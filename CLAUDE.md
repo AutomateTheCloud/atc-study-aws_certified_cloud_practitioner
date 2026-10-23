@@ -35,6 +35,16 @@ public, so everything committed here must be fit to publish.
 - American English. "Automate the Cloud" in prose, "Automate the Cloud Inc."
   in legal text.
 
+## Labs
+
+- Labs run in the learner's own AWS account. Before the first lab, the guide
+  sends learners through the guardrails primer
+  (`atc-study-aws_account_guardrails`); don't repeat its steps here, link to
+  them.
+- Every lab says what it creates, what it costs, and how to delete it, and
+  starts with the liability notice. Where a lab would cost money or isn't
+  possible on the Free plan, teach the topic anyway and simulate it.
+
 ## AWS trademarks
 
 - AWS names in plain text only, to make true factual statements. No AWS
