@@ -13,7 +13,7 @@ work the way they do, not only what to memorize.
 The guide is written once, in Markdown, and built into three editions:
 
 - **Markdown** in this repository, readable on the hosting platform.
-- **Website**, as a multi-page course on automatethe.cloud.
+- **Website**, as a multi-page course on an Automate the Cloud learning site.
 - **PDF**, as a book-style edition.
 
 Hands-on labs run in the learner's own AWS account, with cost guardrails

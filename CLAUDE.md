@@ -47,11 +47,17 @@ public, so everything committed here must be fit to publish.
 ## Images
 
 - Diagrams we draw are CC BY-NC. Icons and other third-party assets keep
-  their own licenses and are credited where used. Check the research repo's
-  `docs/09` before using any AWS icon set.
+  their own licenses and are credited where used.
+- AWS service icons come only from the AWS Icons for PlantUML set (CC BY-ND
+  2.0): unmodified (no recoloring, cropping, or redrawing), credited, and
+  marked as outside our license. Generic icons come from openly licensed
+  sets (MIT, ISC, Apache). Don't use the official AWS Architecture Icons
+  package. Never adapt a diagram from AWS documentation; draw our own. See the
+  research repo's `docs/09`.
 - Screenshots are taken in our own AWS accounts and redacted (account IDs,
   ARNs, emails, and anything else in the `docs/09` redaction checklist).
-  They are AWS material, marked as outside our licenses.
+  They are AWS material used as limited fair use, marked as outside our
+  licenses. Use them sparingly, only where they teach something.
 
 ## Licensing
 
