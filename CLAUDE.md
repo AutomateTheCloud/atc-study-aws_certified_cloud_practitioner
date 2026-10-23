@@ -42,7 +42,8 @@ public, so everything committed here must be fit to publish.
   (`atc-study-aws_account_guardrails`); don't repeat its steps here, link to
   them.
 - Every lab says what it creates, what it costs, and how to delete it, and
-  starts with the liability notice. Where a lab would cost money or isn't
+  starts with the approved liability notice (research repo `docs/13`, word
+  for word). The same notice goes in the front matter of every edition. Where a lab would cost money or isn't
   possible on the Free plan, teach the topic anyway and simulate it.
 
 ## AWS trademarks
