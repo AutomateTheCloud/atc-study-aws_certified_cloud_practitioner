@@ -65,10 +65,15 @@ public, so everything committed here must be fit to publish.
   sets (MIT, ISC, Apache). Don't use the official AWS Architecture Icons
   package. Never adapt a diagram from AWS documentation; draw our own. See the
   research repo's `docs/09`.
-- Screenshots are taken in our own AWS accounts and redacted (account IDs,
-  ARNs, emails, and anything else in the `docs/09` redaction checklist).
-  They are AWS material used as limited fair use, marked as outside our
-  licenses. Use them sparingly, only where they teach something.
+- Screenshots are taken in our own AWS accounts and redacted (emails,
+  people's names, phone numbers, addresses, card details, MFA QR codes and
+  secrets, keys, IP addresses, user IDs, credit IDs, and anything else in the
+  `docs/09` redaction checklist). For the `atc-test-01` test account the owner
+  decided (2026-10-23) that its account ID, alias and company name may show,
+  including inside ARNs. Only screenshots the owner has approved in the
+  private redaction log may enter this repo. They are AWS material used as
+  limited fair use, marked as outside our licenses. Use them sparingly, only
+  where they teach something.
 
 ## Licensing
 
