@@ -88,6 +88,11 @@ flowchart LR
    **You should see:** a page titled **Create bucket**, with **AWS Region** shown as US East (N. Virginia) us-east-1.
 7. Keep **Bucket type** at **General purpose**. Under **Bucket namespace**, keep **Global namespace**, which was selected by default on 2026-10-24.
    The other option, **Account Regional namespace (recommended)**, makes the name unique to your account by adding a suffix with your account ID and Region (for example `-111122223333-us-east-1-an`). It is a good choice for real work, because no other account can ever take your names. This lab keeps the default so the steps stay simple.
+
+   ![The Create bucket page with General purpose selected, the bucket namespace choice, and the Account Regional namespace option showing the suffix it would add.](../../images/02-06-bucket-namespace.png)
+
+   *Screenshot: the bucket namespace choice on the Create bucket page, with the Account Regional option selected to show its suffix (the lab keeps Global namespace), captured 2026-10-24 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+
 8. In the bucket name box, type the name from your lab log.
 9. Leave the security settings as AWS sets them by default, and check that they read as follows. Don't change any of them.
    - **Object Ownership:** ACLs disabled (the bucket owner owns everything in it).
@@ -100,6 +105,11 @@ flowchart LR
     **You should see:** two tags listed before you create the bucket.
 11. Choose **Create bucket** at the bottom of the page.
     **You should see:** your new bucket's own page, with a green message that the bucket was created and an empty **Objects** tab.
+
+    ![The new bucket's page with a green Successfully created bucket message and an empty Objects tab.](../../images/02-06-bucket-created.png)
+
+    *Screenshot: the new bucket right after creation, captured 2026-10-24 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+
     > **If something went wrong:**
     > - *The name is already taken:* another account in the world uses it. Change the four digits and try again.
     > - *The name is not valid:* look for capital letters, spaces, underscores or a dot or hyphen at the end.
@@ -115,6 +125,11 @@ flowchart LR
 16. Under **Tags – Optional**, enter the tag key `lab` and the tag value `01`, and choose **Add**. Then choose **Search resources**.
     **You should see:** one result, your bucket.
     The **Tag: Name** column shows *(not tagged)*. That is normal: you didn't add a tag with the key `Name`, and this lab doesn't need one.
+
+    ![Tag Editor with All regions, the AWS::S3::Bucket type and the tag lab: 01 selected, and one result: the lab bucket in us-east-1.](../../images/02-06-tag-editor-result.png)
+
+    *Screenshot: Tag Editor finding the bucket by its tag, captured 2026-10-24 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+
     > **If something went wrong:** no results usually means a typo in the tag (the search is case sensitive) or a tag that wasn't added. Open the bucket in S3, choose its **Properties** tab, and scroll to **Tags**. If a tag is missing, add it there and search again.
 
 ### Find it in the activity record
@@ -123,6 +138,11 @@ flowchart LR
 18. In the left menu, choose **Event history**. Event history is on in every account, keeps 90 days of account activity for each Region, and costs nothing to view ([Working with CloudTrail event history](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html), checked 2026-10-23).
 19. Under **Lookup attributes**, the first box starts on **Read-only**. Change it to **Event name**, type `CreateBucket` in the box beside it, and press Enter.
     **You should see:** one event from a few minutes ago, with your IAM user name under **User name** and your bucket's name under **Resource name**.
+
+    ![CloudTrail Event history filtered by Event name CreateBucket, showing one event with the IAM user name, the event source s3.amazonaws.com and the bucket name.](../../images/02-06-cloudtrail-createbucket.png)
+
+    *Screenshot: CloudTrail Event history showing the CreateBucket event, captured 2026-10-24 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+
     > **If something went wrong:** if nothing appears, wait five minutes and refresh; in our run, events took up to four minutes to appear. Then check that the Region is N. Virginia, because Event history shows one Region at a time.
 
 ## Check your work

@@ -116,6 +116,11 @@ You delete all three at the end.
 9. Read the summary of permissions the page shows. It should name one service, S3, with list and read access only. Choose **Create policy**.
    **You should see:** a success message, and your policy in the list. Choose the filter for customer managed policies to see it alone.
 
+   ![The Review and create step: policy name, description, a permissions summary showing S3 with Limited: List, Read, and the two tags.](../../images/04-06-policy-review.png)
+
+   *Screenshot: the review step before creating the policy, with its permissions summary, captured 2026-10-24 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+
+
 ### Create the group and attach the policy
 
 10. In IAM's left menu, choose **IAM user groups**, then choose the button to create a group. The page that opens is titled **Create user group**.
@@ -131,6 +136,11 @@ The **IAM policy simulator** works out whether a request would be allowed or den
 
 13. Open the group `clf-lab03-photo-viewers` and choose its **Permissions** tab. Next to **Permissions policies**, choose **Simulate**. The simulator opens in a new browser tab. (You can also open it from IAM's left menu: **Policy simulator**.)
     **You should see:** **Principal** selected at the top, your group under **Identities**, and `clf-lab03-photo-viewing` ticked under **Identity-based policies**.
+
+    ![The new IAM policy simulator with a notice about the legacy simulator, Principal selected, the lab group under Identities and its policy ticked.](../../images/04-06-policy-simulator.png)
+
+    *Screenshot: the new in-console policy simulator, opened from the group, captured 2026-10-24 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+
 14. Choose **Add actions**. Choose the service **S3**, then choose **Specify** so you can type action names. Type `ListBucket`; choose **Add more** and type `GetObject`; do the same for `PutObject` and `DeleteObject`. Choose **Add actions**.
     **You should see:** four rows, each with the resource `*`.
 15. Give each row its resource. Choose the row's **Resource** cell, select **Specific**, choose the **Type** (`bucket` for `ListBucket`, `object` for the other three), paste the ARN from the table below, and choose **Save**.
@@ -149,6 +159,11 @@ The **IAM policy simulator** works out whether a request would be allowed or den
     > **If something went wrong:** test 1 or 2 denied → check the bucket name in the policy and in the resource, letter by letter, and check that test 2's resource ends with a file name after the `/`. Fix the policy in IAM (open it and choose **Edit**), then choose **Simulate** again.
 17. Read the **Result details** column.
     **You should see:** for the allowed tests, "Explicit allow in 1 statement(s)" (as of 2026-10-24); open it to see which policy and which lines allowed the request. For the denied tests, "Implicit deny due to no statement(s) matching". That is an **implicit deny**: IAM denies every request that no policy allows. Nothing in this lab writes a "Deny".
+
+    ![Simulation results: GetObject on another bucket denied, PutObject and DeleteObject denied, ListBucket allowed, ListAllMyBuckets denied, each with its result details.](../../images/04-06-simulation-results.png)
+
+    *Screenshot: simulation results, after test 5 changed GetObject to another bucket, captured 2026-10-24 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+
 
 The file `cakes/lemon-tart.jpg` doesn't exist, and that doesn't matter: the simulator checks permissions, not files. AWS warns that its results can differ from your live account, so in real work you would also test with a real sign-in.
 

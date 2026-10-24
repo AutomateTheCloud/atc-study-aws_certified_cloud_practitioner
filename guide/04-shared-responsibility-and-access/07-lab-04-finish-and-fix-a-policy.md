@@ -93,6 +93,11 @@ The bakery's photographer uploads new cake photos and checks them. She needs to 
 
 3. Look at the policy validation pane under the editor. It shows a count for each of **Security**, **Errors**, **Warnings** and **Suggestions**.
    **You should see:** on 2026-10-24, **Errors: 3**, one for each blank: two "Missing ARN Field" errors (the resources aren't real ARNs) and "Invalid Action: The action BLANK-2 does not exist". Choose the **Errors** count to list them; each gives the line and column it points at. Write them in your lab log.
+
+   ![The JSON policy editor with the half-written policy and the Errors list below it: two Missing ARN Field errors and Invalid Action for BLANK-2, each with its line and column.](../../images/04-07-validation-errors.png)
+
+   *Screenshot: policy validation flagging the three blanks, captured 2026-10-24 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+
 4. Fill in the three blanks.
    **You should see:** every count back to 0.
    > **If something went wrong:** a finding that stays usually points at a typo. Action names are written `service:Action`, and every ARN starts `arn:aws:s3:::`.
@@ -176,6 +181,11 @@ The bakery's previous helper wrote a policy to make sure nobody in the editors' 
 
 12. Use the policy simulator in **Principal** mode, which tests an existing identity (the easiest way in is the **Simulate** button on the group's **Permissions** tab), to find the cause. Test `s3:PutObject` and `s3:GetObject` on a file and `s3:DeleteBucket` on the bucket. Open the result details for the upload. Write in your lab log which policy decides the result, and why the allow in her own policy doesn't help.
     **You should see:** `PutObject` **Denied** with "Explicit deny found in 1 or more statements", and details naming `clf-lab04-protect-bucket` and the lines of its statement (as of 2026-10-24).
+
+    ![Simulation results for the editors group: PutObject denied with Explicit deny found in 1 or more statements, GetObject allowed, DeleteBucket denied.](../../images/04-07-explicit-deny.png)
+
+    *Screenshot: the explicit deny blocking uploads, before the fix, captured 2026-10-24 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+
 13. Fix the cause without weakening the protection the helper wanted. Open the policy in IAM, choose **Edit**, change the JSON, and choose **Next**. IAM keeps the old text as an earlier **version** of the policy. Check that **Set this new version as the default.** is selected (it was, by default, on 2026-10-24), then choose **Save changes**.
 14. Run the simulation again.
     **You should see:** uploads allowed, and `s3:DeleteBucket` still denied, with the protecting policy named as the reason.
