@@ -1,4 +1,4 @@
-# Course plan: Automate the Cloud Study Guide for the AWS Certified Cloud Practitioner (CLF-C02) Exam
+# Course plan: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
 
 Design document for authors and reviewers. Drafted 2026-10-24.
 

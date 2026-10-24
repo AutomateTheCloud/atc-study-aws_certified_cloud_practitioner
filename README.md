@@ -1,4 +1,4 @@
-# Automate the Cloud Study Guide for the AWS Certified Cloud Practitioner (CLF-C02) Exam
+# Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
 
 A study guide that teaches the skills behind the AWS Certified Cloud
 Practitioner certification, exam version CLF-C02. Passing the exam is the
