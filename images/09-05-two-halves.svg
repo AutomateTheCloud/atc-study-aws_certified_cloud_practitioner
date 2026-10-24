@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="472" viewBox="0 0 680 472" role="img" aria-labelledby="t d">
+<title id="t">An auditor's question splits into AWS's half and the bakery's half</title>
+<desc id="d">At the top, a box labeled the auditor's question, with arrows to two columns. Left column, AWS's controls, security of the cloud: examples are physical security of data centers, hardware, the global network and each service's own infrastructure; evidence is AWS's audit reports and certificates, such as SOC 2, ISO 27001 and PCI DSS; it comes from AWS Artifact, free. Right column, highlighted, the bakery's controls, security in the cloud: examples are its data and where it lives, who has access, how its services are configured, and its staff; evidence is its own records, such as CloudTrail activity, AWS Config history and rules, IAM access reports, written policies and training records; it comes from the bakery itself. A band across the bottom says: compliant only when both halves are covered.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --ok-fill:#d9e8fb; --no-fill:#fbe1d6; --n-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --ok-fill:#1b3554; --no-fill:#4d2716; --n-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .ok { fill: var(--ok-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .no { fill: var(--no-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .n { fill: var(--n-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .plain { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .zlab { fill: var(--muted); font-size: 12px; }
+  .rowl { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .key { fill: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: 0.4px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .arrowhead { fill: var(--ink2); }
+</style>
+<rect width="680" height="472" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Every audit question has an owner</text>
+<text class="sub" x="16" y="48">AWS proves its controls; the customer proves its own</text>
+<rect class="plain" x="230.0" y="66.0" width="220.0" height="40.0" rx="6"/>
+<text class="cellt" x="340" y="91" text-anchor="middle">The auditor's question</text>
+<line class="arrow" x1="300.0" y1="107.0" x2="174.0" y2="130.0"/>
+<path class="arrowhead" d="M182.8,133.5 L181.0,123.6 L174.0,130.0 Z"/>
+<line class="arrow" x1="380.0" y1="107.0" x2="506.0" y2="130.0"/>
+<path class="arrowhead" d="M499.0,123.6 L497.2,133.5 L506.0,130.0 Z"/>
+<rect class="n" x="16.0" y="132.0" width="316.0" height="236.0" rx="8"/>
+<text class="cellt" x="30" y="158">AWS's controls</text>
+<text class="small" x="30" y="176">security of the cloud</text>
+<text class="key" x="30" y="202">EXAMPLES</text>
+<text class="small" x="30" y="219.0">Physical security of data centers, hardware,</text>
+<text class="small" x="30" y="235.0">the global network, each service's own</text>
+<text class="small" x="30" y="251.0">infrastructure</text>
+<text class="key" x="30" y="275">EVIDENCE</text>
+<text class="small" x="30" y="292.0">AWS's audit reports and certificates, such</text>
+<text class="small" x="30" y="308.0">as SOC 2, ISO 27001 and PCI DSS</text>
+<text class="key" x="30" y="332">WHERE FROM</text>
+<text class="small" x="30" y="349.0">AWS Artifact, free</text>
+<rect class="ok" x="348.0" y="132.0" width="316.0" height="236.0" rx="8"/>
+<text class="cellt" x="362" y="158">The bakery's controls</text>
+<text class="small" x="362" y="176">security in the cloud</text>
+<text class="key" x="362" y="202">EXAMPLES</text>
+<text class="small" x="362" y="219.0">Its data and where it lives, who has access,</text>
+<text class="small" x="362" y="235.0">how its services are configured, its staff</text>
+<text class="key" x="362" y="259">EVIDENCE</text>
+<text class="small" x="362" y="276.0">Its own records: CloudTrail activity, AWS</text>
+<text class="small" x="362" y="292.0">Config history and rules, IAM access</text>
+<text class="small" x="362" y="308.0">reports, written policies, training records</text>
+<text class="key" x="362" y="332">WHERE FROM</text>
+<text class="small" x="362" y="349.0">The bakery itself</text>
+<rect class="n" x="16.0" y="382.0" width="648.0" height="36.0" rx="6"/>
+<text class="cellt" x="340.0" y="405" text-anchor="middle">Compliant only when both halves are covered</text>
+<text class="note" x="16" y="442">From "What is AWS Artifact?" and the Shared Responsibility Model page, checked 2026-10-24. The bakery is made up</text>
+<text class="note" x="16" y="458">for teaching.</text>
+</svg>

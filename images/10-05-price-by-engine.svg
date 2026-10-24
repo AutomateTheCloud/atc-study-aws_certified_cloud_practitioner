@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="375" viewBox="0 0 680 375" role="img" aria-labelledby="t d">
+<title id="t">Amazon Polly's price per million characters, by voice engine</title>
+<desc id="d">Horizontal bar chart of Amazon Polly's pay-as-you-go price per 1 million characters, before any free allowance, checked 2026-10-24. Standard: $4, so the lab's 211-character description costs about $0.0008 to synthesize once. Neural: $16, about $0.0034 once. Generative: $30, about $0.0063 once. Long Form: $100, about $0.0211 once; the lab doesn't use it. You pay each time Polly synthesizes, so speech you will reuse is best synthesized once and kept as a file, which AWS allows at no extra charge.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+</style>
+<rect width="680" height="375" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Amazon Polly charges by the character, and the engine sets the rate</text>
+<text class="sub" x="16" y="48">US dollars per 1 million characters, pay-as-you-go, before any free allowance</text>
+<line class="axis" x1="110.0" x2="110.0" y1="86" y2="258"/>
+<text class="tick" x="110.0" y="276" text-anchor="middle">$0</text>
+<line class="grid" x1="192.5" x2="192.5" y1="86" y2="258"/>
+<text class="tick" x="192.5" y="276" text-anchor="middle">$25</text>
+<line class="grid" x1="275.0" x2="275.0" y1="86" y2="258"/>
+<text class="tick" x="275.0" y="276" text-anchor="middle">$50</text>
+<line class="grid" x1="357.5" x2="357.5" y1="86" y2="258"/>
+<text class="tick" x="357.5" y="276" text-anchor="middle">$75</text>
+<line class="grid" x1="440.0" x2="440.0" y1="86" y2="258"/>
+<text class="tick" x="440.0" y="276" text-anchor="middle">$100</text>
+<text class="lab" x="98" y="111" text-anchor="end">Standard</text>
+<path class="s1" d="M110.0,96.0 L119.2,96.0 Q123.2,96.0 123.2,100.0 L123.2,114.0 Q123.2,118.0 119.2,118.0 L110.0,118.0 Z"><title>Standard: $4.00 per million characters; the lab's 211 characters once: about $0.0008</title></path>
+<text class="lab" x="131.2" y="107">$4</text>
+<text class="small" x="131.2" y="123">this description once: about $0.0008</text>
+<text class="lab" x="98" y="155" text-anchor="end">Neural</text>
+<path class="s1" d="M110.0,140.0 L158.8,140.0 Q162.8,140.0 162.8,144.0 L162.8,158.0 Q162.8,162.0 158.8,162.0 L110.0,162.0 Z"><title>Neural: $16.00 per million characters; the lab's 211 characters once: about $0.0034</title></path>
+<text class="lab" x="170.8" y="151">$16</text>
+<text class="small" x="170.8" y="167">this description once: about $0.0034</text>
+<text class="lab" x="98" y="199" text-anchor="end">Generative</text>
+<path class="s1" d="M110.0,184.0 L205.0,184.0 Q209.0,184.0 209.0,188.0 L209.0,202.0 Q209.0,206.0 205.0,206.0 L110.0,206.0 Z"><title>Generative: $30.00 per million characters; the lab's 211 characters once: about $0.0063</title></path>
+<text class="lab" x="217.0" y="195">$30</text>
+<text class="small" x="217.0" y="211">this description once: about $0.0063</text>
+<text class="lab" x="98" y="243" text-anchor="end">Long Form</text>
+<path class="s1" d="M110.0,228.0 L436.0,228.0 Q440.0,228.0 440.0,232.0 L440.0,246.0 Q440.0,250.0 436.0,250.0 L110.0,250.0 Z"><title>Long Form: $100.00 per million characters; the lab's 211 characters once: about $0.0211</title></path>
+<text class="lab" x="448.0" y="239">$100 (not used in this lab)</text>
+<text class="small" x="448.0" y="255">this description once: about $0.0211</text>
+<text class="small" x="16" y="304.0">The lab's lemon tart description is 211 characters. You pay each time Polly turns text into speech,</text>
+<text class="small" x="16" y="321.0">so a shop that plays the same description to every visitor should synthesize it once and keep the</text>
+<text class="small" x="16" y="338.0">audio file: AWS allows you to store and replay Polly's output at no extra charge.</text>
+<text class="note" x="16" y="361">Amazon Polly pricing, checked 2026-10-24. Per-description figures are our arithmetic.</text>
+</svg>

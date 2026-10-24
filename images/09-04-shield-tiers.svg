@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="397" viewBox="0 0 680 397" role="img" aria-labelledby="t d">
+<title id="t">AWS Shield Standard compared with AWS Shield Advanced</title>
+<desc id="d">Two panels. Left: AWS Shield Standard. No additional charge and nothing to turn on: every AWS customer has it. It defends against the most common network and transport layer attacks, such as SYN floods and UDP reflection. It is strongest for CloudFront, Route 53 hosted zones and Global Accelerator. It has no people to call, no bill protection and no web-request (layer 7) mitigation. Right, highlighted: AWS Shield Advanced. $3,000 a month with a 1-year subscription, billed once per organization's payer account, plus data transfer fees. You choose the resources to protect: CloudFront, Route 53 hosted zones, load balancers, Elastic IP addresses and Global Accelerator. It adds automatic web-request (layer 7) mitigation through AWS WAF and covers standard WAF fees on those resources. It brings the Shield Response Team, DDoS experts available around the clock, and AWS's page also requires a Business or Enterprise Support plan for them. It adds DDoS cost protection: credits for scaling charges an attack causes. Note: Support plans change on 2027-01-01, when Business Support ends; AWS's SRT page still named it on 2026-10-24.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --hi-fill:#d9e8fb; --n-fill:#f1f0ec; --alt-fill:#fbe1d6; --zone:#f6f5f1; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --hi-fill:#1b3554; --n-fill:#252523; --alt-fill:#4d2716; --zone:#20201f; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 2; }
+  .n { fill: var(--n-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .alt { fill: var(--alt-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .none { fill: none; stroke: var(--axis); stroke-width: 1; stroke-dasharray: 3 3; }
+  .plain { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .zone { fill: var(--zone); stroke: var(--axis); stroke-width: 1.2; stroke-dasharray: 6 4; }
+  .vpc { fill: none; stroke: var(--ink2); stroke-width: 1.5; }
+  .sg { fill: none; stroke: var(--s1); stroke-width: 2; stroke-dasharray: 7 4; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .cellb { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .zlab { fill: var(--muted); font-size: 12px; font-weight: 600; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .val { fill: var(--ink); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .num { fill: var(--ink); font-size: 12px; font-weight: 700; }
+  .numc { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; }
+  .zero { stroke: var(--s1); stroke-width: 2; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .arrowd { stroke: var(--ink2); stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; }
+  .arrowhead { fill: var(--ink2); }
+</style>
+<rect width="680" height="397" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Shield Standard comes with your account; Shield Advanced is a decision</text>
+<text class="sub" x="16" y="48">What each tier gives you, as AWS described it when we checked</text>
+<rect class="n" x="16.0" y="66.0" width="316.0" height="273.0" rx="6"/>
+<text class="boxt" x="26" y="86">AWS Shield Standard</text>
+<text class="cells" x="26" y="104.0">• No additional charge, and nothing to turn</text>
+<text class="cells" x="37" y="119.0">on: every AWS customer has it</text>
+<text class="cells" x="26" y="139.0">• Defends against the most common network and</text>
+<text class="cells" x="37" y="154.0">transport layer attacks, such as SYN floods</text>
+<text class="cells" x="37" y="169.0">and UDP reflection</text>
+<text class="cells" x="26" y="189.0">• Strongest for CloudFront, Route 53 hosted</text>
+<text class="cells" x="37" y="204.0">zones and Global Accelerator</text>
+<text class="cells" x="26" y="224.0">• No people to call, no bill protection, no</text>
+<text class="cells" x="37" y="239.0">web-request (layer 7) mitigation</text>
+<rect class="hi" x="348.0" y="66.0" width="316.0" height="273.0" rx="6"/>
+<text class="boxt" x="358" y="86">AWS Shield Advanced</text>
+<text class="cells" x="358" y="104.0">• $3,000 a month with a 1-year subscription,</text>
+<text class="cells" x="369" y="119.0">billed once per organization's payer</text>
+<text class="cells" x="369" y="134.0">account, plus data transfer fees</text>
+<text class="cells" x="358" y="154.0">• You choose the resources: CloudFront, Route</text>
+<text class="cells" x="369" y="169.0">53 hosted zones, load balancers, Elastic IP</text>
+<text class="cells" x="369" y="184.0">addresses, Global Accelerator</text>
+<text class="cells" x="358" y="204.0">• Adds automatic web-request (layer 7)</text>
+<text class="cells" x="369" y="219.0">mitigation through AWS WAF, and covers</text>
+<text class="cells" x="369" y="234.0">standard WAF fees on those resources</text>
+<text class="cells" x="358" y="254.0">• Shield Response Team (SRT): DDoS experts,</text>
+<text class="cells" x="369" y="269.0">around the clock; AWS's page also requires a</text>
+<text class="cells" x="369" y="284.0">Business or Enterprise Support plan</text>
+<text class="cells" x="358" y="304.0">• DDoS cost protection: credits for scaling</text>
+<text class="cells" x="369" y="319.0">charges an attack causes</text>
+<text class="note" x="16" y="363.0">Support plans change on 2027-01-01, when Business Support ends; AWS's SRT page still named it on 2026-10-24.</text>
+<text class="note" x="16" y="378.0">From the AWS Shield developer guide, Shield FAQ and Shield pricing page, checked 2026-10-24. Prices change.</text>
+</svg>

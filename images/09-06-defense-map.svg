@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="616" viewBox="0 0 680 616" role="img" aria-labelledby="t d">
+<title id="t">Six security layers from the edge to the organization, with a watch across all of them</title>
+<desc id="d">Six bands, each drawn slightly inside the one above, from the internet at the top to the organization at the bottom. 1, Edge, where traffic first reaches AWS: Route 53, CloudFront, Shield Standard and Advanced, AWS WAF. 2, Network, the bakery's VPC: public and private subnets, route tables, network ACLs, security groups. 3, Compute, servers and functions: patched images and guest operating systems, Amazon Inspector scans. 4, Data, what is stored and sent: encryption with KMS keys and ACM certificates, S3 Block Public Access and versioning, Macie, backups. 5, Identity and account, who can do what: IAM least privilege, MFA, roles instead of access keys, root user protection. 6, Organization, rules over every account: separate accounts, SCPs, Control Tower controls, Firewall Manager. A highlighted vertical band on the right, labeled watch and prove across every layer, lists CloudTrail, AWS Config, CloudWatch, GuardDuty and Security Hub: records, findings and alarms that show what got through.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --ok-fill:#d9e8fb; --no-fill:#fbe1d6; --n-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --ok-fill:#1b3554; --no-fill:#4d2716; --n-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .ok { fill: var(--ok-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .no { fill: var(--no-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .n { fill: var(--n-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .plain { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .watch { fill: var(--no-fill); stroke: var(--s2); stroke-width: 2; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .tiny { fill: var(--ink); font-size: 11px; }
+  .zlab { fill: var(--muted); font-size: 12px; }
+  .rowl { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .key { fill: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: 0.5px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .arrowhead { fill: var(--ink2); }
+</style>
+<rect width="680" height="616" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">A defense map: six layers, and a watch across all of them</text>
+<text class="sub" x="16" y="48">From the internet (top) to the organization (bottom), with the controls at each layer</text>
+<text class="zlab" x="16" y="78">The internet: customers, bots and attackers</text>
+<rect class="n" x="16.0" y="92.0" width="500.0" height="66.0" rx="6"/>
+<text class="cellt" x="28" y="114">1  Edge</text>
+<text class="zlab" x="28" y="132">where traffic reaches AWS</text>
+<text class="small" x="222" y="114.0">Route 53, CloudFront, Shield Standard</text>
+<text class="small" x="222" y="129.0">and Advanced, AWS WAF</text>
+<rect class="n" x="22.0" y="166.0" width="488.0" height="66.0" rx="6"/>
+<text class="cellt" x="34" y="188">2  Network</text>
+<text class="zlab" x="34" y="206">the bakery's VPC</text>
+<text class="small" x="222" y="188.0">Public and private subnets, route</text>
+<text class="small" x="222" y="203.0">tables, network ACLs, security groups</text>
+<rect class="n" x="28.0" y="240.0" width="476.0" height="66.0" rx="6"/>
+<text class="cellt" x="40" y="262">3  Compute</text>
+<text class="zlab" x="40" y="280">servers and functions</text>
+<text class="small" x="222" y="262.0">Patched images and guest operating</text>
+<text class="small" x="222" y="277.0">systems, Amazon Inspector scans</text>
+<rect class="n" x="34.0" y="314.0" width="464.0" height="66.0" rx="6"/>
+<text class="cellt" x="46" y="336">4  Data</text>
+<text class="zlab" x="46" y="354">what is stored and sent</text>
+<text class="small" x="222" y="336.0">Encryption with KMS keys and ACM</text>
+<text class="small" x="222" y="351.0">certificates, S3 Block Public Access and</text>
+<text class="small" x="222" y="366.0">versioning, Macie, backups</text>
+<rect class="n" x="40.0" y="388.0" width="452.0" height="66.0" rx="6"/>
+<text class="cellt" x="52" y="410">5  Identity and account</text>
+<text class="zlab" x="52" y="428">who can do what</text>
+<text class="small" x="222" y="410.0">IAM least privilege, MFA, roles instead</text>
+<text class="small" x="222" y="425.0">of access keys, root user protection</text>
+<rect class="n" x="46.0" y="462.0" width="440.0" height="66.0" rx="6"/>
+<text class="cellt" x="58" y="484">6  Organization</text>
+<text class="zlab" x="58" y="502">rules over every account</text>
+<text class="small" x="222" y="484.0">Separate accounts, SCPs, Control Tower</text>
+<text class="small" x="222" y="499.0">controls, Firewall Manager</text>
+<rect class="watch" x="530.0" y="92.0" width="134.0" height="436.0" rx="8"/>
+<text class="cellt" x="597.0" y="118" text-anchor="middle">Watch and prove</text>
+<text class="zlab" x="597.0" y="136" text-anchor="middle">across every layer</text>
+<text class="cellt" x="597.0" y="176" text-anchor="middle">CloudTrail</text>
+<text class="cellt" x="597.0" y="206" text-anchor="middle">AWS Config</text>
+<text class="cellt" x="597.0" y="236" text-anchor="middle">CloudWatch</text>
+<text class="cellt" x="597.0" y="266" text-anchor="middle">GuardDuty</text>
+<text class="cellt" x="597.0" y="296" text-anchor="middle">Security Hub</text>
+<text class="zlab" x="597.0" y="336.0" text-anchor="middle">records, findings</text>
+<text class="zlab" x="597.0" y="351.0" text-anchor="middle">and alarms that</text>
+<text class="zlab" x="597.0" y="366.0" text-anchor="middle">show what got</text>
+<text class="zlab" x="597.0" y="381.0" text-anchor="middle">through</text>
+<text class="note" x="16" y="554">Each layer is drawn inside the one above it. Lessons: 07.01 to 07.03 and 09.04 (edge and network),</text>
+<text class="note" x="16" y="570">Module 06 and 09.03 (compute), 05.02 and 09.02 (data), Module 04 and 09.01 (identity and account),</text>
+<text class="note" x="16" y="586">09.05 (organization). The bakery is made up for teaching.</text>
+</svg>

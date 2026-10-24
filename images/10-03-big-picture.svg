@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="464" viewBox="0 0 680 464" role="img" aria-labelledby="t d">
+<title id="t">Seven services grouped by who is on the other end</title>
+<desc id="d">Four groups. Staff at a screen, such as seasonal staff or an accountant: Amazon WorkSpaces gives a whole desktop; WorkSpaces Applications, the exam's AppStream 2.0, gives one application; WorkSpaces Secure Browser gives one browser and is closed to new customers from 2026-10-29. Customers on the phone, in chat or by email: Amazon Connect Customer, the exam's Amazon Connect, is a contact center; Amazon SES is email at scale. App users of the bakery's web and phone app: AWS Amplify builds and hosts the front end. Devices such as freezer sensors: AWS IoT Core connects devices and routes their messages.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --aws-fill:#d9e8fb; --hi-fill:#fbe1d6; --card-fill:#f1f0ec; --scr:#ffffff; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --aws-fill:#1b3554; --hi-fill:#4d2716; --card-fill:#252523; --scr:#2c2c2a; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .aws { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .card { fill: var(--card-fill); stroke: var(--axis); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s2); stroke-width: 2.5; }
+  .panel { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .scr { fill: var(--scr); stroke: var(--ink2); stroke-width: 1.5; }
+  .win { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 1.2; }
+  .winhi { fill: var(--hi-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .bar { fill: var(--grid); }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .colh { fill: var(--muted); font-size: 11.5px; font-weight: 600; letter-spacing: 0.5px; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .tiny { fill: var(--ink2); font-size: 10.5px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .flow { stroke: var(--ink2); stroke-width: 1.8; fill: none; }
+  .flowd { stroke: var(--ink2); stroke-width: 1.8; fill: none; stroke-dasharray: 5 4; }
+  .head-ink { fill: var(--ink2); }
+  .line-s2 { stroke: var(--s2); stroke-width: 2; fill: none; stroke-linecap: round; }
+  .ann { fill: var(--ink); font-size: 12px; }
+  .band { fill: var(--grid); opacity: 0.6; }
+</style>
+<rect width="680" height="464" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Who is on the other end? Four kinds of user, seven services</text>
+<text class="sub" x="16" y="48">Start from who the service is for; then pick the service by what they need.</text>
+<text class="colh" x="16" y="74">WHO</text>
+<text class="colh" x="250" y="74">AWS SERVICE AND WHAT IT GIVES THEM</text>
+<rect class="card" x="16" y="84" width="196" height="132" rx="6"/>
+<text class="boxt" x="26" y="102" text-anchor="start">Staff at a screen</text>
+<text class="cells" x="26" y="118.0" text-anchor="start">Seasonal staff, an accountant</text>
+<rect class="aws" x="250" y="84" width="414" height="40" rx="6"/>
+<text class="boxt" x="260" y="109">Amazon WorkSpaces</text>
+<text class="cells" x="456" y="109">a whole desktop</text>
+<path class="flow" d="M216.0,150.0 L243.4,110.6"/>
+<path class="head-ink" d="M248.0,104.0 L238.2,109.4 L246.4,115.1 Z"/>
+<rect class="aws" x="250" y="130" width="414" height="40" rx="6"/>
+<text class="boxt" x="260" y="155">WorkSpaces Applications</text>
+<text class="cells" x="456" y="155">one application (AppStream 2.0)</text>
+<path class="flow" d="M216.0,150.0 L240.0,150.0"/>
+<path class="head-ink" d="M248.0,150.0 L238.0,145.0 L238.0,155.0 Z"/>
+<rect class="aws" x="250" y="176" width="414" height="40" rx="6"/>
+<text class="boxt" x="260" y="201">WorkSpaces Secure Browser</text>
+<text class="cells" x="456" y="201">one web browser</text>
+<path class="flow" d="M216.0,150.0 L243.4,189.4"/>
+<path class="head-ink" d="M248.0,196.0 L246.4,184.9 L238.2,190.6 Z"/>
+<rect class="card" x="16" y="232" width="196" height="86" rx="6"/>
+<text class="boxt" x="26" y="250" text-anchor="start">Customers</text>
+<text class="cells" x="26" y="266.0" text-anchor="start">On the phone, in chat, by email</text>
+<rect class="aws" x="250" y="232" width="414" height="40" rx="6"/>
+<text class="boxt" x="260" y="257">Amazon Connect Customer</text>
+<text class="cells" x="456" y="257">a contact center (Amazon Connect)</text>
+<path class="flow" d="M216.0,275.0 L241.5,256.7"/>
+<path class="head-ink" d="M248.0,252.0 L237.0,253.8 L242.8,261.9 Z"/>
+<rect class="aws" x="250" y="278" width="414" height="40" rx="6"/>
+<text class="boxt" x="260" y="303">Amazon SES</text>
+<text class="cells" x="456" y="303">email at scale</text>
+<path class="flow" d="M216.0,275.0 L241.5,293.3"/>
+<path class="head-ink" d="M248.0,298.0 L242.8,288.1 L237.0,296.2 Z"/>
+<rect class="card" x="16" y="334" width="196" height="40" rx="6"/>
+<text class="boxt" x="26" y="352" text-anchor="start">App users</text>
+<text class="cells" x="26" y="368.0" text-anchor="start">Website and phone app</text>
+<rect class="aws" x="250" y="334" width="414" height="40" rx="6"/>
+<text class="boxt" x="260" y="359">AWS Amplify</text>
+<text class="cells" x="456" y="359">builds and hosts the front end</text>
+<path class="flow" d="M216.0,354.0 L240.0,354.0"/>
+<path class="head-ink" d="M248.0,354.0 L238.0,349.0 L238.0,359.0 Z"/>
+<rect class="card" x="16" y="390" width="196" height="40" rx="6"/>
+<text class="boxt" x="26" y="408" text-anchor="start">Devices</text>
+<text class="cells" x="26" y="424.0" text-anchor="start">Freezer sensors</text>
+<rect class="aws" x="250" y="390" width="414" height="40" rx="6"/>
+<text class="boxt" x="260" y="415">AWS IoT Core</text>
+<text class="cells" x="456" y="415">connects devices; routes messages</text>
+<path class="flow" d="M216.0,410.0 L240.0,410.0"/>
+<path class="head-ink" d="M248.0,410.0 L238.0,405.0 L238.0,415.0 Z"/>
+<text class="note" x="16" y="450">Exam names in parentheses. Secure Browser closes to new customers on 2026-10-29. Checked 2026-10-24.</text>
+</svg>

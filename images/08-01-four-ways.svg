@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="770" height="395" viewBox="0 0 770 395" role="img" aria-labelledby="t d">
+<title id="t">The four ways into AWS compared</title>
+<desc id="d">Four columns, the AWS Management Console, the AWS CLI, the AWS SDKs and infrastructure as code, compared on four rows. How you work: clicking through pages in a web browser; typing commands and saving them as a script; calls written inside your program's code; a template file that describes the end state. Best for: seeing what exists, learning, and tasks done once; quick or bulk tasks from a terminal such as CloudShell; applications that use AWS while they run; building, changing and copying whole setups. Repeatable, highlighted: no, the steps live in someone's memory; yes if saved as a script, which repeats steps, not the end state; yes, the program makes the same calls every time it runs; yes, the same file builds the same setup anywhere. Exam clue words: visual, browser, one-time; command line, terminal, script; application code, programming language; template, repeatable, identical environments. Notes: on AWS the infrastructure as code service is AWS CloudFormation; AWS CloudShell is a place to run the CLI.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --ok-fill:#d9e8fb; --n-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --ok-fill:#1b3554; --n-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .ok { fill: var(--ok-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .n { fill: var(--n-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .rowl { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+</style>
+<rect width="770" height="395" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Four ways into AWS, compared</text>
+<text class="sub" x="16" y="48">All four send requests to the same AWS APIs; read across a row to see how they differ</text>
+<rect class="n" x="116.0" y="66.0" width="156.0" height="32.0" rx="6"/>
+<text class="cellt" x="124" y="87">Console</text>
+<rect class="n" x="278.0" y="66.0" width="156.0" height="32.0" rx="6"/>
+<text class="cellt" x="286" y="87">AWS CLI</text>
+<rect class="n" x="440.0" y="66.0" width="156.0" height="32.0" rx="6"/>
+<text class="cellt" x="448" y="87">AWS SDKs</text>
+<rect class="n" x="602.0" y="66.0" width="156.0" height="32.0" rx="6"/>
+<text class="cellt" x="610" y="87">Infrastructure as code</text>
+<line class="grid" x1="16" x2="758" y1="106" y2="106"/>
+<text class="rowl" x="16" y="125.0">How you work</text>
+<text class="small" x="124" y="125.0">Clicking through pages</text>
+<text class="small" x="124" y="140.0">in a web browser</text>
+<text class="small" x="286" y="125.0">Typing commands; saving</text>
+<text class="small" x="286" y="140.0">them as a script</text>
+<text class="small" x="448" y="125.0">Calls written inside</text>
+<text class="small" x="448" y="140.0">your program's code</text>
+<text class="small" x="610" y="125.0">A template file that</text>
+<text class="small" x="610" y="140.0">describes the end state</text>
+<line class="grid" x1="16" x2="758" y1="154" y2="154"/>
+<text class="rowl" x="16" y="173.0">Best for</text>
+<text class="small" x="124" y="173.0">Seeing what exists,</text>
+<text class="small" x="124" y="188.0">learning, and tasks</text>
+<text class="small" x="124" y="203.0">done once</text>
+<text class="small" x="286" y="173.0">Quick or bulk tasks</text>
+<text class="small" x="286" y="188.0">from a terminal, such</text>
+<text class="small" x="286" y="203.0">as CloudShell</text>
+<text class="small" x="448" y="173.0">Applications that use</text>
+<text class="small" x="448" y="188.0">AWS while they run</text>
+<text class="small" x="610" y="173.0">Building, changing and</text>
+<text class="small" x="610" y="188.0">copying whole setups</text>
+<rect class="ok" x="113.0" y="219.0" width="162.0" height="74.0" rx="5"/>
+<rect class="ok" x="275.0" y="219.0" width="162.0" height="74.0" rx="5"/>
+<rect class="ok" x="437.0" y="219.0" width="162.0" height="74.0" rx="5"/>
+<rect class="ok" x="599.0" y="219.0" width="162.0" height="74.0" rx="5"/>
+<line class="grid" x1="16" x2="758" y1="217" y2="217"/>
+<text class="rowl" x="16" y="236.0">Repeatable?</text>
+<text class="cellt" x="124" y="236.0">No: the steps live</text>
+<text class="cellt" x="124" y="251.0">in someone's memory</text>
+<text class="cellt" x="286" y="236.0">Yes, if saved as a</text>
+<text class="cellt" x="286" y="251.0">script; it repeats</text>
+<text class="cellt" x="286" y="266.0">steps, not the end</text>
+<text class="cellt" x="286" y="281.0">state</text>
+<text class="cellt" x="448" y="236.0">Yes: the program</text>
+<text class="cellt" x="448" y="251.0">makes the same calls</text>
+<text class="cellt" x="448" y="266.0">every time it runs</text>
+<text class="cellt" x="610" y="236.0">Yes: the same file</text>
+<text class="cellt" x="610" y="251.0">builds the same</text>
+<text class="cellt" x="610" y="266.0">setup, anywhere</text>
+<line class="grid" x1="16" x2="758" y1="295" y2="295"/>
+<text class="rowl" x="16" y="314.0">Exam clue</text>
+<text class="rowl" x="16" y="329.0">words</text>
+<text class="small" x="124" y="314.0">visual, browser,</text>
+<text class="small" x="124" y="329.0">one-time</text>
+<text class="small" x="286" y="314.0">command line, terminal,</text>
+<text class="small" x="286" y="329.0">script</text>
+<text class="small" x="448" y="314.0">application code,</text>
+<text class="small" x="448" y="329.0">programming language</text>
+<text class="small" x="610" y="314.0">template, repeatable,</text>
+<text class="small" x="610" y="329.0">identical environments</text>
+<line class="grid" x1="16" x2="758" y1="343" y2="343"/>
+<text class="note" x="16" y="365">On AWS, the infrastructure as code service is AWS CloudFormation (lesson 08.02). AWS CloudShell is a place to run the CLI.</text>
+<text class="note" x="16" y="381">From AWS's console, CLI, SDK and CloudFormation documentation, checked 2026-10-24. Clue words are our summary.</text>
+</svg>

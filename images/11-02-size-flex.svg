@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="342" viewBox="0 0 720 342" role="img" aria-labelledby="t d">
+<title id="t">How one t3.medium Regional Reserved Instance covers different sizes in its family</title>
+<desc id="d">One t3.medium Regional Reserved Instance for Linux is worth 2 normalized units an hour. Case 1: two t3.small instances, 1 unit each, are fully covered. Case 2: one t3.medium, 2 units, is fully covered. Case 3: one t3.large, 4 units, is half covered, and the other 2 units are paid at On-Demand rates. Units per size: small 1, medium 2, large 4, xlarge 8. A zonal Reserved Instance has no size flexibility.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --panel:#f1f0ec; --hi-fill:#d9e8fb; --s3:#1baf7a; --no-fill:#f6f5f2; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --panel:#252523; --hi-fill:#1b3554; --s3:#199e70; --no-fill:#1f1f1e; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .panel { fill: var(--panel); stroke: var(--axis); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .no { fill: var(--no-fill); stroke: var(--grid); stroke-width: 1; }
+  .box { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .head { fill: var(--ink); font-size: 15px; font-weight: 600; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .val { fill: var(--ink); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .yes { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .avg { fill: var(--ink); stroke: var(--surface); stroke-width: 2; }
+  .unit { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .unit-od { fill: var(--s2); stroke: var(--surface); stroke-width: 2; }
+  .s3 { fill: var(--s3); }
+</style>
+<rect width="720" height="342" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">A Regional Reserved Instance covers units, not one exact size</text>
+<text class="sub" x="16" y="48">One t3.medium Regional Reserved Instance (Linux) is worth 2 units an hour. Each square is one unit.</text>
+<text class="cellt" x="16" y="104">Two t3.small (1 unit each)</text>
+<rect class="unit" x="250" y="84" width="30" height="30" rx="4"/>
+<rect fill="none" style="stroke:var(--ink2);stroke-width:1.2" x="247" y="81" width="36" height="36" rx="6"/>
+<rect class="unit" x="298" y="84" width="30" height="30" rx="4"/>
+<rect fill="none" style="stroke:var(--ink2);stroke-width:1.2" x="295" y="81" width="36" height="36" rx="6"/>
+<text class="lab" x="352" y="104">Fully covered</text>
+<text class="cellt" x="16" y="168">One t3.medium (2 units)</text>
+<rect class="unit" x="250" y="148" width="30" height="30" rx="4"/>
+<rect class="unit" x="284" y="148" width="30" height="30" rx="4"/>
+<rect fill="none" style="stroke:var(--ink2);stroke-width:1.2" x="247" y="145" width="70" height="36" rx="6"/>
+<text class="lab" x="338" y="168">Fully covered</text>
+<text class="cellt" x="16" y="232">One t3.large (4 units)</text>
+<rect class="unit" x="250" y="212" width="30" height="30" rx="4"/>
+<rect class="unit" x="284" y="212" width="30" height="30" rx="4"/>
+<rect class="unit-od" x="318" y="212" width="30" height="30" rx="4"/>
+<rect class="unit-od" x="352" y="212" width="30" height="30" rx="4"/>
+<rect fill="none" style="stroke:var(--ink2);stroke-width:1.2" x="247" y="209" width="138" height="36" rx="6"/>
+<text class="lab" x="406" y="232">Half covered; the rest at On-Demand</text>
+<rect class="s1" x="16" y="276" width="12" height="12" rx="2"/>
+<text x="34" y="286">Covered by the Reserved Instance</text>
+<rect class="s2" x="280" y="276" width="12" height="12" rx="2"/>
+<text x="298" y="286">Paid at On-Demand rates</text>
+<text class="note" x="16" y="314">Units per size: small 1, medium 2, large 4, xlarge 8. A zonal Reserved Instance has no size flexibility: it covers only its exact type.</text>
+<text class="note" x="16" y="330">Source: EC2 User Guide, "How Reserved Instance discounts are applied", checked 2026-10-24.</text>
+</svg>

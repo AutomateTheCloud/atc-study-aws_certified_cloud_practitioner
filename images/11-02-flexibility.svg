@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="486" viewBox="0 0 720 486" role="img" aria-labelledby="t d">
+<title id="t">Which usage changes Compute and EC2 Instance Savings Plans and Regional and zonal Reserved Instances keep covering</title>
+<desc id="d">A table of ten rows and four columns, as of 2026-10-24. Change instance family: Compute Savings Plan Yes, EC2 Instance Savings Plan No: one family, Regional Reserved Instance No, Zonal Reserved Instance No. Change instance size: Compute Savings Plan Yes, EC2 Instance Savings Plan Yes, Regional Reserved Instance Yes*, Zonal Reserved Instance No. Change Availability Zone: Compute Savings Plan Yes, EC2 Instance Savings Plan Yes, Regional Reserved Instance Yes, Zonal Reserved Instance No. Change Region: Compute Savings Plan Yes, EC2 Instance Savings Plan No: one Region, Regional Reserved Instance No, Zonal Reserved Instance No. Change operating system: Compute Savings Plan Yes, EC2 Instance Savings Plan Yes, Regional Reserved Instance No, Zonal Reserved Instance No. Change tenancy: Compute Savings Plan Yes, EC2 Instance Savings Plan Yes, Regional Reserved Instance No, Zonal Reserved Instance No. Covers Fargate and Lambda: Compute Savings Plan Yes, EC2 Instance Savings Plan No, Regional Reserved Instance No, Zonal Reserved Instance No. Reserves capacity: Compute Savings Plan No, EC2 Instance Savings Plan No, Regional Reserved Instance No, Zonal Reserved Instance Yes, in one AZ. You commit to: Compute Savings Plan $ per hour, EC2 Instance Savings Plan $ per hour, Regional Reserved Instance one configuration, Zonal Reserved Instance one configuration. Discount, up to: Compute Savings Plan 66%, EC2 Instance Savings Plan 72%, Regional Reserved Instance 72% (Standard), Zonal Reserved Instance 72% (Standard). Size flexibility for Regional Reserved Instances applies to Linux/Unix on default tenancy only.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --panel:#f1f0ec; --hi-fill:#d9e8fb; --s3:#1baf7a; --no-fill:#f6f5f2; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --panel:#252523; --hi-fill:#1b3554; --s3:#199e70; --no-fill:#1f1f1e; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .panel { fill: var(--panel); stroke: var(--axis); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .no { fill: var(--no-fill); stroke: var(--grid); stroke-width: 1; }
+  .box { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .head { fill: var(--ink); font-size: 15px; font-weight: 600; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .val { fill: var(--ink); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .yes { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .avg { fill: var(--ink); stroke: var(--surface); stroke-width: 2; }
+  .unit { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .unit-od { fill: var(--s2); stroke: var(--surface); stroke-width: 2; }
+  .s3 { fill: var(--s3); }
+</style>
+<rect width="720" height="486" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">When your usage changes, which discounts follow it?</text>
+<text class="sub" x="16" y="48">Highlighted cells: the discount keeps applying after that change, with nothing to buy or exchange</text>
+<text class="cellt" x="261.0" y="78.0" text-anchor="middle">Compute Savings</text>
+<text class="cellt" x="261.0" y="93.0" text-anchor="middle">Plan</text>
+<text class="cellt" x="391.0" y="78.0" text-anchor="middle">EC2 Instance</text>
+<text class="cellt" x="391.0" y="93.0" text-anchor="middle">Savings Plan</text>
+<text class="cellt" x="521.0" y="78.0" text-anchor="middle">Regional Reserved</text>
+<text class="cellt" x="521.0" y="93.0" text-anchor="middle">Instance</text>
+<text class="cellt" x="651.0" y="78.0" text-anchor="middle">Zonal Reserved</text>
+<text class="cellt" x="651.0" y="93.0" text-anchor="middle">Instance</text>
+<text class="lab" x="16" y="134">Change instance family</text>
+<rect class="hi" x="199" y="116" width="124" height="28" rx="4"/>
+<text class="yes" x="261.0" y="134" text-anchor="middle">✓ Yes</text>
+<rect class="no" x="329" y="116" width="124" height="28" rx="4"/>
+<text class="small" x="391.0" y="134" text-anchor="middle">✗ No: one family</text>
+<rect class="no" x="459" y="116" width="124" height="28" rx="4"/>
+<text class="small" x="521.0" y="134" text-anchor="middle">✗ No</text>
+<rect class="no" x="589" y="116" width="124" height="28" rx="4"/>
+<text class="small" x="651.0" y="134" text-anchor="middle">✗ No</text>
+<text class="lab" x="16" y="166">Change instance size</text>
+<rect class="hi" x="199" y="148" width="124" height="28" rx="4"/>
+<text class="yes" x="261.0" y="166" text-anchor="middle">✓ Yes</text>
+<rect class="hi" x="329" y="148" width="124" height="28" rx="4"/>
+<text class="yes" x="391.0" y="166" text-anchor="middle">✓ Yes</text>
+<rect class="hi" x="459" y="148" width="124" height="28" rx="4"/>
+<text class="yes" x="521.0" y="166" text-anchor="middle">✓ Yes*</text>
+<rect class="no" x="589" y="148" width="124" height="28" rx="4"/>
+<text class="small" x="651.0" y="166" text-anchor="middle">✗ No</text>
+<text class="lab" x="16" y="198">Change Availability Zone</text>
+<rect class="hi" x="199" y="180" width="124" height="28" rx="4"/>
+<text class="yes" x="261.0" y="198" text-anchor="middle">✓ Yes</text>
+<rect class="hi" x="329" y="180" width="124" height="28" rx="4"/>
+<text class="yes" x="391.0" y="198" text-anchor="middle">✓ Yes</text>
+<rect class="hi" x="459" y="180" width="124" height="28" rx="4"/>
+<text class="yes" x="521.0" y="198" text-anchor="middle">✓ Yes</text>
+<rect class="no" x="589" y="180" width="124" height="28" rx="4"/>
+<text class="small" x="651.0" y="198" text-anchor="middle">✗ No</text>
+<text class="lab" x="16" y="230">Change Region</text>
+<rect class="hi" x="199" y="212" width="124" height="28" rx="4"/>
+<text class="yes" x="261.0" y="230" text-anchor="middle">✓ Yes</text>
+<rect class="no" x="329" y="212" width="124" height="28" rx="4"/>
+<text class="small" x="391.0" y="230" text-anchor="middle">✗ No: one Region</text>
+<rect class="no" x="459" y="212" width="124" height="28" rx="4"/>
+<text class="small" x="521.0" y="230" text-anchor="middle">✗ No</text>
+<rect class="no" x="589" y="212" width="124" height="28" rx="4"/>
+<text class="small" x="651.0" y="230" text-anchor="middle">✗ No</text>
+<text class="lab" x="16" y="262">Change operating system</text>
+<rect class="hi" x="199" y="244" width="124" height="28" rx="4"/>
+<text class="yes" x="261.0" y="262" text-anchor="middle">✓ Yes</text>
+<rect class="hi" x="329" y="244" width="124" height="28" rx="4"/>
+<text class="yes" x="391.0" y="262" text-anchor="middle">✓ Yes</text>
+<rect class="no" x="459" y="244" width="124" height="28" rx="4"/>
+<text class="small" x="521.0" y="262" text-anchor="middle">✗ No</text>
+<rect class="no" x="589" y="244" width="124" height="28" rx="4"/>
+<text class="small" x="651.0" y="262" text-anchor="middle">✗ No</text>
+<text class="lab" x="16" y="294">Change tenancy</text>
+<rect class="hi" x="199" y="276" width="124" height="28" rx="4"/>
+<text class="yes" x="261.0" y="294" text-anchor="middle">✓ Yes</text>
+<rect class="hi" x="329" y="276" width="124" height="28" rx="4"/>
+<text class="yes" x="391.0" y="294" text-anchor="middle">✓ Yes</text>
+<rect class="no" x="459" y="276" width="124" height="28" rx="4"/>
+<text class="small" x="521.0" y="294" text-anchor="middle">✗ No</text>
+<rect class="no" x="589" y="276" width="124" height="28" rx="4"/>
+<text class="small" x="651.0" y="294" text-anchor="middle">✗ No</text>
+<text class="lab" x="16" y="326">Covers Fargate and Lambda</text>
+<rect class="hi" x="199" y="308" width="124" height="28" rx="4"/>
+<text class="yes" x="261.0" y="326" text-anchor="middle">✓ Yes</text>
+<rect class="no" x="329" y="308" width="124" height="28" rx="4"/>
+<text class="small" x="391.0" y="326" text-anchor="middle">✗ No</text>
+<rect class="no" x="459" y="308" width="124" height="28" rx="4"/>
+<text class="small" x="521.0" y="326" text-anchor="middle">✗ No</text>
+<rect class="no" x="589" y="308" width="124" height="28" rx="4"/>
+<text class="small" x="651.0" y="326" text-anchor="middle">✗ No</text>
+<text class="lab" x="16" y="358">Reserves capacity</text>
+<rect class="no" x="199" y="340" width="124" height="28" rx="4"/>
+<text class="small" x="261.0" y="358" text-anchor="middle">✗ No</text>
+<rect class="no" x="329" y="340" width="124" height="28" rx="4"/>
+<text class="small" x="391.0" y="358" text-anchor="middle">✗ No</text>
+<rect class="no" x="459" y="340" width="124" height="28" rx="4"/>
+<text class="small" x="521.0" y="358" text-anchor="middle">✗ No</text>
+<rect class="hi" x="589" y="340" width="124" height="28" rx="4"/>
+<text class="yes" x="651.0" y="358" text-anchor="middle">✓ Yes, in one AZ</text>
+<text class="lab" x="16" y="390">You commit to</text>
+<rect class="panel" x="199" y="372" width="124" height="28" rx="4"/>
+<text class="small" x="261.0" y="390" text-anchor="middle">$ per hour</text>
+<rect class="panel" x="329" y="372" width="124" height="28" rx="4"/>
+<text class="small" x="391.0" y="390" text-anchor="middle">$ per hour</text>
+<rect class="panel" x="459" y="372" width="124" height="28" rx="4"/>
+<text class="small" x="521.0" y="390" text-anchor="middle">one configuration</text>
+<rect class="panel" x="589" y="372" width="124" height="28" rx="4"/>
+<text class="small" x="651.0" y="390" text-anchor="middle">one configuration</text>
+<text class="lab" x="16" y="422">Discount, up to</text>
+<rect class="panel" x="199" y="404" width="124" height="28" rx="4"/>
+<text class="small" x="261.0" y="422" text-anchor="middle">66%</text>
+<rect class="panel" x="329" y="404" width="124" height="28" rx="4"/>
+<text class="small" x="391.0" y="422" text-anchor="middle">72%</text>
+<rect class="panel" x="459" y="404" width="124" height="28" rx="4"/>
+<text class="small" x="521.0" y="422" text-anchor="middle">72% (Standard)</text>
+<rect class="panel" x="589" y="404" width="124" height="28" rx="4"/>
+<text class="small" x="651.0" y="422" text-anchor="middle">72% (Standard)</text>
+<text class="note" x="16" y="460">* Size flexibility: Linux/Unix on default tenancy, within one family; not Windows, RHEL, SUSE,</text>
+<text class="note" x="16" y="476">dedicated tenancy or some GPU families. Sources: AWS Savings Plans and EC2 User Guides, checked 2026-10-24.</text>
+</svg>

@@ -43,7 +43,7 @@ AWS releases changes continuously. The timeline shows a selection from about fou
 
 AWS's pages also disagree with each other while they catch up. Two examples we met while writing this guide:
 
-- **How long the free offer lasts.** Some AWS pages said 6 months and others 12. When we opened a real account, both were true: the Free plan lasts 6 months, and the credits expire after 12 months. They are two different clocks (as of 2026-10-23).
+- **How long the free offer lasts.** Some AWS pages said 6 months and others 12. When we opened a real account, both appeared: the Free plan lasts up to 6 months, ending sooner if its credits run out, while the account's Credits page showed the credits expiring after 12 months, which matters only after an upgrade. Module 11 explains the two clocks (as of 2026-10-23).
 - **How many checks AWS Trusted Advisor runs.** Three AWS pages gave three different totals for this account-checking tool, so module 12 teaches its check categories instead of a number.
 
 ## AWS uses three words for a service on its way out

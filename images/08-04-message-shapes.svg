@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="684" viewBox="0 0 680 684" role="img" aria-labelledby="t d">
+<title id="t">Five shapes of message: SQS, SNS, EventBridge, Step Functions and SES</title>
+<desc id="d">Five panels, each with a service, the shape of message it handles, a small diagram and a bakery example. Amazon SQS, a queue: work waits until a worker pulls it. The web server sends orders into an SQS queue, and a packing worker pulls them; example: orders wait for the packing worker even if it is down for an hour. Amazon SNS, a topic: one message pushed to every subscriber. The order function publishes to an SNS topic, which pushes to the owner's email, a kitchen queue and an invoice function; example: order failed reaches the owner, the kitchen and invoicing at once. Amazon EventBridge, an event bus: events routed by rules on what they say. AWS services, your apps and SaaS partners send events to an event bus with rules, which sends matching events to targets; example: when an EC2 instance stops, tell the owner, and a sales report at 23:00. AWS Step Functions, a workflow: several steps in order, tracked to the end. Four steps: take deposit, check baker, owner approves (highlighted), book the bake; a state machine with retries and waits. Amazon SES, email out: email from your own domain to customers. The order website sends through Amazon SES to customers' inboxes, from the bakery's own domain; example: the order confirmation each customer receives.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --hi-fill:#d9e8fb; --n-fill:#f1f0ec; --o-fill:#fbe1d6; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --hi-fill:#1b3554; --n-fill:#252523; --o-fill:#4d2716; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .panel { fill: var(--n-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .box { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .svc { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .orng { fill: var(--o-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .slot { fill: var(--s1); }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 700; }
+  .mini { fill: var(--ink); font-size: 11.5px; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .rowl { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .arrlab { fill: var(--ink2); font-size: 11px; font-style: italic; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.4; fill: none; }
+  .arrowhead { fill: var(--ink2); }
+  .brace { stroke: var(--s1); stroke-width: 2; fill: none; }
+</style>
+<rect width="680" height="684" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Five shapes of message, five services</text>
+<text class="sub" x="16" y="48">Look at who sends, who receives and who waits, then pick the service</text>
+<rect class="panel" x="16.0" y="64.0" width="648.0" height="108.0" rx="6"/>
+<text class="head" x="28" y="86">Amazon SQS</text>
+<text class="small" x="28" y="104">A queue</text>
+<text class="cellt" x="28" y="126.0">Work waits until a</text>
+<text class="cellt" x="28" y="141.0">worker pulls it.</text>
+<rect class="box" x="190.0" y="94.0" width="74.0" height="36.0" rx="5"/>
+<text class="mini" x="227.0" y="116.0" text-anchor="middle">Web server</text>
+<rect class="svc" x="290.0" y="94.0" width="92.0" height="36.0" rx="5"/>
+<rect class="slot" x="300" y="103" width="13" height="18" rx="2"/>
+<rect class="slot" x="319" y="103" width="13" height="18" rx="2"/>
+<rect class="slot" x="338" y="103" width="13" height="18" rx="2"/>
+<rect class="slot" x="357" y="103" width="13" height="18" rx="2"/>
+<text class="mini" x="336" y="144" text-anchor="middle">SQS queue</text>
+<rect class="box" x="412.0" y="94.0" width="74.0" height="36.0" rx="5"/>
+<text class="mini" x="449.0" y="109.0" text-anchor="middle">Packing</text>
+<text class="mini" x="449.0" y="123.0" text-anchor="middle">worker</text>
+<line class="arrow" x1="265.0" y1="112.0" x2="289.0" y2="112.0"/>
+<path class="arrowhead" d="M282.0,108.0 L282.0,116.0 L289.0,112.0 Z"/>
+<line class="arrow" x1="411.0" y1="112.0" x2="383.0" y2="112.0"/>
+<path class="arrowhead" d="M390.0,116.0 L390.0,108.0 L383.0,112.0 Z"/>
+<text class="arrlab" x="397" y="88" text-anchor="middle">pulls</text>
+<text class="arrlab" x="277" y="88" text-anchor="middle">sends</text>
+<text class="small" x="500" y="94.0">Orders wait for the</text>
+<text class="small" x="500" y="109.0">packing worker, even if</text>
+<text class="small" x="500" y="124.0">it's down for an hour.</text>
+<rect class="panel" x="16.0" y="180.0" width="648.0" height="108.0" rx="6"/>
+<text class="head" x="28" y="202">Amazon SNS</text>
+<text class="small" x="28" y="220">A topic</text>
+<text class="cellt" x="28" y="242.0">One message, pushed</text>
+<text class="cellt" x="28" y="257.0">to every subscriber.</text>
+<rect class="box" x="190.0" y="214.0" width="74.0" height="36.0" rx="5"/>
+<text class="mini" x="227.0" y="229.0" text-anchor="middle">Order</text>
+<text class="mini" x="227.0" y="243.0" text-anchor="middle">function</text>
+<rect class="svc" x="290.0" y="214.0" width="80.0" height="36.0" rx="5"/>
+<text class="mini" x="330.0" y="236.0" text-anchor="middle">SNS topic</text>
+<rect class="box" x="396.0" y="190.0" width="92.0" height="24.0" rx="5"/>
+<text class="mini" x="442.0" y="206.0" text-anchor="middle">Owner's email</text>
+<line class="arrow" x1="371.0" y1="232.0" x2="395.0" y2="202.0"/>
+<path class="arrowhead" d="M387.5,205.0 L393.8,210.0 L395.0,202.0 Z"/>
+<rect class="box" x="396.0" y="220.0" width="92.0" height="24.0" rx="5"/>
+<text class="mini" x="442.0" y="236.0" text-anchor="middle">Kitchen queue</text>
+<line class="arrow" x1="371.0" y1="232.0" x2="395.0" y2="232.0"/>
+<path class="arrowhead" d="M388.0,228.0 L388.0,236.0 L395.0,232.0 Z"/>
+<rect class="box" x="396.0" y="250.0" width="92.0" height="24.0" rx="5"/>
+<text class="mini" x="442.0" y="266.0" text-anchor="middle">Invoice function</text>
+<line class="arrow" x1="371.0" y1="232.0" x2="395.0" y2="262.0"/>
+<path class="arrowhead" d="M393.8,254.0 L387.5,259.0 L395.0,262.0 Z"/>
+<line class="arrow" x1="265.0" y1="232.0" x2="289.0" y2="232.0"/>
+<path class="arrowhead" d="M282.0,228.0 L282.0,236.0 L289.0,232.0 Z"/>
+<text class="arrlab" x="277" y="208" text-anchor="middle">publishes</text>
+<text class="small" x="500" y="210.0">“Order failed” reaches</text>
+<text class="small" x="500" y="225.0">the owner, the kitchen</text>
+<text class="small" x="500" y="240.0">and invoicing at once.</text>
+<rect class="panel" x="16.0" y="296.0" width="648.0" height="108.0" rx="6"/>
+<text class="head" x="28" y="318">Amazon EventBridge</text>
+<text class="small" x="28" y="336">An event bus</text>
+<text class="cellt" x="28" y="358.0">Events routed by</text>
+<text class="cellt" x="28" y="373.0">rules on what they</text>
+<text class="cellt" x="28" y="388.0">say.</text>
+<rect class="box" x="190.0" y="306.0" width="84.0" height="24.0" rx="5"/>
+<text class="mini" x="232.0" y="322.0" text-anchor="middle">AWS services</text>
+<line class="arrow" x1="275.0" y1="318.0" x2="297.0" y2="348.0"/>
+<path class="arrowhead" d="M296.1,340.0 L289.6,344.7 L297.0,348.0 Z"/>
+<rect class="box" x="190.0" y="336.0" width="84.0" height="24.0" rx="5"/>
+<text class="mini" x="232.0" y="352.0" text-anchor="middle">Your apps</text>
+<line class="arrow" x1="275.0" y1="348.0" x2="297.0" y2="348.0"/>
+<path class="arrowhead" d="M290.0,344.0 L290.0,352.0 L297.0,348.0 Z"/>
+<rect class="box" x="190.0" y="366.0" width="84.0" height="24.0" rx="5"/>
+<text class="mini" x="232.0" y="382.0" text-anchor="middle">SaaS partners</text>
+<line class="arrow" x1="275.0" y1="378.0" x2="297.0" y2="348.0"/>
+<path class="arrowhead" d="M289.6,351.3 L296.1,356.0 L297.0,348.0 Z"/>
+<rect class="svc" x="298.0" y="326.0" width="90.0" height="44.0" rx="5"/>
+<text class="mini" x="343.0" y="345.0" text-anchor="middle">Event bus</text>
+<text class="mini" x="343.0" y="359.0" text-anchor="middle">+ rules</text>
+<rect class="box" x="412.0" y="312.0" width="76.0" height="24.0" rx="5"/>
+<text class="mini" x="450.0" y="328.0" text-anchor="middle">Target A</text>
+<rect class="box" x="412.0" y="360.0" width="76.0" height="24.0" rx="5"/>
+<text class="mini" x="450.0" y="376.0" text-anchor="middle">Target B</text>
+<line class="arrow" x1="389.0" y1="344.0" x2="411.0" y2="324.0"/>
+<path class="arrowhead" d="M403.1,325.7 L408.5,331.7 L411.0,324.0 Z"/>
+<line class="arrow" x1="389.0" y1="352.0" x2="411.0" y2="372.0"/>
+<path class="arrowhead" d="M408.5,364.3 L403.1,370.3 L411.0,372.0 Z"/>
+<text class="small" x="500" y="326.0">“When an EC2 instance</text>
+<text class="small" x="500" y="341.0">stops, tell the owner”;</text>
+<text class="small" x="500" y="356.0">a sales report at 23:00.</text>
+<rect class="panel" x="16.0" y="412.0" width="648.0" height="108.0" rx="6"/>
+<text class="head" x="28" y="434">AWS Step Functions</text>
+<text class="small" x="28" y="452">A workflow</text>
+<text class="cellt" x="28" y="474.0">Several steps in</text>
+<text class="cellt" x="28" y="489.0">order, tracked to</text>
+<text class="cellt" x="28" y="504.0">the end.</text>
+<rect class="box" x="190.0" y="444.0" width="66.0" height="38.0" rx="5"/>
+<text class="mini" x="223.0" y="460.0" text-anchor="middle">Take</text>
+<text class="mini" x="223.0" y="474.0" text-anchor="middle">deposit</text>
+<rect class="box" x="267.0" y="444.0" width="66.0" height="38.0" rx="5"/>
+<text class="mini" x="300.0" y="460.0" text-anchor="middle">Check</text>
+<text class="mini" x="300.0" y="474.0" text-anchor="middle">baker</text>
+<line class="arrow" x1="257.0" y1="463.0" x2="266.0" y2="463.0"/>
+<path class="arrowhead" d="M259.0,459.0 L259.0,467.0 L266.0,463.0 Z"/>
+<rect class="svc" x="344.0" y="444.0" width="66.0" height="38.0" rx="5"/>
+<text class="mini" x="377.0" y="460.0" text-anchor="middle">Owner</text>
+<text class="mini" x="377.0" y="474.0" text-anchor="middle">approves</text>
+<line class="arrow" x1="334.0" y1="463.0" x2="343.0" y2="463.0"/>
+<path class="arrowhead" d="M336.0,459.0 L336.0,467.0 L343.0,463.0 Z"/>
+<rect class="box" x="421.0" y="444.0" width="66.0" height="38.0" rx="5"/>
+<text class="mini" x="454.0" y="460.0" text-anchor="middle">Book</text>
+<text class="mini" x="454.0" y="474.0" text-anchor="middle">the bake</text>
+<line class="arrow" x1="411.0" y1="463.0" x2="420.0" y2="463.0"/>
+<path class="arrowhead" d="M413.0,459.0 L413.0,467.0 L420.0,463.0 Z"/>
+<text class="arrlab" x="340" y="502" text-anchor="middle">a state machine: steps in order, with retries and waits</text>
+<text class="small" x="500" y="442.0">A custom cake: deposit,</text>
+<text class="small" x="500" y="457.0">baker, the owner's</text>
+<text class="small" x="500" y="472.0">approval, then the</text>
+<text class="small" x="500" y="487.0">booking.</text>
+<rect class="panel" x="16.0" y="528.0" width="648.0" height="108.0" rx="6"/>
+<text class="head" x="28" y="550">Amazon SES</text>
+<text class="small" x="28" y="568">Email out</text>
+<text class="cellt" x="28" y="590.0">Email from your own</text>
+<text class="cellt" x="28" y="605.0">domain to customers.</text>
+<rect class="box" x="190.0" y="562.0" width="74.0" height="36.0" rx="5"/>
+<text class="mini" x="227.0" y="577.0" text-anchor="middle">Order</text>
+<text class="mini" x="227.0" y="591.0" text-anchor="middle">website</text>
+<rect class="svc" x="290.0" y="562.0" width="80.0" height="36.0" rx="5"/>
+<text class="mini" x="330.0" y="584.0" text-anchor="middle">Amazon SES</text>
+<rect class="box" x="396.0" y="562.0" width="92.0" height="36.0" rx="5"/>
+<text class="mini" x="442.0" y="577.0" text-anchor="middle">Customers'</text>
+<text class="mini" x="442.0" y="591.0" text-anchor="middle">inboxes</text>
+<line class="arrow" x1="265.0" y1="580.0" x2="289.0" y2="580.0"/>
+<path class="arrowhead" d="M282.0,576.0 L282.0,584.0 L289.0,580.0 Z"/>
+<line class="arrow" x1="371.0" y1="580.0" x2="395.0" y2="580.0"/>
+<path class="arrowhead" d="M388.0,576.0 L388.0,584.0 L395.0,580.0 Z"/>
+<text class="arrlab" x="383" y="556" text-anchor="middle">from the bakery's domain</text>
+<text class="small" x="500" y="558.0">The order confirmation</text>
+<text class="small" x="500" y="573.0">each customer receives.</text>
+<text class="note" x="16" y="654">Our summary of the SQS, SNS, EventBridge, Step Functions and SES developer guides, checked 2026-10-24.</text>
+<text class="note" x="16" y="670">The bakery is made up.</text>
+</svg>

@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="410" viewBox="0 0 680 410" role="img" aria-labelledby="t d">
+<title id="t">Application Migration Service compared with AWS DMS</title>
+<desc id="d">Two panels. Left, Application Migration Service, now AWS Transform MGN: on-premises, the operating system, installed software including any database, and the disks; it copies the whole server block by block; in AWS it lands as an EC2 instance, and you still patch the operating system and the database software. Strategy: rehost. Right, AWS DMS with AWS SCT or DMS Schema Conversion: on-premises, the tables and rows, then every new change; it copies only the data, with the schema converted first if the engine changes; in AWS it lands in a managed database such as RDS or Aurora, where AWS runs and patches the database software. Strategy: replatform, or database replication.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --aws-fill:#d9e8fb; --hi-fill:#fbe1d6; --card-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --aws-fill:#1b3554; --hi-fill:#4d2716; --card-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .aws { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .card { fill: var(--card-fill); stroke: var(--axis); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s2); stroke-width: 2.5; stroke-dasharray: 6 4; }
+  .panel { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .colh { fill: var(--muted); font-size: 11.5px; font-weight: 600; letter-spacing: 0.5px; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .flow { stroke: var(--ink2); stroke-width: 1.8; fill: none; }
+  .flowhi { stroke: var(--s2); stroke-width: 2; fill: none; stroke-dasharray: 5 4; }
+  .head-ink { fill: var(--ink2); }
+  .head-hi { fill: var(--s2); }
+  .dot { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .dothi { fill: var(--s2); stroke: var(--surface); stroke-width: 2; }
+  .track { stroke: var(--s1); stroke-width: 3; fill: none; stroke-linecap: round; }
+  .val { fill: var(--ink); font-size: 13px; font-variant-numeric: tabular-nums; }
+</style>
+<rect width="680" height="410" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">What lands in AWS: a whole server, or only the data</text>
+<text class="sub" x="16" y="48">Both copy while the source keeps running. They differ in the unit that moves.</text>
+<rect class="panel" x="16" y="64" width="316" height="330" rx="8"/>
+<text class="head" x="30" y="88">Application Migration Service</text>
+<text class="cells" x="30" y="106">now AWS Transform MGN</text>
+<text class="colh" x="30" y="132">ON-PREMISES</text>
+<rect class="card" x="30" y="140" width="288" height="64" rx="6"/>
+<text class="cells" x="40" y="160.0">Operating system</text>
+<text class="cells" x="40" y="176.0">Installed software (incl. a database)</text>
+<text class="cells" x="40" y="192.0">Disks and data</text>
+<path class="flow" d="M60.0,210.0 L60.0,252.0"/>
+<path class="head-ink" d="M60.0,260.0 L65.0,250.0 L55.0,250.0 Z"/>
+<text class="cells" x="74" y="230">copies the whole server,</text>
+<text class="cells" x="74" y="246">block by block</text>
+<text class="colh" x="30" y="276">IN AWS</text>
+<rect class="aws" x="30" y="284" width="288" height="40" rx="6"/>
+<text class="boxt" x="40" y="302" text-anchor="start">EC2 instance</text>
+<text class="cells" x="30" y="346.0">You still patch the OS and</text>
+<text class="cells" x="30" y="361.0">the database software</text>
+<text class="boxt" x="30" y="382">Strategy: rehost</text>
+<rect class="panel" x="348" y="64" width="316" height="330" rx="8"/>
+<text class="head" x="362" y="88">AWS DMS</text>
+<text class="cells" x="362" y="106">with AWS SCT or DMS Schema Conversion</text>
+<text class="colh" x="362" y="132">ON-PREMISES</text>
+<rect class="card" x="362" y="140" width="288" height="64" rx="6"/>
+<text class="cells" x="372" y="160.0">Tables and rows</text>
+<text class="cells" x="372" y="176.0">then every new change</text>
+<path class="flow" d="M392.0,210.0 L392.0,252.0"/>
+<path class="head-ink" d="M392.0,260.0 L397.0,250.0 L387.0,250.0 Z"/>
+<text class="cells" x="406" y="230">copies only the data;</text>
+<text class="cells" x="406" y="246">schema converted first if needed</text>
+<text class="colh" x="362" y="276">IN AWS</text>
+<rect class="aws" x="362" y="284" width="288" height="40" rx="6"/>
+<text class="boxt" x="372" y="302" text-anchor="start">Managed database (RDS, Aurora)</text>
+<text class="cells" x="362" y="346.0">AWS runs and patches the</text>
+<text class="cells" x="362" y="361.0">database software</text>
+<text class="boxt" x="362" y="382">Strategy: replatform; database replication</text>
+</svg>

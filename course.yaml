@@ -25,6 +25,18 @@ sections:
     title: "Module 06: Running applications"
   - dir: 07-connecting-it
     title: "Module 07: Connecting it"
+  - dir: 08-building-and-operating
+    title: "Module 08: Building and operating"
+  - dir: 09-protecting-and-governing
+    title: "Module 09: Protecting, governing and proving compliance"
+  - dir: 10-data-ai-and-more
+    title: "Module 10: Data, AI and the rest of the catalog"
+  - dir: 11-paying-for-aws
+    title: "Module 11: Paying for AWS"
+  - dir: 12-getting-help
+    title: "Module 12: Getting help"
+  - dir: 13-moving-to-aws
+    title: "Module 13: Moving to AWS"
   - dir: 99-reference
     title: "Reference"
 notices:

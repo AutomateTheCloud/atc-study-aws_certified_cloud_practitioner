@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="361" viewBox="0 0 680 361" role="img" aria-labelledby="t d">
+<title id="t">Monthly fee to keep one key in AWS KMS, by kind of key</title>
+<desc id="d">Horizontal bars from $0 to $4 per month. AWS owned key: $0; AWS managed key: $0 (requests may be billed); Customer managed key, first year: $1.00; Same key after two yearly rotations: $3.00, the most it reaches. Notes: the first 20,000 requests a month are free across all Regions, then $0.03 per 10,000 symmetric requests; each of the first two rotations adds $1 a month and later ones add nothing; a key scheduled for deletion costs nothing; CloudHSM is billed per HSM per hour instead.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --rest-fill:#d9e8fb; --n-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --rest-fill:#1b3554; --n-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .plain { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .rest { fill: var(--rest-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .zone { fill: none; stroke: var(--axis); stroke-width: 1.2; stroke-dasharray: 6 4; }
+  .card { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .hl { fill: none; stroke: var(--s1); stroke-width: 2.2; }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .keyl { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .key { fill: var(--muted); font-size: 10.5px; font-weight: 600; letter-spacing: 0.5px; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .arrlab { fill: var(--ink2); font-size: 11.5px; font-style: italic; }
+  .flow { stroke: var(--ink2); stroke-width: 2; fill: none; }
+  .head-ink { fill: var(--ink2); }
+  .spec { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .val { fill: var(--ink); font-size: 13px; font-variant-numeric: tabular-nums; }
+</style>
+<rect width="680" height="361" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">The monthly fee to keep one key in AWS KMS</text>
+<text class="sub" x="16" y="48">US dollars per key per month, as of 2026-10-24, before any request charges</text>
+<line class="axis" x1="262.0" x2="262.0" y1="76" y2="252"/>
+<text class="tick" x="262.0" y="270" text-anchor="middle">$0</text>
+<line class="grid" x1="336.5" x2="336.5" y1="76" y2="252"/>
+<text class="tick" x="336.5" y="270" text-anchor="middle">$1</text>
+<line class="grid" x1="411.0" x2="411.0" y1="76" y2="252"/>
+<text class="tick" x="411.0" y="270" text-anchor="middle">$2</text>
+<line class="grid" x1="485.5" x2="485.5" y1="76" y2="252"/>
+<text class="tick" x="485.5" y="270" text-anchor="middle">$3</text>
+<line class="grid" x1="560.0" x2="560.0" y1="76" y2="252"/>
+<text class="tick" x="560.0" y="270" text-anchor="middle">$4</text>
+<text class="lab" x="252" y="103" text-anchor="end">AWS owned key</text>
+<line class="axis" x1="262" x2="262" y1="88" y2="108" style="stroke:var(--s1);stroke-width:3"/>
+<text class="val" x="272" y="103">$0</text>
+<text class="lab" x="252" y="147" text-anchor="end">AWS managed key</text>
+<line class="axis" x1="262" x2="262" y1="132" y2="152" style="stroke:var(--s1);stroke-width:3"/>
+<text class="val" x="272" y="147">$0 (requests may be billed)</text>
+<text class="lab" x="252" y="191" text-anchor="end">Customer managed key, first year</text>
+<path class="s1" d="M262.0,176.0 L332.5,176.0 Q336.5,176.0 336.5,180.0 L336.5,192.0 Q336.5,196.0 332.5,196.0 L262.0,196.0 Z"/>
+<text class="val" x="344.5" y="191">$1.00</text>
+<text class="lab" x="252" y="235" text-anchor="end">Same key after two yearly rotations</text>
+<path class="s1" d="M262.0,220.0 L481.5,220.0 Q485.5,220.0 485.5,224.0 L485.5,236.0 Q485.5,240.0 481.5,240.0 L262.0,240.0 Z"/>
+<text class="val" x="493.5" y="235">$3.00, the most it reaches</text>
+<text class="small" x="16" y="292.0">Requests: the first 20,000 a month are free, counted across all Regions; then $0.03 per 10,000 symmetric</text>
+<text class="small" x="16" y="309.0">requests. Each of the first two rotations adds $1 a month; later rotations add nothing. A key scheduled for</text>
+<text class="small" x="16" y="326.0">deletion costs nothing. AWS CloudHSM is billed per HSM per hour instead (see its pricing page).</text>
+<text class="note" x="16" y="347">From the AWS KMS pricing page and Developer Guide, checked 2026-10-24. Prices change; check the page.</text>
+</svg>

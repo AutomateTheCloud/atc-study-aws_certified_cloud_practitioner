@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="546" viewBox="0 0 680 546" role="img" aria-labelledby="t d">
+<title id="t">Which AWS detection service answers which question, before, during and after an attack</title>
+<desc id="d">A time line runs left to right in three columns. Before an attack, the question is: is there a hole? Trusted Advisor runs best-practice checks on the account, a few security checks free on Basic Support, and its results stay in its own console. Amazon Inspector finds known software flaws and unintended network exposure in EC2 instances, Lambda functions and container images. During an attack, the question is: is someone at it now? Amazon GuardDuty finds suspicious activity in CloudTrail events, VPC Flow Logs and DNS logs, such as stolen credentials, crypto mining and calls from known bad addresses. After, the question is: how did it happen? Amazon Detective starts from a finding, shown by an arrow from GuardDuty, and investigates it using up to a year of history. Arrows labeled findings lead down from Inspector and GuardDuty to a highlighted band: AWS Security Hub, where the findings meet. Security Hub CSPM, the original Security Hub, runs its own checks of your settings against standards such as CIS and PCI DSS, collects the other services' findings in one place and scores you; the newer unified Security Hub correlates them into exposures. Macie's findings about sensitive data in S3 also arrive there.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --hi-fill:#d9e8fb; --n-fill:#f1f0ec; --alt-fill:#fbe1d6; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --hi-fill:#1b3554; --n-fill:#252523; --alt-fill:#4d2716; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 2; }
+  .n { fill: var(--n-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .alt { fill: var(--alt-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .plain { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .panel { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .q { fill: var(--ink); font-size: 12.5px; font-style: italic; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .tag { fill: var(--ink); font-size: 11.5px; font-weight: 600; letter-spacing: 0.4px; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .arrowhead { fill: var(--ink2); }
+  .time { stroke: var(--ink); stroke-width: 2; fill: none; }
+</style>
+<rect width="680" height="546" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Weaknesses before, threats during, investigation after</text>
+<text class="sub" x="16" y="48">Each detection service answers a different question; all of them report, none of them blocks</text>
+<line class="time" x1="16" y1="78" x2="656" y2="78"/>
+<path class="arrowhead" d="M664,78 L654,73 L654,83 Z"/>
+<text class="tag" x="16" y="100">BEFORE AN ATTACK</text>
+<text class="q" x="16" y="120">Is there a hole?</text>
+<rect class="n" x="16" y="132" width="196" height="113" rx="6"/>
+<text class="boxt" x="26" y="152">Trusted Advisor</text>
+<text class="cells" x="26" y="170.0">Best-practice checks on the</text>
+<text class="cells" x="26" y="185.0">account; a few security</text>
+<text class="cells" x="26" y="200.0">checks free on Basic</text>
+<text class="cells" x="26" y="215.0">Support. Its results stay</text>
+<text class="cells" x="26" y="230.0">in its own console</text>
+<rect class="n" x="16" y="255" width="196" height="113" rx="6"/>
+<text class="boxt" x="26" y="275">Amazon Inspector</text>
+<text class="cells" x="26" y="293.0">Known software flaws and</text>
+<text class="cells" x="26" y="308.0">unintended network exposure</text>
+<text class="cells" x="26" y="323.0">in EC2 instances, Lambda</text>
+<text class="cells" x="26" y="338.0">functions and container</text>
+<text class="cells" x="26" y="353.0">images</text>
+<text class="tag" x="238" y="100">DURING</text>
+<text class="q" x="238" y="120">Is someone at it now?</text>
+<rect class="n" x="238" y="132" width="196" height="128" rx="6"/>
+<text class="boxt" x="248" y="152">Amazon GuardDuty</text>
+<text class="cells" x="248" y="170.0">Suspicious activity found</text>
+<text class="cells" x="248" y="185.0">in CloudTrail events, VPC</text>
+<text class="cells" x="248" y="200.0">Flow Logs and DNS logs:</text>
+<text class="cells" x="248" y="215.0">stolen credentials, crypto</text>
+<text class="cells" x="248" y="230.0">mining, calls from known</text>
+<text class="cells" x="248" y="245.0">bad addresses</text>
+<text class="tag" x="460" y="100">AFTER</text>
+<text class="q" x="460" y="120">How did it happen?</text>
+<rect class="n" x="460" y="132" width="196" height="113" rx="6"/>
+<text class="boxt" x="470" y="152">Amazon Detective</text>
+<text class="cells" x="470" y="170.0">Starts from a finding and</text>
+<text class="cells" x="470" y="185.0">investigates it: what</text>
+<text class="cells" x="470" y="200.0">happened, what else was</text>
+<text class="cells" x="470" y="215.0">touched, using up to a year</text>
+<text class="cells" x="470" y="230.0">of history</text>
+<line class="arrow" x1="114.0" y1="370.0" x2="114.0" y2="406.0"/>
+<path class="arrowhead" d="M119.0,398.0 L109.0,398.0 L114.0,406.0 Z"/>
+<text class="small" x="122.0" y="398">findings</text>
+<line class="arrow" x1="336.0" y1="262.0" x2="336.0" y2="406.0"/>
+<path class="arrowhead" d="M341.0,398.0 L331.0,398.0 L336.0,406.0 Z"/>
+<text class="small" x="344.0" y="398">findings</text>
+<line class="arrow" x1="436.0" y1="162.0" x2="458.0" y2="162.0"/>
+<path class="arrowhead" d="M450.0,157.0 L450.0,167.0 L458.0,162.0 Z"/>
+<rect class="hi" x="16" y="408" width="648" height="82" rx="6"/>
+<text class="boxt" x="28" y="430">AWS Security Hub: where the findings meet</text>
+<text class="cells" x="28" y="448.0">Security Hub CSPM (the original Security Hub) runs its own checks of your settings against standards such</text>
+<text class="cells" x="28" y="463.0">as CIS and PCI DSS, collects the other services' findings in one place, and scores you. The newer, unified</text>
+<text class="cells" x="28" y="478.0">Security Hub correlates them into exposures: which problems combine into real risk.</text>
+<text class="note" x="16" y="512.0">Amazon Macie (lesson 09.02) also sends its findings here: sensitive data in S3. From the AWS documentation for</text>
+<text class="note" x="16" y="527.0">each service, checked 2026-10-24. Trusted Advisor's checks depend on your Support plan.</text>
+</svg>

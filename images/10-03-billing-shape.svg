@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="396" viewBox="0 0 680 396" role="img" aria-labelledby="t d">
+<title id="t">The shape of hourly versus monthly WorkSpaces billing</title>
+<desc id="d">A line chart of cost in a month against hours the WorkSpace runs in a month, from 0 to 200 hours, with no cost scale because the numbers are made up and only the shape matters. Monthly billing is a flat line: one fixed fee for unlimited use. Hourly billing starts lower, at a low monthly fee, and rises steadily with each hour the WorkSpace runs. The lines cross at a break-even point; above it, monthly is cheaper. A shaded band at low hours is labeled part-time, seasonal staff, where hourly is cheaper; the high-hours end is labeled full-time staff, where monthly is cheaper.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --aws-fill:#d9e8fb; --hi-fill:#fbe1d6; --card-fill:#f1f0ec; --scr:#ffffff; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --aws-fill:#1b3554; --hi-fill:#4d2716; --card-fill:#252523; --scr:#2c2c2a; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .aws { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .card { fill: var(--card-fill); stroke: var(--axis); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s2); stroke-width: 2.5; }
+  .panel { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .scr { fill: var(--scr); stroke: var(--ink2); stroke-width: 1.5; }
+  .win { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 1.2; }
+  .winhi { fill: var(--hi-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .bar { fill: var(--grid); }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .colh { fill: var(--muted); font-size: 11.5px; font-weight: 600; letter-spacing: 0.5px; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .tiny { fill: var(--ink2); font-size: 10.5px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .flow { stroke: var(--ink2); stroke-width: 1.8; fill: none; }
+  .flowd { stroke: var(--ink2); stroke-width: 1.8; fill: none; stroke-dasharray: 5 4; }
+  .head-ink { fill: var(--ink2); }
+  .line-s2 { stroke: var(--s2); stroke-width: 2; fill: none; stroke-linecap: round; }
+  .ann { fill: var(--ink); font-size: 12px; }
+  .band { fill: var(--grid); opacity: 0.6; }
+</style>
+<rect width="680" height="396" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Hourly or monthly WorkSpaces billing: it depends on hours used</text>
+<text class="sub" x="16" y="48">The shape of the trade-off only. The numbers are made up; check real prices in the calculator.</text>
+<rect class="band" x="70.0" y="76" width="168.0" height="220"/>
+<text class="ann" x="81.2" y="92">Part-time,</text>
+<text class="ann" x="81.2" y="108">seasonal staff</text>
+<text class="ann" x="618.8" y="286" text-anchor="end">Full-time staff →</text>
+<line class="axis" x1="70.0" x2="70.0" y1="76" y2="296"/>
+<text class="tick" x="70.0" y="314" text-anchor="middle">0</text>
+<line class="grid" x1="210.0" x2="210.0" y1="76" y2="296"/>
+<text class="tick" x="210.0" y="314" text-anchor="middle">50</text>
+<line class="grid" x1="350.0" x2="350.0" y1="76" y2="296"/>
+<text class="tick" x="350.0" y="314" text-anchor="middle">100</text>
+<line class="grid" x1="490.0" x2="490.0" y1="76" y2="296"/>
+<text class="tick" x="490.0" y="314" text-anchor="middle">150</text>
+<line class="grid" x1="630.0" x2="630.0" y1="76" y2="296"/>
+<text class="tick" x="630.0" y="314" text-anchor="middle">200</text>
+<line class="axis" x1="70" x2="630" y1="296" y2="296"/>
+<text class="tick" x="350.0" y="334" text-anchor="middle">Hours the WorkSpace runs in a month</text>
+<text class="tick" x="16" y="66">Cost in a month (no scale: shape only)</text>
+<path class="line-s1" d="M70.0,189.1 L630.0,189.1"/>
+<path class="line-s2" d="M70.0,264.6 L630.0,76.0"/>
+<circle class="dot-s1" cx="294.0" cy="189.1" r="5"/>
+<line class="lead" x1="294.0" x2="294.0" y1="195.1" y2="296"/>
+<text class="ann" x="286.0" y="159.1" text-anchor="end">Break-even: beyond it,</text>
+<text class="ann" x="286.0" y="175.1" text-anchor="end">monthly is cheaper</text>
+<text class="ann" x="618.8" y="207.1" text-anchor="end">Monthly: one fixed fee, unlimited use</text>
+<text class="ann" x="490.0" y="91.7" text-anchor="end">Hourly: a low monthly fee</text>
+<text class="ann" x="490.0" y="107.7" text-anchor="end">plus a charge per hour it runs</text>
+<line class="line-s2" x1="16" x2="32" y1="356" y2="356"/>
+<text x="38" y="360">Hourly billing</text>
+<line class="line-s1" x1="150" x2="166" y1="356" y2="356"/>
+<text x="172" y="360">Monthly billing</text>
+<text class="note" x="16" y="382">Billing models from the Amazon WorkSpaces FAQ, checked 2026-10-24. AutoStop stops hourly WorkSpaces when idle.</text>
+</svg>

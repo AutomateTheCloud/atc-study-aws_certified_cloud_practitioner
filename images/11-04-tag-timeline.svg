@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="364" viewBox="0 0 680 364" role="img" aria-labelledby="t d">
+<title id="t">Which months of the kitchen team's costs carry its tag, by default and after a backfill</title>
+<desc id="d">A grid of six months, January to June, and four rows. The kitchen team's bucket: no tag in January and February, team=kitchen from March. Tag key team activated: no until May, activated on May 1. Reports by default: no tag value from January to April, team: kitchen in May and June. After a backfill to January: no tag value in January and February, team: kitchen from March to June. A note says activation counts from then on; a backfill by the management account, up to 12 months back, re-applies the activation to past months, but months before the resource was tagged stay empty.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --cell:#fcfcfb; --hit:#fbe1d6; --na:#f1f0ec; --on:#d9e8fb; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --cell:#1a1a19; --hit:#4d2716; --na:#252523; --on:#1b3554; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .cell { fill: var(--cell); stroke: var(--grid); stroke-width: 1; }
+  .na { fill: var(--na); stroke: var(--grid); stroke-width: 1; }
+  .on { fill: var(--on); stroke: var(--s1); stroke-width: 1.5; }
+  .hit { fill: var(--hit); stroke: var(--ink); stroke-width: 2; }
+  .unused { fill: var(--s1-light); }
+  .head { fill: var(--ink); font-size: 12.5px; font-weight: 600; }
+  .ct { fill: var(--ink); font-size: 12px; }
+  .ctm { fill: var(--muted); font-size: 12px; }
+  .ctb { fill: var(--ink); font-size: 12.5px; font-weight: 700; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+</style>
+<rect width="680" height="364" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">When a tag shows up in your cost reports</text>
+<text class="sub" x="16" y="48">The bucket was tagged in March; the tag key was activated in May</text>
+<text class="head" x="231.3" y="82" text-anchor="middle">Jan</text>
+<text class="head" x="310.0" y="82" text-anchor="middle">Feb</text>
+<text class="head" x="388.7" y="82" text-anchor="middle">Mar</text>
+<text class="head" x="467.3" y="82" text-anchor="middle">Apr</text>
+<text class="head" x="546.0" y="82" text-anchor="middle">May</text>
+<text class="head" x="624.7" y="82" text-anchor="middle">Jun</text>
+<text class="ct" x="16" y="114.0">The kitchen team's</text>
+<text class="ct" x="16" y="128.0">bucket</text>
+<rect class="na" x="194.0" y="94" width="74.7" height="46" rx="4"><title>The kitchen team's bucket, Jan: no tag</title></rect>
+<text class="ctm" x="231.33333333333334" y="121.0" text-anchor="middle">no tag</text>
+<rect class="na" x="272.7" y="94" width="74.7" height="46" rx="4"><title>The kitchen team's bucket, Feb: no tag</title></rect>
+<text class="ctm" x="310.0" y="121.0" text-anchor="middle">no tag</text>
+<rect class="on" x="351.3" y="94" width="74.7" height="46" rx="4"><title>The kitchen team's bucket, Mar: team = kitchen</title></rect>
+<text class="ct" x="388.6666666666667" y="114.0" text-anchor="middle">team =</text>
+<text class="ct" x="388.6666666666667" y="128.0" text-anchor="middle">kitchen</text>
+<rect class="on" x="430.0" y="94" width="74.7" height="46" rx="4"><title>The kitchen team's bucket, Apr: team = kitchen</title></rect>
+<text class="ct" x="467.3333333333333" y="114.0" text-anchor="middle">team =</text>
+<text class="ct" x="467.3333333333333" y="128.0" text-anchor="middle">kitchen</text>
+<rect class="on" x="508.7" y="94" width="74.7" height="46" rx="4"><title>The kitchen team's bucket, May: team = kitchen</title></rect>
+<text class="ct" x="546.0" y="114.0" text-anchor="middle">team =</text>
+<text class="ct" x="546.0" y="128.0" text-anchor="middle">kitchen</text>
+<rect class="on" x="587.3" y="94" width="74.7" height="46" rx="4"><title>The kitchen team's bucket, Jun: team = kitchen</title></rect>
+<text class="ct" x="624.6666666666667" y="114.0" text-anchor="middle">team =</text>
+<text class="ct" x="624.6666666666667" y="128.0" text-anchor="middle">kitchen</text>
+<text class="ct" x="16" y="164.0">Tag key team:</text>
+<text class="ct" x="16" y="178.0">activated?</text>
+<rect class="na" x="194.0" y="144" width="74.7" height="46" rx="4"><title>Tag key team: activated?, Jan: no</title></rect>
+<text class="ctm" x="231.33333333333334" y="171.0" text-anchor="middle">no</text>
+<rect class="na" x="272.7" y="144" width="74.7" height="46" rx="4"><title>Tag key team: activated?, Feb: no</title></rect>
+<text class="ctm" x="310.0" y="171.0" text-anchor="middle">no</text>
+<rect class="na" x="351.3" y="144" width="74.7" height="46" rx="4"><title>Tag key team: activated?, Mar: no</title></rect>
+<text class="ctm" x="388.6666666666667" y="171.0" text-anchor="middle">no</text>
+<rect class="na" x="430.0" y="144" width="74.7" height="46" rx="4"><title>Tag key team: activated?, Apr: no</title></rect>
+<text class="ctm" x="467.3333333333333" y="171.0" text-anchor="middle">no</text>
+<rect class="on" x="508.7" y="144" width="74.7" height="46" rx="4"><title>Tag key team: activated?, May: yes, May 1</title></rect>
+<text class="ct" x="546.0" y="171.0" text-anchor="middle">yes, May 1</text>
+<rect class="on" x="587.3" y="144" width="74.7" height="46" rx="4"><title>Tag key team: activated?, Jun: yes</title></rect>
+<text class="ct" x="624.6666666666667" y="171.0" text-anchor="middle">yes</text>
+<text class="ctb" x="16" y="221.0">Reports by default</text>
+<rect class="na" x="194.0" y="194" width="74.7" height="46" rx="4"><title>Reports by default, Jan: no tag value</title></rect>
+<text class="ctm" x="231.33333333333334" y="214.0" text-anchor="middle">no tag</text>
+<text class="ctm" x="231.33333333333334" y="228.0" text-anchor="middle">value</text>
+<rect class="na" x="272.7" y="194" width="74.7" height="46" rx="4"><title>Reports by default, Feb: no tag value</title></rect>
+<text class="ctm" x="310.0" y="214.0" text-anchor="middle">no tag</text>
+<text class="ctm" x="310.0" y="228.0" text-anchor="middle">value</text>
+<rect class="na" x="351.3" y="194" width="74.7" height="46" rx="4"><title>Reports by default, Mar: no tag value</title></rect>
+<text class="ctm" x="388.6666666666667" y="214.0" text-anchor="middle">no tag</text>
+<text class="ctm" x="388.6666666666667" y="228.0" text-anchor="middle">value</text>
+<rect class="na" x="430.0" y="194" width="74.7" height="46" rx="4"><title>Reports by default, Apr: no tag value</title></rect>
+<text class="ctm" x="467.3333333333333" y="214.0" text-anchor="middle">no tag</text>
+<text class="ctm" x="467.3333333333333" y="228.0" text-anchor="middle">value</text>
+<rect class="on" x="508.7" y="194" width="74.7" height="46" rx="4"><title>Reports by default, May: team: kitchen</title></rect>
+<text class="ct" x="546.0" y="214.0" text-anchor="middle">team:</text>
+<text class="ct" x="546.0" y="228.0" text-anchor="middle">kitchen</text>
+<rect class="on" x="587.3" y="194" width="74.7" height="46" rx="4"><title>Reports by default, Jun: team: kitchen</title></rect>
+<text class="ct" x="624.6666666666667" y="214.0" text-anchor="middle">team:</text>
+<text class="ct" x="624.6666666666667" y="228.0" text-anchor="middle">kitchen</text>
+<text class="ctb" x="16" y="264.0">After a backfill to</text>
+<text class="ctb" x="16" y="278.0">January</text>
+<rect class="na" x="194.0" y="244" width="74.7" height="46" rx="4"><title>After a backfill to January, Jan: no tag value</title></rect>
+<text class="ctm" x="231.33333333333334" y="264.0" text-anchor="middle">no tag</text>
+<text class="ctm" x="231.33333333333334" y="278.0" text-anchor="middle">value</text>
+<rect class="na" x="272.7" y="244" width="74.7" height="46" rx="4"><title>After a backfill to January, Feb: no tag value</title></rect>
+<text class="ctm" x="310.0" y="264.0" text-anchor="middle">no tag</text>
+<text class="ctm" x="310.0" y="278.0" text-anchor="middle">value</text>
+<rect class="on" x="351.3" y="244" width="74.7" height="46" rx="4"><title>After a backfill to January, Mar: team: kitchen</title></rect>
+<text class="ct" x="388.6666666666667" y="264.0" text-anchor="middle">team:</text>
+<text class="ct" x="388.6666666666667" y="278.0" text-anchor="middle">kitchen</text>
+<rect class="on" x="430.0" y="244" width="74.7" height="46" rx="4"><title>After a backfill to January, Apr: team: kitchen</title></rect>
+<text class="ct" x="467.3333333333333" y="264.0" text-anchor="middle">team:</text>
+<text class="ct" x="467.3333333333333" y="278.0" text-anchor="middle">kitchen</text>
+<rect class="on" x="508.7" y="244" width="74.7" height="46" rx="4"><title>After a backfill to January, May: team: kitchen</title></rect>
+<text class="ct" x="546.0" y="264.0" text-anchor="middle">team:</text>
+<text class="ct" x="546.0" y="278.0" text-anchor="middle">kitchen</text>
+<rect class="on" x="587.3" y="244" width="74.7" height="46" rx="4"><title>After a backfill to January, Jun: team: kitchen</title></rect>
+<text class="ct" x="624.6666666666667" y="264.0" text-anchor="middle">team:</text>
+<text class="ct" x="624.6666666666667" y="278.0" text-anchor="middle">kitchen</text>
+<text class="note" x="16" y="314.0">Activation counts from then on. A backfill (management account, up to 12 months back) re-applies the activation</text>
+<text class="note" x="16" y="329.0">to past months, but January and February stay empty: the bucket carried no tag then. Months are made up.</text>
+<text class="note" x="16" y="344.0">From the AWS Billing User Guide (cost allocation tags; backfill), checked 2026-10-24.</text>
+</svg>

@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="416" viewBox="0 0 680 416" role="img" aria-labelledby="t d">
+<title id="t">Migration tools grouped by job: plan, move and stay ready</title>
+<desc id="d">Three columns. Plan: Migration Evaluator prices the move and builds the business case; AWS Application Discovery Service finds servers and their dependencies; AWS Migration Hub tracks each application's migration. Discovery Service and Migration Hub have a dashed outline meaning closed to new customers since 2025-11-07, and an arrow leads to AWS Transform, which AWS points new customers to instead. Move: Application Migration Service, now AWS Transform MGN, moves whole servers; AWS DMS moves database data, with AWS SCT or DMS Schema Conversion first if the engine changes; AWS DataSync moves files and objects over the network, not Snowball. Stay ready: Elastic Disaster Recovery keeps copying servers so they can be launched after a disaster.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --aws-fill:#d9e8fb; --hi-fill:#fbe1d6; --card-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --aws-fill:#1b3554; --hi-fill:#4d2716; --card-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .aws { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .card { fill: var(--card-fill); stroke: var(--axis); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s2); stroke-width: 2.5; stroke-dasharray: 6 4; }
+  .panel { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .colh { fill: var(--muted); font-size: 11.5px; font-weight: 600; letter-spacing: 0.5px; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .flow { stroke: var(--ink2); stroke-width: 1.8; fill: none; }
+  .flowhi { stroke: var(--s2); stroke-width: 2; fill: none; stroke-dasharray: 5 4; }
+  .head-ink { fill: var(--ink2); }
+  .head-hi { fill: var(--s2); }
+  .dot { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .dothi { fill: var(--s2); stroke: var(--surface); stroke-width: 2; }
+  .track { stroke: var(--s1); stroke-width: 3; fill: none; stroke-linecap: round; }
+  .val { fill: var(--ink); font-size: 13px; font-variant-numeric: tabular-nums; }
+</style>
+<rect width="680" height="416" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Plan, move, stay ready: one job per tool</text>
+<text class="sub" x="16" y="48">Planning tools move nothing. Each moving tool moves one kind of thing.</text>
+<text class="colh" x="16" y="74">PLAN</text>
+<text class="colh" x="237" y="74">MOVE</text>
+<text class="colh" x="458" y="74">STAY READY</text>
+<rect class="aws" x="16" y="86" width="206" height="72" rx="6"/>
+<text class="boxt" x="26" y="104" text-anchor="start">Migration Evaluator</text>
+<text class="cells" x="26" y="120.0" text-anchor="start">Prices the move:</text>
+<text class="cells" x="26" y="134.0" text-anchor="start">the business case</text>
+<rect class="hi" x="16" y="170" width="206" height="72" rx="6"/>
+<text class="boxt" x="26" y="188" text-anchor="start">Application Discovery Svc.</text>
+<text class="cells" x="26" y="204.0" text-anchor="start">Finds servers and</text>
+<text class="cells" x="26" y="218.0" text-anchor="start">their dependencies</text>
+<rect class="hi" x="16" y="254" width="206" height="72" rx="6"/>
+<text class="boxt" x="26" y="272" text-anchor="start">Migration Hub</text>
+<text class="cells" x="26" y="288.0" text-anchor="start">Tracks each</text>
+<text class="cells" x="26" y="302.0" text-anchor="start">application's migration</text>
+<rect class="aws" x="237" y="86" width="206" height="72" rx="6"/>
+<text class="boxt" x="247" y="104" text-anchor="start">Application Migration</text>
+<text class="cells" x="247" y="120.0" text-anchor="start">Service, now AWS Transform</text>
+<text class="cells" x="247" y="134.0" text-anchor="start">MGN: whole servers</text>
+<rect class="aws" x="237" y="170" width="206" height="72" rx="6"/>
+<text class="boxt" x="247" y="188" text-anchor="start">AWS DMS</text>
+<text class="cells" x="247" y="204.0" text-anchor="start">Database data; SCT or DMS</text>
+<text class="cells" x="247" y="218.0" text-anchor="start">Schema Conversion first if</text>
+<text class="cells" x="247" y="232.0" text-anchor="start">the engine changes</text>
+<rect class="aws" x="237" y="254" width="206" height="72" rx="6"/>
+<text class="boxt" x="247" y="272" text-anchor="start">AWS DataSync</text>
+<text class="cells" x="247" y="288.0" text-anchor="start">Files and objects over</text>
+<text class="cells" x="247" y="302.0" text-anchor="start">the network (not Snowball)</text>
+<rect class="aws" x="458" y="86" width="206" height="72" rx="6"/>
+<text class="boxt" x="468" y="104" text-anchor="start">Elastic Disaster Recovery</text>
+<text class="cells" x="468" y="120.0" text-anchor="start">Keeps copying servers;</text>
+<text class="cells" x="468" y="134.0" text-anchor="start">launch them after a disaster</text>
+<rect class="card" x="16" y="346" width="206" height="56" rx="6"/>
+<text class="boxt" x="26" y="364" text-anchor="start">AWS Transform</text>
+<text class="cells" x="26" y="380.0" text-anchor="start">What AWS points new</text>
+<text class="cells" x="26" y="394.0" text-anchor="start">customers to instead</text>
+<path class="flowhi" d="M198.0,326.0 L198.0,338.0"/>
+<path class="head-hi" d="M198.0,346.0 L203.0,336.0 L193.0,336.0 Z"/>
+<text class="note" x="237" y="364">Dashed orange outline: closed to new customers</text>
+<text class="note" x="237" y="380">since 2025-11-07. The exam still names both.</text>
+<text class="note" x="237" y="396">Checked 2026-10-24.</text>
+</svg>

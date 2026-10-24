@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="344" viewBox="0 0 680 344" role="img" aria-labelledby="t d">
+<title id="t">One month of two m7g.large Reserved Instances with discount sharing on and off: $78.84 against $138.41</title>
+<desc id="d">Two horizontal stacked bars. Sharing on: two segments of $39.42, RI hours used for shop-prod's instance and for shop-dev's instance; total $78.84. Sharing off for shop-dev: $39.42 of RI hours used by shop-prod, $39.42 of RI hours paid for and unused, and $59.57 of On-Demand hours for shop-dev's instance; total $138.41. The difference is $59.57 a month. Prices are US East (N. Virginia) as of 2026-10-24.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --cell:#fcfcfb; --hit:#fbe1d6; --na:#f1f0ec; --on:#d9e8fb; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --cell:#1a1a19; --hit:#4d2716; --na:#252523; --on:#1b3554; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .cell { fill: var(--cell); stroke: var(--grid); stroke-width: 1; }
+  .na { fill: var(--na); stroke: var(--grid); stroke-width: 1; }
+  .on { fill: var(--on); stroke: var(--s1); stroke-width: 1.5; }
+  .hit { fill: var(--hit); stroke: var(--ink); stroke-width: 2; }
+  .unused { fill: var(--s1-light); }
+  .head { fill: var(--ink); font-size: 12.5px; font-weight: 600; }
+  .ct { fill: var(--ink); font-size: 12px; }
+  .ctm { fill: var(--muted); font-size: 12px; }
+  .ctb { fill: var(--ink); font-size: 12.5px; font-weight: 700; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+</style>
+<rect width="680" height="344" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Two Reserved Instances, two accounts, one month</text>
+<text class="sub" x="16" y="48">shop-prod bought 2 m7g.large RIs but runs 1 instance; shop-dev runs 1 more</text>
+<rect class="s1" x="16" y="68" width="12" height="12" rx="2"/>
+<text x="34" y="78">RI hours used</text>
+<rect class="unused" x="160" y="68" width="12" height="12" rx="2"/>
+<text x="178" y="78">RI hours paid for, unused</text>
+<rect class="s2" x="380" y="68" width="12" height="12" rx="2"/>
+<text x="398" y="78">On-Demand hours</text>
+<text class="lab" x="180" y="127" text-anchor="end">Sharing on</text>
+<rect class="s1" x="190.0" y="104" width="105.0" height="36"><title>RI covers shop-prod's instance: $39.42</title></rect>
+<path class="s1" d="M297.0,104.0 L400.0,104.0 Q404.0,104.0 404.0,108.0 L404.0,136.0 Q404.0,140.0 400.0,140.0 L297.0,140.0 Z"><title>RI covers shop-dev's instance: $39.42</title></path>
+<text class="lab" x="412.0" y="127">$78.84</text>
+<text class="tick" x="190" y="157">both RIs used: shop-dev's instance gets the discount</text>
+<text class="lab" x="180" y="221" text-anchor="end">Sharing off for shop-dev</text>
+<rect class="s1" x="190.0" y="198" width="105.0" height="36"><title>RI covers shop-prod's instance: $39.42</title></rect>
+<rect class="unused" x="297.0" y="198" width="105.0" height="36"><title>RI paid for, unused: $39.42</title></rect>
+<path class="s2" d="M404.0,198.0 L561.7,198.0 Q565.7,198.0 565.7,202.0 L565.7,230.0 Q565.7,234.0 561.7,234.0 L404.0,234.0 Z"><title>shop-dev pays On-Demand: $59.57</title></path>
+<text class="lab" x="573.7" y="221">$138.41</text>
+<text class="tick" x="190" y="251">one RI wasted; shop-dev pays the full On-Demand rate</text>
+<text class="note" x="16" y="298.0">Difference: $59.57 a month. Each RI costs $39.42 a month whether or not anything uses it.</text>
+<text class="note" x="16" y="313.0">m7g.large, Linux, US East (N. Virginia), as of 2026-10-24: On-Demand $0.0816 an hour; 1-year Standard RI,</text>
+<text class="note" x="16" y="328.0">No Upfront, $0.054 an hour. 730 hours. Accounts made up.</text>
+</svg>

@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="560" viewBox="0 0 680 560" role="img" aria-labelledby="t d">
+<title id="t">Rehost, relocate, replatform and refactor compared</title>
+<desc id="d">Four columns, rehost, relocate, replatform and refactor, compared on five rows. Also called: lift and shift; no other name; lift, tinker and shift, or lift and reshape; re-architect. What moves: each server, as it is, onto Amazon EC2; a whole platform at once to the AWS version of it, or a resource to another VPC, Region or account; the application, onto better-fitting services; the application, rebuilt. What changes in the application, highlighted: nothing; nothing, not even how you operate it; a few parts, such as the database host or the operating system; its design, to use cloud-native features. AWS's example: an application stack from on-premises to AWS; VMware workloads to Amazon EVS, or an RDS database to another account; SQL Server to Amazon RDS for SQL Server; a monolith that slows every release. What AWS says about effort: moves many servers without compatibility worries, optimize later; the quickest way to migrate and operate a workload; a few or many changes, depending on your goals; the most complex and costly strategy.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --aws-fill:#d9e8fb; --hi-fill:#fbe1d6; --card-fill:#f1f0ec; --zone1:#ecebe6; --zone2:#f5f4f0; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --aws-fill:#1b3554; --hi-fill:#4d2716; --card-fill:#252523; --zone1:#2a2a28; --zone2:#222221; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .card { fill: var(--card-fill); stroke: var(--axis); stroke-width: 1; }
+  .move { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .hi { fill: var(--hi-fill); stroke: var(--s2); stroke-width: 2.5; }
+  .hirow { fill: none; stroke: var(--s2); stroke-width: 2.5; }
+  .band { fill: none; stroke: var(--axis); stroke-width: 1; stroke-dasharray: 4 3; }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .grp { fill: var(--ink); font-size: 12px; font-weight: 700; letter-spacing: 0.3px; }
+  .rowl { fill: var(--ink); font-size: 12.5px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .zone1 { fill: var(--zone1); } .zone2 { fill: var(--zone2); }
+  .zone { fill: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: 0.5px; }
+  .val { fill: var(--ink); font-size: 12px; font-variant-numeric: tabular-nums; }
+</style>
+<rect width="680" height="560" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Rehost, relocate, replatform, refactor: how much of the application changes</text>
+<text class="sub" x="16" y="48">All four move the application to AWS. Read the highlighted row first.</text>
+<rect class="move" x="120" y="64" width="134" height="30" rx="6"/>
+<text class="boxt" x="130" y="84">Rehost</text>
+<rect class="move" x="260" y="64" width="134" height="30" rx="6"/>
+<text class="boxt" x="270" y="84">Relocate</text>
+<rect class="move" x="400" y="64" width="134" height="30" rx="6"/>
+<text class="boxt" x="410" y="84">Replatform</text>
+<rect class="move" x="540" y="64" width="134" height="30" rx="6"/>
+<text class="boxt" x="550" y="84">Refactor</text>
+<line class="grid" x1="16" x2="674" y1="102" y2="102"/>
+<text class="rowl" x="16" y="121.0">Also called</text>
+<text class="small" x="128" y="121.0">Lift and shift</text>
+<text class="small" x="268" y="121.0">(no other name)</text>
+<text class="small" x="408" y="121.0">Lift, tinker and</text>
+<text class="small" x="408" y="136.0">shift; lift and</text>
+<text class="small" x="408" y="151.0">reshape</text>
+<text class="small" x="548" y="121.0">Re-architect</text>
+<line class="grid" x1="16" x2="674" y1="165" y2="165"/>
+<text class="rowl" x="16" y="184.0">What moves</text>
+<text class="small" x="128" y="184.0">Each server, as it</text>
+<text class="small" x="128" y="199.0">is, onto Amazon EC2</text>
+<text class="small" x="268" y="184.0">A whole platform at</text>
+<text class="small" x="268" y="199.0">once, to the AWS</text>
+<text class="small" x="268" y="214.0">version of it; or a</text>
+<text class="small" x="268" y="229.0">resource to another</text>
+<text class="small" x="268" y="244.0">VPC, Region or</text>
+<text class="small" x="268" y="259.0">account</text>
+<text class="small" x="408" y="184.0">The application,</text>
+<text class="small" x="408" y="199.0">onto better-fitting</text>
+<text class="small" x="408" y="214.0">services</text>
+<text class="small" x="548" y="184.0">The application,</text>
+<text class="small" x="548" y="199.0">rebuilt</text>
+<rect class="hirow" x="116" y="275" width="562" height="74" rx="5"/>
+<line class="grid" x1="16" x2="674" y1="273" y2="273"/>
+<text class="rowl" x="16" y="292.0">What changes</text>
+<text class="rowl" x="16" y="307.0">in the</text>
+<text class="rowl" x="16" y="322.0">application</text>
+<text class="small" x="128" y="292.0">Nothing</text>
+<text class="small" x="268" y="292.0">Nothing, not even</text>
+<text class="small" x="268" y="307.0">how you operate it</text>
+<text class="small" x="408" y="292.0">A few parts, such</text>
+<text class="small" x="408" y="307.0">as the database</text>
+<text class="small" x="408" y="322.0">host or the</text>
+<text class="small" x="408" y="337.0">operating system</text>
+<text class="small" x="548" y="292.0">Its design, to use</text>
+<text class="small" x="548" y="307.0">cloud-native</text>
+<text class="small" x="548" y="322.0">features</text>
+<line class="grid" x1="16" x2="674" y1="351" y2="351"/>
+<text class="rowl" x="16" y="370.0">AWS's example</text>
+<text class="small" x="128" y="370.0">An application</text>
+<text class="small" x="128" y="385.0">stack from</text>
+<text class="small" x="128" y="400.0">on-premises to AWS</text>
+<text class="small" x="268" y="370.0">VMware workloads to</text>
+<text class="small" x="268" y="385.0">Amazon EVS; an RDS</text>
+<text class="small" x="268" y="400.0">database to another</text>
+<text class="small" x="268" y="415.0">account</text>
+<text class="small" x="408" y="370.0">SQL Server to</text>
+<text class="small" x="408" y="385.0">Amazon RDS for SQL</text>
+<text class="small" x="408" y="400.0">Server</text>
+<text class="small" x="548" y="370.0">A monolith that</text>
+<text class="small" x="548" y="385.0">slows every release</text>
+<line class="grid" x1="16" x2="674" y1="429" y2="429"/>
+<text class="rowl" x="16" y="448.0">What AWS says</text>
+<text class="rowl" x="16" y="463.0">about effort</text>
+<text class="small" x="128" y="448.0">Moves many servers</text>
+<text class="small" x="128" y="463.0">without</text>
+<text class="small" x="128" y="478.0">compatibility</text>
+<text class="small" x="128" y="493.0">worries; optimize</text>
+<text class="small" x="128" y="508.0">later</text>
+<text class="small" x="268" y="448.0">The quickest way to</text>
+<text class="small" x="268" y="463.0">migrate and operate</text>
+<text class="small" x="268" y="478.0">a workload</text>
+<text class="small" x="408" y="448.0">A few or many</text>
+<text class="small" x="408" y="463.0">changes, depending</text>
+<text class="small" x="408" y="478.0">on your goals</text>
+<text class="small" x="548" y="448.0">The most complex</text>
+<text class="small" x="548" y="463.0">and costly strategy</text>
+<line class="grid" x1="16" x2="674" y1="522" y2="522"/>
+<text class="note" x="16" y="544">From AWS Prescriptive Guidance (migration strategies) and AWS's VMware page, checked 2026-10-24.</text>
+</svg>

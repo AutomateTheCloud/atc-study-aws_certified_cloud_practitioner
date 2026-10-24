@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="350" viewBox="0 0 680 350" role="img" aria-labelledby="t d">
+<title id="t">Application Migration Service and Elastic Disaster Recovery compared as two timelines</title>
+<desc id="d">Two timelines. Application Migration Service, now AWS Transform MGN, a one-time move: install the agent, replicate continuously, launch tests, cut over, then stop replicating and retire the source; the line ends. AWS Elastic Disaster Recovery, ongoing protection: install the agent, replicate continuously, run drills, and after a disaster recover in AWS within minutes, then fail back when the site is fixed; an arrow loops back to replication, because protection never ends.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --aws-fill:#d9e8fb; --hi-fill:#fbe1d6; --card-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --aws-fill:#1b3554; --hi-fill:#4d2716; --card-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .aws { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .card { fill: var(--card-fill); stroke: var(--axis); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s2); stroke-width: 2.5; stroke-dasharray: 6 4; }
+  .panel { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .colh { fill: var(--muted); font-size: 11.5px; font-weight: 600; letter-spacing: 0.5px; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .flow { stroke: var(--ink2); stroke-width: 1.8; fill: none; }
+  .flowhi { stroke: var(--s2); stroke-width: 2; fill: none; stroke-dasharray: 5 4; }
+  .head-ink { fill: var(--ink2); }
+  .head-hi { fill: var(--s2); }
+  .dot { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .dothi { fill: var(--s2); stroke: var(--surface); stroke-width: 2; }
+  .track { stroke: var(--s1); stroke-width: 3; fill: none; stroke-linecap: round; }
+  .val { fill: var(--ink); font-size: 13px; font-variant-numeric: tabular-nums; }
+</style>
+<rect width="680" height="350" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Same copying, different ending</text>
+<text class="sub" x="16" y="48">Application Migration Service ends at cutover. Elastic Disaster Recovery keeps going.</text>
+<text class="head" x="16" y="84">Application Migration Service (AWS Transform MGN)</text>
+<text class="cells" x="16" y="101">A one-time move</text>
+<line class="track" x1="40" x2="600" y1="142" y2="142"/>
+<circle class="dot" cx="40.0" cy="142" r="7"/>
+<text class="cells" x="40.0" y="168" text-anchor="middle">Install</text>
+<text class="cells" x="40.0" y="183" text-anchor="middle">agent</text>
+<circle class="dot" cx="180.0" cy="142" r="7"/>
+<text class="cells" x="180.0" y="168" text-anchor="middle">Replicate</text>
+<text class="cells" x="180.0" y="183" text-anchor="middle">continuously</text>
+<circle class="dot" cx="320.0" cy="142" r="7"/>
+<text class="cells" x="320.0" y="168" text-anchor="middle">Launch</text>
+<text class="cells" x="320.0" y="183" text-anchor="middle">tests</text>
+<circle class="dot" cx="460.0" cy="142" r="7"/>
+<text class="cells" x="460.0" y="168" text-anchor="middle">Cut over</text>
+<circle class="dothi" cx="600.0" cy="142" r="7"/>
+<text class="cells" x="600.0" y="168" text-anchor="middle">Stop replicating;</text>
+<text class="cells" x="600.0" y="183" text-anchor="middle">retire the source</text>
+<line class="lead" x1="614" x2="614" y1="130" y2="154"/>
+<text class="boxt" x="622" y="147">ends</text>
+<text class="head" x="16" y="220">AWS Elastic Disaster Recovery</text>
+<text class="cells" x="16" y="237">Ongoing protection</text>
+<line class="track" x1="40" x2="600" y1="278" y2="278"/>
+<circle class="dot" cx="40.0" cy="278" r="7"/>
+<text class="cells" x="40.0" y="304" text-anchor="middle">Install</text>
+<text class="cells" x="40.0" y="319" text-anchor="middle">agent</text>
+<circle class="dot" cx="180.0" cy="278" r="7"/>
+<text class="cells" x="180.0" y="304" text-anchor="middle">Replicate</text>
+<text class="cells" x="180.0" y="319" text-anchor="middle">continuously</text>
+<circle class="dot" cx="320.0" cy="278" r="7"/>
+<text class="cells" x="320.0" y="304" text-anchor="middle">Run drills</text>
+<circle class="dot" cx="460.0" cy="278" r="7"/>
+<text class="cells" x="460.0" y="304" text-anchor="middle">Disaster: recover</text>
+<text class="cells" x="460.0" y="319" text-anchor="middle">in AWS in minutes</text>
+<circle class="dothi" cx="600.0" cy="278" r="7"/>
+<text class="cells" x="600.0" y="304" text-anchor="middle">Fail back when</text>
+<text class="cells" x="600.0" y="319" text-anchor="middle">the site is fixed</text>
+<path class="flowhi" d="M600.0,268 C600.0,232 180.0,232 180.0,264"/>
+<path class="head-hi" d="M180.0,270 L175.0,260 L185.0,260 Z"/>
+<text class="boxt" x="390.0" y="238" text-anchor="middle">loops: protection never ends</text>
+</svg>

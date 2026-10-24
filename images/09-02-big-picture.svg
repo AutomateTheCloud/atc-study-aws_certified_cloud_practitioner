@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="493" viewBox="0 0 680 493" role="img" aria-labelledby="t d">
+<title id="t">The bakery's data in transit and at rest, with the key protecting each store</title>
+<desc id="d">Left: the customer's browser. An arrow labeled HTTPS runs to a load balancer that holds a TLS certificate from ACM. An arrow labeled HTTP or HTTPS runs from the load balancer to the web servers on EC2. From the web servers, arrows run down to the server disks on EBS, encrypted at rest with the AWS managed key aws/ebs; to the order database on RDS, labeled TLS if you require it, encrypted at rest with a key chosen when the database is created; to the photo bucket in S3, labeled HTTPS, encrypted with SSE-S3, S3's own keys; and to the tax archive bucket in S3, encrypted with SSE-KMS and the bakery's own key. The four stores are shaded as data at rest. A note says that AWS also encrypts all traffic between Availability Zones and between Regions on its own network.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --rest-fill:#d9e8fb; --n-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --rest-fill:#1b3554; --n-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .plain { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .rest { fill: var(--rest-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .zone { fill: none; stroke: var(--axis); stroke-width: 1.2; stroke-dasharray: 6 4; }
+  .card { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .hl { fill: none; stroke: var(--s1); stroke-width: 2.2; }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .keyl { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .key { fill: var(--muted); font-size: 10.5px; font-weight: 600; letter-spacing: 0.5px; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .arrlab { fill: var(--ink2); font-size: 11.5px; font-style: italic; }
+  .flow { stroke: var(--ink2); stroke-width: 2; fill: none; }
+  .head-ink { fill: var(--ink2); }
+  .spec { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .val { fill: var(--ink); font-size: 13px; font-variant-numeric: tabular-nums; }
+</style>
+<rect width="680" height="493" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">The bakery's data, moving and stored</text>
+<text class="sub" x="16" y="48">Arrows carry data in transit; shaded boxes hold data at rest, each with the key that protects it</text>
+<rect class="plain" x="16.0" y="150.0" width="92.0" height="64.0" rx="6"/>
+<text class="boxt" x="62" y="176.0" text-anchor="middle">Customer's</text>
+<text class="boxt" x="62" y="192.0" text-anchor="middle">browser</text>
+<rect class="zone" x="130.0" y="66.0" width="534.0" height="334.0" rx="10"/>
+<text class="note" x="142" y="84">The bakery on AWS, US East (N. Virginia)</text>
+<rect class="plain" x="150.0" y="140.0" width="112.0" height="84.0" rx="6"/>
+<text class="boxt" x="206" y="162.0" text-anchor="middle">Load balancer</text>
+<text class="cells" x="206" y="182.0" text-anchor="middle">TLS certificate</text>
+<text class="cells" x="206" y="197.0" text-anchor="middle">from ACM</text>
+<rect class="plain" x="306.0" y="140.0" width="118.0" height="84.0" rx="6"/>
+<text class="boxt" x="365" y="166.0" text-anchor="middle">Web servers</text>
+<text class="boxt" x="365" y="182.0" text-anchor="middle">(EC2)</text>
+<rect class="rest" x="306.0" y="276.0" width="118.0" height="92.0" rx="6"/>
+<text class="boxt" x="365" y="298.0" text-anchor="middle">Server disks</text>
+<text class="boxt" x="365" y="314.0" text-anchor="middle">(EBS)</text>
+<text class="cells" x="365" y="334.0" text-anchor="middle">key: aws/ebs,</text>
+<text class="cells" x="365" y="349.0" text-anchor="middle">AWS managed</text>
+<rect class="rest" x="474.0" y="96.0" width="178.0" height="76.0" rx="6"/>
+<text class="boxt" x="563" y="120.0" text-anchor="middle">Order database (RDS)</text>
+<text class="cells" x="563" y="142.0" text-anchor="middle">key: chosen at creation</text>
+<rect class="rest" x="474.0" y="196.0" width="178.0" height="76.0" rx="6"/>
+<text class="boxt" x="563" y="220.0" text-anchor="middle">Photo bucket (S3)</text>
+<text class="cells" x="563" y="242.0" text-anchor="middle">SSE-S3: S3's own keys</text>
+<rect class="rest" x="474.0" y="296.0" width="178.0" height="76.0" rx="6"/>
+<text class="boxt" x="563" y="320.0" text-anchor="middle">Tax archive (S3)</text>
+<text class="cells" x="563" y="342.0" text-anchor="middle">SSE-KMS: the bakery's own</text>
+<text class="cells" x="563" y="357.0" text-anchor="middle">key</text>
+<path class="flow" d="M108.0,182.0 L150.0,182.0"/>
+<path class="head-ink" d="M150.0,182.0 L141.0,177.0 L141.0,187.0 Z"/>
+<text class="arrlab" x="129" y="172" text-anchor="middle">HTTPS</text>
+<path class="flow" d="M262.0,182.0 L306.0,182.0"/>
+<path class="head-ink" d="M306.0,182.0 L297.0,177.0 L297.0,187.0 Z"/>
+<text class="arrlab" x="284" y="154" text-anchor="middle">HTTP or</text>
+<text class="arrlab" x="284" y="168" text-anchor="middle">HTTPS</text>
+<path class="flow" d="M365.0,224.0 L365.0,276.0"/>
+<path class="head-ink" d="M365.0,276.0 L370.0,267.0 L360.0,267.0 Z"/>
+<path class="flow" d="M424.0,160.0 L448.0,160.0 L448.0,134.0 L474.0,134.0"/>
+<path class="head-ink" d="M474.0,134.0 L465.0,129.0 L465.0,139.0 Z"/>
+<text class="arrlab" x="442" y="112" text-anchor="end">TLS, if you</text>
+<text class="arrlab" x="442" y="126" text-anchor="end">require it</text>
+<path class="flow" d="M424.0,182.0 L474.0,234.0"/>
+<path class="head-ink" d="M474.0,234.0 L471.4,224.0 L464.2,231.0 Z"/>
+<path class="flow" d="M424.0,204.0 L448.0,204.0 L448.0,334.0 L474.0,334.0"/>
+<path class="head-ink" d="M474.0,334.0 L465.0,329.0 L465.0,339.0 Z"/>
+<text class="arrlab" x="442" y="262" text-anchor="end">HTTPS</text>
+<text class="small" x="16" y="424.0">In transit: TLS, the protection behind HTTPS, scrambles data on the wire. AWS also encrypts all traffic between</text>
+<text class="small" x="16" y="441.0">Availability Zones and between Regions on its own network. At rest: every shaded store is encrypted; what</text>
+<text class="small" x="16" y="458.0">differs is who holds the key and who can see it being used.</text>
+<text class="note" x="16" y="479">The bakery is made up for teaching. From the S3, RDS, KMS and ACM user guides, checked 2026-10-24.</text>
+</svg>

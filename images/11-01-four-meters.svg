@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="430" viewBox="0 0 720 430" role="img" aria-labelledby="t d">
+<title id="t">The four meters behind most AWS charges, with the bakery's resources on each</title>
+<desc id="d">Four columns. Time, the hours or seconds a resource exists or runs: EC2 web servers, the load balancer, a NAT gateway, the RDS database, public IPv4 addresses; it bills while the resource exists, busy or idle. Storage, GB kept per month: the S3 photo bucket, EBS disks billed by the size you set, RDS storage and backups, snapshots; it bills for what you keep until you delete it. Requests, calls and runs by the count: S3 GET and PUT requests, Lambda invocations and GB-seconds, Athena data scanned; it bills only when someone uses it. Data transfer, GB moved by direction: out to the internet, across Availability Zones, to another Region, while data in from the internet is free; it bills for where data goes.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --panel:#f1f0ec; --hi-fill:#d9e8fb; --s3:#1baf7a; --s4:#eda100; --warm-fill:#fbe1d6; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --panel:#252523; --hi-fill:#1b3554; --s3:#199e70; --s4:#c98500; --warm-fill:#4d2716; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .panel { fill: var(--panel); stroke: var(--axis); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .warm { fill: var(--warm-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .zone { fill: none; stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 5 4; }
+  .box { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .head { fill: var(--ink); font-size: 15px; font-weight: 600; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .val { fill: var(--ink); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .arrlab { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .free { stroke: var(--s3); stroke-width: 2.5; fill: none; }
+  .paid { stroke: var(--s2); stroke-width: 2.5; fill: none; }
+  .ahead-free { fill: var(--s3); }
+  .ahead-paid { fill: var(--s2); }
+  .s3 { fill: var(--s3); } .s4 { fill: var(--s4); }
+  .conn { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 3; }
+  .dashext { fill: none; stroke: var(--s3); stroke-width: 1.5; stroke-dasharray: 5 4; }
+</style>
+<rect width="720" height="430" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Every line on a bill is a quantity times a rate</text>
+<text class="sub" x="16" y="48">Most charges run on one of four meters. The bakery's resources, sorted by meter:</text>
+<rect class="panel" x="16" y="70" width="166" height="300" rx="8"/>
+<rect class="s1" x="16" y="70" width="166" height="6" rx="2"/>
+<text class="head" x="28" y="102">Time</text>
+<text class="small" x="28" y="122.0">hours or seconds a</text>
+<text class="small" x="28" y="137.0">resource exists or runs</text>
+<rect class="box" x="26" y="154" width="146" height="26" rx="4"/>
+<text class="lab" x="34" y="172" style="font-size:12px">EC2 web servers</text>
+<rect class="box" x="26" y="188" width="146" height="26" rx="4"/>
+<text class="lab" x="34" y="206" style="font-size:12px">Load balancer</text>
+<rect class="box" x="26" y="222" width="146" height="26" rx="4"/>
+<text class="lab" x="34" y="240" style="font-size:12px">NAT gateway</text>
+<rect class="box" x="26" y="256" width="146" height="26" rx="4"/>
+<text class="lab" x="34" y="274" style="font-size:12px">RDS database</text>
+<rect class="box" x="26" y="290" width="146" height="26" rx="4"/>
+<text class="lab" x="34" y="308" style="font-size:12px">Public IPv4 addresses</text>
+<text class="cellt" x="28" y="338.0">Bills while it</text>
+<text class="cellt" x="28" y="353.0">exists, busy or idle</text>
+<rect class="panel" x="192" y="70" width="166" height="300" rx="8"/>
+<rect class="s3" x="192" y="70" width="166" height="6" rx="2"/>
+<text class="head" x="204" y="102">Storage</text>
+<text class="small" x="204" y="122.0">GB kept, per month</text>
+<rect class="box" x="202" y="154" width="146" height="26" rx="4"/>
+<text class="lab" x="210" y="172" style="font-size:12px">S3 photo bucket</text>
+<rect class="box" x="202" y="188" width="146" height="26" rx="4"/>
+<text class="lab" x="210" y="206" style="font-size:12px">EBS disks (size you set)</text>
+<rect class="box" x="202" y="222" width="146" height="26" rx="4"/>
+<text class="lab" x="210" y="240" style="font-size:12px">RDS storage, backups</text>
+<rect class="box" x="202" y="256" width="146" height="26" rx="4"/>
+<text class="lab" x="210" y="274" style="font-size:12px">Snapshots</text>
+<text class="cellt" x="204" y="338.0">Bills for what you</text>
+<text class="cellt" x="204" y="353.0">keep, until deleted</text>
+<rect class="panel" x="368" y="70" width="166" height="300" rx="8"/>
+<rect class="s4" x="368" y="70" width="166" height="6" rx="2"/>
+<text class="head" x="380" y="102">Requests</text>
+<text class="small" x="380" y="122.0">calls and runs, by the</text>
+<text class="small" x="380" y="137.0">count</text>
+<rect class="box" x="378" y="154" width="146" height="26" rx="4"/>
+<text class="lab" x="386" y="172" style="font-size:12px">S3 GET and PUT</text>
+<rect class="box" x="378" y="188" width="146" height="26" rx="4"/>
+<text class="lab" x="386" y="206" style="font-size:12px">Lambda invocations</text>
+<rect class="box" x="378" y="222" width="146" height="26" rx="4"/>
+<text class="lab" x="386" y="240" style="font-size:12px">Lambda GB-seconds</text>
+<rect class="box" x="378" y="256" width="146" height="26" rx="4"/>
+<text class="lab" x="386" y="274" style="font-size:12px">Athena data scanned</text>
+<text class="cellt" x="380" y="338.0">Bills only when</text>
+<text class="cellt" x="380" y="353.0">someone uses it</text>
+<rect class="panel" x="544" y="70" width="166" height="300" rx="8"/>
+<rect class="s2" x="544" y="70" width="166" height="6" rx="2"/>
+<text class="head" x="556" y="102">Data transfer</text>
+<text class="small" x="556" y="122.0">GB moved, by direction</text>
+<rect class="box" x="554" y="154" width="146" height="26" rx="4"/>
+<text class="lab" x="562" y="172" style="font-size:12px">Out to the internet</text>
+<rect class="box" x="554" y="188" width="146" height="26" rx="4"/>
+<text class="lab" x="562" y="206" style="font-size:12px">Across AZs</text>
+<rect class="box" x="554" y="222" width="146" height="26" rx="4"/>
+<text class="lab" x="562" y="240" style="font-size:12px">To another Region</text>
+<rect class="box" x="554" y="256" width="146" height="26" rx="4"/>
+<text class="lab" x="562" y="274" style="font-size:12px">In from internet: $0</text>
+<text class="cellt" x="556" y="338.0">Bills for where data</text>
+<text class="cellt" x="556" y="353.0">goes</text>
+<text class="note" x="16" y="396">Bar colors only group the columns; each column is named.</text>
+<text class="note" x="16" y="414">Our summary of the EC2, S3, Lambda and data transfer pricing pages, checked 2026-10-24.</text>
+</svg>

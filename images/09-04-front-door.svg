@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="543" viewBox="0 0 680 543" role="img" aria-labelledby="t d">
+<title id="t">The layers of protection between the internet and the bakery's web servers</title>
+<desc id="d">Left: the internet, with customers, bots and attackers. Middle: a zone labeled AWS edge locations, holding Route 53, which answers DNS for bakery.example, and CloudFront, which serves pages and photos, with an AWS WAF web ACL attached that checks each web request (layer 2, highlighted). Right: a zone labeled US East (N. Virginia), the bakery's VPC, holding an Application Load Balancer, with a second WAF web ACL marked for use if traffic doesn't come through CloudFront (layer 2, highlighted), and a dashed ring for the network ACL and security group (layer 3) around the web servers, EC2 instances in an Auto Scaling group across two Availability Zones. Arrows: from the internet to Route 53 for the address and to CloudFront; from CloudFront to the load balancer; from the load balancer to the web servers. A band underneath the edge and Region zones: layer 1, AWS Shield Standard, on for everyone at no charge, absorbing common network floods at the edge and in the Region. A band across the top: layer 4, AWS Firewall Manager, applying the same WAF rules, Shield Advanced and security group policies to every account in an organization. Key: 1, Shield, network and transport floods such as SYN floods and UDP reflection; 2, WAF, bad web requests such as SQL injection, cross-site scripting, request floods and blocked addresses or countries; 3, network ACL and security group, only the ports and addresses you allow; 4, Firewall Manager, the same protections in every account, including new ones.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --hi-fill:#d9e8fb; --n-fill:#f1f0ec; --alt-fill:#fbe1d6; --zone:#f6f5f1; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --hi-fill:#1b3554; --n-fill:#252523; --alt-fill:#4d2716; --zone:#20201f; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 2; }
+  .n { fill: var(--n-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .alt { fill: var(--alt-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .none { fill: none; stroke: var(--axis); stroke-width: 1; stroke-dasharray: 3 3; }
+  .plain { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .zone { fill: var(--zone); stroke: var(--axis); stroke-width: 1.2; stroke-dasharray: 6 4; }
+  .vpc { fill: none; stroke: var(--ink2); stroke-width: 1.5; }
+  .sg { fill: none; stroke: var(--s1); stroke-width: 2; stroke-dasharray: 7 4; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .cellb { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .zlab { fill: var(--muted); font-size: 12px; font-weight: 600; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .val { fill: var(--ink); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .num { fill: var(--ink); font-size: 12px; font-weight: 700; }
+  .numc { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; }
+  .zero { stroke: var(--s1); stroke-width: 2; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .arrowd { stroke: var(--ink2); stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; }
+  .arrowhead { fill: var(--ink2); }
+</style>
+<rect width="680" height="543" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">The bakery's front door, layer by layer</text>
+<text class="sub" x="16" y="48">Each numbered layer stops a different kind of bad traffic before it reaches the web servers</text>
+<rect class="n" x="16.0" y="66.0" width="648.0" height="40.0" rx="6"/>
+<circle class="numc" cx="34" cy="86" r="10"/>
+<text class="num" x="34" y="90" text-anchor="middle">4</text>
+<text class="boxt" x="52" y="83">AWS Firewall Manager</text>
+<text class="cells" x="52" y="99">Applies the same WAF, Shield Advanced and security group policies to all accounts in an organization</text>
+<rect class="plain" x="16.0" y="200.0" width="92.0" height="84.0" rx="6"/>
+<text class="boxt" x="62.0" y="218" text-anchor="middle">Internet</text>
+<text class="cells" x="62.0" y="234.0" text-anchor="middle">customers,</text>
+<text class="cells" x="62.0" y="248.0" text-anchor="middle">bots and</text>
+<text class="cells" x="62.0" y="262.0" text-anchor="middle">attackers</text>
+<rect class="zone" x="124.0" y="130.0" width="196.0" height="250.0" rx="8"/>
+<text class="zlab" x="134" y="148">AWS EDGE LOCATIONS</text>
+<rect class="plain" x="138.0" y="160.0" width="168.0" height="50.0" rx="6"/>
+<text class="boxt" x="222.0" y="178" text-anchor="middle">Route 53</text>
+<text class="cells" x="222.0" y="194.0" text-anchor="middle">answers DNS lookups</text>
+<rect class="plain" x="138.0" y="226.0" width="168.0" height="50.0" rx="6"/>
+<text class="boxt" x="222.0" y="244" text-anchor="middle">CloudFront</text>
+<text class="cells" x="222.0" y="260.0" text-anchor="middle">serves pages and photos</text>
+<rect class="hi" x="138.0" y="284.0" width="168.0" height="38.0" rx="6"/>
+<circle class="numc" cx="154" cy="303" r="10"/>
+<text class="num" x="154" y="307" text-anchor="middle">2</text>
+<text class="boxt" x="170" y="300">AWS WAF web ACL</text>
+<text class="cells" x="170" y="315">checks each web request</text>
+<rect class="zone" x="336.0" y="130.0" width="328.0" height="250.0" rx="8"/>
+<text class="zlab" x="346" y="148">US EAST (N. VIRGINIA): THE BAKERY'S VPC</text>
+<rect class="plain" x="350.0" y="224.0" width="140.0" height="54.0" rx="6"/>
+<text class="boxt" x="420.0" y="242" text-anchor="middle">Load balancer</text>
+<text class="cells" x="420.0" y="258.0" text-anchor="middle">Application Load</text>
+<text class="cells" x="420.0" y="272.0" text-anchor="middle">Balancer</text>
+<rect class="hi" x="350.0" y="286.0" width="140.0" height="38.0" rx="6"/>
+<circle class="numc" cx="366" cy="305" r="10"/>
+<text class="num" x="366" y="309" text-anchor="middle">2</text>
+<text class="boxt" x="382" y="302">WAF web ACL</text>
+<text class="cells" x="382" y="317">if not via CloudFront</text>
+<rect class="sg" x="506.0" y="160.0" width="144.0" height="162.0" rx="10"/>
+<circle class="numc" cx="522" cy="176" r="10"/>
+<text class="num" x="522" y="180" text-anchor="middle">3</text>
+<text class="cellb" x="536" y="180">Network ACL and</text>
+<text class="cellb" x="536" y="195">security group</text>
+<rect class="plain" x="520.0" y="214.0" width="116.0" height="92.0" rx="6"/>
+<text class="boxt" x="578.0" y="232" text-anchor="middle">Web servers</text>
+<text class="cells" x="578.0" y="248.0" text-anchor="middle">EC2 instances in</text>
+<text class="cells" x="578.0" y="262.0" text-anchor="middle">an Auto Scaling</text>
+<text class="cells" x="578.0" y="276.0" text-anchor="middle">group, two AZs</text>
+<line class="arrow" x1="109.0" y1="242.0" x2="137.0" y2="185.0"/>
+<path class="arrowhead" d="M129.0,190.0 L138.0,194.4 L137.0,185.0 Z"/>
+<line class="arrow" x1="109.0" y1="242.0" x2="137.0" y2="251.0"/>
+<path class="arrowhead" d="M130.9,243.8 L127.9,253.3 L137.0,251.0 Z"/>
+<text class="cells" x="164" y="222">address</text>
+<line class="arrow" x1="306.0" y1="251.0" x2="349.0" y2="251.0"/>
+<path class="arrowhead" d="M341.0,246.0 L341.0,256.0 L349.0,251.0 Z"/>
+<line class="arrow" x1="491.0" y1="251.0" x2="519.0" y2="251.0"/>
+<path class="arrowhead" d="M511.0,246.0 L511.0,256.0 L519.0,251.0 Z"/>
+<rect class="n" x="132.0" y="332.0" width="524.0" height="40.0" rx="6"/>
+<circle class="numc" cx="150" cy="352" r="10"/>
+<text class="num" x="150" y="356" text-anchor="middle">1</text>
+<text class="boxt" x="166" y="349">AWS Shield Standard: on for everyone, no charge</text>
+<text class="cells" x="166" y="365">absorbs common network floods at the edge and in the Region</text>
+<circle class="numc" cx="28" cy="400" r="10"/>
+<text class="num" x="28" y="404" text-anchor="middle">1</text>
+<text class="cellb" x="46" y="404">Shield:</text>
+<text class="cells" x="250" y="404.0">network and transport floods, such as SYN floods and UDP reflection.</text>
+<circle class="numc" cx="28" cy="421" r="10"/>
+<text class="num" x="28" y="425" text-anchor="middle">2</text>
+<text class="cellb" x="46" y="425">WAF:</text>
+<text class="cells" x="250" y="425.0">bad web requests: SQL injection, cross-site scripting, request floods,</text>
+<text class="cells" x="250" y="440.0">blocked addresses or countries.</text>
+<circle class="numc" cx="28" cy="457" r="10"/>
+<text class="num" x="28" y="461" text-anchor="middle">3</text>
+<text class="cellb" x="46" y="461">Network ACL and security group:</text>
+<text class="cells" x="250" y="461.0">only the ports and addresses you allow (Module 07).</text>
+<circle class="numc" cx="28" cy="478" r="10"/>
+<text class="num" x="28" y="482" text-anchor="middle">4</text>
+<text class="cellb" x="46" y="482">Firewall Manager:</text>
+<text class="cells" x="250" y="482.0">the same protections in every account, including new ones.</text>
+<text class="note" x="16" y="509.0">From the AWS WAF, AWS Shield and AWS Firewall Manager developer guides, checked 2026-10-24. The bakery is made</text>
+<text class="note" x="16" y="524.0">up for teaching.</text>
+</svg>

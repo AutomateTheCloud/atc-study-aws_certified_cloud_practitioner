@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="276" viewBox="0 0 680 276" role="img" aria-labelledby="t d">
+<title id="t">How far back three evidence sources reach: Event history 90 days, IAM last accessed 400 days, AWS Config 2,557 days</title>
+<desc id="d">A horizontal bar chart of days of history, from 0 to 2,500. CloudTrail Event history: 90 days. IAM last accessed information: at least 400 days. AWS Config: 2,557 days, or 7 years, by default. A note says Config counts only from the day recording started and can be set from 30 days to 7 years, last accessed covers services with action detail starting later, and a CloudTrail trail keeps events as long as you keep its files in S3.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+</style>
+<rect width="680" height="276" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">How far back each evidence source reaches</text>
+<text class="sub" x="16" y="48">Days of history, by default (checked 2026-10-24)</text>
+<line class="axis" x1="210.0" x2="210.0" y1="68" y2="206"/>
+<text class="tick" x="210.0" y="224" text-anchor="middle">0</text>
+<line class="grid" x1="271.5" x2="271.5" y1="68" y2="206"/>
+<text class="tick" x="271.5" y="224" text-anchor="middle">500</text>
+<line class="grid" x1="333.1" x2="333.1" y1="68" y2="206"/>
+<text class="tick" x="333.1" y="224" text-anchor="middle">1,000</text>
+<line class="grid" x1="394.6" x2="394.6" y1="68" y2="206"/>
+<text class="tick" x="394.6" y="224" text-anchor="middle">1,500</text>
+<line class="grid" x1="456.2" x2="456.2" y1="68" y2="206"/>
+<text class="tick" x="456.2" y="224" text-anchor="middle">2,000</text>
+<line class="grid" x1="517.7" x2="517.7" y1="68" y2="206"/>
+<text class="tick" x="517.7" y="224" text-anchor="middle">2,500</text>
+<text class="lab" x="200" y="94" text-anchor="end">CloudTrail Event history</text>
+<path class="s1" d="M210.0,76.0 L217.1,76.0 Q221.1,76.0 221.1,80.0 L221.1,98.0 Q221.1,102.0 217.1,102.0 L210.0,102.0 Z"/>
+<text class="lab" x="229.1" y="94">90 days</text>
+<text class="lab" x="200" y="142" text-anchor="end">IAM last accessed information</text>
+<path class="s1" d="M210.0,124.0 L255.2,124.0 Q259.2,124.0 259.2,128.0 L259.2,146.0 Q259.2,150.0 255.2,150.0 L210.0,150.0 Z"/>
+<text class="lab" x="267.2" y="142">400 days (at least)</text>
+<text class="lab" x="200" y="190" text-anchor="end">AWS Config</text>
+<path class="s1" d="M210.0,172.0 L520.7,172.0 Q524.7,172.0 524.7,176.0 L524.7,194.0 Q524.7,198.0 520.7,198.0 L210.0,198.0 Z"/>
+<text class="lab" x="532.7" y="190">2,557 days (7 years)</text>
+<text class="tick" x="16" y="250.0">Config counts only from the day recording started; you can set 30 days to 7 years. Last accessed covers services;</text>
+<text class="tick" x="16" y="266.0">action detail started later. A CloudTrail trail keeps events for as long as you keep its files in S3.</text>
+</svg>

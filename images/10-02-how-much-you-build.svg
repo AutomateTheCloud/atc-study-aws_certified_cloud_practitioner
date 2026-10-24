@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="374" viewBox="0 0 680 374" role="img" aria-labelledby="t d">
+<title id="t">Four ways to use AI on AWS, from a finished assistant to your own model</title>
+<desc id="d">Four cards left to right, with an arrow underneath from less to build, less to run and less control, to more to build and run and more control. A finished assistant: Amazon Q Developer; you ask and it answers and writes code; nothing to build; no ML skills. A ready-made service, highlighted: Comprehend, Textract, Polly, Lex and others; you call an API; AWS trained the model; no ML skills. Models to build on: Amazon Bedrock; foundation models from several companies; you build a generative AI app around one. Your own model: Amazon SageMaker AI; you bring data and ML skills, and build, train and deploy; most work, most control. A note says Amazon Bedrock isn't on the exam's in-scope list, and is shown because Amazon Q is built on it and AWS points some closed services to it.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --aws-fill:#d9e8fb; --hi-fill:#fbe1d6; --card-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --aws-fill:#1b3554; --hi-fill:#4d2716; --card-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .aws { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .card { fill: var(--card-fill); stroke: var(--axis); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s2); stroke-width: 2.5; }
+  .panel { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .panelhi { fill: none; stroke: var(--s2); stroke-width: 3; }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .grp { fill: var(--ink); font-size: 12px; font-weight: 700; letter-spacing: 0.3px; }
+  .colh { fill: var(--muted); font-size: 11.5px; font-weight: 600; letter-spacing: 0.5px; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .mono { fill: var(--ink); font-size: 12px; font-family: ui-monospace, Menlo, Consolas, monospace; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .flow { stroke: var(--ink2); stroke-width: 1.8; fill: none; }
+  .head-ink { fill: var(--ink2); }
+  .spine { stroke: var(--axis); stroke-width: 2; }
+  .ring { fill: var(--surface); stroke: var(--s1); stroke-width: 2; }
+  .sq { fill: var(--s2); stroke: var(--surface); stroke-width: 2; }
+  .today { stroke: var(--ink); stroke-width: 1.5; }
+  .date { fill: var(--ink2); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .zone { fill: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: 0.5px; }
+  .lab2 { fill: var(--ink); font-size: 13px; }
+</style>
+<rect width="680" height="374" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">The further right, the more you build, and the more you control</text>
+<text class="sub" x="16" y="48">Four ways to use AI on AWS. Start from the left; move right only when the left can't do the job.</text>
+<rect class="aws" x="16" y="68" width="156" height="182" rx="8"/>
+<text class="colh" x="26" y="88" style="font-size:10.5px">FINISHED ASSISTANT</text>
+<text class="boxt" x="26" y="110.0">Amazon</text>
+<text class="boxt" x="26" y="126.0">Q Developer</text>
+<text class="cells" x="26" y="148.0">You ask; it answers</text>
+<text class="cells" x="26" y="164.0">and writes code</text>
+<text class="cells" x="26" y="180.0"></text>
+<text class="cells" x="26" y="196.0">Nothing to build</text>
+<text class="cells" x="26" y="212.0">No ML skills</text>
+<rect class="hi" x="180" y="68" width="156" height="182" rx="8"/>
+<text class="colh" x="190" y="88" style="font-size:10.5px">READY-MADE SERVICE</text>
+<text class="boxt" x="190" y="110.0">Comprehend, Textract,</text>
+<text class="boxt" x="190" y="126.0">Polly, Lex and more</text>
+<text class="cells" x="190" y="148.0">You call an API</text>
+<text class="cells" x="190" y="164.0">AWS trained the model</text>
+<text class="cells" x="190" y="180.0"></text>
+<text class="cells" x="190" y="196.0">Nothing to train</text>
+<text class="cells" x="190" y="212.0">No ML skills</text>
+<rect class="aws" x="344" y="68" width="156" height="182" rx="8"/>
+<text class="colh" x="354" y="88" style="font-size:10.5px">MODELS TO BUILD ON</text>
+<text class="boxt" x="354" y="110.0">Amazon</text>
+<text class="boxt" x="354" y="126.0">Bedrock</text>
+<text class="cells" x="354" y="148.0">Foundation models</text>
+<text class="cells" x="354" y="164.0">from several companies</text>
+<text class="cells" x="354" y="180.0"></text>
+<text class="cells" x="354" y="196.0">You build a generative</text>
+<text class="cells" x="354" y="212.0">AI app around one</text>
+<rect class="aws" x="508" y="68" width="156" height="182" rx="8"/>
+<text class="colh" x="518" y="88" style="font-size:10.5px">YOUR OWN MODEL</text>
+<text class="boxt" x="518" y="110.0">Amazon</text>
+<text class="boxt" x="518" y="126.0">SageMaker AI</text>
+<text class="cells" x="518" y="148.0">You bring data and</text>
+<text class="cells" x="518" y="164.0">ML skills; you build,</text>
+<text class="cells" x="518" y="180.0">train and deploy</text>
+<text class="cells" x="518" y="196.0"></text>
+<text class="cells" x="518" y="212.0">Most work, most control</text>
+<path class="flow" d="M24.0,276.0 L648.0,276.0"/>
+<path class="head-ink" d="M656.0,276.0 L646.0,271.0 L646.0,281.0 Z"/>
+<text class="small" x="24" y="296">Less to build, less to run, less control</text>
+<text class="small" x="656" y="296" text-anchor="end">More to build and run, more control</text>
+<text class="small" x="16" y="322.0">Amazon Bedrock isn't on the exam's in-scope list; it's shown because Amazon Q is built on it, and because</text>
+<text class="small" x="16" y="339.0">AWS now points some closed services to it.</text>
+<text class="note" x="16" y="360">Our summary of the Q Developer, Bedrock and SageMaker AI documentation, checked 2026-10-24.</text>
+</svg>

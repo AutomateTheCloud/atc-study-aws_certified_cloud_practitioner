@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="292" viewBox="0 0 680 292" role="img" aria-labelledby="t d">
+<title id="t">A release pipeline: CodePipeline runs the stages, CodeBuild builds and tests</title>
+<desc id="d">Five stages in a row, left to right, joined by arrows, under a bracket labeled AWS CodePipeline: runs the stages in order and stops the release if one fails. Source: a code change is pushed to the repository. Build, highlighted: CodeBuild compiles, runs unit tests and packages. Test, highlighted: CodeBuild runs more tests on the package. Approve: the owner approves, and SNS emails her that a release is waiting. Deploy: CloudFormation updates both Regions. Notes: the highlighted stages are the ones CodeBuild runs; a failed test stops the release before anything reaches customers; CodeDeploy can also be a deploy step, but the exam guide lists it as out of scope.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --hi-fill:#d9e8fb; --n-fill:#f1f0ec; --o-fill:#fbe1d6; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --hi-fill:#1b3554; --n-fill:#252523; --o-fill:#4d2716; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .panel { fill: var(--n-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .box { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .svc { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .orng { fill: var(--o-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .slot { fill: var(--s1); }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 700; }
+  .mini { fill: var(--ink); font-size: 11.5px; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .rowl { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .arrlab { fill: var(--ink2); font-size: 11px; font-style: italic; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.4; fill: none; }
+  .arrowhead { fill: var(--ink2); }
+  .brace { stroke: var(--s1); stroke-width: 2; fill: none; }
+</style>
+<rect width="680" height="292" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">CodePipeline runs the release; CodeBuild does the building</text>
+<text class="sub" x="16" y="48">The bakery's release pipeline: each change goes through every stage in order</text>
+<path class="brace" d="M16,96 L16,86 L664,86 L664,96"/>
+<text class="cellt" x="340.0" y="78" text-anchor="middle">AWS CodePipeline: runs the stages in order and stops the release if one fails</text>
+<rect class="box" x="16.0" y="108.0" width="116.0" height="96.0" rx="6"/>
+<text class="head" x="74.0" y="132" text-anchor="middle">Source</text>
+<text class="small" x="74.0" y="154.0" text-anchor="middle">A code change</text>
+<text class="small" x="74.0" y="169.0" text-anchor="middle">is pushed to</text>
+<text class="small" x="74.0" y="184.0" text-anchor="middle">the repository</text>
+<rect class="svc" x="149.0" y="108.0" width="116.0" height="96.0" rx="6"/>
+<text class="head" x="207.0" y="132" text-anchor="middle">Build</text>
+<text class="small" x="207.0" y="154.0" text-anchor="middle">CodeBuild</text>
+<text class="small" x="207.0" y="169.0" text-anchor="middle">compiles, runs</text>
+<text class="small" x="207.0" y="184.0" text-anchor="middle">unit tests, packages</text>
+<line class="arrow" x1="133.0" y1="156.0" x2="148.0" y2="156.0"/>
+<path class="arrowhead" d="M141.0,152.0 L141.0,160.0 L148.0,156.0 Z"/>
+<rect class="svc" x="282.0" y="108.0" width="116.0" height="96.0" rx="6"/>
+<text class="head" x="340.0" y="132" text-anchor="middle">Test</text>
+<text class="small" x="340.0" y="154.0" text-anchor="middle">CodeBuild runs</text>
+<text class="small" x="340.0" y="169.0" text-anchor="middle">more tests on</text>
+<text class="small" x="340.0" y="184.0" text-anchor="middle">the package</text>
+<line class="arrow" x1="266.0" y1="156.0" x2="281.0" y2="156.0"/>
+<path class="arrowhead" d="M274.0,152.0 L274.0,160.0 L281.0,156.0 Z"/>
+<rect class="box" x="415.0" y="108.0" width="116.0" height="96.0" rx="6"/>
+<text class="head" x="473.0" y="132" text-anchor="middle">Approve</text>
+<text class="small" x="473.0" y="154.0" text-anchor="middle">The owner</text>
+<text class="small" x="473.0" y="169.0" text-anchor="middle">approves (SNS</text>
+<text class="small" x="473.0" y="184.0" text-anchor="middle">emails her)</text>
+<line class="arrow" x1="399.0" y1="156.0" x2="414.0" y2="156.0"/>
+<path class="arrowhead" d="M407.0,152.0 L407.0,160.0 L414.0,156.0 Z"/>
+<rect class="box" x="548.0" y="108.0" width="116.0" height="96.0" rx="6"/>
+<text class="head" x="606.0" y="132" text-anchor="middle">Deploy</text>
+<text class="small" x="606.0" y="154.0" text-anchor="middle">CloudFormation</text>
+<text class="small" x="606.0" y="169.0" text-anchor="middle">updates both</text>
+<text class="small" x="606.0" y="184.0" text-anchor="middle">Regions</text>
+<line class="arrow" x1="532.0" y1="156.0" x2="547.0" y2="156.0"/>
+<path class="arrowhead" d="M540.0,152.0 L540.0,160.0 L547.0,156.0 Z"/>
+<text class="note" x="16" y="234">Highlighted: the stages CodeBuild runs. A failed test stops the release before anything reaches customers.</text>
+<text class="note" x="16" y="250">CodeDeploy can also be a deploy step; it exists, but the exam guide lists it as out of scope.</text>
+<text class="note" x="16" y="266">From the AWS CodePipeline and AWS CodeBuild user guides, checked 2026-10-24. The bakery is made up.</text>
+</svg>

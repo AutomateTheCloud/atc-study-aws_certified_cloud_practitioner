@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="562" viewBox="0 0 680 562" role="img" aria-labelledby="t d">
+<title id="t">Three questions, three services: CloudWatch, X-Ray and CloudTrail</title>
+<desc id="d">Three panels, one per service, each with the question it answers, what it records and a bakery example. Amazon CloudWatch answers: how is the workload doing right now, and is anything wrong? It records metrics, numbers over time such as errors per 5 minutes; logs, the lines your code and servers write; and alarms, which act when a metric crosses a line. Example: the order function had 9 errors between 13:20 and 13:25, and the alarm emailed the owner. AWS X-Ray answers: where did this one request spend its time, and where did it fail? It records traces, one request's path through every part it touched with timings, and a trace map of the parts that called each other. Example: order 1043 took 2.45 seconds, 1.94 of them waiting for the payment provider. AWS CloudTrail answers: who changed what in the account, and when? It records events, one per action on your account by a person, a role or an AWS service, through the console, the CLI, an SDK or the API. Example: at 12:58 the nephew's IAM user changed the order function's settings.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --hi-fill:#d9e8fb; --n-fill:#f1f0ec; --no-fill:#fbe1d6; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --hi-fill:#1b3554; --n-fill:#252523; --no-fill:#4d2716; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .panel { fill: var(--n-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .hi { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .alarm { fill: var(--no-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .okband { fill: var(--n-fill); stroke: var(--ink2); stroke-width: 1; }
+  .plain { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 700; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .q { fill: var(--ink); font-size: 13px; font-style: italic; }
+  .zlab { fill: var(--muted); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .rowl { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .thr { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 6 4; fill: none; }
+  .bar-n { fill: var(--muted); }
+  .bar-hi { fill: var(--s1); }
+  .tick-line { stroke: var(--ink2); stroke-width: 1.5; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .arrowhead { fill: var(--ink2); }
+</style>
+<rect width="680" height="562" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Three questions, three services</text>
+<text class="sub" x="16" y="48">Each one watches the bakery from a different side. Start from the question you need answered.</text>
+<rect class="panel" x="16.0" y="68.0" width="648.0" height="146.0" rx="6"/>
+<text class="head" x="30" y="92">Amazon CloudWatch</text>
+<text class="q" x="30" y="114.0">How is the workload doing</text>
+<text class="q" x="30" y="130.0">right now, and is anything</text>
+<text class="q" x="30" y="146.0">wrong?</text>
+<text class="small" x="290" y="92.0">• Metrics: numbers over time, such as errors</text>
+<text class="small" x="290" y="108.0">  per 5 minutes</text>
+<text class="small" x="290" y="124.0">• Logs: the lines your code and servers write</text>
+<text class="small" x="290" y="140.0">• Alarms: act when a metric crosses a line</text>
+<text class="cellt" x="290" y="164.0">Bakery example: The order function had 9</text>
+<text class="cellt" x="290" y="180.0">errors between 13:20 and 13:25; the alarm</text>
+<text class="cellt" x="290" y="196.0">emailed the owner.</text>
+<rect class="panel" x="16.0" y="224.0" width="648.0" height="130.0" rx="6"/>
+<text class="head" x="30" y="248">AWS X-Ray</text>
+<text class="q" x="30" y="270.0">Where did this one request</text>
+<text class="q" x="30" y="286.0">spend its time, and where did</text>
+<text class="q" x="30" y="302.0">it fail?</text>
+<text class="small" x="290" y="248.0">• Traces: one request's path through every</text>
+<text class="small" x="290" y="264.0">  part it touched, with timings</text>
+<text class="small" x="290" y="280.0">• Trace map: the parts that called each other</text>
+<text class="cellt" x="290" y="304.0">Bakery example: Order 1043 took 2.45</text>
+<text class="cellt" x="290" y="320.0">seconds; 1.94 of them were waiting for the</text>
+<text class="cellt" x="290" y="336.0">payment provider.</text>
+<rect class="panel" x="16.0" y="364.0" width="648.0" height="146.0" rx="6"/>
+<text class="head" x="30" y="388">AWS CloudTrail</text>
+<text class="q" x="30" y="410.0">Who changed what in the</text>
+<text class="q" x="30" y="426.0">account, and when?</text>
+<text class="small" x="290" y="388.0">• Events: one record per action on your</text>
+<text class="small" x="290" y="404.0">  account, by a person, a role or an AWS</text>
+<text class="small" x="290" y="420.0">  service</text>
+<text class="small" x="290" y="436.0">• Through the console, the CLI, an SDK or the</text>
+<text class="small" x="290" y="452.0">  API</text>
+<text class="cellt" x="290" y="476.0">Bakery example: At 12:58 the nephew's IAM</text>
+<text class="cellt" x="290" y="492.0">user changed the order function's settings.</text>
+<text class="note" x="16" y="532">Our summary of the CloudWatch, X-Ray and CloudTrail user guides, checked 2026-10-24.</text>
+<text class="note" x="16" y="548">The bakery, its people and its numbers are made up.</text>
+</svg>

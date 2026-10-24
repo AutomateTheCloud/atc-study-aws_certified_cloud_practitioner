@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="456" viewBox="0 0 720 456" role="img" aria-labelledby="t d">
+<title id="t">Dedicated Host compared with Dedicated Instance</title>
+<desc id="d">Two panels. What's the same: single-tenant hardware, no other customer on it, and no difference in performance or security. Dedicated Host, a whole physical server you place instances on: you see its sockets, cores and host ID; you place instances on the host you choose and keep them there; billed per host; supports per-socket, per-core or per-VM licenses you bring; no Capacity Reservations; Host Reservations give up to 70% off. Choose it for software licensed by socket or core. Dedicated Instance, an instance on hardware only your account uses: you see nothing about the hardware; AWS places it and it may move after a stop and start; billed per instance plus a $2 an hour fee per Region while any runs; partial license support; Capacity Reservations supported; Reserved Instances with dedicated tenancy for a discount. Choose it for a rule that says no shared hardware. As of 2026-10-24.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --panel:#f1f0ec; --hi-fill:#d9e8fb; --s3:#1baf7a; --no-fill:#f6f5f2; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --panel:#252523; --hi-fill:#1b3554; --s3:#199e70; --no-fill:#1f1f1e; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .panel { fill: var(--panel); stroke: var(--axis); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .no { fill: var(--no-fill); stroke: var(--grid); stroke-width: 1; }
+  .box { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .head { fill: var(--ink); font-size: 15px; font-weight: 600; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .val { fill: var(--ink); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .yes { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .avg { fill: var(--ink); stroke: var(--surface); stroke-width: 2; }
+  .unit { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .unit-od { fill: var(--s2); stroke: var(--surface); stroke-width: 2; }
+  .s3 { fill: var(--s3); }
+</style>
+<rect width="720" height="456" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Dedicated Host or Dedicated Instance?</text>
+<text class="sub" x="16" y="48">Same: single-tenant hardware, no other customer on it, no difference in performance or security</text>
+<rect class="hi" x="16" y="66" width="336" height="356" rx="8"/>
+<text class="head" x="30" y="92">Dedicated Host</text>
+<text class="small" x="30" y="110">A whole physical server, yours to place instances on</text>
+<text class="cellt" x="30" y="138">You see</text>
+<text class="small" x="30" y="154.0">its sockets, cores and host ID</text>
+<text class="cellt" x="30" y="175">You place</text>
+<text class="small" x="30" y="191.0">instances on the host you choose, and keep</text>
+<text class="small" x="30" y="206.0">them there</text>
+<text class="cellt" x="30" y="227">Billing</text>
+<text class="small" x="30" y="243.0">per host, whatever runs on it</text>
+<text class="cellt" x="30" y="264">Your licenses</text>
+<text class="small" x="30" y="280.0">per-socket, per-core or per-VM (BYOL)</text>
+<text class="cellt" x="30" y="301">Capacity Reservations</text>
+<text class="small" x="30" y="317.0">not supported</text>
+<text class="cellt" x="30" y="338">Discount</text>
+<text class="small" x="30" y="354.0">Host Reservations, up to 70%</text>
+<text class="cellt" x="30" y="408">Choose it for: software licensed by socket or core</text>
+<rect class="panel" x="368" y="66" width="336" height="356" rx="8"/>
+<text class="head" x="382" y="92">Dedicated Instance</text>
+<text class="small" x="382" y="110">An instance on hardware only your account uses</text>
+<text class="cellt" x="382" y="138">You see</text>
+<text class="small" x="382" y="154.0">nothing about the hardware</text>
+<text class="cellt" x="382" y="175">You place</text>
+<text class="small" x="382" y="191.0">nothing: AWS places it, and after a stop and</text>
+<text class="small" x="382" y="206.0">start it may move</text>
+<text class="cellt" x="382" y="227">Billing</text>
+<text class="small" x="382" y="243.0">per instance, plus a $2 an hour fee per Region</text>
+<text class="small" x="382" y="258.0">while any runs</text>
+<text class="cellt" x="382" y="279">Your licenses</text>
+<text class="small" x="382" y="295.0">partial support only</text>
+<text class="cellt" x="382" y="316">Capacity Reservations</text>
+<text class="small" x="382" y="332.0">supported</text>
+<text class="cellt" x="382" y="353">Discount</text>
+<text class="small" x="382" y="369.0">Reserved Instances with dedicated tenancy</text>
+<text class="cellt" x="382" y="408">Choose it for: a rule that says no shared hardware</text>
+<text class="note" x="16" y="444">Sources: EC2 User Guide, Dedicated Hosts and Dedicated Instances; Savings Plans types (the $2 fee). Checked 2026-10-24.</text>
+</svg>

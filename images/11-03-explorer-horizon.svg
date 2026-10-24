@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="340" viewBox="0 0 680 340" role="img" aria-labelledby="t d">
+<title id="t">Cost Explorer's time range: 13 months back by default, up to 38 with an option, and 18 months of forecast</title>
+<desc id="d">A horizontal timeline in months around the current month. In blue, the default: the previous 13 months of history, then the current month, then a dashed forecast band for the next 18 months. In gray, options you switch on: multi-year data reaching back up to 38 months at monthly granularity, and hourly data for the last 14 days, which is charged. A note says older material gives 12 months of history and a 12-month forecast, while AWS's guide now says 13 and 18.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --base:#a8a69d; --cell:#fcfcfb; --hit:#fbe1d6; --band:#d9e8fb; --band2:#eeeeea; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --base:#6b6a65; --cell:#1a1a19; --hit:#4d2716; --band:#1b3554; --band2:#2c2c2a; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .base { fill: var(--base); }
+  .line-dash { stroke: var(--ink2); stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; }
+  .line-s2 { stroke: var(--s2); stroke-width: 2; fill: none; stroke-dasharray: 6 4; }
+  .dot-s2 { fill: var(--s2); stroke: var(--surface); stroke-width: 2; }
+  .dot-ink { fill: var(--ink); stroke: var(--surface); stroke-width: 2; }
+  .cell { fill: var(--cell); stroke: var(--grid); stroke-width: 1; }
+  .hit { fill: var(--hit); stroke: var(--ink); stroke-width: 2; }
+  .band { fill: var(--band); stroke: var(--s1); stroke-width: 1.5; }
+  .band2 { fill: var(--band2); stroke: var(--axis); stroke-width: 1; stroke-dasharray: 4 3; }
+  .fc { fill: none; stroke: var(--s2); stroke-width: 2; stroke-dasharray: 6 4; }
+  .head { fill: var(--ink); font-size: 12.5px; font-weight: 600; }
+  .ct { fill: var(--ink); font-size: 12px; }
+  .ctb { fill: var(--ink); font-size: 12.5px; font-weight: 700; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+</style>
+<rect width="680" height="340" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">How far Cost Explorer looks back and ahead</text>
+<text class="sub" x="16" y="48">By default: 13 months back (blue) and 18 ahead (dashed). Options you switch on: gray</text>
+<rect class="band2" x="24.0" y="96" width="275.2" height="30" rx="4"><title>Multi-year data, opt-in: up to 38 months, monthly granularity</title></rect>
+<text class="ct" x="32.0" y="116">Up to 38 months with multi-year data (opt-in, monthly)</text>
+<rect class="band" x="301.2" y="140" width="142.1" height="30" rx="4"><title>Default history: the previous 13 months, daily or monthly</title></rect>
+<text class="ct" x="309.2" y="160">13 months back</text>
+<rect class="hit" x="445.3" y="140" width="9.1" height="30" rx="4"><title>The current month</title></rect>
+<rect class="fc" x="456.4" y="140" width="197.6" height="30" rx="4"><title>Forecast: the next 18 months, with an 80% prediction interval</title></rect>
+<text class="ct" x="464.4" y="160">Forecast: next 18 months</text>
+<rect class="band2" x="439.8" y="184" width="3.5" height="30" rx="4"><title>Hourly data for the last 14 days, opt-in and paid</title></rect>
+<text class="ct" x="450.9" y="130" text-anchor="middle">Now</text>
+<line class="lead" x1="450.9" x2="450.9" y1="134" y2="140"/>
+<text class="ct" x="437.3" y="204" text-anchor="end">Hourly, last 14 days (opt-in, paid)</text>
+<line class="axis" x1="24" x2="656" y1="236" y2="236"/>
+<line class="axis" x1="46.2" x2="46.2" y1="236" y2="241"/>
+<text class="tick" x="46.2" y="256" text-anchor="middle">-36</text>
+<line class="axis" x1="179.2" x2="179.2" y1="236" y2="241"/>
+<text class="tick" x="179.2" y="256" text-anchor="middle">-24</text>
+<line class="axis" x1="312.3" x2="312.3" y1="236" y2="241"/>
+<text class="tick" x="312.3" y="256" text-anchor="middle">-12</text>
+<line class="axis" x1="445.3" x2="445.3" y1="236" y2="241"/>
+<text class="tick" x="445.3" y="256" text-anchor="middle">now</text>
+<line class="axis" x1="578.4" x2="578.4" y1="236" y2="241"/>
+<text class="tick" x="578.4" y="256" text-anchor="middle">+12</text>
+<line class="axis" x1="644.9" x2="644.9" y1="236" y2="241"/>
+<text class="tick" x="644.9" y="256" text-anchor="middle">+18</text>
+<text class="tick" x="340.0" y="274" text-anchor="middle">Months from the current month</text>
+<text class="note" x="16" y="302.0">Older material says 12 months of history and a 12-month forecast. AWS's guide now says 13 and 18.</text>
+<text class="note" x="16" y="317.0">From the AWS Cost Management User Guide (Cost Explorer pages), checked 2026-10-24.</text>
+</svg>

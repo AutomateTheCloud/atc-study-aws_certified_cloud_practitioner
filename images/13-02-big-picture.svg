@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="474" viewBox="0 0 680 474" role="img" aria-labelledby="t d">
+<title id="t">The seven migration strategies, grouped by what happens to the application</title>
+<desc id="d">Three groups of cards. Doesn't move: Retire, switch it off and archive the data you must keep; Retain, keep it where it is, for now, and revisit later. Moves without changing the application: Rehost, lift and shift, each server as it is onto Amazon EC2; Relocate, highlighted, move a whole platform such as VMware to its AWS version, or move a resource to another VPC, Region or account. A note says relocate is the seventh R, added after AWS's 2016 list of six, and older material may leave it out. Changes on the way: Replatform, lift, tinker and shift, a few changes such as moving the database onto Amazon RDS; Repurchase, drop and shop, replace it with a different product, often software as a service; Refactor, re-architect, redesign it to use cloud-native features. The grouping is ours; the seven names are AWS's.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --aws-fill:#d9e8fb; --hi-fill:#fbe1d6; --card-fill:#f1f0ec; --zone1:#ecebe6; --zone2:#f5f4f0; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --aws-fill:#1b3554; --hi-fill:#4d2716; --card-fill:#252523; --zone1:#2a2a28; --zone2:#222221; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .card { fill: var(--card-fill); stroke: var(--axis); stroke-width: 1; }
+  .move { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .hi { fill: var(--hi-fill); stroke: var(--s2); stroke-width: 2.5; }
+  .hirow { fill: none; stroke: var(--s2); stroke-width: 2.5; }
+  .band { fill: none; stroke: var(--axis); stroke-width: 1; stroke-dasharray: 4 3; }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .grp { fill: var(--ink); font-size: 12px; font-weight: 700; letter-spacing: 0.3px; }
+  .rowl { fill: var(--ink); font-size: 12.5px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .zone1 { fill: var(--zone1); } .zone2 { fill: var(--zone2); }
+  .zone { fill: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: 0.5px; }
+  .val { fill: var(--ink); font-size: 12px; font-variant-numeric: tabular-nums; }
+</style>
+<rect width="680" height="474" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Seven migration strategies, one per application</text>
+<text class="sub" x="16" y="48">Grouped by what happens to the application. The grouping is ours; the seven names are AWS's.</text>
+<rect class="band" x="10" y="64" width="660" height="106" rx="8"/>
+<text class="grp" x="20" y="83">DOESN'T MOVE</text>
+<rect class="card" x="20" y="92" width="210" height="72" rx="6"/>
+<text class="boxt" x="30" y="111">Retire</text>
+<text class="cells" x="30" y="128.0">Switch it off; archive the</text>
+<text class="cells" x="30" y="142.0">data you must keep.</text>
+<rect class="card" x="238" y="92" width="210" height="72" rx="6"/>
+<text class="boxt" x="248" y="111">Retain</text>
+<text class="cells" x="248" y="128.0">Keep it where it is, for now.</text>
+<text class="cells" x="248" y="142.0">Revisit later.</text>
+<rect class="band" x="10" y="180" width="660" height="134" rx="8"/>
+<text class="grp" x="20" y="199">MOVES WITHOUT CHANGING THE APPLICATION</text>
+<rect class="move" x="20" y="208" width="210" height="100" rx="6"/>
+<text class="boxt" x="30" y="227">Rehost</text>
+<text class="cells" x="30" y="244.0">Lift and shift: each server,</text>
+<text class="cells" x="30" y="258.0">as it is, onto Amazon EC2.</text>
+<rect class="hi" x="238" y="208" width="210" height="100" rx="6"/>
+<text class="boxt" x="248" y="227">Relocate</text>
+<text class="cells" x="248" y="244.0">Move a whole platform, such as</text>
+<text class="cells" x="248" y="258.0">VMware, to its AWS version; or</text>
+<text class="cells" x="248" y="272.0">move a resource to another</text>
+<text class="cells" x="248" y="286.0">VPC, Region or account.</text>
+<text class="small" x="456" y="230.0">Relocate is the seventh R,</text>
+<text class="small" x="456" y="245.0">added after AWS's 2016 list</text>
+<text class="small" x="456" y="260.0">of six. Older material</text>
+<text class="small" x="456" y="275.0">may leave it out.</text>
+<rect class="band" x="10" y="324" width="660" height="120" rx="8"/>
+<text class="grp" x="20" y="343">CHANGES ON THE WAY</text>
+<rect class="card" x="20" y="352" width="210" height="86" rx="6"/>
+<text class="boxt" x="30" y="371">Replatform</text>
+<text class="cells" x="30" y="388.0">Lift, tinker and shift: a few</text>
+<text class="cells" x="30" y="402.0">changes, such as moving the</text>
+<text class="cells" x="30" y="416.0">database onto Amazon RDS.</text>
+<rect class="card" x="238" y="352" width="210" height="86" rx="6"/>
+<text class="boxt" x="248" y="371">Repurchase</text>
+<text class="cells" x="248" y="388.0">Drop and shop: replace it with</text>
+<text class="cells" x="248" y="402.0">a different product, often</text>
+<text class="cells" x="248" y="416.0">software as a service.</text>
+<rect class="card" x="456" y="352" width="210" height="86" rx="6"/>
+<text class="boxt" x="466" y="371">Refactor</text>
+<text class="cells" x="466" y="388.0">Re-architect: redesign it to</text>
+<text class="cells" x="466" y="402.0">use cloud-native features.</text>
+<text class="note" x="16" y="458">From "About the migration strategies", AWS Prescriptive Guidance, checked 2026-10-24.</text>
+</svg>

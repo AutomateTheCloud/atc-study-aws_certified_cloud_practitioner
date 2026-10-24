@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="430" viewBox="0 0 680 430" role="img" aria-labelledby="t d">
+<title id="t">What a user sees with WorkSpaces, WorkSpaces Applications and WorkSpaces Secure Browser</title>
+<desc id="d">Three panels. In each, the service runs in AWS and only pixels, pictures of the screen, stream to the user's device. Amazon WorkSpaces: the screen shows a whole desktop with a taskbar and several windows; the user gets their own Windows or Linux desktop with any app they need and files kept. WorkSpaces Applications, the exam's AppStream 2.0: the screen shows one application, a stock app, in a window; chosen apps in a window or browser tab. WorkSpaces Secure Browser: the screen shows one web browser open at an internal web address; internal websites and web apps only; closed to new customers from 2026-10-29.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --aws-fill:#d9e8fb; --hi-fill:#fbe1d6; --card-fill:#f1f0ec; --scr:#ffffff; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --aws-fill:#1b3554; --hi-fill:#4d2716; --card-fill:#252523; --scr:#2c2c2a; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .aws { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .card { fill: var(--card-fill); stroke: var(--axis); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s2); stroke-width: 2.5; }
+  .panel { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .scr { fill: var(--scr); stroke: var(--ink2); stroke-width: 1.5; }
+  .win { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 1.2; }
+  .winhi { fill: var(--hi-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .bar { fill: var(--grid); }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .colh { fill: var(--muted); font-size: 11.5px; font-weight: 600; letter-spacing: 0.5px; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .tiny { fill: var(--ink2); font-size: 10.5px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .flow { stroke: var(--ink2); stroke-width: 1.8; fill: none; }
+  .flowd { stroke: var(--ink2); stroke-width: 1.8; fill: none; stroke-dasharray: 5 4; }
+  .head-ink { fill: var(--ink2); }
+  .line-s2 { stroke: var(--s2); stroke-width: 2; fill: none; stroke-linecap: round; }
+  .ann { fill: var(--ink); font-size: 12px; }
+  .band { fill: var(--grid); opacity: 0.6; }
+</style>
+<rect width="680" height="430" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">What does the user see? The question that tells the three apart</text>
+<text class="sub" x="16" y="48">All three run in AWS and stream only pictures of the screen to the user's device.</text>
+<rect class="panel" x="16" y="64" width="210" height="330" rx="8"/>
+<rect class="aws" x="28" y="76" width="186" height="44" rx="6"/>
+<text class="boxt" x="121.0" y="94" text-anchor="middle">Amazon WorkSpaces</text>
+<text class="cells" x="121.0" y="110.0" text-anchor="middle">runs in AWS</text>
+<path class="flow" d="M121.0,124.0 L121.0,152.0"/>
+<path class="head-ink" d="M121.0,160.0 L126.0,150.0 L116.0,150.0 Z"/>
+<text class="tiny" x="129.0" y="146">pixels only</text>
+<rect class="scr" x="36" y="164" width="170" height="112" rx="4"/>
+<rect class="bar" x="38" y="262" width="166" height="12" rx="2"/>
+<rect class="win" x="46" y="174" width="90" height="56" rx="3"/>
+<rect class="win" x="96" y="198" width="96" height="58" rx="3"/>
+<rect class="bar" x="46" y="238" width="10" height="10" rx="2"/>
+<rect class="bar" x="60" y="238" width="10" height="10" rx="2"/>
+<rect class="bar" x="74" y="238" width="10" height="10" rx="2"/>
+<text class="head" x="121.0" y="302" text-anchor="middle">A whole desktop</text>
+<text class="small" x="121.0" y="324.0" text-anchor="middle">Their own Windows or</text>
+<text class="small" x="121.0" y="340.0" text-anchor="middle">Linux desktop; any app</text>
+<text class="small" x="121.0" y="356.0" text-anchor="middle">they need, files kept</text>
+<rect class="panel" x="239" y="64" width="210" height="330" rx="8"/>
+<rect class="aws" x="251" y="76" width="186" height="44" rx="6"/>
+<text class="boxt" x="344.0" y="94" text-anchor="middle">WorkSpaces Applications</text>
+<text class="cells" x="344.0" y="110.0" text-anchor="middle">runs in AWS</text>
+<path class="flow" d="M344.0,124.0 L344.0,152.0"/>
+<path class="head-ink" d="M344.0,160.0 L349.0,150.0 L339.0,150.0 Z"/>
+<text class="tiny" x="352.0" y="146">pixels only</text>
+<rect class="scr" x="259" y="164" width="170" height="112" rx="4"/>
+<rect class="winhi" x="285" y="182" width="118" height="76" rx="3"/>
+<text class="tiny" x="344.0" y="224" text-anchor="middle">stock app</text>
+<text class="head" x="344.0" y="302" text-anchor="middle">One application</text>
+<text class="small" x="344.0" y="324.0" text-anchor="middle">Exam name: AppStream 2.0</text>
+<text class="small" x="344.0" y="340.0" text-anchor="middle">Chosen apps in a window</text>
+<text class="small" x="344.0" y="356.0" text-anchor="middle">or browser tab</text>
+<rect class="panel" x="462" y="64" width="210" height="330" rx="8"/>
+<rect class="aws" x="474" y="76" width="186" height="44" rx="6"/>
+<text class="boxt" x="567.0" y="94" text-anchor="middle">WorkSpaces Secure Browser</text>
+<text class="cells" x="567.0" y="110.0" text-anchor="middle">runs in AWS</text>
+<path class="flow" d="M567.0,124.0 L567.0,152.0"/>
+<path class="head-ink" d="M567.0,160.0 L572.0,150.0 L562.0,150.0 Z"/>
+<text class="tiny" x="575.0" y="146">pixels only</text>
+<rect class="scr" x="482" y="164" width="170" height="112" rx="4"/>
+<rect class="win" x="494" y="176" width="146" height="88" rx="3"/>
+<rect class="bar" x="500" y="182" width="134" height="12" rx="2"/>
+<text class="tiny" x="506" y="192">https://orders.internal</text>
+<text class="head" x="567.0" y="302" text-anchor="middle">One web browser</text>
+<text class="small" x="567.0" y="324.0" text-anchor="middle">Internal websites and</text>
+<text class="small" x="567.0" y="340.0" text-anchor="middle">web apps only; closed to</text>
+<text class="small" x="567.0" y="356.0" text-anchor="middle">new customers 2026-10-29</text>
+<text class="note" x="16" y="416">Our summary of the three services' AWS documentation, checked 2026-10-23 and 2026-10-24.</text>
+</svg>

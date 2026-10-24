@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="435" viewBox="0 0 680 435" role="img" aria-labelledby="t d">
+<title id="t">Daily cost grouped by a tag, before and after the tag key is activated</title>
+<desc id="d">A stacked column chart of the bakery's daily cost over ten days, made-up figures of about $20 a day. On days 1 to 5 every column is one gray segment: cost with no tag value. The tag key is activated on day 5 and is active from day 6. From day 6 to day 10 each column splits into about $17 that carries a team tag value, in blue, and about $3.50 with no tag value, in gray. A note says days 1 to 5 stay untagged in the report even though the resources carried the tag, unless a management account requests a backfill, and that costs from untagged resources still show no tag value after activation.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .untag { fill: var(--muted); }
+  .seg-gap { stroke: var(--surface); stroke-width: 2; }
+  .mark { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 4 4; }
+  .ann { fill: var(--ink); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+</style>
+<rect width="680" height="435" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">A tag shows costs only from the day it is active</text>
+<text class="sub" x="16" y="48">The bakery's daily cost in Cost Explorer, grouped by its "team" tag (made-up figures)</text>
+<rect class="s1" x="16" y="70" width="12" height="12" rx="2"/>
+<text x="34" y="80">Cost that carries a team tag value</text>
+<rect class="untag" x="300" y="70" width="12" height="12" rx="2"/>
+<text x="318" y="80">Cost with no tag value (shown as no tag key)</text>
+<line class="axis" x1="56" x2="616" y1="340.0" y2="340.0"/>
+<text class="tick" x="48" y="344.0" text-anchor="end">$0</text>
+<line class="grid" x1="56" x2="616" y1="296.0" y2="296.0"/>
+<text class="tick" x="48" y="300.0" text-anchor="end">$5</text>
+<line class="grid" x1="56" x2="616" y1="252.0" y2="252.0"/>
+<text class="tick" x="48" y="256.0" text-anchor="end">$10</text>
+<line class="grid" x1="56" x2="616" y1="208.0" y2="208.0"/>
+<text class="tick" x="48" y="212.0" text-anchor="end">$15</text>
+<line class="grid" x1="56" x2="616" y1="164.0" y2="164.0"/>
+<text class="tick" x="48" y="168.0" text-anchor="end">$20</text>
+<line class="grid" x1="56" x2="616" y1="120.0" y2="120.0"/>
+<text class="tick" x="48" y="124.0" text-anchor="end">$25</text>
+<text class="tick" x="16" y="106">Dollars a day</text>
+<path class="untag" d="M69.0,340.0 L69.0,169.8 Q69.0,165.8 73.0,165.8 L95.0,165.8 Q99.0,165.8 99.0,169.8 L99.0,340.0 Z"><title>Day 1: $19.80 with no tag value</title></path>
+<text class="tick" x="84.0" y="358" text-anchor="middle">Day 1</text>
+<path class="untag" d="M125.0,340.0 L125.0,164.5 Q125.0,160.5 129.0,160.5 L151.0,160.5 Q155.0,160.5 155.0,164.5 L155.0,340.0 Z"><title>Day 2: $20.40 with no tag value</title></path>
+<text class="tick" x="140.0" y="358" text-anchor="middle">Day 2</text>
+<path class="untag" d="M181.0,340.0 L181.0,167.1 Q181.0,163.1 185.0,163.1 L207.0,163.1 Q211.0,163.1 211.0,167.1 L211.0,340.0 Z"><title>Day 3: $20.10 with no tag value</title></path>
+<text class="tick" x="196.0" y="358" text-anchor="middle">Day 3</text>
+<path class="untag" d="M237.0,340.0 L237.0,171.5 Q237.0,167.5 241.0,167.5 L263.0,167.5 Q267.0,167.5 267.0,171.5 L267.0,340.0 Z"><title>Day 4: $19.60 with no tag value</title></path>
+<text class="tick" x="252.0" y="358" text-anchor="middle">Day 4</text>
+<path class="untag" d="M293.0,340.0 L293.0,166.2 Q293.0,162.2 297.0,162.2 L319.0,162.2 Q323.0,162.2 323.0,166.2 L323.0,340.0 Z"><title>Day 5: $20.20 with no tag value</title></path>
+<text class="tick" x="308.0" y="358" text-anchor="middle">Day 5</text>
+<rect class="s1" x="349.0" y="193.9" width="30" height="146.1"><title>Day 6: $16.60 tagged</title></rect>
+<line class="seg-gap" x1="349.0" x2="379.0" y1="193.9" y2="193.9"/>
+<path class="untag" d="M349.0,193.9 L349.0,167.1 Q349.0,163.1 353.0,163.1 L375.0,163.1 Q379.0,163.1 379.0,167.1 L379.0,193.9 Z"><title>Day 6: $3.50 with no tag value</title></path>
+<text class="tick" x="364.0" y="358" text-anchor="middle">Day 6</text>
+<rect class="s1" x="405.0" y="189.5" width="30" height="150.5"><title>Day 7: $17.10 tagged</title></rect>
+<line class="seg-gap" x1="405.0" x2="435.0" y1="189.5" y2="189.5"/>
+<path class="untag" d="M405.0,189.5 L405.0,163.6 Q405.0,159.6 409.0,159.6 L431.0,159.6 Q435.0,159.6 435.0,163.6 L435.0,189.5 Z"><title>Day 7: $3.40 with no tag value</title></path>
+<text class="tick" x="420.0" y="358" text-anchor="middle">Day 7</text>
+<rect class="s1" x="461.0" y="195.7" width="30" height="144.3"><title>Day 8: $16.40 tagged</title></rect>
+<line class="seg-gap" x1="461.0" x2="491.0" y1="195.7" y2="195.7"/>
+<path class="untag" d="M461.0,195.7 L461.0,168.0 Q461.0,164.0 465.0,164.0 L487.0,164.0 Q491.0,164.0 491.0,168.0 L491.0,195.7 Z"><title>Day 8: $3.60 with no tag value</title></path>
+<text class="tick" x="476.0" y="358" text-anchor="middle">Day 8</text>
+<rect class="s1" x="517.0" y="191.3" width="30" height="148.7"><title>Day 9: $16.90 tagged</title></rect>
+<line class="seg-gap" x1="517.0" x2="547.0" y1="191.3" y2="191.3"/>
+<path class="untag" d="M517.0,191.3 L517.0,164.5 Q517.0,160.5 521.0,160.5 L543.0,160.5 Q547.0,160.5 547.0,164.5 L547.0,191.3 Z"><title>Day 9: $3.50 with no tag value</title></path>
+<text class="tick" x="532.0" y="358" text-anchor="middle">Day 9</text>
+<rect class="s1" x="573.0" y="193.0" width="30" height="147.0"><title>Day 10: $16.70 tagged</title></rect>
+<line class="seg-gap" x1="573.0" x2="603.0" y1="193.0" y2="193.0"/>
+<path class="untag" d="M573.0,193.0 L573.0,167.1 Q573.0,163.1 577.0,163.1 L599.0,163.1 Q603.0,163.1 603.0,167.1 L603.0,193.0 Z"><title>Day 10: $3.40 with no tag value</title></path>
+<text class="tick" x="588.0" y="358" text-anchor="middle">Day 10</text>
+<line class="mark" x1="336.0" x2="336.0" y1="110" y2="340"/>
+<text class="ann" x="342.0" y="106">Key active from day 6</text>
+<text class="ann" x="330.0" y="106" text-anchor="end">Activated on day 5</text>
+<text class="note" x="16" y="386">Days 1 to 5 stay untagged in the report even though the resources carried the tag all along.</text>
+<text class="note" x="16" y="401">Unless a management account requests a backfill. After activation, costs from untagged resources still show no value.</text>
+<text class="note" x="16" y="416">Made-up figures. Behavior per the AWS Billing User Guide, checked 2026-10-24.</text>
+</svg>

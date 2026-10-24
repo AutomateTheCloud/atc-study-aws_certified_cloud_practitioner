@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="344" viewBox="0 0 680 344" role="img" aria-labelledby="t d">
+<title id="t">A trace of one bakery order as a timeline</title>
+<desc id="d">A timeline of one request, order 1043, from 0 to 2.5 seconds, made-up timings. Web server on EC2 handling POST /order: 0 to 2,450 ms. Order function in Lambda: 90 to 2,400 ms. Inside it: read the cake's price from RDS, 140 to 200 ms (60 ms); charge the card at the payment provider, 230 to 2,170 ms (1,940 ms, highlighted); save the order to RDS, 2,200 to 2,250 ms (50 ms). A note says the whole request took 2.45 seconds and 1.94 of them were spent waiting for the payment provider, so that is the part to fix or ask about.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --hi-fill:#d9e8fb; --n-fill:#f1f0ec; --no-fill:#fbe1d6; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --hi-fill:#1b3554; --n-fill:#252523; --no-fill:#4d2716; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .panel { fill: var(--n-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .hi { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .alarm { fill: var(--no-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .okband { fill: var(--n-fill); stroke: var(--ink2); stroke-width: 1; }
+  .plain { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 700; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .q { fill: var(--ink); font-size: 13px; font-style: italic; }
+  .zlab { fill: var(--muted); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .rowl { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .thr { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 6 4; fill: none; }
+  .bar-n { fill: var(--muted); }
+  .bar-hi { fill: var(--s1); }
+  .tick-line { stroke: var(--ink2); stroke-width: 1.5; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .arrowhead { fill: var(--ink2); }
+</style>
+<rect width="680" height="344" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">One request, every part it touched</text>
+<text class="sub" x="16" y="48">A trace of order 1043 as a timeline: each bar is one part's work (made-up timings)</text>
+<line class="grid" x1="262.0" x2="262.0" y1="84" y2="262"/>
+<text class="tick" x="262.0" y="78" text-anchor="middle">0.0 s</text>
+<line class="grid" x1="342.0" x2="342.0" y1="84" y2="262"/>
+<text class="tick" x="342.0" y="78" text-anchor="middle">0.5 s</text>
+<line class="grid" x1="422.0" x2="422.0" y1="84" y2="262"/>
+<text class="tick" x="422.0" y="78" text-anchor="middle">1.0 s</text>
+<line class="grid" x1="502.0" x2="502.0" y1="84" y2="262"/>
+<text class="tick" x="502.0" y="78" text-anchor="middle">1.5 s</text>
+<line class="grid" x1="582.0" x2="582.0" y1="84" y2="262"/>
+<text class="tick" x="582.0" y="78" text-anchor="middle">2.0 s</text>
+<line class="grid" x1="662.0" x2="662.0" y1="84" y2="262"/>
+<text class="tick" x="662.0" y="78" text-anchor="middle">2.5 s</text>
+<text class="small" x="16" y="113">Web server (EC2): POST /order</text>
+<rect class="bar-n" x="262.0" y="101" width="392.0" height="16" rx="3"><title>Web server (EC2): POST /order: 0 to 2450 ms (2450 ms)</title></rect>
+<text class="tick" x="268.0" y="97">2,450 ms</text>
+<text class="small" x="28" y="147">Order function (Lambda)</text>
+<rect class="bar-n" x="276.4" y="135" width="369.6" height="16" rx="3"><title>Order function (Lambda): 90 to 2400 ms (2310 ms)</title></rect>
+<text class="tick" x="282.4" y="131">2,310 ms</text>
+<text class="small" x="28" y="181">Read the cake's price (RDS)</text>
+<rect class="bar-n" x="284.4" y="169" width="9.6" height="16" rx="3"><title>Read the cake's price (RDS): 140 to 200 ms (60 ms)</title></rect>
+<text class="tick" x="300.0" y="181">60 ms</text>
+<text class="cellt" x="28" y="215">Charge the card (payment provider)</text>
+<rect class="bar-hi" x="298.8" y="203" width="310.4" height="16" rx="3"><title>Charge the card (payment provider): 230 to 2170 ms (1940 ms)</title></rect>
+<text class="tick" x="615.2" y="215">1,940 ms</text>
+<text class="small" x="28" y="249">Save the order (RDS)</text>
+<rect class="bar-n" x="614.0" y="237" width="8.0" height="16" rx="3"><title>Save the order (RDS): 2200 to 2250 ms (50 ms)</title></rect>
+<text class="tick" x="628.0" y="249">50 ms</text>
+<text class="note" x="16" y="286">Read it like the expert: the whole request took 2.45 s, and 1.94 s of that was the order function waiting</text>
+<text class="note" x="16" y="302">for the payment provider. The database calls took 60 ms and 50 ms. Fix or ask about the slow part, not the</text>
+<text class="note" x="16" y="318">server. Timings are made up; the layout follows what the X-Ray Developer Guide describes (traces, segments).</text>
+</svg>

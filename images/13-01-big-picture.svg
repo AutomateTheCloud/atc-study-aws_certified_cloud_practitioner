@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="560" viewBox="0 0 680 560" role="img" aria-labelledby="t d">
+<title id="t">The parts of the AWS Cloud Adoption Framework and how they relate</title>
+<desc id="d">Three layers, read from the bottom up, and a column of phases. Bottom layer, six perspectives, each with its number of capabilities: Business (8), strategy and outcomes; People (7), culture and change; Governance (7), control and oversight; Platform (7), infrastructure and applications; Security (9), compliance and assurance; Operations (9), health and availability. An arrow labeled enable leads up to the middle layer, four transformation domains in a chain, each enabling the next: Technology (migrate and modernize), Process (digitize, automate, optimize; highlighted, with the note that process is a domain, not a perspective), Organization (teams around products), Product (new offers and revenue models). An arrow labeled deliver leads up to the top layer, four business outcomes: reduce business risk (reliability, performance, security); improve ESG performance (sustainability, transparency); grow revenue (new products, customers, markets); increase operational efficiency (lower costs, more productivity). On the right, four phases in order: Envision (pick outcomes), Align (find gaps), Launch (run pilots), Scale (expand, sustain), then back to Envision for the next round.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --aws-fill:#d9e8fb; --hi-fill:#fbe1d6; --card-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --aws-fill:#1b3554; --hi-fill:#4d2716; --card-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .persp { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .card { fill: var(--card-fill); stroke: var(--axis); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s2); stroke-width: 2.5; }
+  .hirow { fill: none; stroke: var(--s2); stroke-width: 2.5; }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .grp { fill: var(--ink); font-size: 12px; font-weight: 700; letter-spacing: 0.3px; }
+  .colh { fill: var(--muted); font-size: 11.5px; font-weight: 600; letter-spacing: 0.5px; }
+  .rowl { fill: var(--ink); font-size: 12.5px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .flow { stroke: var(--ink2); stroke-width: 1.8; fill: none; }
+  .head-ink { fill: var(--ink2); }
+</style>
+<rect width="680" height="560" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">The AWS CAF in one picture: capabilities enable change, change delivers outcomes</text>
+<text class="sub" x="16" y="48">Read from the bottom up. The four phases on the right repeat for each round of change.</text>
+<text class="grp" x="16" y="74">BUSINESS OUTCOMES: WHY THE ORGANIZATION CHANGES</text>
+<rect class="card" x="16.0" y="84" width="119.0" height="100" rx="6"/>
+<text class="boxt" x="26.0" y="103.0">Reduce business</text>
+<text class="boxt" x="26.0" y="119.0">risk</text>
+<text class="cells" x="26.0" y="135.0">reliability,</text>
+<text class="cells" x="26.0" y="149.0">performance,</text>
+<text class="cells" x="26.0" y="163.0">security</text>
+<rect class="card" x="143.0" y="84" width="119.0" height="100" rx="6"/>
+<text class="boxt" x="153.0" y="103.0">Improve ESG</text>
+<text class="boxt" x="153.0" y="119.0">performance</text>
+<text class="cells" x="153.0" y="135.0">sustainability,</text>
+<text class="cells" x="153.0" y="149.0">transparency</text>
+<rect class="card" x="270.0" y="84" width="119.0" height="100" rx="6"/>
+<text class="boxt" x="280.0" y="103.0">Grow revenue</text>
+<text class="cells" x="280.0" y="119.0">new products,</text>
+<text class="cells" x="280.0" y="133.0">customers,</text>
+<text class="cells" x="280.0" y="147.0">markets</text>
+<rect class="card" x="397.0" y="84" width="119.0" height="100" rx="6"/>
+<text class="boxt" x="407.0" y="103.0">Increase</text>
+<text class="boxt" x="407.0" y="119.0">operational</text>
+<text class="boxt" x="407.0" y="135.0">efficiency</text>
+<text class="cells" x="407.0" y="151.0">lower costs,</text>
+<text class="cells" x="407.0" y="165.0">more</text>
+<text class="cells" x="407.0" y="179.0">productivity</text>
+<path class="flow" d="M266.0,212.0 L266.0,198.0"/>
+<path class="head-ink" d="M266.0,190.0 L261.0,200.0 L271.0,200.0 Z"/>
+<text class="small" x="276.0" y="206">deliver</text>
+<text class="grp" x="16" y="230">TRANSFORMATION DOMAINS: WHAT CHANGES, EACH ENABLING THE NEXT</text>
+<rect class="card" x="16.0" y="240" width="108.5" height="66" rx="6"/>
+<text class="boxt" x="26.0" y="259.0">Technology</text>
+<text class="cells" x="26.0" y="275.0">migrate and</text>
+<text class="cells" x="26.0" y="289.0">modernize</text>
+<path class="flow" d="M126.5,273.0 L136.5,273.0"/>
+<path class="head-ink" d="M144.5,273.0 L134.5,268.0 L134.5,278.0 Z"/>
+<rect class="hi" x="146.5" y="240" width="108.5" height="66" rx="6"/>
+<text class="boxt" x="156.5" y="259.0">Process</text>
+<text class="cells" x="156.5" y="275.0">digitize,</text>
+<text class="cells" x="156.5" y="289.0">automate,</text>
+<text class="cells" x="156.5" y="303.0">optimize</text>
+<path class="flow" d="M257.0,273.0 L267.0,273.0"/>
+<path class="head-ink" d="M275.0,273.0 L265.0,268.0 L265.0,278.0 Z"/>
+<rect class="card" x="277.0" y="240" width="108.5" height="66" rx="6"/>
+<text class="boxt" x="287.0" y="259.0">Organization</text>
+<text class="cells" x="287.0" y="275.0">teams around</text>
+<text class="cells" x="287.0" y="289.0">products</text>
+<path class="flow" d="M387.5,273.0 L397.5,273.0"/>
+<path class="head-ink" d="M405.5,273.0 L395.5,268.0 L395.5,278.0 Z"/>
+<rect class="card" x="407.5" y="240" width="108.5" height="66" rx="6"/>
+<text class="boxt" x="417.5" y="259.0">Product</text>
+<text class="cells" x="417.5" y="275.0">new offers,</text>
+<text class="cells" x="417.5" y="289.0">revenue models</text>
+<text class="small" x="156.5" y="326">Process is a domain, not a perspective</text>
+<path class="flow" d="M266.0,350.0 L266.0,340.0"/>
+<path class="head-ink" d="M266.0,332.0 L261.0,342.0 L271.0,342.0 Z"/>
+<text class="small" x="276.0" y="348">enable</text>
+<text class="grp" x="16" y="370">SIX PERSPECTIVES: WHO MUST BE READY (CAPABILITIES IN EACH)</text>
+<rect class="persp" x="16.0" y="380" width="161.33333333333334" height="62" rx="6"/>
+<text class="boxt" x="26.0" y="399.0">Business (8)</text>
+<text class="cells" x="26.0" y="415.0">strategy and outcomes</text>
+<rect class="persp" x="185.33333333333334" y="380" width="161.33333333333334" height="62" rx="6"/>
+<text class="boxt" x="195.33333333333334" y="399.0">People (7)</text>
+<text class="cells" x="195.33333333333334" y="415.0">culture and change</text>
+<rect class="persp" x="354.6666666666667" y="380" width="161.33333333333334" height="62" rx="6"/>
+<text class="boxt" x="364.6666666666667" y="399.0">Governance (7)</text>
+<text class="cells" x="364.6666666666667" y="415.0">control and oversight</text>
+<rect class="persp" x="16.0" y="450" width="161.33333333333334" height="62" rx="6"/>
+<text class="boxt" x="26.0" y="469.0">Platform (7)</text>
+<text class="cells" x="26.0" y="485.0">infrastructure and</text>
+<text class="cells" x="26.0" y="499.0">applications</text>
+<rect class="persp" x="185.33333333333334" y="450" width="161.33333333333334" height="62" rx="6"/>
+<text class="boxt" x="195.33333333333334" y="469.0">Security (9)</text>
+<text class="cells" x="195.33333333333334" y="485.0">compliance and</text>
+<text class="cells" x="195.33333333333334" y="499.0">assurance</text>
+<rect class="persp" x="354.6666666666667" y="450" width="161.33333333333334" height="62" rx="6"/>
+<text class="boxt" x="364.6666666666667" y="469.0">Operations (9)</text>
+<text class="cells" x="364.6666666666667" y="485.0">health and</text>
+<text class="cells" x="364.6666666666667" y="499.0">availability</text>
+<text class="grp" x="540" y="74">PHASES, REPEATED</text>
+<rect class="card" x="540" y="84" width="124" height="62" rx="6"/>
+<text class="boxt" x="550" y="103.0">Envision</text>
+<text class="cells" x="550" y="119.0">pick outcomes</text>
+<path class="flow" d="M602.0,148.0 L602.0,166.0"/>
+<path class="head-ink" d="M602.0,174.0 L607.0,164.0 L597.0,164.0 Z"/>
+<rect class="card" x="540" y="176" width="124" height="62" rx="6"/>
+<text class="boxt" x="550" y="195.0">Align</text>
+<text class="cells" x="550" y="211.0">find gaps</text>
+<path class="flow" d="M602.0,240.0 L602.0,258.0"/>
+<path class="head-ink" d="M602.0,266.0 L607.0,256.0 L597.0,256.0 Z"/>
+<rect class="card" x="540" y="268" width="124" height="62" rx="6"/>
+<text class="boxt" x="550" y="287.0">Launch</text>
+<text class="cells" x="550" y="303.0">run pilots</text>
+<path class="flow" d="M602.0,332.0 L602.0,350.0"/>
+<path class="head-ink" d="M602.0,358.0 L607.0,348.0 L597.0,348.0 Z"/>
+<rect class="card" x="540" y="360" width="124" height="62" rx="6"/>
+<text class="boxt" x="550" y="379.0">Scale</text>
+<text class="cells" x="550" y="395.0">expand, sustain</text>
+<text class="small" x="540" y="444">then back to</text>
+<text class="small" x="540" y="460">Envision for the</text>
+<text class="small" x="540" y="476">next round</text>
+<text class="note" x="16" y="542">Our drawing of the AWS CAF whitepaper (2021) and the AWS CAF page, checked 2026-10-24.</text>
+</svg>

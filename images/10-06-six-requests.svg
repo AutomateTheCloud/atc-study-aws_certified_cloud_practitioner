@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="508" viewBox="0 0 680 508" role="img" aria-labelledby="t d">
+<title id="t">The bakery owner's six requests matched to AWS services</title>
+<desc id="d">Six cards in two columns. 1, sales dashboard: in, sales files in S3 queried with Athena; out, charts the owner can read; service, Amazon Quick Sight; not Athena alone, which answers queries but draws no charts. 2, phone bot: in, a caller's voice; out, a conversation that understands the request; service, Amazon Lex on a phone line from Amazon Connect Customer; not Polly alone, which speaks but doesn't understand. 3, spoken product descriptions: in, written text; out, lifelike speech; service, Amazon Polly; not Transcribe, which turns speech into text. 4, receipts turned into text: in, photos of paper receipts; out, text and fields such as supplier, date and total; service, Amazon Textract; not Rekognition, which finds text in images but not document fields. 5, desktops for seasonal staff: in, staff on their own devices; out, a whole desktop streamed to them; service, Amazon WorkSpaces; not buying PCs, and if staff need one app only, WorkSpaces Applications. 6, freezer sensors: in, temperature readings from devices; out, readings in AWS and an alert; service, AWS IoT Core; not Kinesis alone, which streams data but doesn't connect and manage devices. Names as of 2026-10-24: Quick Sight was QuickSight, Connect Customer was Amazon Connect, WorkSpaces Applications was AppStream 2.0.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --card:#eef4fc; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --card:#1f2a37; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .card { fill: var(--card); stroke: var(--s1); stroke-width: 1.5; }
+  .req { fill: var(--ink); font-size: 13.5px; font-weight: 600; }
+  .k { fill: var(--muted); font-size: 12px; }
+  .v { fill: var(--ink2); font-size: 12px; }
+  .svc { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .not { fill: var(--ink2); font-size: 12px; font-style: italic; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+</style>
+<rect width="680" height="508" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">The owner's six requests, matched by what goes in and what comes out</text>
+<text class="sub" x="16" y="48">Each card: the input, the output she wants, the service, and the likeliest wrong pick</text>
+<rect class="card" x="16" y="66" width="320" height="122" rx="8"/>
+<text class="req" x="28" y="88">1. Sales dashboard</text>
+<text class="k" x="28" y="108">In:</text>
+<text class="v" x="58" y="108">sales files in S3, queried with Athena</text>
+<text class="k" x="28" y="125">Out:</text>
+<text class="v" x="58" y="125">charts the owner can read</text>
+<text class="svc" x="28" y="146.0">→ Amazon Quick Sight</text>
+<text class="not" x="28" y="164">Not Athena alone: it answers queries, draws no charts</text>
+<rect class="card" x="348" y="66" width="320" height="122" rx="8"/>
+<text class="req" x="360" y="88">2. Phone bot</text>
+<text class="k" x="360" y="108">In:</text>
+<text class="v" x="390" y="108">a caller's voice</text>
+<text class="k" x="360" y="125">Out:</text>
+<text class="v" x="390" y="125">a conversation that understands the request</text>
+<text class="svc" x="360" y="146.0">→ Amazon Lex, on a phone line from</text>
+<text class="svc" x="360" y="162.0">   Amazon Connect Customer</text>
+<text class="not" x="360" y="180">Not Polly alone: it speaks, it doesn't understand</text>
+<rect class="card" x="16" y="200" width="320" height="122" rx="8"/>
+<text class="req" x="28" y="222">3. Spoken product descriptions</text>
+<text class="k" x="28" y="242">In:</text>
+<text class="v" x="58" y="242">written text</text>
+<text class="k" x="28" y="259">Out:</text>
+<text class="v" x="58" y="259">lifelike speech</text>
+<text class="svc" x="28" y="280.0">→ Amazon Polly</text>
+<text class="not" x="28" y="298">Not Transcribe: that turns speech into text</text>
+<rect class="card" x="348" y="200" width="320" height="122" rx="8"/>
+<text class="req" x="360" y="222">4. Receipts turned into text</text>
+<text class="k" x="360" y="242">In:</text>
+<text class="v" x="390" y="242">photos of paper receipts</text>
+<text class="k" x="360" y="259">Out:</text>
+<text class="v" x="390" y="259">text and fields: supplier, date, total</text>
+<text class="svc" x="360" y="280.0">→ Amazon Textract</text>
+<text class="not" x="360" y="298">Not Rekognition: it finds text in images, not fields</text>
+<rect class="card" x="16" y="334" width="320" height="122" rx="8"/>
+<text class="req" x="28" y="356">5. Desktops for seasonal staff</text>
+<text class="k" x="28" y="376">In:</text>
+<text class="v" x="58" y="376">staff on their own devices</text>
+<text class="k" x="28" y="393">Out:</text>
+<text class="v" x="58" y="393">a whole desktop, streamed</text>
+<text class="svc" x="28" y="414.0">→ Amazon WorkSpaces</text>
+<text class="not" x="28" y="432">Not buying PCs; one app only: WorkSpaces Applications</text>
+<rect class="card" x="348" y="334" width="320" height="122" rx="8"/>
+<text class="req" x="360" y="356">6. Freezer sensors</text>
+<text class="k" x="360" y="376">In:</text>
+<text class="v" x="390" y="376">temperature readings from devices</text>
+<text class="k" x="360" y="393">Out:</text>
+<text class="v" x="390" y="393">readings in AWS, and an alert</text>
+<text class="svc" x="360" y="414.0">→ AWS IoT Core</text>
+<text class="not" x="360" y="432">Not Kinesis alone: it streams data, manages no devices</text>
+<text class="note" x="16" y="478">Made-up requests for teaching. Service names as of 2026-10-24: Quick Sight was QuickSight; Connect Customer</text>
+<text class="note" x="16" y="494">was Amazon Connect; WorkSpaces Applications was AppStream 2.0.</text>
+</svg>

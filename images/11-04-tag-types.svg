@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="411" viewBox="0 0 680 411" role="img" aria-labelledby="t d">
+<title id="t">AWS-generated and user-defined cost allocation tags compared on six rows</title>
+<desc id="d">A grid comparing AWS-generated tags and user-defined tags. Who puts it on: AWS, on supported resources, and some Marketplace sellers; you, on your resources. Example key: aws:createdBy, who created the resource; team, project or cost-center, your choice. In reports: aws: prefix; user: prefix. Who activates: the management account, once, for all member accounts; the management account or a standalone account. Highlighted as the same for both: they must be activated before reports show them. Which costs carry them: only resources created after activation; usage from activation on, while the resource carries the tag. A note says tags take up to 24 hours to appear after activation.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --cell:#fcfcfb; --hit:#fbe1d6; --na:#f1f0ec; --on:#d9e8fb; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --cell:#1a1a19; --hit:#4d2716; --na:#252523; --on:#1b3554; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .cell { fill: var(--cell); stroke: var(--grid); stroke-width: 1; }
+  .na { fill: var(--na); stroke: var(--grid); stroke-width: 1; }
+  .on { fill: var(--on); stroke: var(--s1); stroke-width: 1.5; }
+  .hit { fill: var(--hit); stroke: var(--ink); stroke-width: 2; }
+  .unused { fill: var(--s1-light); }
+  .head { fill: var(--ink); font-size: 12.5px; font-weight: 600; }
+  .ct { fill: var(--ink); font-size: 12px; }
+  .ctm { fill: var(--muted); font-size: 12px; }
+  .ctb { fill: var(--ink); font-size: 12.5px; font-weight: 700; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+</style>
+<rect width="680" height="411" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Two kinds of cost allocation tag</text>
+<text class="sub" x="16" y="48">The highlighted row is the same for both: nothing shows until you activate it</text>
+<text class="head" x="192" y="76">AWS-generated tags</text>
+<text class="head" x="430" y="76">User-defined tags</text>
+<rect class="na" x="18" y="90" width="164" height="46" rx="4"/>
+<text class="ctb" x="26" y="117.0">Who puts it on</text>
+<rect class="cell" x="186" y="90" width="234" height="46" rx="4"/>
+<text class="ct" x="194" y="109.5">AWS, on supported resources (some</text>
+<text class="ct" x="194" y="124.5">Marketplace sellers add their own)</text>
+<rect class="cell" x="424" y="90" width="234" height="46" rx="4"/>
+<text class="ct" x="432" y="109.5">You, on your resources (Tag</text>
+<text class="ct" x="432" y="124.5">Editor, the console, the API)</text>
+<rect class="na" x="18" y="140" width="164" height="46" rx="4"/>
+<text class="ctb" x="26" y="167.0">Example key</text>
+<rect class="cell" x="186" y="140" width="234" height="46" rx="4"/>
+<text class="ct" x="194" y="159.5">aws:createdBy: who created the</text>
+<text class="ct" x="194" y="174.5">resource</text>
+<rect class="cell" x="424" y="140" width="234" height="46" rx="4"/>
+<text class="ct" x="432" y="159.5">team, project, cost-center: your</text>
+<text class="ct" x="432" y="174.5">choice</text>
+<rect class="na" x="18" y="190" width="164" height="31" rx="4"/>
+<text class="ctb" x="26" y="209.5">In reports</text>
+<rect class="cell" x="186" y="190" width="234" height="31" rx="4"/>
+<text class="ct" x="194" y="209.5">aws: prefix</text>
+<rect class="cell" x="424" y="190" width="234" height="31" rx="4"/>
+<text class="ct" x="432" y="209.5">user: prefix</text>
+<rect class="na" x="18" y="225" width="164" height="46" rx="4"/>
+<text class="ctb" x="26" y="252.0">Who activates</text>
+<rect class="cell" x="186" y="225" width="234" height="46" rx="4"/>
+<text class="ct" x="194" y="244.5">The management account, once, for</text>
+<text class="ct" x="194" y="259.5">all member accounts</text>
+<rect class="cell" x="424" y="225" width="234" height="46" rx="4"/>
+<text class="ct" x="432" y="244.5">The management account (or a</text>
+<text class="ct" x="432" y="259.5">standalone account)</text>
+<rect class="na" x="18" y="275" width="164" height="46" rx="4"/>
+<text class="ctb" x="26" y="294.5">Activate before</text>
+<text class="ctb" x="26" y="309.5">reports show it?</text>
+<rect class="hit" x="186" y="275" width="234" height="46" rx="4"/>
+<text class="ct" x="194" y="302.0">Yes</text>
+<rect class="hit" x="424" y="275" width="234" height="46" rx="4"/>
+<text class="ct" x="432" y="302.0">Yes</text>
+<rect class="na" x="18" y="325" width="164" height="46" rx="4"/>
+<text class="ctb" x="26" y="352.0">Which costs carry it</text>
+<rect class="cell" x="186" y="325" width="234" height="46" rx="4"/>
+<text class="ct" x="194" y="344.5">Only resources created after</text>
+<text class="ct" x="194" y="359.5">activation</text>
+<rect class="cell" x="424" y="325" width="234" height="46" rx="4"/>
+<text class="ct" x="432" y="344.5">Usage from activation on, while</text>
+<text class="ct" x="432" y="359.5">the resource carries the tag</text>
+<text class="note" x="16" y="393">Up to 24 hours to appear after activation. From the AWS Billing User Guide, checked 2026-10-24.</text>
+</svg>
