@@ -17,6 +17,8 @@ time: "50 minutes"
 cost: "$0 on the Free plan (as of 2026-10-24)"
 worst_case: "$0 on a Paid plan if everything is left behind: IAM groups and policies have no charge, and this lab creates no bucket"
 needs: [primer-02, primer-03, primer-05, primer-07, clf-04-06]
+last_run_pass: "2026-10-24, standalone Free plan account, advanced sign-up, us-east-1"
+recorded: 2026-10-24
 facts_checked: 2026-10-24
 sources:
   - "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-policy-validation.html"
@@ -89,10 +91,10 @@ The bakery's photographer uploads new cake photos and checks them. She needs to 
    }
    ```
 
-3. Look at the policy validation pane's tabs: **Security**, **Errors**, **Warnings** and **Suggestions**.
-   **You should see:** at least one finding about the blanks, because `BLANK-2` isn't a real action and the resources aren't real ARNs. Open each finding and read where it points. Write in your lab log which tab each one appeared on. (If the pane shows nothing, choose **Next**: IAM's own policy checker reports syntax errors that Access Analyzer doesn't, and you can come back to the editor.)
+3. Look at the policy validation pane under the editor. It shows a count for each of **Security**, **Errors**, **Warnings** and **Suggestions**.
+   **You should see:** on 2026-10-24, **Errors: 3**, one for each blank: two "Missing ARN Field" errors (the resources aren't real ARNs) and "Invalid Action: The action BLANK-2 does not exist". Choose the **Errors** count to list them; each gives the line and column it points at. Write them in your lab log.
 4. Fill in the three blanks.
-   **You should see:** the findings about the blanks disappear, with no security warnings and no errors left.
+   **You should see:** every count back to 0.
    > **If something went wrong:** a finding that stays usually points at a typo. Action names are written `service:Action`, and every ARN starts `arn:aws:s3:::`.
 
    <details><summary>Model answer</summary>
@@ -101,7 +103,7 @@ The bakery's photographer uploads new cake photos and checks them. She needs to 
 
    </details>
 
-5. Choose **Next**, name the policy `clf-lab04-photographer`, add the tags `guide` = `clf` and `lab` = `04` if the page offers them, and choose **Create policy**.
+5. Choose **Next**, name the policy `clf-lab04-photographer`, add the tags `guide` = `clf` and `lab` = `04`, and choose **Create policy**. Before you create it, read the summary: it showed S3 with **Limited: List, Read, Write** (as of 2026-10-24), because uploading is a write.
    **You should see:** the policy in the customer managed list.
 
 ## Part B: write the teammate's policy (challenge)
@@ -112,7 +114,8 @@ The new teammate keeps the cake photos on the site up to date. **Requirement:** 
 
 6. Write the policy in a text editor first.
 7. Open the policy simulator from IAM's left menu (**Policy simulator**). On 2026-10-24 it opened inside the IAM console; [Lab 03](06-lab-03-a-group-and-a-policy.md#test-it-in-the-policy-simulator) shows how to add actions and set each row's resource. This time, choose **Custom** at the top instead of **Principal**: it tests a policy you paste in. A pasted policy is simulated on its own and isn't saved to your account. We haven't yet run this lab, so the Custom screens may differ slightly from these steps.
-8. Paste your policy. Design at least six tests: three that must be allowed and three that must be denied, including `s3:DeleteBucket` on the bucket ARN. Run them and write the results in your lab log.
+8. Choose **Add policy**. Give the draft a name (the dialog says the policy is only used for simulation and isn't created in IAM), paste your JSON into the editor that opens, choose **Save**, then **Back to simulator**. Add your test actions and set each row's resource as in Lab 03. Design at least six tests: three that must be allowed and three that must be denied, including `s3:DeleteBucket` on the bucket ARN. Choose **Simulate** and write the results in your lab log.
+   > **Watch the resource box:** when an action has only one resource type, the simulator fills in the type for you and puts `arn:aws:s3:::*` in the **ARN** box. Replace all of it with your ARN, don't add to it. Also clear **Apply to all actions with the same resource type** unless you want every row of that type to get the same ARN.
    **You should see:** every result matching what you predicted.
    > **If something went wrong:** an unexpected "denied" usually means the wrong resource for the action: list actions take the bucket ARN, file actions take the ARN ending in `/*`.
 9. When all six match, create the policy in IAM as you did in Part A, named `clf-lab04-photo-editing`.
@@ -171,16 +174,19 @@ The bakery's previous helper wrote a policy to make sure nobody in the editors' 
 
 **The symptom:** on her first morning, the teammate says she can see and download the photos, but every upload fails with an access error.
 
-12. Use the policy simulator in **Principal** mode, which tests an existing identity (the easiest way in is the **Simulate** button on the group's **Permissions** tab), to find the cause. Write in your lab log which policy and which statement decide the result, and why the allow in her own policy doesn't help.
-13. Fix the cause without weakening the protection the helper wanted. To change a policy, open it in IAM, choose **Edit**, change the JSON, and save. IAM keeps the old text as an earlier **version** of the policy; make sure the box to set the new version as the default is selected (it was labeled **Set this new version as the default** in AWS's guide).
+12. Use the policy simulator in **Principal** mode, which tests an existing identity (the easiest way in is the **Simulate** button on the group's **Permissions** tab), to find the cause. Test `s3:PutObject` and `s3:GetObject` on a file and `s3:DeleteBucket` on the bucket. Open the result details for the upload. Write in your lab log which policy decides the result, and why the allow in her own policy doesn't help.
+    **You should see:** `PutObject` **Denied** with "Explicit deny found in 1 or more statements", and details naming `clf-lab04-protect-bucket` and the lines of its statement (as of 2026-10-24).
+13. Fix the cause without weakening the protection the helper wanted. Open the policy in IAM, choose **Edit**, change the JSON, and choose **Next**. IAM keeps the old text as an earlier **version** of the policy. Check that **Set this new version as the default.** is selected (it was, by default, on 2026-10-24), then choose **Save changes**.
 14. Run the simulation again.
     **You should see:** uploads allowed, and `s3:DeleteBucket` still denied, with the protecting policy named as the reason.
 
 <details><summary>Model answer</summary>
 
-The simulator shows `s3:PutObject` denied by the statement `NeverDeleteThePhotoBucket` in `clf-lab04-protect-bucket`. Her own policy does allow uploads, but an explicit deny in any policy overrides every allow, so the allow can't win. The helper listed `s3:PutObject` by mistake: the statement's own name says its job is to stop the bucket being deleted. The fix is to remove `"s3:PutObject"` from the action list and the `/*` ARN from the resource list, leaving a deny on `s3:DeleteBucket` for the bucket ARN only.
+The simulator shows `s3:PutObject` denied by an explicit deny, and the details point at the statement in `clf-lab04-protect-bucket` (the one named `NeverDeleteThePhotoBucket` when you open the policy). Her own policy does allow uploads, but an explicit deny in any policy overrides every allow, so the allow can't win. The helper listed `s3:PutObject` by mistake: the statement's own name says its job is to stop the bucket being deleted. The fix is to remove `"s3:PutObject"` from the action list and the `/*` ARN from the resource list, leaving a deny on `s3:DeleteBucket` for the bucket ARN only.
 
 Why keep a deny at all, when nothing allows deleting the bucket anyway? Because an explicit deny keeps working even if someone later attaches a broader policy to the group. That is what makes it a **guardrail**, a limit that holds whatever else is granted.
+
+There was an early clue. When you created `clf-lab04-protect-bucket`, the summary before **Create policy** listed an explicit deny on S3 with the access level **Limited: Write** (as of 2026-10-24). A policy whose only job is to stop the bucket being deleted shouldn't deny writes in general; uploading is a write. Reading that summary before you create a policy is a cheap check.
 
 </details>
 
@@ -196,7 +202,7 @@ Delete the group first, because a policy can't be deleted while it is attached.
 
 15. In IAM, choose **IAM user groups**, select `clf-lab04-photo-editors`, choose **Delete**, and confirm.
     > **If something went wrong:** if the console says policies are still attached, remove them on the group's permissions tab and delete it again.
-16. Choose **Policies**, filter to customer managed, and delete `clf-lab04-photographer`, `clf-lab04-photo-editing` and `clf-lab04-protect-bucket` one at a time. If the console asks you to delete a policy's older versions first, follow its prompts.
+16. Choose **Policies**, filter to customer managed, and delete `clf-lab04-photographer`, `clf-lab04-photo-editing` and `clf-lab04-protect-bucket` one at a time. Deleting `clf-lab04-protect-bucket` removed both of its versions in one step when we ran this lab.
 17. **Confirm:** IAM's user groups and customer managed policies show nothing starting `clf-lab04-`. Tick them off in your lab log.
 
 ## Recap
