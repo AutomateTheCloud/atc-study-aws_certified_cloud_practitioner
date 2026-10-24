@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="568" viewBox="0 0 680 568" role="img" aria-labelledby="t d">
+<title id="t">The bakery's VPC with public and private subnets in two Availability Zones</title>
+<desc id="d">The internet sits above an AWS Region, US East (N. Virginia). Arrows run both ways between the internet and an internet gateway attached to the top of the bakery's VPC, 10.0.0.0/16. Inside the VPC are two Availability Zones, A and B. Each holds a public subnet (10.0.1.0/24 and 10.0.2.0/24) with a web server that has a public IPv4 address, and a private subnet (10.0.3.0/24 and 10.0.4.0/24) holding the order database: the primary in AZ A and the standby in AZ B. Internet traffic from the gateway reaches only the public subnets. Below, two route tables. The public route table, used by both public subnets, has 10.0.0.0/16 to local (stays inside the VPC) and, highlighted, 0.0.0.0/0 to the internet gateway. The private route table, used by both private subnets, has only 10.0.0.0/16 to local and no route to the internet gateway. A note says the highlighted route is the only difference between the two kinds of subnet.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --pub-fill:#d9e8fb; --priv-fill:#f1f0ec; --bad-fill:#fbe1d6; --s3c:#1baf7a; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --pub-fill:#1b3554; --priv-fill:#252523; --bad-fill:#4d2716; --s3c:#199e70; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .pub { fill: var(--pub-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .priv { fill: var(--priv-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .bad { fill: var(--bad-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .plain { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .zone { fill: none; stroke: var(--axis); stroke-width: 1.5; stroke-dasharray: 6 4; }
+  .region { fill: none; stroke: var(--ink2); stroke-width: 1.2; }
+  .vpc { fill: none; stroke: var(--ink); stroke-width: 1.8; }
+  .s3c { fill: var(--s3c); }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .head { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .zlab { fill: var(--muted); font-size: 12px; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .mono { fill: var(--ink); font-size: 12px; font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; }
+  .arrlab { fill: var(--ink2); font-size: 11.5px; font-style: italic; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .arrowhead { fill: var(--ink2); }
+  .cross { stroke: var(--s2); stroke-width: 2.5; stroke-linecap: round; }
+  .val { fill: var(--ink); font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+</style>
+<rect width="680" height="568" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">The bakery's own network: what makes half of it public</text>
+<text class="sub" x="16" y="48">A VPC in one Region, with a public and a private subnet in each of two Availability Zones</text>
+<rect class="plain" x="250.0" y="62.0" width="180.0" height="30.0" rx="15"/>
+<text class="cellt" x="340" y="82" text-anchor="middle">The internet (customers)</text>
+<line class="arrow" x1="334.0" y1="93.0" x2="334.0" y2="124.0"/>
+<path class="arrowhead" d="M339.0,116.0 L329.0,116.0 L334.0,124.0 Z"/>
+<line class="arrow" x1="346.0" y1="124.0" x2="346.0" y2="93.0"/>
+<path class="arrowhead" d="M341.0,101.0 L351.0,101.0 L346.0,93.0 Z"/>
+<rect class="zone" x="44.0" y="186.0" width="290.0" height="196.0" rx="6"/>
+<text class="zlab" x="52" y="202">Availability Zone A</text>
+<rect class="pub" x="54.0" y="212.0" width="270.0" height="72.0" rx="6"/>
+<text class="cellt" x="64" y="231">Public subnet 10.0.1.0/24</text>
+<text class="small" x="64" y="250">Web server (has a public IPv4 address)</text>
+<text class="zlab" x="64" y="272">Uses: the public route table</text>
+<rect class="priv" x="54.0" y="298.0" width="270.0" height="72.0" rx="6"/>
+<text class="cellt" x="64" y="317">Private subnet 10.0.3.0/24</text>
+<text class="small" x="64" y="336">Order database (primary)</text>
+<text class="zlab" x="64" y="358">Uses: the private route table</text>
+<rect class="zone" x="346.0" y="186.0" width="290.0" height="196.0" rx="6"/>
+<text class="zlab" x="354" y="202">Availability Zone B</text>
+<rect class="pub" x="356.0" y="212.0" width="270.0" height="72.0" rx="6"/>
+<text class="cellt" x="366" y="231">Public subnet 10.0.2.0/24</text>
+<text class="small" x="366" y="250">Web server (has a public IPv4 address)</text>
+<text class="zlab" x="366" y="272">Uses: the public route table</text>
+<rect class="priv" x="356.0" y="298.0" width="270.0" height="72.0" rx="6"/>
+<text class="cellt" x="366" y="317">Private subnet 10.0.4.0/24</text>
+<text class="small" x="366" y="336">Order database (standby)</text>
+<text class="zlab" x="366" y="358">Uses: the private route table</text>
+<path class="arrow" d="M340,156 L340,176 M189.0,176 L491.0,176"/>
+<line class="arrow" x1="189.0" y1="176.0" x2="189.0" y2="211.0"/>
+<path class="arrowhead" d="M194.0,203.0 L184.0,203.0 L189.0,211.0 Z"/>
+<line class="arrow" x1="491.0" y1="176.0" x2="491.0" y2="211.0"/>
+<path class="arrowhead" d="M496.0,203.0 L486.0,203.0 L491.0,211.0 Z"/>
+<text class="arrlab" x="499.0" y="171">internet traffic</text>
+<rect class="plain" x="44.0" y="398.0" width="290.0" height="92.0" rx="6"/>
+<text class="cellt" x="54" y="417">Public route table</text>
+<text class="zlab" x="54" y="435">Destination</text>
+<text class="zlab" x="148" y="435">Target</text>
+<text class="mono" x="54" y="456">10.0.0.0/16</text>
+<text class="small" x="148" y="456">local: stays inside the VPC</text>
+<rect class="pub" x="48.0" y="464.0" width="282.0" height="20.0" rx="4"/>
+<text class="mono" x="54" y="478">0.0.0.0/0</text>
+<text class="small" x="148" y="478">internet gateway</text>
+<rect class="plain" x="346.0" y="398.0" width="290.0" height="92.0" rx="6"/>
+<text class="cellt" x="356" y="417">Private route table</text>
+<text class="zlab" x="356" y="435">Destination</text>
+<text class="zlab" x="450" y="435">Target</text>
+<text class="mono" x="356" y="456">10.0.0.0/16</text>
+<text class="small" x="450" y="456">local: stays inside the VPC</text>
+<text class="small" x="356" y="478">No route to the internet gateway</text>
+<rect class="vpc" x="30.0" y="140.0" width="620.0" height="364.0" rx="8"/>
+<text class="head" x="40" y="164">VPC: the bakery's network, 10.0.0.0/16</text>
+<rect class="region" x="16.0" y="112.0" width="648.0" height="404.0" rx="8"/>
+<text class="zlab" x="24" y="130">AWS Region: US East (N. Virginia)</text>
+<rect class="pub" x="270.0" y="125.0" width="140.0" height="30.0" rx="6"/>
+<text class="cellt" x="340" y="145" text-anchor="middle">Internet gateway</text>
+<text class="note" x="16" y="538">The highlighted route is the only difference between the two kinds of subnet. Addresses are examples;</text>
+<text class="note" x="16" y="554">the bakery is made up for teaching. From the Amazon VPC User Guide, checked 2026-10-23.</text>
+</svg>

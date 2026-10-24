@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="486" viewBox="0 0 680 486" role="img" aria-labelledby="t d">
+<title id="t">Amazon CloudFront compared with AWS Global Accelerator</title>
+<desc id="d">Two panels. Amazon CloudFront: a user connects to the nearest edge location, which keeps a copy of popular content and answers from it when it can; a dashed arrow goes to the origin in a Region, an S3 bucket, web server or API, only when there is no fresh copy. Bullets: web content over HTTP and HTTPS; many requests never reach the origin; a content delivery network. AWS Global Accelerator: a user connects to the nearest edge location through two fixed IP addresses announced from AWS's edge, with no copies kept; traffic travels over the AWS network to a healthy endpoint in Region A, with a dashed arrow to Region B, used if A fails. Bullets: any TCP or UDP traffic such as games, voice and IoT; every request reaches your application; switches Regions without waiting on DNS.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --aws-fill:#d9e8fb; --edge-fill:#fbe1d6; --prem-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --aws-fill:#1b3554; --edge-fill:#4d2716; --prem-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .aws { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .edgeb { fill: var(--edge-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .prem { fill: var(--prem-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .zone { fill: none; stroke: var(--axis); stroke-width: 1.5; stroke-dasharray: 6 4; }
+  .panel { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .q { fill: var(--ink2); font-size: 12px; font-style: italic; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .arrlab { fill: var(--ink); font-size: 11.5px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .num { fill: var(--ink); font-size: 11px; font-weight: 700; }
+  .numc { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; }
+  .flow { stroke: var(--ink); stroke-width: 2; fill: none; }
+  .flowx { stroke: var(--muted); stroke-width: 1.8; fill: none; stroke-dasharray: 6 4; }
+  .head-ink { fill: var(--ink); }
+  .head-mut { fill: var(--muted); }
+</style>
+<rect width="680" height="486" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">CloudFront and Global Accelerator both start at the edge, then differ</text>
+<text class="sub" x="16" y="48">The difference to notice: where the answer comes from</text>
+<rect class="panel" x="16" y="64" width="318" height="384" rx="8"/>
+<text class="head" x="30" y="88">Amazon CloudFront</text>
+<rect class="prem" x="85.0" y="110" width="180" height="30" rx="6"/>
+<text class="boxt" x="175.0" y="128" text-anchor="middle">User</text>
+<rect class="edgeb" x="55.0" y="182" width="240" height="70" rx="6"/>
+<text class="boxt" x="175.0" y="200" text-anchor="middle">Nearest edge location</text>
+<text class="cells" x="175.0" y="216.0" text-anchor="middle">keeps a copy of popular content</text>
+<text class="cells" x="175.0" y="230.0" text-anchor="middle">and answers from it when it can</text>
+<path class="flow" d="M175.0,140.0 L175.0,174.0"/>
+<path class="head-ink" d="M175.0,182.0 L180.0,172.0 L170.0,172.0 Z"/>
+<rect class="aws" x="55.0" y="300" width="240" height="54" rx="6"/>
+<text class="boxt" x="175.0" y="318" text-anchor="middle">Origin in a Region</text>
+<text class="cells" x="175.0" y="334.0" text-anchor="middle">S3 bucket, web server, or API</text>
+<path class="flowx" d="M145.0,252.0 L145.0,292.0"/>
+<path class="head-mut" d="M145.0,300.0 L150.0,290.0 L140.0,290.0 Z"/>
+<text class="arrlab" x="155.0" y="280">only when no fresh copy</text>
+<text class="cells" x="30" y="384">• Web content over HTTP and HTTPS</text>
+<text class="cells" x="30" y="404">• Many requests never reach the origin</text>
+<text class="cells" x="30" y="424">• A content delivery network (CDN)</text>
+<rect class="panel" x="346" y="64" width="318" height="384" rx="8"/>
+<text class="head" x="360" y="88">AWS Global Accelerator</text>
+<rect class="prem" x="415.0" y="110" width="180" height="30" rx="6"/>
+<text class="boxt" x="505.0" y="128" text-anchor="middle">User</text>
+<rect class="edgeb" x="385.0" y="182" width="240" height="70" rx="6"/>
+<text class="boxt" x="505.0" y="200" text-anchor="middle">Nearest edge location</text>
+<text class="cells" x="505.0" y="216.0" text-anchor="middle">two fixed IP addresses, announced</text>
+<text class="cells" x="505.0" y="230.0" text-anchor="middle">from AWS's edge; no copies kept</text>
+<path class="flow" d="M505.0,140.0 L505.0,174.0"/>
+<path class="head-ink" d="M505.0,182.0 L510.0,172.0 L500.0,172.0 Z"/>
+<rect class="aws" x="360" y="300" width="140" height="54" rx="6"/>
+<text class="boxt" x="430.0" y="318" text-anchor="middle">Region A</text>
+<text class="cells" x="430.0" y="334.0" text-anchor="middle">healthy endpoint</text>
+<rect class="aws" x="510" y="300" width="140" height="54" rx="6"/>
+<text class="boxt" x="580.0" y="318" text-anchor="middle">Region B</text>
+<text class="cells" x="580.0" y="334.0" text-anchor="middle">used if A fails</text>
+<path class="flow" d="M465.0,252.0 L434.7,293.5"/>
+<path class="head-ink" d="M430.0,300.0 L439.9,294.9 L431.9,289.0 Z"/>
+<path class="flowx" d="M545.0,252.0 L575.3,293.5"/>
+<path class="head-mut" d="M580.0,300.0 L578.1,289.0 L570.1,294.9 Z"/>
+<text class="arrlab" x="505.0" y="288" text-anchor="middle">AWS network</text>
+<text class="cells" x="360" y="384">• Any TCP or UDP traffic: games, voice, IoT</text>
+<text class="cells" x="360" y="404">• Every request reaches your application</text>
+<text class="cells" x="360" y="424">• Switches Regions without waiting on DNS</text>
+<text class="note" x="16" y="472">Our summary of AWS's CloudFront and Global Accelerator documentation, checked 2026-10-23.</text>
+</svg>

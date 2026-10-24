@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="400" viewBox="0 0 680 400" role="img" aria-labelledby="t d">
+<title id="t">Instances the Auto Scaling group runs each hour, against a fixed fleet of six</title>
+<desc id="d">Column chart, 24 hours from midnight, made-up orders. Instances running: 2 from midnight to 08:00, then 3, 4, 5, 6 at noon and 6 at 13:00, then 5, 4, 5, 5, 4, 3, and 2 from 20:00 to midnight: 76 instance-hours. A flat line at 6 shows a fixed fleet sized for the noon peak, 144 instance-hours. A dashed line at 2 marks the minimum, one per Availability Zone.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .line-dash { stroke: var(--ink2); stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; }
+</style>
+<rect width="680" height="400" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Instances Auto Scaling runs on a December Saturday</text>
+<text class="sub" x="16" y="48">Hour by hour, against a fixed fleet sized for the noon peak (made-up orders)</text>
+<rect class="s1" x="16" y="66" width="12" height="12" rx="2"/>
+<text x="34" y="76">Instances running (Auto Scaling)</text>
+<line class="line-ink" x1="260" x2="276" y1="72" y2="72"/>
+<text x="282" y="76">Fixed fleet: 6 all day</text>
+<line class="line-dash" x1="450" x2="466" y1="72" y2="72"/>
+<text x="472" y="76">Minimum: 2</text>
+<line class="axis" x1="56" x2="526" y1="348.0" y2="348.0"/>
+<text class="tick" x="48" y="352.0" text-anchor="end">0</text>
+<line class="grid" x1="56" x2="526" y1="314.3" y2="314.3"/>
+<text class="tick" x="48" y="318.3" text-anchor="end">1</text>
+<line class="grid" x1="56" x2="526" y1="280.6" y2="280.6"/>
+<text class="tick" x="48" y="284.6" text-anchor="end">2</text>
+<line class="grid" x1="56" x2="526" y1="246.9" y2="246.9"/>
+<text class="tick" x="48" y="250.9" text-anchor="end">3</text>
+<line class="grid" x1="56" x2="526" y1="213.1" y2="213.1"/>
+<text class="tick" x="48" y="217.1" text-anchor="end">4</text>
+<line class="grid" x1="56" x2="526" y1="179.4" y2="179.4"/>
+<text class="tick" x="48" y="183.4" text-anchor="end">5</text>
+<line class="grid" x1="56" x2="526" y1="145.7" y2="145.7"/>
+<text class="tick" x="48" y="149.7" text-anchor="end">6</text>
+<line class="grid" x1="56" x2="526" y1="112.0" y2="112.0"/>
+<text class="tick" x="48" y="116.0" text-anchor="end">7</text>
+<text class="tick" x="16" y="98">Instances</text>
+<path class="s1" d="M59.3,348.0 L59.3,284.6 Q59.3,280.6 63.3,280.6 L68.3,280.6 Q72.3,280.6 72.3,284.6 L72.3,348.0 Z"><title>00:00, 2 orders: 2 instances</title></path>
+<text class="tick" x="65.8" y="366" text-anchor="middle">00:00</text>
+<path class="s1" d="M78.9,348.0 L78.9,284.6 Q78.9,280.6 82.9,280.6 L87.9,280.6 Q91.9,280.6 91.9,284.6 L91.9,348.0 Z"><title>01:00, 1 orders: 2 instances</title></path>
+<path class="s1" d="M98.5,348.0 L98.5,284.6 Q98.5,280.6 102.5,280.6 L107.5,280.6 Q111.5,280.6 111.5,284.6 L111.5,348.0 Z"><title>02:00, 1 orders: 2 instances</title></path>
+<path class="s1" d="M118.0,348.0 L118.0,284.6 Q118.0,280.6 122.0,280.6 L127.0,280.6 Q131.0,280.6 131.0,284.6 L131.0,348.0 Z"><title>03:00, 0 orders: 2 instances</title></path>
+<text class="tick" x="124.5" y="366" text-anchor="middle">03:00</text>
+<path class="s1" d="M137.6,348.0 L137.6,284.6 Q137.6,280.6 141.6,280.6 L146.6,280.6 Q150.6,280.6 150.6,284.6 L150.6,348.0 Z"><title>04:00, 0 orders: 2 instances</title></path>
+<path class="s1" d="M157.2,348.0 L157.2,284.6 Q157.2,280.6 161.2,280.6 L166.2,280.6 Q170.2,280.6 170.2,284.6 L170.2,348.0 Z"><title>05:00, 1 orders: 2 instances</title></path>
+<path class="s1" d="M176.8,348.0 L176.8,284.6 Q176.8,280.6 180.8,280.6 L185.8,280.6 Q189.8,280.6 189.8,284.6 L189.8,348.0 Z"><title>06:00, 4 orders: 2 instances</title></path>
+<text class="tick" x="183.3" y="366" text-anchor="middle">06:00</text>
+<path class="s1" d="M196.4,348.0 L196.4,284.6 Q196.4,280.6 200.4,280.6 L205.4,280.6 Q209.4,280.6 209.4,284.6 L209.4,348.0 Z"><title>07:00, 10 orders: 2 instances</title></path>
+<path class="s1" d="M216.0,348.0 L216.0,284.6 Q216.0,280.6 220.0,280.6 L225.0,280.6 Q229.0,280.6 229.0,284.6 L229.0,348.0 Z"><title>08:00, 25 orders: 2 instances</title></path>
+<path class="s1" d="M235.5,348.0 L235.5,250.9 Q235.5,246.9 239.5,246.9 L244.5,246.9 Q248.5,246.9 248.5,250.9 L248.5,348.0 Z"><title>09:00, 45 orders: 3 instances</title></path>
+<text class="tick" x="242.0" y="366" text-anchor="middle">09:00</text>
+<path class="s1" d="M255.1,348.0 L255.1,217.1 Q255.1,213.1 259.1,213.1 L264.1,213.1 Q268.1,213.1 268.1,217.1 L268.1,348.0 Z"><title>10:00, 70 orders: 4 instances</title></path>
+<path class="s1" d="M274.7,348.0 L274.7,183.4 Q274.7,179.4 278.7,179.4 L283.7,179.4 Q287.7,179.4 287.7,183.4 L287.7,348.0 Z"><title>11:00, 95 orders: 5 instances</title></path>
+<path class="s1" d="M294.3,348.0 L294.3,149.7 Q294.3,145.7 298.3,145.7 L303.3,145.7 Q307.3,145.7 307.3,149.7 L307.3,348.0 Z"><title>12:00, 120 orders: 6 instances</title></path>
+<text class="tick" x="300.8" y="366" text-anchor="middle">12:00</text>
+<path class="s1" d="M313.9,348.0 L313.9,149.7 Q313.9,145.7 317.9,145.7 L322.9,145.7 Q326.9,145.7 326.9,149.7 L326.9,348.0 Z"><title>13:00, 110 orders: 6 instances</title></path>
+<path class="s1" d="M333.5,348.0 L333.5,183.4 Q333.5,179.4 337.5,179.4 L342.5,179.4 Q346.5,179.4 346.5,183.4 L346.5,348.0 Z"><title>14:00, 90 orders: 5 instances</title></path>
+<path class="s1" d="M353.0,348.0 L353.0,217.1 Q353.0,213.1 357.0,213.1 L362.0,213.1 Q366.0,213.1 366.0,217.1 L366.0,348.0 Z"><title>15:00, 80 orders: 4 instances</title></path>
+<text class="tick" x="359.5" y="366" text-anchor="middle">15:00</text>
+<path class="s1" d="M372.6,348.0 L372.6,183.4 Q372.6,179.4 376.6,179.4 L381.6,179.4 Q385.6,179.4 385.6,183.4 L385.6,348.0 Z"><title>16:00, 85 orders: 5 instances</title></path>
+<path class="s1" d="M392.2,348.0 L392.2,183.4 Q392.2,179.4 396.2,179.4 L401.2,179.4 Q405.2,179.4 405.2,183.4 L405.2,348.0 Z"><title>17:00, 100 orders: 5 instances</title></path>
+<path class="s1" d="M411.8,348.0 L411.8,217.1 Q411.8,213.1 415.8,213.1 L420.8,213.1 Q424.8,213.1 424.8,217.1 L424.8,348.0 Z"><title>18:00, 75 orders: 4 instances</title></path>
+<text class="tick" x="418.3" y="366" text-anchor="middle">18:00</text>
+<path class="s1" d="M431.4,348.0 L431.4,250.9 Q431.4,246.9 435.4,246.9 L440.4,246.9 Q444.4,246.9 444.4,250.9 L444.4,348.0 Z"><title>19:00, 50 orders: 3 instances</title></path>
+<path class="s1" d="M451.0,348.0 L451.0,284.6 Q451.0,280.6 455.0,280.6 L460.0,280.6 Q464.0,280.6 464.0,284.6 L464.0,348.0 Z"><title>20:00, 30 orders: 2 instances</title></path>
+<path class="s1" d="M470.5,348.0 L470.5,284.6 Q470.5,280.6 474.5,280.6 L479.5,280.6 Q483.5,280.6 483.5,284.6 L483.5,348.0 Z"><title>21:00, 15 orders: 2 instances</title></path>
+<text class="tick" x="477.0" y="366" text-anchor="middle">21:00</text>
+<path class="s1" d="M490.1,348.0 L490.1,284.6 Q490.1,280.6 494.1,280.6 L499.1,280.6 Q503.1,280.6 503.1,284.6 L503.1,348.0 Z"><title>22:00, 8 orders: 2 instances</title></path>
+<path class="s1" d="M509.7,348.0 L509.7,284.6 Q509.7,280.6 513.7,280.6 L518.7,280.6 Q522.7,280.6 522.7,284.6 L522.7,348.0 Z"><title>23:00, 4 orders: 2 instances</title></path>
+<line class="line-ink" x1="56" x2="526" y1="145.7" y2="145.7"/>
+<text class="lab" x="534" y="149.7">Fixed: 6</text>
+<line class="line-dash" x1="56" x2="526" y1="280.6" y2="280.6"/>
+<text class="lab" x="534" y="284.6">Minimum: 2</text>
+<text class="lab" x="300.8" y="135.7" text-anchor="middle">noon: 120 orders</text>
+</svg>

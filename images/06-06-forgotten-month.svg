@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="312" viewBox="0 0 680 312" role="img" aria-labelledby="t d">
+<title id="t">What one forgotten t3.micro instance costs in a month: running, stopped or terminated</title>
+<desc id="d">Horizontal stacked bars, US East (N. Virginia) prices as of 2026-10-24, assuming an 8 GiB gp3 volume and a 730-hour month. Left running: $11.88, made of $7.59 of instance hours, $3.65 for the public IPv4 address and $0.64 for the volume. Stopped but not terminated: $0.64, the volume alone. Terminated: $0.00.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --s3:#1baf7a; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --s3:#199e70; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .s3 { fill: var(--s3); }
+</style>
+<rect width="680" height="312" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">One forgotten t3.micro for a month, on a Paid plan</text>
+<text class="sub" x="16" y="48">US East (N. Virginia) prices as of 2026-10-24; an 8 GiB gp3 volume and a 730-hour month</text>
+<rect class="s1" x="16" y="70" width="12" height="12" rx="2"/>
+<text x="34" y="80">Instance hours</text>
+<rect class="s2" x="150" y="70" width="12" height="12" rx="2"/>
+<text x="168" y="80">Public IPv4 address</text>
+<rect class="s3" x="320" y="70" width="12" height="12" rx="2"/>
+<text x="338" y="80">EBS volume</text>
+<text class="lab" x="16" y="118">Left running</text>
+<rect class="s1" x="16.0" y="126" width="252.9" height="20"><title>Left running: instance hours $7.59</title></rect>
+<rect class="s2" x="270.9" y="126" width="120.5" height="20"><title>Left running: public IPv4 $3.65</title></rect>
+<rect class="s3" x="393.4" y="126" width="21.5" height="20" rx="2"><title>Left running: volume $0.64</title></rect>
+<text class="lab" x="422.9" y="141">$11.88: $7.59 + $3.65 + $0.64</text>
+<text class="lab" x="16" y="178">Stopped, not terminated</text>
+<rect class="s3" x="16.0" y="186" width="21.5" height="20" rx="2"><title>Stopped, not terminated: volume $0.64</title></rect>
+<text class="lab" x="45.5" y="201">$0.64: the volume is still stored</text>
+<text class="lab" x="16" y="238">Terminated</text>
+<text class="lab" x="24.0" y="261">$0.00: nothing left to bill</text>
+<line class="axis" x1="16" x2="16" y1="122" y2="284"/>
+</svg>

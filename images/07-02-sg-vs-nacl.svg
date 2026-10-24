@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="494" viewBox="0 0 680 494" role="img" aria-labelledby="t d">
+<title id="t">Security group compared with network ACL</title>
+<desc id="d">Two columns, security group and network ACL, compared on seven rows. Guards: a security group guards each resource it's attached to, such as one web server (instance level); a network ACL guards a whole subnet, everything that enters or leaves it (subnet level). Rules: allow rules only; allow and deny rules. How rules are checked: all rules together, and any allow rule that matches lets traffic through; in number order, and the first rule that matches decides. Replies, highlighted: allowed automatically because the security group remembers the request (stateful); checked again, so an outbound rule must allow them (stateless). When you create one: a new security group allows nothing in and everything out; the default network ACL allows everything, and a new custom one denies everything. Usual job: the main control, who may reach this resource on which port; a second layer, for example denying an address range for a whole subnet. Cost: no charge for either. A note says neither filters traffic to Amazon DNS, DHCP, instance metadata or the Amazon Time Sync Service.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --ok-fill:#d9e8fb; --no-fill:#fbe1d6; --n-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --ok-fill:#1b3554; --no-fill:#4d2716; --n-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .ok { fill: var(--ok-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .no { fill: var(--no-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .n { fill: var(--n-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .skip { fill: none; stroke: var(--axis); stroke-width: 1; stroke-dasharray: 3 3; }
+  .plain { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .vpc { fill: none; stroke: var(--ink); stroke-width: 1.8; }
+  .subnet { fill: none; stroke: var(--ink2); stroke-width: 1.2; }
+  .nacl { fill: var(--n-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .sg { fill: none; stroke: var(--s1); stroke-width: 2; stroke-dasharray: 7 4; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .head { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .zlab { fill: var(--muted); font-size: 12px; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .mono { fill: var(--ink); font-size: 12px; font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; }
+  .arrlab { fill: var(--ink2); font-size: 11.5px; font-style: italic; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .arrowhead { fill: var(--ink2); }
+  .rowl { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .num { fill: var(--ink); font-size: 13px; font-weight: 700; }
+  .numc { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; }
+  .numh { fill: var(--s1); stroke: var(--s1); stroke-width: 1.5; }
+  .numhl { fill: var(--surface); font-size: 13px; font-weight: 700; }
+</style>
+<rect width="680" height="494" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Security group or network ACL: same job, different rules</text>
+<text class="sub" x="16" y="48">Both filter traffic in your VPC; read across a row to see how they differ</text>
+<rect class="n" x="166.0" y="66.0" width="250.0" height="32.0" rx="6"/>
+<text class="cellt" x="176" y="87">Security group</text>
+<rect class="n" x="424.0" y="66.0" width="250.0" height="32.0" rx="6"/>
+<text class="cellt" x="434" y="87">Network ACL</text>
+<line class="grid" x1="16" x2="674" y1="106" y2="106"/>
+<text class="rowl" x="16" y="125.0">Guards</text>
+<text class="small" x="176" y="125.0">Each resource it's attached to,</text>
+<text class="small" x="176" y="140.0">such as one web server (instance</text>
+<text class="small" x="176" y="155.0">level)</text>
+<text class="small" x="434" y="125.0">A whole subnet: everything that</text>
+<text class="small" x="434" y="140.0">enters or leaves it (subnet level)</text>
+<line class="grid" x1="16" x2="674" y1="169" y2="169"/>
+<text class="rowl" x="16" y="188.0">Rules</text>
+<text class="small" x="176" y="188.0">Allow rules only</text>
+<text class="small" x="434" y="188.0">Allow and deny rules</text>
+<line class="grid" x1="16" x2="674" y1="202" y2="202"/>
+<text class="rowl" x="16" y="221.0">How rules are</text>
+<text class="rowl" x="16" y="236.0">checked</text>
+<text class="small" x="176" y="221.0">All rules together: any allow rule</text>
+<text class="small" x="176" y="236.0">that matches lets traffic through</text>
+<text class="small" x="434" y="221.0">In number order: the first rule</text>
+<text class="small" x="434" y="236.0">that matches decides</text>
+<rect class="ok" x="162.0" y="252.0" width="258.0" height="44.0" rx="5"/>
+<rect class="ok" x="420.0" y="252.0" width="258.0" height="44.0" rx="5"/>
+<line class="grid" x1="16" x2="674" y1="250" y2="250"/>
+<text class="rowl" x="16" y="269.0">Replies</text>
+<text class="cellt" x="176" y="269.0">Allowed automatically: it</text>
+<text class="cellt" x="176" y="284.0">remembers the request (stateful)</text>
+<text class="cellt" x="434" y="269.0">Checked again: an outbound rule</text>
+<text class="cellt" x="434" y="284.0">must allow it (stateless)</text>
+<line class="grid" x1="16" x2="674" y1="298" y2="298"/>
+<text class="rowl" x="16" y="317.0">When you create one</text>
+<text class="small" x="176" y="317.0">A new group allows nothing in and</text>
+<text class="small" x="176" y="332.0">everything out</text>
+<text class="small" x="434" y="317.0">The default one allows everything;</text>
+<text class="small" x="434" y="332.0">a new custom one denies everything</text>
+<line class="grid" x1="16" x2="674" y1="346" y2="346"/>
+<text class="rowl" x="16" y="365.0">Its usual job</text>
+<text class="small" x="176" y="365.0">The main control: who may reach</text>
+<text class="small" x="176" y="380.0">this resource, on which port</text>
+<text class="small" x="434" y="365.0">A second layer: for example, deny</text>
+<text class="small" x="434" y="380.0">an address range for a whole</text>
+<text class="small" x="434" y="395.0">subnet</text>
+<line class="grid" x1="16" x2="674" y1="409" y2="409"/>
+<text class="rowl" x="16" y="428.0">Cost</text>
+<text class="small" x="176" y="428.0">No charge</text>
+<text class="small" x="434" y="428.0">No charge</text>
+<line class="grid" x1="16" x2="674" y1="442" y2="442"/>
+<text class="note" x="16" y="464">Neither filters traffic to Amazon DNS, DHCP, instance metadata or the Amazon Time Sync Service.</text>
+<text class="note" x="16" y="480">From the Amazon VPC User Guide (security groups; network ACLs; infrastructure security), checked 2026-10-23.</text>
+</svg>

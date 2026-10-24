@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="448" viewBox="0 0 680 448" role="img" aria-labelledby="t d">
+<title id="t">Internet gateway compared with NAT gateway</title>
+<desc id="d">Two panels. Left, internet gateway: the internet, then an internet gateway, then a public subnet holding a web server with a public IPv4 address. Arrows run both ways between each pair, labeled either side can start. Notes: who can start, the internet or your server; it is attached to the VPC; there is no charge for the gateway itself. Right, NAT gateway: the internet, an internet gateway, a public subnet holding a NAT gateway with an Elastic IP address, and below it a private subnet holding a server with no public address. Arrows run upward only, from the server to the NAT gateway, to the internet gateway, to the internet, labeled only the server starts. A dashed arrow from the internet is crossed out before it reaches the NAT gateway, labeled can't start a connection in. Notes: who can start, only your private server; it lives in a public subnet, often one per AZ; cost $0.045 an hour plus $0.045 per GB processed, US East (N. Virginia) as of 2026-10-24, with the Elastic IP and data transfer charged on top.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --pub-fill:#d9e8fb; --priv-fill:#f1f0ec; --bad-fill:#fbe1d6; --s3c:#1baf7a; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --pub-fill:#1b3554; --priv-fill:#252523; --bad-fill:#4d2716; --s3c:#199e70; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .pub { fill: var(--pub-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .priv { fill: var(--priv-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .bad { fill: var(--bad-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .plain { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .zone { fill: none; stroke: var(--axis); stroke-width: 1.5; stroke-dasharray: 6 4; }
+  .region { fill: none; stroke: var(--ink2); stroke-width: 1.2; }
+  .vpc { fill: none; stroke: var(--ink); stroke-width: 1.8; }
+  .s3c { fill: var(--s3c); }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .head { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .zlab { fill: var(--muted); font-size: 12px; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .mono { fill: var(--ink); font-size: 12px; font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; }
+  .arrlab { fill: var(--ink2); font-size: 11.5px; font-style: italic; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .arrowhead { fill: var(--ink2); }
+  .cross { stroke: var(--s2); stroke-width: 2.5; stroke-linecap: round; }
+  .val { fill: var(--ink); font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+</style>
+<rect width="680" height="448" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Internet gateway or NAT gateway: who can start the conversation?</text>
+<text class="sub" x="16" y="48">Replies always come back the way the request went; the difference is who may begin</text>
+<rect class="region" x="16.0" y="66.0" width="316.0" height="330.0" rx="8"/>
+<text class="head" x="28" y="88">Internet gateway</text>
+<rect class="region" x="348.0" y="66.0" width="316.0" height="330.0" rx="8"/>
+<text class="head" x="360" y="88">NAT gateway</text>
+<rect class="plain" x="94.0" y="106.0" width="160.0" height="30.0" rx="15"/>
+<text class="cellt" x="174.0" y="126" text-anchor="middle">The internet</text>
+<rect class="pub" x="94.0" y="176.0" width="160.0" height="30.0" rx="6"/>
+<text class="cellt" x="174.0" y="196" text-anchor="middle">Internet gateway</text>
+<rect class="pub" x="46.0" y="246.0" width="256.0" height="70.0" rx="6"/>
+<text class="cellt" x="58" y="265">Public subnet</text>
+<text class="small" x="58" y="284">Web server with a public</text>
+<text class="small" x="58" y="300">IPv4 address</text>
+<line class="arrow" x1="166.0" y1="137.0" x2="166.0" y2="175.0"/>
+<path class="arrowhead" d="M171.0,167.0 L161.0,167.0 L166.0,175.0 Z"/>
+<line class="arrow" x1="182.0" y1="175.0" x2="182.0" y2="137.0"/>
+<path class="arrowhead" d="M177.0,145.0 L187.0,145.0 L182.0,137.0 Z"/>
+<line class="arrow" x1="166.0" y1="207.0" x2="166.0" y2="245.0"/>
+<path class="arrowhead" d="M171.0,237.0 L161.0,237.0 L166.0,245.0 Z"/>
+<line class="arrow" x1="182.0" y1="245.0" x2="182.0" y2="207.0"/>
+<path class="arrowhead" d="M177.0,215.0 L187.0,215.0 L182.0,207.0 Z"/>
+<text class="arrlab" x="194.0" y="160">either side can start</text>
+<text class="small" x="30" y="346.0">Who can start: the internet or your server</text>
+<text class="small" x="30" y="363.0">Lives: attached to the VPC</text>
+<text class="small" x="30" y="380.0">Cost: no charge for the gateway itself</text>
+<rect class="plain" x="426.0" y="106.0" width="160.0" height="30.0" rx="15"/>
+<text class="cellt" x="506.0" y="126" text-anchor="middle">The internet</text>
+<rect class="pub" x="426.0" y="158.0" width="160.0" height="26.0" rx="6"/>
+<text class="cellt" x="506.0" y="176" text-anchor="middle">Internet gateway</text>
+<rect class="pub" x="378.0" y="206.0" width="256.0" height="44.0" rx="6"/>
+<text class="cellt" x="390" y="224">Public subnet</text>
+<text class="small" x="390" y="242">NAT gateway (with an Elastic IP)</text>
+<rect class="priv" x="378.0" y="272.0" width="256.0" height="44.0" rx="6"/>
+<text class="cellt" x="390" y="290">Private subnet</text>
+<text class="small" x="390" y="308">Server with no public address</text>
+<line class="arrow" x1="514.0" y1="271.0" x2="514.0" y2="251.0"/>
+<path class="arrowhead" d="M509.0,259.0 L519.0,259.0 L514.0,251.0 Z"/>
+<line class="arrow" x1="514.0" y1="205.0" x2="514.0" y2="185.0"/>
+<path class="arrowhead" d="M509.0,193.0 L519.0,193.0 L514.0,185.0 Z"/>
+<line class="arrow" x1="514.0" y1="157.0" x2="514.0" y2="137.0"/>
+<path class="arrowhead" d="M509.0,145.0 L519.0,145.0 L514.0,137.0 Z"/>
+<text class="arrlab" x="526.0" y="266">only the server starts</text>
+<line class="arrow" x1="466.0" y1="137.0" x2="466.0" y2="198.0" stroke-dasharray="5 4"/>
+<path class="arrowhead" d="M471.0,190.0 L461.0,190.0 L466.0,198.0 Z"/>
+<line class="cross" x1="459.0" y1="194" x2="473.0" y2="208"/>
+<line class="cross" x1="473.0" y1="194" x2="459.0" y2="208"/>
+<text class="arrlab" x="360" y="148">can't start</text>
+<text class="arrlab" x="360" y="162">a connection in</text>
+<text class="small" x="362" y="346.0">Who can start: only your private server</text>
+<text class="small" x="362" y="363.0">Lives: in a public subnet, often one per AZ</text>
+<text class="small" x="362" y="380.0">Cost: $0.045 an hour + $0.045 per GB</text>
+<text class="note" x="16" y="418">From the Amazon VPC User Guide (internet gateways; NAT gateways), checked 2026-10-23. NAT gateway prices:</text>
+<text class="note" x="16" y="434">AWS Price List, US East (N. Virginia), retrieved 2026-10-24. The Elastic IP and data transfer are charged on top.</text>
+</svg>

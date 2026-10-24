@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="530" viewBox="0 0 680 530" role="img" aria-labelledby="t d">
+<title id="t">The bakery's network for Simulation S8: an internet gateway, a public subnet with the web server and a private subnet with the order database</title>
+<desc id="d">On the left, the internet holds three made-up addresses: a customer at 192.0.2.44, a bad range 203.0.113.0/24, and an update site at 192.0.2.200. All connect to the internet gateway on the edge of the VPC, 10.0.0.0/16, in US East (N. Virginia). Inside, Availability Zone a holds two subnets; AZ b holds a matching pair that isn't drawn. The public subnet, 10.0.1.0/24, uses network ACL public-nacl and a route table with 10.0.0.0/16 to local and 0.0.0.0/0 to the internet gateway; it holds the web server, private address 10.0.1.10, public IP 198.51.100.20, security group web-sg. The private subnet, 10.0.3.0/24, uses network ACL private-nacl and a route table with only the local route; it holds the order database at 10.0.3.20, port 5432, security group db-sg. The internet gateway connects to the public subnet. A note says a real shop would also have a load balancer, left out here.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --az-fill:#d9e8fb; --you-fill:#fbe1d6; --card:#fcfcfb; --no-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --az-fill:#1b3554; --you-fill:#4d2716; --card:#1a1a19; --no-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .vpc { fill: none; stroke: var(--ink); stroke-width: 2; }
+  .net { fill: none; stroke: var(--ink2); stroke-width: 1.5; stroke-dasharray: 6 4; }
+  .az { fill: var(--az-fill); stroke: var(--s1); stroke-width: 1.2; }
+  .you { fill: var(--you-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .card { fill: var(--card); stroke: var(--ink2); stroke-width: 1; }
+  .gw { fill: var(--card); stroke: var(--ink); stroke-width: 2; }
+  .ok { fill: var(--card); stroke: var(--ink2); stroke-width: 1; }
+  .stop { fill: var(--you-fill); stroke: var(--ink); stroke-width: 3; }
+  .auto { fill: var(--no-fill); stroke: var(--muted); stroke-width: 1; stroke-dasharray: 4 3; }
+  .hl { fill: var(--card); stroke: var(--ink); stroke-width: 3; }
+  .link { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .flow { stroke: var(--ink); stroke-width: 1.5; fill: none; }
+  .arrowhead { fill: var(--ink); }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .bold { fill: var(--ink); font-size: 12px; font-weight: 700; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .tiny { fill: var(--ink2); font-size: 11px; }
+  .chip { fill: var(--ink); font-size: 11.5px; }
+  .chipb { fill: var(--ink); font-size: 11.5px; font-weight: 700; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+</style>
+<rect width="680" height="530" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">The bakery's network in this simulation</text>
+<text class="sub" x="16" y="48">US East (N. Virginia). Only AZ a is drawn; AZ b holds a matching pair of subnets.</text>
+<rect class="net" x="16" y="72" width="150" height="388" rx="10"/>
+<text class="boxt" x="91" y="94" text-anchor="middle">The internet</text>
+<rect class="card" x="28" y="118" width="126" height="48" rx="6"/>
+<text class="bold" x="91" y="138" text-anchor="middle">Customer</text>
+<text class="small" x="91" y="155" text-anchor="middle">192.0.2.44</text>
+<line class="link" x1="154" y1="142" x2="180" y2="142"/>
+<rect class="card" x="28" y="198" width="126" height="48" rx="6"/>
+<text class="bold" x="91" y="218" text-anchor="middle">Bad range</text>
+<text class="small" x="91" y="235" text-anchor="middle">203.0.113.0/24</text>
+<line class="link" x1="154" y1="222" x2="180" y2="222"/>
+<rect class="card" x="28" y="278" width="126" height="48" rx="6"/>
+<text class="bold" x="91" y="298" text-anchor="middle">Update site</text>
+<text class="small" x="91" y="315" text-anchor="middle">192.0.2.200</text>
+<line class="link" x1="154" y1="302" x2="180" y2="302"/>
+<line class="link" x1="180" y1="142" x2="180" y2="302"/>
+<rect class="vpc" x="214" y="72" width="450" height="388" rx="8"/>
+<text class="boxt" x="650" y="94" text-anchor="end">VPC 10.0.0.0/16</text>
+<line class="link" x1="180" y1="222" x2="190" y2="222"/>
+<rect class="gw" x="190" y="196" width="74" height="52" rx="5"/>
+<text class="bold" x="227" y="218.0" text-anchor="middle">Internet</text>
+<text class="bold" x="227" y="233.0" text-anchor="middle">gateway</text>
+<rect class="az" x="276" y="104" width="376" height="344" rx="7"/>
+<text class="small" x="288" y="122">Availability Zone a</text>
+<rect class="you" x="288" y="132" width="352" height="140" rx="6"/>
+<text class="boxt" x="300" y="154">Public subnet 10.0.1.0/24</text>
+<text class="small" x="300" y="176">Network ACL: public-nacl</text>
+<text class="tiny" x="300" y="196.0">Route table: 10.0.0.0/16 →</text>
+<text class="tiny" x="300" y="210.0">local; 0.0.0.0/0 →</text>
+<text class="tiny" x="300" y="224.0">internet gateway</text>
+<rect class="card" x="486" y="166" width="142" height="92" rx="6"/>
+<text class="bold" x="496" y="186">Web server</text>
+<text class="tiny" x="496" y="204.0">10.0.1.10</text>
+<text class="tiny" x="496" y="219.0">public IP 198.51.100.20</text>
+<text class="tiny" x="496" y="234.0">security group web-sg</text>
+<rect class="you" x="288" y="296" width="352" height="140" rx="6"/>
+<text class="boxt" x="300" y="318">Private subnet 10.0.3.0/24</text>
+<text class="small" x="300" y="340">Network ACL: private-nacl</text>
+<text class="tiny" x="300" y="360.0">Route table: 10.0.0.0/16 →</text>
+<text class="tiny" x="300" y="374.0">local, nothing else</text>
+<rect class="card" x="486" y="330" width="142" height="92" rx="6"/>
+<text class="bold" x="496" y="350">Order database</text>
+<text class="tiny" x="496" y="368.0">10.0.3.20, port 5432</text>
+<text class="tiny" x="496" y="383.0">security group db-sg</text>
+<line class="link" x1="264" y1="222" x2="288" y2="222"/>
+<text class="note" x="16" y="486.0">Lines show what connects to what. The addresses are made up, from ranges reserved for examples. A real</text>
+<text class="note" x="16" y="502.0">shop would also have a load balancer; the simulation leaves it out to keep the path short.</text>
+</svg>

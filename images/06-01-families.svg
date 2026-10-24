@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="558" viewBox="0 0 700 558" role="img" aria-labelledby="t d">
+<title id="t">The six EC2 instance families and the bottleneck each one is built for</title>
+<desc id="d">Six cards in two rows. General purpose: nothing in particular runs out, a balance of CPU, memory and network; letters M and T (burstable); for web servers, code repositories, small and medium databases. Compute optimized: CPU runs out first; letter C; for batch processing, media transcoding, dedicated game servers. Memory optimized: memory runs out first, the data must fit in RAM; letters R, X, U, z1d; for in-memory databases and analytics on large data sets in memory. Storage optimized: fast reads and writes to local disks; letters I, D, H; for high-throughput databases and processing and streaming large data sets. Accelerated computing: work that needs GPUs or other special chips; letters P, G, Inf, Trn; for machine learning, graphics, floating-point calculations. HPC optimized: very large, tightly linked computations; letters Hpc; for complex simulations, deep learning, visual effects rendering.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --panel:#f1f0ec; --hi-fill:#d9e8fb; --s3:#1baf7a; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --panel:#252523; --hi-fill:#1b3554; --s3:#199e70; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .panel { fill: var(--panel); stroke: var(--axis); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .box { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .zone { fill: none; stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 5 4; }
+  .wire { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .head { fill: var(--ink); font-size: 15px; font-weight: 600; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .big { fill: var(--ink); font-size: 56px; font-weight: 600; font-family: ui-monospace, Menlo, Consolas, monospace; }
+  .bighi { fill: var(--s1); font-size: 56px; font-weight: 600; font-family: ui-monospace, Menlo, Consolas, monospace; }
+  .mono { fill: var(--ink); font-size: 13px; font-family: ui-monospace, Menlo, Consolas, monospace; }
+  .brace { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .s3 { fill: var(--s3); }
+</style>
+<rect width="700" height="558" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Six instance families, sorted by what runs out first</text>
+<text class="sub" x="16" y="48">Find the bottleneck, and the family follows. Letters are the first letter of the type name.</text>
+<rect class="panel" x="16" y="66" width="216" height="222" rx="8"/>
+<text class="head" x="30" y="92">General purpose</text>
+<text class="note" x="30" y="116">RUNS OUT FIRST</text>
+<text class="cellt" x="30" y="134.0">Nothing in particular: a</text>
+<text class="cellt" x="30" y="151.0">balance of CPU, memory and</text>
+<text class="cellt" x="30" y="168.0">network</text>
+<text class="note" x="30" y="191">LETTERS</text>
+<text class="mono" x="30" y="209">M, T (burstable)</text>
+<text class="note" x="30" y="231">AWS EXAMPLES</text>
+<text class="small" x="30" y="249.0">Web servers, code repositories,</text>
+<text class="small" x="30" y="264.0">small and medium databases</text>
+<rect class="panel" x="242" y="66" width="216" height="222" rx="8"/>
+<text class="head" x="256" y="92">Compute optimized</text>
+<text class="note" x="256" y="116">RUNS OUT FIRST</text>
+<text class="cellt" x="256" y="134.0">CPU: the processors are busy</text>
+<text class="cellt" x="256" y="151.0">all the time</text>
+<text class="note" x="256" y="174">LETTERS</text>
+<text class="mono" x="256" y="192">C</text>
+<text class="note" x="256" y="214">AWS EXAMPLES</text>
+<text class="small" x="256" y="232.0">Batch processing, media</text>
+<text class="small" x="256" y="247.0">transcoding, dedicated game</text>
+<text class="small" x="256" y="262.0">servers</text>
+<rect class="panel" x="468" y="66" width="216" height="222" rx="8"/>
+<text class="head" x="482" y="92">Memory optimized</text>
+<text class="note" x="482" y="116">RUNS OUT FIRST</text>
+<text class="cellt" x="482" y="134.0">Memory: the data must fit in</text>
+<text class="cellt" x="482" y="151.0">RAM</text>
+<text class="note" x="482" y="174">LETTERS</text>
+<text class="mono" x="482" y="192">R, X, U, z1d</text>
+<text class="note" x="482" y="214">AWS EXAMPLES</text>
+<text class="small" x="482" y="232.0">In-memory databases, analytics</text>
+<text class="small" x="482" y="247.0">on large data sets in memory</text>
+<rect class="panel" x="16" y="298" width="216" height="222" rx="8"/>
+<text class="head" x="30" y="324">Storage optimized</text>
+<text class="note" x="30" y="348">RUNS OUT FIRST</text>
+<text class="cellt" x="30" y="366.0">Fast reads and writes to local</text>
+<text class="cellt" x="30" y="383.0">disks</text>
+<text class="note" x="30" y="406">LETTERS</text>
+<text class="mono" x="30" y="424">I, D, H</text>
+<text class="note" x="30" y="446">AWS EXAMPLES</text>
+<text class="small" x="30" y="464.0">High-throughput databases,</text>
+<text class="small" x="30" y="479.0">processing and streaming large</text>
+<text class="small" x="30" y="494.0">data sets</text>
+<rect class="panel" x="242" y="298" width="216" height="222" rx="8"/>
+<text class="head" x="256" y="324">Accelerated computing</text>
+<text class="note" x="256" y="348">RUNS OUT FIRST</text>
+<text class="cellt" x="256" y="366.0">Work that needs GPUs or other</text>
+<text class="cellt" x="256" y="383.0">special chips</text>
+<text class="note" x="256" y="406">LETTERS</text>
+<text class="mono" x="256" y="424">P, G, Inf, Trn</text>
+<text class="note" x="256" y="446">AWS EXAMPLES</text>
+<text class="small" x="256" y="464.0">Machine learning, graphics,</text>
+<text class="small" x="256" y="479.0">floating-point calculations</text>
+<rect class="panel" x="468" y="298" width="216" height="222" rx="8"/>
+<text class="head" x="482" y="324">HPC optimized</text>
+<text class="note" x="482" y="348">RUNS OUT FIRST</text>
+<text class="cellt" x="482" y="366.0">Very large, tightly linked</text>
+<text class="cellt" x="482" y="383.0">computations</text>
+<text class="note" x="482" y="406">LETTERS</text>
+<text class="mono" x="482" y="424">Hpc</text>
+<text class="note" x="482" y="446">AWS EXAMPLES</text>
+<text class="small" x="482" y="464.0">Complex simulations, deep</text>
+<text class="small" x="482" y="479.0">learning, visual effects</text>
+<text class="small" x="482" y="494.0">rendering</text>
+<text class="note" x="16" y="544">Sources: EC2 instance types page and Instance Types Guide, checked 2026-10-23. Not every letter is shown.</text>
+</svg>

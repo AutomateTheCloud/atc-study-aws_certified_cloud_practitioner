@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="580" viewBox="0 0 680 580" role="img" aria-labelledby="t d">
+<title id="t">Model answer: the checkpoints each of five packets passes, and where it stops</title>
+<desc id="d">Five rows, one per packet. A, a customer to the shop on port 443: the gateway; the network ACL's inbound rule 100 allows it; web-sg allows 443; the reply passes web-sg because it remembers the request; the network ACL's outbound rule 100 allows it; the route 0.0.0.0/0 sends it to the gateway; it reaches the customer. B, the bad range to the shop on port 443: the gateway, then network ACL inbound rule 90 denies it, so it stops there. C, the web server to the database on port 5432: web-sg outbound allows all; public-nacl outbound rule 100 allows it, because 5432 is inside its port range; the local route; private-nacl inbound rule 100 allows it; db-sg allows it from web-sg; the reply passes db-sg because it remembers; private-nacl outbound rule 100 and public-nacl inbound rule 110 allow the reply; it reaches the web server. D, the database to an update site on port 443: db-sg outbound allows all, then private-nacl outbound denies it with the catch-all rule, and the private route table has no route to the internet either. E, a test server at 10.0.1.50 to the database on port 5432: its security group allows all outbound; public-nacl outbound rule 100, the local route and private-nacl inbound rule 100 all allow it, because it comes from inside the VPC; db-sg stops it, because the test server doesn't carry web-sg.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --az-fill:#d9e8fb; --you-fill:#fbe1d6; --card:#fcfcfb; --no-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --az-fill:#1b3554; --you-fill:#4d2716; --card:#1a1a19; --no-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .vpc { fill: none; stroke: var(--ink); stroke-width: 2; }
+  .net { fill: none; stroke: var(--ink2); stroke-width: 1.5; stroke-dasharray: 6 4; }
+  .az { fill: var(--az-fill); stroke: var(--s1); stroke-width: 1.2; }
+  .you { fill: var(--you-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .card { fill: var(--card); stroke: var(--ink2); stroke-width: 1; }
+  .gw { fill: var(--card); stroke: var(--ink); stroke-width: 2; }
+  .ok { fill: var(--card); stroke: var(--ink2); stroke-width: 1; }
+  .stop { fill: var(--you-fill); stroke: var(--ink); stroke-width: 3; }
+  .auto { fill: var(--no-fill); stroke: var(--muted); stroke-width: 1; stroke-dasharray: 4 3; }
+  .hl { fill: var(--card); stroke: var(--ink); stroke-width: 3; }
+  .link { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .flow { stroke: var(--ink); stroke-width: 1.5; fill: none; }
+  .arrowhead { fill: var(--ink); }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .bold { fill: var(--ink); font-size: 12px; font-weight: 700; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .tiny { fill: var(--ink2); font-size: 11px; }
+  .chip { fill: var(--ink); font-size: 11.5px; }
+  .chipb { fill: var(--ink); font-size: 11.5px; font-weight: 700; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+</style>
+<rect width="680" height="580" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Where each packet goes, and where it stops</text>
+<text class="sub" x="16" y="48">Model answer to Part 1, read left to right</text>
+<text class="bold" x="16" y="78">A. Customer → shop, port 443</text>
+<text class="small" x="664" y="78" text-anchor="end">Reply reaches the customer</text>
+<rect class="ok" x="16.0" y="88" width="72.9" height="26" rx="5"/>
+<text class="chip" x="25.0" y="105">✓ Gateway</text>
+<rect class="ok" x="94.9" y="88" width="176.6" height="26" rx="5"/>
+<text class="chip" x="103.9" y="105">✓ NACL in: rule 100 allows</text>
+<rect class="ok" x="277.5" y="88" width="164.4" height="26" rx="5"/>
+<text class="chip" x="286.5" y="105">✓ web-sg in: 443 allowed</text>
+<rect class="auto" x="447.9" y="88" width="170.5" height="26" rx="5"/>
+<text class="chip" x="456.9" y="105">✓ Reply: web-sg remembers</text>
+<rect class="ok" x="16.0" y="120" width="182.7" height="26" rx="5"/>
+<text class="chip" x="25.0" y="137">✓ NACL out: rule 100 allows</text>
+<rect class="ok" x="204.7" y="120" width="182.7" height="26" rx="5"/>
+<text class="chip" x="213.7" y="137">✓ Route 0.0.0.0/0 → gateway</text>
+<text class="bold" x="16" y="176">B. Bad range → shop, port 443</text>
+<text class="small" x="664" y="176" text-anchor="end">Blocked at the network ACL</text>
+<rect class="ok" x="16.0" y="186" width="72.9" height="26" rx="5"/>
+<text class="chip" x="25.0" y="203">✓ Gateway</text>
+<rect class="stop" x="94.9" y="186" width="249.8" height="26" rx="5"/>
+<text class="chipb" x="103.9" y="203">✗ NACL in: rule 90 denies (stops here)</text>
+<text class="bold" x="16" y="242">C. Web server → database, port 5432</text>
+<text class="small" x="664" y="242" text-anchor="end">Reply reaches the web server</text>
+<rect class="ok" x="16.0" y="252" width="170.5" height="26" rx="5"/>
+<text class="chip" x="25.0" y="269">✓ web-sg out: all allowed</text>
+<rect class="ok" x="192.5" y="252" width="182.7" height="26" rx="5"/>
+<text class="chip" x="201.5" y="269">✓ public-nacl out: rule 100</text>
+<rect class="ok" x="381.2" y="252" width="97.3" height="26" rx="5"/>
+<text class="chip" x="390.2" y="269">✓ Local route</text>
+<rect class="ok" x="16.0" y="284" width="182.7" height="26" rx="5"/>
+<text class="chip" x="25.0" y="301">✓ private-nacl in: rule 100</text>
+<rect class="ok" x="204.7" y="284" width="158.3" height="26" rx="5"/>
+<text class="chip" x="213.7" y="301">✓ db-sg in: from web-sg</text>
+<rect class="auto" x="369.0" y="284" width="164.4" height="26" rx="5"/>
+<text class="chip" x="378.0" y="301">✓ Reply: db-sg remembers</text>
+<rect class="ok" x="16.0" y="316" width="188.8" height="26" rx="5"/>
+<text class="chip" x="25.0" y="333">✓ private-nacl out: rule 100</text>
+<rect class="ok" x="210.8" y="316" width="176.6" height="26" rx="5"/>
+<text class="chip" x="219.8" y="333">✓ public-nacl in: rule 110</text>
+<text class="bold" x="16" y="372">D. Database → update site, port 443</text>
+<text class="small" x="664" y="372" text-anchor="end">Blocked leaving the subnet</text>
+<rect class="ok" x="16.0" y="382" width="164.4" height="26" rx="5"/>
+<text class="chip" x="25.0" y="399">✓ db-sg out: all allowed</text>
+<rect class="stop" x="186.4" y="382" width="268.1" height="26" rx="5"/>
+<text class="chipb" x="195.4" y="399">✗ private-nacl out: * denies (stops here)</text>
+<text class="bold" x="16" y="438">E. Test server 10.0.1.50 → database, port 5432</text>
+<text class="small" x="664" y="438" text-anchor="end">Blocked at the security group</text>
+<rect class="ok" x="16.0" y="448" width="176.6" height="26" rx="5"/>
+<text class="chip" x="25.0" y="465">✓ test-sg out: all allowed</text>
+<rect class="ok" x="198.6" y="448" width="182.7" height="26" rx="5"/>
+<text class="chip" x="207.6" y="465">✓ public-nacl out: rule 100</text>
+<rect class="ok" x="387.3" y="448" width="97.3" height="26" rx="5"/>
+<text class="chip" x="396.3" y="465">✓ Local route</text>
+<rect class="ok" x="16.0" y="480" width="182.7" height="26" rx="5"/>
+<text class="chip" x="25.0" y="497">✓ private-nacl in: rule 100</text>
+<rect class="stop" x="204.7" y="480" width="231.5" height="26" rx="5"/>
+<text class="chipb" x="213.7" y="497">✗ db-sg in: not web-sg (stops here)</text>
+<text class="note" x="16" y="530.0">✓ passes; dashed: a security group lets a reply through without a rule; thick outline and ✗: the rule</text>
+<text class="note" x="16" y="546.0">that stops the packet. Packet D would also find no route to the internet in the private subnet's route</text>
+<text class="note" x="16" y="562.0">table.</text>
+</svg>

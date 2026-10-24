@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="424" viewBox="0 0 680 424" role="img" aria-labelledby="t d">
+<title id="t">Grid comparing connection options by path and by encryption</title>
+<desc id="d">A two-by-two grid. Columns: over the public internet, and private, off the internet. Rows: encrypted, and not encrypted unless you add it. Encrypted over the internet, highlighted: AWS VPN, both kinds: Site-to-Site VPN, network to network, and Client VPN for one person's device; encrypted, but not private. Encrypted and private: Direct Connect plus MACsec on supported connections, or a VPN run over it. Not encrypted, over the internet: plain internet traffic, not a connection option, what a link is meant to avoid. Private, not encrypted unless you add it: Direct Connect on its own, a dedicated line off the internet where encryption is something you add. A note says the highlighted cell is the one people get wrong: a VPN protects what it carries, but the traffic still crosses the public internet; private means the path, not the protection.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --aws-fill:#d9e8fb; --link-fill:#fbe1d6; --prem-fill:#f1f0ec; --net-fill:#ecebe6; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --aws-fill:#1b3554; --link-fill:#4d2716; --prem-fill:#252523; --net-fill:#262624; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .aws { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .link { fill: var(--link-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .prem { fill: var(--prem-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .net { fill: var(--net-fill); stroke: var(--axis); stroke-width: 1; }
+  .zone { fill: none; stroke: var(--axis); stroke-width: 1.5; stroke-dasharray: 6 4; }
+  .panel { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .cellhi { fill: var(--link-fill); stroke: var(--s2); stroke-width: 2; }
+  .cell { fill: var(--prem-fill); stroke: var(--axis); stroke-width: 1; }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .arrlab { fill: var(--ink); font-size: 11.5px; font-weight: 600; }
+  .arrsub { fill: var(--ink2); font-size: 11px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .flow { stroke: var(--ink); stroke-width: 2; fill: none; }
+  .flowp { stroke: var(--s1); stroke-width: 3; fill: none; }
+  .flowt { stroke: var(--ink); stroke-width: 2; fill: none; stroke-dasharray: 8 4; }
+  .mesh { stroke: var(--ink2); stroke-width: 1.5; }
+  .node { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .hub { fill: var(--link-fill); stroke: var(--s2); stroke-width: 2; }
+  .val { fill: var(--ink); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .zero { stroke: var(--s1); stroke-width: 2; }
+  .other { fill: var(--muted); }
+  .head-ink { fill: var(--ink); }
+</style>
+<rect width="680" height="424" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Private and encrypted are two different questions</text>
+<text class="sub" x="16" y="48">Columns: which path the traffic takes. Rows: whether it is encrypted on the way.</text>
+<text class="boxt" x="277.0" y="80" text-anchor="middle">Over the public internet</text>
+<text class="boxt" x="543.0" y="80" text-anchor="middle">Private: off the internet</text>
+<text class="boxt" x="138" y="144.0" text-anchor="end">Encrypted</text>
+<text class="boxt" x="138" y="268.0" text-anchor="end">Not encrypted</text>
+<text class="boxt" x="138" y="283.0" text-anchor="end">unless you</text>
+<text class="boxt" x="138" y="298.0" text-anchor="end">add it</text>
+<rect class="cellhi" x="150" y="92" width="254" height="118" rx="8"/>
+<text class="boxt" x="164" y="118">AWS VPN, both kinds</text>
+<text class="cells" x="164" y="142.0">Site-to-Site: network to network</text>
+<text class="cells" x="164" y="158.0">Client VPN: one person's device</text>
+<text class="arrlab" x="164" y="194">Encrypted, but NOT private</text>
+<rect class="cell" x="416" y="92" width="254" height="118" rx="8"/>
+<text class="boxt" x="430" y="118">Direct Connect plus</text>
+<text class="cells" x="430" y="142.0">MACsec on supported connections,</text>
+<text class="cells" x="430" y="158.0">or a VPN run over it</text>
+<text class="arrlab" x="430" y="194">Private and encrypted</text>
+<rect class="cell" x="150" y="222" width="254" height="118" rx="8"/>
+<text class="boxt" x="164" y="248">Plain internet traffic</text>
+<text class="cells" x="164" y="272.0">Not a connection option:</text>
+<text class="cells" x="164" y="288.0">what a link is meant to avoid</text>
+<rect class="cell" x="416" y="222" width="254" height="118" rx="8"/>
+<text class="boxt" x="430" y="248">Direct Connect on its own</text>
+<text class="cells" x="430" y="272.0">A dedicated line, off the internet</text>
+<text class="cells" x="430" y="288.0">Encryption is something you add</text>
+<text class="arrlab" x="430" y="324">Private</text>
+<text class="small" x="16" y="372.0">Highlighted: the cell people get wrong. A VPN protects what it carries, but the traffic still crosses the</text>
+<text class="small" x="16" y="389.0">public internet, so its speed and delay vary with the internet. Private means the path, not the protection.</text>
+<text class="note" x="16" y="410">Our summary of AWS's VPN and Direct Connect documentation and FAQs, checked 2026-10-23.</text>
+</svg>

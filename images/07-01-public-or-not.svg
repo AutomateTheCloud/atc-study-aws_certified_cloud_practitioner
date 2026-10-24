@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="410" viewBox="0 0 680 410" role="img" aria-labelledby="t d">
+<title id="t">What a server can do, by its subnet's route and its address</title>
+<desc id="d">A grid of four cells. Columns: the server has a public IPv4 address; the server has no public address. Rows: the route table sends 0.0.0.0/0 to the internet gateway, which makes a public subnet; there is no route to the internet gateway, which makes a private subnet. Public subnet with a public address: the server reaches the internet and the internet can reach it, for example the bakery's web server, whose security group still decides what gets in. Public subnet with no public address: the server can't use the internet gateway, because it has no public address to translate. Private subnet with a public address, marked as the common mistake: the server still can't reach the internet, because there is no route out; the address does nothing but still costs $0.005 an hour as of 2026-10-24. Private subnet with no public address: private and unreachable from the internet, for example the order database; to reach out it would need a route to a NAT gateway.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --pub-fill:#d9e8fb; --priv-fill:#f1f0ec; --bad-fill:#fbe1d6; --s3c:#1baf7a; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --pub-fill:#1b3554; --priv-fill:#252523; --bad-fill:#4d2716; --s3c:#199e70; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .pub { fill: var(--pub-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .priv { fill: var(--priv-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .bad { fill: var(--bad-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .plain { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .zone { fill: none; stroke: var(--axis); stroke-width: 1.5; stroke-dasharray: 6 4; }
+  .region { fill: none; stroke: var(--ink2); stroke-width: 1.2; }
+  .vpc { fill: none; stroke: var(--ink); stroke-width: 1.8; }
+  .s3c { fill: var(--s3c); }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .head { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .zlab { fill: var(--muted); font-size: 12px; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .mono { fill: var(--ink); font-size: 12px; font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; }
+  .arrlab { fill: var(--ink2); font-size: 11.5px; font-style: italic; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .arrowhead { fill: var(--ink2); }
+  .cross { stroke: var(--s2); stroke-width: 2.5; stroke-linecap: round; }
+  .val { fill: var(--ink); font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+</style>
+<rect width="680" height="410" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Two things must be true to talk to the internet directly</text>
+<text class="sub" x="16" y="48">The route makes the subnet public; the address lets one server use that route</text>
+<text class="head" x="166" y="84">The server has a public IPv4 address</text>
+<text class="head" x="423" y="84">The server has no public address</text>
+<text class="cellt" x="16" y="120.0">Route table sends</text>
+<text class="cellt" x="16" y="136.0">0.0.0.0/0 to the</text>
+<text class="cellt" x="16" y="152.0">internet gateway</text>
+<text class="zlab" x="16" y="208">= Public subnet</text>
+<rect class="pub" x="166.0" y="98.0" width="247.0" height="124.0" rx="6"/>
+<text class="cellt" x="178" y="120.0">Reaches the internet, and the</text>
+<text class="cellt" x="178" y="136.0">internet can reach it</text>
+<text class="cells" x="178" y="156.0">Example: the bakery's web server. Its</text>
+<text class="cells" x="178" y="171.0">security group still decides what gets</text>
+<text class="cells" x="178" y="186.0">in (07.02).</text>
+<rect class="priv" x="423.0" y="98.0" width="247.0" height="124.0" rx="6"/>
+<text class="cellt" x="435" y="120.0">Can't use the internet gateway</text>
+<text class="cells" x="435" y="140.0">The subnet is public, but this server</text>
+<text class="cells" x="435" y="155.0">has no public address for the gateway</text>
+<text class="cells" x="435" y="170.0">to translate.</text>
+<text class="cellt" x="16" y="254.0">No route to the</text>
+<text class="cellt" x="16" y="270.0">internet gateway</text>
+<text class="zlab" x="16" y="342">= Private subnet</text>
+<rect class="bad" x="166.0" y="232.0" width="247.0" height="124.0" rx="6"/>
+<text class="cellt" x="178" y="254.0">Still can't reach the internet</text>
+<text class="cells" x="178" y="274.0">There is no route out, so the address</text>
+<text class="cells" x="178" y="289.0">does nothing. It still costs $0.005 an</text>
+<text class="cells" x="178" y="304.0">hour (2026-10-24).</text>
+<rect class="priv" x="423.0" y="232.0" width="247.0" height="124.0" rx="6"/>
+<text class="cellt" x="435" y="254.0">Private: unreachable from the</text>
+<text class="cellt" x="435" y="270.0">internet</text>
+<text class="cells" x="435" y="290.0">Example: the order database. To reach</text>
+<text class="cells" x="435" y="305.0">out, it would need a NAT gateway</text>
+<text class="cells" x="435" y="320.0">route.</text>
+<text class="note" x="16" y="380">From the Amazon VPC User Guide (subnets; internet gateways), checked 2026-10-23. Price: AWS Price List,</text>
+<text class="note" x="16" y="396">US East (N. Virginia), retrieved 2026-10-24. The orange cell is the common mistake: a public address in a private subnet.</text>
+</svg>
