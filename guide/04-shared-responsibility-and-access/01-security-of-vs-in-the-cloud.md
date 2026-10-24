@@ -74,7 +74,8 @@ Think of the bakery's site as a stack of layers. AWS secures the bottom ones; th
 - **Virtualization:** software that splits one physical computer into several **virtual servers**. The **host operating system** runs on the physical machine; AWS runs it. The **guest operating system**, such as Linux or Windows, runs inside your virtual server.
 - **Patch:** a software update that fixes a flaw, often a security flaw.
 - **Security group:** a firewall that AWS provides for each EC2 virtual server. You write its rules: who may connect, and how.
-- **Managed service** (AWS also says **abstracted service**): AWS runs the servers and software underneath, and you use the service through its settings. Amazon RDS and Amazon S3 are examples.
+- **Managed service:** AWS runs the servers and software underneath, and you use the service through its settings. Amazon RDS and Amazon S3 are examples.
+- **Abstracted service:** AWS's name for the most managed kind, such as Amazon S3 or Amazon DynamoDB, where AWS also runs the operating system and platform and you work only with your data and its settings.
 - **Region, Availability Zone, edge location:** parts of AWS's global infrastructure. A Region is a place in the world with several Availability Zones; an Availability Zone is one or more separate data centers; edge locations are smaller sites. Module 03 covers them.
 
 "Shared" is an everyday word that misleads here. Two people sharing a job often do the same task together. In this model, AWS and you each do **different** parts. Lesson 04.02 returns to this.

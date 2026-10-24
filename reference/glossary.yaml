@@ -1,0 +1,1917 @@
+# Glossary of the terms this guide teaches: the source of truth for reference/glossary.md
+# (built by source/glossary/build_glossary.py) and, later, for flashcards.
+# Sorted alphabetically by term. Fields are described in source/glossary/build_glossary.py.
+
+- term: abstracted service
+  definition: >-
+    AWS's name for the most managed kind of service, such as Amazon S3 or Amazon DynamoDB, where AWS
+    runs the infrastructure, operating system and platform and you work only with your data and its
+    settings.
+  taught_in: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
+  confused_with: [managed service]
+  not_to_confuse: >-
+    Abstracted services are the far end of managed services: you never see a server or a database
+    engine, only the service's data and settings.
+  module: "04"
+
+- term: access key
+  definition: >-
+    A long-term credential that lets a program act as an IAM user, or the root user, without a
+    password or MFA. It has an access key ID and a secret access key; avoid it wherever a role or
+    keyless sign-in will do.
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  module: "04"
+
+- term: account-specific event
+  definition: >-
+    An AWS Health Dashboard event about your own account or resources, such as scheduled maintenance
+    on one of your servers.
+  taught_in: guide/03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md
+  confused_with: [public event]
+  not_to_confuse: >-
+    An account-specific event is about your resources; a public event is a service issue not tied to
+    any account.
+  module: "03"
+
+- term: Action (policy element)
+  definition: >-
+    The part of a policy statement that names what may be done, written as service:action, such as
+    s3:GetObject.
+  taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
+  module: "04"
+
+- term: agility
+  definition: >-
+    The ability to get new resources, and try new ideas, quickly and cheaply: a new resource takes
+    minutes rather than weeks, and you can delete it afterwards.
+  taught_in: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+  also_in: [guide/02-why-the-cloud/06-lab-01-first-resource.md]
+  confused_with: [elasticity, global reach]
+  not_to_confuse: >-
+    Agility is how fast you can get something new; elasticity is more or less of the same thing
+    driven by demand, and global reach is about where you run.
+  module: "02"
+
+- term: Amazon CloudFront
+  definition: >-
+    AWS's content delivery network. It serves cached copies from the edge location with the lowest
+    latency for each user, and fetches from your origin over AWS's network when it has no copy.
+  taught_in: guide/03-aws-around-the-world/04-the-edge.md
+  confused_with: [Amazon Route 53, AWS Global Accelerator]
+  not_to_confuse: >-
+    CloudFront caches and delivers content; Route 53 only answers where a site is, and Global
+    Accelerator carries traffic over AWS's network without caching.
+  module: "03"
+
+- term: Amazon Cognito
+  definition: >-
+    An AWS service that handles sign-up and sign-in for the customers of your web or mobile app,
+    including with accounts such as Google, and can give app users temporary, limited AWS
+    credentials.
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  confused_with: [AWS IAM Identity Center]
+  not_to_confuse: >-
+    Cognito signs in your app's customers; IAM Identity Center signs in your own staff.
+  module: "04"
+
+- term: Amazon Resource Name
+  abbreviation: ARN
+  definition: >-
+    The unique name of a resource in AWS, used in policies to say which resource a statement covers.
+    A bucket's ARN, for example, is arn:aws:s3::: followed by the bucket name.
+  taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
+  also_in: [guide/04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md]
+  module: "04"
+
+- term: Amazon Route 53
+  definition: >-
+    AWS's DNS service. It answers where a site is, and can choose the answer, for example the Region
+    with the lowest latency, or a standby when the main site fails its health checks.
+  taught_in: guide/03-aws-around-the-world/04-the-edge.md
+  confused_with: [Amazon CloudFront]
+  not_to_confuse: >-
+    Route 53 tells users where to go and is not a CDN; CloudFront delivers the content.
+  module: "03"
+
+- term: Amazon S3
+  definition: >-
+    Amazon Simple Storage Service, AWS's service for storing files, which it calls objects, in
+    containers called buckets. AWS runs it across several Availability Zones for you.
+  taught_in: guide/02-why-the-cloud/06-lab-01-first-resource.md
+  also_in: [guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md, guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md]
+  module: "02"
+
+- term: Amazon Web Services
+  abbreviation: AWS
+  definition: >-
+    The company that rents computing power, storage and many other IT services over the internet:
+    the cloud provider this guide is about.
+  taught_in: guide/00-start-here/01-welcome.md
+  also_in: [guide/02-why-the-cloud/01-what-cloud-computing-is.md]
+  module: "00"
+
+- term: assume a role
+  definition: >-
+    To take on a role's permissions for a session, receiving temporary credentials. The role's trust
+    policy says who may do it.
+  taught_in: guide/04-shared-responsibility-and-access/03-identities.md
+  also_in: [guide/04-shared-responsibility-and-access/05-credentials-and-federation.md]
+  module: "04"
+
+- term: audit
+  definition: >-
+    An independent check that controls exist and work, done by an auditor. AWS makes its auditors'
+    reports available to customers.
+  taught_in: guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md
+  also_in: [guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md]
+  confused_with: [compliance]
+  not_to_confuse: >-
+    An audit is the check; compliance is meeting the rules the check looks for.
+  module: "04"
+
+- term: authentication
+  definition: >-
+    Proving who you are, for example by signing in.
+  taught_in: guide/04-shared-responsibility-and-access/03-identities.md
+  confused_with: [authorization]
+  not_to_confuse: >-
+    Authentication asks who you are; authorization asks, on every request, whether that identity may
+    do that action.
+  module: "04"
+
+- term: authorization
+  definition: >-
+    AWS checking, on every request, whether your identity may do that one action on that one
+    resource. If AWS knows who you are and still says no, authorization is what failed.
+  taught_in: guide/04-shared-responsibility-and-access/03-identities.md
+  confused_with: [authentication]
+  not_to_confuse: >-
+    Authorization decides what an identity may do, request by request; authentication only proves
+    who it is.
+  module: "04"
+
+- term: auto scaling
+  definition: >-
+    A feature that watches demand and adds or removes servers by rules you set; the usual way AWS
+    delivers elasticity. The exam guide's service list names AWS Auto Scaling, while the service
+    that adds and removes servers is Amazon EC2 Auto Scaling.
+  taught_in: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+  module: "02"
+
+- term: automation
+  definition: >-
+    Having software do a repeated task, such as starting, stopping or building servers, instead of a
+    person doing it by hand. It saves money and cuts mistakes.
+  taught_in: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+  module: "02"
+
+- term: Availability Zone
+  abbreviation: AZ
+  definition: >-
+    One or more data centers inside a Region, with their own power, networking and connections, kept
+    physically apart from the other Availability Zones so they fail separately.
+  taught_in: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
+  also_in: [guide/02-why-the-cloud/03-telling-the-benefits-apart.md, guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md]
+  confused_with: [Region, data center, edge location]
+  not_to_confuse: >-
+    An Availability Zone is inside a Region and holds one or more data centers; an edge location is
+    a separate, smaller site outside the Regions that delivers content close to users.
+  module: "03"
+
+- term: awareness and training
+  definition: >-
+    Teaching people to work securely. A shared control: AWS trains its own employees, and you must
+    train yours.
+  taught_in: guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md
+  module: "04"
+
+- term: AWS CloudTrail
+  definition: >-
+    The AWS service that records activity in your account, such as who created a resource and when.
+    Its Event history lets you look up recent activity.
+  taught_in: guide/02-why-the-cloud/06-lab-01-first-resource.md
+  module: "02"
+
+- term: AWS Directory Service
+  definition: >-
+    An AWS service for Microsoft Active Directory: a managed directory on AWS, or a connector that
+    passes sign-ins to your existing on-premises directory.
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  confused_with: [AWS IAM Identity Center]
+  not_to_confuse: >-
+    Directory Service runs or connects an Active Directory; IAM Identity Center gives staff single
+    sign-on to AWS accounts and can use such a directory as its identity source.
+  module: "04"
+
+- term: AWS European Sovereign Cloud
+  definition: >-
+    A separate, independent AWS cloud for Europe, aimed at public bodies and highly regulated
+    industries with strict sovereignty needs.
+  taught_in: guide/03-aws-around-the-world/02-choosing-a-region.md
+  module: "03"
+
+- term: AWS Global Accelerator
+  definition: >-
+    A service that gives an application fixed internet addresses announced from AWS's edge
+    locations, so users' traffic enters AWS's network at the nearest edge and travels on it to the
+    best healthy endpoint in a Region. It caches nothing.
+  taught_in: guide/03-aws-around-the-world/04-the-edge.md
+  confused_with: [Amazon CloudFront]
+  not_to_confuse: >-
+    Global Accelerator speeds the path to your application without caching; CloudFront keeps copies
+    of content near users.
+  module: "03"
+
+- term: AWS Health Dashboard
+  definition: >-
+    The console page that shows events affecting AWS services and your own account, with no setup.
+    Older material calls it the Personal Health Dashboard or the Service Health Dashboard.
+  taught_in: guide/03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md
+  module: "03"
+
+- term: AWS IAM Identity Center
+  definition: >-
+    AWS's recommended way to give a workforce single sign-on to many AWS accounts and business
+    applications, with temporary credentials through permission sets. It was called AWS Single
+    Sign-On (AWS SSO) until 2022.
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  also_in: [guide/04-shared-responsibility-and-access/09-sim-policy-playground.md]
+  confused_with: [AWS Identity and Access Management, Amazon Cognito, AWS Directory Service]
+  not_to_confuse: >-
+    Identity Center is for your staff across many accounts; IAM holds identities inside one account,
+    Cognito signs in your app's customers, and Directory Service runs Microsoft Active Directory.
+  module: "04"
+
+- term: AWS Identity and Access Management
+  abbreviation: IAM
+  definition: >-
+    The AWS service that holds an account's identities and their permissions. It is a global
+    service, not tied to one Region.
+  taught_in: guide/04-shared-responsibility-and-access/03-identities.md
+  also_in: [guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md]
+  confused_with: [AWS IAM Identity Center]
+  not_to_confuse: >-
+    IAM holds the identities and permissions inside one account; IAM Identity Center gives a
+    workforce single sign-on across many accounts.
+  module: "04"
+
+- term: AWS managed policy
+  definition: >-
+    A policy that AWS writes and updates and every customer can use. It's a quick start, but it may
+    grant more than your case needs.
+  taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
+  confused_with: [customer managed policy, inline policy]
+  not_to_confuse: >-
+    AWS managed policies are written by AWS for everyone; customer managed policies are yours and
+    attach to many identities; inline policies live in one identity and are deleted with it.
+  module: "04"
+
+- term: AWS Outposts
+  definition: >-
+    AWS hardware, services and tools installed in your own data center or site, which AWS operates
+    and maintains as an extension of a Region; you provide the building, power and network
+    connection. It suits hybrid systems whose data must stay on the premises.
+  taught_in: guide/03-aws-around-the-world/04-the-edge.md
+  confused_with: [Local Zone]
+  not_to_confuse: >-
+    Outposts is in your own building; a Local Zone is an AWS site in a big city.
+  module: "03"
+
+- term: AWS Secrets Manager
+  definition: >-
+    An AWS service that stores secrets, such as database passwords and API keys, always encrypted,
+    and can rotate them automatically on a schedule.
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  confused_with: [Parameter Store]
+  not_to_confuse: >-
+    Secrets Manager is built for secrets and can rotate them; Parameter Store is built for
+    configuration values and doesn't rotate them.
+  module: "04"
+
+- term: AWS Security Token Service
+  abbreviation: AWS STS
+  definition: >-
+    The AWS service that issues temporary credentials.
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  module: "04"
+
+- term: AWS Well-Architected Framework
+  definition: >-
+    AWS's published guidance, as a set of whitepapers, for designing and running workloads well in
+    the cloud. It is organized into six pillars, each with design principles and best practices.
+  taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
+  confused_with: [AWS Well-Architected Tool]
+  not_to_confuse: >-
+    The Framework is the guidance; the Well-Architected Tool is the console service that reviews one
+    workload against it.
+  module: "02"
+
+- term: AWS Well-Architected Tool
+  definition: >-
+    A service in the AWS console that reviews one workload against the Well-Architected Framework's
+    questions, flags risks and saves milestones. It is a different service from AWS Trusted Advisor,
+    which runs automatic checks on an account.
+  taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
+  confused_with: [AWS Well-Architected Framework]
+  not_to_confuse: >-
+    The Tool is the service that runs a review; the Framework is the guidance the review is based
+    on.
+  module: "02"
+
+- term: AZ ID
+  definition: >-
+    An identifier, such as use1-az1, that names the same physical Availability Zone in every
+    account. To agree on a place across accounts, compare AZ IDs, not AZ names.
+  taught_in: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
+  also_in: [guide/03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md]
+  confused_with: [AZ name]
+  not_to_confuse: >-
+    An AZ ID is the same in every account; an AZ name is your account's label for a zone and may
+    differ from another account's.
+  module: "03"
+
+- term: AZ name
+  definition: >-
+    An Availability Zone's name in your account: the Region code plus a letter, such as us-east-1a.
+    In AWS's oldest Regions, older accounts may map the same name to different physical zones.
+  taught_in: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
+  also_in: [guide/03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md]
+  confused_with: [AZ ID]
+  not_to_confuse: >-
+    An AZ name such as us-east-1a can point to different places in different accounts; an AZ ID such
+    as use1-az1 means the same physical place in every account.
+  module: "03"
+
+- term: backup
+  definition: >-
+    A saved copy of data as it was at one moment. A point-in-time backup lets you go back to that
+    moment, which is the only way to undo a deletion that replication has already copied.
+  taught_in: guide/03-aws-around-the-world/03-surviving-failure.md
+  also_in: [guide/03-aws-around-the-world/06-sim-blast-radius.md]
+  confused_with: [replication]
+  not_to_confuse: >-
+    A backup stops changing, so it can take you back to before a mistake; replication keeps copying
+    every change, mistakes included.
+  module: "03"
+
+- term: backup and restore
+  definition: >-
+    The cheapest and slowest disaster recovery strategy: only backups of the data and setup are kept
+    in the recovery Region, and everything else is rebuilt after the disaster. Recovery typically
+    takes hours.
+  taught_in: guide/03-aws-around-the-world/03-surviving-failure.md
+  also_in: [guide/03-aws-around-the-world/06-sim-blast-radius.md]
+  confused_with: [pilot light]
+  not_to_confuse: >-
+    Backup and restore keeps only backups and rebuilds everything; a pilot light also keeps data
+    copied continuously and core parts such as the database running.
+  module: "03"
+
+- term: best practice
+  definition: >-
+    A specific recommended action in the Well-Architected Framework, with an ID that shows its
+    pillar and question.
+  taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
+  confused_with: [design principle]
+  not_to_confuse: >-
+    A best practice is a specific action with an ID; a design principle is a broad idea that guides
+    many decisions.
+  module: "02"
+
+- term: blast radius
+  definition: >-
+    How far a failure reaches: one server, a data center, an Availability Zone, or a whole Region.
+    It decides which protection you need.
+  taught_in: guide/03-aws-around-the-world/03-surviving-failure.md
+  also_in: [guide/03-aws-around-the-world/06-sim-blast-radius.md]
+  module: "03"
+
+- term: bucket
+  definition: >-
+    A container for files (objects) in Amazon S3.
+  taught_in: guide/02-why-the-cloud/06-lab-01-first-resource.md
+  also_in: [guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md, guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md]
+  confused_with: [object]
+  not_to_confuse: >-
+    A bucket is the container; objects are the files stored in it.
+  module: "02"
+
+- term: bucket policy
+  definition: >-
+    A resource-based policy attached to an S3 bucket. Because it can let other identities or
+    accounts in, it deserves the same review as an identity's policies.
+  taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
+  also_in: [guide/04-shared-responsibility-and-access/09-sim-policy-playground.md]
+  module: "04"
+
+- term: business continuity
+  definition: >-
+    Keeping the business running through a major disruption, not just restoring it afterwards; one
+    of the reasons to use more than one Region.
+  taught_in: guide/03-aws-around-the-world/02-choosing-a-region.md
+  confused_with: [disaster recovery]
+  not_to_confuse: >-
+    Business continuity keeps the business going during a disruption; disaster recovery brings the
+    workload back after it.
+  module: "03"
+
+- term: cache
+  definition: >-
+    A stored copy kept close by so it can be served again quickly. To cache something is to keep
+    such a copy.
+  taught_in: guide/03-aws-around-the-world/04-the-edge.md
+  confused_with: [origin]
+  not_to_confuse: >-
+    The cache is the nearby copy; the origin is where the original lives, and where the cache
+    fetches from when it has no copy.
+  module: "03"
+
+- term: capacity
+  definition: >-
+    How much work a system can do.
+  taught_in: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+  confused_with: [demand]
+  not_to_confuse: >-
+    Capacity is the work a system can do; demand is the work asked of it, and the gap between them
+    is idle capacity or lost sales.
+  module: "02"
+
+- term: capital expense
+  abbreviation: CapEx
+  definition: >-
+    Money spent up front on things that last for years, such as servers or a building.
+  taught_in: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+  also_in: [guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md]
+  confused_with: [operating expense, fixed expense]
+  not_to_confuse: >-
+    Capital versus operating is about when you pay (up front or as you go); fixed versus variable is
+    about whether use drives the cost.
+  module: "02"
+
+- term: closed to new customers
+  definition: >-
+    A stage in a service's retirement: customers who already use it keep using it, but new customers
+    can't start. This guide still teaches such a service while the exam lists it, but never uses it
+    in a lab.
+  taught_in: guide/00-start-here/04-aws-changes-fast.md
+  confused_with: [end of support, shut down]
+  not_to_confuse: >-
+    Closed to new customers means existing users carry on; end of support means a stop date has been
+    set; shut down means the service is gone.
+  module: "00"
+
+- term: cloud computing
+  definition: >-
+    Renting IT resources from a provider on demand, over the internet, and paying as you go. All
+    three features are needed: renting a server for a fixed term in someone else's building, for
+    example, isn't cloud computing.
+  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+  module: "02"
+
+- term: cloud deployment
+  definition: >-
+    A deployment model in which every part of a system runs in the cloud, whether it was built there
+    or moved there.
+  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+  confused_with: [hybrid deployment]
+  not_to_confuse: >-
+    In a cloud deployment every part runs at a cloud provider, even if there are two providers; in a
+    hybrid deployment some connected parts don't run in the cloud at all.
+  module: "02"
+
+- term: cloud provider
+  definition: >-
+    A company that owns data centers and rents IT resources to others over the internet. AWS is one.
+  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+  module: "02"
+
+- term: compensatory scoring
+  definition: >-
+    Passing on your total score for the whole exam, not domain by domain, so strength in one domain
+    can make up for weakness in another.
+  taught_in: guide/00-start-here/03-the-exam-at-a-glance.md
+  module: "00"
+
+- term: compliance
+  definition: >-
+    Meeting the rules that apply to you, from laws, regulators, industry standards or contracts.
+    Each such rule is a compliance requirement, and one can rule out a Region however cheap or close
+    it is.
+  taught_in: guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md
+  also_in: [guide/03-aws-around-the-world/02-choosing-a-region.md]
+  confused_with: [audit]
+  not_to_confuse: >-
+    Compliance is meeting the rules; an audit is the independent check that your controls exist and
+    work.
+  module: "04"
+
+- term: compute
+  definition: >-
+    Processing power to run programs; one of the main IT resources.
+  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+  module: "02"
+
+- term: Condition (policy element)
+  definition: >-
+    An optional part of a policy statement that adds "only when", such as only when the request was
+    made with MFA.
+  taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
+  module: "04"
+
+- term: configuration management
+  definition: >-
+    Keeping systems set up correctly. A shared control: AWS keeps its own devices set up, and you
+    keep your operating systems, databases, applications and AWS resource settings set up.
+  taught_in: guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md
+  module: "04"
+
+- term: content delivery network
+  abbreviation: CDN
+  definition: >-
+    A network of servers in many places that keeps copies of content near users, so it arrives
+    faster. Amazon CloudFront is AWS's CDN.
+  taught_in: guide/03-aws-around-the-world/04-the-edge.md
+  confused_with: [Domain Name System]
+  not_to_confuse: >-
+    A CDN delivers the content itself from nearby copies; DNS only tells users where to find it.
+  module: "03"
+
+- term: cost optimization pillar
+  definition: >-
+    The Well-Architected pillar that asks whether a workload delivers its value at the lowest cost.
+  taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
+  confused_with: [sustainability pillar]
+  not_to_confuse: >-
+    Both pillars fight waste, but cost optimization measures money and sustainability measures
+    resources and energy.
+  module: "02"
+
+- term: credentials
+  definition: >-
+    What an identity shows to prove who it is: a password, an MFA device, an access key, or a
+    temporary token.
+  taught_in: guide/04-shared-responsibility-and-access/03-identities.md
+  module: "04"
+
+- term: cross-account role
+  definition: >-
+    A role in the account that owns the resources, whose trust policy names another account that may
+    assume it. People there get temporary credentials, with no second IAM user.
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  also_in: [guide/04-shared-responsibility-and-access/09-sim-policy-playground.md]
+  confused_with: [resource-based policy]
+  not_to_confuse: >-
+    With a cross-account role, the other account's users assume a role in your account; with a
+    resource-based policy, they use one resource directly without assuming anything.
+  module: "04"
+
+- term: customer managed policy
+  definition: >-
+    A permissions policy you write and manage yourself, which you can attach to many identities; the
+    usual way to apply least privilege.
+  taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
+  also_in: [guide/04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md, guide/04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md]
+  exam_name: custom policy
+  confused_with: [AWS managed policy, inline policy]
+  not_to_confuse: >-
+    A customer managed policy is yours and reusable; an AWS managed policy is AWS's and shared by
+    every customer, and an inline policy belongs to one identity only.
+  module: "04"
+
+- term: customer-specific control
+  definition: >-
+    A control that depends only on what you build, so only you can do it, such as keeping certain
+    data in certain protected areas.
+  taught_in: guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md
+  confused_with: [inherited control, shared control]
+  not_to_confuse: >-
+    A customer-specific control is yours alone because it comes from what you build; an inherited
+    control is AWS's alone, and a shared control is done by both sides on their own things.
+  module: "04"
+
+- term: data center
+  definition: >-
+    A building that holds servers, storage and network equipment, with the power and cooling they
+    need.
+  taught_in: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
+  also_in: [guide/02-why-the-cloud/01-what-cloud-computing-is.md]
+  confused_with: [Availability Zone]
+  not_to_confuse: >-
+    A data center is one building; an Availability Zone is one or more data centers, and on AWS you
+    choose Availability Zones, never buildings.
+  module: "03"
+
+- term: data residency
+  definition: >-
+    Where data is physically stored.
+  taught_in: guide/03-aws-around-the-world/02-choosing-a-region.md
+  confused_with: [data sovereignty]
+  not_to_confuse: >-
+    Data residency is only where the data sits; data sovereignty is whose control and laws the data
+    is under, which often decides where it may sit.
+  module: "03"
+
+- term: data sovereignty
+  definition: >-
+    Keeping data under the control and the laws that apply to it, which often means keeping it in
+    particular countries. AWS gives no single definition; the exam lists it as a reason to use more
+    than one Region.
+  taught_in: guide/03-aws-around-the-world/02-choosing-a-region.md
+  confused_with: [data residency]
+  not_to_confuse: >-
+    Data sovereignty is about whose control and laws apply to the data; data residency is just where
+    it is stored.
+  module: "03"
+
+- term: database
+  definition: >-
+    An organized collection of records that programs can search and update; one of the main IT
+    resources.
+  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+  module: "02"
+
+- term: demand
+  definition: >-
+    How much work customers ask a system to do, such as orders per hour.
+  taught_in: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+  confused_with: [capacity]
+  not_to_confuse: >-
+    Demand is the work asked of a system; capacity is the work it can do.
+  module: "02"
+
+- term: demand curve
+  definition: >-
+    A chart of demand over time. Drawn against a flat line for the capacity you own, it shows idle
+    capacity below the line and lost sales above it.
+  taught_in: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+  module: "02"
+
+- term: deployment model
+  definition: >-
+    Where the parts of a system run. AWS names three: cloud, hybrid and on-premises. "Public,
+    private, community" is a different vocabulary, not AWS's.
+  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+  module: "02"
+
+- term: design principle
+  definition: >-
+    A short, named idea in the Well-Architected Framework that guides decisions, such as "stop
+    guessing your capacity needs". There are general principles and principles for each pillar.
+  taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
+  confused_with: [best practice]
+  not_to_confuse: >-
+    A design principle is a broad guiding idea; a best practice is a specific recommended action
+    with an ID.
+  module: "02"
+
+- term: disaster
+  definition: >-
+    An event bigger than an ordinary failure. AWS names natural, technical and human kinds, so
+    deleting the wrong data counts if it stops the business.
+  taught_in: guide/03-aws-around-the-world/03-surviving-failure.md
+  module: "03"
+
+- term: disaster recovery
+  abbreviation: DR
+  definition: >-
+    Getting a whole workload working again after a disaster, usually from a separate copy in another
+    Region, within limits the business sets as its RTO and RPO.
+  taught_in: guide/03-aws-around-the-world/03-surviving-failure.md
+  also_in: [guide/03-aws-around-the-world/02-choosing-a-region.md, guide/03-aws-around-the-world/06-sim-blast-radius.md]
+  confused_with: [high availability, business continuity]
+  not_to_confuse: >-
+    Disaster recovery brings the whole workload back from a separate copy after a larger event; high
+    availability keeps it running through one part failing.
+  module: "03"
+
+- term: domain
+  definition: >-
+    One of the four broad subject areas the CLF-C02 exam guide divides the exam into, each with its
+    own share of the questions.
+  taught_in: guide/00-start-here/03-the-exam-at-a-glance.md
+  confused_with: [task statement]
+  not_to_confuse: >-
+    A domain is a broad subject area of the exam; a task statement is one specific thing a domain
+    tests.
+  module: "00"
+
+- term: Domain Name System
+  abbreviation: DNS
+  definition: >-
+    The internet's address book: it turns a name like example.com into the network address of a
+    server. Amazon Route 53 is AWS's DNS service.
+  taught_in: guide/03-aws-around-the-world/04-the-edge.md
+  confused_with: [content delivery network]
+  not_to_confuse: >-
+    DNS only answers where something is; a CDN delivers the content.
+  module: "03"
+
+- term: durability
+  definition: >-
+    Stored data being kept safe from loss over time, so it will still exist later. It protects
+    against failing hardware, not against someone deleting the data.
+  taught_in: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+  also_in: [guide/03-aws-around-the-world/03-surviving-failure.md]
+  confused_with: [high availability]
+  not_to_confuse: >-
+    Durability means the data still exists later; availability means it is reachable right now.
+  module: "02"
+
+- term: economies of scale
+  definition: >-
+    The lower cost per unit that a very large operation reaches by buying, building and running
+    things in bulk. AWS says its scale leads to lower pay-as-you-go prices.
+  taught_in: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+  module: "02"
+
+- term: edge location
+  definition: >-
+    A small AWS site in a city, close to internet users and separate from the Regions, that runs
+    services which deliver content and traffic close to users, such as Amazon CloudFront, Amazon
+    Route 53 and AWS Global Accelerator. AWS also calls these sites points of presence (PoPs).
+  taught_in: guide/03-aws-around-the-world/04-the-edge.md
+  also_in: [guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md]
+  confused_with: [Region, Availability Zone, Local Zone]
+  not_to_confuse: >-
+    Edge locations deliver content and answer requests near users but don't run your servers; your
+    servers run in a Region's Availability Zones, or in a Local Zone when they must be in a
+    particular city.
+  module: "03"
+
+- term: Effect (policy element)
+  definition: >-
+    The part of a policy statement that says whether it allows or denies: Allow or Deny.
+  taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
+  module: "04"
+
+- term: elasticity
+  definition: >-
+    Capacity that grows when demand rises and shrinks when it falls, so you don't pay for capacity
+    you no longer need. On AWS it is usually automatic, through auto scaling.
+  taught_in: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+  also_in: [guide/02-why-the-cloud/07-sim-demand-curve.md]
+  confused_with: [scalability, agility]
+  not_to_confuse: >-
+    Elasticity is capacity following demand up and down; scalability is only the ability to grow,
+    and agility is how quickly you can get something new.
+  module: "02"
+
+- term: end of support
+  definition: >-
+    The stage after a service closes to new customers, when AWS announces the date it will stop,
+    often about a year ahead.
+  taught_in: guide/00-start-here/04-aws-changes-fast.md
+  confused_with: [closed to new customers, shut down]
+  not_to_confuse: >-
+    End of support sets the date a service stops; closed to new customers only stops new sign-ups,
+    and shut down means the date has passed and the service is gone.
+  module: "00"
+
+- term: Event history
+  definition: >-
+    The part of AWS CloudTrail that is on in every account without setup and shows recent account
+    activity, one Region at a time. See the lab for how far back it goes.
+  taught_in: guide/02-why-the-cloud/06-lab-01-first-resource.md
+  module: "02"
+
+- term: explicit deny
+  definition: >-
+    A Deny statement in any policy that applies to a request. It beats every allow, wherever the
+    allow is.
+  taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
+  also_in: [guide/04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md, guide/04-shared-responsibility-and-access/09-sim-policy-playground.md]
+  confused_with: [implicit deny]
+  not_to_confuse: >-
+    An explicit deny is written in a policy and always wins; an implicit deny is just the default
+    when nothing allows.
+  module: "04"
+
+- term: failover
+  definition: >-
+    Switching users from a failed copy of a system to a working one.
+  taught_in: guide/03-aws-around-the-world/03-surviving-failure.md
+  also_in: [guide/03-aws-around-the-world/04-the-edge.md]
+  module: "03"
+
+- term: federation
+  definition: >-
+    Letting people sign in with an account held somewhere else, such as a company directory, and
+    giving them temporary access to AWS through a role, with no IAM user. AWS recommends it for
+    people.
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  module: "04"
+
+- term: fixed expense
+  definition: >-
+    A cost that stays the same however much you use, such as servers you have bought, or rent.
+  taught_in: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+  also_in: [guide/02-why-the-cloud/04-what-a-data-center-really-costs.md]
+  confused_with: [variable expense, capital expense]
+  not_to_confuse: >-
+    Fixed or variable asks whether a cost changes with use; capital or operating asks whether you
+    pay up front or as you go, so rent is fixed but operating.
+  module: "02"
+
+- term: global reach
+  definition: >-
+    The ability to run a system in many parts of the world, close to its users, so they get lower
+    latency. AWS calls this advantage "go global in minutes".
+  taught_in: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+  confused_with: [agility]
+  not_to_confuse: >-
+    Global reach is about where you run; agility is about how fast you got something new, wherever
+    it is.
+  module: "02"
+
+- term: global service
+  definition: >-
+    A service not tied to one Region, such as IAM, Amazon Route 53 or Amazon CloudFront.
+  taught_in: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
+  confused_with: [Regional service, zonal resource]
+  not_to_confuse: >-
+    A global service isn't tied to any Region; a Regional service runs inside one Region, and a
+    zonal resource inside one Availability Zone.
+  module: "03"
+
+- term: guardrail
+  definition: >-
+    A limit that holds whatever else is granted, such as an explicit deny that keeps working even if
+    a broader policy is attached later.
+  taught_in: guide/04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md
+  module: "04"
+
+- term: guest operating system
+  definition: >-
+    The operating system, such as Linux or Windows, that runs inside your virtual server. On Amazon
+    EC2 you install its updates and security patches.
+  taught_in: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
+  also_in: [guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md, guide/04-shared-responsibility-and-access/08-sim-responsibility-slider.md]
+  confused_with: [host operating system]
+  not_to_confuse: >-
+    The guest operating system is inside your virtual server and yours on EC2; the host operating
+    system is under the virtualization layer and AWS's.
+  module: "04"
+
+- term: hardware refresh
+  definition: >-
+    Replacing servers and network equipment when they wear out, go out of support, or become too
+    slow; a recurring up-front cost of running your own IT.
+  taught_in: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+  module: "02"
+
+- term: high availability
+  definition: >-
+    A system's ability to keep working, with little or no downtime, when some of its parts fail. On
+    AWS you get it mainly by running copies in two or more Availability Zones.
+  taught_in: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+  also_in: [guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md, guide/03-aws-around-the-world/03-surviving-failure.md]
+  confused_with: [durability, disaster recovery]
+  not_to_confuse: >-
+    High availability keeps a system working through a part failing; durability keeps stored data
+    from being lost, and disaster recovery brings a whole workload back after a larger event.
+  module: "02"
+
+- term: high-risk issue
+  abbreviation: HRI
+  definition: >-
+    An answer in a Well-Architected review that shows a serious gap. A smaller gap is a medium-risk
+    issue (MRI).
+  taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
+  module: "02"
+
+- term: host operating system
+  definition: >-
+    The operating system on the physical machine, beneath the virtualization layer. AWS runs and
+    patches it.
+  taught_in: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
+  confused_with: [guest operating system]
+  not_to_confuse: >-
+    The host operating system runs the physical machine and is AWS's; the guest operating system
+    runs inside your virtual server, and on EC2 it is yours to patch.
+  module: "04"
+
+- term: hot standby
+  definition: >-
+    A variation of multi-site active/active: a full second copy in another Region that takes no
+    customers until a failover.
+  taught_in: guide/03-aws-around-the-world/03-surviving-failure.md
+  confused_with: [warm standby, multi-site active/active]
+  not_to_confuse: >-
+    A hot standby is full size but idle until failover; a warm standby is smaller and must scale up,
+    and in multi-site active/active every copy serves customers.
+  module: "03"
+
+- term: hybrid deployment
+  definition: >-
+    A deployment model in which some parts of a system run in the cloud and others don't, and the
+    parts are connected. Most often it joins the cloud to equipment an organization already runs
+    on-premises.
+  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+  confused_with: [cloud deployment, on-premises deployment]
+  not_to_confuse: >-
+    Hybrid needs parts in both places, connected; all parts in the cloud is a cloud deployment, and
+    all parts in your own buildings is an on-premises deployment.
+  module: "02"
+
+- term: IAM Access Analyzer
+  definition: >-
+    An IAM feature that checks policies as you write them and warns about errors and overly broad
+    statements (policy validation), and can draft a policy from what an identity actually did
+    (policy generation).
+  taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
+  also_in: [guide/04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md, guide/04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md]
+  module: "04"
+
+- term: IAM policy simulator
+  definition: >-
+    An IAM tool that works out whether requests would be allowed or denied by the policies you
+    choose, without sending real requests. Its results can differ from the live account, so check
+    for real afterward.
+  taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
+  also_in: [guide/04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md, guide/04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md]
+  module: "04"
+
+- term: IAM role
+  definition: >-
+    A set of permissions not tied to one person, with no password or keys of its own. Whoever you
+    allow can assume it and gets temporary credentials for a session; programs on AWS, other
+    accounts and federated people reach an account this way.
+  taught_in: guide/04-shared-responsibility-and-access/03-identities.md
+  also_in: [guide/04-shared-responsibility-and-access/05-credentials-and-federation.md]
+  confused_with: [IAM user, IAM user group]
+  not_to_confuse: >-
+    A role is assumed for a session with temporary credentials; an IAM user has long-term
+    credentials of its own, and a group is only a way to share policies among users.
+  module: "04"
+
+- term: IAM user
+  definition: >-
+    A named identity for one person or program, with long-term credentials: a console password,
+    access keys, or both.
+  taught_in: guide/04-shared-responsibility-and-access/03-identities.md
+  confused_with: [IAM role, root user]
+  not_to_confuse: >-
+    An IAM user has its own long-term credentials; an IAM role has none and gives temporary
+    credentials to whoever assumes it.
+  module: "04"
+
+- term: IAM user group
+  definition: >-
+    A set of IAM users; a policy attached to the group applies to every member. A group isn't a
+    principal: nobody signs in as one, resource-based policies can't name one, and groups can't
+    contain groups.
+  taught_in: guide/04-shared-responsibility-and-access/03-identities.md
+  also_in: [guide/04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md]
+  confused_with: [IAM role]
+  not_to_confuse: >-
+    A group gives the same permissions to several IAM users; a role is something people or programs
+    assume to get temporary credentials.
+  module: "04"
+
+- term: identity
+  definition: >-
+    Something AWS recognizes and attaches permissions to: the root user, an IAM user, an IAM user
+    group or an IAM role. One person can use several identities, and one role can be used by many
+    people or programs.
+  taught_in: guide/04-shared-responsibility-and-access/03-identities.md
+  confused_with: [principal]
+  not_to_confuse: >-
+    Every principal is an identity, but not every identity is a principal: an IAM user group holds
+    permissions but can't make a request.
+  module: "04"
+
+- term: identity provider
+  abbreviation: IdP
+  definition: >-
+    The system that holds people's accounts and confirms who they are, which AWS trusts in
+    federation.
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  module: "04"
+
+- term: identity-based policy
+  definition: >-
+    A policy attached to a user, group or role that says what that identity may do, to which
+    resources. It names no principal: it applies to whoever holds it.
+  taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
+  confused_with: [resource-based policy]
+  not_to_confuse: >-
+    An identity-based policy follows the identity and names no principal; a resource-based policy
+    sits on the resource and must name who it applies to.
+  module: "04"
+
+- term: idle capacity
+  definition: >-
+    Capacity you pay for but don't use, such as servers bought for the busiest day that do no work
+    on the other days.
+  taught_in: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+  also_in: [guide/02-why-the-cloud/04-what-a-data-center-really-costs.md, guide/02-why-the-cloud/07-sim-demand-curve.md]
+  confused_with: [lost sales]
+  not_to_confuse: >-
+    Idle capacity is paid-for capacity left unused when demand is below it; lost sales are customers
+    turned away when demand is above it.
+  module: "02"
+
+- term: implicit deny
+  definition: >-
+    The default result when no policy allows a request: nothing has to say "no".
+  taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
+  also_in: [guide/04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md]
+  confused_with: [explicit deny]
+  not_to_confuse: >-
+    An implicit deny is only the absence of an allow, and an allow overrides it; an explicit deny is
+    a Deny statement, and it overrides every allow.
+  module: "04"
+
+- term: infrastructure
+  definition: >-
+    The hardware, software, networks and buildings that run AWS's services.
+  taught_in: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
+  module: "04"
+
+- term: infrastructure as a service
+  abbreviation: IaaS
+  definition: >-
+    A cloud model in which the provider supplies basic building blocks (computers, storage and
+    networking) and you manage the most: operating systems, software and data. Amazon EC2 is AWS's
+    example.
+  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+  also_in: [guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md]
+  confused_with: [platform as a service, software as a service]
+  not_to_confuse: >-
+    IaaS gives you building blocks to run yourself; PaaS gives you a place to run your application,
+    and SaaS a finished application, so the provider runs more at each step.
+  module: "02"
+
+- term: inherited control
+  definition: >-
+    A control AWS fully carries out and you benefit from, such as physical and environmental
+    controls on its buildings. Your evidence for it is AWS's audit reports.
+  taught_in: guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md
+  confused_with: [shared control, customer-specific control]
+  not_to_confuse: >-
+    An inherited control is AWS's alone; a shared control is a kind of work both sides do on their
+    own things, and a customer-specific control exists only because of what you build.
+  module: "04"
+
+- term: inline policy
+  definition: >-
+    A policy written directly into one identity and deleted with it. Use one only for a strict
+    one-to-one case.
+  taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
+  confused_with: [customer managed policy, AWS managed policy]
+  not_to_confuse: >-
+    An inline policy belongs to one identity and dies with it; managed policies, AWS's or yours,
+    stand alone and can attach to many identities.
+  module: "04"
+
+- term: IT control
+  definition: >-
+    A safeguard, such as a rule, a process or a setting, that lowers a risk to computer systems and
+    that someone can check.
+  taught_in: guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md
+  module: "04"
+
+- term: IT resources
+  definition: >-
+    What computers provide to the people and programs that use them. The main ones are compute,
+    storage and databases, and cloud providers rent them out.
+  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+  module: "02"
+
+- term: latency
+  definition: >-
+    The delay between a request and its answer. Distance is one of its main causes, so running close
+    to users lowers it.
+  taught_in: guide/03-aws-around-the-world/02-choosing-a-region.md
+  also_in: [guide/02-why-the-cloud/03-telling-the-benefits-apart.md]
+  module: "03"
+
+- term: lens
+  definition: >-
+    An extra set of review questions in the Well-Architected Tool for a particular kind of workload
+    or industry.
+  taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
+  module: "02"
+
+- term: load balancer
+  definition: >-
+    A service that spreads users' requests across servers in one or more Availability Zones and
+    skips any that fail its health checks.
+  taught_in: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
+  module: "03"
+
+- term: Local Zone
+  definition: >-
+    An extension of a Region in a large city that runs selected services, such as compute and
+    storage, for users who need single-digit-millisecond latency or data that must stay in that
+    city. You turn one on before using it.
+  taught_in: guide/03-aws-around-the-world/04-the-edge.md
+  confused_with: [edge location, AWS Outposts, Wavelength Zone]
+  not_to_confuse: >-
+    A Local Zone runs your servers at an AWS site in a big city; an edge location runs only AWS's
+    networking services, Outposts is AWS hardware in your own building, and a Wavelength Zone sits
+    inside a 5G network.
+  module: "03"
+
+- term: long-term credentials
+  definition: >-
+    Credentials that keep working until someone changes or deletes them: passwords and access keys.
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  confused_with: [temporary credentials]
+  not_to_confuse: >-
+    Long-term credentials work until someone removes them; temporary credentials expire on their
+    own, which is why AWS prefers them.
+  module: "04"
+
+- term: lost sales
+  definition: >-
+    Customers you can't serve because demand is above your capacity.
+  taught_in: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+  also_in: [guide/02-why-the-cloud/07-sim-demand-curve.md]
+  confused_with: [idle capacity]
+  not_to_confuse: >-
+    Lost sales happen when demand is above capacity; idle capacity is the waste when demand is below
+    it.
+  module: "02"
+
+- term: managed service
+  definition: >-
+    A service where AWS runs the servers and software underneath and you use it through its
+    settings, such as Amazon RDS or Amazon S3. The more AWS runs, the less you have to secure.
+  taught_in: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
+  confused_with: [abstracted service]
+  not_to_confuse: >-
+    Every abstracted service is managed, but not every managed service is abstracted: on Amazon RDS
+    you still choose and tune a database engine, while on Amazon S3 you only handle data and settings.
+  module: "04"
+
+- term: milestone
+  definition: >-
+    A saved snapshot of a Well-Architected review, so you can compare later.
+  taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
+  module: "02"
+
+- term: Multi-AZ deployment
+  definition: >-
+    An Amazon RDS setup that adds a standby copy of the database in a second Availability Zone,
+    which takes over if the first fails. RDS runs in one Availability Zone unless you turn it on.
+  taught_in: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
+  confused_with: [multi-Region]
+  not_to_confuse: >-
+    Multi-AZ spreads copies across Availability Zones inside one Region; multi-Region runs copies in
+    separate Regions.
+  module: "03"
+
+- term: multi-factor authentication
+  abbreviation: MFA
+  definition: >-
+    A second proof of identity besides the password, so a stolen password isn't enough on its own.
+    AWS recommends passkeys or security keys first.
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  module: "04"
+
+- term: multi-Region
+  definition: >-
+    Running a workload, or copies of it, in more than one Region: for disaster recovery, business
+    continuity, users far apart, or data sovereignty. It costs more and is harder, and several
+    Availability Zones are often enough.
+  taught_in: guide/03-aws-around-the-world/02-choosing-a-region.md
+  confused_with: [Multi-AZ deployment]
+  not_to_confuse: >-
+    Multi-Region uses separate Regions; Multi-AZ uses several Availability Zones inside one Region,
+    which AWS says meets most resilience goals.
+  module: "03"
+
+- term: multi-site active/active
+  definition: >-
+    The most expensive disaster recovery strategy: full copies in two or more Regions, all serving
+    customers, so recovery is near zero. It still needs backups, because it copies data mistakes
+    too.
+  taught_in: guide/03-aws-around-the-world/03-surviving-failure.md
+  also_in: [guide/03-aws-around-the-world/06-sim-blast-radius.md]
+  confused_with: [hot standby, warm standby]
+  not_to_confuse: >-
+    In multi-site active/active every copy serves customers every day; a hot standby is a full copy
+    that waits, and a warm standby is a smaller copy that must scale up.
+  module: "03"
+
+- term: object
+  definition: >-
+    Amazon S3's name for a file stored in a bucket.
+  taught_in: guide/02-why-the-cloud/06-lab-01-first-resource.md
+  confused_with: [bucket]
+  not_to_confuse: >-
+    An object is one stored file; a bucket is the container that holds objects.
+  module: "02"
+
+- term: on demand
+  definition: >-
+    Getting a resource when you ask for it, within minutes, with no order, delivery or installation
+    to wait for. One of the three features of cloud computing.
+  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+  also_in: [guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md]
+  module: "02"
+
+- term: on-premises
+  definition: >-
+    In a building you own or control. On-premises IT means buying, housing and running your own
+    servers instead of renting capacity from a cloud provider.
+  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+  also_in: [guide/02-why-the-cloud/04-what-a-data-center-really-costs.md]
+  module: "02"
+
+- term: on-premises cost categories
+  definition: >-
+    The seven groups of cost in running your own IT: hardware and its refresh, space, power,
+    cooling, network, staff and licenses. Most are fixed, and the hardware is paid for up front.
+  taught_in: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+  module: "02"
+
+- term: on-premises deployment
+  definition: >-
+    A deployment model in which every part of a system runs on equipment in the organization's own
+    buildings.
+  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+  confused_with: [hybrid deployment, private cloud]
+  not_to_confuse: >-
+    On-premises means every part is in your own buildings, even when software shares the servers out
+    flexibly (a private cloud); once a connected part runs at a cloud provider, it is hybrid.
+  module: "02"
+
+- term: operating expense
+  abbreviation: OpEx
+  definition: >-
+    Money spent on running costs as you go, such as rent, electricity, salaries or a monthly cloud
+    bill.
+  taught_in: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+  also_in: [guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md]
+  confused_with: [capital expense, variable expense]
+  not_to_confuse: >-
+    Operating versus capital is about paying as you go or up front; variable versus fixed is about
+    whether the amount follows use, and rent is operating yet fixed.
+  module: "02"
+
+- term: operational excellence pillar
+  definition: >-
+    The Well-Architected pillar that asks whether you can run a workload well day to day, see what
+    it is doing, and keep improving how you work.
+  taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
+  module: "02"
+
+- term: opt-in Region
+  definition: >-
+    A Region that starts switched off in an account until someone turns it on, and may be hidden
+    while off. Regions AWS launched after March 20, 2019 work this way.
+  taught_in: guide/03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md
+  also_in: [guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md]
+  module: "03"
+
+- term: origin
+  definition: >-
+    The place where the original content lives, such as an S3 bucket in a Region, from which a CDN
+    fetches what it hasn't cached.
+  taught_in: guide/03-aws-around-the-world/04-the-edge.md
+  confused_with: [cache]
+  not_to_confuse: >-
+    The origin holds the original content; a cache holds nearby copies of it.
+  module: "03"
+
+- term: Parameter Store
+  definition: >-
+    A capability of AWS Systems Manager that keeps configuration values, such as settings, IDs and
+    addresses, out of your code, optionally encrypted.
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  confused_with: [AWS Secrets Manager]
+  not_to_confuse: >-
+    Parameter Store holds configuration; Secrets Manager holds secrets and can rotate them, so
+    "rotate automatically" points to Secrets Manager.
+  module: "04"
+
+- term: passkey
+  definition: >-
+    A form of MFA kept in your device or password manager; a security key is the same idea as a
+    physical key you touch. AWS recommends them first because they can't be used on a fake sign-in
+    page.
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  module: "04"
+
+- term: password policy
+  definition: >-
+    An account's rules for IAM user passwords, such as minimum length, required character types and
+    expiry. It doesn't cover the root user or access keys.
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  module: "04"
+
+- term: patch
+  definition: >-
+    A software update that fixes a flaw, often a security flaw.
+  taught_in: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
+  module: "04"
+
+- term: patch management
+  definition: >-
+    Keeping software updated with fixes. A shared control: AWS patches its infrastructure, and you
+    patch your guest operating systems and applications.
+  taught_in: guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md
+  module: "04"
+
+- term: pay as you go
+  definition: >-
+    Paying only for what you use, for as long as you use it; when you delete a resource, you stop
+    paying for it. One of the three features of cloud computing.
+  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+  also_in: [guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md]
+  module: "02"
+
+- term: performance efficiency pillar
+  definition: >-
+    The Well-Architected pillar that asks whether you use the right kind and amount of resources to
+    meet your needs as demand and technology change.
+  taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
+  confused_with: [reliability pillar]
+  not_to_confuse: >-
+    Performance efficiency is about the right resources for the job; reliability is about something
+    failing and recovering.
+  module: "02"
+
+- term: permission set
+  definition: >-
+    IAM Identity Center's bundle of permissions. Identity Center creates the matching IAM roles in
+    the accounts you assign it to.
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  also_in: [guide/04-shared-responsibility-and-access/09-sim-policy-playground.md]
+  module: "04"
+
+- term: permissions boundary
+  definition: >-
+    A limit on what an identity's own policies can grant. It grants nothing by itself.
+  taught_in: guide/04-shared-responsibility-and-access/09-sim-policy-playground.md
+  also_in: [guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md]
+  confused_with: [service control policy]
+  not_to_confuse: >-
+    A permissions boundary caps one identity; a service control policy caps every identity in a
+    member account.
+  module: "04"
+
+- term: pillar
+  definition: >-
+    One of the Well-Architected Framework's six areas of concern, each a way of judging a workload:
+    operational excellence, security, reliability, performance efficiency, cost optimization and
+    sustainability.
+  taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
+  module: "02"
+
+- term: pilot light
+  definition: >-
+    A disaster recovery strategy that copies data continuously to the recovery Region and keeps core
+    parts, such as the database, running, with app servers off until needed. Recovery typically
+    takes tens of minutes.
+  taught_in: guide/03-aws-around-the-world/03-surviving-failure.md
+  also_in: [guide/03-aws-around-the-world/06-sim-blast-radius.md]
+  confused_with: [warm standby, backup and restore]
+  not_to_confuse: >-
+    Ask whether it could serve a customer right now: a pilot light can't until its app servers are
+    switched on, while a warm standby can, at reduced size.
+  module: "03"
+
+- term: platform as a service
+  abbreviation: PaaS
+  definition: >-
+    A cloud model in which the provider runs the hardware and operating system and gives you a place
+    to run your application; you manage the application and its data.
+  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+  confused_with: [infrastructure as a service, software as a service]
+  not_to_confuse: >-
+    PaaS runs your own application for you; IaaS leaves the operating system to you, and SaaS gives
+    you someone else's finished application.
+  module: "02"
+
+- term: policy
+  definition: >-
+    A document, usually written in JSON, that lists permissions as statements allowing or denying
+    actions on resources. Nothing is allowed until a policy allows it.
+  taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
+  module: "04"
+
+- term: policy version
+  definition: >-
+    A saved earlier text of a managed policy. When you edit the policy, IAM keeps the old text as a
+    version and lets you choose which version is the default.
+  taught_in: guide/04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md
+  module: "04"
+
+- term: principal
+  definition: >-
+    An identity that can make a request to AWS: the root user, an IAM user or an IAM role.
+    Resource-based policies name the principals they apply to.
+  taught_in: guide/04-shared-responsibility-and-access/03-identities.md
+  also_in: [guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md]
+  confused_with: [identity]
+  not_to_confuse: >-
+    A principal is an identity that can make a request; an IAM user group is an identity but not a
+    principal.
+  module: "04"
+
+- term: principle of least privilege
+  definition: >-
+    Giving each identity only the permissions it needs for its task: specific actions, on specific
+    resources, under specific conditions, so that less can go wrong if it is misused.
+  taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
+  also_in: [guide/04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md]
+  module: "04"
+
+- term: private cloud
+  definition: >-
+    AWS's name for an on-premises deployment in which software shares the organization's own servers
+    out flexibly. It is still on-premises, and AWS notes it lacks many of the cloud's benefits.
+  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+  confused_with: [cloud deployment, on-premises deployment]
+  not_to_confuse: >-
+    A private cloud runs on the organization's own equipment, so it is an on-premises deployment;
+    building one is not moving to the cloud.
+  module: "02"
+
+- term: public event
+  definition: >-
+    An AWS service issue shown in the AWS Health Dashboard that isn't tied to any one account.
+  taught_in: guide/03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md
+  confused_with: [account-specific event]
+  not_to_confuse: >-
+    A public event is a service issue for everyone; an account-specific event concerns your own
+    account or resources.
+  module: "03"
+
+- term: recovery point objective
+  abbreviation: RPO
+  definition: >-
+    The most data the business accepts losing, measured as the time between the last saved copy and
+    the failure. It looks back from the failure.
+  taught_in: guide/03-aws-around-the-world/03-surviving-failure.md
+  also_in: [guide/03-aws-around-the-world/06-sim-blast-radius.md]
+  confused_with: [recovery time objective]
+  not_to_confuse: >-
+    RPO is the data you can lose, measured back to the last saved copy; RTO is how long you can be
+    without service.
+  module: "03"
+
+- term: recovery Region
+  definition: >-
+    The second Region where a disaster recovery plan keeps its copy of the workload. It inherits the
+    data's rules, so it must be inside any area the data has to stay in.
+  taught_in: guide/03-aws-around-the-world/03-surviving-failure.md
+  also_in: [guide/03-aws-around-the-world/04-the-edge.md]
+  module: "03"
+
+- term: recovery time objective
+  abbreviation: RTO
+  definition: >-
+    The longest the business accepts a service being down after a failure. It looks forward from the
+    failure.
+  taught_in: guide/03-aws-around-the-world/03-surviving-failure.md
+  also_in: [guide/03-aws-around-the-world/06-sim-blast-radius.md]
+  confused_with: [recovery point objective]
+  not_to_confuse: >-
+    RTO is time without service; RPO is how much data you accept losing, measured back from the
+    failure (P for a point in your data, T for time).
+  module: "03"
+
+- term: Region
+  definition: >-
+    An area of the world where AWS runs a group of Availability Zones, isolated from other Regions;
+    your resources stay in their Region unless you copy them. Each has a name and a Region code,
+    such as US East (N. Virginia), us-east-1; see the lesson for the minimum number of Availability
+    Zones.
+  taught_in: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
+  also_in: [guide/00-start-here/05-before-your-first-lab.md, guide/02-why-the-cloud/03-telling-the-benefits-apart.md, guide/03-aws-around-the-world/02-choosing-a-region.md, guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md]
+  confused_with: [Availability Zone, edge location, Local Zone]
+  not_to_confuse: >-
+    A Region is a whole area holding several Availability Zones; an Availability Zone is one or more
+    data centers inside it, and edge locations and Local Zones are smaller sites outside the
+    Regions.
+  module: "03"
+
+- term: Region code
+  definition: >-
+    A Region's short code, such as us-east-1 or eu-central-1, used in commands, settings and
+    resource names.
+  taught_in: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
+  also_in: [guide/03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md]
+  module: "03"
+
+- term: Regional service
+  definition: >-
+    A service AWS runs across several Availability Zones of a Region for you, behind one Regional
+    address, such as Amazon S3 or AWS Lambda.
+  taught_in: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
+  confused_with: [zonal resource, global service]
+  not_to_confuse: >-
+    A Regional service is spread across one Region's Availability Zones; a zonal resource lives in a
+    single Availability Zone, and a global service isn't tied to one Region.
+  module: "03"
+
+- term: reliability pillar
+  definition: >-
+    The Well-Architected pillar that asks whether a workload does its job correctly whenever it is
+    needed, and recovers when something fails. High availability and durability belong here.
+  taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
+  confused_with: [performance efficiency pillar]
+  not_to_confuse: >-
+    Reliability is about failing and recovering; performance efficiency is about using the right
+    kind and amount of resources.
+  module: "02"
+
+- term: replication
+  definition: >-
+    Copying every change to a second place as it happens. It copies mistakes, deletions and
+    corruption too, so it doesn't replace backups.
+  taught_in: guide/03-aws-around-the-world/03-surviving-failure.md
+  also_in: [guide/03-aws-around-the-world/06-sim-blast-radius.md]
+  confused_with: [backup]
+  not_to_confuse: >-
+    A replica shows the data as it is now, mistakes included; a backup shows it as it was, so only a
+    backup can undo damage.
+  module: "03"
+
+- term: Resource (policy element)
+  definition: >-
+    The part of a policy statement that names which resources it covers, by their ARNs; * means all.
+  taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
+  module: "04"
+
+- term: resource-based policy
+  definition: >-
+    A policy attached to a resource, such as an S3 bucket, that says who may do what to that
+    resource, so it must name a principal. Within one account an allow here is enough; across
+    accounts both sides must allow.
+  taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
+  confused_with: [identity-based policy, cross-account role]
+  not_to_confuse: >-
+    A resource-based policy sits on the resource and names who may use it; an identity-based policy
+    sits on the identity and names what it may use.
+  module: "04"
+
+- term: rightsizing
+  definition: >-
+    Choosing the type, size and number of resources that meet your needs at the lowest cost, and
+    repeating the choice as usage, prices and resource types change.
+  taught_in: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+  module: "02"
+
+- term: root user
+  definition: >-
+    The identity created with an AWS account from the sign-up email address and password, with
+    complete access to everything in the account. IAM policies can't be attached to it, so keep it
+    for root-only tasks and protect it with MFA and no access keys.
+  taught_in: guide/04-shared-responsibility-and-access/03-identities.md
+  also_in: [guide/04-shared-responsibility-and-access/09-sim-policy-playground.md]
+  confused_with: [IAM user]
+  not_to_confuse: >-
+    The root user's power can't be narrowed by IAM policies; even an IAM admin user gets its power
+    from policies and can't do root-only tasks.
+  module: "04"
+
+- term: root-only task
+  definition: >-
+    A task that needs the root user's credentials. Such tasks change the account itself or rescue it
+    from a lockout; see the lesson for the current list.
+  taught_in: guide/04-shared-responsibility-and-access/03-identities.md
+  module: "04"
+
+- term: rotation
+  definition: >-
+    Replacing a secret with a new one on a schedule. Of AWS's two stores, only Secrets Manager does
+    it automatically.
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  module: "04"
+
+- term: scalability
+  definition: >-
+    In plain words, a system's ability to grow to handle more work. AWS gives no formal definition,
+    and "scalability is manual, elasticity is automatic" is a myth.
+  taught_in: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+  confused_with: [elasticity]
+  not_to_confuse: >-
+    Scalability means a system can grow; elasticity means capacity follows demand in both
+    directions, which is the answer when a scenario shows capacity rising and falling.
+  module: "02"
+
+- term: scaled score
+  definition: >-
+    A score adjusted so that every version of the exam is equally hard to pass. The exam reports
+    pass or fail on this scale; see the lesson for the range and the pass mark.
+  taught_in: guide/00-start-here/03-the-exam-at-a-glance.md
+  module: "00"
+
+- term: secret
+  definition: >-
+    Any value that grants access, such as a password, an API key or a token.
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  module: "04"
+
+- term: security group
+  definition: >-
+    A firewall AWS provides for each EC2 virtual server. You write its rules (who may connect, and
+    how), so its configuration is your responsibility.
+  taught_in: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
+  also_in: [guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md]
+  module: "04"
+
+- term: security in the cloud
+  definition: >-
+    Your side of the shared responsibility model: your data, your settings, who can reach them, and
+    any software you run. How much it includes depends on the service.
+  taught_in: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
+  confused_with: [security of the cloud]
+  not_to_confuse: >-
+    Security in the cloud is what you put there and how you set it up; security of the cloud is the
+    infrastructure underneath, which AWS protects.
+  module: "04"
+
+- term: security of the cloud
+  definition: >-
+    AWS's side of the shared responsibility model: the infrastructure that runs its services, from
+    the host operating system and virtualization layer down to the buildings.
+  taught_in: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
+  confused_with: [security in the cloud]
+  not_to_confuse: >-
+    Security of the cloud is the infrastructure AWS protects; security in the cloud is your data,
+    settings, access and any software you run.
+  module: "04"
+
+- term: security pillar
+  definition: >-
+    The Well-Architected pillar that asks whether data, systems and accounts are protected. It is
+    generally not traded away for other pillars.
+  taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
+  module: "02"
+
+- term: server
+  definition: >-
+    A computer that runs all the time and answers requests from other computers over a network. A
+    website runs on one or more servers.
+  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+  module: "02"
+
+- term: server-month
+  definition: >-
+    One server running for one month: a unit for comparing the cost of owning capacity with renting
+    it.
+  taught_in: guide/02-why-the-cloud/07-sim-demand-curve.md
+  also_in: [guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md]
+  module: "02"
+
+- term: service control policy
+  abbreviation: SCP
+  definition: >-
+    A policy set in AWS Organizations that caps what users and roles in a member account can do,
+    including that account's root user. It grants nothing, and it doesn't apply to the
+    organization's management account.
+  taught_in: guide/04-shared-responsibility-and-access/09-sim-policy-playground.md
+  also_in: [guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md]
+  confused_with: [permissions boundary]
+  not_to_confuse: >-
+    An SCP caps everyone in a member account, root included; a permissions boundary caps one
+    identity's own policies, and neither grants anything.
+  module: "04"
+
+- term: service-linked role
+  definition: >-
+    A role an AWS service creates and owns so it can act for you. You can view its permissions but
+    not edit them.
+  taught_in: guide/04-shared-responsibility-and-access/03-identities.md
+  module: "04"
+
+- term: shared control
+  definition: >-
+    A kind of control that applies on both sides, with AWS and you each doing it for your own
+    things: patch management, configuration management, and awareness and training. "Shared" doesn't
+    mean done together.
+  taught_in: guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md
+  also_in: [guide/04-shared-responsibility-and-access/08-sim-responsibility-slider.md]
+  confused_with: [inherited control, customer-specific control]
+  not_to_confuse: >-
+    In a shared control the kind of work is shared but each specific task belongs to one side; an
+    inherited control is all AWS's, and a customer-specific control is all yours.
+  module: "04"
+
+- term: shared responsibility model
+  definition: >-
+    AWS's description of which security work AWS does and which you do. AWS secures the cloud
+    itself; you secure what you put in it, and the line moves with the service you choose.
+  taught_in: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
+  also_in: [guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md, guide/04-shared-responsibility-and-access/08-sim-responsibility-slider.md]
+  module: "04"
+
+- term: shut down
+  definition: >-
+    The last stage of a service's retirement: the service no longer exists. A shut-down service
+    appears in this guide only so you can reject it as a wrong answer.
+  taught_in: guide/00-start-here/04-aws-changes-fast.md
+  confused_with: [closed to new customers, end of support]
+  not_to_confuse: >-
+    A shut-down service is gone for everyone; a service closed to new customers, or with an end of
+    support announced, still works for existing customers.
+  module: "00"
+
+- term: single point of failure
+  definition: >-
+    One part whose failure stops the whole system. Availability Zones are designed not to share one.
+  taught_in: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
+  module: "03"
+
+- term: single sign-on
+  definition: >-
+    One sign-in, with MFA, that gives access to many accounts and applications. AWS IAM Identity
+    Center provides it for a workforce.
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  module: "04"
+
+- term: six advantages of cloud computing
+  definition: >-
+    AWS's list of the cloud's main benefits: trade fixed expense for variable expense; benefit from
+    massive economies of scale; stop guessing capacity; increase speed and agility; stop spending
+    money running and maintaining data centers; and go global in minutes.
+  taught_in: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+  also_in: [guide/02-why-the-cloud/01-what-cloud-computing-is.md, guide/02-why-the-cloud/03-telling-the-benefits-apart.md]
+  module: "02"
+
+- term: software as a service
+  abbreviation: SaaS
+  definition: >-
+    A cloud model in which the provider runs a finished application entirely, such as web-based
+    email; you manage only how you use it and your data in it.
+  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+  confused_with: [infrastructure as a service, platform as a service]
+  not_to_confuse: >-
+    SaaS is a finished application you only use; PaaS runs an application you wrote, and IaaS gives
+    you building blocks to run yourself.
+  module: "02"
+
+- term: standby
+  definition: >-
+    A second copy, such as a database in another Availability Zone, that takes over if the first
+    fails. Amazon RDS adds one when you turn on a Multi-AZ deployment.
+  taught_in: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
+  also_in: [guide/03-aws-around-the-world/03-surviving-failure.md]
+  confused_with: [warm standby]
+  not_to_confuse: >-
+    A standby database in a second Availability Zone gives high availability inside one Region; a
+    warm standby is a smaller working copy of a whole workload in another Region, for disaster
+    recovery.
+  module: "03"
+
+- term: statement
+  definition: >-
+    One permission inside a policy: an Effect, an Action, a Resource, and an optional Condition. A
+    policy can hold several.
+  taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
+  module: "04"
+
+- term: storage
+  definition: >-
+    Space to keep files and data; one of the main IT resources.
+  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+  module: "02"
+
+- term: sustainability pillar
+  definition: >-
+    The Well-Architected pillar that asks whether you use as few resources, and as little energy, as
+    you can.
+  taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
+  confused_with: [cost optimization pillar]
+  not_to_confuse: >-
+    Sustainability measures resources and energy; cost optimization measures money, though the two
+    usually point the same way.
+  module: "02"
+
+- term: tag
+  definition: >-
+    A label you attach to an AWS resource, made of a key and a value that you choose. Tags let one
+    search find everything with that label, in every Region.
+  taught_in: guide/00-start-here/05-before-your-first-lab.md
+  also_in: [guide/02-why-the-cloud/06-lab-01-first-resource.md]
+  module: "00"
+
+- term: Tag Editor
+  definition: >-
+    A console tool that finds resources by their tags across Regions, which makes it a quick check
+    that a lab left nothing behind. AWS has said tag management is moving to the AWS Resource
+    Explorer console; see the lab.
+  taught_in: guide/02-why-the-cloud/06-lab-01-first-resource.md
+  also_in: [guide/03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md]
+  module: "02"
+
+- term: task statement
+  definition: >-
+    One of the specific things a domain of the exam tests, numbered within its domain. The exam
+    guide lists them, and each page of this guide names the ones it covers.
+  taught_in: guide/00-start-here/03-the-exam-at-a-glance.md
+  confused_with: [domain]
+  not_to_confuse: >-
+    A task statement is one specific thing the exam tests; a domain is the broad subject area that
+    groups several of them.
+  module: "00"
+
+- term: temporary credentials
+  definition: >-
+    Credentials AWS issues for a limited time, from minutes to hours, and then stops accepting. AWS
+    STS issues them, and roles and federation are built on them.
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  also_in: [guide/04-shared-responsibility-and-access/03-identities.md, guide/04-shared-responsibility-and-access/09-sim-policy-playground.md]
+  confused_with: [long-term credentials]
+  not_to_confuse: >-
+    Temporary credentials expire on their own; long-term credentials, such as access keys, work
+    until someone deletes them.
+  module: "04"
+
+- term: total cost of ownership
+  abbreviation: TCO
+  definition: >-
+    Every cost of owning and running something over its whole life, not only the purchase price. A
+    server's TCO is usually far above its price tag.
+  taught_in: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+  module: "02"
+
+- term: trade-off
+  definition: >-
+    Accepting less of one good thing to get more of another, such as less reliability in a test
+    environment to save money. The Framework expects trade-offs, but security and operational
+    excellence are generally not traded away.
+  taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
+  module: "02"
+
+- term: trust policy
+  definition: >-
+    The resource-based policy on a role that says who may assume it. The role's separate permissions
+    policy says what it may do.
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  also_in: [guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md, guide/04-shared-responsibility-and-access/09-sim-policy-playground.md]
+  module: "04"
+
+- term: unscored question
+  definition: >-
+    A question AWS is trying out that doesn't count toward your score. You can't tell which
+    questions they are, so answer every one.
+  taught_in: guide/00-start-here/03-the-exam-at-a-glance.md
+  module: "00"
+
+- term: variable expense
+  definition: >-
+    A cost that rises and falls with how much you use, such as servers rented by the hour. Trading
+    fixed expense for variable expense is the first of AWS's six advantages of cloud computing.
+  taught_in: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+  also_in: [guide/02-why-the-cloud/04-what-a-data-center-really-costs.md]
+  confused_with: [fixed expense, operating expense]
+  not_to_confuse: >-
+    Variable or fixed asks whether a cost follows use; operating or capital asks when you pay, so a
+    flat monthly fee is an operating expense but not a variable one.
+  module: "02"
+
+- term: virtualization
+  definition: >-
+    Software that splits one physical computer into several virtual servers. AWS runs the
+    virtualization layer and the host operating system beneath it.
+  taught_in: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
+  module: "04"
+
+- term: warm standby
+  definition: >-
+    A disaster recovery strategy that keeps a smaller but complete working copy in the recovery
+    Region, which only has to scale up to take over. Recovery typically takes minutes.
+  taught_in: guide/03-aws-around-the-world/03-surviving-failure.md
+  also_in: [guide/03-aws-around-the-world/06-sim-blast-radius.md]
+  confused_with: [pilot light, hot standby, standby]
+  not_to_confuse: >-
+    A warm standby can serve customers at once at reduced size; a pilot light can't until its app
+    servers start, and a hot standby is a full-size copy that takes no customers until failover.
+  module: "03"
+
+- term: Wavelength Zone
+  definition: >-
+    AWS compute and storage placed inside telecom carriers' 5G networks, for very low latency to
+    mobile devices. The CLF-C02 exam guide lists AWS Wavelength as out of scope, so know it only to
+    reject it.
+  taught_in: guide/03-aws-around-the-world/04-the-edge.md
+  confused_with: [Local Zone]
+  not_to_confuse: >-
+    A Wavelength Zone is inside a mobile carrier's 5G network; a Local Zone is in a big city for any
+    nearby users.
+  module: "03"
+
+- term: workload
+  definition: >-
+    The set of parts (code, settings and AWS resources) that together deliver something of value,
+    such as a shop's ordering site.
+  taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
+  module: "02"
+
+- term: zonal resource
+  definition: >-
+    A resource that lives in one Availability Zone and fails with it, such as an EC2 virtual server.
+    For high availability you put copies in other Availability Zones yourself.
+  taught_in: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
+  confused_with: [Regional service, global service]
+  not_to_confuse: >-
+    A zonal resource sits in one Availability Zone you choose; a Regional service is spread across
+    Availability Zones for you, and a global service isn't tied to one Region.
+  module: "03"
