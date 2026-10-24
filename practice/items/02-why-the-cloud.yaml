@@ -1,0 +1,4445 @@
+# Module 02, Why organizations use the cloud: exam-style questions and concept cards.
+# Written from guide/02-why-the-cloud/. Build fields (page, section, task, level, topics) are
+# turned into tags and references by source/practice/build_bundle.py.
+
+questions:
+
+  # ---------------------------------------------------------------- 02.01 What cloud computing is
+
+  - id: q02-cloud-features-besides-internet
+    page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+    section: Three features together make something cloud computing
+    task: "1.1"
+    level: recall
+    topics: [cloud-computing-definition]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A hosting company says its service is cloud computing because customers reach their servers
+        over the internet. In AWS's definition, which other two features must the service have?
+        (Select TWO.)
+    choices:
+      - id: fixed-contract
+        text: A fixed monthly price agreed for a set term
+        variants:
+          - text: The same price every month for an agreed contract term
+          - text: A set monthly fee locked in for the length of a contract
+        explanation:
+          text: |
+            A fixed price for a fixed term is the opposite of paying as you go: the customer pays the
+            same whether the servers are busy or idle.
+      - id: on-demand
+        text: Resources available within minutes of asking
+        variants:
+          - text: New resources ready a few minutes after a request
+          - text: Resources that arrive minutes after you ask for them
+        explanation:
+          text: |
+            Correct. On demand means there is no order, delivery or installation to wait for: you ask,
+            and the resource is ready within minutes.
+      - id: dedicated-building
+        text: Hardware placed in the customer's own building
+        variants:
+          - text: Equipment installed on the customer's premises
+          - text: Servers kept in a building the customer controls
+        explanation:
+          text: |
+            Equipment in the customer's building is on-premises IT. Cloud resources sit in the
+            provider's data centers.
+      - id: pay-as-you-go
+        text: Charges only for what is used, while it is used
+        variants:
+          - text: Billing that follows actual use and stops when use stops
+          - text: Paying just for the resources used, for as long as they run
+        explanation:
+          text: |
+            Correct. Pay as you go means the bill follows use, and deleting a resource ends its
+            charges.
+      - id: minimum-term
+        text: A minimum commitment of one year per server
+        variants:
+          - text: At least a one-year commitment for every server
+          - text: A one-year minimum term on each server
+        explanation:
+          text: |
+            A minimum term ties the customer to paying whether or not it needs the server, which is
+            not pay as you go.
+    correct_answers: [on-demand, pay-as-you-go]
+    explanation:
+      text: |
+        AWS defines cloud computing by three features that work together: on demand, over the
+        internet, and pay as you go. Reaching a server over the internet isn't enough on its own; a
+        server bought up front or rented for a fixed term lacks the other two. The test is whether
+        you can get resources when you need them and stop paying when you stop using them.
+
+  - id: q02-missing-feature-annual-billing
+    page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+    section: Three features together make something cloud computing
+    task: "1.1"
+    level: application
+    topics: [cloud-computing-definition]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A design agency rents virtual servers from a provider through a website. A new server is
+        ready about five minutes after the agency asks for it. However, the agency is billed for a
+        full year for every server, even if it deletes the server after a week. Which feature of
+        cloud computing does this service lack?
+    choices:
+      - id: on-demand
+        text: On demand
+        variants:
+          - text: On-demand access
+          - text: Resources on demand
+        explanation:
+          text: |
+            The service has this one: a server is ready about five minutes after the request.
+      - id: over-the-internet
+        text: Over the internet
+        variants:
+          - text: Access over the internet
+          - text: Reached through the internet
+        explanation:
+          text: |
+            The service has this one: the agency requests and reaches its servers through the
+            provider's website.
+      - id: pay-as-you-go
+        text: Pay as you go
+        variants:
+          - text: Pay-as-you-go pricing
+          - text: Paying as you go
+        explanation:
+          text: |
+            Correct. Paying for a full year whatever the use means the bill doesn't follow use, and
+            deleting a server doesn't stop its charges.
+      - id: hybrid-connection
+        text: Hybrid connectivity
+        variants:
+          - text: A hybrid connection
+          - text: Hybrid networking
+        explanation:
+          text: |
+            Hybrid is a deployment model (some parts in the cloud, some not), not one of the three
+            features that define cloud computing.
+    correct_answers: [pay-as-you-go]
+    hint:
+      text: Check each of the three defining features against the scenario, one at a time.
+    explanation:
+      text: |
+        Cloud computing needs all three features at once: on demand, over the internet, and pay as
+        you go. This service is fast and reached online, but a year's charge for a server deleted
+        after a week breaks pay as you go. When a resource is deleted, its charges should stop.
+
+  - id: q02-deleted-resource-charges
+    page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+    section: Three features together make something cloud computing
+    task: "1.1"
+    level: understanding
+    topics: [cloud-computing-definition, pay-as-you-go]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A team rents a server under AWS's pay-as-you-go pricing, uses it for three days, and then
+        deletes it. What happens to the charges for that server?
+    choices:
+      - id: termination-fee
+        text: A fee for ending early replaces the remaining charges.
+        variants:
+          - text: An early-termination fee is charged instead of the rest.
+          - text: The team pays a fee for stopping before the term ends.
+        explanation:
+          text: |
+            AWS's pricing page notes that there are no termination fees for pay-as-you-go use.
+      - id: rest-of-month
+        text: They continue until the end of the billing month.
+        variants:
+          - text: The team keeps paying until the month is over.
+          - text: Charges run on to the end of that month's bill.
+        explanation:
+          text: |
+            Pay as you go means paying for as long as you use a resource, not for a whole month you
+            have committed to.
+      - id: charges-stop
+        text: They stop, and no fee is charged for ending.
+        variants:
+          - text: The charges end, with no fee for stopping.
+          - text: Billing for it ends, and there is no exit fee.
+        explanation:
+          text: |
+            Correct. The team paid for the three days the server ran; deleting it ended the charges.
+      - id: until-hardware-reclaimed
+        text: They continue until AWS reuses the hardware.
+        variants:
+          - text: Billing goes on until the hardware is given to someone else.
+          - text: The team pays until AWS reassigns the equipment.
+        explanation:
+          text: |
+            What AWS does with its own hardware afterwards isn't the customer's cost. The customer
+            pays only for its own use.
+    correct_answers: [charges-stop]
+    explanation:
+      text: |
+        Under pay-as-you-go pricing you pay for what you use, for as long as you use it, and deleting
+        a resource stops its charges; AWS notes there are no termination fees. That is why every lab
+        in the guide ends by deleting what it created: anything left running keeps costing money.
+
+  - id: q02-on-prem-quiet-months-cost
+    page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+    section: Before the cloud, organizations owned and ran their own equipment
+    task: "1.1"
+    level: understanding
+    topics: [on-premises, fixed-expense]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A manufacturer runs its website on servers it bought and keeps in its own building. For six
+        months, visits to the site fall by half. What happens to the cost of those servers during
+        those months?
+    choices:
+      - id: stays-same
+        text: It stays about the same, because the equipment is owned and housed either way.
+        variants:
+          - text: It barely changes, since the owned equipment still needs space and power.
+          - text: It hardly moves, because the company paid for and still houses the servers.
+        explanation:
+          text: |
+            Correct. The servers were paid for up front, and space, power and repairs continue
+            whether they are busy or idle.
+      - id: halves
+        text: It falls by about half, because the servers do half the work.
+        variants:
+          - text: It drops by roughly half, in line with the work the servers do.
+          - text: It shrinks by about half, matching the fall in visits.
+        explanation:
+          text: |
+            Falling with use is how a pay-as-you-go bill behaves, not owned equipment. The servers
+            cost the same busy or idle.
+      - id: return-servers
+        text: It falls, because the company can return its unused servers to the seller within minutes.
+        variants:
+          - text: It drops, since spare servers can be handed back to the seller in minutes.
+          - text: It goes down, because idle servers can be given back for a refund within minutes.
+        explanation:
+          text: |
+            Getting or giving back capacity within minutes is a cloud feature. Owned servers can't be
+            returned for a refund when demand drops.
+      - id: provider-credits
+        text: It falls, because the hardware supplier credits the company for the idle time.
+        variants:
+          - text: It drops, since the hardware supplier refunds the months of low use.
+          - text: It goes down, because the hardware vendor gives credit for idle servers.
+        explanation:
+          text: |
+            Once the company has bought the servers, nobody refunds it for using them less. Idle time
+            is the owner's cost.
+    correct_answers: [stays-same]
+    explanation:
+      text: |
+        On-premises, an organization buys its servers up front and pays for their space, power,
+        cooling and repairs whether they are busy or idle. Its server cost doesn't follow demand.
+        That is the problem the cloud's pay-as-you-go model addresses.
+
+  - id: q02-classify-retailer-stock-database
+    page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+    section: The three deployment models are cloud, hybrid and on-premises
+    task: "3.1"
+    level: application
+    topics: [deployment-models]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A retailer runs its online store on AWS. Its stock database stays on servers in its
+        warehouse, and the online store reads stock levels from that database. Which deployment
+        model is this?
+    choices:
+      - id: cloud
+        text: Cloud deployment
+        variants:
+          - text: A cloud deployment
+          - text: The cloud deployment model
+        explanation:
+          text: |
+            Cloud deployment means every part runs in the cloud. The stock database runs in the
+            warehouse.
+      - id: on-premises
+        text: On-premises deployment
+        variants:
+          - text: An on-premises deployment
+          - text: The on-premises deployment model
+        explanation:
+          text: |
+            On-premises means every part runs in the retailer's own buildings. The online store runs
+            on AWS.
+      - id: private-cloud
+        text: Private cloud deployment
+        variants:
+          - text: A private cloud deployment
+          - text: The private cloud model
+        explanation:
+          text: |
+            In AWS's description, a private cloud is the organization's own equipment run with
+            sharing software, which is on-premises. Here part of the system runs at AWS.
+      - id: hybrid
+        text: Hybrid deployment
+        variants:
+          - text: A hybrid deployment
+          - text: The hybrid deployment model
+        explanation:
+          text: |
+            Correct. Some parts run in the cloud and some on-premises, and data flows between them.
+    correct_answers: [hybrid]
+    hint:
+      text: List the parts, and say where each one runs. Then ask whether they work together.
+    explanation:
+      text: |
+        To classify a setup, ask where each part runs. The online store runs at AWS and the stock
+        database in the retailer's warehouse, and the two are connected, so it is a hybrid
+        deployment. AWS's three deployment models are cloud, hybrid and on-premises.
+
+  - id: q02-classify-two-cloud-providers
+    page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+    section: "Worked example: classifying three setups"
+    task: "3.1"
+    level: application
+    topics: [deployment-models]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A media company runs its video website on AWS and uses an email service that another cloud
+        provider runs. It has no servers of its own. Which deployment model describes the company's
+        systems?
+    choices:
+      - id: hybrid
+        text: Hybrid, because it uses two different providers
+        variants:
+          - text: Hybrid, since two separate providers are involved
+          - text: Hybrid, because its systems are split across two providers
+        explanation:
+          text: |
+            This is the common trap. Hybrid means some parts are not in the cloud, usually
+            on-premises. Using two cloud providers is still all cloud.
+      - id: cloud
+        text: Cloud, because every part runs at a cloud provider
+        variants:
+          - text: Cloud, since all of its parts run at cloud providers
+          - text: Cloud, because nothing runs outside a cloud provider
+        explanation:
+          text: |
+            Correct. Every part runs at a provider, so the setup is a cloud deployment, however many
+            providers there are.
+      - id: on-premises
+        text: On-premises, because staff use its systems from the office
+        variants:
+          - text: On-premises, since staff reach the systems from its offices
+          - text: On-premises, because employees work on them at the office
+        explanation:
+          text: |
+            Where people sit when they use a system doesn't decide the model. Only where the parts
+            run does, and none of them run in the company's buildings.
+      - id: community
+        text: Community, because the email service is shared with others
+        variants:
+          - text: Community, since other customers share the email service
+          - text: Community, because many organizations use the same email service
+        explanation:
+          text: |
+            "Community" belongs to a different vocabulary. AWS's deployment models are cloud, hybrid
+            and on-premises.
+    correct_answers: [cloud]
+    hint:
+      text: Hybrid needs something that is not in the cloud at all. Is there anything like that here?
+    explanation:
+      text: |
+        Only where the parts run decides the deployment model. Here both the website and the email
+        run at cloud providers and nothing runs on the company's own equipment, so it is a cloud
+        deployment. Using more than one provider doesn't make a setup hybrid.
+
+  - id: q02-classify-office-servers-remote-staff
+    page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+    section: "Worked example: classifying three setups"
+    task: "3.1"
+    level: application
+    topics: [deployment-models]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A law firm keeps its case files and its billing software on two servers in its own office.
+        Its lawyers work from home and reach both systems over the internet. Nothing runs at a cloud
+        provider. Which deployment model is this?
+    choices:
+      - id: cloud
+        text: Cloud deployment
+        variants:
+          - text: A cloud deployment
+          - text: The cloud deployment model
+        explanation:
+          text: |
+            Reaching a system over the internet doesn't make it cloud. Every part runs on the firm's
+            own servers, not at a provider.
+      - id: hybrid
+        text: Hybrid deployment
+        variants:
+          - text: A hybrid deployment
+          - text: The hybrid deployment model
+        explanation:
+          text: |
+            Hybrid needs some parts at a cloud provider. Working from home is how people reach the
+            system, not a second place where it runs.
+      - id: on-premises
+        text: On-premises deployment
+        variants:
+          - text: An on-premises deployment
+          - text: The on-premises deployment model
+        explanation:
+          text: |
+            Correct. Both systems run on equipment in the firm's own office.
+      - id: community
+        text: Community deployment
+        variants:
+          - text: A community deployment
+          - text: The community deployment model
+        explanation:
+          text: |
+            "Community" isn't one of AWS's deployment models, which are cloud, hybrid and
+            on-premises.
+    correct_answers: [on-premises]
+    hint:
+      text: The question is where the systems run, not where the people using them sit.
+    explanation:
+      text: |
+        A deployment model describes where a system's parts run. Both of the firm's systems run on
+        servers in its own office, so it is on-premises, even though people reach them over the
+        internet from home. Laptops and home connections are how people reach a system, not where
+        it runs.
+
+  - id: q02-private-cloud-is-on-premises
+    page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+    section: '"Public, private and community" are not AWS''s deployment models'
+    task: "3.1"
+    level: recall
+    topics: [deployment-models, private-cloud]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        In AWS's description of deployment models, which model does a "private cloud" belong to?
+    choices:
+      - id: cloud
+        text: The cloud deployment model
+        variants:
+          - text: Cloud deployment
+          - text: The model called cloud
+        explanation:
+          text: |
+            Cloud deployment means every part runs at a cloud provider. A private cloud runs on the
+            organization's own equipment.
+      - id: hybrid
+        text: The hybrid deployment model
+        variants:
+          - text: Hybrid deployment
+          - text: The model called hybrid
+        explanation:
+          text: |
+            Hybrid joins parts at a cloud provider with parts elsewhere. A private cloud on its own
+            has nothing at a provider.
+      - id: separate-model
+        text: A fourth model of its own
+        variants:
+          - text: A separate, fourth deployment model
+          - text: Its own fourth model
+        explanation:
+          text: |
+            AWS names only three deployment models. The "public, private, community, hybrid" list
+            comes from a different vocabulary.
+      - id: on-premises
+        text: The on-premises deployment model
+        variants:
+          - text: On-premises deployment
+          - text: The model called on-premises
+        explanation:
+          text: |
+            Correct. AWS uses "private cloud" for an organization's own equipment, shared out with
+            software, which is an on-premises deployment.
+    correct_answers: [on-premises]
+    explanation:
+      text: |
+        AWS sometimes calls an on-premises deployment a private cloud when the organization uses
+        software to share out its own servers flexibly. It is still the organization's own
+        equipment, bought and paid for whether used or not, so it lacks most of the cloud's
+        benefits. Building a private cloud is not a move to a cloud provider.
+
+  - id: q02-aws-deployment-model-names
+    page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+    section: The three deployment models are cloud, hybrid and on-premises
+    task: "3.1"
+    level: recall
+    topics: [deployment-models]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A study group is listing the cloud deployment models that AWS and the CLF-C02 exam guide
+        use. Which two belong on the list? (Select TWO.)
+    choices:
+      - id: community
+        text: Community
+        variants:
+          - text: Community deployment
+          - text: The community model
+        explanation:
+          text: |
+            "Community" comes from a different vocabulary (public, private, community, hybrid) that
+            AWS and the exam guide don't use.
+      - id: hybrid
+        text: Hybrid
+        variants:
+          - text: Hybrid deployment
+          - text: The hybrid model
+        explanation:
+          text: |
+            Correct. Hybrid is one of AWS's three deployment models: some parts in the cloud, some
+            not, connected.
+      - id: public
+        text: Public
+        variants:
+          - text: Public deployment
+          - text: The public model
+        explanation:
+          text: |
+            "Public" also comes from the other vocabulary. AWS's name for running everything at a
+            provider is cloud deployment.
+      - id: colocation
+        text: Colocation
+        variants:
+          - text: Colocation deployment
+          - text: The colocation model
+        explanation:
+          text: |
+            Colocation means renting space for your own servers in someone else's data center. It
+            isn't one of AWS's deployment models.
+      - id: on-premises
+        text: On-premises
+        variants:
+          - text: On-premises deployment
+          - text: The on-premises model
+        explanation:
+          text: |
+            Correct. On-premises is one of AWS's three deployment models: every part runs in the
+            organization's own buildings.
+    correct_answers: [hybrid, on-premises]
+    explanation:
+      text: |
+        AWS and the CLF-C02 exam guide name three deployment models: cloud, hybrid and on-premises.
+        The list "public, private, community" appears in many courses, but it isn't the vocabulary
+        the exam uses. Learn the three AWS names so that the exam's wording looks familiar.
+
+  - id: q02-reason-to-keep-part-on-premises
+    page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+    section: Hybrid is often a deliberate choice, not a halfway failure
+    task: "3.1"
+    level: understanding
+    topics: [deployment-models, hybrid]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A hospital moves its patient portal to AWS. The software that drives its blood-test
+        analyzers stays on servers in the hospital and passes results to the portal. Which reason
+        best explains keeping that software on-premises?
+    choices:
+      - id: fast-link-to-machines
+        text: It needs a very fast, low-delay link to equipment on site.
+        variants:
+          - text: It must reach nearby equipment with almost no delay.
+          - text: It depends on a very quick connection to local devices.
+        explanation:
+          text: |
+            Correct. A need for a very fast connection to equipment in the building is one of the
+            common reasons for keeping a system on-premises in a hybrid setup.
+      - id: hybrid-required
+        text: AWS recommends keeping some of each workload on-premises.
+        variants:
+          - text: AWS advises leaving part of every workload on-premises.
+          - text: AWS guidance says part of each workload should stay on-site.
+        explanation:
+          text: |
+            AWS has no such recommendation. Many organizations run entirely in the cloud; hybrid is
+            a choice made for specific reasons.
+      - id: faster-to-add
+        text: Servers in the hospital can be added faster than cloud servers.
+        variants:
+          - text: New servers arrive faster on site than in the cloud.
+          - text: Owned servers can be set up sooner than cloud ones.
+        explanation:
+          text: |
+            This reverses the comparison: owned servers must be ordered, delivered and installed,
+            while cloud resources arrive within minutes.
+      - id: cloud-cannot-run
+        text: Software that controls equipment can't run on cloud servers.
+        variants:
+          - text: Cloud servers are unable to run equipment-control software.
+          - text: Programs that drive devices can't be run in the cloud.
+        explanation:
+          text: |
+            Nothing stops such software from running in the cloud. The reason to keep it close is
+            the delay of the link to the equipment, not what the cloud can run.
+    correct_answers: [fast-link-to-machines]
+    hint:
+      text: Think about what this particular software has to talk to, and where that is.
+    explanation:
+      text: |
+        Hybrid is often a deliberate choice rather than a halfway failure. Common reasons to keep
+        some parts on-premises are a need for a very fast link to equipment in the building, data
+        that must stay in a particular place, and moving to the cloud in stages. The analyzer
+        software fits the first reason.
+
+  - id: q02-saas-web-app-grouping
+    page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+    section: "Going deeper (optional): IaaS, PaaS and SaaS"
+    task: "3.1"
+    level: application
+    topics: [service-models]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A school signs in through a web browser to a document-editing application that the provider
+        runs entirely. The school manages only its users and their documents. Which grouping of
+        cloud services is this?
+    choices:
+      - id: iaas
+        text: Infrastructure as a service (IaaS)
+        variants:
+          - text: IaaS (infrastructure as a service)
+          - text: The infrastructure-as-a-service grouping
+        explanation:
+          text: |
+            IaaS gives you basic building blocks such as computers and storage, and you manage the
+            operating systems and software on them. The school runs no servers at all.
+      - id: paas
+        text: Platform as a service (PaaS)
+        variants:
+          - text: PaaS (platform as a service)
+          - text: The platform-as-a-service grouping
+        explanation:
+          text: |
+            PaaS gives you a place to run your own application. The school didn't write or upload
+            any application; it uses a finished one.
+      - id: hybrid
+        text: Hybrid deployment
+        variants:
+          - text: A hybrid deployment
+          - text: The hybrid deployment model
+        explanation:
+          text: |
+            Hybrid is a deployment model, which describes where a system runs, not what kind of
+            service it is. Nothing here runs on-premises either.
+      - id: saas
+        text: Software as a service (SaaS)
+        variants:
+          - text: SaaS (software as a service)
+          - text: The software-as-a-service grouping
+        explanation:
+          text: |
+            Correct. A finished application run entirely by the provider, used through a browser, is
+            software as a service.
+    correct_answers: [saas]
+    hint:
+      text: Ask how much the provider runs for the school, and how much the school runs itself.
+    explanation:
+      text: |
+        IaaS, PaaS and SaaS sort cloud services by how much the provider runs for you. With SaaS the
+        provider runs a finished application, and you manage only how you use it and your data in
+        it. These groupings describe the kind of service; the deployment model describes where your
+        system runs.
+
+  - id: q02-undifferentiated-heavy-lifting
+    page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+    section: "In real work: the deployment model is a business decision"
+    task: "1.1"
+    level: understanding
+    topics: [design-principles, cost-optimization]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A Well-Architected cost optimization design principle says to stop spending money on
+        "undifferentiated heavy lifting". For a small online florist, which task is an example of
+        that kind of work?
+    choices:
+      - id: arranging-bouquets
+        text: Designing the seasonal bouquets it sells
+        variants:
+          - text: Creating the bouquet designs for each season
+          - text: Planning the flower arrangements it offers
+        explanation:
+          text: |
+            Bouquet design is what sets the florist apart from competitors: differentiated work, the
+            kind it should spend its effort on.
+      - id: racking-servers
+        text: Installing and cooling the servers its site runs on
+        variants:
+          - text: Setting up and cooling the servers behind its website
+          - text: Racking and cooling the machines that run its site
+        explanation:
+          text: |
+            Correct. Every organization that owns servers does this the same way, and customers
+            don't choose a florist for how it cools its servers.
+      - id: customer-service
+        text: Answering customers' questions about their flower orders
+        variants:
+          - text: Replying to customer questions about deliveries and orders
+          - text: Helping customers who ask about their bouquet orders
+        explanation:
+          text: |
+            Customer service is part of how the florist competes and keeps customers; it isn't
+            generic infrastructure work.
+      - id: choosing-suppliers
+        text: Choosing which flower growers to buy its stock from
+        variants:
+          - text: Picking the growers that supply its flowers
+          - text: Selecting the flower growers it buys from
+        explanation:
+          text: |
+            Choosing suppliers shapes the florist's product and prices; it isn't IT work done the same
+            way by everyone.
+    correct_answers: [racking-servers]
+    hint:
+      text: '"Undifferentiated" means it doesn''t set the business apart from its competitors.'
+    explanation:
+      text: |
+        Undifferentiated heavy lifting is work every organization must do the same way and that
+        doesn't set it apart, such as buying, racking, powering and cooling servers. The cloud hands
+        that work to the provider, so the business can spend its effort on what customers actually
+        choose it for. AWS's advantage "stop spending money running and maintaining data centers"
+        makes the same point.
+
+
+  # ---------------------------------------------------------------- 02.02 Before and after: the demand curve
+
+  - id: q02-fixed-servers-two-problems
+    page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+    section: Buying for normal months turns customers away at the peak
+    task: "1.4"
+    level: application
+    topics: [demand-curve, idle-capacity, lost-sales]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A concert-ticket website owns four servers. In its quietest month it needs one server; in
+        the month when a big tour goes on sale it needs seven. Which two problems does owning a
+        fixed four servers cause? (Select TWO.)
+    choices:
+      - id: idle-quiet-months
+        text: Paying for servers that sit idle in quiet months
+        variants:
+          - text: Owned servers doing no work in the quiet months
+          - text: Idle servers that are paid for in quiet months
+        explanation:
+          text: |
+            Correct. In the quietest month three of the four owned servers do nothing, but the site
+            has paid for all four.
+      - id: rising-bill-busy-month
+        text: A server bill that jumps in the busiest month
+        variants:
+          - text: A bill for servers that rises in the peak month
+          - text: Server costs that climb sharply at the peak
+        explanation:
+          text: |
+            Owned servers cost the same every month. A bill that rises with use is a variable
+            expense, which is how renting behaves.
+      - id: lost-sales-peak
+        text: Turning away buyers in the month of the tour sale
+        variants:
+          - text: Losing ticket sales in the peak month
+          - text: Customers who can't buy during the busiest month
+        explanation:
+          text: |
+            Correct. Demand needs seven servers and the site has four, so some buyers can't be served
+            and the sales are lost.
+      - id: slow-to-remove
+        text: Charges that continue after servers are deleted
+        variants:
+          - text: Paying on for servers that have been removed
+          - text: Costs that go on after the servers are gone
+        explanation:
+          text: |
+            Owned servers aren't deleted and billed by use; they are bought. The problem is paying for
+            them while they are idle, not after they are gone.
+      - id: lost-sales-quiet
+        text: Turning away buyers in the quietest month
+        variants:
+          - text: Losing ticket sales in the quiet months
+          - text: Customers who can't buy during the slowest month
+        explanation:
+          text: |
+            In the quietest month demand needs one server and the site has four, so every buyer can
+            be served. The shortage is at the peak.
+    correct_answers: [idle-quiet-months, lost-sales-peak]
+    hint:
+      text: Draw the year as a demand curve with a flat line at four servers. Look below the line and above it.
+    explanation:
+      text: |
+        Against a flat line of owned capacity, a demand curve shows two costs. Below the line is
+        idle capacity: servers paid for but not used, as in the quiet months. Above the line are lost
+        sales: customers the site can't serve, as in the tour month. Any fixed number of servers is a
+        guess that is wrong somewhere.
+
+  - id: q02-buy-for-peak-main-cost
+    page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+    section: Buying for the peak means paying for idle servers
+    task: "1.4"
+    level: understanding
+    topics: [demand-curve, idle-capacity]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A garden center buys enough servers for the single busiest hour of its year, a spring sale
+        weekend. What is the main cost of this choice?
+    choices:
+      - id: lost-sales
+        text: Customers turned away during the spring sale
+        variants:
+          - text: Shoppers who can't order during the spring sale
+          - text: Lost orders on the spring sale weekend
+        explanation:
+          text: |
+            Buying for the peak means the spring sale is covered. Lost sales come from buying too
+            little, not too much.
+      - id: variable-bill
+        text: A server bill that swings from month to month
+        variants:
+          - text: Server costs that rise and fall every month
+          - text: A monthly bill for servers that keeps changing
+        explanation:
+          text: |
+            Owned servers are a fixed expense: the cost is the same each month. A swinging bill
+            belongs to paying by use.
+      - id: idle-capacity
+        text: Servers paid for but idle most of the year
+        variants:
+          - text: Owned servers doing nothing for most of the year
+          - text: Paying all year for capacity that is mostly unused
+        explanation:
+          text: |
+            Correct. Outside the spring peak, most of the servers do no work, but they were paid for
+            and still need space and power.
+      - id: slow-checkout
+        text: A slow website for most of the year
+        variants:
+          - text: Slow pages for customers in ordinary months
+          - text: Poor website speed outside the peak
+        explanation:
+          text: |
+            With capacity for the peak, ordinary months have more than enough servers. The site
+            isn't short of capacity; it has too much.
+    correct_answers: [idle-capacity]
+    explanation:
+      text: |
+        Buying for the peak avoids lost sales, but it leaves most of the capacity idle for the rest
+        of the year. Idle servers still cost money: they were paid for up front, and they still need
+        space and power. AWS's answer to having to choose a number in advance is the advantage it
+        calls "stop guessing capacity".
+
+  - id: q02-idle-server-months-count
+    page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+    section: Buying for the peak means paying for idle servers
+    task: "1.4"
+    level: application
+    topics: [demand-curve, idle-capacity]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A tutoring company owns 5 servers all year. Adding up each month's need, it uses 35
+        server-months of capacity over the year, and it never needs more than 5 servers in any
+        month. How many server-months of capacity does it pay for but leave idle?
+    choices:
+      - id: thirty-five
+        text: "35"
+        variants:
+          - text: Thirty-five
+          - text: 35 server-months
+        explanation:
+          text: |
+            35 is the capacity the company uses, not the part it leaves idle.
+      - id: twenty-five
+        text: "25"
+        variants:
+          - text: Twenty-five
+          - text: 25 server-months
+        explanation:
+          text: |
+            Correct. It owns 5 × 12 = 60 server-months and uses 35, so 60 − 35 = 25 are idle.
+      - id: sixty
+        text: "60"
+        variants:
+          - text: Sixty
+          - text: 60 server-months
+        explanation:
+          text: |
+            60 is everything the company owns over the year (5 × 12), not the part it leaves idle.
+      - id: thirty
+        text: "30"
+        variants:
+          - text: Thirty
+          - text: 30 server-months
+        explanation:
+          text: |
+            This subtracts the 5 servers from the 35 server-months used, which mixes servers with
+            server-months.
+    correct_answers: [twenty-five]
+    hint:
+      text: First work out how many server-months it owns over twelve months.
+    explanation:
+      text: |
+        A server-month is one server running for one month. Owning 5 servers for 12 months is 60
+        server-months; the company uses 35 of them, so the other 25 are idle capacity, paid for but
+        doing no work. In the cloud, it would rent only the 35 it uses.
+
+  - id: q02-why-cloud-capacity-follows-demand
+    page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+    section: In the cloud, capacity follows the curve
+    task: "1.1"
+    level: understanding
+    topics: [demand-curve, elasticity]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Why can a business that rents servers in the cloud avoid both idle servers and lost sales?
+    choices:
+      - id: bigger-servers
+        text: Each cloud server is large enough to handle any peak on its own.
+        variants:
+          - text: One cloud server is big enough for any busy period by itself.
+          - text: A single cloud server can carry every peak without help.
+        explanation:
+          text: |
+            Cloud servers come in many sizes, and none removes the need to match capacity to demand.
+            One large server all year would be idle capacity again.
+      - id: add-and-remove
+        text: It can add servers within minutes and stop paying when it removes them.
+        variants:
+          - text: Servers arrive in minutes, and removing them ends their charges.
+          - text: It gets servers in minutes and stops paying once it deletes them.
+        explanation:
+          text: |
+            Correct. On demand lets capacity rise when demand does; pay as you go means removing
+            capacity also removes its cost.
+      - id: fixed-price
+        text: The provider charges one fixed price whatever the business uses.
+        variants:
+          - text: The provider bills a single flat price regardless of use.
+          - text: One set price covers all use, whatever the amount.
+        explanation:
+          text: |
+            A fixed price whatever the use is a fixed expense; idle capacity would still be paid
+            for.
+      - id: scale-free-idle
+        text: Economies of scale make idle cloud servers free of charge.
+        variants:
+          - text: Thanks to economies of scale, unused cloud servers cost nothing.
+          - text: The provider's scale means idle servers aren't charged for.
+        explanation:
+          text: |
+            Economies of scale lower the price per unit, but a server left running is charged
+            whether or not it does any work.
+    correct_answers: [add-and-remove]
+    explanation:
+      text: |
+        In the cloud, capacity follows the demand curve instead of sitting at one fixed level.
+        Because resources are on demand, servers can be added within minutes when demand rises;
+        because they are pay as you go, removing them stops their charges. Lesson 02.03 names this
+        ability elasticity.
+
+  - id: q02-example-fixed-to-variable
+    page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+    section: Fixed expense becomes variable expense, which isn't the same as cheaper
+    task: "1.4"
+    level: application
+    topics: [fixed-vs-variable]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Which change is an example of trading fixed expense for variable expense?
+    choices:
+      - id: three-year-contract
+        text: Signing a three-year hosting contract at the same price each month
+        variants:
+          - text: Agreeing to a three-year hosting deal with a flat monthly price
+          - text: Taking a three-year hosting contract with one monthly rate
+        explanation:
+          text: |
+            The same price every month, whatever the use, is still a fixed expense, even though it
+            is paid monthly.
+      - id: payment-plan
+        text: Buying servers on a payment plan spread over three years
+        variants:
+          - text: Paying for bought servers in installments over three years
+          - text: Purchasing servers with payments split across three years
+        explanation:
+          text: |
+            Spreading the payments doesn't change what is bought: a fixed amount of capacity, paid
+            for whether used or not.
+      - id: extra-for-growth
+        text: Buying extra servers now to cover the next year's growth
+        variants:
+          - text: Purchasing spare servers today for next year's growth
+          - text: Adding owned servers in advance of expected growth
+        explanation:
+          text: |
+            Buying ahead for a guess is the fixed-expense habit the cloud replaces, and it adds idle
+            capacity now.
+      - id: pay-per-hour
+        text: Paying each month only for the server hours that were used
+        variants:
+          - text: Being billed monthly for just the server hours actually run
+          - text: Paying monthly for the server hours used, and no others
+        explanation:
+          text: |
+            Correct. The amount now rises and falls with use, which is what variable expense means.
+    correct_answers: [pay-per-hour]
+    hint:
+      text: A variable expense changes with how much you use. Which bill would change if use fell?
+    explanation:
+      text: |
+        AWS's first advantage of cloud computing is to trade fixed expense for variable expense:
+        instead of paying in advance for capacity you may not use, you pay as you use resources, for
+        how much you use. A cost is variable only if the amount follows use; paying monthly is not
+        enough on its own.
+
+  - id: q02-cloud-cuts-operating-costs-claim
+    page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+    section: The cloud doesn't always cut operating costs
+    task: "1.4"
+    level: understanding
+    topics: [fixed-vs-variable, cloud-economics-misconceptions]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A manager says, "Once we move to the cloud, our operating costs will certainly go down."
+        Which response is most accurate?
+    choices:
+      - id: wrong-moves-to-capital
+        text: She is wrong; the cloud moves server spending into the capital budget.
+        variants:
+          - text: That's wrong; cloud spending counts as capital, not operating, cost.
+          - text: She is mistaken; the cloud turns server costs into capital expense.
+        explanation:
+          text: |
+            This reverses the change. Paying as you go turns an up-front capital purchase into a
+            running operating cost, not the other way round.
+      - id: running-bills-can-rise
+        text: Not necessarily; running bills often rise, and the total depends on use.
+        variants:
+          - text: She may be wrong; monthly bills often go up, and the total depends on use.
+          - text: Not always; operating bills often grow, and the total depends on use.
+        explanation:
+          text: |
+            Correct. Purchases become monthly costs, so operating bills can rise even when the total
+            falls. The total depends on how demand varies and whether capacity is removed.
+      - id: stay-flat
+        text: She is overstating it; operating costs usually stay flat, and capital costs fall.
+        variants:
+          - text: Not quite; running costs tend to hold steady while capital spending drops.
+          - text: She goes too far; operating bills mostly stay level, and capital costs drop.
+        explanation:
+          text: |
+            The capital part is right, since there is less to buy up front, but operating costs
+            don't stay flat: the purchases turn into monthly bills, so operating costs often rise.
+      - id: mostly-right-first-year
+        text: She is mostly right; operating costs usually fall within the first year.
+        variants:
+          - text: That's largely right; running costs tend to drop in the first year.
+          - text: She is broadly correct; operating bills generally shrink in year one.
+        explanation:
+          text: |
+            The hedge sounds careful, but the direction is wrong. Purchases become monthly bills, so
+            operating costs usually go up after a move, even when the total falls.
+    correct_answers: [running-bills-can-rise]
+    explanation:
+      text: |
+        What the cloud changes for certain is the kind of cost: an up-front purchase becomes a
+        running bill, so operating costs often go up. Whether the total cost falls depends on how
+        much demand varies and on whether the organization removes capacity it doesn't need. The
+        cloud allows you to pay for what you use; it doesn't make you.
+
+  - id: q02-when-paying-by-use-saves-most
+    page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+    section: Fixed expense becomes variable expense, which isn't the same as cheaper
+    task: "1.4"
+    level: understanding
+    topics: [fixed-vs-variable]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A company is deciding whether paying by use would cut its server costs. Which two conditions
+        make the biggest saving likely? (Select TWO.)
+    choices:
+      - id: demand-varies
+        text: Its demand rises and falls a lot over the year.
+        variants:
+          - text: Its demand swings widely during the year.
+          - text: Its demand goes up and down sharply across the year.
+        explanation:
+          text: |
+            Correct. When demand varies, owned capacity sits idle much of the time, so paying only
+            for use has the most waste to remove.
+      - id: demand-flat
+        text: Its demand is flat, hour after hour, through the year.
+        variants:
+          - text: Its demand is steady around the clock, all year.
+          - text: Its demand never changes from hour to hour.
+        explanation:
+          text: |
+            With flat demand there is little idle capacity to give back, so paying by use saves
+            little; owning can even cost less.
+      - id: removes-capacity
+        text: Its team removes capacity when demand falls.
+        variants:
+          - text: Its team scales capacity down as demand drops.
+          - text: Its team gives back capacity it no longer needs.
+        explanation:
+          text: |
+            Correct. The saving comes only if capacity actually goes down with demand.
+      - id: keeps-peak
+        text: Its team keeps peak capacity running year-round.
+        variants:
+          - text: Its team leaves peak-sized capacity on all year.
+          - text: Its team runs its busiest-month capacity in every month.
+        explanation:
+          text: |
+            Renting the peak all year turns idle equipment into idle rent and can cost more than
+            owning.
+      - id: new-servers
+        text: It bought new servers for its data center last month.
+        variants:
+          - text: It has just bought new servers for its data center.
+          - text: Its data center got new servers a month ago.
+        explanation:
+          text: |
+            Servers already paid for argue for waiting, not for a quick saving from moving.
+    correct_answers: [demand-varies, removes-capacity]
+    explanation:
+      text: |
+        Variable expense saves money when use varies and the organization actually reduces capacity
+        when demand falls. Both conditions matter: varying demand creates the idle capacity to remove,
+        and scaling down removes it. With flat demand or peak capacity left running, the saving
+        shrinks or turns into a loss.
+
+  - id: q02-economies-of-scale-scenario
+    page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+    section: "Economies of scale: a very large provider can charge less per unit"
+    task: "1.4"
+    level: application
+    topics: [economies-of-scale, six-advantages]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A small analytics startup finds that AWS's pay-as-you-go price for each unit of storage is
+        lower than what it could achieve buying and running a few disks itself. Which of AWS's six
+        advantages of cloud computing explains this?
+    choices:
+      - id: economies-of-scale
+        text: Benefit from massive economies of scale
+        variants:
+          - text: 'The "benefit from massive economies of scale" advantage'
+          - text: 'The advantage "benefit from massive economies of scale"'
+        explanation:
+          text: |
+            Correct. AWS combines the use of a very large number of customers, buys and runs
+            equipment in bulk, and passes that on as lower pay-as-you-go prices.
+      - id: stop-guessing
+        text: Stop guessing capacity
+        variants:
+          - text: 'The "stop guessing capacity" advantage'
+          - text: 'The advantage "stop guessing capacity"'
+        explanation:
+          text: |
+            This advantage removes the need to choose a fixed amount of capacity in advance; it
+            doesn't explain a lower price per unit.
+      - id: go-global
+        text: Go global in minutes
+        variants:
+          - text: 'The "go global in minutes" advantage'
+          - text: 'The advantage "go global in minutes"'
+        explanation:
+          text: |
+            Going global is about running near users in other parts of the world, not about the
+            price of storage.
+      - id: speed-agility
+        text: Increase speed and agility
+        variants:
+          - text: 'The "increase speed and agility" advantage'
+          - text: 'The advantage "increase speed and agility"'
+        explanation:
+          text: |
+            Speed and agility are about how fast you get new resources, not about how much each unit
+            costs.
+    correct_answers: [economies-of-scale]
+    hint:
+      text: Which advantage depends on the provider's size rather than on how you use it?
+    explanation:
+      text: |
+        Economies of scale are the lower cost per unit that a very large operation reaches by
+        buying, building and running in bulk. AWS combines the usage of a very large number of
+        customers, which it says leads to lower pay-as-you-go prices. A single small company can't
+        reach that scale on its own.
+
+  - id: q02-economies-of-scale-what-changes
+    page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+    section: "Economies of scale: a very large provider can charge less per unit"
+    task: "1.4"
+    level: understanding
+    topics: [economies-of-scale, demand-curve]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        On a chart of a company's demand for servers over a year, what do the provider's economies
+        of scale change?
+    choices:
+      - id: price-per-unit
+        text: How much each unit of capacity costs
+        variants:
+          - text: The price of every unit of capacity
+          - text: What each unit of capacity costs
+        explanation:
+          text: |
+            Correct. Economies of scale lower the price per unit: how much each column on the chart
+            costs.
+      - id: shape-of-curve
+        text: How much the company's demand rises and falls
+        variants:
+          - text: How far the company's demand moves up and down
+          - text: The size of the company's swings in demand
+        explanation:
+          text: |
+            The shape of demand comes from the company's customers. The provider's size doesn't
+            change it.
+      - id: amount-needed
+        text: How many servers the company needs at its peak
+        variants:
+          - text: The number of servers needed at the busiest time
+          - text: The count of servers the peak requires
+        explanation:
+          text: |
+            The peak need depends on the company's demand, not on how big the provider is.
+      - id: idle-line
+        text: Where the flat line of owned servers sits
+        variants:
+          - text: The level of the flat owned-capacity line
+          - text: The height of the owned-servers line
+        explanation:
+          text: |
+            The flat line is the capacity the company chose to buy. The provider's economies of
+            scale have nothing to do with it.
+    correct_answers: [price-per-unit]
+    explanation:
+      text: |
+        Economies of scale affect the price of each unit of capacity, not the shape of the demand
+        curve. That is why following the curve saves money even before economies of scale: renting
+        only what each month needs removes idle capacity, and a lower unit price is a separate,
+        additional saving.
+
+  - id: q02-advantage-unknown-audience
+    page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+    section: Six advantages, one picture
+    task: "1.1"
+    level: application
+    topics: [six-advantages]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A streaming startup is launching a new sports channel and has no idea whether it will draw a
+        thousand viewers or a million. It wants to avoid committing to a number of servers before
+        launch. Which of AWS's six advantages of cloud computing does this rely on most?
+    choices:
+      - id: stop-guessing
+        text: Stop guessing capacity
+        variants:
+          - text: 'The "stop guessing capacity" advantage'
+          - text: 'The advantage "stop guessing capacity"'
+        explanation:
+          text: |
+            Correct. Capacity can be added and removed as real demand appears, so there is no fixed
+            number to choose, and no wrong guess.
+      - id: data-centers
+        text: Stop spending money running and maintaining data centers
+        variants:
+          - text: 'The "stop spending money running and maintaining data centers" advantage'
+          - text: 'The advantage "stop spending money running and maintaining data centers"'
+        explanation:
+          text: |
+            This advantage is about no longer housing and repairing equipment, not about choosing
+            how much of it to have.
+      - id: economies-of-scale
+        text: Benefit from massive economies of scale
+        variants:
+          - text: 'The "benefit from massive economies of scale" advantage'
+          - text: 'The advantage "benefit from massive economies of scale"'
+        explanation:
+          text: |
+            Economies of scale lower the price per unit; they don't remove the need to decide how
+            many units.
+      - id: go-global
+        text: Go global in minutes
+        variants:
+          - text: 'The "go global in minutes" advantage'
+          - text: 'The advantage "go global in minutes"'
+        explanation:
+          text: |
+            Going global is about where the servers run, near users abroad, not about how many are
+            needed.
+    correct_answers: [stop-guessing]
+    hint:
+      text: The startup's problem is that it doesn't know a number in advance.
+    explanation:
+      text: |
+        "Stop guessing capacity" means you don't have to choose a fixed amount of capacity before
+        you know your demand. In the cloud, the startup can start small, add servers within minutes
+        if viewers arrive, and remove them if they don't. Owning servers would force a guess that is
+        wrong one way or the other.
+
+  - id: q02-advantage-no-server-room
+    page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+    section: Six advantages, one picture
+    task: "1.1"
+    level: application
+    topics: [six-advantages]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A veterinary clinic's two IT staff spend much of their week replacing failed disks and
+        fixing the air conditioning in its server room. The clinic wants them working on its
+        appointment app instead. Which of AWS's six advantages of cloud computing fits this goal
+        best?
+    choices:
+      - id: data-centers
+        text: Stop spending money running and maintaining data centers
+        variants:
+          - text: 'The "stop spending money running and maintaining data centers" advantage'
+          - text: 'The advantage "stop spending money running and maintaining data centers"'
+        explanation:
+          text: |
+            Correct. In the cloud, the provider buys, houses, cools and repairs the equipment, and
+            the clinic's staff can work on its own business.
+      - id: speed-agility
+        text: Increase speed and agility
+        variants:
+          - text: 'The "increase speed and agility" advantage'
+          - text: 'The advantage "increase speed and agility"'
+        explanation:
+          text: |
+            Agility is about getting new resources and trying ideas quickly. The clinic's issue is
+            the upkeep of the equipment it owns.
+      - id: fixed-to-variable
+        text: Trade fixed expense for variable expense
+        variants:
+          - text: 'The "trade fixed expense for variable expense" advantage'
+          - text: 'The advantage "trade fixed expense for variable expense"'
+        explanation:
+          text: |
+            This advantage is about how the bill behaves, following use. The scenario is about staff
+            time spent on equipment.
+      - id: go-global
+        text: Go global in minutes
+        variants:
+          - text: 'The "go global in minutes" advantage'
+          - text: 'The advantage "go global in minutes"'
+        explanation:
+          text: |
+            The clinic isn't trying to reach users in other parts of the world.
+    correct_answers: [data-centers]
+    hint:
+      text: Who would replace the disks and fix the cooling if the clinic used the cloud?
+    explanation:
+      text: |
+        AWS's advantage "stop spending money running and maintaining data centers" means the
+        provider does the buying, housing, cooling and repairing of equipment. The organization can
+        then spend its time on what sets it apart, here the clinic's appointment app, instead of on
+        work every server room needs.
+
+  - id: q02-six-advantages-names
+    page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+    section: Six advantages, one picture
+    task: "1.1"
+    level: recall
+    topics: [six-advantages]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A slide for new staff is meant to list AWS's six advantages of cloud computing, but some
+        of its lines were made up or misremembered. Which two lines are really among the six?
+        (Select TWO.)
+    choices:
+      - id: design-for-failure
+        text: Design for failure
+        variants:
+          - text: 'The line "Design for failure"'
+          - text: 'The phrase "Design for failure"'
+        explanation:
+          text: |
+            "Design for failure" is a slogan from older study material. It isn't one of the six
+            advantages, nor a current Well-Architected design principle.
+      - id: go-global
+        text: Go global in minutes
+        variants:
+          - text: 'The line "Go global in minutes"'
+          - text: 'The phrase "Go global in minutes"'
+        explanation:
+          text: |
+            Correct. You can run your system in Regions around the world, close to users, with a few
+            clicks.
+      - id: reduce-operating
+        text: Reduce operating expenses
+        variants:
+          - text: 'The line "Reduce operating expenses"'
+          - text: 'The phrase "Reduce operating expenses"'
+        explanation:
+          text: |
+            The cloud changes the kind of cost, from fixed to variable; operating bills often go up.
+            AWS's advantage is "trade fixed expense for variable expense".
+      - id: speed-agility
+        text: Increase speed and agility
+        variants:
+          - text: 'The line "Increase speed and agility"'
+          - text: 'The phrase "Increase speed and agility"'
+        explanation:
+          text: |
+            Correct. New resources arrive in minutes instead of weeks, so teams can try ideas
+            quickly.
+      - id: fixed-price
+        text: Pay one fixed price for capacity
+        variants:
+          - text: 'The line "Pay one fixed price for capacity"'
+          - text: 'The phrase "Pay one fixed price for capacity"'
+        explanation:
+          text: |
+            A fixed price is the opposite of the cloud's pay-as-you-go model, where the bill follows
+            use.
+    correct_answers: [go-global, speed-agility]
+    explanation:
+      text: |
+        AWS's six advantages are: trade fixed expense for variable expense; benefit from massive
+        economies of scale; stop guessing capacity; increase speed and agility; stop spending money
+        running and maintaining data centers; and go global in minutes. "Reduce operating expenses"
+        is a common misreading of the first one.
+
+  # ---------------------------------------------------------------- 02.03 Telling the benefits apart
+
+  - id: q02-tax-deadline-traffic-benefit
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: "Elasticity: capacity grows and shrinks with demand"
+    task: "1.1"
+    level: understanding
+    topics: [cloud-benefits, elasticity]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        An online tax-filing service gets several times its usual traffic in the weeks before the
+        filing deadline, and very little afterwards. Its servers are added automatically as traffic
+        rises and removed as it falls. Which cloud benefit does this show best?
+    choices:
+      - id: agility
+        text: Agility
+        variants:
+          - text: Business agility
+          - text: Speed and agility
+        explanation:
+          text: |
+            Agility is about getting something new quickly to try an idea. Here the same service gets
+            more or less capacity in response to demand.
+      - id: elasticity
+        text: Elasticity
+        variants:
+          - text: Elastic capacity
+          - text: Being elastic
+        explanation:
+          text: |
+            Correct. Capacity follows demand in both directions, which is elasticity.
+      - id: high-availability
+        text: High availability
+        variants:
+          - text: Being highly available
+          - text: High-availability design
+        explanation:
+          text: |
+            High availability is about staying up when a part fails. Nothing fails in this scenario.
+      - id: durability
+        text: Durability
+        variants:
+          - text: Data durability
+          - text: Durable storage
+        explanation:
+          text: |
+            Durability is about stored data not being lost. The scenario is about capacity.
+    correct_answers: [elasticity]
+    explanation:
+      text: |
+        Elasticity means capacity grows when demand rises and shrinks when it falls, so you don't
+        pay for capacity you no longer need. On AWS it is usually delivered automatically by auto
+        scaling. When a scenario describes more or less of the same thing in response to demand, the
+        answer is elasticity.
+
+  - id: q02-scalability-elasticity-correction
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: '"Scalability is manual, elasticity is automatic" is a myth'
+    task: "1.1"
+    level: understanding
+    topics: [cloud-benefits, elasticity, scalability]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A colleague says, "Scalability is when engineers add servers by hand; elasticity is when the
+        cloud adds them for you." Which statement best corrects this?
+    choices:
+      - id: correct-as-stated
+        text: Nothing needs correcting; that is how AWS defines the two terms.
+        variants:
+          - text: It is accurate; AWS defines the two terms exactly that way.
+          - text: No correction is needed; it matches AWS's definitions.
+        explanation:
+          text: |
+            No AWS source defines the terms that way, although the idea circulates in study material.
+      - id: reversed
+        text: It is reversed; elasticity is the manual one and scalability is automatic.
+        variants:
+          - text: It is backwards; scalability is automatic and elasticity manual.
+          - text: The two are swapped; elasticity is done by hand, scalability automatically.
+        explanation:
+          text: |
+            Swapping the labels keeps the same mistake: the difference isn't about manual versus
+            automatic at all.
+      - id: up-and-down
+        text: The difference is direction; elasticity also shrinks capacity as demand falls.
+        variants:
+          - text: The real difference is that elastic capacity follows demand down as well as up.
+          - text: What matters is that elasticity removes capacity when demand drops, too.
+        explanation:
+          text: |
+            Correct. Scalability means a system can grow; elasticity means capacity follows demand up
+            and down. On AWS, elasticity is usually automatic, but that isn't what defines it.
+      - id: same-thing
+        text: The two terms mean exactly the same thing on AWS, so either fits.
+        variants:
+          - text: On AWS the two words are exact synonyms, so either is right.
+          - text: AWS treats the terms as identical, so they are interchangeable.
+        explanation:
+          text: |
+            They aren't the same. A system can scale up without ever giving capacity back, and that
+            isn't elasticity.
+    correct_answers: [up-and-down]
+    explanation:
+      text: |
+        "Scalability is manual, elasticity is automatic" is a myth. Scalability, in plain words,
+        means a system can grow to handle more; AWS gives no formal definition of it. Elasticity
+        means capacity follows demand up and down, so you don't pay for what you no longer need. It
+        is usually automatic on AWS, which is why the two ideas get merged.
+
+  - id: q02-grew-never-shrank-missing
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: '"Scalability is manual, elasticity is automatic" is a myth'
+    task: "1.1"
+    level: application
+    topics: [cloud-benefits, elasticity]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        An online forum's servers grew from 2 to 40 over three years as members joined. Servers were
+        added when needed, but none were ever removed, even overnight when few members were online.
+        What does this setup lack to be a good example of elasticity?
+    choices:
+      - id: two-azs
+        text: Copies of the forum in a second Availability Zone
+        variants:
+          - text: A second copy of the forum in another Availability Zone
+          - text: Forum servers spread across two Availability Zones
+        explanation:
+          text: |
+            Running in two AZs gives high availability, protection from a failed part. It has nothing
+            to do with capacity following demand.
+      - id: shrink-with-demand
+        text: Capacity that shrinks again when demand falls
+        variants:
+          - text: Servers removed again when demand drops
+          - text: Giving capacity back as demand goes down
+        explanation:
+          text: |
+            Correct. The forum scaled up, but capacity never followed demand down, so it pays for
+            idle servers every night.
+      - id: second-region
+        text: A copy of the forum in another AWS Region
+        variants:
+          - text: A second copy of the forum in a different Region
+          - text: Forum servers running in a second AWS Region
+        explanation:
+          text: |
+            A second Region is about global reach or recovery, not about matching capacity to
+            demand.
+      - id: faster-test-setup
+        text: A quicker way to set up new test environments
+        variants:
+          - text: Faster creation of new test environments
+          - text: Test environments that can be built more quickly
+        explanation:
+          text: |
+            Quick test environments are agility: getting something new fast. The forum's issue is
+            the amount of the same capacity.
+    correct_answers: [shrink-with-demand]
+    hint:
+      text: Elasticity works in two directions. Which one is missing here?
+    explanation:
+      text: |
+        Elasticity means capacity follows demand in both directions. The forum shows that the system
+        can grow, which is scalability, but it never gave capacity back when demand fell, so it pays
+        for servers that sit idle. A good example would add servers at busy times and remove them at
+        quiet times.
+
+  - id: q02-recommendation-trial-benefit
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: "Agility: getting something new takes minutes, not weeks"
+    task: "1.1"
+    level: understanding
+    topics: [cloud-benefits, agility]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A furniture retailer's marketing team wants to try a new product-recommendation feature.
+        Within an hour it has test servers running, it runs the trial for two days, and then it
+        deletes everything because the results were poor. Which cloud benefit does this show best?
+    choices:
+      - id: durability
+        text: Durability
+        variants:
+          - text: Data durability
+          - text: Durable storage
+        explanation:
+          text: |
+            Durability is about stored data not being lost. Nothing here depends on keeping data.
+      - id: global-reach
+        text: Global reach
+        variants:
+          - text: Reaching users globally
+          - text: Worldwide reach
+        explanation:
+          text: |
+            Global reach is about running close to users in new places. The trial is about trying an
+            idea, wherever it runs.
+      - id: elasticity
+        text: Elasticity
+        variants:
+          - text: Elastic capacity
+          - text: Being elastic
+        explanation:
+          text: |
+            Nothing grew or shrank in response to demand. The team made a decision to try something
+            new, then removed it.
+      - id: agility
+        text: Agility
+        variants:
+          - text: Business agility
+          - text: Speed and agility
+        explanation:
+          text: |
+            Correct. Getting new resources in minutes and deleting them cheaply lets the team test an
+            idea it couldn't otherwise justify.
+    correct_answers: [agility]
+    explanation:
+      text: |
+        Agility is the ability to get new resources, and try new ideas, quickly and cheaply. In the
+        cloud the time to get something new drops from weeks to minutes, and a failed experiment can
+        be deleted, so it stops costing money. AWS lists this as the advantage "increase speed and
+        agility".
+
+  - id: q02-elasticity-not-agility-scenarios
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: Elasticity and agility both sound like "fast"
+    task: "1.1"
+    level: application
+    topics: [cloud-benefits, elasticity, agility]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        Which two scenarios show elasticity rather than agility? (Select TWO.)
+    choices:
+      - id: flash-sale
+        text: A shop's servers double during a flash sale and shrink back after it ends.
+        variants:
+          - text: A store's servers double for a flash sale, then return to normal afterwards.
+          - text: An online shop gets twice the servers during a flash sale and fewer after it.
+        explanation:
+          text: |
+            Correct. The amount of the same capacity rises and falls with demand.
+      - id: test-copy
+        text: A developer sets up a test copy of the company website in ten minutes.
+        variants:
+          - text: A developer has a test version of the website running within ten minutes.
+          - text: In ten minutes, a developer builds a test copy of the company's site.
+        explanation:
+          text: |
+            Getting something new quickly, driven by a person's decision, is agility.
+      - id: payday
+        text: A payroll system adds capacity on payday and releases it the next day.
+        variants:
+          - text: A payroll system grows its capacity on payday and gives it back a day later.
+          - text: On payday a payroll system gains capacity, which it returns the next day.
+        explanation:
+          text: |
+            Correct. Capacity follows a predictable rise and fall in demand.
+      - id: three-designs
+        text: A team tries three sign-up page designs in an afternoon and keeps one.
+        variants:
+          - text: In one afternoon a team tests three sign-up pages and keeps the best.
+          - text: A team trials three sign-up page designs in an afternoon, keeping one.
+        explanation:
+          text: |
+            Trying new ideas quickly and cheaply, then deleting what failed, is agility.
+      - id: new-country
+        text: A company opens a copy of its site for customers in a new country.
+        variants:
+          - text: A company starts running its site near customers in another country.
+          - text: A firm launches a copy of its website for buyers in a new country.
+        explanation:
+          text: |
+            Running close to users in a new place is global reach, not elasticity.
+    correct_answers: [flash-sale, payday]
+    hint:
+      text: Ask what started each story, a change in demand or a person's idea.
+    explanation:
+      text: |
+        Elasticity and agility both involve speed, but different things happen quickly. Elasticity
+        changes the amount of the same thing in response to demand. Agility gets you something new,
+        quickly and cheaply, because someone decided to try it.
+
+  - id: q02-pharmacy-two-azs-benefit
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: "High availability: the system keeps working when a part fails"
+    task: "1.1"
+    level: understanding
+    topics: [cloud-benefits, high-availability]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A pharmacy chain's prescription system runs copies in two Availability Zones. When one
+        Availability Zone loses power, pharmacists keep filling prescriptions without interruption.
+        Which cloud benefit does this show best?
+    choices:
+      - id: high-availability
+        text: High availability
+        variants:
+          - text: Being highly available
+          - text: High-availability design
+        explanation:
+          text: |
+            Correct. The system kept working when a part, a whole Availability Zone, failed.
+      - id: durability
+        text: Durability
+        variants:
+          - text: Data durability
+          - text: Durable storage
+        explanation:
+          text: |
+            Durability is about stored data not being lost. The point here is that the system kept
+            working right now.
+      - id: elasticity
+        text: Elasticity
+        variants:
+          - text: Elastic capacity
+          - text: Being elastic
+        explanation:
+          text: |
+            Nothing changed in response to demand; a part failed.
+      - id: global-reach
+        text: Global reach
+        variants:
+          - text: Reaching users globally
+          - text: Worldwide reach
+        explanation:
+          text: |
+            Both Availability Zones are in one Region; the point isn't running near users in new
+            places.
+    correct_answers: [high-availability]
+    explanation:
+      text: |
+        High availability means a system keeps working, with little or no downtime, when some of its
+        parts fail. The main way to get it on AWS is to avoid having only one of anything: run copies
+        in more than one Availability Zone, so that if one fails, the others keep serving users.
+
+  - id: q02-registration-overload-benefit
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: "High availability: the system keeps working when a part fails"
+    task: "1.1"
+    level: application
+    topics: [cloud-benefits, high-availability, elasticity]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A university's course-registration site fails each semester on the morning registration
+        opens, when thousands of students sign in at once. At all other times it works, and no
+        hardware is faulty. Which cloud benefit addresses the cause of the failures most directly?
+    choices:
+      - id: durability
+        text: Durability
+        variants:
+          - text: Data durability
+          - text: Durable storage
+        explanation:
+          text: |
+            No data is being lost. The site fails because demand is above capacity.
+      - id: global-reach
+        text: Global reach
+        variants:
+          - text: Reaching users globally
+          - text: Worldwide reach
+        explanation:
+          text: |
+            The students are not far away; there are simply too many of them at once.
+      - id: high-availability
+        text: High availability
+        variants:
+          - text: Being highly available
+          - text: High-availability design
+        explanation:
+          text: |
+            This is the trap. High availability protects against a failed part, and nothing here is
+            broken; the site is overloaded.
+      - id: elasticity
+        text: Elasticity
+        variants:
+          - text: Elastic capacity
+          - text: Being elastic
+        explanation:
+          text: |
+            Correct. Adding capacity when sign-ins surge, and removing it afterwards, fixes an
+            overload.
+    correct_answers: [elasticity]
+    hint:
+      text: Is the cause a broken part, or more demand than capacity?
+    explanation:
+      text: |
+        High availability is about failure, not load. A site that fails because too many people use
+        it at once needs capacity that grows with demand, which is elasticity. High availability
+        would protect the site when a server or a data center fails, a different problem that the
+        university may also want to solve.
+
+  - id: q02-four-nines-downtime
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: "High availability: the system keeps working when a part fails"
+    task: "1.1"
+    level: recall
+    topics: [high-availability]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A system is designed to be available 99.99% of the time ("four nines"). About how much
+        downtime does that allow over a year?
+    choices:
+      - id: three-days
+        text: About 3.7 days
+        variants:
+          - text: Roughly 3.7 days
+          - text: Around 3.7 days
+        explanation:
+          text: |
+            About 3.7 days a year is 99% availability, two nines.
+      - id: nine-hours
+        text: About 8.8 hours
+        variants:
+          - text: Roughly 8.8 hours
+          - text: Around 8.8 hours
+        explanation:
+          text: |
+            About 8.8 hours a year is 99.9%, three nines.
+      - id: fifty-three-minutes
+        text: About 53 minutes
+        variants:
+          - text: Roughly 53 minutes
+          - text: Around 53 minutes
+        explanation:
+          text: |
+            Correct. 0.01% of a year's 8,760 hours is about 0.88 hours, or about 53 minutes.
+      - id: five-minutes
+        text: About 5 minutes
+        variants:
+          - text: Roughly 5 minutes
+          - text: Around 5 minutes
+        explanation:
+          text: |
+            About 5 minutes a year is 99.999%, five nines.
+    correct_answers: [fifty-three-minutes]
+    explanation:
+      text: |
+        Availability is usually measured as the percentage of time a system is working, and each
+        extra nine allows a tenth of the downtime. Over a year of 8,760 hours, 99.9% allows about
+        8.8 hours, 99.99% about 53 minutes, and 99.999% about 5 minutes.
+
+  - id: q02-family-records-benefit
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: "Durability: stored data isn't lost"
+    task: "1.1"
+    level: understanding
+    topics: [cloud-benefits, durability]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A family-history company stores millions of scanned birth and marriage records. Its main
+        concern is that a failed disk or server must never cause a scan to be lost for good. Which
+        cloud benefit is it looking for?
+    choices:
+      - id: elasticity
+        text: Elasticity
+        variants:
+          - text: Elastic capacity
+          - text: Being elastic
+        explanation:
+          text: |
+            Elasticity matches capacity to demand. The concern here is losing stored data.
+      - id: durability
+        text: Durability
+        variants:
+          - text: Data durability
+          - text: Durable storage
+        explanation:
+          text: |
+            Correct. Durability means stored data is kept safe from loss, even when disks, servers
+            or a data center fail.
+      - id: agility
+        text: Agility
+        variants:
+          - text: Business agility
+          - text: Speed and agility
+        explanation:
+          text: |
+            Agility is about getting something new quickly, not about keeping what is stored.
+      - id: global-reach
+        text: Global reach
+        variants:
+          - text: Reaching users globally
+          - text: Worldwide reach
+        explanation:
+          text: |
+            Global reach is about running near users in many places, not about protecting stored
+            records.
+    correct_answers: [durability]
+    explanation:
+      text: |
+        Durability is about data, not about the system being up: stored data will still exist later,
+        even after hardware fails. Amazon S3 is the classic example; for most of its storage classes
+        it keeps copies of data across at least three Availability Zones (as of 2026-10-23).
+
+  - id: q02-reachable-later-unchanged
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: Durability isn't availability
+    task: "1.1"
+    level: understanding
+    topics: [durability, high-availability]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A storage service is designed so that stored files are almost never lost. During a brief
+        outage, a customer can't open one of its files; an hour later the file opens, unchanged.
+        Which statement explains this?
+    choices:
+      - id: durability-failed
+        text: The service's durability failed while the file was out of reach.
+        variants:
+          - text: Durability broke down for the time the file couldn't be opened.
+          - text: The file's durability failed during the outage.
+        explanation:
+          text: |
+            Durability failing would mean the file was lost for good. It came back unchanged, so
+            nothing was lost.
+      - id: durable-means-reachable
+        text: Durable storage should keep every file reachable at all times.
+        variants:
+          - text: A durable service ought to make files reachable at every moment.
+          - text: Being durable means a file can be opened at any moment.
+        explanation:
+          text: |
+            Being reachable right now is availability, which durability doesn't promise.
+      - id: availability-is-existence
+        text: Availability measures whether the file will still exist later.
+        variants:
+          - text: Availability is about whether the file survives over time.
+          - text: Availability tracks whether a file will be kept in the future.
+        explanation:
+          text: |
+            This reverses the two terms: whether data will still exist later is durability.
+      - id: different-measures
+        text: Durability and availability measure different things.
+        variants:
+          - text: Durability and availability are separate measures.
+          - text: Availability and durability describe different properties.
+        explanation:
+          text: |
+            Correct. The file was never lost (durability), only briefly out of reach
+            (availability).
+    correct_answers: [different-measures]
+    hint:
+      text: Separate "will the data still exist later?" from "can I reach it right now?".
+    explanation:
+      text: |
+        Durability answers "will my data still exist later?"; availability answers "can I reach it
+        right now?". A service can be extremely durable but briefly unavailable. For example, as of
+        2026-10-23, S3 Standard is designed for eleven nines of durability but 99.99% availability.
+
+  - id: q02-users-far-away-benefit
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: "Global reach: run close to users anywhere, in minutes"
+    task: "1.1"
+    level: understanding
+    topics: [cloud-benefits, global-reach]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A language-learning app runs in a Region in Europe. It gains many new users in Australia, who
+        complain that every page is slow to load. The company starts running a copy of the app in a
+        Region near Australia. Which cloud benefit does this show best?
+    choices:
+      - id: global-reach
+        text: Global reach
+        variants:
+          - text: Reaching users globally
+          - text: Worldwide reach
+        explanation:
+          text: |
+            Correct. Running a copy close to the new users shortens the distance and lowers their
+            latency.
+      - id: elasticity
+        text: Elasticity
+        variants:
+          - text: Elastic capacity
+          - text: Being elastic
+        explanation:
+          text: |
+            The problem is distance, not too little capacity. Adding servers in Europe wouldn't
+            shorten the trip to Australia.
+      - id: high-availability
+        text: High availability
+        variants:
+          - text: Being highly available
+          - text: High-availability design
+        explanation:
+          text: |
+            Nothing failed; the pages were slow because the users were far away.
+      - id: agility
+        text: Agility
+        variants:
+          - text: Business agility
+          - text: Speed and agility
+        explanation:
+          text: |
+            The scenario stresses where the app runs, close to users, not how fast something new
+            was created.
+    correct_answers: [global-reach]
+    explanation:
+      text: |
+        Global reach means running your system in many parts of the world, close to users, so they
+        get lower latency. AWS calls this advantage "go global in minutes". When a scenario stresses
+        where (closer to users, less delay), the answer is global reach; when it stresses how fast
+        something new appeared, it is agility.
+
+  - id: q02-benefits-about-failure
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: All five side by side
+    task: "1.1"
+    level: understanding
+    topics: [cloud-benefits]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        Which two cloud benefits are about coping with failing hardware, rather than about load,
+        speed or location? (Select TWO.)
+    choices:
+      - id: elasticity
+        text: Elasticity
+        variants:
+          - text: Elastic capacity
+          - text: Being elastic
+        explanation:
+          text: |
+            Elasticity is about load: capacity following demand.
+      - id: high-availability
+        text: High availability
+        variants:
+          - text: Being highly available
+          - text: High-availability design
+        explanation:
+          text: |
+            Correct. The system keeps working when a part fails.
+      - id: agility
+        text: Agility
+        variants:
+          - text: Business agility
+          - text: Speed and agility
+        explanation:
+          text: |
+            Agility is about speed: getting something new quickly.
+      - id: global-reach
+        text: Global reach
+        variants:
+          - text: Reaching users globally
+          - text: Worldwide reach
+        explanation:
+          text: |
+            Global reach is about location: running close to users.
+      - id: durability
+        text: Durability
+        variants:
+          - text: Data durability
+          - text: Durable storage
+        explanation:
+          text: |
+            Correct. Stored data survives failed disks, servers or even a data center.
+    correct_answers: [high-availability, durability]
+    explanation:
+      text: |
+        Each benefit answers a different question about what changed: capacity (elasticity), time
+        (agility), failure (high availability), data (durability) or place (global reach). High
+        availability keeps the system working through a failure; durability keeps stored data from
+        being lost through one. Both belong to the reliability pillar.
+
+  - id: q02-one-server-one-az-in-cloud
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: "In real work: the benefits map to the Well-Architected pillars"
+    task: "1.1"
+    level: understanding
+    topics: [cloud-benefits, high-availability]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company moves its website to AWS and runs it on a single server in one Availability Zone.
+        Which statement about this website is accurate?
+    choices:
+      - id: ha-by-default
+        text: It is highly available because AWS runs the underlying equipment.
+        variants:
+          - text: AWS running the equipment makes it highly available.
+          - text: It is highly available since AWS operates the hardware it runs on.
+        explanation:
+          text: |
+            AWS provides the Availability Zones, but a single server in one AZ is still a single
+            point of failure.
+      - id: elastic-by-default
+        text: It is elastic because AWS adds servers whenever demand rises.
+        variants:
+          - text: AWS adds servers for it whenever demand goes up, so it is elastic.
+          - text: It is elastic since AWS adds capacity each time demand rises.
+        explanation:
+          text: |
+            AWS doesn't add servers on its own. Elasticity needs the customer to set up something
+            like auto scaling.
+      - id: must-design
+        text: It gains the cloud's benefits only if it is designed to use them.
+        variants:
+          - text: It gets the cloud's benefits only when designed to use them.
+          - text: The cloud's benefits apply to it only if its design uses them.
+        explanation:
+          text: |
+            Correct. AWS provides the AZs, auto scaling and Regions; the customer has to design the
+            website to use them, for example by running in more than one AZ.
+      - id: global-by-default
+        text: It has global reach because AWS has Regions around the world.
+        variants:
+          - text: AWS's worldwide Regions give it global reach.
+          - text: It reaches the world since AWS runs Regions everywhere.
+        explanation:
+          text: |
+            The website runs in one place. Global reach needs copies running in Regions near the
+            users.
+    correct_answers: [must-design]
+    hint:
+      text: Who decides how many Availability Zones and servers the website uses?
+    explanation:
+      text: |
+        The cloud's benefits are possibilities, not defaults. AWS provides the Availability Zones,
+        auto scaling and Regions, but the customer must design its system to use them. A website on
+        one server in one AZ isn't highly available just because it runs in the cloud; Module 04
+        explains this split of responsibilities.
+
+  - id: q02-benefits-reliability-pillar
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: "In real work: the benefits map to the Well-Architected pillars"
+    task: "1.1"
+    level: application
+    topics: [cloud-benefits, well-architected-pillars]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        An insurer's claims app runs in two Availability Zones so that it keeps taking claims if one
+        of them goes dark, and it stores scanned claim forms where a failed disk won't lose them. In
+        a design review, under which Well-Architected pillar do these two choices mainly belong?
+    choices:
+      - id: cost-optimization
+        text: Cost optimization
+        variants:
+          - text: The cost optimization pillar
+          - text: Cost optimization (COST)
+        explanation:
+          text: |
+            Both choices add resources rather than remove waste. Cost optimization asks whether the
+            workload delivers its value at the lowest cost.
+      - id: reliability
+        text: Reliability
+        variants:
+          - text: The reliability pillar
+          - text: Reliability (REL)
+        explanation:
+          text: |
+            Correct. Staying up through a zone failure is high availability, and not losing stored
+            forms is durability; both serve reliability.
+      - id: security
+        text: Security
+        variants:
+          - text: The security pillar
+          - text: Security (SEC)
+        explanation:
+          text: |
+            Security is about protecting data, systems and accounts from people who shouldn't reach
+            them. Neither choice guards against an intruder; both guard against things breaking.
+      - id: sustainability
+        text: Sustainability
+        variants:
+          - text: The sustainability pillar
+          - text: Sustainability (SUS)
+        explanation:
+          text: |
+            Sustainability is about using as few resources and as little energy as possible. A
+            second zone uses more, not fewer.
+    correct_answers: [reliability]
+    hint:
+      text: Both choices protect against the same kind of event. What is it?
+    explanation:
+      text: |
+        Running in two Availability Zones gives high availability, and storage that survives a
+        failed disk gives durability. Both belong mainly to the reliability pillar, which asks
+        whether a workload does its job correctly whenever it is needed and recovers when something
+        fails. Neither benefit is automatic: the app gets them only because it was designed to use
+        two zones and durable storage.
+
+  - id: q02-elasticity-statements
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: "Elasticity: capacity grows and shrinks with demand"
+    task: "1.1"
+    level: understanding
+    topics: [elasticity]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        Which two statements about elasticity are accurate? (Select TWO.)
+    choices:
+      - id: shrinks-too
+        text: Capacity shrinks when demand falls, as well as growing when it rises.
+        variants:
+          - text: Capacity goes down with falling demand, not only up with rising demand.
+          - text: It removes capacity as demand drops, as well as adding it as demand climbs.
+        explanation:
+          text: |
+            Correct. Following demand in both directions is what makes it elasticity rather than
+            just growth.
+      - id: manual-by-definition
+        text: It means adding capacity by hand, unlike automatic scalability.
+        variants:
+          - text: It is the manual way to add capacity, while scalability is automatic.
+          - text: It is capacity added by hand, as opposed to automatic scalability.
+        explanation:
+          text: |
+            The difference between elasticity and scalability isn't manual versus automatic, and on
+            AWS elasticity is usually automatic.
+      - id: auto-scaling
+        text: On AWS it is usually delivered by auto scaling.
+        variants:
+          - text: AWS normally provides it through auto scaling.
+          - text: On AWS, auto scaling is the usual way to get it.
+        explanation:
+          text: |
+            Correct. Auto scaling watches demand and adds or removes servers by rules you set.
+      - id: protects-data
+        text: It keeps stored data safe when disks fail.
+        variants:
+          - text: It protects stored data from failing disks.
+          - text: It stops stored data being lost when a disk fails.
+        explanation:
+          text: |
+            Keeping stored data safe from loss is durability.
+      - id: tries-ideas
+        text: It measures how fast a new idea can be tried.
+        variants:
+          - text: It is about how quickly a new idea can be tested.
+          - text: It describes how soon you can try a new idea.
+        explanation:
+          text: |
+            How fast you can get something new to try an idea is agility.
+    correct_answers: [shrinks-too, auto-scaling]
+    explanation:
+      text: |
+        Elasticity means capacity follows demand up and down, so you don't pay for capacity you no
+        longer need. On AWS it is usually automatic: auto scaling adds or removes servers by rules
+        you set. The CLF-C02 exam guide links elasticity to auto scaling.
+
+  # ---------------------------------------------------------------- 02.04 What a data center really costs
+
+  - id: q02-purchase-price-understates-cost
+    page: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+    section: On-premises costs come in seven groups
+    task: "1.4"
+    level: recall
+    topics: [on-premises-costs, tco]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A firm's office manager says its file server "costs $4,000", the price it paid for the
+        machine. Which idea explains why that figure understates what the server really costs?
+    choices:
+      - id: economies-of-scale
+        text: Economies of scale
+        variants:
+          - text: The economies of scale
+          - text: Scale economies
+        explanation:
+          text: |
+            Economies of scale are the lower unit cost a very large operation reaches. They don't
+            describe the costs a purchase price leaves out.
+      - id: variable-expense
+        text: Variable expense
+        variants:
+          - text: A variable expense
+          - text: Variable cost
+        explanation:
+          text: |
+            A variable expense rises and falls with use. Most costs of an owned server are fixed.
+      - id: elasticity
+        text: Elasticity
+        variants:
+          - text: Elastic capacity
+          - text: Being elastic
+        explanation:
+          text: |
+            Elasticity is capacity following demand; it isn't a way of counting costs.
+      - id: tco
+        text: Total cost of ownership
+        variants:
+          - text: Total cost of ownership (TCO)
+          - text: TCO (total cost of ownership)
+        explanation:
+          text: |
+            Correct. TCO counts every cost over the server's life: space, power, cooling, network,
+            staff, licenses and its eventual replacement.
+    correct_answers: [tco]
+    explanation:
+      text: |
+        Total cost of ownership is every cost of owning and running something over its whole life,
+        not only the purchase price. For a server that includes space, power, cooling, network,
+        staff, licenses and the hardware refresh, so its TCO can be far above its price tag.
+
+  - id: q02-on-prem-costs-no-visitors
+    revision: 2
+    page: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+    section: On-premises costs come in seven groups
+    task: "1.4"
+    level: understanding
+    topics: [on-premises-costs, fixed-expense]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A small hotel runs its booking site on servers in its own back office. Then comes a month
+        in which the site gets almost no visitors. How do the hotel's costs for running the site
+        that month compare with a busy month?
+    choices:
+      - id: fall-with-visits
+        text: Most of them fall roughly in step with the number of visits.
+        variants:
+          - text: Most of them shrink more or less in line with the visits.
+          - text: The bulk of them drop roughly as far as the visits do.
+        explanation:
+          text: |
+            That is how a pay-as-you-go bill behaves. Owned servers, the room, the staff and the
+            licenses cost the same whether or not anyone visits.
+      - id: staff-licenses-stop
+        text: Staff and license costs pause until the visitors come back.
+        variants:
+          - text: Staff and licenses stop costing money until visits return.
+          - text: The staff and license bills stop until the visitors return.
+        explanation:
+          text: |
+            Salaries, contracts and licenses are fixed costs; they are due whether the site is busy
+            or idle.
+      - id: mostly-unchanged
+        text: Nearly all of them stay at about the same level.
+        variants:
+          - text: Almost all of them remain much the same.
+          - text: Nearly every one of them stays about level.
+        explanation:
+          text: |
+            Correct. Space, power, cooling, network, staff and licenses are mostly fixed, so they
+            continue in a quiet month much as in a busy one.
+      - id: line-falls
+        text: They stay level, except the internet line, which falls with traffic.
+        variants:
+          - text: They hold steady, apart from the internet line, which drops with traffic.
+          - text: All stay the same but the internet line, which shrinks with traffic.
+        explanation:
+          text: |
+            The internet line is usually a fixed monthly charge, like the rent and the licenses. It
+            is still due when the site has almost no visitors.
+    correct_answers: [mostly-unchanged]
+    hint:
+      text: Which of the hotel's costs depend on the equipment existing, rather than on anyone using it?
+    explanation:
+      text: |
+        On-premises costs come in seven groups: hardware and its refresh, space, power, cooling,
+        network, staff and licenses. Almost all of them are fixed or mostly fixed, so the hotel pays
+        them in a quiet month much as in a busy one. That is why idle months are expensive
+        on-premises, and why a bill that follows use can save money when demand varies.
+
+  - id: q02-hidden-cost-waiting
+    page: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+    section: On-premises costs come in seven groups
+    task: "1.4"
+    level: recall
+    topics: [on-premises-costs, agility]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Which cost of running your own servers never appears on an invoice, but can leave customers
+        facing a crashed site while new hardware is on its way?
+    choices:
+      - id: cooling
+        text: Cooling the server room
+        variants:
+          - text: Air conditioning for the servers
+          - text: Keeping the equipment cool
+        explanation:
+          text: |
+            Cooling is billed: it shows up in the electricity bill or an air-conditioning contract.
+      - id: waiting
+        text: Waiting for new servers to arrive
+        variants:
+          - text: The wait for new hardware to be delivered
+          - text: Time spent waiting on new equipment
+        explanation:
+          text: |
+            Correct. New hardware must be ordered, delivered and installed. No invoice shows that
+            time, but customers meet an overloaded site while it passes.
+      - id: licenses
+        text: Software licenses for each server
+        variants:
+          - text: Per-server software licenses
+          - text: License fees for the servers' software
+        explanation:
+          text: |
+            Licenses are invoiced, often per server or per processor.
+      - id: space
+        text: Rent for the server room
+        variants:
+          - text: The server room's rent
+          - text: Rent paid for the equipment's space
+        explanation:
+          text: |
+            Rent is paid on an invoice every month.
+    correct_answers: [waiting]
+    explanation:
+      text: |
+        Two on-premises costs never appear on an invoice: idle capacity, and waiting. New hardware has
+        to be ordered, delivered and installed, while AWS says the cloud cuts the time to get new
+        resources from weeks to minutes. While a business waits, its customers meet a site that
+        can't keep up.
+
+  - id: q02-rented-space-classification
+    page: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+    section: "Capital or operating, fixed or variable: two different questions"
+    task: "1.4"
+    level: understanding
+    topics: [capex-opex, fixed-vs-variable]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company pays the same rent every month for space in a shared data center, where it keeps
+        servers it bought. How is the rent best classified?
+    choices:
+      - id: capital-fixed
+        text: A capital expense that is fixed
+        variants:
+          - text: Capital, and fixed
+          - text: A fixed capital expense
+        explanation:
+          text: |
+            Capital expense is a large up-front payment for something that lasts, such as the servers
+            themselves. Rent is paid as you go.
+      - id: operating-variable
+        text: An operating expense that is variable
+        variants:
+          - text: Operating, and variable
+          - text: A variable operating expense
+        explanation:
+          text: |
+            Rent is an operating expense, but it doesn't change with how much the servers are used.
+            Operating doesn't mean variable.
+      - id: operating-fixed
+        text: An operating expense that is fixed
+        variants:
+          - text: Operating, and fixed
+          - text: A fixed operating expense
+        explanation:
+          text: |
+            Correct. It is paid as you go (operating), and it stays the same however much the
+            servers are used (fixed).
+      - id: capital-variable
+        text: A capital expense that is variable
+        variants:
+          - text: Capital, and variable
+          - text: A variable capital expense
+        explanation:
+          text: |
+            Rent is neither an up-front purchase nor a cost that follows use.
+    correct_answers: [operating-fixed]
+    hint:
+      text: Ask two separate questions. When is it paid? Does it change with use?
+    explanation:
+      text: |
+        Capital or operating asks when and how you pay; fixed or variable asks whether the cost
+        changes with use. Rent is an operating expense, because it is paid as you go, yet it is
+        fixed, because it is the same however much the servers are used. A pay-as-you-go cloud bill,
+        by contrast, is operating and variable.
+
+  - id: q02-two-pairs-of-cost-words
+    page: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+    section: "Capital or operating, fixed or variable: two different questions"
+    task: "1.4"
+    level: understanding
+    topics: [capex-opex, fixed-vs-variable]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A finance student treats "capital versus operating" and "fixed versus variable" as two ways
+        of saying the same thing. Which statement corrects this?
+    choices:
+      - id: monthly-is-variable
+        text: Any cost that is paid every month is a variable expense.
+        variants:
+          - text: A cost paid monthly is always a variable expense.
+          - text: Whatever is paid each month counts as variable expense.
+        explanation:
+          text: |
+            Rent and salaries are paid monthly and are fixed. How often you pay doesn't make a cost
+            variable.
+      - id: different-questions
+        text: One pair asks when you pay; the other asks if use drives the cost.
+        variants:
+          - text: One pair is about timing; the other is about whether use changes it.
+          - text: One asks how and when you pay; the other, whether use changes it.
+        explanation:
+          text: |
+            Correct. Capital or operating is about timing; fixed or variable is about whether use
+            drives the cost. Rent shows the difference: operating, but fixed.
+      - id: capex-equals-fixed
+        text: Capital expense and fixed expense are two names for one cost.
+        variants:
+          - text: A capital expense and a fixed expense are the same cost.
+          - text: Capital and fixed expense are different words for one thing.
+        explanation:
+          text: |
+            Rent is fixed but not capital, so the two words can't mean the same thing.
+      - id: cloud-makes-fixed
+        text: Moving to the cloud turns variable costs into fixed costs.
+        variants:
+          - text: A move to the cloud makes variable costs fixed.
+          - text: Going to the cloud changes variable costs into fixed ones.
+        explanation:
+          text: |
+            This is the reverse: AWS describes the move as trading fixed expense for variable
+            expense.
+    correct_answers: [different-questions]
+    explanation:
+      text: |
+        The two pairs of words answer different questions, and the exam can use either. Capital or
+        operating describes when and how you pay; fixed or variable describes whether the cost
+        changes with use. For cost, the move from fixed to variable is the part that matters, because
+        it lets the bill follow demand.
+
+  - id: q02-what-makes-cloud-most-expensive
+    page: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+    section: "Worked example: the bakery's three-year comparison"
+    task: "1.4"
+    level: application
+    topics: [cloud-economics, idle-capacity]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A seasonal business compares three options over three years: buying enough servers for its
+        peak, renting cloud servers matched to each month's demand, and a third cloud plan. Renting
+        matched to demand comes out cheapest. Which third plan would most likely cost more than
+        buying the servers?
+    choices:
+      - id: rightsize-idle
+        text: Renting matched to demand, and moving a mostly idle server to a smaller size
+        variants:
+          - text: Renting matched to demand, plus shrinking a mostly idle server
+          - text: Matching rentals to demand and downsizing a server that is mostly idle
+        explanation:
+          text: |
+            Rightsizing lowers the bill further; it would make the cloud option cheaper, not dearer.
+      - id: peak-all-year
+        text: Renting enough servers for the peak and leaving them running all year
+        variants:
+          - text: Renting peak-sized capacity and keeping it running year-round
+          - text: Keeping enough rented servers for the peak running every month
+        explanation:
+          text: |
+            Correct. Without scaling down, the business pays rental prices for idle capacity every
+            month, which can cost far more than owning.
+      - id: stop-test-nights
+        text: Renting matched to demand, with test servers stopped every night
+        variants:
+          - text: Matching rentals to demand and switching test servers off at night
+          - text: Renting to match demand, with test servers turned off overnight
+        explanation:
+          text: |
+            Stopping servers when nobody uses them is automation that lowers the bill further.
+      - id: remove-after-peak
+        text: Renting extra servers for the peak and removing them right after it
+        variants:
+          - text: Adding servers for the busy season and deleting them once it ends
+          - text: Renting more servers at the peak and releasing them straight after
+        explanation:
+          text: |
+            This is renting matched to demand: capacity follows the curve, so it is cheap.
+    correct_answers: [peak-all-year]
+    hint:
+      text: The cloud's savings come from giving capacity back. Which plan never gives any back?
+    explanation:
+      text: |
+        In the guide's three-year comparison, renting matched to demand was cheapest even at a
+        higher price per server-month, because demand swung widely and the business scaled down
+        after the peak. Left at peak size all year, the same cloud option cost nearly twice as much
+        as owning (made-up teaching numbers). The cloud only saves money if capacity follows demand.
+
+  - id: q02-first-month-difference
+    page: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+    section: "Worked example: the bakery's three-year comparison"
+    task: "1.4"
+    level: understanding
+    topics: [cloud-economics, capex-opex]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A business compares buying six servers with renting cloud servers matched to its demand.
+        What is the biggest difference between the two options in the first month?
+    choices:
+      - id: owning-up-front
+        text: Owning needs a large up-front payment, while renting starts small.
+        variants:
+          - text: Buying means a large payment at the start; renting begins with a small bill.
+          - text: Owning takes a big payment up front; the cloud bill starts small.
+        explanation:
+          text: |
+            Correct. The servers' price leaves the bank in month one, while the cloud bill covers
+            only what runs that month.
+      - id: same-start
+        text: Both cost about the same, since spending is spread evenly over time.
+        variants:
+          - text: The two cost about the same, because spending is spread evenly.
+          - text: There is little difference, as both spread spending evenly.
+        explanation:
+          text: |
+            Owning isn't spread evenly: the hardware is paid for in one large payment at the start.
+      - id: cloud-big-deposit
+        text: Renting needs a large deposit, while buying is paid off monthly.
+        variants:
+          - text: The cloud needs a big up-front deposit; owned servers are paid monthly.
+          - text: Renting starts with a large deposit; buying spreads the cost.
+        explanation:
+          text: |
+            This reverses the two. Pay-as-you-go renting has no up-front purchase; buying servers
+            does.
+      - id: owning-free-start
+        text: Owning costs nothing until the servers start doing work.
+        variants:
+          - text: Owned servers cost nothing until they are put to work.
+          - text: There is no cost to owning until the servers are used.
+        explanation:
+          text: |
+            Owned servers are paid for, and need space and power, whether they work or not.
+    correct_answers: [owning-up-front]
+    explanation:
+      text: |
+        Owning puts a large capital payment at the start: in the guide's made-up example, more than
+        $12,000 leaves the bank in month one, against a first cloud bill of a few hundred dollars.
+        Pay-as-you-go turns that up-front purchase into smaller payments that follow use.
+
+  - id: q02-costs-that-stay-after-move
+    page: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+    section: Moving to the cloud doesn't automatically lower costs
+    task: "1.4"
+    level: understanding
+    topics: [cloud-economics, on-premises-costs]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A company moves its applications from its own data center to AWS. Which two kinds of cost
+        stay with the company in some form after the move? (Select TWO.)
+    choices:
+      - id: provider-cooling
+        text: Cooling the provider's data centers
+        variants:
+          - text: Air conditioning in AWS's data centers
+          - text: Keeping the provider's buildings cool
+        explanation:
+          text: |
+            The provider's cooling is part of what the usage bill covers; the company doesn't pay
+            for it separately.
+      - id: staff-time
+        text: Staff time to set up, secure and watch systems
+        variants:
+          - text: People's time to build, protect and monitor systems
+          - text: Staff hours spent setting up, securing and monitoring
+        explanation:
+          text: |
+            Correct. Fewer hours go on hardware, but someone still sets up, secures and watches what
+            the company runs.
+      - id: provider-refresh
+        text: Replacing the provider's worn-out servers
+        variants:
+          - text: Renewing AWS's aging hardware
+          - text: The refresh of the provider's old servers
+        explanation:
+          text: |
+            Hardware refresh moves to the provider, inside the usage bill.
+      - id: licenses
+        text: Licenses for software the company brings
+        variants:
+          - text: Licenses the company brings for its software
+          - text: Software licenses that the company supplies
+        explanation:
+          text: |
+            Correct. Some software has the license included in the price; for other software the
+            company brings licenses it owns.
+      - id: provider-rent
+        text: Rent for the provider's buildings
+        variants:
+          - text: Rent on AWS's data center buildings
+          - text: The cost of the provider's building space
+        explanation:
+          text: |
+            Space is the provider's cost, covered by the usage bill.
+    correct_answers: [staff-time, licenses]
+    explanation:
+      text: |
+        Moving to the cloud puts the provider's hardware, space, power, cooling and network inside
+        one usage bill. Some costs stay with the customer in some form: staff time (fewer hours,
+        different work), software licenses (included in the price, or brought by the customer) and
+        data sent out to the internet.
+
+  - id: q02-flat-load-savings
+    page: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+    section: Moving to the cloud doesn't automatically lower costs
+    task: "1.4"
+    level: application
+    topics: [cloud-economics, fixed-vs-variable]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A weather-data company processes readings at the same load 24 hours a day, every day of the
+        year. Compared with a holiday-gift shop whose demand peaks sharply in December, how much is
+        the weather company likely to save by switching from owned servers to paying by use?
+    choices:
+      - id: more-more-hours
+        text: More, because it runs its servers for more hours
+        variants:
+          - text: More, since its servers run for more hours
+          - text: A bigger saving, as it uses more server hours
+        explanation:
+          text: |
+            Running more hours means paying for more hours. Savings come from hours you no longer pay
+            for.
+      - id: same-for-all
+        text: The same, because cloud prices are equal for every customer
+        variants:
+          - text: The same, since every customer pays equal prices
+          - text: An equal saving, as prices are the same for all
+        explanation:
+          text: |
+            Equal prices don't mean equal savings. The saving depends on how much idle capacity each
+            business gives back.
+      - id: more-scale
+        text: More, because a constant load benefits from economies of scale
+        variants:
+          - text: More, since steady load gains from economies of scale
+          - text: A bigger saving, as constant load earns economies of scale
+        explanation:
+          text: |
+            Economies of scale lower AWS's prices for every customer; they don't depend on the
+            customer's load pattern.
+      - id: less-no-idle
+        text: Less, because it has little idle capacity to give back
+        variants:
+          - text: Less, since it has hardly any idle capacity to remove
+          - text: A smaller saving, as little of its capacity sits idle
+        explanation:
+          text: |
+            Correct. Paying by use saves the most when demand varies. With a flat load, the
+            weather company's servers are busy all the time.
+    correct_answers: [less-no-idle]
+    hint:
+      text: Paying by use saves money by not paying for capacity that would sit idle. How much does each business have?
+    explanation:
+      text: |
+        A workload that runs flat out every hour gains little from paying by the hour, because it has
+        no idle capacity to give back. Whether the cloud saves money depends on how demand moves and
+        how well capacity is matched to it. AWS offers lower prices for steady, committed use, which
+        Module 11 covers.
+
+  - id: q02-smaller-server-from-data
+    page: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+    section: Rightsizing and automation keep the variable bill small
+    task: "1.4"
+    level: application
+    topics: [rightsizing]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        After a month of measurements, a team finds that its database server never uses more than
+        20% of its processing power. It moves the database to a smaller, cheaper server type. What
+        is this practice called?
+    choices:
+      - id: rightsizing
+        text: Rightsizing
+        variants:
+          - text: Rightsizing resources
+          - text: Resource rightsizing
+        explanation:
+          text: |
+            Correct. Choosing the type and size that meets the need at the lowest cost, based on
+            data, is rightsizing.
+      - id: elasticity
+        text: Elasticity
+        variants:
+          - text: Elastic capacity
+          - text: Being elastic
+        explanation:
+          text: |
+            Elasticity is capacity following demand up and down over time. This is a one-off change
+            of size, chosen from measurements.
+      - id: economies-of-scale
+        text: Economies of scale
+        variants:
+          - text: The economies of scale
+          - text: Scale economies
+        explanation:
+          text: |
+            Economies of scale are the provider's lower unit costs from size, not a customer's
+            choice of server.
+      - id: hardware-refresh
+        text: Hardware refresh
+        variants:
+          - text: A hardware refresh
+          - text: Refreshing hardware
+        explanation:
+          text: |
+            Hardware refresh is replacing worn-out or outdated equipment, an on-premises cost; here
+            the team picks a smaller size because the current one is too big.
+    correct_answers: [rightsizing]
+    hint:
+      text: The decision was about the size of the resource, made from data.
+    explanation:
+      text: |
+        Rightsizing means choosing the type, size and number of resources that meet your needs at
+        the lowest cost. AWS's Cost Optimization Pillar treats it as something you repeat, based on
+        data, because usage, prices and resource types change. On-premises you buy years ahead and
+        guess; in the cloud an oversized server can be swapped for a smaller one.
+
+  - id: q02-dev-test-servers-schedule
+    page: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+    section: Rightsizing and automation keep the variable bill small
+    task: "1.4"
+    level: application
+    topics: [automation, cost-optimization]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A software company's development and test servers are used only during an eight-hour
+        working day, five days a week, but they run around the clock. Which action would cut their
+        running hours by about three quarters?
+    choices:
+      - id: schedule-stop
+        text: Stopping them automatically outside working hours
+        variants:
+          - text: Switching them off on a schedule outside work hours
+          - text: Having them stop by themselves when work hours end
+        explanation:
+          text: |
+            Correct. Running 40 of the week's 168 hours instead of all of them cuts running time by
+            about 75%.
+      - id: larger-type
+        text: Moving them to a larger server type
+        variants:
+          - text: Switching them to bigger servers
+          - text: Changing them to a larger size of server
+        explanation:
+          text: |
+            A larger server costs more per hour and doesn't change how many hours they run.
+      - id: second-az
+        text: Running copies of them in a second Availability Zone
+        variants:
+          - text: Adding copies of them in another Availability Zone
+          - text: Duplicating them in a second Availability Zone
+        explanation:
+          text: |
+            Copies in a second AZ add reliability, and double the hours paid for, which is the wrong
+            direction here.
+      - id: buy-own
+        text: Buying servers for them to run on
+        variants:
+          - text: Purchasing hardware for them instead
+          - text: Moving them onto bought servers
+        explanation:
+          text: |
+            Owned servers are paid for whether they run or not; buying them doesn't reduce what the
+            company pays for idle hours.
+    correct_answers: [schedule-stop]
+    hint:
+      text: How many of the week's 168 hours are they actually needed?
+    explanation:
+      text: |
+        Automation lets software do repeated work, such as starting and stopping servers on a
+        schedule. The Well-Architected cost design principle "adopt a consumption model" gives this
+        example: stopping development and test systems outside an eight-hour, five-day week cuts
+        their running time from 168 hours a week to 40, a saving of about 75%.
+
+  - id: q02-rightsizing-repeated-why
+    page: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+    section: Rightsizing and automation keep the variable bill small
+    task: "1.4"
+    level: understanding
+    topics: [rightsizing]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Why does AWS's Cost Optimization Pillar treat rightsizing as something to repeat rather than
+        a one-time choice?
+    choices:
+      - id: things-change
+        text: Usage, prices and the resource types on offer change over time.
+        variants:
+          - text: Over time, use changes, prices drop and new resource types appear.
+          - text: How much you use, what it costs and what's available all change.
+        explanation:
+          text: |
+            Correct. When any of these change, the right size changes too, so the choice is worth
+            revisiting.
+      - id: aws-rule
+        text: AWS requires customers to resize their resources each month.
+        variants:
+          - text: AWS makes customers resize their resources every month.
+          - text: A monthly resize is mandatory for all AWS customers.
+        explanation:
+          text: |
+            AWS has no such requirement. Rightsizing is a habit the Framework recommends, not a
+            rule.
+      - id: auto-shrink
+        text: Resources shrink by themselves, so their size drifts over time.
+        variants:
+          - text: Resources get smaller on their own, so sizes drift.
+          - text: Sizes drift over time because resources shrink by themselves.
+        explanation:
+          text: |
+            Resources don't change size on their own; someone or something has to choose a new
+            size.
+      - id: once-a-year
+        text: A resource's size can be changed just once a year.
+        variants:
+          - text: Each resource can be resized just once a year.
+          - text: Size changes are limited to one a year per resource.
+        explanation:
+          text: |
+            There is no yearly limit. In the cloud, an oversized server can be swapped for a smaller
+            one when the data shows it.
+    correct_answers: [things-change]
+    explanation:
+      text: |
+        Rightsizing means choosing the type, size and number of resources that meet your needs at
+        the lowest cost. The Cost Optimization Pillar treats it as a repeated task, based on data,
+        because usage changes, prices drop and new resource types appear, so yesterday's right size
+        may not be today's.
+
+  # ---------------------------------------------------------------- 02.05 The Well-Architected Framework
+
+  - id: q02-pillar-count
+    page: guide/02-why-the-cloud/05-the-well-architected-framework.md
+    section: Six pillars, six questions
+    task: "1.2"
+    level: recall
+    topics: [well-architected-pillars]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        How many pillars does the current AWS Well-Architected Framework have?
+    choices:
+      - id: four
+        text: Four
+        variants:
+          - text: "4"
+          - text: Four pillars
+        explanation:
+          text: |
+            Too few. The Framework has six: operational excellence, security, reliability,
+            performance efficiency, cost optimization and sustainability.
+      - id: five
+        text: Five
+        variants:
+          - text: "5"
+          - text: Five pillars
+        explanation:
+          text: |
+            Five is the count in older material, written before AWS added the sustainability
+            pillar.
+      - id: six
+        text: Six
+        variants:
+          - text: "6"
+          - text: Six pillars
+        explanation:
+          text: |
+            Correct. The CLF-C02 exam guide lists all six.
+      - id: seven
+        text: Seven
+        variants:
+          - text: "7"
+          - text: Seven pillars
+        explanation:
+          text: |
+            Too many. The Framework has six pillars, plus six general design principles that are not
+            pillars.
+    correct_answers: [six]
+    explanation:
+      text: |
+        The Framework has six pillars: operational excellence, security, reliability, performance
+        efficiency, cost optimization and sustainability. Some material still says five because it
+        was written before AWS added sustainability. The CLF-C02 exam guide, under task 1.2, lists
+        all six.
+
+  - id: q02-which-are-pillars
+    revision: 2
+    page: guide/02-why-the-cloud/05-the-well-architected-framework.md
+    section: Six pillars, six questions
+    task: "1.2"
+    level: recall
+    topics: [well-architected-pillars]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A team's architecture review template should get one heading per Well-Architected pillar.
+        A new hire has drafted five headings. Which two of the drafts match a real pillar? (Select
+        TWO.)
+    choices:
+      - id: high-availability
+        text: High availability
+        variants:
+          - text: The high availability pillar
+          - text: High availability pillar
+        explanation:
+          text: |
+            High availability is a cloud benefit that serves the reliability pillar; it isn't a
+            pillar itself.
+      - id: performance-efficiency
+        text: Performance efficiency
+        variants:
+          - text: The performance efficiency pillar
+          - text: Performance efficiency pillar
+        explanation:
+          text: |
+            Correct. Performance efficiency asks whether you use the right kind and amount of
+            resources as demand and technology change.
+      - id: elasticity
+        text: Elasticity
+        variants:
+          - text: The elasticity pillar
+          - text: Elasticity pillar
+        explanation:
+          text: |
+            Elasticity is a cloud benefit that several pillars draw on, such as performance
+            efficiency and cost optimization. It isn't a pillar of its own.
+      - id: agility
+        text: Agility
+        variants:
+          - text: The agility pillar
+          - text: Agility pillar
+        explanation:
+          text: |
+            Agility is one of AWS's six advantages of cloud computing, not a pillar of the
+            Framework.
+      - id: operational-excellence
+        text: Operational excellence
+        variants:
+          - text: The operational excellence pillar
+          - text: Operational excellence pillar
+        explanation:
+          text: |
+            Correct. Operational excellence asks whether you can run the workload well day to day,
+            see what it is doing, and keep improving.
+    correct_answers: [performance-efficiency, operational-excellence]
+    explanation:
+      text: |
+        The six pillars are operational excellence, security, reliability, performance efficiency,
+        cost optimization and sustainability. Cloud benefits such as high availability, elasticity
+        and agility show up inside the pillars' guidance, but none of them is a pillar.
+
+  - id: q02-shared-admin-password-pillar
+    page: guide/02-why-the-cloud/05-the-well-architected-framework.md
+    section: Six pillars, six questions
+    task: "1.2"
+    level: understanding
+    topics: [well-architected-pillars, security]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        At a dental practice, everyone uses one shared administrator password for the cloud account,
+        and it is written on a note at reception. Which Well-Architected pillar does this concern
+        most?
+    choices:
+      - id: operational-excellence
+        text: Operational excellence
+        variants:
+          - text: The operational excellence pillar
+          - text: Operational excellence (OPS)
+        explanation:
+          text: |
+            Operational excellence is about running and improving the workload. The risk here is
+            that someone gets into the account.
+      - id: security
+        text: Security
+        variants:
+          - text: The security pillar
+          - text: Security (SEC)
+        explanation:
+          text: |
+            Correct. Security asks whether the data, systems and accounts are protected; a shared,
+            exposed password protects none of them.
+      - id: reliability
+        text: Reliability
+        variants:
+          - text: The reliability pillar
+          - text: Reliability (REL)
+        explanation:
+          text: |
+            Reliability is about working correctly and recovering from failure. Nothing has
+            failed.
+      - id: cost-optimization
+        text: Cost optimization
+        variants:
+          - text: The cost optimization pillar
+          - text: Cost optimization (COST)
+        explanation:
+          text: |
+            Cost optimization is about delivering value at the lowest cost. The problem is weak
+            protection of the account.
+    correct_answers: [security]
+    explanation:
+      text: |
+        The security pillar asks whether the data, systems and accounts are protected. One of its
+        design principles is "implement a strong identity foundation": each person has their own
+        identity, with strong sign-in such as MFA, instead of a shared password anyone can read.
+
+  - id: q02-untracked-manual-changes-pillar
+    page: guide/02-why-the-cloud/05-the-well-architected-framework.md
+    section: Six pillars, six questions
+    task: "1.2"
+    level: application
+    topics: [well-architected-pillars, operational-excellence]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        An online shop's team changes its live website by hand late at night and records nothing
+        about what changed. Nothing records errors, so nobody can say how many orders failed last
+        week. Which Well-Architected pillar does this concern most?
+    choices:
+      - id: performance-efficiency
+        text: Performance efficiency
+        variants:
+          - text: The performance efficiency pillar
+          - text: Performance efficiency (PERF)
+        explanation:
+          text: |
+            Performance efficiency is about the right kind and amount of resources. The problem here
+            is how the team works and what it can see.
+      - id: security
+        text: Security
+        variants:
+          - text: The security pillar
+          - text: Security (SEC)
+        explanation:
+          text: |
+            Nothing here describes weak protection of data or accounts.
+      - id: operational-excellence
+        text: Operational excellence
+        variants:
+          - text: The operational excellence pillar
+          - text: Operational excellence (OPS)
+        explanation:
+          text: |
+            Correct. The team can't see what the workload is doing and changes it in ways it can't
+            track or undo, so it can't run or improve it well.
+      - id: reliability
+        text: Reliability
+        variants:
+          - text: The reliability pillar
+          - text: Reliability (REL)
+        explanation:
+          text: |
+            Failed orders touch reliability, but the concern described is the missing record of
+            changes and errors, which is how the workload is run.
+    correct_answers: [operational-excellence]
+    hint:
+      text: The scenario is about how the team works and what it can see, not about a single failure.
+    explanation:
+      text: |
+        Operational excellence asks whether you can run a workload well day to day, see what it is
+        doing, and keep improving how you work. Untracked manual changes and missing error records
+        are its typical concerns; one of its design principles is "make frequent, small, reversible
+        changes".
+
+  - id: q02-auto-replace-failed-part-pillar
+    page: guide/02-why-the-cloud/05-the-well-architected-framework.md
+    section: Pillars that sound alike, side by side
+    task: "1.2"
+    level: understanding
+    topics: [well-architected-pillars, reliability]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A ticketing company wants its system to notice when a component fails and replace it
+        without anyone stepping in, so that sales carry on. Which Well-Architected pillar does this
+        goal belong to?
+    choices:
+      - id: reliability
+        text: Reliability
+        variants:
+          - text: The reliability pillar
+          - text: Reliability (REL)
+        explanation:
+          text: |
+            Correct. "Automatically recover from failure" is one of the reliability pillar's design
+            principles.
+      - id: performance-efficiency
+        text: Performance efficiency
+        variants:
+          - text: The performance efficiency pillar
+          - text: Performance efficiency (PERF)
+        explanation:
+          text: |
+            Performance efficiency is about using the right kind and amount of resource. The goal
+            here is to keep working through a failure.
+      - id: sustainability
+        text: Sustainability
+        variants:
+          - text: The sustainability pillar
+          - text: Sustainability (SUS)
+        explanation:
+          text: |
+            Sustainability is about using fewer resources and less energy, not about recovering
+            from failure.
+      - id: cost-optimization
+        text: Cost optimization
+        variants:
+          - text: The cost optimization pillar
+          - text: Cost optimization (COST)
+        explanation:
+          text: |
+            Cost optimization is about delivering value at the lowest cost; nothing here is about
+            spending less.
+    correct_answers: [reliability]
+    hint:
+      text: Ask what is at risk if the goal isn't met.
+    explanation:
+      text: |
+        The reliability pillar asks whether a workload does its job correctly whenever it is needed,
+        and recovers when something fails. Its design principles include "automatically recover
+        from failure" and "test recovery procedures". To match a concern to a pillar, decide what is
+        at risk: here, the system stopping.
+
+  - id: q02-slow-server-type-pillar
+    page: guide/02-why-the-cloud/05-the-well-architected-framework.md
+    section: Pillars that sound alike, side by side
+    task: "1.2"
+    level: application
+    topics: [well-architected-pillars, performance-efficiency]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A video studio renders its films on a general-purpose server type that is far too slow for
+        the job, although it never fails. A newer type built for this kind of work would finish in a
+        fraction of the time. Which Well-Architected pillar does this concern most?
+    choices:
+      - id: reliability
+        text: Reliability
+        variants:
+          - text: The reliability pillar
+          - text: Reliability (REL)
+        explanation:
+          text: |
+            Nothing fails or needs recovering. Reliability is the pillar for stopping and
+            recovering.
+      - id: security
+        text: Security
+        variants:
+          - text: The security pillar
+          - text: Security (SEC)
+        explanation:
+          text: |
+            Nothing is exposed or unprotected.
+      - id: operational-excellence
+        text: Operational excellence
+        variants:
+          - text: The operational excellence pillar
+          - text: Operational excellence (OPS)
+        explanation:
+          text: |
+            The issue isn't how the team runs and improves its operations; it is the kind of server
+            doing the work.
+      - id: performance-efficiency
+        text: Performance efficiency
+        variants:
+          - text: The performance efficiency pillar
+          - text: Performance efficiency (PERF)
+        explanation:
+          text: |
+            Correct. The work runs, but on the wrong kind of resource for the job.
+    correct_answers: [performance-efficiency]
+    hint:
+      text: The system works. What is wrong with the resource it works on?
+    explanation:
+      text: |
+        Performance efficiency asks whether you use the right kind and amount of resources to meet
+        your needs as demand and technology change. A server type that is too slow for the work is a
+        typical performance efficiency concern; reliability would apply only if something failed or
+        couldn't recover.
+
+  - id: q02-energy-goal-pillar
+    page: guide/02-why-the-cloud/05-the-well-architected-framework.md
+    section: Pillars that sound alike, side by side
+    task: "1.2"
+    level: understanding
+    topics: [well-architected-pillars, sustainability]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company sets a goal to cut the energy its workloads use and the amount of hardware they
+        need, even where the money saved would be small. Which Well-Architected pillar does this
+        goal belong to?
+    choices:
+      - id: cost-optimization
+        text: Cost optimization
+        variants:
+          - text: The cost optimization pillar
+          - text: Cost optimization (COST)
+        explanation:
+          text: |
+            Cost optimization measures money. The goal is stated in energy and hardware, even where
+            little money is saved.
+      - id: sustainability
+        text: Sustainability
+        variants:
+          - text: The sustainability pillar
+          - text: Sustainability (SUS)
+        explanation:
+          text: |
+            Correct. Sustainability asks whether you use as few resources and as little energy as
+            you can.
+      - id: performance-efficiency
+        text: Performance efficiency
+        variants:
+          - text: The performance efficiency pillar
+          - text: Performance efficiency (PERF)
+        explanation:
+          text: |
+            Performance efficiency is about meeting needs with the right resources, not about
+            using less energy.
+      - id: reliability
+        text: Reliability
+        variants:
+          - text: The reliability pillar
+          - text: Reliability (REL)
+        explanation:
+          text: |
+            Reliability is about working and recovering from failure.
+    correct_answers: [sustainability]
+    hint:
+      text: Cost optimization and sustainability often agree. What does each one measure?
+    explanation:
+      text: |
+        Cost optimization and sustainability usually point the same way, because unused resources
+        waste money and energy at once. The difference is what they measure: money for cost
+        optimization, resources and energy for sustainability. A goal stated in energy and hardware
+        belongs to sustainability.
+
+  - id: q02-perf-not-reliability-concern
+    page: guide/02-why-the-cloud/05-the-well-architected-framework.md
+    section: Pillars that sound alike, side by side
+    task: "1.2"
+    level: understanding
+    topics: [well-architected-pillars, reliability, performance-efficiency]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Which concern belongs to the performance efficiency pillar rather than the reliability
+        pillar?
+    choices:
+      - id: single-server
+        text: One server whose failure would stop the whole site
+        variants:
+          - text: A single server that takes the whole site down if it fails
+          - text: The whole site depending on one server that could fail
+        explanation:
+          text: |
+            A single point of failure is a reliability concern: the site stops if it fails.
+      - id: untested-restore
+        text: A backup that nobody has ever tried restoring
+        variants:
+          - text: Backups that have never been test-restored
+          - text: No one ever having tested a restore from backup
+        explanation:
+          text: |
+            Recovering from failure is reliability; "test recovery procedures" is one of its design
+            principles.
+      - id: too-slow-type
+        text: A server type that is too slow for the work it does
+        variants:
+          - text: A kind of server too slow for its workload
+          - text: Work running on a server type that can't keep up
+        explanation:
+          text: |
+            Correct. The work runs, but on the wrong kind of resource, which is performance
+            efficiency.
+      - id: az-outage
+        text: The site going down when one Availability Zone fails
+        variants:
+          - text: An outage of the site whenever one AZ fails
+          - text: Losing the site if a single Availability Zone goes down
+        explanation:
+          text: |
+            Staying up through the failure of an Availability Zone is reliability.
+    correct_answers: [too-slow-type]
+    explanation:
+      text: |
+        Reliability and performance efficiency both care about capacity, so decide by what is at
+        risk. If something stops working or can't recover, it is reliability. If it works, but on
+        the wrong kind or amount of resource, it is performance efficiency.
+
+  - id: q02-pillars-not-traded-away
+    page: guide/02-why-the-cloud/05-the-well-architected-framework.md
+    section: The pillars can be traded against each other, but not all of them
+    task: "1.2"
+    level: recall
+    topics: [well-architected-pillars, trade-offs]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        According to the Well-Architected Framework, which two pillars are generally not traded
+        against the other pillars? (Select TWO.)
+    choices:
+      - id: reliability
+        text: Reliability
+        variants:
+          - text: The reliability pillar
+          - text: Reliability (REL)
+        explanation:
+          text: |
+            Reliability is the Framework's own example of a pillar you can trade, for instance less
+            of it in a development environment.
+      - id: security
+        text: Security
+        variants:
+          - text: The security pillar
+          - text: Security (SEC)
+        explanation:
+          text: |
+            Correct. Security is generally held, even on a test system.
+      - id: cost-optimization
+        text: Cost optimization
+        variants:
+          - text: The cost optimization pillar
+          - text: Cost optimization (COST)
+        explanation:
+          text: |
+            Cost is often traded, for example paying more for reliability in a system the business
+            can't run without.
+      - id: operational-excellence
+        text: Operational excellence
+        variants:
+          - text: The operational excellence pillar
+          - text: Operational excellence (OPS)
+        explanation:
+          text: |
+            Correct. Like security, operational excellence is generally not traded away.
+      - id: performance-efficiency
+        text: Performance efficiency
+        variants:
+          - text: The performance efficiency pillar
+          - text: Performance efficiency (PERF)
+        explanation:
+          text: |
+            Performance efficiency can be weighed against cost and the other pillars to fit the
+            business's needs.
+    correct_answers: [security, operational-excellence]
+    explanation:
+      text: |
+        You can't maximize all six pillars at once, and the Framework expects you to weigh them
+        against what the business needs: for example, lower reliability in a development
+        environment, or more reliability, at a higher cost, where the business depends on the
+        system. It also says security and operational excellence are generally not traded against
+        the other pillars.
+
+  - id: q02-acceptable-trade-off
+    page: guide/02-why-the-cloud/05-the-well-architected-framework.md
+    section: The pillars can be traded against each other, but not all of them
+    task: "1.2"
+    level: application
+    topics: [trade-offs]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A startup's architects list four proposed trade-offs. Which one fits the Well-Architected
+        Framework's guidance on trade-offs?
+    choices:
+      - id: weaker-access-test
+        text: Weaker sign-in protection on the test system, to save staff time
+        variants:
+          - text: Looser sign-in controls on the test system, to save staff time
+          - text: Less sign-in protection for the test system, to save effort
+        explanation:
+          text: |
+            Security is generally not traded away, and a break-in on a test system can reach the rest
+            of the account.
+      - id: no-logging-live
+        text: No error logs or monitoring on the live system, to save money
+        variants:
+          - text: Dropping error logs and monitoring on the live system, to cut cost
+          - text: Turning off monitoring and logs on the live system, to save money
+        explanation:
+          text: |
+            Seeing what a workload is doing is operational excellence, which is generally not traded
+            away either.
+      - id: less-reliable-test
+        text: Lower reliability for an internal test system, to save money
+        variants:
+          - text: Less reliability for an internal test system, to cut cost
+          - text: Accepting a less reliable internal test system, to save money
+        explanation:
+          text: |
+            Correct. Accepting lower reliability where little is at stake, in exchange for lower
+            cost, is the kind of trade the Framework itself describes.
+      - id: no-encryption-speed
+        text: Unencrypted customer data on the live system, for extra speed
+        variants:
+          - text: Leaving customer data unencrypted on the live system, for speed
+          - text: Dropping encryption of customer data on the live system, for speed
+        explanation:
+          text: |
+            This trades security for performance, and security is generally held whatever else
+            changes.
+    correct_answers: [less-reliable-test]
+    hint:
+      text: Two pillars are generally held on every system. Which proposal touches neither of them?
+    explanation:
+      text: |
+        The Framework expects trade-offs based on business needs, and its own example is accepting
+        lower reliability in a development or test environment. It also says security and
+        operational excellence are generally not traded against the other pillars, so the
+        acceptable trade bends reliability toward cost, not security or visibility.
+
+  - id: q02-cost-vs-sustainability-difference
+    page: guide/02-why-the-cloud/05-the-well-architected-framework.md
+    section: Pillars that sound alike, side by side
+    task: "1.2"
+    level: recall
+    topics: [well-architected-pillars, cost-optimization, sustainability]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        The cost optimization and sustainability pillars usually point the same way. What is the
+        main difference between them?
+    choices:
+      - id: reversed
+        text: Cost optimization measures energy; sustainability measures money.
+        variants:
+          - text: Cost optimization tracks energy, and sustainability tracks money.
+          - text: Energy is cost optimization's measure; money is sustainability's.
+        explanation:
+          text: |
+            This swaps the two. Cost optimization measures money.
+      - id: what-they-measure
+        text: Cost optimization measures money; sustainability measures resources and energy.
+        variants:
+          - text: Cost optimization tracks money, and sustainability tracks resources and energy.
+          - text: Money is cost optimization's measure; resources and energy are sustainability's.
+        explanation:
+          text: |
+            Correct. Waste usually costs money and energy at once, which is why they agree so often,
+            but they measure different things.
+      - id: on-prem-only
+        text: Sustainability applies only on-premises; cost optimization only in the cloud.
+        variants:
+          - text: Sustainability is for on-premises systems; cost optimization is for the cloud.
+          - text: Only on-premises systems need sustainability; only cloud ones need cost work.
+        explanation:
+          text: |
+            Both pillars apply to every workload, wherever it runs.
+      - id: part-of-cost
+        text: Sustainability is a part of the cost pillar, not a pillar of its own.
+        variants:
+          - text: Sustainability sits inside the cost pillar rather than being separate.
+          - text: Sustainability belongs within cost optimization, not as its own pillar.
+        explanation:
+          text: |
+            Sustainability is its own pillar, the sixth. Treating it as part of another is the
+            "five pillars" mistake.
+    correct_answers: [what-they-measure]
+    explanation:
+      text: |
+        Unused resources waste money and energy at once, so cost optimization and sustainability
+        usually agree. The Framework's sustainability example is that two hosts each running at 30%
+        are less efficient than one host at 60%. The difference is what each pillar measures: money,
+        or resources and energy.
+
+  - id: q02-failure-rehearsal-principle
+    page: guide/02-why-the-cloud/05-the-well-architected-framework.md
+    section: Real design principles, and slogans that only sound like them
+    task: "1.2"
+    level: application
+    topics: [design-principles]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Once a quarter, a team rehearses a simulated failure of its main database to see how the
+        system and the on-call staff respond. Which general design principle of the Well-Architected
+        Framework is it following?
+    choices:
+      - id: production-scale
+        text: Test systems at production scale
+        variants:
+          - text: 'The "test systems at production scale" principle'
+          - text: 'The principle "test systems at production scale"'
+        explanation:
+          text: |
+            This principle is about building a full-size copy for testing and removing it after. The
+            team is rehearsing a failure, not building a test copy.
+      - id: evolutionary
+        text: Consider evolutionary architectures
+        variants:
+          - text: 'The "consider evolutionary architectures" principle'
+          - text: 'The principle "consider evolutionary architectures"'
+        explanation:
+          text: |
+            Evolutionary architectures are about expecting the design to change over time.
+      - id: game-days
+        text: Improve through game days
+        variants:
+          - text: 'The "improve through game days" principle'
+          - text: 'The principle "improve through game days"'
+        explanation:
+          text: |
+            Correct. Game days are practice runs that rehearse failures and busy days.
+      - id: data-driven
+        text: Drive architectures using data
+        variants:
+          - text: 'The "drive architectures using data" principle'
+          - text: 'The principle "drive architectures using data"'
+        explanation:
+          text: |
+            This principle is about deciding from measurements rather than opinions; it doesn't
+            describe rehearsing failures.
+    correct_answers: [game-days]
+    hint:
+      text: The team is practicing a bad day before it happens.
+    explanation:
+      text: |
+        The Framework's six general design principles are: stop guessing your capacity needs; test
+        systems at production scale; automate with architectural experimentation in mind; consider
+        evolutionary architectures; drive architectures using data; and improve through game days.
+        Rehearsing failures and busy days in practice runs is "improve through game days".
+
+  - id: q02-general-principles-select-two
+    page: guide/02-why-the-cloud/05-the-well-architected-framework.md
+    section: Real design principles, and slogans that only sound like them
+    task: "1.2"
+    level: recall
+    topics: [design-principles, wa-misconceptions]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A wiki page headed "Well-Architected general design principles" has picked up pillar-level
+        principles and slogans from old study notes. An editor keeps only the entries that are
+        general design principles. Which two entries stay? (Select TWO.)
+    choices:
+      - id: scale-horizontally
+        text: Scale horizontally to increase aggregate workload availability
+        variants:
+          - text: 'The entry "Scale horizontally to increase aggregate workload availability"'
+          - text: 'The line "Scale horizontally to increase aggregate workload availability"'
+        explanation:
+          text: |
+            This is real Framework wording, but it is a design principle of the reliability pillar,
+            not one of the six general design principles.
+      - id: stop-guessing
+        text: Stop guessing your capacity needs
+        variants:
+          - text: 'The entry "Stop guessing your capacity needs"'
+          - text: 'The line "Stop guessing your capacity needs"'
+        explanation:
+          text: |
+            Correct. Use as much capacity as you need and scale with demand, instead of buying for a
+            guess.
+      - id: consumption-model
+        text: Adopt a consumption model
+        variants:
+          - text: 'The entry "Adopt a consumption model"'
+          - text: 'The line "Adopt a consumption model"'
+        explanation:
+          text: |
+            This is real Framework wording, but it is a design principle of the cost optimization
+            pillar, not one of the six general design principles.
+      - id: design-for-failure
+        text: Design for failure
+        variants:
+          - text: 'The entry "Design for failure"'
+          - text: 'The line "Design for failure"'
+        explanation:
+          text: |
+            A slogan from older material, not a principle in the current Framework. The idea appears
+            in the reliability pillar's "test recovery procedures".
+      - id: automate-experimentation
+        text: Automate with architectural experimentation in mind
+        variants:
+          - text: 'The entry "Automate with architectural experimentation in mind"'
+          - text: 'The line "Automate with architectural experimentation in mind"'
+        explanation:
+          text: |
+            Correct. Automated builds make it cheap to try a change and undo it.
+    correct_answers: [stop-guessing, automate-experimentation]
+    explanation:
+      text: |
+        The six general design principles are: stop guessing your capacity needs; test systems at
+        production scale; automate with architectural experimentation in mind; consider
+        evolutionary architectures; drive architectures using data; and improve through game days.
+        Each pillar has its own design principles as well, such as the cost optimization pillar's
+        "adopt a consumption model". Slogans such as "design for failure" aren't
+        principles in the current Framework.
+
+  - id: q02-describe-wa-tool
+    page: guide/02-why-the-cloud/05-the-well-architected-framework.md
+    section: The Framework is guidance; the Well-Architected Tool applies it
+    task: "1.2"
+    level: recall
+    topics: [well-architected-tool]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Which statement describes the AWS Well-Architected Tool?
+    choices:
+      - id: whitepapers
+        text: The set of AWS whitepapers that lays out the six pillars and their best practices
+        variants:
+          - text: AWS's whitepapers that set out the six pillars and their best practices
+          - text: The AWS documents that describe the six pillars and their best practices
+        explanation:
+          text: |
+            That is the Well-Architected Framework: guidance you read. The Tool is where you apply it
+            to one workload.
+      - id: workload-review
+        text: A console service that reviews one workload against the Framework's questions
+        variants:
+          - text: A service in the console for reviewing a workload against the Framework
+          - text: A console service where you check one workload against the Framework
+        explanation:
+          text: |
+            Correct. You define a workload, answer the Framework's questions about it, and get high
+            and medium risks and an improvement plan, with milestones to track progress.
+      - id: account-checks
+        text: A service that runs automatic checks on an account, grouped into categories
+        variants:
+          - text: A service that checks an account automatically, by category
+          - text: A service running automatic account checks, organized into categories
+        explanation:
+          text: |
+            That describes AWS Trusted Advisor, a different service whose categories are not the
+            Framework's pillars.
+      - id: certification-audit
+        text: An audit by AWS that certifies a workload as well architected
+        variants:
+          - text: An AWS audit that certifies a workload as well architected
+          - text: An audit in which AWS certifies a workload's architecture
+        explanation:
+          text: |
+            A review is a conversation about decisions, not an audit, and nobody passes, fails or
+            gets certified.
+    correct_answers: [workload-review]
+    explanation:
+      text: |
+        The Framework is guidance: a set of AWS whitepapers. The Well-Architected Tool is a service
+        in the AWS console that applies it: you define a workload, answer the Framework's questions,
+        and get a list of high and medium risks and an improvement plan. It also lets you apply
+        lenses and save milestones.
+
+  - id: q02-review-pass-or-fail
+    page: guide/02-why-the-cloud/05-the-well-architected-framework.md
+    section: The Framework is guidance; the Well-Architected Tool applies it
+    task: "1.2"
+    level: understanding
+    topics: [well-architected-tool]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A manager worries that her team's workload will "fail" its first Well-Architected review.
+        What should she be told?
+    choices:
+      - id: blocks-workload
+        text: A failed review stops the workload from running on AWS.
+        variants:
+          - text: Failing the review prevents the workload from running on AWS.
+          - text: If the review fails, AWS stops the workload from running.
+        explanation:
+          text: |
+            A review has no such effect. It produces a list of risks, not a decision about whether a
+            workload may run.
+      - id: certifies
+        text: AWS certifies the workloads that pass the review.
+        variants:
+          - text: Workloads that pass the review get an AWS certificate.
+          - text: Passing the review earns the workload AWS certification.
+        explanation:
+          text: |
+            There is no pass mark and no certificate. A review finds risks for the team to work
+            on.
+      - id: auditors
+        text: AWS auditors will run the review and grade the team.
+        variants:
+          - text: The review is run by AWS auditors who grade the team.
+          - text: AWS auditors carry out the review and score the team.
+        explanation:
+          text: |
+            A review isn't an audit and nobody is graded; you can run one yourself in the
+            Well-Architected Tool.
+      - id: no-pass-fail
+        text: A review finds risks to prioritize; nobody passes or fails.
+        variants:
+          - text: Nobody passes or fails; the review finds risks to work on.
+          - text: The review lists risks to prioritize, with no pass or fail.
+        explanation:
+          text: |
+            Correct. AWS describes a review as a conversation about architecture decisions, not an
+            audit.
+    correct_answers: [no-pass-fail]
+    explanation:
+      text: |
+        AWS describes a Well-Architected review as a conversation about architecture decisions, not
+        an audit. Nobody passes or fails: the review finds risks, and the team decides which to fix
+        first. A good review ends with a short list of high risks, each with an owner, not a score.
+
+  # ---------------------------------------------------------------- 02.06 Lab 01
+
+  - id: q02-lab-bucket-minutes-benefit
+    page: guide/02-why-the-cloud/06-lab-01-first-resource.md
+    section: Recap
+    task: "1.1"
+    level: understanding
+    topics: [agility, cloud-benefits]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A learner times how long it takes to create a new, private storage bucket in AWS: about three
+        minutes, most of it spent reading. Buying a physical server would mean choosing it, ordering
+        it, waiting for delivery and installing it. Which cloud benefit does the difference show?
+    choices:
+      - id: elasticity
+        text: Elasticity
+        variants:
+          - text: Elastic capacity
+          - text: Being elastic
+        explanation:
+          text: |
+            Nothing grew or shrank in response to demand. The learner got something new, quickly.
+      - id: durability
+        text: Durability
+        variants:
+          - text: Data durability
+          - text: Durable storage
+        explanation:
+          text: |
+            The bucket is storage, but the lab measures how fast it arrived, not whether stored data
+            is kept safe. It stored nothing at all.
+      - id: agility
+        text: Agility
+        variants:
+          - text: Business agility
+          - text: Speed and agility
+        explanation:
+          text: |
+            Correct. The time to get a new resource falls from days or weeks to minutes, so trying
+            something new is quick and cheap.
+      - id: economies-of-scale
+        text: Economies of scale
+        variants:
+          - text: The economies of scale
+          - text: Scale economies
+        explanation:
+          text: |
+            Economies of scale lower the price per unit. The lab measures time, not price.
+    correct_answers: [agility]
+    explanation:
+      text: |
+        Agility is the ability to get new resources, and try new ideas, quickly and cheaply. AWS says
+        the cloud cuts the time to get new resources from weeks to minutes; Lab 01 lets you measure
+        it. For a business, that means it can try an idea this week and delete what it built if the
+        idea fails.
+
+  - id: q02-lab-habits-stop-costs
+    page: guide/02-why-the-cloud/06-lab-01-first-resource.md
+    section: Clean up
+    task: "1.1"
+    level: application
+    topics: [pay-as-you-go, cost-optimization]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A learner finishes a lab and wants to be sure nothing she created keeps costing money. Which
+        two habits from Lab 01 help most? (Select TWO.)
+    choices:
+      - id: stop-and-keep
+        text: Stop the resources and keep them for the next lab
+        variants:
+          - text: Stop what she created and leave it for next time
+          - text: Pause the resources and keep them for later labs
+        explanation:
+          text: |
+            A stopped resource still exists, and some resources keep charging while they exist. The
+            habit is to delete, not just stop.
+      - id: tag-and-find
+        text: Tag every resource so it can be found in all Regions
+        variants:
+          - text: Tag what she creates so she can find it in every Region
+          - text: Label each resource with tags to find it across Regions
+        explanation:
+          text: |
+            Correct. Tags let a tool such as Tag Editor find everything a lab created, across all
+            Regions, so nothing is forgotten.
+      - id: use-root
+        text: Do the lab as the root user so everything is in one place
+        variants:
+          - text: Sign in as the root user so all resources sit together
+          - text: Work as the root user to keep every resource in one place
+        explanation:
+          text: |
+            Labs use an IAM admin user, never the root user. Which user signs in doesn't decide what
+            keeps costing money.
+      - id: delete-and-confirm
+        text: Delete the resources and confirm that they are gone
+        variants:
+          - text: Delete what she created and check that it has gone
+          - text: Remove the resources and verify that none remain
+        explanation:
+          text: |
+            Correct. Under pay as you go, deleting a resource stops its charges; checking afterwards
+            catches anything missed.
+      - id: open-public-access
+        text: Turn off Block Public Access so cleanup is easier
+        variants:
+          - text: Switch off Block Public Access to make cleanup simpler
+          - text: Disable Block Public Access so deletion goes smoothly
+        explanation:
+          text: |
+            Turning off Block Public Access weakens security and has nothing to do with cost. The lab
+            says never to turn it off to get past an error.
+    correct_answers: [tag-and-find, delete-and-confirm]
+    hint:
+      text: Under pay as you go, what has to happen to a resource for its charges to stop, and how do you make sure you didn't miss one?
+    explanation:
+      text: |
+        Under pay as you go, you stop paying for a resource when you delete it, so a forgotten
+        resource keeps costing money. Tagging what you create lets you find it later in every Region,
+        and deleting it, then confirming it is gone, ends its charges. These are the cost
+        optimization best practices of adding organization information to resources and
+        decommissioning what you no longer need.
+
+  # ---------------------------------------------------------------- 02.07 Simulation S1
+
+  - id: q02-sim-matched-renting-cost
+    page: guide/02-why-the-cloud/07-sim-demand-curve.md
+    section: "Decision 2: finish the comparison"
+    task: "1.4"
+    level: application
+    topics: [cloud-economics, demand-curve]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        In a cost simulation, renting a server costs $250 per server-month (made-up price), and a
+        bakery's demand adds up to 25 server-months over the year. Peak demand is 6 servers, in
+        December. What does renting exactly what each month needs cost for the year?
+    choices:
+      - id: three-thousand-seven-fifty
+        text: "$3,750"
+        variants:
+          - text: "$3,750 a year"
+          - text: "3,750 dollars"
+        explanation:
+          text: |
+            That is 25 server-months at $150, the owned price, not the $250 rental price.
+      - id: eighteen-thousand
+        text: "$18,000"
+        variants:
+          - text: "$18,000 a year"
+          - text: "18,000 dollars"
+        explanation:
+          text: |
+            That is 6 servers for all 12 months (72 server-months) at $250: the cost of leaving peak
+            capacity running all year.
+      - id: ten-thousand-eight-hundred
+        text: "$10,800"
+        variants:
+          - text: "$10,800 a year"
+          - text: "10,800 dollars"
+        explanation:
+          text: |
+            That is 6 servers for 12 months at $150, the cost of owning enough for the peak.
+      - id: six-thousand-two-fifty
+        text: "$6,250"
+        variants:
+          - text: "$6,250 a year"
+          - text: "6,250 dollars"
+        explanation:
+          text: |
+            Correct. 25 server-months × $250 = $6,250, with no idle capacity and no lost orders.
+    correct_answers: [six-thousand-two-fifty]
+    hint:
+      text: Renting matched to demand means paying only for the server-months actually used.
+    explanation:
+      text: |
+        A server-month is one server running for one month. Renting exactly what each month needs
+        means paying for the 25 server-months used: 25 × $250 = $6,250. Leaving 6 servers running all
+        year would mean paying for 72 server-months, $18,000, the most expensive option in the
+        simulation. All figures are made up for teaching.
+
+  - id: q02-sim-what-owned-price-hides
+    page: guide/02-why-the-cloud/07-sim-demand-curve.md
+    section: "Decision 5: look inside the $150"
+    task: "1.4"
+    level: understanding
+    topics: [on-premises-costs, cloud-economics]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A cost model prices each owned server at a flat $150 a month, which bundles its share of
+        hardware, space, power, cooling, network, staff and licenses. Which two real features of
+        owning does this flat monthly figure leave out? (Select TWO.)
+    choices:
+      - id: power-cooling
+        text: The electricity and cooling the servers use
+        variants:
+          - text: Power and cooling for the servers
+          - text: What the servers cost to power and cool
+        explanation:
+          text: |
+            Power and cooling are already inside the $150.
+      - id: up-front-payment
+        text: The large payment made up front for the hardware
+        variants:
+          - text: The big up-front payment for the servers
+          - text: Paying for the hardware in one large sum at the start
+        explanation:
+          text: |
+            Correct. The model spreads the hardware cost evenly over the months, but in reality it is
+            paid in one large sum when the servers are bought.
+      - id: staff-time
+        text: The staff time spent looking after the servers
+        variants:
+          - text: Staff hours spent maintaining the servers
+          - text: People's time to look after the equipment
+        explanation:
+          text: |
+            Staff are already inside the $150.
+      - id: weeks-to-install
+        text: The weeks it takes to buy and install new servers
+        variants:
+          - text: The wait of weeks to order and install servers
+          - text: Weeks spent buying and installing new servers
+        explanation:
+          text: |
+            Correct. A flat monthly price ignores the wait for new capacity, during which a busy site
+            can't serve its customers.
+      - id: licenses
+        text: The software licenses each server needs
+        variants:
+          - text: Licenses for the servers' software
+          - text: Software license fees for each server
+        explanation:
+          text: |
+            Licenses are already inside the $150.
+    correct_answers: [up-front-payment, weeks-to-install]
+    hint:
+      text: The seven cost groups are all inside the $150. Think about timing instead of amounts.
+    explanation:
+      text: |
+        A flat monthly price is a convenient way to compare owning with renting, but it hides two
+        things about owning: the large up-front payment when the servers are bought, and the weeks
+        it takes to buy and install them. Both make owning look better in the model than it feels in
+        practice, above all when new servers are needed before a peak.
+
+  - id: q02-sim-matched-option-benefit
+    page: guide/02-why-the-cloud/07-sim-demand-curve.md
+    section: "Decision 6: name the ideas"
+    task: "1.1"
+    level: understanding
+    topics: [elasticity, cloud-benefits]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        In a cost simulation, the cheapest option is to rent one or two servers in most months, three
+        in November and six in December, paying only for what runs. Which cloud benefit does this
+        option depend on?
+    choices:
+      - id: high-availability
+        text: High availability
+        variants:
+          - text: Being highly available
+          - text: High-availability design
+        explanation:
+          text: |
+            High availability is about staying up when a part fails; the option is about matching
+            capacity to demand.
+      - id: elasticity
+        text: Elasticity
+        variants:
+          - text: Elastic capacity
+          - text: Being elastic
+        explanation:
+          text: |
+            Correct. Capacity follows demand up for the holidays and back down afterwards.
+      - id: global-reach
+        text: Global reach
+        variants:
+          - text: Reaching users globally
+          - text: Worldwide reach
+        explanation:
+          text: |
+            Every server serves the same customers in the same place; nothing runs in a new part of
+            the world.
+      - id: durability
+        text: Durability
+        variants:
+          - text: Data durability
+          - text: Durable storage
+        explanation:
+          text: |
+            Durability is about stored data not being lost, which the comparison doesn't involve.
+    correct_answers: [elasticity]
+    explanation:
+      text: |
+        The matched option works only because capacity follows demand up and down, which is
+        elasticity. Without scaling down after the peak, the same cloud price gave the most expensive
+        option in the simulation. Its idle capacity would concern two Well-Architected pillars: cost
+        optimization and sustainability.
+flashcards:
+
+  # ---------------------------------------------------------------- 02.01
+
+  - id: c02-classify-by-where-parts-run
+    page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+    section: The three deployment models are cloud, hybrid and on-premises
+    level: understanding
+    topics: [deployment-models]
+    front:
+      text: What one question decides a setup's deployment model?
+    back:
+      text: |
+        **Where does each part run?** All at a cloud provider: cloud. All in your own buildings:
+        on-premises. Some in each place, connected: hybrid.
+
+  - id: c02-two-providers-not-hybrid
+    page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+    section: "Worked example: classifying three setups"
+    level: understanding
+    topics: [deployment-models]
+    front:
+      text: A system runs at two different cloud providers and nowhere else. Is it hybrid?
+    back:
+      text: |
+        **No, it's a cloud deployment.** Hybrid means some parts are *not* in the cloud (usually
+        on-premises) and are connected to the cloud parts.
+
+  - id: c02-internet-access-not-enough
+    page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+    section: Three features together make something cloud computing
+    level: understanding
+    topics: [cloud-computing-definition]
+    front:
+      text: Does reaching a server over the internet make it cloud computing?
+    back:
+      text: |
+        **No.** It must also be **on demand** (ready within minutes) and **pay as you go** (charges
+        stop when you delete it). A server bought up front lacks both.
+
+  # ---------------------------------------------------------------- 02.02
+
+  - id: c02-any-fixed-number-is-a-guess
+    page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+    section: Buying for normal months turns customers away at the peak
+    level: understanding
+    topics: [demand-curve]
+    front:
+      text: With owned servers, why is any fixed number of servers wrong somewhere?
+    back:
+      text: |
+        Buy for the **peak**, and servers sit idle most of the year. Buy for the **average**, and
+        customers are turned away at the peak (lost sales).
+
+  - id: c02-when-variable-expense-saves
+    page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+    section: Fixed expense becomes variable expense, which isn't the same as cheaper
+    level: understanding
+    topics: [fixed-vs-variable]
+    front:
+      text: When does trading fixed expense for variable expense actually save money?
+    back:
+      text: |
+        When use **varies** and you **remove capacity** as demand falls. Peak capacity left running
+        all year can cost more than owning.
+
+  - id: c02-economies-of-scale-change-unit-price
+    page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+    section: "Economies of scale: a very large provider can charge less per unit"
+    level: understanding
+    topics: [economies-of-scale]
+    front:
+      text: Economies of scale and following the demand curve both save money. What does each change?
+    back:
+      text: |
+        **Economies of scale** lower the price of each unit of capacity. **Following the curve**
+        cuts how many units you pay for. They are separate savings.
+
+  # ---------------------------------------------------------------- 02.03
+
+  - id: c02-elasticity-or-agility-rule
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: Elasticity and agility both sound like "fast"
+    level: understanding
+    topics: [elasticity, agility]
+    front:
+      text: A scenario mentions speed. How do you tell elasticity from agility?
+    back:
+      text: |
+        **Elasticity:** more or less of the *same* thing, driven by demand. **Agility:** something
+        *new*, fast and cheap, driven by a person's idea.
+
+  - id: c02-overload-needs-elasticity
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: "High availability: the system keeps working when a part fails"
+    level: understanding
+    topics: [high-availability, elasticity]
+    front:
+      text: A site crashes because too many visitors arrive at once. High availability or elasticity?
+    back:
+      text: |
+        **Elasticity.** High availability is about surviving a *failed part*; an overload is a
+        capacity problem, fixed by adding capacity as demand rises.
+
+  - id: c02-durability-not-undo
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: Durability isn't availability
+    level: understanding
+    topics: [durability]
+    front:
+      text: Does durable storage protect a file you delete by mistake?
+    back:
+      text: |
+        **No.** Durability protects against the storage failing, not against you: a durable service
+        deletes reliably too. Features such as keeping earlier versions guard against mistakes.
+
+  - id: c02-global-reach-or-agility-rule
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: Global reach and agility both happen "in minutes"
+    level: understanding
+    topics: [global-reach, agility]
+    front:
+      text: A company opens a site abroad within days. Global reach or agility?
+    back:
+      text: |
+        Look at what the scenario stresses. **Where** (closer to users, lower latency): global
+        reach. **How fast or cheaply** something new appeared: agility.
+
+  - id: c02-benefits-need-design
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: "In real work: the benefits map to the Well-Architected pillars"
+    level: understanding
+    topics: [cloud-benefits]
+    front:
+      text: Is a website on one server in one Availability Zone highly available because it runs on AWS?
+    back:
+      text: |
+        **No.** AWS provides Availability Zones, auto scaling and Regions; you must design your
+        system to use them. The benefits are possibilities, not defaults.
+
+  # ---------------------------------------------------------------- 02.04
+
+  - id: c02-operating-but-fixed-example
+    page: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+    section: "Capital or operating, fixed or variable: two different questions"
+    level: understanding
+    topics: [capex-opex, fixed-vs-variable]
+    front:
+      text: Give an example of an operating expense that is fixed, and say what it shows.
+    back:
+      text: |
+        **Rent** (or salaries): paid as you go, but the same however much you use. Operating
+        doesn't mean variable; the two pairs answer different questions.
+
+  - id: c02-cloud-left-at-peak
+    page: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+    section: "Worked example: the bakery's three-year comparison"
+    level: understanding
+    topics: [cloud-economics, idle-capacity]
+    front:
+      text: What one habit can make the cloud cost more than owning the same servers?
+    back:
+      text: |
+        **Leaving peak-sized capacity running all year.** You then pay rental prices for idle
+        capacity every month, with nothing given back.
+
+  - id: c02-waste-hits-two-pillars
+    page: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+    section: Rightsizing and automation keep the variable bill small
+    level: understanding
+    topics: [rightsizing, automation, sustainability]
+    front:
+      text: Why do rightsizing and automation serve sustainability as well as cost optimization?
+    back:
+      text: |
+        A half-idle server wastes **energy** as well as **money**. Using only what you need saves
+        both at once.
+
+  # ---------------------------------------------------------------- 02.05
+
+  - id: c02-why-some-say-five-pillars
+    page: guide/02-why-the-cloud/05-the-well-architected-framework.md
+    section: Six pillars, six questions
+    level: understanding
+    topics: [well-architected-pillars, wa-misconceptions]
+    front:
+      text: Why does some study material say the Well-Architected Framework has five pillars?
+    back:
+      text: |
+        It was written **before AWS added the sustainability pillar**. The current Framework, and
+        the CLF-C02 exam guide, list **six**.
+
+  - id: c02-pillars-held-in-trade-offs
+    page: guide/02-why-the-cloud/05-the-well-architected-framework.md
+    section: The pillars can be traded against each other, but not all of them
+    level: recall
+    topics: [trade-offs]
+    front:
+      text: In a Well-Architected trade-off, which two pillars are generally not traded away?
+    back:
+      text: |
+        **Security** and **operational excellence**. A typical acceptable trade is lower
+        reliability in a test environment, to save cost.
+
+  - id: c02-slogans-not-principles
+    page: guide/02-why-the-cloud/05-the-well-architected-framework.md
+    section: Real design principles, and slogans that only sound like them
+    level: understanding
+    topics: [design-principles, wa-misconceptions]
+    front:
+      text: Is "design for failure" a Well-Architected design principle?
+    back:
+      text: |
+        **No.** It's a slogan from older material. The Framework's wording is "automatically
+        recover from failure" and "test recovery procedures", both reliability principles.
+
+  - id: c02-wa-tool-not-trusted-advisor
+    page: guide/02-why-the-cloud/05-the-well-architected-framework.md
+    section: The Framework is guidance; the Well-Architected Tool applies it
+    level: understanding
+    topics: [well-architected-tool]
+    front:
+      text: Which service reviews one workload against the Framework's questions, Trusted Advisor or the Well-Architected Tool?
+    back:
+      text: |
+        **The Well-Architected Tool.** AWS Trusted Advisor runs automatic checks on an account,
+        grouped into categories, not pillars.

@@ -12,8 +12,9 @@ The repository's written content is licensed under the
 (CC BY-NC 4.0). That covers:
 
 - this study guide's lessons, chapters, exercise and lab instructions, and
-  other written documentation, including material in `guide/`, `reference/`
-  and `design/`
+  other written documentation, including material in `guide/`, `reference/`,
+  `design/` and `practice/` (the practice questions and flashcards, and the
+  bundle built from them)
 - diagrams and illustrations created by Automate the Cloud Inc., including
   material in `images/`
 - the written text of the website and PDF editions built from them

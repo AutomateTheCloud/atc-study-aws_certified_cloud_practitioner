@@ -1,0 +1,59 @@
+# The practice bundle's collection header. source/practice/build_bundle.py adds the questions
+# (from practice/items/) and the flashcards (from practice/items/ and reference/glossary.yaml)
+# and writes practice/clf-c02-practice/study.yaml. Keep `id` forever; raise `version` with every
+# release (patch for corrections, minor for added items, major for restructuring).
+format_version: "0.2"
+id: b247b7a9-9b89-4b04-8cd5-17aed3c38d61
+title: "Practice Questions and Flashcards for the AWS Certified Cloud Practitioner Exam (CLF-C02)"
+version: 0.1.0
+language: en
+subject: Cloud computing
+tags: [aws, cloud-practitioner, clf-c02, certification, cloud-computing]
+created: "2026-10-24"
+description: |
+  Practice questions and flashcards to go with Automate the Cloud's **Study Guide for the AWS
+  Certified Cloud Practitioner Exam (CLF-C02)**. The questions follow the exam's style: short
+  business scenarios, one correct answer, or two correct answers where the question says
+  "Select TWO". Each answer appears in one of several wordings, so learn what an answer means,
+  not what it looks like. The flashcards cover the guide's glossary terms, the pairs people mix
+  up, and the major ideas of each module.
+
+  **What it covers.** The modules of the guide written so far: Module 02 (why organizations use
+  the cloud) to Module 07 (networks and the edge). Items for later modules are added as those
+  modules are written.
+
+  **Following along with the guide.** Every item is tagged so you can practice one part at a
+  time:
+
+  - `module-05`: everything from Module 05;
+  - `clf-05-03`: everything from one page of the guide (the guide's page ID);
+  - `domain-3` and `task-3-6`: the exam domain and task statement a question serves;
+  - `recall`, `understanding`, `application`: what a question asks you to do;
+  - `exam-style` (questions), `concept`, `glossary-term`, `confused-pair` and `abbreviation`
+    (flashcards).
+
+  Each item's reference names the guide page and section it was written from.
+
+  **What it isn't.** These are original practice items, not questions from the real exam, and a
+  practice score doesn't predict an exam result. AWS changes often: when an item depends on a
+  dated fact, the explanation says so. The items were drafted with AI assistance from the guide
+  and checked against it, and have not yet been reviewed by a subject expert.
+
+  Automate the Cloud is not affiliated with, endorsed by, or sponsored by Amazon Web Services.
+  AWS, Amazon Web Services, and AWS Certified Cloud Practitioner are trademarks of Amazon.com,
+  Inc. or its affiliates. They are used here only to identify the exam this set prepares you for.
+
+  Written from the study guide by Automate the Cloud Inc., under the same terms as the guide:
+  CC BY-NC 4.0 with the Additional Permission for Internal Training.
+license:
+  spdx: CC-BY-NC-4.0
+  url: https://creativecommons.org/licenses/by-nc/4.0/
+  statement: >-
+    Copyright 2026 Automate the Cloud Inc. Questions and flashcards written from the Study Guide
+    for the AWS Certified Cloud Practitioner Exam (CLF-C02), by Automate the Cloud Inc. Licensed under CC BY-NC 4.0, with the Additional Permission for Internal Training
+    from Automate the Cloud Inc.:
+    https://automatethe.cloud/licenses/atc-internal-training-permission.txt
+sources:
+  - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
+    reference: Modules 02 to 07 and the glossary
+    url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner

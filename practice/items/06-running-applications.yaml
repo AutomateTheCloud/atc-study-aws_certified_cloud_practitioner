@@ -1,0 +1,4148 @@
+# Module 06, Running applications: compute. Practice questions and concept cards.
+# Written from the guide pages in guide/06-running-applications/; plan in practice/work/blueprint-06.md.
+
+questions:
+
+  # ---------------------------------------------------------------- 06.01 Amazon EC2
+
+  - id: q06-family-reports-held-in-memory
+    page: guide/06-running-applications/01-ec2.md
+    section: Choose the family from the bottleneck
+    task: "3.3"
+    level: application
+    topics: [instance-families]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A retailer's reporting tool loads a full year of sales into RAM so it can compare them.
+        Monitoring shows memory filling up while the processors stay mostly idle. Which EC2
+        instance family fits this workload best?
+    choices:
+      - id: memory-optimized
+        text: Memory optimized
+        variants:
+          - text: Memory optimized family
+          - text: Memory optimized types
+        explanation:
+          text: The workload runs out of memory first, and memory optimized types give the most memory for their processors.
+      - id: compute-optimized
+        text: Compute optimized
+        variants:
+          - text: Compute optimized family
+          - text: Compute optimized types
+        explanation:
+          text: Compute optimized adds processor power, but the processors here are mostly idle.
+      - id: storage-optimized
+        text: Storage optimized
+        variants:
+          - text: Storage optimized family
+          - text: Storage optimized types
+        explanation:
+          text: Storage optimized gives fast local disks; this data has to sit in RAM, not on disk.
+      - id: accelerated-computing
+        text: Accelerated computing
+        variants:
+          - text: Accelerated computing family
+          - text: Accelerated computing types
+        explanation:
+          text: Accelerated computing adds GPUs and other special chips, which nothing here calls for.
+    correct_answers: [memory-optimized]
+    hint:
+      text: Ask what the program runs out of first.
+    explanation:
+      text: |
+        Choose the family from the bottleneck: the resource the workload runs out of first. Here it
+        is memory, and AWS lists analytics on large data sets held in memory as a memory optimized
+        workload (the R, X, U and z1d types).
+
+  - id: q06-family-game-servers-busy-cpu
+    page: guide/06-running-applications/01-ec2.md
+    section: Choose the family from the bottleneck
+    task: "3.3"
+    level: application
+    topics: [instance-families]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A game studio runs dedicated multiplayer game servers on Amazon EC2. Monitoring shows
+        processor use near 100% for hours, while memory and disk use stay low. Which instance
+        family should the studio choose?
+    choices:
+      - id: general-purpose
+        text: General purpose
+        variants:
+          - text: General purpose family
+          - text: General purpose types
+        explanation:
+          text: General purpose suits balanced loads; this one has a clear processor bottleneck.
+      - id: compute-optimized
+        text: Compute optimized
+        variants:
+          - text: Compute optimized family
+          - text: Compute optimized types
+        explanation:
+          text: The processor runs out first, and compute optimized types give the most processor power for their memory.
+      - id: storage-optimized
+        text: Storage optimized
+        variants:
+          - text: Storage optimized family
+          - text: Storage optimized types
+        explanation:
+          text: Storage optimized is for fast reads and writes to local disks, and disk use here is low.
+      - id: memory-optimized
+        text: Memory optimized
+        variants:
+          - text: Memory optimized family
+          - text: Memory optimized types
+        explanation:
+          text: Memory optimized adds memory, which this workload isn't short of.
+    correct_answers: [compute-optimized]
+    hint:
+      text: Which resource is at its limit while the others have room?
+    explanation:
+      text: |
+        The processors are what run out, so the family is compute optimized (the C types). AWS
+        lists dedicated game servers, batch processing and media transcoding among its example
+        workloads.
+
+  - id: q06-family-model-training-on-gpus
+    page: guide/06-running-applications/01-ec2.md
+    section: Choose the family from the bottleneck
+    task: "3.3"
+    level: application
+    topics: [instance-families]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A startup trains machine learning models that tag product photos, and its training code
+        is written to run on GPUs. Which EC2 instance family fits the training servers?
+    choices:
+      - id: memory-optimized
+        text: Memory optimized
+        variants:
+          - text: Memory optimized family
+          - text: Memory optimized types
+        explanation:
+          text: Memory optimized types add memory, not GPUs.
+      - id: compute-optimized
+        text: Compute optimized
+        variants:
+          - text: Compute optimized family
+          - text: Compute optimized types
+        explanation:
+          text: Tempting because training is heavy work, but compute optimized adds ordinary processors, not GPUs.
+      - id: accelerated-computing
+        text: Accelerated computing
+        variants:
+          - text: Accelerated computing family
+          - text: Accelerated computing types
+        explanation:
+          text: Accelerated computing types carry GPUs and other special chips for work such as machine learning.
+      - id: general-purpose
+        text: General purpose
+        variants:
+          - text: General purpose family
+          - text: General purpose types
+        explanation:
+          text: General purpose is for balanced loads with no particular bottleneck.
+    correct_answers: [accelerated-computing]
+    hint:
+      text: The code needs a kind of chip, not just more of an ordinary resource.
+    explanation:
+      text: |
+        Work that needs GPUs or other special chips points to accelerated computing (the P, G,
+        Inf and Trn types). AWS lists machine learning, graphics and floating-point calculations
+        as its workloads.
+
+  - id: q06-family-nothing-runs-out
+    page: guide/06-running-applications/01-ec2.md
+    section: Choose the family from the bottleneck
+    task: "3.3"
+    level: application
+    topics: [instance-families]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A small company runs a web server and a code repository on Amazon EC2. Neither uses much
+        processor, memory or disk, and no single resource runs out first. Which instance family
+        fits?
+    choices:
+      - id: compute-optimized
+        text: Compute optimized
+        variants:
+          - text: Compute optimized family
+          - text: Compute optimized types
+        explanation:
+          text: Compute optimized is for a processor bottleneck, and there isn't one.
+      - id: memory-optimized
+        text: Memory optimized
+        variants:
+          - text: Memory optimized family
+          - text: Memory optimized types
+        explanation:
+          text: Memory optimized is for data that must sit in memory, which isn't the case here.
+      - id: storage-optimized
+        text: Storage optimized
+        variants:
+          - text: Storage optimized family
+          - text: Storage optimized types
+        explanation:
+          text: Storage optimized is for heavy reads and writes to local disks, which isn't the case here.
+      - id: general-purpose
+        text: General purpose
+        variants:
+          - text: General purpose family
+          - text: General purpose types
+        explanation:
+          text: With nothing running out first, the balanced family fits.
+    correct_answers: [general-purpose]
+    hint:
+      text: When there is no bottleneck, which family is built for balance?
+    explanation:
+      text: |
+        General purpose types (M and T) balance processor, memory and network. They are the answer
+        when nothing in particular runs out, and AWS lists web servers and code repositories among
+        their example workloads.
+
+  - id: q06-storage-optimized-is-not-more-space
+    page: guide/06-running-applications/01-ec2.md
+    section: Choose the family from the bottleneck
+    task: "3.3"
+    level: understanding
+    topics: [instance-families]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company's file server on Amazon EC2 is running out of disk space for archived documents.
+        A colleague suggests moving it to a storage optimized instance type. Which response is
+        accurate?
+    choices:
+      - id: fast-disks-not-space
+        text: It won't help; storage optimized targets heavy local disk reads and writes, so grow EBS or use S3
+        variants:
+          - text: That misreads the family; it is built for heavy local disk reads and writes, so grow EBS or use S3
+          - text: It's the wrong fix; those types target heavy reads and writes on local disks; space comes from EBS or S3
+        explanation:
+          text: Storage optimized types are for heavy reads and writes to local disks, and those disks are instance store, which a stop erases. Lasting space for an archive comes from a larger EBS volume or from Amazon S3.
+      - id: adds-space
+        text: It will help; storage optimized types are the family to choose whenever a server needs more space
+        variants:
+          - text: Good idea; those types are the family for any server that is short of disk space
+          - text: That's right; whenever disk space runs short, storage optimized is the family to pick
+        explanation:
+          text: This is the misconception the lesson names. "Storage optimized" describes workloads that read and write local disks heavily, not a cure for a server short of space.
+      - id: keeps-in-ram
+        text: It won't help; storage optimized types hold their data in RAM, so the archive needs memory
+        variants:
+          - text: Wrong family; storage optimized types keep data in memory, so the archive would need RAM
+          - text: It's the wrong fix; those types store data in RAM, so the server would need more memory
+        explanation:
+          text: Storage optimized types have fast local disks. Data that must sit in RAM points to memory optimized, which isn't the issue here.
+      - id: gpu-family
+        text: It won't help; storage optimized is a family of GPU types for machine learning and graphics
+        variants:
+          - text: Wrong family; storage optimized types carry GPUs for machine learning and graphics work
+          - text: It's the wrong fix; those types are built around GPUs for machine learning and graphics
+        explanation:
+          text: GPUs and other special chips belong to accelerated computing, not storage optimized.
+    correct_answers: [fast-disks-not-space]
+    explanation:
+      text: |
+        Storage optimized types (I, D, H) suit workloads that read and write a lot of data on fast
+        local disks, such as high-throughput databases. They are not the answer to "we need more
+        space": their local disks are instance store, which doesn't survive a stop, so attach a
+        bigger EBS volume, or keep the archive in Amazon S3 (Module 05).
+
+  - id: q06-family-heavy-local-disk-reads-writes
+    page: guide/06-running-applications/01-ec2.md
+    section: Choose the family from the bottleneck
+    task: "3.3"
+    level: application
+    topics: [instance-families]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company runs a high-throughput database on Amazon EC2. It makes huge numbers of reads and
+        writes to the server's local disks, and disk speed is what slows it down. Which instance
+        family fits?
+    choices:
+      - id: memory-optimized
+        text: Memory optimized
+        variants:
+          - text: Memory optimized family
+          - text: Memory optimized types
+        explanation:
+          text: Memory optimized helps when data must fit in RAM; here the bottleneck is disk speed.
+      - id: storage-optimized
+        text: Storage optimized
+        variants:
+          - text: Storage optimized family
+          - text: Storage optimized types
+        explanation:
+          text: Fast reads and writes to local disks is exactly what storage optimized types are built for.
+      - id: accelerated-computing
+        text: Accelerated computing
+        variants:
+          - text: Accelerated computing family
+          - text: Accelerated computing types
+        explanation:
+          text: Accelerated computing adds GPUs and other chips; it doesn't speed up local disks.
+      - id: compute-optimized
+        text: Compute optimized
+        variants:
+          - text: Compute optimized family
+          - text: Compute optimized types
+        explanation:
+          text: Compute optimized adds processor power, but the processor isn't what runs out.
+    correct_answers: [storage-optimized]
+    hint:
+      text: Name the resource that slows it down, then the family built for that resource.
+    explanation:
+      text: |
+        The bottleneck is reading and writing local disks, so the family is storage optimized (I,
+        D and H types). AWS lists high-throughput databases and data processing among its example
+        workloads.
+
+  - id: q06-burstable-for-mostly-idle-server
+    page: guide/06-running-applications/01-ec2.md
+    section: Choose the family from the bottleneck
+    task: "3.3"
+    level: application
+    topics: [instance-families]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A team's test server sits idle most of the day and is busy for a few minutes at a time when
+        developers run their checks. Which kind of EC2 instance suits it?
+    choices:
+      - id: memory-r
+        text: A memory optimized type, such as an R type
+        variants:
+          - text: An R type from the memory optimized family
+          - text: A type from the memory optimized R family
+        explanation:
+          text: Memory optimized types are for data held in memory; nothing here runs short of memory.
+      - id: storage-i
+        text: A storage optimized type, such as an I type
+        variants:
+          - text: An I type from the storage optimized family
+          - text: A type from the storage optimized I family
+        explanation:
+          text: Storage optimized types are for heavy local disk work, which a test server doesn't do.
+      - id: burstable-t
+        text: A burstable general purpose type, such as a T type
+        variants:
+          - text: A T type from the burstable general purpose family
+          - text: A type from the burstable general purpose T family
+        explanation:
+          text: T types run at a baseline and burst above it with credits earned while quiet, which matches a mostly idle server.
+      - id: accelerated-p
+        text: An accelerated computing GPU type, such as a P type
+        variants:
+          - text: A P type from the accelerated computing GPU family
+          - text: A type from the accelerated computing GPU P family
+        explanation:
+          text: Accelerated computing adds GPUs for work such as machine learning, which a test server doesn't need.
+    correct_answers: [burstable-t]
+    hint:
+      text: The load comes in short bursts with long quiet spells between them.
+    explanation:
+      text: |
+        Burstable (T) instances run at a baseline level of processor use and burst above it using
+        credits they earn while quiet. They suit web servers and test systems that are mostly idle
+        with occasional short bursts.
+
+  - id: q06-family-tightly-linked-computations
+    page: guide/06-running-applications/01-ec2.md
+    section: Choose the family from the bottleneck
+    task: "3.3"
+    level: recall
+    topics: [instance-families]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Which EC2 instance family is built for very large, tightly linked computations, such as
+        complex simulations?
+    choices:
+      - id: general-purpose
+        text: General purpose
+        variants:
+          - text: General purpose family
+          - text: General purpose types
+        explanation:
+          text: General purpose balances resources for everyday work such as web servers.
+      - id: storage-optimized
+        text: Storage optimized
+        variants:
+          - text: Storage optimized family
+          - text: Storage optimized types
+        explanation:
+          text: Storage optimized is for fast reads and writes to local disks.
+      - id: memory-optimized
+        text: Memory optimized
+        variants:
+          - text: Memory optimized family
+          - text: Memory optimized types
+        explanation:
+          text: Memory optimized is for data sets held in memory, such as in-memory databases.
+      - id: hpc-optimized
+        text: HPC optimized
+        variants:
+          - text: HPC optimized family
+          - text: HPC optimized types
+        explanation:
+          text: HPC (high performance computing) optimized types are for very large, tightly linked computations.
+    correct_answers: [hpc-optimized]
+    explanation:
+      text: |
+        HPC optimized (the Hpc types) is the family for high performance computing: very large,
+        tightly linked computations such as complex simulations. It is the sixth family in the
+        lesson's table, beside general purpose, compute, memory, storage and accelerated.
+
+  - id: q06-type-name-family-letter
+    page: guide/06-running-applications/01-ec2.md
+    section: Read an instance type's name from left to right
+    task: "3.3"
+    level: recall
+    topics: [instance-types]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        An engineer sees the EC2 instance type `r7g.large` on a bill. Which part of the name tells
+        her the instance is memory optimized?
+    choices:
+      - id: first-letter
+        text: The `r` at the start
+        variants:
+          - text: The first letter, `r`
+          - text: The leading letter `r`
+        explanation:
+          text: The first letter shows the kind of work the type is built for; `r` is memory optimized.
+      - id: number
+        text: The `7` after the first letter
+        variants:
+          - text: The number `7` in the middle
+          - text: The digit `7` before the `g`
+        explanation:
+          text: The number is the generation; a higher number is newer.
+      - id: variant-letter
+        text: The `g` just before the dot
+        variants:
+          - text: The letter `g` before the dot
+          - text: The `g` ending the first part
+        explanation:
+          text: The `g` is a variant letter, here an AWS Graviton processor.
+      - id: size
+        text: The `large` after the dot
+        variants:
+          - text: The part after the dot, `large`
+          - text: The word `large` at the end
+        explanation:
+          text: The part after the dot is the size; it says how much hardware, not what kind of work.
+    correct_answers: [first-letter]
+    explanation:
+      text: |
+        Read a type's name from left to right: before the dot come the letter for the kind of work
+        (`r`, memory optimized), the generation (`7`) and any variant letters (`g`, Graviton);
+        after the dot comes the size (`large`). AWS's naming page calls that first letter the
+        series and the whole of `r7g` the family, but either way, the first letter alone tells you
+        it is memory optimized.
+
+  - id: q06-purchasing-options-pick-two
+    page: guide/06-running-applications/01-ec2.md
+    section: Instance types are not purchasing options
+    task: "3.3"
+    level: recall
+    topics: [purchasing-options]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A planning sheet for a new EC2 workload lists five items. Which TWO of them are Amazon EC2
+        purchasing options? (Select TWO.)
+    choices:
+      - id: spot
+        text: Spot Instances
+        variants:
+          - text: EC2 Spot Instances
+          - text: Spot
+        explanation:
+          text: Spot is a way to pay that uses AWS's spare capacity at a discount, for interruptible work.
+      - id: memory-optimized
+        text: Memory optimized
+        variants:
+          - text: Memory optimized family
+          - text: Memory optimized types
+        explanation:
+          text: Memory optimized is an instance family, a kind of hardware, not a way to pay.
+      - id: reserved
+        text: Reserved Instances
+        variants:
+          - text: EC2 Reserved Instances
+          - text: Reserved Instances (RIs)
+        explanation:
+          text: Reserved Instances are a way to pay, a commitment to one configuration in return for a lower rate.
+      - id: m7g-large
+        text: The `m7g.large` type
+        variants:
+          - text: An `m7g.large`
+          - text: Type `m7g.large`
+        explanation:
+          text: "`m7g.large` is an instance type: hardware you can pay for in any of the ways."
+      - id: burstable
+        text: Burstable instances
+        variants:
+          - text: Burstable (T) instances
+          - text: Burstable performance types
+        explanation:
+          text: Burstable describes T instance types, which are hardware, not a way to pay.
+    correct_answers: [spot, reserved]
+    explanation:
+      text: |
+        An instance type is hardware; a purchasing option is how you pay for it. On-Demand, Savings
+        Plans, Reserved Instances and Spot Instances are purchasing options, and the same type can
+        be bought any of those ways. The exam guide's list calls them "instance types", so read
+        such a question as being about how you pay.
+
+  - id: q06-purchasing-interruptible-rendering
+    page: guide/06-running-applications/01-ec2.md
+    section: Instance types are not purchasing options
+    task: "4.1"
+    level: application
+    topics: [purchasing-options]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A studio renders animation frames on EC2 overnight. If a server is taken away, the job
+        simply redoes the lost frames later, costing only time. The studio wants the lowest compute
+        cost and commits to nothing. Which purchasing option fits best?
+    choices:
+      - id: on-demand
+        text: On-Demand Instances
+        variants:
+          - text: EC2 On-Demand Instances
+          - text: On-Demand
+        explanation:
+          text: On-Demand needs no commitment either, but it doesn't use the work's tolerance for interruption to cut the cost.
+      - id: spot
+        text: Spot Instances
+        variants:
+          - text: EC2 Spot Instances
+          - text: Spot
+        explanation:
+          text: Spot needs no commitment and costs less, and AWS reclaiming a server only delays this job.
+      - id: reserved
+        text: Reserved Instances
+        variants:
+          - text: EC2 Reserved Instances
+          - text: Reserved Instances (RIs)
+        explanation:
+          text: Reserved Instances need a 1- or 3-year commitment, which the studio doesn't want.
+      - id: savings-plans
+        text: Savings Plans
+        variants:
+          - text: A Savings Plan
+          - text: AWS Savings Plans
+        explanation:
+          text: Savings Plans commit to an hourly dollar amount for 1 or 3 years, which the studio doesn't want.
+    correct_answers: [spot]
+    hint:
+      text: Which option trades the risk of interruption for a lower price?
+    explanation:
+      text: |
+        Spot Instances need no commitment and cost less, but AWS can reclaim them with a short
+        warning. That suits flexible work that can be interrupted and resumed, such as rendering
+        frames that can be redone.
+
+  - id: q06-purchasing-short-unpredictable-trial
+    page: guide/06-running-applications/01-ec2.md
+    section: Instance types are not purchasing options
+    task: "4.1"
+    level: application
+    topics: [purchasing-options]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A team will run a proof of concept on EC2 for about two weeks. It can't predict how many
+        hours the servers will run, the work must not be interrupted, and it wants no commitment.
+        Which purchasing option fits?
+    choices:
+      - id: reserved
+        text: Reserved Instances
+        variants:
+          - text: EC2 Reserved Instances
+          - text: Reserved Instances (RIs)
+        explanation:
+          text: Reserved Instances commit to one configuration for a year or more, far longer than two weeks.
+      - id: spot
+        text: Spot Instances
+        variants:
+          - text: EC2 Spot Instances
+          - text: Spot
+        explanation:
+          text: Spot needs no commitment, but AWS can reclaim the servers, and this work must not be interrupted.
+      - id: on-demand
+        text: On-Demand Instances
+        variants:
+          - text: EC2 On-Demand Instances
+          - text: On-Demand
+        explanation:
+          text: No commitment, no interruptions, and you pay only for the time the servers run.
+      - id: savings-plans
+        text: Savings Plans
+        variants:
+          - text: A Savings Plan
+          - text: AWS Savings Plans
+        explanation:
+          text: Savings Plans commit to an hourly amount for 1 or 3 years, which a two-week trial doesn't justify.
+    correct_answers: [on-demand]
+    hint:
+      text: Three conditions; check each option against all of them.
+    explanation:
+      text: |
+        On-Demand commits you to nothing and isn't reclaimed by AWS; for Linux it bills by the
+        second, with a 60-second minimum, while the instance runs. That suits short or
+        unpredictable work.
+
+  - id: q06-purchasing-steady-same-configuration
+    page: guide/06-running-applications/01-ec2.md
+    section: Instance types are not purchasing options
+    task: "4.1"
+    level: application
+    topics: [purchasing-options]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company's database server will run around the clock on the same `m7g.large`
+        configuration for the next three years. The company wants a lower rate in return for a
+        commitment, and AWS must never take the server back. Which choice fits?
+    choices:
+      - id: on-demand
+        text: On-Demand Instances
+        variants:
+          - text: EC2 On-Demand Instances
+          - text: On-Demand
+        explanation:
+          text: On-Demand has no commitment and no lower rate for one.
+      - id: spot
+        text: Spot Instances
+        variants:
+          - text: EC2 Spot Instances
+          - text: Spot
+        explanation:
+          text: Spot is cheap, but AWS can reclaim the server, which this database can't allow.
+      - id: memory-optimized
+        text: Memory optimized types
+        variants:
+          - text: Memory optimized family
+          - text: Memory optimized instances
+        explanation:
+          text: That's a change of hardware, not a way to pay; it brings no commitment discount.
+      - id: reserved
+        text: Reserved Instances
+        variants:
+          - text: EC2 Reserved Instances
+          - text: Reserved Instances (RIs)
+        explanation:
+          text: A Reserved Instance commits to one instance configuration for 1 or 3 years in return for a lower rate.
+    correct_answers: [reserved]
+    hint:
+      text: Look for the option that matches "one configuration, steady use, a term commitment".
+    explanation:
+      text: |
+        Reserved Instances suit steady use of the same type: you commit to one instance
+        configuration for 1 or 3 years and get a lower rate. Module 11 compares them with Savings
+        Plans, which commit to a dollar amount instead.
+
+  - id: q06-reserved-changes-only-payment
+    page: guide/06-running-applications/01-ec2.md
+    section: Instance types are not purchasing options
+    task: "4.1"
+    level: understanding
+    topics: [purchasing-options, instance-types]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company moves its `m7g.large` web servers from On-Demand to Reserved Instances. What
+        changes?
+    choices:
+      - id: only-payment
+        text: How it pays, a lower rate for a term commitment, on the same hardware
+        variants:
+          - text: The billing, a commitment in return for a lower rate, on identical hardware
+          - text: The payment terms, cheaper for a commitment, while the hardware stays
+        explanation:
+          text: A purchasing option changes the price and the commitment, never the hardware.
+      - id: newer-generation
+        text: The servers move to a newer generation with more memory at the same price
+        variants:
+          - text: The servers get a newer generation and more memory for the same price
+          - text: The servers move up to a newer generation with more memory for the same price
+        explanation:
+          text: The hardware stays `m7g.large`; a Reserved Instance is a billing discount, not a machine.
+      - id: reclaimable
+        text: AWS may now reclaim the servers at short notice when it needs the capacity
+        variants:
+          - text: AWS can now take the servers back with a short warning when capacity is tight
+          - text: The servers become reclaimable by AWS at short notice when it needs them
+        explanation:
+          text: That describes Spot Instances. Reserved Instances aren't reclaimed.
+      - id: new-family
+        text: The servers become a different instance family, built for steady workloads
+        variants:
+          - text: The servers switch to another instance family that is meant for steady use
+          - text: The servers join a separate family of types designed for steady workloads
+        explanation:
+          text: This is the misconception that purchasing options are instance types. The family is still general purpose.
+    correct_answers: [only-payment]
+    explanation:
+      text: |
+        The same `m7g.large` can be paid for On-Demand, with a Savings Plan, as a Reserved
+        Instance or as Spot. Moving to Reserved Instances commits the company to that configuration
+        for 1 or 3 years in return for a lower rate; the servers themselves are unchanged.
+
+  - id: q06-stopped-instance-two-charges
+    page: guide/06-running-applications/01-ec2.md
+    section: Stopping pauses the instance bill; terminating ends it
+    task: "4.1"
+    level: understanding
+    topics: [instance-states]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A developer stops an EC2 test instance for a two-week holiday. It has an EBS root volume
+        and an Elastic IP address attached. Which TWO charges continue while it is stopped?
+        (Select TWO.)
+    choices:
+      - id: ebs-storage
+        text: Storage for its EBS volume
+        variants:
+          - text: The EBS volume's storage
+          - text: Its EBS root volume's storage
+        explanation:
+          text: EBS volumes bill for as long as they exist, running or stopped.
+      - id: instance-hours
+        text: Instance-hour charges
+        variants:
+          - text: Its hourly instance time
+          - text: Instance time by the hour
+        explanation:
+          text: Instance time is billed only while the instance runs; stopping ends it.
+      - id: elastic-ip
+        text: The Elastic IP address
+        variants:
+          - text: Its Elastic IP address
+          - text: The Elastic IP it keeps
+        explanation:
+          text: An Elastic IP address is charged until you release it, even while the instance is stopped.
+      - id: standby-fee
+        text: A daily fee for being stopped
+        variants:
+          - text: A per-day stopped-state fee
+          - text: A daily standby charge
+        explanation:
+          text: There is no such fee; the continuing charges are the disk and the kept address.
+      - id: instance-store
+        text: Storage for its instance store
+        variants:
+          - text: The instance store's storage
+          - text: Its instance store disk space
+        explanation:
+          text: Instance store is erased when the instance stops; it isn't billed separately as storage.
+    correct_answers: [ebs-storage, elastic-ip]
+    explanation:
+      text: |
+        A stopped instance doesn't cost nothing. Stopping ends the instance-time charge, but EBS
+        volumes are billed while they exist and an Elastic IP address until it is released. To end
+        every charge, terminate the instance, check its volumes are gone and release the address.
+
+  - id: q06-stop-start-public-address
+    page: guide/06-running-applications/01-ec2.md
+    section: Stopping pauses the instance bill; terminating ends it
+    task: "3.3"
+    level: understanding
+    topics: [instance-states]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A web server on EC2 uses the public IPv4 address that AWS assigned automatically at launch.
+        The server is stopped overnight and started the next morning. What happens to its public
+        address?
+    choices:
+      - id: keeps-same
+        text: It keeps the same address, because a stop releases nothing at all
+        variants:
+          - text: It comes back with the same address, since stopping releases nothing
+          - text: The address stays the same, as a stop doesn't release anything
+        explanation:
+          text: The automatically assigned address is released on stop, so it doesn't come back the same.
+      - id: new-address
+        text: It gets a different address; a fixed one needs an Elastic IP address
+        variants:
+          - text: It comes back with a new address; keeping one needs an Elastic IP
+          - text: The address changes; an Elastic IP address would stay fixed
+        explanation:
+          text: The automatic address is released on stop and a new one is assigned on start. An Elastic IP address stays yours.
+      - id: none-until-relaunch
+        text: It gets no public address until it is launched again from its AMI
+        variants:
+          - text: It has no public address until relaunched from its AMI
+          - text: It stays without a public address until a fresh launch from its AMI
+        explanation:
+          text: A restarted instance gets a new automatic address; no relaunch is needed.
+      - id: same-free
+        text: It keeps the same address, and AWS stops charging for it while stopped
+        variants:
+          - text: The address stays the same, and it is free while the server is stopped
+          - text: It comes back with the same address, which isn't billed while stopped
+        explanation:
+          text: That describes neither kind of address. An automatic address is released; an Elastic IP keeps billing.
+    correct_answers: [new-address]
+    explanation:
+      text: |
+        An address AWS assigns automatically stays with an instance only until it is stopped or
+        terminated; on start it gets a new one. An Elastic IP address is a fixed public address you
+        keep, and it is charged until you release it.
+
+  - id: q06-end-every-charge-for-old-server
+    page: guide/06-running-applications/01-ec2.md
+    section: Stopping pauses the instance bill; terminating ends it
+    task: "4.1"
+    level: application
+    topics: [instance-states]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A team has finished a project and will never need its EC2 test server again. It wants every
+        charge for the server to end. What should it do?
+    choices:
+      - id: stop
+        text: Stop the instance, so it no longer bills for instance hours or anything else
+        variants:
+          - text: Stop it, which ends the instance-hour charge and every other charge for it
+          - text: Put it in the stopped state, so neither its hours nor anything else is billed
+        explanation:
+          text: Stopping ends instance-time charges, but the EBS volume and any Elastic IP keep billing.
+      - id: smaller-type
+        text: Change it to the smallest instance type, so its hourly rate drops close to zero
+        variants:
+          - text: Resize it to the smallest instance type, so the hourly rate is almost nothing
+          - text: Move it to the smallest type available, so it costs next to nothing an hour
+        explanation:
+          text: A smaller type still bills while it runs, and the disk still bills; nothing ends.
+      - id: terminate
+        text: Terminate it, then check its volume is gone and release any Elastic IP
+        variants:
+          - text: Terminate it, confirm its volume was deleted, and release any Elastic IP
+          - text: Terminate the instance, check the volume is gone, release any Elastic IP
+        explanation:
+          text: Termination ends instance charges for good; checking the volume and releasing the address ends the rest.
+      - id: spot
+        text: Switch it to Spot pricing, so it bills only in the hours AWS lends it capacity
+        variants:
+          - text: Move it to Spot pricing, so it is billed only when AWS has spare capacity
+          - text: Pay for it as a Spot Instance, so charges arise only when capacity is spare
+        explanation:
+          text: Spot is a cheaper way to pay for running instances; it doesn't end charges for one nobody needs.
+    correct_answers: [terminate]
+    hint:
+      text: Which state is permanent, and what can outlive the instance itself?
+    explanation:
+      text: |
+        Terminating deletes the instance for good, along with volumes set to delete on termination.
+        Stopping only pauses the instance bill: the disk and any Elastic IP address still cost
+        money. Check that the volume is gone and release any Elastic IP to bring the charges to
+        zero.
+
+  - id: q06-ec2-customer-tasks-pick-two
+    page: guide/06-running-applications/01-ec2.md
+    section: Your side of the line on EC2
+    task: "2.1"
+    level: understanding
+    topics: [shared-responsibility, ec2-instances]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A company runs its website on Amazon EC2 instances. Under the AWS shared responsibility
+        model, which TWO tasks are the company's? (Select TWO.)
+    choices:
+      - id: patch-guest-os
+        text: Patching the guest operating system
+        variants:
+          - text: Installing patches on the instances' operating system
+          - text: Keeping the instances' guest OS patched
+        explanation:
+          text: On EC2 the guest operating system, and its security patches, are the customer's.
+      - id: host-hardware
+        text: Replacing failed disks in the physical hosts
+        variants:
+          - text: Repairing the physical servers' hardware
+          - text: Swapping out failed physical host parts
+        explanation:
+          text: Physical hardware is always AWS's side of the line.
+      - id: security-group-rules
+        text: Writing the instances' security group rules
+        variants:
+          - text: Deciding which ports the security group opens
+          - text: Setting who may connect, in the security group
+        explanation:
+          text: Security group rules are settings, and settings are the customer's.
+      - id: virtualization
+        text: Maintaining the hosts' virtualization layer
+        variants:
+          - text: Patching the hypervisor on the physical hosts
+          - text: Keeping the host virtualization software updated
+        explanation:
+          text: The host and its virtualization are AWS's, under the instance.
+      - id: building
+        text: Guarding the data center buildings
+        variants:
+          - text: Securing the data center facilities
+          - text: Controlling entry to the data centers
+        explanation:
+          text: Physical security of AWS's facilities is AWS's responsibility.
+    correct_answers: [patch-guest-os, security-group-rules]
+    explanation:
+      text: |
+        EC2 puts more on the customer's side than any other compute service, because the customer
+        runs the operating system. AWS looks after the buildings, hardware, hosts and
+        virtualization; the customer patches the guest OS, installs and updates its software, and
+        sets the security group rules, sign-in method, encryption and backups.
+
+  - id: q06-what-the-ami-decides
+    page: guide/06-running-applications/01-ec2.md
+    section: An instance is a virtual server started from an image
+    task: "3.3"
+    level: recall
+    topics: [ec2-instances]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        When you launch an EC2 instance, what does the Amazon Machine Image (AMI) you choose
+        decide?
+    choices:
+      - id: vcpus-memory
+        text: How many vCPUs and how much memory the instance gets
+        variants:
+          - text: The instance's number of vCPUs and amount of memory
+          - text: How much processor and memory the instance receives
+        explanation:
+          text: That is the instance type's job, such as `t3.micro` or `r7g.large`.
+      - id: open-ports
+        text: Which ports are open to incoming network traffic
+        variants:
+          - text: Which ports incoming traffic is allowed to reach
+          - text: Which network ports accept incoming connections
+        explanation:
+          text: That is decided by the security group's rules.
+      - id: how-you-pay
+        text: Whether you pay On-Demand or with a Reserved Instance
+        variants:
+          - text: Whether it is billed On-Demand or as a Reserved Instance
+          - text: Whether you pay for it On-Demand or through a reservation
+        explanation:
+          text: That is the purchasing option, which the image has nothing to do with.
+      - id: os-and-software
+        text: The operating system and software the instance starts with
+        variants:
+          - text: Which operating system and software are on the new instance
+          - text: The operating system and preinstalled software it boots with
+        explanation:
+          text: An AMI is a template holding the operating system and any preinstalled software.
+    correct_answers: [os-and-software]
+    explanation:
+      text: |
+        An AMI is the template an instance starts from: an operating system plus any preinstalled
+        software. Launching also involves four other choices: the instance type (hardware), storage,
+        the network and security group, and how you sign in.
+
+  - id: q06-why-build-your-own-ami
+    page: guide/06-running-applications/01-ec2.md
+    section: An instance is a virtual server started from an image
+    task: "3.3"
+    level: understanding
+    topics: [ec2-instances]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company sets up each new web server by hand, installing the same software every time.
+        Which is the main benefit of building its own AMI instead?
+    choices:
+      - id: identical-copies
+        text: Every instance started from it is identical and ready in minutes, so copies can launch automatically
+        variants:
+          - text: Each server launched from it is the same and ready in minutes, so new copies can start automatically
+          - text: All instances from it come up identical within minutes, so copies can be launched without anyone acting
+        explanation:
+          text: That is what an image is for, and it is how Auto Scaling adds servers in lesson 06.02.
+      - id: cheaper-hours
+        text: Instances started from a custom image are billed at a lower hourly rate than those from AWS images
+        variants:
+          - text: Servers launched from your own image cost less per hour than servers from AWS's images
+          - text: An instance from a custom AMI has a lower hourly price than one from an AWS-provided AMI
+        explanation:
+          text: The image doesn't set the hourly rate; the instance type and purchasing option do.
+      - id: more-memory
+        text: Instances started from it get more memory and processor power than the type normally provides
+        variants:
+          - text: Servers launched from it receive more memory and processing than their type would give
+          - text: An instance from it has more memory and CPU than its instance type normally includes
+        explanation:
+          text: Hardware comes from the instance type; an image holds only software.
+      - id: no-patching
+        text: Instances started from it never need operating system patches again, because AWS maintains them
+        variants:
+          - text: Servers launched from it need no further OS patches, since AWS keeps them up to date
+          - text: An instance from it is kept patched by AWS, so the company no longer patches the OS
+        explanation:
+          text: The guest OS stays the customer's to patch; a good practice is to rebuild the image from patched software.
+    correct_answers: [identical-copies]
+    explanation:
+      text: |
+        Ten instances started from one AMI are identical, with no setup steps to forget. That lets
+        servers be added in minutes, and lets Amazon EC2 Auto Scaling launch new copies
+        automatically. Building compute from a known, patched image is also a security best
+        practice.
+
+  - id: q06-volume-left-after-terminate
+    page: guide/06-running-applications/06-lab-08-launch-and-terminate-an-instance.md
+    section: "Part C: terminate, and prove it's gone (on your own)"
+    task: "4.1"
+    level: understanding
+    topics: [instance-states]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        After terminating an EC2 instance, a learner finds that its root volume is still listed
+        under Volumes and still billing. The instance shows as terminated. What is the most likely
+        reason?
+    choices:
+      - id: thirty-days
+        text: Terminated instances keep their volumes for a month in case they are restarted
+        variants:
+          - text: A terminated instance's volumes are kept for a month so it can be restarted
+          - text: Volumes of terminated instances stay for a month in case of a restart
+        explanation:
+          text: Termination is permanent; there is no restart and no holding period.
+      - id: delete-on-termination-no
+        text: The volume's delete on termination setting was No, so it stayed behind
+        variants:
+          - text: Delete on termination was set to No for the volume, so it was kept
+          - text: Its delete on termination flag was off, so the volume wasn't removed
+        explanation:
+          text: Only volumes set to delete on termination are deleted with the instance; others stay, and bill, until you delete them.
+      - id: encryption-keeps
+        text: EBS encryption by default makes AWS keep encrypted volumes after termination
+        variants:
+          - text: Encryption by default causes encrypted volumes to be kept after termination
+          - text: Encrypted volumes are always kept after termination when encryption is default
+        explanation:
+          text: Encryption protects the data; it doesn't change what happens to the volume at termination.
+      - id: security-group-first
+        text: Volumes are deleted only after the instance's security group has been deleted
+        variants:
+          - text: A volume isn't removed until the instance's security group is deleted too
+          - text: The security group must be deleted before the instance's volume can go
+        explanation:
+          text: Security groups filter network traffic; they have nothing to do with volume deletion.
+    correct_answers: [delete-on-termination-no]
+    hint:
+      text: Lab 08 asked you to look at one storage setting before launching.
+    explanation:
+      text: |
+        Terminating deletes the volumes set to delete on termination, along with any instance
+        store data. A volume with that setting at No outlives the instance and keeps billing until
+        you delete it, which is why Lab 08 checks the Volumes list after terminating.
+
+  # ---------------------------------------------------------------- 06.02 Auto Scaling and load balancers
+
+  - id: q06-capacity-follows-ticket-sales
+    page: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+    section: An Auto Scaling group keeps the right number of instances running
+    task: "3.3"
+    level: understanding
+    topics: [auto-scaling, elasticity]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A ticketing website's traffic jumps tenfold when a popular concert goes on sale, then falls
+        back within hours. The company wants the number of EC2 web servers to follow that demand up
+        and down without anyone acting. Which service does that?
+    choices:
+      - id: elb
+        text: Elastic Load Balancing
+        variants:
+          - text: Elastic Load Balancing (ELB)
+          - text: An Elastic Load Balancing setup
+        explanation:
+          text: A load balancer spreads requests across the servers that exist; it doesn't add or remove any.
+      - id: batch
+        text: AWS Batch
+        variants:
+          - text: The AWS Batch service
+          - text: AWS Batch job queues
+        explanation:
+          text: Batch runs queues of unattended jobs, not a website's web servers.
+      - id: ec2-auto-scaling
+        text: Amazon EC2 Auto Scaling
+        variants:
+          - text: EC2 Auto Scaling
+          - text: An EC2 Auto Scaling group
+        explanation:
+          text: It launches instances when demand rises and terminates them when it falls.
+      - id: lightsail
+        text: Amazon Lightsail
+        variants:
+          - text: Lightsail
+          - text: An Amazon Lightsail plan
+        explanation:
+          text: Lightsail sells simple servers at a fixed monthly price; it doesn't grow and shrink a fleet with demand.
+    correct_answers: [ec2-auto-scaling]
+    hint:
+      text: Which service changes how many servers exist?
+    explanation:
+      text: |
+        Capacity that follows demand up and down without anyone acting is elasticity, and for EC2
+        it comes from Amazon EC2 Auto Scaling. The exam guide lists the related AWS Auto Scaling;
+        for "auto scaling provides elasticity", either name points to the same idea.
+
+  - id: q06-auto-scaling-and-elb-divide-work
+    page: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+    section: Auto Scaling changes how many; the load balancer chooses which
+    task: "3.3"
+    level: understanding
+    topics: [auto-scaling, load-balancers]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company runs its web servers in an Auto Scaling group behind a load balancer. Which
+        statement correctly describes how the two services divide the work?
+    choices:
+      - id: lb-adds
+        text: The load balancer adds servers as demand rises; Auto Scaling routes each request
+        variants:
+          - text: The load balancer launches servers for demand; Auto Scaling sends each request
+          - text: New servers come from the load balancer; requests are routed by Auto Scaling
+        explanation:
+          text: This reverses the two jobs.
+      - id: asg-spreads
+        text: Auto Scaling spreads each request across servers; the load balancer replaces failures
+        variants:
+          - text: Auto Scaling shares out the requests; the load balancer replaces failed servers
+          - text: Requests are spread by Auto Scaling; failed servers are replaced by the load balancer
+        explanation:
+          text: This is the misconception that Auto Scaling spreads traffic. It changes the count and replaces failed instances.
+      - id: both-spread
+        text: Both spread requests across servers; Auto Scaling also caches pages at the edge
+        variants:
+          - text: Each one spreads requests; Auto Scaling also caches pages at edge locations
+          - text: The two both share out requests, and Auto Scaling caches pages near users
+        explanation:
+          text: Only the load balancer spreads requests, and caching at edge locations is CloudFront's job.
+      - id: count-and-route
+        text: Auto Scaling sets how many servers run; the load balancer picks which gets each request
+        variants:
+          - text: Auto Scaling decides the number of servers; the load balancer routes each request
+          - text: The count of servers is Auto Scaling's job; choosing one per request is the load balancer's
+        explanation:
+          text: One service handles the count, the other handles each request.
+    correct_answers: [count-and-route]
+    explanation:
+      text: |
+        Amazon EC2 Auto Scaling answers "how many instances, and where?"; Elastic Load Balancing
+        answers "which healthy instance gets this request?". They work as a team: Auto Scaling
+        registers each new instance with the load balancer and deregisters the ones it terminates.
+
+  - id: q06-auto-scaling-jobs-pick-two
+    page: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+    section: An Auto Scaling group keeps the right number of instances running
+    task: "3.3"
+    level: understanding
+    topics: [auto-scaling]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        Which TWO jobs does Amazon EC2 Auto Scaling do for a group of instances? (Select TWO.)
+    choices:
+      - id: replace-unhealthy
+        text: Replaces instances that fail the group's health checks
+        variants:
+          - text: Swaps out instances the group finds unhealthy
+          - text: Launches replacements for instances it marks unhealthy
+        explanation:
+          text: The group heals itself to keep its desired capacity. By default it checks EC2 status; it also acts on the load balancer's health checks only if you turn those on for the group.
+      - id: route-requests
+        text: Sends each incoming request to a healthy instance
+        variants:
+          - text: Routes every request to an instance that is healthy
+          - text: Picks a healthy instance for each new request
+        explanation:
+          text: That is the load balancer's job, not Auto Scaling's.
+      - id: balance-azs
+        text: Spreads the instances evenly across the chosen AZs
+        variants:
+          - text: Keeps instances balanced across the selected AZs
+          - text: Distributes instances evenly over the chosen AZs
+        explanation:
+          text: Balancing across Availability Zones means one zone's failure leaves the others running.
+      - id: decrypt-https
+        text: Decrypts HTTPS traffic using a certificate
+        variants:
+          - text: Handles HTTPS decryption with a certificate
+          - text: Decrypts HTTPS requests with an attached certificate
+        explanation:
+          text: A load balancer can decrypt HTTPS with a certificate from AWS Certificate Manager; Auto Scaling doesn't.
+      - id: cache-edge
+        text: Caches content at edge locations near users
+        variants:
+          - text: Keeps copies of content at edge locations
+          - text: Serves cached content from the edge near users
+        explanation:
+          text: Caching at edge locations is Amazon CloudFront's job.
+    correct_answers: [replace-unhealthy, balance-azs]
+    explanation:
+      text: |
+        Amazon EC2 Auto Scaling does three jobs: it follows demand by changing the desired
+        capacity, it replaces instances that are terminated or impaired, and it balances instances
+        across the Availability Zones you choose. Its health checks are EC2 status checks by
+        default; it replaces instances that fail the load balancer's checks only when ELB health
+        checks are turned on for the group. Routing requests and decrypting HTTPS belong to the
+        load balancer.
+
+  - id: q06-load-balancer-provides-pick-two
+    page: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+    section: A load balancer sends each request to a healthy instance
+    task: "3.3"
+    level: understanding
+    topics: [load-balancers]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A company puts Elastic Load Balancing in front of its EC2 web servers. Which TWO does the
+        load balancer provide? (Select TWO.)
+    choices:
+      - id: one-address
+        text: One address for customers, however many servers are behind it
+        variants:
+          - text: A single front door for users, whatever the number of servers
+          - text: One address users connect to, regardless of the server count
+        explanation:
+          text: Customers use one address while servers come and go behind it.
+      - id: launch-instances
+        text: New instances launched when average processor use rises
+        variants:
+          - text: Extra instances started when average CPU use climbs
+          - text: Instances added automatically as processor load goes up
+        explanation:
+          text: Launching instances is Amazon EC2 Auto Scaling's job.
+      - id: healthy-only
+        text: Requests sent only to targets that pass their health checks
+        variants:
+          - text: Traffic routed only to targets passing health checks
+          - text: Requests kept away from targets that fail health checks
+        explanation:
+          text: It runs health checks and routes only to healthy targets.
+      - id: bigger-type
+        text: A larger instance type chosen whenever traffic grows
+        variants:
+          - text: A bigger instance type picked each time traffic rises
+          - text: Instances resized to a larger type as traffic increases
+        explanation:
+          text: Neither service changes instance types; the type comes from the launch template.
+      - id: forecast
+        text: A forecast of tomorrow's traffic from past patterns
+        variants:
+          - text: A prediction of the next day's traffic from history
+          - text: Tomorrow's traffic forecast from earlier patterns
+        explanation:
+          text: Forecasting is predictive scaling, part of Auto Scaling.
+    correct_answers: [one-address, healthy-only]
+    explanation:
+      text: |
+        A load balancer is one front door that spreads incoming requests across targets in one or
+        more Availability Zones, sending them only to targets that pass its health checks. AWS
+        scales the load balancer itself, and it can decrypt HTTPS so the servers don't have to.
+
+  - id: q06-why-minimum-of-two
+    page: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+    section: "Worked example: the bakery's December"
+    task: "1.1"
+    level: understanding
+    topics: [auto-scaling, high-availability]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        One web server can handle a company's overnight traffic, yet its Auto Scaling group keeps a
+        minimum of 2 instances, one in each of two Availability Zones. Why?
+    choices:
+      - id: survive-loss
+        text: So that losing one server or one AZ still leaves a server taking requests
+        variants:
+          - text: So a failed server or a lost AZ still leaves one server answering requests
+          - text: So that if a server or an AZ fails, another server keeps taking requests
+        explanation:
+          text: One instance per zone is the price of high availability.
+      - id: aws-requires-two
+        text: Because Auto Scaling groups can't be created with fewer than two instances
+        variants:
+          - text: Because AWS doesn't allow an Auto Scaling group with fewer than two instances
+          - text: Because an Auto Scaling group must always contain at least two instances
+        explanation:
+          text: The minimum is the company's choice; it is set at 2 for availability, not because AWS requires it.
+      - id: lb-needs-two
+        text: Because a load balancer can't send traffic to a group of only one instance
+        variants:
+          - text: Because a load balancer won't route traffic to a single-instance group
+          - text: Because load balancers need at least two instances to send traffic to
+        explanation:
+          text: A load balancer can route to one target; the second instance is about surviving a failure.
+      - id: half-rate
+        text: So that the two servers share the cost and each bills at half the rate
+        variants:
+          - text: So that the bill is split, with each of the two servers at half price
+          - text: So that each server is charged half the rate, as the two share the cost
+        explanation:
+          text: Each instance bills at its full rate; the second one is an extra cost paid for availability.
+    correct_answers: [survive-loss]
+    explanation:
+      text: |
+        With every server in one place, losing that server or its Availability Zone stops the site.
+        A minimum of one instance per AZ means a failure still leaves a server running, and the
+        extra overnight server is the price of high availability.
+
+  - id: q06-why-set-a-maximum
+    page: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+    section: An Auto Scaling group keeps the right number of instances running
+    task: "3.3"
+    level: understanding
+    topics: [auto-scaling]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Why does a company set a maximum capacity on its Auto Scaling group?
+    choices:
+      - id: survive-az
+        text: To make sure the site stays up if an Availability Zone fails
+        variants:
+          - text: To keep the site running when an Availability Zone goes down
+          - text: To guarantee the site survives the failure of an Availability Zone
+        explanation:
+          text: Surviving an AZ failure comes from the minimum spread across zones, not the maximum.
+      - id: cap-cost
+        text: To cap the cost if a fault or a flood of bots drives demand up
+        variants:
+          - text: To limit spending if a fault or bot traffic pushes the measure up
+          - text: To put a ceiling on cost if a fault or a bot flood inflates demand
+        explanation:
+          text: The group can never run more instances than you are willing to pay for.
+      - id: starting-count
+        text: To set how many instances the group runs when it is first created
+        variants:
+          - text: To decide the number of instances the group starts out with
+          - text: To fix how many instances run when the group is first launched
+        explanation:
+          text: The number the group aims for right now is the desired capacity.
+      - id: limit-requests
+        text: To limit how many requests per second the load balancer accepts
+        variants:
+          - text: To cap the number of requests a second the load balancer takes
+          - text: To restrict how many requests per second reach the load balancer
+        explanation:
+          text: The maximum limits instances, not the requests the load balancer handles.
+    correct_answers: [cap-cost]
+    explanation:
+      text: |
+        An Auto Scaling group stays between a minimum and a maximum, at the desired capacity in
+        between. The minimum is the floor kept for availability; the maximum is a ceiling, so a
+        fault or a flood of unwanted traffic can't drive the bill up without limit.
+
+  - id: q06-scale-on-average-cpu
+    page: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+    section: An Auto Scaling group keeps the right number of instances running
+    task: "3.3"
+    level: application
+    topics: [auto-scaling, scaling-policies]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company wants its Auto Scaling group to add instances when average processor use climbs
+        above about 50% and remove them when it falls back, with no times set in advance. Which way
+        of scaling fits?
+    choices:
+      - id: scheduled
+        text: Scheduled scaling
+        variants:
+          - text: Scaling on a schedule
+          - text: A scheduled scaling setup
+        explanation:
+          text: Scheduled scaling changes capacity at times you set, and the company wants no times.
+      - id: predictive
+        text: Predictive scaling
+        variants:
+          - text: Forecast-based scaling
+          - text: A predictive scaling setup
+        explanation:
+          text: Predictive scaling acts on a forecast from past patterns, not on keeping a measure near a value.
+      - id: target-tracking
+        text: Target tracking
+        variants:
+          - text: Target tracking scaling
+          - text: A target tracking setup
+        explanation:
+          text: Target tracking adds or removes instances to keep a measure, such as average CPU, near a value.
+      - id: manual
+        text: Manual scaling
+        variants:
+          - text: Scaling by hand
+          - text: A manual scaling setup
+        explanation:
+          text: Manual scaling needs someone to change the desired capacity each time.
+    correct_answers: [target-tracking]
+    hint:
+      text: The rule is "keep this measure near this value".
+    explanation:
+      text: |
+        Target tracking keeps a measure such as average processor use near a value you set, adding
+        instances when it climbs and removing them when it falls. It is the usual choice for most
+        websites.
+
+  - id: q06-scale-for-a-known-opening-time
+    page: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+    section: An Auto Scaling group keeps the right number of instances running
+    task: "3.3"
+    level: application
+    topics: [auto-scaling, scaling-policies]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A university's course sign-up site opens at 09:00 on a date announced months ahead, and
+        traffic surges at that moment. The team wants extra instances already running just before
+        09:00 on that date, without anyone acting at the time. Which way of scaling fits best?
+    choices:
+      - id: target-tracking
+        text: Target tracking
+        variants:
+          - text: Target tracking scaling
+          - text: A target tracking setup
+        explanation:
+          text: Target tracking reacts after the load rises, so new instances arrive a little late.
+      - id: predictive
+        text: Predictive scaling
+        variants:
+          - text: Forecast-based scaling
+          - text: A predictive scaling setup
+        explanation:
+          text: Predictive scaling learns daily or weekly patterns from past traffic; a once-a-term opening isn't one.
+      - id: manual
+        text: Manual scaling
+        variants:
+          - text: Scaling by hand
+          - text: A manual scaling setup
+        explanation:
+          text: Manual scaling needs someone to act at the time, which the team wants to avoid.
+      - id: scheduled
+        text: Scheduled scaling
+        variants:
+          - text: Scaling on a schedule
+          - text: A scheduled scaling setup
+        explanation:
+          text: Scheduled scaling changes capacity at a time you set, which fits a known event.
+    correct_answers: [scheduled]
+    hint:
+      text: The team knows the exact moment in advance.
+    explanation:
+      text: |
+        Scheduled scaling changes capacity at times you set, which suits known events such as
+        opening hours or an announced launch. Keeping target tracking as well catches anything the
+        schedule misses.
+
+  - id: q06-scale-ahead-of-daily-lunch-rush
+    page: guide/06-running-applications/07-sim-elasticity-with-auto-scaling.md
+    section: "Decision 5: the lunch rush arrives on time, every day"
+    task: "1.1"
+    level: application
+    topics: [auto-scaling, scaling-policies]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A food-delivery site's traffic rises sharply at lunchtime every day. Its target tracking
+        policy reacts, but new instances take minutes to start, so they arrive late. The team wants
+        AWS to learn the daily pattern from past traffic and add capacity before the rush, without
+        setting times by hand. What should it add?
+    choices:
+      - id: predictive
+        text: Predictive scaling
+        variants:
+          - text: Forecast-based scaling
+          - text: A predictive scaling setup
+        explanation:
+          text: Predictive scaling forecasts traffic from past patterns and starts instances early.
+      - id: scheduled
+        text: Scheduled scaling
+        variants:
+          - text: Scaling on a schedule
+          - text: A scheduled scaling setup
+        explanation:
+          text: A schedule would also scale ahead, but someone has to set the times, which the team wants to avoid.
+      - id: manual
+        text: Manual scaling
+        variants:
+          - text: Scaling by hand
+          - text: A manual scaling setup
+        explanation:
+          text: Manual scaling needs someone to act every day.
+    correct_answers: [predictive]
+    hint:
+      text: Which way of scaling learns from history?
+    explanation:
+      text: |
+        Predictive scaling forecasts traffic from past daily or weekly patterns and adds capacity
+        before the rise arrives, allowing for the minutes an instance needs to start. Keep target
+        tracking alongside it for surprises the forecast misses.
+
+  - id: q06-load-balancer-for-web-and-lambda
+    page: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+    section: Choose ALB, NLB or GWLB; Classic is the previous generation
+    task: "3.3"
+    level: application
+    topics: [load-balancers]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company's online store receives HTTPS requests. It wants one load balancer that routes
+        requests by the page address, sending some paths to EC2 instances and others to Lambda
+        functions. Which load balancer type fits?
+    choices:
+      - id: nlb
+        text: Network Load Balancer
+        variants:
+          - text: Network Load Balancer (NLB)
+          - text: A Network Load Balancer
+        explanation:
+          text: An NLB works with TCP, UDP and TLS connections, not web addresses.
+      - id: alb
+        text: Application Load Balancer
+        variants:
+          - text: Application Load Balancer (ALB)
+          - text: An Application Load Balancer
+        explanation:
+          text: An ALB handles HTTP and HTTPS, can route by the page address and can send requests to Lambda functions.
+      - id: gwlb
+        text: Gateway Load Balancer
+        variants:
+          - text: Gateway Load Balancer (GWLB)
+          - text: A Gateway Load Balancer
+        explanation:
+          text: A GWLB passes traffic through virtual appliances such as firewalls.
+      - id: classic
+        text: Classic Load Balancer
+        variants:
+          - text: Classic Load Balancer (CLB)
+          - text: A Classic Load Balancer
+        explanation:
+          text: Classic is the previous generation, which AWS recommends moving away from.
+    correct_answers: [alb]
+    hint:
+      text: Which type understands web requests, down to the page address?
+    explanation:
+      text: |
+        The Application Load Balancer is the type for web requests (HTTP, HTTPS and gRPC). It can
+        route by the page address and can send requests to Lambda functions as well as to
+        instances.
+
+  - id: q06-load-balancer-tcp-fixed-ip
+    page: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+    section: Choose ALB, NLB or GWLB; Classic is the previous generation
+    task: "3.3"
+    level: application
+    topics: [load-balancers]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A trading platform accepts TCP connections from partner systems at very high volume and
+        needs the lowest possible delay. The partners' firewalls only allow connections to fixed IP
+        addresses. Which load balancer type fits?
+    choices:
+      - id: alb
+        text: Application Load Balancer
+        variants:
+          - text: Application Load Balancer (ALB)
+          - text: An Application Load Balancer
+        explanation:
+          text: An ALB is for web requests such as HTTP and HTTPS, and routes by page address.
+      - id: gwlb
+        text: Gateway Load Balancer
+        variants:
+          - text: Gateway Load Balancer (GWLB)
+          - text: A Gateway Load Balancer
+        explanation:
+          text: A GWLB is for passing traffic through appliances such as firewalls.
+      - id: nlb
+        text: Network Load Balancer
+        variants:
+          - text: Network Load Balancer (NLB)
+          - text: A Network Load Balancer
+        explanation:
+          text: TCP connections, very high volume with very low delay, and a fixed IP address all point to the NLB.
+      - id: classic
+        text: Classic Load Balancer
+        variants:
+          - text: Classic Load Balancer (CLB)
+          - text: A Classic Load Balancer
+        explanation:
+          text: Classic is the previous generation; don't pick it for new work.
+    correct_answers: [nlb]
+    hint:
+      text: The traffic is connections, not web pages.
+    explanation:
+      text: |
+        The Network Load Balancer handles connections (TCP, UDP and TLS). Choose it for very high
+        volume with very low delay, or when you need a fixed IP address.
+
+  - id: q06-load-balancer-for-firewall-appliances
+    page: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+    section: Choose ALB, NLB or GWLB; Classic is the previous generation
+    task: "3.3"
+    level: recall
+    topics: [load-balancers]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company must pass all traffic entering its network through a fleet of third-party virtual
+        firewall appliances, and wants that fleet to scale and stay available. Which load balancer
+        type is built for this?
+    choices:
+      - id: alb
+        text: Application Load Balancer
+        variants:
+          - text: Application Load Balancer (ALB)
+          - text: An Application Load Balancer
+        explanation:
+          text: An ALB spreads web requests across web targets; it isn't built to pass traffic through appliances.
+      - id: nlb
+        text: Network Load Balancer
+        variants:
+          - text: Network Load Balancer (NLB)
+          - text: A Network Load Balancer
+        explanation:
+          text: An NLB handles high-volume TCP and UDP connections to targets, not traffic passed through appliances.
+      - id: classic
+        text: Classic Load Balancer
+        variants:
+          - text: Classic Load Balancer (CLB)
+          - text: A Classic Load Balancer
+        explanation:
+          text: Classic is the previous generation and has no appliance role.
+      - id: gwlb
+        text: Gateway Load Balancer
+        variants:
+          - text: Gateway Load Balancer (GWLB)
+          - text: A Gateway Load Balancer
+        explanation:
+          text: A GWLB passes network traffic through third-party virtual appliances and scales them.
+    correct_answers: [gwlb]
+    hint:
+      text: The traffic passes through something on its way, rather than ending at a web server.
+    explanation:
+      text: |
+        The Gateway Load Balancer is for running third-party virtual appliances, such as firewalls
+        or intrusion detection, so they scale and stay available. It is the first question on the
+        lesson's flowchart: must traffic pass through appliances?
+
+  - id: q06-classic-load-balancer-for-new-work
+    revision: 2
+    page: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+    section: Choose ALB, NLB or GWLB; Classic is the previous generation
+    task: "3.3"
+    level: application
+    topics: [load-balancers]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A florist's online shop was set up years ago behind a Classic Load Balancer. The owner's
+        nephew is now building a second HTTPS storefront and plans to copy the old setup exactly.
+        What is the best advice?
+    choices:
+      - id: use-current-type
+        text: Put the new storefront behind an Application Load Balancer, a current type
+        variants:
+          - text: Use an Application Load Balancer, one of the current types, for the new site
+          - text: Front the new storefront with an Application Load Balancer, a current type
+        explanation:
+          text: Classic is the previous generation, and AWS recommends a current type; for HTTPS web traffic that is the Application Load Balancer.
+      - id: copy-classic
+        text: Copy the old setup, since Classic is still the recommended type for websites
+        variants:
+          - text: Reuse the Classic setup, since it remains the recommended type for websites
+          - text: Keep to Classic, because it is still the type AWS recommends for websites
+        explanation:
+          text: AWS calls Classic the previous generation and recommends moving to a current type, so it isn't the choice for new work.
+      - id: cloudfront-instead
+        text: Drop load balancing and use Amazon CloudFront, which took over Classic's job
+        variants:
+          - text: Skip a load balancer and use Amazon CloudFront, Classic's replacement
+          - text: Use Amazon CloudFront instead, since it replaced the Classic Load Balancer
+        explanation:
+          text: CloudFront caches content at edge locations; it didn't replace any load balancer type, and it doesn't health-check servers behind one address.
+      - id: auto-scaling-instead
+        text: Drop load balancing and let EC2 Auto Scaling hand out requests to servers
+        variants:
+          - text: Skip a load balancer and have EC2 Auto Scaling spread the requests
+          - text: Let EC2 Auto Scaling share out requests instead of a load balancer
+        explanation:
+          text: Auto Scaling changes how many servers run; it never routes requests. That is the load balancer's job.
+    correct_answers: [use-current-type]
+    hint:
+      text: Which generation is Classic, and which current type handles web requests?
+    explanation:
+      text: |
+        Elastic Load Balancing has three current types: ALB, NLB and GWLB. The Classic Load
+        Balancer is the previous generation, and AWS recommends moving to a current type, so
+        recognize the name in older setups but don't copy it for new work. An HTTPS storefront is
+        web traffic, which is the Application Load Balancer's job.
+
+  - id: q06-single-az-web-tier-risk
+    page: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+    section: "Worked example: the bakery's December"
+    task: "1.1"
+    level: understanding
+    topics: [high-availability, auto-scaling]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company's web tier uses an Auto Scaling group behind an Application Load Balancer, but
+        every instance runs in one Availability Zone "to keep it simple". What does this design
+        give up?
+    choices:
+      - id: elasticity
+        text: Elasticity, since the group can no longer add instances as demand rises
+        variants:
+          - text: Elasticity, because the group stops adding instances when demand grows
+          - text: Elasticity, as the group can't launch more instances when load climbs
+        explanation:
+          text: Auto Scaling still follows demand inside the one zone, so the design stays elastic.
+      - id: high-availability
+        text: High availability, since if that zone fails no healthy instance is left
+        variants:
+          - text: High availability, because a failure of that zone leaves no healthy instance
+          - text: High availability, as losing that one zone leaves nothing healthy to serve
+        explanation:
+          text: With every instance in one zone, the zone is a single point of failure.
+      - id: https
+        text: HTTPS, since a load balancer in a single zone can't decrypt traffic
+        variants:
+          - text: HTTPS, because a single-zone load balancer can't handle encryption
+          - text: HTTPS, as a load balancer used in one zone can't decrypt requests
+        explanation:
+          text: Decrypting HTTPS doesn't depend on how many zones the instances use.
+      - id: health-checks
+        text: Health checks, since they only run when instances span several zones
+        variants:
+          - text: Health checks, because they run only for instances in several zones
+          - text: Health checks, as they work only when instances are in several zones
+        explanation:
+          text: Health checks run in one zone too; they just have nowhere else to send traffic when the zone fails.
+    correct_answers: [high-availability]
+    hint:
+      text: The design still follows demand. What happens if the zone itself goes down?
+    explanation:
+      text: |
+        Elasticity comes from Auto Scaling, which still works here. High availability comes from
+        running in several Availability Zones; with every instance in one zone, losing that zone
+        leaves the load balancer nowhere healthy to send requests.
+
+  - id: q06-zone-fails-at-peak-pick-two
+    page: guide/06-running-applications/07-sim-elasticity-with-auto-scaling.md
+    section: "Decision 4: AZ b fails at 12:00"
+    task: "1.1"
+    level: understanding
+    topics: [high-availability, auto-scaling, load-balancers]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A company's Auto Scaling group spans two Availability Zones behind a load balancer, and the
+        group is set to use the load balancer's health checks. One zone loses power at the busiest
+        hour of the day. Which TWO things happen automatically? (Select TWO.)
+    choices:
+      - id: lb-stops-routing
+        text: The load balancer stops sending requests to the failed instances
+        variants:
+          - text: Requests stop going to the failed instances from the load balancer
+          - text: The load balancer routes nothing more to the instances that failed
+        explanation:
+          text: The failed instances fail their health checks, so the load balancer sends traffic only to the other zone.
+      - id: region-move
+        text: AWS moves the whole group to another Region until power returns
+        variants:
+          - text: AWS shifts the entire group into another Region until power is back
+          - text: The group is relocated by AWS to a different Region for the outage
+        explanation:
+          text: Nothing moves between Regions automatically; recovering from a Region loss is disaster recovery.
+      - id: asg-replaces
+        text: Auto Scaling launches replacements in the zone that still works
+        variants:
+          - text: Auto Scaling starts replacement instances in the working zone
+          - text: Replacements are launched by Auto Scaling in the healthy zone
+        explanation:
+          text: The group replaces instances that fail its health checks to get back to its desired capacity; with one zone down, it can start them only in the other.
+      - id: lb-launches
+        text: The load balancer launches new instances to replace the failed ones
+        variants:
+          - text: The load balancer starts new instances in place of the failed ones
+          - text: New instances replacing the failed ones are launched by the load balancer
+        explanation:
+          text: Load balancers never launch instances; that is Auto Scaling's job.
+      - id: max-raised
+        text: Auto Scaling raises its own maximum capacity to make up for the loss
+        variants:
+          - text: Auto Scaling increases its maximum capacity to cover the lost zone
+          - text: The group's maximum capacity is raised by Auto Scaling to offset the loss
+        explanation:
+          text: The maximum is a setting you choose; Auto Scaling never changes it itself.
+    correct_answers: [lb-stops-routing, asg-replaces]
+    hint:
+      text: One service acts on requests, the other on the number of instances.
+    explanation:
+      text: |
+        In the first minutes, the load balancer stops the damage: health checks fail for the lost
+        zone's instances, so every request goes to the healthy zone. Then Auto Scaling repairs it,
+        launching replacements where it can to get back to the desired capacity. The site may slow
+        for a few minutes, then recovers with nobody acting. The group acts on the load balancer's
+        health checks because they are turned on for it; by default it uses only EC2 status checks.
+
+  - id: q06-where-elasticity-and-ha-come-from
+    page: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+    section: Auto Scaling changes how many; the load balancer chooses which
+    task: "1.1"
+    level: understanding
+    topics: [elasticity, high-availability]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Which statement correctly describes where an EC2 web tier gets its elasticity and its high
+        availability?
+    choices:
+      - id: lb-and-bigger-type
+        text: Elasticity from the load balancer; high availability from a larger instance type
+        variants:
+          - text: The load balancer gives elasticity; a bigger instance type gives high availability
+          - text: Elasticity comes via the load balancer, and availability via a larger instance
+        explanation:
+          text: The load balancer doesn't change the number of servers, and one big server is still a single point of failure.
+      - id: reserved
+        text: Both from Reserved Instances, which keep spare capacity ready in each AZ
+        variants:
+          - text: Both come from Reserved Instances, holding spare capacity ready in every AZ
+          - text: Reserved Instances supply both, by keeping spare capacity waiting in each AZ
+        explanation:
+          text: A Reserved Instance is a billing discount, not spare capacity or a source of elasticity.
+      - id: asg-and-multi-az
+        text: Elasticity from Auto Scaling; high availability from instances in several AZs
+        variants:
+          - text: Auto Scaling gives elasticity; instances spread over several AZs give availability
+          - text: Elasticity comes via Auto Scaling, and availability via running in several AZs
+        explanation:
+          text: Auto Scaling changes the count; several AZs, kept balanced and reached through the load balancer, survive a zone's loss.
+      - id: health-checks-and-one-server
+        text: Elasticity from health checks; high availability from one large, powerful server
+        variants:
+          - text: Health checks give elasticity; a single powerful server gives high availability
+          - text: Elasticity comes via health checks, and availability via one large server
+        explanation:
+          text: Health checks find failed instances; they don't change capacity. One server is a single point of failure.
+    correct_answers: [asg-and-multi-az]
+    explanation:
+      text: |
+        Elasticity comes from Auto Scaling changing the number of instances with demand. High
+        availability comes from running in several Availability Zones, which Auto Scaling keeps
+        balanced and the load balancer makes reachable through one address.
+
+  - id: q06-scaling-several-resource-types
+    page: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+    section: An Auto Scaling group keeps the right number of instances running
+    task: "3.3"
+    level: understanding
+    topics: [auto-scaling, exam-names]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company wants to set up scaling for its groups of EC2 instances and for its Amazon
+        DynamoDB tables together, in one place. Which service, listed by name in the CLF-C02 exam
+        guide, does that?
+    choices:
+      - id: elb
+        text: Elastic Load Balancing
+        variants:
+          - text: Elastic Load Balancing (ELB)
+          - text: The Elastic Load Balancing service
+        explanation:
+          text: Elastic Load Balancing spreads requests; it doesn't scale resources.
+      - id: ec2-auto-scaling
+        text: Amazon EC2 Auto Scaling
+        variants:
+          - text: EC2 Auto Scaling
+          - text: The Amazon EC2 Auto Scaling service
+        explanation:
+          text: EC2 Auto Scaling runs groups of EC2 instances only; it doesn't scale DynamoDB tables.
+      - id: compute-optimizer
+        text: AWS Compute Optimizer
+        variants:
+          - text: Compute Optimizer
+          - text: The AWS Compute Optimizer service
+        explanation:
+          text: Compute Optimizer recommends better resource sizes; it doesn't scale anything.
+      - id: aws-auto-scaling
+        text: AWS Auto Scaling
+        variants:
+          - text: The AWS Auto Scaling service
+          - text: AWS Auto Scaling, the service
+        explanation:
+          text: AWS Auto Scaling sets up scaling for several resource types at once, such as EC2 groups and DynamoDB tables.
+    correct_answers: [aws-auto-scaling]
+    explanation:
+      text: |
+        The exam guide lists AWS Auto Scaling, a separate service that sets up scaling for several
+        kinds of resource at once through scaling plans. The groups of EC2 instances themselves are
+        run by Amazon EC2 Auto Scaling. This is the exam's name; AWS has been reshaping how it
+        presents these features (its product page read "AWS Application Auto Scaling" when the
+        guide checked it on 2026-10-24), so in real work, check AWS's current pages before
+        choosing a scaling plan over a policy set on each service.
+
+  - id: q06-launch-template-is-the-recipe
+    page: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+    section: Key terms (skip if you know them)
+    task: "3.3"
+    level: recall
+    topics: [auto-scaling]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Where does an Auto Scaling group get the AMI, instance type and security group for each new
+        instance it launches?
+    choices:
+      - id: launch-template
+        text: From the group's launch template
+        variants:
+          - text: From its launch template
+          - text: From the launch template it uses
+        explanation:
+          text: The launch template is the recipe for every new instance.
+      - id: load-balancer
+        text: From the load balancer's settings
+        variants:
+          - text: From the load balancer's configuration
+          - text: From settings on the load balancer
+        explanation:
+          text: The load balancer routes requests; it holds no recipe for instances.
+      - id: scaling-policy
+        text: From the group's scaling policy
+        variants:
+          - text: From its scaling policy
+          - text: From the scaling policy it follows
+        explanation:
+          text: The scaling policy decides how many instances, not what each one is.
+      - id: busiest-instance
+        text: From the busiest running instance
+        variants:
+          - text: From the instance with the most load
+          - text: From whichever instance is busiest
+        explanation:
+          text: New instances aren't copied from running ones; they come from the template.
+    correct_answers: [launch-template]
+    explanation:
+      text: |
+        A launch template holds the settings for each new instance: the AMI, the instance type, the
+        security group and the other launch choices from lesson 06.01. Because every instance comes
+        from the same recipe, they are identical.
+
+  - id: q06-scaling-tier-customer-pick-two
+    page: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+    section: Your side of the line
+    task: "2.1"
+    level: understanding
+    topics: [shared-responsibility, auto-scaling, load-balancers]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A company runs its web tier with Amazon EC2 Auto Scaling and Elastic Load Balancing. Under
+        the shared responsibility model, which TWO tasks are the company's? (Select TWO.)
+    choices:
+      - id: choose-azs
+        text: Choosing the AZs and the group's minimum and maximum
+        variants:
+          - text: Picking the group's AZs, minimum and maximum
+          - text: Setting the AZs and the group's size limits
+        explanation:
+          text: The design and its settings are the customer's.
+      - id: scale-lb
+        text: Scaling the load balancer's own capacity
+        variants:
+          - text: Growing the load balancer's own capacity
+          - text: Adding capacity to the load balancer itself
+        explanation:
+          text: AWS scales the load balancer itself as traffic changes.
+      - id: patch-ami
+        text: Keeping the launch template's AMI patched
+        variants:
+          - text: Patching the AMI in the launch template
+          - text: Keeping the template's AMI up to date
+        explanation:
+          text: The instances run the customer's operating system, so the image they start from is the customer's to patch.
+      - id: run-service
+        text: Running the Auto Scaling service's servers
+        variants:
+          - text: Operating the servers behind Auto Scaling
+          - text: Keeping the Auto Scaling service running
+        explanation:
+          text: AWS runs the Auto Scaling service.
+      - id: lb-hardware
+        text: Maintaining the load balancer's hardware
+        variants:
+          - text: Looking after the load balancer's hardware
+          - text: Repairing the hardware under the load balancer
+        explanation:
+          text: The hardware under the load balancer is AWS's.
+    correct_answers: [choose-azs, patch-ami]
+    explanation:
+      text: |
+        AWS runs the Auto Scaling service and the load balancer, including the load balancer's own
+        capacity and availability. The design and its settings are the customer's: the zones, the
+        minimum and maximum, the scaling policy, health checks, security groups, certificates, and
+        the patched AMI that every new instance starts from.
+
+  - id: q06-quiet-hour-instance-count
+    page: guide/06-running-applications/07-sim-elasticity-with-auto-scaling.md
+    section: "Decision 1: fill in the table"
+    task: "1.1"
+    level: application
+    topics: [auto-scaling]
+    type: multiple_choice
+    selection: single
+    revision: 2
+    prompt:
+      text: |
+        A shop's web servers each handle about 20 orders an hour. Its Auto Scaling group spans two
+        Availability Zones with a minimum of 2 and a maximum of 8, and runs enough instances for
+        each hour's orders. One quiet hour brings 8 orders; a flash sale hour brings 190. How many
+        instances does the group run in each of those hours?
+    choices:
+      - id: two-then-eight
+        text: 2 in the quiet hour, 8 in the sale hour
+        variants:
+          - text: Two in the quiet hour and eight in the sale hour
+          - text: "Quiet hour: 2; sale hour: 8"
+        explanation:
+          text: The minimum lifts the quiet hour from 1 to 2, and the maximum caps the sale hour at 8 although 10 would be needed.
+      - id: one-then-ten
+        text: 1 in the quiet hour, 10 in the sale hour
+        variants:
+          - text: One in the quiet hour and ten in the sale hour
+          - text: "Quiet hour: 1; sale hour: 10"
+        explanation:
+          text: That is what the orders alone need, but the group stays between its minimum and its maximum.
+      - id: two-then-ten
+        text: 2 in the quiet hour, 10 in the sale hour
+        variants:
+          - text: Two in the quiet hour and ten in the sale hour
+          - text: "Quiet hour: 2; sale hour: 10"
+        explanation:
+          text: The quiet hour is right, but the group never runs more than its maximum of 8.
+      - id: one-then-eight
+        text: 1 in the quiet hour, 8 in the sale hour
+        variants:
+          - text: One in the quiet hour and eight in the sale hour
+          - text: "Quiet hour: 1; sale hour: 8"
+        explanation:
+          text: The sale hour is right, but the group never runs fewer than its minimum of 2.
+    correct_answers: [two-then-eight]
+    hint:
+      text: Work out what the orders need in each hour, then apply the group's floor and its ceiling.
+    explanation:
+      text: |
+        8 orders need one server and 190 need ten (rounding up), but the group stays between its
+        limits. The minimum of 2 keeps one instance in each Availability Zone through the quiet
+        hour: the price of high availability. The maximum of 8 caps the sale hour, so the site runs
+        short of capacity; the maximum limits cost, and you raise it if peaks like this are expected.
+
+  # ---------------------------------------------------------------- 06.03 Containers and serverless
+
+  - id: q06-private-store-for-container-images
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: "Four names, four jobs: ECR stores, ECS and EKS orchestrate, Fargate supplies the computers"
+    task: "3.3"
+    level: recall
+    topics: [containers]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A development team builds container images in its pipeline. It needs a private place to
+        keep them, with access controlled through IAM, from which Amazon ECS can pull them. Which
+        service fits?
+    choices:
+      - id: ecs
+        text: Amazon ECS
+        variants:
+          - text: Amazon Elastic Container Service
+          - text: ECS
+        explanation:
+          text: ECS orchestrates containers; it pulls images from a registry rather than storing them.
+      - id: fargate
+        text: AWS Fargate
+        variants:
+          - text: Fargate
+          - text: The AWS Fargate service
+        explanation:
+          text: Fargate is serverless compute that runs containers; it stores no images.
+      - id: ecr
+        text: Amazon ECR
+        variants:
+          - text: Amazon Elastic Container Registry
+          - text: ECR
+        explanation:
+          text: ECR stores container images in private repositories controlled with IAM, or in public ones.
+      - id: eks
+        text: Amazon EKS
+        variants:
+          - text: Amazon Elastic Kubernetes Service
+          - text: EKS
+        explanation:
+          text: EKS runs Kubernetes to orchestrate containers; it isn't a registry.
+    correct_answers: [ecr]
+    explanation:
+      text: |
+        Amazon Elastic Container Registry (Amazon ECR) is the registry: it stores container images
+        in private repositories controlled with IAM, or in public ones, and can scan them for known
+        flaws. It runs nothing; ECS or EKS pulls the image from it to start containers.
+
+  - id: q06-accurate-statement-about-fargate
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: "\"Fargate orchestrates containers\" is wrong"
+    task: "3.3"
+    level: understanding
+    topics: [containers, fargate]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Which statement about AWS Fargate is accurate?
+    choices:
+      - id: orchestrates
+        text: It decides where containers run and how many copies there are, in place of ECS or EKS
+        variants:
+          - text: It chooses where containers run and how many copies are needed, instead of ECS or EKS
+          - text: It replaces ECS or EKS by deciding how many containers run and where they go
+        explanation:
+          text: This is the misconception the lesson names. ECS or EKS decides; Fargate is the capacity underneath.
+      - id: stores-images
+        text: It stores container images in private repositories and scans them for known flaws
+        variants:
+          - text: It keeps container images in private repositories and checks them for known flaws
+          - text: It holds container images in private repositories and scans them for weaknesses
+        explanation:
+          text: That is Amazon ECR, the registry.
+      - id: kubernetes-control-plane
+        text: It runs a managed Kubernetes control plane so existing Kubernetes tools keep working
+        variants:
+          - text: It provides a managed Kubernetes control plane so teams keep their Kubernetes tools
+          - text: It hosts the Kubernetes control plane for you so current Kubernetes tools still work
+        explanation:
+          text: That is Amazon EKS.
+      - id: serverless-capacity
+        text: It is serverless compute that ECS or EKS places containers on, with no servers to manage
+        variants:
+          - text: It is serverless capacity that ECS or EKS runs containers on, with no servers to run
+          - text: It supplies serverless compute for containers placed by ECS or EKS, with no servers to run
+        explanation:
+          text: ECS lists Fargate as a capacity option beside EC2 instances.
+    correct_answers: [serverless-capacity]
+    explanation:
+      text: |
+        ECR stores images, ECS and EKS orchestrate, and Fargate supplies the computers. Fargate is
+        not an orchestrator: ECS or EKS decides where containers run and how many, and schedules
+        them onto Fargate, where you don't pick, scale or patch servers.
+
+  - id: q06-orchestrator-for-a-kubernetes-team
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: "Four names, four jobs: ECR stores, ECS and EKS orchestrate, Fargate supplies the computers"
+    task: "3.3"
+    level: recall
+    topics: [containers]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company already runs its containers with Kubernetes in its own data center, and its team
+        wants to keep using the same Kubernetes tools on AWS. Which service should orchestrate the
+        containers?
+    choices:
+      - id: eks
+        text: Amazon EKS
+        variants:
+          - text: Amazon Elastic Kubernetes Service
+          - text: EKS
+        explanation:
+          text: EKS runs Kubernetes with an AWS-managed control plane, so existing Kubernetes tools work.
+      - id: ecs
+        text: Amazon ECS
+        variants:
+          - text: Amazon Elastic Container Service
+          - text: ECS
+        explanation:
+          text: ECS orchestrates containers AWS's own way, not with Kubernetes, so the team's tools wouldn't carry over.
+      - id: fargate
+        text: AWS Fargate
+        variants:
+          - text: Fargate
+          - text: The AWS Fargate service
+        explanation:
+          text: Fargate is compute that EKS can use, but it doesn't orchestrate anything itself.
+      - id: ecr
+        text: Amazon ECR
+        variants:
+          - text: Amazon Elastic Container Registry
+          - text: ECR
+        explanation:
+          text: ECR stores images; it doesn't orchestrate containers.
+    correct_answers: [eks]
+    hint:
+      text: Which service keeps the team's existing orchestration system?
+    explanation:
+      text: |
+        Amazon EKS runs Kubernetes, the widely used open-source orchestration system, with a
+        control plane AWS manages. Choose it when the team already uses Kubernetes; ECS is AWS's
+        own, simpler orchestrator.
+
+  - id: q06-simplest-aws-native-orchestrator
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: "Four names, four jobs: ECR stores, ECS and EKS orchestrate, Fargate supplies the computers"
+    task: "3.3"
+    level: application
+    topics: [containers]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A small company has never used Kubernetes. It wants the simplest AWS-native way to keep its
+        containerized app running and to replace copies that fail. Which service should orchestrate
+        the containers?
+    choices:
+      - id: eks
+        text: Amazon EKS
+        variants:
+          - text: Amazon Elastic Kubernetes Service
+          - text: EKS
+        explanation:
+          text: EKS would work, but it adds Kubernetes, which the company doesn't use.
+      - id: ecs
+        text: Amazon ECS
+        variants:
+          - text: Amazon Elastic Container Service
+          - text: ECS
+        explanation:
+          text: ECS is AWS's own orchestrator; its services keep a set number of tasks running.
+      - id: ecr
+        text: Amazon ECR
+        variants:
+          - text: Amazon Elastic Container Registry
+          - text: ECR
+        explanation:
+          text: ECR stores container images; it doesn't keep anything running.
+      - id: batch
+        text: AWS Batch
+        variants:
+          - text: The AWS Batch service
+          - text: Batch
+        explanation:
+          text: Batch runs queues of jobs that finish; it doesn't keep an app running all day.
+    correct_answers: [ecs]
+    hint:
+      text: Two services orchestrate; the company has no reason to bring in Kubernetes.
+    explanation:
+      text: |
+        Amazon ECS is AWS's own container orchestrator, with AWS's operational practices built in.
+        You describe the app in a task definition, and an ECS service keeps a chosen number of
+        tasks running, replacing any that stop.
+
+  - id: q06-containers-without-servers-pick-two
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: Fargate runs containers without servers to manage
+    task: "3.3"
+    level: application
+    topics: [containers, fargate]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A company's web app is packaged as a container image, already stored in Amazon ECR. It must
+        run all day, copies that fail must be replaced, and nobody wants to manage servers. Which
+        TWO services should the company combine to run it? (Select TWO.)
+    choices:
+      - id: ecs
+        text: Amazon ECS
+        variants:
+          - text: Amazon Elastic Container Service
+          - text: ECS
+        explanation:
+          text: ECS orchestrates the containers, keeping the app running and replacing failed copies.
+      - id: ec2-auto-scaling
+        text: Amazon EC2 Auto Scaling
+        variants:
+          - text: EC2 Auto Scaling
+          - text: An EC2 Auto Scaling group
+        explanation:
+          text: EC2 Auto Scaling adjusts EC2 instances, which the company would then manage.
+      - id: fargate
+        text: AWS Fargate
+        variants:
+          - text: Fargate
+          - text: The AWS Fargate service
+        explanation:
+          text: Fargate supplies the compute with no servers to pick, scale or patch.
+      - id: batch
+        text: AWS Batch
+        variants:
+          - text: The AWS Batch service
+          - text: Batch
+        explanation:
+          text: Batch runs queued jobs that finish; it doesn't keep an app running all day.
+      - id: outposts
+        text: AWS Outposts
+        variants:
+          - text: Outposts
+          - text: An AWS Outposts rack
+        explanation:
+          text: Outposts puts AWS hardware in your own building; nothing here needs that.
+    correct_answers: [ecs, fargate]
+    hint:
+      text: One service decides, the other supplies the computers.
+    explanation:
+      text: |
+        A common serverless container setup uses three services at once: ECR stores the image, ECS
+        keeps the app running and replaces failed copies, and Fargate supplies the compute so no
+        one picks or patches servers. EKS would also orchestrate, but it adds Kubernetes.
+
+  - id: q06-why-a-container-runs-the-same
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: A container packages an app with everything it needs
+    task: "3.3"
+    level: understanding
+    topics: [containers]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A developer's app runs inside a container on her laptop. Why does it run the same way when
+        the same container image runs on AWS?
+    choices:
+      - id: rewrites-code
+        text: Because AWS rewrites the app's code for its own servers when the container starts
+        variants:
+          - text: Because AWS adapts the app's code to its servers each time the container starts
+          - text: Because the app's code is rewritten by AWS for its servers when the container starts
+        explanation:
+          text: AWS doesn't change your code; the image is the same everywhere.
+      - id: data-in-s3
+        text: Because a container keeps all its files in Amazon S3, which every computer can reach
+        variants:
+          - text: Because containers store all their files in Amazon S3, where any computer finds them
+          - text: Because every container's files live in Amazon S3, which any computer can reach
+        explanation:
+          text: A container is a package of code, not a storage place like an S3 bucket.
+      - id: carries-dependencies
+        text: Because the container carries the code together with the libraries and settings it needs
+        variants:
+          - text: Because the container holds the code along with the libraries and settings it depends on
+          - text: Because the code travels in the container with the libraries and settings it relies on
+        explanation:
+          text: The app brings its dependencies with it, so it behaves the same anywhere.
+      - id: fargate-copies-os
+        text: Because containers run on AWS Fargate, which copies the laptop's operating system to AWS
+        variants:
+          - text: Because containers run on Fargate, which clones the laptop's operating system for them
+          - text: Because AWS Fargate runs the containers, and it copies the laptop's operating system
+        explanation:
+          text: Containers also run on EC2 instances under ECS or EKS, and Fargate copies nothing from your laptop.
+    correct_answers: [carries-dependencies]
+    explanation:
+      text: |
+        A container holds an application's code together with the libraries and settings it
+        depends on. You build the image once, and every container started from it is identical, so
+        an app that works on a laptop works the same on AWS.
+
+  - id: q06-containers-that-need-gpus
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: "Worked example: compute for the bakery's photo job and inventory app"
+    task: "3.3"
+    level: application
+    topics: [containers, fargate, compute-choice]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company runs its containerized apps on Amazon ECS with AWS Fargate. A new version of one
+        app needs GPUs to recognize products in photos. Where should that app's containers run?
+    choices:
+      - id: fargate-bigger
+        text: On AWS Fargate, with a larger CPU and memory size for each task
+        variants:
+          - text: On Fargate, giving each task a bigger CPU and memory setting
+          - text: On AWS Fargate, raising the CPU and memory of every task
+        explanation:
+          text: More CPU and memory isn't a GPU; AWS says to use EC2 for GPU work (as of 2026-10-23).
+      - id: ecr-hardware
+        text: On Amazon ECR, which runs images that need special hardware
+        variants:
+          - text: On Amazon ECR, which runs any image needing special chips
+          - text: In Amazon ECR, which starts images that need special hardware
+        explanation:
+          text: ECR stores images; it runs nothing.
+      - id: lambda-memory
+        text: On AWS Lambda, triggered by each photo, with the most memory
+        variants:
+          - text: On Lambda, started by each photo and given maximum memory
+          - text: On AWS Lambda, run per photo with its memory set to the top
+        explanation:
+          text: Lambda runs short event-driven functions; memory brings more CPU, not GPUs. The lesson's flowchart sends GPU work to EC2.
+      - id: ecs-on-ec2-gpu
+        text: On Amazon ECS with EC2 instances of a GPU instance type
+        variants:
+          - text: On ECS, placed on EC2 instances that have GPUs
+          - text: On Amazon ECS, using EC2 instances with GPU types
+        explanation:
+          text: ECS can place containers on EC2 instances you choose, including accelerated computing types with GPUs.
+    correct_answers: [ecs-on-ec2-gpu]
+    hint:
+      text: One capacity option under ECS doesn't offer GPUs.
+    explanation:
+      text: |
+        Fargate doesn't offer GPUs (as of 2026-10-23), so GPU work moves to ECS on EC2 instances,
+        with an accelerated computing instance type. That brings back work: choosing the type and
+        count and patching the instances, unless the company uses ECS Managed Instances.
+
+  - id: q06-fargate-files-after-the-task-stops
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: Fargate runs containers without servers to manage
+    task: "3.3"
+    level: understanding
+    topics: [fargate]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A task on AWS Fargate writes report files to the task's own temporary storage. The team
+        needs those files after the task stops. What should it do?
+    choices:
+      - id: use-efs
+        text: Write the files to Amazon EFS, since the task's own storage is erased when it stops
+        variants:
+          - text: Save the files on Amazon EFS, because task storage is wiped when the task stops
+          - text: Put the files in Amazon EFS, as the task's storage is erased once the task stops
+        explanation:
+          text: Fargate task storage is temporary, like instance store; EFS keeps files after the task ends.
+      - id: nothing
+        text: Nothing, because Fargate keeps each task's storage until someone deletes it by hand
+        variants:
+          - text: Nothing, since Fargate holds on to each task's storage until it is deleted by hand
+          - text: Nothing, as each task's storage stays on Fargate until someone removes it manually
+        explanation:
+          text: Task storage is erased when the task stops.
+      - id: ecr
+        text: Save the files in Amazon ECR, next to the container image the task started from
+        variants:
+          - text: Store the files in Amazon ECR, beside the image the task was started from
+          - text: Keep the files in Amazon ECR, alongside the container image the task came from
+        explanation:
+          text: ECR stores container images, not an app's output files.
+      - id: more-memory
+        text: Give the task more memory, so Fargate holds the files in RAM after the task stops
+        variants:
+          - text: Raise the task's memory, so the files stay in RAM on Fargate once the task stops
+          - text: Assign the task more memory, so its files are kept in RAM after it has stopped
+        explanation:
+          text: Memory is released when a task stops; it can't hold files afterwards.
+    correct_answers: [use-efs]
+    explanation:
+      text: |
+        Each Fargate task gets temporary storage that is erased when the task stops, the same way
+        instance store is erased when an instance stops. For files that must last, use lasting
+        storage such as Amazon EFS (lesson 05.01).
+
+  - id: q06-good-fits-for-lambda-pick-two
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: "Lambda or Fargate: short event-driven work, or containers that keep running"
+    task: "3.3"
+    level: application
+    topics: [lambda, compute-choice]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A company lists five jobs it might move to AWS. Which TWO are a good fit for AWS Lambda?
+        (Select TWO.)
+    choices:
+      - id: thumbnail-on-upload
+        text: Making a thumbnail, a few seconds' work, whenever a photo is uploaded
+        variants:
+          - text: Creating a small copy of each photo, seconds of work, as it is uploaded
+          - text: Shrinking each uploaded photo, a few seconds of work, as it arrives
+        explanation:
+          text: Short, event-driven work that runs only when a photo arrives is Lambda's best case.
+      - id: gpu-retraining
+        text: Retraining an image model on GPUs over a whole afternoon
+        variants:
+          - text: Retraining an image model on GPUs across a full afternoon
+          - text: Spending a whole afternoon retraining an image model on GPUs
+        explanation:
+          text: GPU work and long runs point to EC2.
+      - id: text-on-signup
+        text: Sending a welcome text message each time a customer signs up
+        variants:
+          - text: Texting a welcome message to every customer who signs up
+          - text: Sending each new customer a welcome text when they sign up
+        explanation:
+          text: A sign-up is an event, and sending a text takes seconds.
+      - id: wordpress-all-day
+        text: Hosting a WordPress blog that must stay online all day
+        variants:
+          - text: Running a WordPress blog that has to be online all day
+          - text: Serving a WordPress blog that stays up around the clock
+        explanation:
+          text: WordPress needs a server that keeps running, such as Lightsail or EC2.
+      - id: sessions-in-memory
+        text: Holding customer sessions in memory from one request to the next
+        variants:
+          - text: Keeping customer sessions in memory between one request and the next
+          - text: Storing customer sessions in memory across successive requests
+        explanation:
+          text: You can't rely on Lambda to keep state between runs; anything to keep goes to S3 or a database.
+    correct_answers: [thumbnail-on-upload, text-on-signup]
+    hint:
+      text: Look for work that is short and starts when something happens.
+    explanation:
+      text: |
+        Lambda runs code when an event triggers it and bills only for each run, so short,
+        event-driven work fits best. It isn't for long or always-on work, GPU work, or anything
+        that needs state kept between runs.
+
+  - id: q06-nightly-container-job-no-servers
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: Fargate runs containers without servers to manage
+    task: "3.3"
+    level: application
+    topics: [fargate, compute-choice]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company's nightly data job takes about three hours, is packaged as a container, and
+        should stop when it finishes. The company wants no servers to manage and to pay only while
+        the job runs. Which option fits best?
+    choices:
+      - id: ec2-patched
+        text: An EC2 instance the team keeps running and patches itself
+        variants:
+          - text: An EC2 instance that runs all day and the team patches
+          - text: A self-patched EC2 instance left running around the clock
+        explanation:
+          text: The team would manage a server and pay for it all day.
+      - id: fargate-task
+        text: An Amazon ECS task on AWS Fargate, started each night
+        variants:
+          - text: An ECS task on Fargate that is started every night
+          - text: A nightly Amazon ECS task running on AWS Fargate
+        explanation:
+          text: A Fargate task runs the container for as long as it needs, then stops, with no servers to manage.
+      - id: lightsail
+        text: An Amazon Lightsail instance on a fixed monthly plan
+        variants:
+          - text: A Lightsail instance billed at a fixed monthly price
+          - text: An Amazon Lightsail server on a set monthly plan
+        explanation:
+          text: Lightsail bills its plan whether the job runs or not, and the server is still the company's to look after.
+      - id: beanstalk
+        text: An AWS Elastic Beanstalk environment that runs all day
+        variants:
+          - text: An Elastic Beanstalk environment left running all day
+          - text: An AWS Elastic Beanstalk setup running around the clock
+        explanation:
+          text: Beanstalk deploys web apps onto EC2 instances in the account, which bill while they run.
+    correct_answers: [fargate-task]
+    hint:
+      text: The job is already a container, and it has an end.
+    explanation:
+      text: |
+        Fargate runs a container as a task for as long as it needs, minutes or months, then stops,
+        and bills per second for the task's vCPU, memory and storage. The company never picks,
+        scales or patches a server.
+
+  - id: q06-lambda-statements-pick-two
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: Lambda runs your code only when an event triggers it
+    task: "3.3"
+    level: understanding
+    topics: [lambda]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A team is deciding whether to run its event processing on AWS Lambda. Which TWO statements
+        about Lambda are true? (Select TWO.)
+    choices:
+      - id: event-triggered
+        text: It runs code each time an event, such as an upload, triggers it
+        variants:
+          - text: It runs a function whenever a trigger, such as an upload, fires
+          - text: Its code runs each time a trigger event, like an upload, arrives
+        explanation:
+          text: Lambda runs a function when a trigger, such as a file landing in S3, fires.
+      - id: keeps-state
+        text: It can be relied on to keep data in memory between invocations
+        variants:
+          - text: It reliably holds data in memory from one invocation to the next
+          - text: You can count on it to carry data in memory from run to run
+        explanation:
+          text: You can't rely on anything carrying over between runs; anything to keep goes to S3 or a database.
+      - id: runs-copies
+        text: It runs many copies side by side when many events arrive at once
+        variants:
+          - text: It runs several copies in parallel when lots of events arrive
+          - text: It starts copies side by side when many events come in together
+        explanation:
+          text: Scaling is automatic; 300 photos at once means many copies running together.
+      - id: choose-type
+        text: It needs you to choose an instance type for each function
+        variants:
+          - text: It requires an instance type to be picked for each function
+          - text: Each function needs an instance type that you select
+        explanation:
+          text: You set only the function's memory; there are no instance types to choose.
+      - id: spread-azs
+        text: It needs you to deploy each function into two or more AZs
+        variants:
+          - text: It requires each function to be placed in at least two AZs
+          - text: Each function must be deployed by you into several AZs
+        explanation:
+          text: Availability is built in; you don't spread Lambda across Availability Zones yourself.
+    correct_answers: [event-triggered, runs-copies]
+    explanation:
+      text: |
+        AWS Lambda runs your code each time an event triggers it, with no servers to manage, and
+        scales automatically by running copies side by side. You can't rely on it to keep anything
+        between runs, and its availability is built in: a function that isn't connected to a VPC
+        has no Availability Zones for you to plan.
+
+  - id: q06-container-service-all-day-no-servers
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: "Lambda or Fargate: short event-driven work, or containers that keep running"
+    task: "3.3"
+    level: application
+    topics: [fargate, compute-choice]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company's product-search service is already packaged as a container image and must answer
+        requests all day, every day. The team doesn't want to choose, scale or patch servers. Which
+        option fits best?
+    choices:
+      - id: batch-jobs
+        text: AWS Batch jobs submitted to a job queue
+        variants:
+          - text: Jobs sent to an AWS Batch job queue
+          - text: An AWS Batch queue of submitted jobs
+        explanation:
+          text: Batch runs jobs that finish; this service has to keep running.
+      - id: ec2-asg
+        text: EC2 instances in an Auto Scaling group
+        variants:
+          - text: An Auto Scaling group of EC2 instances
+          - text: EC2 servers managed by Auto Scaling
+        explanation:
+          text: That works, but the team would choose and patch the instances.
+      - id: ecs-fargate-service
+        text: An Amazon ECS service on AWS Fargate
+        variants:
+          - text: An ECS service running on Fargate
+          - text: A Fargate-backed Amazon ECS service
+        explanation:
+          text: An ECS service keeps tasks running all day, and Fargate removes the servers from the team's list.
+      - id: ecr-scanning
+        text: An Amazon ECR repository with scanning
+        variants:
+          - text: A scanned repository in Amazon ECR
+          - text: Amazon ECR with image scanning on
+        explanation:
+          text: ECR stores and scans images; it doesn't run them.
+    correct_answers: [ecs-fargate-service]
+    hint:
+      text: It is already a container, and it never stops.
+    explanation:
+      text: |
+        An app already in a container, or one that keeps running, points to Fargate. Under ECS, a
+        service keeps a set number of tasks running and replaces any that stop, and Fargate means
+        no one chooses, scales or patches servers.
+
+  - id: q06-how-lambda-bills-compute
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: What you pay for
+    task: "3.3"
+    level: recall
+    topics: [lambda]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        How does AWS Lambda bill for the compute a function uses?
+    choices:
+      - id: hourly-existence
+        text: By the hour, for as long as the function exists, used or not
+        variants:
+          - text: Hourly, for the whole time the function exists, run or not
+          - text: For every hour the function exists, whether it runs or not
+        explanation:
+          text: An idle function costs nothing; Lambda bills only for runs.
+      - id: monthly-plan
+        text: A fixed monthly plan price covering a set number of runs
+        variants:
+          - text: A set monthly plan price that includes a number of runs
+          - text: One fixed price a month that covers an allowance of runs
+        explanation:
+          text: Fixed monthly plans are Lightsail's model, not Lambda's.
+      - id: instance-type
+        text: By the instance type chosen for the function, per second
+        variants:
+          - text: Per second, at the rate of the function's instance type
+          - text: At the per-second rate of the instance type you picked
+        explanation:
+          text: Lambda has no instance types; you set memory only.
+      - id: requests-gb-seconds
+        text: Per request, plus memory times run time, in GB-seconds
+        variants:
+          - text: For each request, plus memory multiplied by run time
+          - text: Per invocation, plus GB of memory times seconds run
+        explanation:
+          text: Lambda bills each request and each GB-second of compute.
+    correct_answers: [requests-gb-seconds]
+    explanation:
+      text: |
+        Lambda charges per request plus GB-seconds: the memory given to the function, in GB, times
+        the seconds it runs. Nothing runs, or bills, between events, which is why pay-per-use suits
+        small or irregular work.
+
+  - id: q06-lambda-customer-tasks-pick-two
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: Your side of the line
+    task: "2.1"
+    level: understanding
+    topics: [shared-responsibility, lambda]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A company moves its order processing to AWS Lambda functions. Under the shared
+        responsibility model, which TWO remain the company's responsibility? (Select TWO.)
+    choices:
+      - id: code-libraries
+        text: The functions' code and the libraries it uses
+        variants:
+          - text: The function code and the libraries in it
+          - text: The code of each function and its libraries
+        explanation:
+          text: Your code and its libraries are yours on every compute option.
+      - id: patch-os
+        text: Patching the servers' operating system
+        variants:
+          - text: Applying patches to the servers' OS
+          - text: Keeping the servers' OS patched
+        explanation:
+          text: AWS patches the servers and operating system under Lambda.
+      - id: iam-permissions
+        text: The permissions each function's IAM role grants
+        variants:
+          - text: What each function's IAM role allows it to do
+          - text: The permissions in each function's IAM role
+        explanation:
+          text: The execution role, kept to least privilege, is the customer's.
+      - id: add-servers
+        text: Adding servers when many events arrive at once
+        variants:
+          - text: Adding servers when events arrive all at once
+          - text: Providing more servers when events pile up
+        explanation:
+          text: Lambda scales itself by running copies side by side.
+      - id: hardware
+        text: Maintaining the hardware in AWS data centers
+        variants:
+          - text: Looking after the hardware in AWS's buildings
+          - text: Repairing physical hardware in AWS facilities
+        explanation:
+          text: Hardware is always AWS's.
+    correct_answers: [code-libraries, iam-permissions]
+    explanation:
+      text: |
+        "With serverless, AWS handles the security" is wrong. On Lambda, AWS runs, scales and
+        patches the servers, but your code and its libraries, your data, and the permissions your
+        function gets through its IAM role stay yours, along with moving off runtimes before AWS
+        retires them.
+
+  - id: q06-flawed-library-in-fargate-image
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: Your side of the line
+    task: "2.1"
+    level: understanding
+    topics: [shared-responsibility, fargate]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company runs its app on Amazon ECS with AWS Fargate. A security flaw is found in a
+        library inside the app's container image. Who fixes it, and how?
+    choices:
+      - id: company-rebuilds
+        text: The company, by rebuilding the image with a fixed library and redeploying it
+        variants:
+          - text: The company, which rebuilds the image with the fixed library and redeploys
+          - text: The company, rebuilding its image with a patched library and redeploying it
+        explanation:
+          text: Everything inside the image is the customer's; the flaw stays until the image is rebuilt.
+      - id: aws-patches-tasks
+        text: AWS, by patching the library inside running tasks as it patches the Fargate platform
+        variants:
+          - text: AWS, which patches the library in running tasks when it patches the Fargate platform
+          - text: AWS, fixing the library inside running tasks as part of patching the Fargate platform
+        explanation:
+          text: AWS patches the platform under the containers, not the libraries inside your image.
+      - id: ecr-replaces
+        text: AWS, because Amazon ECR replaces flawed libraries in the images it stores
+        variants:
+          - text: AWS, since Amazon ECR swaps out flawed libraries in the images it holds
+          - text: AWS, as Amazon ECR automatically replaces flawed libraries in stored images
+        explanation:
+          text: ECR's scanning can find known flaws, but it doesn't change your images.
+      - id: isolation
+        text: Nobody needs to, because Fargate isolates each task in its own environment
+        variants:
+          - text: No one has to, since Fargate runs each task in its own isolated environment
+          - text: It needs no fix, because each Fargate task is isolated in its own environment
+        explanation:
+          text: Isolation separates tasks from each other; it doesn't remove a flaw in the app's own library.
+    correct_answers: [company-rebuilds]
+    explanation:
+      text: |
+        On Fargate, AWS patches the servers and operating system under the containers. Everything
+        inside the image is still the customer's: a flawed library stays until the company rebuilds
+        and redeploys the image. ECR's image scanning helps find such flaws.
+
+  - id: q06-who-patches-the-server-os
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: "The big picture: the further right, the less you manage"
+    task: "2.1"
+    level: understanding
+    topics: [shared-responsibility, compute-choice]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        On which of these options does the customer still patch the operating system of the servers
+        that run its code?
+    choices:
+      - id: ecs-fargate
+        text: Amazon ECS, with its tasks on AWS Fargate
+        variants:
+          - text: ECS, running its tasks on AWS Fargate
+          - text: Amazon ECS, placing tasks on Fargate
+        explanation:
+          text: On Fargate, AWS patches the servers' operating system.
+      - id: ecs-ec2-self
+        text: Amazon ECS, on EC2 instances the customer runs
+        variants:
+          - text: ECS, with tasks on EC2 instances the customer runs
+          - text: Amazon ECS, using EC2 instances the customer runs
+        explanation:
+          text: The customer chooses, counts and patches these instances, unless it uses ECS Managed Instances.
+      - id: lambda
+        text: AWS Lambda, with functions on managed runtimes
+        variants:
+          - text: Lambda, running functions on managed runtimes
+          - text: AWS Lambda, using its managed runtimes
+        explanation:
+          text: AWS runs and patches the servers under Lambda.
+      - id: eks-fargate
+        text: Amazon EKS, with its containers on AWS Fargate
+        variants:
+          - text: EKS, running its containers on AWS Fargate
+          - text: Amazon EKS, placing containers on Fargate
+        explanation:
+          text: On Fargate, AWS patches the servers whichever orchestrator places the containers.
+    correct_answers: [ecs-ec2-self]
+    explanation:
+      text: |
+        The further you move from EC2 toward Lambda, the less you manage. On ECS or EKS with EC2
+        instances, the instances' operating system, patches and count stay the customer's (unless
+        it uses ECS Managed Instances or EKS Auto Mode); on Fargate and Lambda, AWS patches the
+        servers.
+
+  - id: q06-retiring-lambda-runtime
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: Your side of the line
+    task: "2.1"
+    level: recall
+    topics: [shared-responsibility, lambda]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        AWS announces that a Lambda language runtime a company's functions use will be retired.
+        Who must move the functions to a supported runtime?
+    choices:
+      - id: aws-auto
+        text: AWS, which moves every function itself on the retirement date
+        variants:
+          - text: AWS, which switches every function over on the retirement date
+          - text: AWS, which migrates all functions itself when the runtime retires
+        explanation:
+          text: AWS updates the managed runtimes, but moving off a retiring one is the customer's job.
+      - id: nobody
+        text: Nobody, because retired runtimes keep getting updates indefinitely
+        variants:
+          - text: No one, since retired runtimes go on receiving updates indefinitely
+          - text: Nobody, as a retired runtime continues to be updated indefinitely
+        explanation:
+          text: Retiring a runtime means AWS stops maintaining it.
+      - id: company
+        text: The company, which updates its functions to a supported runtime
+        variants:
+          - text: The company, by moving its functions to a runtime still supported
+          - text: The company, which switches its functions to a supported runtime
+        explanation:
+          text: Moving off a runtime before AWS retires it is on the customer's side of the line.
+      - id: support
+        text: AWS Support, which migrates the functions once a ticket is opened
+        variants:
+          - text: AWS Support, which moves the functions after a ticket is raised
+          - text: AWS Support, which migrates the functions when asked in a ticket
+        explanation:
+          text: Support helps with questions; it doesn't change your functions for you.
+    correct_answers: [company]
+    explanation:
+      text: |
+        On Lambda, AWS runs and patches the servers and keeps the managed runtimes updated. Moving
+        off a runtime before AWS retires it stays the customer's job, along with the code, its
+        libraries and its permissions.
+
+  - id: q06-lambda-and-availability-zones
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: Lambda runs your code only when an event triggers it
+    task: "3.3"
+    level: understanding
+    topics: [lambda, high-availability]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company runs its web servers on EC2 in two Availability Zones. It moves its order
+        processing to AWS Lambda functions that aren't connected to a VPC. What must it do about
+        Availability Zones for the functions?
+    choices:
+      - id: copy-per-az
+        text: Deploy a copy of each function into each AZ, as with the servers
+        variants:
+          - text: Put a copy of every function in each AZ, as with the servers
+          - text: Deploy each function once per AZ, the way it does its servers
+        explanation:
+          text: That is the EC2 habit; Lambda doesn't need it.
+      - id: alb-two-azs
+        text: Place an Application Load Balancer before the functions in two AZs
+        variants:
+          - text: Put an Application Load Balancer before the functions in two AZs
+          - text: Front the functions with an Application Load Balancer in two AZs
+        explanation:
+          text: A load balancer doesn't give Lambda its availability; Lambda has it built in.
+      - id: min-two
+        text: Set an Auto Scaling minimum of two functions, one in each AZ
+        variants:
+          - text: Give the functions an Auto Scaling minimum of two, one per AZ
+          - text: Keep at least two functions, one per AZ, with Auto Scaling
+        explanation:
+          text: Auto Scaling groups manage EC2 instances, not Lambda functions.
+      - id: nothing
+        text: Nothing, because Lambda has its availability built in
+        variants:
+          - text: Nothing, since Lambda's availability is built in already
+          - text: Nothing, as availability comes built into Lambda itself
+        explanation:
+          text: AWS runs Lambda with its availability built in and no maintenance windows.
+    correct_answers: [nothing]
+    explanation:
+      text: |
+        Lambda's availability is built in, with no maintenance windows, so you don't spread it
+        across Availability Zones yourself. With EC2, placing servers in more than one AZ is the
+        customer's job.
+
+  - id: q06-what-limits-a-function
+    page: guide/06-running-applications/05-lab-07-a-lambda-function.md
+    section: Look at the role
+    task: "2.1"
+    level: recall
+    topics: [lambda, shared-responsibility]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        In AWS Lambda, what decides which AWS resources a function's code is allowed to touch?
+    choices:
+      - id: execution-role
+        text: The function's execution role, an IAM role
+        variants:
+          - text: Its execution role, which is an IAM role
+          - text: The IAM role it runs with, its execution role
+        explanation:
+          text: Lambda assumes the execution role while the code runs; its policies set what the code may touch.
+      - id: trigger
+        text: The trigger that starts the function's runs
+        variants:
+          - text: The trigger that sets the function running
+          - text: Whichever trigger starts the function's runs
+        explanation:
+          text: A trigger decides when the function runs, not what it may touch.
+      - id: handler
+        text: The handler named in the function's code
+        variants:
+          - text: The handler that the function's code names
+          - text: The handler declared in the function's code
+        explanation:
+          text: The handler is the part of the code Lambda runs on each invocation; it grants nothing.
+      - id: log-group
+        text: The log group the function writes its logs to
+        variants:
+          - text: The log group that receives the function's logs
+          - text: The log group where the function's logs are kept
+        explanation:
+          text: The log group stores log lines; it grants no permissions.
+    correct_answers: [execution-role]
+    explanation:
+      text: |
+        A Lambda function's execution role is an IAM role that Lambda assumes while the code runs.
+        In Lab 07 the default role only lets the function write its logs: it can log, but it can't,
+        say, read your buckets. Keeping the role to least privilege is the customer's job.
+
+  - id: q06-lambda-logs-keep-growing
+    page: guide/06-running-applications/05-lab-07-a-lambda-function.md
+    section: Read the logs and set retention
+    task: "3.3"
+    level: understanding
+    topics: [lambda]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company's Lambda functions have run for a year, and their logs in Amazon CloudWatch Logs
+        keep growing, though nobody has changed any settings. What explains this, and what should
+        the company do?
+    choices:
+      - id: region-copies
+        text: Lambda copies its logs to every Region daily; turn off that copying
+        variants:
+          - text: Lambda copies logs to every Region each day; switch the copying off
+          - text: Logs are copied to all Regions every day; turn that replication off
+        explanation:
+          text: Lambda doesn't copy logs between Regions; the logs grow because they never expire.
+      - id: never-expire
+        text: By default logs never expire; set a retention period on each log group
+        variants:
+          - text: Logs are kept forever by default; give each log group a retention period
+          - text: Log data never expires by default; set each log group's retention period
+        explanation:
+          text: CloudWatch Logs keeps log data forever unless you set a retention period.
+      - id: role-stores
+        text: The execution role keeps a log per run; remove the role's permissions
+        variants:
+          - text: The execution role stores a log for each run; strip the role's permissions
+          - text: Each run's log is kept by the execution role; remove the role's policy
+        explanation:
+          text: The role only allows writing logs; removing it would stop new logs, not delete old ones.
+      - id: recreate-monthly
+        text: Logs grow until a function is deleted; delete and recreate it monthly
+        variants:
+          - text: Logs keep growing until deletion; delete and recreate functions monthly
+          - text: A function's logs grow until it is deleted; recreate each one monthly
+        explanation:
+          text: Deleting a function doesn't delete its log group, and a retention setting does the job.
+    correct_answers: [never-expire]
+    hint:
+      text: Lab 07 asked you to look at one column in the log groups list.
+    explanation:
+      text: |
+        By default, CloudWatch Logs keeps a log group's data forever, so stored logs grow every
+        month. Setting a retention period, such as one week, deletes older events automatically;
+        choose the period from what investigations and any legal requirements need.
+
+  - id: q06-pay-per-use-or-a-flat-server
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: What you pay for
+    task: "3.3"
+    level: understanding
+    topics: [lambda, compute-choice]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company compares running an irregular job on AWS Lambda with running it on one small EC2
+        instance all month. Which statement is accurate?
+    choices:
+      - id: lambda-always
+        text: Lambda tends to win for steady heavy use, because it bills each function a flat monthly fee
+        variants:
+          - text: Lambda usually wins for heavy, steady use, since each function has a flat monthly fee
+          - text: Steady heavy use tends to favor Lambda, because it charges each function a flat monthly fee
+        explanation:
+          text: Lambda has no flat monthly fee; it bills per request and per GB-second, so heavy, steady use raises its cost.
+      - id: server-always
+        text: The server tends to win for light use, because each Lambda request has a minimum hourly charge
+        variants:
+          - text: Light use usually favors the server, since every Lambda request bills a minimum hour
+          - text: The server is usually cheaper when use is light, as each Lambda request bills a full hour
+        explanation:
+          text: Lambda bills by the request and the GB-second, not by the hour, so light, irregular use costs a fraction of a server that runs all month.
+      - id: follows-work
+        text: Lambda's cost follows the work, so light use is cheaper; steady heavy use can favor the server
+        variants:
+          - text: Lambda costs track the work, so light use wins there; steady heavy use may favor the server
+          - text: Lambda's bill follows the work, cheaper when light; steady, heavy use can tip it to the server
+        explanation:
+          text: The server costs the same for three runs or thousands; Lambda's cost follows each run.
+      - id: same-cost
+        text: Both tend to cost about the same, because AWS prices its compute by the hour either way
+        variants:
+          - text: Both usually cost about the same, since AWS prices any kind of compute by the hour
+          - text: The two tend to cost much the same, as AWS compute is priced by the hour regardless
+        explanation:
+          text: Lambda bills per request and per GB-second, not by the hour.
+    correct_answers: [follows-work]
+    explanation:
+      text: |
+        A server that runs all month costs the same whether it does three jobs or thousands. Lambda
+        bills per request and per GB-second, so its cost follows the work: cents for light, irregular
+        use, but steady, heavy use can make the flat-priced server cheaper. Pay per use is cheap for
+        small work, not always cheapest.
+
+  # ---------------------------------------------------------------- 06.04 Simpler paths
+
+  - id: q06-upload-code-get-the-setup-built
+    page: guide/06-running-applications/04-simpler-paths.md
+    section: Elastic Beanstalk builds and runs the setup for your code
+    task: "3.3"
+    level: recall
+    topics: [elastic-beanstalk]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A development team wants to upload its Java web application's code and have AWS create the
+        EC2 instances, load balancing, scaling and health monitoring for it, in the team's own
+        account. The team wants to keep control of those resources, such as the instance type.
+        Which service fits?
+    choices:
+      - id: lightsail
+        text: Amazon Lightsail
+        variants:
+          - text: Lightsail
+          - text: An Amazon Lightsail plan
+        explanation:
+          text: Lightsail sells a bundled server at a fixed price; it doesn't build a load-balanced, scaling setup from uploaded code.
+      - id: batch
+        text: AWS Batch
+        variants:
+          - text: The AWS Batch service
+          - text: Batch
+        explanation:
+          text: Batch runs queues of unattended jobs, not web applications.
+      - id: lambda
+        text: AWS Lambda
+        variants:
+          - text: Lambda
+          - text: The AWS Lambda service
+        explanation:
+          text: Lambda runs functions on events with no instances in your account to control.
+      - id: beanstalk
+        text: AWS Elastic Beanstalk
+        variants:
+          - text: Elastic Beanstalk
+          - text: The Elastic Beanstalk service
+        explanation:
+          text: Beanstalk builds and runs the setup for your code in your account, and you keep control of the resources.
+    correct_answers: [beanstalk]
+    hint:
+      text: The team brings code; AWS assembles the parts from lessons 06.01 and 06.02.
+    explanation:
+      text: |
+        With AWS Elastic Beanstalk you upload your code, and Beanstalk creates EC2 instances (or an
+        EKS cluster), load balancing, Auto Scaling and health monitoring in your account. You keep
+        full control of those resources, and Beanstalk itself adds no charge.
+
+  - id: q06-beanstalk-is-not-serverless
+    page: guide/06-running-applications/04-simpler-paths.md
+    section: "\"Elastic Beanstalk is serverless\" is wrong"
+    task: "3.3"
+    level: understanding
+    topics: [elastic-beanstalk]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A manager says Elastic Beanstalk is serverless, like Lambda, so the team pays nothing while
+        its site is idle. Which statement corrects this?
+    choices:
+      - id: real-instances
+        text: Beanstalk creates real EC2 instances in the account, and they bill while they run
+        variants:
+          - text: Beanstalk launches actual EC2 instances in the account, which bill while running
+          - text: The EC2 instances Beanstalk creates are real, in the account, and bill as they run
+        explanation:
+          text: The servers exist, appear on the bill and are updated according to settings you choose.
+      - id: hidden-plan
+        text: Beanstalk runs code on AWS's hidden servers, billed as one fixed monthly plan price
+        variants:
+          - text: Beanstalk uses hidden AWS servers for the code, charged as a fixed monthly plan
+          - text: The code runs on servers hidden in AWS's account, for one set monthly plan price
+        explanation:
+          text: The resources are ordinary ones in your account, billed by use; fixed plans are Lightsail's model.
+      - id: per-request
+        text: Beanstalk adds a per-request fee, like Lambda, on top of the instances it creates
+        variants:
+          - text: Beanstalk charges per request, as Lambda does, in addition to its instances' cost
+          - text: On top of the instances, Beanstalk bills a fee for each request, like Lambda does
+        explanation:
+          text: Beanstalk adds no charge of its own; you pay only for the resources it creates.
+      - id: never-on-bill
+        text: Beanstalk keeps the servers in AWS's own account, so they never appear on the bill
+        variants:
+          - text: The servers sit in AWS's own account under Beanstalk, so they don't show on the bill
+          - text: Beanstalk holds the servers in AWS's account, which keeps them off the company's bill
+        explanation:
+          text: The instances are created in your account and appear on your bill.
+    correct_answers: [real-instances]
+    explanation:
+      text: |
+        Elastic Beanstalk isn't serverless. You only upload code and never launch an instance
+        yourself, but Beanstalk creates real EC2 instances, or an EKS cluster, in your account, and
+        you pay for them while they run.
+
+  - id: q06-managed-platform-updates-do-what
+    page: guide/06-running-applications/04-simpler-paths.md
+    section: Elastic Beanstalk builds and runs the setup for your code
+    task: "2.1"
+    level: understanding
+    topics: [elastic-beanstalk, shared-responsibility]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company turns on managed platform updates for its Elastic Beanstalk environment. What
+        does Beanstalk then do?
+    choices:
+      - id: every-version
+        text: Applies every new platform version, major ones included, the moment AWS releases it
+        variants:
+          - text: Installs each new platform version, majors included, as soon as AWS releases it
+          - text: Applies all new platform versions, including majors, the moment they are released
+        explanation:
+          text: Major version upgrades, which can break your code, are yours to start.
+      - id: patch-minor-weekly
+        text: Applies patch and minor versions in a weekly window; major upgrades stay the company's
+        variants:
+          - text: Applies patch and minor versions weekly in a window; majors are the company's to start
+          - text: Installs patch and minor versions in a weekly window, leaving majors to the company
+        explanation:
+          text: Those updates bring operating system and language updates; majors are left to you.
+      - id: moves-to-lambda
+        text: Moves the environment onto AWS Lambda, so that no servers need updating after that
+        variants:
+          - text: Shifts the environment to AWS Lambda, so no servers need any updates from then on
+          - text: Migrates the environment to AWS Lambda, after which there are no servers to update
+        explanation:
+          text: The environment stays on EC2 instances (or EKS) in your account.
+      - id: patches-app-code
+        text: Patches the company's own application code and its libraries during a weekly window
+        variants:
+          - text: Fixes the company's own application code and libraries in a weekly window
+          - text: Updates the company's application code and its libraries during a weekly window
+        explanation:
+          text: The platform is updated, not your code; your code and its libraries stay yours.
+    correct_answers: [patch-minor-weekly]
+    explanation:
+      text: |
+        With managed platform updates turned on, Beanstalk applies new patch and minor platform
+        versions, with operating system and language updates, during a weekly maintenance window.
+        Major version upgrades, which can break your code, stay yours to start.
+
+  - id: q06-small-site-predictable-price
+    page: guide/06-running-applications/04-simpler-paths.md
+    section: Lightsail sells a simple server as a bundle with a predictable price
+    task: "3.3"
+    level: application
+    topics: [lightsail]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A yoga teacher wants a small booking website started from a ready-made image. She wants the
+        server, storage and data transfer in one predictable monthly price, with as little setup as
+        possible. Which service fits best?
+    choices:
+      - id: beanstalk
+        text: AWS Elastic Beanstalk
+        variants:
+          - text: Elastic Beanstalk
+          - text: The Elastic Beanstalk service
+        explanation:
+          text: Beanstalk bills the parts it creates by use, with no fixed monthly price.
+      - id: ec2-asg
+        text: Amazon EC2 with Auto Scaling
+        variants:
+          - text: EC2 instances with Auto Scaling
+          - text: An EC2 Auto Scaling setup
+        explanation:
+          text: It works, but she would assemble and pay for each part separately.
+      - id: lightsail
+        text: Amazon Lightsail
+        variants:
+          - text: Lightsail
+          - text: An Amazon Lightsail plan
+        explanation:
+          text: Lightsail bundles a server, storage, a static IP and data transfer into one monthly price, often from a ready-made image.
+      - id: batch
+        text: AWS Batch
+        variants:
+          - text: The AWS Batch service
+          - text: Batch
+        explanation:
+          text: Batch runs queues of unattended jobs, not websites.
+    correct_answers: [lightsail]
+    hint:
+      text: Which service is sold as a bundle at a monthly price?
+    explanation:
+      text: |
+        Amazon Lightsail is AWS's simplest way to put a website or small app online. Its plans
+        bundle a virtual server, storage, a static IP address and a data transfer allowance into one
+        monthly price, and you can start from ready-made images such as WordPress.
+
+  - id: q06-lightsail-statements-pick-two
+    page: guide/06-running-applications/04-simpler-paths.md
+    section: Lightsail sells a simple server as a bundle with a predictable price
+    task: "3.3"
+    level: understanding
+    topics: [lightsail]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A shop owner is considering Amazon Lightsail for a small website. Which TWO statements
+        about Lightsail are true? (Select TWO.)
+    choices:
+      - id: bundle
+        text: A plan bundles a server, storage and data transfer into one monthly price
+        variants:
+          - text: Each plan packs a server, storage and transfer into one monthly price
+          - text: Its plans combine a server, storage and transfer in one monthly price
+        explanation:
+          text: That bundle, with a predictable price, is what Lightsail sells.
+      - id: builds-from-code
+        text: It builds load-balanced, auto-scaling environments from code you upload
+        variants:
+          - text: It creates load-balanced, scaling environments from uploaded code
+          - text: It assembles load-balanced, auto-scaling setups from your uploaded code
+        explanation:
+          text: That is Elastic Beanstalk.
+      - id: bills-when-stopped
+        text: An instance keeps billing while stopped; only deleting it ends the charge
+        variants:
+          - text: A stopped instance is still billed; only deleting it stops the charge
+          - text: Stopping an instance doesn't end its charge; deleting it does
+        explanation:
+          text: Unlike EC2, where a stop ends instance-hour charges, Lightsail bills the plan while the instance exists.
+      - id: on-premises
+        text: It runs on AWS hardware installed in the customer's own building
+        variants:
+          - text: Its servers are AWS hardware placed in the customer's building
+          - text: It puts AWS hardware inside the customer's own building
+        explanation:
+          text: Lightsail runs in AWS Regions; AWS hardware in your building is Outposts.
+      - id: events-only
+        text: It runs code as functions, but only when an event triggers them
+        variants:
+          - text: It runs functions, and only when an event triggers each one
+          - text: It runs code in functions, solely when events trigger them
+        explanation:
+          text: That is AWS Lambda.
+    correct_answers: [bundle, bills-when-stopped]
+    explanation:
+      text: |
+        Lightsail sells a simple server as a bundle with a predictable price, charged by the hour
+        up to the plan's monthly price. The instance is charged while it is running or stopped, so
+        only deleting it ends the charge; that differs from EC2, where a stop ends instance-hour
+        charges.
+
+  - id: q06-outgrowing-lightsail
+    page: guide/06-running-applications/04-simpler-paths.md
+    section: Lightsail sells a simple server as a bundle with a predictable price
+    task: "3.3"
+    level: application
+    topics: [lightsail]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company's website on Amazon Lightsail now needs instance types, pricing options and
+        network controls that Lightsail doesn't offer. Which path does AWS provide for this?
+    choices:
+      - id: batch
+        text: Move the site to AWS Batch, which offers every instance type
+        variants:
+          - text: Move the site to AWS Batch, which has every instance type
+          - text: Shift the site to AWS Batch, which offers all instance types
+        explanation:
+          text: Batch runs queued jobs, not websites.
+      - id: outposts
+        text: Move the site to AWS Outposts to get more network control
+        variants:
+          - text: Shift the site to AWS Outposts for more network control
+          - text: Put the site on AWS Outposts to gain network control
+        explanation:
+          text: Outposts puts AWS hardware in your building; nothing here needs that.
+      - id: join-bundles
+        text: Buy several Lightsail bundles and join them into a larger plan
+        variants:
+          - text: Combine several Lightsail bundles into one larger plan
+          - text: Merge a few Lightsail bundles together into a bigger plan
+        explanation:
+          text: Bundles aren't joined into new plans, and bigger bundles still lack EC2's choices.
+      - id: upgrade-to-ec2
+        text: Use Upgrade to EC2 to copy the Lightsail instance into EC2
+        variants:
+          - text: Copy the Lightsail instance into EC2 with Upgrade to EC2
+          - text: Run Upgrade to EC2, which copies the instance into EC2
+        explanation:
+          text: Upgrade to EC2 copies a Lightsail instance into EC2, with every instance type and pricing option.
+    correct_answers: [upgrade-to-ec2]
+    hint:
+      text: Lightsail has a built-in way up.
+    explanation:
+      text: |
+        Lightsail is the simple start; when a site outgrows it, Upgrade to EC2 copies the
+        Lightsail instance into Amazon EC2, where the company gets every instance type and pricing
+        option and more control over the network.
+
+  - id: q06-ec2-beanstalk-lightsail-what-differs
+    page: guide/06-running-applications/04-simpler-paths.md
+    section: "EC2, Elastic Beanstalk or Lightsail: three ways to run a web app"
+    task: "3.3"
+    level: understanding
+    topics: [elastic-beanstalk, lightsail, compute-choice]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        The same small website could run on Amazon EC2, AWS Elastic Beanstalk or Amazon Lightsail.
+        What mainly differs among the three?
+    choices:
+      - id: who-builds-how-paid
+        text: Who assembles the setup, and how the company pays for it
+        variants:
+          - text: Who builds the setup, and how the company is billed for it
+          - text: Who puts the setup together, and how it is paid for
+        explanation:
+          text: All three run the app on AWS virtual servers; the assembly and the billing differ.
+      - id: only-ec2-servers
+        text: EC2 alone uses virtual servers; the other two are serverless
+        variants:
+          - text: Just EC2 has virtual servers; the other two are serverless
+          - text: Virtual servers are EC2's alone; the others are serverless
+        explanation:
+          text: Beanstalk and Lightsail also run on AWS virtual servers that exist and bill.
+      - id: lightsail-multi-az
+        text: Lightsail alone can run the website in several Availability Zones
+        variants:
+          - text: Just Lightsail can spread the site across several Availability Zones
+          - text: Running the site in several Availability Zones is Lightsail's alone
+        explanation:
+          text: EC2 and Beanstalk can both run in more than one Availability Zone.
+      - id: beanstalk-on-site
+        text: Beanstalk alone runs on AWS hardware in the company's building
+        variants:
+          - text: Just Beanstalk uses AWS hardware inside the company's building
+          - text: AWS hardware in the company's building is Beanstalk's alone
+        explanation:
+          text: AWS hardware in your own building is AWS Outposts.
+    correct_answers: [who-builds-how-paid]
+    explanation:
+      text: |
+        All three run your app on AWS virtual servers. On EC2 you build everything and pay for each
+        part by use; Beanstalk builds the setup in your account at no extra charge beyond the parts;
+        Lightsail sells a bundle at a fixed monthly price. Choose by how much you want to build and
+        how you want to be billed.
+
+  - id: q06-thousands-of-long-container-jobs
+    page: guide/06-running-applications/04-simpler-paths.md
+    section: Batch runs large numbers of jobs from a queue
+    task: "3.3"
+    level: application
+    topics: [batch]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A genomics lab submits thousands of analysis jobs each night. Each is packaged as a
+        container and runs for about 12 hours. The lab wants AWS to start compute while jobs wait
+        and remove it when the queue is empty. Which service fits?
+    choices:
+      - id: lambda
+        text: AWS Lambda
+        variants:
+          - text: Lambda
+          - text: The AWS Lambda service
+        explanation:
+          text: A standard Lambda invocation stops at 15 minutes (as of 2026-10-23), far short of 12 hours.
+      - id: batch
+        text: AWS Batch
+        variants:
+          - text: The AWS Batch service
+          - text: Batch
+        explanation:
+          text: Batch queues the jobs, launches compute for them and removes it when it's no longer needed.
+      - id: lightsail
+        text: Amazon Lightsail
+        variants:
+          - text: Lightsail
+          - text: An Amazon Lightsail plan
+        explanation:
+          text: Lightsail sells a few simple servers at fixed prices, not compute that grows and shrinks with a queue.
+      - id: beanstalk
+        text: AWS Elastic Beanstalk
+        variants:
+          - text: Elastic Beanstalk
+          - text: The Elastic Beanstalk service
+        explanation:
+          text: Beanstalk deploys web applications, not queues of unattended jobs.
+    correct_answers: [batch]
+    hint:
+      text: The words "jobs", "queue" and "remove it when the queue is empty" point to one service.
+    explanation:
+      text: |
+        AWS Batch runs batch work at any scale: you package each job as a container and submit it
+        to a job queue. Batch decides where each job runs, launches compute when it's needed and
+        removes it afterwards. AWS lists genomics among its uses.
+
+  - id: q06-cheaper-compute-for-retryable-jobs
+    page: guide/06-running-applications/04-simpler-paths.md
+    section: Batch runs large numbers of jobs from a queue
+    task: "3.3"
+    level: application
+    topics: [batch, purchasing-options]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company's AWS Batch jobs can be safely retried if they are interrupted. How can it lower
+        the cost of the compute they run on?
+    choices:
+      - id: lambda
+        text: Run the jobs as Lambda functions that stop after a few minutes
+        variants:
+          - text: Turn the jobs into Lambda functions that end after a few minutes
+          - text: Make the jobs Lambda functions that stop after a few minutes
+        explanation:
+          text: Cutting jobs short doesn't finish them; Batch exists for jobs of any length.
+      - id: nlb
+        text: Put a Network Load Balancer in front of the job queue
+        variants:
+          - text: Place a Network Load Balancer before the job queue
+          - text: Front the job queue with a Network Load Balancer
+        explanation:
+          text: A load balancer spreads network traffic; it doesn't lower compute prices, and it bills by the hour.
+      - id: spot
+        text: Use Spot Instances in the jobs' compute environment
+        variants:
+          - text: Run the compute environment on Spot Instances
+          - text: Give the compute environment Spot capacity
+        explanation:
+          text: Spot is spare EC2 capacity at a discount that AWS can take back; a retried job loses only time.
+      - id: lightsail
+        text: Move the compute environment onto Lightsail plans
+        variants:
+          - text: Shift the compute environment to Lightsail plans
+          - text: Run the compute environment on Lightsail bundles
+        explanation:
+          text: Batch's compute environments use EC2 (On-Demand or Spot) or Fargate, not Lightsail.
+    correct_answers: [spot]
+    hint:
+      text: Which way of paying trades the risk of interruption for a discount?
+    explanation:
+      text: |
+        AWS Batch can run jobs on Spot Instances: spare EC2 capacity at a discount, which AWS can
+        reclaim with a short warning. That suits jobs that can be retried, because an interruption
+        costs time, not results.
+
+  - id: q06-batch-statements-pick-two
+    page: guide/06-running-applications/04-simpler-paths.md
+    section: Batch runs large numbers of jobs from a queue
+    task: "3.3"
+    level: understanding
+    topics: [batch]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A research group plans to run its overnight simulations with AWS Batch. Which TWO
+        statements describe how Batch works? (Select TWO.)
+    choices:
+      - id: fixed-plan
+        text: It is billed as a fixed monthly plan, like a Lightsail bundle
+        variants:
+          - text: It charges a set monthly plan price, as a Lightsail bundle does
+          - text: Its price is a fixed monthly plan, the way Lightsail's is
+        explanation:
+          text: Batch adds no charge of its own; you pay for the EC2 or Fargate capacity the jobs use.
+      - id: queue-containers
+        text: Each job is packaged as a container and submitted to a job queue
+        variants:
+          - text: Jobs are packaged as containers and sent to a job queue
+          - text: You package each job as a container and submit it to a queue
+        explanation:
+          text: The job queue holds submitted jobs until Batch runs them.
+      - id: needs-lb
+        text: It needs a load balancer in front of each of its job queues
+        variants:
+          - text: Each of its job queues needs a load balancer in front of it
+          - text: It requires a load balancer placed before every job queue
+        explanation:
+          text: Load balancers spread network requests; job queues don't use them.
+      - id: removes-compute
+        text: It removes the compute once the jobs no longer need it
+        variants:
+          - text: It takes the compute away when the jobs no longer need it
+          - text: It deletes the compute when it is no longer needed for jobs
+        explanation:
+          text: The compute exists only while there are jobs, so a nightly run doesn't leave servers billing all day.
+      - id: install-scheduler
+        text: You install and run its scheduling software on EC2 yourself
+        variants:
+          - text: You set up and operate its scheduling software on EC2
+          - text: Its scheduling software is yours to install and run on EC2
+        explanation:
+          text: Batch is fully managed, with nothing to install; on EC2 alone you would have to write the scheduling.
+    correct_answers: [queue-containers, removes-compute]
+    explanation:
+      text: |
+        You package each job as a container and submit it to a job queue. AWS Batch decides where
+        each job runs, launches compute when it's needed, watches the jobs and removes the compute
+        afterwards, with nothing to install and no charge beyond the compute used.
+
+  - id: q06-factory-control-systems-on-site
+    page: guide/06-running-applications/04-simpler-paths.md
+    section: Outposts brings AWS hardware into your own building
+    task: "3.1"
+    level: application
+    topics: [outposts]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A manufacturer's assembly-line control systems need responses within milliseconds, and the
+        data they use must stay in its own plant. It wants to run EC2 instances there with the same
+        APIs and tools it uses in its AWS Region. Which service fits?
+    choices:
+      - id: local-zone
+        text: A Local Zone in the nearest city
+        variants:
+          - text: The Local Zone in the closest city
+          - text: An AWS Local Zone in a nearby city
+        explanation:
+          text: A Local Zone is close, but it is AWS's site in a city, not the plant itself.
+      - id: batch
+        text: AWS Batch
+        variants:
+          - text: The AWS Batch service
+          - text: Batch
+        explanation:
+          text: Batch runs job queues in a Region; it doesn't change where the hardware is.
+      - id: lightsail
+        text: Amazon Lightsail
+        variants:
+          - text: Lightsail
+          - text: An Amazon Lightsail plan
+        explanation:
+          text: Lightsail servers run in AWS Regions, not in the plant.
+      - id: outposts
+        text: AWS Outposts
+        variants:
+          - text: Outposts
+          - text: An AWS Outposts rack
+        explanation:
+          text: Outposts puts AWS-managed racks or servers in your own building, running EC2 with the same APIs and tools.
+    correct_answers: [outposts]
+    hint:
+      text: The data may not leave the building at all.
+    explanation:
+      text: |
+        AWS Outposts brings AWS racks or servers into your own data center or site, extending an
+        Availability Zone of its Region through a service link. It suits low latency to on-site
+        systems and data that must stay on premises: a hybrid deployment managed with the same
+        tools as the Region.
+
+  - id: q06-outposts-customer-tasks-pick-two
+    page: guide/06-running-applications/04-simpler-paths.md
+    section: Your side of the line
+    task: "2.1"
+    level: understanding
+    topics: [outposts, shared-responsibility]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A company installs an AWS Outposts rack in its own data center. Which TWO tasks are the
+        company's? (Select TWO.)
+    choices:
+      - id: maintain-hardware
+        text: Maintaining the Outpost's hardware
+        variants:
+          - text: Looking after the Outpost's hardware
+          - text: Repairing the Outpost's hardware
+        explanation:
+          text: AWS maintains the Outpost's hardware.
+      - id: space-power-network
+        text: Providing space, power and a network link
+        variants:
+          - text: Supplying space, power and a network link
+          - text: Giving it space, power and a network link
+        explanation:
+          text: The site, its power and the connection to the Region are the company's to provide.
+      - id: patch-software
+        text: Applying the Outpost's software patches
+        variants:
+          - text: Installing the Outpost's software patches
+          - text: Patching the Outpost's own software
+        explanation:
+          text: AWS applies the Outpost's software patches.
+      - id: physical-security
+        text: Physical security and access to the rack
+        variants:
+          - text: Guarding the rack and controlling access to it
+          - text: Physical security and access control at the rack
+        explanation:
+          text: In your building, physical security and access control around the Outpost are yours.
+      - id: monitor-outpost
+        text: Monitoring the Outpost's hardware health
+        variants:
+          - text: Watching the health of the Outpost's hardware
+          - text: Checking the Outpost hardware's health
+        explanation:
+          text: AWS monitors the Outpost.
+    correct_answers: [space-power-network, physical-security]
+    explanation:
+      text: |
+        Outposts moves the line. AWS still monitors the Outpost, applies its software patches and
+        maintains its hardware. The customer provides the space, power and network, and is
+        responsible for physical security and access control around it, work that in a Region is
+        all AWS's.
+
+  - id: q06-no-charge-of-their-own-pick-two
+    page: guide/06-running-applications/04-simpler-paths.md
+    section: What you pay for
+    task: "3.3"
+    level: recall
+    topics: [elastic-beanstalk, batch]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        Which TWO services add no charge of their own, so a company pays only for the resources
+        they create or use? (Select TWO.)
+    choices:
+      - id: beanstalk
+        text: AWS Elastic Beanstalk
+        variants:
+          - text: Elastic Beanstalk
+          - text: The Elastic Beanstalk service
+        explanation:
+          text: You pay for the instances, load balancer and other resources it creates, not for Beanstalk.
+      - id: eks
+        text: Amazon EKS
+        variants:
+          - text: Amazon Elastic Kubernetes Service
+          - text: EKS
+        explanation:
+          text: EKS charges per cluster per hour, plus the compute underneath.
+      - id: lightsail
+        text: Amazon Lightsail
+        variants:
+          - text: Lightsail
+          - text: An Amazon Lightsail plan
+        explanation:
+          text: Lightsail charges a plan price, by the hour up to its monthly maximum.
+      - id: batch
+        text: AWS Batch
+        variants:
+          - text: The AWS Batch service
+          - text: Batch
+        explanation:
+          text: You pay for the EC2 or Fargate capacity the jobs use, not for Batch.
+      - id: elb
+        text: Elastic Load Balancing
+        variants:
+          - text: Elastic Load Balancing (ELB)
+          - text: The Elastic Load Balancing service
+        explanation:
+          text: A load balancer bills for every hour or partial hour it runs, plus its capacity units.
+    correct_answers: [beanstalk, batch]
+    explanation:
+      text: |
+        Elastic Beanstalk and AWS Batch do the assembling and scheduling for no extra charge; you
+        pay for the resources they create or use (as of 2026-10-23). Amazon ECS and Amazon EC2
+        Auto Scaling work the same way. Lightsail, EKS and load balancers each have a charge of
+        their own.
+
+  - id: q06-beanstalk-container-or-fargate
+    page: guide/06-running-applications/04-simpler-paths.md
+    section: Elastic Beanstalk builds and runs the setup for your code
+    task: "3.3"
+    level: understanding
+    topics: [elastic-beanstalk, fargate, compute-choice]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Elastic Beanstalk accepts Docker containers, so a company's containerized app could run
+        there. Why might Amazon ECS on AWS Fargate still fit better for an owner who wants no
+        servers to look after?
+    choices:
+      - id: standard-on-ec2
+        text: Beanstalk would run the app on EC2 instances in the company's account
+        variants:
+          - text: Beanstalk would place the app on EC2 instances in the company's account
+          - text: On Beanstalk, the app would sit on EC2 instances in the company's account
+        explanation:
+          text: Those instances are the company's, updated only as its settings allow; Fargate has no servers to look after.
+      - id: no-long-running
+        text: Beanstalk can't run containers that need to keep running all day
+        variants:
+          - text: Beanstalk is unable to run containers that keep running all day
+          - text: Containers that must run all day can't be run on Beanstalk
+        explanation:
+          text: Beanstalk runs long-lived web apps, including containers; the issue is the servers underneath.
+      - id: per-container-fee
+        text: Beanstalk charges a fee for each container on top of the instances
+        variants:
+          - text: Beanstalk adds a per-container fee to the cost of the instances
+          - text: On top of the instances, Beanstalk bills a fee per container
+        explanation:
+          text: Beanstalk adds no charge of its own.
+      - id: stores-only
+        text: Beanstalk can store container images but can't run any of them
+        variants:
+          - text: Beanstalk keeps container images but is unable to run them
+          - text: Container images can be stored in Beanstalk but never run
+        explanation:
+          text: Storing images is Amazon ECR's job, and Beanstalk does run containers.
+    correct_answers: [standard-on-ec2]
+    explanation:
+      text: |
+        Beanstalk has two modes: Standard, on EC2, and Cluster, on Amazon EKS. In Standard mode,
+        the containerized app would sit on EC2 instances in the company's account, updated only as
+        the settings allow. ECS on Fargate removes the servers from the owner's list.
+
+  - id: q06-spiky-store-full-control
+    page: guide/06-running-applications/04-simpler-paths.md
+    section: "Worked example: matching five requests"
+    task: "3.3"
+    level: application
+    topics: [compute-choice, auto-scaling]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company's online store has sharp traffic spikes and needs exact control of its instance
+        types, scaling rules and load balancer settings. Which compute setup fits?
+    choices:
+      - id: lightsail
+        text: Amazon Lightsail instances on a fixed monthly bundle plan
+        variants:
+          - text: Lightsail instances on a set monthly bundle plan
+          - text: Amazon Lightsail servers billed as a monthly bundle
+        explanation:
+          text: Lightsail is simple and predictable, but it offers less control; Upgrade to EC2 is for outgrowing it.
+      - id: ec2-asg-lb
+        text: Amazon EC2 with Auto Scaling and a load balancer
+        variants:
+          - text: EC2 instances with Auto Scaling and a load balancer
+          - text: An Auto Scaling group of EC2 behind a load balancer
+        explanation:
+          text: Building it yourself gives the most control of types, scaling rules and the load balancer.
+      - id: batch
+        text: AWS Batch, with the store's pages submitted as jobs
+        variants:
+          - text: AWS Batch, submitting the store's pages as queued jobs
+          - text: AWS Batch, running the store's pages as queued jobs
+        explanation:
+          text: Batch runs unattended jobs from a queue, not a website.
+      - id: outposts
+        text: AWS Outposts racks installed in the company's own building
+        variants:
+          - text: AWS Outposts racks placed in the company's own building
+          - text: Outposts racks set up inside the company's own building
+        explanation:
+          text: Nothing here needs to run in the company's building.
+    correct_answers: [ec2-asg-lb]
+    hint:
+      text: How much does this company want to build itself?
+    explanation:
+      text: |
+        The lesson's flowchart asks where the work must run, what kind of work it is, and how much
+        you want to build. A web app that needs full control of instance types, scaling rules and
+        the load balancer lands on EC2 with Auto Scaling and a load balancer, as in lessons 06.01
+        and 06.02.
+
+flashcards:
+
+  # ---------------------------------------------------------------- 06.01 Amazon EC2
+
+  - id: c06-family-choice-order
+    page: guide/06-running-applications/01-ec2.md
+    section: "Worked example: a family for each of the bakery's jobs"
+    level: recall
+    topics: [instance-families]
+    front:
+      text: In what order does an expert choose an EC2 instance type for a workload?
+    back:
+      text: Bottleneck first (what the work runs out of), then the family built for that resource, then the size last.
+
+  - id: c06-type-name-around-the-dot
+    page: guide/06-running-applications/01-ec2.md
+    section: Read an instance type's name from left to right
+    level: recall
+    topics: [instance-types]
+    front:
+      text: In an EC2 instance type name such as `c7g.large`, what comes before the dot, and what after it?
+    back:
+      text: "Before the dot: the family letter, the generation number and any variant letters (`c`, `7`, `g`). After it: the size (`large`)."
+
+  - id: c06-volume-outlives-instance
+    page: guide/06-running-applications/06-lab-08-launch-and-terminate-an-instance.md
+    section: "Part C: terminate, and prove it's gone (on your own)"
+    level: understanding
+    topics: [instance-states]
+    front:
+      text: When does an EC2 instance's EBS volume keep billing after the instance is terminated?
+    back:
+      text: When its delete on termination setting is No. The volume stays, and bills, until you delete it yourself.
+
+  - id: c06-why-ec2-puts-most-on-you
+    page: guide/06-running-applications/01-ec2.md
+    section: Your side of the line on EC2
+    level: understanding
+    topics: [shared-responsibility, ec2-instances]
+    front:
+      text: Why does Amazon EC2 leave more security work with the customer than any other AWS compute service?
+    back:
+      text: Because the customer runs the guest operating system, so its patches, the software installed on it and the security group rules are all the customer's.
+
+  # ---------------------------------------------------------------- 06.02 Auto Scaling and load balancers
+
+  - id: c06-elasticity-and-ha-sources
+    page: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+    section: Auto Scaling changes how many; the load balancer chooses which
+    level: understanding
+    topics: [elasticity, high-availability]
+    front:
+      text: In an EC2 web tier, where does elasticity come from, and where does high availability come from?
+    back:
+      text: "Elasticity: Auto Scaling changing the number of instances with demand. High availability: instances in several AZs, kept balanced by Auto Scaling and reached through the load balancer."
+
+  - id: c06-failed-health-check-two-responses
+    page: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+    section: A load balancer sends each request to a healthy instance
+    level: understanding
+    topics: [auto-scaling, load-balancers]
+    front:
+      text: An instance behind a load balancer fails the load balancer's health check. Its Auto Scaling group is set to use those checks too. What does each service do?
+    back:
+      text: "The load balancer stops sending it requests (stops the damage). Auto Scaling replaces it to restore the desired capacity (repairs it)."
+
+  - id: c06-scale-ahead-of-a-daily-rush
+    page: guide/06-running-applications/07-sim-elasticity-with-auto-scaling.md
+    section: "Decision 5: the lunch rush arrives on time, every day"
+    level: understanding
+    topics: [auto-scaling, scaling-policies]
+    front:
+      text: Why is target tracking alone a little late for a rush that arrives at the same time every day, and what fixes it?
+    back:
+      text: It reacts after load rises, and new instances take minutes to start. Predictive scaling or a scheduled action adds them before the rush.
+
+  - id: c06-choose-a-load-balancer-type
+    page: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+    section: Choose ALB, NLB or GWLB; Classic is the previous generation
+    level: understanding
+    topics: [load-balancers]
+    front:
+      text: "Which load balancer type fits: (a) traffic through firewall appliances; (b) web requests routed by page address; (c) TCP or UDP at very high speed, or a fixed IP?"
+    back:
+      text: (a) Gateway Load Balancer. (b) Application Load Balancer. (c) Network Load Balancer.
+
+  # ---------------------------------------------------------------- 06.03 Containers and serverless
+
+  - id: c06-ecr-ecs-fargate-together
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: "Four names, four jobs: ECR stores, ECS and EKS orchestrate, Fargate supplies the computers"
+    level: understanding
+    topics: [containers, fargate]
+    front:
+      text: A container app runs on AWS with no servers to manage, using ECR, ECS and Fargate together. What does each of the three do?
+    back:
+      text: "ECR stores the image. ECS orchestrates: where containers run, how many, replacing failed copies. Fargate supplies the serverless compute they run on."
+
+  - id: c06-lambda-fargate-or-ec2-rule
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: "Lambda or Fargate: short event-driven work, or containers that keep running"
+    level: understanding
+    topics: [compute-choice]
+    front:
+      text: What rule of thumb picks between AWS Lambda, AWS Fargate and Amazon EC2 for a job?
+    back:
+      text: "Short work started by an event: Lambda. A container, or work that keeps running: Fargate. GPUs, full OS control or software that can't be containerized: EC2."
+
+  - id: c06-yours-on-every-compute-option
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: Your side of the line
+    level: recall
+    topics: [shared-responsibility, compute-choice]
+    front:
+      text: Which security responsibilities stay with the customer on every AWS compute option, from EC2 to Lambda?
+    back:
+      text: Your code and its libraries, your data, and the permissions your app gets through its IAM role.
+
+  - id: c06-flawed-library-in-a-fargate-image
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: Your side of the line
+    level: understanding
+    topics: [shared-responsibility, fargate]
+    front:
+      text: On AWS Fargate, how long does a flawed library inside your container image stay flawed?
+    back:
+      text: Until you rebuild and redeploy the image. AWS patches the platform under the containers, not what's inside your image; ECR scanning helps find the flaw.
+
+  - id: c06-lambda-keeps-no-state
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: Lambda runs your code only when an event triggers it
+    level: recall
+    topics: [lambda]
+    front:
+      text: Where must a Lambda function put anything it needs to keep for its next run?
+    back:
+      text: Outside the function, such as in Amazon S3 or a database. You can't rely on Lambda to keep state between runs.
+
+  - id: c06-lambda-needs-no-az-planning
+    page: guide/06-running-applications/03-containers-and-serverless.md
+    section: Lambda runs your code only when an event triggers it
+    level: understanding
+    topics: [lambda, high-availability]
+    front:
+      text: Why don't you spread a Lambda function that isn't connected to a VPC across Availability Zones yourself, as you do EC2 web servers?
+    back:
+      text: Lambda's availability is built in, with no maintenance windows, so there are no servers for you to place. With EC2, placing servers in several AZs is your job.
+
+  # ---------------------------------------------------------------- 06.04 Simpler paths
+
+  - id: c06-beanstalk-what-you-still-decide
+    page: guide/06-running-applications/04-simpler-paths.md
+    section: Elastic Beanstalk builds and runs the setup for your code
+    level: recall
+    topics: [elastic-beanstalk, shared-responsibility]
+    front:
+      text: Elastic Beanstalk builds the setup for your code. What does the customer still decide?
+    back:
+      text: The instance type and how many instances, whether to turn on managed platform updates, and when to start major platform upgrades.
+
+  - id: c06-ec2-beanstalk-lightsail-difference
+    page: guide/06-running-applications/04-simpler-paths.md
+    section: "EC2, Elastic Beanstalk or Lightsail: three ways to run a web app"
+    level: understanding
+    topics: [elastic-beanstalk, lightsail, compute-choice]
+    front:
+      text: EC2, Elastic Beanstalk and Lightsail can all run the same website. What differs among them?
+    back:
+      text: "Who assembles the setup and how you pay: you, by each part (EC2); Beanstalk, at no extra charge beyond the parts; or Lightsail, as a fixed monthly bundle."
+
+  - id: c06-what-batch-saves-you-building
+    page: guide/06-running-applications/04-simpler-paths.md
+    section: Batch runs large numbers of jobs from a queue
+    level: understanding
+    topics: [batch]
+    front:
+      text: To run a large queue of jobs on EC2 alone, what would you have to build that AWS Batch does for you?
+    back:
+      text: "The scheduling: which job runs where and when, and when to add or remove servers."
+
+  - id: c06-outposts-physical-security-line
+    page: guide/06-running-applications/04-simpler-paths.md
+    section: Your side of the line
+    level: understanding
+    topics: [outposts, shared-responsibility]
+    front:
+      text: On AWS Outposts, which work moves to the customer that AWS does in a Region?
+    back:
+      text: Providing space, power and network, and the physical security and access control around the Outpost. AWS still monitors, patches and maintains it.
