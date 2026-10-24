@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="780" viewBox="0 0 680 780" role="img" aria-labelledby="t d">
+<title id="t">Ten AWS changes between November 2025 and January 2027</title>
+<desc id="d">Vertical timeline with a line marking today, 2026-10-24. Already happened: 2025-11-07 Snowball, Migration Hub and Application Discovery Service close to new customers; 2025-12-02 new Support plans, and Developer and Business Support take no new customers; 2026-04-30 AWS Audit Manager closes to new accounts; 2026-05-20 Amazon Inspector Classic shuts down; 2026-07-30 Amazon Kendra closes to new customers; 2026-09-16 AWS announces a new sign-up experience; by 2026-09-27 the exam guide is revised, still CLF-C02. Announced, still to come: 2026-10-29 WorkSpaces Secure Browser closes to new customers; 2026-12-31 Snowball support ends, and the Italian and German exams retire after this day; 2027-01-01 the Developer, Business and Enterprise On-Ramp Support plans end.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .spine { stroke: var(--axis); stroke-width: 2; }
+  .ring { fill: var(--surface); stroke: var(--s1); stroke-width: 2; }
+  .today { stroke: var(--ink); stroke-width: 1.5; }
+  .date { fill: var(--ink2); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .zone { fill: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: 0.5px; }
+</style>
+<rect width="680" height="780" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Ten changes a learner would meet in about fourteen months</text>
+<text class="sub" x="16" y="50">Selected AWS renames, closures and plan changes, Nov 2025 to Jan 2027 (checked 2026-10-23)</text>
+<line class="spine" x1="120" x2="120" y1="92" y2="692"/>
+<line class="axis" x1="114" x2="120" y1="114.1" y2="114.1"/>
+<text class="tick" x="110" y="118.1" text-anchor="end">Nov 2025</text>
+<line class="axis" x1="114" x2="120" y1="193.3" y2="193.3"/>
+<text class="tick" x="110" y="197.3" text-anchor="end">Jan 2026</text>
+<line class="axis" x1="114" x2="120" y1="310.2" y2="310.2"/>
+<text class="tick" x="110" y="314.2" text-anchor="end">Apr 2026</text>
+<line class="axis" x1="114" x2="120" y1="428.4" y2="428.4"/>
+<text class="tick" x="110" y="432.4" text-anchor="end">Jul 2026</text>
+<line class="axis" x1="114" x2="120" y1="547.8" y2="547.8"/>
+<text class="tick" x="110" y="551.8" text-anchor="end">Oct 2026</text>
+<line class="axis" x1="114" x2="120" y1="667.3" y2="667.3"/>
+<text class="tick" x="110" y="671.3" text-anchor="end">Jan 2027</text>
+<line class="today" x1="112" x2="664" y1="577.7" y2="577.7"/>
+<text class="zone" x="664" y="571.7" text-anchor="end">ALREADY HAPPENED ↑</text>
+<text class="zone" x="664" y="592.7" text-anchor="end">ANNOUNCED, STILL TO COME ↓</text>
+<text class="lab" x="16" y="581.7">Today</text>
+<text class="tick" x="16" y="597.7">2026-10-24</text>
+<circle class="dot-s1" cx="120" cy="121.9" r="6"><title>2025-11-07: Snowball, Migration Hub and Application Discovery Service close to new customers (happened)</title></circle>
+<line class="lead" x1="128" x2="144" y1="121.9" y2="121.9"/>
+<text class="date" x="148" y="125.9">2025-11-07</text>
+<text class="lab" x="230" y="125.9">Snowball, Migration Hub and Application Discovery</text>
+<text class="lab" x="230" y="142.9">Service close to new customers</text>
+<circle class="dot-s1" cx="120" cy="154.3" r="6"><title>2025-12-02: New Support plans; Developer and Business Support take no new customers (happened)</title></circle>
+<line class="lead" x1="128" x2="144" y1="154.3" y2="174.9"/>
+<text class="date" x="148" y="178.9">2025-12-02</text>
+<text class="lab" x="230" y="178.9">New Support plans; Developer and Business Support</text>
+<text class="lab" x="230" y="195.9">take no new customers</text>
+<circle class="dot-s1" cx="120" cy="347.8" r="6"><title>2026-04-30: AWS Audit Manager closes to new accounts (happened)</title></circle>
+<line class="lead" x1="128" x2="144" y1="347.8" y2="347.8"/>
+<text class="date" x="148" y="351.8">2026-04-30</text>
+<text class="lab" x="230" y="351.8">AWS Audit Manager closes to new accounts</text>
+<circle class="dot-s1" cx="120" cy="373.8" r="6"><title>2026-05-20: Amazon Inspector Classic shuts down (happened)</title></circle>
+<line class="lead" x1="128" x2="144" y1="373.8" y2="383.8"/>
+<text class="date" x="148" y="387.8">2026-05-20</text>
+<text class="lab" x="230" y="387.8">Amazon Inspector Classic shuts down</text>
+<circle class="dot-s1" cx="120" cy="466.0" r="6"><title>2026-07-30: Amazon Kendra closes to new customers (happened)</title></circle>
+<line class="lead" x1="128" x2="144" y1="466.0" y2="466.0"/>
+<text class="date" x="148" y="470.0">2026-07-30</text>
+<text class="lab" x="230" y="470.0">Amazon Kendra closes to new customers</text>
+<circle class="dot-s1" cx="120" cy="528.4" r="6"><title>2026-09-16: AWS announces a new sign-up experience (happened)</title></circle>
+<line class="lead" x1="128" x2="144" y1="528.4" y2="528.4"/>
+<text class="date" x="148" y="532.4">2026-09-16</text>
+<text class="lab" x="230" y="532.4">AWS announces a new sign-up experience</text>
+<circle class="dot-s1" cx="120" cy="542.6" r="6"><title>2026-09-27: Exam guide revised by this date; still CLF-C02 (happened)</title></circle>
+<line class="lead" x1="128" x2="144" y1="542.6" y2="561.7"/>
+<text class="date" x="148" y="565.7">2026-09-27</text>
+<text class="lab" x="230" y="565.7">Exam guide revised by this date; still CLF-C02</text>
+<circle class="ring" cx="120" cy="584.2" r="6"><title>2026-10-29: WorkSpaces Secure Browser closes to new customers (announced)</title></circle>
+<line class="lead" x1="128" x2="144" y1="584.2" y2="609.7"/>
+<text class="date" x="148" y="613.7">2026-10-29</text>
+<text class="lab" x="230" y="613.7">WorkSpaces Secure Browser closes to new customers</text>
+<circle class="ring" cx="120" cy="666.0" r="6"><title>2026-12-31: Snowball support ends; Italian and German exams retire after this day (announced)</title></circle>
+<line class="lead" x1="128" x2="144" y1="666.0" y2="666.0"/>
+<text class="date" x="148" y="670.0">2026-12-31</text>
+<text class="lab" x="230" y="670.0">Snowball support ends; Italian and German exams</text>
+<text class="lab" x="230" y="687.0">retire after this day</text>
+<circle class="ring" cx="120" cy="667.3" r="6"><title>2027-01-01: Developer, Business and Enterprise On-Ramp Support plans end (announced)</title></circle>
+<line class="lead" x1="128" x2="144" y1="667.3" y2="719.0"/>
+<text class="date" x="148" y="723.0">2027-01-01</text>
+<text class="lab" x="230" y="723.0">Developer, Business and Enterprise On-Ramp Support</text>
+<text class="lab" x="230" y="740.0">plans end</text>
+<text class="tick" x="16" y="770">Filled dots: already happened. Rings: announced, still to come.</text>
+</svg>

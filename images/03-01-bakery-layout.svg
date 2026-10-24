@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="688" viewBox="0 0 680 688" role="img" aria-labelledby="t d">
+<title id="t">The bakery's resources across Availability Zones, before and after adding a second AZ</title>
+<desc id="d">Two panels, each with three Availability Zone columns, a, b and c, in US East (N. Virginia). Before: the only web server (EC2) and the order database (RDS, no standby) are both in AZ a; the order functions (Lambda) and the cake photos (S3) span all three AZs, because AWS runs them across AZs. If AZ a fails, the site stops, because the web server and database are both there. After: a load balancer spans AZs a and b and spreads orders across healthy servers; web server 1 is in AZ a and web server 2 in AZ b; the database has its primary in AZ a and a standby in AZ b that takes over; Lambda and S3 are unchanged. If AZ a fails, web server 2 keeps taking orders and the standby database takes over.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --az-fill:#d9e8fb; --you-fill:#fbe1d6; --dc-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --az-fill:#1b3554; --you-fill:#4d2716; --dc-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .region { fill: none; stroke: var(--ink2); stroke-width: 1.5; }
+  .region2 { fill: none; stroke: var(--ink2); stroke-width: 1.5; stroke-dasharray: 6 4; }
+  .az { fill: var(--az-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .dc { fill: var(--dc-fill); stroke: var(--ink2); stroke-width: 1; }
+  .you { fill: var(--you-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .gone { fill: none; stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 4 3; }
+  .edge { fill: var(--dc-fill); stroke: var(--ink2); stroke-width: 1; }
+  .link { stroke: var(--ink2); stroke-width: 2; fill: none; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .tiny { fill: var(--ink2); font-size: 11px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .minline { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 5 4; }
+</style>
+<rect width="680" height="688" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Where the bakery's parts live, before and after</text>
+<text class="sub" x="16" y="48">Orange boxes are the bakery's resources; blue columns are Availability Zones in US East (N. Virginia)</text>
+<text class="head" x="16" y="80">Before: the server and database sit in one AZ</text>
+<rect class="az" x="130" y="94" width="168" height="198" rx="6"/>
+<text class="boxt" x="214.0" y="112" text-anchor="middle">AZ a</text>
+<rect class="az" x="310" y="94" width="168" height="198" rx="6"/>
+<text class="boxt" x="394.0" y="112" text-anchor="middle">AZ b</text>
+<rect class="az" x="490" y="94" width="168" height="198" rx="6"/>
+<text class="boxt" x="574.0" y="112" text-anchor="middle">AZ c</text>
+<text class="small" x="120" y="134.0" text-anchor="end">Web server</text>
+<text class="small" x="120" y="147.0" text-anchor="end">(EC2)</text>
+<rect class="you" x="136" y="120" width="156" height="34" rx="5"/>
+<text class="tiny" x="214.0" y="141" text-anchor="middle">the only web server</text>
+<text class="small" x="120" y="176.0" text-anchor="end">Order database</text>
+<text class="small" x="120" y="189.0" text-anchor="end">(RDS)</text>
+<rect class="you" x="136" y="162" width="156" height="34" rx="5"/>
+<text class="tiny" x="214.0" y="183" text-anchor="middle">the database, no standby</text>
+<text class="small" x="120" y="218.0" text-anchor="end">Order functions</text>
+<text class="small" x="120" y="231.0" text-anchor="end">(Lambda)</text>
+<rect class="you" x="136" y="204" width="516" height="34" rx="5"/>
+<text class="tiny" x="394.0" y="225" text-anchor="middle">AWS runs them across AZs for you</text>
+<text class="small" x="120" y="260.0" text-anchor="end">Cake photos</text>
+<text class="small" x="120" y="273.0" text-anchor="end">(S3)</text>
+<rect class="you" x="136" y="246" width="516" height="34" rx="5"/>
+<text class="tiny" x="394.0" y="267" text-anchor="middle">stored across at least three AZs</text>
+<text class="small" x="16" y="310.0">If AZ a fails, the site stops: the web server and the database are both there. The photos and</text>
+<text class="small" x="16" y="326.0">functions would survive, but nobody could place an order.</text>
+<text class="head" x="16" y="366">After: a copy of each zonal part in a second AZ</text>
+<rect class="az" x="130" y="380" width="168" height="240" rx="6"/>
+<text class="boxt" x="214.0" y="398" text-anchor="middle">AZ a</text>
+<rect class="az" x="310" y="380" width="168" height="240" rx="6"/>
+<text class="boxt" x="394.0" y="398" text-anchor="middle">AZ b</text>
+<rect class="az" x="490" y="380" width="168" height="240" rx="6"/>
+<text class="boxt" x="574.0" y="398" text-anchor="middle">AZ c</text>
+<text class="small" x="120" y="420.0" text-anchor="end">Load balancer</text>
+<rect class="you" x="136" y="406" width="336" height="34" rx="5"/>
+<text class="tiny" x="304.0" y="427" text-anchor="middle">spreads orders across healthy servers</text>
+<text class="small" x="120" y="462.0" text-anchor="end">Web servers</text>
+<text class="small" x="120" y="475.0" text-anchor="end">(EC2)</text>
+<rect class="you" x="136" y="448" width="156" height="34" rx="5"/>
+<text class="tiny" x="214.0" y="469" text-anchor="middle">web server 1</text>
+<rect class="you" x="316" y="448" width="156" height="34" rx="5"/>
+<text class="tiny" x="394.0" y="469" text-anchor="middle">web server 2</text>
+<text class="small" x="120" y="504.0" text-anchor="end">Order database</text>
+<text class="small" x="120" y="517.0" text-anchor="end">(RDS)</text>
+<rect class="you" x="136" y="490" width="156" height="34" rx="5"/>
+<text class="tiny" x="214.0" y="511" text-anchor="middle">primary</text>
+<rect class="you" x="316" y="490" width="156" height="34" rx="5"/>
+<text class="tiny" x="394.0" y="511" text-anchor="middle">standby, takes over</text>
+<text class="small" x="120" y="546.0" text-anchor="end">Order functions</text>
+<text class="small" x="120" y="559.0" text-anchor="end">(Lambda)</text>
+<rect class="you" x="136" y="532" width="516" height="34" rx="5"/>
+<text class="tiny" x="394.0" y="553" text-anchor="middle">AWS runs them across AZs for you</text>
+<text class="small" x="120" y="588.0" text-anchor="end">Cake photos</text>
+<text class="small" x="120" y="601.0" text-anchor="end">(S3)</text>
+<rect class="you" x="136" y="574" width="516" height="34" rx="5"/>
+<text class="tiny" x="394.0" y="595" text-anchor="middle">stored across at least three AZs</text>
+<text class="small" x="16" y="638.0">If AZ a fails, web server 2 keeps taking orders and the standby database takes over. Lambda and S3</text>
+<text class="small" x="16" y="654.0">needed no change.</text>
+</svg>

@@ -4,6 +4,14 @@ The guide's pages in reading order. Modules not listed here are still being writ
 
 Before your first lab, work through the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md).
 
+## Start here
+
+- [Welcome](00-start-here/01-welcome.md) · Lesson
+- [How to study with this guide](00-start-here/02-how-to-study-with-this-guide.md) · Lesson
+- [The exam at a glance](00-start-here/03-the-exam-at-a-glance.md) · Reference
+- [AWS changes fast](00-start-here/04-aws-changes-fast.md) · Lesson
+- [Before your first lab](00-start-here/05-before-your-first-lab.md) · Task card
+
 ## Module 02: Why organizations use the cloud
 
 - [Module 02: Why organizations use the cloud](02-why-the-cloud/00-brief.md) · Module brief
@@ -14,6 +22,16 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [The Well-Architected Framework](02-why-the-cloud/05-the-well-architected-framework.md) · Lesson
 - [Lab 01: Create, find and delete your first storage bucket](02-why-the-cloud/06-lab-01-first-resource.md) · Lab
 - [Simulation S1: Finish the bakery's cost comparison](02-why-the-cloud/07-sim-demand-curve.md) · Simulation
+
+## Module 03: AWS around the world
+
+- [Module 03: AWS around the world](03-aws-around-the-world/00-brief.md) · Module brief
+- [Regions, Availability Zones and data centers](03-aws-around-the-world/01-regions-availability-zones-data-centers.md) · Lesson
+- [Choosing a Region](03-aws-around-the-world/02-choosing-a-region.md) · Lesson
+- [Surviving failure](03-aws-around-the-world/03-surviving-failure.md) · Lesson
+- [The edge](03-aws-around-the-world/04-the-edge.md) · Lesson
+- [Lab 02: See Regions, Availability Zones and AWS Health in your own account](03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md) · Lab
+- [Simulation S2: The blast-radius ladder and three recovery plans](03-aws-around-the-world/06-sim-blast-radius.md) · Simulation
 
 ## Module 04: Who secures what: shared responsibility and access
 

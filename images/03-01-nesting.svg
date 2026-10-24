@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="500" viewBox="0 0 680 500" role="img" aria-labelledby="t d">
+<title id="t">How Regions, Availability Zones and data centers nest</title>
+<desc id="d">A large box labeled Region, one area of the world such as Europe (Frankfurt), with at least three Availability Zones, isolated from other Regions. Inside it, three Availability Zone boxes, each with its own power, cooling and network. The first holds three data centers, the second one, the third two; the counts are illustrative. Lines join the AZs: fast, redundant private fiber, with traffic between AZs encrypted; AZs are many kilometers apart but all within 100 km (60 miles) of each other. To the right, a dashed box labeled Another Region: much farther away than AZs are from each other, and nothing is copied there unless you copy it. Below, outside the Regions, four small boxes labeled Edge location, covered in lesson 03.04.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --az-fill:#d9e8fb; --you-fill:#fbe1d6; --dc-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --az-fill:#1b3554; --you-fill:#4d2716; --dc-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .region { fill: none; stroke: var(--ink2); stroke-width: 1.5; }
+  .region2 { fill: none; stroke: var(--ink2); stroke-width: 1.5; stroke-dasharray: 6 4; }
+  .az { fill: var(--az-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .dc { fill: var(--dc-fill); stroke: var(--ink2); stroke-width: 1; }
+  .you { fill: var(--you-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .gone { fill: none; stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 4 3; }
+  .edge { fill: var(--dc-fill); stroke: var(--ink2); stroke-width: 1; }
+  .link { stroke: var(--ink2); stroke-width: 2; fill: none; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .boxt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .tiny { fill: var(--ink2); font-size: 11px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .minline { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 5 4; }
+</style>
+<rect width="680" height="500" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">A Region holds Availability Zones; an AZ holds data centers</text>
+<text class="sub" x="16" y="48">How AWS's global infrastructure nests, drawn as boxes inside boxes (not to scale)</text>
+<rect class="region" x="16" y="66" width="500" height="336" rx="10"/>
+<text class="head" x="30" y="88">Region: one area of the world, for example Europe (Frankfurt)</text>
+<text class="small" x="30" y="106">At least three Availability Zones, isolated from other Regions</text>
+<rect class="az" x="34" y="122" width="146" height="200" rx="8"/>
+<text class="boxt" x="107.0" y="142" text-anchor="middle">Availability Zone</text>
+<text class="tiny" x="107.0" y="158.0" text-anchor="middle">own power, cooling</text>
+<text class="tiny" x="107.0" y="171.0" text-anchor="middle">and network</text>
+<rect class="dc" x="48" y="180" width="118" height="32" rx="4"/>
+<text class="small" x="107.0" y="200" text-anchor="middle">Data center</text>
+<rect class="dc" x="48" y="218" width="118" height="32" rx="4"/>
+<text class="small" x="107.0" y="238" text-anchor="middle">Data center</text>
+<rect class="dc" x="48" y="256" width="118" height="32" rx="4"/>
+<text class="small" x="107.0" y="276" text-anchor="middle">Data center</text>
+<text class="tiny" x="107.0" y="310" text-anchor="middle">3 data centers (illustrative)</text>
+<rect class="az" x="194" y="122" width="146" height="200" rx="8"/>
+<text class="boxt" x="267.0" y="142" text-anchor="middle">Availability Zone</text>
+<text class="tiny" x="267.0" y="158.0" text-anchor="middle">own power, cooling</text>
+<text class="tiny" x="267.0" y="171.0" text-anchor="middle">and network</text>
+<rect class="dc" x="208" y="180" width="118" height="32" rx="4"/>
+<text class="small" x="267.0" y="200" text-anchor="middle">Data center</text>
+<text class="tiny" x="267.0" y="310" text-anchor="middle">1 data center (illustrative)</text>
+<rect class="az" x="354" y="122" width="146" height="200" rx="8"/>
+<text class="boxt" x="427.0" y="142" text-anchor="middle">Availability Zone</text>
+<text class="tiny" x="427.0" y="158.0" text-anchor="middle">own power, cooling</text>
+<text class="tiny" x="427.0" y="171.0" text-anchor="middle">and network</text>
+<rect class="dc" x="368" y="180" width="118" height="32" rx="4"/>
+<text class="small" x="427.0" y="200" text-anchor="middle">Data center</text>
+<rect class="dc" x="368" y="218" width="118" height="32" rx="4"/>
+<text class="small" x="427.0" y="238" text-anchor="middle">Data center</text>
+<text class="tiny" x="427.0" y="310" text-anchor="middle">2 data centers (illustrative)</text>
+<path class="link" d="M107.0,322 L107.0,344 L267.0,344 L267.0,322"/>
+<path class="link" d="M267.0,322 L267.0,344 L427.0,344 L427.0,322"/>
+<text class="small" x="266.0" y="362" text-anchor="middle">Linked by fast, redundant private fiber; traffic between AZs is encrypted</text>
+<text class="small" x="266.0" y="378" text-anchor="middle">AZs are many kilometers apart, but all within 100 km (60 miles) of each other</text>
+<rect class="region2" x="532" y="66" width="132" height="150" rx="10"/>
+<text class="boxt" x="598.0" y="92.0" text-anchor="middle">Another Region</text>
+<text class="tiny" x="598.0" y="114.0" text-anchor="middle">Much farther away</text>
+<text class="tiny" x="598.0" y="128.0" text-anchor="middle">than AZs are from</text>
+<text class="tiny" x="598.0" y="142.0" text-anchor="middle">each other. Nothing</text>
+<text class="tiny" x="598.0" y="156.0" text-anchor="middle">is copied here</text>
+<text class="tiny" x="598.0" y="170.0" text-anchor="middle">unless you copy it.</text>
+<text class="head" x="16" y="430">Outside the Regions</text>
+<rect class="edge" x="186" y="412" width="110" height="26" rx="13"/>
+<text class="tiny" x="241" y="429" text-anchor="middle">Edge location</text>
+<rect class="edge" x="308" y="412" width="110" height="26" rx="13"/>
+<text class="tiny" x="363" y="429" text-anchor="middle">Edge location</text>
+<rect class="edge" x="430" y="412" width="110" height="26" rx="13"/>
+<text class="tiny" x="485" y="429" text-anchor="middle">Edge location</text>
+<rect class="edge" x="552" y="412" width="110" height="26" rx="13"/>
+<text class="tiny" x="607" y="429" text-anchor="middle">Edge location</text>
+<text class="note" x="16" y="460">Edge locations are smaller sites in many more cities, outside the Regions. Lesson 03.04 covers them.</text>
+</svg>

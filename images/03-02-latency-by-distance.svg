@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="336" viewBox="0 0 680 336" role="img" aria-labelledby="t d">
+<title id="t">Shortest possible round-trip delay through fiber, by distance</title>
+<desc id="d">Horizontal bar chart of the shortest possible round trip through a straight fiber cable, from AWS's figure of 4.9 microseconds per kilometer, doubled for there and back. 100 km, the most two AZs in a Region are apart: about 1 ms. 1,000 km: about 10 ms. 3,000 km: about 29 ms. 6,000 km: about 59 ms. 10,000 km: about 98 ms. Real routes are longer and pass through equipment, so real delays are higher.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --az-fill:#d9e8fb; --you-fill:#fbe1d6; --zone-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --az-fill:#1b3554; --you-fill:#4d2716; --zone-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .area { fill: var(--zone-fill); stroke: var(--axis); stroke-width: 1; }
+  .eu { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 7 4; }
+  .reg { fill: var(--az-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .regx { fill: var(--surface); stroke: var(--muted); stroke-width: 1.2; }
+  .cust { fill: var(--you-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .flow { stroke: var(--ink); stroke-width: 2; fill: none; }
+  .flowx { stroke: var(--muted); stroke-width: 2; fill: none; stroke-dasharray: 6 4; }
+  .arrow { fill: var(--ink); }
+  .arrowx { fill: var(--muted); }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .boxt { fill: var(--ink); font-size: 12.5px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .tiny { fill: var(--ink2); font-size: 11px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .other { fill: var(--muted); }
+</style>
+<rect width="680" height="336" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Distance alone puts a floor under delay</text>
+<text class="sub" x="16" y="48">Shortest possible round trip through fiber, in milliseconds (ms), for a straight cable of each length</text>
+<text class="lab" x="98" y="100" text-anchor="end">100 km</text>
+<path class="s1" d="M110.0,86.0 L110.3,86.0 Q114.3,86.0 114.3,90.0 L114.3,104.0 Q114.3,108.0 110.3,108.0 L110.0,108.0 Z"><title>100 km: at least 1 ms there and back</title></path>
+<text class="lab" x="122.3" y="102">about 1 ms: the most two AZs in a Region are apart</text>
+<text class="lab" x="98" y="140" text-anchor="end">1,000 km</text>
+<path class="s1" d="M110.0,126.0 L149.1,126.0 Q153.1,126.0 153.1,130.0 L153.1,144.0 Q153.1,148.0 149.1,148.0 L110.0,148.0 Z"><title>1,000 km: at least 10 ms there and back</title></path>
+<text class="lab" x="161.1" y="142">about 10 ms</text>
+<text class="lab" x="98" y="180" text-anchor="end">3,000 km</text>
+<path class="s1" d="M110.0,166.0 L235.4,166.0 Q239.4,166.0 239.4,170.0 L239.4,184.0 Q239.4,188.0 235.4,188.0 L110.0,188.0 Z"><title>3,000 km: at least 29 ms there and back</title></path>
+<text class="lab" x="247.4" y="182">about 29 ms</text>
+<text class="lab" x="98" y="220" text-anchor="end">6,000 km</text>
+<path class="s1" d="M110.0,206.0 L364.7,206.0 Q368.7,206.0 368.7,210.0 L368.7,224.0 Q368.7,228.0 364.7,228.0 L110.0,228.0 Z"><title>6,000 km: at least 59 ms there and back</title></path>
+<text class="lab" x="376.7" y="222">about 59 ms</text>
+<text class="lab" x="98" y="260" text-anchor="end">10,000 km</text>
+<path class="s1" d="M110.0,246.0 L537.2,246.0 Q541.2,246.0 541.2,250.0 L541.2,264.0 Q541.2,268.0 537.2,268.0 L110.0,268.0 Z"><title>10,000 km: at least 98 ms there and back</title></path>
+<text class="lab" x="549.2" y="262">about 98 ms</text>
+<line class="axis" x1="110" x2="110" y1="82" y2="270"/>
+<text class="small" x="16" y="294.0">AWS gives about 4.9 microseconds of delay per kilometer of fiber. A request and its answer travel both</text>
+<text class="small" x="16" y="311.0">ways, so we doubled it. Real routes bend and pass through equipment, so real delays are higher.</text>
+</svg>

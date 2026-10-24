@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="364" viewBox="0 0 680 364" role="img" aria-labelledby="t d">
+<title id="t">AZ names mapped to AZ IDs in two accounts</title>
+<desc id="d">Three columns. In the middle, three physical Availability Zones labeled by AZ ID: use1-az1, use1-az2, use1-az3. On the left, your account's AZ names: us-east-1a points to use1-az1, us-east-1b to use1-az2, us-east-1c to use1-az3. On the right, a friend's account: us-east-1a points to use1-az2, us-east-1b to use1-az3, us-east-1c to use1-az1. The two us-east-1a lines are drawn thick to show that the same name is a different physical AZ in each account. The mapping is a made-up example. AWS says accounts created from November 2025 get the same mapping, while older accounts in its oldest Regions may differ. To agree on a place with another account, compare AZ IDs.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --id-fill:#d9e8fb; --name-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --id-fill:#1b3554; --name-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .idbox { fill: var(--id-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .namebox { fill: var(--name-fill); stroke: var(--axis); stroke-width: 1; }
+  .map { stroke: var(--muted); stroke-width: 1.5; fill: none; }
+  .maphi { stroke: var(--s2); stroke-width: 3; fill: none; }
+  .mono { fill: var(--ink); font-size: 13px; font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+  .head { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+</style>
+<rect width="680" height="364" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">The same AZ name can point to different places</text>
+<text class="sub" x="16" y="48">In older accounts, each account's names are mapped on their own. AZ IDs never change.</text>
+<text class="head" x="110.0" y="86" text-anchor="middle">Your account: AZ names</text>
+<text class="head" x="340.0" y="86" text-anchor="middle">Physical AZs: AZ IDs</text>
+<text class="head" x="570.0" y="86" text-anchor="middle">A friend's account</text>
+<rect class="idbox" x="270" y="110" width="140" height="34" rx="5"/>
+<text class="mono" x="340.0" y="132" text-anchor="middle">use1-az1</text>
+<rect class="idbox" x="270" y="166" width="140" height="34" rx="5"/>
+<text class="mono" x="340.0" y="188" text-anchor="middle">use1-az2</text>
+<rect class="idbox" x="270" y="222" width="140" height="34" rx="5"/>
+<text class="mono" x="340.0" y="244" text-anchor="middle">use1-az3</text>
+<rect class="namebox" x="40" y="110" width="140" height="34" rx="5"/>
+<text class="mono" x="110.0" y="132" text-anchor="middle">us-east-1a</text>
+<path class="maphi" d="M180,127.0 C230,127.0 220,127.0 270,127.0"/>
+<rect class="namebox" x="40" y="166" width="140" height="34" rx="5"/>
+<text class="mono" x="110.0" y="188" text-anchor="middle">us-east-1b</text>
+<path class="map" d="M180,183.0 C230,183.0 220,183.0 270,183.0"/>
+<rect class="namebox" x="40" y="222" width="140" height="34" rx="5"/>
+<text class="mono" x="110.0" y="244" text-anchor="middle">us-east-1c</text>
+<path class="map" d="M180,239.0 C230,239.0 220,239.0 270,239.0"/>
+<rect class="namebox" x="500" y="110" width="140" height="34" rx="5"/>
+<text class="mono" x="570.0" y="132" text-anchor="middle">us-east-1a</text>
+<path class="maphi" d="M500,127.0 C450,127.0 460,183.0 410,183.0"/>
+<rect class="namebox" x="500" y="166" width="140" height="34" rx="5"/>
+<text class="mono" x="570.0" y="188" text-anchor="middle">us-east-1b</text>
+<path class="map" d="M500,183.0 C450,183.0 460,239.0 410,239.0"/>
+<rect class="namebox" x="500" y="222" width="140" height="34" rx="5"/>
+<text class="mono" x="570.0" y="244" text-anchor="middle">us-east-1c</text>
+<path class="map" d="M500,239.0 C450,239.0 460,127.0 410,127.0"/>
+<text class="lab" x="16" y="290">Thick lines: <tspan font-family="monospace">us-east-1a</tspan> is a different physical AZ in each of these two accounts.</text>
+<text class="small" x="16" y="310">To agree on a place with another account, compare AZ IDs, not names.</text>
+<text class="note" x="16" y="334">Made-up example mapping. AWS says accounts created from November 2025 get the same mapping;</text>
+<text class="note" x="16" y="350">older accounts in its oldest Regions may differ. Checked 2026-10-23.</text>
+</svg>

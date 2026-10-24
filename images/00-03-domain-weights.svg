@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="332" viewBox="0 0 680 332" role="img" aria-labelledby="t d">
+<title id="t">CLF-C02 domain weights</title>
+<desc id="d">Horizontal bar chart of the four exam domains and their weights. Domain 1, Cloud Concepts: 24%, about 12 of 50 scored questions. Domain 2, Security and Compliance: 30%, about 15. Domain 3, Cloud Technology and Services: 34%, about 17. Domain 4, Billing, Pricing, and Support: 12%, about 6.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+</style>
+<rect width="680" height="332" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Security and technology make up almost two-thirds of the exam</text>
+<text class="sub" x="16" y="50">CLF-C02 domain weights from the exam guide (checked 2026-10-23)</text>
+<line class="axis" x1="250.0" x2="250.0" y1="78" y2="280"/>
+<text class="tick" x="250.0" y="298" text-anchor="middle">0%</text>
+<line class="grid" x1="312.5" x2="312.5" y1="78" y2="280"/>
+<text class="tick" x="312.5" y="298" text-anchor="middle">10%</text>
+<line class="grid" x1="375.0" x2="375.0" y1="78" y2="280"/>
+<text class="tick" x="375.0" y="298" text-anchor="middle">20%</text>
+<line class="grid" x1="437.5" x2="437.5" y1="78" y2="280"/>
+<text class="tick" x="437.5" y="298" text-anchor="middle">30%</text>
+<line class="grid" x1="500.0" x2="500.0" y1="78" y2="280"/>
+<text class="tick" x="500.0" y="298" text-anchor="middle">40%</text>
+<text class="lab" x="16" y="97">Domain 1</text>
+<text x="16" y="114">Cloud Concepts</text>
+<path class="s1" d="M250.0,84.0 L396.0,84.0 Q400.0,84.0 400.0,88.0 L400.0,102.0 Q400.0,106.0 396.0,106.0 L250.0,106.0 Z"><title>Domain 1, Cloud Concepts: 24%, about 12 scored questions</title></path>
+<text class="lab" x="408.0" y="100">24% · about 12 questions</text>
+<text class="lab" x="16" y="149">Domain 2</text>
+<text x="16" y="166">Security and Compliance</text>
+<path class="s1" d="M250.0,136.0 L433.5,136.0 Q437.5,136.0 437.5,140.0 L437.5,154.0 Q437.5,158.0 433.5,158.0 L250.0,158.0 Z"><title>Domain 2, Security and Compliance: 30%, about 15 scored questions</title></path>
+<text class="lab" x="445.5" y="152">30% · about 15 questions</text>
+<text class="lab" x="16" y="201">Domain 3</text>
+<text x="16" y="218">Cloud Technology and Services</text>
+<path class="s1" d="M250.0,188.0 L458.5,188.0 Q462.5,188.0 462.5,192.0 L462.5,206.0 Q462.5,210.0 458.5,210.0 L250.0,210.0 Z"><title>Domain 3, Cloud Technology and Services: 34%, about 17 scored questions</title></path>
+<text class="lab" x="470.5" y="204">34% · about 17 questions</text>
+<text class="lab" x="16" y="253">Domain 4</text>
+<text x="16" y="270">Billing, Pricing, and Support</text>
+<path class="s1" d="M250.0,240.0 L321.0,240.0 Q325.0,240.0 325.0,244.0 L325.0,258.0 Q325.0,262.0 321.0,262.0 L250.0,262.0 Z"><title>Domain 4, Billing, Pricing, and Support: 12%, about 6 scored questions</title></path>
+<text class="lab" x="333.0" y="256">12% · about 6 questions</text>
+<text class="tick" x="16" y="320">Questions: our arithmetic, weight × 50 scored questions. Each exam form varies.</text>
+</svg>

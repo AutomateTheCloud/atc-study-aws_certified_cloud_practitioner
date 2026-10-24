@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="470" viewBox="0 0 680 470" role="img" aria-labelledby="t d">
+<title id="t">Schematic of the bakery's customers and nearby AWS Regions</title>
+<desc id="d">A schematic, not to scale, in two areas. United States: US customers, who order for pickup at the US shop, with a solid arrow labeled short trip to US East (N. Virginia), us-east-1, where the site runs today; US East (Ohio), us-east-2, is shown as another US Region. Europe: a dashed boundary marks the European Union. Inside it, German customers have a solid arrow labeled short trip to Europe (Frankfurt), eu-central-1, in Germany; Europe (Ireland), eu-west-1, and Europe (Paris), eu-west-3, are also inside the EU boundary. Blue boxes are Regions that could hold that group of customers' data. Outside the EU boundary but in Europe: Europe (London), eu-west-2, in the UK, and Europe (Zurich), eu-central-2, in Switzerland, both marked not EU. A dashed arrow runs from the German customers to N. Virginia; the note says each request would cross an ocean, adding delay, and the German customers' data would leave the EU, which breaks the bakery's rule.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --az-fill:#d9e8fb; --you-fill:#fbe1d6; --zone-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --az-fill:#1b3554; --you-fill:#4d2716; --zone-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .area { fill: var(--zone-fill); stroke: var(--axis); stroke-width: 1; }
+  .eu { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 7 4; }
+  .reg { fill: var(--az-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .regx { fill: var(--surface); stroke: var(--muted); stroke-width: 1.2; }
+  .cust { fill: var(--you-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .flow { stroke: var(--ink); stroke-width: 2; fill: none; }
+  .flowx { stroke: var(--muted); stroke-width: 2; fill: none; stroke-dasharray: 6 4; }
+  .arrow { fill: var(--ink); }
+  .arrowx { fill: var(--muted); }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .boxt { fill: var(--ink); font-size: 12.5px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .tiny { fill: var(--ink2); font-size: 11px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .other { fill: var(--muted); }
+</style>
+<rect width="680" height="470" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">The bakery's customers and the Regions near them</text>
+<text class="sub" x="16" y="48">A schematic, not a map: distances and positions are not to scale</text>
+<rect class="area" x="16" y="70" width="250" height="300" rx="12"/>
+<text class="head" x="30" y="94">United States</text>
+<rect class="cust" x="40" y="112" width="200" height="46" rx="6"/>
+<text class="boxt" x="140.0" y="129" text-anchor="middle">US customers</text>
+<text class="tiny" x="140.0" y="144.0" text-anchor="middle">order for pickup at the US shop</text>
+<rect class="reg" x="40" y="220" width="200" height="50" rx="6"/>
+<text class="boxt" x="140.0" y="237" text-anchor="middle">US East (N. Virginia)</text>
+<text class="tiny" x="140.0" y="252.0" text-anchor="middle">us-east-1: the site runs here today</text>
+<rect class="reg" x="40" y="300" width="200" height="50" rx="6"/>
+<text class="boxt" x="140.0" y="317" text-anchor="middle">US East (Ohio)</text>
+<text class="tiny" x="140.0" y="332.0" text-anchor="middle">us-east-2: another US Region</text>
+<line class="flow" x1="140" y1="160" x2="140.0" y2="209.0"/>
+<path class="arrow" d="M140,218 L145.0,208.0 L135.0,208.0 Z"/>
+<text class="tiny" x="148" y="194">short trip</text>
+<rect class="area" x="300" y="70" width="364" height="300" rx="12"/>
+<text class="head" x="314" y="94">Europe</text>
+<rect class="eu" x="312" y="104" width="340" height="190" rx="10"/>
+<text class="boxt" x="640" y="124" text-anchor="end">European Union (EU)</text>
+<rect class="cust" x="326" y="134" width="150" height="46" rx="6"/>
+<text class="boxt" x="401.0" y="151" text-anchor="middle">German customers</text>
+<text class="tiny" x="401.0" y="166.0" text-anchor="middle">order at the German shop</text>
+<rect class="reg" x="326" y="230" width="150" height="50" rx="6"/>
+<text class="boxt" x="401.0" y="247" text-anchor="middle">Europe (Frankfurt)</text>
+<text class="tiny" x="401.0" y="262.0" text-anchor="middle">eu-central-1, Germany</text>
+<rect class="reg" x="490" y="166" width="150" height="50" rx="6"/>
+<text class="boxt" x="565.0" y="183" text-anchor="middle">Europe (Ireland)</text>
+<text class="tiny" x="565.0" y="198.0" text-anchor="middle">eu-west-1, Ireland</text>
+<rect class="reg" x="490" y="230" width="150" height="50" rx="6"/>
+<text class="boxt" x="565.0" y="247" text-anchor="middle">Europe (Paris)</text>
+<text class="tiny" x="565.0" y="262.0" text-anchor="middle">eu-west-3, France</text>
+<line class="flow" x1="400" y1="182" x2="400.0" y2="219.0"/>
+<path class="arrow" d="M400,228 L405.0,218.0 L395.0,218.0 Z"/>
+<text class="tiny" x="408" y="210">short trip</text>
+<rect class="regx" x="326" y="306" width="150" height="50" rx="6"/>
+<text class="boxt" x="401.0" y="323" text-anchor="middle">Europe (London)</text>
+<text class="tiny" x="401.0" y="338.0" text-anchor="middle">eu-west-2, UK: not EU</text>
+<rect class="regx" x="490" y="306" width="150" height="50" rx="6"/>
+<text class="boxt" x="565.0" y="323" text-anchor="middle">Europe (Zurich)</text>
+<text class="tiny" x="565.0" y="338.0" text-anchor="middle">eu-central-2, Switzerland:</text>
+<text class="tiny" x="565.0" y="351.0" text-anchor="middle">not EU</text>
+<path class="flowx" d="M326,158 C 290,158 290,245 251,245"/>
+<path class="arrowx" d="M242,245 L252,240 L252,250 Z"/>
+<text class="small" x="16" y="396.0">Dashed arrow: if German orders went to N. Virginia, each request would cross an ocean (more delay),</text>
+<text class="small" x="16" y="413.0">and German customers' data would leave the EU, which breaks the bakery's rule.</text>
+<text class="note" x="16" y="446">Blue: Regions that could hold that group's data. Gray: in Europe but not in the EU. Region list checked 2026-10-23.</text>
+</svg>
