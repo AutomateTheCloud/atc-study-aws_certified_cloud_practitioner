@@ -61,6 +61,8 @@ The fastest way to tell the benefits apart is to ask what changed in the scenari
 
 ```mermaid
 flowchart LR
+  accTitle: Five questions that name a cloud benefit
+  accDescr: A scenario is tested against five questions: capacity growing or shrinking with demand means elasticity, less time to get something new means agility, keeping working when a part failed means high availability, stored data kept safe from loss means durability, and reaching users in new places means global reach. Each question is about a different thing: capacity, time, failure, data, and place.
   S["Scenario"] --> Q1{"Did capacity grow or<br/>shrink with demand?"}
   S --> Q2{"Did the time to get<br/>something new shrink?"}
   S --> Q3{"Did the system keep<br/>working when a part failed?"}
@@ -131,6 +133,8 @@ Both benefits involve speed, which is why they are easy to confuse. The differen
 
 ```mermaid
 flowchart LR
+  accTitle: Elasticity versus agility at the bakery
+  accDescr: Elasticity: orders rise and servers are added automatically to the same site, then orders fall and servers are removed. Agility: the owner has an idea, a new test page runs within minutes, and with no orders it is deleted, leaving nothing to pay for. Elasticity starts with demand and changes the amount of the same thing, while agility starts with a person's idea and creates something new.
   subgraph EL["Elasticity: more or less of the same"]
     direction TB
     D1["Orders rise"] -->|"servers added automatically"| E1["Same site,<br/>6 servers"]
@@ -193,6 +197,8 @@ For the bakery: all three servers are in one room, so a power cut there stops th
 
 ```mermaid
 flowchart TB
+  accTitle: A power cut in one Availability Zone
+  accDescr: One AWS Region holds the bakery's server in two Availability Zones. A power cut takes down the server in Availability Zone 1, but the server in Availability Zone 2 is still taking orders. The failure stays inside one AZ, so customers can still order.
   C["Customers"] -->|"orders"| S2
   C -.->|"no answer"| S1
   subgraph R["One AWS Region"]
@@ -231,6 +237,8 @@ You may have read that durability and availability are the same thing. That isn'
 
 ```mermaid
 flowchart LR
+  accTitle: Durability versus availability
+  accDescr: Durability: a disk fails, copies in other AZs still hold the file, and nothing is lost. Availability: the service is briefly unreachable, you wait and try again, and the file was never lost, only out of reach. Durability is about losing data for good, availability about not reaching it for a while.
   subgraph DUR["Durability: will the data still exist later?"]
     direction TB
     F1["A disk fails"] --> F2["Copies in other AZs<br/>still hold the file"]
@@ -268,6 +276,8 @@ For the bakery: if it started shipping cakes abroad, it could run a copy of its 
 
 ```mermaid
 flowchart LR
+  accTitle: Global reach with a copy of the ordering site
+  accDescr: Customers at home reach the ordering site in the Region near the bakery over a short distance, with low latency, and customers abroad reach a copy in a Region near them the same way. Without the copy, customers abroad would make the long trip to the home site, with higher latency. Global reach is about distance.
   CH["Customers at home"] -->|"short distance: low latency"| W1
   CA["Customers abroad"] -->|"short distance: low latency"| W2
   CA -.->|"without a copy: long distance, higher latency"| W1

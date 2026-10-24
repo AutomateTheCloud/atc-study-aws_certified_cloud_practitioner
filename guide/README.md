@@ -2,7 +2,7 @@
 
 The guide's pages in reading order. Modules not listed here are still being written; the full plan is in [design/course-plan.md](../design/course-plan.md).
 
-Look up any term in the [glossary](../reference/glossary.md).
+Look up any term in the [glossary](99-reference/01-glossary.md).
 
 Before your first lab, work through the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md).
 

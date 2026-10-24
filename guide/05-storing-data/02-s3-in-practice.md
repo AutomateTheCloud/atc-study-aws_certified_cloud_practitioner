@@ -5,7 +5,7 @@ title: "S3 in practice"
 tasks: ["3.6", "2.1", "2.2"]
 objectives: ["05.02a"]
 reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 to 04 and the guardrails primer; about 25 minutes; works on a phone"
-prerequisites: [clf-05-01, clf-04-01, clf-04-04, clf-03-03, guardrails-primer-06]
+prerequisites: [clf-05-01, clf-04-01, clf-04-04, clf-03-03, guardrails-06]
 terms_introduced: [Block Public Access, access control list (ACL), encryption at rest, encryption in transit, server-side encryption, SSE-S3, SSE-KMS, client-side encryption, versioning, version ID, current version, noncurrent version, delete marker, S3 Object Lock, WORM, S3 Replication, MFA Delete]
 pillars: [security, reliability]
 facts_checked: 2026-10-24
@@ -85,6 +85,8 @@ How it works:
 
 ```mermaid
 flowchart LR
+  accTitle: Two levels of S3 Block Public Access
+  accDescr: A request that would make a photo public is checked first against the account-level Block Public Access settings, then the bucket-level settings, and either level can reject it on its own. Only if neither blocks it does the policy or ACL decide. That is what most restrictive wins means.
   R["A request that would<br/>make a photo public"] --> A{"Account-level<br/>Block Public Access<br/>blocks it?"}
   A -->|"yes"| X["Rejected"]
   A -->|"no"| B{"Bucket-level<br/>Block Public Access<br/>blocks it?"}

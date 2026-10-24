@@ -16,7 +16,7 @@ signup_path: advanced
 time: "60 minutes, including a 15-minute wait, plus 5 minutes the next day"
 cost: "Nothing billed on the Free plan; about a tenth of a cent of credits at most (US East (N. Virginia) prices as of 2026-10-24)"
 worst_case: "Under a hundredth of a cent a month on a Paid plan if both buckets are left behind: a few kilobytes at $0.023 per GB-month (as of 2026-10-24)"
-needs: [primer-02, primer-03, primer-05, primer-07, clf-02-06]
+needs: [guardrails-02, guardrails-03, guardrails-05, guardrails-07, clf-02-06]
 recorded: 2026-10-24
 facts_checked: 2026-10-24
 sources:
@@ -43,6 +43,8 @@ This guide is provided as is, without warranty. We work hard to keep it correct 
 
 ```mermaid
 flowchart LR
+  accTitle: The stages of Lab 05
+  accDescr: Part A creates a bucket that keeps every version, Part B finishes a lifecycle rule during the wait, Part C overwrites, deletes, restores and then deletes every version, and Part D sets up the archive bucket from requirements alone, before both buckets are emptied and deleted. Part B comes before any upload because AWS asks you to wait 15 minutes after turning on versioning, and a rule needs no files.
   A["Part A: create a bucket<br/>that keeps every version"] --> B["Part B: finish a<br/>lifecycle rule<br/>(during the wait)"]
   B --> C["Part C: overwrite, delete,<br/>restore, then delete<br/>every version"]
   C --> D["Part D: set up the<br/>archive bucket from<br/>requirements alone"]
@@ -66,7 +68,7 @@ You delete both, with every version.
 
 **Why this matters:** a mistake reaches every live copy of your data (Module 03); versioning keeps the earlier copies. For S3, AWS puts backup, versioning and replication of your data on your side of the line ([04.01](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)): [REL09-BP01 Identify and back up all data that needs to be backed up, or reproduce the data from sources](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_backing_up_data_identified_backups_data.html). Lifecycle rules keep only what you need, in the cheapest class that fits: [COST04-BP05 Enforce data retention policies](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_decomissioning_resources_data_retention.html).
 
-> **If you signed up on the new sign-up path:** S3 is supported there, but IAM users can't sign in to the console and your Region is fixed (as of 2026-10-23). Use your assigned Region instead of `us-east-1`, and sign in the way that path gives you. We haven't run this lab on that path.
+> **New sign-up path:** S3 is supported there, but IAM users can't sign in to the console and your Region is fixed (as of 2026-10-23). Use your assigned Region instead of `us-east-1`, and sign in the way that path gives you. We haven't run this lab on that path.
 
 **About the screens:** the bucket-creation steps are what we saw running Lab 01 on 2026-10-24; the versioning and lifecycle labels come from AWS's documentation (checked 2026-10-23). We haven't yet run this lab end to end. If a label differs, look for the option with the same meaning.
 

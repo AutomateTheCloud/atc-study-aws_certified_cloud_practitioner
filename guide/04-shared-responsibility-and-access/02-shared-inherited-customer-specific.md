@@ -5,7 +5,7 @@ title: "Shared, inherited and customer-specific controls"
 tasks: ["2.1"]
 objectives: ["04.02a"]
 reader: "Adult studying alone, possibly new to IT, who has finished lesson 04.01, Module 02 and the guardrails primer; about 35 minutes; works on a phone"
-prerequisites: [clf-04-01, guardrails-primer-03, guardrails-primer-06]
+prerequisites: [clf-04-01, guardrails-03, guardrails-06]
 terms_introduced: [IT control, audit, compliance, inherited control, shared control, customer-specific control, patch management, configuration management, awareness and training]
 pillars: [security]
 facts_checked: 2026-10-24
@@ -180,6 +180,8 @@ You might ask: isn't a database rule configuration management? The setting itsel
 
 ```mermaid
 flowchart TD
+  accTitle: Inherited, shared or customer-specific control
+  accDescr: If the customer has nothing to do for a control, it is inherited and AWS does it all. If the customer has work to do and AWS does its own version for its infrastructure, it is shared, with each side doing its own half. If it depends only on what the customer builds, it is customer-specific.
   Q1{"Does the customer have<br/>anything to do for it?"} -->|"no"| INH["Inherited<br/>(AWS does it all)"]
   Q1 -->|"yes"| Q2{"Does AWS do its own version<br/>of it, for its infrastructure?"}
   Q2 -->|"yes"| SH["Shared<br/>(each side does its own half)"]

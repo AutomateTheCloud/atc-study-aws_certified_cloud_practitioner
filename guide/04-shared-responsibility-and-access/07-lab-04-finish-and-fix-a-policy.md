@@ -16,7 +16,7 @@ signup_path: advanced
 time: "50 minutes"
 cost: "$0 on the Free plan (as of 2026-10-24)"
 worst_case: "$0 on a Paid plan if everything is left behind: IAM groups and policies have no charge, and this lab creates no bucket"
-needs: [primer-02, primer-03, primer-05, primer-07, clf-04-06]
+needs: [guardrails-02, guardrails-03, guardrails-05, guardrails-07, clf-04-06]
 last_run_pass: "2026-10-24, standalone Free plan account, advanced sign-up, us-east-1"
 recorded: 2026-10-24
 facts_checked: 2026-10-24
@@ -40,6 +40,8 @@ This guide is provided as is, without warranty. We work hard to keep it correct 
 
 ```mermaid
 flowchart LR
+  accTitle: The stages of Lab 04
+  accDescr: Part A finishes and validates the photographer's policy, Part B writes the teammate's policy from her job alone, and Part C finds and fixes the deny that makes uploads fail, before cleaning up one group and three policies. The help fades: Part A gives most of the policy, Part B only the requirement, and Part C only a symptom.
   A["Part A: finish<br/>the photographer's policy<br/>and validate it"] --> B["Part B: write<br/>the teammate's policy<br/>from her job alone"]
   B --> C["Part C: uploads fail.<br/>Find the deny<br/>and fix it"]
   C --> D["Clean up:<br/>one group,<br/>three policies"]
@@ -57,7 +59,7 @@ flowchart LR
 
 **Why this matters:** writing a policy for one job, checking it, and testing it before use is [SEC03-BP02 Grant least privilege access](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_permissions_least_privileges.html) in practice. AWS's IAM best practices also ask you to validate policies with IAM Access Analyzer ([Security best practices in IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)). Part C shows the rule from [04.04](04-policies-and-least-privilege.md) that surprises people most: an explicit deny in any policy beats every allow.
 
-> **If you signed up on the new sign-up path:** policy validation is listed as available there, but IAM users can't sign in to the console (as of 2026-10-23). We haven't run this lab on that path. Read the steps, then do [Simulation S4](09-sim-policy-playground.md).
+> **New sign-up path:** policy validation is listed as available there, but IAM users can't sign in to the console (as of 2026-10-23). We haven't run this lab on that path. Read the steps, then do [Simulation S4](09-sim-policy-playground.md).
 
 **About the screens:** labels in **bold** come from AWS's documentation or our test account (2026-10-23 and 2026-10-24). We haven't yet run this lab end to end. If a label differs, look for the option with the same meaning.
 
@@ -120,7 +122,7 @@ The new teammate keeps the cake photos on the site up to date. **Requirement:** 
 6. Write the policy in a text editor first.
 7. Open the policy simulator from IAM's left menu (**Policy simulator**). On 2026-10-24 it opened inside the IAM console; [Lab 03](06-lab-03-a-group-and-a-policy.md#test-it-in-the-policy-simulator) shows how to add actions and set each row's resource. This time, choose **Custom** at the top instead of **Principal**: it tests a policy you paste in. A pasted policy is simulated on its own and isn't saved to your account. We haven't yet run this lab, so the Custom screens may differ slightly from these steps.
 8. Choose **Add policy**. Give the draft a name (the dialog says the policy is only used for simulation and isn't created in IAM), paste your JSON into the editor that opens, choose **Save**, then **Back to simulator**. Add your test actions and set each row's resource as in Lab 03. Design at least six tests: three that must be allowed and three that must be denied, including `s3:DeleteBucket` on the bucket ARN. Choose **Simulate** and write the results in your lab log.
-   > **Watch the resource box:** when an action has only one resource type, the simulator fills in the type for you and puts `arn:aws:s3:::*` in the **ARN** box. Replace all of it with your ARN, don't add to it. Also clear **Apply to all actions with the same resource type** unless you want every row of that type to get the same ARN.
+   > **Tip:** watch the resource box: when an action has only one resource type, the simulator fills in the type for you and puts `arn:aws:s3:::*` in the **ARN** box. Replace all of it with your ARN, don't add to it. Also clear **Apply to all actions with the same resource type** unless you want every row of that type to get the same ARN.
    **You should see:** every result matching what you predicted.
    > **If something went wrong:** an unexpected "denied" usually means the wrong resource for the action: list actions take the bucket ARN, file actions take the ARN ending in `/*`.
 9. When all six match, create the policy in IAM as you did in Part A, named `clf-lab04-photo-editing`.

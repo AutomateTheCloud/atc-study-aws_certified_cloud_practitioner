@@ -16,7 +16,7 @@ signup_path: advanced
 time: "25 minutes, plus 5 minutes the next day"
 cost: "$0 on the Free plan (as of 2026-10-24)"
 worst_case: "$0 on a Paid plan if the empty bucket is left behind; storage charges start only if you upload files"
-needs: [primer-02, primer-03, primer-05, primer-07]
+needs: [guardrails-02, guardrails-03, guardrails-05, guardrails-07]
 last_run_pass: "2026-10-24, standalone Free plan account, advanced sign-up, us-east-1"
 recorded: 2026-10-24
 facts_checked: 2026-10-24
@@ -41,6 +41,8 @@ This guide is provided as is, without warranty. We work hard to keep it correct 
 
 ```mermaid
 flowchart LR
+  accTitle: The five stages of Lab 01
+  accDescr: Create the bucket, tag it and time it, find it by its tags in Tag Editor, find it in CloudTrail Event history, then delete it and confirm it's gone. The next day, check that the Credits balance hasn't fallen, because cost data can take about a day to appear.
   A["Create the bucket,<br/>tag it, and time it"] --> B["Find it by its tags<br/>in Tag Editor"]
   B --> C["Find it in the activity record:<br/>CloudTrail Event history"]
   C --> D["Clean up: delete it<br/>and confirm it's gone"]
@@ -64,7 +66,7 @@ flowchart LR
 
 **Why this matters:** in [02.03](03-telling-the-benefits-apart.md) you met **agility**: AWS says the time to get new resources falls from weeks to minutes ([Six advantages of cloud computing](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html)). Here you measure it yourself. Tagging, finding and deleting what you create is how professionals keep the variable bill from [02.04](04-what-a-data-center-really-costs.md) under control: [COST03-BP02 Add organization information to cost and usage](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_monitor_usage_org_information.html) and [COST04-BP03 Decommission resources](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_decomissioning_resources_decommission.html). Checking the activity record is [SEC04-BP01 Configure service and application logging](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_detect_investigate_events_app_service_logging.html) in practice.
 
-> **If you signed up on the new sign-up path:** that experience has no root user, no console IAM users, and a Region chosen for you that you can't change (as of 2026-10-23). Use your assigned Region wherever this lab says `us-east-1`, and sign in the way that path gives you. We haven't run this lab on that path yet, so some screens may differ.
+> **New sign-up path:** that experience has no root user, no console IAM users, and a Region chosen for you that you can't change (as of 2026-10-23). Use your assigned Region wherever this lab says `us-east-1`, and sign in the way that path gives you. We haven't run this lab on that path yet, so some screens may differ.
 
 **About the screens:** names in **bold** are what we saw when we ran this lab in a new account on 2026-10-24. AWS changes its console often. If a label differs, look for the option with the same meaning.
 

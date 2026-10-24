@@ -5,7 +5,7 @@ title: "Regions, Availability Zones and data centers"
 tasks: ["3.2", "1.1"]
 objectives: ["03.01a"]
 reader: "Adult studying alone, possibly new to IT, who has finished Module 02 and the guardrails primer; about 25 minutes; works on a phone"
-prerequisites: [clf-02-03, guardrails-primer-06, guardrails-primer-07]
+prerequisites: [clf-02-03, guardrails-06, guardrails-07]
 terms_introduced: [data center, Availability Zone, Region, single point of failure, Region code, zonal resource, Regional service, global service, AZ ID, load balancer, standby]
 pillars: [reliability, cost-optimization]
 facts_checked: 2026-10-24
@@ -110,6 +110,8 @@ The whole point of AZs is that they fail separately. AWS builds them so that one
 
 ```mermaid
 flowchart LR
+  accTitle: What keeps Availability Zones apart
+  accDescr: Each AZ has its own power from different substations, its own generators and cooling, network connections to the internet and physical security. Between the AZs: many kilometers apart but within 100 km, fast redundant private fiber with all traffic encrypted, and AWS's software updates rolled out to one AZ at a time. The shared parts are removed, and the AZs are kept apart in space and in time, yet still well connected.
   subgraph OWN["Each AZ has its own"]
     direction TB
     P["Power, from different<br/>substations"]
@@ -165,7 +167,7 @@ You may have read that a Region needs only two AZs. AWS says every Region has at
 
 It's tempting for two reasons. Two is the smallest number that gives high availability, so some material treats it as the minimum. And your *account* may really see two: AWS notes that newer accounts can use only two AZs in US West (N. California), though the Region has three, and that it may stop offering a crowded AZ to new accounts ([AWS Availability Zones](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-availability-zones.html)). What your account can use is a separate question from what the Region has.
 
-> **Dated facts: counts that change (checked 2026-10-23)**
+> **Dated (checked 2026-10-23):** these counts change often.
 >
 > - AWS's Global Infrastructure page: **124 Availability Zones in 39 geographic Regions**, with 7 more AZs and 2 more Regions (Saudi Arabia and Chile) announced ([AWS Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/)).
 > - AWS's documentation lists **34 Regions** that a standard AWS account provides ([AWS Regions](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html)). The two pages don't count the same set. Part of the gap is that AWS also runs Regions that need a separate kind of account, such as AWS GovCloud (US) and the China Regions, which the documentation's table leaves out.

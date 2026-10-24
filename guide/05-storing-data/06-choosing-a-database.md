@@ -227,6 +227,8 @@ Many databases arrive on AWS from somewhere else. The exam names two tools for t
 
 ```mermaid
 flowchart LR
+  accTitle: Homogeneous and heterogeneous database migration
+  accDescr: The source database keeps running. If the engine is the same on AWS, AWS DMS copies the data and then each new change, and if not, AWS SCT or DMS Schema Conversion first converts the schema before DMS does the moving. Both paths end at the target database on AWS, where the application is switched over.
   S["Source database<br/>(keeps running)"] --> Q{"Same engine<br/>on AWS?"}
   Q -->|"yes: homogeneous"| D["AWS DMS<br/>copies the data,<br/>then each new change"]
   Q -->|"no: heterogeneous"| C["AWS SCT or DMS<br/>Schema Conversion<br/>converts the schema"]
@@ -270,6 +272,8 @@ Here is how someone who knows the services works it out. The flowchart is the me
 
 ```mermaid
 flowchart TD
+  accTitle: Choosing a database
+  accDescr: First ask whether the data runs the business or studies it: study data that is large and from many sources, beyond what a replica handles, goes to Amazon Redshift, otherwise a read replica for now. Data that runs the business is chosen by shape: linked tables and transactions for RDS or Aurora, items fetched by one key for DynamoDB, JSON documents with MongoDB tools for DocumentDB, and relationships many links deep for Neptune. Data read again and again adds Amazon ElastiCache in front of the main store, never instead of one.
   W{"Does the data run the business<br/>or study it?"} -->|"studies it: big questions<br/>over years, many sources"| A{"Large, from many sources,<br/>beyond what a replica handles?"}
   A -->|"yes"| RS["Amazon Redshift"]
   A -->|"not yet"| RR["A read replica<br/>(lesson 05.05)"]

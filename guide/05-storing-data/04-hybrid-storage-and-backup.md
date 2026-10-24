@@ -249,6 +249,8 @@ Here is how someone who knows the services works through it. The flowchart is th
 
 ```mermaid
 flowchart TD
+  accTitle: Choosing a hybrid storage or backup service
+  accDescr: The first question is where the software that uses the data runs. In AWS already, use AWS Backup for many resources under one set of rules or that service's snapshots for one, and on premises use S3 File Gateway, Volume Gateway or Tape Gateway for shared folders, disks or tapes, or Elastic Disaster Recovery if it must restart in minutes after a disaster. A one-time move uses AWS DataSync, not Snowball, which is being retired.
   Q1{"Where does the software<br/>that uses the data run?"} -->|"in AWS already"| Q2{"Data back for many<br/>resources, or for one?"}
   Q1 -->|"on premises, and it<br/>keeps running there"| Q3{"What does the<br/>software expect?"}
   Q1 -->|"on premises, and it must<br/>restart in minutes after a disaster"| DR["Elastic Disaster Recovery"]

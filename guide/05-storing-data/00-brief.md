@@ -5,7 +5,7 @@ title: "Module 05: Storing data: storage and databases"
 tasks: ["3.6", "3.4", "4.1", "2.1"]
 objectives: ["05.01a", "05.02a", "05.03a", "05.04a", "05.05a", "05.06a"]
 reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 to 04 and the guardrails primer; about 4.5 hours in total"
-prerequisites: [clf-04-00, clf-03-00, clf-02-00, guardrails-primer]
+prerequisites: [clf-04-00, clf-03-00, clf-02-00, guardrails-00]
 pillars: [reliability, security, cost-optimization, performance-efficiency]
 facts_checked: 2026-10-24
 sources:
@@ -77,6 +77,8 @@ Both labs run in your own AWS account and state their cost on the Free plan and 
 
 ```mermaid
 flowchart TB
+  accTitle: How Module 05's lessons build the data plan
+  accDescr: The storage half (exam 3.6 and 4.1) holds lessons 05.01 to 05.04, with Lab 05 and Simulation S5 after 05.03, and places the photos, backups and archives in the one-page data plan. The database half (exam 3.4) holds lessons 05.05 and 05.06, with Simulation S6 and Lab 06, places the orders and carts, and leads to the mastery check, which shows you can defend the plan.
   subgraph STORE["Storage: exam 3.6 and 4.1"]
     direction TB
     L1["05.01 Block, file,<br/>object"] --> L2["05.02 S3 in practice"] --> L3["05.03 Storage classes<br/>and lifecycle"] --> L4["05.04 Hybrid storage<br/>and backup"]

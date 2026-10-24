@@ -69,6 +69,8 @@ AWS's best practices sort the answer by who needs access ([Security best practic
 
 ```mermaid
 flowchart TD
+  accTitle: Getting credentials to whoever needs access
+  accDescr: A person who works for you uses central sign-in such as IAM Identity Center with MFA, a program on AWS uses an IAM role, someone in another AWS account uses a cross-account role, and a customer of your app uses Amazon Cognito. Only a program that truly can't use a role gets an IAM user's long-term access key, the last resort, and your app's own secrets go in AWS Secrets Manager, not the code. Every route but one ends in temporary credentials.
   W{"Who needs to get in?"} -->|"a person who works<br/>for you"| P["Central sign-in (federation),<br/>for example IAM Identity Center:<br/>temporary credentials, with MFA"]
   W -->|"a program running<br/>on AWS"| R["An IAM role:<br/>temporary credentials,<br/>delivered automatically"]
   W -->|"a person or program in<br/>another AWS account"| X["A cross-account role:<br/>temporary credentials"]
@@ -191,6 +193,8 @@ With **federation**, people get no IAM user. They sign in with an account held b
 
 ```mermaid
 flowchart LR
+  accTitle: Signing in through IAM Identity Center
+  accDescr: An employee signs in once, with MFA, to an identity source, which tells IAM Identity Center who this is. In the access portal, the employee picks an account, bakery-live or bakery-test, and a permission set, and receives temporary credentials for the role created from it. The employee never gets an IAM user in either account.
   P["Employee"] -->|"1. signs in once,<br/>with MFA"| IDP["Identity source:<br/>Identity Center's own directory,<br/>Active Directory, or another IdP"]
   IDP -->|"2. who this is"| IC["IAM Identity Center<br/>(access portal)"]
   IC -->|"3. picks an account<br/>and permission set"| A1["Account: bakery-live<br/>role created from<br/>the permission set"]
@@ -226,6 +230,8 @@ A few details from the services' pages ([Cognito](https://docs.aws.amazon.com/co
 
 ```mermaid
 flowchart TD
+  accTitle: Choosing a sign-in service by whose sign-in it is
+  accDescr: Staff using many accounts or business apps lead to IAM Identity Center, customers of our app to Amazon Cognito, staff already in Microsoft Active Directory to AWS Directory Service, a program or one account's own identities to IAM users and roles, and people or programs in another AWS account to a cross-account IAM role. The question is about the people, not the technology.
   Q{"Whose sign-in is it?"} -->|"staff, many accounts<br/>or business apps"| IC["IAM Identity Center"]
   Q -->|"customers of our<br/>web or mobile app"| CG["Amazon Cognito"]
   Q -->|"staff already in<br/>Microsoft Active Directory"| DS["AWS Directory Service<br/>(often as Identity Center's source)"]
@@ -243,6 +249,8 @@ A **cross-account role** lives in the account that owns the resources, the *trus
 
 ```mermaid
 flowchart LR
+  accTitle: Cross-account role for the delivery company
+  accDescr: The bakery's account holds the order data and the role ReadTodaysOrders, whose trust policy names the delivery company's account. The dispatcher, allowed by the delivery company's account to assume the role, receives temporary credentials and reads the orders with them. Both accounts take part, because both sides must allow it.
   subgraph T["Delivery company's account (trusted)"]
     D["Dispatcher's identity<br/>allowed to assume the role"]
   end

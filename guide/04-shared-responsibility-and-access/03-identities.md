@@ -64,6 +64,8 @@ Every time a person or a program asks AWS to do something, AWS asks two question
 
 ```mermaid
 flowchart LR
+  accTitle: Authentication, then authorization
+  accDescr: A person or program shows credentials, and the first check, authentication, asks who you are, refusing anyone not recognized as the root user, an IAM user or a role. The second check, authorization, asks whether you may do this: the request is done only if policies allow it, and refused if none allows it or one denies it. Both checks must pass in order, and being recognized gives no permissions.
   P["A person or a program<br/>wants to do something"] -->|"shows credentials:<br/>password + MFA, keys,<br/>or a temporary token"| A{"1. Authentication<br/>Who are you?"}
   A -->|"not recognized"| X1["Refused"]
   A -->|"recognized as an identity:<br/>root user, IAM user or role"| Z{"2. Authorization<br/>May you do this?"}
@@ -198,6 +200,8 @@ The bakery's ordering site now runs on AWS, with its cake photos stored there. T
 
 ```mermaid
 flowchart TD
+  accTitle: Choosing an identity type
+  accDescr: A root-only task uses the root user, rarely and with MFA. A person gets an IAM user, in a user group with policies on the group when others need the same permissions, while a program or AWS service gets an IAM role and someone in another AWS account gets a cross-account role. Only people end up as IAM users, and programs and outsiders get roles.
   Q1{"What needs access?"} -->|"a root-only task"| R["Root user<br/>(rarely, with MFA)"]
   Q1 -->|"a person"| Q2{"Do others need<br/>the same permissions?"}
   Q2 -->|"yes"| G["IAM users in a<br/>user group; policies<br/>on the group"]

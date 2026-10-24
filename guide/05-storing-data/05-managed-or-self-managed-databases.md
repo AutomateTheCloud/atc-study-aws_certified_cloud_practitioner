@@ -235,6 +235,8 @@ Here is how someone who knows the options works through it. The flowchart is the
 
 ```mermaid
 flowchart TD
+  accTitle: Choosing RDS features for each problem
+  accDescr: If you need an engine RDS doesn't offer or the server's operating system, self-manage on EC2, running patches, backups, replication and failover yourself, and otherwise use Amazon RDS or Aurora. Then, per problem: Multi-AZ for an AZ or server failure, a read replica for too many reads, automated backups and snapshots for damaged or deleted data, and backups copied to another Region or a cross-Region replica you promote for a lost Region. A real database often ends with three or four answers, not one.
   H{"Do you need an engine RDS doesn't offer,<br/>or the server's operating system?"} -->|"yes"| EC2["Self-managed on EC2:<br/>you run patches, backups,<br/>replication and failover"]
   H -->|"no"| RDS["Amazon RDS<br/>(or Aurora)"]
   RDS --> F{"Which failure or<br/>problem must it handle?"}

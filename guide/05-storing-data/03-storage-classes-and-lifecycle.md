@@ -133,6 +133,8 @@ The CLF-C02 exam guide lists "Amazon S3 Glacier", and older courses teach "vault
 
 ```mermaid
 flowchart LR
+  accTitle: S3 Glacier storage classes versus Amazon Glacier
+  accDescr: The S3 Glacier storage classes to learn are Glacier Instant Retrieval, Glacier Flexible Retrieval (formerly named S3 Glacier) and Glacier Deep Archive, which live inside S3 buckets and are reached with the S3 API and lifecycle rules. Amazon Glacier, the original vault service, stores archives in vaults with its own API and is closed to new customers, while existing data stays available.
   subgraph NOW["S3 Glacier storage classes: learn these"]
     direction TB
     C1["Glacier Instant Retrieval"]
@@ -247,6 +249,8 @@ The owner's data plan needs a class and a rule for the photos and for the monthl
 
 ```mermaid
 flowchart TD
+  accTitle: Choosing an S3 storage class
+  accDescr: Unknown read frequency points to S3 Intelligent-Tiering and frequent reads to S3 Standard. Data read about monthly goes to S3 One Zone-IA if you could recreate it after an AZ were destroyed, otherwise S3 Standard-IA. Archives read rarely go to Glacier Instant Retrieval, Glacier Flexible Retrieval or Glacier Deep Archive, for return in milliseconds, minutes to hours, or within 12 to 48 hours.
   Q1{"Do you know how often<br/>it will be read?"} -->|"no"| IT["S3 Intelligent-Tiering"]
   Q1 -->|"often"| ST["S3 Standard"]
   Q1 -->|"about monthly"| Q2{"Could you recreate it<br/>if an AZ were destroyed?"}

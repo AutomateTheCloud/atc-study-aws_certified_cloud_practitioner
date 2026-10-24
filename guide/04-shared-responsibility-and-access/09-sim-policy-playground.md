@@ -44,6 +44,8 @@ A **service control policy (SCP)** is set in AWS Organizations and caps what use
 
 ```mermaid
 flowchart TD
+  accTitle: The policy playground's evaluation order
+  accDescr: Checks run in order: an explicit deny in any policy, an SCP that doesn't allow the request, a permissions boundary that doesn't allow it, and no identity or resource policy allowing it each end in DENIED. If something allows it and caller and resource are in the same account, it is allowed, while across accounts both the caller's identity policy and the resource's policy must allow it. There is one way to reach ALLOWED and five ways to be denied.
   R["A request arrives"] --> X{"Does any policy that applies<br/>deny it explicitly?"}
   X -->|"yes"| D1["DENIED<br/>explicit deny"]
   X -->|"no"| S{"Is there an SCP?<br/>Does it allow the request?"}

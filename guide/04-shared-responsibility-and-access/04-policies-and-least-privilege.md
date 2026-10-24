@@ -61,6 +61,8 @@ When a request arrives, AWS gathers every policy that applies to it and evaluate
 
 ```mermaid
 flowchart LR
+  accTitle: Which policies AWS evaluates for a request
+  accDescr: The teammate's IAM user, a member of the PhotoTeam group with the photo policy attached, sends a request, s3:PutObject on a photo, to the bakery-cake-photos bucket. AWS evaluates the group's identity-based policies and the bucket's resource-based policy, if any, together to give allow or deny. It decides from all of them, not from one policy.
   subgraph ID["The identity asking"]
     U["Teammate's IAM user"] -->|"member of"| G["Group: PhotoTeam<br/>(photo policy attached)"]
   end
@@ -180,6 +182,8 @@ The root user is the exception from lesson 04.03: in general, AWS allows root's 
 
 ```mermaid
 flowchart TD
+  accTitle: How AWS decides allow or deny
+  accDescr: Any applicable policy that says Deny ends in DENIED, an explicit deny. Otherwise an identity-based or resource-based policy must allow the request, or it is denied by default, and any limit-setting policy (SCP, permissions boundary or session policy) must allow it too. There is only one path to ALLOWED, and it needs a real allow.
   S["A request arrives"] --> Q1{"Does any policy that<br/>applies say Deny for it?"}
   Q1 -->|"yes"| DX["DENIED<br/>(explicit deny)"]
   Q1 -->|"no"| Q2{"Does an identity-based or<br/>resource-based policy<br/>allow it?"}

@@ -93,7 +93,7 @@ How they relate to the rest:
 
 Edge locations give you three benefits: faster answers, because the first trip is short; fewer requests reaching your servers, because the edge answers many; and attack traffic absorbed far from your servers. CloudFront includes AWS Shield Standard, which protects against common network attacks, at no extra cost (checked 2026-10-23; Module 09 covers Shield).
 
-> **Counts change; don't memorize them.** When we checked on 2026-10-23, AWS's CloudFront features page listed more than 750 points of presence in more than 100 cities across more than 50 countries, plus more than 1,140 smaller "embedded" points of presence inside internet providers' networks. For Region and AZ counts, see the dated box in [lesson 03.01](01-regions-availability-zones-data-centers.md) or AWS's [Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/) page. Older material quotes smaller numbers; the pattern, not the number, is what matters.
+> **Dated (checked 2026-10-23):** don't memorize these counts. When we checked, AWS's CloudFront features page listed more than 750 points of presence in more than 100 cities across more than 50 countries, plus more than 1,140 smaller "embedded" points of presence inside internet providers' networks. For Region and AZ counts, see the dated box in [lesson 03.01](01-regions-availability-zones-data-centers.md) or AWS's [Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/) page. Older material quotes smaller numbers; the pattern, not the number, is what matters.
 
 > **Your turn:** Answer the second prequestion in two sentences: is an edge location a small Availability Zone where the bakery could run its web server?
 
@@ -111,6 +111,8 @@ CloudFront, Route 53 and Global Accelerator all run at edge locations, and exam 
 
 ```mermaid
 flowchart LR
+  accTitle: How an edge location serves a photo
+  accDescr: A customer in Munich requests a photo from the nearest edge location, which answers at once if it already has a copy. If not, the edge fetches the photo from the origin, an S3 bucket in a Region, over AWS's network and keeps it for the next customer, so the long trip happens only when the edge has no copy yet.
   U["Customer<br/>in Munich"] -->|"(1) request for a photo"| E["Nearest edge<br/>location"]
   E -->|"(2a) copy already there:<br/>answered at once"| U
   E -.->|"(2b) no copy yet:<br/>fetch over AWS's network"| O["Origin: S3 bucket<br/>in a Region"]
@@ -181,6 +183,8 @@ These five are the module's most confused group. One question separates them: **
 
 ```mermaid
 flowchart TD
+  accTitle: Choosing where the work happens
+  accDescr: Where the work must happen picks the answer: your own building means Outposts, one big city with servers means a Local Zone, a 5G mobile network means Wavelength (out of scope), near users everywhere delivering content means edge locations through CloudFront, and an area of the world with full AWS services means a Region across several AZs. Speed alone doesn't pick the answer. The location does.
   Q{"Where must the work happen?"} -->|"in your own building"| OP["Outposts"]
   Q -->|"in one big city, with<br/>servers, very fast"| LZ["Local Zone"]
   Q -->|"inside a 5G mobile network"| WL["Wavelength<br/>(out of scope)"]

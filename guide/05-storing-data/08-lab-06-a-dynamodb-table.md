@@ -16,7 +16,7 @@ signup_path: advanced
 time: "30 minutes, plus 5 minutes the next day"
 cost: "Nothing billed on the Free plan; far less than one cent of credits (as of 2026-10-24)"
 worst_case: "$0 a month on a Paid plan if the table is left behind unused: on-demand tables charge per request, and its few kilobytes fit in the always-free 25 GB"
-needs: [primer-02, primer-03, primer-05, primer-07, clf-02-06]
+needs: [guardrails-02, guardrails-03, guardrails-05, guardrails-07, clf-02-06]
 recorded: 2026-10-24
 facts_checked: 2026-10-24
 sources:
@@ -38,6 +38,8 @@ This guide is provided as is, without warranty. We work hard to keep it correct 
 
 ```mermaid
 flowchart LR
+  accTitle: The stages of Lab 06
+  accDescr: Create the table with partition key CartId and sort key Product, put three items into two carts, get one item by its full key, query one cart by CartId alone, then delete the table and check the next day. There are no servers, database engine versions or connections anywhere in the lab.
   A["Create the table:<br/>partition key CartId,<br/>sort key Product"] --> B["Put three items<br/>into two carts"]
   B --> C["Get one item<br/>by its full key"]
   C --> D["Query one cart<br/>by CartId alone"]
@@ -56,7 +58,7 @@ flowchart LR
 
 **Why this matters:** a cart is looked up by one key, changes often, and has no fixed shape; that is the key-value shape lesson 05.06 matched to DynamoDB. Picking the store that fits the data, instead of putting everything in one database, is [PERF03-BP01 Use a purpose-built data store that best supports your data access and storage requirements](https://docs.aws.amazon.com/wellarchitected/latest/performance-efficiency-pillar/perf_data_use_purpose_built_data_store.html). Paying per request for a small, uneven workload is cost optimization in practice.
 
-> **If you signed up on the new sign-up path:** DynamoDB is on that experience's list of supported services, but IAM users can't sign in to the console and your Region is fixed (as of 2026-10-23). Use your assigned Region wherever this lab says `us-east-1`, and sign in the way that path gives you. We haven't run this lab on that path.
+> **New sign-up path:** DynamoDB is on that experience's list of supported services, but IAM users can't sign in to the console and your Region is fixed (as of 2026-10-23). Use your assigned Region wherever this lab says `us-east-1`, and sign in the way that path gives you. We haven't run this lab on that path.
 
 **About the screens:** the labels for creating a table come from AWS's DynamoDB getting-started guide (checked 2026-10-23). We haven't yet run this lab, so the steps for adding and finding items describe what to look for rather than exact labels. If a label differs, look for the option with the same meaning.
 

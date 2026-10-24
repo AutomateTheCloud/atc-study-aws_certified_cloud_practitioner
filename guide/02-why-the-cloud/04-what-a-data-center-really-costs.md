@@ -59,6 +59,8 @@ Moving a workload to the cloud doesn't make costs disappear. It moves most of th
 
 ```mermaid
 flowchart LR
+  accTitle: Where on-premises costs go in the cloud
+  accDescr: On-premises, you pay for seven categories: hardware and its refresh, space, power, cooling, network, staff and licenses. When the workload moves to the cloud, five of them end up inside the usage bill, while staff (fewer hours, different work) and licenses (included or brought by you) stay with you in some form.
   subgraph ONP["On-premises: you pay for every part, mostly up front or every month"]
     H["Hardware and its refresh"]
     S["Space"]

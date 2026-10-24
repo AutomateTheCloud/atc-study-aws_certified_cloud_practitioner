@@ -67,6 +67,8 @@ Think of the choice as a funnel. The first two questions remove Regions you can'
 
 ```mermaid
 flowchart TD
+  accTitle: Four questions for choosing a Region
+  accDescr: Start with all Regions your account can use and rule out any where the data may not live or that lacks a service you need. The shortlist is then weighed on latency to your users and on price, leading to your Region, with the reason. Latency and price never rescue a Region that fails a rule or lacks a service.
   A["All Regions your<br/>account can use"] --> R{"1. Rules: may the<br/>data live here?"}
   R -->|no| X1["Rule it out"]
   R -->|yes| S{"2. Services: does it have<br/>everything you need?"}
@@ -271,7 +273,7 @@ The owner's three requirements are in the module brief. Here is how an experienc
 
 **Answer:** run the US site in US East (N. Virginia) and a German copy of the site, with its own order database, in Europe (Frankfurt), each laid out across two AZs as in lesson 03.01. The reasons, in order: the EU rule, then latency, with price confirming.
 
-> **Sidebar: if you signed up through AWS's new sign-up experience.** Accounts made through the newer sign-up path don't let you choose a Region. AWS assigns one from your contact address: US East (Ohio), Europe (Stockholm) or Asia Pacific (Sydney), and you can't change it, though you can activate advanced features to use other Regions ([AWS Regions for your projects](https://docs.aws.amazon.com/accounts/latest/reference/project-regions.html), checked 2026-10-23). The guide's labs assume the advanced sign-up path, where you choose US East (N. Virginia).
+> **New sign-up path:** Accounts made through the newer sign-up path don't let you choose a Region. AWS assigns one from your contact address: US East (Ohio), Europe (Stockholm) or Asia Pacific (Sydney), and you can't change it, though you can activate advanced features to use other Regions ([AWS Regions for your projects](https://docs.aws.amazon.com/accounts/latest/reference/project-regions.html), checked 2026-10-23). The guide's labs assume the advanced sign-up path, where you choose US East (N. Virginia).
 
 ## Mixed practice: choose and justify
 

@@ -5,7 +5,7 @@ title: "Module 04: Who secures what: shared responsibility and access"
 tasks: ["2.1", "2.3"]
 objectives: ["04.01a", "04.02a", "04.03a", "04.03b", "04.04a", "04.05a"]
 reader: "Adult studying alone, possibly new to IT, who has finished Module 02 and the guardrails primer; about 5 hours in total"
-prerequisites: [clf-02-00, guardrails-primer]
+prerequisites: [clf-02-00, guardrails-00]
 pillars: [security]
 facts_checked: 2026-10-24
 sources:
@@ -83,6 +83,8 @@ Both labs run in your own AWS account and cost $0 on the Free plan (as of 2026-1
 
 ```mermaid
 flowchart TB
+  accTitle: How Module 04's two halves meet the owner's requests
+  accDescr: The first half, who secures what (exam 2.1), holds lessons 04.01 and 04.02 and Simulation S3, and produces the note on who patches the server, the database and the functions. The second half, who can do what (exam 2.3), holds lessons 04.03 to 04.05, Labs 03 and 04 and Simulation S4, and produces the teammate's tested access to the photos and nothing else. Both lead to the mastery check, which shows you can explain both.
   subgraph WHO["Who secures what: exam 2.1"]
     direction TB
     L1["04.01 Of vs in<br/>the line moves<br/>with the service"] --> L2["04.02 Controls<br/>inherited, shared,<br/>customer-specific"]

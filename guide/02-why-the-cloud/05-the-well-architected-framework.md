@@ -57,6 +57,8 @@ The Framework is guidance: you read it. The Well-Architected Tool is a service i
 
 ```mermaid
 flowchart TB
+  accTitle: How the Well-Architected Framework and Tool fit together
+  accDescr: The Framework is guidance you read: six general design principles and six pillars, each with design principles and numbered best practices. The Well-Architected Tool, a service you use, asks the Framework's questions about your workload, and your answers reveal high and medium risks that lead to an improvement plan.
   F["AWS Well-Architected Framework: guidance you read"]
   F --> GP["Six general design principles"]
   F --> P["Six pillars, each one question"]
@@ -142,6 +144,8 @@ Two pairs cause most of the confusion.
 
 ```mermaid
 flowchart LR
+  accTitle: Matching what is at risk to a pillar
+  accDescr: One question, what is at risk, has four answers: it stops working or can't recover is reliability, it works on the wrong kind or amount of resource is performance efficiency, money wasted is cost optimization, and resources and energy wasted is sustainability. The question is about the harm, not about capacity, and one concern often belongs to both cost optimization and sustainability.
   Q{"What is at risk?"} -->|"It stops working,<br/>or can't recover"| REL["Reliability"]
   Q -->|"It works, but on the wrong<br/>kind or amount of resource"| PERF["Performance efficiency"]
   Q -->|"Money is wasted"| COST["Cost optimization"]

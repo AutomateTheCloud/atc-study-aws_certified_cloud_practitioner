@@ -143,6 +143,8 @@ File storage gives many computers the same folders and files at once, like a sha
 
 ```mermaid
 flowchart TD
+  accTitle: Choosing block or file storage
+  accDescr: If only one server needs the files, use block storage, EBS. If several servers need the same files at once, use Amazon FSx when it must match a file system you already run, such as Windows shares with Active Directory, or Amazon EFS for Linux clients. FSx keeps something familiar.
   Q1{"Do several servers need<br/>the same files at once?"} -->|"no: one server"| BLK["Block storage<br/>(EBS)"]
   Q1 -->|"yes"| Q2{"Must it match a file system<br/>you already run, such as<br/>Windows shares with<br/>Active Directory?"}
   Q2 -->|"yes"| FSX["Amazon FSx<br/>(for Windows File Server,<br/>NetApp ONTAP, OpenZFS)"]
@@ -252,6 +254,8 @@ The owner's data plan starts here. An expert asks three questions of each kind o
 
 ```mermaid
 flowchart TD
+  accTitle: Choosing storage by how the program reaches the data
+  accDescr: As its own disk: Amazon EBS if the data must outlive a stop or a failure, or instance store for scratch or cache. As shared folders: Amazon FSx for Windows shares or another file system to match, otherwise Amazon EFS for Linux. As whole files over the web: Amazon S3.
   A{"How does the program<br/>reach the data?"} -->|"as its own disk"| B{"Must the data outlive<br/>a stop or a failure?"}
   B -->|"yes"| EBS["Amazon EBS"]
   B -->|"no: scratch or cache"| IS["Instance store<br/>(if the instance type has it)"]

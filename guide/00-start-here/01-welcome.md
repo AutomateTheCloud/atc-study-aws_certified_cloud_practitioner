@@ -76,6 +76,8 @@ Hours are estimates until tested with learners. Modules without a link are still
 
 ```mermaid
 flowchart TD
+  accTitle: Map of the guide's modules and paths
+  accDescr: Every path joins the same sequence after Start here: an optional On-ramp for learners new to IT basics, then Foundations (modules 02 to 04), Building blocks (05 to 10), Money, help and moving (11 to 13), 14 Capstone and 90 Exam preparation. The separate guardrails primer must be done before Lab 01, the first lab, which is in module 02.
   S["00 Start here<br/>choose your path"] -->|"new to IT basics"| R["01 On-ramp<br/>(optional)"]
   S -->|"standard or fast path"| F
   R --> F

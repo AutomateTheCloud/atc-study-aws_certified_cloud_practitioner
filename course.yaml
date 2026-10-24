@@ -1,0 +1,45 @@
+contract: 1
+id: clf
+slug: clf-c02
+title: "Automate the Cloud Study Guide for the AWS Certified Cloud Practitioner (CLF-C02) Exam"
+short_title: "CLF-C02 study guide"
+summary: >-
+  Teaches the skills behind the AWS Certified Cloud Practitioner
+  certification, for self-paced learners, including people new to IT.
+status: preview
+content_dir: guide
+catalog_order: 20
+license: cc-by-nc-4.0-with-internal-training
+sections:
+  - dir: 00-start-here
+    title: "Start here"
+  - dir: 02-why-the-cloud
+    title: "Module 02: Why organizations use the cloud"
+  - dir: 03-aws-around-the-world
+    title: "Module 03: AWS around the world"
+  - dir: 04-shared-responsibility-and-access
+    title: "Module 04: Who secures what"
+  - dir: 05-storing-data
+    title: "Module 05: Storing data"
+  - dir: 06-running-applications
+    title: "Module 06: Running applications"
+  - dir: 07-connecting-it
+    title: "Module 07: Connecting it"
+  - dir: 99-reference
+    title: "Reference"
+notices:
+  trademark: >-
+    Automate the Cloud is not affiliated with, endorsed by, or sponsored by
+    Amazon Web Services. AWS, Amazon Web Services, and AWS Certified Cloud
+    Practitioner are trademarks of Amazon.com, Inc. or its affiliates. They
+    are used here only to identify the exam this guide prepares you for.
+  liability: >-
+    This guide is provided as is, without warranty. We work hard to keep it
+    correct and current, but AWS changes often, and its services, prices, and
+    free offers may differ from what is written here. The labs run in your own
+    AWS account. You are responsible for that account, for its security, and for
+    any charges it incurs, including charges from resources you forget to
+    delete. Automate the Cloud Inc. is not liable for any costs, losses, or
+    security incidents that result from following, or failing to follow, this
+    material. Technical guidance here is general information, not advice about
+    your specific systems.

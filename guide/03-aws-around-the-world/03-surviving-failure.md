@@ -89,6 +89,8 @@ High availability keeps the system running *through* a failure of one of its par
 
 ```mermaid
 flowchart LR
+  accTitle: High availability versus disaster recovery
+  accDescr: High availability, inside one Region: one AZ fails, the copies in the other AZ keep serving, and customers notice little or nothing. Disaster recovery, a separate copy elsewhere: the whole Region or the data is lost, you fail over to the recovery Region or restore a backup, and service returns within the RTO, with data back to within the RPO.
   subgraph HA["High availability: inside one Region"]
     direction TB
     A1["One AZ fails"] --> A2["The copies in the<br/>other AZ keep serving"]
@@ -220,6 +222,8 @@ When data is replicated, every change reaches the copy within moments, including
 
 ```mermaid
 flowchart LR
+  accTitle: Why a standby copy is not a backup
+  accDescr: At 10:00 someone deletes last week's orders, and replication carries the deletion to the standby copy within moments. Only the backup from 09:00, which stopped changing, still holds the orders, and restoring it brings them back as they were at 09:00.
   M["10:00 Someone deletes<br/>last week's orders"] --> P["Main database:<br/>orders gone"]
   P -->|"replication: within moments"| S["Standby copy:<br/>orders gone too"]
   B["Backup from 09:00:<br/>orders still there"] -->|"restore"| R["Orders back,<br/>as they were at 09:00"]
@@ -253,6 +257,8 @@ Here is how someone who knows the material works it out. The flowchart is the me
 
 ```mermaid
 flowchart TD
+  accTitle: Choosing high availability and a recovery strategy
+  accDescr: First, what must the site survive without customers noticing: a server, a data center or an AZ calls for high availability across two or more AZs. Separately, the RTO and RPO for a Region or data disaster pick the strategy: hours for backup and restore, tens of minutes for pilot light, minutes for warm standby, near zero for multi-site active/active. Every path ends in point-in-time backups, kept where the data's rules allow.
   Q1{"What must the site survive<br/>without customers noticing?"} -->|"a server, a data center or an AZ"| HA["High availability:<br/>two or more AZs"]
   Q1 -->|"then, separately"| Q2{"For a Region or data disaster:<br/>what are the RTO and RPO?"}
   Q2 -->|"hours"| BR["Backup and restore"]

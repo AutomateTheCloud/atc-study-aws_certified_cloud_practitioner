@@ -84,6 +84,8 @@ The map shows how the parts fit together and what each gives you for the recomme
 
 ```mermaid
 flowchart TB
+  accTitle: How Module 02's parts build the recommendation
+  accDescr: Five lessons lead to the hands-on work (the guardrails primer, Lab 01 and Simulation S1), which leads to the mastery check. Every part feeds the one-page recommendation: the lessons give the ideas and words, the lab and the simulation give numbers of your own, and the check shows you can explain them.
   subgraph LES["Lessons: the ideas and words"]
     direction TB
     L1["02.01 Cloud computing<br/>cloud, hybrid or<br/>on-premises?"] --> L2["02.02 The demand curve<br/>idle cost and lost sales"]

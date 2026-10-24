@@ -16,7 +16,7 @@ signup_path: advanced
 time: "20 minutes"
 cost: "$0 (as of 2026-10-23)"
 worst_case: "$0 on a Paid plan: the lab is read-only and creates nothing"
-needs: [primer-02, primer-03, primer-04, primer-05, primer-07]
+needs: [guardrails-02, guardrails-03, guardrails-04, guardrails-05, guardrails-07]
 facts_checked: 2026-10-24
 sources:
   - "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-availability-zones.html"
@@ -42,6 +42,8 @@ This guide is provided as is, without warranty. We work hard to keep it correct 
 
 ```mermaid
 flowchart LR
+  accTitle: The four stages of Lab 02
+  accDescr: List Regions in the console's Region selector, list AZ names and AZ IDs for two Regions in CloudShell, look at the AWS Health Dashboard for your account and then AWS's services, and confirm nothing was created. Every stage only reads, but you still confirm it, as in every lab.
   A["Console: list Regions<br/>in the Region selector"] --> B["CloudShell: AZ names<br/>and AZ IDs, two Regions"]
   B --> C["AWS Health Dashboard:<br/>your account, then<br/>AWS's services"]
   C --> D["Confirm nothing<br/>was created"]
@@ -65,7 +67,7 @@ flowchart LR
 
 **Why this matters:** high availability means placing copies in more than one Availability Zone, [REL10-BP01 Deploy the workload to multiple locations](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html). To do that, you need to see which AZs your account has, and name them so they mean the same place to everyone: the AZ ID. The Health Dashboard is where AWS reports events that could affect your resources: the first place to look when a failure from lesson [03.03](03-surviving-failure.md) happens for real.
 
-> **If you signed up on the new sign-up path:** that experience assigns your Region from your contact country (US East (Ohio), Europe (Stockholm) or Asia Pacific (Sydney), as of 2026-10-23), and you can't change it. Run step 9 in your assigned Region and skip the `--region` part of step 10. We haven't run this lab on that path, and we haven't confirmed how CloudShell and the Health Dashboard behave there.
+> **New sign-up path:** that experience assigns your Region from your contact country (US East (Ohio), Europe (Stockholm) or Asia Pacific (Sydney), as of 2026-10-23), and you can't change it. Run step 9 in your assigned Region and skip the `--region` part of step 10. We haven't run this lab on that path, and we haven't confirmed how CloudShell and the Health Dashboard behave there.
 
 **About the screens:** we wrote this lab from AWS's documentation and our test account's observations of 2026-10-23, and haven't yet run it end to end. AWS changes its console often; if a label differs, look for the option with the same meaning.
 

@@ -52,6 +52,8 @@ AWS publishes a central list of services and features that are being retired ([A
 
 ```mermaid
 flowchart LR
+  accTitle: Life cycle of an AWS service
+  accDescr: Four stages: available to anyone, closed to new customers while existing customers keep using it, end of support announced with a date often about a year ahead, and shut down. A service can stay closed to new customers for a long time, still in the exam guide but not available to a new account.
   A["Available<br/>anyone can sign up"] --> M["Closed to new customers<br/>existing customers<br/>keep using it"]
   M --> S["End of support announced<br/>a date is set,<br/>often about a year ahead"]
   S --> F["Shut down<br/>the service is gone"]

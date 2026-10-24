@@ -1,4 +1,4 @@
-# Glossary of the terms this guide teaches: the source of truth for reference/glossary.md
+# Glossary of the terms this guide teaches: the source of truth for guide/99-reference/01-glossary.md
 # (built by source/glossary/build_glossary.py) and, later, for flashcards.
 # Sorted alphabetically by term. Fields are described in source/glossary/build_glossary.py.
 
@@ -15,12 +15,27 @@
     engine, only the service's data and settings.
   module: "04"
 
+- term: accelerated computing
+  definition: >-
+    EC2 instance types with GPUs or other special chips, for work such as machine learning, graphics
+    and floating-point calculations. Its letters include P, G, Inf and Trn.
+  taught_in: guide/06-running-applications/01-ec2.md
+  confused_with: [compute optimized, HPC optimized]
+  not_to_confuse: >-
+    Accelerated computing adds special chips such as GPUs; compute optimized adds ordinary
+    processors, and HPC optimized is for very large, tightly linked computations.
+  module: "06"
+
 - term: access control list
   abbreviation: ACL
   definition: >-
     An older way to grant access to an S3 bucket or object. New buckets have ACLs turned off, and
     AWS recommends policies instead.
   taught_in: guide/05-storing-data/02-s3-in-practice.md
+  confused_with: [network ACL]
+  not_to_confuse: >-
+    An S3 access control list grants access to buckets and objects; a network ACL is a firewall
+    that filters traffic at the edge of a subnet.
   module: "05"
 
 - term: access key
@@ -61,6 +76,26 @@
     driven by demand, and global reach is about where you run.
   module: "02"
 
+- term: alias record
+  definition: >-
+    A Route 53 record that points a name, even the bare domain such as bakery.example, at an AWS
+    resource such as a CloudFront distribution, a load balancer or an S3 website bucket, whose
+    addresses can change.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  module: "07"
+
+- term: Amazon API Gateway
+  definition: >-
+    A service for publishing APIs at any scale with no servers of your own. It receives each call,
+    checks who is calling and how often, and passes it to the code behind it, such as a Lambda
+    function, with caching, stages and monitoring.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  confused_with: [Application Load Balancer, Amazon CloudFront]
+  not_to_confuse: >-
+    API Gateway manages an API (who may call, how often, which version); a load balancer only spreads
+    requests across healthy targets, and CloudFront delivers and caches content.
+  module: "07"
+
 - term: Amazon Aurora
   definition: >-
     AWS's own relational database engine, compatible with MySQL and PostgreSQL and managed through
@@ -77,14 +112,16 @@
 
 - term: Amazon CloudFront
   definition: >-
-    AWS's content delivery network. It serves cached copies from the edge location with the lowest
-    latency for each user, and fetches from your origin over AWS's network when it has no copy.
-  taught_in: guide/03-aws-around-the-world/04-the-edge.md
+    AWS's content delivery network. Through a distribution, it serves cached copies of content from
+    the edge location nearest each user and fetches from your origin over AWS's network when it has
+    no fresh copy; origin access control lets it read a bucket that stays private.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  also_in: [guide/03-aws-around-the-world/04-the-edge.md]
   confused_with: [Amazon Route 53, AWS Global Accelerator]
   not_to_confuse: >-
     CloudFront caches and delivers content; Route 53 only answers where a site is, and Global
     Accelerator carries traffic over AWS's network without caching.
-  module: "03"
+  module: "07"
 
 - term: Amazon Cognito
   definition: >-
@@ -137,6 +174,57 @@
     store is erased by a stop; and an EBS volume serves one instance, while EFS is shared by many.
   module: "05"
 
+- term: Amazon EC2
+  definition: >-
+    Amazon Elastic Compute Cloud, AWS's service for renting virtual servers, called instances, that
+    you start in minutes and pay for while they run. You choose the image, the instance type, the
+    storage, the network and how you sign in, and you run the operating system.
+  taught_in: guide/06-running-applications/01-ec2.md
+  also_in: [guide/06-running-applications/06-lab-08-launch-and-terminate-an-instance.md, guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md]
+  confused_with: [AWS Elastic Beanstalk, Amazon Lightsail]
+  not_to_confuse: >-
+    On EC2 you build and run every part yourself; Elastic Beanstalk sets up EC2 and the parts around
+    it from your code, and Lightsail sells a simple server at a fixed monthly price.
+  module: "06"
+
+- term: Amazon EC2 Auto Scaling
+  definition: >-
+    The service that keeps the number of EC2 instances in a group between a minimum and a maximum,
+    launches or terminates instances as demand changes, replaces unhealthy ones and spreads them
+    across Availability Zones. It is how EC2 gets elasticity, at no extra charge; the exam guide
+    lists the related AWS Auto Scaling instead.
+  taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+  also_in: [guide/06-running-applications/07-sim-elasticity-with-auto-scaling.md]
+  confused_with: [Elastic Load Balancing, AWS Auto Scaling]
+  not_to_confuse: >-
+    EC2 Auto Scaling changes how many instances run, while Elastic Load Balancing chooses which
+    instance gets each request, and AWS Auto Scaling sets up scaling for several resource types at
+    once.
+  module: "06"
+
+- term: Amazon ECR
+  definition: >-
+    Amazon Elastic Container Registry, AWS's store for container images, in private repositories
+    controlled with IAM or in public ones. It can scan images for known flaws, but it runs nothing.
+  taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  confused_with: [Amazon ECS, AWS Fargate]
+  not_to_confuse: >-
+    ECR only stores images; ECS or EKS decides where containers run, and Fargate is the compute
+    they run on.
+  module: "06"
+
+- term: Amazon ECS
+  definition: >-
+    Amazon Elastic Container Service, AWS's own container orchestrator. You describe your app in a
+    task definition, and ECS starts tasks and keeps services running on EC2 instances or on AWS
+    Fargate; ECS itself has no charge.
+  taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  confused_with: [Amazon EKS, AWS Fargate, Amazon ECR]
+  not_to_confuse: >-
+    ECS and EKS both orchestrate, ECS AWS's own way and EKS with Kubernetes; Fargate is compute
+    they place containers on, and ECR stores the images.
+  module: "06"
+
 - term: Amazon EFS
   definition: >-
     Amazon Elastic File System, AWS's own elastic file system for Linux, shared over NFS by many EC2
@@ -149,6 +237,18 @@
     EFS is AWS's own NFS file system for Linux; FSx runs a familiar third-party file system, such as
     Windows File Server over SMB, and EBS is a disk for one server.
   module: "05"
+
+- term: Amazon EKS
+  definition: >-
+    Amazon Elastic Kubernetes Service, which runs Kubernetes with a control plane AWS manages, on
+    EC2 instances or on AWS Fargate. Choose it when your team already uses Kubernetes; it is charged
+    per cluster per hour, plus the compute underneath.
+  taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  confused_with: [Amazon ECS, AWS Fargate]
+  not_to_confuse: >-
+    EKS orchestrates with Kubernetes and ECS orchestrates AWS's own way; Fargate is not an
+    orchestrator but compute that either one can use.
+  module: "06"
 
 - term: Amazon ElastiCache
   definition: >-
@@ -187,6 +287,45 @@
     Amazon Glacier keeps archives in vaults and takes no new customers; the S3 Glacier storage
     classes keep objects in ordinary S3 buckets, and an AWS Backup vault is unrelated.
   module: "05"
+
+- term: Amazon Inspector
+  definition: >-
+    A vulnerability management service that scans EC2 instances, container images in Amazon ECR and
+    Lambda functions for software flaws and unintended network exposure, and reports each as a
+    finding. It reports; it doesn't block traffic.
+  taught_in: guide/07-connecting-it/02-filtering-traffic.md
+  confused_with: [security group, network ACL]
+  not_to_confuse: >-
+    Inspector finds open paths and flaws but changes nothing; security groups and network ACLs are
+    the filters you fix.
+  module: "07"
+
+- term: Amazon Lightsail
+  definition: >-
+    AWS's simplest way to put a website or small app online: a plan that bundles a virtual server,
+    storage, a static IP address and a data transfer allowance into one monthly price, often
+    started from a ready-made image such as WordPress. An instance is billed while it exists, even
+    when stopped.
+  taught_in: guide/06-running-applications/04-simpler-paths.md
+  confused_with: [Amazon EC2, AWS Elastic Beanstalk]
+  not_to_confuse: >-
+    Lightsail sells a simple server at a predictable price; EC2 bills each part separately with
+    every choice open, and Elastic Beanstalk builds a scaling setup from your code.
+  module: "06"
+
+- term: Amazon Machine Image
+  abbreviation: AMI
+  definition: >-
+    The template an EC2 instance starts from: an operating system plus any software already
+    installed. Every instance started from one AMI is identical, which is how Auto Scaling adds
+    servers that are ready at once.
+  taught_in: guide/06-running-applications/01-ec2.md
+  also_in: [guide/06-running-applications/06-lab-08-launch-and-terminate-an-instance.md, guide/06-running-applications/02-auto-scaling-and-load-balancers.md]
+  confused_with: [instance type]
+  not_to_confuse: >-
+    The AMI decides what software runs on an instance; the instance type decides how much hardware
+    it gets.
+  module: "06"
 
 - term: Amazon Neptune
   definition: >-
@@ -237,13 +376,16 @@
 
 - term: Amazon Route 53
   definition: >-
-    AWS's DNS service. It answers where a site is, and can choose the answer, for example the Region
-    with the lowest latency, or a standby when the main site fails its health checks.
-  taught_in: guide/03-aws-around-the-world/04-the-edge.md
-  confused_with: [Amazon CloudFront]
+    AWS's DNS service. It registers domain names, answers DNS questions using routing policies such
+    as latency or failover, and checks the health of sites so it can send users away from one that
+    fails; it never carries your content.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  also_in: [guide/03-aws-around-the-world/04-the-edge.md]
+  confused_with: [Amazon CloudFront, load balancer]
   not_to_confuse: >-
-    Route 53 tells users where to go and is not a CDN; CloudFront delivers the content.
-  module: "03"
+    Route 53 only tells users where to go, while CloudFront delivers the content and a load balancer
+    sits in the path of every request to spread it across servers in one Region.
+  module: "07"
 
 - term: Amazon S3
   definition: >-
@@ -253,6 +395,15 @@
   taught_in: guide/05-storing-data/01-block-file-object.md
   also_in: [guide/02-why-the-cloud/06-lab-01-first-resource.md, guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md, guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md, guide/05-storing-data/02-s3-in-practice.md, guide/05-storing-data/03-storage-classes-and-lifecycle.md]
   module: "05"
+
+- term: Amazon VPC
+  definition: >-
+    Amazon Virtual Private Cloud, which gives your account its own virtual network in one Region,
+    isolated from everyone else's. You choose its address range, subnets, route tables and gateways;
+    the VPC itself costs nothing, though some parts and data transfer do.
+  taught_in: guide/07-connecting-it/01-your-own-network.md
+  also_in: [guide/07-connecting-it/05-lab-09-build-a-small-vpc.md]
+  module: "07"
 
 - term: Amazon Web Services
   abbreviation: AWS
@@ -274,6 +425,39 @@
     changes, and running heavy analytics on the transactional database slows the business down.
   module: "05"
 
+- term: anycast
+  definition: >-
+    Announcing the same address from many places, so each user reaches the nearest one. AWS Global
+    Accelerator announces its addresses this way from AWS's edge locations.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  module: "07"
+
+- term: API
+  definition: >-
+    Application programming interface: a defined way for one program to ask another for something,
+    such as "what is the status of order 1234?"
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  module: "07"
+
+- term: API key
+  definition: >-
+    In API Gateway, a key given to each outside developer so their calls can be counted against
+    their usage plan.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  module: "07"
+
+- term: Application Load Balancer
+  abbreviation: ALB
+  definition: >-
+    The Elastic Load Balancing type for web requests (HTTP, HTTPS and gRPC). It can route by the page
+    address, such as /orders or /photos, and can send requests to Lambda functions.
+  taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+  confused_with: [Network Load Balancer, Gateway Load Balancer]
+  not_to_confuse: >-
+    Choose an ALB for web traffic, a Network Load Balancer for TCP or UDP connections at very high
+    speed or with a fixed IP address, and a Gateway Load Balancer for traffic through appliances.
+  module: "06"
+
 - term: assume a role
   definition: >-
     To take on a role's permissions for a session, receiving temporary credentials. The role's trust
@@ -293,6 +477,13 @@
     Asynchronous replication lets the copy lag, so the latest changes can be lost in a failure;
     synchronous replication keeps it in step.
   module: "05"
+
+- term: attachment (Transit Gateway)
+  definition: >-
+    One network's connection to a transit gateway, such as a VPC or a VPN connection, each attached
+    once. Each attachment bills by the hour.
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  module: "07"
 
 - term: attribute
   definition: >-
@@ -342,7 +533,21 @@
     delivers elasticity. The exam guide's service list names AWS Auto Scaling, while the service
     that adds and removes servers is Amazon EC2 Auto Scaling.
   taught_in: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+  also_in: [guide/06-running-applications/02-auto-scaling-and-load-balancers.md]
+  confused_with: [load balancer]
+  not_to_confuse: >-
+    Auto scaling changes how many servers there are; a load balancer spreads requests across the
+    servers there are.
   module: "02"
+
+- term: Auto Scaling group
+  definition: >-
+    A set of identical EC2 instances that Amazon EC2 Auto Scaling manages as one unit, between a
+    minimum and a maximum capacity, launched from a launch template and spread across the
+    Availability Zones you choose.
+  taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+  also_in: [guide/06-running-applications/07-sim-elasticity-with-auto-scaling.md]
+  module: "06"
 
 - term: automated backup
   definition: >-
@@ -385,6 +590,18 @@
   taught_in: guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md
   module: "04"
 
+- term: AWS Auto Scaling
+  definition: >-
+    The service the exam guide lists for auto scaling: it sets up scaling for several kinds of
+    resource at once, such as groups of EC2 instances and DynamoDB tables. Groups of EC2 instances
+    themselves are run by Amazon EC2 Auto Scaling.
+  taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+  confused_with: [Amazon EC2 Auto Scaling]
+  not_to_confuse: >-
+    AWS Auto Scaling coordinates scaling across several resource types; Amazon EC2 Auto Scaling
+    runs the groups of instances, and either name answers "auto scaling provides elasticity".
+  module: "06"
+
 - term: AWS Backup
   definition: >-
     An AWS service that runs backups for many AWS services, and some on-premises systems, from one
@@ -398,6 +615,30 @@
     Recovery brings back whole running servers in minutes, a snapshot covers one resource, and Tape
     Gateway serves existing tape backup software.
   module: "05"
+
+- term: AWS Batch
+  definition: >-
+    A service that runs large numbers of batch jobs, each packaged as a container, from a job queue.
+    It launches EC2 or Fargate compute while jobs wait and removes it when the queue is empty, with
+    no extra charge beyond that compute.
+  taught_in: guide/06-running-applications/04-simpler-paths.md
+  confused_with: [AWS Lambda]
+  not_to_confuse: >-
+    Batch runs queued jobs of any length on containers; Lambda runs short functions started by
+    events.
+  module: "06"
+
+- term: AWS Client VPN
+  definition: >-
+    One of the AWS VPN services: a managed service that lets individual people connect their own
+    devices, encrypted over the internet, to a VPC, after signing in and subject to authorization
+    rules.
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  confused_with: [AWS Site-to-Site VPN]
+  not_to_confuse: >-
+    Client VPN connects one person's device, each connecting for themselves; Site-to-Site VPN joins a
+    whole network through its router.
+  module: "07"
 
 - term: AWS CloudTrail
   definition: >-
@@ -431,6 +672,20 @@
     software uses every day, and Snowball's shipped devices are being retired.
   module: "05"
 
+- term: AWS Direct Connect
+  definition: >-
+    A dedicated network connection from your network to AWS at a Direct Connect location, whose
+    traffic never crosses the public internet, for consistent performance and high bandwidth. It is
+    private but not encrypted unless you add MACsec or a VPN, and its physical setup takes longer
+    than a VPN's.
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  confused_with: [AWS Site-to-Site VPN]
+  not_to_confuse: >-
+    Direct Connect is private and consistent but not encrypted by itself; a Site-to-Site VPN is
+    encrypted and quick to set up but runs over the internet, and often serves as Direct Connect's
+    backup.
+  module: "07"
+
 - term: AWS Directory Service
   definition: >-
     An AWS service for Microsoft Active Directory: a managed directory on AWS, or a connector that
@@ -441,6 +696,20 @@
     Directory Service runs or connects an Active Directory; IAM Identity Center gives staff single
     sign-on to AWS accounts and can use such a directory as its identity source.
   module: "04"
+
+- term: AWS Elastic Beanstalk
+  definition: >-
+    A service that takes your application's code and builds and runs the setup for it in your
+    account: EC2 instances or an EKS cluster, load balancing, Auto Scaling and health monitoring.
+    It is AWS's platform-as-a-service offering, with no extra charge beyond the resources it
+    creates; it is not serverless.
+  taught_in: guide/06-running-applications/04-simpler-paths.md
+  confused_with: [Amazon EC2, Amazon Lightsail, AWS Lambda]
+  not_to_confuse: >-
+    Beanstalk assembles ordinary EC2 resources in your account and bills them by use; on EC2 you
+    assemble them yourself, Lightsail sells a bundle at a fixed price, and Lambda has no servers in
+    your account at all.
+  module: "06"
 
 - term: AWS Elastic Disaster Recovery
   abbreviation: AWS DRS
@@ -463,17 +732,32 @@
   taught_in: guide/03-aws-around-the-world/02-choosing-a-region.md
   module: "03"
 
+- term: AWS Fargate
+  definition: >-
+    Serverless compute for containers, used by Amazon ECS or Amazon EKS: you say how much CPU and
+    memory each task needs, and AWS supplies, isolates and patches the servers. It runs containers
+    for as long as a task runs, but has no GPUs.
+  taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  confused_with: [Amazon ECS, Amazon EKS, AWS Lambda]
+  not_to_confuse: >-
+    Fargate doesn't orchestrate: ECS or EKS decides where containers run and places them on Fargate;
+    and Fargate runs containers that keep running, while Lambda runs short functions started by
+    events.
+  module: "06"
+
 - term: AWS Global Accelerator
   definition: >-
-    A service that gives an application fixed internet addresses announced from AWS's edge
+    A service that gives an application fixed IP addresses announced by anycast from AWS's edge
     locations, so users' traffic enters AWS's network at the nearest edge and travels on it to the
-    best healthy endpoint in a Region. It caches nothing.
-  taught_in: guide/03-aws-around-the-world/04-the-edge.md
+    best healthy endpoint in a Region. It caches nothing, suits any TCP or UDP traffic, and can
+    switch Regions without waiting for DNS.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  also_in: [guide/03-aws-around-the-world/04-the-edge.md]
   confused_with: [Amazon CloudFront]
   not_to_confuse: >-
-    Global Accelerator speeds the path to your application without caching; CloudFront keeps copies
-    of content near users.
-  module: "03"
+    Global Accelerator speeds the path to your application without caching, so every request reaches
+    it; CloudFront keeps copies of content near users and answers from them.
+  module: "07"
 
 - term: AWS Health Dashboard
   definition: >-
@@ -508,6 +792,19 @@
     workforce single sign-on across many accounts.
   module: "04"
 
+- term: AWS Lambda
+  definition: >-
+    AWS's serverless service that runs your code, as functions, each time an event triggers it, with
+    no servers to manage. It suits short, event-driven work, scales by running copies side by side,
+    and bills per request and per GB-second.
+  taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  also_in: [guide/06-running-applications/05-lab-07-a-lambda-function.md, guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md]
+  confused_with: [AWS Fargate, AWS Batch]
+  not_to_confuse: >-
+    Lambda runs short functions started by events, up to a time limit per run (see the lesson);
+    Fargate runs containers for as long as they need, and Batch runs queues of long jobs.
+  module: "06"
+
 - term: AWS managed policy
   definition: >-
     A policy that AWS writes and updates and every customer can use. It's a quick start, but it may
@@ -525,10 +822,25 @@
     and maintains as an extension of a Region; you provide the building, power and network
     connection. It suits hybrid systems whose data must stay on the premises.
   taught_in: guide/03-aws-around-the-world/04-the-edge.md
+  also_in: [guide/06-running-applications/04-simpler-paths.md]
   confused_with: [Local Zone]
   not_to_confuse: >-
     Outposts is in your own building; a Local Zone is an AWS site in a big city.
   module: "03"
+
+- term: AWS PrivateLink
+  definition: >-
+    A way to reach one service privately from a VPC, through an interface endpoint with a private
+    address in your subnet, without joining networks or using an internet gateway, NAT gateway or
+    public address. The service can be an AWS service, a partner's product or another team's
+    endpoint service.
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  also_in: [guide/07-connecting-it/01-your-own-network.md]
+  confused_with: [VPC peering, AWS Transit Gateway]
+  not_to_confuse: >-
+    PrivateLink exposes one service, and only the consumer can start connections; peering and
+    Transit Gateway join whole networks both ways.
+  module: "07"
 
 - term: AWS Schema Conversion Tool
   abbreviation: AWS SCT
@@ -560,6 +872,19 @@
   taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
   module: "04"
 
+- term: AWS Site-to-Site VPN
+  definition: >-
+    One of the AWS VPN services: it connects a whole network, such as an office, to AWS through
+    encrypted IPsec tunnels across the public internet. It can be set up in minutes, but it is
+    encrypted, not private.
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  confused_with: [AWS Direct Connect, AWS Client VPN]
+  not_to_confuse: >-
+    A Site-to-Site VPN is quick and encrypted but shares the internet's path, while Direct Connect is
+    a private line that takes longer to set up; and Site-to-Site joins a network, while Client VPN
+    joins one person's device.
+  module: "07"
+
 - term: AWS Snowball
   definition: >-
     A rugged storage device AWS shipped to customers for moving large amounts of data into AWS. It
@@ -584,6 +909,18 @@
     Storage Gateway is a lasting link that on-premises software uses every day; DataSync moves data
     once, and AWS Backup manages backups of resources already in AWS.
   module: "05"
+
+- term: AWS Transit Gateway
+  definition: >-
+    A hub that VPCs, VPN connections and Direct Connect links each attach to once, with route tables
+    that decide which networks reach which. It replaces a tangle of peering connections when there
+    are many networks, and bills per attachment-hour and per GB.
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  confused_with: [VPC peering, AWS PrivateLink]
+  not_to_confuse: >-
+    Transit Gateway connects many networks through one hub and is transitive; peering joins just two
+    VPCs, and PrivateLink reaches one service.
+  module: "07"
 
 - term: AWS Well-Architected Framework
   definition: >-
@@ -675,6 +1012,13 @@
     older Amazon Glacier service, closed to new customers.
   module: "05"
 
+- term: batch job
+  definition: >-
+    A program that runs to completion with no one interacting with it, such as a nightly report or
+    a simulation.
+  taught_in: guide/06-running-applications/04-simpler-paths.md
+  module: "06"
+
 - term: best practice
   definition: >-
     A specific recommended action in the Well-Architected Framework, with an ID that shows its
@@ -705,6 +1049,13 @@
     over the network, and object storage keeps whole objects in a bucket reached through a web API.
   module: "05"
 
+- term: bottleneck
+  definition: >-
+    The resource a program runs out of first: processor, memory, disk speed or special chips. It is
+    the first thing to find when choosing an EC2 instance family.
+  taught_in: guide/06-running-applications/01-ec2.md
+  module: "06"
+
 - term: bucket
   definition: >-
     A container for files (objects) in Amazon S3.
@@ -723,6 +1074,20 @@
   also_in: [guide/04-shared-responsibility-and-access/09-sim-policy-playground.md, guide/05-storing-data/02-s3-in-practice.md]
   module: "04"
 
+- term: bundle (Lightsail)
+  definition: >-
+    Amazon Lightsail's name for a plan that packs a server, storage and data transfer into one
+    price.
+  taught_in: guide/06-running-applications/04-simpler-paths.md
+  module: "06"
+
+- term: burstable instance
+  definition: >-
+    An EC2 instance, of the T types, that runs at a baseline level of processor use and bursts above
+    it using credits earned while quiet. It suits web servers and test systems that are mostly idle.
+  taught_in: guide/06-running-applications/01-ec2.md
+  module: "06"
+
 - term: business continuity
   definition: >-
     Keeping the business running through a major disruption, not just restoring it afterwards; one
@@ -739,7 +1104,7 @@
     A stored copy kept close by so it can be served again quickly. To cache something is to keep
     such a copy.
   taught_in: guide/03-aws-around-the-world/04-the-edge.md
-  also_in: [guide/05-storing-data/04-hybrid-storage-and-backup.md, guide/05-storing-data/06-choosing-a-database.md]
+  also_in: [guide/05-storing-data/04-hybrid-storage-and-backup.md, guide/05-storing-data/06-choosing-a-database.md, guide/07-connecting-it/03-names-and-the-edge.md]
   confused_with: [origin]
   not_to_confuse: >-
     The cache is the nearby copy; the origin is where the original lives, and where the cache
@@ -775,6 +1140,25 @@
     migration strategy works.
   taught_in: guide/05-storing-data/06-choosing-a-database.md
   module: "05"
+
+- term: CIDR block
+  definition: >-
+    A way to write a range of IP addresses, such as 10.0.0.0/16 for every address starting 10.0. A
+    smaller number after the slash means a bigger range, and 0.0.0.0/0 means every address.
+  taught_in: guide/07-connecting-it/01-your-own-network.md
+  also_in: [guide/07-connecting-it/05-lab-09-build-a-small-vpc.md]
+  module: "07"
+
+- term: Classic Load Balancer
+  definition: >-
+    The previous generation of Elastic Load Balancing. AWS recommends moving to a current type, so
+    recognize the name but don't choose it for new work.
+  taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+  confused_with: [Application Load Balancer]
+  not_to_confuse: >-
+    The Classic Load Balancer is not a current peer of the ALB, NLB and GWLB; it is the older
+    generation they replace.
+  module: "06"
 
 - term: client-side encryption
   definition: >-
@@ -849,6 +1233,24 @@
   taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
   module: "02"
 
+- term: compute environment
+  definition: >-
+    In AWS Batch, the set of servers jobs run on: EC2 instances, On-Demand or Spot, or Fargate. In a
+    managed compute environment AWS provisions the servers; in an unmanaged one you run them.
+  taught_in: guide/06-running-applications/04-simpler-paths.md
+  module: "06"
+
+- term: compute optimized
+  definition: >-
+    EC2 instance types with more processor power for their memory, for work that keeps the
+    processors busy, such as batch processing, media transcoding and game servers. Its letter is C.
+  taught_in: guide/06-running-applications/01-ec2.md
+  confused_with: [memory optimized, accelerated computing, general purpose (instance family)]
+  not_to_confuse: >-
+    Compute optimized adds ordinary processor power; memory optimized adds memory, and accelerated
+    computing adds GPUs or other special chips.
+  module: "06"
+
 - term: Condition (policy element)
   definition: >-
     An optional part of a policy statement that adds "only when", such as only when the request was
@@ -863,16 +1265,46 @@
   taught_in: guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md
   module: "04"
 
+- term: container
+  definition: >-
+    A standard package that holds an application's code together with the libraries and settings it
+    depends on, so it runs the same on a laptop or on AWS. It is a package of software, not a place
+    to store data like an S3 bucket.
+  taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  module: "06"
+
+- term: container image
+  definition: >-
+    The template a container starts from, built once so that every container started from it is
+    identical. Images are kept in a container registry.
+  taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  module: "06"
+
+- term: container registry
+  definition: >-
+    A store of container images, from which an orchestrator pulls an image when it starts a
+    container. Amazon ECR is AWS's.
+  taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  module: "06"
+
 - term: content delivery network
   abbreviation: CDN
   definition: >-
     A network of servers in many places that keeps copies of content near users, so it arrives
     faster. Amazon CloudFront is AWS's CDN.
   taught_in: guide/03-aws-around-the-world/04-the-edge.md
+  also_in: [guide/07-connecting-it/03-names-and-the-edge.md]
   confused_with: [Domain Name System]
   not_to_confuse: >-
     A CDN delivers the content itself from nearby copies; DNS only tells users where to find it.
   module: "03"
+
+- term: control plane
+  definition: >-
+    The part of an orchestration system that makes the decisions about where containers run. In
+    Amazon EKS, AWS manages the Kubernetes control plane for you.
+  taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  module: "06"
 
 - term: cost optimization pillar
   definition: >-
@@ -914,6 +1346,17 @@
     The current version is what a plain request returns; noncurrent versions are older ones kept
     underneath, still stored and billed.
   module: "05"
+
+- term: customer gateway device
+  definition: >-
+    Your router or firewall at the office end of a Site-to-Site VPN. Setting it up and using both
+    tunnels is your side of the line.
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  confused_with: [virtual private gateway]
+  not_to_confuse: >-
+    The customer gateway device is your end of the VPN; the virtual private gateway is AWS's end,
+    attached to a VPC.
+  module: "07"
 
 - term: customer managed policy
   definition: >-
@@ -980,6 +1423,15 @@
     it is stored.
   module: "03"
 
+- term: data transfer
+  definition: >-
+    Data moving into, within or out of AWS, billed per GB by direction. Data in from the internet is
+    free, but data out to the internet, between Regions and across Availability Zones is charged
+    (see the lesson).
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  also_in: [guide/07-connecting-it/01-your-own-network.md]
+  module: "07"
+
 - term: data warehouse
   definition: >-
     A database built to analyze large amounts of historical data gathered from many sources, through
@@ -1016,6 +1468,25 @@
     runs.
   taught_in: guide/05-storing-data/05-managed-or-self-managed-databases.md
   module: "05"
+
+- term: dedicated connection
+  definition: >-
+    A Direct Connect connection on a physical port for you alone, at a fixed speed.
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  confused_with: [hosted connection]
+  not_to_confuse: >-
+    A dedicated connection is your own port at a Direct Connect location; a hosted connection comes
+    to you through an AWS Direct Connect Partner.
+  module: "07"
+
+- term: default VPC
+  definition: >-
+    The VPC AWS creates in each Region of every account, with a public subnet in every Availability
+    Zone, an internet gateway and automatic public IPv4 addresses. Handy for a first test, but every
+    subnet in it is public.
+  taught_in: guide/07-connecting-it/01-your-own-network.md
+  also_in: [guide/07-connecting-it/05-lab-09-build-a-small-vpc.md]
+  module: "07"
 
 - term: delete marker
   definition: >-
@@ -1060,6 +1531,26 @@
     with an ID.
   module: "02"
 
+- term: desired capacity
+  definition: >-
+    How many instances an Auto Scaling group should run right now, always between its minimum and
+    maximum. A scaling policy, a schedule or a person changes it, and the group launches or
+    terminates instances to match.
+  taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+  also_in: [guide/06-running-applications/07-sim-elasticity-with-auto-scaling.md]
+  confused_with: [minimum capacity, maximum capacity]
+  not_to_confuse: >-
+    The desired capacity moves with demand; the minimum and maximum are the fixed limits it moves
+    between.
+  module: "06"
+
+- term: Direct Connect location
+  definition: >-
+    A data center where AWS's network and customers' networks meet, so a cable can join them for AWS
+    Direct Connect.
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  module: "07"
+
 - term: disaster
   definition: >-
     An event bigger than an ordinary failure. AWS names natural, technical and human kinds, so
@@ -1080,6 +1571,19 @@
     availability keeps it running through one part failing.
   module: "03"
 
+- term: distribution
+  definition: >-
+    Your Amazon CloudFront setup: which origins it serves, such as an S3 bucket or a web server, and
+    how it caches their content.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  module: "07"
+
+- term: DNS record
+  definition: >-
+    One entry in a hosted zone that maps a name to an answer, such as an address.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  module: "07"
+
 - term: document database
   definition: >-
     A database in which each record is a self-contained document, usually JSON, and different
@@ -1097,11 +1601,22 @@
     One of the four broad subject areas the CLF-C02 exam guide divides the exam into, each with its
     own share of the questions.
   taught_in: guide/00-start-here/03-the-exam-at-a-glance.md
-  confused_with: [task statement]
+  confused_with: [task statement, domain name]
   not_to_confuse: >-
-    A domain is a broad subject area of the exam; a task statement is one specific thing a domain
-    tests.
+    A domain is a broad subject area of the exam and a task statement is one specific thing a domain
+    tests, while a domain name is a website's name on the internet.
   module: "00"
+
+- term: domain name
+  definition: >-
+    A name people use to reach a site, such as bakery.example, which DNS turns into an address.
+    Amazon Route 53 can register domain names and answer DNS questions for them.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  confused_with: [domain]
+  not_to_confuse: >-
+    A domain name is a site's name on the internet; an exam domain is one of the broad subject areas
+    of the CLF-C02 exam.
+  module: "07"
 
 - term: Domain Name System
   abbreviation: DNS
@@ -1109,6 +1624,7 @@
     The internet's address book: it turns a name like example.com into the network address of a
     server. Amazon Route 53 is AWS's DNS service.
   taught_in: guide/03-aws-around-the-world/04-the-edge.md
+  also_in: [guide/07-connecting-it/03-names-and-the-edge.md]
   confused_with: [content delivery network]
   not_to_confuse: >-
     DNS only answers where something is; a CDN delivers the content.
@@ -1152,6 +1668,13 @@
   also_in: [guide/05-storing-data/04-hybrid-storage-and-backup.md]
   module: "05"
 
+- term: EC2 Instance Connect
+  definition: >-
+    A way to sign in to a Linux EC2 instance with your IAM identity and a key that lasts only
+    seconds, without leaving SSH open to everyone. Each connection is logged in CloudTrail.
+  taught_in: guide/06-running-applications/01-ec2.md
+  module: "06"
+
 - term: economies of scale
   definition: >-
     The lower cost per unit that a very large operation reaches by buying, building and running
@@ -1165,7 +1688,7 @@
     services which deliver content and traffic close to users, such as Amazon CloudFront, Amazon
     Route 53 and AWS Global Accelerator. AWS also calls these sites points of presence (PoPs).
   taught_in: guide/03-aws-around-the-world/04-the-edge.md
-  also_in: [guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md]
+  also_in: [guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md, guide/07-connecting-it/03-names-and-the-edge.md]
   confused_with: [Region, Availability Zone, Local Zone]
   not_to_confuse: >-
     Edge locations deliver content and answer requests near users but don't run your servers; your
@@ -1179,12 +1702,39 @@
   taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
   module: "04"
 
+- term: Elastic IP address
+  definition: >-
+    A fixed public IPv4 address that you keep in your account and attach to an instance or a NAT
+    gateway. Unlike the address an instance gets automatically, it survives a stop, and it is
+    charged until you release it.
+  taught_in: guide/06-running-applications/01-ec2.md
+  also_in: [guide/07-connecting-it/01-your-own-network.md]
+  confused_with: [public IP address]
+  not_to_confuse: >-
+    An Elastic IP address stays yours until you release it; an automatic public IP address is
+    released when the instance stops, so it comes back different.
+  module: "06"
+
+- term: Elastic Load Balancing
+  abbreviation: ELB
+  definition: >-
+    AWS's load balancing service: one front door that spreads incoming traffic across healthy
+    targets, such as EC2 instances, containers and IP addresses, in one or more Availability Zones.
+    AWS scales the load balancer itself, and it bills by the hour.
+  taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+  also_in: [guide/06-running-applications/07-sim-elasticity-with-auto-scaling.md]
+  confused_with: [Amazon EC2 Auto Scaling]
+  not_to_confuse: >-
+    Elastic Load Balancing decides which healthy target gets each request; Amazon EC2 Auto Scaling
+    decides how many instances there are.
+  module: "06"
+
 - term: elasticity
   definition: >-
     Capacity that grows when demand rises and shrinks when it falls, so you don't pay for capacity
     you no longer need. On AWS it is usually automatic, through auto scaling.
   taught_in: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
-  also_in: [guide/02-why-the-cloud/07-sim-demand-curve.md]
+  also_in: [guide/02-why-the-cloud/07-sim-demand-curve.md, guide/06-running-applications/02-auto-scaling-and-load-balancers.md]
   confused_with: [scalability, agility]
   not_to_confuse: >-
     Elasticity is capacity following demand up and down; scalability is only the ability to grow,
@@ -1206,12 +1756,14 @@
 - term: encryption in transit
   definition: >-
     Scrambling data while it travels over the network, for example with TLS, the protection behind
-    HTTPS.
+    HTTPS, so that anyone who intercepts it can't read it.
   taught_in: guide/05-storing-data/02-s3-in-practice.md
-  confused_with: [encryption at rest]
+  also_in: [guide/07-connecting-it/04-connecting-networks-and-offices.md]
+  confused_with: [encryption at rest, private connection]
   not_to_confuse: >-
     Encryption in transit protects data on the move and encryption at rest protects it where it is
-    stored; neither decides who may read it.
+    stored, while a private connection only keeps data off the internet's path; none of them decides
+    who may read it.
   module: "05"
 
 - term: end of support
@@ -1225,12 +1777,60 @@
     and shut down means the date has passed and the service is gone.
   module: "00"
 
+- term: endpoint
+  definition: >-
+    A resource that receives an application's traffic, such as a load balancer, an EC2 instance or an
+    Elastic IP address. AWS Global Accelerator sends each user's traffic to the best healthy endpoint
+    in a Region.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  confused_with: [VPC endpoint]
+  not_to_confuse: >-
+    An endpoint is where an application receives traffic; a VPC endpoint is a private path from your
+    VPC out to an AWS service.
+  module: "07"
+
+- term: endpoint service
+  definition: >-
+    A service that its owner publishes through AWS PrivateLink, behind a Network Load Balancer, so
+    other VPCs can reach it through interface endpoints.
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  module: "07"
+
+- term: environment (Elastic Beanstalk)
+  definition: >-
+    In AWS Elastic Beanstalk, the set of AWS resources that runs one version of your application.
+    Its resources keep billing until you delete it.
+  taught_in: guide/06-running-applications/04-simpler-paths.md
+  module: "06"
+
+- term: ephemeral port
+  definition: >-
+    The temporary high-numbered port the client end of a conversation uses, to which replies are
+    sent. A network ACL needs a rule allowing these ports for replies; a security group doesn't.
+  taught_in: guide/07-connecting-it/02-filtering-traffic.md
+  also_in: [guide/07-connecting-it/05-lab-09-build-a-small-vpc.md, guide/07-connecting-it/06-sim-packet-journey.md]
+  module: "07"
+
+- term: event
+  definition: >-
+    Something that happens and starts code, such as a file landing in S3, a web request, a message
+    in a queue or a set time.
+  taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  module: "06"
+
 - term: Event history
   definition: >-
     The part of AWS CloudTrail that is on in every account without setup and shows recent account
     activity, one Region at a time. See the lab for how far back it goes.
   taught_in: guide/02-why-the-cloud/06-lab-01-first-resource.md
   module: "02"
+
+- term: execution role
+  definition: >-
+    The IAM role AWS Lambda assumes while a function runs, which decides what the code may touch.
+    By default it allows only writing the function's logs.
+  taught_in: guide/06-running-applications/05-lab-07-a-lambda-function.md
+  module: "06"
 
 - term: expiration action
   definition: >-
@@ -1274,6 +1874,17 @@
   also_in: [guide/03-aws-around-the-world/04-the-edge.md, guide/05-storing-data/05-managed-or-self-managed-databases.md]
   module: "03"
 
+- term: failover routing
+  definition: >-
+    A Route 53 routing policy that sends users to the main site while its health check passes, and
+    to a standby when it fails, with no one acting.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  confused_with: [latency routing, weighted routing]
+  not_to_confuse: >-
+    Failover routing asks whether the main site is healthy; latency routing asks which Region is
+    fastest for the user, and weighted routing what share goes where.
+  module: "07"
+
 - term: federation
   definition: >-
     Letting people sign in with an account held somewhere else, such as a company directory, and
@@ -1293,6 +1904,13 @@
     server's disk, and object storage answers web requests for whole objects.
   module: "05"
 
+- term: firewall
+  definition: >-
+    Something that lets network traffic through or stops it according to rules. In a VPC, security
+    groups and network ACLs are firewalls.
+  taught_in: guide/07-connecting-it/02-filtering-traffic.md
+  module: "07"
+
 - term: fixed expense
   definition: >-
     A cost that stays the same however much you use, such as servers you have bought, or rent.
@@ -1303,6 +1921,73 @@
     Fixed or variable asks whether a cost changes with use; capital or operating asks whether you
     pay up front or as you go, so rent is fixed but operating.
   module: "02"
+
+- term: function (AWS Lambda)
+  definition: >-
+    The code you upload to AWS Lambda, as a .zip file or a container image, which runs each time an
+    event triggers it. It keeps no state between runs.
+  taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  also_in: [guide/06-running-applications/05-lab-07-a-lambda-function.md]
+  module: "06"
+
+- term: gateway endpoint
+  definition: >-
+    A VPC endpoint for Amazon S3 or Amazon DynamoDB only, reached through an entry in a route table.
+    It has no charge.
+  taught_in: guide/07-connecting-it/01-your-own-network.md
+  confused_with: [interface endpoint, NAT gateway]
+  not_to_confuse: >-
+    A gateway endpoint is a free route to S3 or DynamoDB; an interface endpoint is a billed address
+    in your subnet that reaches many services through PrivateLink.
+  module: "07"
+
+- term: Gateway Load Balancer
+  abbreviation: GWLB
+  definition: >-
+    The Elastic Load Balancing type that passes network traffic through third-party virtual
+    appliances, such as firewalls or intrusion detection systems, and lets them scale.
+  taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+  confused_with: [Application Load Balancer, Network Load Balancer]
+  not_to_confuse: >-
+    A GWLB is chosen for appliances that inspect traffic, not for serving users; ALB and NLB spread
+    users' requests across your servers.
+  module: "06"
+
+- term: GB-second
+  definition: >-
+    The unit Lambda bills compute in: the memory given to a function, in GB, times the seconds it
+    runs. Fargate bills memory in the same way.
+  taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  also_in: [guide/06-running-applications/05-lab-07-a-lambda-function.md]
+  module: "06"
+
+- term: general purpose (instance family)
+  definition: >-
+    EC2 instance types with a balance of processor, memory and network, for work where nothing in
+    particular runs out first, such as web servers and small databases. Its letters include M and T.
+  taught_in: guide/06-running-applications/01-ec2.md
+  confused_with: [compute optimized, memory optimized]
+  not_to_confuse: >-
+    General purpose is the answer when no one resource runs out first; a clear processor or memory
+    bottleneck points to compute optimized or memory optimized.
+  module: "06"
+
+- term: geolocation routing
+  definition: >-
+    A Route 53 routing policy that chooses the answer by where the user is, by country or continent,
+    for content or rules that differ by location.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  confused_with: [latency routing]
+  not_to_confuse: >-
+    Geolocation routing follows a rule about the user's location; latency routing follows measured
+    speed, so it can't guarantee a country is served from a given Region.
+  module: "07"
+
+- term: GiB
+  definition: >-
+    Gibibyte, the unit in which EC2 states memory: slightly more than a gigabyte.
+  taught_in: guide/06-running-applications/01-ec2.md
+  module: "06"
 
 - term: global reach
   definition: >-
@@ -1359,12 +2044,28 @@
     system is under the virtualization layer and AWS's.
   module: "04"
 
+- term: handler
+  definition: >-
+    The part of a Lambda function's code that Lambda runs on each invocation, receiving the event's
+    data.
+  taught_in: guide/06-running-applications/05-lab-07-a-lambda-function.md
+  module: "06"
+
 - term: hardware refresh
   definition: >-
     Replacing servers and network equipment when they wear out, go out of support, or become too
     slow; a recurring up-front cost of running your own IT.
   taught_in: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
   module: "02"
+
+- term: health check
+  definition: >-
+    A regular test of whether a server or endpoint is working, meaning answering correctly, not
+    free of viruses. Load balancers send traffic only to targets that pass, Auto Scaling replaces
+    instances that fail, and Route 53 can stop answering with an endpoint that fails.
+  taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+  also_in: [guide/07-connecting-it/03-names-and-the-edge.md]
+  module: "06"
 
 - term: heterogeneous migration
   definition: >-
@@ -1419,6 +2120,24 @@
     runs inside your virtual server, and on EC2 it is yours to patch.
   module: "04"
 
+- term: hosted connection
+  definition: >-
+    A Direct Connect connection provided through an AWS Direct Connect Partner rather than on a port
+    of your own.
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  confused_with: [dedicated connection]
+  not_to_confuse: >-
+    A hosted connection comes through a partner; a dedicated connection is a physical port for you
+    alone.
+  module: "07"
+
+- term: hosted zone
+  definition: >-
+    In Route 53, the set of DNS records for one domain, such as bakery.example. A public hosted zone
+    answers anyone on the internet; a private one answers only inside the VPCs you choose.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  module: "07"
+
 - term: hot standby
   definition: >-
     A variation of multi-site active/active: a full second copy in another Region that takes no
@@ -1429,6 +2148,24 @@
     A hot standby is full size but idle until failover; a warm standby is smaller and must scale up,
     and in multi-site active/active every copy serves customers.
   module: "03"
+
+- term: HPC optimized
+  definition: >-
+    EC2 instance types for high performance computing: very large, tightly linked computations such
+    as complex simulations. Its letters are Hpc.
+  taught_in: guide/06-running-applications/01-ec2.md
+  confused_with: [accelerated computing]
+  not_to_confuse: >-
+    HPC optimized is for huge computations spread over many linked processors; accelerated computing
+    is for work done on GPUs or other special chips.
+  module: "06"
+
+- term: hub and spoke
+  definition: >-
+    A network layout in which every network connects once to a central hub, such as a transit
+    gateway, instead of to every other network in a mesh.
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  module: "07"
 
 - term: hybrid deployment
   definition: >-
@@ -1566,6 +2303,16 @@
   taught_in: guide/05-storing-data/06-choosing-a-database.md
   module: "05"
 
+- term: inbound rule
+  definition: >-
+    A firewall rule for traffic arriving at a resource or subnet.
+  taught_in: guide/07-connecting-it/02-filtering-traffic.md
+  confused_with: [outbound rule]
+  not_to_confuse: >-
+    Inbound rules cover traffic arriving and outbound rules cover traffic leaving; on a stateless
+    network ACL a reply needs a rule for its own direction.
+  module: "07"
+
 - term: infrastructure
   definition: >-
     The hardware, software, networks and buildings that run AWS's services.
@@ -1608,6 +2355,34 @@
     stand alone and can attach to many identities.
   module: "04"
 
+- term: instance
+  definition: >-
+    One virtual server in Amazon EC2, started from an AMI with the hardware of its instance type.
+    You pay for its running time, and separately for its disks and public addresses.
+  taught_in: guide/06-running-applications/01-ec2.md
+  also_in: [guide/06-running-applications/06-lab-08-launch-and-terminate-an-instance.md]
+  module: "06"
+
+- term: instance family
+  definition: >-
+    A group of EC2 instance types built for the same kind of work, such as general purpose or memory
+    optimized. You choose the family from the workload's bottleneck, then the size inside it.
+  taught_in: guide/06-running-applications/01-ec2.md
+  exam_name: Amazon EC2 instance types
+  confused_with: [instance type]
+  not_to_confuse: >-
+    A family is a group of types with the same balance of resources; an instance type is one size
+    in that family.
+  module: "06"
+
+- term: instance state
+  definition: >-
+    Where an EC2 instance is in its life: pending, running, stopped or terminated. You pay for
+    instance time only while it is running.
+  taught_in: guide/06-running-applications/01-ec2.md
+  also_in: [guide/06-running-applications/06-lab-08-launch-and-terminate-an-instance.md]
+  module: "06"
+
 - term: instance store
   definition: >-
     Temporary block storage on disks physically attached to the computer that runs an EC2 instance,
@@ -1619,6 +2394,78 @@
     Instance store belongs to the physical host and loses its data on a stop; an EBS volume persists
     apart from the instance and can be backed up with snapshots.
   module: "05"
+
+- term: instance type
+  definition: >-
+    A named size of EC2 hardware, such as m7g.large: its virtual processors, memory, storage and
+    network speed. The name gives the family and generation before the dot and the size after it.
+  taught_in: guide/06-running-applications/01-ec2.md
+  confused_with: [purchasing option, Amazon Machine Image]
+  not_to_confuse: >-
+    An instance type is the hardware; a purchasing option such as On-Demand or Spot is only how you
+    pay for that hardware, and the AMI is the software it runs.
+  module: "06"
+
+- term: instance-hour
+  definition: >-
+    One instance running for one hour: the unit for adding up compute use, as when comparing an
+    Auto Scaling group with a fixed fleet over a day.
+  taught_in: guide/06-running-applications/07-sim-elasticity-with-auto-scaling.md
+  module: "06"
+
+- term: interface endpoint
+  definition: >-
+    A VPC endpoint, built on AWS PrivateLink, that puts a network interface with a private IP address
+    in your subnet to reach one of many AWS services, partners' services or services other accounts
+    publish. It bills by the hour in each Availability Zone, plus per GB.
+  taught_in: guide/07-connecting-it/01-your-own-network.md
+  also_in: [guide/07-connecting-it/04-connecting-networks-and-offices.md]
+  confused_with: [gateway endpoint]
+  not_to_confuse: >-
+    An interface endpoint reaches many services and is billed; a gateway endpoint reaches only S3
+    and DynamoDB, through a route, for free.
+  module: "07"
+
+- term: internet gateway
+  definition: >-
+    The part attached to a VPC that connects it to the internet in both directions, so either side
+    can start a connection. AWS runs it as a highly available component, and it has no charge.
+  taught_in: guide/07-connecting-it/01-your-own-network.md
+  also_in: [guide/07-connecting-it/05-lab-09-build-a-small-vpc.md]
+  confused_with: [NAT gateway]
+  not_to_confuse: >-
+    Through an internet gateway the internet can start connections in, at no charge; through a NAT
+    gateway only your private servers can start connections out, and it bills by the hour and per
+    GB.
+  module: "07"
+
+- term: invalidation
+  definition: >-
+    Removing a file from CloudFront's edge caches before its cache time runs out, for example after
+    fixing a wrong price list.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  module: "07"
+
+- term: invocation
+  definition: >-
+    One run of a Lambda function. Lambda bills each invocation as a request, plus its memory times
+    its run time.
+  taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  also_in: [guide/06-running-applications/05-lab-07-a-lambda-function.md]
+  module: "06"
+
+- term: IP address
+  definition: >-
+    The number that identifies a device on a network, such as 10.0.1.25. It can be private, working
+    only inside one network, or public, reachable across the internet.
+  taught_in: guide/07-connecting-it/01-your-own-network.md
+  module: "07"
+
+- term: IPsec
+  definition: >-
+    The standard AWS Site-to-Site VPN uses to build its encrypted tunnels.
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  module: "07"
 
 - term: iSCSI
   definition: >-
@@ -1655,6 +2502,12 @@
     An item is a whole record; an attribute is one named value inside it.
   module: "05"
 
+- term: job queue
+  definition: >-
+    In AWS Batch, the list that holds submitted jobs until Batch runs them.
+  taught_in: guide/06-running-applications/04-simpler-paths.md
+  module: "06"
+
 - term: JSON
   definition: >-
     Text with named fields and nested lists: the usual format for documents in a document database,
@@ -1685,6 +2538,13 @@
     documents whose fields can vary, and DynamoDB supports both.
   module: "05"
 
+- term: Kubernetes
+  definition: >-
+    A widely used open-source system for orchestrating containers. Amazon EKS runs it for you, so
+    teams can keep their existing Kubernetes tools.
+  taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  module: "06"
+
 - term: latency
   definition: >-
     The delay between a request and its answer. Distance is one of its main causes, so running close
@@ -1692,6 +2552,31 @@
   taught_in: guide/03-aws-around-the-world/02-choosing-a-region.md
   also_in: [guide/02-why-the-cloud/03-telling-the-benefits-apart.md]
   module: "03"
+
+- term: latency routing
+  definition: >-
+    A Route 53 routing policy that sends each user to the Region that answers them fastest.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  confused_with: [geolocation routing]
+  not_to_confuse: >-
+    Latency routing picks the fastest Region, which is usually but not always the nearest; when a
+    rule says where a user's country must be served, use geolocation routing.
+  module: "07"
+
+- term: launch (EC2 instance)
+  definition: >-
+    To start a new EC2 instance, choosing its AMI, instance type, storage, network and security
+    group, and how you sign in. The instance bills from launch until you terminate it.
+  taught_in: guide/06-running-applications/01-ec2.md
+  also_in: [guide/06-running-applications/06-lab-08-launch-and-terminate-an-instance.md]
+  module: "06"
+
+- term: launch template
+  definition: >-
+    The recipe an Auto Scaling group uses for each new instance: the AMI, the instance type, the
+    security group and other launch settings.
+  taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+  module: "06"
 
 - term: lens
   definition: >-
@@ -1710,10 +2595,23 @@
 
 - term: load balancer
   definition: >-
-    A service that spreads users' requests across servers in one or more Availability Zones and
-    skips any that fail its health checks.
-  taught_in: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
-  module: "03"
+    One front door that spreads users' requests across servers, called targets, in one or more
+    Availability Zones and skips any that fail its health checks. Elastic Load Balancing is AWS's.
+  taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+  also_in: [guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md]
+  confused_with: [auto scaling]
+  not_to_confuse: >-
+    A load balancer decides which server gets each request; auto scaling decides how many servers
+    there are.
+  module: "06"
+
+- term: local route
+  definition: >-
+    The route every route table has for the VPC's own address range, which keeps traffic for those
+    addresses inside the VPC and lets its subnets reach each other.
+  taught_in: guide/07-connecting-it/05-lab-09-build-a-small-vpc.md
+  also_in: [guide/07-connecting-it/01-your-own-network.md]
+  module: "07"
 
 - term: Local Zone
   definition: >-
@@ -1727,6 +2625,33 @@
     networking services, Outposts is AWS hardware in your own building, and a Wavelength Zone sits
     inside a 5G network.
   module: "03"
+
+- term: log group
+  definition: >-
+    In Amazon CloudWatch Logs, a set of log streams that share settings, such as how long their data
+    is kept. A Lambda function writes to its own log group.
+  taught_in: guide/06-running-applications/05-lab-07-a-lambda-function.md
+  confused_with: [log stream]
+  not_to_confuse: >-
+    A log group holds many streams and their shared settings; a log stream is one run of lines from
+    one source.
+  module: "06"
+
+- term: log retention
+  definition: >-
+    How long CloudWatch Logs keeps a log group's data before deleting it. By default logs never
+    expire, so set a period that fits your needs.
+  taught_in: guide/06-running-applications/05-lab-07-a-lambda-function.md
+  module: "06"
+
+- term: log stream
+  definition: >-
+    In Amazon CloudWatch Logs, a run of log lines from one source, kept inside a log group.
+  taught_in: guide/06-running-applications/05-lab-07-a-lambda-function.md
+  confused_with: [log group]
+  not_to_confuse: >-
+    A log stream is one source's lines; the log group around it sets how long they are kept.
+  module: "06"
 
 - term: long-term credentials
   definition: >-
@@ -1749,6 +2674,21 @@
     it.
   module: "02"
 
+- term: MACsec
+  definition: >-
+    Encryption between your device and the Direct Connect location, on connections that support it.
+    It is one way to make a private Direct Connect path encrypted too.
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  module: "07"
+
+- term: main route table
+  definition: >-
+    The route table AWS creates with a VPC, used by every subnet you don't link to another route
+    table. It starts with only the local route and is deleted with the VPC.
+  taught_in: guide/07-connecting-it/05-lab-09-build-a-small-vpc.md
+  also_in: [guide/07-connecting-it/01-your-own-network.md]
+  module: "07"
+
 - term: managed database
   definition: >-
     A database a provider runs for you, such as Amazon RDS: AWS installs and patches the software,
@@ -1760,6 +2700,14 @@
     A managed database leaves the operating system, patches and backups to AWS; a self-managed
     database on EC2 leaves them all to you.
   module: "05"
+
+- term: managed platform updates
+  definition: >-
+    An Elastic Beanstalk setting that applies new patch and minor platform versions, with operating
+    system and language updates, in a weekly maintenance window. Major version upgrades stay yours
+    to start.
+  taught_in: guide/06-running-applications/04-simpler-paths.md
+  module: "06"
 
 - term: managed service
   definition: >-
@@ -1773,6 +2721,29 @@
     you still choose and tune a database engine, while on Amazon S3 you only handle data and
     settings.
   module: "04"
+
+- term: maximum capacity
+  definition: >-
+    The most instances an Auto Scaling group may run. It caps the cost if a fault or a flood of
+    traffic drives demand up.
+  taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+  also_in: [guide/06-running-applications/07-sim-elasticity-with-auto-scaling.md]
+  confused_with: [minimum capacity, desired capacity]
+  not_to_confuse: >-
+    The maximum is the ceiling the group never passes; the desired capacity is how many it runs now,
+    which a scaling policy moves between the minimum and the maximum.
+  module: "06"
+
+- term: memory optimized
+  definition: >-
+    EC2 instance types with a lot of memory for their processors, for work that holds large data
+    sets in memory, such as in-memory databases and analytics. Its letters include R and X.
+  taught_in: guide/06-running-applications/01-ec2.md
+  confused_with: [compute optimized, storage optimized]
+  not_to_confuse: >-
+    Memory optimized is for data that must fit in RAM; compute optimized is for processor-bound
+    work, and storage optimized for fast reads and writes to local disks.
+  module: "06"
 
 - term: metadata
   definition: >-
@@ -1809,6 +2780,18 @@
     The minimum billable size charges small objects as larger ones; the minimum storage duration
     charges early leavers for the full stay.
   module: "05"
+
+- term: minimum capacity
+  definition: >-
+    The fewest instances an Auto Scaling group may run. Set it to at least one per Availability
+    Zone you use, so the loss of one zone still leaves servers running.
+  taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+  also_in: [guide/06-running-applications/07-sim-elasticity-with-auto-scaling.md]
+  confused_with: [maximum capacity, desired capacity]
+  not_to_confuse: >-
+    The minimum is the floor kept for availability, the maximum is the ceiling that caps the cost,
+    and the desired capacity is the number the group aims for right now, between the two.
+  module: "06"
 
 - term: minimum storage duration
   definition: >-
@@ -1867,6 +2850,46 @@
     In multi-site active/active every copy serves customers every day; a hot standby is a full copy
     that waits, and a warm standby is a smaller copy that must scale up.
   module: "03"
+
+- term: NAT gateway
+  definition: >-
+    A part, placed in a public subnet with an Elastic IP address, that lets servers in private
+    subnets start connections out to the internet while nobody outside can start one in. It is
+    charged for every hour it exists and every GB it processes (see the lesson).
+  taught_in: guide/07-connecting-it/01-your-own-network.md
+  confused_with: [internet gateway, gateway endpoint]
+  not_to_confuse: >-
+    A NAT gateway carries private servers' traffic out to the internet and bills hourly; an internet
+    gateway is free and works both ways, and a free gateway endpoint is the cheaper path when the
+    traffic only goes to S3 or DynamoDB.
+  module: "07"
+
+- term: network ACL
+  abbreviation: NACL
+  definition: >-
+    Network access control list: a stateless firewall at the edge of a subnet, with numbered allow
+    and deny rules checked from the lowest number until the first match, ending in a catch-all deny.
+    The default one allows everything; a new custom one denies everything.
+  taught_in: guide/07-connecting-it/02-filtering-traffic.md
+  also_in: [guide/07-connecting-it/05-lab-09-build-a-small-vpc.md, guide/07-connecting-it/06-sim-packet-journey.md]
+  confused_with: [security group, access control list]
+  not_to_confuse: >-
+    A network ACL guards a whole subnet, can deny and checks replies again, while a security group
+    guards one resource, only allows and lets replies through; an S3 ACL is unrelated and grants
+    access to buckets and objects.
+  module: "07"
+
+- term: Network Load Balancer
+  abbreviation: NLB
+  definition: >-
+    The Elastic Load Balancing type for connections (TCP, UDP and TLS), for very high volume with
+    very low delay, or when clients need a fixed IP address.
+  taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+  confused_with: [Application Load Balancer, Gateway Load Balancer]
+  not_to_confuse: >-
+    An NLB works with connections and can have a fixed IP address; an ALB understands web requests
+    and their addresses, and a GWLB passes traffic through appliances.
+  module: "06"
 
 - term: NFS
   definition: >-
@@ -1947,6 +2970,17 @@
     hour for the reads and writes per second you set, which can cost less for steady traffic.
   module: "05"
 
+- term: On-Demand Instance
+  definition: >-
+    The EC2 purchasing option with no commitment: you pay for the time an instance runs, and stop
+    paying when it stops. It suits short or unpredictable work.
+  taught_in: guide/06-running-applications/01-ec2.md
+  confused_with: [Reserved Instance, Spot Instance]
+  not_to_confuse: >-
+    On-Demand commits you to nothing at the full rate; a Reserved Instance trades a term commitment
+    for a lower rate, and a Spot Instance is cheaper still but AWS can take it back.
+  module: "06"
+
 - term: on-premises
   definition: >-
     In a building you own or control. On-premises IT means buying, housing and running your own
@@ -1972,6 +3006,12 @@
     On-premises means every part is in your own buildings, even when software shares the servers out
     flexibly (a private cloud); once a connected part runs at a cloud provider, it is hybrid.
   module: "02"
+
+- term: on-premises network
+  definition: >-
+    The network in a building you run, such as an office or data center.
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  module: "07"
 
 - term: operating expense
   abbreviation: OpEx
@@ -2001,15 +3041,50 @@
   also_in: [guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md]
   module: "03"
 
+- term: orchestration
+  definition: >-
+    Deciding where containers run and how many copies there are, and replacing copies that fail.
+    Amazon ECS and Amazon EKS orchestrate; AWS Fargate does not.
+  taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  module: "06"
+
 - term: origin
   definition: >-
     The place where the original content lives, such as an S3 bucket in a Region, from which a CDN
     fetches what it hasn't cached.
   taught_in: guide/03-aws-around-the-world/04-the-edge.md
+  also_in: [guide/07-connecting-it/03-names-and-the-edge.md]
   confused_with: [cache]
   not_to_confuse: >-
     The origin holds the original content; a cache holds nearby copies of it.
   module: "03"
+
+- term: origin access control
+  abbreviation: OAC
+  definition: >-
+    A CloudFront feature that lets only your distribution read a private S3 bucket, so customers see
+    the content through CloudFront while the bucket stays private with Block Public Access on.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  module: "07"
+
+- term: outbound rule
+  definition: >-
+    A firewall rule for traffic leaving a resource or subnet. A new security group has one outbound
+    rule that lets everything out.
+  taught_in: guide/07-connecting-it/02-filtering-traffic.md
+  confused_with: [inbound rule]
+  not_to_confuse: >-
+    Outbound rules on a security group cover conversations the resource starts, not replies; on a
+    network ACL they also decide whether replies may leave.
+  module: "07"
+
+- term: packet
+  definition: >-
+    One small piece of data travelling across a network, labeled with where it comes from and where
+    it is going.
+  taught_in: guide/07-connecting-it/02-filtering-traffic.md
+  also_in: [guide/07-connecting-it/06-sim-packet-journey.md]
+  module: "07"
 
 - term: Parameter Store
   definition: >-
@@ -2127,12 +3202,20 @@
     switched on, while a warm standby can, at reduced size.
   module: "03"
 
+- term: platform (Elastic Beanstalk)
+  definition: >-
+    The operating system, language and web server software that Elastic Beanstalk runs your code
+    on, such as a version of Python.
+  taught_in: guide/06-running-applications/04-simpler-paths.md
+  module: "06"
+
 - term: platform as a service
   abbreviation: PaaS
   definition: >-
     A cloud model in which the provider runs the hardware and operating system and gives you a place
     to run your application; you manage the application and its data.
   taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
+  also_in: [guide/06-running-applications/04-simpler-paths.md]
   confused_with: [infrastructure as a service, software as a service]
   not_to_confuse: >-
     PaaS runs your own application for you; IaaS leaves the operating system to you, and SaaS gives
@@ -2160,6 +3243,25 @@
     version and lets you choose which version is the default.
   taught_in: guide/04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md
   module: "04"
+
+- term: port
+  definition: >-
+    A number that says which program on a computer traffic is for: a web server listens on 443 for
+    HTTPS, and SSH logins use 22.
+  taught_in: guide/07-connecting-it/02-filtering-traffic.md
+  module: "07"
+
+- term: predictive scaling
+  definition: >-
+    A way of scaling that forecasts traffic from past daily or weekly patterns and adds capacity
+    before the rise arrives.
+  taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+  also_in: [guide/06-running-applications/07-sim-elasticity-with-auto-scaling.md]
+  confused_with: [scheduled scaling, target tracking]
+  not_to_confuse: >-
+    Predictive scaling acts on a forecast learned from past patterns; scheduled scaling acts at times
+    you set, and target tracking reacts once the load has changed.
+  module: "06"
 
 - term: prefix
   definition: >-
@@ -2211,6 +3313,40 @@
     building one is not moving to the cloud.
   module: "02"
 
+- term: private connection
+  definition: >-
+    In networking, a connection whose path doesn't use the public internet at all, such as AWS
+    Direct Connect. It describes the path, not whether the data is encrypted.
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  confused_with: [encryption in transit]
+  not_to_confuse: >-
+    Private is about the path and encrypted is about the protection: a VPN is encrypted but not
+    private, and Direct Connect is private but not encrypted unless you add it.
+  module: "07"
+
+- term: private IP address
+  definition: >-
+    An IP address that works only inside a private network, such as a VPC. Every server in a VPC
+    has one.
+  taught_in: guide/07-connecting-it/01-your-own-network.md
+  confused_with: [public IP address]
+  not_to_confuse: >-
+    A private address is reachable only inside the network; a public address can be reached across
+    the internet, when a route allows it.
+  module: "07"
+
+- term: private subnet
+  definition: >-
+    A subnet whose route table has no route to an internet gateway, so the internet can't reach what
+    is in it, even a server with a public address. It is where a database belongs.
+  taught_in: guide/07-connecting-it/01-your-own-network.md
+  also_in: [guide/07-connecting-it/05-lab-09-build-a-small-vpc.md]
+  confused_with: [public subnet]
+  not_to_confuse: >-
+    A private subnet has no route to an internet gateway; it can still reach out through a NAT
+    gateway or an endpoint, but nothing on the internet can start a connection in.
+  module: "07"
+
 - term: promote
   definition: >-
     To turn a read replica into a separate database that accepts writes, for example to recover in
@@ -2246,6 +3382,43 @@
     A public event is a service issue for everyone; an account-specific event concerns your own
     account or resources.
   module: "03"
+
+- term: public IP address
+  definition: >-
+    An IP address that can be reached across the internet. An EC2 instance can get a public IPv4
+    address automatically, which is released when it stops; AWS charges by the hour for every public
+    IPv4 address, in use or idle.
+  taught_in: guide/07-connecting-it/01-your-own-network.md
+  also_in: [guide/06-running-applications/01-ec2.md, guide/06-running-applications/06-lab-08-launch-and-terminate-an-instance.md]
+  confused_with: [Elastic IP address, private IP address, public subnet]
+  not_to_confuse: >-
+    An automatic public address changes after a stop while an Elastic IP address stays yours, and
+    neither makes a subnet public: only a route to an internet gateway does.
+  module: "07"
+
+- term: public subnet
+  definition: >-
+    A subnet whose route table has a route to an internet gateway. A server in it also needs a
+    public IP address to use that route.
+  taught_in: guide/07-connecting-it/01-your-own-network.md
+  also_in: [guide/07-connecting-it/05-lab-09-build-a-small-vpc.md]
+  confused_with: [private subnet, public IP address]
+  not_to_confuse: >-
+    A subnet is public because of its route to an internet gateway, not because its servers have
+    public addresses; a private subnet has no such route.
+  module: "07"
+
+- term: purchasing option
+  definition: >-
+    How you pay for an EC2 instance, such as On-Demand, Savings Plans, Reserved Instances or Spot
+    Instances. It changes the price and the commitment, never the hardware.
+  taught_in: guide/06-running-applications/01-ec2.md
+  exam_name: Amazon EC2 instance types
+  confused_with: [instance type]
+  not_to_confuse: >-
+    A purchasing option is how you pay; an instance type is the hardware you pay for, and the same
+    type can be bought any way.
+  module: "06"
 
 - term: query (DynamoDB)
   definition: >-
@@ -2390,11 +3563,30 @@
   also_in: [guide/05-storing-data/10-sim-multi-az-vs-read-replica.md]
   module: "05"
 
+- term: Reserved Instance
+  abbreviation: RI
+  definition: >-
+    An EC2 purchasing option in which you commit to one instance configuration for one or three
+    years in return for a lower rate. It is a billing discount, not a machine.
+  taught_in: guide/06-running-applications/01-ec2.md
+  confused_with: [On-Demand Instance, Spot Instance]
+  not_to_confuse: >-
+    A Reserved Instance lowers the rate for steady use of the same type; On-Demand has no
+    commitment, and Spot is for work that can be interrupted.
+  module: "06"
+
 - term: Resource (policy element)
   definition: >-
     The part of a policy statement that names which resources it covers, by their ARNs; * means all.
   taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
   module: "04"
+
+- term: resource map
+  definition: >-
+    A tab in the VPC console that draws how a VPC's parts connect: subnets, route tables and
+    gateways.
+  taught_in: guide/07-connecting-it/05-lab-09-build-a-small-vpc.md
+  module: "07"
 
 - term: resource-based policy
   definition: >-
@@ -2445,6 +3637,14 @@
     from policies and can't do root-only tasks.
   module: "04"
 
+- term: root volume
+  definition: >-
+    The EBS volume that holds an EC2 instance's operating system. It is usually set to be deleted
+    when the instance is terminated; if it isn't, it keeps billing until you delete it.
+  taught_in: guide/06-running-applications/06-lab-08-launch-and-terminate-an-instance.md
+  also_in: [guide/06-running-applications/01-ec2.md]
+  module: "06"
+
 - term: root-only task
   definition: >-
     A task that needs the root user's credentials. Such tasks change the account itself or rescue it
@@ -2458,6 +3658,30 @@
     it automatically.
   taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
   module: "04"
+
+- term: route
+  definition: >-
+    One line in a route table: a destination, which is a range of addresses, and a target, such as
+    an internet gateway, a NAT gateway or an endpoint. When two routes match, the more specific one
+    wins.
+  taught_in: guide/07-connecting-it/01-your-own-network.md
+  module: "07"
+
+- term: route table
+  definition: >-
+    A list of routes that decides where traffic leaving a subnet goes. Every subnet uses exactly one;
+    if you don't choose one, it uses the VPC's main route table.
+  taught_in: guide/07-connecting-it/01-your-own-network.md
+  also_in: [guide/07-connecting-it/05-lab-09-build-a-small-vpc.md]
+  module: "07"
+
+- term: routing policy
+  definition: >-
+    The rule that tells Route 53 how to choose its answer when a user could be sent to more than one
+    place. Each policy, such as failover, latency, geolocation or weighted, answers a different
+    question.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  module: "07"
 
 - term: S3 Block Public Access
   definition: >-
@@ -2650,6 +3874,33 @@
   taught_in: guide/00-start-here/03-the-exam-at-a-glance.md
   module: "00"
 
+- term: scaling policy
+  definition: >-
+    A rule that changes an Auto Scaling group's desired capacity as load changes, for example "keep
+    average processor use near 50%".
+  taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+  also_in: [guide/06-running-applications/07-sim-elasticity-with-auto-scaling.md]
+  module: "06"
+
+- term: scheduled action
+  definition: >-
+    One planned change to an Auto Scaling group's capacity at a time you set, such as raising the
+    minimum before a busy morning. Scheduled scaling is made of these.
+  taught_in: guide/06-running-applications/07-sim-elasticity-with-auto-scaling.md
+  module: "06"
+
+- term: scheduled scaling
+  definition: >-
+    A way of scaling that changes an Auto Scaling group's capacity at times you set, such as before
+    opening hours. Each planned change is a scheduled action.
+  taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+  also_in: [guide/06-running-applications/07-sim-elasticity-with-auto-scaling.md]
+  confused_with: [target tracking, predictive scaling]
+  not_to_confuse: >-
+    Scheduled scaling follows a timetable you write; predictive scaling writes its own forecast from
+    past traffic, and target tracking reacts to the load it measures.
+  module: "06"
+
 - term: schema
   definition: >-
     The fixed layout a relational database expects: which tables, which columns and which types. AWS
@@ -2665,11 +3916,16 @@
 
 - term: security group
   definition: >-
-    A firewall AWS provides for each EC2 virtual server. You write its rules (who may connect, and
-    how), so its configuration is your responsibility.
-  taught_in: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
-  also_in: [guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md]
-  module: "04"
+    A stateful firewall around a resource, such as an EC2 instance or an RDS database, with allow
+    rules only: a new one lets nothing in and everything out, and replies to allowed requests pass
+    on their own. AWS provides it; its rules are yours to write.
+  taught_in: guide/07-connecting-it/02-filtering-traffic.md
+  also_in: [guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md, guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md, guide/06-running-applications/01-ec2.md, guide/06-running-applications/06-lab-08-launch-and-terminate-an-instance.md, guide/07-connecting-it/05-lab-09-build-a-small-vpc.md]
+  confused_with: [network ACL]
+  not_to_confuse: >-
+    A security group guards one resource, only allows and lets replies through; a network ACL guards
+    a whole subnet, can deny, and checks replies again.
+  module: "07"
 
 - term: security in the cloud
   definition: >-
@@ -2739,6 +3995,22 @@
     you encrypt it before uploading and manage the keys and tools yourself.
   module: "05"
 
+- term: serverless
+  definition: >-
+    A way of running things in which AWS provisions, scales and patches the servers out of your
+    sight and you pay for what you use, as with AWS Lambda and AWS Fargate. Your code, images, data
+    and permissions are still yours to secure.
+  taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  also_in: [guide/06-running-applications/04-simpler-paths.md]
+  module: "06"
+
+- term: service (Amazon ECS)
+  definition: >-
+    In Amazon ECS, a setting that keeps a chosen number of tasks running, replacing any that stop,
+    for apps that run all the time such as a web API.
+  taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  module: "06"
+
 - term: service control policy
   abbreviation: SCP
   definition: >-
@@ -2752,6 +4024,12 @@
     An SCP caps everyone in a member account, root included; a permissions boundary caps one
     identity's own policies, and neither grants anything.
   module: "04"
+
+- term: service link
+  definition: >-
+    The network connection between an AWS Outpost and the AWS Region it extends.
+  taught_in: guide/06-running-applications/04-simpler-paths.md
+  module: "06"
 
 - term: service-linked role
   definition: >-
@@ -2861,6 +4139,18 @@
     The sort key distinguishes items within one group; the partition key chooses the group.
   module: "05"
 
+- term: Spot Instance
+  definition: >-
+    An EC2 purchasing option that uses AWS's spare capacity at a large discount, with no commitment,
+    but AWS can reclaim the instance after a short warning. It suits flexible work that can be
+    interrupted.
+  taught_in: guide/06-running-applications/01-ec2.md
+  confused_with: [On-Demand Instance, Reserved Instance]
+  not_to_confuse: >-
+    A Spot Instance can be taken back by AWS, so it suits interruptible work only; On-Demand and
+    Reserved Instances run until you stop them.
+  module: "06"
+
 - term: SQL
   definition: >-
     The standard language for querying relational databases. Data warehouses such as Amazon Redshift
@@ -2906,6 +4196,12 @@
     SSE-C uses a key you send with each request.
   module: "05"
 
+- term: stage (API Gateway)
+  definition: >-
+    A named version of an API in API Gateway, such as test or production.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  module: "07"
+
 - term: staging area
   definition: >-
     In Elastic Disaster Recovery, the low-cost storage and very little compute in an AWS Region that
@@ -2926,12 +4222,55 @@
     standby is a smaller working copy of a whole workload in another Region.
   module: "03"
 
+- term: stateful
+  definition: >-
+    Describes a filter that remembers each conversation, so a reply to an allowed request passes
+    without a rule of its own. Security groups are stateful.
+  taught_in: guide/07-connecting-it/02-filtering-traffic.md
+  confused_with: [stateless]
+  not_to_confuse: >-
+    A stateful filter lets replies through on its own; a stateless one judges every packet,
+    replies included, by its rules alone.
+  module: "07"
+
+- term: stateless
+  definition: >-
+    Describes a filter that remembers nothing, so it judges every packet, replies included, by its
+    rules alone. Network ACLs are stateless; the Well-Architected Framework also uses the word for
+    applications that keep no session data on their servers.
+  taught_in: guide/07-connecting-it/02-filtering-traffic.md
+  confused_with: [stateful]
+  not_to_confuse: >-
+    A stateless filter needs rules for both halves of every conversation; a stateful one allows the
+    reply because it remembers the request.
+  module: "07"
+
 - term: statement
   definition: >-
     One permission inside a policy: an Effect, an Action, a Resource, and an optional Condition. A
     policy can hold several.
   taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
   module: "04"
+
+- term: static IP address
+  definition: >-
+    An internet address that doesn't change. AWS Global Accelerator gives an application static
+    addresses that stay the same while you move the endpoints behind them.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  module: "07"
+
+- term: stop (EC2 instance)
+  definition: >-
+    To shut an EC2 instance down so it can be started again later. Instance time stops being
+    billed, but its EBS volumes and any Elastic IP address are still charged, and instance store is
+    erased.
+  taught_in: guide/06-running-applications/01-ec2.md
+  also_in: [guide/06-running-applications/06-lab-08-launch-and-terminate-an-instance.md]
+  confused_with: [terminate (EC2 instance)]
+  not_to_confuse: >-
+    A stopped instance can be started again and still costs money for its disks; a terminated
+    instance is gone for good, with its volumes deleted if they are set to be.
+  module: "06"
 
 - term: storage
   definition: >-
@@ -2947,6 +4286,25 @@
   taught_in: guide/05-storing-data/03-storage-classes-and-lifecycle.md
   also_in: [guide/05-storing-data/07-lab-05-versions-and-lifecycle.md, guide/05-storing-data/09-sim-lifecycle-cost-timeline.md]
   module: "05"
+
+- term: storage optimized
+  definition: >-
+    EC2 instance types with fast local disks, for work that reads and writes a lot of data on them,
+    such as high-throughput databases. Its letters include I, D and H.
+  taught_in: guide/06-running-applications/01-ec2.md
+  confused_with: [memory optimized]
+  not_to_confuse: >-
+    Storage optimized means fast local disks, not more space: for more space, attach a bigger EBS
+    volume or use S3, and for data held in RAM choose memory optimized.
+  module: "06"
+
+- term: subnet
+  definition: >-
+    A slice of a VPC's address range that sits entirely in one Availability Zone; you launch servers
+    and databases into subnets. High availability therefore needs subnets in at least two zones.
+  taught_in: guide/07-connecting-it/01-your-own-network.md
+  also_in: [guide/07-connecting-it/05-lab-09-build-a-small-vpc.md]
+  module: "07"
 
 - term: sustainability pillar
   definition: >-
@@ -3009,6 +4367,39 @@
     that runs backups of resources by a plan, and S3 File Gateway is for people saving files.
   module: "05"
 
+- term: target
+  definition: >-
+    A destination a load balancer sends requests to, such as an EC2 instance, a container, an IP
+    address or, for an Application Load Balancer, a Lambda function.
+  taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+  module: "06"
+
+- term: target tracking
+  definition: >-
+    A way of scaling that adds or removes instances to keep a measure, such as average processor
+    use, near a value you set. It suits most websites.
+  taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
+  also_in: [guide/06-running-applications/07-sim-elasticity-with-auto-scaling.md]
+  confused_with: [scheduled scaling, predictive scaling]
+  not_to_confuse: >-
+    Target tracking reacts to load as it happens; scheduled scaling changes capacity at times you
+    set, and predictive scaling adds capacity before a forecast rise.
+  module: "06"
+
+- term: task (Amazon ECS)
+  definition: >-
+    In Amazon ECS, running containers that do a piece of work, started from a task definition. A
+    task can run for a while and stop, or a service can keep it running.
+  taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  module: "06"
+
+- term: task definition
+  definition: >-
+    In Amazon ECS, the description of an app's containers, such as which image to use and how much
+    CPU and memory they get, from which ECS starts tasks.
+  taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  module: "06"
+
 - term: task statement
   definition: >-
     One of the specific things a domain of the exam tests, numbered within its domain. The exam
@@ -3031,6 +4422,39 @@
     Temporary credentials expire on their own; long-term credentials, such as access keys, work
     until someone deletes them.
   module: "04"
+
+- term: terminate (EC2 instance)
+  definition: >-
+    To delete an EC2 instance for good. It also deletes the volumes set to delete on termination
+    and any instance store data, and ends the instance's charges.
+  taught_in: guide/06-running-applications/01-ec2.md
+  also_in: [guide/06-running-applications/06-lab-08-launch-and-terminate-an-instance.md]
+  confused_with: [stop (EC2 instance)]
+  not_to_confuse: >-
+    Terminating is permanent and ends the charges; stopping can be undone and leaves the disks
+    billed.
+  module: "06"
+
+- term: test event
+  definition: >-
+    Sample input that you save in the Lambda console and send to a function, standing in for what a
+    real event would send.
+  taught_in: guide/06-running-applications/05-lab-07-a-lambda-function.md
+  module: "06"
+
+- term: throttling
+  definition: >-
+    Capping how fast calls may arrive, so a spike doesn't overwhelm the code behind an API.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  module: "07"
+
+- term: time to live
+  abbreviation: TTL
+  definition: >-
+    How long other DNS servers may keep a copy of a DNS answer before asking again. Until copies
+    expire, some users still go to the old place, so a DNS switch isn't instant.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  module: "07"
 
 - term: total cost of ownership
   abbreviation: TCO
@@ -3077,6 +4501,20 @@
     A transition action moves an object to another class; an expiration action deletes it.
   module: "05"
 
+- term: transitive
+  definition: >-
+    Passing along: traffic can travel through one network to reach a third. VPC peering is not
+    transitive; a transit gateway is.
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  module: "07"
+
+- term: trigger
+  definition: >-
+    The connection that tells AWS Lambda which events start a function, for example "a new object
+    in this bucket".
+  taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  module: "06"
+
 - term: trust policy
   definition: >-
     The resource-based policy on a role that says who may assume it. The role's separate permissions
@@ -3085,12 +4523,25 @@
   also_in: [guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md, guide/04-shared-responsibility-and-access/09-sim-policy-playground.md]
   module: "04"
 
+- term: tunnel
+  definition: >-
+    An encrypted connection carried across another network, such as the internet. Each Site-to-Site
+    VPN connection comes with a second tunnel, for high availability.
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  module: "07"
+
 - term: unscored question
   definition: >-
     A question AWS is trying out that doesn't count toward your score. You can't tell which
     questions they are, so answer every one.
   taught_in: guide/00-start-here/03-the-exam-at-a-glance.md
   module: "00"
+
+- term: usage plan
+  definition: >-
+    In API Gateway, an allowance of calls given to an outside developer, tied to their API key.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  module: "07"
 
 - term: variable expense
   definition: >-
@@ -3115,6 +4566,14 @@
     an S3 bucket.
   module: "05"
 
+- term: vCPU
+  definition: >-
+    A virtual processor: the unit in which EC2 instance types, and Fargate tasks, state their
+    processing power.
+  taught_in: guide/06-running-applications/01-ec2.md
+  also_in: [guide/06-running-applications/03-containers-and-serverless.md]
+  module: "06"
+
 - term: version ID
   definition: >-
     The identifier S3 gives each version of an object in a versioned bucket. Deleting by version ID
@@ -3136,6 +4595,25 @@
     the bucket; replication or a backup keeps a copy somewhere else, and only Object Lock stops
     someone with permission deleting a version for good.
   module: "05"
+
+- term: virtual private gateway
+  definition: >-
+    The AWS end of a Site-to-Site VPN, attached to one VPC. To reach many VPCs, a VPN ends on a
+    transit gateway instead.
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  confused_with: [customer gateway device]
+  not_to_confuse: >-
+    The virtual private gateway is AWS's end of the VPN; the customer gateway device is the router at
+    your office.
+  module: "07"
+
+- term: virtual private server
+  abbreviation: VPS
+  definition: >-
+    A virtual server rented on its own, usually at a monthly price. Amazon Lightsail's servers are
+    of this kind, though Lightsail calls them instances.
+  taught_in: guide/06-running-applications/04-simpler-paths.md
+  module: "06"
 
 - term: virtualization
   definition: >-
@@ -3164,6 +4642,36 @@
     Gateway presents a folder, and Tape Gateway presents tapes.
   module: "05"
 
+- term: VPC endpoint
+  definition: >-
+    A private path from a VPC to an AWS service, such as Amazon S3, that keeps traffic on AWS's
+    network with no internet gateway or NAT gateway. It comes in two kinds, gateway and interface.
+  taught_in: guide/07-connecting-it/01-your-own-network.md
+  confused_with: [endpoint]
+  not_to_confuse: >-
+    A VPC endpoint is a private path from your VPC to a service; an endpoint, as Global Accelerator
+    uses the word, is where an application receives traffic.
+  module: "07"
+
+- term: VPC Flow Logs
+  definition: >-
+    A VPC feature that records information about the traffic to and from your network interfaces,
+    for troubleshooting and security analysis. It records traffic; it doesn't block any.
+  taught_in: guide/07-connecting-it/02-filtering-traffic.md
+  module: "07"
+
+- term: VPC peering
+  definition: >-
+    A connection that joins two VPCs, in the same or different accounts and Regions, so they talk
+    over private addresses as if they were one network. It is one to one and not transitive, the
+    address ranges must not overlap, and it costs nothing to keep.
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  confused_with: [AWS Transit Gateway, AWS PrivateLink]
+  not_to_confuse: >-
+    Peering joins two whole VPCs, each pair needing its own connection; Transit Gateway joins many
+    networks through one hub, and PrivateLink exposes one service without joining networks.
+  module: "07"
+
 - term: warm standby
   definition: >-
     A disaster recovery strategy that keeps a smaller but complete working copy in the recovery
@@ -3187,6 +4695,17 @@
     A Wavelength Zone is inside a mobile carrier's 5G network; a Local Zone is in a big city for any
     nearby users.
   module: "03"
+
+- term: weighted routing
+  definition: >-
+    A Route 53 routing policy that sends a share of users to each place you choose, such as 10 in 100
+    to a new version of a site.
+  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  confused_with: [failover routing]
+  not_to_confuse: >-
+    Weighted routing splits users by shares you set; failover routing sends everyone to the main site
+    until its health check fails.
+  module: "07"
 
 - term: workload
   definition: >-

@@ -5,7 +5,7 @@ title: "Module 03: AWS around the world"
 tasks: ["3.2", "1.1"]
 objectives: ["03.01a", "03.02a", "03.03a", "03.04a"]
 reader: "Adult studying alone, possibly new to IT, who has finished Module 02 and the guardrails primer; about 3 hours in total"
-prerequisites: [clf-02-00, guardrails-primer]
+prerequisites: [clf-02-00, guardrails-00]
 pillars: [reliability, performance-efficiency, cost-optimization]
 facts_checked: 2026-10-24
 sources:
@@ -75,6 +75,8 @@ This module covers the AWS Certified Cloud Practitioner (CLF-C02) exam's task [3
 
 ```mermaid
 flowchart TB
+  accTitle: How Module 03's lessons build the plan
+  accDescr: Lessons 03.01 and 03.02 (where it runs) lead to 03.03 and 03.04 (how it survives and reaches people), then the mastery check, with Lab 02 after 03.01 and Simulation S2 after 03.03. Each of the first three lessons supplies one part of the one-page plan, the layout, the Regions and the recovery approach, and the check shows you can defend it.
   subgraph WHERE["Where it runs"]
     direction TB
     L1["03.01 Regions, AZs,<br/>data centers"] --> L2["03.02 Choosing<br/>a Region"]

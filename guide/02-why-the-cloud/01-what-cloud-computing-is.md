@@ -60,6 +60,8 @@ The deployment model answers one question: where do the parts of your system run
 
 ```mermaid
 flowchart LR
+  accTitle: On-premises, cloud and hybrid compared
+  accDescr: On-premises keeps the website and the order records in your own building, and cloud puts both at a cloud provider. In hybrid, the order records stay in your building and the website runs at the provider, joined by a network connection that carries orders and stock levels in both directions. The three models differ only in where each part runs.
   subgraph ONP["On-premises: everything in your own building"]
     W1["Website"]
     R1["Order records"]
@@ -107,6 +109,8 @@ All three matter, as the exercise at the end of this section shows. The diagram 
 
 ```mermaid
 flowchart LR
+  accTitle: Owning a server versus cloud computing
+  accDescr: Owning a server means deciding how many months ahead, waiting weeks for delivery, running it for years busy or idle, and paying in full up front. In the cloud you ask for a server when you need it, it runs within minutes, and when you delete it you pay only for the time it ran. Owning puts the waiting and the paying at the start, while in the cloud the paying follows the use.
   subgraph OWN["Owning a server"]
     direction TB
     O1["Decide how many,<br/>months ahead"] -->|"purchase order"| O2["Wait weeks<br/>for delivery"]
@@ -182,6 +186,8 @@ AWS and the CLF-C02 exam guide name three deployment models ([Types of cloud com
 
 ```mermaid
 flowchart TD
+  accTitle: Deciding between cloud, on-premises and hybrid
+  accDescr: List the parts and ask where each one runs. All at a cloud provider is cloud, all in your own buildings is on-premises, and some in each place is hybrid if the parts work together, or separate systems to classify one by one if they don't. Only where the parts run decides the answer.
   Q1{"List the parts.<br/>Where does each one run?"} -->|"all at a cloud provider"| C["Cloud"]
   Q1 -->|"all in your own buildings"| P["On-premises"]
   Q1 -->|"some in each place"| Q2{"Do the parts<br/>work together?"}

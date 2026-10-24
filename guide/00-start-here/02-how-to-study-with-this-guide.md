@@ -10,8 +10,18 @@ terms_introduced: [retrieval, feedback, spacing, interleaving, familiarity]
 pillars: []
 facts_checked: 2026-10-24
 sources:
-  - "study-learning-design: skills/study-material-design/references/evidence.md"
-  - "study-learning-design: research/learning-science.md, sections 1, 2, 4, 5, 11 and 13"
+  - "https://doi.org/10.1111/j.1467-9280.2006.01693.x"
+  - "https://doi.org/10.1037/a0037559"
+  - "https://doi.org/10.1111/j.1467-9280.2008.02209.x"
+  - "https://doi.org/10.1038/s44159-022-00089-1"
+  - "https://doi.org/10.1111/j.1467-9280.2008.02127.x"
+  - "https://doi.org/10.1037/bul0000209"
+  - "https://doi.org/10.1073/pnas.1821936116"
+  - "https://doi.org/10.1007/s10648-023-09814-5"
+  - "https://doi.org/10.1037/bul0000309"
+  - "https://doi.org/10.1016/S0065-2601(06)38002-1"
+  - "https://doi.org/10.1073/pnas.1921417117"
+  - "https://cresst.org/wp-content/uploads/R655.pdf"
 ---
 
 # You learn by pulling ideas out of memory, spread over time, not by reading them again
@@ -80,6 +90,8 @@ Every lesson repeats one cycle, which the diagram shows.
 
 ```mermaid
 flowchart LR
+  accTitle: The study loop: learn, try, check, correct, wait
+  accDescr: Five steps in a loop: Learn, Try (answer from memory), Check the feedback, Correct by rereading the section you missed, then Wait days or weeks. Warm-ups and mixed sets send you back to Try, not to Learn, so after the first time you meet a topic again as a question.
   L["Learn<br/>explanation, diagram,<br/>worked example"] --> T["Try<br/>answer from memory,<br/>write it down"]
   T --> F["Check<br/>open the feedback:<br/>why right, why wrong"]
   F --> C["Correct<br/>reread the section<br/>you missed"]

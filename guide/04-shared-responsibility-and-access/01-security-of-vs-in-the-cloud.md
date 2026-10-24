@@ -5,7 +5,7 @@ title: "Security of the cloud vs security in the cloud"
 tasks: ["2.1"]
 objectives: ["04.01a"]
 reader: "Adult studying alone, possibly new to IT, who has finished Module 02 and the guardrails primer; about 35 minutes; works on a phone"
-prerequisites: [clf-02-01, clf-02-05, guardrails-primer-02, guardrails-primer-06]
+prerequisites: [clf-02-01, clf-02-05, guardrails-02, guardrails-06]
 terms_introduced: [shared responsibility model, security of the cloud, security in the cloud, infrastructure, virtualization, host operating system, guest operating system, patch, security group, managed service, abstracted service, Region, Availability Zone, edge location]
 pillars: [security, cost-optimization]
 facts_checked: 2026-10-24
@@ -245,6 +245,8 @@ The owner asked: "AWS runs the computers now. Do I still have to install securit
 
 ```mermaid
 flowchart TD
+  accTitle: Who does a task: AWS or you
+  accDescr: Buildings, hardware, the host or virtualization are AWS's on every service, and your data, who can access it, and code you wrote or added are yours on every service. The operating system or platform software depends on the service: you on EC2, AWS on RDS, Lambda or S3, though on Lambda you still move off retired runtimes. Only the middle layers depend on the service.
   T{"What is the task about?"} -->|"buildings, hardware,<br/>host or virtualization"| AWS1["AWS, on every service"]
   T -->|"your data, who can access it,<br/>or code you wrote or added"| YOU1["You, on every service"]
   T -->|"the operating system or<br/>platform software"| S{"Which service?"}

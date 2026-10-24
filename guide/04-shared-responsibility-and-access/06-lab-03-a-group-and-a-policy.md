@@ -16,7 +16,7 @@ signup_path: advanced
 time: "35 minutes"
 cost: "$0 on the Free plan (as of 2026-10-24)"
 worst_case: "$0 on a Paid plan if everything is left behind: IAM groups and policies have no charge, and the bucket stays empty"
-needs: [primer-02, primer-03, primer-05, primer-07, clf-02-06]
+needs: [guardrails-02, guardrails-03, guardrails-05, guardrails-07, clf-02-06]
 last_run_pass: "2026-10-24, standalone Free plan account, advanced sign-up, us-east-1"
 recorded: 2026-10-24
 facts_checked: 2026-10-24
@@ -41,6 +41,8 @@ This guide is provided as is, without warranty. We work hard to keep it correct 
 
 ```mermaid
 flowchart LR
+  accTitle: Lab 03's group, policy and bucket
+  accDescr: The group clf-lab03-photo-viewers, with no members, has the customer managed policy clf-lab03-photo-viewing attached. The policy allows s3:ListBucket on the bucket itself and s3:GetObject on the files in it, and the IAM policy simulator asks whether a request would be allowed. Listing is something you do to the bucket, downloading something you do to a file.
   G["Group<br/>clf-lab03-photo-viewers<br/>(no members)"] -->|"attached"| P["Customer managed policy<br/>clf-lab03-photo-viewing"]
   P -->|"allows s3:ListBucket on"| B["The bucket<br/>arn:aws:s3:::your-bucket"]
   P -->|"allows s3:GetObject on"| O["The files in it<br/>arn:aws:s3:::your-bucket/*"]
@@ -65,7 +67,7 @@ You delete all three at the end.
 
 **Why this matters:** in the primer you gave yourself `AdministratorAccess`, which suits the one owner of a lab account. Shop staff need far less. Granting only what a job needs is [SEC03-BP02 Grant least privilege access](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_permissions_least_privileges.html); giving permissions to a group rather than to each person is [SEC02-BP06 Employ user groups and attributes](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_identities_groups_attributes.html).
 
-> **If you signed up on the new sign-up path:** there, IAM users can't sign in to the console, and AWS lists IAM Access Analyzer as not supported apart from policy validation (as of 2026-10-23). We haven't run this lab on that path. Read the steps, then practice the same reasoning in [Simulation S4](09-sim-policy-playground.md).
+> **New sign-up path:** there, IAM users can't sign in to the console, and AWS lists IAM Access Analyzer as not supported apart from policy validation (as of 2026-10-23). We haven't run this lab on that path. Read the steps, then practice the same reasoning in [Simulation S4](09-sim-policy-playground.md).
 
 **About the screens:** names in **bold** are what AWS's documentation or our own test account showed on 2026-10-23 or 2026-10-24. We haven't yet run this lab end to end, and AWS changes its console often. If a label differs, look for the option with the same meaning.
 
