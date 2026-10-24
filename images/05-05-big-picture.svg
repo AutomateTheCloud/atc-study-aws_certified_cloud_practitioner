@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="520" viewBox="0 0 680 520" role="img" aria-labelledby="t d">
+<title id="t">One Amazon RDS order database with a Multi-AZ standby, a read replica and backups</title>
+<desc id="d">A Region, US East (N. Virginia), holding three Availability Zones side by side. In AZ A, the primary takes every read and write from the website. In AZ B, the Multi-AZ standby takes no traffic and waits to take over if the primary fails; an arrow labeled sync shows it gets every write at once (synchronously). In AZ C, a read replica answers read-only queries such as reports; an arrow from the primary to the replica is labeled async: changes arrive a little later, so the replica can lag behind. Below the AZs, for the whole Region: automated backups and snapshots stored in Amazon S3, a daily snapshot plus a log of every change, restorable to any second in the retention period (7 days by default, up to 35) or to a snapshot you took. A key lists each copy's job: the standby keeps the database running if its AZ fails (high availability); the read replica takes read-only work off the primary (read scaling); backups and snapshots go back to before a mistake (point-in-time recovery).</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --pri-fill:#d9e8fb; --copy-fill:#f1f0ec; --bad-fill:#fbe1d6; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --pri-fill:#1b3554; --copy-fill:#252523; --bad-fill:#4d2716; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .pri { fill: var(--pri-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .copy { fill: var(--copy-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .bad { fill: var(--bad-fill); stroke: var(--s2); stroke-width: 1.5; stroke-dasharray: 5 4; }
+  .zone { fill: none; stroke: var(--axis); stroke-width: 1.5; stroke-dasharray: 6 4; }
+  .region { fill: none; stroke: var(--ink2); stroke-width: 1.2; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .head { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .zlab { fill: var(--muted); font-size: 12px; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .q { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .arrlab { fill: var(--ink2); font-size: 11.5px; font-style: italic; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .arrowhead { fill: var(--ink2); }
+  .rowl { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .num { fill: var(--ink); font-size: 14px; font-weight: 700; }
+  .numc { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; }
+</style>
+<rect width="680" height="520" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">One order database, three kinds of copy, three different jobs</text>
+<text class="sub" x="16" y="48">An Amazon RDS database in one Region, as the bakery could set it up</text>
+<rect class="region" x="16" y="66" width="648" height="332" rx="8"/>
+<text class="zlab" x="26" y="84">AWS Region: US East (N. Virginia)</text>
+<rect class="zone" x="28" y="98" width="196" height="214" rx="6"/>
+<text class="zlab" x="36" y="114">Availability Zone A</text>
+<rect class="zone" x="234" y="98" width="196" height="214" rx="6"/>
+<text class="zlab" x="242" y="114">Availability Zone B</text>
+<rect class="zone" x="440" y="98" width="196" height="214" rx="6"/>
+<text class="zlab" x="448" y="114">Availability Zone C</text>
+<rect class="pri" x="38.0" y="168.0" width="176.0" height="100.0" rx="6"/>
+<text class="cellt" x="48" y="187.0">Primary</text>
+<text class="cells" x="48" y="204.0">Takes every read and</text>
+<text class="cells" x="48" y="219.0">write from the website</text>
+<rect class="copy" x="244.0" y="168.0" width="176.0" height="100.0" rx="6"/>
+<text class="cellt" x="254" y="187.0">Standby (Multi-AZ)</text>
+<text class="cells" x="254" y="204.0">Gets every write at once.</text>
+<text class="cells" x="254" y="219.0">Serves nothing; takes</text>
+<text class="cells" x="254" y="234.0">over if the primary fails</text>
+<rect class="copy" x="450.0" y="168.0" width="176.0" height="100.0" rx="6"/>
+<text class="cellt" x="460" y="187.0">Read replica</text>
+<text class="cells" x="460" y="204.0">Gets changes a little</text>
+<text class="cells" x="460" y="219.0">later, so it can lag.</text>
+<text class="cells" x="460" y="234.0">Answers read-only queries</text>
+<text class="small" x="38" y="142">Website: reads and writes</text>
+<line class="arrow" x1="68.0" y1="148.0" x2="68.0" y2="166.0"/>
+<path class="arrowhead" d="M73.0,158.0 L63.0,158.0 L68.0,166.0 Z"/>
+<text class="small" x="450" y="142">Reports: reads only</text>
+<line class="arrow" x1="480.0" y1="148.0" x2="480.0" y2="166.0"/>
+<path class="arrowhead" d="M485.0,158.0 L475.0,158.0 L480.0,166.0 Z"/>
+<line class="arrow" x1="215.0" y1="202.0" x2="242.0" y2="202.0"/>
+<path class="arrowhead" d="M234.0,197.0 L234.0,207.0 L242.0,202.0 Z"/>
+<text class="arrlab" x="229.0" y="196" text-anchor="middle">sync</text>
+<path class="arrow" d="M126.0,269 L126.0,294 L538.0,294 L538.0,278"/>
+<path class="arrowhead" d="M533.0,278 L543.0,278 L538.0,270 Z"/>
+<text class="arrlab" x="332.0" y="288" text-anchor="middle">async: can lag behind</text>
+<rect class="copy" x="28.0" y="324.0" width="624.0" height="62.0" rx="6"/>
+<text class="cellt" x="38" y="343.0">Automated backups and snapshots (stored in Amazon S3, in the Region)</text>
+<text class="cells" x="38" y="360.0">A daily snapshot plus a log of every change: restore to any second in the retention</text>
+<text class="cells" x="38" y="375.0">period (7 days by default, up to 35), or to a snapshot you took.</text>
+<text class="head" x="16" y="424">The job each copy does</text>
+<text class="q" x="16" y="444">Standby:</text>
+<text class="small" x="176" y="444">keeps the database running if its AZ fails (high availability)</text>
+<text class="q" x="16" y="462">Read replica:</text>
+<text class="small" x="176" y="462">takes read-only work off the primary (read scaling)</text>
+<text class="q" x="16" y="480">Backups and snapshots:</text>
+<text class="small" x="176" y="480">go back to before a mistake (point-in-time recovery)</text>
+<text class="note" x="16" y="506">From the Amazon RDS User Guide and FAQ, checked 2026-10-23. The bakery's setup is made up for teaching.</text>
+</svg>

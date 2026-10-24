@@ -48,6 +48,20 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [Simulation S3: Slide the line from your own servers to Amazon S3](04-shared-responsibility-and-access/08-sim-responsibility-slider.md) · Simulation
 - [Simulation S4: Predict allow or deny across accounts, boundaries and organizations](04-shared-responsibility-and-access/09-sim-policy-playground.md) · Simulation
 
+## Module 05: Storing data: storage and databases
+
+- [Module 05: Storing data: storage and databases](05-storing-data/00-brief.md) · Module brief
+- [Block, file and object storage](05-storing-data/01-block-file-object.md) · Lesson
+- [S3 in practice](05-storing-data/02-s3-in-practice.md) · Lesson
+- [Storage classes and lifecycle](05-storing-data/03-storage-classes-and-lifecycle.md) · Lesson
+- [Hybrid storage and backup](05-storing-data/04-hybrid-storage-and-backup.md) · Lesson
+- [Managed or self-managed databases](05-storing-data/05-managed-or-self-managed-databases.md) · Lesson
+- [Choosing a database](05-storing-data/06-choosing-a-database.md) · Lesson
+- [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](05-storing-data/07-lab-05-versions-and-lifecycle.md) · Lab
+- [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](05-storing-data/08-lab-06-a-dynamodb-table.md) · Lab
+- [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](05-storing-data/09-sim-lifecycle-cost-timeline.md) · Simulation
+- [Simulation S6: Multi-AZ, read replica or backup: protect the order database](05-storing-data/10-sim-multi-az-vs-read-replica.md) · Simulation
+
 ---
 
 "Contents" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="456" viewBox="0 0 680 456" role="img" aria-labelledby="t d">
+<title id="t">Where each storage option keeps its copies: one host, one Availability Zone, or several</title>
+<desc id="d">Three dashed columns stand for Availability Zones a, b and c in one Region. Six bars show where copies of the data live. EC2 instance store: one physical host, a short bar inside AZ a. Amazon EBS volume: copies within one AZ, a bar filling AZ a. EFS One Zone: within one AZ. S3 One Zone-IA: within one AZ. EFS Regional: across multiple AZs, a bar spanning all three columns. S3 Standard: across at least three AZs, spanning all three. Below: if AZ a is destroyed, only the bottom two still hold the data; anything in one AZ or on one host needs a copy elsewhere, such as a snapshot or a backup.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --panel:#f1f0ec; --hi-fill:#d9e8fb; --good:#0ca30c; --crit:#d03b3b; --good-fill:#e3f4e3; --crit-fill:#fae3e3; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --panel:#252523; --hi-fill:#1b3554; --good:#0ca30c; --crit:#d03b3b; --good-fill:#16301a; --crit-fill:#3d1d1d; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .panel { fill: var(--panel); stroke: var(--axis); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .box { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .blk { fill: var(--s1); }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .head { fill: var(--ink); font-size: 15px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .mono { fill: var(--ink); font-size: 11.5px; font-family: ui-monospace, Menlo, Consolas, monospace; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .ex { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .wire { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .good { fill: var(--good-fill); stroke: var(--good); stroke-width: 1.5; }
+  .crit { fill: var(--crit-fill); stroke: var(--crit); stroke-width: 1.5; }
+  .gi { stroke: var(--good); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .ci { stroke: var(--crit); stroke-width: 2.5; fill: none; stroke-linecap: round; }
+  .az { fill: none; stroke: var(--axis); stroke-width: 1.2; stroke-dasharray: 5 4; }
+  .span { fill: var(--s1); }
+  .span-light { fill: var(--s1-light); }
+</style>
+<rect width="680" height="456" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Where the copies live decides what a failure can take</text>
+<text class="sub" x="16" y="48">Each bar covers the part of one Region that holds copies of your data.</text>
+<rect class="az" x="203.0" y="92" width="147.3" height="282" rx="6"/>
+<text class="cellt" x="276.7" y="84" text-anchor="middle">AZ a</text>
+<rect class="az" x="356.3" y="92" width="147.3" height="282" rx="6"/>
+<text class="cellt" x="430.0" y="84" text-anchor="middle">AZ b</text>
+<rect class="az" x="509.7" y="92" width="147.3" height="282" rx="6"/>
+<text class="cellt" x="583.3" y="84" text-anchor="middle">AZ c</text>
+<text class="cellt" x="16" y="125">EC2 instance store</text>
+<text class="small" x="16" y="141">One physical host</text>
+<rect class="span-light" x="210.0" y="116" width="22.9" height="20" rx="4"/>
+<text class="cellt" x="16" y="169">Amazon EBS volume</text>
+<text class="small" x="16" y="185">Copies within one AZ</text>
+<rect class="span" x="210.0" y="160" width="133.3" height="20" rx="4"/>
+<text class="cellt" x="16" y="213">EFS One Zone</text>
+<text class="small" x="16" y="229">Copies within one AZ</text>
+<rect class="span" x="210.0" y="204" width="133.3" height="20" rx="4"/>
+<text class="cellt" x="16" y="257">S3 One Zone-IA</text>
+<text class="small" x="16" y="273">Copies within one AZ</text>
+<rect class="span" x="210.0" y="248" width="133.3" height="20" rx="4"/>
+<text class="cellt" x="16" y="301">EFS Regional</text>
+<text class="small" x="16" y="317">Across multiple AZs</text>
+<rect class="span" x="210.0" y="292" width="440.0" height="20" rx="4"/>
+<text class="cellt" x="16" y="345">S3 Standard</text>
+<text class="small" x="16" y="361">Across at least 3 AZs</text>
+<rect class="span" x="210.0" y="336" width="440.0" height="20" rx="4"/>
+<text class="small" x="16" y="398.0">If AZ a is destroyed, only the bottom two still hold your data. Whatever is in one AZ or on one host</text>
+<text class="small" x="16" y="415.0">needs a copy somewhere else, such as a snapshot or a backup.</text>
+<text class="note" x="16" y="442">Schematic. A Region has at least three AZs. Sources: EBS, EFS and S3 User Guides, checked 2026-10-24.</text>
+</svg>

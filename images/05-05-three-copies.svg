@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="470" viewBox="0 0 680 470" role="img" aria-labelledby="t d">
+<title id="t">Multi-AZ standby, read replica and backups compared</title>
+<desc id="d">Three columns compared on five rows. How it's copied: the Multi-AZ standby gets every write synchronously, in another AZ; the read replica gets changes asynchronously and can lag behind; backups are a daily snapshot plus a log of every change, and snapshots are taken when you take them. Answers queries: standby no; read replica yes, read-only; backups no, you restore to a new database first. Takes over by itself: standby yes, by automatic failover, typically one to two minutes; read replica no, you can promote it by hand and lose any lag; backups no, a restore is a new database you switch to. Saves you from a mistaken delete: standby no, the delete reaches it at once; read replica no, it reaches it soon after; backups yes, restore to a moment before the mistake. The job: high availability; read scaling and a disaster recovery option; going back in time. A note says this is for RDS engines other than Aurora; in Aurora a read replica can also be the failover target.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --pri-fill:#d9e8fb; --copy-fill:#f1f0ec; --bad-fill:#fbe1d6; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --pri-fill:#1b3554; --copy-fill:#252523; --bad-fill:#4d2716; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .pri { fill: var(--pri-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .copy { fill: var(--copy-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .bad { fill: var(--bad-fill); stroke: var(--s2); stroke-width: 1.5; stroke-dasharray: 5 4; }
+  .zone { fill: none; stroke: var(--axis); stroke-width: 1.5; stroke-dasharray: 6 4; }
+  .region { fill: none; stroke: var(--ink2); stroke-width: 1.2; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .head { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .zlab { fill: var(--muted); font-size: 12px; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .q { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .arrlab { fill: var(--ink2); font-size: 11.5px; font-style: italic; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .arrowhead { fill: var(--ink2); }
+  .rowl { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .num { fill: var(--ink); font-size: 14px; font-weight: 700; }
+  .numc { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; }
+</style>
+<rect width="680" height="470" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Standby, read replica, backup: same data, different jobs</text>
+<text class="sub" x="16" y="48">Read down a column to see what each copy can and can't do for you</text>
+<rect class="pri" x="148" y="66" width="168" height="44" rx="6"/>
+<text class="cellt" x="158" y="84.0">Multi-AZ standby</text>
+<rect class="pri" x="322" y="66" width="168" height="44" rx="6"/>
+<text class="cellt" x="332" y="84.0">Read replica</text>
+<rect class="pri" x="496" y="66" width="168" height="44" rx="6"/>
+<text class="cellt" x="506" y="84.0">Automated backups</text>
+<text class="cellt" x="506" y="100.0">and snapshots</text>
+<line class="grid" x1="16" x2="664" y1="118" y2="118"/>
+<text class="rowl" x="16" y="137.0">How it's copied</text>
+<text class="small" x="158" y="137.0">Every write,</text>
+<text class="small" x="158" y="152.0">synchronously, to</text>
+<text class="small" x="158" y="167.0">another AZ</text>
+<text class="small" x="332" y="137.0">Changes, asynchronously;</text>
+<text class="small" x="332" y="152.0">it can lag behind</text>
+<text class="small" x="506" y="137.0">A daily snapshot plus a</text>
+<text class="small" x="506" y="152.0">log of every change;</text>
+<text class="small" x="506" y="167.0">snapshots when you take</text>
+<text class="small" x="506" y="182.0">them</text>
+<line class="grid" x1="16" x2="664" y1="196" y2="196"/>
+<text class="rowl" x="16" y="215.0">Answers queries?</text>
+<text class="small" x="158" y="215.0">No (a Multi-AZ DB</text>
+<text class="small" x="158" y="230.0">instance's standby</text>
+<text class="small" x="158" y="245.0">serves nothing)</text>
+<text class="small" x="332" y="215.0">Yes, read-only queries</text>
+<text class="small" x="506" y="215.0">No: you restore it to a</text>
+<text class="small" x="506" y="230.0">new database first</text>
+<line class="grid" x1="16" x2="664" y1="259" y2="259"/>
+<text class="rowl" x="16" y="278.0">Takes over by</text>
+<text class="rowl" x="16" y="293.0">itself?</text>
+<text class="small" x="158" y="278.0">Yes: automatic failover,</text>
+<text class="small" x="158" y="293.0">typically 1 to 2 minutes</text>
+<text class="small" x="332" y="278.0">No: you can promote it</text>
+<text class="small" x="332" y="293.0">by hand, losing any lag</text>
+<text class="small" x="506" y="278.0">No: a restore is a new</text>
+<text class="small" x="506" y="293.0">database you switch to</text>
+<line class="grid" x1="16" x2="664" y1="307" y2="307"/>
+<text class="rowl" x="16" y="326.0">Saves you from a</text>
+<text class="rowl" x="16" y="341.0">mistaken delete?</text>
+<text class="small" x="158" y="326.0">No: the delete reaches</text>
+<text class="small" x="158" y="341.0">it at once</text>
+<text class="small" x="332" y="326.0">No: the delete reaches</text>
+<text class="small" x="332" y="341.0">it soon after</text>
+<text class="small" x="506" y="326.0">Yes: restore to a moment</text>
+<text class="small" x="506" y="341.0">before the mistake</text>
+<line class="grid" x1="16" x2="664" y1="355" y2="355"/>
+<text class="rowl" x="16" y="374.0">The job</text>
+<text class="cellt" x="158" y="374.0">High availability</text>
+<text class="cellt" x="332" y="374.0">Read scaling (and a</text>
+<text class="cellt" x="332" y="389.0">disaster recovery</text>
+<text class="cellt" x="332" y="404.0">option)</text>
+<text class="cellt" x="506" y="374.0">Going back in time</text>
+<text class="cellt" x="506" y="389.0">(backup)</text>
+<line class="grid" x1="16" x2="664" y1="418" y2="418"/>
+<text class="note" x="16" y="440">For RDS engines other than Aurora. In Aurora, a read replica can also be the failover target.</text>
+<text class="note" x="16" y="456">From the Amazon RDS User Guide and FAQ, checked 2026-10-23.</text>
+</svg>

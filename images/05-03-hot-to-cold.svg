@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="502" viewBox="0 0 820 502" role="img" aria-labelledby="t d">
+<title id="t">S3 storage classes from hot to cold, with minimum billed stay, first-byte time, retrieval fee and AZ count</title>
+<desc id="d">Seven rows from hot at the top to cold at the bottom; in general, the lower the row, the less storage costs per GB, and the more it costs to read data or delete it early. S3 Standard: no minimum stay; milliseconds; no retrieval fee; 3 or more AZs. S3 Intelligent-Tiering: no minimum stay; milliseconds, with optional archive tiers that take longer; no retrieval fee, but a small monitoring fee per object; 3 or more AZs. S3 Standard-IA: 30 days; milliseconds; per GB read; 3 or more AZs. S3 One Zone-IA: 30 days; milliseconds; per GB read; 1 AZ. S3 Glacier Instant Retrieval: 90 days; milliseconds; per GB read; 3 or more AZs. S3 Glacier Flexible Retrieval: 90 days; minutes to 12 hours after a restore; per GB read, bulk restores free; 3 or more AZs. S3 Glacier Deep Archive: 180 days; 12 to 48 hours after a restore; per GB read; 3 or more AZs. The minimum stays are drawn as bars of 0, 0, 30, 30, 90, 90 and 180 days. Below: deleting, overwriting or moving an object out early is billed for the rest of the minimum stay, and Standard-IA, One Zone-IA and Glacier Instant Retrieval bill any object under 128 KB as 128 KB.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --hot:#86b6ef; --warm:#3987e5; --cold:#184f95; --panel:#f1f0ec; --it:#d9e8fb; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --hot:#184f95; --warm:#2a78d6; --cold:#86b6ef; --panel:#252523; --it:#1b3554; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .hot { fill: var(--hot); } .warm { fill: var(--warm); } .cold { fill: var(--cold); }
+  .it { fill: var(--it); stroke: var(--s1); stroke-width: 1.5; stroke-dasharray: 6 4; }
+  .panel { fill: var(--panel); }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .head { fill: var(--ink); font-size: 12.5px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .val { fill: var(--ink); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .ev { fill: var(--ink); stroke: var(--surface); stroke-width: 2; }
+  .evline { stroke: var(--ink2); stroke-width: 1; stroke-dasharray: 3 3; }
+  .brk { stroke: var(--surface); stroke-width: 4; }
+  .brk2 { stroke: var(--ink2); stroke-width: 1.2; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .arrowhead { fill: var(--ink2); }
+</style>
+<rect width="820" height="502" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">S3 storage classes from hot to cold</text>
+<text class="sub" x="16" y="48">In general, the lower the row, the less storage costs per GB, and the more it costs to read data or delete it early.</text>
+<text class="head" x="34" y="84">Storage class</text>
+<text class="head" x="236" y="84">Minimum billed stay</text>
+<text class="head" x="430" y="84">First byte</text>
+<text class="head" x="600" y="84">Retrieval fee</text>
+<text class="head" x="750" y="84">AZs</text>
+<rect class="panel" x="16" y="98" width="788" height="40" rx="5"/>
+<text class="cellt" x="34" y="123.0">S3 Standard</text>
+<text class="val" x="236" y="122.0">None</text>
+<text class="small" x="430" y="122.0">Milliseconds</text>
+<text class="small" x="600" y="122.0">None</text>
+<text class="small" x="750" y="122.0">3 or more</text>
+<rect class="panel" x="16" y="144" width="788" height="40" rx="5"/>
+<text class="cellt" x="34" y="169.0">S3 Intelligent-Tiering</text>
+<text class="val" x="236" y="168.0">None</text>
+<text class="small" x="430" y="160.5">Milliseconds (optional</text>
+<text class="small" x="430" y="175.5">archive tiers: longer)</text>
+<text class="small" x="600" y="160.5">None; small monitoring</text>
+<text class="small" x="600" y="175.5">fee per object</text>
+<text class="small" x="750" y="168.0">3 or more</text>
+<rect class="panel" x="16" y="190" width="788" height="40" rx="5"/>
+<text class="cellt" x="34" y="215.0">S3 Standard-IA</text>
+<path class="s1" d="M236.0,202.0 L252.0,202.0 Q256.0,202.0 256.0,206.0 L256.0,214.0 Q256.0,218.0 252.0,218.0 L236.0,218.0 Z"/>
+<text class="val" x="262.0" y="214.0">30 days</text>
+<text class="small" x="430" y="214.0">Milliseconds</text>
+<text class="small" x="600" y="214.0">Per GB read</text>
+<text class="small" x="750" y="214.0">3 or more</text>
+<rect class="panel" x="16" y="236" width="788" height="40" rx="5"/>
+<text class="cellt" x="34" y="261.0">S3 One Zone-IA</text>
+<path class="s1" d="M236.0,248.0 L252.0,248.0 Q256.0,248.0 256.0,252.0 L256.0,260.0 Q256.0,264.0 252.0,264.0 L236.0,264.0 Z"/>
+<text class="val" x="262.0" y="260.0">30 days</text>
+<text class="small" x="430" y="260.0">Milliseconds</text>
+<text class="small" x="600" y="260.0">Per GB read</text>
+<text class="small" x="750" y="260.0">1</text>
+<rect class="panel" x="16" y="282" width="788" height="40" rx="5"/>
+<text class="cellt" x="34" y="307.0">S3 Glacier Instant Retrieval</text>
+<path class="s1" d="M236.0,294.0 L292.0,294.0 Q296.0,294.0 296.0,298.0 L296.0,306.0 Q296.0,310.0 292.0,310.0 L236.0,310.0 Z"/>
+<text class="val" x="302.0" y="306.0">90 days</text>
+<text class="small" x="430" y="306.0">Milliseconds</text>
+<text class="small" x="600" y="306.0">Per GB read</text>
+<text class="small" x="750" y="306.0">3 or more</text>
+<rect class="panel" x="16" y="328" width="788" height="40" rx="5"/>
+<text class="cellt" x="34" y="353.0">S3 Glacier Flexible Retrieval</text>
+<path class="s1" d="M236.0,340.0 L292.0,340.0 Q296.0,340.0 296.0,344.0 L296.0,352.0 Q296.0,356.0 292.0,356.0 L236.0,356.0 Z"/>
+<text class="val" x="302.0" y="352.0">90 days</text>
+<text class="small" x="430" y="344.5">Minutes to 12 hours,</text>
+<text class="small" x="430" y="359.5">after a restore</text>
+<text class="small" x="600" y="344.5">Per GB read;</text>
+<text class="small" x="600" y="359.5">bulk restores free</text>
+<text class="small" x="750" y="352.0">3 or more</text>
+<rect class="panel" x="16" y="374" width="788" height="40" rx="5"/>
+<text class="cellt" x="34" y="399.0">S3 Glacier Deep Archive</text>
+<path class="s1" d="M236.0,386.0 L352.0,386.0 Q356.0,386.0 356.0,390.0 L356.0,398.0 Q356.0,402.0 352.0,402.0 L236.0,402.0 Z"/>
+<text class="val" x="362.0" y="398.0">180 days</text>
+<text class="small" x="430" y="390.5">12 to 48 hours,</text>
+<text class="small" x="430" y="405.5">after a restore</text>
+<text class="small" x="600" y="398.0">Per GB read</text>
+<text class="small" x="750" y="398.0">3 or more</text>
+<line class="arrow" x1="24" y1="102" x2="24" y2="406"/>
+<path class="arrowhead" d="M19,400 L29,400 L24,410 Z"/>
+<text class="small" x="16" y="434.0">Delete, overwrite or move an object out early, and you are billed for the rest of the minimum stay. Standard-IA, One</text>
+<text class="small" x="16" y="451.0">Zone-IA and Glacier Instant Retrieval also bill any object under 128 KB as 128 KB.</text>
+<text class="note" x="16" y="472">S3 User Guide storage class table and S3 storage classes pages, checked 2026-10-23. S3 Express One Zone is left out.</text>
+<text class="note" x="16" y="488">No prices are shown: they vary by Region and change. Check the Amazon S3 pricing page.</text>
+</svg>

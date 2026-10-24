@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="460" viewBox="0 0 680 460" role="img" aria-labelledby="t d">
+<title id="t">Five layers that protect the data in an S3 bucket, and which are on for a new bucket</title>
+<desc id="d">Five numbered rows. 1, Block Public Access: protects against someone making the bucket or its objects public by mistake; on, blocking all public access. 2, policies, IAM and the bucket policy: protect against the wrong person reading, changing or deleting data; on, the bucket is private and open only where a policy allows. 3, encryption at rest: protects against someone reading the stored bytes without permission; on for every new object, with SSE-S3. 4, versioning: protects against an overwrite or a delete you didn't mean; off, you turn it on. 5, a copy somewhere else: protects against losing the bucket, the Region or the account; off, replication or backups that you set up. Rows 1 to 3 are solid blue boxes, on; rows 4 and 5 are dashed orange boxes, off. Durability, AWS's side of the line, sits under all five.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --panel:#f1f0ec; --hi-fill:#d9e8fb; --off-fill:#fbe1d6; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --panel:#252523; --hi-fill:#1b3554; --off-fill:#4d2716; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .panel { fill: var(--panel); stroke: var(--axis); stroke-width: 1; }
+  .on { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .off { fill: var(--off-fill); stroke: var(--s2); stroke-width: 1.5; stroke-dasharray: 6 4; }
+  .ver { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .cur { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 2; }
+  .marker { fill: var(--off-fill); stroke: var(--s2); stroke-width: 2; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .tag { fill: var(--ink); font-size: 11.5px; font-weight: 600; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .num { fill: var(--surface); font-size: 12px; font-weight: 700; }
+  .numc { fill: var(--ink); }
+  .arrow { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .arrowhead { fill: var(--ink2); }
+</style>
+<rect width="680" height="460" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Five layers protect the data in a bucket</text>
+<text class="sub" x="16" y="48">Three are on when you create a bucket. You choose the other two.</text>
+<text class="cellt" x="60" y="72">Layer</text>
+<text class="cellt" x="278" y="72">Protects against</text>
+<text class="cellt" x="502" y="72">New bucket</text>
+<rect class="on" x="16" y="82" width="648" height="56" rx="6"/>
+<circle class="numc" cx="36" cy="110.0" r="11"/>
+<text class="num" x="36" y="114.0" text-anchor="middle">1</text>
+<text class="cellt" x="60" y="103.0">Block Public Access</text>
+<text class="small" x="278" y="103.0">Someone making the bucket or its</text>
+<text class="small" x="278" y="118.0">objects public by mistake</text>
+<text class="small" x="502" y="103.0">On: blocks all public</text>
+<text class="small" x="502" y="118.0">access</text>
+<rect class="on" x="16" y="144" width="648" height="56" rx="6"/>
+<circle class="numc" cx="36" cy="172.0" r="11"/>
+<text class="num" x="36" y="176.0" text-anchor="middle">2</text>
+<text class="cellt" x="60" y="165.0">Policies (IAM and bucket</text>
+<text class="cellt" x="60" y="180.0">policy)</text>
+<text class="small" x="278" y="165.0">The wrong person reading,</text>
+<text class="small" x="278" y="180.0">changing or deleting data</text>
+<text class="small" x="502" y="165.0">On: private, open only</text>
+<text class="small" x="502" y="180.0">where a policy allows</text>
+<rect class="on" x="16" y="206" width="648" height="56" rx="6"/>
+<circle class="numc" cx="36" cy="234.0" r="11"/>
+<text class="num" x="36" y="238.0" text-anchor="middle">3</text>
+<text class="cellt" x="60" y="227.0">Encryption at rest</text>
+<text class="small" x="278" y="227.0">Someone reading the stored bytes</text>
+<text class="small" x="278" y="242.0">without permission</text>
+<text class="small" x="502" y="227.0">On: SSE-S3 for every new</text>
+<text class="small" x="502" y="242.0">object</text>
+<rect class="off" x="16" y="268" width="648" height="56" rx="6"/>
+<circle class="numc" cx="36" cy="296.0" r="11"/>
+<text class="num" x="36" y="300.0" text-anchor="middle">4</text>
+<text class="cellt" x="60" y="289.0">Versioning</text>
+<text class="small" x="278" y="289.0">An overwrite or a delete you</text>
+<text class="small" x="278" y="304.0">didn't mean</text>
+<text class="small" x="502" y="289.0">Off: you turn it on</text>
+<rect class="off" x="16" y="330" width="648" height="56" rx="6"/>
+<circle class="numc" cx="36" cy="358.0" r="11"/>
+<text class="num" x="36" y="362.0" text-anchor="middle">5</text>
+<text class="cellt" x="60" y="351.0">A copy somewhere else</text>
+<text class="small" x="278" y="351.0">Losing the bucket, the Region or</text>
+<text class="small" x="278" y="366.0">the account</text>
+<text class="small" x="502" y="351.0">Off: replication or</text>
+<text class="small" x="502" y="366.0">backups you set up</text>
+<text class="small" x="16" y="408.0">Solid blue boxes start on. Dashed orange boxes start off. Durability, AWS's side of the</text>
+<text class="small" x="16" y="425.0">line, sits under all five.</text>
+<text class="note" x="16" y="446">Defaults for a general purpose bucket, from the S3 User Guide and our Lab 01 run, checked 2026-10-24.</text>
+</svg>

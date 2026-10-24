@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="390" viewBox="0 0 680 390" role="img" aria-labelledby="t d">
+<title id="t">Which RDS copy protects the bakery from each of four events</title>
+<desc id="d">A grid of four made-up events against three kinds of copy. AZ a loses power: the Multi-AZ standby solves it, automatically in one to two minutes; a read replica helps partly, because you promote it by hand (manual) and may lose writes; automated backups are slow, because you restore a new database. Reports slow the site: the standby doesn't help because it serves no reads; a read replica solves it, by running the reports; backups don't help, because they aren't a live copy. A wrong DELETE at 15:42: the standby copies the delete at once and the replica shortly after, so neither helps; automated backups solve it by restoring to 15:41. The whole Region is down: the standby doesn't help, because both AZs are in the Region; a read replica helps only if it is in another Region; backups help only if copied to another Region.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --no-fill:#f1f0ec; --ok-fill:#d9e8fb; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --no-fill:#252523; --ok-fill:#1b3554; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .no { fill: var(--no-fill); stroke: var(--axis); stroke-width: 1; stroke-dasharray: 3 3; }
+  .ok { fill: var(--ok-fill); stroke: var(--s1); stroke-width: 1; }
+  .pick { fill: var(--ok-fill); stroke: var(--s2); stroke-width: 3; }
+  .head { fill: var(--ink); font-size: 12.5px; font-weight: 600; }
+  .rowl { fill: var(--ink); font-size: 12.5px; font-weight: 600; }
+  .rows { fill: var(--ink2); font-size: 11.5px; }
+  .cellt { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 11px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+</style>
+<rect width="680" height="390" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Which copy saves the bakery from each event?</text>
+<text class="sub" x="16" y="48">Model answer to Part 1. Events are made up; the behaviors are RDS's.</text>
+<text class="head" x="256.0" y="80.0" text-anchor="middle">Multi-AZ standby</text>
+<text class="head" x="422.0" y="80.0" text-anchor="middle">Read replica</text>
+<text class="head" x="588.0" y="80.0" text-anchor="middle">Automated backups</text>
+<text class="rowl" x="16" y="136">AZ a loses power</text>
+<text class="rows" x="16" y="153">10:00, a busy Saturday</text>
+<rect class="pick" x="176" y="112" width="160" height="56" rx="5"/>
+<text class="cellt" x="256.0" y="135" text-anchor="middle">Solves it</text>
+<text class="cells" x="256.0" y="152" text-anchor="middle">automatic, 1-2 min</text>
+<rect class="ok" x="342" y="112" width="160" height="56" rx="5"/>
+<text class="cellt" x="422.0" y="135" text-anchor="middle">Partly</text>
+<text class="cells" x="422.0" y="152" text-anchor="middle">manual; may lose writes</text>
+<rect class="ok" x="508" y="112" width="160" height="56" rx="5"/>
+<text class="cellt" x="588.0" y="135" text-anchor="middle">Slow</text>
+<text class="cells" x="588.0" y="152" text-anchor="middle">restore a new database</text>
+<text class="rowl" x="16" y="198">Reports slow the site</text>
+<text class="rows" x="16" y="215">month-end, every month</text>
+<rect class="no" x="176" y="174" width="160" height="56" rx="5"/>
+<text class="cellt" x="256.0" y="197" text-anchor="middle">No</text>
+<text class="cells" x="256.0" y="214" text-anchor="middle">standby serves no reads</text>
+<rect class="pick" x="342" y="174" width="160" height="56" rx="5"/>
+<text class="cellt" x="422.0" y="197" text-anchor="middle">Solves it</text>
+<text class="cells" x="422.0" y="214" text-anchor="middle">run reports on it</text>
+<rect class="no" x="508" y="174" width="160" height="56" rx="5"/>
+<text class="cellt" x="588.0" y="197" text-anchor="middle">No</text>
+<text class="cells" x="588.0" y="214" text-anchor="middle">not a live copy</text>
+<text class="rowl" x="16" y="260">A wrong DELETE</text>
+<text class="rows" x="16" y="277">15:42, yesterday's orders</text>
+<rect class="no" x="176" y="236" width="160" height="56" rx="5"/>
+<text class="cellt" x="256.0" y="259" text-anchor="middle">No</text>
+<text class="cells" x="256.0" y="276" text-anchor="middle">copies the delete at once</text>
+<rect class="no" x="342" y="236" width="160" height="56" rx="5"/>
+<text class="cellt" x="422.0" y="259" text-anchor="middle">No</text>
+<text class="cells" x="422.0" y="276" text-anchor="middle">copies it shortly after</text>
+<rect class="pick" x="508" y="236" width="160" height="56" rx="5"/>
+<text class="cellt" x="588.0" y="259" text-anchor="middle">Solves it</text>
+<text class="cells" x="588.0" y="276" text-anchor="middle">restore to 15:41</text>
+<text class="rowl" x="16" y="322">The Region is down</text>
+<text class="rows" x="16" y="339">all of US East (N. Virginia)</text>
+<rect class="no" x="176" y="298" width="160" height="56" rx="5"/>
+<text class="cellt" x="256.0" y="321" text-anchor="middle">No</text>
+<text class="cells" x="256.0" y="338" text-anchor="middle">both AZs are in the Region</text>
+<rect class="ok" x="342" y="298" width="160" height="56" rx="5"/>
+<text class="cellt" x="422.0" y="321" text-anchor="middle">Only if</text>
+<text class="cells" x="422.0" y="338" text-anchor="middle">it's in another Region</text>
+<rect class="ok" x="508" y="298" width="160" height="56" rx="5"/>
+<text class="cellt" x="588.0" y="321" text-anchor="middle">Only if</text>
+<text class="cells" x="588.0" y="338" text-anchor="middle">copied to another Region</text>
+<text class="note" x="16" y="374">Thick outline: the copy that solves it. Dashed: doesn't help. Thin: helps partly, or only if set up for it.</text>
+</svg>

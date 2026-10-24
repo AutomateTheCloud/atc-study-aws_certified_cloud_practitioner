@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="588" viewBox="0 0 680 588" role="img" aria-labelledby="t d">
+<title id="t">Six shapes of data and the AWS database built for each</title>
+<desc id="d">Six cards in two rows of three, each with a small drawing of the shape. Relational: tables with rows and columns, linked to each other; bakery example, orders, customers and order lines; Amazon RDS and Amazon Aurora. Key-value: look up one item by its key, fast, at any scale; shopping carts by cart ID; Amazon DynamoDB. Document: records stored as JSON documents whose fields can vary; a product catalog where each cake has different options; Amazon DocumentDB, and DynamoDB also stores documents. In-memory: copies of hot data held in memory, answered in microseconds; the home page's best sellers and sign-in sessions; Amazon ElastiCache. Graph: things and the relationships between them; customers who bought this cake also bought; Amazon Neptune. Data warehouse: years of data from many sources, for analysis; sales by month, product and shop over three years; Amazon Redshift, for analytics, not the shop's daily work.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --card-fill:#f1f0ec; --tint:#d9e8fb; --tint2:#fbe1d6; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --card-fill:#252523; --tint:#1b3554; --tint2:#4d2716; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .card { fill: var(--card-fill); stroke: var(--axis); stroke-width: 1; }
+  .pane { fill: var(--tint); stroke: var(--s1); stroke-width: 1.5; }
+  .pane2 { fill: var(--tint2); stroke: var(--s2); stroke-width: 1.5; }
+  .ico { fill: none; stroke: var(--s1); stroke-width: 1.5; }
+  .icof { fill: var(--s1-light); stroke: var(--s1); stroke-width: 1.2; }
+  .icot { fill: var(--ink2); font-size: 10.5px; font-family: ui-monospace, Menlo, Consolas, monospace; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .svc { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .head { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .rowl { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .ann { fill: var(--ink); font-size: 12px; }
+</style>
+<rect width="680" height="588" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Choose the database by the shape of the data</text>
+<text class="sub" x="16" y="48">Six shapes, the AWS database built for each, and a bakery example</text>
+<rect class="card" x="16" y="66" width="208" height="236" rx="8"/>
+<rect class="ico" x="30" y="80" width="62" height="40" rx="2"/>
+<rect class="icof" x="30" y="80" width="62" height="10" rx="2"/>
+<line class="ico" x1="30" x2="92" y1="100" y2="100"/>
+<line class="ico" x1="30" x2="92" y1="110" y2="110"/>
+<line class="ico" x1="54" x2="54" y1="80" y2="120"/>
+<rect class="ico" x="108" y="94" width="62" height="40" rx="2"/>
+<rect class="icof" x="108" y="94" width="62" height="10" rx="2"/>
+<line class="ico" x1="108" x2="170" y1="114" y2="114"/>
+<line class="ico" x1="108" x2="170" y1="124" y2="124"/>
+<line class="ico" x1="132" x2="132" y1="94" y2="134"/>
+<path class="ico" d="M92,105 C100,105 100,119 108,119"/>
+<text class="cellt" x="28" y="150">Relational</text>
+<text class="cells" x="28" y="167.0">Tables with rows and columns,</text>
+<text class="cells" x="28" y="182.0">linked to each other</text>
+<text class="cells" x="28" y="201.0">Bakery: orders, customers and</text>
+<text class="cells" x="28" y="216.0">order lines</text>
+<text class="svc" x="28" y="237.0">Amazon RDS, Amazon Aurora</text>
+<rect class="card" x="236" y="66" width="208" height="236" rx="8"/>
+<rect class="icof" x="250" y="80" width="54" height="12" rx="2"/>
+<text class="icot" x="254" y="90">cart-17</text>
+<line class="ico" x1="308" x2="322" y1="86" y2="86"/>
+<rect class="ico" x="326" y="80" width="60" height="12" rx="2"/>
+<text class="icot" x="330" y="90">3 items</text>
+<rect class="icof" x="250" y="95" width="54" height="12" rx="2"/>
+<text class="icot" x="254" y="105">cart-18</text>
+<line class="ico" x1="308" x2="322" y1="101" y2="101"/>
+<rect class="ico" x="326" y="95" width="60" height="12" rx="2"/>
+<text class="icot" x="330" y="105">1 item</text>
+<rect class="icof" x="250" y="110" width="54" height="12" rx="2"/>
+<text class="icot" x="254" y="120">cart-19</text>
+<line class="ico" x1="308" x2="322" y1="116" y2="116"/>
+<rect class="ico" x="326" y="110" width="60" height="12" rx="2"/>
+<text class="icot" x="330" y="120">5 items</text>
+<text class="cellt" x="248" y="150">Key-value</text>
+<text class="cells" x="248" y="167.0">Look up one item by its key,</text>
+<text class="cells" x="248" y="182.0">fast, at any scale</text>
+<text class="cells" x="248" y="201.0">Bakery: shopping carts, by</text>
+<text class="cells" x="248" y="216.0">cart ID</text>
+<text class="svc" x="248" y="237.0">Amazon DynamoDB</text>
+<rect class="card" x="456" y="66" width="208" height="236" rx="8"/>
+<path class="ico" d="M470,80 L522,80 L534,92 L534,126 L470,126 Z"/>
+<line class="ico" x1="476" x2="484" y1="88" y2="88"/>
+<line class="ico" x1="482" x2="518" y1="96" y2="96"/>
+<line class="ico" x1="482" x2="512" y1="104" y2="104"/>
+<line class="ico" x1="488" x2="514" y1="112" y2="112"/>
+<line class="ico" x1="476" x2="484" y1="120" y2="120"/>
+<text class="icot" x="542" y="98">{ "name": ...,</text>
+<text class="icot" x="548" y="112">"sizes": [...] }</text>
+<text class="cellt" x="468" y="150">Document</text>
+<text class="cells" x="468" y="167.0">Records stored as JSON</text>
+<text class="cells" x="468" y="182.0">documents whose fields can</text>
+<text class="cells" x="468" y="197.0">vary</text>
+<text class="cells" x="468" y="216.0">Bakery: a product catalog</text>
+<text class="cells" x="468" y="231.0">where each cake has different</text>
+<text class="cells" x="468" y="246.0">options</text>
+<text class="svc" x="468" y="267.0">Amazon DocumentDB</text>
+<text class="svc" x="468" y="282.0">(DynamoDB also stores</text>
+<text class="svc" x="468" y="297.0">documents)</text>
+<rect class="card" x="16" y="314" width="208" height="236" rx="8"/>
+<path class="ico" d="M128,336 L128,368 A20,6 0 0 0 168,368 L168,336"/>
+<ellipse class="ico" cx="148" cy="336" rx="20" ry="6"/>
+<rect class="icof" x="30" y="338" width="58" height="28" rx="3"/>
+<text class="icot" x="38" y="356">memory</text>
+<line class="ico" x1="90" x2="124" y1="352" y2="352" stroke-dasharray="3 3"/>
+<text class="cellt" x="28" y="398">In-memory</text>
+<text class="cells" x="28" y="415.0">Copies of hot data held in</text>
+<text class="cells" x="28" y="430.0">memory, answered in</text>
+<text class="cells" x="28" y="445.0">microseconds</text>
+<text class="cells" x="28" y="464.0">Bakery: the home page's best</text>
+<text class="cells" x="28" y="479.0">sellers; sign-in sessions</text>
+<text class="svc" x="28" y="500.0">Amazon ElastiCache</text>
+<rect class="card" x="236" y="314" width="208" height="236" rx="8"/>
+<line class="ico" x1="260" y1="352" x2="296" y2="334"/>
+<line class="ico" x1="260" y1="352" x2="302" y2="368"/>
+<line class="ico" x1="296" y1="334" x2="340" y2="348"/>
+<line class="ico" x1="302" y1="368" x2="340" y2="348"/>
+<line class="ico" x1="340" y1="348" x2="376" y2="362"/>
+<line class="ico" x1="296" y1="334" x2="302" y2="368"/>
+<circle class="icof" cx="260" cy="352" r="6"/>
+<circle class="icof" cx="296" cy="334" r="6"/>
+<circle class="icof" cx="302" cy="368" r="6"/>
+<circle class="icof" cx="340" cy="348" r="6"/>
+<circle class="icof" cx="376" cy="362" r="6"/>
+<text class="cellt" x="248" y="398">Graph</text>
+<text class="cells" x="248" y="415.0">Things and the relationships</text>
+<text class="cells" x="248" y="430.0">between them</text>
+<text class="cells" x="248" y="449.0">Bakery: customers who bought</text>
+<text class="cells" x="248" y="464.0">this cake also bought...</text>
+<text class="svc" x="248" y="485.0">Amazon Neptune</text>
+<rect class="card" x="456" y="314" width="208" height="236" rx="8"/>
+<path class="icof" d="M470.0,374.0 L470.0,362.0 Q470.0,360.0 472.0,360.0 L479.0,360.0 Q481.0,360.0 481.0,362.0 L481.0,374.0 Z"/>
+<path class="icof" d="M486.0,374.0 L486.0,354.0 Q486.0,352.0 488.0,352.0 L495.0,352.0 Q497.0,352.0 497.0,354.0 L497.0,374.0 Z"/>
+<path class="icof" d="M502.0,374.0 L502.0,358.0 Q502.0,356.0 504.0,356.0 L511.0,356.0 Q513.0,356.0 513.0,358.0 L513.0,374.0 Z"/>
+<path class="icof" d="M518.0,374.0 L518.0,346.0 Q518.0,344.0 520.0,344.0 L527.0,344.0 Q529.0,344.0 529.0,346.0 L529.0,374.0 Z"/>
+<path class="icof" d="M534.0,374.0 L534.0,350.0 Q534.0,348.0 536.0,348.0 L543.0,348.0 Q545.0,348.0 545.0,350.0 L545.0,374.0 Z"/>
+<path class="icof" d="M550.0,374.0 L550.0,338.0 Q550.0,336.0 552.0,336.0 L559.0,336.0 Q561.0,336.0 561.0,338.0 L561.0,374.0 Z"/>
+<path class="icof" d="M566.0,374.0 L566.0,342.0 Q566.0,340.0 568.0,340.0 L575.0,340.0 Q577.0,340.0 577.0,342.0 L577.0,374.0 Z"/>
+<path class="icof" d="M582.0,374.0 L582.0,332.0 Q582.0,330.0 584.0,330.0 L591.0,330.0 Q593.0,330.0 593.0,332.0 L593.0,374.0 Z"/>
+<line class="ico" x1="468" x2="600" y1="374" y2="374"/>
+<text class="cellt" x="468" y="398">Data warehouse</text>
+<text class="cells" x="468" y="415.0">Years of data from many</text>
+<text class="cells" x="468" y="430.0">sources, for analysis</text>
+<text class="cells" x="468" y="449.0">Bakery: sales by month,</text>
+<text class="cells" x="468" y="464.0">product and shop over three</text>
+<text class="cells" x="468" y="479.0">years</text>
+<text class="svc" x="468" y="500.0">Amazon Redshift</text>
+<text class="svc" x="468" y="515.0">(analytics, not the</text>
+<text class="svc" x="468" y="530.0">shop's daily work)</text>
+<text class="note" x="16" y="574">From each service's documentation, checked 2026-10-23. Bakery examples are made up for teaching.</text>
+</svg>

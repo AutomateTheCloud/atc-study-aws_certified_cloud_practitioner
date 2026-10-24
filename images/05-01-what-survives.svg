@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="386" viewBox="0 0 680 386" role="img" aria-labelledby="t d">
+<title id="t">What happens to data on an EBS volume and on instance store when the server changes state</title>
+<desc id="d">A grid of four server events by two kinds of block storage. Reboot, the server restarts: EBS kept; instance store kept. Stop, the server is turned off: EBS kept; instance store lost, every block erased. Hibernate, memory saved, then off: EBS kept; instance store lost. Terminate, the server is deleted: EBS kept only if the volume's Delete on termination setting is No; instance store lost. Below: a reboot is the one event instance store survives; copy anything you need to keep to EBS, S3 or EFS.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --panel:#f1f0ec; --hi-fill:#d9e8fb; --good:#0ca30c; --crit:#d03b3b; --good-fill:#e3f4e3; --crit-fill:#fae3e3; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --panel:#252523; --hi-fill:#1b3554; --good:#0ca30c; --crit:#d03b3b; --good-fill:#16301a; --crit-fill:#3d1d1d; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .panel { fill: var(--panel); stroke: var(--axis); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .box { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .blk { fill: var(--s1); }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .head { fill: var(--ink); font-size: 15px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .mono { fill: var(--ink); font-size: 11.5px; font-family: ui-monospace, Menlo, Consolas, monospace; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .ex { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .wire { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .good { fill: var(--good-fill); stroke: var(--good); stroke-width: 1.5; }
+  .crit { fill: var(--crit-fill); stroke: var(--crit); stroke-width: 1.5; }
+  .gi { stroke: var(--good); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .ci { stroke: var(--crit); stroke-width: 2.5; fill: none; stroke-linecap: round; }
+  .az { fill: none; stroke: var(--axis); stroke-width: 1.2; stroke-dasharray: 5 4; }
+  .span { fill: var(--s1); }
+  .span-light { fill: var(--s1-light); }
+</style>
+<rect width="680" height="386" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">What happens to the data when the server changes state</text>
+<text class="sub" x="16" y="48">An EBS volume lives apart from the server. Instance store lives and dies with it.</text>
+<text class="cellt" x="16" y="78">Server event</text>
+<text class="cellt" x="220" y="78">Data on an EBS volume</text>
+<text class="cellt" x="460" y="78">Data on instance store</text>
+<text class="cellt" x="16" y="110">Reboot</text>
+<text class="small" x="16" y="126">The server restarts</text>
+<rect class="good" x="220" y="90" width="204" height="44" rx="6"/>
+<path class="gi" d="M232,112.0 L237,117.0 L245,106.0"/>
+<text class="cellt" x="256" y="117.0">Kept</text>
+<rect class="good" x="460" y="90" width="204" height="44" rx="6"/>
+<path class="gi" d="M472,112.0 L477,117.0 L485,106.0"/>
+<text class="cellt" x="496" y="117.0">Kept</text>
+<text class="cellt" x="16" y="162">Stop</text>
+<text class="small" x="16" y="178">The server is turned off</text>
+<rect class="good" x="220" y="142" width="204" height="44" rx="6"/>
+<path class="gi" d="M232,164.0 L237,169.0 L245,158.0"/>
+<text class="cellt" x="256" y="169.0">Kept</text>
+<rect class="crit" x="460" y="142" width="204" height="44" rx="6"/>
+<path class="ci" d="M473,159.0 L483,169.0 M483,159.0 L473,169.0"/>
+<text class="cellt" x="496" y="169.0">Lost</text>
+<text class="small" x="542" y="168.0">every block erased</text>
+<text class="cellt" x="16" y="214">Hibernate</text>
+<text class="small" x="16" y="230">Memory saved, then off</text>
+<rect class="good" x="220" y="194" width="204" height="44" rx="6"/>
+<path class="gi" d="M232,216.0 L237,221.0 L245,210.0"/>
+<text class="cellt" x="256" y="221.0">Kept</text>
+<rect class="crit" x="460" y="194" width="204" height="44" rx="6"/>
+<path class="ci" d="M473,211.0 L483,221.0 M483,211.0 L473,221.0"/>
+<text class="cellt" x="496" y="221.0">Lost</text>
+<text class="small" x="542" y="220.0">every block erased</text>
+<text class="cellt" x="16" y="266">Terminate</text>
+<text class="small" x="16" y="282">The server is deleted</text>
+<rect class="good" x="220" y="246" width="204" height="64" rx="6"/>
+<path class="gi" d="M232,278.0 L237,283.0 L245,272.0"/>
+<text class="cellt" x="256" y="283.0">Kept</text>
+<text class="small" x="302" y="268.0">only if its Delete</text>
+<text class="small" x="302" y="282.0">on termination</text>
+<text class="small" x="302" y="296.0">setting is No</text>
+<rect class="crit" x="460" y="246" width="204" height="64" rx="6"/>
+<path class="ci" d="M473,273.0 L483,283.0 M483,273.0 L473,283.0"/>
+<text class="cellt" x="496" y="283.0">Lost</text>
+<text class="small" x="542" y="282.0">every block erased</text>
+<text class="small" x="16" y="332.0">A reboot is the one event instance store survives. Copy anything you need to keep to</text>
+<text class="small" x="16" y="349.0">EBS, S3 or EFS.</text>
+<text class="note" x="16" y="372">Sources: EC2 User Guide, "Data persistence for instance store volumes"; Amazon EBS FAQs. Checked 2026-10-24.</text>
+</svg>

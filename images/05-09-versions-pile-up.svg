@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="396" viewBox="0 0 680 396" role="img" aria-labelledby="t d">
+<title id="t">GB stored when a 10 GB file is overwritten every night in a versioned bucket</title>
+<desc id="d">Line chart over 60 nights. With no rule for older versions, every overwrite keeps the old 10 GB version, so storage climbs in a straight line to 600 GB on night 60 and keeps growing. With a lifecycle rule that permanently deletes older versions 7 days after they stop being current, storage rises to 80 GB by night 8 and stays there.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --c-std:#184f95; --c-ia:#2a78d6; --c-gfr:#6da7ec; --c-gda:#9ec5f4; --t-std:#ffffff; --t-ia:#ffffff; --t-gfr:#0b0b0b; --t-gda:#0b0b0b; --s3c:#1baf7a; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --c-std:#9ec5f4; --c-ia:#5598e7; --c-gfr:#256abf; --c-gda:#184f95; --t-std:#0b0b0b; --t-ia:#0b0b0b; --t-gfr:#ffffff; --t-gda:#ffffff; --s3c:#199e70; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .STD { fill: var(--c-std); } .IA { fill: var(--c-ia); } .GFR { fill: var(--c-gfr); } .GDA { fill: var(--c-gda); }
+  .tSTD { fill: var(--t-std); font-size: 11.5px; } .tIA { fill: var(--t-ia); font-size: 11.5px; }
+  .tGFR { fill: var(--t-gfr); font-size: 11.5px; } .tGDA { fill: var(--t-gda); font-size: 11.5px; }
+  .plan { fill: var(--ink); font-size: 12.5px; font-weight: 600; }
+  .plans { fill: var(--ink2); font-size: 11.5px; }
+  .exp { stroke: var(--s2); stroke-width: 2.5; }
+  .expt { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .fail { fill: var(--muted); font-size: 11.5px; font-style: italic; }
+  .line-s2 { stroke: var(--s2); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s3 { stroke: var(--s3c); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s2 { fill: var(--s2); stroke: var(--surface); stroke-width: 2; }
+  .dot-s3 { fill: var(--s3c); stroke: var(--surface); stroke-width: 2; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+</style>
+<rect width="680" height="396" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">One file overwritten every night, versioning on</text>
+<text class="sub" x="16" y="48">GB stored for a 10 GB backup file that keeps the same name</text>
+<line class="line-s1" x1="16" x2="32" y1="72" y2="72"/>
+<text x="38" y="76">No rule for older versions</text>
+<line class="line-s2" x1="236" x2="252" y1="72" y2="72"/>
+<text x="258" y="76">Older versions deleted after 7 days</text>
+<line class="axis" x1="56" x2="476" y1="342.0" y2="342.0"/>
+<text class="tick" x="48" y="346.0" text-anchor="end">0</text>
+<line class="grid" x1="56" x2="476" y1="303.7" y2="303.7"/>
+<text class="tick" x="48" y="307.7" text-anchor="end">100</text>
+<line class="grid" x1="56" x2="476" y1="265.3" y2="265.3"/>
+<text class="tick" x="48" y="269.3" text-anchor="end">200</text>
+<line class="grid" x1="56" x2="476" y1="227.0" y2="227.0"/>
+<text class="tick" x="48" y="231.0" text-anchor="end">300</text>
+<line class="grid" x1="56" x2="476" y1="188.7" y2="188.7"/>
+<text class="tick" x="48" y="192.7" text-anchor="end">400</text>
+<line class="grid" x1="56" x2="476" y1="150.3" y2="150.3"/>
+<text class="tick" x="48" y="154.3" text-anchor="end">500</text>
+<line class="grid" x1="56" x2="476" y1="112.0" y2="112.0"/>
+<text class="tick" x="48" y="116.0" text-anchor="end">600</text>
+<text class="tick" x="16" y="102">GB</text>
+<text class="tick" x="56.0" y="360" text-anchor="middle">0</text>
+<text class="tick" x="126.0" y="360" text-anchor="middle">10</text>
+<text class="tick" x="196.0" y="360" text-anchor="middle">20</text>
+<text class="tick" x="266.0" y="360" text-anchor="middle">30</text>
+<text class="tick" x="336.0" y="360" text-anchor="middle">40</text>
+<text class="tick" x="406.0" y="360" text-anchor="middle">50</text>
+<text class="tick" x="476.0" y="360" text-anchor="middle">60</text>
+<text class="tick" x="56" y="378">Nights since versioning was turned on</text>
+<polyline class="line-s1" points="63.0,338.2 70.0,334.3 77.0,330.5 84.0,326.7 91.0,322.8 98.0,319.0 105.0,315.2 112.0,311.3 119.0,307.5 126.0,303.7 133.0,299.8 140.0,296.0 147.0,292.2 154.0,288.3 161.0,284.5 168.0,280.7 175.0,276.8 182.0,273.0 189.0,269.2 196.0,265.3 203.0,261.5 210.0,257.7 217.0,253.8 224.0,250.0 231.0,246.2 238.0,242.3 245.0,238.5 252.0,234.7 259.0,230.8 266.0,227.0 273.0,223.2 280.0,219.3 287.0,215.5 294.0,211.7 301.0,207.8 308.0,204.0 315.0,200.2 322.0,196.3 329.0,192.5 336.0,188.7 343.0,184.8 350.0,181.0 357.0,177.2 364.0,173.3 371.0,169.5 378.0,165.7 385.0,161.8 392.0,158.0 399.0,154.2 406.0,150.3 413.0,146.5 420.0,142.7 427.0,138.8 434.0,135.0 441.0,131.2 448.0,127.3 455.0,123.5 462.0,119.7 469.0,115.8 476.0,112.0"/>
+<circle class="dot-s1" cx="476.0" cy="112.0" r="5"><title>Night 60: 600 GB</title></circle>
+<text class="lab" x="486.0" y="116.0">600 GB and growing</text>
+<polyline class="line-s2" points="63.0,338.2 70.0,334.3 77.0,330.5 84.0,326.7 91.0,322.8 98.0,319.0 105.0,315.2 112.0,311.3 119.0,311.3 126.0,311.3 133.0,311.3 140.0,311.3 147.0,311.3 154.0,311.3 161.0,311.3 168.0,311.3 175.0,311.3 182.0,311.3 189.0,311.3 196.0,311.3 203.0,311.3 210.0,311.3 217.0,311.3 224.0,311.3 231.0,311.3 238.0,311.3 245.0,311.3 252.0,311.3 259.0,311.3 266.0,311.3 273.0,311.3 280.0,311.3 287.0,311.3 294.0,311.3 301.0,311.3 308.0,311.3 315.0,311.3 322.0,311.3 329.0,311.3 336.0,311.3 343.0,311.3 350.0,311.3 357.0,311.3 364.0,311.3 371.0,311.3 378.0,311.3 385.0,311.3 392.0,311.3 399.0,311.3 406.0,311.3 413.0,311.3 420.0,311.3 427.0,311.3 434.0,311.3 441.0,311.3 448.0,311.3 455.0,311.3 462.0,311.3 469.0,311.3 476.0,311.3"/>
+<circle class="dot-s2" cx="476.0" cy="311.3" r="5"><title>Night 60: 80 GB</title></circle>
+<text class="lab" x="486.0" y="315.3">80 GB, steady</text>
+</svg>

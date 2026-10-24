@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="489" viewBox="0 0 680 489" role="img" aria-labelledby="t d">
+<title id="t">Three kinds of AWS Storage Gateway: what stays on premises and where the data lands</title>
+<desc id="d">Three columns, each a flow from top to bottom. S3 File Gateway: file-sharing apps and users in the shop send files over NFS or SMB to the gateway on premises, which keeps recently used files in a local cache and stores them over the network as objects in an S3 bucket, readable with normal S3 tools; typical need: keep a shared folder and store the files in S3. Volume Gateway: servers that need disks send block volumes over iSCSI; in cached mode the gateway keeps frequently used data and the data itself lives in S3; in stored mode the gateway keeps the whole dataset and AWS holds point-in-time copies as EBS snapshots; typical need: cloud-backed disks or off-site copies of local disks. Tape Gateway: existing backup software sends virtual tapes over iSCSI; the gateway caches recently used tapes; tapes are stored in S3 and archived to S3 Glacier Flexible Retrieval or Deep Archive; typical need: replace physical tapes without changing the backup jobs. A note says Amazon FSx File Gateway has been closed to new customers since 2024-10-28.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --aws-fill:#d9e8fb; --link-fill:#fbe1d6; --prem-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --aws-fill:#1b3554; --link-fill:#4d2716; --prem-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .aws { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .link { fill: var(--link-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .prem { fill: var(--prem-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .zone { fill: none; stroke: var(--axis); stroke-width: 1.5; stroke-dasharray: 6 4; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .head { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .arrlab { fill: var(--ink2); font-size: 11.5px; font-style: italic; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .arrowhead { fill: var(--ink2); }
+  .rowl { fill: var(--ink); font-size: 12px; font-weight: 600; }
+</style>
+<rect width="680" height="489" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Three kinds of Storage Gateway, one idea: local access, data in AWS</text>
+<text class="sub" x="16" y="48">The app keeps the protocol it already speaks; the gateway turns it into AWS storage</text>
+<text class="cellt" x="120.0" y="74" text-anchor="middle">S3 File Gateway</text>
+<rect class="prem" x="16.0" y="86.0" width="208.0" height="46.0" rx="6"/>
+<text class="cellt" x="26" y="105.0">In the shop</text>
+<text class="cells" x="26" y="122.0">File-sharing apps and users</text>
+<line class="arrow" x1="120.0" y1="134.0" x2="120.0" y2="166.0"/>
+<path class="arrowhead" d="M115.0,158.0 L125.0,158.0 L120.0,166.0 Z"/>
+<text class="arrlab" x="128.0" y="154.0">files: NFS or SMB</text>
+<rect class="link" x="16.0" y="168.0" width="208.0" height="79.0" rx="6"/>
+<text class="cellt" x="26" y="187.0">The gateway (on premises)</text>
+<text class="cells" x="26" y="204.0">Keeps: recently used files, in</text>
+<text class="cells" x="26" y="219.0">a local cache</text>
+<line class="arrow" x1="120.0" y1="249.0" x2="120.0" y2="281.0"/>
+<path class="arrowhead" d="M115.0,273.0 L125.0,273.0 L120.0,281.0 Z"/>
+<text class="arrlab" x="128.0" y="269.0">over the network</text>
+<rect class="aws" x="16.0" y="283.0" width="208.0" height="94.0" rx="6"/>
+<text class="cellt" x="26" y="302.0">In AWS</text>
+<text class="cells" x="26" y="319.0">Objects in an S3 bucket,</text>
+<text class="cells" x="26" y="334.0">readable with normal S3 tools</text>
+<text class="rowl" x="16" y="399">Typical need</text>
+<text class="small" x="16" y="415.0">Keep a shared folder, store</text>
+<text class="small" x="16" y="430.0">the files in S3</text>
+<text class="cellt" x="340.0" y="74" text-anchor="middle">Volume Gateway</text>
+<rect class="prem" x="236.0" y="86.0" width="208.0" height="46.0" rx="6"/>
+<text class="cellt" x="246" y="105.0">In the shop</text>
+<text class="cells" x="246" y="122.0">Servers that need disks</text>
+<line class="arrow" x1="340.0" y1="134.0" x2="340.0" y2="166.0"/>
+<path class="arrowhead" d="M335.0,158.0 L345.0,158.0 L340.0,166.0 Z"/>
+<text class="arrlab" x="348.0" y="154.0">disk blocks: iSCSI</text>
+<rect class="link" x="236.0" y="168.0" width="208.0" height="79.0" rx="6"/>
+<text class="cellt" x="246" y="187.0">The gateway (on premises)</text>
+<text class="cells" x="246" y="204.0">Keeps: cached mode, frequently</text>
+<text class="cells" x="246" y="219.0">used data; stored mode, the</text>
+<text class="cells" x="246" y="234.0">whole dataset</text>
+<line class="arrow" x1="340.0" y1="249.0" x2="340.0" y2="281.0"/>
+<path class="arrowhead" d="M335.0,273.0 L345.0,273.0 L340.0,281.0 Z"/>
+<text class="arrlab" x="348.0" y="269.0">over the network</text>
+<rect class="aws" x="236.0" y="283.0" width="208.0" height="94.0" rx="6"/>
+<text class="cellt" x="246" y="302.0">In AWS</text>
+<text class="cells" x="246" y="319.0">Cached mode: the data itself,</text>
+<text class="cells" x="246" y="334.0">in S3. Stored mode:</text>
+<text class="cells" x="246" y="349.0">point-in-time copies, as EBS</text>
+<text class="cells" x="246" y="364.0">snapshots</text>
+<text class="rowl" x="236" y="399">Typical need</text>
+<text class="small" x="236" y="415.0">Cloud-backed disks, or</text>
+<text class="small" x="236" y="430.0">off-site copies of local disks</text>
+<text class="cellt" x="560.0" y="74" text-anchor="middle">Tape Gateway</text>
+<rect class="prem" x="456.0" y="86.0" width="208.0" height="46.0" rx="6"/>
+<text class="cellt" x="466" y="105.0">In the shop</text>
+<text class="cells" x="466" y="122.0">Existing backup software</text>
+<line class="arrow" x1="560.0" y1="134.0" x2="560.0" y2="166.0"/>
+<path class="arrowhead" d="M555.0,158.0 L565.0,158.0 L560.0,166.0 Z"/>
+<text class="arrlab" x="568.0" y="154.0">tapes: iSCSI</text>
+<rect class="link" x="456.0" y="168.0" width="208.0" height="79.0" rx="6"/>
+<text class="cellt" x="466" y="187.0">The gateway (on premises)</text>
+<text class="cells" x="466" y="204.0">Keeps: recently used tapes, in</text>
+<text class="cells" x="466" y="219.0">a local cache</text>
+<line class="arrow" x1="560.0" y1="249.0" x2="560.0" y2="281.0"/>
+<path class="arrowhead" d="M555.0,273.0 L565.0,273.0 L560.0,281.0 Z"/>
+<text class="arrlab" x="568.0" y="269.0">over the network</text>
+<rect class="aws" x="456.0" y="283.0" width="208.0" height="94.0" rx="6"/>
+<text class="cellt" x="466" y="302.0">In AWS</text>
+<text class="cells" x="466" y="319.0">Virtual tapes in S3, archived</text>
+<text class="cells" x="466" y="334.0">to S3 Glacier Flexible</text>
+<text class="cells" x="466" y="349.0">Retrieval or Deep Archive</text>
+<text class="rowl" x="456" y="399">Typical need</text>
+<text class="small" x="456" y="415.0">Replace physical tapes without</text>
+<text class="small" x="456" y="430.0">changing the backup jobs</text>
+<text class="note" x="16" y="459">A fourth type, Amazon FSx File Gateway, has been closed to new customers since 2024-10-28.</text>
+<text class="note" x="16" y="475">From the AWS Storage Gateway FAQ and documentation, checked 2026-10-23.</text>
+</svg>

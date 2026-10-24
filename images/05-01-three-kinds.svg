@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="480" viewBox="0 0 700 480" role="img" aria-labelledby="t d">
+<title id="t">Block, file and object storage side by side</title>
+<desc id="d">Three panels. Block: a disk for one server. One server connects to a disk drawn as numbered blocks with no names; the server's operating system formats the disk and keeps its own files on it, as on a laptop's drive. Examples: Amazon EBS and EC2 instance store. File: a shared folder tree. Three servers connect to one folder tree with folders and file names; many servers connect over the network at the same time and see the same files. Examples: Amazon EFS and Amazon FSx. Object: whole objects in a bucket. An app and a phone reach the bucket over HTTPS; each object has a key, such as cakes/birthday.jpg, the whole data, and metadata; programs put and get whole objects through an API. Example: Amazon S3, with all its storage classes.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --panel:#f1f0ec; --hi-fill:#d9e8fb; --good:#0ca30c; --crit:#d03b3b; --good-fill:#e3f4e3; --crit-fill:#fae3e3; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --panel:#252523; --hi-fill:#1b3554; --good:#0ca30c; --crit:#d03b3b; --good-fill:#16301a; --crit-fill:#3d1d1d; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .panel { fill: var(--panel); stroke: var(--axis); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .box { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .blk { fill: var(--s1); }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .head { fill: var(--ink); font-size: 15px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .mono { fill: var(--ink); font-size: 11.5px; font-family: ui-monospace, Menlo, Consolas, monospace; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .ex { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .wire { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .good { fill: var(--good-fill); stroke: var(--good); stroke-width: 1.5; }
+  .crit { fill: var(--crit-fill); stroke: var(--crit); stroke-width: 1.5; }
+  .gi { stroke: var(--good); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .ci { stroke: var(--crit); stroke-width: 2.5; fill: none; stroke-linecap: round; }
+  .az { fill: none; stroke: var(--axis); stroke-width: 1.2; stroke-dasharray: 5 4; }
+  .span { fill: var(--s1); }
+  .span-light { fill: var(--s1-light); }
+</style>
+<rect width="700" height="480" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Three ways to store data: block, file and object</text>
+<text class="sub" x="16" y="48">What differs is how a computer reaches the data, and how many computers can reach it at once.</text>
+<rect class="panel" x="16" y="64" width="216" height="380" rx="8"/>
+<rect class="panel" x="242" y="64" width="216" height="380" rx="8"/>
+<rect class="panel" x="468" y="64" width="216" height="380" rx="8"/>
+<text class="head" x="30" y="90">Block</text>
+<text class="small" x="30" y="108">A disk for one server</text>
+<rect class="box" x="95" y="126" width="58" height="26" rx="4"/>
+<text class="small" x="124" y="143" text-anchor="middle">Server</text>
+<line class="wire" x1="124" y1="152" x2="124" y2="176"/>
+<rect class="hi" x="54" y="176" width="140" height="92" rx="6"/>
+<rect class="blk" x="66" y="188" width="16" height="16" rx="2"/>
+<rect class="blk" x="86" y="188" width="16" height="16" rx="2"/>
+<rect class="blk" x="106" y="188" width="16" height="16" rx="2"/>
+<rect class="blk" x="126" y="188" width="16" height="16" rx="2"/>
+<rect class="blk" x="146" y="188" width="16" height="16" rx="2"/>
+<rect class="blk" x="166" y="188" width="16" height="16" rx="2"/>
+<rect class="blk" x="66" y="210" width="16" height="16" rx="2"/>
+<rect class="blk" x="86" y="210" width="16" height="16" rx="2"/>
+<rect class="blk" x="106" y="210" width="16" height="16" rx="2"/>
+<rect class="blk" x="126" y="210" width="16" height="16" rx="2"/>
+<rect class="blk" x="146" y="210" width="16" height="16" rx="2"/>
+<rect class="blk" x="166" y="210" width="16" height="16" rx="2"/>
+<rect class="blk" x="66" y="232" width="16" height="16" rx="2"/>
+<rect class="blk" x="86" y="232" width="16" height="16" rx="2"/>
+<rect class="blk" x="106" y="232" width="16" height="16" rx="2"/>
+<rect class="blk" x="126" y="232" width="16" height="16" rx="2"/>
+<rect class="blk" x="146" y="232" width="16" height="16" rx="2"/>
+<rect class="blk" x="166" y="232" width="16" height="16" rx="2"/>
+<text class="small" x="124" y="286" text-anchor="middle">Numbered blocks, no names</text>
+<text class="small" x="30" y="316.0">The server's operating system</text>
+<text class="small" x="30" y="332.0">formats the disk and keeps its</text>
+<text class="small" x="30" y="348.0">own files on it, as on a</text>
+<text class="small" x="30" y="364.0">laptop's drive.</text>
+<text class="ex" x="30" y="400">Amazon EBS</text>
+<text class="ex" x="30" y="420">EC2 instance store</text>
+<text class="head" x="256" y="90">File</text>
+<text class="small" x="256" y="108">A shared folder tree</text>
+<rect class="box" x="256" y="126" width="58" height="26" rx="4"/>
+<text class="small" x="285" y="143" text-anchor="middle">Server</text>
+<line class="wire" x1="285" y1="152" x2="350" y2="176"/>
+<rect class="box" x="322" y="126" width="58" height="26" rx="4"/>
+<text class="small" x="351" y="143" text-anchor="middle">Server</text>
+<line class="wire" x1="351" y1="152" x2="350" y2="176"/>
+<rect class="box" x="388" y="126" width="58" height="26" rx="4"/>
+<text class="small" x="417" y="143" text-anchor="middle">Server</text>
+<line class="wire" x1="417" y1="152" x2="350" y2="176"/>
+<rect class="hi" x="270" y="176" width="160" height="92" rx="6"/>
+<text class="mono" x="282" y="198" xml:space="preserve">/shared</text>
+<text class="mono" x="282" y="217" xml:space="preserve">  photos/</text>
+<text class="mono" x="282" y="236" xml:space="preserve">    birthday-cake.jpg</text>
+<text class="mono" x="282" y="255" xml:space="preserve">  menus/</text>
+<text class="small" x="350" y="286" text-anchor="middle">Folders and file names</text>
+<text class="small" x="256" y="316.0">Many servers connect over the</text>
+<text class="small" x="256" y="332.0">network at the same time and</text>
+<text class="small" x="256" y="348.0">see the same files.</text>
+<text class="ex" x="256" y="400">Amazon EFS</text>
+<text class="ex" x="256" y="420">Amazon FSx</text>
+<text class="head" x="482" y="90">Object</text>
+<text class="small" x="482" y="108">Whole objects in a bucket</text>
+<rect class="box" x="490" y="126" width="58" height="26" rx="4"/>
+<text class="small" x="519" y="143" text-anchor="middle">App</text>
+<rect class="box" x="604" y="126" width="58" height="26" rx="4"/>
+<text class="small" x="633" y="143" text-anchor="middle">Phone</text>
+<line class="wire" x1="519" y1="152" x2="558" y2="176"/>
+<line class="wire" x1="633" y1="152" x2="594" y2="176"/>
+<text class="note" x="576" y="168" text-anchor="middle">HTTPS</text>
+<rect class="hi" x="486" y="176" width="180" height="92" rx="6"/>
+<text class="mono" x="496" y="196">key: cakes/birthday.jpg</text>
+<text class="mono" x="496" y="214">data: the whole photo</text>
+<text class="mono" x="496" y="232">metadata: type, date</text>
+<text class="mono" x="496" y="256">key: menus/may.pdf ...</text>
+<text class="small" x="576" y="286" text-anchor="middle">Each object has a key</text>
+<text class="small" x="482" y="316.0">Programs put and get whole</text>
+<text class="small" x="482" y="332.0">objects through an API, from</text>
+<text class="small" x="482" y="348.0">anywhere they are allowed to.</text>
+<text class="ex" x="482" y="400">Amazon S3</text>
+<text class="ex" x="482" y="420">(all its storage classes)</text>
+<text class="note" x="16" y="466">Our summary of the Amazon EFS FAQ ("EFS vs. EBS vs. S3"), checked 2026-10-24. File and key names are made up.</text>
+</svg>

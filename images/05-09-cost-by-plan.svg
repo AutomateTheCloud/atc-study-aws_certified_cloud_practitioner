@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="400" viewBox="0 0 680 400" role="img" aria-labelledby="t d">
+<title id="t">Running storage cost over a year for lifecycle plans A, B and D</title>
+<desc id="d">Line chart, days 0 to 365, running storage cost in US dollars for 300 GB of backups at S3 prices for US East (N. Virginia) as of 2026-10-24. All three plans cost the same $6.90 for the first 30 days in S3 Standard. Plan A, Standard all year, keeps climbing in a straight line to $83.95. Plan B, three steps, rises to $14.40 by day 90, then flattens, ending at $24.30. Plan D, Standard then Deep Archive, almost flattens after day 30 and ends at $10.22. Plan C is not drawn because it fails the restore rule.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --c-std:#184f95; --c-ia:#2a78d6; --c-gfr:#6da7ec; --c-gda:#9ec5f4; --t-std:#ffffff; --t-ia:#ffffff; --t-gfr:#0b0b0b; --t-gda:#0b0b0b; --s3c:#1baf7a; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --c-std:#9ec5f4; --c-ia:#5598e7; --c-gfr:#256abf; --c-gda:#184f95; --t-std:#0b0b0b; --t-ia:#0b0b0b; --t-gfr:#ffffff; --t-gda:#ffffff; --s3c:#199e70; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .STD { fill: var(--c-std); } .IA { fill: var(--c-ia); } .GFR { fill: var(--c-gfr); } .GDA { fill: var(--c-gda); }
+  .tSTD { fill: var(--t-std); font-size: 11.5px; } .tIA { fill: var(--t-ia); font-size: 11.5px; }
+  .tGFR { fill: var(--t-gfr); font-size: 11.5px; } .tGDA { fill: var(--t-gda); font-size: 11.5px; }
+  .plan { fill: var(--ink); font-size: 12.5px; font-weight: 600; }
+  .plans { fill: var(--ink2); font-size: 11.5px; }
+  .exp { stroke: var(--s2); stroke-width: 2.5; }
+  .expt { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .fail { fill: var(--muted); font-size: 11.5px; font-style: italic; }
+  .line-s2 { stroke: var(--s2); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s3 { stroke: var(--s3c); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s2 { fill: var(--s2); stroke: var(--surface); stroke-width: 2; }
+  .dot-s3 { fill: var(--s3c); stroke: var(--surface); stroke-width: 2; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+</style>
+<rect width="680" height="400" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Running storage cost of plans A, B and D</text>
+<text class="sub" x="16" y="48">300 GB of backups (made up); S3 prices for US East (N. Virginia) as of 2026-10-24. Plan C fails a rule.</text>
+<line class="line-s1" x1="16" x2="32" y1="72" y2="72"/>
+<text x="38" y="76">Plan A: Standard all year</text>
+<line class="line-s2" x1="210" x2="226" y1="72" y2="72"/>
+<text x="232" y="76">Plan B: Three steps</text>
+<line class="line-s3" x1="360" x2="376" y1="72" y2="72"/>
+<text x="382" y="76">Plan D: Standard, then Deep Archive</text>
+<line class="axis" x1="56" x2="456" y1="346.0" y2="346.0"/>
+<text class="tick" x="48" y="350.0" text-anchor="end">$0</text>
+<line class="grid" x1="56" x2="456" y1="262.7" y2="262.7"/>
+<text class="tick" x="48" y="266.7" text-anchor="end">$30</text>
+<line class="grid" x1="56" x2="456" y1="179.3" y2="179.3"/>
+<text class="tick" x="48" y="183.3" text-anchor="end">$60</text>
+<line class="grid" x1="56" x2="456" y1="96.0" y2="96.0"/>
+<text class="tick" x="48" y="100.0" text-anchor="end">$90</text>
+<text class="tick" x="56.0" y="364" text-anchor="middle">0</text>
+<text class="tick" x="88.9" y="364" text-anchor="middle">30</text>
+<text class="tick" x="154.6" y="364" text-anchor="middle">90</text>
+<text class="tick" x="253.3" y="364" text-anchor="middle">180</text>
+<text class="tick" x="456.0" y="364" text-anchor="middle">365</text>
+<text class="tick" x="56" y="382">Age of the backups, in days</text>
+<polyline class="line-s1" points="56.0,346.0 61.5,342.8 67.0,339.6 72.4,336.4 77.9,333.2 83.4,330.0 88.9,326.8 94.4,323.6 99.8,320.4 105.3,317.2 110.8,314.1 116.3,310.9 121.8,307.7 127.2,304.5 132.7,301.3 138.2,298.1 143.7,294.9 149.2,291.7 154.6,288.5 160.1,285.3 165.6,282.1 171.1,278.9 176.5,275.7 182.0,272.5 187.5,269.3 193.0,266.1 198.5,262.9 203.9,259.8 209.4,256.6 214.9,253.4 220.4,250.2 225.9,247.0 231.3,243.8 236.8,240.6 242.3,237.4 247.8,234.2 253.3,231.0 258.7,227.8 264.2,224.6 269.7,221.4 275.2,218.2 280.7,215.0 286.1,211.8 291.6,208.6 297.1,205.4 302.6,202.3 308.1,199.1 313.5,195.9 319.0,192.7 324.5,189.5 330.0,186.3 335.5,183.1 340.9,179.9 346.4,176.7 351.9,173.5 357.4,170.3 362.8,167.1 368.3,163.9 373.8,160.7 379.3,157.5 384.8,154.3 390.2,151.1 395.7,147.9 401.2,144.8 406.7,141.6 412.2,138.4 417.6,135.2 423.1,132.0 428.6,128.8 434.1,125.6 439.6,122.4 445.0,119.2 450.5,116.0 456.0,112.8"/>
+<circle class="dot-s1" cx="456.0" cy="112.8" r="5"><title>Plan A: $83.95 over the year</title></circle>
+<text class="lab" x="466.0" y="116.8">Plan A: $83.95</text>
+<polyline class="line-s2" points="56.0,346.0 61.5,342.8 67.0,339.6 72.4,336.4 77.9,333.2 83.4,330.0 88.9,326.8 94.4,325.1 99.8,323.4 105.3,321.6 110.8,319.9 116.3,318.2 121.8,316.4 127.2,314.7 132.7,312.9 138.2,311.2 143.7,309.5 149.2,307.7 154.6,306.0 160.1,305.5 165.6,305.0 171.1,304.5 176.5,304.0 182.0,303.5 187.5,303.0 193.0,302.5 198.5,302.0 203.9,301.5 209.4,301.0 214.9,300.5 220.4,300.0 225.9,299.5 231.3,299.0 236.8,298.5 242.3,298.0 247.8,297.5 253.3,297.0 258.7,296.5 264.2,296.0 269.7,295.5 275.2,295.0 280.7,294.5 286.1,294.0 291.6,293.5 297.1,293.0 302.6,292.5 308.1,292.0 313.5,291.5 319.0,291.0 324.5,290.5 330.0,290.0 335.5,289.5 340.9,289.0 346.4,288.5 351.9,288.0 357.4,287.5 362.8,287.0 368.3,286.5 373.8,286.0 379.3,285.5 384.8,285.0 390.2,284.5 395.7,284.0 401.2,283.5 406.7,283.0 412.2,282.5 417.6,282.0 423.1,281.5 428.6,281.0 434.1,280.5 439.6,280.0 445.0,279.5 450.5,279.0 456.0,278.5"/>
+<circle class="dot-s2" cx="456.0" cy="278.5" r="5"><title>Plan B: $24.30 over the year</title></circle>
+<text class="lab" x="466.0" y="282.5">Plan B: $24.30</text>
+<polyline class="line-s3" points="56.0,346.0 61.5,342.8 67.0,339.6 72.4,336.4 77.9,333.2 83.4,330.0 88.9,326.8 94.4,326.7 99.8,326.6 105.3,326.4 110.8,326.3 116.3,326.1 121.8,326.0 127.2,325.9 132.7,325.7 138.2,325.6 143.7,325.5 149.2,325.3 154.6,325.2 160.1,325.0 165.6,324.9 171.1,324.8 176.5,324.6 182.0,324.5 187.5,324.4 193.0,324.2 198.5,324.1 203.9,323.9 209.4,323.8 214.9,323.7 220.4,323.5 225.9,323.4 231.3,323.3 236.8,323.1 242.3,323.0 247.8,322.8 253.3,322.7 258.7,322.6 264.2,322.4 269.7,322.3 275.2,322.2 280.7,322.0 286.1,321.9 291.6,321.7 297.1,321.6 302.6,321.5 308.1,321.3 313.5,321.2 319.0,321.1 324.5,320.9 330.0,320.8 335.5,320.6 340.9,320.5 346.4,320.4 351.9,320.2 357.4,320.1 362.8,320.0 368.3,319.8 373.8,319.7 379.3,319.5 384.8,319.4 390.2,319.3 395.7,319.1 401.2,319.0 406.7,318.9 412.2,318.7 417.6,318.6 423.1,318.4 428.6,318.3 434.1,318.2 439.6,318.0 445.0,317.9 450.5,317.8 456.0,317.6"/>
+<circle class="dot-s3" cx="456.0" cy="317.6" r="5"><title>Plan D: $10.22 over the year</title></circle>
+<text class="lab" x="466.0" y="321.6">Plan D: $10.22</text>
+</svg>

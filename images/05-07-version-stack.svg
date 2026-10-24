@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="586" viewBox="0 0 680 586" role="img" aria-labelledby="t d">
+<title id="t">What a versioned S3 bucket keeps for one file name after each step of Lab 05</title>
+<desc id="d">Six frames, newest version at the top of each. 1, Upload: version 1, current. 2, Overwrite with the same name: version 2 is current, version 1 is kept as an older version. 3, Delete with Show versions off: a delete marker becomes the current version, so the file looks gone, but versions 2 and 1 are still stored. 4, Undo the delete by deleting the marker: version 2 is current again, version 1 older. 5, Bring back the text of version 1 by downloading it and uploading it again: version 3, holding version 1's text, is current; versions 2 and 1 are older versions. 6, Delete every version with Show versions on: nothing is left, not even a marker; the file is gone for good. Every stored version is billed as a whole file.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --cur-fill:#d9e8fb; --old-fill:#f1f0ec; --dm-fill:#fbe1d6; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --cur-fill:#1b3554; --old-fill:#252523; --dm-fill:#4d2716; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .cur { fill: var(--cur-fill); stroke: var(--s1); stroke-width: 2; }
+  .old { fill: var(--old-fill); stroke: var(--axis); stroke-width: 1; }
+  .dm { fill: var(--dm-fill); stroke: var(--s2); stroke-width: 2; stroke-dasharray: 5 3; }
+  .gone { fill: none; stroke: var(--axis); stroke-width: 1; stroke-dasharray: 3 3; }
+  .frame { fill: none; stroke: var(--grid); stroke-width: 1; }
+  .step { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .stepsub { fill: var(--ink2); font-size: 12px; }
+  .vt { fill: var(--ink); font-size: 12.5px; font-weight: 600; }
+  .vs { fill: var(--ink2); font-size: 11.5px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+</style>
+<rect width="680" height="586" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">What the bucket keeps for one file name, step by step</text>
+<text class="sub" x="16" y="48">Versioning on. Newest at the top. Every version you see is stored, and billed, as a whole file.</text>
+<rect class="frame" x="16" y="66" width="208" height="236" rx="6"/>
+<text class="step" x="26" y="86.0">1. Upload</text>
+<text class="stepsub" x="26" y="102">order-note.txt, first text</text>
+<rect class="cur" x="26" y="116" width="188" height="42" rx="5"/>
+<text class="vt" x="36" y="134">Version 1</text>
+<text class="vs" x="36" y="150">current</text>
+<rect class="frame" x="236" y="66" width="208" height="236" rx="6"/>
+<text class="step" x="246" y="86.0">2. Overwrite</text>
+<text class="stepsub" x="246" y="102">same name, new text</text>
+<rect class="cur" x="246" y="116" width="188" height="42" rx="5"/>
+<text class="vt" x="256" y="134">Version 2</text>
+<text class="vs" x="256" y="150">current</text>
+<rect class="old" x="246" y="164" width="188" height="42" rx="5"/>
+<text class="vt" x="256" y="182">Version 1</text>
+<text class="vs" x="256" y="198">older version</text>
+<rect class="frame" x="456" y="66" width="208" height="236" rx="6"/>
+<text class="step" x="466" y="86.0">3. Delete</text>
+<text class="stepsub" x="466" y="102">Show versions off</text>
+<rect class="dm" x="466" y="116" width="188" height="42" rx="5"/>
+<text class="vt" x="476" y="134">Delete marker</text>
+<text class="vs" x="476" y="150">current: the file looks gone</text>
+<rect class="old" x="466" y="164" width="188" height="42" rx="5"/>
+<text class="vt" x="476" y="182">Version 2</text>
+<text class="vs" x="476" y="198">older version</text>
+<rect class="old" x="466" y="212" width="188" height="42" rx="5"/>
+<text class="vt" x="476" y="230">Version 1</text>
+<text class="vs" x="476" y="246">older version</text>
+<rect class="frame" x="16" y="316" width="208" height="236" rx="6"/>
+<text class="step" x="26" y="336.0">4. Undo the delete</text>
+<text class="stepsub" x="26" y="352">delete the marker</text>
+<rect class="cur" x="26" y="366" width="188" height="42" rx="5"/>
+<text class="vt" x="36" y="384">Version 2</text>
+<text class="vs" x="36" y="400">current again</text>
+<rect class="old" x="26" y="414" width="188" height="42" rx="5"/>
+<text class="vt" x="36" y="432">Version 1</text>
+<text class="vs" x="36" y="448">older version</text>
+<rect class="frame" x="236" y="316" width="208" height="236" rx="6"/>
+<text class="step" x="246" y="336.0">5. Bring back the text of</text>
+<text class="step" x="246" y="352.0">version 1</text>
+<text class="stepsub" x="246" y="368">download it, upload it</text>
+<rect class="cur" x="246" y="382" width="188" height="42" rx="5"/>
+<text class="vt" x="256" y="400">Version 3</text>
+<text class="vs" x="256" y="416">current: version 1's text</text>
+<rect class="old" x="246" y="430" width="188" height="42" rx="5"/>
+<text class="vt" x="256" y="448">Version 2</text>
+<text class="vs" x="256" y="464">older version</text>
+<rect class="old" x="246" y="478" width="188" height="42" rx="5"/>
+<text class="vt" x="256" y="496">Version 1</text>
+<text class="vs" x="256" y="512">older version</text>
+<rect class="frame" x="456" y="316" width="208" height="236" rx="6"/>
+<text class="step" x="466" y="336.0">6. Delete every version</text>
+<text class="stepsub" x="466" y="352">Show versions on</text>
+<rect class="gone" x="466" y="366" width="188" height="42" rx="5"/>
+<text class="vt" x="560.0" y="384" text-anchor="middle">Nothing left</text>
+<text class="vs" x="560.0" y="400" text-anchor="middle">no marker either: gone for good</text>
+<text class="note" x="16" y="572">Our summary of the Amazon S3 User Guide, S3 Versioning, checked 2026-10-23. Steps match Lab 05, Part C.</text>
+</svg>

@@ -11,16 +11,21 @@ pillars: []
 
 # Glossary
 
-The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a link to the page that teaches it; the list grows as modules are written.
+The 316 terms this guide has taught so far (modules 00, 02, 03, 04, 05), each with a link to the page that teaches it; the list grows as modules are written.
 
-[A](#a) · [B](#b) · [C](#c) · [D](#d) · [E](#e) · [F](#f) · [G](#g) · [H](#h) · [I](#i) · J · K · [L](#l) · [M](#m) · N · [O](#o) · [P](#p) · Q · [R](#r) · [S](#s) · [T](#t) · [U](#u) · [V](#v) · [W](#w) · X · Y · [Z](#z)
+[A](#a) · [B](#b) · [C](#c) · [D](#d) · [E](#e) · [F](#f) · [G](#g) · [H](#h) · [I](#i) · [J](#j) · [K](#k) · [L](#l) · [M](#m) · [N](#n) · [O](#o) · [P](#p) · [Q](#q) · [R](#r) · [S](#s) · [T](#t) · [U](#u) · [V](#v) · [W](#w) · X · Y · [Z](#z)
 
 ## A
 
 **abstracted service**: AWS's name for the most managed kind of service, such as Amazon S3 or Amazon DynamoDB, where AWS runs the infrastructure, operating system and platform and you work only with your data and its settings.
 
 - Taught in: [Security of the cloud vs security in the cloud](../guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
+- Also in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
 - Don't confuse with: managed service. Abstracted services are the far end of managed services: you never see a server or a database engine, only the service's data and settings.
+
+**access control list** (ACL): An older way to grant access to an S3 bucket or object. New buckets have ACLs turned off, and AWS recommends policies instead.
+
+- Taught in: [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
 
 **access key**: A long-term credential that lets a program act as an IAM user, or the root user, without a password or MFA. It has an access key ID and a secret access key; avoid it wherever a role or keyless sign-in will do.
 
@@ -41,6 +46,12 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Also in: [Lab 01: Create, find and delete your first storage bucket](../guide/02-why-the-cloud/06-lab-01-first-resource.md)
 - Don't confuse with: elasticity, global reach. Agility is how fast you can get something new; elasticity is more or less of the same thing driven by demand, and global reach is about where you run.
 
+**Amazon Aurora**: AWS's own relational database engine, compatible with MySQL and PostgreSQL and managed through Amazon RDS. Its storage grows by itself and is copied across several Availability Zones, its replicas can be the automatic failover target, and it has a serverless option.
+
+- Taught in: [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
+- Also in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Don't confuse with: Amazon RDS. Aurora is AWS's MySQL- and PostgreSQL-compatible engine with more performance and availability built in; choose another RDS engine when software needs Oracle, SQL Server, Db2, MariaDB or plain MySQL or PostgreSQL.
+
 **Amazon CloudFront**: AWS's content delivery network. It serves cached copies from the edge location with the lowest latency for each user, and fetches from your origin over AWS's network when it has no copy.
 
 - Taught in: [The edge](../guide/03-aws-around-the-world/04-the-edge.md)
@@ -50,6 +61,60 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 
 - Taught in: [Credentials and federation](../guide/04-shared-responsibility-and-access/05-credentials-and-federation.md)
 - Don't confuse with: AWS IAM Identity Center. Cognito signs in your app's customers; IAM Identity Center signs in your own staff.
+
+**Amazon DocumentDB**: AWS's managed document database, compatible with MongoDB's drivers and tools, for data that is naturally a document, such as a product catalog. Its full name is Amazon DocumentDB (with MongoDB compatibility).
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Don't confuse with: Amazon DynamoDB. DocumentDB is the choice when the team uses MongoDB tools; DynamoDB also stores documents and needs no servers, but has no MongoDB compatibility.
+
+**Amazon DynamoDB**: AWS's main NoSQL database: serverless and fully managed, with key-value and document models and single-digit millisecond responses at any scale. You store items in tables and fetch them by key, with no joins, servers or maintenance windows, and it copies data across several Availability Zones by default.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Also in: [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](../guide/05-storing-data/08-lab-06-a-dynamodb-table.md); [Security of the cloud vs security in the cloud](../guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
+- Don't confuse with: Amazon RDS, Amazon ElastiCache, Amazon DocumentDB. DynamoDB is a main store for items fetched by key, answering in milliseconds; RDS joins linked tables, ElastiCache is an in-memory cache answering in microseconds, and DocumentDB is for teams using MongoDB tools.
+
+**Amazon EBS**: Amazon Elastic Block Store, AWS's block storage: volumes you attach to an EC2 instance in the same Availability Zone and use like a local drive. A volume's data is copied within that one Availability Zone, persists when the instance stops, and is backed up with snapshots.
+
+- Taught in: [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md)
+- Also in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+- Don't confuse with: instance store, Amazon EFS. An EBS volume persists apart from its instance and keeps its data through a stop, while instance store is erased by a stop; and an EBS volume serves one instance, while EFS is shared by many.
+
+**Amazon EFS**: Amazon Elastic File System, AWS's own elastic file system for Linux, shared over NFS by many EC2 instances, containers, Lambda functions and on-premises servers at once. It grows and shrinks with your files; a Regional file system stores data across several Availability Zones, a One Zone file system in one.
+
+- Taught in: [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md)
+- Don't confuse with: Amazon FSx, Amazon EBS. EFS is AWS's own NFS file system for Linux; FSx runs a familiar third-party file system, such as Windows File Server over SMB, and EBS is a disk for one server.
+
+**Amazon ElastiCache**: AWS's in-memory service: usually a cache that answers repeated reads in microseconds in front of a slower database, and also a store for short-lived fast data such as sessions and leaderboards. Its engines are Valkey, Memcached and Redis OSS, and it runs serverless or on nodes you choose.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Don't confuse with: Amazon DynamoDB, DynamoDB Accelerator. ElastiCache sits in front of a main store and answers from memory in microseconds; DynamoDB is a main store answering in milliseconds, and DAX is a cache for DynamoDB only.
+
+**Amazon FSx**: A family of fully managed, well-known third-party file systems: FSx for Windows File Server (SMB shares joined to Microsoft Active Directory), FSx for NetApp ONTAP, FSx for OpenZFS and FSx for Lustre. You pick the one that matches what you run today, so applications move without changes; FSx for Lustre is outside the exam's scope.
+
+- Taught in: [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md)
+- Don't confuse with: Amazon EFS. FSx keeps a file system you already know, and FSx for Windows File Server is the answer for Windows shared folders; EFS is AWS's own NFS file system for Linux, which AWS doesn't support on Windows-based EC2 instances.
+
+**Amazon Glacier**: The original, separate archive service that stores archives in vaults, with its own API. It is closed to new customers, and AWS recommends the S3 Glacier storage classes for new archives.
+
+- Taught in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
+- Also in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+- Don't confuse with: S3 Glacier storage classes, backup vault. Amazon Glacier keeps archives in vaults and takes no new customers; the S3 Glacier storage classes keep objects in ordinary S3 buckets, and an AWS Backup vault is unrelated.
+
+**Amazon Neptune**: AWS's managed graph database, for data where the connections matter most, such as recommendation engines, fraud detection and knowledge graphs.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Don't confuse with: Amazon RDS, Amazon DocumentDB. Neptune is built to follow relationships many links deep; a relational database can store the links but such queries grow complex and slow, and DocumentDB keeps self-contained documents.
+
+**Amazon RDS**: Amazon Relational Database Service, AWS's managed service for relational databases: AWS installs and patches the operating system and database engine, runs backups and provides failover, while you choose the settings, control access and tune queries. AWS recommends it as the default for most relational databases; it offers several engines plus Amazon Aurora.
+
+- Taught in: [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
+- Also in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md); [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md); [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../guide/05-storing-data/10-sim-multi-az-vs-read-replica.md); [Security of the cloud vs security in the cloud](../guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
+- Don't confuse with: Amazon Aurora, Amazon DynamoDB, Amazon Redshift. RDS runs familiar relational engines for transactional work; Aurora is AWS's own engine in the RDS family, DynamoDB is serverless NoSQL fetched by key, and Redshift is a data warehouse for analysis.
+
+**Amazon Redshift**: AWS's fully managed data warehouse, which runs SQL analysis over very large amounts of data gathered from many sources, on clusters you size or serverless. The exam guide lists it under analytics; it isn't the database that runs a website.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Don't confuse with: Amazon RDS, read replica. Redshift studies the business with large analytical queries; RDS and Aurora run the business with many small reads and writes, and a read replica is enough for smaller reports.
 
 **Amazon Resource Name** (ARN): The unique name of a resource in AWS, used in policies to say which resource a statement covers. A bucket's ARN, for example, is arn:aws:s3::: followed by the bucket name.
 
@@ -61,20 +126,36 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Taught in: [The edge](../guide/03-aws-around-the-world/04-the-edge.md)
 - Don't confuse with: Amazon CloudFront. Route 53 tells users where to go and is not a CDN; CloudFront delivers the content.
 
-**Amazon S3**: Amazon Simple Storage Service, AWS's service for storing files, which it calls objects, in containers called buckets. AWS runs it across several Availability Zones for you.
+**Amazon S3**: Amazon Simple Storage Service, AWS's object storage: it keeps files, which it calls objects, in containers called buckets, reached through a web API, with no capacity to plan. AWS runs it across several Availability Zones for you.
 
-- Taught in: [Lab 01: Create, find and delete your first storage bucket](../guide/02-why-the-cloud/06-lab-01-first-resource.md)
-- Also in: [Regions, Availability Zones and data centers](../guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md); [Security of the cloud vs security in the cloud](../guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
+- Taught in: [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md)
+- Also in: [Lab 01: Create, find and delete your first storage bucket](../guide/02-why-the-cloud/06-lab-01-first-resource.md); [Regions, Availability Zones and data centers](../guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md); [Security of the cloud vs security in the cloud](../guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md); [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md); [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
 
 **Amazon Web Services** (AWS): The company that rents computing power, storage and many other IT services over the internet: the cloud provider this guide is about.
 
 - Taught in: [Welcome](../guide/00-start-here/01-welcome.md)
 - Also in: [What cloud computing is](../guide/02-why-the-cloud/01-what-cloud-computing-is.md)
 
+**analytics workload**: Work that studies the business: fewer, much larger queries over large amounts of data, such as total sales by month over years. A data warehouse such as Amazon Redshift is built for it.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Don't confuse with: transactional workload. Analytics work reads large amounts of data in each query; transactional work makes many small changes, and running heavy analytics on the transactional database slows the business down.
+
 **assume a role**: To take on a role's permissions for a session, receiving temporary credentials. The role's trust policy says who may do it.
 
 - Taught in: [Identities](../guide/04-shared-responsibility-and-access/03-identities.md)
 - Also in: [Credentials and federation](../guide/04-shared-responsibility-and-access/05-credentials-and-federation.md)
+
+**asynchronous replication**: Sending each change to a copy just after it is written to the primary, so the copy can fall behind. Read replicas are kept this way.
+
+- Taught in: [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
+- Also in: [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../guide/05-storing-data/10-sim-multi-az-vs-read-replica.md)
+- Don't confuse with: synchronous replication. Asynchronous replication lets the copy lag, so the latest changes can be lost in a failure; synchronous replication keeps it in step.
+
+**attribute**: One named value in a DynamoDB item, such as Quantity or GiftNote, with a type such as String or Number. Items in one table needn't have the same attributes.
+
+- Taught in: [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](../guide/05-storing-data/08-lab-06-a-dynamodb-table.md)
+- Don't confuse with: item. An attribute is one named value; an item is the whole record that holds its attributes.
 
 **audit**: An independent check that controls exist and work, done by an auditor. AWS makes its auditors' reports available to customers.
 
@@ -96,6 +177,12 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 
 - Taught in: [Telling the benefits apart](../guide/02-why-the-cloud/03-telling-the-benefits-apart.md)
 
+**automated backup**: Amazon RDS's daily snapshot plus a log of every change, which lets you restore the database to any second within the retention period you set. Automated backups are deleted with the database, and every restore creates a new database.
+
+- Taught in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+- Also in: [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md); [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../guide/05-storing-data/10-sim-multi-az-vs-read-replica.md)
+- Don't confuse with: snapshot, Multi-AZ deployment. Automated backups disappear when the database is deleted, while a manual snapshot stays until you delete it; and unlike a Multi-AZ standby, a backup stops changing, so it can undo a mistaken delete.
+
 **automation**: Having software do a repeated task, such as starting, stopping or building servers, instead of a person doing it by hand. It saves money and cuts mistakes.
 
 - Taught in: [What a data center really costs](../guide/02-why-the-cloud/04-what-a-data-center-really-costs.md)
@@ -110,14 +197,35 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 
 - Taught in: [Shared, inherited and customer-specific controls](../guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md)
 
+**AWS Backup**: An AWS service that runs backups for many AWS services, and some on-premises systems, from one backup plan, across accounts. It copies backups to other Regions or accounts, keeps them encrypted in backup vaults that Vault Lock can protect, and reports that the backups happen.
+
+- Taught in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+- Also in: [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md); [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
+- Don't confuse with: AWS Elastic Disaster Recovery, snapshot, Tape Gateway. AWS Backup brings back data from recovery points under one set of rules; Elastic Disaster Recovery brings back whole running servers in minutes, a snapshot covers one resource, and Tape Gateway serves existing tape backup software.
+
 **AWS CloudTrail**: The AWS service that records activity in your account, such as who created a resource and when. Its Event history lets you look up recent activity.
 
 - Taught in: [Lab 01: Create, find and delete your first storage bucket](../guide/02-why-the-cloud/06-lab-01-first-resource.md)
+
+**AWS Database Migration Service** (AWS DMS): An AWS service that moves a database's data into AWS, or between on-premises and cloud databases, while the source keeps running. It copies the data once, then can keep copying every change until you switch over, or keep both in step for as long as you like.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Don't confuse with: AWS Schema Conversion Tool. DMS moves the data and is used in every migration; SCT only converts the schema, and only when the engine changes.
+
+**AWS DataSync**: An AWS service that moves large amounts of data over the network, between on-premises storage, other clouds and AWS storage such as S3, EFS and FSx. It is AWS's current answer for moving data once, online, though the exam guide's service list doesn't name it.
+
+- Taught in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+- Don't confuse with: AWS Storage Gateway, AWS Snowball. DataSync moves data once, over the network; Storage Gateway is a lasting link that on-premises software uses every day, and Snowball's shipped devices are being retired.
 
 **AWS Directory Service**: An AWS service for Microsoft Active Directory: a managed directory on AWS, or a connector that passes sign-ins to your existing on-premises directory.
 
 - Taught in: [Credentials and federation](../guide/04-shared-responsibility-and-access/05-credentials-and-federation.md)
 - Don't confuse with: AWS IAM Identity Center. Directory Service runs or connects an Active Directory; IAM Identity Center gives staff single sign-on to AWS accounts and can use such a directory as its identity source.
+
+**AWS Elastic Disaster Recovery** (AWS DRS): An AWS service that copies every change on whole servers' disks, continuously, to a low-cost staging area in an AWS Region, so you can launch recovery servers there within minutes. It protects physical servers, virtual machines, servers in other clouds and EC2 instances, and works as a pilot light.
+
+- Taught in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+- Don't confuse with: AWS Backup, snapshot. Elastic Disaster Recovery gives back running servers within minutes; AWS Backup and snapshots give back data, and the servers must still be rebuilt.
 
 **AWS European Sovereign Cloud**: A separate, independent AWS cloud for Europe, aimed at public bodies and highly regulated industries with strict sovereignty needs.
 
@@ -154,6 +262,11 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Taught in: [The edge](../guide/03-aws-around-the-world/04-the-edge.md)
 - Don't confuse with: Local Zone. Outposts is in your own building; a Local Zone is an AWS site in a big city.
 
+**AWS Schema Conversion Tool** (AWS SCT): A program you download that converts a database's schema (tables, views, stored procedures and functions) for a different engine, and lists what you must convert by hand. DMS Schema Conversion does the same job inside the AWS DMS console.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Don't confuse with: AWS Database Migration Service. SCT translates the structure when the engine changes and moves no data; DMS moves the data.
+
 **AWS Secrets Manager**: An AWS service that stores secrets, such as database passwords and API keys, always encrypted, and can rotate them automatically on a schedule.
 
 - Taught in: [Credentials and federation](../guide/04-shared-responsibility-and-access/05-credentials-and-federation.md)
@@ -162,6 +275,16 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 **AWS Security Token Service** (AWS STS): The AWS service that issues temporary credentials.
 
 - Taught in: [Credentials and federation](../guide/04-shared-responsibility-and-access/05-credentials-and-federation.md)
+
+**AWS Snowball**: A rugged storage device AWS shipped to customers for moving large amounts of data into AWS. It is closed to new customers and reaching the end of its support, and the current exam guide no longer lists it, so treat it as a wrong answer; see the lesson for the dates.
+
+- Taught in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+- Don't confuse with: AWS DataSync. Snowball moved data on a shipped device and is being retired; DataSync moves data over the network and is what AWS points new customers to.
+
+**AWS Storage Gateway**: A hybrid storage service that you run on premises, usually as a virtual machine, so software in your building keeps using storage as it always has while the data is stored in AWS. It keeps frequently used data in a local cache and sends changes to AWS; its types are S3 File Gateway, Volume Gateway and Tape Gateway.
+
+- Taught in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+- Don't confuse with: AWS DataSync, AWS Backup. Storage Gateway is a lasting link that on-premises software uses every day; DataSync moves data once, and AWS Backup manages backups of resources already in AWS.
 
 **AWS Well-Architected Framework**: AWS's published guidance, as a set of whitepapers, for designing and running workloads well in the cloud. It is organized into six pillars, each with design principles and best practices.
 
@@ -190,14 +313,23 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 **backup**: A saved copy of data as it was at one moment. A point-in-time backup lets you go back to that moment, which is the only way to undo a deletion that replication has already copied.
 
 - Taught in: [Surviving failure](../guide/03-aws-around-the-world/03-surviving-failure.md)
-- Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../guide/03-aws-around-the-world/06-sim-blast-radius.md)
+- Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../guide/03-aws-around-the-world/06-sim-blast-radius.md); [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md); [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
 - Don't confuse with: replication. A backup stops changing, so it can take you back to before a mistake; replication keeps copying every change, mistakes included.
 
 **backup and restore**: The cheapest and slowest disaster recovery strategy: only backups of the data and setup are kept in the recovery Region, and everything else is rebuilt after the disaster. Recovery typically takes hours.
 
 - Taught in: [Surviving failure](../guide/03-aws-around-the-world/03-surviving-failure.md)
-- Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../guide/03-aws-around-the-world/06-sim-blast-radius.md)
+- Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../guide/03-aws-around-the-world/06-sim-blast-radius.md); [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
 - Don't confuse with: pilot light. Backup and restore keeps only backups and rebuilds everything; a pilot light also keeps data copied continuously and core parts such as the database running.
+
+**backup plan**: In AWS Backup, the rules for what to back up, how often, how long to keep each backup and where to copy it. You assign resources to it, for example by tag.
+
+- Taught in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+
+**backup vault**: In AWS Backup, the container that holds backups, encrypted and unchangeable. It has nothing to do with the vaults of the older Amazon Glacier service.
+
+- Taught in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+- Don't confuse with: Amazon Glacier. A backup vault holds AWS Backup's recovery points and is current; a Glacier vault belongs to the older Amazon Glacier service, closed to new customers.
 
 **best practice**: A specific recommended action in the Well-Architected Framework, with an ID that shows its pillar and question.
 
@@ -209,16 +341,21 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Taught in: [Surviving failure](../guide/03-aws-around-the-world/03-surviving-failure.md)
 - Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../guide/03-aws-around-the-world/06-sim-blast-radius.md)
 
+**block storage**: Storage that a server sees as its own disk: the server's operating system formats it and keeps its files on it. On AWS it is an Amazon EBS volume or EC2 instance store.
+
+- Taught in: [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md)
+- Don't confuse with: file storage, object storage. Block storage is a disk for one server; file storage is a folder tree that many servers share over the network, and object storage keeps whole objects in a bucket reached through a web API.
+
 **bucket**: A container for files (objects) in Amazon S3.
 
 - Taught in: [Lab 01: Create, find and delete your first storage bucket](../guide/02-why-the-cloud/06-lab-01-first-resource.md)
-- Also in: [Security of the cloud vs security in the cloud](../guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md); [Policies and least privilege](../guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
+- Also in: [Security of the cloud vs security in the cloud](../guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md); [Policies and least privilege](../guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md); [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md); [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
 - Don't confuse with: object. A bucket is the container; objects are the files stored in it.
 
 **bucket policy**: A resource-based policy attached to an S3 bucket. Because it can let other identities or accounts in, it deserves the same review as an identity's policies.
 
 - Taught in: [Policies and least privilege](../guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
-- Also in: [Simulation S4: Predict allow or deny across accounts, boundaries and organizations](../guide/04-shared-responsibility-and-access/09-sim-policy-playground.md)
+- Also in: [Simulation S4: Predict allow or deny across accounts, boundaries and organizations](../guide/04-shared-responsibility-and-access/09-sim-policy-playground.md); [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
 
 **business continuity**: Keeping the business running through a major disruption, not just restoring it afterwards; one of the reasons to use more than one Region.
 
@@ -230,6 +367,7 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 **cache**: A stored copy kept close by so it can be served again quickly. To cache something is to keep such a copy.
 
 - Taught in: [The edge](../guide/03-aws-around-the-world/04-the-edge.md)
+- Also in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md); [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
 - Don't confuse with: origin. The cache is the nearby copy; the origin is where the original lives, and where the cache fetches from when it has no copy.
 
 **capacity**: How much work a system can do.
@@ -242,6 +380,15 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Taught in: [What a data center really costs](../guide/02-why-the-cloud/04-what-a-data-center-really-costs.md)
 - Also in: [Before and after: the demand curve](../guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md)
 - Don't confuse with: operating expense, fixed expense. Capital versus operating is about when you pay (up front or as you go); fixed versus variable is about whether use drives the cost.
+
+**change data capture**: Copying each new change from a source database after the first full copy, so the target stays in step until you switch over. AWS DMS does it, and it is how the exam's database replication migration strategy works.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+
+**client-side encryption**: Encrypting data yourself before you upload it, and managing the keys and tools yourself.
+
+- Taught in: [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
+- Don't confuse with: server-side encryption. Client-side encryption happens before the data leaves you; server-side encryption is done by S3 as it stores the data.
 
 **closed to new customers**: A stage in a service's retirement: customers who already use it keep using it, but new customers can't start. This guide still teaches such a service while the exam lists it, but never uses it in a lab.
 
@@ -303,6 +450,12 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Also in: [Simulation S4: Predict allow or deny across accounts, boundaries and organizations](../guide/04-shared-responsibility-and-access/09-sim-policy-playground.md)
 - Don't confuse with: resource-based policy. With a cross-account role, the other account's users assume a role in your account; with a resource-based policy, they use one resource directly without assuming anything.
 
+**current version**: The newest version of an object in a versioned bucket, which is what people see. After a plain delete, the current version is a delete marker.
+
+- Taught in: [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
+- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../guide/05-storing-data/07-lab-05-versions-and-lifecycle.md)
+- Don't confuse with: noncurrent version. The current version is what a plain request returns; noncurrent versions are older ones kept underneath, still stored and billed.
+
 **customer managed policy**: A permissions policy you write and manage yourself, which you can attach to many identities; the usual way to apply least privilege.
 
 - Taught in: [Policies and least privilege](../guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
@@ -323,6 +476,10 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Also in: [What cloud computing is](../guide/02-why-the-cloud/01-what-cloud-computing-is.md)
 - Don't confuse with: Availability Zone. A data center is one building; an Availability Zone is one or more data centers, and on AWS you choose Availability Zones, never buildings.
 
+**data model**: The shape a database gives your data: relational tables, key-value items, documents, a graph, data held in memory, or a data warehouse. Each AWS database is built for one shape.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+
 **data residency**: Where data is physically stored.
 
 - Taught in: [Choosing a Region](../guide/03-aws-around-the-world/02-choosing-a-region.md)
@@ -333,9 +490,32 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Taught in: [Choosing a Region](../guide/03-aws-around-the-world/02-choosing-a-region.md)
 - Don't confuse with: data residency. Data sovereignty is about whose control and laws apply to the data; data residency is just where it is stored.
 
+**data warehouse**: A database built to analyze large amounts of historical data gathered from many sources, through fewer, much larger queries. Amazon Redshift is AWS's; it studies the business rather than running it.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+
 **database**: An organized collection of records that programs can search and update; one of the main IT resources.
 
 - Taught in: [What cloud computing is](../guide/02-why-the-cloud/01-what-cloud-computing-is.md)
+- Also in: [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md); [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+
+**database engine**: The database software itself, such as MySQL, PostgreSQL or Microsoft SQL Server.
+
+- Taught in: [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
+- Also in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+
+**database migration**: Moving a database into AWS from somewhere else, such as an on-premises server, or between databases. AWS DMS moves the data, and AWS SCT converts the schema when the engine changes.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+
+**DB instance**: Amazon RDS's name for one running database server, whose size you choose and pay for while it runs.
+
+- Taught in: [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
+
+**delete marker**: A placeholder S3 puts on top of an object when you delete it in a versioned bucket without naming a version. The object looks gone, but its versions are still there; deleting the marker brings it back.
+
+- Taught in: [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
+- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../guide/05-storing-data/07-lab-05-versions-and-lifecycle.md)
 
 **demand**: How much work customers ask a system to do, such as orders per hour.
 
@@ -365,6 +545,11 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Also in: [Choosing a Region](../guide/03-aws-around-the-world/02-choosing-a-region.md); [Simulation S2: The blast-radius ladder and three recovery plans](../guide/03-aws-around-the-world/06-sim-blast-radius.md)
 - Don't confuse with: high availability, business continuity. Disaster recovery brings the whole workload back from a separate copy after a larger event; high availability keeps it running through one part failing.
 
+**document database**: A database in which each record is a self-contained document, usually JSON, and different documents can have different fields. Amazon DocumentDB is AWS's, and DynamoDB also stores documents.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Don't confuse with: key-value database. A document database keeps self-contained documents whose fields can vary and can be searched by those fields; a key-value database fetches each item by its key.
+
 **domain**: One of the four broad subject areas the CLF-C02 exam guide divides the exam into, each with its own share of the questions.
 
 - Taught in: [The exam at a glance](../guide/00-start-here/03-the-exam-at-a-glance.md)
@@ -375,13 +560,27 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Taught in: [The edge](../guide/03-aws-around-the-world/04-the-edge.md)
 - Don't confuse with: content delivery network. DNS only answers where something is; a CDN delivers the content.
 
+**drill**: A practice recovery that doesn't disturb the real system, to prove a recovery plan works.
+
+- Taught in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+
 **durability**: Stored data being kept safe from loss over time, so it will still exist later. It protects against failing hardware, not against someone deleting the data.
 
 - Taught in: [Telling the benefits apart](../guide/02-why-the-cloud/03-telling-the-benefits-apart.md)
-- Also in: [Surviving failure](../guide/03-aws-around-the-world/03-surviving-failure.md)
+- Also in: [Surviving failure](../guide/03-aws-around-the-world/03-surviving-failure.md); [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md); [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
 - Don't confuse with: high availability. Durability means the data still exists later; availability means it is reachable right now.
 
+**DynamoDB Accelerator** (DAX): An in-memory cache built only for DynamoDB, which turns its millisecond reads into microsecond reads.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Don't confuse with: Amazon ElastiCache. DAX caches DynamoDB only; ElastiCache is a general in-memory cache that can sit in front of other stores, such as an RDS database.
+
 ## E
+
+**EBS snapshot**: A point-in-time copy of an EBS volume that exists on its own and outlives the volume. You can create new volumes from it and copy it to another Availability Zone, Region or account; it is billed separately.
+
+- Taught in: [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md)
+- Also in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
 
 **economies of scale**: The lower cost per unit that a very large operation reaches by buying, building and running things in bulk. AWS says its scale leads to lower pay-as-you-go prices.
 
@@ -403,6 +602,16 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Also in: [Simulation S1: Finish the bakery's cost comparison](../guide/02-why-the-cloud/07-sim-demand-curve.md)
 - Don't confuse with: scalability, agility. Elasticity is capacity following demand up and down; scalability is only the ability to grow, and agility is how quickly you can get something new.
 
+**encryption at rest**: Scrambling stored data so that only someone with the key can read it. S3 does it automatically for every new object; it protects the stored bytes, but any caller your policies allow gets the data decrypted.
+
+- Taught in: [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
+- Don't confuse with: encryption in transit. Encryption at rest protects data where it is stored; encryption in transit protects it while it travels over the network, for example by HTTPS.
+
+**encryption in transit**: Scrambling data while it travels over the network, for example with TLS, the protection behind HTTPS.
+
+- Taught in: [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
+- Don't confuse with: encryption at rest. Encryption in transit protects data on the move and encryption at rest protects it where it is stored; neither decides who may read it.
+
 **end of support**: The stage after a service closes to new customers, when AWS announces the date it will stop, often about a year ahead.
 
 - Taught in: [AWS changes fast](../guide/00-start-here/04-aws-changes-fast.md)
@@ -412,6 +621,12 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 
 - Taught in: [Lab 01: Create, find and delete your first storage bucket](../guide/02-why-the-cloud/06-lab-01-first-resource.md)
 
+**expiration action**: A lifecycle action that deletes objects a number of days after they were created, for example at the end of a retention period. In a versioned bucket, expiring the current version only adds a delete marker; removing noncurrent versions takes its own action.
+
+- Taught in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
+- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../guide/05-storing-data/07-lab-05-versions-and-lifecycle.md); [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../guide/05-storing-data/09-sim-lifecycle-cost-timeline.md)
+- Don't confuse with: transition action. An expiration action deletes objects; a transition action moves them to another class, and either one billed before a class's minimum stay is over costs the rest of that stay.
+
 **explicit deny**: A Deny statement in any policy that applies to a request. It beats every allow, wherever the allow is.
 
 - Taught in: [Policies and least privilege](../guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
@@ -420,14 +635,24 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 
 ## F
 
+**failback**: Moving work back to the original site once it is fixed, after a failover.
+
+- Taught in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+- Don't confuse with: failover. Failover moves users to a working copy when the original fails; failback moves them back once the original is fixed.
+
 **failover**: Switching users from a failed copy of a system to a working one.
 
 - Taught in: [Surviving failure](../guide/03-aws-around-the-world/03-surviving-failure.md)
-- Also in: [The edge](../guide/03-aws-around-the-world/04-the-edge.md)
+- Also in: [The edge](../guide/03-aws-around-the-world/04-the-edge.md); [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
 
 **federation**: Letting people sign in with an account held somewhere else, such as a company directory, and giving them temporary access to AWS through a role, with no IAM user. AWS recommends it for people.
 
 - Taught in: [Credentials and federation](../guide/04-shared-responsibility-and-access/05-credentials-and-federation.md)
+
+**file storage**: A shared file system, with folders and file names, that many servers use over the network at the same time, through NFS or SMB. On AWS it is Amazon EFS or Amazon FSx.
+
+- Taught in: [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md)
+- Don't confuse with: block storage, object storage. File storage is mounted by many servers at once as folders and files; block storage is one server's disk, and object storage answers web requests for whole objects.
 
 **fixed expense**: A cost that stays the same however much you use, such as servers you have bought, or rent.
 
@@ -447,6 +672,14 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Taught in: [Regions, Availability Zones and data centers](../guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md)
 - Don't confuse with: Regional service, zonal resource. A global service isn't tied to any Region; a Regional service runs inside one Region, and a zonal resource inside one Availability Zone.
 
+**global table**: A DynamoDB table copied across several Regions, for users around the world and for surviving the loss of a Region.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+
+**graph database**: A database that stores things (nodes) and the connections between them (edges), for questions about relationships many links deep, such as recommendations or fraud rings. Amazon Neptune is AWS's.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+
 **guardrail**: A limit that holds whatever else is granted, such as an explicit deny that keeps working even if a broader policy is attached later.
 
 - Taught in: [Lab 04: Finish a policy, write one yourself, and find the deny that blocks it](../guide/04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md)
@@ -463,15 +696,25 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 
 - Taught in: [What a data center really costs](../guide/02-why-the-cloud/04-what-a-data-center-really-costs.md)
 
+**heterogeneous migration**: A database migration that changes the engine, such as Oracle to Aurora PostgreSQL: convert the schema first with AWS SCT or DMS Schema Conversion, then move the data with AWS DMS.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Don't confuse with: homogeneous migration. A heterogeneous migration changes the engine, so it uses SCT and then DMS; a homogeneous migration keeps the engine and uses DMS alone.
+
 **high availability**: A system's ability to keep working, with little or no downtime, when some of its parts fail. On AWS you get it mainly by running copies in two or more Availability Zones.
 
 - Taught in: [Telling the benefits apart](../guide/02-why-the-cloud/03-telling-the-benefits-apart.md)
-- Also in: [Regions, Availability Zones and data centers](../guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md); [Surviving failure](../guide/03-aws-around-the-world/03-surviving-failure.md)
+- Also in: [Regions, Availability Zones and data centers](../guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md); [Surviving failure](../guide/03-aws-around-the-world/03-surviving-failure.md); [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
 - Don't confuse with: durability, disaster recovery. High availability keeps a system working through a part failing; durability keeps stored data from being lost, and disaster recovery brings a whole workload back after a larger event.
 
 **high-risk issue** (HRI): An answer in a Well-Architected review that shows a serious gap. A smaller gap is a medium-risk issue (MRI).
 
 - Taught in: [The Well-Architected Framework](../guide/02-why-the-cloud/05-the-well-architected-framework.md)
+
+**homogeneous migration**: A database migration that keeps the same engine, such as SQL Server to RDS for SQL Server, so the schema fits as it is and AWS DMS alone can move the data.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Don't confuse with: heterogeneous migration. A homogeneous migration keeps the engine and needs only DMS; a heterogeneous migration changes the engine and needs the schema converted first.
 
 **host operating system**: The operating system on the physical machine, beneath the virtualization layer. AWS runs and patches it.
 
@@ -487,6 +730,10 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 
 - Taught in: [What cloud computing is](../guide/02-why-the-cloud/01-what-cloud-computing-is.md)
 - Don't confuse with: cloud deployment, on-premises deployment. Hybrid needs parts in both places, connected; all parts in the cloud is a cloud deployment, and all parts in your own buildings is an on-premises deployment.
+
+**hybrid storage**: Storage for a setup where some systems run on premises and some in the cloud, such as AWS Storage Gateway letting software in your building use AWS storage.
+
+- Taught in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
 
 ## I
 
@@ -543,6 +790,10 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Also in: [Lab 03: Give a group read-only access to one bucket, and test it in the policy simulator](../guide/04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md)
 - Don't confuse with: explicit deny. An implicit deny is only the absence of an allow, and an allow overrides it; an explicit deny is a Deny statement, and it overrides every allow.
 
+**in-memory database**: A database that keeps data in memory rather than on disk, so it answers in microseconds; usually a cache in front of a slower store. Amazon ElastiCache is AWS's, which the exam calls memory-based.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+
 **infrastructure**: The hardware, software, networks and buildings that run AWS's services.
 
 - Taught in: [Security of the cloud vs security in the cloud](../guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
@@ -563,6 +814,16 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Taught in: [Policies and least privilege](../guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
 - Don't confuse with: customer managed policy, AWS managed policy. An inline policy belongs to one identity and dies with it; managed policies, AWS's or yours, stand alone and can attach to many identities.
 
+**instance store**: Temporary block storage on disks physically attached to the computer that runs an EC2 instance, included in the instance's price; not every instance type has it. Its data survives a reboot but is erased by a stop, hibernation or termination, so use it only for caches and scratch data.
+
+- Taught in: [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md)
+- Don't confuse with: Amazon EBS. Instance store belongs to the physical host and loses its data on a stop; an EBS volume persists apart from the instance and can be backed up with snapshots.
+
+**iSCSI**: A protocol for using disks over a network, read and written as blocks. Volume Gateway and Tape Gateway present their storage over it.
+
+- Taught in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+- Don't confuse with: NFS, SMB. iSCSI presents disks, as blocks; NFS and SMB present shared folders of files.
+
 **IT control**: A safeguard, such as a rule, a process or a setting, that lowers a risk to computer systems and that someone can check.
 
 - Taught in: [Shared, inherited and customer-specific controls](../guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md)
@@ -570,6 +831,31 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 **IT resources**: What computers provide to the people and programs that use them. The main ones are compute, storage and databases, and cloud providers rent them out.
 
 - Taught in: [What cloud computing is](../guide/02-why-the-cloud/01-what-cloud-computing-is.md)
+
+**item**: One record in a DynamoDB table, stored under a unique key and made of attributes. Items in the same table don't need the same attributes.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Also in: [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](../guide/05-storing-data/08-lab-06-a-dynamodb-table.md)
+- Don't confuse with: attribute. An item is a whole record; an attribute is one named value inside it.
+
+## J
+
+**JSON**: Text with named fields and nested lists: the usual format for documents in a document database, and the format of IAM policies.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+
+## K
+
+**key (S3)**: An object's name in its S3 bucket, such as cakes/birthday.jpg, by which programs store and fetch it.
+
+- Taught in: [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md)
+- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../guide/05-storing-data/07-lab-05-versions-and-lifecycle.md)
+- Don't confuse with: partition key. An S3 key names one object in a bucket; a DynamoDB partition key picks the group of items an item belongs to.
+
+**key-value database**: A database that stores each item under a unique key and fetches it by that key, fast at any scale. Amazon DynamoDB is AWS's.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Don't confuse with: document database. A key-value database fetches whole items by one key; a document database stores self-contained documents whose fields can vary, and DynamoDB supports both.
 
 ## L
 
@@ -581,6 +867,11 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 **lens**: An extra set of review questions in the Well-Architected Tool for a particular kind of workload or industry.
 
 - Taught in: [The Well-Architected Framework](../guide/02-why-the-cloud/05-the-well-architected-framework.md)
+
+**lifecycle rule**: One rule in a bucket's S3 Lifecycle configuration: which objects it covers, and its transition and expiration actions.
+
+- Taught in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
+- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../guide/05-storing-data/07-lab-05-versions-and-lifecycle.md); [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../guide/05-storing-data/09-sim-lifecycle-cost-timeline.md)
 
 **load balancer**: A service that spreads users' requests across servers in one or more Availability Zones and skips any that fail its health checks.
 
@@ -604,19 +895,47 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 
 ## M
 
+**managed database**: A database a provider runs for you, such as Amazon RDS: AWS installs and patches the software, takes backups and provides failover, while you choose the settings, control access and tune queries.
+
+- Taught in: [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
+- Don't confuse with: self-managed database. A managed database leaves the operating system, patches and backups to AWS; a self-managed database on EC2 leaves them all to you.
+
 **managed service**: A service where AWS runs the servers and software underneath and you use it through its settings, such as Amazon RDS or Amazon S3. The more AWS runs, the less you have to secure.
 
 - Taught in: [Security of the cloud vs security in the cloud](../guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
+- Also in: [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
 - Don't confuse with: abstracted service. Every abstracted service is managed, but not every managed service is abstracted: on Amazon RDS you still choose and tune a database engine, while on Amazon S3 you only handle data and settings.
+
+**metadata**: Facts about stored data rather than the data itself, such as an S3 object's type. Each S3 object is stored with its metadata.
+
+- Taught in: [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md)
+
+**MFA Delete**: A versioning setting that requires a code from the account's MFA device to delete an object version permanently. Only the root user can turn it on, and not in the console.
+
+- Taught in: [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
+- Don't confuse with: S3 Object Lock. MFA Delete only adds an MFA code to permanent deletes; Object Lock forbids deletes until a set date.
 
 **milestone**: A saved snapshot of a Well-Architected review, so you can compare later.
 
 - Taught in: [The Well-Architected Framework](../guide/02-why-the-cloud/05-the-well-architected-framework.md)
 
-**Multi-AZ deployment**: An Amazon RDS setup that adds a standby copy of the database in a second Availability Zone, which takes over if the first fails. RDS runs in one Availability Zone unless you turn it on.
+**minimum billable object size**: The smallest size some S3 storage classes bill an object as; a smaller object is billed as that size. It makes those classes expensive for many tiny files.
 
-- Taught in: [Regions, Availability Zones and data centers](../guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md)
-- Don't confuse with: multi-Region. Multi-AZ spreads copies across Availability Zones inside one Region; multi-Region runs copies in separate Regions.
+- Taught in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
+- Also in: [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../guide/05-storing-data/09-sim-lifecycle-cost-timeline.md)
+- Don't confuse with: minimum storage duration. The minimum billable size charges small objects as larger ones; the minimum storage duration charges early leavers for the full stay.
+
+**minimum storage duration**: The shortest stay an S3 storage class bills for. Delete, overwrite or move an object out of the class earlier, and you pay for the rest of the stay; see the lesson for each class's minimum.
+
+- Taught in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
+- Also in: [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../guide/05-storing-data/09-sim-lifecycle-cost-timeline.md); [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../guide/05-storing-data/07-lab-05-versions-and-lifecycle.md)
+- Don't confuse with: minimum billable object size. The minimum storage duration is about time, billing a short stay as the full minimum; the minimum billable object size is about size, billing a small object as a larger one.
+
+**Multi-AZ deployment**: An Amazon RDS setup that keeps a standby copy of the database in a second Availability Zone, updated by synchronous replication, which serves no queries and takes over automatically if the primary fails. It is high availability, not a backup: a mistaken delete reaches the standby too.
+
+- Taught in: [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
+- Also in: [Regions, Availability Zones and data centers](../guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md); [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../guide/05-storing-data/10-sim-multi-az-vs-read-replica.md)
+- Don't confuse with: multi-Region, read replica. Multi-AZ keeps a synchronous standby that fails over by itself inside one Region; a read replica serves reads and must be promoted by hand, and multi-Region runs copies in separate Regions.
 
 **multi-factor authentication** (MFA): A second proof of identity besides the password, so a stolen password isn't enough on its own. AWS recommends passkeys or security keys first.
 
@@ -633,17 +952,49 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../guide/03-aws-around-the-world/06-sim-blast-radius.md)
 - Don't confuse with: hot standby, warm standby. In multi-site active/active every copy serves customers every day; a hot standby is a full copy that waits, and a warm standby is a smaller copy that must scale up.
 
+## N
+
+**NFS**: A common way for computers to share files over a network, used mostly by Linux. Amazon EFS and S3 File Gateway can use it.
+
+- Taught in: [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md)
+- Also in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+- Don't confuse with: SMB, iSCSI. NFS shares files, mostly for Linux; SMB shares files, mostly for Windows, and iSCSI presents disks as blocks rather than files.
+
+**noncurrent version**: An older version of an object in a versioned bucket, kept under the current one and billed in full. Lifecycle rules can delete noncurrent versions a set number of days after they stop being current.
+
+- Taught in: [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
+- Also in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md); [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../guide/05-storing-data/07-lab-05-versions-and-lifecycle.md)
+- Don't confuse with: current version. A noncurrent version is kept but hidden behind the current one, which is what people see.
+
+**NoSQL**: Databases that use a model other than relational tables, such as key-value or documents. Amazon DynamoDB is AWS's main NoSQL database.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Also in: [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](../guide/05-storing-data/08-lab-06-a-dynamodb-table.md)
+- Don't confuse with: relational database, SQL. NoSQL databases are shaped around how the data will be read and don't join tables; relational databases link tables with a fixed schema and join them in SQL.
+
 ## O
 
-**object**: Amazon S3's name for a file stored in a bucket.
+**object**: Amazon S3's name for a file stored in a bucket, together with its key (its name in the bucket) and its metadata.
 
 - Taught in: [Lab 01: Create, find and delete your first storage bucket](../guide/02-why-the-cloud/06-lab-01-first-resource.md)
+- Also in: [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md)
 - Don't confuse with: bucket. An object is one stored file; a bucket is the container that holds objects.
+
+**object storage**: Storage for whole files, called objects, kept in a bucket and reached through a web API, each with a key and metadata. Programs store and read whole objects, with no disk to attach and no folder to mount; Amazon S3 is AWS's object storage.
+
+- Taught in: [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md)
+- Don't confuse with: block storage, file storage. Object storage hands whole objects to any allowed program over the web; block storage is attached to one server, and file storage is mounted as shared folders.
 
 **on demand**: Getting a resource when you ask for it, within minutes, with no order, delivery or installation to wait for. One of the three features of cloud computing.
 
 - Taught in: [What cloud computing is](../guide/02-why-the-cloud/01-what-cloud-computing-is.md)
 - Also in: [Before and after: the demand curve](../guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md)
+
+**on-demand capacity**: A DynamoDB capacity mode that bills per read and write request, with no capacity to plan: the table scales up for a spike and back down, and an idle table pays only for its storage.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Also in: [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](../guide/05-storing-data/08-lab-06-a-dynamodb-table.md)
+- Don't confuse with: provisioned capacity. On-demand capacity bills each request with nothing to plan; provisioned capacity bills by the hour for the reads and writes per second you set, which can cost less for steady traffic.
 
 **on-premises**: In a building you own or control. On-premises IT means buying, housing and running your own servers instead of renting capacity from a cloud provider.
 
@@ -686,6 +1037,11 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Taught in: [Credentials and federation](../guide/04-shared-responsibility-and-access/05-credentials-and-federation.md)
 - Don't confuse with: AWS Secrets Manager. Parameter Store holds configuration; Secrets Manager holds secrets and can rotate them, so "rotate automatically" points to Secrets Manager.
 
+**partition key**: The part of a DynamoDB item's key that picks which group the item belongs to, such as a cart ID. A query finds every item that shares one partition key.
+
+- Taught in: [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](../guide/05-storing-data/08-lab-06-a-dynamodb-table.md)
+- Don't confuse with: sort key, key (S3). The partition key picks the group and the sort key tells the items in that group apart, together making each item's full key; an S3 key is simply an object's name in its bucket.
+
 **passkey**: A form of MFA kept in your device or password manager; a security key is the same idea as a physical key you touch. AWS recommends them first because they can't be used on a fake sign-in page.
 
 - Taught in: [Credentials and federation](../guide/04-shared-responsibility-and-access/05-credentials-and-federation.md)
@@ -723,6 +1079,10 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Also in: [Policies and least privilege](../guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
 - Don't confuse with: service control policy. A permissions boundary caps one identity; a service control policy caps every identity in a member account.
 
+**persistent**: Kept when the server stops or is deleted; the opposite is temporary. An EBS volume is persistent, and instance store is temporary.
+
+- Taught in: [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md)
+
 **pillar**: One of the Well-Architected Framework's six areas of concern, each a way of judging a workload: operational excellence, security, reliability, performance efficiency, cost optimization and sustainability.
 
 - Taught in: [The Well-Architected Framework](../guide/02-why-the-cloud/05-the-well-architected-framework.md)
@@ -730,13 +1090,18 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 **pilot light**: A disaster recovery strategy that copies data continuously to the recovery Region and keeps core parts, such as the database, running, with app servers off until needed. Recovery typically takes tens of minutes.
 
 - Taught in: [Surviving failure](../guide/03-aws-around-the-world/03-surviving-failure.md)
-- Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../guide/03-aws-around-the-world/06-sim-blast-radius.md)
+- Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../guide/03-aws-around-the-world/06-sim-blast-radius.md); [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
 - Don't confuse with: warm standby, backup and restore. Ask whether it could serve a customer right now: a pilot light can't until its app servers are switched on, while a warm standby can, at reduced size.
 
 **platform as a service** (PaaS): A cloud model in which the provider runs the hardware and operating system and gives you a place to run your application; you manage the application and its data.
 
 - Taught in: [What cloud computing is](../guide/02-why-the-cloud/01-what-cloud-computing-is.md)
 - Don't confuse with: infrastructure as a service, software as a service. PaaS runs your own application for you; IaaS leaves the operating system to you, and SaaS gives you someone else's finished application.
+
+**point-in-time recovery**: Restoring data to how it was at a chosen moment within the retention period, as RDS automated backups and DynamoDB's backups allow. On RDS the restore creates a new database.
+
+- Taught in: [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
+- Also in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md); [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
 
 **policy**: A document, usually written in JSON, that lists permissions as statements allowing or denying actions on resources. Nothing is allowed until a policy allows it.
 
@@ -745,6 +1110,17 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 **policy version**: A saved earlier text of a managed policy. When you edit the policy, IAM keeps the old text as a version and lets you choose which version is the default.
 
 - Taught in: [Lab 04: Finish a policy, write one yourself, and find the deny that blocks it](../guide/04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md)
+
+**prefix**: The start of an S3 object's key, such as exports/, which works like a folder. A lifecycle rule can be limited to objects with a given prefix.
+
+- Taught in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../guide/05-storing-data/07-lab-05-versions-and-lifecycle.md)
+- Also in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
+
+**primary**: In a database with copies, the copy that takes the writes.
+
+- Taught in: [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
+- Also in: [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../guide/05-storing-data/10-sim-multi-az-vs-read-replica.md)
+- Don't confuse with: standby, read replica. The primary takes the writes; a standby waits to take over, and a read replica answers read-only queries.
 
 **principal**: An identity that can make a request to AWS: the root user, an IAM user or an IAM role. Resource-based policies name the principals they apply to.
 
@@ -762,12 +1138,43 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Taught in: [What cloud computing is](../guide/02-why-the-cloud/01-what-cloud-computing-is.md)
 - Don't confuse with: cloud deployment, on-premises deployment. A private cloud runs on the organization's own equipment, so it is an on-premises deployment; building one is not moving to the cloud.
 
+**promote**: To turn a read replica into a separate database that accepts writes, for example to recover in another Region. Someone has to do it and point the application at the new database.
+
+- Taught in: [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
+- Also in: [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../guide/05-storing-data/10-sim-multi-az-vs-read-replica.md)
+
+**protocol**: The agreed language software uses to talk to storage: NFS and SMB for shared folders of files, and iSCSI for disks.
+
+- Taught in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+
+**provisioned capacity**: A DynamoDB capacity mode in which you set the reads and writes per second and pay for them by the hour, which can cost less for steady, predictable traffic.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Don't confuse with: on-demand capacity. Provisioned capacity is paid by the hour whether it is used or not; on-demand capacity is paid per request.
+
 **public event**: An AWS service issue shown in the AWS Health Dashboard that isn't tied to any one account.
 
 - Taught in: [Lab 02: See Regions, Availability Zones and AWS Health in your own account](../guide/03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md)
 - Don't confuse with: account-specific event. A public event is a service issue for everyone; an account-specific event concerns your own account or resources.
 
+## Q
+
+**query (DynamoDB)**: A DynamoDB read that finds every item sharing one partition key, optionally narrowed by a condition on the sort key, such as loading one customer's cart.
+
+- Taught in: [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](../guide/05-storing-data/08-lab-06-a-dynamodb-table.md)
+
 ## R
+
+**read replica**: A read-only copy of an Amazon RDS database that applications can query, kept by asynchronous replication, so it can lag. It takes reports and other read-heavy work off the primary and can be promoted to a separate database, but outside Aurora it doesn't take over automatically.
+
+- Taught in: [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
+- Also in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md); [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../guide/05-storing-data/10-sim-multi-az-vs-read-replica.md)
+- Don't confuse with: Multi-AZ deployment, standby, automated backup. A read replica serves reads and must be promoted by hand, losing any lag; a Multi-AZ standby serves nothing and fails over automatically with every change, and only a backup can undo a mistaken delete.
+
+**recovery point**: In AWS Backup, one saved backup of a resource, kept in a backup vault.
+
+- Taught in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+- Don't confuse with: recovery point objective. A recovery point is one saved backup; the recovery point objective is how much data the business accepts losing, measured back to the last saved copy.
 
 **recovery point objective** (RPO): The most data the business accepts losing, measured as the time between the last saved copy and the failure. It looks back from the failure.
 
@@ -802,6 +1209,12 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Taught in: [Regions, Availability Zones and data centers](../guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md)
 - Don't confuse with: zonal resource, global service. A Regional service is spread across one Region's Availability Zones; a zonal resource lives in a single Availability Zone, and a global service isn't tied to one Region.
 
+**relational database**: A database that keeps data in tables of rows and columns that link to each other, queried in SQL, and changes several tables together in one transaction. On AWS it is Amazon RDS or Amazon Aurora.
+
+- Taught in: [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
+- Also in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Don't confuse with: NoSQL. A relational database links tables with a fixed schema and joins them; NoSQL databases use other models, such as items fetched by key or documents, and don't join tables.
+
 **reliability pillar**: The Well-Architected pillar that asks whether a workload does its job correctly whenever it is needed, and recovers when something fails. High availability and durability belong here.
 
 - Taught in: [The Well-Architected Framework](../guide/02-why-the-cloud/05-the-well-architected-framework.md)
@@ -810,8 +1223,13 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 **replication**: Copying every change to a second place as it happens. It copies mistakes, deletions and corruption too, so it doesn't replace backups.
 
 - Taught in: [Surviving failure](../guide/03-aws-around-the-world/03-surviving-failure.md)
-- Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../guide/03-aws-around-the-world/06-sim-blast-radius.md)
+- Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../guide/03-aws-around-the-world/06-sim-blast-radius.md); [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
 - Don't confuse with: backup. A replica shows the data as it is now, mistakes included; a backup shows it as it was, so only a backup can undo damage.
+
+**replication lag**: How far a copy kept by asynchronous replication, such as a read replica, is behind its primary. It varies, and changes not yet copied are lost if the copy has to take over.
+
+- Taught in: [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
+- Also in: [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../guide/05-storing-data/10-sim-multi-az-vs-read-replica.md)
 
 **Resource (policy element)**: The part of a policy statement that names which resources it covers, by their ARNs; * means all.
 
@@ -821,6 +1239,16 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 
 - Taught in: [Policies and least privilege](../guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
 - Don't confuse with: identity-based policy, cross-account role. A resource-based policy sits on the resource and names who may use it; an identity-based policy sits on the identity and names what it may use.
+
+**restore (S3 Glacier)**: For S3 Glacier Flexible Retrieval and S3 Glacier Deep Archive, a request that makes a temporary readable copy of an object, which you must wait for before you can read it.
+
+- Taught in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
+- Also in: [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../guide/05-storing-data/09-sim-lifecycle-cost-timeline.md)
+
+**retrieval fee**: A charge per GB each time you read data from some S3 storage classes: Standard-IA, One Zone-IA and the Glacier classes. It can make a cold class cost more than S3 Standard for data that is read often.
+
+- Taught in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
+- Also in: [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../guide/05-storing-data/09-sim-lifecycle-cost-timeline.md)
 
 **rightsizing**: Choosing the type, size and number of resources that meet your needs at the lowest cost, and repeating the choice as usage, prices and resource types change.
 
@@ -842,6 +1270,80 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 
 ## S
 
+**S3 Block Public Access**: S3 settings that override any bucket policy or access control list that would make data public. They can be set for an organization, an account and each bucket, and the most restrictive combination wins; new buckets have them on, but check the account-level settings, which started off in a new account (see the lesson).
+
+- Taught in: [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
+- Don't confuse with: bucket policy, encryption at rest. A bucket policy grants or denies access and encryption protects the stored bytes; Block Public Access overrides any grant to the public, whatever the policy says, and doesn't affect access given to named identities.
+
+**S3 File Gateway**: The Storage Gateway type that presents a shared folder over NFS or SMB and stores each file as an object in an S3 bucket, keeping recently used files in a local cache. Its full name is Amazon S3 File Gateway.
+
+- Taught in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+- Don't confuse with: Volume Gateway, Tape Gateway. S3 File Gateway looks like a shared folder of files; Volume Gateway looks like disks, and Tape Gateway like a tape library for backup software.
+
+**S3 Glacier Deep Archive**: S3's lowest-cost storage class, for records read less than once a year and kept for years, such as for compliance, and a replacement for tape. You restore an object before reading it, which takes many hours, and it has the longest minimum stay of the S3 classes.
+
+- Taught in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
+- Also in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md); [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../guide/05-storing-data/07-lab-05-versions-and-lifecycle.md); [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../guide/05-storing-data/09-sim-lifecycle-cost-timeline.md)
+- Don't confuse with: S3 Glacier Flexible Retrieval, S3 Glacier Instant Retrieval. Deep Archive is the cheapest to store but the slowest to get back; Flexible Retrieval restores in minutes to hours, and Instant Retrieval reads in milliseconds.
+
+**S3 Glacier Flexible Retrieval**: The S3 Glacier class for backups and disaster recovery copies read once or twice a year. You restore an object before reading it, which takes minutes to hours depending on the option; the class was formerly named S3 Glacier.
+
+- Taught in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
+- Also in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md); [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../guide/05-storing-data/09-sim-lifecycle-cost-timeline.md)
+- Don't confuse with: S3 Glacier Instant Retrieval, S3 Glacier Deep Archive. Flexible Retrieval needs a restore of minutes to hours; Instant Retrieval needs none but costs more to store, and Deep Archive costs less but its restores take many hours.
+
+**S3 Glacier Instant Retrieval**: The S3 Glacier class for archive data read about once a quarter that must come back in milliseconds, with no restore step. It charges per GB read and has a minimum stay; see the lesson.
+
+- Taught in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
+- Don't confuse with: S3 Glacier Flexible Retrieval, S3 Glacier Deep Archive, S3 Standard-IA. Instant Retrieval reads in milliseconds like Standard-IA, for data read even less often; Flexible Retrieval and Deep Archive cost less to store but need a restore first, taking minutes to hours and many hours.
+
+**S3 Glacier storage classes**: S3's archive storage classes, for data you must keep but rarely read: S3 Glacier Instant Retrieval, S3 Glacier Flexible Retrieval and S3 Glacier Deep Archive. They are ordinary S3 classes in ordinary buckets; pick one by how fast you need the data back.
+
+- Taught in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
+- Also in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+- Exam name: "Amazon S3 Glacier" in the CLF-C02 exam guide
+- Don't confuse with: Amazon Glacier. The S3 Glacier storage classes live in S3 buckets and use the S3 API and lifecycle rules; Amazon Glacier is the older, separate vault service, closed to new customers.
+
+**S3 Intelligent-Tiering**: An S3 storage class for data whose access pattern is unknown or changes: S3 moves each object to cheaper tiers when it goes unread for a while, and back when it is read. It has no retrieval fees but a small monitoring fee per object, and very small objects are never moved.
+
+- Taught in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
+- Don't confuse with: S3 Standard-IA, S3 One Zone-IA, S3 Lifecycle. Intelligent-Tiering moves each object by its own reads, for patterns you can't predict; Standard-IA and One Zone-IA suit data you know is read about monthly and charge per GB read, and lifecycle rules move objects by age on a schedule you set.
+
+**S3 Lifecycle**: A set of rules on an S3 bucket that transition objects to colder storage classes, or expire (delete) them, a number of days after they were created. Rules can cover the whole bucket or objects with a given prefix or tag, and can also act on noncurrent versions.
+
+- Taught in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
+- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../guide/05-storing-data/07-lab-05-versions-and-lifecycle.md); [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../guide/05-storing-data/09-sim-lifecycle-cost-timeline.md)
+- Don't confuse with: S3 Intelligent-Tiering. Lifecycle rules move objects by age on a schedule you set, for data whose cooling you know; Intelligent-Tiering moves each object by its own reads, for data you can't predict.
+
+**S3 Object Lock**: An S3 feature that stops object versions from being deleted or overwritten until a date you set: write once, read many (WORM). In its compliance mode nobody, not even the root user, can remove the protection early.
+
+- Taught in: [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
+- Also in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
+- Don't confuse with: versioning, MFA Delete, Vault Lock. Object Lock forbids deletes until a date; versioning keeps old versions that someone with permission can still delete, MFA Delete only demands an MFA code for such deletes, and Vault Lock protects AWS Backup vaults rather than S3 objects.
+
+**S3 One Zone-IA**: An S3 storage class like Standard-IA but cheaper, storing data in a single Availability Zone, so the data can be lost if that zone is destroyed. Use it only for infrequently read data you can recreate.
+
+- Taught in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
+- Also in: [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md)
+- Don't confuse with: S3 Standard-IA, S3 Intelligent-Tiering. One Zone-IA keeps data in one Availability Zone and suits data you can recreate; Standard-IA costs more but survives the loss of a zone, and Intelligent-Tiering is for patterns you can't predict.
+
+**S3 Replication**: An S3 feature that copies new objects automatically to another bucket, in another Region (Cross-Region Replication) or the same Region (Same-Region Replication), in the same account or another.
+
+- Taught in: [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
+- Don't confuse with: versioning. S3 Replication keeps a copy in another bucket, which protects against losing the first bucket; versioning keeps earlier versions inside the same bucket, which protects against overwrites and deletes.
+
+**S3 Standard**: The default S3 storage class, for data read often: no minimum stay and no retrieval fee, with copies across several Availability Zones and the highest designed availability of the classes (see the lesson for the figures).
+
+- Taught in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
+- Also in: [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../guide/05-storing-data/09-sim-lifecycle-cost-timeline.md)
+- Don't confuse with: S3 Standard-IA. Standard costs more to store but nothing to read; Standard-IA is cheaper to store, charges per GB read and is designed for lower availability, with the same durability.
+
+**S3 Standard-IA**: An S3 storage class for infrequent access: data read about once a month that must still come back in milliseconds. It costs less to store than S3 Standard but charges per GB read, has a minimum stay and a minimum billed size, and is designed for lower availability than Standard.
+
+- Taught in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
+- Also in: [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../guide/05-storing-data/09-sim-lifecycle-cost-timeline.md)
+- Don't confuse with: S3 One Zone-IA, S3 Intelligent-Tiering, S3 Standard. Standard-IA keeps copies across several Availability Zones for a known monthly pattern; One Zone-IA is cheaper but in one zone, Intelligent-Tiering suits unknown patterns, and Standard has higher designed availability.
+
 **scalability**: In plain words, a system's ability to grow to handle more work. AWS gives no formal definition, and "scalability is manual, elasticity is automatic" is a myth.
 
 - Taught in: [Telling the benefits apart](../guide/02-why-the-cloud/03-telling-the-benefits-apart.md)
@@ -850,6 +1352,10 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 **scaled score**: A score adjusted so that every version of the exam is equally hard to pass. The exam reports pass or fail on this scale; see the lesson for the range and the pass mark.
 
 - Taught in: [The exam at a glance](../guide/00-start-here/03-the-exam-at-a-glance.md)
+
+**schema**: The fixed layout a relational database expects: which tables, which columns and which types. AWS SCT converts it when a database moves to a different engine.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
 
 **secret**: Any value that grants access, such as a password, an API key or a token.
 
@@ -874,6 +1380,12 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 
 - Taught in: [The Well-Architected Framework](../guide/02-why-the-cloud/05-the-well-architected-framework.md)
 
+**self-managed database**: A database you install and run yourself, for example on an EC2 server, so the operating system, patches, backups, replication and failover are all yours. Choose it only for a real reason, such as an engine RDS doesn't offer or a need to reach the server's operating system.
+
+- Taught in: [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
+- Also in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Don't confuse with: managed database. On a self-managed database you run everything from the operating system up; on a managed database AWS runs that, and you keep your data, access and query tuning.
+
 **server**: A computer that runs all the time and answers requests from other computers over a network. A website runs on one or more servers.
 
 - Taught in: [What cloud computing is](../guide/02-why-the-cloud/01-what-cloud-computing-is.md)
@@ -882,6 +1394,11 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 
 - Taught in: [Simulation S1: Finish the bakery's cost comparison](../guide/02-why-the-cloud/07-sim-demand-curve.md)
 - Also in: [Before and after: the demand curve](../guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md)
+
+**server-side encryption**: Encryption that the storage service, such as S3, applies as it stores your data and removes when an allowed caller reads it. Its kinds differ in who holds the key: SSE-S3, SSE-KMS or SSE-C.
+
+- Taught in: [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
+- Don't confuse with: client-side encryption. With server-side encryption S3 encrypts the data after receiving it; with client-side encryption you encrypt it before uploading and manage the keys and tools yourself.
 
 **service control policy** (SCP): A policy set in AWS Organizations that caps what users and roles in a member account can do, including that account's root user. It grants nothing, and it doesn't apply to the organization's management account.
 
@@ -922,16 +1439,58 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Taught in: [Before and after: the demand curve](../guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md)
 - Also in: [What cloud computing is](../guide/02-why-the-cloud/01-what-cloud-computing-is.md); [Telling the benefits apart](../guide/02-why-the-cloud/03-telling-the-benefits-apart.md)
 
+**SMB**: A common way for computers to share files over a network, used mostly by Windows. Amazon FSx for Windows File Server and S3 File Gateway can use it.
+
+- Taught in: [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md)
+- Also in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+- Don't confuse with: NFS, iSCSI. SMB is the usual Windows way to share files and NFS the usual Linux way, so Windows shared folders point to SMB; iSCSI presents disks, not files.
+
+**snapshot**: A point-in-time copy of one disk or one database, such as an EBS volume or an RDS database, which you restore to create a new one as it was then. Each service has its own snapshots, schedules and settings.
+
+- Taught in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+- Also in: [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md); [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md); [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../guide/05-storing-data/10-sim-multi-az-vs-read-replica.md)
+- Don't confuse with: AWS Backup, AWS Elastic Disaster Recovery. A snapshot brings back one resource's data; AWS Backup runs backups of many resources under one plan, and Elastic Disaster Recovery brings back whole running servers within minutes.
+
 **software as a service** (SaaS): A cloud model in which the provider runs a finished application entirely, such as web-based email; you manage only how you use it and your data in it.
 
 - Taught in: [What cloud computing is](../guide/02-why-the-cloud/01-what-cloud-computing-is.md)
 - Don't confuse with: infrastructure as a service, platform as a service. SaaS is a finished application you only use; PaaS runs an application you wrote, and IaaS gives you building blocks to run yourself.
 
+**sort key**: The second part of a DynamoDB item's key, which tells apart the items that share a partition key, such as the product in a cart.
+
+- Taught in: [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](../guide/05-storing-data/08-lab-06-a-dynamodb-table.md)
+- Don't confuse with: partition key. The sort key distinguishes items within one group; the partition key chooses the group.
+
+**SQL**: The standard language for querying relational databases. Data warehouses such as Amazon Redshift use it too.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Also in: [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
+- Don't confuse with: NoSQL. SQL is a query language, used by relational databases and Redshift alike; NoSQL describes databases built on models other than relational tables.
+
+**SSE-C**: Server-side encryption with a key you supply with each request. New buckets have it turned off until you deliberately enable it.
+
+- Taught in: [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
+- Don't confuse with: SSE-S3, SSE-KMS. With SSE-C you send the key every time; with SSE-S3 and SSE-KMS the key stays in AWS.
+
+**SSE-KMS**: Server-side encryption with a key in AWS Key Management Service (AWS KMS), where you control who may use the key. Choose it when you must show who can decrypt the data; it adds AWS KMS request charges.
+
+- Taught in: [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
+- Don't confuse with: SSE-S3, SSE-C. SSE-KMS lets you control, and show, who can use the key; SSE-S3 leaves the key entirely to S3, and SSE-C has you send the key with each request.
+
+**SSE-S3**: Server-side encryption with keys that S3 manages. It is S3's default, applied automatically to every new object at no extra charge, and you can't turn encryption off for new uploads.
+
+- Taught in: [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
+- Don't confuse with: SSE-KMS, SSE-C. SSE-S3 uses keys S3 manages for you; SSE-KMS uses a key in AWS KMS whose use you control, and SSE-C uses a key you send with each request.
+
+**staging area**: In Elastic Disaster Recovery, the low-cost storage and very little compute in an AWS Region that receive the continuous copies of your servers, ready to launch from.
+
+- Taught in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+
 **standby**: A second copy, such as a database in another Availability Zone, that takes over if the first fails. Amazon RDS adds one when you turn on a Multi-AZ deployment.
 
 - Taught in: [Regions, Availability Zones and data centers](../guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md)
-- Also in: [Surviving failure](../guide/03-aws-around-the-world/03-surviving-failure.md)
-- Don't confuse with: warm standby. A standby database in a second Availability Zone gives high availability inside one Region; a warm standby is a smaller working copy of a whole workload in another Region, for disaster recovery.
+- Also in: [Surviving failure](../guide/03-aws-around-the-world/03-surviving-failure.md); [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md); [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../guide/05-storing-data/10-sim-multi-az-vs-read-replica.md)
+- Don't confuse with: warm standby, read replica. A standby database in a second Availability Zone gives high availability inside one Region and serves no queries; a read replica serves reads but doesn't take over by itself, and a warm standby is a smaller working copy of a whole workload in another Region.
 
 **statement**: One permission inside a policy: an Effect, an Action, a Resource, and an optional Condition. A policy can hold several.
 
@@ -940,13 +1499,30 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 **storage**: Space to keep files and data; one of the main IT resources.
 
 - Taught in: [What cloud computing is](../guide/02-why-the-cloud/01-what-cloud-computing-is.md)
+- Also in: [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md)
+
+**storage class**: A setting on each S3 object that decides how it is stored, how fast you get it back and how it is billed. New objects go to S3 Standard unless you choose otherwise.
+
+- Taught in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
+- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../guide/05-storing-data/07-lab-05-versions-and-lifecycle.md); [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../guide/05-storing-data/09-sim-lifecycle-cost-timeline.md)
 
 **sustainability pillar**: The Well-Architected pillar that asks whether you use as few resources, and as little energy, as you can.
 
 - Taught in: [The Well-Architected Framework](../guide/02-why-the-cloud/05-the-well-architected-framework.md)
 - Don't confuse with: cost optimization pillar. Sustainability measures resources and energy; cost optimization measures money, though the two usually point the same way.
 
+**synchronous replication**: Writing each change to a copy at the same moment as to the primary, so the copy is always up to date and each write waits for both. A Multi-AZ standby is kept this way.
+
+- Taught in: [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md)
+- Also in: [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../guide/05-storing-data/10-sim-multi-az-vs-read-replica.md)
+- Don't confuse with: asynchronous replication. Synchronous replication keeps the copy always in step but makes each write slightly slower; asynchronous replication sends changes just after, so the copy can lag.
+
 ## T
+
+**table**: A named collection of related records in a database: rows and columns in a relational database, items in DynamoDB. In DynamoDB you choose only the key in advance, and items needn't share their other attributes.
+
+- Taught in: [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](../guide/05-storing-data/08-lab-06-a-dynamodb-table.md)
+- Also in: [Managed or self-managed databases](../guide/05-storing-data/05-managed-or-self-managed-databases.md); [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
 
 **tag**: A label you attach to an AWS resource, made of a key and a value that you choose. Tags let one search find everything with that label, in every Region.
 
@@ -957,6 +1533,11 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 
 - Taught in: [Lab 01: Create, find and delete your first storage bucket](../guide/02-why-the-cloud/06-lab-01-first-resource.md)
 - Also in: [Lab 02: See Regions, Availability Zones and AWS Health in your own account](../guide/03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md)
+
+**Tape Gateway**: The Storage Gateway type that looks like a tape library (a virtual tape library) to existing backup software, which writes virtual tapes over iSCSI. The tapes are stored in S3 and archived to the S3 Glacier classes, so physical tapes can go without changing the backup jobs.
+
+- Taught in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+- Don't confuse with: AWS Backup, S3 File Gateway. Tape Gateway lets existing backup software keep writing tapes; AWS Backup is AWS's own service that runs backups of resources by a plan, and S3 File Gateway is for people saving files.
 
 **task statement**: One of the specific things a domain of the exam tests, numbered within its domain. The exam guide lists them, and each page of this guide names the ones it covers.
 
@@ -977,6 +1558,21 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 
 - Taught in: [The Well-Architected Framework](../guide/02-why-the-cloud/05-the-well-architected-framework.md)
 
+**transaction**: A set of changes, such as an order and its lines, that a relational database applies together: all succeed or all fail, so nothing is half-saved.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+
+**transactional workload**: Work that runs the business: many small reads and writes all day, each touching a few rows, such as saving an order. Amazon RDS and Amazon Aurora are built for it.
+
+- Taught in: [Choosing a database](../guide/05-storing-data/06-choosing-a-database.md)
+- Don't confuse with: analytics workload. Transactional work is many small requests that change data; analytics work is fewer, larger queries that read much of it, and both can use SQL.
+
+**transition action**: A lifecycle action that moves objects to another storage class a number of days after they were created, or after they became noncurrent. Each transition is a billed request.
+
+- Taught in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md)
+- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../guide/05-storing-data/07-lab-05-versions-and-lifecycle.md); [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../guide/05-storing-data/09-sim-lifecycle-cost-timeline.md)
+- Don't confuse with: expiration action. A transition action moves an object to another class; an expiration action deletes it.
+
 **trust policy**: The resource-based policy on a role that says who may assume it. The role's separate permissions policy says what it may do.
 
 - Taught in: [Credentials and federation](../guide/04-shared-responsibility-and-access/05-credentials-and-federation.md)
@@ -996,9 +1592,35 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 - Also in: [What a data center really costs](../guide/02-why-the-cloud/04-what-a-data-center-really-costs.md)
 - Don't confuse with: fixed expense, operating expense. Variable or fixed asks whether a cost follows use; operating or capital asks when you pay, so a flat monthly fee is an operating expense but not a variable one.
 
+**Vault Lock**: An AWS Backup feature that stops anyone, even an administrator, from deleting backups in a vault before their retention ends: protection against mistakes and ransomware.
+
+- Taught in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+- Don't confuse with: S3 Object Lock. Vault Lock protects backups in an AWS Backup vault; S3 Object Lock protects object versions in an S3 bucket.
+
+**version ID**: The identifier S3 gives each version of an object in a versioned bucket. Deleting by version ID removes that version for good.
+
+- Taught in: [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
+- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../guide/05-storing-data/07-lab-05-versions-and-lifecycle.md)
+
+**versioning**: An S3 bucket setting that keeps every version of each object under the same key, so an overwrite or a delete can be undone. It starts off; once on, it can be suspended but never turned off, and each version is billed as a whole object.
+
+- Taught in: [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
+- Also in: [Storage classes and lifecycle](../guide/05-storing-data/03-storage-classes-and-lifecycle.md); [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../guide/05-storing-data/07-lab-05-versions-and-lifecycle.md); [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../guide/05-storing-data/09-sim-lifecycle-cost-timeline.md)
+- Don't confuse with: S3 Replication, backup, S3 Object Lock. Versioning keeps earlier versions inside the same bucket, so it undoes mistakes but is lost with the bucket; replication or a backup keeps a copy somewhere else, and only Object Lock stops someone with permission deleting a version for good.
+
 **virtualization**: Software that splits one physical computer into several virtual servers. AWS runs the virtualization layer and the host operating system beneath it.
 
 - Taught in: [Security of the cloud vs security in the cloud](../guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
+
+**volume**: One block storage disk, of a size you choose, such as an Amazon EBS volume attached to an EC2 instance.
+
+- Taught in: [Block, file and object storage](../guide/05-storing-data/01-block-file-object.md)
+- Also in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+
+**Volume Gateway**: The Storage Gateway type that presents disks to on-premises servers over iSCSI. In cached mode the full data lives in S3 and only frequently used data stays local; in stored mode the full data stays on premises and AWS keeps point-in-time copies as EBS snapshots.
+
+- Taught in: [Hybrid storage and backup](../guide/05-storing-data/04-hybrid-storage-and-backup.md)
+- Don't confuse with: S3 File Gateway, Tape Gateway. Volume Gateway presents disks, and its two modes differ in where the full dataset lives; S3 File Gateway presents a folder, and Tape Gateway presents tapes.
 
 ## W
 
@@ -1016,6 +1638,10 @@ The 197 terms this guide has taught so far (modules 00, 02, 03, 04), each with a
 **workload**: The set of parts (code, settings and AWS resources) that together deliver something of value, such as a shop's ordering site.
 
 - Taught in: [The Well-Architected Framework](../guide/02-why-the-cloud/05-the-well-architected-framework.md)
+
+**write once, read many** (WORM): Storage that, once written, can be read but not changed or deleted for a set time. S3 Object Lock provides it.
+
+- Taught in: [S3 in practice](../guide/05-storing-data/02-s3-in-practice.md)
 
 ## Z
 
