@@ -102,11 +102,32 @@ python3 -I ../study-aws-certified_cloud_practitioner/tools/link_refs.py \
 
 It adds the links and flags titles that differ from AWS's current wording.
 
-## Diagrams
+## Visuals
 
-Draft diagrams as Mermaid in the page, with a caption saying what to notice and a visible long
-description. No AWS icons in Mermaid; when a diagram needs service icons, draw it later with AWS
-Icons for PlantUML. Never adapt an AWS diagram.
+The owner wants the guide visually rich and engaging (2026-10-24). Every visual must teach, never
+decorate: learning research shows explanatory visuals help and decorative ones hurt. So plan the
+visuals for a page before writing it, and use many of them:
+
+- **Every lesson:** a big-picture visual near the top, and at least one more visual for most
+  sections. A lesson with fewer than three visuals needs a reason.
+- **Numbers become charts.** Costs over time, demand curves, comparisons of prices or durations:
+  draw them as a chart, not only a table. Keep the table too, as the accessible version.
+- **Systems and flows become diagrams.** Anything with parts that interact, nest or happen in order.
+- **Confused pairs become comparison graphics** (side-by-side panels or a decision flowchart), in
+  addition to the comparison table.
+- **Screenshots** where seeing the screen helps a step (approved, redacted ones only).
+- Each visual has a caption that says what to notice, alt text, and a visible long description or
+  data table. Color never carries meaning alone, and colors work in light and dark mode.
+
+**How to make them:**
+
+- Diagrams and flowcharts: Mermaid in the page for drafts. No AWS icons in Mermaid; when a diagram
+  needs service icons, draw it with AWS Icons for PlantUML (source in `diagrams/`). Never adapt an
+  AWS diagram.
+- Charts: generate SVG from a script kept in `diagrams/` (Apache-2.0, SPDX header), output in
+  `images/MM-PP-descriptor.svg`, so charts can be regenerated when numbers change. Follow the
+  dataviz skill for chart design.
+- All three editions must render every visual; prefer SVG for drawn images.
 
 ## Attribution line
 
