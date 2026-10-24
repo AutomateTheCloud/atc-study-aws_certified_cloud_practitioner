@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="378" viewBox="0 0 680 378" role="img" aria-labelledby="t d">
+<title id="t">Least privilege as nested boxes, from all access down to one job</title>
+<desc id="d">Four nested boxes, each inside the last. AdministratorAccess: Every action, on every resource, in the account; A storage-wide policy: Every S3 action, on every bucket in the account; The teammate's policy: List one bucket; read and add the photos in it; With a condition: ...and only when signed in with MFA. The third box, the teammate's policy, is highlighted as what the photo job needs.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .card { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .card-s1 { fill: none; stroke: var(--s1); stroke-width: 2; }
+  .codebg { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .code { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; fill: var(--ink); font-size: 12px; }
+  .code-dim { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; fill: var(--muted); font-size: 12px; }
+  .brace { stroke: var(--s1); stroke-width: 2; fill: none; }
+  .name { fill: var(--ink); font-size: 15px; font-weight: 600; }
+  .key { fill: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: 0.5px; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .box { fill: var(--surface); stroke: var(--muted); stroke-width: 1; }
+  .box-s1 { fill: var(--surface); stroke: var(--s1); stroke-width: 2; }
+  .attach { stroke: var(--muted); stroke-width: 1.5; fill: none; }
+</style>
+<rect width="680" height="378" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Least privilege: each step grants less</text>
+<text class="sub" x="16" y="48">Narrow the actions, then the resources, then add conditions. Highlighted: what the photo job needs.</text>
+<rect class="card" x="16" y="66" width="648" height="300" rx="10"/>
+<text class="name" x="32" y="92">AdministratorAccess</text>
+<text class="small" x="32" y="111">Every action, on every resource, in the account</text>
+<rect class="card" x="52" y="128" width="576" height="224" rx="10"/>
+<text class="name" x="68" y="154">A storage-wide policy</text>
+<text class="small" x="68" y="173">Every S3 action, on every bucket in the account</text>
+<rect class="card-s1" x="88" y="190" width="504" height="148" rx="10"/>
+<text class="name" x="104" y="216">The teammate's policy</text>
+<text class="small" x="104" y="235">List one bucket; read and add the photos in it</text>
+<rect class="card" x="124" y="252" width="432" height="72" rx="10"/>
+<text class="name" x="140" y="278">With a condition</text>
+<text class="small" x="140" y="297">...and only when signed in with MFA</text>
+</svg>

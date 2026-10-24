@@ -12,7 +12,8 @@ an adult studying alone, possibly new to IT, who wants to understand AWS and use
 ## Files
 
 - Path: `guide/MM-module-slug/PP-page-slug.md`, as in the course plan section 9. Lowercase ASCII,
-  hyphens, two-digit prefixes.
+  hyphens, two-digit prefixes. The module's mastery check takes the next free number after the module's other
+  pages (for example `08-check.md` in Module 02, `10-check.md` in Module 04).
 - Images: `images/MM-PP-descriptor.png|svg`. Diagram sources: `diagrams/`. Chart scripts: `source/charts/`.
 - Links inside the guide are relative `.md` links. Links to the guardrails primer use its GitHub
   address, `https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/<page>.md`,

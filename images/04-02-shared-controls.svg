@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="417" viewBox="0 0 680 417" role="img" aria-labelledby="t d">
+<title id="t">The three shared controls, with AWS's half and your half of each</title>
+<desc id="d">Three rows, each split into AWS's half and your half by a dashed divider. Patch management: AWS patches and fixes flaws in its infrastructure; you patch the guest operating system and applications you run, such as the bakery's web server and the libraries in its order functions. Configuration management: AWS configures its own infrastructure devices; you configure your operating systems, databases, applications and resource settings, such as the web server's security group and Block Public Access on the photo bucket. Awareness and training: AWS trains AWS employees; you train your own people, such as the owner, her nephew and the new teammate. A note says a question about one specific task has one answer, one side; the control as a whole is what is shared.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --aws-fill:#d9e8fb; --you-fill:#fbe1d6; --none-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --aws-fill:#1b3554; --you-fill:#4d2716; --none-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .aws { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .you { fill: var(--you-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .none { fill: var(--none-fill); stroke: var(--axis); stroke-width: 1; stroke-dasharray: 3 3; }
+  .panel { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .panel-hi { fill: none; stroke: var(--ink2); stroke-width: 2; }
+  .name { fill: var(--ink); font-size: 15px; font-weight: 600; }
+  .cellt { fill: var(--ink); font-size: 12.5px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .head { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .divider { stroke: var(--ink2); stroke-width: 2; stroke-dasharray: 6 4; }
+</style>
+<rect width="680" height="417" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Shared controls: same kind of work, separate contexts</text>
+<text class="sub" x="16" y="48">Each side does its own half. No single task is done by both.</text>
+<text class="head" x="283.0" y="76" text-anchor="middle">AWS does, for its infrastructure</text>
+<text class="head" x="547.0" y="76" text-anchor="middle">You do, for what you run</text>
+<text class="head" x="148" y="140.0" text-anchor="end">Patch management</text>
+<rect class="aws" x="160" y="88" width="246" height="95" rx="5"/>
+<text class="cells" x="170" y="109.0">Patches and fixes flaws in its</text>
+<text class="cells" x="170" y="124.0">infrastructure: hosts,</text>
+<text class="cells" x="170" y="139.0">virtualization, the services' own</text>
+<text class="cells" x="170" y="154.0">software</text>
+<rect class="you" x="424" y="88" width="246" height="95" rx="5"/>
+<text class="cells" x="434" y="109.0">Patches the guest OS and</text>
+<text class="cells" x="434" y="124.0">applications you run. Bakery: the</text>
+<text class="cells" x="434" y="139.0">web server's OS and website</text>
+<text class="cells" x="434" y="154.0">software; the libraries in the</text>
+<text class="cells" x="434" y="169.0">order functions</text>
+<text class="head" x="148" y="237.5" text-anchor="end">Configuration</text>
+<text class="head" x="148" y="252.5" text-anchor="end">management</text>
+<rect class="aws" x="160" y="193" width="246" height="95" rx="5"/>
+<text class="cells" x="170" y="214.0">Configures its own infrastructure</text>
+<text class="cells" x="170" y="229.0">devices</text>
+<rect class="you" x="424" y="193" width="246" height="95" rx="5"/>
+<text class="cells" x="434" y="214.0">Configures your OS, databases,</text>
+<text class="cells" x="434" y="229.0">applications and resource</text>
+<text class="cells" x="434" y="244.0">settings. Bakery: the web server's</text>
+<text class="cells" x="434" y="259.0">security group; Block Public</text>
+<text class="cells" x="434" y="274.0">Access on the photo bucket</text>
+<text class="head" x="148" y="327.5" text-anchor="end">Awareness and</text>
+<text class="head" x="148" y="342.5" text-anchor="end">training</text>
+<rect class="aws" x="160" y="298" width="246" height="65" rx="5"/>
+<text class="cells" x="170" y="319.0">Trains AWS employees</text>
+<rect class="you" x="424" y="298" width="246" height="65" rx="5"/>
+<text class="cells" x="434" y="319.0">Trains your own people. Bakery:</text>
+<text class="cells" x="434" y="334.0">the owner, her nephew and the new</text>
+<text class="cells" x="434" y="349.0">teammate</text>
+<line class="divider" x1="415" x2="415" y1="84" y2="367"/>
+<text class="small" x="16" y="385">The dashed divider is the line from lesson 04.01. A question about one specific task, such as patching</text>
+<text class="small" x="16" y="402">the web server's operating system, has one answer: one side. The control as a whole is what is shared.</text>
+</svg>

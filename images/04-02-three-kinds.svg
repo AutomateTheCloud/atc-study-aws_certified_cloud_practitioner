@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="420" viewBox="0 0 680 420" role="img" aria-labelledby="t d">
+<title id="t">Inherited, shared and customer-specific controls, by who does the work</title>
+<desc id="d">Three panels. Inherited: AWS's part is all of it; your part is nothing to do, because you inherit it. AWS's example is physical and environmental controls; for the bakery, no more locking the server room or keeping it cool. Shared, highlighted: AWS does its own half, for the infrastructure; you do your own half, for what you run. AWS's examples are patch management, configuration management, and awareness and training; for the bakery, AWS patches its hosts and the bakery patches its web server. Customer-specific: AWS has no counterpart; your part is all of it. AWS's example is routing or zoning data within specific security environments; for the bakery, the order database accepts connections only from the web server.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --aws-fill:#d9e8fb; --you-fill:#fbe1d6; --none-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --aws-fill:#1b3554; --you-fill:#4d2716; --none-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .aws { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .you { fill: var(--you-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .none { fill: var(--none-fill); stroke: var(--axis); stroke-width: 1; stroke-dasharray: 3 3; }
+  .panel { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .panel-hi { fill: none; stroke: var(--ink2); stroke-width: 2; }
+  .name { fill: var(--ink); font-size: 15px; font-weight: 600; }
+  .cellt { fill: var(--ink); font-size: 12.5px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 12px; }
+  .head { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .divider { stroke: var(--ink2); stroke-width: 2; stroke-dasharray: 6 4; }
+</style>
+<rect width="680" height="420" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Three kinds of control, by who does the work</text>
+<text class="sub" x="16" y="48">AWS's three groups of IT controls in the shared responsibility model</text>
+<rect class="panel" x="16" y="66" width="210" height="302" rx="8"/>
+<text class="name" x="30" y="94">Inherited</text>
+<rect class="aws" x="28.0" y="110.0" width="186.0" height="45.0" rx="5"/>
+<text class="cellt" x="38.0" y="128.0">AWS's part</text>
+<text class="cells" x="38" y="145.0">All of it</text>
+<rect class="none" x="28.0" y="163.0" width="186.0" height="60.0" rx="5"/>
+<text class="cellt" x="38.0" y="181.0">Your part</text>
+<text class="cells" x="38" y="198.0">Nothing to do: you inherit</text>
+<text class="cells" x="38" y="213.0">it</text>
+<text class="small" x="30" y="241.0">AWS's example: physical and</text>
+<text class="small" x="30" y="256.0">environmental controls.</text>
+<text class="small" x="30" y="279.0">Bakery: no more locking the</text>
+<text class="small" x="30" y="294.0">server room or keeping it</text>
+<text class="small" x="30" y="309.0">cool.</text>
+<rect class="panel-hi" x="240" y="66" width="210" height="302" rx="8"/>
+<text class="name" x="254" y="94">Shared</text>
+<rect class="aws" x="252.0" y="110.0" width="186.0" height="60.0" rx="5"/>
+<text class="cellt" x="262.0" y="128.0">AWS's part</text>
+<text class="cells" x="262" y="145.0">Its own half, for the</text>
+<text class="cells" x="262" y="160.0">infrastructure</text>
+<rect class="you" x="252.0" y="178.0" width="186.0" height="60.0" rx="5"/>
+<text class="cellt" x="262.0" y="196.0">Your part</text>
+<text class="cells" x="262" y="213.0">Your own half, for what</text>
+<text class="cells" x="262" y="228.0">you run</text>
+<text class="small" x="254" y="256.0">AWS's examples: patch</text>
+<text class="small" x="254" y="271.0">management, configuration</text>
+<text class="small" x="254" y="286.0">management, awareness and</text>
+<text class="small" x="254" y="301.0">training.</text>
+<text class="small" x="254" y="324.0">Bakery: AWS patches its hosts;</text>
+<text class="small" x="254" y="339.0">the bakery patches its web</text>
+<text class="small" x="254" y="354.0">server.</text>
+<rect class="panel" x="464" y="66" width="210" height="302" rx="8"/>
+<text class="name" x="478" y="94">Customer-specific</text>
+<rect class="none" x="476.0" y="110.0" width="186.0" height="45.0" rx="5"/>
+<text class="cellt" x="486.0" y="128.0">AWS's part</text>
+<text class="cells" x="486" y="145.0">No counterpart</text>
+<rect class="you" x="476.0" y="163.0" width="186.0" height="45.0" rx="5"/>
+<text class="cellt" x="486.0" y="181.0">Your part</text>
+<text class="cells" x="486" y="198.0">All of it</text>
+<text class="small" x="478" y="226.0">AWS's example: routing or</text>
+<text class="small" x="478" y="241.0">zoning data within specific</text>
+<text class="small" x="478" y="256.0">security environments.</text>
+<text class="small" x="478" y="279.0">Bakery: the order database</text>
+<text class="small" x="478" y="294.0">accepts connections only from</text>
+<text class="small" x="478" y="309.0">the web server.</text>
+<text class="note" x="16" y="390">Read each panel top to bottom: does AWS do any of it, and do you? Only the middle one says yes to both,</text>
+<text class="note" x="16" y="406">and even there each side works on its own things.</text>
+</svg>

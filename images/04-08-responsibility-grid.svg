@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="576" viewBox="0 0 720 576" role="img" aria-labelledby="t d">
+<title id="t">Who does each security task on-premises and on EC2, RDS, Lambda and S3</title>
+<desc id="d">A grid with six rows of security tasks and five columns: on-premises, EC2, RDS, Lambda and S3, in order of more abstraction. Facilities, power, cooling, hardware and servers: you on-premises, AWS for every service. Operating system install and patch: you on-premises and on EC2; AWS on RDS, Lambda (note 1) and S3. Database engine or language runtime install and patch: you on-premises and on EC2; AWS on RDS, Lambda (note 2) and S3. Backups, high availability and scaling: you on-premises and on EC2; AWS on RDS; on Lambda, AWS for scaling (note 3); on S3, not stated. Your code, its dependencies and tuning: you everywhere, including query tuning on RDS; on S3 no code runs. Your data, its encryption and who can access it: you in every column. ¹ For managed runtimes, Lambda applies security updates by default. For functions built as container images, you rebuild from the latest base image. ² Until AWS deprecates the runtime. Moving to a supported runtime is yours. ³ Lambda manages capacity and scaling. The pages we use publish no split for its backups or high availability.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --aws:#2a78d6; --you:#eb6834; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --aws:#3987e5; --you:#d95926; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .cell { stroke: var(--grid); stroke-width: 1; }
+  .c-aws { fill: var(--aws); fill-opacity: 0.16; } .c-you { fill: var(--you); fill-opacity: 0.16; }
+  .c-none { fill: var(--surface); }
+  .bar-aws { fill: var(--aws); } .bar-you { fill: var(--you); }
+  .none-border { fill: none; stroke: var(--muted); stroke-width: 1; stroke-dasharray: 4 3; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .celltext { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .celltext-none { fill: var(--ink2); font-size: 12px; font-style: italic; }
+  .small { fill: var(--ink2); font-size: 12px; }
+</style>
+<rect width="720" height="576" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">The line moves: who does each security task, by service</text>
+<text class="sub" x="16" y="48">From AWS-published statements only; a blank AWS page means "not stated", never a guess</text>
+<rect class="c-aws" x="16" y="66" width="16" height="16" rx="3"/>
+<rect class="bar-aws" x="16" y="66" width="4" height="16"/>
+<text x="40" y="79">AWS does it</text>
+<rect class="c-you" x="147.2" y="66" width="16" height="16" rx="3"/>
+<rect class="bar-you" x="147.2" y="66" width="4" height="16"/>
+<text x="171.2" y="79">You (the customer) do it</text>
+<rect class="none-border" x="372.0" y="66" width="16" height="16" rx="3"/>
+<text x="396.0" y="79">No AWS statement, or not applicable</text>
+<text class="head" x="298.0" y="144" text-anchor="middle">On-premises</text>
+<text class="head" x="390.0" y="144" text-anchor="middle">EC2</text>
+<text class="head" x="482.0" y="144" text-anchor="middle">RDS</text>
+<text class="head" x="574.0" y="144" text-anchor="middle">Lambda</text>
+<text class="head" x="666.0" y="144" text-anchor="middle">S3</text>
+<line class="lead" x1="260" x2="704" y1="120" y2="120"/>
+<path d="M698,116 L704,120 L698,124" class="lead" fill="none"/>
+<text class="small" x="482.0" y="114" text-anchor="middle">more abstraction: AWS does more of the work</text>
+<text class="lab" x="16" y="177.0">Facilities, power, cooling,</text>
+<text class="lab" x="16" y="193.0">hardware and servers</text>
+<g><title>Facilities, power, cooling, hardware and servers on On-premises: You</title>
+<rect class="cell c-you" x="253" y="157" width="90" height="48" rx="4"/>
+<rect class="bar-you" x="253" y="157" width="4" height="48"/>
+<text class="celltext" x="300.0" y="185.0" text-anchor="middle">You</text>
+</g>
+<g><title>Facilities, power, cooling, hardware and servers on EC2: AWS</title>
+<rect class="cell c-aws" x="345" y="157" width="90" height="48" rx="4"/>
+<rect class="bar-aws" x="345" y="157" width="4" height="48"/>
+<text class="celltext" x="392.0" y="185.0" text-anchor="middle">AWS</text>
+</g>
+<g><title>Facilities, power, cooling, hardware and servers on RDS: AWS</title>
+<rect class="cell c-aws" x="437" y="157" width="90" height="48" rx="4"/>
+<rect class="bar-aws" x="437" y="157" width="4" height="48"/>
+<text class="celltext" x="484.0" y="185.0" text-anchor="middle">AWS</text>
+</g>
+<g><title>Facilities, power, cooling, hardware and servers on Lambda: AWS</title>
+<rect class="cell c-aws" x="529" y="157" width="90" height="48" rx="4"/>
+<rect class="bar-aws" x="529" y="157" width="4" height="48"/>
+<text class="celltext" x="576.0" y="185.0" text-anchor="middle">AWS</text>
+</g>
+<g><title>Facilities, power, cooling, hardware and servers on S3: AWS</title>
+<rect class="cell c-aws" x="621" y="157" width="90" height="48" rx="4"/>
+<rect class="bar-aws" x="621" y="157" width="4" height="48"/>
+<text class="celltext" x="668.0" y="185.0" text-anchor="middle">AWS</text>
+</g>
+<text class="lab" x="16" y="227.0">Operating system: install and</text>
+<text class="lab" x="16" y="243.0">patch</text>
+<g><title>Operating system: install and patch on On-premises: You</title>
+<rect class="cell c-you" x="253" y="207" width="90" height="48" rx="4"/>
+<rect class="bar-you" x="253" y="207" width="4" height="48"/>
+<text class="celltext" x="300.0" y="235.0" text-anchor="middle">You</text>
+</g>
+<g><title>Operating system: install and patch on EC2: You</title>
+<rect class="cell c-you" x="345" y="207" width="90" height="48" rx="4"/>
+<rect class="bar-you" x="345" y="207" width="4" height="48"/>
+<text class="celltext" x="392.0" y="235.0" text-anchor="middle">You</text>
+</g>
+<g><title>Operating system: install and patch on RDS: AWS</title>
+<rect class="cell c-aws" x="437" y="207" width="90" height="48" rx="4"/>
+<rect class="bar-aws" x="437" y="207" width="4" height="48"/>
+<text class="celltext" x="484.0" y="235.0" text-anchor="middle">AWS</text>
+</g>
+<g><title>Operating system: install and patch on Lambda: AWS (note 1)</title>
+<rect class="cell c-aws" x="529" y="207" width="90" height="48" rx="4"/>
+<rect class="bar-aws" x="529" y="207" width="4" height="48"/>
+<text class="celltext" x="576.0" y="235.0" text-anchor="middle">AWS ¹</text>
+</g>
+<g><title>Operating system: install and patch on S3: AWS</title>
+<rect class="cell c-aws" x="621" y="207" width="90" height="48" rx="4"/>
+<rect class="bar-aws" x="621" y="207" width="4" height="48"/>
+<text class="celltext" x="668.0" y="235.0" text-anchor="middle">AWS</text>
+</g>
+<text class="lab" x="16" y="277.0">Database engine or language</text>
+<text class="lab" x="16" y="293.0">runtime: install and patch</text>
+<g><title>Database engine or language runtime: install and patch on On-premises: You</title>
+<rect class="cell c-you" x="253" y="257" width="90" height="48" rx="4"/>
+<rect class="bar-you" x="253" y="257" width="4" height="48"/>
+<text class="celltext" x="300.0" y="285.0" text-anchor="middle">You</text>
+</g>
+<g><title>Database engine or language runtime: install and patch on EC2: You</title>
+<rect class="cell c-you" x="345" y="257" width="90" height="48" rx="4"/>
+<rect class="bar-you" x="345" y="257" width="4" height="48"/>
+<text class="celltext" x="392.0" y="285.0" text-anchor="middle">You</text>
+</g>
+<g><title>Database engine or language runtime: install and patch on RDS: AWS</title>
+<rect class="cell c-aws" x="437" y="257" width="90" height="48" rx="4"/>
+<rect class="bar-aws" x="437" y="257" width="4" height="48"/>
+<text class="celltext" x="484.0" y="285.0" text-anchor="middle">AWS</text>
+</g>
+<g><title>Database engine or language runtime: install and patch on Lambda: AWS (note 2)</title>
+<rect class="cell c-aws" x="529" y="257" width="90" height="48" rx="4"/>
+<rect class="bar-aws" x="529" y="257" width="4" height="48"/>
+<text class="celltext" x="576.0" y="285.0" text-anchor="middle">AWS ²</text>
+</g>
+<g><title>Database engine or language runtime: install and patch on S3: AWS</title>
+<rect class="cell c-aws" x="621" y="257" width="90" height="48" rx="4"/>
+<rect class="bar-aws" x="621" y="257" width="4" height="48"/>
+<text class="celltext" x="668.0" y="285.0" text-anchor="middle">AWS</text>
+</g>
+<text class="lab" x="16" y="327.0">Backups, high availability and</text>
+<text class="lab" x="16" y="343.0">scaling</text>
+<g><title>Backups, high availability and scaling on On-premises: You</title>
+<rect class="cell c-you" x="253" y="307" width="90" height="48" rx="4"/>
+<rect class="bar-you" x="253" y="307" width="4" height="48"/>
+<text class="celltext" x="300.0" y="335.0" text-anchor="middle">You</text>
+</g>
+<g><title>Backups, high availability and scaling on EC2: You</title>
+<rect class="cell c-you" x="345" y="307" width="90" height="48" rx="4"/>
+<rect class="bar-you" x="345" y="307" width="4" height="48"/>
+<text class="celltext" x="392.0" y="335.0" text-anchor="middle">You</text>
+</g>
+<g><title>Backups, high availability and scaling on RDS: AWS</title>
+<rect class="cell c-aws" x="437" y="307" width="90" height="48" rx="4"/>
+<rect class="bar-aws" x="437" y="307" width="4" height="48"/>
+<text class="celltext" x="484.0" y="335.0" text-anchor="middle">AWS</text>
+</g>
+<g><title>Backups, high availability and scaling on Lambda: AWS: scaling (note 3)</title>
+<rect class="cell c-aws" x="529" y="307" width="90" height="48" rx="4"/>
+<rect class="bar-aws" x="529" y="307" width="4" height="48"/>
+<text class="celltext" x="576.0" y="328.0" text-anchor="middle">AWS:</text>
+<text class="celltext" x="576.0" y="342.0" text-anchor="middle">scaling ³</text>
+</g>
+<g><title>Backups, high availability and scaling on S3: Not stated</title>
+<rect class="cell c-none" x="621" y="307" width="90" height="48" rx="4"/>
+<rect class="none-border" x="623" y="309" width="86" height="44" rx="4"/>
+<text class="celltext-none" x="666.0" y="335.0" text-anchor="middle">Not stated</text>
+</g>
+<text class="lab" x="16" y="377.0">Your code, its dependencies, and</text>
+<text class="lab" x="16" y="393.0">tuning</text>
+<g><title>Your code, its dependencies, and tuning on On-premises: You</title>
+<rect class="cell c-you" x="253" y="357" width="90" height="48" rx="4"/>
+<rect class="bar-you" x="253" y="357" width="4" height="48"/>
+<text class="celltext" x="300.0" y="385.0" text-anchor="middle">You</text>
+</g>
+<g><title>Your code, its dependencies, and tuning on EC2: You</title>
+<rect class="cell c-you" x="345" y="357" width="90" height="48" rx="4"/>
+<rect class="bar-you" x="345" y="357" width="4" height="48"/>
+<text class="celltext" x="392.0" y="385.0" text-anchor="middle">You</text>
+</g>
+<g><title>Your code, its dependencies, and tuning on RDS: You: tuning</title>
+<rect class="cell c-you" x="437" y="357" width="90" height="48" rx="4"/>
+<rect class="bar-you" x="437" y="357" width="4" height="48"/>
+<text class="celltext" x="484.0" y="385.0" text-anchor="middle">You: tuning</text>
+</g>
+<g><title>Your code, its dependencies, and tuning on Lambda: You</title>
+<rect class="cell c-you" x="529" y="357" width="90" height="48" rx="4"/>
+<rect class="bar-you" x="529" y="357" width="4" height="48"/>
+<text class="celltext" x="576.0" y="385.0" text-anchor="middle">You</text>
+</g>
+<g><title>Your code, its dependencies, and tuning on S3: No code runs</title>
+<rect class="cell c-none" x="621" y="357" width="90" height="48" rx="4"/>
+<rect class="none-border" x="623" y="359" width="86" height="44" rx="4"/>
+<text class="celltext-none" x="666.0" y="385.0" text-anchor="middle">No code runs</text>
+</g>
+<text class="lab" x="16" y="427.0">Your data, its encryption, and</text>
+<text class="lab" x="16" y="443.0">who can access it</text>
+<g><title>Your data, its encryption, and who can access it on On-premises: You</title>
+<rect class="cell c-you" x="253" y="407" width="90" height="48" rx="4"/>
+<rect class="bar-you" x="253" y="407" width="4" height="48"/>
+<text class="celltext" x="300.0" y="435.0" text-anchor="middle">You</text>
+</g>
+<g><title>Your data, its encryption, and who can access it on EC2: You</title>
+<rect class="cell c-you" x="345" y="407" width="90" height="48" rx="4"/>
+<rect class="bar-you" x="345" y="407" width="4" height="48"/>
+<text class="celltext" x="392.0" y="435.0" text-anchor="middle">You</text>
+</g>
+<g><title>Your data, its encryption, and who can access it on RDS: You</title>
+<rect class="cell c-you" x="437" y="407" width="90" height="48" rx="4"/>
+<rect class="bar-you" x="437" y="407" width="4" height="48"/>
+<text class="celltext" x="484.0" y="435.0" text-anchor="middle">You</text>
+</g>
+<g><title>Your data, its encryption, and who can access it on Lambda: You</title>
+<rect class="cell c-you" x="529" y="407" width="90" height="48" rx="4"/>
+<rect class="bar-you" x="529" y="407" width="4" height="48"/>
+<text class="celltext" x="576.0" y="435.0" text-anchor="middle">You</text>
+</g>
+<g><title>Your data, its encryption, and who can access it on S3: You</title>
+<rect class="cell c-you" x="621" y="407" width="90" height="48" rx="4"/>
+<rect class="bar-you" x="621" y="407" width="4" height="48"/>
+<text class="celltext" x="668.0" y="435.0" text-anchor="middle">You</text>
+</g>
+<text class="small" x="16" y="482.0">¹ For managed runtimes, Lambda applies security updates by default. For functions built as container images,</text>
+<text class="small" x="16" y="498.0">you rebuild from the latest base image.</text>
+<text class="small" x="16" y="516.0">² Until AWS deprecates the runtime. Moving to a supported runtime is yours.</text>
+<text class="small" x="16" y="534.0">³ Lambda manages capacity and scaling. The pages we use publish no split for its backups or high</text>
+<text class="small" x="16" y="550.0">availability.</text>
+</svg>

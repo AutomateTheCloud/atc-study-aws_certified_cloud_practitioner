@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="453" viewBox="0 0 680 453" role="img" aria-labelledby="t d">
+<title id="t">Anatomy of an identity-based policy for the bakery's photo bucket</title>
+<desc id="d">A JSON policy with two statements. Statement 1, labeled SeeTheBucket: Effect Allow, Action s3:ListBucket, Resource arn:aws:s3:::bakery-cake-photos. Statement 2, labeled ReadAndAddPhotos: Effect Allow, Actions s3:GetObject and s3:PutObject, Resource arn:aws:s3:::bakery-cake-photos/* (the files in the bucket). Notes explain: Effect is Allow or Deny; Action is what may be done, as service:action; Resource is which thing, by its ARN, where /* means every file in the bucket. A footnote says there is no Principal line, because an identity-based policy applies to whoever it is attached to.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .card { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .card-s1 { fill: none; stroke: var(--s1); stroke-width: 2; }
+  .codebg { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .code { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; fill: var(--ink); font-size: 12px; }
+  .code-dim { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; fill: var(--muted); font-size: 12px; }
+  .brace { stroke: var(--s1); stroke-width: 2; fill: none; }
+  .name { fill: var(--ink); font-size: 15px; font-weight: 600; }
+  .key { fill: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: 0.5px; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .box { fill: var(--surface); stroke: var(--muted); stroke-width: 1; }
+  .box-s1 { fill: var(--surface); stroke: var(--s1); stroke-width: 2; }
+  .attach { stroke: var(--muted); stroke-width: 1.5; fill: none; }
+</style>
+<rect width="680" height="453" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Anatomy of an identity-based policy</text>
+<text class="sub" x="16" y="48">Two statements, each saying Allow or Deny, which actions, and on which resources</text>
+<rect class="codebg" x="16" y="70" width="424" height="343" rx="6"/>
+<text class="code-dim" x="28" y="92" xml:space="preserve">{</text>
+<text class="code-dim" x="42" y="111" xml:space="preserve">"Version": "2012-10-17",</text>
+<text class="code-dim" x="42" y="130" xml:space="preserve">"Statement": [</text>
+<text class="code" x="56" y="149" xml:space="preserve">{</text>
+<text class="code" x="70" y="168" xml:space="preserve">"Sid": "SeeTheBucket",</text>
+<text class="code" x="70" y="187" xml:space="preserve">"Effect": "Allow",</text>
+<text class="code" x="70" y="206" xml:space="preserve">"Action": "s3:ListBucket",</text>
+<text class="code" x="70" y="225" xml:space="preserve">"Resource": "arn:aws:s3:::bakery-cake-photos"</text>
+<text class="code" x="56" y="244" xml:space="preserve">},</text>
+<text class="code" x="56" y="263" xml:space="preserve">{</text>
+<text class="code" x="70" y="282" xml:space="preserve">"Sid": "ReadAndAddPhotos",</text>
+<text class="code" x="70" y="301" xml:space="preserve">"Effect": "Allow",</text>
+<text class="code" x="70" y="320" xml:space="preserve">"Action": ["s3:GetObject", "s3:PutObject"],</text>
+<text class="code" x="70" y="339" xml:space="preserve">"Resource": "arn:aws:s3:::bakery-cake-photos/*"</text>
+<text class="code" x="56" y="358" xml:space="preserve">}</text>
+<text class="code-dim" x="42" y="377" xml:space="preserve">]</text>
+<text class="code-dim" x="28" y="396" xml:space="preserve">}</text>
+<line class="lead" x1="440" x2="452" y1="183" y2="106"/>
+<text class="key" x="458" y="110">EFFECT</text>
+<text class="small" x="458" y="126.0">Allow or Deny.</text>
+<line class="lead" x1="440" x2="452" y1="202" y2="151"/>
+<text class="key" x="458" y="155">ACTION</text>
+<text class="small" x="458" y="171.0">What may be done, written</text>
+<text class="small" x="458" y="186.0">service:action.</text>
+<line class="lead" x1="440" x2="452" y1="221" y2="211"/>
+<text class="key" x="458" y="215">RESOURCE</text>
+<text class="small" x="458" y="231.0">Which thing, by its ARN; /*</text>
+<text class="small" x="458" y="246.0">means every file in the</text>
+<text class="small" x="458" y="261.0">bucket.</text>
+<text class="key" x="458" y="297">STATEMENT 2</text>
+<text class="small" x="458" y="313.0">Same parts again: read and</text>
+<text class="small" x="458" y="328.0">add files inside the bucket.</text>
+<text class="sub" x="16" y="439.0">No Principal line: an identity-based policy applies to whoever it is attached to.</text>
+</svg>

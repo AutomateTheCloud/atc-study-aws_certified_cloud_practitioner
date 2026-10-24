@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="606" viewBox="0 0 680 606" role="img" aria-labelledby="t d">
+<title id="t">Four kinds of identity in an AWS account, compared</title>
+<desc id="d">Four cards in two rows. The IAM role card is highlighted, and its credentials label reads Temporary. Root user: credentials long-term. What it is: The account's first identity, created with the sign-up email address. Can you sign in as it? Yes, with the email address, password and MFA. Limited by IAM policies? No. IAM policies can't be attached to it. Use it for: Only the few tasks that need root. IAM user: credentials long-term. What it is: One named person or program inside the account. Can you sign in as it? Yes, with a console password and MFA. Programs use access keys. Limited by IAM policies? Yes, by the policies attached to it or its groups. Use it for: Our labs' everyday admin; programs that can't use a role. IAM user group: credentials none. What it is: A set of IAM users who share the same policies. Can you sign in as it? No. A group has no credentials of its own. Limited by IAM policies? It carries policies for its members. Use it for: Giving a team the same permissions in one place. IAM role: credentials temporary. What it is: A set of permissions that anyone allowed to can take on for a while. Can you sign in as it? Not directly. A person or program assumes it. Limited by IAM policies? Yes, by its permissions policy. Use it for: Programs and AWS services, other accounts, people from a central sign-in.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --on-s1:#ffffff; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --on-s1:#1a1a19; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .card { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .card-s1 { fill: none; stroke: var(--s1); stroke-width: 2; }
+  .card-s2 { fill: none; stroke: var(--s2); stroke-width: 2; stroke-dasharray: 6 4; }
+  .pill { fill: var(--surface); stroke: var(--muted); stroke-width: 1; }
+  .pill-s1 { fill: var(--s1); }
+  .pilltext { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .pilltext-on { fill: var(--on-s1); font-size: 12px; font-weight: 600; }
+  .name { fill: var(--ink); font-size: 15px; font-weight: 600; }
+  .key { fill: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: 0.5px; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .tag { fill: var(--ink); font-size: 11px; font-weight: 700; letter-spacing: 0.5px; }
+</style>
+<rect width="680" height="606" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Four kinds of identity in an AWS account</text>
+<text class="sub" x="16" y="48">Only the role hands out temporary credentials; a group has no credentials at all</text>
+<rect class="card" x="16" y="68" width="320" height="264" rx="8"/>
+<text class="name" x="30" y="95">Root user</text>
+<rect class="pill" x="152.2" y="80" width="169.8" height="22" rx="11"/>
+<text class="pilltext" x="237.1" y="95" text-anchor="middle">Credentials: Long-term</text>
+<text class="key" x="30" y="128">WHAT IT IS</text>
+<text class="lab" x="30" y="145.0">The account's first identity, created with</text>
+<text class="lab" x="30" y="161.0">the sign-up email address.</text>
+<text class="key" x="30" y="183">CAN YOU SIGN IN AS IT?</text>
+<text class="lab" x="30" y="200.0">Yes, with the email address, password and</text>
+<text class="lab" x="30" y="216.0">MFA.</text>
+<text class="key" x="30" y="238">LIMITED BY IAM POLICIES?</text>
+<text class="lab" x="30" y="255.0">No. IAM policies can't be attached to it.</text>
+<text class="key" x="30" y="277">USE IT FOR</text>
+<text class="lab" x="30" y="294.0">Only the few tasks that need root.</text>
+<rect class="card" x="344" y="68" width="320" height="264" rx="8"/>
+<text class="name" x="358" y="95">IAM user</text>
+<rect class="pill" x="480.2" y="80" width="169.8" height="22" rx="11"/>
+<text class="pilltext" x="565.1" y="95" text-anchor="middle">Credentials: Long-term</text>
+<text class="key" x="358" y="128">WHAT IT IS</text>
+<text class="lab" x="358" y="145.0">One named person or program inside the</text>
+<text class="lab" x="358" y="161.0">account.</text>
+<text class="key" x="358" y="183">CAN YOU SIGN IN AS IT?</text>
+<text class="lab" x="358" y="200.0">Yes, with a console password and MFA.</text>
+<text class="lab" x="358" y="216.0">Programs use access keys.</text>
+<text class="key" x="358" y="238">LIMITED BY IAM POLICIES?</text>
+<text class="lab" x="358" y="255.0">Yes, by the policies attached to it or its</text>
+<text class="lab" x="358" y="271.0">groups.</text>
+<text class="key" x="358" y="293">USE IT FOR</text>
+<text class="lab" x="358" y="310.0">Our labs' everyday admin; programs that</text>
+<text class="lab" x="358" y="326.0">can't use a role.</text>
+<rect class="card" x="16" y="342" width="320" height="248" rx="8"/>
+<text class="name" x="30" y="369">IAM user group</text>
+<rect class="pill" x="186.7" y="354" width="135.3" height="22" rx="11"/>
+<text class="pilltext" x="254.3" y="369" text-anchor="middle">Credentials: None</text>
+<text class="key" x="30" y="402">WHAT IT IS</text>
+<text class="lab" x="30" y="419.0">A set of IAM users who share the same</text>
+<text class="lab" x="30" y="435.0">policies.</text>
+<text class="key" x="30" y="457">CAN YOU SIGN IN AS IT?</text>
+<text class="lab" x="30" y="474.0">No. A group has no credentials of its own.</text>
+<text class="key" x="30" y="496">LIMITED BY IAM POLICIES?</text>
+<text class="lab" x="30" y="513.0">It carries policies for its members.</text>
+<text class="key" x="30" y="535">USE IT FOR</text>
+<text class="lab" x="30" y="552.0">Giving a team the same permissions in one</text>
+<text class="lab" x="30" y="568.0">place.</text>
+<rect class="card-s1" x="344" y="342" width="320" height="248" rx="8"/>
+<text class="name" x="358" y="369">IAM role</text>
+<rect class="pill-s1" x="480.2" y="354" width="169.8" height="22" rx="11"/>
+<text class="pilltext-on" x="565.1" y="369" text-anchor="middle">Credentials: Temporary</text>
+<text class="key" x="358" y="402">WHAT IT IS</text>
+<text class="lab" x="358" y="419.0">A set of permissions that anyone allowed</text>
+<text class="lab" x="358" y="435.0">to can take on for a while.</text>
+<text class="key" x="358" y="457">CAN YOU SIGN IN AS IT?</text>
+<text class="lab" x="358" y="474.0">Not directly. A person or program assumes</text>
+<text class="lab" x="358" y="490.0">it.</text>
+<text class="key" x="358" y="512">LIMITED BY IAM POLICIES?</text>
+<text class="lab" x="358" y="529.0">Yes, by its permissions policy.</text>
+<text class="key" x="358" y="551">USE IT FOR</text>
+<text class="lab" x="358" y="568.0">Programs and AWS services, other accounts,</text>
+<text class="lab" x="358" y="584.0">people from a central sign-in.</text>
+</svg>

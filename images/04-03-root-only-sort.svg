@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="474" viewBox="0 0 680 474" role="img" aria-labelledby="t d">
+<title id="t">Tasks that need the root user, and tasks that don't</title>
+<desc id="d">Two panels. Left, highlighted, only the root user can: Change the account's email address, root password or root access keys (standalone account); Close the account, or reopen it after closing; Restore permissions when the only IAM admin has locked themselves out; Turn on IAM access to the billing pages; View certain tax invoices, and some other billing tasks; Sign up for AWS GovCloud (US); Register as a seller in the Reserved Instance Marketplace; Recover a KMS key that nobody can manage, through AWS Support; Turn on MFA Delete for an S3 bucket; Fix an S3 bucket policy or SQS queue policy that denies everyone. Right, no root needed: Change the AWS Support plan; Change the account name or contact details; Choose which Regions the account uses; Create IAM users, groups and roles; Create budgets and read bills (once IAM access to billing is on). The Support plan item is marked as a trap because older study material says it needs root.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --on-s1:#ffffff; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --on-s1:#1a1a19; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .card { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .card-s1 { fill: none; stroke: var(--s1); stroke-width: 2; }
+  .card-s2 { fill: none; stroke: var(--s2); stroke-width: 2; stroke-dasharray: 6 4; }
+  .pill { fill: var(--surface); stroke: var(--muted); stroke-width: 1; }
+  .pill-s1 { fill: var(--s1); }
+  .pilltext { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .pilltext-on { fill: var(--on-s1); font-size: 12px; font-weight: 600; }
+  .name { fill: var(--ink); font-size: 15px; font-weight: 600; }
+  .key { fill: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: 0.5px; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .tag { fill: var(--ink); font-size: 11px; font-weight: 700; letter-spacing: 0.5px; }
+</style>
+<rect width="680" height="474" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Does this task need the root user?</text>
+<text class="sub" x="16" y="48">AWS's current list, checked 2026-10-23. An IAM admin can do everything on the right.</text>
+<rect class="card-s1" x="16" y="66" width="372" height="396" rx="8"/>
+<text class="name" x="30" y="90">Only the root user can</text>
+<circle cx="34" cy="114" r="3" style="fill:var(--s1)"/>
+<text class="lab" x="44" y="118.0">Change the account's email address, root password</text>
+<text class="lab" x="44" y="134.0">or root access keys (standalone account)</text>
+<circle cx="34" cy="154" r="3" style="fill:var(--s1)"/>
+<text class="lab" x="44" y="158.0">Close the account, or reopen it after closing</text>
+<circle cx="34" cy="178" r="3" style="fill:var(--s1)"/>
+<text class="lab" x="44" y="182.0">Restore permissions when the only IAM admin has</text>
+<text class="lab" x="44" y="198.0">locked themselves out</text>
+<circle cx="34" cy="218" r="3" style="fill:var(--s1)"/>
+<text class="lab" x="44" y="222.0">Turn on IAM access to the billing pages</text>
+<circle cx="34" cy="242" r="3" style="fill:var(--s1)"/>
+<text class="lab" x="44" y="246.0">View certain tax invoices, and some other billing</text>
+<text class="lab" x="44" y="262.0">tasks</text>
+<circle cx="34" cy="282" r="3" style="fill:var(--s1)"/>
+<text class="lab" x="44" y="286.0">Sign up for AWS GovCloud (US)</text>
+<circle cx="34" cy="306" r="3" style="fill:var(--s1)"/>
+<text class="lab" x="44" y="310.0">Register as a seller in the Reserved Instance</text>
+<text class="lab" x="44" y="326.0">Marketplace</text>
+<circle cx="34" cy="346" r="3" style="fill:var(--s1)"/>
+<text class="lab" x="44" y="350.0">Recover a KMS key that nobody can manage, through</text>
+<text class="lab" x="44" y="366.0">AWS Support</text>
+<circle cx="34" cy="386" r="3" style="fill:var(--s1)"/>
+<text class="lab" x="44" y="390.0">Turn on MFA Delete for an S3 bucket</text>
+<circle cx="34" cy="410" r="3" style="fill:var(--s1)"/>
+<text class="lab" x="44" y="414.0">Fix an S3 bucket policy or SQS queue policy that</text>
+<text class="lab" x="44" y="430.0">denies everyone</text>
+<rect class="card" x="396" y="66" width="268" height="396" rx="8"/>
+<text class="name" x="410" y="90">No root needed</text>
+<rect x="404" y="104" width="4" height="36" rx="2" style="fill:var(--s2)"/>
+<text class="tag" x="414" y="118">TRAP: OLDER MATERIAL SAYS ROOT</text>
+<circle cx="414" cy="132" r="3" style="fill:var(--muted)"/>
+<text class="lab" x="424" y="136.0">Change the AWS Support plan</text>
+<circle cx="414" cy="156" r="3" style="fill:var(--muted)"/>
+<text class="lab" x="424" y="160.0">Change the account name or</text>
+<text class="lab" x="424" y="176.0">contact details</text>
+<circle cx="414" cy="196" r="3" style="fill:var(--muted)"/>
+<text class="lab" x="424" y="200.0">Choose which Regions the</text>
+<text class="lab" x="424" y="216.0">account uses</text>
+<circle cx="414" cy="236" r="3" style="fill:var(--muted)"/>
+<text class="lab" x="424" y="240.0">Create IAM users, groups and</text>
+<text class="lab" x="424" y="256.0">roles</text>
+<circle cx="414" cy="276" r="3" style="fill:var(--muted)"/>
+<text class="lab" x="424" y="280.0">Create budgets and read bills</text>
+<text class="lab" x="424" y="296.0">(once IAM access to billing is</text>
+<text class="lab" x="424" y="312.0">on)</text>
+</svg>
