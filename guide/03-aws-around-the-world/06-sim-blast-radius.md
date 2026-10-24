@@ -22,6 +22,8 @@ sources:
   - "https://docs.aws.amazon.com/pdfs/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-workloads-on-aws.pdf"
   - "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
   - "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions-availability-zones.html"
+  - "https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-what-is-isnot-replicated.html"
+  - "https://docs.aws.amazon.com/AmazonS3/latest/userguide/delete-marker-replication.html"
 ---
 
 # Simulation S2: The blast-radius ladder and three recovery plans
@@ -49,6 +51,7 @@ The businesses and their numbers are **made up for teaching**. The strategies, t
 
 - **High availability** (two or more AZs in one Region) handles failures inside a Region: a server, a data center, an AZ.
 - **Disaster recovery** handles losing a whole Region. Pick the **cheapest strategy that meets both the RTO and the RPO**.
+- **The RTO and the RPO can differ.** AWS's table gives one range for both, but a pilot light, like a warm standby, copies data continuously, so its RPO can be a few minutes or less even though its recovery takes tens of minutes (lesson 03.03).
 - **Replication copies mistakes.** Only a point-in-time backup undoes damage to the data itself.
 
 Keep the ladder from lesson 03.03 in view:
@@ -85,7 +88,7 @@ For each event, write its rung (server, data center, AZ, Region, or off the ladd
 | 3 | AZ | Web server 2 and the standby database in the second AZ take over. High availability. |
 | 4 | Region | Nothing in Frankfurt helps: both AZs are in it. The bakery needs a copy, or at least backups, in another EU Region. Disaster recovery. |
 | 5 | Off the ladder: data | The standby deletes the orders too, within moments. Only a point-in-time backup from before the mistake brings them back. |
-| 6 | Off the ladder: data | Every copy of a deleted object is gone, wherever it is. Earlier versions (S3 versioning) or a backup restore the photos. Then lock out the attacker: Module 04 shows how. |
+| 6 | Off the ladder: data | A deletion doesn't always reach every copy: with current S3 Replication rules, a deletion is copied only if delete marker replication is turned on, and the permanent deletion of a specific version is never copied ([What does Amazon S3 replicate?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-what-is-isnot-replicated.html)). But a stolen password may reach the copies too, so don't count on them. Earlier versions (S3 versioning) or a backup restore the photos. Then lock out the attacker: Module 04 shows how. |
 
 Events 5 and 6 are the ones people miss: damage to the data travels with the data.
 

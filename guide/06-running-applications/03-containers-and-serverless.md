@@ -194,11 +194,11 @@ Four facts decide whether a job fits, from the [Lambda quotas](https://docs.aws.
 - **At most 15 minutes per invocation.** Longer jobs don't fit a standard function.
 - **Memory from 128 MB to 10,240 MB.** CPU power grows with memory.
 - **Automatic scaling.** If 300 photos arrive at once, Lambda runs many copies side by side; by default up to 1,000 at once per Region, a quota you can ask to raise.
-- **No state between runs.** Anything to keep goes to S3 or a database.
+- **No state you can count on between runs.** Lambda may reuse a warm environment, and data from an earlier run may still be there, but nothing guarantees it ([What is AWS Lambda?](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)). Anything to keep goes to S3 or a database.
 
 Availability is built in, with no maintenance windows ([AWS Lambda FAQs](https://aws.amazon.com/lambda/faqs/)); you don't spread it across Availability Zones yourself as you do with EC2.
 
-> **Dated (checked 2026-10-23):** AWS now calls classic functions **Lambda Event Functions** and has added longer-running forms, such as MicroVMs that last up to 8 hours and durable functions that pause and resume ([What is AWS Lambda?](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)). We couldn't confirm that exam questions reflect them. For CLF-C02, use the classic rule: event-driven functions, at most 15 minutes per invocation.
+> **Dated (checked 2026-10-24):** AWS now calls classic functions **Lambda Event Functions** and has added longer-running forms, such as MicroVMs that last up to 8 hours and durable functions that pause and resume ([What is AWS Lambda?](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)). We couldn't confirm that exam questions reflect them. For CLF-C02, use the classic rule: event-driven functions, at most 15 minutes per invocation.
 
 > **Check:** Answer the second prequestion. Photos arrive at random times, and each takes a few seconds to shrink. Which fits best?
 >

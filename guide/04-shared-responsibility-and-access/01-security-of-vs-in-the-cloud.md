@@ -12,6 +12,7 @@ facts_checked: 2026-10-24
 sources:
   - "https://aws.amazon.com/compliance/shared-responsibility-model/"
   - "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html"
+  - "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html"
   - "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html"
   - "https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html"
   - "https://docs.aws.amazon.com/lambda/latest/dg/lambda-security.html"
@@ -155,6 +156,8 @@ The table gives the same data.
 | Power, network and cooling | You | AWS | AWS |
 
 Even on RDS, one row stays yours. The RDS User Guide calls it **query tuning**: adjusting your database requests so they run well. It also says you control who reaches your database, with IAM and with security groups.
+
+"AWS" in the scaling, availability and backup row means AWS does the work, not that you have nothing to decide. You still choose the settings: the instance size, and when to change it; whether to run a Multi-AZ deployment; and whether automated backups are on, and for how long they're kept ([What is Amazon RDS?](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html); [Introduction to backups](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html)). AWS then carries out what you chose.
 
 ### Four services side by side
 

@@ -61,7 +61,7 @@ flowchart LR
 
 > **New sign-up path:** policy validation is listed as available there, but IAM users can't sign in to the console (as of 2026-10-23). We haven't run this lab on that path. Read the steps, then do [Simulation S4](09-sim-policy-playground.md).
 
-**About the screens:** labels in **bold** come from AWS's documentation or our test account (2026-10-23 and 2026-10-24). We haven't yet run this lab end to end. If a label differs, look for the option with the same meaning.
+**About the screens:** labels in **bold** come from AWS's documentation or our test account (2026-10-23 and 2026-10-24). We ran this lab end to end in our test account on 2026-10-24. If a label differs, look for the option with the same meaning.
 
 ## Get ready
 
@@ -120,7 +120,7 @@ The new teammate keeps the cake photos on the site up to date. **Requirement:** 
 **Constraints:** no more than two statements; no `*` inside an action name; the only resources are your two ARNs.
 
 6. Write the policy in a text editor first.
-7. Open the policy simulator from IAM's left menu (**Policy simulator**). On 2026-10-24 it opened inside the IAM console; [Lab 03](06-lab-03-a-group-and-a-policy.md#test-it-in-the-policy-simulator) shows how to add actions and set each row's resource. This time, choose **Custom** at the top instead of **Principal**: it tests a policy you paste in. A pasted policy is simulated on its own and isn't saved to your account. We haven't yet run this lab, so the Custom screens may differ slightly from these steps.
+7. Open the policy simulator from IAM's left menu (**Policy simulator**). On 2026-10-24 it opened inside the IAM console; [Lab 03](06-lab-03-a-group-and-a-policy.md#test-it-in-the-policy-simulator) shows how to add actions and set each row's resource. This time, choose **Custom** at the top instead of **Principal**: it tests a policy you paste in. A pasted policy is simulated on its own and isn't saved to your account. We ran these Custom steps in our test account on 2026-10-24; if a screen differs, look for the option with the same meaning.
 8. Choose **Add policy**. Give the draft a name (the dialog says the policy is only used for simulation and isn't created in IAM), paste your JSON into the editor that opens, choose **Save**, then **Back to simulator**. Add your test actions and set each row's resource as in Lab 03. Design at least six tests: three that must be allowed and three that must be denied, including `s3:DeleteBucket` on the bucket ARN. Choose **Simulate** and write the results in your lab log.
    > **Tip:** watch the resource box: when an action has only one resource type, the simulator fills in the type for you and puts `arn:aws:s3:::*` in the **ARN** box. Replace all of it with your ARN, don't add to it. Also clear **Apply to all actions with the same resource type** unless you want every row of that type to get the same ARN.
    **You should see:** every result matching what you predicted.

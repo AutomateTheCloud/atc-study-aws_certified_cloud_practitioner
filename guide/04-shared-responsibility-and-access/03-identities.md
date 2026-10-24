@@ -8,7 +8,7 @@ reader: "Adult studying alone, possibly new to IT; has done the guardrails prime
 prerequisites: ["clf-04-01"]
 terms_introduced: [identity, credentials, authentication, authorization, principal, AWS Identity and Access Management (IAM), root user, IAM user, IAM user group, IAM role, assume a role, service-linked role, root-only task]
 pillars: [security]
-facts_checked: 2026-10-23
+facts_checked: 2026-10-24
 sources:
   - "https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html"
   - "https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html"
@@ -169,7 +169,7 @@ Older material and many practice questions list changing the AWS Support plan as
 
 <details><summary>Model answer</summary>
 
-(a) **Root only**: it changes the account itself. (b) **IAM admin**: ordinary IAM work. (c) **Root only**: the sign-up email is the root user's. (d) **IAM admin**: not on AWS's root-only list (as of 2026-10-23); this is the trap.
+(a) **Root only**: it changes the account itself. (b) **IAM admin**: ordinary IAM work. (c) **Root only**, for a standalone account like the bakery's: the sign-up email is the root user's. (In an account that belongs to an AWS Organizations organization, an authorized admin in the management account can change it instead.) (d) **IAM admin**: not on AWS's root-only list (as of 2026-10-23); this is the trap.
 
 </details>
 

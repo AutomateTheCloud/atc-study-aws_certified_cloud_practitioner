@@ -186,13 +186,13 @@ def name_decoded():
     w, h = 680, 300
     body = [
         '<text class="title" x="16" y="28">Reading an instance type name</text>',
-        '<text class="sub" x="16" y="48">Before the dot: the family, generation and variant. After the dot: the size.</text>',
+        '<text class="sub" x="16" y="48">Before the dot: the family, made of series, generation and options. After the dot: the size.</text>',
     ]
     cw = 34  # width of one monospace character at 56px, approximately
     x0, y0 = 150, 132
-    parts = [("m", 0, 1, "Family", "M: general purpose"),
+    parts = [("m", 0, 1, "Series", "m: general purpose"),
              ("7", 1, 1, "Generation", "7th; a higher number is newer"),
-             ("g", 2, 1, "Variant", "extra letters; here an AWS Graviton (Arm) processor"),
+             ("g", 2, 1, "Option", "extra letters; here an AWS Graviton (Arm) processor"),
              ("large", 4, 5, "Size", "how much of the family's hardware")]
     body.append(f'<text class="big" x="{x0 + 3 * cw + cw / 2:.1f}" y="{y0}" text-anchor="middle" style="fill:var(--muted)">.</text>')
     label_x = [40, 180, 330, 500]
@@ -204,12 +204,13 @@ def name_decoded():
         body.append(f'<line class="brace" x1="{xm:.1f}" y1="{y0 + 22}" x2="{lx + 60:.1f}" y2="{y0 + 58}"/>')
         body.append(f'<text class="cellt" x="{lx}" y="{y0 + 76}">{title}</text>')
         text_lines(body, lx, y0 + 94, wrap(line, 24), cls="small", dy=15)
-    body.append(f'<text class="note" x="16" y="{h - 14}">Sources: Savings Plans User Guide (family and size); EC2 Instance Types Guide. Checked 2026-10-24.</text>')
+    body.append(f'<text class="note" x="16" y="{h - 14}">Source: EC2 Instance Types Guide, naming conventions. Checked 2026-10-24.</text>')
     svg("06-01-name-decoded.svg", w, h,
         "The parts of the instance type name m7g.large",
-        "The name m7g.large in large letters, with four labeled parts. m: the family, M for general purpose. "
-        "7: the generation, 7th, where a higher number is newer. g: the variant, extra letters, here an AWS "
-        "Graviton (Arm) processor. large, after the dot: the size, how much of the family's hardware.",
+        "The name m7g.large in large letters, with four labeled parts. m: the series, general purpose. "
+        "7: the generation, 7th, where a higher number is newer. g: an option, extra letters, here an AWS "
+        "Graviton (Arm) processor. large, after the dot: the size, how much of the family's hardware. "
+        "Together, m7g is the family.",
         body, style=STYLE)
 
 

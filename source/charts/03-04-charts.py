@@ -6,8 +6,9 @@
 Usage: python3 -I source/charts/03-04-charts.py
 Writes images/03-04-*.svg. Facts come from AWS's Global Infrastructure and Regions
 and AZs pages, the CloudFront key features page, the AWS Fault Isolation Boundaries
-whitepaper (which services run at points of presence), and the What is AWS Local
-Zones, What is AWS Wavelength and What is AWS Outposts pages, all read 2026-10-23.
+whitepaper (which services run at points of presence, and which features such as
+AWS WAF for CloudFront run there too), and the What is AWS Local Zones, What is AWS
+Wavelength and What is AWS Outposts pages, read 2026-10-23 and 2026-10-24.
 The world view is a schematic: no map, and the number and position of shapes are
 illustrative, not counts. Our own design: no AWS logos, icons, trade dress or AWS
 diagrams.
@@ -121,7 +122,7 @@ def regions_and_edge():
 CARDS = [
     ("Edge location", False, [
         ("Where", "Many cities worldwide, beside and inside internet providers' networks"),
-        ("Runs", "CloudFront, Route 53 and Global Accelerator. Not your own servers"),
+        ("Runs", "CloudFront, Route 53 and Global Accelerator, plus features that work through them, such as AWS WAF. Not your own servers"),
         ("Use it for", "Delivering content and answering requests close to users"),
     ]),
     ("Local Zone", False, [
@@ -175,11 +176,12 @@ def edge_options():
                 body.append(f'<text class="key" x="{x + 14}" y="{y + h - 28}">Out of scope for CLF-C02 as a service:</text>')
                 body.append(f'<text class="key" x="{x + 14}" y="{y + h - 12}">know it as a wrong answer</text>')
         y += h + gap
-    body.append(f'<text class="note" x="16" y="{y + 8}">Our summary of AWS\'s Local Zones, Wavelength, Outposts and CloudFront pages, checked 2026-10-23.</text>')
+    body.append(f'<text class="note" x="16" y="{y + 8}">Our summary of AWS\'s Local Zones, Wavelength, Outposts and CloudFront pages, checked 2026-10-24.</text>')
     svg("03-04-edge-options.svg", w, y + 22,
         "Edge location, Local Zone, Outposts and Wavelength Zone compared",
         "Four cards. Edge location: in many cities worldwide, beside and inside internet providers' networks; "
-        "runs CloudFront, Route 53 and Global Accelerator, not your own servers; used for delivering content "
+        "runs CloudFront, Route 53 and Global Accelerator, plus features that work through them such as AWS WAF, "
+        "but not your own servers; used for delivering content "
         "and answering requests close to users. Local Zone: in a large city away from the Region it extends; "
         "runs selected services such as compute, storage and databases; used for single-digit-millisecond "
         "latency for users in that city and for keeping data there. Outposts: in your own building; AWS racks "

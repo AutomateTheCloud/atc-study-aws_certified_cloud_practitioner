@@ -26,6 +26,7 @@ sources:
   - "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html"
   - "https://docs.aws.amazon.com/vpc/latest/userguide/security-group-rules.html"
   - "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html"
+  - "https://docs.aws.amazon.com/vpc/latest/userguide/custom-network-acl.html"
   - "https://aws.amazon.com/vpc/faqs/"
   - "https://aws.amazon.com/vpc/pricing/"
 ---
@@ -152,7 +153,7 @@ This guide is provided as is, without warranty. We work hard to keep it correct 
 
     <details><summary>Model answer</summary>
 
-    Outbound rule 100: **Custom TCP**, ports `1024-65535`, destination `0.0.0.0/0`, **Allow**; AWS's network ACL examples use that range for replies. "Allow outbound 443" is tempting but wrong: replies go *to* the customer's ephemeral port, not to 443. A security group needs no such rule, because it remembers the request.
+    Outbound rule 100: **Custom TCP**, ports `1024-65535`, destination `0.0.0.0/0`, **Allow**; the client's operating system picks the reply port, and AWS suggests this range to cover every kind of client ([ephemeral ports](https://docs.aws.amazon.com/vpc/latest/userguide/custom-network-acl.html#nacl-ephemeral-ports); lesson 07.02 explains). "Allow outbound 443" is tempting but wrong: replies go *to* the customer's ephemeral port, not to 443. A security group needs no such rule, because it remembers the request.
 
     </details>
 

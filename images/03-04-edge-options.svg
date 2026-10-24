@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="680" height="469" viewBox="0 0 680 469" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="499" viewBox="0 0 680 499" role="img" aria-labelledby="t d">
 <title id="t">Edge location, Local Zone, Outposts and Wavelength Zone compared</title>
-<desc id="d">Four cards. Edge location: in many cities worldwide, beside and inside internet providers' networks; runs CloudFront, Route 53 and Global Accelerator, not your own servers; used for delivering content and answering requests close to users. Local Zone: in a large city away from the Region it extends; runs selected services such as compute, storage and databases; used for single-digit-millisecond latency for users in that city and for keeping data there. Outposts: in your own building; AWS racks or servers that AWS manages, with you providing space, power and network; used for low latency to on-site systems, local processing and keeping data on site. Wavelength Zone, drawn with a dashed border: inside a telecom carrier's 5G network, extending a Region; runs compute and storage such as EC2 instances; used for ultra-low latency to phones and other mobile devices; out of scope for CLF-C02 as a service.</desc>
+<desc id="d">Four cards. Edge location: in many cities worldwide, beside and inside internet providers' networks; runs CloudFront, Route 53 and Global Accelerator, plus features that work through them such as AWS WAF, but not your own servers; used for delivering content and answering requests close to users. Local Zone: in a large city away from the Region it extends; runs selected services such as compute, storage and databases; used for single-digit-millisecond latency for users in that city and for keeping data there. Outposts: in your own building; AWS racks or servers that AWS manages, with you providing space, power and network; used for low latency to on-site systems, local processing and keeping data on site. Wavelength Zone, drawn with a dashed border: inside a telecom carrier's 5G network, extending a Region; runs compute and storage such as EC2 instances; used for ultra-low latency to phones and other mobile devices; out of scope for CLF-C02 as a service.</desc>
 
 <style>
   svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
@@ -37,10 +37,10 @@
   .small { fill: var(--ink2); font-size: 12px; }
   .note { fill: var(--muted); font-size: 11.5px; }
 </style>
-<rect width="680" height="469" fill="var(--surface)" style="fill:var(--surface)"/>
+<rect width="680" height="499" fill="var(--surface)" style="fill:var(--surface)"/>
 <text class="title" x="16" y="28">Four ways AWS reaches beyond its Regions</text>
 <text class="sub" x="16" y="48">The question that separates them: where is it, physically?</text>
-<rect class="card" x="16" y="66" width="318" height="169" rx="8"/>
+<rect class="card" x="16" y="66" width="318" height="199" rx="8"/>
 <text class="name" x="30" y="90">Edge location</text>
 <text class="key" x="30" y="112">Where</text>
 <text class="cells" x="108" y="112.0">Many cities worldwide, beside and</text>
@@ -48,11 +48,13 @@
 <text class="cells" x="108" y="142.0">networks</text>
 <text class="key" x="30" y="165">Runs</text>
 <text class="cells" x="108" y="165.0">CloudFront, Route 53 and Global</text>
-<text class="cells" x="108" y="180.0">Accelerator. Not your own servers</text>
-<text class="key" x="30" y="203">Use it for</text>
-<text class="cells" x="108" y="203.0">Delivering content and answering</text>
-<text class="cells" x="108" y="218.0">requests close to users</text>
-<rect class="card" x="346" y="66" width="318" height="169" rx="8"/>
+<text class="cells" x="108" y="180.0">Accelerator, plus features that</text>
+<text class="cells" x="108" y="195.0">work through them, such as AWS</text>
+<text class="cells" x="108" y="210.0">WAF. Not your own servers</text>
+<text class="key" x="30" y="233">Use it for</text>
+<text class="cells" x="108" y="233.0">Delivering content and answering</text>
+<text class="cells" x="108" y="248.0">requests close to users</text>
+<rect class="card" x="346" y="66" width="318" height="199" rx="8"/>
 <text class="name" x="360" y="90">Local Zone</text>
 <text class="key" x="360" y="112">Where</text>
 <text class="cells" x="438" y="112.0">A large city away from the Region</text>
@@ -64,31 +66,31 @@
 <text class="cells" x="438" y="188.0">Single-digit-millisecond latency</text>
 <text class="cells" x="438" y="203.0">for users in that city; keeping</text>
 <text class="cells" x="438" y="218.0">data there</text>
-<rect class="card" x="16" y="247" width="318" height="188" rx="8"/>
-<text class="name" x="30" y="271">Outposts</text>
-<text class="key" x="30" y="293">Where</text>
-<text class="cells" x="108" y="293.0">Your own building: your data</text>
-<text class="cells" x="108" y="308.0">center or site</text>
-<text class="key" x="30" y="331">Runs</text>
-<text class="cells" x="108" y="331.0">AWS racks or servers that AWS</text>
-<text class="cells" x="108" y="346.0">manages; you provide space, power</text>
-<text class="cells" x="108" y="361.0">and network</text>
-<text class="key" x="30" y="384">Use it for</text>
-<text class="cells" x="108" y="384.0">Low latency to on-site systems,</text>
-<text class="cells" x="108" y="399.0">local processing, keeping data on</text>
-<text class="cells" x="108" y="414.0">site</text>
-<rect class="cardhi" x="346" y="247" width="318" height="188" rx="8"/>
-<text class="name" x="360" y="271">Wavelength Zone</text>
-<text class="key" x="360" y="293">Where</text>
-<text class="cells" x="438" y="293.0">Inside a telecom carrier's 5G</text>
-<text class="cells" x="438" y="308.0">network, extending a Region</text>
-<text class="key" x="360" y="331">Runs</text>
-<text class="cells" x="438" y="331.0">Compute and storage, such as EC2</text>
-<text class="cells" x="438" y="346.0">instances</text>
-<text class="key" x="360" y="369">Use it for</text>
-<text class="cells" x="438" y="369.0">Ultra-low latency to phones and</text>
-<text class="cells" x="438" y="384.0">other mobile devices</text>
-<text class="key" x="360" y="407">Out of scope for CLF-C02 as a service:</text>
-<text class="key" x="360" y="423">know it as a wrong answer</text>
-<text class="note" x="16" y="455">Our summary of AWS's Local Zones, Wavelength, Outposts and CloudFront pages, checked 2026-10-23.</text>
+<rect class="card" x="16" y="277" width="318" height="188" rx="8"/>
+<text class="name" x="30" y="301">Outposts</text>
+<text class="key" x="30" y="323">Where</text>
+<text class="cells" x="108" y="323.0">Your own building: your data</text>
+<text class="cells" x="108" y="338.0">center or site</text>
+<text class="key" x="30" y="361">Runs</text>
+<text class="cells" x="108" y="361.0">AWS racks or servers that AWS</text>
+<text class="cells" x="108" y="376.0">manages; you provide space, power</text>
+<text class="cells" x="108" y="391.0">and network</text>
+<text class="key" x="30" y="414">Use it for</text>
+<text class="cells" x="108" y="414.0">Low latency to on-site systems,</text>
+<text class="cells" x="108" y="429.0">local processing, keeping data on</text>
+<text class="cells" x="108" y="444.0">site</text>
+<rect class="cardhi" x="346" y="277" width="318" height="188" rx="8"/>
+<text class="name" x="360" y="301">Wavelength Zone</text>
+<text class="key" x="360" y="323">Where</text>
+<text class="cells" x="438" y="323.0">Inside a telecom carrier's 5G</text>
+<text class="cells" x="438" y="338.0">network, extending a Region</text>
+<text class="key" x="360" y="361">Runs</text>
+<text class="cells" x="438" y="361.0">Compute and storage, such as EC2</text>
+<text class="cells" x="438" y="376.0">instances</text>
+<text class="key" x="360" y="399">Use it for</text>
+<text class="cells" x="438" y="399.0">Ultra-low latency to phones and</text>
+<text class="cells" x="438" y="414.0">other mobile devices</text>
+<text class="key" x="360" y="437">Out of scope for CLF-C02 as a service:</text>
+<text class="key" x="360" y="453">know it as a wrong answer</text>
+<text class="note" x="16" y="485">Our summary of AWS's Local Zones, Wavelength, Outposts and CloudFront pages, checked 2026-10-24.</text>
 </svg>

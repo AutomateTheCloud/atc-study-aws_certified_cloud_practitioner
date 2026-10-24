@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="680" height="300" viewBox="0 0 680 300" role="img" aria-labelledby="t d">
 <title id="t">The parts of the instance type name m7g.large</title>
-<desc id="d">The name m7g.large in large letters, with four labeled parts. m: the family, M for general purpose. 7: the generation, 7th, where a higher number is newer. g: the variant, extra letters, here an AWS Graviton (Arm) processor. large, after the dot: the size, how much of the family's hardware.</desc>
+<desc id="d">The name m7g.large in large letters, with four labeled parts. m: the series, general purpose. 7: the generation, 7th, where a higher number is newer. g: an option, extra letters, here an AWS Graviton (Arm) processor. large, after the dot: the size, how much of the family's hardware. Together, m7g is the family.</desc>
 
 <style>
   svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
@@ -38,13 +38,13 @@
 </style>
 <rect width="680" height="300" fill="var(--surface)" style="fill:var(--surface)"/>
 <text class="title" x="16" y="28">Reading an instance type name</text>
-<text class="sub" x="16" y="48">Before the dot: the family, generation and variant. After the dot: the size.</text>
+<text class="sub" x="16" y="48">Before the dot: the family, made of series, generation and options. After the dot: the size.</text>
 <text class="big" x="269.0" y="132" text-anchor="middle" style="fill:var(--muted)">.</text>
 <text class="big" x="167.0" y="132" text-anchor="middle" textLength="30">m</text>
 <path class="brace" d="M153.0,146 L153.0,154 L181.0,154 L181.0,146"/>
 <line class="brace" x1="167.0" y1="154" x2="100.0" y2="190"/>
-<text class="cellt" x="40" y="208">Family</text>
-<text class="small" x="40" y="226.0">M: general purpose</text>
+<text class="cellt" x="40" y="208">Series</text>
+<text class="small" x="40" y="226.0">m: general purpose</text>
 <text class="big" x="201.0" y="132" text-anchor="middle" textLength="30">7</text>
 <path class="brace" d="M187.0,146 L187.0,154 L215.0,154 L215.0,146"/>
 <line class="brace" x1="201.0" y1="154" x2="240.0" y2="190"/>
@@ -54,7 +54,7 @@
 <text class="big" x="235.0" y="132" text-anchor="middle" textLength="30">g</text>
 <path class="brace" d="M221.0,146 L221.0,154 L249.0,154 L249.0,146"/>
 <line class="brace" x1="235.0" y1="154" x2="390.0" y2="190"/>
-<text class="cellt" x="330" y="208">Variant</text>
+<text class="cellt" x="330" y="208">Option</text>
 <text class="small" x="330" y="226.0">extra letters; here an</text>
 <text class="small" x="330" y="241.0">AWS Graviton (Arm)</text>
 <text class="small" x="330" y="256.0">processor</text>
@@ -64,5 +64,5 @@
 <text class="cellt" x="500" y="208">Size</text>
 <text class="small" x="500" y="226.0">how much of the family's</text>
 <text class="small" x="500" y="241.0">hardware</text>
-<text class="note" x="16" y="286">Sources: Savings Plans User Guide (family and size); EC2 Instance Types Guide. Checked 2026-10-24.</text>
+<text class="note" x="16" y="286">Source: EC2 Instance Types Guide, naming conventions. Checked 2026-10-24.</text>
 </svg>

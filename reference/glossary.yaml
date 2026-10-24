@@ -40,9 +40,9 @@
 
 - term: access key
   definition: >-
-    A long-term credential that lets a program act as an IAM user, or the root user, without a
-    password or MFA. It has an access key ID and a secret access key; avoid it wherever a role or
-    keyless sign-in will do.
+    A long-term credential, an access key ID plus a secret access key, letting a program act as an
+    IAM user or the root user without a password or MFA. Avoid it where a role or keyless sign-in
+    works.
   taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
   module: "04"
 
@@ -87,8 +87,8 @@
 - term: Amazon API Gateway
   definition: >-
     A service for publishing APIs at any scale with no servers of your own. It receives each call,
-    checks who is calling and how often, and passes it to the code behind it, such as a Lambda
-    function, with caching, stages and monitoring.
+    checks who is calling and how often, and passes it to the code behind it, with caching, stages
+    and monitoring.
   taught_in: guide/07-connecting-it/03-names-and-the-edge.md
   confused_with: [Application Load Balancer, Amazon CloudFront]
   not_to_confuse: >-
@@ -99,7 +99,7 @@
 - term: Amazon Aurora
   definition: >-
     AWS's own relational database engine, compatible with MySQL and PostgreSQL and managed through
-    Amazon RDS. Its storage grows by itself and is copied across several Availability Zones, its
+    Amazon RDS. Storage grows automatically and is copied across several Availability Zones, its
     replicas can be the automatic failover target, and it has a serverless option.
   taught_in: guide/05-storing-data/05-managed-or-self-managed-databases.md
   also_in: [guide/05-storing-data/06-choosing-a-database.md]
@@ -112,9 +112,9 @@
 
 - term: Amazon CloudFront
   definition: >-
-    AWS's content delivery network. Through a distribution, it serves cached copies of content from
-    the edge location nearest each user and fetches from your origin over AWS's network when it has
-    no fresh copy; origin access control lets it read a bucket that stays private.
+    AWS's content delivery network. A distribution serves cached copies from the edge location
+    nearest each user, fetching from your origin over AWS's network when it has no fresh copy;
+    origin access control lets it read a private bucket.
   taught_in: guide/07-connecting-it/03-names-and-the-edge.md
   also_in: [guide/03-aws-around-the-world/04-the-edge.md]
   confused_with: [Amazon Route 53, AWS Global Accelerator]
@@ -148,10 +148,9 @@
 
 - term: Amazon DynamoDB
   definition: >-
-    AWS's main NoSQL database: serverless and fully managed, with key-value and document models and
-    single-digit millisecond responses at any scale. You store items in tables and fetch them by
-    key, with no joins, servers or maintenance windows, and it copies data across several
-    Availability Zones by default.
+    AWS's main NoSQL database: serverless, fully managed, key-value and document, with single-digit
+    millisecond responses at any scale. You fetch items by key, with no joins or maintenance
+    windows; data is copied across several Availability Zones by default.
   taught_in: guide/05-storing-data/06-choosing-a-database.md
   also_in: [guide/05-storing-data/08-lab-06-a-dynamodb-table.md, guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md]
   confused_with: [Amazon RDS, Amazon ElastiCache, Amazon DocumentDB]
@@ -163,9 +162,9 @@
 
 - term: Amazon EBS
   definition: >-
-    Amazon Elastic Block Store, AWS's block storage: volumes you attach to an EC2 instance in the
-    same Availability Zone and use like a local drive. A volume's data is copied within that one
-    Availability Zone, persists when the instance stops, and is backed up with snapshots.
+    Amazon Elastic Block Store, AWS's block storage: volumes that attach to an EC2 instance in their
+    Availability Zone like a local drive. Data is copied within that zone, persists when the
+    instance stops, and is backed up with snapshots.
   taught_in: guide/05-storing-data/01-block-file-object.md
   also_in: [guide/05-storing-data/04-hybrid-storage-and-backup.md]
   confused_with: [instance store, Amazon EFS]
@@ -177,8 +176,8 @@
 - term: Amazon EC2
   definition: >-
     Amazon Elastic Compute Cloud, AWS's service for renting virtual servers, called instances, that
-    you start in minutes and pay for while they run. You choose the image, the instance type, the
-    storage, the network and how you sign in, and you run the operating system.
+    start in minutes and are billed while running. You choose the image, instance type, storage,
+    network and how you sign in, and run the operating system.
   taught_in: guide/06-running-applications/01-ec2.md
   also_in: [guide/06-running-applications/06-lab-08-launch-and-terminate-an-instance.md, guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md]
   confused_with: [AWS Elastic Beanstalk, Amazon Lightsail]
@@ -189,10 +188,9 @@
 
 - term: Amazon EC2 Auto Scaling
   definition: >-
-    The service that keeps the number of EC2 instances in a group between a minimum and a maximum,
-    launches or terminates instances as demand changes, replaces unhealthy ones and spreads them
-    across Availability Zones. It is how EC2 gets elasticity, at no extra charge; the exam guide
-    lists the related AWS Auto Scaling instead.
+    AWS's service for sizing EC2 instance groups to demand, between a minimum and maximum, replacing
+    unhealthy instances and spreading them across Availability Zones. It gives EC2 elasticity at no
+    extra charge; the exam guide lists AWS Auto Scaling instead.
   taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
   also_in: [guide/06-running-applications/07-sim-elasticity-with-auto-scaling.md]
   confused_with: [Elastic Load Balancing, AWS Auto Scaling]
@@ -227,10 +225,9 @@
 
 - term: Amazon EFS
   definition: >-
-    Amazon Elastic File System, AWS's own elastic file system for Linux, shared over NFS by many EC2
-    instances, containers, Lambda functions and on-premises servers at once. It grows and shrinks
-    with your files; a Regional file system stores data across several Availability Zones, a One
-    Zone file system in one.
+    Amazon Elastic File System, AWS's own Linux file system, shared over NFS by EC2 instances,
+    containers, Lambda functions and on-premises servers. It grows and shrinks automatically;
+    Regional file systems span several Availability Zones, One Zone ones use one.
   taught_in: guide/05-storing-data/01-block-file-object.md
   confused_with: [Amazon FSx, Amazon EBS]
   not_to_confuse: >-
@@ -252,9 +249,9 @@
 
 - term: Amazon ElastiCache
   definition: >-
-    AWS's in-memory service: usually a cache that answers repeated reads in microseconds in front of
-    a slower database, and also a store for short-lived fast data such as sessions and leaderboards.
-    Its engines are Valkey, Memcached and Redis OSS, and it runs serverless or on nodes you choose.
+    AWS's in-memory service: usually a cache answering repeated reads in microseconds in front of
+    slower databases, and a store for short-lived data like sessions. It runs Valkey, Memcached or
+    Redis OSS, serverless or on nodes you choose.
   taught_in: guide/05-storing-data/06-choosing-a-database.md
   confused_with: [Amazon DynamoDB, DynamoDB Accelerator]
   not_to_confuse: >-
@@ -264,16 +261,15 @@
 
 - term: Amazon FSx
   definition: >-
-    A family of fully managed, well-known third-party file systems: FSx for Windows File Server (SMB
-    shares joined to Microsoft Active Directory), FSx for NetApp ONTAP, FSx for OpenZFS and FSx for
-    Lustre. You pick the one that matches what you run today, so applications move without changes;
-    FSx for Lustre is outside the exam's scope.
+    A family of fully managed third-party file systems: FSx for Windows File Server (SMB shares
+    joined to Active Directory), NetApp ONTAP, OpenZFS and Lustre. Pick the one you run today;
+    applications move unchanged. Lustre is outside exam scope.
   taught_in: guide/05-storing-data/01-block-file-object.md
   confused_with: [Amazon EFS]
   not_to_confuse: >-
     FSx keeps a file system you already know, and FSx for Windows File Server is the answer for
     Windows shared folders; EFS is AWS's own NFS file system for Linux, which AWS doesn't support on
-    Windows-based EC2 instances.
+    Windows EC2 instances.
   module: "05"
 
 - term: Amazon Glacier
@@ -302,10 +298,9 @@
 
 - term: Amazon Lightsail
   definition: >-
-    AWS's simplest way to put a website or small app online: a plan that bundles a virtual server,
-    storage, a static IP address and a data transfer allowance into one monthly price, often
-    started from a ready-made image such as WordPress. An instance is billed while it exists, even
-    when stopped.
+    AWS's simplest way to put a website or small app online: one monthly price bundling a virtual
+    server, storage, static IP address and data transfer allowance, often started from a ready-made
+    image. Instances are billed even when stopped.
   taught_in: guide/06-running-applications/04-simpler-paths.md
   confused_with: [Amazon EC2, AWS Elastic Beanstalk]
   not_to_confuse: >-
@@ -340,10 +335,10 @@
 
 - term: Amazon RDS
   definition: >-
-    Amazon Relational Database Service, AWS's managed service for relational databases: AWS installs
-    and patches the operating system and database engine, runs backups and provides failover, while
-    you choose the settings, control access and tune queries. AWS recommends it as the default for
-    most relational databases; it offers several engines plus Amazon Aurora.
+    Amazon Relational Database Service: managed relational databases. AWS installs and patches the
+    operating system and engine, handles backups and failover; you choose settings, control access
+    and tune queries. AWS recommends it for most relational databases, with several engines plus
+    Aurora.
   taught_in: guide/05-storing-data/05-managed-or-self-managed-databases.md
   also_in: [guide/05-storing-data/04-hybrid-storage-and-backup.md, guide/05-storing-data/06-choosing-a-database.md, guide/05-storing-data/10-sim-multi-az-vs-read-replica.md, guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md]
   confused_with: [Amazon Aurora, Amazon DynamoDB, Amazon Redshift]
@@ -355,9 +350,9 @@
 
 - term: Amazon Redshift
   definition: >-
-    AWS's fully managed data warehouse, which runs SQL analysis over very large amounts of data
-    gathered from many sources, on clusters you size or serverless. The exam guide lists it under
-    analytics; it isn't the database that runs a website.
+    AWS's fully managed data warehouse, running SQL analysis over very large amounts of data from
+    many sources, on clusters you size or serverless. The exam guide lists it under analytics; it
+    isn't the database that runs a website.
   taught_in: guide/05-storing-data/06-choosing-a-database.md
   confused_with: [Amazon RDS, read replica]
   not_to_confuse: >-
@@ -398,9 +393,9 @@
 
 - term: Amazon VPC
   definition: >-
-    Amazon Virtual Private Cloud, which gives your account its own virtual network in one Region,
-    isolated from everyone else's. You choose its address range, subnets, route tables and gateways;
-    the VPC itself costs nothing, though some parts and data transfer do.
+    Amazon Virtual Private Cloud: your account's own virtual network in one Region, isolated from
+    everyone else's. You choose its address range, subnets, route tables and gateways; the VPC
+    itself costs nothing, though some parts and data transfer do.
   taught_in: guide/07-connecting-it/01-your-own-network.md
   also_in: [guide/07-connecting-it/05-lab-09-build-a-small-vpc.md]
   module: "07"
@@ -530,8 +525,8 @@
 - term: auto scaling
   definition: >-
     A feature that watches demand and adds or removes servers by rules you set; the usual way AWS
-    delivers elasticity. The exam guide's service list names AWS Auto Scaling, while the service
-    that adds and removes servers is Amazon EC2 Auto Scaling.
+    delivers elasticity. The exam guide lists AWS Auto Scaling, but the service that adds and
+    removes servers is Amazon EC2 Auto Scaling.
   taught_in: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
   also_in: [guide/06-running-applications/02-auto-scaling-and-load-balancers.md]
   confused_with: [load balancer]
@@ -551,16 +546,16 @@
 
 - term: automated backup
   definition: >-
-    Amazon RDS's daily snapshot plus a log of every change, which lets you restore the database to
-    any second within the retention period you set. Automated backups are deleted with the database,
-    and every restore creates a new database.
+    Amazon RDS's daily snapshot plus a log of every change, for restoring to any second within the
+    retention period you set. They're deleted with the database unless you retain them; every
+    restore creates a new database.
   taught_in: guide/05-storing-data/04-hybrid-storage-and-backup.md
   also_in: [guide/05-storing-data/05-managed-or-self-managed-databases.md, guide/05-storing-data/10-sim-multi-az-vs-read-replica.md]
   confused_with: [snapshot, Multi-AZ deployment]
   not_to_confuse: >-
-    Automated backups disappear when the database is deleted, while a manual snapshot stays until
-    you delete it; and unlike a Multi-AZ standby, a backup stops changing, so it can undo a mistaken
-    delete.
+    Automated backups go with a deleted database unless retained, and then last only until retention
+    ends, while a manual snapshot stays until you delete it; unlike a Multi-AZ standby, a backup can
+    undo a mistaken delete.
   module: "05"
 
 - term: automation
@@ -594,7 +589,7 @@
   definition: >-
     The service the exam guide lists for auto scaling: it sets up scaling for several kinds of
     resource at once, such as groups of EC2 instances and DynamoDB tables. Groups of EC2 instances
-    themselves are run by Amazon EC2 Auto Scaling.
+    are run by Amazon EC2 Auto Scaling.
   taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
   confused_with: [Amazon EC2 Auto Scaling]
   not_to_confuse: >-
@@ -604,9 +599,9 @@
 
 - term: AWS Backup
   definition: >-
-    An AWS service that runs backups for many AWS services, and some on-premises systems, from one
-    backup plan, across accounts. It copies backups to other Regions or accounts, keeps them
-    encrypted in backup vaults that Vault Lock can protect, and reports that the backups happen.
+    A service backing up many AWS services, and some on-premises systems, across accounts from one
+    backup plan. It copies backups across Regions or accounts, keeps them encrypted in backup vaults
+    lockable with Vault Lock, and reports that backups happen.
   taught_in: guide/05-storing-data/04-hybrid-storage-and-backup.md
   also_in: [guide/05-storing-data/02-s3-in-practice.md, guide/05-storing-data/05-managed-or-self-managed-databases.md]
   confused_with: [AWS Elastic Disaster Recovery, snapshot, Tape Gateway]
@@ -618,9 +613,9 @@
 
 - term: AWS Batch
   definition: >-
-    A service that runs large numbers of batch jobs, each packaged as a container, from a job queue.
-    It launches EC2 or Fargate compute while jobs wait and removes it when the queue is empty, with
-    no extra charge beyond that compute.
+    A service that runs many batch jobs, each packaged as a container, from a job queue. It launches
+    EC2 or Fargate compute while jobs wait and removes it when the queue is empty, with no extra
+    charge beyond that compute.
   taught_in: guide/06-running-applications/04-simpler-paths.md
   confused_with: [AWS Lambda]
   not_to_confuse: >-
@@ -650,9 +645,9 @@
 - term: AWS Database Migration Service
   abbreviation: AWS DMS
   definition: >-
-    An AWS service that moves a database's data into AWS, or between on-premises and cloud
-    databases, while the source keeps running. It copies the data once, then can keep copying every
-    change until you switch over, or keep both in step for as long as you like.
+    A service that moves database data into AWS, or between on-premises and cloud databases, while
+    the source keeps running. It copies the data once, then can copy every change until you switch
+    over, or keep both in step indefinitely.
   taught_in: guide/05-storing-data/06-choosing-a-database.md
   confused_with: [AWS Schema Conversion Tool]
   not_to_confuse: >-
@@ -662,9 +657,9 @@
 
 - term: AWS DataSync
   definition: >-
-    An AWS service that moves large amounts of data over the network, between on-premises storage,
-    other clouds and AWS storage such as S3, EFS and FSx. It is AWS's current answer for moving data
-    once, online, though the exam guide's service list doesn't name it.
+    A service moving large amounts of data over the network between on-premises storage, other
+    clouds and AWS storage such as S3, EFS and FSx. AWS's current answer for one-time online moves,
+    though the exam guide omits it.
   taught_in: guide/05-storing-data/04-hybrid-storage-and-backup.md
   confused_with: [AWS Storage Gateway, AWS Snowball]
   not_to_confuse: >-
@@ -674,10 +669,9 @@
 
 - term: AWS Direct Connect
   definition: >-
-    A dedicated network connection from your network to AWS at a Direct Connect location, whose
-    traffic never crosses the public internet, for consistent performance and high bandwidth. It is
-    private but not encrypted unless you add MACsec or a VPN, and its physical setup takes longer
-    than a VPN's.
+    A dedicated connection from your network to AWS at a Direct Connect location, off the public
+    internet, for consistent performance and high bandwidth; private but unencrypted without MACsec
+    or a VPN, and slower to set up than a VPN.
   taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
   confused_with: [AWS Site-to-Site VPN]
   not_to_confuse: >-
@@ -699,10 +693,9 @@
 
 - term: AWS Elastic Beanstalk
   definition: >-
-    A service that takes your application's code and builds and runs the setup for it in your
-    account: EC2 instances or an EKS cluster, load balancing, Auto Scaling and health monitoring.
-    It is AWS's platform-as-a-service offering, with no extra charge beyond the resources it
-    creates; it is not serverless.
+    AWS's platform as a service: it builds and runs the setup for your code in your account (EC2
+    instances or an EKS cluster, load balancing, Auto Scaling, health monitoring). It costs nothing
+    beyond those resources and isn't serverless.
   taught_in: guide/06-running-applications/04-simpler-paths.md
   confused_with: [Amazon EC2, Amazon Lightsail, AWS Lambda]
   not_to_confuse: >-
@@ -714,10 +707,9 @@
 - term: AWS Elastic Disaster Recovery
   abbreviation: AWS DRS
   definition: >-
-    An AWS service that copies every change on whole servers' disks, continuously, to a low-cost
-    staging area in an AWS Region, so you can launch recovery servers there within minutes. It
-    protects physical servers, virtual machines, servers in other clouds and EC2 instances, and
-    works as a pilot light.
+    A service continuously replicating whole servers' disks to a low-cost staging area in an AWS
+    Region, ready to launch recovery servers within minutes. It protects physical servers, virtual
+    machines, other clouds and EC2 instances, working as a pilot light.
   taught_in: guide/05-storing-data/04-hybrid-storage-and-backup.md
   confused_with: [AWS Backup, snapshot]
   not_to_confuse: >-
@@ -734,9 +726,9 @@
 
 - term: AWS Fargate
   definition: >-
-    Serverless compute for containers, used by Amazon ECS or Amazon EKS: you say how much CPU and
-    memory each task needs, and AWS supplies, isolates and patches the servers. It runs containers
-    for as long as a task runs, but has no GPUs.
+    Serverless compute for containers, used by Amazon ECS or Amazon EKS: you set each task's CPU and
+    memory, and AWS supplies, isolates and patches the servers. It runs containers as long as a task
+    runs, but has no GPUs.
   taught_in: guide/06-running-applications/03-containers-and-serverless.md
   confused_with: [Amazon ECS, Amazon EKS, AWS Lambda]
   not_to_confuse: >-
@@ -747,10 +739,9 @@
 
 - term: AWS Global Accelerator
   definition: >-
-    A service that gives an application fixed IP addresses announced by anycast from AWS's edge
-    locations, so users' traffic enters AWS's network at the nearest edge and travels on it to the
-    best healthy endpoint in a Region. It caches nothing, suits any TCP or UDP traffic, and can
-    switch Regions without waiting for DNS.
+    A service whose fixed anycast IP addresses bring users' traffic onto AWS's network at the
+    nearest edge, then to the best healthy Regional endpoint. It caches nothing, handles any TCP or
+    UDP traffic, and switches Regions without DNS delays.
   taught_in: guide/07-connecting-it/03-names-and-the-edge.md
   also_in: [guide/03-aws-around-the-world/04-the-edge.md]
   confused_with: [Amazon CloudFront]
@@ -794,9 +785,9 @@
 
 - term: AWS Lambda
   definition: >-
-    AWS's serverless service that runs your code, as functions, each time an event triggers it, with
+    AWS's serverless service running your code, as functions, each time an event triggers it, with
     no servers to manage. It suits short, event-driven work, scales by running copies side by side,
-    and bills per request and per GB-second.
+    and bills per request and GB-second.
   taught_in: guide/06-running-applications/03-containers-and-serverless.md
   also_in: [guide/06-running-applications/05-lab-07-a-lambda-function.md, guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md]
   confused_with: [AWS Fargate, AWS Batch]
@@ -818,9 +809,9 @@
 
 - term: AWS Outposts
   definition: >-
-    AWS hardware, services and tools installed in your own data center or site, which AWS operates
-    and maintains as an extension of a Region; you provide the building, power and network
-    connection. It suits hybrid systems whose data must stay on the premises.
+    AWS hardware, services and tools in your own data center or site, operated and maintained by AWS
+    as an extension of a Region, for hybrid systems whose data must stay on premises. You provide
+    the building, power and network connection.
   taught_in: guide/03-aws-around-the-world/04-the-edge.md
   also_in: [guide/06-running-applications/04-simpler-paths.md]
   confused_with: [Local Zone]
@@ -830,10 +821,9 @@
 
 - term: AWS PrivateLink
   definition: >-
-    A way to reach one service privately from a VPC, through an interface endpoint with a private
-    address in your subnet, without joining networks or using an internet gateway, NAT gateway or
-    public address. The service can be an AWS service, a partner's product or another team's
-    endpoint service.
+    Private access from a VPC to one service, from AWS, a partner or another team, through an
+    interface endpoint with a private address in your subnet, without joining networks or using an
+    internet gateway, NAT gateway or public address.
   taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
   also_in: [guide/07-connecting-it/01-your-own-network.md]
   confused_with: [VPC peering, AWS Transit Gateway]
@@ -880,16 +870,16 @@
   taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
   confused_with: [AWS Direct Connect, AWS Client VPN]
   not_to_confuse: >-
-    A Site-to-Site VPN is quick and encrypted but shares the internet's path, while Direct Connect is
-    a private line that takes longer to set up; and Site-to-Site joins a network, while Client VPN
-    joins one person's device.
+    Site-to-Site VPN is quick and encrypted but shares the internet's path, while Direct Connect is
+    a private line taking longer to set up; Site-to-Site joins a network, while Client VPN joins one
+    person's device.
   module: "07"
 
 - term: AWS Snowball
   definition: >-
-    A rugged storage device AWS shipped to customers for moving large amounts of data into AWS. It
-    is closed to new customers and reaching the end of its support, and the current exam guide no
-    longer lists it, so treat it as a wrong answer; see the lesson for the dates.
+    A rugged storage device AWS shipped for moving large amounts of data into AWS. Closed to new
+    customers, nearing end of support and dropped from the current exam guide: treat it as a wrong
+    answer (dates in the lesson).
   taught_in: guide/05-storing-data/04-hybrid-storage-and-backup.md
   confused_with: [AWS DataSync]
   not_to_confuse: >-
@@ -899,10 +889,9 @@
 
 - term: AWS Storage Gateway
   definition: >-
-    A hybrid storage service that you run on premises, usually as a virtual machine, so software in
-    your building keeps using storage as it always has while the data is stored in AWS. It keeps
-    frequently used data in a local cache and sends changes to AWS; its types are S3 File Gateway,
-    Volume Gateway and Tape Gateway.
+    A hybrid storage service, usually a virtual machine on premises, letting local software use
+    storage as before, with the data in AWS. It caches frequently used data locally and sends
+    changes to AWS. Types: S3 File, Volume and Tape Gateway.
   taught_in: guide/05-storing-data/04-hybrid-storage-and-backup.md
   confused_with: [AWS DataSync, AWS Backup]
   not_to_confuse: >-
@@ -913,8 +902,8 @@
 - term: AWS Transit Gateway
   definition: >-
     A hub that VPCs, VPN connections and Direct Connect links each attach to once, with route tables
-    that decide which networks reach which. It replaces a tangle of peering connections when there
-    are many networks, and bills per attachment-hour and per GB.
+    deciding which networks reach which. It replaces a tangle of peering connections between many
+    networks, and bills per attachment-hour and per GB.
   taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
   confused_with: [VPC peering, AWS PrivateLink]
   not_to_confuse: >-
@@ -1144,7 +1133,7 @@
 - term: CIDR block
   definition: >-
     A way to write a range of IP addresses, such as 10.0.0.0/16 for every address starting 10.0. A
-    smaller number after the slash means a bigger range, and 0.0.0.0/0 means every address.
+    smaller number after the slash means a bigger range; 0.0.0.0/0 means every address.
   taught_in: guide/07-connecting-it/01-your-own-network.md
   also_in: [guide/07-connecting-it/05-lab-09-build-a-small-vpc.md]
   module: "07"
@@ -1267,9 +1256,9 @@
 
 - term: container
   definition: >-
-    A standard package that holds an application's code together with the libraries and settings it
-    depends on, so it runs the same on a laptop or on AWS. It is a package of software, not a place
-    to store data like an S3 bucket.
+    A standard package of an application's code with the libraries and settings it depends on, so it
+    runs the same on a laptop or on AWS. It is software, not a place to store data like an S3
+    bucket.
   taught_in: guide/06-running-applications/03-containers-and-serverless.md
   module: "06"
 
@@ -1661,9 +1650,9 @@
 
 - term: EBS snapshot
   definition: >-
-    A point-in-time copy of an EBS volume that exists on its own and outlives the volume. You can
-    create new volumes from it and copy it to another Availability Zone, Region or account; it is
-    billed separately.
+    A point-in-time copy of an EBS volume that exists on its own and outlives the volume. Stored
+    Regionally, it can create volumes in any AZ of its Region and be copied to another Region or
+    account; billed separately.
   taught_in: guide/05-storing-data/01-block-file-object.md
   also_in: [guide/05-storing-data/04-hybrid-storage-and-backup.md]
   module: "05"
@@ -1684,9 +1673,9 @@
 
 - term: edge location
   definition: >-
-    A small AWS site in a city, close to internet users and separate from the Regions, that runs
-    services which deliver content and traffic close to users, such as Amazon CloudFront, Amazon
-    Route 53 and AWS Global Accelerator. AWS also calls these sites points of presence (PoPs).
+    A small AWS site in a city, separate from the Regions, running services that deliver content and
+    traffic close to internet users, such as Amazon CloudFront, Amazon Route 53 and AWS Global
+    Accelerator; also called a point of presence (PoP).
   taught_in: guide/03-aws-around-the-world/04-the-edge.md
   also_in: [guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md, guide/07-connecting-it/03-names-and-the-edge.md]
   confused_with: [Region, Availability Zone, Local Zone]
@@ -1718,9 +1707,9 @@
 - term: Elastic Load Balancing
   abbreviation: ELB
   definition: >-
-    AWS's load balancing service: one front door that spreads incoming traffic across healthy
-    targets, such as EC2 instances, containers and IP addresses, in one or more Availability Zones.
-    AWS scales the load balancer itself, and it bills by the hour.
+    AWS's load balancing service: one front door spreading incoming traffic across healthy targets,
+    such as EC2 instances, containers and IP addresses, in one or more Availability Zones. AWS
+    scales the load balancer itself, and it bills by the hour.
   taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
   also_in: [guide/06-running-applications/07-sim-elasticity-with-auto-scaling.md]
   confused_with: [Amazon EC2 Auto Scaling]
@@ -1834,9 +1823,9 @@
 
 - term: expiration action
   definition: >-
-    A lifecycle action that deletes objects a number of days after they were created, for example at
-    the end of a retention period. In a versioned bucket, expiring the current version only adds a
-    delete marker; removing noncurrent versions takes its own action.
+    A lifecycle action that deletes objects a number of days after creation, such as when a
+    retention period ends. In a versioned bucket, expiring the current version only adds a delete
+    marker; removing noncurrent versions takes its own action.
   taught_in: guide/05-storing-data/03-storage-classes-and-lifecycle.md
   also_in: [guide/05-storing-data/07-lab-05-versions-and-lifecycle.md, guide/05-storing-data/09-sim-lifecycle-cost-timeline.md]
   confused_with: [transition action]
@@ -1925,7 +1914,8 @@
 - term: function (AWS Lambda)
   definition: >-
     The code you upload to AWS Lambda, as a .zip file or a container image, which runs each time an
-    event triggers it. It keeps no state between runs.
+    event triggers it. Don't count on state between runs: a reused environment may keep data, but
+    nothing guarantees it.
   taught_in: guide/06-running-applications/03-containers-and-serverless.md
   also_in: [guide/06-running-applications/05-lab-07-a-lambda-function.md]
   module: "06"
@@ -2060,9 +2050,9 @@
 
 - term: health check
   definition: >-
-    A regular test of whether a server or endpoint is working, meaning answering correctly, not
-    free of viruses. Load balancers send traffic only to targets that pass, Auto Scaling replaces
-    instances that fail, and Route 53 can stop answering with an endpoint that fails.
+    A regular test of whether a server or endpoint is answering correctly. Load balancers send
+    traffic only to passing targets; Auto Scaling replaces failing instances, using the load
+    balancer's checks only once they're turned on for the group.
   taught_in: guide/06-running-applications/02-auto-scaling-and-load-balancers.md
   also_in: [guide/07-connecting-it/03-names-and-the-edge.md]
   module: "06"
@@ -2207,8 +2197,8 @@
 - term: IAM role
   definition: >-
     A set of permissions not tied to one person, with no password or keys of its own. Whoever you
-    allow can assume it and gets temporary credentials for a session; programs on AWS, other
-    accounts and federated people reach an account this way.
+    allow can assume it for temporary session credentials; programs on AWS, other accounts and
+    federated people reach an account this way.
   taught_in: guide/04-shared-responsibility-and-access/03-identities.md
   also_in: [guide/04-shared-responsibility-and-access/05-credentials-and-federation.md]
   confused_with: [IAM user, IAM user group]
@@ -2365,14 +2355,15 @@
 
 - term: instance family
   definition: >-
-    A group of EC2 instance types built for the same kind of work, such as general purpose or memory
-    optimized. You choose the family from the workload's bottleneck, then the size inside it.
+    In AWS's naming, the part of an instance type's name before the dot, such as m7g, whose sizes
+    share one balance of hardware. AWS sorts families into categories, such as memory optimized;
+    choose the category from the bottleneck.
   taught_in: guide/06-running-applications/01-ec2.md
   exam_name: Amazon EC2 instance types
   confused_with: [instance type]
   not_to_confuse: >-
-    A family is a group of types with the same balance of resources; an instance type is one size
-    in that family.
+    A family, such as m7g, is a group of types with the same balance of resources; an instance type,
+    such as m7g.large, is one size in that family.
   module: "06"
 
 - term: instance state
@@ -2385,9 +2376,9 @@
 
 - term: instance store
   definition: >-
-    Temporary block storage on disks physically attached to the computer that runs an EC2 instance,
-    included in the instance's price; not every instance type has it. Its data survives a reboot but
-    is erased by a stop, hibernation or termination, so use it only for caches and scratch data.
+    Temporary block storage on disks physically attached to an EC2 instance's host, included in its
+    price; not every instance type has it. Data survives a reboot, not a stop, hibernation or
+    termination: use only for caches and scratch data.
   taught_in: guide/05-storing-data/01-block-file-object.md
   confused_with: [Amazon EBS]
   not_to_confuse: >-
@@ -2398,7 +2389,8 @@
 - term: instance type
   definition: >-
     A named size of EC2 hardware, such as m7g.large: its virtual processors, memory, storage and
-    network speed. The name gives the family and generation before the dot and the size after it.
+    network speed. Before the dot, the name gives the family (series, generation and options); after
+    it, the size.
   taught_in: guide/06-running-applications/01-ec2.md
   confused_with: [purchasing option, Amazon Machine Image]
   not_to_confuse: >-
@@ -2415,9 +2407,9 @@
 
 - term: interface endpoint
   definition: >-
-    A VPC endpoint, built on AWS PrivateLink, that puts a network interface with a private IP address
-    in your subnet to reach one of many AWS services, partners' services or services other accounts
-    publish. It bills by the hour in each Availability Zone, plus per GB.
+    A VPC endpoint, built on AWS PrivateLink, that puts a network interface with a private IP
+    address in your subnet to reach one of many AWS, partner or other accounts' services. Billed
+    hourly in each Availability Zone, plus per GB.
   taught_in: guide/07-connecting-it/01-your-own-network.md
   also_in: [guide/07-connecting-it/04-connecting-networks-and-offices.md]
   confused_with: [gateway endpoint]
@@ -2615,9 +2607,9 @@
 
 - term: Local Zone
   definition: >-
-    An extension of a Region in a large city that runs selected services, such as compute and
-    storage, for users who need single-digit-millisecond latency or data that must stay in that
-    city. You turn one on before using it.
+    An extension of a Region in a large city running selected services, such as compute and storage,
+    for users who need single-digit-millisecond latency or data that must stay in that city. You
+    turn one on before using it.
   taught_in: guide/03-aws-around-the-world/04-the-edge.md
   confused_with: [edge location, AWS Outposts, Wavelength Zone]
   not_to_confuse: >-
@@ -2807,9 +2799,9 @@
 
 - term: Multi-AZ deployment
   definition: >-
-    An Amazon RDS setup that keeps a standby copy of the database in a second Availability Zone,
-    updated by synchronous replication, which serves no queries and takes over automatically if the
-    primary fails. It is high availability, not a backup: a mistaken delete reaches the standby too.
+    An Amazon RDS setup with a synchronously replicated standby in a second Availability Zone that
+    serves no queries and takes over automatically if the primary fails. It is high availability,
+    not a backup: a mistaken delete reaches the standby too.
   taught_in: guide/05-storing-data/05-managed-or-self-managed-databases.md
   also_in: [guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md, guide/05-storing-data/10-sim-multi-az-vs-read-replica.md]
   confused_with: [multi-Region, read replica]
@@ -2853,23 +2845,23 @@
 
 - term: NAT gateway
   definition: >-
-    A part, placed in a public subnet with an Elastic IP address, that lets servers in private
-    subnets start connections out to the internet while nobody outside can start one in. It is
-    charged for every hour it exists and every GB it processes (see the lesson).
+    Lets servers in private subnets connect out to the internet while outsiders can't connect in.
+    The usual, zonal kind sits in one AZ's public subnet with an Elastic IP address. Billed hourly
+    and per GB (see the lesson).
   taught_in: guide/07-connecting-it/01-your-own-network.md
   confused_with: [internet gateway, gateway endpoint]
   not_to_confuse: >-
     A NAT gateway carries private servers' traffic out to the internet and bills hourly; an internet
-    gateway is free and works both ways, and a free gateway endpoint is the cheaper path when the
+    gateway is free and works both ways, and a free gateway endpoint is the cheaper path when
     traffic only goes to S3 or DynamoDB.
   module: "07"
 
 - term: network ACL
   abbreviation: NACL
   definition: >-
-    Network access control list: a stateless firewall at the edge of a subnet, with numbered allow
-    and deny rules checked from the lowest number until the first match, ending in a catch-all deny.
-    The default one allows everything; a new custom one denies everything.
+    Network access control list: a stateless firewall at a subnet's edge, with numbered allow and
+    deny rules checked lowest first until one matches, ending in a catch-all deny. The default
+    allows everything; a new custom one denies everything.
   taught_in: guide/07-connecting-it/02-filtering-traffic.md
   also_in: [guide/07-connecting-it/05-lab-09-build-a-small-vpc.md, guide/07-connecting-it/06-sim-packet-journey.md]
   confused_with: [security group, access control list]
@@ -2940,9 +2932,9 @@
 
 - term: object storage
   definition: >-
-    Storage for whole files, called objects, kept in a bucket and reached through a web API, each
-    with a key and metadata. Programs store and read whole objects, with no disk to attach and no
-    folder to mount; Amazon S3 is AWS's object storage.
+    Storage for whole files, called objects, each with a key and metadata, kept in a bucket and
+    reached through a web API, with no disk to attach or folder to mount. Amazon S3 is AWS's object
+    storage.
   taught_in: guide/05-storing-data/01-block-file-object.md
   confused_with: [block storage, file storage]
   not_to_confuse: >-
@@ -3193,7 +3185,7 @@
   definition: >-
     A disaster recovery strategy that copies data continuously to the recovery Region and keeps core
     parts, such as the database, running, with app servers off until needed. Recovery typically
-    takes tens of minutes.
+    takes tens of minutes; data loss can be much less.
   taught_in: guide/03-aws-around-the-world/03-surviving-failure.md
   also_in: [guide/03-aws-around-the-world/06-sim-blast-radius.md, guide/05-storing-data/04-hybrid-storage-and-backup.md]
   confused_with: [warm standby, backup and restore]
@@ -3429,9 +3421,9 @@
 
 - term: read replica
   definition: >-
-    A read-only copy of an Amazon RDS database that applications can query, kept by asynchronous
-    replication, so it can lag. It takes reports and other read-heavy work off the primary and can
-    be promoted to a separate database, but outside Aurora it doesn't take over automatically.
+    A read-only copy of an Amazon RDS database, updated asynchronously, so it can lag. It takes
+    read-heavy work off the primary and can be promoted to a separate database, but outside Aurora
+    it doesn't take over automatically.
   taught_in: guide/05-storing-data/05-managed-or-self-managed-databases.md
   also_in: [guide/05-storing-data/06-choosing-a-database.md, guide/05-storing-data/10-sim-multi-az-vs-read-replica.md]
   confused_with: [Multi-AZ deployment, standby, automated backup]
@@ -3487,10 +3479,9 @@
 
 - term: Region
   definition: >-
-    An area of the world where AWS runs a group of Availability Zones, isolated from other Regions;
-    your resources stay in their Region unless you copy them. Each has a name and a Region code,
-    such as US East (N. Virginia), us-east-1; see the lesson for the minimum number of Availability
-    Zones.
+    A geographic area holding several Availability Zones (the lesson gives the minimum), isolated
+    from other Regions; resources stay in their Region unless you copy them. Each has a name and
+    code, such as US East (N. Virginia), us-east-1.
   taught_in: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
   also_in: [guide/00-start-here/05-before-your-first-lab.md, guide/02-why-the-cloud/03-telling-the-benefits-apart.md, guide/03-aws-around-the-world/02-choosing-a-region.md, guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md]
   confused_with: [Availability Zone, edge location, Local Zone]
@@ -3626,9 +3617,9 @@
 
 - term: root user
   definition: >-
-    The identity created with an AWS account from the sign-up email address and password, with
-    complete access to everything in the account. IAM policies can't be attached to it, so keep it
-    for root-only tasks and protect it with MFA and no access keys.
+    The identity created with an AWS account from the sign-up email and password, with complete
+    account access. IAM policies can't be attached to it, so keep it for root-only tasks, protected
+    by MFA, with no access keys.
   taught_in: guide/04-shared-responsibility-and-access/03-identities.md
   also_in: [guide/04-shared-responsibility-and-access/09-sim-policy-playground.md]
   confused_with: [IAM user]
@@ -3685,10 +3676,9 @@
 
 - term: S3 Block Public Access
   definition: >-
-    S3 settings that override any bucket policy or access control list that would make data public.
-    They can be set for an organization, an account and each bucket, and the most restrictive
-    combination wins; new buckets have them on, but check the account-level settings, which started
-    off in a new account (see the lesson).
+    S3 settings that override any bucket policy or ACL making data public. Settable per
+    organization, account and bucket; the strictest combination wins. New buckets have them on;
+    check account-level settings, which started off in new accounts (see the lesson).
   taught_in: guide/05-storing-data/02-s3-in-practice.md
   confused_with: [bucket policy, encryption at rest]
   not_to_confuse: >-
@@ -3711,9 +3701,9 @@
 
 - term: S3 Glacier Deep Archive
   definition: >-
-    S3's lowest-cost storage class, for records read less than once a year and kept for years, such
-    as for compliance, and a replacement for tape. You restore an object before reading it, which
-    takes many hours, and it has the longest minimum stay of the S3 classes.
+    S3's cheapest storage class, for records read less than once a year and kept for years, such as
+    for compliance, replacing tape. Objects must be restored before reading, taking many hours, and
+    it has S3's longest minimum stay.
   taught_in: guide/05-storing-data/03-storage-classes-and-lifecycle.md
   also_in: [guide/05-storing-data/04-hybrid-storage-and-backup.md, guide/05-storing-data/07-lab-05-versions-and-lifecycle.md, guide/05-storing-data/09-sim-lifecycle-cost-timeline.md]
   confused_with: [S3 Glacier Flexible Retrieval, S3 Glacier Instant Retrieval]
@@ -3750,9 +3740,9 @@
 
 - term: S3 Glacier storage classes
   definition: >-
-    S3's archive storage classes, for data you must keep but rarely read: S3 Glacier Instant
-    Retrieval, S3 Glacier Flexible Retrieval and S3 Glacier Deep Archive. They are ordinary S3
-    classes in ordinary buckets; pick one by how fast you need the data back.
+    S3 archive storage classes, for data you must keep but rarely read: S3 Glacier Instant
+    Retrieval, S3 Glacier Flexible Retrieval and S3 Glacier Deep Archive. They're ordinary classes
+    in ordinary buckets; pick by how fast you need data back.
   taught_in: guide/05-storing-data/03-storage-classes-and-lifecycle.md
   also_in: [guide/05-storing-data/04-hybrid-storage-and-backup.md]
   exam_name: Amazon S3 Glacier
@@ -3764,22 +3754,22 @@
 
 - term: S3 Intelligent-Tiering
   definition: >-
-    An S3 storage class for data whose access pattern is unknown or changes: S3 moves each object to
-    cheaper tiers when it goes unread for a while, and back when it is read. It has no retrieval
-    fees but a small monitoring fee per object, and very small objects are never moved.
+    An S3 storage class for unknown or changing access patterns: S3 moves each object to cheaper
+    tiers when unread for a while, and back when read. No retrieval fees, but small per-object
+    monitoring fees; tiny objects are never moved.
   taught_in: guide/05-storing-data/03-storage-classes-and-lifecycle.md
   confused_with: [S3 Standard-IA, S3 One Zone-IA, S3 Lifecycle]
   not_to_confuse: >-
-    Intelligent-Tiering moves each object by its own reads, for patterns you can't predict;
-    Standard-IA and One Zone-IA suit data you know is read about monthly and charge per GB read, and
-    lifecycle rules move objects by age on a schedule you set.
+    Intelligent-Tiering moves each object by its reads, for unpredictable patterns; Standard-IA and
+    One Zone-IA suit data you know is read about monthly and charge per GB read, and lifecycle rules
+    you set move objects by age.
   module: "05"
 
 - term: S3 Lifecycle
   definition: >-
-    A set of rules on an S3 bucket that transition objects to colder storage classes, or expire
-    (delete) them, a number of days after they were created. Rules can cover the whole bucket or
-    objects with a given prefix or tag, and can also act on noncurrent versions.
+    Rules on an S3 bucket that transition objects to colder storage classes, or expire (delete)
+    them, a number of days after creation. Rules can cover the whole bucket or a prefix or tag, and
+    can act on noncurrent versions.
   taught_in: guide/05-storing-data/03-storage-classes-and-lifecycle.md
   also_in: [guide/05-storing-data/07-lab-05-versions-and-lifecycle.md, guide/05-storing-data/09-sim-lifecycle-cost-timeline.md]
   confused_with: [S3 Intelligent-Tiering]
@@ -3809,13 +3799,11 @@
     recreate.
   taught_in: guide/05-storing-data/03-storage-classes-and-lifecycle.md
   also_in: [guide/05-storing-data/01-block-file-object.md]
-  confused_with: [S3 Standard-IA, S3 Intelligent-Tiering]
+  confused_with: [S3 Standard-IA]
   not_to_confuse: >-
     One Zone-IA keeps data in one Availability Zone and suits data you can recreate; Standard-IA
-    costs more but survives the loss of a zone, and Intelligent-Tiering is for patterns you can't
-    predict.
+    costs more but survives the loss of a zone.
   module: "05"
-
 - term: S3 Replication
   definition: >-
     An S3 feature that copies new objects automatically to another bucket, in another Region
@@ -3844,9 +3832,9 @@
 
 - term: S3 Standard-IA
   definition: >-
-    An S3 storage class for infrequent access: data read about once a month that must still come
-    back in milliseconds. It costs less to store than S3 Standard but charges per GB read, has a
-    minimum stay and a minimum billed size, and is designed for lower availability than Standard.
+    An S3 storage class for infrequent access: data read about monthly that must still return in
+    milliseconds. Cheaper to store than S3 Standard but charged per GB read, with a minimum stay, a
+    minimum billed size and lower designed availability.
   taught_in: guide/05-storing-data/03-storage-classes-and-lifecycle.md
   also_in: [guide/05-storing-data/09-sim-lifecycle-cost-timeline.md]
   confused_with: [S3 One Zone-IA, S3 Intelligent-Tiering, S3 Standard]
@@ -3916,9 +3904,9 @@
 
 - term: security group
   definition: >-
-    A stateful firewall around a resource, such as an EC2 instance or an RDS database, with allow
-    rules only: a new one lets nothing in and everything out, and replies to allowed requests pass
-    on their own. AWS provides it; its rules are yours to write.
+    A stateful firewall around a resource, such as an EC2 instance, with allow rules only: a new one
+    lets nothing in and everything out, and replies to allowed requests pass automatically. AWS
+    provides it; its rules are yours to write.
   taught_in: guide/07-connecting-it/02-filtering-traffic.md
   also_in: [guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md, guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md, guide/06-running-applications/01-ec2.md, guide/06-running-applications/06-lab-08-launch-and-terminate-an-instance.md, guide/07-connecting-it/05-lab-09-build-a-small-vpc.md]
   confused_with: [network ACL]
@@ -3958,9 +3946,9 @@
 
 - term: self-managed database
   definition: >-
-    A database you install and run yourself, for example on an EC2 server, so the operating system,
-    patches, backups, replication and failover are all yours. Choose it only for a real reason, such
-    as an engine RDS doesn't offer or a need to reach the server's operating system.
+    A database you install and run yourself, for example on EC2, so the operating system, patches,
+    backups, replication and failover are yours. Choose it only for a real reason, such as an engine
+    RDS lacks or needing operating system access.
   taught_in: guide/05-storing-data/05-managed-or-self-managed-databases.md
   also_in: [guide/05-storing-data/06-choosing-a-database.md]
   confused_with: [managed database]
@@ -3997,9 +3985,9 @@
 
 - term: serverless
   definition: >-
-    A way of running things in which AWS provisions, scales and patches the servers out of your
-    sight and you pay for what you use, as with AWS Lambda and AWS Fargate. Your code, images, data
-    and permissions are still yours to secure.
+    A way of running things where AWS provisions, scales and patches the servers out of sight and
+    you pay for what you use, as with AWS Lambda and Fargate. Your code, images, data and
+    permissions are still yours to secure.
   taught_in: guide/06-running-applications/03-containers-and-serverless.md
   also_in: [guide/06-running-applications/04-simpler-paths.md]
   module: "06"
@@ -4087,7 +4075,7 @@
   definition: >-
     AWS's list of the cloud's main benefits: trade fixed expense for variable expense; benefit from
     massive economies of scale; stop guessing capacity; increase speed and agility; stop spending
-    money running and maintaining data centers; and go global in minutes.
+    money running and maintaining data centers; go global in minutes.
   taught_in: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
   also_in: [guide/02-why-the-cloud/01-what-cloud-computing-is.md, guide/02-why-the-cloud/03-telling-the-benefits-apart.md]
   module: "02"
@@ -4106,9 +4094,9 @@
 
 - term: snapshot
   definition: >-
-    A point-in-time copy of one disk or one database, such as an EBS volume or an RDS database,
-    which you restore to create a new one as it was then. Each service has its own snapshots,
-    schedules and settings.
+    A point-in-time copy of one disk or database, such as an EBS volume or an RDS database, which
+    you restore to create a new one as it was then. Each service has its own snapshots, schedules
+    and settings.
   taught_in: guide/05-storing-data/04-hybrid-storage-and-backup.md
   also_in: [guide/05-storing-data/01-block-file-object.md, guide/05-storing-data/05-managed-or-self-managed-databases.md, guide/05-storing-data/10-sim-multi-az-vs-read-replica.md]
   confused_with: [AWS Backup, AWS Elastic Disaster Recovery]
@@ -4217,9 +4205,9 @@
   also_in: [guide/03-aws-around-the-world/03-surviving-failure.md, guide/05-storing-data/05-managed-or-self-managed-databases.md, guide/05-storing-data/10-sim-multi-az-vs-read-replica.md]
   confused_with: [warm standby, read replica]
   not_to_confuse: >-
-    A standby database in a second Availability Zone gives high availability inside one Region and
-    serves no queries; a read replica serves reads but doesn't take over by itself, and a warm
-    standby is a smaller working copy of a whole workload in another Region.
+    A standby database in another Availability Zone gives in-Region high availability, serving no
+    queries; a read replica serves reads but doesn't take over automatically; a warm standby is a
+    smaller working copy of a workload in another Region.
   module: "03"
 
 - term: stateful
@@ -4289,13 +4277,13 @@
 
 - term: storage optimized
   definition: >-
-    EC2 instance types with fast local disks, for work that reads and writes a lot of data on them,
-    such as high-throughput databases. Its letters include I, D and H.
+    EC2 instance types with large, fast local disks, for work that reads and writes a lot of data on
+    them, such as high-throughput databases. Its letters include I, D and H.
   taught_in: guide/06-running-applications/01-ec2.md
   confused_with: [memory optimized]
   not_to_confuse: >-
-    Storage optimized means fast local disks, not more space: for more space, attach a bigger EBS
-    volume or use S3, and for data held in RAM choose memory optimized.
+    Storage optimized means heavy, fast use of large local disks, not just more space: for more
+    space, attach a bigger EBS volume or use S3, and for data held in RAM choose memory optimized.
   module: "06"
 
 - term: subnet
@@ -4357,9 +4345,9 @@
 
 - term: Tape Gateway
   definition: >-
-    The Storage Gateway type that looks like a tape library (a virtual tape library) to existing
-    backup software, which writes virtual tapes over iSCSI. The tapes are stored in S3 and archived
-    to the S3 Glacier classes, so physical tapes can go without changing the backup jobs.
+    The Storage Gateway type that presents a virtual tape library over iSCSI to existing backup
+    software. Tapes are stored in S3 and archived to the S3 Glacier classes, so physical tapes can
+    go without changing backup jobs.
   taught_in: guide/05-storing-data/04-hybrid-storage-and-backup.md
   confused_with: [AWS Backup, S3 File Gateway]
   not_to_confuse: >-
@@ -4557,8 +4545,9 @@
 
 - term: Vault Lock
   definition: >-
-    An AWS Backup feature that stops anyone, even an administrator, from deleting backups in a vault
-    before their retention ends: protection against mistakes and ransomware.
+    An AWS Backup feature that stops backups in a vault being deleted before their retention ends, a
+    defense against mistakes and ransomware. In governance mode, permitted users can remove it; in
+    compliance mode, after its grace period, no one can.
   taught_in: guide/05-storing-data/04-hybrid-storage-and-backup.md
   confused_with: [S3 Object Lock]
   not_to_confuse: >-
@@ -4584,9 +4573,9 @@
 
 - term: versioning
   definition: >-
-    An S3 bucket setting that keeps every version of each object under the same key, so an overwrite
-    or a delete can be undone. It starts off; once on, it can be suspended but never turned off, and
-    each version is billed as a whole object.
+    An S3 bucket setting keeping every version of each object under its key so overwrites and
+    deletes can be undone. Off by default; once on, it can be suspended but never disabled, and each
+    version is billed in full.
   taught_in: guide/05-storing-data/02-s3-in-practice.md
   also_in: [guide/05-storing-data/03-storage-classes-and-lifecycle.md, guide/05-storing-data/07-lab-05-versions-and-lifecycle.md, guide/05-storing-data/09-sim-lifecycle-cost-timeline.md]
   confused_with: [S3 Replication, backup, S3 Object Lock]
@@ -4632,9 +4621,9 @@
 
 - term: Volume Gateway
   definition: >-
-    The Storage Gateway type that presents disks to on-premises servers over iSCSI. In cached mode
-    the full data lives in S3 and only frequently used data stays local; in stored mode the full
-    data stays on premises and AWS keeps point-in-time copies as EBS snapshots.
+    The Storage Gateway type presenting disks to on-premises servers over iSCSI. Cached mode keeps
+    all data in S3 and frequently used data locally; stored mode keeps it all on premises, with
+    point-in-time EBS snapshots in AWS.
   taught_in: guide/05-storing-data/04-hybrid-storage-and-backup.md
   confused_with: [S3 File Gateway, Tape Gateway]
   not_to_confuse: >-
@@ -4662,9 +4651,9 @@
 
 - term: VPC peering
   definition: >-
-    A connection that joins two VPCs, in the same or different accounts and Regions, so they talk
-    over private addresses as if they were one network. It is one to one and not transitive, the
-    address ranges must not overlap, and it costs nothing to keep.
+    A connection joining two VPCs, in the same or different accounts and Regions, so they talk over
+    private addresses like one network. It is one-to-one, not transitive, address ranges must not
+    overlap, and it costs nothing to keep.
   taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
   confused_with: [AWS Transit Gateway, AWS PrivateLink]
   not_to_confuse: >-

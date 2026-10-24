@@ -18,6 +18,8 @@ sources:
   - "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html"
   - "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html"
   - "https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/abstract-and-introduction.html"
+  - "https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/global-services.html"
+  - "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/edge-functions.html"
   - "https://docs.aws.amazon.com/local-zones/latest/ug/what-is-aws-local-zones.html"
   - "https://docs.aws.amazon.com/outposts/latest/userguide/what-is-outposts.html"
   - "https://docs.aws.amazon.com/wavelength/latest/developerguide/what-is-wavelength.html"
@@ -89,7 +91,8 @@ How they relate to the rest:
 
 - **A Region** holds at least three Availability Zones (lesson 03.01). Your servers, databases and storage live there.
 - **Edge locations** sit outside the Regions, in many more cities, often beside or inside internet providers' networks. AWS's own network connects them to the Regions ([Amazon CloudFront key features](https://aws.amazon.com/cloudfront/features/)).
-- **Three services run at edge locations:** Amazon CloudFront, Amazon Route 53 and AWS Global Accelerator. AWS designs each site to be isolated from the others, so a problem at one doesn't spread ([AWS Fault Isolation Boundaries](https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/abstract-and-introduction.html), 2022).
+- **Three main services run at edge locations:** Amazon CloudFront, Amazon Route 53 and AWS Global Accelerator. AWS designs each site to be isolated from the others, so a problem at one doesn't spread ([AWS Fault Isolation Boundaries](https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/abstract-and-introduction.html), 2022).
+- **Some features ride along with them.** AWS WAF and AWS Shield Advanced, when used with CloudFront, also do their work at the edge, and CloudFront's edge functions (CloudFront Functions and Lambda@Edge) run small pieces of your code close to viewers ([Global services](https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/global-services.html); [Customize at the edge with functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/edge-functions.html)). They add filtering or small tweaks to requests; none of them gives you a server.
 
 Edge locations give you three benefits: faster answers, because the first trip is short; fewer requests reaching your servers, because the edge answers many; and attack traffic absorbed far from your servers. CloudFront includes AWS Shield Standard, which protects against common network attacks, at no extra cost (checked 2026-10-23; Module 09 covers Shield).
 
@@ -99,7 +102,7 @@ Edge locations give you three benefits: faster answers, because the first trip i
 
 <details><summary>Model answer</summary>
 
-No. An Availability Zone is one or more full data centers inside a Region, where you run servers and databases; an edge location is a smaller site outside the Regions that runs only a few AWS networking services, such as CloudFront. The bakery's web server runs in AZs, and edge locations help deliver its pages and photos to customers faster.
+No. An Availability Zone is one or more full data centers inside a Region, where you run servers and databases; an edge location is a smaller site outside the Regions that runs AWS's networking services, such as CloudFront, but never your own servers. The bakery's web server runs in AZs, and edge locations help deliver its pages and photos to customers faster.
 
 </details>
 
@@ -157,11 +160,11 @@ flowchart LR
 
 Sometimes the computing itself must run closer: a game server that must answer within milliseconds, or a factory system that can't wait for a distant Region. Edge locations can't run your servers, so AWS offers three other options. Each one extends a Region: it connects back to a parent Region and works with the services there.
 
-![Four cards. Edge location: in many cities, beside and inside internet providers' networks; runs CloudFront, Route 53 and Global Accelerator, not your servers; for delivering content and answering requests close to users. Local Zone: in a large city away from the Region it extends; runs selected services such as compute, storage and databases; for single-digit-millisecond latency in that city and keeping data there. Outposts: in your own building; AWS-managed racks or servers, with you providing space, power and network; for low latency to on-site systems, local processing and keeping data on site. Wavelength Zone, with a dashed border: inside a telecom carrier's 5G network; runs compute and storage; for ultra-low latency to mobile devices; out of scope for CLF-C02 as a service.](../../images/03-04-edge-options.svg)
+![Four cards. Edge location: in many cities, beside and inside internet providers' networks; runs CloudFront, Route 53 and Global Accelerator, plus features that work through them such as AWS WAF, not your servers; for delivering content and answering requests close to users. Local Zone: in a large city away from the Region it extends; runs selected services such as compute, storage and databases; for single-digit-millisecond latency in that city and keeping data there. Outposts: in your own building; AWS-managed racks or servers, with you providing space, power and network; for low latency to on-site systems, local processing and keeping data on site. Wavelength Zone, with a dashed border: inside a telecom carrier's 5G network; runs compute and storage; for ultra-low latency to mobile devices; out of scope for CLF-C02 as a service.](../../images/03-04-edge-options.svg)
 
 *Notice the first line of each card: the location is what tells them apart. The dashed card is the one the exam lists as out of scope.*
 
-**Long description.** Four cards. Edge location: in many cities worldwide, beside and inside internet providers' networks; runs CloudFront, Route 53 and Global Accelerator, not your own servers; used for delivering content and answering requests close to users. Local Zone: in a large city away from the Region it extends; runs selected services such as compute, storage and databases; used for single-digit-millisecond latency for users in that city and for keeping data there. Outposts: in your own building; AWS racks or servers that AWS manages, while you provide space, power and network; used for low latency to on-site systems, local processing and keeping data on site. Wavelength Zone, dashed: inside a telecom carrier's 5G network, extending a Region; runs compute and storage such as EC2 instances; used for ultra-low latency to phones and other mobile devices; out of scope for CLF-C02 as a service.
+**Long description.** Four cards. Edge location: in many cities worldwide, beside and inside internet providers' networks; runs CloudFront, Route 53 and Global Accelerator, plus features that work through them such as AWS WAF, but not your own servers; used for delivering content and answering requests close to users. Local Zone: in a large city away from the Region it extends; runs selected services such as compute, storage and databases; used for single-digit-millisecond latency for users in that city and for keeping data there. Outposts: in your own building; AWS racks or servers that AWS manages, while you provide space, power and network; used for low latency to on-site systems, local processing and keeping data on site. Wavelength Zone, dashed: inside a telecom carrier's 5G network, extending a Region; runs compute and storage such as EC2 instances; used for ultra-low latency to phones and other mobile devices; out of scope for CLF-C02 as a service.
 
 **AWS Local Zones** put compute, storage, databases and other selected services in large cities, close to people and industry ([What is AWS Local Zones?](https://docs.aws.amazon.com/local-zones/latest/ug/what-is-aws-local-zones.html)). Each Local Zone extends a parent Region. AWS describes uses such as real-time games, live streaming and virtual workstations that need single-digit-millisecond latency, and meeting rules that keep data in a state or city. You turn a Local Zone on before using it; turning it on is free, and you pay for what you run there (as of 2026-10-23).
 
@@ -177,7 +180,7 @@ These five are the module's most confused group. One question separates them: **
 |---|---|---|---|
 | **Region** | A geographic area with at least three AZs | Almost every AWS service | You need to place a workload: near users, under the right laws |
 | **Availability Zone** | One or more data centers inside a Region | Your servers and databases | You need copies that survive one location failing (lesson 03.03) |
-| **Edge location** | Many cities, near internet users, outside the Regions | Only CloudFront, Route 53 and Global Accelerator | You want content delivered, or requests answered, close to users |
+| **Edge location** | Many cities, near internet users, outside the Regions | CloudFront, Route 53 and Global Accelerator, plus features that work through them, such as AWS WAF; never your own servers | You want content delivered, or requests answered, close to users |
 | **Local Zone** | A large city away from its parent Region | Selected services, such as compute and storage | Users in one city need single-digit-millisecond latency, or data must stay there |
 | **Outposts** | Your own building | AWS racks or servers that AWS manages | Systems or data must stay on your premises, with AWS's tools |
 
@@ -208,7 +211,7 @@ flowchart TD
 **B is right.** Outposts puts AWS-managed hardware in the customer's own building, running AWS services with the same tools.
 
 - **A is wrong.** A Local Zone is AWS's site in a city, not the hospital's building.
-- **C is wrong.** Edge locations run only networking services such as CloudFront; you can't store the hospital's systems there.
+- **C is wrong.** Edge locations run AWS's networking services, such as CloudFront, not customers' own systems; you can't store the hospital's systems there.
 - **D is wrong.** Wavelength is inside 5G carriers' networks, for mobile devices, and is out of scope for the exam.
 
 </details>
@@ -246,7 +249,7 @@ As always, the benefits are possibilities, not defaults: AWS runs the edge locat
 
 ## Summary
 
-- **Edge locations deliver and answer close to users.** They are many small sites outside the Regions, linked by AWS's network. They run CloudFront, Route 53 and Global Accelerator, not your servers. Counts change; don't memorize them.
+- **Edge locations deliver and answer close to users.** They are many small sites outside the Regions, linked by AWS's network. They run CloudFront, Route 53 and Global Accelerator, plus features that work through them such as AWS WAF, but not your servers. Counts change; don't memorize them.
 - **CloudFront caches content near users; Route 53 tells users where to go; Global Accelerator carries traffic over AWS's network** from the nearest edge. Route 53 is not a CDN.
 - **Local Zones, Outposts and Wavelength run AWS servers outside a Region:** in a big city, in your own building, and inside 5G networks. Wavelength is out of scope for CLF-C02.
 - **To tell them apart, ask where it physically is.**

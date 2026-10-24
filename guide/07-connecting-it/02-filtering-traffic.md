@@ -14,6 +14,7 @@ sources:
   - "https://docs.aws.amazon.com/vpc/latest/userguide/security-group-rules.html"
   - "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules-reference.html"
   - "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html"
+  - "https://docs.aws.amazon.com/vpc/latest/userguide/custom-network-acl.html"
   - "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html"
   - "https://aws.amazon.com/vpc/faqs/"
   - "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html"
@@ -138,7 +139,7 @@ They still get in. Rule 100 allows HTTPS from anywhere and is checked first, so 
 
 ## A security group lets replies through on its own; a network ACL checks them again
 
-Every conversation has two halves: the request and the reply. A customer's browser sends its request to port 443 on the web server, and the server answers to a temporary high-numbered port on the customer's computer. The VPC FAQ's example uses the range 49152 to 65535 ([Amazon VPC FAQ](https://aws.amazon.com/vpc/faqs/), checked 2026-10-23).
+Every conversation has two halves: the request and the reply. A customer's browser sends its request to port 443 on the web server, and the server answers to a temporary high-numbered port on the customer's computer, called an **ephemeral port**. The client's operating system picks it, so the range varies: recent Windows versions use 49152 to 65535 (the range in the [Amazon VPC FAQ](https://aws.amazon.com/vpc/faqs/)'s example), many Linux systems 32768 to 61000, and NAT gateways, load balancers and Lambda 1024 to 65535. That's why a network ACL rule for replies usually allows **1024 to 65535**, as in the worked example below and Lab 09: AWS suggests that range to cover every kind of client ([Custom network ACLs: ephemeral ports](https://docs.aws.amazon.com/vpc/latest/userguide/custom-network-acl.html#nacl-ephemeral-ports), checked 2026-10-24).
 
 - The **security group** saw the request come in, remembers it, and lets the reply out. No outbound rule is needed.
 - The **network ACL** doesn't remember. To it, the reply is a new packet leaving the subnet for a high-numbered port, and an outbound rule must allow it.

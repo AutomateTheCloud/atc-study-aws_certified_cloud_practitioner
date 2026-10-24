@@ -12,6 +12,7 @@ facts_checked: 2026-10-24
 sources:
   - "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html"
   - "https://aws.amazon.com/rds/faqs/"
+  - "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"
   - "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html"
   - "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html"
   - "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StopInstance.html"
@@ -41,7 +42,7 @@ Answer from memory before you look anything up.
 
 1. **To AWS:** installing and patching the operating system and the database software, backups, scaling and high availability. **Stays with the bakery:** tuning its queries, and deciding who can reach the data.
 2. **It protects against** losing a server, a data center or a whole AZ, because the standby takes over. **It doesn't protect against** losing the Region, or a mistake such as deleted orders, which it copies at once.
-3. **They are deleted with it.** Only manual snapshots, such as a final snapshot taken at deletion, stay.
+3. **They are deleted with it, unless you choose to retain them when you delete it;** retained automated backups last until their retention period ends. Manual snapshots, such as a final snapshot taken at deletion, always stay.
 
 </details>
 

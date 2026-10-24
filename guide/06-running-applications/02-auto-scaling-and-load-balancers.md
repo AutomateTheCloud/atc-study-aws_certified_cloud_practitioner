@@ -13,6 +13,9 @@ sources:
   - "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html"
   - "https://aws.amazon.com/ec2/autoscaling/faqs/"
   - "https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-a-scaling-plan.html"
+  - "https://aws.amazon.com/autoscaling/"
+  - "https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html"
+  - "https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-checks-overview.html"
   - "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html"
   - "https://aws.amazon.com/elasticloadbalancing/features/"
   - "https://aws.amazon.com/elasticloadbalancing/faqs/"
@@ -73,7 +76,7 @@ Guess before you read on:
 **Amazon EC2 Auto Scaling** keeps the number of instances in a group between a minimum and a maximum you set, and at the desired capacity in between ([What is Amazon EC2 Auto Scaling?](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html)). It does three jobs:
 
 - **Follows demand.** A scaling policy raises the desired capacity when load rises and lowers it when load falls. The group launches new instances from the launch template, or terminates spare ones. This is elasticity, the skill task [3.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.3) asks you to recognize.
-- **Heals itself.** It checks each instance's health and replaces any that is terminated or impaired, to keep the desired capacity.
+- **Heals itself.** It checks each instance's health and replaces any that is terminated or impaired, to keep the desired capacity. By default it uses only EC2's own status checks; to have it also replace instances that fail the load balancer's health checks, you turn on Elastic Load Balancing health checks for the group ([About the health checks for your Auto Scaling group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-checks-overview.html)).
 - **Balances across AZs.** It spreads instances evenly across the Availability Zones you choose, so one AZ's failure leaves the others running.
 
 How does the group decide? You choose one or more ways ([Amazon EC2 Auto Scaling FAQs](https://aws.amazon.com/ec2/autoscaling/faqs/), checked 2026-10-23):
@@ -99,7 +102,7 @@ Here is Module 02's demand curve again, now with Auto Scaling and a minimum of 2
 
 Made-up figures from [lesson 02.02](../02-why-the-cloud/02-before-and-after-the-demand-curve.md), for each month's busiest hour. Inside each day the group also shrinks at night; [Simulation S7](07-sim-elasticity-with-auto-scaling.md) works through one December day hour by hour.
 
-> **Note:** watch the names on the exam. The CLF-C02 exam guide lists **AWS Auto Scaling**, a separate service that sets up scaling for several resource types at once, such as EC2 groups and DynamoDB tables ([What is a scaling plan?](https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-a-scaling-plan.html); its product page title read "AWS Application Auto Scaling" on 2026-10-24). Groups of EC2 instances are run by **Amazon EC2 Auto Scaling**. For "auto scaling provides elasticity", either name points to the same idea.
+> **Note:** watch the names on the exam. The CLF-C02 exam guide lists **AWS Auto Scaling**, a separate service that sets up scaling for several resource types at once, such as EC2 groups and DynamoDB tables, through **scaling plans** ([What is a scaling plan?](https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-a-scaling-plan.html)). Scaling plans work through two other services: **Amazon EC2 Auto Scaling**, which runs groups of EC2 instances, and **Application Auto Scaling**, which scales other services' resources one at a time, such as DynamoDB tables and ECS services ([What is Application Auto Scaling?](https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html)). The names blur: on 2026-10-24 the [AWS Auto Scaling product page](https://aws.amazon.com/autoscaling/)'s browser title read "AWS Application Auto Scaling". For "auto scaling provides elasticity", any of these names points to the same idea.
 
 > **Your turn:** The bakery sets its group to minimum 2, maximum 8. Explain in one sentence each why the minimum isn't 1, and why there is a maximum at all.
 
@@ -122,7 +125,7 @@ The two services work as a team: when Auto Scaling launches an instance, it regi
 
 ![Three numbered frames. 1: both instances healthy, the load balancer splits requests between AZ a and AZ b. 2: instance 1 fails its health check and gets no requests; instance 2 carries the site. 3: Auto Scaling launches instance 3 in AZ a, which registers and takes requests again.](../../images/06-02-health-frames.svg)
 
-*Notice who acts in each frame. In frame 2 the load balancer stops the damage; in frame 3 Auto Scaling repairs it.*
+*Notice who acts in each frame. In frame 2 the load balancer stops the damage; in frame 3 Auto Scaling repairs it, because the group has Elastic Load Balancing health checks turned on. Without them, Auto Scaling would ignore the load balancer's verdict and replace instance 1 only if it also failed EC2's status checks.*
 
 **Long description.** Three frames, each with a load balancer above two Availability Zones. Frame 1: requests go to instance 1 in AZ a and instance 2 in AZ b. Frame 2: instance 1 fails its health check, marked with a cross, and gets no requests; instance 2 carries the site. Frame 3: Auto Scaling has launched instance 3 in AZ a, highlighted; it registers with the load balancer and takes requests again alongside instance 2.
 

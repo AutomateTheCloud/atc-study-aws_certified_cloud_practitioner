@@ -7,12 +7,14 @@ The YAML file is the source of truth; never edit the Markdown page by hand. Each
 
   term            the term as the guide writes it (required)
   abbreviation    optional
-  definition      one to three plain sentences in our own words (required)
+  definition      one to three plain sentences in our own words, at most 40 words counted
+                  as runs of letters and digits (it is a flashcard's back) (required)
   taught_in       repo-relative path of the page that teaches the term (required)
   also_in         optional list of other pages that define or use it
   exam_name       optional; only when the CLF-C02 exam guide's name differs from today's
   confused_with   optional list of terms that also have entries
-  not_to_confuse  one sentence on the difference; required when confused_with is present
+  not_to_confuse  one sentence on the difference, at most 40 words; required when
+                  confused_with is present
   module          two-digit module of taught_in, as a string (required)
 
 Usage, from the repository root:
@@ -39,6 +41,7 @@ PAGE = ROOT / "guide" / "99-reference" / "01-glossary.md"
 
 REQUIRED = ("term", "definition", "taught_in", "module")
 OPTIONAL = ("abbreviation", "also_in", "exam_name", "confused_with", "not_to_confuse")
+MAX_DEFINITION_WORDS = 40  # a definition is the back of a flashcard
 
 ATTRIBUTION = (
     '"Glossary" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional '
@@ -55,6 +58,12 @@ def sort_key(term):
 def clean(text):
     """Collapse the whitespace a folded YAML block leaves behind."""
     return " ".join(str(text).split())
+
+
+def words(text):
+    """Words as the flashcard checker counts them: runs of letters and digits, so
+    "Standard-IA" is two."""
+    return len(re.findall(r"\w+", text))
 
 
 def sentences(text):
@@ -115,8 +124,19 @@ def check(entries):
         definition = clean(e.get("definition", ""))
         if sentences(definition) > 3:
             problems.append(f"{name}: definition has more than three sentences")
-        if e.get("not_to_confuse") and sentences(clean(e["not_to_confuse"])) > 1:
-            problems.append(f"{name}: not_to_confuse should be one sentence")
+        if words(definition) > MAX_DEFINITION_WORDS:
+            problems.append(
+                f"{name}: definition has {words(definition)} words; "
+                f"the limit is {MAX_DEFINITION_WORDS}"
+            )
+        if e.get("not_to_confuse"):
+            if sentences(clean(e["not_to_confuse"])) > 1:
+                problems.append(f"{name}: not_to_confuse should be one sentence")
+            if words(clean(e["not_to_confuse"])) > MAX_DEFINITION_WORDS:
+                problems.append(
+                    f"{name}: not_to_confuse has {words(clean(e['not_to_confuse']))} words; "
+                    f"the limit is {MAX_DEFINITION_WORDS}"
+                )
 
     if terms != sorted(terms, key=sort_key):
         problems.append("entries are not sorted alphabetically by term")

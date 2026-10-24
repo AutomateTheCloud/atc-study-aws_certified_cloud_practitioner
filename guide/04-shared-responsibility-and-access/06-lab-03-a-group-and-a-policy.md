@@ -69,7 +69,7 @@ You delete all three at the end.
 
 > **New sign-up path:** there, IAM users can't sign in to the console, and AWS lists IAM Access Analyzer as not supported apart from policy validation (as of 2026-10-23). We haven't run this lab on that path. Read the steps, then practice the same reasoning in [Simulation S4](09-sim-policy-playground.md).
 
-**About the screens:** names in **bold** are what AWS's documentation or our own test account showed on 2026-10-23 or 2026-10-24. We haven't yet run this lab end to end, and AWS changes its console often. If a label differs, look for the option with the same meaning.
+**About the screens:** names in **bold** are what AWS's documentation or our own test account showed on 2026-10-23 or 2026-10-24. We ran this lab end to end in our test account on 2026-10-24, but AWS changes its console often. If a label differs, look for the option with the same meaning.
 
 ## Steps
 

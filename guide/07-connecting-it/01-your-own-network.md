@@ -16,6 +16,7 @@ sources:
   - "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html"
   - "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html"
   - "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html"
+  - "https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateways-regional.html"
   - "https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-pricing.html"
   - "https://docs.aws.amazon.com/vpc/latest/privatelink/concepts.html"
   - "https://docs.aws.amazon.com/vpc/latest/privatelink/gateway-endpoints.html"
@@ -209,7 +210,9 @@ You may have read that NAT gateways are free, like internet gateways. That's not
 | Two NAT gateways (one per AZ), 200 GB in total | $65.70 | $7.30 | $9.00 | $82.00 |
 | A gateway endpoint instead, 200 GB to S3 | — | — | — | $0 |
 
-Why run two? A NAT gateway lives in one AZ: if AZ A fails, servers in AZ B lose their way out through it. AWS's pricing page also suggests keeping traffic in the NAT gateway's own AZ, or giving each AZ its own, to cut cross-AZ charges. AWS's NAT gateway guide also describes a newer Regional option that spreads across AZs by itself; check its current wording before you design one (checked 2026-10-23).
+Why run two? The NAT gateway in this lesson, which AWS now calls a **zonal** NAT gateway, lives in one AZ: if AZ A fails, servers in AZ B lose their way out through it. AWS's pricing page also suggests keeping traffic in the NAT gateway's own AZ, or giving each AZ its own, to cut cross-AZ charges.
+
+> **Dated (checked 2026-10-24):** AWS also offers a **Regional NAT gateway**. It isn't tied to one AZ: it expands by itself into each AZ where you have workloads, needs no public subnet, and one route can serve private subnets in every AZ ([Regional NAT gateways for automatic multi-AZ expansion](https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateways-regional.html)). It's newer than most study material, which describes only the zonal kind. Check Regional pricing on the [Amazon VPC pricing](https://aws.amazon.com/vpc/pricing/) page before you design with it.
 
 > **Your turn:** Answer the second prequestion in two sentences: what would one NAT gateway cost the bakery for a month (730 hours) in which it carried only 10 GB, and which part of the bill is largest?
 

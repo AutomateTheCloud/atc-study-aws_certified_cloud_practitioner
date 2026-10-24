@@ -189,6 +189,8 @@ AWS groups disaster recovery into four strategies. Each step keeps more running 
 
 The ranges are AWS's typical figures (2021 whitepaper, checked 2026-10-24). Real times depend on how well the plan is built and tested.
 
+AWS's figure gives one range for RTO and RPO together, but the two can differ. A pilot light, like a warm standby, copies data continuously to live databases in the recovery Region, which AWS calls the best approach for a low RPO. So a pilot light can lose only minutes of data, or less, even though switching it on takes tens of minutes. Check the RTO and the RPO separately.
+
 Three details help on the exam and at work:
 
 - **Pilot light vs warm standby** is a pair AWS itself calls hard to tell apart. Ask: *could it serve a customer right now?* A pilot light can't until its app servers are switched on; a warm standby can, at reduced size.

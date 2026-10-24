@@ -19,6 +19,7 @@ sources:
   - "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/LocationsOfEdgeServers.html"
   - "https://aws.amazon.com/cloudfront/faqs/"
   - "https://aws.amazon.com/cloudfront/pricing/"
+  - "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/request-static-ips.html"
   - "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html"
   - "https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-pricing.html"
   - "https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html"
@@ -185,7 +186,7 @@ Global Accelerator and CloudFront both start at the edge, so they are the module
 
 <details><summary>Model answer</summary>
 
-**Global Accelerator.** It gives two static IP addresses that stay the same for the life of the accelerator, while the endpoints behind them can move between Regions. CloudFront is reached by a name and its addresses aren't fixed for you; it also keeps copies, which this need doesn't call for.
+**Global Accelerator.** It gives two static IP addresses that stay the same for the life of the accelerator, while the endpoints behind them can move between Regions. CloudFront is normally reached by a name whose addresses change. It can give a distribution a fixed list of anycast addresses, but only on request, after AWS approves it, and as a list of 21 (or 3 for a bare domain) rather than two ([Request Anycast static IPs](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/request-static-ips.html), checked 2026-10-24). It also keeps copies, which this need doesn't call for.
 
 </details>
 

@@ -15,12 +15,16 @@ sources:
   - "https://docs.aws.amazon.com/filegateway/latest/filefsxw/what-is-file-fsxw.html"
   - "https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html"
   - "https://aws.amazon.com/backup/faqs/"
+  - "https://docs.aws.amazon.com/aws-backup/latest/devguide/vault-lock.html"
   - "https://aws.amazon.com/backup/pricing/"
   - "https://docs.aws.amazon.com/drs/latest/userguide/what-is-drs.html"
   - "https://aws.amazon.com/disaster-recovery/"
   - "https://aws.amazon.com/disaster-recovery/faqs/"
   - "https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html"
+  - "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html"
+  - "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-copy-snapshot.html"
   - "https://aws.amazon.com/rds/faqs/"
+  - "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"
   - "https://docs.aws.amazon.com/datasync/latest/userguide/what-is-datasync.html"
   - "https://aws.amazon.com/snowball/"
   - "https://docs.aws.amazon.com/pdfs/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-workloads-on-aws.pdf"
@@ -115,23 +119,23 @@ A fourth type, **Amazon FSx File Gateway**, has been closed to new customers sin
 
 Before AWS Backup, look at the copies services already make. A **snapshot** copies a single resource at one moment. You restore it to create a new resource as it was then.
 
-- **Amazon EBS snapshots** copy one EBS volume, the virtual disk from lesson 05.01. A snapshot outlives its volume, and you can restore new volumes from it or copy it to another AZ, Region or account ([What is Amazon EBS?](https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html)).
-- **Amazon RDS automated backups** take a daily snapshot plus a log of every change, so you can restore to any second within the retention period: 7 days by default, up to 35 ([Amazon RDS FAQs](https://aws.amazon.com/rds/faqs/), checked 2026-10-23). They are deleted when you delete the database.
+- **Amazon EBS snapshots** copy one EBS volume, the virtual disk from lesson 05.01. A snapshot outlives its volume. AWS stores it across all the AZs of its Region, so you can restore new volumes from it in any AZ there, and you can copy it to another Region or account ([What is Amazon EBS?](https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html); [Amazon EBS snapshots](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html); [Copy an Amazon EBS snapshot](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-copy-snapshot.html)).
+- **Amazon RDS automated backups** take a daily snapshot plus a log of every change, so you can restore to any second within the retention period: 7 days by default, up to 35 ([Amazon RDS FAQs](https://aws.amazon.com/rds/faqs/), checked 2026-10-23). When you delete the database, they are deleted with it unless you choose to retain them; retained automated backups are kept until their retention period runs out ([Deleting a DB instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html), checked 2026-10-24).
 - **Amazon RDS manual snapshots** are taken when you ask and kept until you delete them, which is why RDS offers a final snapshot when you delete a database.
 
 S3 has its own point-in-time protection, versioning, from lesson [05.02](02-s3-in-practice.md). Snapshots answer lesson 03.03's warning, because a snapshot stops changing. Their limit is scope: each service has its own snapshots, schedule and settings, and keeping them all right across many resources becomes a job of its own.
 
-> **Check:** On Monday the owner's nephew deletes a test copy of the order database. It had automated backups kept for 7 days, and no manual snapshots. On Wednesday he wants it back. What happens?
+> **Check:** On Monday the owner's nephew deletes a test copy of the order database. It had automated backups kept for 7 days, and no manual snapshots, and he didn't choose to retain the automated backups when he deleted it. On Wednesday he wants it back. What happens?
 >
 > A. He restores it from its automated backups, which last 7 days
-> B. Nothing can be restored: automated backups are deleted with the database
+> B. He can't restore it: its automated backups were deleted with the database
 > C. He restores it from its Multi-AZ standby
 
 <details><summary>Feedback</summary>
 
-**B is right.** RDS deletes automated backups with the database; only manual snapshots, such as a final snapshot, are kept.
+**B is right.** Unless you choose to retain them, RDS deletes automated backups with the database; manual snapshots, such as a final snapshot, are always kept.
 
-- **A is wrong.** The 7 days apply while the database exists.
+- **A is wrong.** The 7 days apply while the database exists, or to automated backups you chose to retain when deleting it; he didn't.
 - **C is wrong.** A standby is part of the database and goes with it; it copies changes rather than keeping old versions.
 
 </details>
@@ -144,7 +148,7 @@ What it adds to plain snapshots:
 
 - **One plan across services and accounts.** Supported resources include EC2, EBS, S3, EFS, FSx, RDS, Aurora, DynamoDB, DocumentDB, Neptune, Redshift, Storage Gateway volumes and on-premises VMware virtual machines.
 - **Copies to another Region or account,** which is how lesson 03.03's backup-and-restore plan gets its backups out of the Region.
-- **Protected vaults.** Backups are encrypted and can't be changed. With **Vault Lock**, no one, not even an administrator, can delete them before their retention ends: protection against mistakes and ransomware.
+- **Protected vaults.** Backups are encrypted and can't be changed. With **Vault Lock**, no one can delete them before their retention ends: protection against mistakes and ransomware. The lock has two modes. In **governance mode**, users with enough IAM permissions can still remove the lock. In **compliance mode**, once a grace period of at least three days ends, no one can remove it, not even the root user or AWS ([AWS Backup Vault Lock](https://docs.aws.amazon.com/aws-backup/latest/devguide/vault-lock.html)).
 - **Cold storage** for older backups of supported resources, and **audit reports** that show the backups really happen.
 
 Its limit: AWS Backup governs only backups it manages, not snapshots someone takes by hand ([AWS Backup FAQs](https://aws.amazon.com/backup/faqs/)). And it is not a storage class or a place for files; it manages backups of resources you already run.
@@ -153,7 +157,7 @@ Its limit: AWS Backup governs only backups it manages, not snapshots someone tak
 
 <details><summary>Model answer</summary>
 
-One plan, assigned by tag, gives both the same schedule and retention and copies every backup to a second Region, so nobody keeps two setups in step. And its vault with Vault Lock stops anyone, even an attacker inside the account, from deleting the backups early, while its reports prove the backups happen.
+One plan, assigned by tag, gives both the same schedule and retention and copies every backup to a second Region, so nobody keeps two setups in step. And a vault with Vault Lock in compliance mode stops anyone, even an attacker inside the account, from deleting the backups early, while its reports prove the backups happen.
 
 </details>
 
@@ -229,7 +233,7 @@ Snowball is closed to new customers and its support ends on 2026-12-31, so it is
 Lesson [04.01](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md) drew the line between AWS's work and yours. AWS's disaster recovery whitepaper applies it to backups: AWS is responsible for resiliency **of** the cloud, and you for resiliency **in** it, which for data stores such as S3 and DynamoDB includes backups, versioning and replication ([Disaster Recovery of Workloads on AWS](https://docs.aws.amazon.com/pdfs/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-workloads-on-aws.pdf)).
 
 - **AWS** runs Storage Gateway, AWS Backup and Elastic Disaster Recovery, keeps backups durable and encrypted, and copies them where you say.
-- **You** decide what is backed up, how often and for how long; who may delete backups, and whether to use Vault Lock; which Regions copies go to, within your data rules (lesson 03.02); and you run the drills and test restores.
+- **You** decide what is backed up, how often and for how long; who may delete backups, and whether to use Vault Lock and in which mode; which Regions copies go to, within your data rules (lesson 03.02); and you run the drills and test restores.
 - **Also yours:** the gateway's virtual machine runs on your servers in your building. And a snapshot can be shared publicly by mistake: in the account we created on 2026-10-23, Block Public Access for EBS snapshots started off, which is why [primer page 06](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/06-safe-defaults.md) had you turn it on.
 
 ## What you pay for
@@ -296,7 +300,7 @@ The reliability design principle "[Test recovery procedures](https://docs.aws.am
 ## Summary
 
 - **Storage Gateway lets on-premises software keep working while the data lives in AWS.** S3 File Gateway presents a shared folder and stores objects in S3; Volume Gateway presents disks (cached: main copy in AWS; stored: main copy on premises); Tape Gateway presents a tape library and archives tapes to the S3 Glacier classes. FSx File Gateway is closed to new customers.
-- **Snapshots are point-in-time copies of one disk or one database.** RDS automated backups allow restore to any second in the retention period but are deleted with the database; manual snapshots stay until you delete them.
+- **Snapshots are point-in-time copies of one disk or one database.** RDS automated backups allow restore to any second in the retention period but are deleted with the database unless you choose to retain them; manual snapshots stay until you delete them.
 - **AWS Backup runs backups for many services and accounts from one plan,** copies them to other Regions or accounts, protects them in vaults with Vault Lock, and reports on them.
 - **Elastic Disaster Recovery keeps whole servers copied continuously and launches them in minutes;** backups bring back data, disaster recovery brings back servers.
 - **Moving data once is a different job:** DataSync online; Snowball is being retired.
@@ -351,7 +355,7 @@ The reliability design principle "[Test recovery procedures](https://docs.aws.am
 
    <details><summary>Feedback</summary>
 
-   **Model answer:** RDS automated backups cover one service, last at most 35 days, and are deleted with the database. AWS Backup applies one plan across many services and accounts, keeps backups as long as the plan says, copies them to other Regions or accounts, and can lock them so no one deletes them early.
+   **Model answer:** RDS automated backups cover one service, last at most 35 days, and are deleted with the database unless you choose to retain them. AWS Backup applies one plan across many services and accounts, keeps backups as long as the plan says, copies them to other Regions or accounts, and can lock them, in compliance mode, so no one deletes them early.
 
    </details>
 
