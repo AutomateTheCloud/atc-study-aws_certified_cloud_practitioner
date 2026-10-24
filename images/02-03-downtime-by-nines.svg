@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="250" viewBox="0 0 680 250" role="img" aria-labelledby="t d">
+<title id="t">Downtime a year at three availability levels</title>
+<desc id="d">Horizontal bar chart. 99.9% availability allows about 8.8 hours of downtime a year; 99.99% about 53 minutes; 99.999% about 5 minutes.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --axis:#c3c2b7; --s1:#2a78d6; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --axis:#383835; --s1:#3987e5; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); }
+</style>
+<rect width="680" height="250" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Each extra nine cuts yearly downtime to a tenth</text>
+<text x="16" y="50">Downtime a year allowed at each availability level</text>
+<text class="lab" x="16" y="91">99.9%</text>
+<text x="16" y="107">three nines</text>
+<path class="s1" d="M150.0,80.0 L526.0,80.0 Q530.0,80.0 530.0,84.0 L530.0,98.0 Q530.0,102.0 526.0,102.0 L150.0,102.0 Z"><title>99.9%: about 8.8 hours of downtime a year</title></path>
+<text class="lab" x="538.0" y="96">about 8.8 hours</text>
+<text class="lab" x="16" y="141">99.99%</text>
+<text x="16" y="157">four nines</text>
+<path class="s1" d="M150.0,130.0 L184.0,130.0 Q188.0,130.0 188.0,134.0 L188.0,148.0 Q188.0,152.0 184.0,152.0 L150.0,152.0 Z"><title>99.99%: about 53 minutes of downtime a year</title></path>
+<text class="lab" x="196.0" y="146">about 53 minutes</text>
+<text class="lab" x="16" y="191">99.999%</text>
+<text x="16" y="207">five nines</text>
+<path class="s1" d="M150.0,180.0 L150.0,180.0 Q153.8,180.0 153.8,183.8 L153.8,198.2 Q153.8,202.0 150.0,202.0 L150.0,202.0 Z"><title>99.999%: about 5 minutes of downtime a year</title></path>
+<text class="lab" x="161.8" y="196">about 5 minutes</text>
+<line class="axis" x1="150" x2="150" y1="76" y2="210"/>
+</svg>

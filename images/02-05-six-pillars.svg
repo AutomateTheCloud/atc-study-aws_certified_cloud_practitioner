@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="469" viewBox="0 0 680 469" role="img" aria-labelledby="t d">
+<title id="t">The six pillars of the Well-Architected Framework, each as one question</title>
+<desc id="d">Six cards in three rows of two, each with a pillar's ID prefix, name and question. Row 1, generally not traded away against the other pillars: Operational excellence (OPS): Can we run this well day to day, see what it is doing, and keep improving how we work? Security (SEC): Are the data, systems and accounts protected? Row 2, sound alike because both care about capacity: Reliability (REL): Does it do its job correctly whenever it is needed, and recover when something fails? Performance efficiency (PERF): Are we using the right kind and amount of resources to meet our needs, as demand and technology change? Row 3, usually point the same way because waste costs money and energy at once: Cost optimization (COST): Does it deliver its value at the lowest cost? Sustainability (SUS): Are we using as few resources, and as little energy, as we can?</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .card { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .panel { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .pill { fill: var(--surface); stroke: var(--muted); stroke-width: 1; }
+  .pill-s1 { fill: var(--surface); stroke: var(--s1); stroke-width: 2; }
+  .tag { fill: var(--ink2); font-size: 11px; font-weight: 600; letter-spacing: 0.5px; }
+  .name { fill: var(--ink); font-size: 15px; font-weight: 600; }
+  .rowlab { fill: var(--ink2); font-size: 12px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .track { stroke: var(--axis); stroke-width: 2; stroke-linecap: round; }
+  .knob { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+</style>
+<rect width="680" height="469" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Six pillars, six questions</text>
+<text class="sub" x="16" y="48">"Is our system built well?" split into the six questions of the Well-Architected Framework</text>
+<text class="rowlab" x="16" y="88">Generally not traded away against the other pillars</text>
+<rect class="card" x="16" y="98" width="320" height="84" rx="8"/>
+<rect class="pill" x="30" y="111" width="33" height="20" rx="10"/>
+<text class="tag" x="46.5" y="125" text-anchor="middle">OPS</text>
+<text class="name" x="71" y="126">Operational excellence</text>
+<text class="lab" x="30" y="152.0">Can we run this well day to day, see what it is</text>
+<text class="lab" x="30" y="169.0">doing, and keep improving how we work?</text>
+<rect class="card" x="344" y="98" width="320" height="84" rx="8"/>
+<rect class="pill" x="358" y="111" width="33" height="20" rx="10"/>
+<text class="tag" x="374.5" y="125" text-anchor="middle">SEC</text>
+<text class="name" x="399" y="126">Security</text>
+<text class="lab" x="358" y="152.0">Are the data, systems and accounts protected?</text>
+<text class="rowlab" x="16" y="212">Sound alike: both care about capacity</text>
+<rect class="card" x="16" y="222" width="320" height="101" rx="8"/>
+<rect class="pill" x="30" y="235" width="33" height="20" rx="10"/>
+<text class="tag" x="46.5" y="249" text-anchor="middle">REL</text>
+<text class="name" x="71" y="250">Reliability</text>
+<text class="lab" x="30" y="276.0">Does it do its job correctly whenever it is</text>
+<text class="lab" x="30" y="293.0">needed, and recover when something fails?</text>
+<rect class="card" x="344" y="222" width="320" height="101" rx="8"/>
+<rect class="pill" x="358" y="235" width="41" height="20" rx="10"/>
+<text class="tag" x="378.5" y="249" text-anchor="middle">PERF</text>
+<text class="name" x="407" y="250">Performance efficiency</text>
+<text class="lab" x="358" y="276.0">Are we using the right kind and amount of</text>
+<text class="lab" x="358" y="293.0">resources to meet our needs, as demand and</text>
+<text class="lab" x="358" y="310.0">technology change?</text>
+<text class="rowlab" x="16" y="353">Usually point the same way: waste costs money and energy at once</text>
+<rect class="card" x="16" y="363" width="320" height="84" rx="8"/>
+<rect class="pill" x="30" y="376" width="41" height="20" rx="10"/>
+<text class="tag" x="50.5" y="390" text-anchor="middle">COST</text>
+<text class="name" x="79" y="391">Cost optimization</text>
+<text class="lab" x="30" y="417.0">Does it deliver its value at the lowest cost?</text>
+<rect class="card" x="344" y="363" width="320" height="84" rx="8"/>
+<rect class="pill" x="358" y="376" width="33" height="20" rx="10"/>
+<text class="tag" x="374.5" y="390" text-anchor="middle">SUS</text>
+<text class="name" x="399" y="391">Sustainability</text>
+<text class="lab" x="358" y="417.0">Are we using as few resources, and as little</text>
+<text class="lab" x="358" y="434.0">energy, as we can?</text>
+</svg>

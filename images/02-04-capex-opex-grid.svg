@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="400" viewBox="0 0 680 400" role="img" aria-labelledby="t d">
+<title id="t">Capital or operating, fixed or variable: four examples placed in a two-by-two grid</title>
+<desc id="d">A grid with two columns, fixed and variable, and two rows, capital and operating. Capital and fixed: buying four servers. Capital and variable: no example in this lesson. Operating and fixed: renting space for the servers, and electricity for servers that are always on, which is mostly fixed. Operating and variable: a cloud bill that follows how much you use. An arrow labeled moving to pay as you go runs from buying servers to the cloud bill.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --fixed:#898781; --upfront:#52514e; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --fixed:#898781; --upfront:#c3c2b7; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .line-s2 { stroke: var(--s2); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .fixed { fill: var(--fixed); } .upfront { fill: var(--upfront); }
+  .cell { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .chip { fill: var(--surface); stroke: var(--muted); stroke-width: 1; }
+  .chip-s1 { fill: var(--surface); stroke: var(--s1); stroke-width: 2; }
+  .arrow { stroke: var(--s1); stroke-width: 2; fill: none; }
+  .head { fill: var(--ink); font-size: 14px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .ring { stroke: var(--surface); stroke-width: 2; }
+</style>
+<rect width="680" height="400" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Two questions about the same money</text>
+<text class="sub" x="16" y="48">Capital or operating: when and how you pay. Fixed or variable: does use change it?</text>
+<text class="head" x="280.0" y="92" text-anchor="middle">Fixed</text>
+<text class="head" x="536.0" y="92" text-anchor="middle">Variable</text>
+<text class="small" x="408.0" y="72" text-anchor="middle">Does the cost change with use?</text>
+<text class="head" x="140" y="166.0" text-anchor="end">Capital</text>
+<text class="small" x="140" y="183.0" text-anchor="end">big payment up front</text>
+<rect class="cell" x="152" y="104" width="256" height="128"/>
+<rect class="cell" x="408" y="104" width="256" height="128"/>
+<text class="head" x="140" y="294.0" text-anchor="end">Operating</text>
+<text class="small" x="140" y="311.0" text-anchor="end">paid as you go</text>
+<rect class="cell" x="152" y="232" width="256" height="128"/>
+<rect class="cell" x="408" y="232" width="256" height="128"/>
+<rect class="chip" x="168.0" y="124.0" width="151.1" height="29" rx="6"/>
+<text class="lab" x="178" y="144.0">Buying four servers</text>
+<text class="small" x="424" y="142.0">No example in this lesson</text>
+<rect class="chip" x="168.0" y="246.0" width="171.8" height="29" rx="6"/>
+<text class="lab" x="178" y="266.0">Renting space for them</text>
+<rect class="chip" x="168.0" y="292.0" width="213.2" height="46" rx="6"/>
+<text class="lab" x="178" y="312.0">Electricity for servers that</text>
+<text class="lab" x="178" y="329.0">are always on (mostly fixed)</text>
+<rect class="chip-s1" x="424.0" y="292.0" width="192.5" height="46" rx="6"/>
+<text class="lab" x="434" y="312.0">A cloud bill that follows</text>
+<text class="lab" x="434" y="329.0">how much you use</text>
+<path class="arrow" d="M323.1,138.5 C443.1,138.5 484.0,196.0 484.0,286.0"/>
+<path d="M478.0,276.0 L484.0,286.0 L490.0,276.0" class="arrow"/>
+<text class="lab" x="496.0" y="204">Moving to pay as you go</text>
+<text class="small" x="496.0" y="220">changes both answers</text>
+<text class="sub" x="16" y="386">Rent and always-on electricity are operating expenses, yet fixed: the two pairs are not the same split.</text>
+</svg>

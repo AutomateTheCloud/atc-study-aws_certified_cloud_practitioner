@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="400" viewBox="0 0 680 400" role="img" aria-labelledby="t d">
+<title id="t">In the cloud, servers rented match servers needed every month</title>
+<desc id="d">Column chart, January to December, servers needed: 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 3, 6. A dot on top of every column shows servers rented, always equal to servers needed: no idle servers and no lost sales.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+</style>
+<rect width="680" height="400" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">In the cloud, rented servers follow demand</text>
+<text class="sub" x="16" y="48">Servers needed and servers rented, each month (made-up figures)</text>
+<rect class="s1" x="16" y="64" width="12" height="12" rx="2"/>
+<text x="34" y="74">Servers needed</text>
+<circle class="dot-s1" cx="176" cy="70" r="5" style="fill:var(--ink)"/>
+<text x="188" y="74">Servers rented</text>
+<line class="axis" x1="56" x2="576" y1="348.0" y2="348.0"/>
+<text class="tick" x="48" y="352.0" text-anchor="end">0</text>
+<line class="grid" x1="56" x2="576" y1="308.7" y2="308.7"/>
+<text class="tick" x="48" y="312.7" text-anchor="end">1</text>
+<line class="grid" x1="56" x2="576" y1="269.3" y2="269.3"/>
+<text class="tick" x="48" y="273.3" text-anchor="end">2</text>
+<line class="grid" x1="56" x2="576" y1="230.0" y2="230.0"/>
+<text class="tick" x="48" y="234.0" text-anchor="end">3</text>
+<line class="grid" x1="56" x2="576" y1="190.7" y2="190.7"/>
+<text class="tick" x="48" y="194.7" text-anchor="end">4</text>
+<line class="grid" x1="56" x2="576" y1="151.3" y2="151.3"/>
+<text class="tick" x="48" y="155.3" text-anchor="end">5</text>
+<line class="grid" x1="56" x2="576" y1="112.0" y2="112.0"/>
+<text class="tick" x="48" y="116.0" text-anchor="end">6</text>
+<text class="tick" x="16" y="98">Servers</text>
+<text class="tick" x="77.7" y="366" text-anchor="middle">Jan</text>
+<text class="tick" x="121.0" y="366" text-anchor="middle">Feb</text>
+<text class="tick" x="164.3" y="366" text-anchor="middle">Mar</text>
+<text class="tick" x="207.7" y="366" text-anchor="middle">Apr</text>
+<text class="tick" x="251.0" y="366" text-anchor="middle">May</text>
+<text class="tick" x="294.3" y="366" text-anchor="middle">Jun</text>
+<text class="tick" x="337.7" y="366" text-anchor="middle">Jul</text>
+<text class="tick" x="381.0" y="366" text-anchor="middle">Aug</text>
+<text class="tick" x="424.3" y="366" text-anchor="middle">Sep</text>
+<text class="tick" x="467.7" y="366" text-anchor="middle">Oct</text>
+<text class="tick" x="511.0" y="366" text-anchor="middle">Nov</text>
+<text class="tick" x="554.3" y="366" text-anchor="middle">Dec</text>
+<path class="s1" d="M65.7,348.0 L65.7,312.7 Q65.7,308.7 69.7,308.7 L85.7,308.7 Q89.7,308.7 89.7,312.7 L89.7,348.0 Z"><title>Jan: 1 needed, 1 rented</title></path>
+<circle cx="77.7" cy="308.7" r="5" style="fill:var(--ink);stroke:var(--surface);stroke-width:2"><title>Jan: 1 rented</title></circle>
+<path class="s1" d="M109.0,348.0 L109.0,312.7 Q109.0,308.7 113.0,308.7 L129.0,308.7 Q133.0,308.7 133.0,312.7 L133.0,348.0 Z"><title>Feb: 1 needed, 1 rented</title></path>
+<circle cx="121.0" cy="308.7" r="5" style="fill:var(--ink);stroke:var(--surface);stroke-width:2"><title>Feb: 1 rented</title></circle>
+<path class="s1" d="M152.3,348.0 L152.3,273.3 Q152.3,269.3 156.3,269.3 L172.3,269.3 Q176.3,269.3 176.3,273.3 L176.3,348.0 Z"><title>Mar: 2 needed, 2 rented</title></path>
+<circle cx="164.3" cy="269.3" r="5" style="fill:var(--ink);stroke:var(--surface);stroke-width:2"><title>Mar: 2 rented</title></circle>
+<path class="s1" d="M195.7,348.0 L195.7,273.3 Q195.7,269.3 199.7,269.3 L215.7,269.3 Q219.7,269.3 219.7,273.3 L219.7,348.0 Z"><title>Apr: 2 needed, 2 rented</title></path>
+<circle cx="207.7" cy="269.3" r="5" style="fill:var(--ink);stroke:var(--surface);stroke-width:2"><title>Apr: 2 rented</title></circle>
+<path class="s1" d="M239.0,348.0 L239.0,273.3 Q239.0,269.3 243.0,269.3 L259.0,269.3 Q263.0,269.3 263.0,273.3 L263.0,348.0 Z"><title>May: 2 needed, 2 rented</title></path>
+<circle cx="251.0" cy="269.3" r="5" style="fill:var(--ink);stroke:var(--surface);stroke-width:2"><title>May: 2 rented</title></circle>
+<path class="s1" d="M282.3,348.0 L282.3,273.3 Q282.3,269.3 286.3,269.3 L302.3,269.3 Q306.3,269.3 306.3,273.3 L306.3,348.0 Z"><title>Jun: 2 needed, 2 rented</title></path>
+<circle cx="294.3" cy="269.3" r="5" style="fill:var(--ink);stroke:var(--surface);stroke-width:2"><title>Jun: 2 rented</title></circle>
+<path class="s1" d="M325.7,348.0 L325.7,312.7 Q325.7,308.7 329.7,308.7 L345.7,308.7 Q349.7,308.7 349.7,312.7 L349.7,348.0 Z"><title>Jul: 1 needed, 1 rented</title></path>
+<circle cx="337.7" cy="308.7" r="5" style="fill:var(--ink);stroke:var(--surface);stroke-width:2"><title>Jul: 1 rented</title></circle>
+<path class="s1" d="M369.0,348.0 L369.0,312.7 Q369.0,308.7 373.0,308.7 L389.0,308.7 Q393.0,308.7 393.0,312.7 L393.0,348.0 Z"><title>Aug: 1 needed, 1 rented</title></path>
+<circle cx="381.0" cy="308.7" r="5" style="fill:var(--ink);stroke:var(--surface);stroke-width:2"><title>Aug: 1 rented</title></circle>
+<path class="s1" d="M412.3,348.0 L412.3,273.3 Q412.3,269.3 416.3,269.3 L432.3,269.3 Q436.3,269.3 436.3,273.3 L436.3,348.0 Z"><title>Sep: 2 needed, 2 rented</title></path>
+<circle cx="424.3" cy="269.3" r="5" style="fill:var(--ink);stroke:var(--surface);stroke-width:2"><title>Sep: 2 rented</title></circle>
+<path class="s1" d="M455.7,348.0 L455.7,273.3 Q455.7,269.3 459.7,269.3 L475.7,269.3 Q479.7,269.3 479.7,273.3 L479.7,348.0 Z"><title>Oct: 2 needed, 2 rented</title></path>
+<circle cx="467.7" cy="269.3" r="5" style="fill:var(--ink);stroke:var(--surface);stroke-width:2"><title>Oct: 2 rented</title></circle>
+<path class="s1" d="M499.0,348.0 L499.0,234.0 Q499.0,230.0 503.0,230.0 L519.0,230.0 Q523.0,230.0 523.0,234.0 L523.0,348.0 Z"><title>Nov: 3 needed, 3 rented</title></path>
+<circle cx="511.0" cy="230.0" r="5" style="fill:var(--ink);stroke:var(--surface);stroke-width:2"><title>Nov: 3 rented</title></circle>
+<path class="s1" d="M542.3,348.0 L542.3,116.0 Q542.3,112.0 546.3,112.0 L562.3,112.0 Q566.3,112.0 566.3,116.0 L566.3,348.0 Z"><title>Dec: 6 needed, 6 rented</title></path>
+<circle cx="554.3" cy="112.0" r="5" style="fill:var(--ink);stroke:var(--surface);stroke-width:2"><title>Dec: 6 rented</title></circle>
+<text class="lab" x="536.3" y="116.0" text-anchor="end">6 rented in December</text>
+</svg>

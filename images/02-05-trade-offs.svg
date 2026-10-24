@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="432" viewBox="0 0 680 432" role="img" aria-labelledby="t d">
+<title id="t">Trade-offs for the bakery's test copy and live ordering site</title>
+<desc id="d">Two panels, each with a slider between Reliability and Cost optimization. Test copy: if it fails, the owner's nephew waits until tomorrow; the slider sits near Cost optimization, labeled bends toward cost: one small server, no standby copy, switched off at night. Live ordering site: if it fails, the bakery loses orders at a holiday peak; the slider sits near Reliability, labeled leans toward reliability: it pays more for reliability during the peak months. A band across both panels reads held on both copies: Security and Operational excellence; the test copy still needs a strong password with MFA. A final line says to write the decision down.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .card { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .panel { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .pill { fill: var(--surface); stroke: var(--muted); stroke-width: 1; }
+  .pill-s1 { fill: var(--surface); stroke: var(--s1); stroke-width: 2; }
+  .tag { fill: var(--ink2); font-size: 11px; font-weight: 600; letter-spacing: 0.5px; }
+  .name { fill: var(--ink); font-size: 15px; font-weight: 600; }
+  .rowlab { fill: var(--ink2); font-size: 12px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .track { stroke: var(--axis); stroke-width: 2; stroke-linecap: round; }
+  .knob { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+</style>
+<rect width="680" height="432" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Which pillars bend: the bakery's two copies of its site</text>
+<text class="sub" x="16" y="48">Reliability can be traded against cost. Security and operational excellence stay on both.</text>
+<rect class="panel" x="16" y="68" width="320" height="214" rx="8"/>
+<text class="name" x="32" y="96">Test copy</text>
+<text class="small" x="32" y="120.0">If it fails, the owner's nephew waits until</text>
+<text class="small" x="32" y="137.0">tomorrow.</text>
+<text class="lab" x="275.0" y="170" text-anchor="end" style="font-weight:600">Bends toward cost</text>
+<line class="track" x1="40" x2="312" y1="188" y2="188"/>
+<line class="track" x1="40" x2="40" y1="182" y2="194"/>
+<line class="track" x1="312" x2="312" y1="182" y2="194"/>
+<circle class="knob" cx="263.0" cy="188" r="8"/>
+<text class="small" x="40" y="212">Reliability</text>
+<text class="small" x="312" y="212" text-anchor="end">Cost optimization</text>
+<text class="lab" x="32" y="246.0">One small server, no standby copy, switched</text>
+<text class="lab" x="32" y="263.0">off at night.</text>
+<rect class="panel" x="344" y="68" width="320" height="214" rx="8"/>
+<text class="name" x="360" y="96">Live ordering site</text>
+<text class="small" x="360" y="120.0">If it fails, the bakery loses orders at a</text>
+<text class="small" x="360" y="137.0">holiday peak.</text>
+<text class="lab" x="405.0" y="170" text-anchor="start" style="font-weight:600">Leans toward reliability</text>
+<line class="track" x1="368" x2="640" y1="188" y2="188"/>
+<line class="track" x1="368" x2="368" y1="182" y2="194"/>
+<line class="track" x1="640" x2="640" y1="182" y2="194"/>
+<circle class="knob" cx="417.0" cy="188" r="8"/>
+<text class="small" x="368" y="212">Reliability</text>
+<text class="small" x="640" y="212" text-anchor="end">Cost optimization</text>
+<text class="lab" x="360" y="246.0">Pays more for reliability during the peak</text>
+<text class="lab" x="360" y="263.0">months.</text>
+<rect class="panel" x="16" y="296" width="648" height="96" rx="8"/>
+<text class="name" x="32" y="326">Held on both copies</text>
+<rect class="pill-s1" x="200" y="309" width="84.8" height="26" rx="13"/>
+<text class="lab" x="242.4" y="327" text-anchor="middle">Security</text>
+<rect class="pill-s1" x="294.8" y="309" width="191.2" height="26" rx="13"/>
+<text class="lab" x="390.4" y="327" text-anchor="middle">Operational excellence</text>
+<text class="small" x="32" y="358.0">The test copy still needs a strong password with MFA, because a break-in</text>
+<text class="small" x="32" y="375.0">there can reach the rest of the account.</text>
+<text class="sub" x="16" y="418">Then write the decision down, so the next person knows the test copy is unreliable on purpose.</text>
+</svg>

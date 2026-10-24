@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="400" viewBox="0 0 680 400" role="img" aria-labelledby="t d">
+<title id="t">Monthly server cost: owning 3 servers versus renting what each month needs</title>
+<desc id="d">Line chart, January to December. Owning 3 servers costs $450 every month. Renting what each month needs costs $150, 150, 300, 300, 300, 300, 150, 150, 300, 300, 450 and 900. Year totals: $5,400 owning, $3,750 renting.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+</style>
+<rect width="680" height="400" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Fixed expense stays flat; variable expense follows use</text>
+<text class="sub" x="16" y="48">The bakery's server cost each month, at a made-up $150 a server-month</text>
+<line class="line-ink" x1="16" x2="32" y1="70" y2="70"/>
+<text x="38" y="74">Own 3 servers (fixed)</text>
+<line class="line-s1" x1="200" x2="216" y1="70" y2="70"/>
+<text x="222" y="74">Rent what each month needs (variable)</text>
+<line class="axis" x1="64" x2="564" y1="348.0" y2="348.0"/>
+<text class="tick" x="56" y="352.0" text-anchor="end">$0</text>
+<line class="grid" x1="64" x2="564" y1="289.0" y2="289.0"/>
+<text class="tick" x="56" y="293.0" text-anchor="end">$250</text>
+<line class="grid" x1="64" x2="564" y1="230.0" y2="230.0"/>
+<text class="tick" x="56" y="234.0" text-anchor="end">$500</text>
+<line class="grid" x1="64" x2="564" y1="171.0" y2="171.0"/>
+<text class="tick" x="56" y="175.0" text-anchor="end">$750</text>
+<line class="grid" x1="64" x2="564" y1="112.0" y2="112.0"/>
+<text class="tick" x="56" y="116.0" text-anchor="end">$1,000</text>
+<text class="tick" x="16" y="98">$ a month</text>
+<text class="tick" x="84.8" y="366" text-anchor="middle">Jan</text>
+<text class="tick" x="126.5" y="366" text-anchor="middle">Feb</text>
+<text class="tick" x="168.2" y="366" text-anchor="middle">Mar</text>
+<text class="tick" x="209.8" y="366" text-anchor="middle">Apr</text>
+<text class="tick" x="251.5" y="366" text-anchor="middle">May</text>
+<text class="tick" x="293.2" y="366" text-anchor="middle">Jun</text>
+<text class="tick" x="334.8" y="366" text-anchor="middle">Jul</text>
+<text class="tick" x="376.5" y="366" text-anchor="middle">Aug</text>
+<text class="tick" x="418.2" y="366" text-anchor="middle">Sep</text>
+<text class="tick" x="459.8" y="366" text-anchor="middle">Oct</text>
+<text class="tick" x="501.5" y="366" text-anchor="middle">Nov</text>
+<text class="tick" x="543.2" y="366" text-anchor="middle">Dec</text>
+<polyline class="line-ink" points="84.8,241.8 126.5,241.8 168.2,241.8 209.8,241.8 251.5,241.8 293.2,241.8 334.8,241.8 376.5,241.8 418.2,241.8 459.8,241.8 501.5,241.8 543.2,241.8"/>
+<polyline class="line-s1" points="84.8,312.6 126.5,312.6 168.2,277.2 209.8,277.2 251.5,277.2 293.2,277.2 334.8,312.6 376.5,312.6 418.2,277.2 459.8,277.2 501.5,241.8 543.2,135.6"/>
+<circle class="dot-s1" cx="84.8" cy="312.6" r="4"><title>Jan: $150 renting, $450 owning</title></circle>
+<circle class="dot-s1" cx="126.5" cy="312.6" r="4"><title>Feb: $150 renting, $450 owning</title></circle>
+<circle class="dot-s1" cx="168.2" cy="277.2" r="4"><title>Mar: $300 renting, $450 owning</title></circle>
+<circle class="dot-s1" cx="209.8" cy="277.2" r="4"><title>Apr: $300 renting, $450 owning</title></circle>
+<circle class="dot-s1" cx="251.5" cy="277.2" r="4"><title>May: $300 renting, $450 owning</title></circle>
+<circle class="dot-s1" cx="293.2" cy="277.2" r="4"><title>Jun: $300 renting, $450 owning</title></circle>
+<circle class="dot-s1" cx="334.8" cy="312.6" r="4"><title>Jul: $150 renting, $450 owning</title></circle>
+<circle class="dot-s1" cx="376.5" cy="312.6" r="4"><title>Aug: $150 renting, $450 owning</title></circle>
+<circle class="dot-s1" cx="418.2" cy="277.2" r="4"><title>Sep: $300 renting, $450 owning</title></circle>
+<circle class="dot-s1" cx="459.8" cy="277.2" r="4"><title>Oct: $300 renting, $450 owning</title></circle>
+<circle class="dot-s1" cx="501.5" cy="241.8" r="4"><title>Nov: $450 renting, $450 owning</title></circle>
+<circle class="dot-s1" cx="543.2" cy="135.6" r="4"><title>Dec: $900 renting, $450 owning</title></circle>
+<text class="lab" x="553.2" y="245.8">$450 owned</text>
+<text class="lab" x="533.2" y="125.6" text-anchor="end">$900 rented</text>
+<text class="lab" x="84.8" y="334.6">$150 rented</text>
+<text class="sub" x="16" y="386">Year total: $5,400 owning; $3,750 renting what each month needs.</text>
+</svg>

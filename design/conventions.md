@@ -13,7 +13,7 @@ an adult studying alone, possibly new to IT, who wants to understand AWS and use
 
 - Path: `guide/MM-module-slug/PP-page-slug.md`, as in the course plan section 9. Lowercase ASCII,
   hyphens, two-digit prefixes.
-- Images: `images/MM-PP-descriptor.png|svg`. Diagram sources: `diagrams/`.
+- Images: `images/MM-PP-descriptor.png|svg`. Diagram sources: `diagrams/`. Chart scripts: `source/charts/`.
 - Links inside the guide are relative `.md` links. Links to the guardrails primer use its GitHub
   address, `https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/<page>.md`,
   until the learning site exists.
@@ -124,9 +124,10 @@ visuals for a page before writing it, and use many of them:
 - Diagrams and flowcharts: Mermaid in the page for drafts. No AWS icons in Mermaid; when a diagram
   needs service icons, draw it with AWS Icons for PlantUML (source in `diagrams/`). Never adapt an
   AWS diagram.
-- Charts: generate SVG from a script kept in `diagrams/` (Apache-2.0, SPDX header), output in
-  `images/MM-PP-descriptor.svg`, so charts can be regenerated when numbers change. Follow the
-  dataviz skill for chart design.
+- Charts: generate SVG from a script in `source/charts/` (software, so Apache-2.0 under
+  `LICENSE.md`; two-line SPDX header), output in `images/MM-PP-descriptor.svg`, so charts can be
+  regenerated when numbers change. The SVGs themselves are illustrations under CC BY-NC. Follow
+  the dataviz skill for chart design.
 - All three editions must render every visual; prefer SVG for drawn images.
 
 ## Attribution line
