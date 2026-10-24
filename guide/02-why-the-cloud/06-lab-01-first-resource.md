@@ -17,6 +17,8 @@ time: "25 minutes, plus 5 minutes the next day"
 cost: "$0 on the Free plan (as of 2026-10-24)"
 worst_case: "$0 on a Paid plan if the empty bucket is left behind; storage charges start only if you upload files"
 needs: [primer-02, primer-03, primer-05, primer-07]
+last_run_pass: "2026-10-24, standalone Free plan account, advanced sign-up, us-east-1"
+recorded: 2026-10-24
 facts_checked: 2026-10-24
 sources:
   - "https://docs.aws.amazon.com/AmazonS3/latest/userguide/GetStartedWithS3.html"
@@ -64,7 +66,7 @@ flowchart LR
 
 > **If you signed up on the new sign-up path:** that experience has no root user, no console IAM users, and a Region chosen for you that you can't change (as of 2026-10-23). Use your assigned Region wherever this lab says `us-east-1`, and sign in the way that path gives you. We haven't run this lab on that path yet, so some screens may differ.
 
-**About the screens:** names in **bold** are what AWS's documentation showed on 2026-10-23. AWS changes its console often. If a label differs, look for the option with the same meaning.
+**About the screens:** names in **bold** are what we saw when we ran this lab in a new account on 2026-10-24. AWS changes its console often. If a label differs, look for the option with the same meaning.
 
 ## Steps
 
@@ -82,9 +84,10 @@ flowchart LR
 
 4. Start a stopwatch, for example on your phone.
 5. In the search bar at the top of the console, type `S3` and open **S3**.
-6. In the left menu, choose **General purpose buckets**, then choose the button to create a bucket (**Create bucket** in AWS's guide).
-   **You should see:** a page for creating a bucket, with the Region shown as US East (N. Virginia).
-7. If the page asks for a bucket type, keep **General purpose**. If it offers a choice of naming area (a *namespace*), keep the option it selects by default.
+6. Choose **Create bucket**. If your account has no buckets yet, S3 opens on a start page with a **Create bucket** button. If it shows a list of buckets, choose **General purpose buckets** in the left menu first.
+   **You should see:** a page titled **Create bucket**, with **AWS Region** shown as US East (N. Virginia) us-east-1.
+7. Keep **Bucket type** at **General purpose**. Under **Bucket namespace**, keep **Global namespace**, which was selected by default on 2026-10-24.
+   The other option, **Account Regional namespace (recommended)**, makes the name unique to your account by adding a suffix with your account ID and Region (for example `-111122223333-us-east-1-an`). It is a good choice for real work, because no other account can ever take your names. This lab keeps the default so the steps stay simple.
 8. In the bucket name box, type the name from your lab log.
 9. Leave the security settings as AWS sets them by default, and check that they read as follows. Don't change any of them.
    - **Object Ownership:** ACLs disabled (the bucket owner owns everything in it).
@@ -96,29 +99,31 @@ flowchart LR
 10. In the **Tags** section, add a tag with key `guide` and value `clf`. Add a second tag with key `lab` and value `01`. Tag keys and values are case sensitive: type them in lowercase, exactly as shown.
     **You should see:** two tags listed before you create the bucket.
 11. Choose **Create bucket** at the bottom of the page.
-    **You should see:** a success message and your bucket in the list of general purpose buckets.
+    **You should see:** your new bucket's own page, with a green message that the bucket was created and an empty **Objects** tab.
     > **If something went wrong:**
     > - *The name is already taken:* another account in the world uses it. Change the four digits and try again.
     > - *The name is not valid:* look for capital letters, spaces, underscores or a dot or hyphen at the end.
     > - *Access denied:* you may be signed in as the wrong user. Sign out and sign in as your IAM admin user. Never turn off Block Public Access to get past an error.
-12. Stop the stopwatch when your bucket appears in the list. Write the time in your lab log.
+12. Stop the stopwatch when the success message appears. Write the time in your lab log. (In our run it took about three minutes, most of it reading.)
 
 ### Find it by its tags
 
 13. In the console search bar, type `Tag Editor` and open it.
+    On 2026-10-24 a banner said tag management is moving to the AWS Resource Explorer console. Tag Editor still worked; if it has moved by the time you read this, use the search in Resource Explorer instead, with the same tag.
 14. In the Regions list, choose **All regions**. Tag Editor starts with only your current Region selected ([Finding resources to tag](https://docs.aws.amazon.com/tag-editor/latest/userguide/find-resources-to-tag.html)).
 15. In **Resource types**, choose `AWS::S3::Bucket`.
-16. Under **Tags**, enter the key `lab` and the value `01`, then choose **Search resources**.
+16. Under **Tags – Optional**, enter the tag key `lab` and the tag value `01`, and choose **Add**. Then choose **Search resources**.
     **You should see:** one result, your bucket.
-    > **If something went wrong:** no results usually means a typo in the tag (the search is case sensitive) or a tag that wasn't added. Open the bucket in S3 and look through its tabs for the section that lists its tags. If a tag is missing, add it there and search again.
+    The **Tag: Name** column shows *(not tagged)*. That is normal: you didn't add a tag with the key `Name`, and this lab doesn't need one.
+    > **If something went wrong:** no results usually means a typo in the tag (the search is case sensitive) or a tag that wasn't added. Open the bucket in S3, choose its **Properties** tab, and scroll to **Tags**. If a tag is missing, add it there and search again.
 
 ### Find it in the activity record
 
 17. In the console search bar, type `CloudTrail` and open **CloudTrail**. Check that the Region is still N. Virginia.
 18. In the left menu, choose **Event history**. Event history is on in every account, keeps 90 days of account activity for each Region, and costs nothing to view ([Working with CloudTrail event history](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html), checked 2026-10-23).
-19. Under the lookup attributes, choose **Event name** and type `CreateBucket`.
-    **You should see:** one event from a few minutes ago, with your IAM user name under the user column. Open it to see your bucket's name in the details.
-    > **If something went wrong:** if nothing appears, wait a few minutes and refresh; events can take a little time to arrive. Then check that the Region is N. Virginia, because Event history shows one Region at a time.
+19. Under **Lookup attributes**, the first box starts on **Read-only**. Change it to **Event name**, type `CreateBucket` in the box beside it, and press Enter.
+    **You should see:** one event from a few minutes ago, with your IAM user name under **User name** and your bucket's name under **Resource name**.
+    > **If something went wrong:** if nothing appears, wait five minutes and refresh; in our run, events took up to four minutes to appear. Then check that the Region is N. Virginia, because Event history shows one Region at a time.
 
 ## Check your work
 
@@ -129,10 +134,10 @@ flowchart LR
 ## Clean up
 
 20. Open **S3**, choose **General purpose buckets**, select the option next to your bucket, and choose **Delete**.
-21. Type the bucket name to confirm, and choose the button to delete it (**Delete bucket** in AWS's guide).
+21. Type the bucket name to confirm, and choose **Delete bucket**. The page warns that deleting a bucket can't be undone and that someone else can then use the name.
     **You should see:** a success message, and the bucket gone from the list.
     > **If something went wrong:** a message that the bucket isn't empty means a file was uploaded. Use the **Empty bucket** option the message offers, follow its prompts, then repeat steps 20 and 21. A deleted bucket can't be restored, which is fine here because it held nothing ([Deleting a general purpose bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/delete-bucket.html)).
-22. **Confirm:** in the S3 bucket list, search for your bucket name; nothing should be found. In CloudTrail Event history, look up the event name `DeleteBucket`; you should see your deletion. In Tag Editor, repeat the search from step 16; expect no results (if the bucket still shows, wait a few minutes and search again). Tick the bucket off in your lab log.
+22. **Confirm:** in the S3 bucket list, search for your bucket name; nothing should be found. In CloudTrail Event history, look up the event name `DeleteBucket`; you should see your deletion. In Tag Editor, repeat the search from step 16; expect **No resources** (in our run it was empty three minutes after the deletion; if the bucket still shows, wait a few minutes and search again). Tick the bucket off in your lab log.
 23. **The next day:** open the **Credits** page in the Billing and Cost Management console and check that the balance hasn't fallen because of S3. Cost data can take about 24 hours to appear ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4).
 
 ## Recap
