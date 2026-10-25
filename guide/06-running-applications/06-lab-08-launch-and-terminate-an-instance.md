@@ -127,6 +127,10 @@ First write your predictions: after you **stop** the instance, will it keep its 
 - **Volume:** still there, with the same `vol-` ID. A stopped instance keeps its EBS data.
 - **Charges:** no instance hours and no IPv4 charge, but the volume's storage is still billed ([Amazon EC2 FAQs](https://aws.amazon.com/ec2/faqs/)). That's the $0.64 bar: **a stopped instance doesn't cost nothing.** "Off" sounds free, but your disk is still kept.
 
+  ![The Stop instance dialog for clf-lab08-web, with a warning: You will be billed for associated resources. After you stop the instance, you are no longer charged usage or data transfer fees for it, but you will still be billed for associated Elastic IP addresses and EBS volumes.](../../images/06-06-stop-dialog.png)
+
+  *Screenshot: the **Stop instance** dialog's own warning that EBS volumes and Elastic IP addresses keep billing, captured 2026-10-25 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+
 </details>
 
 ### Part C: terminate, and prove it's gone (on your own)

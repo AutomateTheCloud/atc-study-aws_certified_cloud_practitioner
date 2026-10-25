@@ -97,6 +97,11 @@ CloudTrail records each action in your account as an **event**. Event history sh
 3. Open **CloudTrail** and choose **Event history**. The filter starts on **Read-only** (as it did for us on 2026-10-24). Change it to **Event name**, type `DeleteVpc`, and press Enter.
    **You should see:** an event from the day you did Lab 09, with your IAM user name under **User name**. **Resource name** shows the VPC's ID, starting `vpc-`. In our run the event appeared about a minute and a half after the VPC was deleted.
    > **If something went wrong:** no event means Lab 09 was more than 90 days ago, or you did it in another Region. Write that down: "no evidence inside Event history's window" is a real audit finding, and the fix is a trail, which keeps events in an S3 bucket for as long as you keep the files.
+
+   ![CloudTrail Event history filtered on Event name DeleteVpc: one event at 10:45:25 on October 25, 2026, user name atc-admin, event source ec2.amazonaws.com, resource type AWS::EC2::VPC and the VPC's ID as resource name.](../../images/09-07-deletevpc-lookup.png)
+
+   *Screenshot: the `DeleteVpc` lookup, with the VPC's ID under **Resource name**, captured 2026-10-25 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+
 4. Choose the event name to open it, and scroll to **Event record**. This **event record** is the full entry, written in JSON, that CloudTrail keeps for one event.
 
    ![A simplified CloudTrail event record for DeleteVpc, with labels pointing to who did it, when, which service, what they did, in which Region, from where, and to which resource.](../../images/09-07-event-record.svg)

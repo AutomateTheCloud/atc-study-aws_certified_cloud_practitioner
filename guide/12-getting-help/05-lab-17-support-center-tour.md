@@ -98,6 +98,11 @@ flowchart LR
 
 3. Go to the **AWS Support Plans console**, the page that shows your plan and where plans are changed: `https://console.aws.amazon.com/support/plans/home` ([Change AWS Support Plans](https://docs.aws.amazon.com/awssupport/latest/user/changing-support-plans.html)).
    **You should see:** your current plan, **Basic Support**, marked **Current plan**, beside the paid plans. On the Free plan, a line at the top says only Basic Support is available until you upgrade to a Paid plan. This is the page where plans are changed, so only read it: don't choose any button in the paid plans' sections.
+
+   ![The Manage Support Plan page with a yellow banner: Only Basic Support is available to accounts on the AWS Free Tier plan. To upgrade your support, first upgrade to a Paid plan. Below it four plans: Basic Support, the current plan; Business Support+ from $29 a month per account; Enterprise Support from $5,000 a month; Unified Operations from $50,000 a month.](../../images/12-05-support-plans-free-plan.png)
+
+   *Screenshot: the Support Plans page on a Free plan account. Read it; don't choose any of its buttons, captured 2026-10-25 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+
 4. Choose **Pricing calculator** at the top of the page. Keep the **Business Support+** tab, enter `1200` in **Estimated Monthly AWS charges (USD)** and choose **Calculate**: `1200` is the bakery's grown monthly AWS bill in this module (made up). The calculator only shows an estimate; it changes nothing. Write the estimate in your lab log. If there is no calculator, work it out by hand from the dated prices in [12.01](01-support-plans.md).
    **You should see:** about **$108 a month**: the greater of $29 or 9% of a bill under $10,000 (as of 2026-10-24, [AWS Support pricing](https://aws.amazon.com/premiumsupport/pricing/)).
 
@@ -109,6 +114,11 @@ A **support case** is a request you open with AWS Support and follow in Support 
    **You should see:** Support Center. In N. Virginia it may first ask you to describe your issue and offer AI-generated troubleshooting before any case form ([AI-enhanced troubleshooting](https://docs.aws.amazon.com/awssupport/latest/user/ai-enhanced-support.html), checked 2026-10-24).
 6. In **Hi. How can we help?**, describe a made-up billing question, say so in the text ("Training exercise, no real problem"), and send it. After the AI answer, choose **Create a case**: a form opens. Open its **Case type** list.
    **You should see:** **Account and billing** and **service limit increase** requests, open to every account, and **Technical**, which Basic can't open ([Case management](https://docs.aws.amazon.com/awssupport/latest/user/case-management.html)). The quota request may be a link such as **Looking for service quota increases?**. On 2026-10-25 all three appeared in the list; choosing **Technical** showed "Technical case type is not available for your support plan" and an offer of a **Business Support+** trial with a **Start trial** button. Don't choose it. Write which types you can choose.
+
+   ![The case form in Support Center with Case type set to Technical and an error, Technical case type is not available for your support plan, and below it an offer: Business Support+ limited time trial with hassle free refund, with a Start trial link.](../../images/12-05-technical-case-trial.png)
+
+   *Screenshot: choosing **Technical** on Basic, and the trial offer you leave alone, captured 2026-10-25 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+
 7. Stop here. Choose **Discard draft**, **Cancel** or simply leave the page; don't submit.
    > **If something went wrong:** if you submitted a case by mistake, open it in Support Center and reply that it was opened in error and can be closed. An account and billing case costs nothing.
 
