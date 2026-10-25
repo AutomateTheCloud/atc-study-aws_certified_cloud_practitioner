@@ -1,11 +1,11 @@
 ---
 type: lab
 id: clf-05-08
-title: "Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it"
+title: "Optional lab 06: Create a DynamoDB table for carts, put and get items, then delete it"
 tasks: ["3.4"]
 objectives: ["05.06a"]
-reader: "Adult studying alone, possibly new to IT, who has done Lab 01 and read lesson 05.06; about 30 minutes; a laptop or desktop"
-prerequisites: ["clf-02-06", "clf-05-06"]
+reader: "Adult studying alone, possibly new to IT, who has done Lab 01 and read lesson 05.05; about 30 minutes; a laptop or desktop"
+prerequisites: ["clf-02-06", "clf-05-05"]
 terms_introduced: [table, item, attribute, partition key, sort key, on-demand capacity mode, query]
 pillars: [performance-efficiency, cost-optimization]
 lab: "06"
@@ -27,13 +27,15 @@ sources:
   - "https://aws.amazon.com/dynamodb/faqs/"
 ---
 
-# Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it
+# Optional lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it
 
 ## Before you start: your account, your responsibility
 
 This guide is provided as is, without warranty. We work hard to keep it correct and current, but AWS changes often, and its services, prices, and free offers may differ from what is written here. The labs run in your own AWS account. You are responsible for that account, for its security, and for any charges it incurs, including charges from resources you forget to delete. Automate the Cloud Inc. is not liable for any costs, losses, or security incidents that result from following, or failing to follow, this material. Technical guidance here is general information, not advice about your specific systems.
 
-**Who this is for:** you have done [Lab 01](../02-why-the-cloud/06-lab-01-first-resource.md) and read [05.06 Choosing a database](06-choosing-a-database.md). **Time:** about 30 minutes, plus 5 minutes the next day.
+**This lab is optional.** The exam asks which database fits, not how to build one; do it if you want to see DynamoDB for yourself.
+
+**Who this is for:** you have done [Lab 01](../02-why-the-cloud/06-lab-01-first-resource.md) and read [05.05 Managed databases and choosing one](05-managed-or-self-managed-databases.md). **Time:** about 30 minutes, plus 5 minutes the next day.
 
 **Goal:** the bakery wants its online shopping carts in Amazon DynamoDB, AWS's serverless NoSQL database. You create a cart table, put three items in it, read one item back by its key and a whole cart with a query, then delete the table. **End state:** your lab log holds what you saw, and your account holds nothing from this lab.
 
@@ -57,7 +59,7 @@ flowchart LR
 
 **Before you start, you need these guardrails in place:** [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md) (primer page 02), [an IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md), which you use for this lab (page 03), [budgets and billing alerts](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md) (page 05), and [the habits for every lab](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), including your lab log (page 07).
 
-**Why this matters:** a cart is looked up by one key, changes often, and has no fixed shape; that is the key-value shape lesson 05.06 matched to DynamoDB. Picking the store that fits the data, instead of putting everything in one database, is [PERF03-BP01 Use a purpose-built data store that best supports your data access and storage requirements](https://docs.aws.amazon.com/wellarchitected/latest/performance-efficiency-pillar/perf_data_use_purpose_built_data_store.html). Paying per request for a small, uneven workload is cost optimization in practice.
+**Why this matters:** a cart is looked up by one key, changes often, and has no fixed shape; that is the key-value shape lesson 05.05 matched to DynamoDB. Picking the store that fits the data, instead of putting everything in one database, is [PERF03-BP01 Use a purpose-built data store that best supports your data access and storage requirements](https://docs.aws.amazon.com/wellarchitected/latest/performance-efficiency-pillar/perf_data_use_purpose_built_data_store.html). Paying per request for a small, uneven workload is cost optimization in practice.
 
 > **New sign-up path:** DynamoDB is on that experience's list of supported services, but IAM users can't sign in to the console and your Region is fixed (as of 2026-10-23). Use your assigned Region wherever this lab says `us-east-1`, and sign in the way that path gives you. We haven't run this lab on that path.
 
@@ -148,6 +150,6 @@ You built a database without choosing a server, an engine version or a size, sto
 
 ---
 
-"Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional lab 06: Create a DynamoDB table for carts, put and get items, then delete it" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt

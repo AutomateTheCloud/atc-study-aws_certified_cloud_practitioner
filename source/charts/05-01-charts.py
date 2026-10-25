@@ -193,54 +193,6 @@ def what_survives():
         "S3 or EFS.", body, style=STYLE)
 
 
-def where_copies_live():
-    """How far each storage option spreads its copies: one host, one AZ, or several AZs."""
-    w = 680
-    body = [
-        '<text class="title" x="16" y="28">Where the copies live decides what a failure can take</text>',
-        '<text class="sub" x="16" y="48">Each bar covers the part of one Region that holds copies of your data.</text>',
-    ]
-    left, right = 200, w - 20
-    top = 92
-    azw = (right - left) / 3
-    rows = [
-        ("EC2 instance store", "One physical host", 0, 0.28, "span-light"),
-        ("Amazon EBS volume", "Copies within one AZ", 0, 1, "span"),
-        ("EFS One Zone", "Copies within one AZ", 0, 1, "span"),
-        ("S3 One Zone-IA", "Copies within one AZ", 0, 1, "span"),
-        ("EFS Regional", "Across multiple AZs", 0, 3, "span"),
-        ("S3 Standard", "Across at least 3 AZs", 0, 3, "span"),
-    ]
-    rh = 44
-    bottom = top + 18 + rh * len(rows)
-    for i, name in enumerate(["AZ a", "AZ b", "AZ c"]):
-        ax = left + i * azw
-        body.append(f'<rect class="az" x="{ax + 3:.1f}" y="{top}" width="{azw - 6:.1f}" height="{bottom - top}" rx="6"/>')
-        body.append(f'<text class="cellt" x="{ax + azw / 2:.1f}" y="{top - 8}" text-anchor="middle">{name}</text>')
-    y = top + 18
-    for name, sub, a, b, cls in rows:
-        body.append(f'<text class="cellt" x="16" y="{y + 15}">{name}</text>')
-        body.append(f'<text class="small" x="16" y="{y + 31}">{sub}</text>')
-        x0 = left + a * azw + 10
-        x1 = left + b * azw - 10
-        body.append(f'<rect class="{cls}" x="{x0:.1f}" y="{y + 6}" width="{x1 - x0:.1f}" height="20" rx="4"/>')
-        y += rh
-    y = bottom + 24
-    text_lines(body, 16, y, wrap("If AZ a is destroyed, only the bottom two still hold your data. Whatever is in one AZ or on one host needs a copy somewhere else, such as a snapshot or a backup.", 100), cls="small")
-    y += 44
-    body.append(f'<text class="note" x="16" y="{y}">Schematic. A Region has at least three AZs. Sources: EBS, EFS and S3 User Guides, checked 2026-10-24.</text>')
-    svg("05-01-where-copies-live.svg", w, y + 14,
-        "Where each storage option keeps its copies: one host, one Availability Zone, or several",
-        "Three dashed columns stand for Availability Zones a, b and c in one Region. Six bars show where "
-        "copies of the data live. EC2 instance store: one physical host, a short bar inside AZ a. Amazon EBS "
-        "volume: copies within one AZ, a bar filling AZ a. EFS One Zone: within one AZ. S3 One Zone-IA: "
-        "within one AZ. EFS Regional: across multiple AZs, a bar spanning all three columns. S3 Standard: "
-        "across at least three AZs, spanning all three. Below: if AZ a is destroyed, only the bottom two still hold the "
-        "data; anything in one AZ or on one host needs a copy elsewhere, such as a snapshot or "
-        "a backup.", body, style=STYLE)
-
-
 if __name__ == "__main__":
     three_kinds()
     what_survives()
-    where_copies_live()
