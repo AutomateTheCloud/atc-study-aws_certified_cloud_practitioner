@@ -45,7 +45,7 @@ The questions follow the exam's style: four choices with one answer, or five cho
 
 <details><summary>Answer</summary>
 
-**C is right.** Ask where each part runs. The website runs at AWS and the lending system runs in the library's own building, and data flows between them. Some parts in the cloud, some on-premises, connected: that is hybrid.
+**C is right.** Ask where each part runs. The website runs at AWS and the lending system runs in the library's own building, and data flows between them. Connected parts, some in the cloud and some on-premises, make the setup hybrid.
 
 - **A is wrong.** How people reach a system doesn't decide the model. The lending system doesn't run at a cloud provider.
 - **B is wrong.** Only one of the two parts is on-premises. The website runs at AWS.
@@ -207,7 +207,7 @@ Which statement is accurate?
 
 **B is right.** Decide by what is at risk. The question is whether the platform keeps working, and recovers, when part of it fails. That is reliability. Running copies in more than one AZ is the usual answer.
 
-- **A is wrong.** Performance efficiency asks whether the platform uses the right type and amount of resources. The scenario says they are already right; the risk is failure, not fit.
+- **A is wrong.** Performance efficiency asks whether the platform uses the right type and amount of resources. The scenario says they are already right, so the risk here is failure rather than fit.
 - **C is wrong.** Nothing here is about wasting resources or energy.
 - **D is wrong.** Nothing here is about wasting money. (A second AZ would cost more, which is a trade-off the business decides, but the question itself is about failure.)
 
@@ -297,7 +297,7 @@ Take Check B only after you have worked through the correction map for the quest
 
 <details><summary>Answer</summary>
 
-**D is right.** First, classify each part. The private cloud is the bank's own equipment in its own buildings, so in AWS's terms it is on-premises. The month-end jobs run at AWS. On-premises parts and cloud parts, with results flowing between them: hybrid.
+**D is right.** First, classify each part. The private cloud is the bank's own equipment in its own buildings, so in AWS's terms it is on-premises. The month-end jobs run at AWS. With on-premises parts and cloud parts passing results between them, the whole setup is hybrid.
 
 - **A is wrong.** Calling the bank's own servers a "cloud" doesn't make them a cloud provider. AWS counts a private cloud as on-premises.
 - **B is wrong.** It is half right: the private cloud is on-premises. But the month-end jobs run at AWS, so the whole setup isn't on-premises.
