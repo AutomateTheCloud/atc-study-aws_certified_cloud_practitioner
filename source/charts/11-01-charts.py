@@ -67,25 +67,6 @@ STYLE = make_style(
   .dashext { fill: none; stroke: var(--s3); stroke-width: 1.5; stroke-dasharray: 5 4; }""")
 
 
-def bill():
-    """The bakery's two months, line by line. Returns (rows, nov_total, dec_total)."""
-    rows = [
-        # (line item, meter, November, December)
-        ("Web servers (t3.small hours)", "Time", 2 * HOURS * T3_SMALL, 4 * HOURS * T3_SMALL),
-        ("Load balancer hours", "Time", HOURS * ALB, HOURS * ALB),
-        ("NAT gateway hours (new in December)", "Time", 0.0, HOURS * NAT_H),
-        ("Server disks (EBS gp3, 8 GB each)", "Storage", 2 * 8 * GP3, 4 * 8 * GP3),
-        ("Photo bucket (S3 Standard)", "Storage", 200 * S3_STD, 260 * S3_STD),
-        ("Photo downloads (S3 GET requests)", "Requests", 2_000_000 * S3_GET, 6_000_000 * S3_GET),
-        ("Photo resizing (Lambda)", "Requests", 0.0, 0.0),
-        ("Data out to the internet", "Data transfer", (300 - 100) * OUT, (900 - 100) * OUT),
-        ("Web server to database, across AZs", "Data transfer", 100 * XAZ, 300 * XAZ),
-        ("Data processed by the NAT gateway", "Data transfer", 0.0, 150 * NAT_GB),
-    ]
-    rows = [(a, b, round(c, 2), round(d, 2)) for a, b, c, d in rows]
-    return rows, round(sum(r[2] for r in rows), 2), round(sum(r[3] for r in rows), 2)
-
-
 def four_meters():
     """Big picture: every line on a bill is a quantity on one of four meters, times a rate."""
     w, h = 720, 430
@@ -131,61 +112,6 @@ def four_meters():
         "S3 GET and PUT requests, Lambda invocations and GB-seconds, Athena data scanned; it bills only when someone "
         "uses it. Data transfer, GB moved by direction: out to the internet, across Availability Zones, to another "
         "Region, while data in from the internet is free; it bills for where data goes.", body, style=STYLE)
-
-
-def waterfall():
-    """From November's bill to December's: which lines grew."""
-    rows, nov, dec = bill()
-    d = {r[0]: (r[2], r[3]) for r in rows}
-    nat = d["NAT gateway hours (new in December)"][1] + d["Data processed by the NAT gateway"][1]
-    out = d["Data out to the internet"][1] - d["Data out to the internet"][0]
-    srv = d["Web servers (t3.small hours)"][1] - d["Web servers (t3.small hours)"][0]
-    xaz = d["Web server to database, across AZs"][1] - d["Web server to database, across AZs"][0]
-    other = round(dec - nov - nat - out - srv - xaz, 2)
-    steps = [("November total", nov, "total"),
-             ("+ NAT gateway (new): hours and data", nat, "up-new"),
-             ("+ Data out to the internet", out, "up"),
-             ("+ More web server hours", srv, "up"),
-             ("+ Web server to database across AZs", xaz, "up"),
-             ("+ Disks, photo storage, requests", other, "up"),
-             ("December total", dec, "total")]
-    w, left, top, pw, rowh, xmax = 720, 270, 92, 400, 40, 220
-    h = top + rowh * len(steps) + 64
-    sx = lambda v: pw * v / xmax
-    body = [
-        '<text class="title" x="16" y="28">The bill nearly tripled. Which lines grew?</text>',
-        '<text class="sub" x="16" y="48">The bakery\'s November and December, without the database, US East (N. Virginia) prices as of 2026-10-24</text>',
-    ]
-    swatch(body, 16, 76, "s1", "Month total")
-    swatch(body, 130, 76, "s4", "Grew with customers")
-    swatch(body, 300, 76, "s2", "New resource, not customers")
-    for v in range(0, xmax + 1, 50):
-        x = left + sx(v)
-        body.append(f'<line class="{"axis" if v == 0 else "grid"}" x1="{x:.1f}" x2="{x:.1f}" y1="{top - 4}" y2="{top + rowh * len(steps)}"/>')
-        body.append(f'<text class="tick" x="{x:.1f}" y="{top + rowh * len(steps) + 18}" text-anchor="middle">${v}</text>')
-    run = 0.0
-    for i, (label, v, kind) in enumerate(steps):
-        y = top + i * rowh + 9
-        body.append(f'<text class="lab" x="16" y="{y + 15}">{label}</text>')
-        if kind == "total":
-            body.append(f'<path class="s1" d="{right_rounded(left, y, sx(v), 22)}"><title>{label}: ${v:,.2f}</title></path>')
-            body.append(f'<text class="val" x="{left + sx(v) + 8:.1f}" y="{y + 16}">${v:,.2f}</text>')
-            run = v
-        else:
-            cls = "s2" if kind == "up-new" else "s4"
-            body.append(f'<rect class="{cls}" x="{left + sx(run):.1f}" y="{y}" width="{max(sx(v), 2):.1f}" height="22" rx="3"><title>{label}: +${v:,.2f}</title></rect>')
-            body.append(f'<line class="conn" x1="{left + sx(run):.1f}" x2="{left + sx(run):.1f}" y1="{y - 18}" y2="{y}"/>')
-            body.append(f'<text class="val" x="{left + sx(run + v) + 8:.1f}" y="{y + 16}">+${v:,.2f}</text>')
-            run += v
-    body.append(f'<text class="note" x="16" y="{h - 26}">Quantities are made up for teaching. Prices from AWS\'s published price lists (data transfer published 2026-09-16).</text>')
-    body.append(f'<text class="note" x="16" y="{h - 10}">Lambda stayed inside its monthly free allowance in both months, so it adds $0.00.</text>')
-    desc = "; ".join(f"{lab} {'$' if k == 'total' else 'plus $'}{v:,.2f}" for lab, v, k in steps)
-    svg("11-01-bill-waterfall.svg", w, h,
-        "How the bakery's bill grew from November to December, line by line",
-        "Waterfall chart, in US dollars, without the order database. " + desc.replace("+ ", "") +
-        ". The NAT gateway is a new resource, not caused by customers; the other increases grew with customers.",
-        body, style=STYLE)
-    return steps
 
 
 def arrow(body, x1, y1, x2, y2, cls):
@@ -274,67 +200,6 @@ def transfer_map():
         "AWS's price list published 2026-09-16.", body, style=STYLE)
 
 
-def two_clocks():
-    """The Free plan's two clocks (calendar and credits), the Paid plan and Always Free."""
-    w, h = 720, 470
-    left, right, top = 200, 690, 92
-    pw = right - left
-    sx = lambda m: left + pw * m / 12
-    body = [
-        '<text class="title" x="16" y="28">The Free Tier now: two plans, and the Free plan\'s two clocks</text>',
-        '<text class="sub" x="16" y="48">A new account, months after sign-up. Terms as of 2026-10-24; check the AWS Free Tier page.</text>',
-    ]
-    for m in range(0, 13, 1):
-        x = sx(m)
-        body.append(f'<line class="{"axis" if m in (0, 12) else "grid"}" x1="{x:.1f}" x2="{x:.1f}" y1="{top - 6}" y2="{top + 250}"/>')
-        if m % 3 == 0:
-            body.append(f'<text class="tick" x="{x:.1f}" y="{top + 268}" text-anchor="middle">{m}</text>')
-    body.append(f'<text class="tick" x="{sx(6):.1f}" y="{top + 286}" text-anchor="middle">months after sign-up</text>')
-    rows = [
-        ("Free plan", 0, 6, "s1", "Calendar clock: 6 months, or less if the credits run out; then it closes"),
-        ("Credits: $100,", 0, 6, "s3", "Balance clock: up to $200 over 6 months (AWS Free Tier page)"),
-        ("Paid plan", 0, 12, "s2", "Never closes for lack of credits; usage beyond credits is billed"),
-        ("Always Free", 0, 12, "s4", "Monthly allowances on both plans, with no end date"),
-    ]
-    sub = {"Credits: $100,": "plus up to $100 more"}
-    for i, (name, a, b, cls, note) in enumerate(rows):
-        y = top + 8 + i * 60
-        body.append(f'<text class="cellt" x="16" y="{y + 15}">{name}</text>')
-        if name in sub:
-            body.append(f'<text class="small" x="16" y="{y + 31}">{sub[name]}</text>')
-        body.append(f'<path class="{cls}" d="{right_rounded(sx(a), y, sx(b) - sx(a), 20)}"><title>{name}: {note}</title></path>')
-        if name in sub:
-            # leftover credits after an upgrade: expiry disputed, so drawn dashed and unfilled
-            body.append(f'<rect class="dashext" x="{sx(6) + 2:.1f}" y="{y + 1}" width="{sx(12) - sx(6) - 3:.1f}" height="18" rx="3">'
-                        '<title>After an upgrade, leftover credits apply to later bills until they expire: '
-                        'AWS pages say 6 or 12 months after sign-up</title></rect>')
-            body.append(f'<text class="small" x="{sx(9):.1f}" y="{y + 14}" text-anchor="middle">after an upgrade: 6 or 12?</text>')
-        text_lines(body, sx(a), y + 38, [note], cls="small")
-    body.append(f'<text class="note" x="16" y="{h - 62}">After the Free plan closes the account, AWS keeps your content for 90 days; upgrading within that time restores access,</text>')
-    body.append(f'<text class="note" x="16" y="{h - 46}">and leftover credits apply to later bills. When they expire, AWS pages disagree: two FAQ answers say 6 months, two FAQ</text>')
-    body.append(f'<text class="note" x="16" y="{h - 30}">answers and the Free Tier terms say 12; our own account\'s Credits page showed 12. Check your own Credits page.</text>')
-    body.append(f'<text class="note" x="16" y="{h - 14}">Sources: AWS Free Tier page, FAQ and terms; Billing User Guide, "Choosing a plan"; our own Free plan account, 2026-10-23.</text>')
-    svg("11-01-two-clocks.svg", w, h,
-        "The Free plan's two clocks, the calendar and the credits, beside the Paid plan and Always Free offers",
-        "Timeline from 0 to 12 months after sign-up, as of 2026-10-24. Free plan: a bar from 0 to 6 months; it "
-        "ends at 6 months or sooner if the credits run out, and then the account closes. Credits, $100 plus up to "
-        "$100 more: a solid bar from 0 to 6 months, up to $200 over 6 months on the Free plan, as AWS's Free Tier page "
-        "says; then a dashed, unfilled bar from 6 to 12 months for leftover credits after an upgrade, whose expiry AWS "
-        "pages give as 6 or 12 months after sign-up. Paid plan: a bar across all 12 months and beyond; it never closes "
-        "for lack of credits, and usage beyond credits is billed. Always Free: monthly allowances on both plans with no "
-        "end date. After the Free plan closes the account, AWS keeps content for 90 days; upgrading in that time "
-        "restores access and leftover credits apply to later bills.",
-        body, style=STYLE)
-
-
 if __name__ == "__main__":
     four_meters()
-    steps = waterfall()
     transfer_map()
-    two_clocks()
-    rows, nov, dec = bill()
-    for r in rows:
-        print(f"{r[0]:<42} {r[1]:<14} {r[2]:>8.2f} {r[3]:>8.2f}")
-    print("totals", nov, dec)
-    for s in steps:
-        print(s)
