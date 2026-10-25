@@ -60,8 +60,9 @@ Follow the skill's concept-lesson template and lesson sequence:
    explained; "Where to check the current details".
 10. The attribution line from the licensing playbook, section 7.
 
-Aim for 2,000–5,000 words by full count (raised from 3,500 on 2026-10-25, owner decision). Domain 1 and 2 lessons run about 35 minutes of study; Domain 3 lessons
-about 25.
+Since 2026-10-25 (owner decision) lessons follow the lean anatomy and budgets in
+`design/optimization-brief.md`, which override this list where they differ: 1,500–2,500 words,
+about 15 to 25 minutes of study.
 
 ## Labs
 
