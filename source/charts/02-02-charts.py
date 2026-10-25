@@ -13,12 +13,11 @@ import sys
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from chartkit import MONTHS, line_key, month_axes, right_rounded, svg, swatch, top_rounded  # noqa: E402
+from chartkit import MONTHS, line_key, month_axes, svg, swatch, top_rounded  # noqa: E402
 
 NEEDED = [1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 3, 6]  # servers needed in the busiest hour
 OWNED = 3
 PRICE = 150  # made-up cost of one server for one month, owned or rented
-LOST_SALES = 8000  # made-up value of December orders turned away
 
 
 def demand_vs_owned():
@@ -118,43 +117,7 @@ def monthly_cost():
         "$150, 150, 300, 300, 300, 300, 150, 150, 300, 300, 450 and 900. Year totals: $5,400 owning, $3,750 renting.", body)
 
 
-def annual_cost():
-    rows = [
-        ("Own 3 servers (today)", 3 * 12 * PRICE, LOST_SALES),
-        ("Own 6 servers", 6 * 12 * PRICE, 0),
-        ("Cloud, rent 6 all year", 6 * 12 * PRICE, 0),
-        ("Cloud, rent what each month needs", sum(NEEDED) * PRICE, 0),
-    ]
-    w, left, top, pw, rowh, xmax = 680, 16, 100, 440, 58, 14000
-    h = top + rowh * len(rows) + 40
-    body = [
-        '<text class="title" x="16" y="28">A year for the bakery: server cost and lost sales</text>',
-        '<text class="sub" x="16" y="48">Made-up figures: $150 a server-month; about $8,000 of December orders lost with 3 servers</text>',
-    ]
-    swatch(body, 16, 76, "s1", "Server cost")
-    swatch(body, 140, 76, "s2", "Lost sales")
-    sx = lambda v: pw * v / xmax
-    for i, (label, cost, lost) in enumerate(rows):
-        y = top + i * rowh
-        body.append(f'<text class="lab" x="{left}" y="{y + 14}">{label}</text>')
-        by = y + 22
-        if lost:
-            body.append(f'<rect class="s1" x="{left}" y="{by}" width="{sx(cost) - 2:.1f}" height="20"><title>{label}: ${cost:,} server cost</title></rect>')
-            body.append(f'<path class="s2" d="{right_rounded(left + sx(cost), by, sx(lost), 20)}"><title>{label}: about ${lost:,} lost sales</title></path>')
-            end, txt = left + sx(cost + lost), f"${cost:,} + about ${lost:,} lost"
-        else:
-            body.append(f'<path class="s1" d="{right_rounded(left, by, sx(cost), 20)}"><title>{label}: ${cost:,} server cost</title></path>')
-            end, txt = left + sx(cost), f"${cost:,}"
-        body.append(f'<text class="lab" x="{end + 8:.1f}" y="{by + 15}">{txt}</text>')
-    body.append(f'<line class="axis" x1="{left}" x2="{left}" y1="{top + 18}" y2="{top + rowh * len(rows)}"/>')
-    svg("02-02-annual-cost.svg", w, h,
-        "Yearly server cost and lost sales for four ways the bakery could run its site",
-        "Horizontal bar chart. Own 3 servers, today: $5,400 server cost plus about $8,000 lost December sales. "
-        "Own 6 servers: $10,800. Cloud, renting 6 all year: $10,800. Cloud, renting what each month needs: $3,750.", body)
-
-
 if __name__ == "__main__":
     demand_vs_owned()
     capacity_in_cloud()
     monthly_cost()
-    annual_cost()

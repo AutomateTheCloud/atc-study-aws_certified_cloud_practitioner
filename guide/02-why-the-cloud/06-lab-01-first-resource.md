@@ -37,34 +37,20 @@ This guide is provided as is, without warranty. We work hard to keep it correct 
 
 **Who this is for:** you have set up the guardrails and are ready for your first real resource. You don't need any AWS experience. **Time:** about 25 minutes, plus 5 minutes the next day.
 
-**Goal:** you create an empty, private, tagged storage bucket and time how long it takes. Then you find it two ways, by its tags and in the account's activity record, and delete it. **End state:** nothing left behind, and your notes say how many minutes it took to get a new resource. The diagram shows the lab's five stages.
-
-```mermaid
-flowchart LR
-  accTitle: The five stages of Lab 01
-  accDescr: Create the bucket, tag it and time it, find it by its tags in Tag Editor, find it in CloudTrail Event history, then delete it and confirm it's gone. The next day, check that the Credits balance hasn't fallen, because cost data can take about a day to appear.
-  A["Create the bucket,<br/>tag it, and time it"] --> B["Find it by its tags<br/>in Tag Editor"]
-  B --> C["Find it in the activity record:<br/>CloudTrail Event history"]
-  C --> D["Clean up: delete it<br/>and confirm it's gone"]
-  D -->|"the next day"| E["Check the Credits<br/>balance hasn't fallen"]
-```
-
-*Notice that you find the bucket twice, in two different ways, before you delete it, and that the lab doesn't end at deletion: cost data can take about a day to appear.*
-
-**Long description.** Five stages from left to right. Create the bucket, tag it, and time it. Find it by its tags in Tag Editor. Find it in the activity record, CloudTrail Event history. Clean up: delete it and confirm it's gone. Then, the next day, check that the Credits balance hasn't fallen.
+**Goal:** you create an empty, private, tagged storage bucket and time how long it takes. Then you find it two ways, by its tags and in the account's activity record, and delete it. **End state:** nothing left behind, and your lab log says how many minutes it took to get a new resource.
 
 **What it creates:** one empty bucket in **Amazon S3** (Simple Storage Service), AWS's service for storing files, which it calls *objects*, in containers called *buckets*. The bucket is in US East (N. Virginia), `us-east-1`, with the tags `guide` = `clf` and `lab` = `01`. You delete it at the end.
 
 **What it costs:** $0. AWS doesn't charge for creating a bucket; it charges for storing files in it and moving them in and out ([Getting started with Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/GetStartedWithS3.html), checked 2026-10-23). This lab stores nothing. **Worst case on a Paid plan** if you forget to delete the bucket: still $0 while it stays empty. **Free plan:** nothing here upgrades your plan. Never choose **Upgrade plan** during a lab.
 
-**Before you start, you need these guardrails in place.** If you haven't done them, do them first (about two to three hours, once):
+**Before you start, you need these guardrails in place** (about two to three hours, once, if you haven't done them):
 
 - Root user secured with MFA: [primer page 02](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md).
 - An IAM admin user with MFA for daily work, never the root user: [primer page 03](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md).
 - Budgets and billing alerts: [primer page 05](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md).
 - The habits for every lab, including a lab log: [primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md).
 
-**Why this matters:** in [02.03](03-telling-the-benefits-apart.md) you met **agility**: AWS says the time to get new resources falls from weeks to minutes ([Six advantages of cloud computing](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html)). Here you measure it yourself. Tagging, finding and deleting what you create is how professionals keep the variable bill from [02.04](04-what-a-data-center-really-costs.md) under control: [COST03-BP02 Add organization information to cost and usage](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_monitor_usage_org_information.html) and [COST04-BP03 Decommission resources](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_decomissioning_resources_decommission.html). Checking the activity record is [SEC04-BP01 Configure service and application logging](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_detect_investigate_events_app_service_logging.html) in practice.
+**Why this matters:** in [02.03](03-telling-the-benefits-apart.md) you met **agility**, the time to get new resources falling from weeks to minutes ([Six advantages of cloud computing](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html)); here you measure it. Tagging, finding and deleting what you create keeps a variable bill under control ([COST03-BP02 Add organization information to cost and usage](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_monitor_usage_org_information.html), [COST04-BP03 Decommission resources](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_decomissioning_resources_decommission.html)), and checking the activity record is [SEC04-BP01 Configure service and application logging](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_detect_investigate_events_app_service_logging.html) in practice.
 
 > **New sign-up path:** that experience has no root user, no console IAM users, and a Region chosen for you that you can't change (as of 2026-10-23). Use your assigned Region wherever this lab says `us-east-1`, and sign in the way that path gives you. We haven't run this lab on that path yet, so some screens may differ.
 
@@ -164,7 +150,7 @@ flowchart LR
 
 ## Recap
 
-You created a private, encrypted, tagged resource in a few minutes, found it by its tags across every Region, saw the record of who created it, and deleted it, so it costs nothing from now on. That is the cloud's pay-as-you-go model on a small scale: get a resource when you need it, and stop paying when you delete it. The tags and the activity record are what make that safe as your labs grow.
+You created a private, encrypted, tagged resource in a few minutes, found it by its tags across every Region, saw the record of who created it, and deleted it. That's pay as you go on a small scale: get a resource when you need it, and stop paying when you delete it.
 
 > **Reflect:** how many minutes did your bucket take? A small business that buys a new server has to choose it, order it, wait for delivery and install it. Write two sentences on what the difference means for the bakery's owner when she wants to try a new idea, such as taking orders for a new product.
 >
@@ -174,7 +160,7 @@ You created a private, encrypted, tagged resource in a few minutes, found it by 
 >
 > </details>
 
-**Next:** practice the cost side in the [demand-curve simulation (S1)](07-sim-demand-curve.md).
+**Next:** the [Module 02 mastery check](08-check.md).
 
 ## Where to check the current details
 
@@ -182,7 +168,6 @@ You created a private, encrypted, tagged resource in a few minutes, found it by 
 - [Deleting a general purpose bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/delete-bucket.html), Amazon S3 User Guide (checked 2026-10-23)
 - [Finding resources to tag](https://docs.aws.amazon.com/tag-editor/latest/userguide/find-resources-to-tag.html), Tagging AWS Resources and Tag Editor (checked 2026-10-23)
 - [Working with CloudTrail event history](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html), AWS CloudTrail User Guide (checked 2026-10-23)
-- [Amazon S3 pricing](https://aws.amazon.com/s3/pricing/) (checked 2026-10-23)
 
 ---
 
