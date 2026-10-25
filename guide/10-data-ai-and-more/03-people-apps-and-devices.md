@@ -300,7 +300,7 @@ AWS runs the streaming servers, the contact center software, the email platform,
 
 ## Worked example: finishing the owner's requests
 
-The owner's six requests are now all answered. Here are the three this lesson adds, plus one more, sorted the way someone who knows the services would do it.
+The owner's six requests are now all answered. Here are the three this lesson adds, plus one more, sorted the way someone who knows the services would sort them.
 
 ```mermaid
 flowchart TD
@@ -340,7 +340,7 @@ Who: people using a computer (here, students rather than staff). How much: one a
 
 - In **security**, the design principle "[Keep people away from data](https://docs.aws.amazon.com/wellarchitected/latest/framework/sec-design.html)": streaming a desktop, an app or a browser keeps the bakery's data in AWS instead of on personal laptops.
 - In **security**, [SEC02-BP04 Rely on a centralized identity provider](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_identities_identity_provider.html): WorkSpaces users sign in through one directory, so removing a temporary worker removes their access everywhere.
-- In **cost optimization**, [COST07-BP01 Perform pricing model analysis](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_pricing_model_analysis.html): choosing hourly or monthly WorkSpaces by expected hours is exactly this.
+- In **cost optimization**, [COST07-BP01 Perform pricing model analysis](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_pricing_model_analysis.html): choosing hourly or monthly WorkSpaces by expected hours is that kind of analysis.
 - In **sustainability**, [SUS05-BP03 Use managed services](https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sus_sus_hardware_a4.html): a managed contact center, email platform or device gateway shares AWS's infrastructure instead of each business running its own.
 
 ## Summary

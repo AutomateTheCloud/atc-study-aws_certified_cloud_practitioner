@@ -169,7 +169,7 @@ Service names and status are as of 2026-10-24. Where the exam guide uses an olde
 
 **C is right.** Amazon AppStream 2.0, now called Amazon WorkSpaces Applications, streams single desktop applications from AWS to a browser or client. Users always get the version you installed, and the program isn't installed on their computers.
 
-- **A is wrong.** WorkSpaces gives each user a whole desktop. The freelancers need one program, so that's more than the job.
+- **A is wrong.** WorkSpaces gives each user a whole desktop. The freelancers need one program, so that's more than the job needs.
 - **B is wrong.** Client VPN gives a device a network path into a VPC. The program would still have to be installed and run on each computer.
 - **D is wrong.** Lightsail rents a simple server at a fixed monthly price, for websites and small applications. It doesn't stream a program to each freelancer.
 
@@ -204,7 +204,7 @@ Service names and status are as of 2026-10-24. Where the exam guide uses an olde
 
 **B and D are right.** AWS IoT Core connects devices, checks each one's identity (usually with a certificate), takes their MQTT messages and routes them with rules. AWS Amplify, through Amplify Hosting, builds and deploys every commit from a Git repository and hosts the result.
 
-- **A is wrong.** Lightsail rents a simple server at a fixed monthly price. The team would set it up, update it and deploy to it itself.
+- **A is wrong.** Lightsail rents a simple server at a fixed monthly price. The team would have to set it up, update it and deploy to it.
 - **C is wrong.** Kinesis Data Streams handles streaming data once it's in AWS, but it doesn't connect or authenticate devices.
 - **E is wrong.** Amazon SES sends and receives email. Neither part of the product is email.
 

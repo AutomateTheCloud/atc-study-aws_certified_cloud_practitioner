@@ -196,7 +196,7 @@ A team turns to SageMaker AI when the question is its own. The bakery's flour su
 
 **Long description.** Four cards in a row, with an arrow underneath running from "less to build, less to run, less control" on the left to "more to build and run, more control" on the right. A finished assistant: Amazon Q Developer; you ask and it answers and writes code; nothing to build; no ML skills. A ready-made service, highlighted: Comprehend, Textract, Polly, Lex and more; you call an API; AWS trained the model; nothing to train; no ML skills. Models to build on: Amazon Bedrock; foundation models from several companies; you build a generative AI app around one. Your own model: Amazon SageMaker AI; you bring data and ML skills; you build, train and deploy; most work, most control. A note says Amazon Bedrock isn't on the exam's in-scope list; it's shown because Amazon Q is built on it and because AWS points some closed services to it.
 
-**Amazon Bedrock** sits between the two. It gives you **foundation models** from Amazon and other AI companies through an API, so you can build a generative AI application without training a model ([What is Amazon Bedrock?](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html), checked 2026-10-24). It's **not on the exam guide's in-scope list** (checked 2026-10-24), so you won't need it to choose an answer; you'll meet the name because Amazon Q is built on it.
+**Amazon Bedrock** sits between the ready-made services and SageMaker AI. It gives you **foundation models** from Amazon and other AI companies through an API, so you can build a generative AI application without training a model ([What is Amazon Bedrock?](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html), checked 2026-10-24). It's **not on the exam guide's in-scope list** (checked 2026-10-24), so you won't need it to choose an answer; you'll meet the name because Amazon Q is built on it.
 
 ### "Amazon SageMaker is the ML service" uses an old name
 
@@ -299,7 +299,7 @@ Free allowances for these services differ and are often worded "for 12 months"; 
 
 ## Worked example: three of the owner's requests
 
-The owner's list has six requests. Lesson 10.01 took the sales dashboard. Here are three more, sorted the way someone who knows the services would do it. The flowchart is the method.
+The owner's list has six requests. Lesson 10.01 took the sales dashboard. Here are three more, sorted the way someone who knows the services would sort them, using the method in the flowchart.
 
 ```mermaid
 flowchart TD
