@@ -35,7 +35,7 @@ sources:
 
 This guide is provided as is, without warranty. We work hard to keep it correct and current, but AWS changes often, and its services, prices, and free offers may differ from what is written here. The labs run in your own AWS account. You are responsible for that account, for its security, and for any charges it incurs, including charges from resources you forget to delete. Automate the Cloud Inc. is not liable for any costs, losses, or security incidents that result from following, or failing to follow, this material. Technical guidance here is general information, not advice about your specific systems.
 
-**Who this is for:** you have set up the guardrails and are ready for your first real resource. No AWS experience needed. **Time:** about 25 minutes, plus 5 minutes the next day.
+**Who this is for:** you have set up the guardrails and are ready for your first real resource. You don't need any AWS experience. **Time:** about 25 minutes, plus 5 minutes the next day.
 
 **Goal:** you create an empty, private, tagged storage bucket and time how long it takes. Then you find it two ways, by its tags and in the account's activity record, and delete it. **End state:** nothing left behind, and your notes say how many minutes it took to get a new resource. The diagram shows the lab's five stages.
 

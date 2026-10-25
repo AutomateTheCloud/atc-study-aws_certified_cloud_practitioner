@@ -85,7 +85,7 @@ flowchart LR
 ## Key terms (skip if you know them)
 
 - **On-premises**: running your own servers in a room or building you control, instead of renting capacity from a cloud provider.
-- **Total cost of ownership (TCO)**: every cost of owning and running something over its whole life, not only the purchase price. Not the same as the price tag: a $3,000 server can have a TCO far above $3,000.
+- **Total cost of ownership (TCO)**: every cost of owning and running something over its whole life, not only the purchase price. It isn't the same as the price tag: a $3,000 server can have a TCO far above $3,000.
 - **Capital expense (CapEx)**: money spent up front on things that last for years, such as servers or a building.
 - **Operating expense (OpEx)**: money spent on running costs as you go, such as rent, electricity, salaries or a monthly cloud bill.
 - **Idle capacity**: equipment you paid for that does no work.

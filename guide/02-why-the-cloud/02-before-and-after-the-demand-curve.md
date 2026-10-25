@@ -112,13 +112,13 @@ In the cloud, the bakery doesn't choose one number for the whole year. It rents 
 
 **Long description.** The same columns as the first chart: servers needed of 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 3 and 6 from January to December. A dot on each column shows the servers rented, which equal the servers needed every month.
 
-This picture is simplified. Real demand changes by the hour, and in the cloud you can follow it hour by hour, which saves more. And adding a server takes a few minutes, so real systems keep a little spare. The idea holds: capacity follows demand, instead of demand being forced to fit capacity.
+This picture is simplified. Real demand changes by the hour, and in the cloud you can follow it hour by hour, which saves more. And adding a server takes a few minutes, so real systems keep a little spare. Even so, capacity follows demand, instead of demand being forced to fit capacity.
 
 What makes this possible is the definition from the last lesson. Because resources are **on demand**, the bakery can add servers within minutes. Because they are **pay as you go**, it stops paying when it removes them. Lesson 02.03 gives this ability its name, elasticity.
 
 ## Worked example: the bakery's year in numbers
 
-Here is the comparison an advisor would make for the owner. All the money figures are made up for teaching. To keep the comparison about the *shape* of demand, assume one server costs $150 a month either way, owned or rented. (In reality the prices differ; lesson 02.04 and [Simulation S1](07-sim-demand-curve.md) look at that.)
+An advisor would make this comparison for the owner. All the money figures are made up for teaching. To keep the comparison about the *shape* of demand, assume one server costs $150 a month either way, owned or rented. (In reality the prices differ; lesson 02.04 and [Simulation S1](07-sim-demand-curve.md) look at that.)
 
 **Step 1: what the bakery pays now.** It owns 3 servers for 12 months: 36 server-months × $150 = **$5,400 a year**, whatever happens.
 
@@ -229,9 +229,9 @@ Today you had to choose a number of servers years ago, and in December that numb
 The AWS Well-Architected Framework, which lesson 02.05 introduces, turns this lesson into guidance:
 
 - Its general design principles start with "[Stop guessing your capacity needs](https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html)".
-- Its cost optimization pillar includes the design principle "[Adopt a consumption model](https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-dp.html)". In short: let what you pay for track what the business needs right now, not what it might need at its busiest. The Framework's example is turning off development and test systems outside working hours. If they run 40 hours of a 168-hour week, that saves about 75% ([cost optimization design principles](https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-dp.html)).
+- Its cost optimization pillar includes the design principle "[Adopt a consumption model](https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-dp.html)". It means letting what you pay for track what the business needs right now, rather than what it might need at its busiest. The Framework's example is turning off development and test systems outside working hours. If they run 40 hours of a 168-hour week, that saves about 75% ([cost optimization design principles](https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-dp.html)).
 
-The worked example's warning matters most at work. The cloud *allows* you to pay for what you use; it doesn't *make* you. Teams that keep peak capacity running all the time pay more, not less. For the same reason, every lab in this guide ends by deleting what it created. The reliability pillar cares about this picture too: a site that crashes at its peak isn't doing its job.
+The worked example's warning matters most at work. The cloud *allows* you to pay for what you use, but it doesn't *make* you. Teams that keep peak capacity running all the time end up paying more. For the same reason, every lab in this guide ends by deleting what it created. The reliability pillar cares about this picture too: a site that crashes at its peak isn't doing its job.
 
 ## Summary
 

@@ -95,13 +95,13 @@ flowchart LR
 - **On-premises:** in a building that you own or control. "Premises" means a building and its land.
 - **Deployment model:** where the parts of a system run: in the cloud, on-premises, or a mix called hybrid.
 
-"Cloud" is an everyday word that means something different here. A cloud in the sky is vague and has no fixed place. Cloud computing is concrete: real servers, in real buildings, owned and run by a provider. You don't see them, but they exist.
+"Cloud" is an everyday word that means something different here. A cloud in the sky is vague and has no fixed place. Cloud computing runs on real servers in real buildings, owned and run by a provider, even though you never see them.
 
 ## Three features together make something cloud computing
 
 AWS defines cloud computing by three features that work together ([What is cloud computing?](https://aws.amazon.com/what-is-cloud-computing/)):
 
-1. **On demand.** You ask for a resource when you need it, and you get it within minutes. There is no order to place with a supplier, no delivery to wait for, and no one to install it.
+1. **On demand.** You ask for a resource when you need it, and you get it within minutes. You don't place an order with a supplier and then wait for delivery and installation.
 2. **Over the internet.** You reach the resources, and set them up, through the internet. They sit in the provider's data centers, not in your building.
 3. **Pay as you go.** You pay for what you use, for as long as you use it. When you stop using a resource and delete it, you stop paying for it. AWS's pricing page notes that there are no termination fees ([AWS Pricing](https://aws.amazon.com/pricing/)).
 
@@ -224,7 +224,7 @@ A related mistake is to treat "private cloud" as a way of moving to the cloud wh
 
 ## Worked example: classifying three setups
 
-Here is how someone who knows this well thinks through a classification. The method is the same each time: list the parts, say where each runs, then decide.
+This is how someone who knows the topic thinks through a classification. They use the same method each time: list the parts, say where each runs, then decide.
 
 **Setup 1.** A design studio stores all its files with a cloud provider and runs its project-tracking website at the same provider. Its staff work from laptops at home.
 
