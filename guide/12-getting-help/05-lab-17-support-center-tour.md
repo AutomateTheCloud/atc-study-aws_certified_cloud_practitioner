@@ -17,8 +17,9 @@ time: "45 minutes"
 cost: "$0 on the Free plan (as of 2026-10-24)"
 worst_case: "$0 on a Paid plan: the lab creates nothing; the only ways to spend money here are buttons it tells you not to press (a Support plan upgrade or a Marketplace subscription)"
 needs: [guardrails-02, guardrails-03, guardrails-05, guardrails-06, guardrails-07, clf-03-05]
-recorded: 2026-10-23
-facts_checked: 2026-10-24
+last_run_pass: "2026-10-25, standalone Free plan account, advanced sign-up, us-east-1"
+recorded: 2026-10-25
+facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/awssupport/latest/user/case-management.html"
   - "https://docs.aws.amazon.com/awssupport/latest/user/case-management-legacy.html"
@@ -67,7 +68,7 @@ flowchart LR
 
 **What it creates:** nothing. **What it costs:** $0; these pages are free to look at. **Worst case on a Paid plan:** still $0, unless you press a button this lab tells you not to.
 
-> **Warning:** two buttons in this lab spend money. **Upgrading the Support plan** starts a monthly fee: Business Support+ is at least $29 a month per account, with a 30-day minimum (as of 2026-10-24, [AWS Support pricing](https://aws.amazon.com/premiumsupport/pricing/)). It doesn't need the root user, so your admin user can do it by accident. **Subscribing in AWS Marketplace** can add the seller's charges to your AWS bill. On the Free plan, AWS also blocks "certain AWS Marketplace offers" ([Choosing a plan](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html), checked 2026-10-23). We haven't tested what a Support plan upgrade does to a Free plan account. Never choose **Upgrade plan**, **Upgrade**, **Get started**, **Confirm upgrade**, **Request Offer**, **Subscribe** or **View purchase options** in this lab. If a page asks you to agree to subscription terms, you have gone too far: leave the page.
+> **Warning:** two buttons in this lab spend money. **Upgrading the Support plan** starts a monthly fee: Business Support+ is at least $29 a month per account, with a 30-day minimum (as of 2026-10-24, [AWS Support pricing](https://aws.amazon.com/premiumsupport/pricing/)). It doesn't need the root user, so your admin user can do it by accident. **Subscribing in AWS Marketplace** can add the seller's charges to your AWS bill. On the Free plan, AWS also blocks "certain AWS Marketplace offers" ([Choosing a plan](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html), checked 2026-10-23). On the Free plan, the Support Plans page says "Only Basic Support is available to accounts on the AWS Free Tier plan. To upgrade your support, first upgrade to a Paid plan." (as of 2026-10-25), so a Support upgrade there starts with a plan upgrade. Never choose **Upgrade plan**, **Upgrade**, **Get started**, **Start trial**, **Try for free**, **Confirm upgrade**, **Request Offer**, **Subscribe** or **View purchase options** in this lab. If a page asks you to agree to subscription terms, you have gone too far: leave the page.
 
 **Before you start, you need these guardrails in place:** [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md) (primer page 02), [an IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md), which you use for this lab (page 03), [budgets and billing alerts](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md) (page 05), [the safe defaults](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/06-safe-defaults.md), where you first refreshed Trusted Advisor (page 06), and [the habits for every lab](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md) (page 07).
 
@@ -75,7 +76,7 @@ flowchart LR
 
 > **New sign-up path:** AWS lists Trusted Advisor as not supported there (as of 2026-10-23, [Supported AWS services](https://docs.aws.amazon.com/accounts/latest/reference/supported-services-sign-up-new.html)). We haven't run this lab on that path. Do the stops that open for you, and use the screenshots in steps 9 and 12 for Trusted Advisor. Steps 14 to 16 need no AWS account.
 
-**About the screens:** the Trusted Advisor screens are what our test account showed on 2026-10-23, on the Free plan with Basic Support. The other labels come from AWS's documentation. We haven't yet run this lab end to end, so if a label differs, look for the option with the same meaning.
+**About the screens:** labels in **bold** are what we saw when we ran this lab end to end in our test account, on the Free plan with Basic Support, on 2026-10-25. AWS changes its console often. If a label differs, look for the option with the same meaning.
 
 ## Steps
 
@@ -96,8 +97,8 @@ flowchart LR
 ### Stop 1: which Support plan are you on?
 
 3. Go to the **AWS Support Plans console**, the page that shows your plan and where plans are changed: `https://console.aws.amazon.com/support/plans/home` ([Change AWS Support Plans](https://docs.aws.amazon.com/awssupport/latest/user/changing-support-plans.html)).
-   **You should see:** your current plan, **Basic**, beside the paid plans. This is the page where plans are changed, so only read it: don't choose any button in the paid plans' sections.
-4. If the page offers a **Pricing calculator**, choose Business Support+ and enter `1200`, the bakery's grown monthly AWS bill in this module (made up). The calculator only shows an estimate; it changes nothing. Write the estimate in your lab log. If there is no calculator, work it out by hand from the dated prices in [12.01](01-support-plans.md).
+   **You should see:** your current plan, **Basic Support**, marked **Current plan**, beside the paid plans. On the Free plan, a line at the top says only Basic Support is available until you upgrade to a Paid plan. This is the page where plans are changed, so only read it: don't choose any button in the paid plans' sections.
+4. Choose **Pricing calculator** at the top of the page. Keep the **Business Support+** tab, enter `1200` in **Estimated Monthly AWS charges (USD)** and choose **Calculate**: `1200` is the bakery's grown monthly AWS bill in this module (made up). The calculator only shows an estimate; it changes nothing. Write the estimate in your lab log. If there is no calculator, work it out by hand from the dated prices in [12.01](01-support-plans.md).
    **You should see:** about **$108 a month**: the greater of $29 or 9% of a bill under $10,000 (as of 2026-10-24, [AWS Support pricing](https://aws.amazon.com/premiumsupport/pricing/)).
 
 ### Stop 2: which cases can you open?
@@ -106,8 +107,8 @@ A **support case** is a request you open with AWS Support and follow in Support 
 
 5. In the console, choose the question mark icon at the top right, then **Support Center**.
    **You should see:** Support Center. In N. Virginia it may first ask you to describe your issue and offer AI-generated troubleshooting before any case form ([AI-enhanced troubleshooting](https://docs.aws.amazon.com/awssupport/latest/user/ai-enhanced-support.html), checked 2026-10-24).
-6. Choose the option to create a case (or describe a made-up billing question until the page offers one), and look at the case types.
-   **You should see:** **Account and billing** and **service limit increase** requests, open to every account, and **Technical**, which Basic can't open ([Case management](https://docs.aws.amazon.com/awssupport/latest/user/case-management.html)). The quota request may be a link such as **Looking for service quota increases?**. Write which types you can choose.
+6. In **Hi. How can we help?**, describe a made-up billing question, say so in the text ("Training exercise, no real problem"), and send it. After the AI answer, choose **Create a case**: a form opens. Open its **Case type** list.
+   **You should see:** **Account and billing** and **service limit increase** requests, open to every account, and **Technical**, which Basic can't open ([Case management](https://docs.aws.amazon.com/awssupport/latest/user/case-management.html)). The quota request may be a link such as **Looking for service quota increases?**. On 2026-10-25 all three appeared in the list; choosing **Technical** showed "Technical case type is not available for your support plan" and an offer of a **Business Support+** trial with a **Start trial** button. Don't choose it. Write which types you can choose.
 7. Stop here. Choose **Discard draft**, **Cancel** or simply leave the page; don't submit.
    > **If something went wrong:** if you submitted a case by mistake, open it in Support Center and reply that it was opened in error and can be closed. An account and billing case costs nothing.
 
@@ -165,7 +166,7 @@ Two categories map to Reliability, and none to Sustainability: the free checks s
 
 The **AWS Knowledge Center** is a set of AWS-written articles answering common questions, hosted on AWS re:Post with an AWS Official badge since 2023 ([announcement](https://aws.amazon.com/about-aws/whats-new/2023/03/aws-re-post-includes-knowledge-center-articles/)).
 
-15. Go to `https://repost.aws/knowledge-center` and search for `report abuse of AWS resources`. Open the article on reporting abuse ([Report abuse of AWS resources](https://aws.amazon.com/premiumsupport/knowledge-center/report-aws-abuse/), checked 2026-10-24).
+15. Go to `https://repost.aws/knowledge-center` and search for `report abuse of AWS resources`. Open the article on reporting abuse ([Report abuse of AWS resources](https://repost.aws/knowledge-center/report-aws-abuse), checked 2026-10-25). It carries an **AWS OFFICIAL** badge and the date it was last updated.
     **You should see:** the AWS abuse form, what to include, and a note that AWS Support doesn't handle abuse reports. Write the three things it asks for about network activity. Don't submit the form.
 16. **Challenge.** On your own, find an AWS-written answer to issue 2 in your table, in the Knowledge Center or AWS documentation. Write its title, who wrote it, and when it was last updated.
 
@@ -179,7 +180,7 @@ Any AWS page about **S3 Lifecycle rules** that expire noncurrent (old) versions 
 
 A **product detail page** is AWS Marketplace's page for one product: what it is, who sells it, how it's delivered and how it's priced.
 
-17. In the console search bar, type `Marketplace` and open **AWS Marketplace**. Choose the option to discover or browse products, and search for `WAF rules`.
+17. In the console search bar, type `Marketplace` and open **AWS Marketplace**. Choose the option to discover or browse products, and search for `WAF rules`. Some results carry a **Try for free** button: don't choose it; open the product by its title.
 18. Open one listing's product detail page. Write its seller, how it's delivered (for example SaaS or a rule group for AWS WAF), and its pricing model (free trial, hourly, monthly, annual or BYOL).
     **You should see:** pricing and terms set by the seller. Charges for a subscription would appear on your AWS bill ([What is AWS Marketplace?](https://docs.aws.amazon.com/marketplace/latest/buyerguide/what-is-marketplace.html), checked 2026-10-24).
     > **Warning:** **View purchase options** starts a subscription ([SaaS usage-based subscriptions](https://docs.aws.amazon.com/marketplace/latest/buyerguide/saas-subscriptions.html)). Stop at the product detail page.

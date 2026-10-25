@@ -107,4 +107,8 @@
   (a bucket policy's explicit deny also blocks root); 05.05 read replica limits for Oracle/SQL Server;
   05.05 "standby serves no reads" vs Multi-AZ DB clusters; align S5 vs 05.03 minimum-duration wording.
 - Sims' and labs' closing "Next: mastery check" lines to link the check pages (final pass).
-- q14-risk-from-worst-missing-practice depends on Lab 18's unconfirmed risk rule: confirm on the live run or cut.
+- ~~q14-risk-from-worst-missing-practice depends on Lab 18's unconfirmed risk rule: confirm on the live run or cut.~~ Resolved 2026-10-25: the live run confirmed the rule at all three levels (a missing High gave high risk; missing Mediums only, medium; a missing Low only, no risk). The item stands.
+
+- Module 03 (2026-10-25 live run): AWS's status page shows a long-running "Operational issue - Multiple services (UAE)" in
+  `me-central-1` (Region damaged; one AZ unrecoverable per AWS's Sep 15 update). Use it as a real Region-isolation
+  example in lesson 03.03 or Lab 02, or leave it out as too sensitive?

@@ -17,7 +17,9 @@ time: "45 minutes"
 cost: "$0: a free web tool, and no AWS account is used (as of 2026-10-24)"
 worst_case: "$0. Nothing is created in AWS. The estimate link you share stays readable by anyone who has it for one year, so keep personal details out of the estimate"
 needs: []
-facts_checked: 2026-10-24
+last_run_pass: "2026-10-25, standalone Free plan account, advanced sign-up, us-east-1"
+recorded: 2026-10-25
+facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/pricing-calculator/latest/userguide/what-is-pricing-calculator.html"
   - "https://docs.aws.amazon.com/pricing-calculator/latest/userguide/create-configure-estimate.html"
@@ -64,7 +66,7 @@ flowchart LR
 
 > **New sign-up path:** AWS lists the Pricing Calculator as not supported in that experience (as of 2026-10-23). We read that as the version inside the console. This lab uses the public website, which needs no account at all, so it should work the same for you.
 
-**About the screens:** names in **bold** come from AWS's Pricing Calculator User Guide (checked 2026-10-24). We haven't yet run this lab, and the calculator's service pages change often, so other labels are hedged where they appear. If a label differs, look for the option with the same meaning.
+**About the screens:** labels in **bold** and the figures quoted are what we saw when we ran this lab end to end on 2026-10-25. The calculator's pages change often. If a label differs, look for the option with the same meaning.
 
 > **Dated (checked 2026-10-24):** the prices in this lab are On-Demand, Linux, US East (N. Virginia), from AWS's Price List files: `t3.small` $0.0208 an hour; Application Load Balancer $0.0225 an hour plus capacity units; public IPv4 address $0.005 an hour; gp3 disk $0.08 per GB-month; S3 Standard $0.023 per GB-month. The calculator counts 730 hours in a month. Your calculator shows today's prices; trust it over this box.
 
@@ -89,16 +91,16 @@ flowchart LR
 3. Choose **Create estimate**.
    **You should see:** the **Add service** page, with a search box.
 4. Search for `Amazon EC2` and choose **Configure** on its card.
-5. In **Description**, type `Bakery live - web servers`. Choose the location type for a Region and the Region **US East (N. Virginia)**.
+5. In **Description**, type `Bakery live - web servers`. Keep the location type **Region** and choose **US East (N. Virginia)**. Check it: our calculator started on US East (Ohio).
 6. In the instance section, keep the tenancy as shared and the operating system as Linux. Choose the workload for constant usage, and set the number of instances to `2`. Search for `t3.small` and select it.
-7. In the payment section, choose On-Demand. If the page asks for expected utilization, enter `100` percent.
-8. In the storage section, choose General Purpose SSD (gp3) and type `20` GB. Leave snapshots, monitoring and data transfer empty or at zero.
+7. Under **Payment options**, choose **On-Demand**. The page starts on **Compute Savings Plans** with a 3-year term (as of 2026-10-25), which would make your figure far lower than this lab's. Keep **Expected utilization** at `100` percent, **Utilization percent per month**.
+8. Open the collapsed **Amazon Elastic Block Store (EBS) - optional** section, keep **General Purpose SSD (gp3)**, and type `20` in **Storage amount** (GB). Leave snapshots, monitoring and data transfer empty or at zero.
    **You should see:** a monthly cost near $33.57 (two servers at $15.18, two disks at $1.60). **Show calculations** opens the working behind the figure; the calculator counts 730 hours a month.
    > **If something went wrong:** a much larger figure usually means a different Region, Windows, or a larger instance type. Check all three against step 6.
 9. Choose **Save and add service**.
-10. Search for `Elastic Load Balancing` and choose **Configure**. Choose the Application Load Balancer, the same Region, and `1` load balancer. Where it asks about traffic, enter the smallest values it accepts, such as `1` GB a month, and save the service.
+10. Search for `Elastic Load Balancing` and choose **Configure**. Choose the Application Load Balancer, the same Region, and `1` load balancer. Where it asks about traffic, under processed bytes for EC2 instances, change the unit from **GB per hour** to **GB per month** and enter `1`. Save the service.
     **You should see:** about $16.43 for the hours, plus a little for **capacity units** (load balancer capacity units, which grow with traffic).
-11. Search for `Amazon VPC` and choose **Configure**. Look for the section on public IPv4 addresses, enter `2` in-use addresses for the full month, set any NAT gateway count to `0`, and save.
+11. Search for `Amazon VPC` and choose **Configure**. Its features are checkboxes: tick **Public IPv4 Address** (leave **NAT Gateway** cleared; **VPN Connection** was ticked by default for us and adds nothing while its numbers are zero), enter `2` in **Number of In-use public IPv4 addresses**, and save.
     **You should see:** $7.30 (2 × $0.005 × 730).
     > **If something went wrong:** if your calculator has no public IPv4 section, cancel this service and write $7.30 in your log by hand. AWS bills public IPv4 addresses by the hour either way ([Amazon VPC pricing](https://aws.amazon.com/vpc/pricing/)).
 12. Search for `Amazon S3` and choose **Configure**. In S3 Standard, enter `50` GB of storage, leave requests at zero, and save.
@@ -129,7 +131,7 @@ An **hourly item** is a line made of a time-based charge ([lesson 11.01](01-how-
 15. The owner's nephew wants a test copy of the site for the cake designer. His draft copies Part 1 without the photos: two servers, a load balancer and two public addresses, all month. Add up his draft's monthly cost from your log, without building it.
 16. Testing happens only in working hours, about 40 of the week's 168 hours, and one tester at a time. Decide which of the draft's hourly items the test copy can drop.
 17. Add a new **Amazon EC2** service with the description `Test copy - cake designer`, the same Region, `1` × `t3.small`, On-Demand, and a 20 GB gp3 disk. In the utilization or usage field, enter about `24` percent (40 ÷ 168), or 40 hours a week if it asks for hours. Save it.
-    **You should see:** about $3.62 for the server and $1.60 for the disk.
+    **You should see:** about $3.62 for the server, but only about $0.38 for the disk, $4.00 in all. The calculator explains why in a note under the usage field: for usage below 100%, it "assumes that the attached EBS volume is deleted while the instance is not running". Your plan only stops the server, and a disk is billed for as long as it exists, so the real cost of this line is $3.62 + $1.60 = $5.22. Write both figures in your log.
     > **If something went wrong:** if you find no utilization or hours field, look for a workload option based on a usage pattern, such as a daily spike, and choose one that runs about 8 hours a day.
 
 > **Your turn:** what did you remove, and why is the disk the one cost the trimmed copy can't shrink by running fewer hours?
@@ -142,13 +144,13 @@ An **hourly item** is a line made of a time-based charge ([lesson 11.01](01-how-
 
 **Long description.** Two stacked horizontal bars, dollars per month, as of 2026-10-24. The nephew's draft totals $57.30: servers $30.37, load balancer $16.43, public IPv4 $7.30, disks $3.20. The trimmed copy totals $5.22: one `t3.small` for about 174 hours, $3.62, and its 20 GB disk, $1.60.
 
-Remove the **load balancer**: with one server there is nothing to balance. Remove the **second server** and its address: one tester needs one. Run the remaining server **only in working hours**, and stop it outside them. The **disk** bills for its size for as long as it exists, even while the server is stopped (lesson 06.01), so only deleting it ends that charge.
+Remove the **load balancer**: with one server there is nothing to balance. Remove the **second server** and its address: one tester needs one. Run the remaining server **only in working hours**, and stop it outside them. The **disk** bills for its size for as long as it exists, even while the server is stopped (lesson 06.01), so only deleting it ends that charge. That's why the calculator's $4.00 understates this plan: it assumes the disk is deleted whenever the server is off.
 
 </details>
 
 ### Part 3 (challenge): compare ways to pay for the web servers
 
-18. The two live web servers run all year. On the **My Estimate** page, choose the **Edit** icon next to `Bakery live - web servers`. Try each payment option the calculator offers, choosing a **1-year** term and **no upfront** payment wherever it asks: On-Demand, Compute Savings Plans, EC2 Instance Savings Plans, Standard Reserved Instances, and Spot. For each, write the monthly cost and any upfront cost. Then set the line back to the option you would choose, and save.
+18. The two live web servers run all year. On the **My Estimate** page, choose the **Edit** icon next to `Bakery live - web servers`. Try each payment option the calculator offers, choosing a **1-year** term and **no upfront** payment wherever it asks: On-Demand, Compute Savings Plans, EC2 Instance Savings Plans, Standard Reserved Instances, and Spot. Reserved Instances are in a collapsed section, **Other purchasing options**, which also offers Convertible Reserved Instances. The total includes the two disks ($3.20); subtract them to compare the servers. For each, write the monthly cost and any upfront cost. Then set the line back to the option you would choose, and save.
 
 > **Your turn:** fill in a table like this, then choose an option for the two always-on servers and give two reasons. Which option would you refuse, and why?
 
@@ -158,11 +160,12 @@ Remove the **load balancer**: with one server there is nothing to balance. Remov
 |---|---|---|
 | On-Demand | $30.37 | None |
 | Standard Reserved Instances | $18.98 ($0.013 an hour each) | 1 year of this instance type |
-| EC2 Instance Savings Plans | your calculator's figure | 1 year of dollars per hour on one family in one Region |
-| Compute Savings Plans | your calculator's figure | 1 year of dollars per hour on any EC2, Lambda or Fargate |
-| Spot | your calculator's figure, using its historical average discount | None, but AWS can reclaim the servers with a two-minute warning |
+| Convertible Reserved Instances | $21.90 | 1 year, but you may exchange it for other instance types |
+| EC2 Instance Savings Plans | $18.98 | 1 year of dollars per hour on one family in one Region |
+| Compute Savings Plans | $21.90 | 1 year of dollars per hour on any EC2, Lambda or Fargate |
+| Spot | $11.54, using the calculator's 62% historical average discount | None, but AWS can reclaim the servers with a two-minute warning |
 
-On-Demand and Reserved prices: AWS Price List, US East (N. Virginia), as of 2026-10-24. AWS describes Compute Savings Plans as up to 66% off On-Demand and EC2 Instance Savings Plans as up to 72% off ([Savings Plans types](https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html), checked 2026-10-24). "Up to" is the best case, so read your own figures.
+On-Demand and Reserved prices: AWS Price List, US East (N. Virginia), as of 2026-10-24. The Savings Plans, Convertible and Spot figures are the calculator's, for two `t3.small` servers, on 2026-10-25; yours may differ. AWS describes Compute Savings Plans as up to 66% off On-Demand and EC2 Instance Savings Plans as up to 72% off ([Savings Plans types](https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html), checked 2026-10-24). "Up to" is the best case, so read your own figures.
 
 **A good choice:** a 1-year **Savings Plan** sized to the two servers. They run every hour, so a commitment is paid for by real use, and the discount is large. A **Compute** Savings Plan keeps working if the bakery moves the servers to another family, such as Graviton, or onto Lambda; an **EC2 Instance** Savings Plan or a **Reserved Instance** can save more (AWS's maximum is 72% against 66%) but ties you to the `t3` family in one Region. **Refuse Spot** for these two servers: they are the site's only floor, and losing both with two minutes' warning would take orders offline.
 
@@ -173,7 +176,7 @@ On-Demand and Reserved prices: AWS Price List, US East (N. Virginia), as of 2026
 ### Part 4: share the estimate
 
 19. On the **My Estimate** page, check that no description contains a name, an address or an account ID. Then choose **Share**.
-20. Read the **Public server acknowledgment** and choose **Agree and Continue**. Then choose **Copy public link**.
+20. Read the **Public server acknowledgment** and choose **Agree and continue**. Then choose **Copy public link**.
     **You should see:** a link copied to your clipboard. This **estimate link** is the public address that reopens the saved estimate. Paste it into your lab log, with one line saying what the estimate shows.
 21. Open the link in a private browser window.
     **You should see:** the same estimate, with all its lines.

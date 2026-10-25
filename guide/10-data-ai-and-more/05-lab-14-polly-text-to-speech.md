@@ -16,7 +16,9 @@ time: "15 minutes, plus 5 minutes the next day"
 cost: "About 1.4 cents at list prices before any free allowance; taken from credits on the Free plan (as of 2026-10-24)"
 worst_case: "Nothing keeps billing: Polly charges per request, and the lab leaves nothing in your account. Extra experiments cost per character, at most about $0.30 for one full 3,000-character request with the Long Form engine"
 needs: [guardrails-02, guardrails-03, guardrails-05, guardrails-07, clf-02-06]
-facts_checked: 2026-10-24
+last_run_pass: "2026-10-25, standalone Free plan account, advanced sign-up, us-east-1"
+recorded: 2026-10-25
+facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/polly/latest/dg/what-is.html"
   - "https://docs.aws.amazon.com/polly/latest/dg/synthesize-example.html"
@@ -70,7 +72,7 @@ This lab sends 211 characters four times (we count the download as a request): o
 
 > **New sign-up path:** our research found Polly among the services that experience offers, but IAM users can't sign in to the console there and your Region is fixed (as of 2026-10-23). Use your assigned Region wherever this lab says `us-east-1`, and sign in the way that path gives you. We haven't run this lab on that path.
 
-**About the screens:** labels come from the console example in the Amazon Polly Developer Guide (checked 2026-10-24). On our Free plan test account, the Polly console opened normally on 2026-10-23, but we haven't yet run this lab or made speech there. If a label differs, look for the option with the same meaning.
+**About the screens:** labels in **bold** are what we saw when we ran this lab end to end in our test account, on the Free plan, on 2026-10-25. AWS changes its console often. If a label differs, look for the option with the same meaning.
 
 ## Steps
 
@@ -86,14 +88,14 @@ This lab sends 211 characters four times (we count the download as a request): o
 
 ### Listen in three engines
 
-3. In the console search bar, type `Polly` and open **Amazon Polly**. Choose **Text-to-Speech** (a tab or a menu entry). The text box opens with AWS's example text.
+3. In the console search bar, type `Polly` and open **Amazon Polly**. Choose **Text-to-Speech** (a tab or a menu entry). The text box opens with AWS's example text, read by the voice **Tiffany**, and the **Generative** engine is selected.
    > **If something went wrong:** if a page says your account is on the Free plan and offers **Upgrade plan**, stop. Don't upgrade; read the rest of the lab instead and go on to the simulation.
-4. If **SSML** is turned on, turn it off: you are sending plain text, not speech markup. Delete the example text and paste the description.
-5. Under **Engine**, choose **Standard**. For the language, choose US English (shown as **English, US** or similar), and for the voice, choose **Joanna**. Joanna has Standard, Neural and Generative versions ([Available voices](https://docs.aws.amazon.com/polly/latest/dg/available-voices.html), checked 2026-10-24), so you hear one voice through three engines.
+4. If **SSML** is turned on, turn it off: you are sending plain text, not speech markup. Delete the example text and paste the description. The counter under the box should read **211 characters used**.
+5. Under **Engine**, choose **Standard**. (The list also offers **Long-Form**, a fourth engine for long texts, which this lab doesn't use.) For the language, choose US English (shown as **English, US** or similar), and for the voice, choose **Joanna**. Joanna has Standard, Neural and Generative versions ([Available voices](https://docs.aws.amazon.com/polly/latest/dg/available-voices.html), checked 2026-10-24), so you hear one voice through three engines.
 6. Choose **Listen**.
    **You should hear:** the description read aloud, within a second or two.
    > **If something went wrong:** no sound usually means the browser tab or the computer is muted. If the page shows an error instead, check that the text has no SSML switched on and that the Region is N. Virginia.
-7. Change **Engine** to **Neural**, keep Joanna, and choose **Listen** again. Then do the same with **Generative**.
+7. Change **Engine** to **Neural**, keep Joanna, and choose **Listen** again. Then do the same with **Generative**. While the speech plays, **Listen** turns into **Stop**.
    **You should hear:** the same words in three styles. In your lab log, write one line on each: which sounds most natural, and which you'd put on the website.
 
 ### Download the version you'd use

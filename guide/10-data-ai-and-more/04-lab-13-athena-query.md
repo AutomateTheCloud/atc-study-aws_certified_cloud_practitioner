@@ -16,7 +16,9 @@ time: "35 minutes, plus 5 minutes the next day"
 cost: "Well under one cent (about $0.0005 at list prices); taken from credits on the Free plan (as of 2026-10-24)"
 worst_case: "Under one cent a month on a Paid plan if everything is left behind: a few kilobytes in S3 and two Data Catalog objects inside the free first million. Each extra query costs about $0.00005"
 needs: [guardrails-02, guardrails-03, guardrails-05, guardrails-07, clf-02-06]
-facts_checked: 2026-10-24
+last_run_pass: "2026-10-25, standalone Free plan account, advanced sign-up, us-east-1"
+recorded: 2026-10-25
+facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/athena/latest/ug/getting-started.html"
   - "https://docs.aws.amazon.com/athena/latest/ug/step-1-create-a-database.html"
@@ -88,7 +90,7 @@ You delete all of it at the end.
 
 > **New sign-up path:** IAM users can't sign in to the console there, and your Region is fixed (as of 2026-10-23). We haven't checked whether Athena is offered on that path. If it is, use your assigned Region wherever this lab says `us-east-1`. If it isn't, read the steps and go on to [Simulation S12](06-sim-input-output-matcher.md).
 
-**About the screens:** Athena labels come from the Amazon Athena User Guide (checked 2026-10-24); the S3 steps are what we saw running Lab 01. We haven't yet run this lab, and we haven't yet confirmed that Athena opens on the Free plan. If a label differs, look for the option with the same meaning.
+**About the screens:** labels in **bold** and the figures quoted are what we saw when we ran this lab end to end in our test account, on the Free plan, on 2026-10-25. AWS changes its console often. If a label differs, look for the option with the same meaning.
 
 ## Steps
 
@@ -140,10 +142,10 @@ You delete all of it at the end.
 
 ### Tell Athena where to write its answers
 
-7. In the console search bar, type `Athena` and open it. If this is your first visit, choose the button that opens the query editor (labeled **Explore the query editor** in AWS's guide).
+7. In the console search bar, type `Athena` and open it. On its start page, under **Get started**, choose **Query your data in Athena console**, then **Launch query editor**. The page starts on the other option, Amazon SageMaker Unified Studio, whose button reads **Open Amazon SageMaker Unified Studio**: this lab doesn't use it.
    > **If something went wrong:** if a page says your account is on the Free plan and offers **Upgrade plan**, stop. Don't upgrade. Delete the bucket as in step 20 and read the rest of this lab instead.
-8. Check that the workgroup shown is **primary**, the default. Choose the **Settings** tab, then **Manage**. (On a first visit, a banner may offer **Edit settings** instead; it opens the same page.)
-9. In **Location of query result**, type `s3://` followed by your bucket name and `/athena-results/`, for example `s3://clf-lab13-ab-20261024-4817/athena-results/`. Leave the other options as they are and choose **Save**.
+8. Check that the workgroup shown is **primary**, the default. Choose the **Query settings** tab, then **Manage**. (On a first visit, a banner may offer **Edit settings** instead; it opens the same settings.)
+9. In **Location of query result - optional**, type `s3://` followed by your bucket name and `/athena-results/`, for example `s3://clf-lab13-ab-20261024-4817/athena-results/`. Leave the other options as they are and choose **Save**.
    The **query result location** is where Athena writes every answer as a file. Those files sit in your bucket, and you pay S3 for them until you delete them.
    > **Note:** AWS also offers *managed query results*, a workgroup setting where Athena keeps answers for 24 hours at no charge, in no bucket of yours (checked 2026-10-24). This lab uses your own bucket so you can see the files and delete them.
 
@@ -213,7 +215,7 @@ You delete all of it at the end.
 
     **You should see:** shop 686.50 and online 245.00. Write both in your lab log, with the data scanned.
 16. Open your bucket in S3 and look inside `athena-results/`.
-    **You should see:** a folder `Unsaved/` with dated subfolders, holding a `.csv` file for each query's answer and a `.txt` file for each statement that created something, each with a `.metadata` partner ([Find query output files in Amazon S3](https://docs.aws.amazon.com/athena/latest/ug/querying-finding-output-files.html)). Every question left files behind.
+    **You should see:** a folder `Unsaved/` with dated subfolders, holding a `.csv` file for each query's answer, each with a `.csv.metadata` partner, and an empty `.txt` file for each statement that created something ([Find query output files in Amazon S3](https://docs.aws.amazon.com/athena/latest/ug/querying-finding-output-files.html)). Every question left files behind.
 
 ## Check your work
 
@@ -230,9 +232,9 @@ Delete in this order: the table before its database, both before the bucket (Ath
 18. Run `DROP DATABASE clf_lab13;`.
     **You should see:** `clf_lab13` gone from the **Database** list (refresh it if needed).
     > **If something went wrong:** an error that the database isn't empty means the table is still there. Repeat step 17, then this step.
-19. Choose **Settings**, then **Manage**. Clear the **Location of query result** box and choose **Save**. If the page won't save an empty box, leave it: it's a setting, not a resource, and costs nothing. A later lab that uses Athena will ask you to set it again.
+19. Choose **Query settings**, then **Manage**. Clear the **Location of query result** box and choose **Save** (it saved empty for us). It's a setting, not a resource, and costs nothing. A later lab that uses Athena will ask you to set it again.
 20. In **S3**, select your `clf-lab13-` bucket, choose **Empty**, and confirm. This deletes the sales file and every result file. Then delete the bucket as in [Lab 01, steps 20 and 21](../02-why-the-cloud/06-lab-01-first-resource.md#clean-up).
-21. **Confirm:** Athena's **Database** list and the Glue Data Catalog show nothing named `clf_lab13`. In the S3 bucket list, a search for `clf-lab13` finds nothing. In Tag Editor, search all Regions for the tag `lab` = `13` ([Lab 01, steps 13 to 16](../02-why-the-cloud/06-lab-01-first-resource.md#find-it-by-its-tags)); expect no results. Tick everything off in your lab log. Athena's **Recent queries** list keeps your query history for 45 days ([View recent queries](https://docs.aws.amazon.com/athena/latest/ug/queries-viewing-history.html)); it isn't a resource and has no charge.
+21. **Confirm:** Athena's **Database** list and the Glue Data Catalog show nothing named `clf_lab13`. A database named `default` may remain: Athena created it in our account; it's empty and costs nothing, so leave it. In the S3 bucket list, a search for `clf-lab13` finds nothing. In Tag Editor, search all Regions for the tag `lab` = `13` ([Lab 01, steps 13 to 16](../02-why-the-cloud/06-lab-01-first-resource.md#find-it-by-its-tags)); expect no results. Tick everything off in your lab log. Athena's **Recent queries** list keeps your query history for 45 days ([View recent queries](https://docs.aws.amazon.com/athena/latest/ug/queries-viewing-history.html)); it isn't a resource and has no charge.
 22. **The next day:** check that your **Credits** balance hasn't fallen by more than a cent ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4).
 
 ## Recap

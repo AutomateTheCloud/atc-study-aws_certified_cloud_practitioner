@@ -17,7 +17,9 @@ time: "50 minutes"
 cost: "$0: the AWS Well-Architected Tool has no charge, and this lab builds nothing (as of 2026-10-24)"
 worst_case: "$0 on a Paid plan if the workload is left behind: a workload is a record of answers, not a running resource (as of 2026-10-24)"
 needs: [guardrails-02, guardrails-03, guardrails-05, guardrails-07]
-facts_checked: 2026-10-24
+last_run_pass: "2026-10-25, standalone Free plan account, advanced sign-up, us-east-1"
+recorded: 2026-10-25
+facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/wellarchitected/latest/userguide/tutorial.html"
   - "https://docs.aws.amazon.com/wellarchitected/latest/userguide/define-workload.html"
@@ -73,7 +75,7 @@ flowchart LR
 
 > **New sign-up path:** AWS lists the Well-Architected Tool among the services on that path's Free Tier (as of 2026-10-23, [Supported AWS services](https://docs.aws.amazon.com/accounts/latest/reference/supported-services-sign-up-new.html)). IAM users can't sign in to the console there, and your Region is fixed, so choose your assigned Region wherever this lab says `us-east-1`, and sign in the way that path gives you. We haven't run this lab on that path.
 
-**About the screens:** the labels in **bold** come from AWS's [Tutorial: Document an AWS Well-Architected Tool workload](https://docs.aws.amazon.com/wellarchitected/latest/userguide/tutorial.html) and its related pages, checked 2026-10-24. We haven't yet run this lab, so if a label differs, look for the option with the same meaning.
+**About the screens:** labels in **bold** are what we saw when we ran this lab end to end in our test account, on the Free plan, on 2026-10-25. AWS changes its console often. If a label differs, look for the option with the same meaning.
 
 ## Steps
 
@@ -92,7 +94,7 @@ flowchart LR
 
 ### Part A: define the workload (follow-along)
 
-3. In the console search bar, type `Well-Architected` and open the **AWS Well-Architected Tool**. On a first visit, an introduction page has a **Define a workload** section; choose **Define workload**. Otherwise choose **Workloads** in the left menu, then **Define workload**.
+3. In the console search bar, type `Well-Architected` and open the **AWS Well-Architected Tool**. On a first visit, an introduction page opens. Its first button, **Get started**, is for the Well-Architected Agent: don't choose it. Further down, a **Define a workload** section has **Define workload**; choose that. Otherwise choose **Workloads** in the left menu, then **Define workload**.
 4. Fill in the required boxes:
    - **Name:** `clf-lab18-bakery-site`.
    - **Description:** `Lab 18 - the bakery's site as Labs 05 to 11 built it: one EC2 web server, Lambda, DynamoDB carts, S3 buckets, one VPC`.
@@ -102,11 +104,11 @@ flowchart LR
 5. Leave every optional box empty: **Account IDs**, **Application**, the architectural design link, **Industry type** and **Industry**. Don't choose **Activate Trusted Advisor**, and leave the **Jira** settings alone. Under **Tags**, add `guide` = `clf` and `lab` = `18`. Choose **Next**.
    > **If something went wrong:** the page won't continue while a required box is empty or invalid. Names and descriptions need at least 3 characters ([Defining a workload](https://docs.aws.amazon.com/wellarchitected/latest/userguide/define-workload.html)).
 6. On the **Apply profile** step, choose **Next** without a profile. On the lens step, keep only the **AWS Well-Architected Framework** lens, which is selected by default. Choose **Define workload**.
-   **You should see:** your workload's page, with a button such as **Start reviewing**.
+   **You should see:** your workload's page, with **0/57** questions answered and a **Start reviewing** button.
 
 ### Part B: answer four questions from evidence (challenge)
 
-For each question, the Tool lists choices that match the question's best practices, and you tick the ones the bakery really follows. Each best-practice page in the Framework states the "level of risk" if that practice is missing: High, Medium or Low. The Tool's **Improvement plan** tab is its version of the improvement plan from [lesson 14.01](01-the-capstone-review.md): a list of the questions where your answers show a risk, with the missing best practices that would remove it, but without your costs, order or owners. The diagram shows how we expect your ticks to become a risk. We haven't confirmed this rule in the Tool, so treat it as a prediction to test, and trust what the Tool shows.
+For each question, the Tool lists choices that match the question's best practices, and you tick the ones the bakery really follows. Each best-practice page in the Framework states the "level of risk" if that practice is missing: High, Medium or Low. The Tool's **Improvement plan** tab is its version of the improvement plan from [lesson 14.01](01-the-capstone-review.md): a list of the questions where your answers show a risk, with the missing best practices that would remove it, but without your costs, order or owners. The diagram shows how we expect your ticks to become a risk. We tested this rule in the Tool on 2026-10-25, and it held at all three levels, but treat it as a prediction to test for yourself, and trust what the Tool shows.
 
 ```mermaid
 flowchart TB
@@ -147,7 +149,7 @@ Use your capstone review notes. If you haven't done the review, use this evidenc
 | Lifecycle rules on the exports and tax archive buckets; a stack whose deletion removes what it made | Labs 05 and 10 |
 | **Not in place:** central sign-in through IAM Identity Center; a secrets store; regular credential audits; a written emergency-access process; detailed cost and usage reports; cost categories or business metrics for cost; any lifecycle rule on the photo bucket; log retention on the order function, whose logs never expire | Primer page 03 explains the first; no lab set up the others; the [module brief](00-brief.md) lists the last two |
 
-7. Choose **Start reviewing**, answer the four questions, and choose **Save and exit**. Then fill in your predictions.
+7. Choose **Start reviewing**, then **AWS Well-Architected Framework** from its list. Answer the four questions, and choose **Save and exit**. Then fill in your predictions.
 
 <details><summary>Hints, if you need them</summary>
 
@@ -176,18 +178,18 @@ Three calls need judgment. First, people sign in as IAM users, whose passwords a
 ### Part C: read the improvement plan (follow-along)
 
 8. On the workload's page, in the **Lenses** section, choose **AWS Well-Architected Framework**, then the **Improvement plan** tab.
-   **You should see:** improvement items for the questions that show a risk, each marked high or medium. We haven't confirmed the order the Tool lists them in. Write each question's risk in the last column of your lab log.
+   **You should see:** improvement items for the questions that show a risk, each marked **High risk** or **Medium risk**, high risks first. Expand **Recommended improvement items** under each: it lists every practice you left unticked, Low ones included, but not those you marked not applicable. Write each question's risk in the last column of your lab log.
    > **If something went wrong:** no items at all means every answered question has no risk, or your answers weren't saved. Open the workload, choose **Continue reviewing**, and check the four questions.
 9. Compare the Tool's results with your predictions. For any that differ, open the question and look again at which practices you ticked and their risk levels. SEC 2 and COST 3 weren't among the capstone's starter questions, so a high risk there is a new finding: add it to your improvement plan.
 10. Expand the recommended improvement items for one high risk, open the guidance for one missing practice, and write one sentence in your lab log: what the bakery would have to do, and whether anything stops it. For example, the guardrails primer keeps you off IAM Identity Center on the Free plan, because creating an organization upgrades the plan ([primer page 03](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md#why-we-dont-use-iam-identity-center-on-the-free-plan)).
 11. Choose **Workloads** in the left menu and find your workload's row.
-    **You should see:** columns for **Questions answered**, **High risks** and **Medium risks** ([Workloads](https://docs.aws.amazon.com/wellarchitected/latest/userguide/workloads.html)). Expect 4 questions answered.
+    **You should see:** columns for **Overall status**, which counts the questions answered, **High risks** and **Medium risks** ([Workloads](https://docs.aws.amazon.com/wellarchitected/latest/userguide/workloads.html)). Expect 4/57.
 
 ### Part D: save a milestone (follow-along)
 
 12. Open the workload and choose **Save milestone**. In **Milestone name**, type `clf-lab18 initial review`, then choose **Save**.
     **You should see:** the milestone listed on the workload's **Milestones** tab. A saved milestone can't be changed ([Saving a milestone](https://docs.aws.amazon.com/wellarchitected/latest/userguide/milestones-save.html)).
-13. Optional, about 3 minutes: see why that matters. Open COST 4, tick [COST04-BP05](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_decomissioning_resources_data_retention.html) as if the bakery had made fix 7 of the capstone review (log retention, and a rule for old photo versions), and choose **Save and exit**. Only a Low practice is then missing, so we expect COST 4's medium risk to go and the workload's **Medium risks** count to drop by one; open the milestone and its counts don't change. That is how a team proves progress next quarter.
+13. Optional, about 3 minutes: see why that matters. Open COST 4, tick [COST04-BP05](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_decomissioning_resources_data_retention.html) as if the bakery had made fix 7 of the capstone review (log retention, and a rule for old photo versions), and choose **Save and exit**. Only a Low practice is then missing, so COST 4's medium risk goes and the workload's **Medium risks** count drops by one (as it did for us); open the workload's **Milestones** tab and the milestone's counts don't change. That is how a team proves progress next quarter.
 
 ## Check your work
 
@@ -198,7 +200,7 @@ Three calls need judgment. First, people sign in as IAM users, whose passwords a
 ## Clean up
 
 14. If you want a copy of the review, look on the workload's page for **Generate report**, which downloads a PDF to your computer.
-15. Choose **Workloads**, select `clf-lab18-bakery-site`, and choose **Delete**. In the window that opens, choose **Delete** again. This also deletes the milestone and can't be undone.
+15. Choose **Workloads**, select `clf-lab18-bakery-site`, and choose **Delete workload**. In the window that opens, choose **Delete**. This also deletes the milestone and can't be undone.
     **You should see:** the workload gone from the list.
 16. **Confirm:** the **Workloads** list in N. Virginia shows nothing named `clf-lab18`. Tag Editor can't help here: AWS's list of resource types marks Well-Architected workloads as not supported by Tag Editor ([Resource types you can use with AWS Resource Groups and Tag Editor](https://docs.aws.amazon.com/ARG/latest/userguide/supported-resources.html), checked 2026-10-24), so the Tool's own list is the check. Tick the workload off in your lab log. No next-day check is needed: nothing here was billed.
 

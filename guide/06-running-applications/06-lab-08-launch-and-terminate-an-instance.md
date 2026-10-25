@@ -17,8 +17,9 @@ time: "30 minutes at most, plus 5 minutes the next day"
 cost: "Under 2 cents of Free plan credits for 30 minutes (US East (N. Virginia) prices as of 2026-10-24)"
 worst_case: "About $11.88 a month on a Paid plan if the instance is left running; about $0.64 a month if it is left stopped (t3.micro, one public IPv4 address, an 8 GiB gp3 volume, 730 hours, as of 2026-10-24)"
 needs: [guardrails-02, guardrails-03, guardrails-05, guardrails-06, guardrails-07, clf-02-06]
-recorded: 2026-10-24
-facts_checked: 2026-10-24
+last_run_pass: "2026-10-25, standalone Free plan account, advanced sign-up, us-east-1"
+recorded: 2026-10-25
+facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/tutorial-launch-my-first-ec2-instance.html"
   - "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-free-tier-usage.html"
@@ -81,7 +82,7 @@ Under 2 cents in all, even if every partial hour were billed as a full one. **Fr
 
 > **New sign-up path:** your Region is fixed and IAM users can't sign in to the console (as of 2026-10-23). Use your assigned Region wherever this lab says `us-east-1`, check primer page 06's EC2 settings there first, and sign in the way that path gives you. We haven't run this lab on that path.
 
-**About the screens:** the launch steps follow AWS's beginner tutorial (checked 2026-10-23). We haven't run this lab yet, so many steps say what to look for. If a label differs, look for the option with the same meaning.
+**About the screens:** labels in **bold** are what we saw when we ran this lab end to end in our test account on 2026-10-25. AWS changes its console often. If a label differs, look for the option with the same meaning.
 
 ## Steps
 
@@ -94,11 +95,11 @@ Under 2 cents in all, even if every partial hour were billed as a full one. **Fr
 
 3. In the console search bar, type `EC2` and open it. Choose **Launch instance**.
    **You should see:** a form titled **Launch an instance**, with a **Summary** panel on the right.
-4. Under **Name and tags**, type `clf-lab08-web` for **Name**. With the option to add more tags (such as **Add additional tags**), add `guide` = `clf` and `lab` = `08` for instances and volumes.
+4. Under **Name and tags**, type `clf-lab08-web` for **Name**. Choose **Add additional tags**, then **Add new tag** twice, for `guide` = `clf` and `lab` = `08`. Each tag has its own **Resource types** list, which starts with only **Instances**: add **Volumes** to both.
 5. Under the image settings (**Application and OS Images**), keep the default Amazon Linux **AMI** (Amazon Machine Image, the template the instance starts from) if it is marked **Free tier eligible**.
 6. Under **Instance type**, choose `t3.micro` and check that it is marked **Free tier eligible**.
 7. Under **Key pair (login)**, choose **Proceed without a key pair (Not recommended)**. You won't log in, so there is no key to leak.
-8. Under **Network settings**, choose the option to create a new security group. Clear every box that would let traffic in: SSH (it may be ticked, with a source of **Anywhere**), HTTP and HTTPS. Write down the security group name shown (often `launch-wizard-` and a number).
+8. Under **Network settings**, keep **Create security group**. Clear every box that would let traffic in: **Allow SSH traffic from** was ticked for us, with a source of **Anywhere** (`0.0.0.0/0`); HTTPS and HTTP were clear. Write down the security group name shown (often `launch-wizard-` and a number).
    **You should see:** no inbound rules, and public IP auto-assignment enabled.
    > **If something went wrong:** if you can't clear the SSH box, choose the option to edit the network settings and delete the inbound rule there. Never leave port 22 or 3389 open to `0.0.0.0/0`.
 9. Under **Configure storage**, write down the root volume's size and type. Open its details if you can.
@@ -117,7 +118,7 @@ Under 2 cents in all, even if every partial hour were billed as a full one. **Fr
 
 First write your predictions: after you **stop** the instance, will it keep its public IPv4 address, will its volume still exist, and which charges continue?
 
-14. Stop the instance: from the **Instance state** menu, choose the stop option and confirm. Wait until the state shows **Stopped**, refreshing if needed.
+14. Stop the instance: from the **Instance state** menu, choose **Stop instance**. Read the dialog before you confirm: it says you will "still be billed for associated Elastic IP addresses and EBS volumes". Leave **Skip OS shutdown** cleared and choose **Stop**. Wait until the state shows **Stopped**, refreshing if needed.
 15. Check your three predictions against the instance's details, its **Storage** tab, and **Elastic Block Store**, **Volumes** in the left menu.
 
 <details><summary>What you should have found</summary>
@@ -134,7 +135,7 @@ First write your predictions: after you **stop** the instance, will it keep its 
 
 <details><summary>Hints, if you need them</summary>
 
-- Terminating is in the same **Instance state** menu; AWS's tutorial calls it **Terminate (delete) instance** (checked 2026-10-23). Terminating is permanent.
+- Terminating is in the same **Instance state** menu; it's called **Terminate (delete) instance**, and its dialog warns that the root EBS volume is deleted by default. Terminating is permanent.
 - The state goes to **Shutting-down**, then **Terminated**, and the instance later drops off the list. Charges for it stop as soon as it reaches shutting-down or terminated ([Terminate Amazon EC2 instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html)).
 - Search **Volumes** for the `vol-` ID you wrote down.
 - Look at the terminated instance's **Public IPv4 address** field, and at **Network & Security**, **Elastic IPs** in the left menu.
@@ -163,7 +164,7 @@ First write your predictions: after you **stop** the instance, will it keep its 
 
 Part C was the cleanup. Two last checks:
 
-16. **Confirm:** in Tag Editor, search all Regions for the tag `lab` = `08` ([Lab 01, steps 13 to 16](../02-why-the-cloud/06-lab-01-first-resource.md#find-it-by-its-tags)). Expect nothing, or only the terminated instance for a short while. Tick everything off in your lab log.
+16. **Confirm:** in Tag Editor, search all Regions for the tag `lab` = `08` ([Lab 01, steps 13 to 16](../02-why-the-cloud/06-lab-01-first-resource.md#find-it-by-its-tags)). Expect nothing, or the terminated instance and its deleted volume for a while: both were still listed about two hours after we terminated them, although the volume no longer existed. Tick everything off in your lab log.
 17. **The next day:** check the **Credits** balance and look for an EC2 or VPC charge of a few cents at most. If credits keep falling the day after, something is still running: search all Regions again ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habits 2 and 4).
 
 ## Recap
