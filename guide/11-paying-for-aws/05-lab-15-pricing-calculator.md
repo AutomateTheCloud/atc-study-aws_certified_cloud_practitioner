@@ -198,7 +198,7 @@ Estimate links made since 31 May 2023 stay valid for one year (checked 2026-10-2
 
 ## Recap
 
-You priced a setup before building it, saw that the hourly items make up almost all of its bill, cut a test copy by removing whole hourly items, and compared paying by the hour with committing for a year. Estimates come before the bill; Budgets, Cost Explorer and anomaly alerts watch the bill afterwards.
+You priced a setup before building it, saw that the hourly items make up almost all of its bill, cut a test copy by removing whole hourly items, and compared paying by the hour with committing for a year. Estimates come before the bill; Budgets, Cost Explorer and anomaly alerts watch the bill afterward.
 
 > **Reflect:** the owner asks, "Is $58 a month what we'll pay?" Write two sentences on what your estimate leaves out and how you would check it once the site runs.
 >

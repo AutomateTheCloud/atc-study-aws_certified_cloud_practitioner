@@ -39,7 +39,7 @@ sources:
 
 # Estimate before you build, watch while it runs, analyze after the fact: each stage has its own cost tool
 
-The bakery's bill has grown, and the owner wants to know why, wants a warning next time, and wants a price for a new feature before anyone builds it. AWS gives you a different tool for each of those jobs. By the end of this lesson you can name the stage each tool serves, the question it answers, and the one thing most people get wrong about each.
+The bakery's bill has grown, and the owner wants to know why, wants a warning next time, and wants a price for a new feature before anyone builds it. AWS has a different tool for each of those jobs. By the end of this lesson you can name the stage each tool serves, the question it answers, and the one thing most people get wrong about each.
 
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 30 minutes. Reading works on a phone.
 
@@ -77,7 +77,7 @@ Try these before you read on. Guess if you're unsure; the answers are in the les
 
 ## The big picture: four stages, five tools
 
-Every cost question belongs to a stage. Before something exists, you estimate it. While it runs, you want to be told when spending crosses a line or behaves strangely. Afterwards, you analyze where the money went, and when the charts aren't detailed enough, you go to the raw line items.
+Every cost question belongs to a stage. Before something exists, you estimate it. While it runs, you want to be told when spending crosses a line or behaves strangely. Afterward, you analyze where the money went, and when the charts aren't detailed enough, you go to the raw line items.
 
 ```mermaid
 flowchart LR
@@ -202,7 +202,7 @@ The CloudWatch billing alarm from primer page 05 also only notifies; for "alert 
 
 ## Cost Anomaly Detection tells you when spending is unusual, not when it is high
 
-**AWS Cost Anomaly Detection** uses machine learning to learn your normal spending pattern, including weekly or monthly rhythms and steady growth, and alerts you when spending departs from it ([Detecting unusual spend](https://docs.aws.amazon.com/cost-management/latest/userguide/manage-ad.html), checked 2026-10-24). It differs from Budgets in one way that matters: a budget compares cost with a number *you* chose; anomaly detection compares cost with what is *normal for you*. A sudden $3 a day in a service you normally use only a little can be an anomaly long before any budget notices.
+**AWS Cost Anomaly Detection** uses machine learning to learn your normal spending pattern, including weekly or monthly rhythms and steady growth, and alerts you when spending departs from it ([Detecting unusual spend](https://docs.aws.amazon.com/cost-management/latest/userguide/manage-ad.html), checked 2026-10-24). It differs from Budgets in what it compares against: a budget compares cost with a number *you* chose; anomaly detection compares cost with what is *normal for you*. A sudden $3 a day in a service you normally use only a little can be an anomaly long before any budget notices.
 
 - A **cost monitor** says what to watch: all AWS services (the default AWS-managed monitor you saw in primer page 05), or chosen accounts, cost allocation tags or cost categories (lesson 11.04).
 - An **alert subscription** says who hears and when: individual alerts through SNS, or daily or weekly summaries by email, once an anomaly passes your dollar or percentage threshold.
@@ -318,7 +318,7 @@ The expert's thinking: **separate the flat from the changed, then drill down one
 
 Teams that manage cloud cost well cover all four stages on a schedule: every new feature is estimated before approval, alerts go to people who will act, and someone reviews Cost Explorer regularly and can explain each change. The Well-Architected Framework's cost optimization pillar names these habits:
 
-- The design principle "[Implement Cloud Financial Management](https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-dp.html)": cost is a practice with owners, not a bill someone opens.
+- The design principle "[Implement Cloud Financial Management](https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-dp.html)": cost is an ongoing practice with named owners, rather than a bill someone opens and forgets.
 - [COST01-BP03 Establish cloud budgets and forecasts](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_cloud_financial_management_budget_forecast.html): budgets and forecasts that change with the business, like the bakery's $150.
 - [COST01-BP06 Monitor cost proactively](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_cloud_financial_management_proactive_process.html): looking before the bill arrives, with anomaly detection and forecasted alerts.
 - [COST03-BP01 Configure detailed information sources](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_monitor_usage_detailed_source.html): the CUR and Cost Explorer as the data behind every cost decision.

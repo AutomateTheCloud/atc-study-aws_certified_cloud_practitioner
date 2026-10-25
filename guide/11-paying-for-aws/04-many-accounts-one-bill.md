@@ -33,7 +33,7 @@ sources:
 
 # In one organization, a commitment discount follows matching usage across accounts, and a tag reaches your cost reports only after you activate it
 
-Simulation S11 showed that an organization gets one bill. This lesson answers the two questions that bill raises: when one account buys a discount, who actually gets it, and how do you split one bill so that each team sees its own costs? By the end you can trace a discount to the account that receives it, and explain every step a tag takes before a cost report shows it.
+Simulation S11 showed that an organization gets one bill. This lesson answers the two questions that bill raises: when one account buys a discount, who gets it, and how do you split one bill so that each team sees its own costs? By the end you can trace a discount to the account that receives it, and explain every step a tag takes before a cost report shows it.
 
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 30 minutes. Reading works on a phone.
 
@@ -243,7 +243,7 @@ Accounts split costs with no extra work, because every charge already belongs to
 - A **split charge rule** divides one value's costs among others, proportionally, evenly or by fixed percentages. It's how shared costs, such as the logging account everyone depends on, get spread fairly.
 - Cost categories appear in Cost Explorer, Budgets and the CUR, beside tags. They take up to 24 hours to apply, and can be set to apply from an earlier month.
 
-Cost categories aren't named on the exam guide. Learn them as the way real organizations finish the job tags start.
+Cost categories aren't named on the exam guide. Learn them anyway, because real organizations use them to finish the split that tags begin.
 
 > **Dated (checked 2026-10-24):** AWS now also lets the management account tag the **accounts** themselves, in AWS Organizations, and activate those tags for cost allocation. Every cost in the account then carries the tag, including charges that can't be tagged on a resource, such as credits and refunds ([Using account tags for cost allocation](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/account-tags-cost-allocation.html)). Older material won't mention it.
 
@@ -267,7 +267,7 @@ The owner's request: "Each team sees its own costs, monthly, and gets an email b
 The expert's thinking, step by step:
 
 1. **Use accounts wherever they already split the costs.** `shop-dev` and `sandbox-anna` belong to the shop team, so they need no tags, and account costs can't be mislabeled.
-2. **Tag only where accounts can't split:** every resource in `shop-prod` gets `team=shop`, `team=kitchen` or `team=delivery`. Agree the key's exact spelling first; `Team` and `team` would be two keys.
+2. **Tag only where accounts can't split:** every resource in `shop-prod` gets `team=shop`, `team=kitchen` or `team=delivery`. Agree on the key's exact spelling first; `Team` and `team` would be two keys.
 3. **Activate the key `team`** from `chain-billing`, the management account, on day one. Costs from before activation won't carry it, so starting late loses months.
 4. **Activate the `aws:createdBy` tag** too. Lesson 11.03's forgotten instance would then have carried the name of whoever launched it, as long as it was launched after activation.
 5. **Build a cost category named `Team`,** with rules in this order: `shop-dev` and `sandbox-anna` → `Shop`; tag `team=shop` → `Shop`; tag `team=kitchen` → `Kitchen`; tag `team=delivery` → `Delivery`; anything else, including the two security accounts → `Shared`. Add a split charge rule that spreads `Shared` across the three teams in proportion to their own costs.
