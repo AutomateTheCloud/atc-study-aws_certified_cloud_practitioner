@@ -1,7 +1,7 @@
 ---
 type: lab
 id: clf-08-06
-title: "Lab 11: Email the owner when the order function fails"
+title: "Optional lab 11: Email the owner when the order function fails"
 tasks: ["3.8", "2.2"]
 objectives: ["08.03a", "08.04a"]
 reader: "Adult studying alone, possibly new to IT, who has done Lab 07 and primer page 05; about 45 minutes, plus 5 the next day; a laptop or desktop"
@@ -32,11 +32,13 @@ sources:
   - "https://aws.amazon.com/lambda/pricing/"
 ---
 
-# Lab 11: Email the owner when the order function fails
+# Optional lab 11: Email the owner when the order function fails
 
 ## Before you start: your account, your responsibility
 
 This guide is provided as is, without warranty. We work hard to keep it correct and current, but AWS changes often, and its services, prices, and free offers may differ from what is written here. The labs run in your own AWS account. You are responsible for that account, for its security, and for any charges it incurs, including charges from resources you forget to delete. Automate the Cloud Inc. is not liable for any costs, losses, or security incidents that result from following, or failing to follow, this material. Technical guidance here is general information, not advice about your specific systems.
+
+**This lab is optional.** The exam asks which service watches or alerts, not how to set up an alarm; do it if you want to see CloudWatch and SNS work together.
 
 **Who this is for:** you have done [Lab 07](../06-running-applications/05-lab-07-a-lambda-function.md) and built the billing alarm on [primer page 05](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md#create-a-billing-alarm-in-us-east-1). The lessons [Watching workloads](03-watching-workloads.md) and [Connecting parts, shipping software](04-connecting-parts-shipping-software.md) explain the services; this lab works without them. **Time:** about 45 minutes, plus 5 minutes the next day. This is a challenge lab: Part B gives you the requirements, not the clicks.
 
@@ -104,7 +106,7 @@ You delete all of it at the end.
 
 ### Part B: build the alert from the owner's request (challenge)
 
-Lesson 08.03, [Watching workloads](03-watching-workloads.md), explains metrics, periods, statistics and thresholds. The metric here is Lambda's `Errors`, which counts the runs that ended in an error, including exceptions your code raises ([Types of metrics for Lambda functions](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html)).
+Lesson 08.03, [Watching workloads](03-watching-workloads.md), explains metrics, alarms and thresholds. The metric here is Lambda's `Errors`, which counts the runs that ended in an error, including exceptions your code raises ([Types of metrics for Lambda functions](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html)).
 
 **The owner's request:** "If customers' orders start failing, email me straight away. Email me again when it's fixed. Don't email me just because nobody ordered anything."
 
@@ -245,6 +247,6 @@ You turned "tell me when orders fail" into three parts that each do one job: a m
 
 ---
 
-"Lab 11: Email the owner when the order function fails" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional lab 11: Email the owner when the order function fails" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt

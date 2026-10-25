@@ -1,11 +1,11 @@
 ---
 type: lab
 id: clf-08-05
-title: "Lab 10: Create the same bucket three ways: console, command line and template"
+title: "Optional lab 10: Create the same bucket three ways: console, command line and template"
 tasks: ["3.1", "1.4"]
 objectives: ["08.01a", "08.02a"]
 reader: "Adult studying alone, possibly new to IT, who has done Lab 01 and primer page 04; about 50 minutes, plus 5 the next day; a laptop or desktop"
-prerequisites: ["clf-02-06", "clf-08-01", "clf-08-02"]
+prerequisites: ["clf-02-06", "clf-08-01"]
 terms_introduced: [shell variable, stack event]
 pillars: [operational-excellence, reliability, cost-optimization]
 lab: "10"
@@ -31,13 +31,15 @@ sources:
   - "https://aws.amazon.com/s3/pricing/"
 ---
 
-# Lab 10: Create the same bucket three ways: console, command line and template
+# Optional lab 10: Create the same bucket three ways: console, command line and template
 
 ## Before you start: your account, your responsibility
 
 This guide is provided as is, without warranty. We work hard to keep it correct and current, but AWS changes often, and its services, prices, and free offers may differ from what is written here. The labs run in your own AWS account. You are responsible for that account, for its security, and for any charges it incurs, including charges from resources you forget to delete. Automate the Cloud Inc. is not liable for any costs, losses, or security incidents that result from following, or failing to follow, this material. Technical guidance here is general information, not advice about your specific systems.
 
-**Who this is for:** you have done [Lab 01](../02-why-the-cloud/06-lab-01-first-resource.md) and opened CloudShell on [primer page 04](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/04-command-line-without-access-keys.md). The lessons [Four ways in](01-four-ways-in.md) and [IaC and automation](02-iac-and-automation.md) explain the ideas; this lab works without them. You don't need to program. **Time:** about 50 minutes, plus 5 minutes the next day.
+**This lab is optional.** The exam asks which way into AWS fits a job, not how to use each one; do it if you want to try all three for yourself.
+
+**Who this is for:** you have done [Lab 01](../02-why-the-cloud/06-lab-01-first-resource.md) and opened CloudShell on [primer page 04](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/04-command-line-without-access-keys.md). Lesson 08.01, [Four ways in, and infrastructure as code](01-four-ways-in.md), explains the ideas; this lab works without it. You don't need to program. **Time:** about 50 minutes, plus 5 minutes the next day.
 
 **Goal:** the bakery's owner wants the photo bucket rebuilt, identically, wherever she asks. You make the same private, tagged bucket three times: by clicking in the console, by typing commands in CloudShell, and from a template you finish yourself. CloudShell is only the place you run the CLI here: the exam guide lists it as out of scope, as lesson 08.01 explains. Then you compare what each way leaves you with. **End state:** your lab log says which way you would trust for the second Region, and your account holds nothing from this lab.
 
@@ -130,7 +132,7 @@ flowchart LR
 
 ### Part C: a template you finish (completion)
 
-As lesson 08.02, [IaC and automation](02-iac-and-automation.md), explains, a template describes the resources you want, and CloudFormation builds them as a stack that you create, change and delete as a unit. Here the template's one parameter, the bucket name, lets the same file make many stacks.
+As lesson 08.01, [Four ways in, and infrastructure as code](01-four-ways-in.md), explains, a template describes the resources you want, and CloudFormation builds them as a stack that you create, change and delete as a unit. Here the template's one parameter, the bucket name, lets the same file make many stacks.
 
 ```mermaid
 flowchart LR
@@ -304,7 +306,7 @@ Delete the stack first, so you watch CloudFormation remove its own bucket.
 
 All three ways made the same private, encrypted bucket, because all three sent S3 the same request. The difference is what remains afterwards: the console leaves only your memory, the CLI leaves commands you could save, and the template leaves a file that rebuilds the bucket, plus a stack that deletes it in one step.
 
-> **Misconception:** "Clicking in the console is fine for production." Your Part A left nothing to review, rerun or compare, so a second copy built that way would drift from the first. Lesson 08.01, [Four ways in](01-four-ways-in.md#console-clicks-are-fine-for-production-is-wrong), explains why teams keep the console for looking and learning, and code for what must last.
+> **Misconception:** "Clicking in the console is fine for production." Your Part A left nothing to review, rerun or compare, so a second copy built that way would drift from the first. Lesson 08.01, [Four ways in, and infrastructure as code](01-four-ways-in.md#console-clicks-are-fine-for-production-is-wrong), explains why teams keep the console for looking and learning, and code for what must last.
 
 > **Reflect:** the owner asks for the photo bucket in US West (Oregon), `us-west-2`, as well. Which of today's three ways would you use, and what exactly would you change? Write two or three sentences.
 >
@@ -326,6 +328,6 @@ All three ways made the same private, encrypted bucket, because all three sent S
 
 ---
 
-"Lab 10: Create the same bucket three ways: console, command line and template" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional lab 10: Create the same bucket three ways: console, command line and template" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt
