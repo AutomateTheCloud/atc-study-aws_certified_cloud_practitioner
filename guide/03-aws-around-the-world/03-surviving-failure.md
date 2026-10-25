@@ -258,7 +258,7 @@ The standby deletes them too, within moments, because it copies every change. On
 
 The owner sets the requirements. "The site must survive losing a data center without anyone noticing. If something bigger happens, I can take phone orders for a day. Losing a few hours of orders is painful but survivable, because every order also sends an email I can rebuild from. And German customers' data must stay in the EU." The budget is small.
 
-Here is how someone who knows the material works it out. The flowchart is the method.
+Here is how someone who knows the material works it out, with the flowchart as the method.
 
 ```mermaid
 flowchart TD
@@ -305,7 +305,7 @@ At work, resilience is a business decision first: engineers ask for the RTO and 
 
 The reliability design principle "[Test recovery procedures](https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html)" says the same thing as step 6: in the cloud, you can rehearse a failure cheaply, so do it.
 
-Resilience follows the split you will meet in Module 04: AWS's DR whitepaper calls the Regions and AZs resiliency *of* the cloud, AWS's job, and using them well resiliency *in* the cloud, yours. A site on one server in one AZ isn't highly available just because it runs on AWS. And every step up the DR ladder is a **cost optimization** trade-off: it costs money every month, disaster or not.
+Resilience follows the split you will meet in Module 04: AWS's DR whitepaper calls the Regions and AZs resiliency *of* the cloud, which is AWS's job, and using them well resiliency *in* the cloud, which is yours. A site on one server in one AZ isn't highly available just because it runs on AWS. And every step up the DR ladder is a **cost optimization** trade-off: it costs money every month, disaster or not.
 
 ## Summary
 

@@ -163,7 +163,7 @@ Distance sets a floor that no amount of computing power removes. AWS says light 
 | 6,000 km | 59 ms |
 | 10,000 km | 98 ms |
 
-These are our arithmetic from AWS's figure, and they are lower limits: real cables don't run straight, and each piece of network equipment adds delay. A web page makes many requests, so the delays add up. Lesson 03.04 shows how edge locations shorten some trips without moving your Region.
+We worked these out from AWS's figure, and they are lower limits: real cables don't run straight, and each piece of network equipment adds delay. A web page makes many requests, so the delays add up. Lesson 03.04 shows how edge locations shorten some trips without moving your Region.
 
 ### "Choose the Region nearest your office" is wrong
 
@@ -232,10 +232,10 @@ Most workloads run in one Region. The exam guide lists four reasons to use more 
 | **Low latency for users far apart** | Run near each group of users | US customers on us-east-1, German customers on eu-central-1 |
 | **Data sovereignty** | Keep each group's data where its rules say | German customers' data in the EU, US data in the US |
 
-Two cautions keep this honest:
+Two cautions apply:
 
 - **It's harder and costs more.** You duplicate the workload in each Region, keep the copies in step, pay for data between Regions, and practice switching over. AWS believes most customers can meet their resilience goals in a single Region with Multi-AZ designs or Regional services ([AWS Fault Isolation Boundaries](https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/abstract-and-introduction.html)), and [REL10-BP01](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html) names going multi-Region when multi-AZ would do as a common mistake.
-- **Rules can pull against resilience.** A rule may keep data in one place while resilience wants a copy far away. AWS's sovereignty material names exactly this tension ([Digital Sovereignty](https://aws.amazon.com/compliance/digital-sovereignty/)). The answer is usually a second Region *inside* the allowed area.
+- **Rules can pull against resilience.** A rule may keep data in one place while resilience wants a copy far away. AWS's sovereignty material names this tension ([Digital Sovereignty](https://aws.amazon.com/compliance/digital-sovereignty/)). The answer is usually a second Region *inside* the allowed area.
 
 | | Several AZs in one Region (lesson 03.01) | Several Regions |
 |---|---|---|

@@ -51,7 +51,7 @@ The questions follow the exam's style: four choices with one answer, or five cho
 
 - **A is wrong.** It has two common errors. Every Region has at least three AZs, not two. And an AZ can be several data centers, not exactly one.
 - **C is wrong.** It reverses the nesting. Regions contain AZs.
-- **D is wrong.** AZs don't share power or a network; that separation is the whole point of them. And a data center sits inside an AZ, not the other way round.
+- **D is wrong.** AZs don't share power or a network; they are built to stay separate. And a data center sits inside an AZ, not the other way round.
 
 </details>
 
