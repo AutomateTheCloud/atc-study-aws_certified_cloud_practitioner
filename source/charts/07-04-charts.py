@@ -10,23 +10,9 @@ What is AWS Site-to-Site VPN?, What is AWS Client VPN?, the AWS VPN FAQ, What is
 Direct Connect? and the Direct Connect FAQ (dedicated private connection that
 bypasses the internet; MACsec as an option; a VPN over it), What is VPC peering?
 (one-to-one, non-transitive), What is AWS Transit Gateway? (a hub), and What is
-AWS PrivateLink? (one service, through an interface endpoint).
-
-Prices, US East (N. Virginia), USD:
-- data transfer: AWS Price List AWSDataTransfer offer file, publicationDate
-  2026-09-16 (retrieved 2026-10-23): in from the internet $0.00/GB; out to the
-  internet $0.09/GB for the first 10 TB a month after the 100 GB monthly free
-  allowance; to most other Regions $0.02/GB (US East (Ohio) $0.01/GB); regional
-  transfer across Availability Zones $0.01/GB, charged in each direction.
-  Same-AZ transfer and S3 to CloudFront are free per the EC2 and S3 pricing pages.
-- NAT gateway data processing $0.045/GB: AmazonEC2 offer file published
-  2026-10-23 (retrieved 2026-10-24).
-- Site-to-Site VPN connection $0.05/hour; Client VPN endpoint association
-  $0.10/hour and connection $0.05/hour; Transit Gateway attachment $0.05/hour plus
-  $0.02/GB processed; interface VPC endpoint $0.01/hour per AZ plus $0.01/GB:
-  AmazonVPC offer file published 2026-10-16 (retrieved 2026-10-24).
-Monthly figures are our arithmetic for a 730-hour month. The bakery's setup is made
-up for teaching. Our own design: no AWS logos, icons, trade dress or AWS diagrams.
+AWS PrivateLink? (one service, through an interface endpoint). The bakery's setup
+is made up for teaching. Our own design: no AWS logos, icons, trade dress or AWS
+diagrams.
 """
 import math
 import os
@@ -34,7 +20,7 @@ import sys
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from chartkit import make_style, right_rounded, svg, text_lines  # noqa: E402
+from chartkit import make_style, svg, text_lines  # noqa: E402
 
 STYLE = make_style(
     light_extra=" --aws-fill:#d9e8fb; --link-fill:#fbe1d6; --prem-fill:#f1f0ec; --net-fill:#ecebe6;",
@@ -192,173 +178,6 @@ def private_vs_encrypted():
         "the path, not the protection.", body, style=STYLE)
 
 
-def ring(cx, cy, r, n, start=-90):
-    return [(cx + r * math.cos(math.radians(start + 360 * i / n)), cy + r * math.sin(math.radians(start + 360 * i / n)))
-            for i in range(n)]
-
-
-def mesh_vs_hub():
-    """Two panels: five VPCs fully peered vs five attachments to a transit gateway."""
-    w = 680
-    body = [
-        '<text class="title" x="16" y="28">Peering joins pairs; a transit gateway is a hub</text>',
-        '<text class="sub" x="16" y="48">Five VPCs that must all reach each other</text>',
-    ]
-    pw, top, ph = 318, 64, 300
-    for i in range(2):
-        px = 16 + i * (pw + 12)
-        body.append(f'<rect class="panel" x="{px}" y="{top}" width="{pw}" height="{ph}" rx="8"/>')
-        cx, cy = px + pw / 2, top + 150
-        pts = ring(cx, cy, 92, 5)
-        if i == 0:
-            body.append(f'<text class="head" x="{px + 14}" y="{top + 24}">VPC peering: 10 connections</text>')
-            for a in range(5):
-                for b in range(a + 1, 5):
-                    body.append(f'<line class="mesh" x1="{pts[a][0]:.1f}" y1="{pts[a][1]:.1f}" x2="{pts[b][0]:.1f}" y2="{pts[b][1]:.1f}"/>')
-            text_lines(body, px + 14, top + 268, ["Every pair needs its own connection:",
-                                                  "traffic can't hop through a middle VPC."], cls="small", dy=15)
-        else:
-            body.append(f'<text class="head" x="{px + 14}" y="{top + 24}">Transit Gateway: 5 attachments</text>')
-            for x, y in pts:
-                body.append(f'<line class="mesh" x1="{cx}" y1="{cy}" x2="{x:.1f}" y2="{y:.1f}"/>')
-            body.append(f'<rect class="hub" x="{cx - 44}" y="{cy - 18}" width="88" height="36" rx="6"/>')
-            text_lines(body, cx, cy - 2, ["Transit", "gateway"], cls="arrsub", dy=12, anchor="middle")
-            text_lines(body, px + 14, top + 268, ["Each network attaches once, to the hub.",
-                                                  "The hub's route tables decide who reaches whom."], cls="small", dy=15)
-        for k, (x, y) in enumerate(pts):
-            body.append(f'<rect class="node" x="{x - 22:.1f}" y="{y - 14:.1f}" width="44" height="28" rx="5"/>')
-            body.append(f'<text class="boxt" x="{x:.1f}" y="{y + 5:.1f}" text-anchor="middle">{"ABCDE"[k]}</text>')
-    y = top + ph + 26
-    rows = [(3, 3, 3), (5, 10, 5), (10, 45, 10), (20, 190, 20)]
-    body.append(f'<text class="boxt" x="16" y="{y}">Networks</text>')
-    body.append(f'<text class="boxt" x="140" y="{y}">Peering connections for a full mesh</text>')
-    body.append(f'<text class="boxt" x="440" y="{y}">Transit Gateway attachments</text>')
-    for n, m, h in rows:
-        y += 20
-        body.append(f'<text class="val" x="16" y="{y}">{n}</text>')
-        body.append(f'<text class="val" x="140" y="{y}">{m}</text>')
-        body.append(f'<text class="val" x="440" y="{y}">{h}</text>')
-    text_lines(body, 16, y + 26, ["A full mesh of n networks needs n × (n − 1) ÷ 2 peering connections (our arithmetic).",
-                                  "From AWS\'s VPC peering and Transit Gateway documentation, checked 2026-10-23."], cls="note", dy=15)
-    svg("07-04-mesh-vs-hub.svg", w, y + 54,
-        "VPC peering mesh compared with a Transit Gateway hub",
-        "Two panels, each with five VPCs labeled A to E in a ring. VPC peering: every pair is joined by its own "
-        "line, 10 connections in all; every pair needs its own connection, because traffic can't hop through a "
-        "middle VPC: peering is not transitive. Transit Gateway: each VPC has one line to a transit gateway in the middle, 5 "
-        "attachments in all; each network attaches once, and the gateway's route tables decide who reaches whom. "
-        "A table below: for 3 networks, 3 peering connections or 3 attachments; for 5, 10 or 5; for 10, 45 or 10; "
-        "for 20, 190 or 20. A full mesh of n networks needs n times n minus 1, divided by 2, connections.",
-        body, style=STYLE)
-
-
-# USD per GB, US East (N. Virginia). See the module docstring for sources.
-TRANSFER = [
-    ("In from the internet", 0.0, "free"),
-    ("Within one Availability Zone", 0.0, "free (private addresses)"),
-    ("From S3 to CloudFront", 0.0, "free"),
-    ("Across Availability Zones", 0.02, "$0.01 out + $0.01 in"),
-    ("To another Region", 0.02, "$0.02 to most; $0.01 to Ohio"),
-    ("Out to the internet", 0.09, "$0.09 (first 10 TB a month)"),
-    ("Through a NAT gateway", 0.045, "+$0.045 processing, on top"),
-]
-
-
-def transfer_by_direction():
-    w = 680
-    left, top, pw, rowh = 216, 84, 260, 36
-    xmax = 0.10
-    body = [
-        '<text class="title" x="16" y="28">Data in is free; data across AZs, between Regions or out is not</text>',
-        '<text class="sub" x="16" y="48">US dollars per GB moved, from US East (N. Virginia), from AWS\'s price lists (see the note)</text>',
-    ]
-    for i, (lab, usd, note) in enumerate(TRANSFER):
-        y = top + i * rowh
-        body.append(f'<text class="lab" x="{left - 12}" y="{y + 18}" text-anchor="end">{lab}</text>')
-        if usd == 0:
-            body.append(f'<line class="zero" x1="{left}" x2="{left}" y1="{y + 4}" y2="{y + 24}"><title>{lab}: $0.00 per GB</title></line>')
-            body.append(f'<text class="val" x="{left + 10}" y="{y + 19}">$0.00 — {note}</text>')
-            continue
-        bw = pw * usd / xmax
-        cls = "other" if lab.startswith("Through") else "s1"
-        if lab.startswith("Across"):
-            half = bw / 2
-            body.append(f'<rect class="s1" x="{left}" y="{y + 4}" width="{half - 1:.1f}" height="20"><title>Sending side: $0.01 per GB</title></rect>')
-            body.append(f'<path class="s1l" d="{right_rounded(left + half + 1, y + 4, half - 1, 20)}"><title>Receiving side: $0.01 per GB</title></path>')
-        else:
-            body.append(f'<path class="{cls}" d="{right_rounded(left, y + 4, bw, 20)}"><title>{lab}: ${usd:.3f} per GB</title></path>')
-        body.append(f'<text class="val" x="{left + bw + 8:.1f}" y="{y + 19}">{note}</text>')
-    body.append(f'<line class="axis" x1="{left}" x2="{left}" y1="{top}" y2="{top + len(TRANSFER) * rowh - 8}"/>')
-    y = top + len(TRANSFER) * rowh + 14
-    y = text_lines(body, 16, y, [
-        "Across AZs, each side pays $0.01, so a GB moved costs $0.02 in all. The 100 GB a month free out to the internet",
-        "is counted across all Regions. The gray bar is a fee that adds to whatever transfer the traffic also pays.",
-    ], cls="small", dy=17)
-    y = text_lines(body, 16, y + 4, [
-        "Transfer: AWSDataTransfer price list published 2026-09-16, checked 2026-10-23. NAT gateway: EC2 price list,",
-        "checked 2026-10-24. Prices change; check the AWS pricing pages or AWS Pricing Calculator for today's rates.",
-    ], cls="note", dy=15)
-    svg("07-04-transfer-by-direction.svg", w, y + 4,
-        "Data transfer prices by direction, from US East (N. Virginia)",
-        "Horizontal bar chart of US dollars per GB. In from the internet: $0.00, free. Within one Availability "
-        "Zone, using private addresses: $0.00. From S3 to CloudFront: $0.00. Across Availability Zones: $0.02 in "
-        "all, as $0.01 charged on the sending side plus $0.01 on the receiving side. To another Region: $0.02 to "
-        "most Regions, $0.01 to US East (Ohio). Out to the internet: $0.09 for the first 10 TB a month, after "
-        "100 GB a month free across all Regions. Through a NAT gateway, shown gray: $0.045 per GB of processing, "
-        "added on top of any transfer charge. Sources: the AWSDataTransfer price list published 2026-09-16, "
-        "checked 2026-10-23, and the EC2 price list for the NAT gateway, checked 2026-10-24.", body, style=STYLE)
-
-
-HOURS = 730  # a typical month
-LINKS = [
-    ("VPC peering connection", 0.0, "no hourly charge; you pay for data moved"),
-    ("Interface endpoint, 1 AZ", 0.01, "+ $0.01 per GB processed"),
-    ("Site-to-Site VPN connection", 0.05, "+ data out, tunnel IPv4 addresses"),
-    ("Transit Gateway attachment", 0.05, "+ $0.02 per GB processed"),
-    ("Client VPN, 1 subnet", 0.10, "+ $0.05 an hour per connected user"),
-]
-
-
-def monthly_link_cost():
-    w = 680
-    left, top, pw, rowh = 216, 84, 190, 38
-    xmax = 80.0
-    body = [
-        '<text class="title" x="16" y="28">What each link costs a month just for being there</text>',
-        '<text class="sub" x="16" y="48">US dollars for a 730-hour month in US East (N. Virginia), before any data moves</text>',
-    ]
-    for i, (lab, rate, extra) in enumerate(LINKS):
-        y = top + i * rowh
-        usd = rate * HOURS
-        body.append(f'<text class="lab" x="{left - 12}" y="{y + 18}" text-anchor="end">{lab}</text>')
-        if usd == 0:
-            body.append(f'<line class="zero" x1="{left}" x2="{left}" y1="{y + 4}" y2="{y + 24}"/>')
-            body.append(f'<text class="val" x="{left + 10}" y="{y + 19}">$0 — {extra}</text>')
-            continue
-        bw = pw * usd / xmax
-        body.append(f'<path class="s1" d="{right_rounded(left, y + 4, bw, 20)}"><title>{lab}: ${rate:.2f} an hour, about ${usd:.2f} a month</title></path>')
-        body.append(f'<text class="val" x="{left + bw + 8:.1f}" y="{y + 19}">${usd:.2f} {extra}</text>')
-    body.append(f'<line class="axis" x1="{left}" x2="{left}" y1="{top}" y2="{top + len(LINKS) * rowh - 8}"/>')
-    y = top + len(LINKS) * rowh + 14
-    y = text_lines(body, 16, y, [
-        "Hourly rate × 730 hours (our arithmetic). Direct Connect isn't shown: it charges per port-hour, set by the",
-        "port's speed and type, plus data transfer out; see its pricing page.",
-    ], cls="small", dy=17)
-    y = text_lines(body, 16, y + 4, [
-        "From the AmazonVPC price list published 2026-10-16, as of 2026-10-24. Prices change; check AWS Pricing Calculator.",
-    ], cls="note", dy=15)
-    svg("07-04-monthly-link-cost.svg", w, y + 4,
-        "Monthly cost of connection options before any data moves, US East (N. Virginia)",
-        "Horizontal bar chart of US dollars for a 730-hour month, before any data moves. VPC peering connection: $0, "
-        "no hourly charge; you pay for data moved. Interface endpoint in one Availability Zone: $7.30, plus $0.01 per "
-        "GB processed. Site-to-Site VPN connection: $36.50, plus data transfer out and public IPv4 addresses on its tunnel endpoints. Transit Gateway attachment: "
-        "$36.50, plus $0.02 per GB processed. Client VPN with one subnet associated: $73.00, plus $0.05 an hour per "
-        "connected user. Direct Connect is not shown; it charges per port-hour by port speed and type, plus data "
-        "transfer out. From the AmazonVPC price list published 2026-10-16, as of 2026-10-24.", body, style=STYLE)
-
-
 if __name__ == "__main__":
     connection_map()
     private_vs_encrypted()
-    mesh_vs_hub()
-    transfer_by_direction()
-    monthly_link_cost()
