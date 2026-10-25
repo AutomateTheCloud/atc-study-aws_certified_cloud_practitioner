@@ -6,9 +6,7 @@
 Usage: python3 -I source/charts/03-04-charts.py
 Writes images/03-04-*.svg. Facts come from AWS's Global Infrastructure and Regions
 and AZs pages, the CloudFront key features page, the AWS Fault Isolation Boundaries
-whitepaper (which services run at points of presence, and which features such as
-AWS WAF for CloudFront run there too), and the What is AWS Local Zones, What is AWS
-Wavelength and What is AWS Outposts pages, read 2026-10-23 and 2026-10-24.
+whitepaper (which services run at points of presence), read 2026-10-23 and 2026-10-24.
 The world view is a schematic: no map, and the number and position of shapes are
 illustrative, not counts. Our own design: no AWS logos, icons, trade dress or AWS
 diagrams.
@@ -18,7 +16,7 @@ import sys
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from chartkit import make_style, svg, text_lines, wrap  # noqa: E402
+from chartkit import make_style, svg  # noqa: E402
 
 # Regions = categorical slot 1 (blue) tint boxes; edge locations = slot 2 (orange)
 # dots. Shape (box vs dot) and the legend carry identity as well as color.
@@ -119,79 +117,5 @@ def regions_and_edge():
         "are illustrative; current counts are on AWS's Global Infrastructure page.", body, style=STYLE)
 
 
-CARDS = [
-    ("Edge location", False, [
-        ("Where", "Many cities worldwide, beside and inside internet providers' networks"),
-        ("Runs", "CloudFront, Route 53 and Global Accelerator, plus features that work through them, such as AWS WAF. Not your own servers"),
-        ("Use it for", "Delivering content and answering requests close to users"),
-    ]),
-    ("Local Zone", False, [
-        ("Where", "A large city away from the Region it extends"),
-        ("Runs", "Selected services, such as compute, storage and databases"),
-        ("Use it for", "Single-digit-millisecond latency for users in that city; keeping data there"),
-    ]),
-    ("Outposts", False, [
-        ("Where", "Your own building: your data center or site"),
-        ("Runs", "AWS racks or servers that AWS manages; you provide space, power and network"),
-        ("Use it for", "Low latency to on-site systems, local processing, keeping data on site"),
-    ]),
-    ("Wavelength Zone", True, [
-        ("Where", "Inside a telecom carrier's 5G network, extending a Region"),
-        ("Runs", "Compute and storage, such as EC2 instances"),
-        ("Use it for", "Ultra-low latency to phones and other mobile devices"),
-    ]),
-]
-
-
-def edge_options():
-    """Four cards: where each edge option physically is, what runs there, what it's for."""
-    w = 680
-    body = [
-        '<text class="title" x="16" y="28">Four ways AWS reaches beyond its Regions</text>',
-        '<text class="sub" x="16" y="48">The question that separates them: where is it, physically?</text>',
-    ]
-    cw, gap, top = 318, 12, 66
-    rows = []
-    for i in range(0, 4, 2):
-        rows.append(CARDS[i:i + 2])
-    y = top
-    for row in rows:
-        heights = []
-        laid = []
-        for name, out, items in row:
-            lines = [(k, wrap(v, 34)) for k, v in items]
-            h = 34 + sum(8 + 15 * len(ls) for _, ls in lines) + (40 if out else 6)
-            heights.append(h)
-            laid.append((name, out, lines))
-        h = max(heights)
-        for j, (name, out, lines) in enumerate(laid):
-            x = 16 + j * (cw + gap)
-            body.append(f'<rect class="{"cardhi" if out else "card"}" x="{x}" y="{y}" width="{cw}" height="{h}" rx="8"/>')
-            body.append(f'<text class="name" x="{x + 14}" y="{y + 24}">{name}</text>')
-            yy = y + 46
-            for k, ls in lines:
-                body.append(f'<text class="key" x="{x + 14}" y="{yy}">{k}</text>')
-                yy = text_lines(body, x + 92, yy, ls, cls="cells", dy=15) + 8
-            if out:
-                body.append(f'<text class="key" x="{x + 14}" y="{y + h - 28}">Out of scope for CLF-C02 as a service:</text>')
-                body.append(f'<text class="key" x="{x + 14}" y="{y + h - 12}">know it as a wrong answer</text>')
-        y += h + gap
-    body.append(f'<text class="note" x="16" y="{y + 8}">Our summary of AWS\'s Local Zones, Wavelength, Outposts and CloudFront pages, checked 2026-10-24.</text>')
-    svg("03-04-edge-options.svg", w, y + 22,
-        "Edge location, Local Zone, Outposts and Wavelength Zone compared",
-        "Four cards. Edge location: in many cities worldwide, beside and inside internet providers' networks; "
-        "runs CloudFront, Route 53 and Global Accelerator, plus features that work through them such as AWS WAF, "
-        "but not your own servers; used for delivering content "
-        "and answering requests close to users. Local Zone: in a large city away from the Region it extends; "
-        "runs selected services such as compute, storage and databases; used for single-digit-millisecond "
-        "latency for users in that city and for keeping data there. Outposts: in your own building; AWS racks "
-        "or servers that AWS manages, with you providing space, power and network; used for low latency to "
-        "on-site systems, local processing and keeping data on site. Wavelength Zone, drawn with a dashed "
-        "border: inside a telecom carrier's 5G network, extending a Region; runs compute and storage such as "
-        "EC2 instances; used for ultra-low latency to phones and other mobile devices; out of scope for "
-        "CLF-C02 as a service.", body, style=STYLE)
-
-
 if __name__ == "__main__":
     regions_and_edge()
-    edge_options()

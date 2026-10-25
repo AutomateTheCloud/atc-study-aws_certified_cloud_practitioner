@@ -53,7 +53,7 @@ flowchart LR
 
 *Notice that every stage only reads. There is nothing to delete at the end, but you still confirm it, as you will in every lab.*
 
-**Long description.** Four stages from left to right. In the console, list Regions in the Region selector. In CloudShell, list AZ names and AZ IDs for two Regions. In the AWS Health Dashboard, look at your account's events, then at AWS's services. Finally, confirm that nothing was created.
+**Long description.** Four stages from left to right: list Regions in the console's Region selector; list AZ names and AZ IDs for two Regions in CloudShell; look at the AWS Health Dashboard for your account, then AWS's services; confirm that nothing was created.
 
 **What it creates:** nothing, so there is nothing to tag with `guide` = `clf` and `lab` = `02`.
 
@@ -67,7 +67,7 @@ flowchart LR
 - Budgets and billing alerts: [primer page 05](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md).
 - The habits for every lab, including a lab log: [primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md).
 
-**Why this matters:** high availability means placing copies in more than one Availability Zone, [REL10-BP01 Deploy the workload to multiple locations](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html). To do that, you need to see which AZs your account has, and name them so they mean the same place to everyone: the AZ ID. The Health Dashboard is where AWS reports events that could affect your resources: the first place to look when a failure from lesson [03.03](03-surviving-failure.md) happens for real.
+**Why this matters:** high availability means placing copies in more than one AZ ([REL10-BP01 Deploy the workload to multiple locations](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html)), so you need to see which AZs your account has. The Health Dashboard is the first place to look when a failure from lesson [03.03](03-surviving-failure.md) happens for real.
 
 > **New sign-up path:** that experience assigns your Region from your contact country (US East (Ohio), Europe (Stockholm) or Asia Pacific (Sydney), as of 2026-10-23), and you can't change it. Run step 9 in your assigned Region and skip the `--region` part of step 10. We haven't run this lab on that path, and we haven't confirmed how CloudShell and the Health Dashboard behave there.
 
@@ -179,7 +179,7 @@ Nothing was created, but confirm it anyway; the habit saves you in later labs.
 
 ## Recap
 
-You saw the global infrastructure from inside your account: Regions with their codes, some off until enabled; each Region's AZs, named with a letter in your account and identified everywhere by an AZ ID; and AWS's record of events, usually confined to one Region. You pick AZs from lists like these when you design for high availability, and you check the Health Dashboard first when something fails.
+You saw Regions with their codes, some off until enabled; each Region's AZs, named with a letter in your account and identified everywhere by an AZ ID; and AWS's record of events, usually confined to one Region. You check the Health Dashboard first when something fails.
 
 > **Reflect:** a colleague in another AWS account says, "Put the standby database in `us-east-1a`, the same AZ as mine, so they're close." Using what you saw today, write two sentences on what could go wrong and what you would ask for instead.
 >

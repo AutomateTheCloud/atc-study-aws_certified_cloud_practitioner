@@ -8,8 +8,6 @@ Writes images/03-01-*.svg. Facts trace to sources cited in
 guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md:
 - nesting, distances and links: "Regions and Availability Zones" (aws.amazon.com,
   retrieved 2026-10-23) and the AWS Fault Isolation Boundaries whitepaper (2022);
-- AZs per Region: the table on "AWS Regions" in the AWS Regions and Availability Zones
-  User Guide, retrieved 2026-10-23 (34 Regions provided by an AWS account);
 - where the bakery's parts live: REL10-BP01 and REL11-BP02 of the Well-Architected
   Reliability Pillar, and the Amazon RDS Multi-AZ page.
 The number of data centers drawn inside each AZ is illustrative; AWS doesn't publish it.
@@ -20,7 +18,7 @@ import sys
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from chartkit import make_style, right_rounded, svg, text_lines, wrap  # noqa: E402
+from chartkit import make_style, svg, text_lines, wrap  # noqa: E402
 
 # AWS infrastructure = slot 1 (blue) tint; the bakery's own resources = slot 2 (orange) tint,
 # the same meaning those two colors carry in Module 04. Words, not color, name every box.
@@ -105,58 +103,6 @@ def nesting():
         "lesson 03.04.", body, style=STYLE)
 
 
-# From the "AWS Regions" table, AWS Regions and AZs User Guide, retrieved 2026-10-23.
-AZ_COUNTS = {
-    "us-east-1": 6, "us-east-2": 3, "us-west-1": 3, "us-west-2": 4, "af-south-1": 3, "ap-east-1": 3,
-    "ap-south-2": 3, "ap-southeast-3": 3, "ap-southeast-5": 3, "ap-southeast-4": 3, "ap-south-1": 3,
-    "ap-southeast-6": 3, "ap-northeast-3": 3, "ap-northeast-2": 4, "ap-southeast-1": 3, "ap-southeast-2": 3,
-    "ap-east-2": 3, "ap-southeast-7": 3, "ap-northeast-1": 4, "ca-central-1": 3, "ca-west-1": 3,
-    "eu-central-1": 3, "eu-west-1": 3, "eu-west-2": 3, "eu-south-1": 3, "eu-west-3": 3, "eu-south-2": 3,
-    "eu-north-1": 3, "eu-central-2": 3, "il-central-1": 3, "mx-central-1": 3, "me-south-1": 3,
-    "me-central-1": 3, "sa-east-1": 3,
-}
-
-
-def azs_per_region():
-    assert len(AZ_COUNTS) == 34
-    counts = {n: sum(1 for v in AZ_COUNTS.values() if v == n) for n in range(1, 7)}
-    w = 680
-    left, top, pw, rowh = 120, 86, 420, 34
-    body = [
-        '<text class="title" x="16" y="28">No Region in AWS\'s table has fewer than three AZs</text>',
-        '<text class="sub" x="16" y="48">Number of Regions with each count of Availability Zones, 34 Regions in AWS\'s table, checked 2026-10-23</text>',
-    ]
-    xmax = 30
-    for i, n in enumerate(range(1, 7)):
-        y = top + i * rowh
-        c = counts[n]
-        body.append(f'<text class="lab" x="{left - 12}" y="{y + 17}" text-anchor="end">{n} AZ{"s" if n > 1 else ""}</text>')
-        if c:
-            bw = pw * c / xmax
-            body.append(f'<path class="s1" d="{right_rounded(left, y + 4, bw, 20)}"><title>{n} AZs: {c} Region{"s" if c > 1 else ""}</title></path>')
-            body.append(f'<text class="lab" x="{left + bw + 8:.1f}" y="{y + 18}">{c} Region{"s" if c > 1 else ""}</text>')
-        else:
-            body.append(f'<text class="small" x="{left + 8}" y="{y + 18}">none</text>')
-    body.append(f'<line class="axis" x1="{left}" x2="{left}" y1="{top}" y2="{top + 6 * rowh - 8}"/>')
-    yline = top + 2 * rowh - 2
-    body.append(f'<line class="minline" x1="16" x2="{left + pw + 40}" y1="{yline}" y2="{yline}"/>')
-    body.append(f'<text class="small" x="{left + pw + 40}" y="{yline - 6}" text-anchor="end">AWS\'s minimum: three AZs per Region</text>')
-    y = top + 6 * rowh + 14
-    y = text_lines(body, 16, y, [
-        "Most Regions have three; a few have more. US East (N. Virginia) has six.",
-        "One catch: in US West (N. California), the Region has three AZs, but AWS says newer accounts can use only two.",
-    ], cls="small", dy=17)
-    body.append(f'<text class="note" x="16" y="{y + 4}">Counts change as AWS adds Regions and AZs. Check AWS\'s live pages; don\'t memorize these numbers.</text>')
-    h = y + 22
-    svg("03-01-azs-per-region.svg", w, h,
-        "Regions by number of Availability Zones, as of 2026-10-23",
-        "Horizontal bar chart of the 34 Regions in the AWS Regions table, checked 2026-10-23. One AZ: none. "
-        "Two AZs: none. Three AZs: 30 Regions. Four AZs: 3 Regions. Five AZs: none. Six AZs: 1 Region, US East "
-        "(N. Virginia). A dashed line marks AWS's minimum of three AZs per Region; no bar sits below it. A note "
-        "says that in US West (N. California) the Region has three AZs but newer accounts can use only two, and "
-        "that counts change, so check AWS's live pages rather than memorize them.", body, style=STYLE)
-
-
 def bakery_layout():
     """Before and after: the bakery's parts in one AZ, then spread over two."""
     w = 680
@@ -224,5 +170,4 @@ def bakery_layout():
 
 if __name__ == "__main__":
     nesting()
-    azs_per_region()
     bakery_layout()
