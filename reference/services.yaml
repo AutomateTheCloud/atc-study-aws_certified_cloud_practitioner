@@ -218,6 +218,8 @@
   category: Security, Identity, and Compliance
 - name: AWS RAM
   category: Security, Identity, and Compliance
+  taught_in: guide/09-protecting-and-governing/05-compliance-and-governance.md
+  does: "Shares a resource you create once, such as VPC subnets, with other accounts or your organization"
 - name: AWS Secrets Manager
   category: Security, Identity, and Compliance
 - name: AWS Security Hub

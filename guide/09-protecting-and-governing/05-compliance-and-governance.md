@@ -6,10 +6,11 @@ tasks: ["2.2", "2.4", "2.3"]
 objectives: ["09.05a"]
 reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 to 08 and the guardrails primer; about 35 minutes; works on a phone"
 prerequisites: [clf-04-02, clf-04-04, clf-04-09, clf-09-01]
-terms_introduced: [compliance program, attestation, AWS Artifact, Artifact report, Artifact agreement, Business Associate Addendum (BAA), Services in Scope, AWS Organizations, organization, management account, member account, organizational unit (OU), resource control policy (RCP), consolidated billing, FullAWSAccess, AWS Control Tower, landing zone, control (AWS Control Tower), Account Factory, AWS Security Center, AWS Security Blog, AWS Security Bulletins, AWS Trust Center]
+terms_introduced: [AWS Resource Access Manager (AWS RAM), compliance program, attestation, AWS Artifact, Artifact report, Artifact agreement, Business Associate Addendum (BAA), Services in Scope, AWS Organizations, organization, management account, member account, organizational unit (OU), resource control policy (RCP), consolidated billing, FullAWSAccess, AWS Control Tower, landing zone, control (AWS Control Tower), Account Factory, AWS Security Center, AWS Security Blog, AWS Security Bulletins, AWS Trust Center]
 pillars: [security]
 facts_checked: 2026-10-24
 sources:
+  - "https://docs.aws.amazon.com/ram/latest/userguide/what-is.html"
   - "https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html"
   - "https://docs.aws.amazon.com/artifact/latest/ug/managing-agreements.html"
   - "https://aws.amazon.com/artifact/faq/"
@@ -223,6 +224,12 @@ flowchart TD
 The management account pays for and controls the whole organization, so whoever breaks into it can reach everything. And SCPs don't apply to it, so the ceilings that protect every member account don't protect anything running there. Keeping it empty keeps the most powerful account the least used.
 
 </details>
+
+### Sharing one resource with many accounts: AWS Resource Access Manager
+
+Separate accounts raise a practical question: what if several of them need the same thing, such as one network? **AWS Resource Access Manager (AWS RAM)** shares a resource you create once with other accounts: specific accounts by ID, every account in your organization, or the accounts in chosen OUs ([What is AWS RAM?](https://docs.aws.amazon.com/ram/latest/userguide/what-is.html), checked 2026-10-24). The account that made the resource keeps owning it; the others see it in their own consoles and use it within the permissions the share allows, and their own IAM policies and SCPs still apply. Commonly shared resources include VPC subnets and transit gateways (Module 07). RAM itself costs nothing extra; you pay for the shared resource as usual.
+
+For the chain, that means one network team can build the shops' network in one account and share its subnets, instead of every shop building and paying for its own.
 
 ## An SCP is a ceiling: it limits everyone in a member account, and grants nothing
 

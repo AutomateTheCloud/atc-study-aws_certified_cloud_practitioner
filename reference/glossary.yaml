@@ -58,6 +58,17 @@
     processors, and HPC optimized is for very large, tightly linked computations.
   module: "06"
 
+- term: accepted risk
+  definition: >-
+    A risk the business decides not to fix, written down with the reason and who decided, such as
+    staying on Basic Support. AWS's guidance asks for this when a business chooses not to act.
+  taught_in: guide/14-capstone/01-the-capstone-review.md
+  confused_with: [high-risk issue]
+  not_to_confuse: >-
+    A high-risk issue is a finding to deal with; an accepted risk is a finding the business has
+    decided, in writing, not to fix.
+  module: "14"
+
 - term: access control list
   abbreviation: ACL
   definition: >-
@@ -950,11 +961,14 @@
 
 - term: API
   definition: >-
-    Application programming interface: a defined way for one program to ask another for something,
-    such as "what is the status of order 1234?"
-  taught_in: guide/07-connecting-it/03-names-and-the-edge.md
-  also_in: [guide/08-building-and-operating/01-four-ways-in.md]
-  module: "07"
+    Application programming interface: a defined set of requests one program can send another, and
+    the responses it returns. Every AWS service has one, which the console, the AWS CLI and programs
+    all use.
+  taught_in: guide/01-on-ramp/05-apis-command-line-and-json.md
+  also_in:
+    - guide/07-connecting-it/03-names-and-the-edge.md
+    - guide/08-building-and-operating/01-four-ways-in.md
+  module: "01"
 
 - term: API key
   definition: >-
@@ -962,6 +976,17 @@
     their usage plan.
   taught_in: guide/07-connecting-it/03-names-and-the-edge.md
   module: "07"
+
+- term: application
+  definition: >-
+    A program that does a job for people, such as a website or a spreadsheet. Applications run on
+    the operating system, which uses the hardware for them.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  confused_with: [operating system]
+  not_to_confuse: >-
+    An application does a job for people, such as pricing an order; the operating system runs the
+    computer and shares its hardware between applications.
+  module: "01"
 
 - term: application layer attack
   definition: >-
@@ -1012,6 +1037,28 @@
     An archive keeps data you no longer use; a backup exists to restore a system that is still in
     use.
   module: "13"
+
+- term: argument
+  definition: >-
+    A value a command works on, such as the new bucket's name in aws s3 mb
+    s3://example-bakery-photos.
+  taught_in: guide/01-on-ramp/05-apis-command-line-and-json.md
+  confused_with: [option]
+  not_to_confuse: >-
+    An argument is the value the command acts on; an option is a setting written as a name with two
+    dashes and then its value.
+  module: "01"
+
+- term: array
+  definition: >-
+    In JSON, a list of values in order inside square brackets, such as the actions in a policy
+    statement. Its items can be any value, even objects.
+  taught_in: guide/01-on-ramp/05-apis-command-line-and-json.md
+  confused_with: [JSON object]
+  not_to_confuse: >-
+    An array, in square brackets, is a list of values in order; an object, in curly braces, holds
+    named values.
+  module: "01"
 
 - term: Artifact agreement
   definition: >-
@@ -1118,11 +1165,24 @@
   definition: >-
     Proving who you are, for example by signing in.
   taught_in: guide/04-shared-responsibility-and-access/03-identities.md
+  also_in: [guide/01-on-ramp/06-everyday-security.md]
   confused_with: [authorization]
   not_to_confuse: >-
     Authentication asks who you are; authorization asks, on every request, whether that identity may
     do that action.
   module: "04"
+
+- term: authenticator app
+  definition: >-
+    A phone app that shows a six-digit code that keeps changing, used as a second factor. AWS ranks
+    it after passkeys and security keys, because its codes can be typed into a fake page.
+  taught_in: guide/01-on-ramp/06-everyday-security.md
+  also_in: [guide/04-shared-responsibility-and-access/05-credentials-and-federation.md]
+  confused_with: [passkey]
+  not_to_confuse: >-
+    An authenticator app's code can be typed into a fake sign-in page and used at once; a passkey is
+    tied to the real site, so a fake page gets nothing.
+  module: "01"
 
 - term: authorization
   definition: >-
@@ -1343,7 +1403,9 @@
     The AWS Command Line Interface: a free, open-source program that sends instructions to AWS as
     typed commands. Saved in a script, commands suit quick, bulk and routine tasks.
   taught_in: guide/08-building-and-operating/01-four-ways-in.md
-  also_in: [guide/08-building-and-operating/05-lab-10-same-bucket-three-ways.md]
+  also_in:
+    - guide/08-building-and-operating/05-lab-10-same-bucket-three-ways.md
+    - guide/01-on-ramp/05-apis-command-line-and-json.md
   confused_with: [AWS CloudShell]
   not_to_confuse: >-
     The AWS CLI is the program that sends the commands; CloudShell is a command line in the browser,
@@ -1412,6 +1474,7 @@
   also_in:
     - guide/08-building-and-operating/05-lab-10-same-bucket-three-ways.md
     - guide/08-building-and-operating/06-lab-11-alarm-on-errors.md
+    - guide/01-on-ramp/05-apis-command-line-and-json.md
   confused_with: [AWS CLI]
   not_to_confuse: >-
     CloudShell is a place to run commands, in the browser and already signed in; the AWS CLI is the
@@ -2108,6 +2171,15 @@
     public question-and-answer site that every customer can use.
   module: "12"
 
+- term: AWS Resource Access Manager
+  abbreviation: AWS RAM
+  definition: >-
+    Shares a resource you create once, such as VPC subnets or a transit gateway, with chosen
+    accounts, your organization or its OUs. The sharing account keeps owning it; the others use it
+    within the share's permissions.
+  taught_in: guide/09-protecting-and-governing/05-compliance-and-governance.md
+  module: "09"
+
 - term: AWS Schema Conversion Tool
   abbreviation: AWS SCT
   definition: >-
@@ -2490,7 +2562,11 @@
     questions, flags risks and saves milestones. It is a different service from AWS Trusted Advisor,
     which runs automatic checks on an account.
   taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
-  also_in: [guide/12-getting-help/02-tools-that-watch-your-account.md, guide/12-getting-help/04-partners-and-paid-help.md]
+  also_in:
+    - guide/12-getting-help/02-tools-that-watch-your-account.md
+    - guide/12-getting-help/04-partners-and-paid-help.md
+    - guide/14-capstone/01-the-capstone-review.md
+    - guide/14-capstone/02-lab-18-well-architected-tool-review.md
   confused_with: [AWS Well-Architected Framework]
   not_to_confuse: >-
     The Tool is the service that runs a review; the Framework is the guidance the review is based
@@ -2608,6 +2684,13 @@
     older Amazon Glacier service, closed to new customers.
   module: "05"
 
+- term: bandwidth
+  definition: >-
+    How much data a network connection can carry each second, counted in megabits or gigabits per
+    second (Mbps, Gbps).
+  taught_in: guide/01-on-ramp/02-networks-ip-dns-https.md
+  module: "01"
+
 - term: baseline usage
   definition: >-
     The level a workload never drops below, such as two servers running every hour of the year. It's
@@ -2677,6 +2760,9 @@
     A specific recommended action in the Well-Architected Framework, with an ID that shows its
     pillar and question.
   taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
+  also_in:
+    - guide/14-capstone/01-the-capstone-review.md
+    - guide/14-capstone/02-lab-18-well-architected-tool-review.md
   confused_with: [design principle]
   not_to_confuse: >-
     A best practice is a specific action with an ID; a design principle is a broad idea that guides
@@ -2733,6 +2819,7 @@
     The resource a program runs out of first: processor, memory, disk speed or special chips. It is
     the first thing to find when choosing an EC2 instance family.
   taught_in: guide/06-running-applications/01-ec2.md
+  also_in: [guide/01-on-ramp/01-computers-and-servers.md]
   module: "06"
 
 - term: bring your own license
@@ -2861,6 +2948,13 @@
     Business Support+ is the current plan that replaces it.
   module: "12"
 
+- term: byte
+  definition: >-
+    The basic unit of data size, about one letter of text. Larger sizes are counted in megabytes,
+    gigabytes and terabytes: millions, billions and trillions of bytes.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  module: "01"
+
 - term: cache
   definition: >-
     A stored copy kept close by so it can be served again quickly. To cache something is to keep
@@ -2932,11 +3026,19 @@
     A digital document that proves to a browser that a site is who it claims to be, and makes TLS
     possible. Certificates expire, so they must be renewed.
   taught_in: guide/09-protecting-and-governing/02-encryption.md
+  also_in: [guide/01-on-ramp/02-networks-ip-dns-https.md]
   confused_with: [encryption key]
   not_to_confuse: >-
     A certificate proves a site's identity so TLS can protect data in transit; an encryption key is
     the secret number that scrambles data, for example at rest.
   module: "09"
+
+- term: certificate authority
+  definition: >-
+    An organization that issues certificates, only after checking that the requester owns or
+    controls the name. It checks control of the name, not the honesty of the business behind it.
+  taught_in: guide/01-on-ramp/02-networks-ip-dns-https.md
+  module: "01"
 
 - term: change data capture
   definition: >-
@@ -2982,6 +3084,7 @@
   definition: >-
     Data scrambled by encryption, which can't be read without the right key.
   taught_in: guide/09-protecting-and-governing/02-encryption.md
+  also_in: [guide/01-on-ramp/06-everyday-security.md]
   confused_with: [plaintext]
   not_to_confuse: >-
     Ciphertext is scrambled and useless without the key; plaintext is the readable data before
@@ -2999,6 +3102,17 @@
     generation they replace.
   module: "06"
 
+- term: client
+  definition: >-
+    A computer or program that sends a request to a server and gets back a response, such as a
+    browser asking a website for a page. The client always speaks first.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  confused_with: [server]
+  not_to_confuse: >-
+    A client sends requests and a server waits for them and answers, but the same computer can be
+    either, depending on what it is doing.
+  module: "01"
+
 - term: client-side encryption
   definition: >-
     Encrypting data yourself before you upload it, and managing the keys and tools yourself.
@@ -3008,6 +3122,13 @@
     Client-side encryption happens before the data leaves you; server-side encryption is done by S3
     as it stores the data.
   module: "05"
+
+- term: close-out
+  definition: >-
+    The final sweep of an account when its work is done: find every leftover by tag, by name and on
+    the bill, delete on purpose, keep the guardrails, and check the bill again the next day.
+  taught_in: guide/14-capstone/03-lab-19-close-out.md
+  module: "14"
 
 - term: closed to new customers
   definition: >-
@@ -3097,6 +3218,36 @@
     Logs Insights searches log lines when you ask it a question; a metric filter keeps counting
     matching lines as a metric that an alarm can watch.
   module: "08"
+
+- term: code
+  definition: >-
+    The instructions of a program, written in a programming language such as Python.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  module: "01"
+
+- term: column
+  definition: >-
+    One fact that every record in a database table has, such as the pickup date. Each column has a
+    type, such as date, which the database engine enforces.
+  taught_in: guide/01-on-ramp/03-files-vs-databases.md
+  confused_with: [row]
+  not_to_confuse: >-
+    A column is one fact that every record has; a row is one whole record.
+  module: "01"
+
+- term: command
+  definition: >-
+    A line you type at a command line for the computer to run. In the AWS CLI, the word after aws,
+    usually a service such as s3, is called the command.
+  taught_in: guide/01-on-ramp/05-apis-command-line-and-json.md
+  module: "01"
+
+- term: command line
+  definition: >-
+    A way to work with a computer by typing commands instead of clicking. It runs exactly what you
+    type, often at once and with no undo.
+  taught_in: guide/01-on-ramp/05-apis-command-line-and-json.md
+  module: "01"
 
 - term: commitment
   definition: >-
@@ -3281,6 +3432,7 @@
     runs the same on a laptop or on AWS. It is software, not a place to store data like an S3
     bucket.
   taught_in: guide/06-running-applications/03-containers-and-serverless.md
+  also_in: [guide/01-on-ramp/04-data-centers-and-virtualization.md]
   module: "06"
 
 - term: container image
@@ -3367,6 +3519,13 @@
     A Convertible Reserved Instance gives up some discount for the right to exchange it; a Standard
     one discounts more and can be sold, but never exchanged.
   module: "11"
+
+- term: core
+  definition: >-
+    One processing unit inside a processor. A processor with several cores can work on several
+    things at once.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  module: "01"
 
 - term: cost allocation tag
   definition: >-
@@ -3573,7 +3732,9 @@
     A building that holds servers, storage and network equipment, with the power and cooling they
     need.
   taught_in: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
-  also_in: [guide/02-why-the-cloud/01-what-cloud-computing-is.md]
+  also_in:
+    - guide/02-why-the-cloud/01-what-cloud-computing-is.md
+    - guide/01-on-ramp/04-data-centers-and-virtualization.md
   confused_with: [Availability Zone]
   not_to_confuse: >-
     A data center is one building; an Availability Zone is one or more data centers, and on AWS you
@@ -3711,17 +3872,27 @@
 
 - term: database
   definition: >-
-    An organized collection of records that programs can search and update; one of the main IT
-    resources.
-  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
-  also_in: [guide/05-storing-data/05-managed-or-self-managed-databases.md, guide/05-storing-data/06-choosing-a-database.md]
-  module: "02"
+    An organized store of records, run by a database engine that keeps them in order, lets many
+    people change them at once without losing work, and answers questions about them; one of the
+    main IT resources.
+  taught_in: guide/01-on-ramp/03-files-vs-databases.md
+  also_in:
+    - guide/02-why-the-cloud/01-what-cloud-computing-is.md
+    - guide/05-storing-data/05-managed-or-self-managed-databases.md
+    - guide/05-storing-data/06-choosing-a-database.md
+  confused_with: [file]
+  not_to_confuse: >-
+    A database puts one engine in charge of many small records; a file is one whole thing each
+    program opens and saves itself, and a spreadsheet is a file.
+  module: "01"
 
 - term: database engine
   definition: >-
     The database software itself, such as MySQL, PostgreSQL or Microsoft SQL Server.
   taught_in: guide/05-storing-data/05-managed-or-self-managed-databases.md
-  also_in: [guide/05-storing-data/06-choosing-a-database.md]
+  also_in:
+    - guide/05-storing-data/06-choosing-a-database.md
+    - guide/01-on-ramp/03-files-vs-databases.md
   module: "05"
 
 - term: database migration
@@ -3995,12 +4166,27 @@
   taught_in: guide/07-connecting-it/03-names-and-the-edge.md
   module: "07"
 
+- term: DNS resolver
+  definition: >-
+    The DNS server, usually your internet service provider's, that finds a name's address for your
+    device by asking other DNS servers, then keeps the answer for a while so later lookups are
+    instant.
+  taught_in: guide/01-on-ramp/02-networks-ip-dns-https.md
+  module: "01"
+
+- term: Docker
+  definition: >-
+    A widely used tool for building and running containers.
+  taught_in: guide/01-on-ramp/04-data-centers-and-virtualization.md
+  module: "01"
+
 - term: document database
   definition: >-
     A database in which each record is a self-contained document, usually JSON, and different
     documents can have different fields. Amazon DocumentDB is AWS's, and DynamoDB also stores
     documents.
   taught_in: guide/05-storing-data/06-choosing-a-database.md
+  also_in: [guide/01-on-ramp/03-files-vs-databases.md]
   confused_with: [key-value database]
   not_to_confuse: >-
     A document database keeps self-contained documents whose fields can vary and can be searched by
@@ -4023,6 +4209,7 @@
     A name people use to reach a site, such as bakery.example, which DNS turns into an address.
     Amazon Route 53 can register domain names and answer DNS questions for them.
   taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  also_in: [guide/01-on-ramp/02-networks-ip-dns-https.md]
   confused_with: [domain]
   not_to_confuse: >-
     A domain name is a site's name on the internet; an exam domain is one of the broad subject areas
@@ -4035,7 +4222,9 @@
     The internet's address book: it turns a name like example.com into the network address of a
     server. Amazon Route 53 is AWS's DNS service.
   taught_in: guide/03-aws-around-the-world/04-the-edge.md
-  also_in: [guide/07-connecting-it/03-names-and-the-edge.md]
+  also_in:
+    - guide/07-connecting-it/03-names-and-the-edge.md
+    - guide/01-on-ramp/02-networks-ip-dns-https.md
   confused_with: [content delivery network]
   not_to_confuse: >-
     DNS only answers where something is; a CDN delivers the content.
@@ -4187,6 +4376,7 @@
     Scrambling readable data (plaintext) into ciphertext with an encryption key, so that only
     someone with the right key can turn it back.
   taught_in: guide/09-protecting-and-governing/02-encryption.md
+  also_in: [guide/01-on-ramp/06-everyday-security.md]
   module: "09"
 
 - term: encryption at rest
@@ -4195,7 +4385,7 @@
     can read it. S3 does it for every new object, but anyone your policies allow gets the data
     decrypted.
   taught_in: guide/09-protecting-and-governing/02-encryption.md
-  also_in: [guide/05-storing-data/02-s3-in-practice.md]
+  also_in: [guide/05-storing-data/02-s3-in-practice.md, guide/01-on-ramp/06-everyday-security.md]
   confused_with: [encryption in transit]
   not_to_confuse: >-
     Encryption at rest protects data where it is stored; encryption in transit protects it while it
@@ -4207,7 +4397,10 @@
     Scrambling data while it travels over the network, for example with TLS, the protection behind
     HTTPS, so that anyone who intercepts it can't read it.
   taught_in: guide/09-protecting-and-governing/02-encryption.md
-  also_in: [guide/05-storing-data/02-s3-in-practice.md, guide/07-connecting-it/04-connecting-networks-and-offices.md]
+  also_in:
+    - guide/05-storing-data/02-s3-in-practice.md
+    - guide/07-connecting-it/04-connecting-networks-and-offices.md
+    - guide/01-on-ramp/06-everyday-security.md
   confused_with: [encryption at rest, private connection]
   not_to_confuse: >-
     Encryption in transit protects data on the move and encryption at rest protects it where it is
@@ -4220,6 +4413,7 @@
     A long secret number used to encrypt and decrypt data. It can be copied without anyone noticing,
     which is why AWS's key services are built never to hand keys out.
   taught_in: guide/09-protecting-and-governing/02-encryption.md
+  also_in: [guide/01-on-ramp/06-everyday-security.md]
   confused_with: [key (S3)]
   not_to_confuse: >-
     An encryption key is a secret number that scrambles data; an S3 key is just the name of an
@@ -4246,10 +4440,11 @@
 
 - term: endpoint
   definition: >-
-    A resource that receives an application's traffic, such as a load balancer, an EC2 instance or an
-    Elastic IP address. AWS Global Accelerator sends each user's traffic to the best healthy endpoint
-    in a Region.
+    Where an application or API receives traffic, such as a service's web address, a load balancer
+    or an EC2 instance. AWS Global Accelerator sends each user's traffic to the best healthy
+    endpoint in a Region.
   taught_in: guide/07-connecting-it/03-names-and-the-edge.md
+  also_in: [guide/01-on-ramp/05-apis-command-line-and-json.md]
   confused_with: [VPC endpoint]
   not_to_confuse: >-
     An endpoint is where an application receives traffic; a VPC endpoint is a private path from your
@@ -4506,6 +4701,31 @@
     more throughput but may deliver a message twice or out of order.
   module: "08"
 
+- term: file
+  definition: >-
+    A named piece of data kept in storage, such as a photo or a document, that a program opens and
+    saves as a whole.
+  taught_in: guide/01-on-ramp/03-files-vs-databases.md
+  confused_with: [database]
+  not_to_confuse: >-
+    A file is one whole thing that each program opens and saves itself; a database holds many small
+    records that one engine lets many people search and change at once.
+  module: "01"
+
+- term: file format
+  definition: >-
+    How a file's contents are laid out, usually shown by the ending of its name: .jpg for a photo,
+    .pdf for a document, .csv for a table as plain text.
+  taught_in: guide/01-on-ramp/03-files-vs-databases.md
+  module: "01"
+
+- term: file path
+  definition: >-
+    A file's full location in a file system, its folders and then its name, such as
+    photos/cakes/birthday-cake.jpg.
+  taught_in: guide/01-on-ramp/03-files-vs-databases.md
+  module: "01"
+
 - term: file storage
   definition: >-
     A shared file system, with folders and file names, that many servers use over the network at the
@@ -4516,6 +4736,17 @@
     File storage is mounted by many servers at once as folders and files; block storage is one
     server's disk, and object storage answers web requests for whole objects.
   module: "05"
+
+- term: file system
+  definition: >-
+    The way an operating system keeps files: a tree of folders and files, each with a name and a
+    path.
+  taught_in: guide/01-on-ramp/03-files-vs-databases.md
+  confused_with: [file storage]
+  not_to_confuse: >-
+    A file system is how files are arranged in folders; file storage is a shared file system that
+    many servers use over the network at once.
+  module: "01"
 
 - term: finding
   definition: >-
@@ -4538,6 +4769,7 @@
     Something that lets network traffic through or stops it according to rules. In a VPC, security
     groups and network ACLs are firewalls.
   taught_in: guide/07-connecting-it/02-filtering-traffic.md
+  also_in: [guide/01-on-ramp/02-networks-ip-dns-https.md]
   module: "07"
 
 - term: first-response time
@@ -4565,6 +4797,12 @@
     handing a caller to a Lex bot or putting them in a queue for an agent.
   taught_in: guide/10-data-ai-and-more/03-people-apps-and-devices.md
   module: "10"
+
+- term: folder
+  definition: >-
+    A named container in a file system that holds files and other folders; also called a directory.
+  taught_in: guide/01-on-ramp/03-files-vs-databases.md
+  module: "01"
 
 - term: forecast
   definition: >-
@@ -4703,9 +4941,25 @@
 
 - term: GiB
   definition: >-
-    Gibibyte, the unit in which EC2 states memory: slightly more than a gigabyte.
-  taught_in: guide/06-running-applications/01-ec2.md
-  module: "06"
+    Gibibyte: a unit based on powers of two, 1,073,741,824 bytes, about 7% more than a gigabyte. AWS
+    often states server memory in it, such as 8 GiB.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  also_in: [guide/06-running-applications/01-ec2.md]
+  confused_with: [gigabyte]
+  not_to_confuse: >-
+    A GiB is 1,073,741,824 bytes; a gigabyte is exactly a billion, so the GiB is about 7% bigger.
+  module: "01"
+
+- term: gigabyte
+  abbreviation: GB
+  definition: >-
+    A billion bytes. A megabyte (MB) is a million bytes and a terabyte (TB) a trillion; a phone
+    photo is a few MB.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  confused_with: [GiB]
+  not_to_confuse: >-
+    A gigabyte is exactly a billion bytes; a GiB is based on powers of two and is about 7% bigger.
+  module: "01"
 
 - term: global reach
   definition: >-
@@ -4769,7 +5023,10 @@
     The operating system, such as Linux or Windows, that runs inside your virtual server. On Amazon
     EC2 you install its updates and security patches.
   taught_in: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
-  also_in: [guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md, guide/04-shared-responsibility-and-access/08-sim-responsibility-slider.md]
+  also_in:
+    - guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md
+    - guide/04-shared-responsibility-and-access/08-sim-responsibility-slider.md
+    - guide/01-on-ramp/04-data-centers-and-virtualization.md
   confused_with: [host operating system]
   not_to_confuse: >-
     The guest operating system is inside your virtual server and yours on EC2; the host operating
@@ -4793,6 +5050,15 @@
     data.
   taught_in: guide/06-running-applications/05-lab-07-a-lambda-function.md
   module: "06"
+
+- term: hardware
+  definition: >-
+    The physical parts of a computer, such as its processor, memory, storage and network connection.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  confused_with: [software]
+  not_to_confuse: >-
+    Hardware is the physical parts you could touch; software is the programs that run on them.
+  module: "01"
 
 - term: hardware refresh
   definition: >-
@@ -4844,10 +5110,18 @@
 - term: high-risk issue
   abbreviation: HRI
   definition: >-
-    An answer in a Well-Architected review that shows a serious gap. A smaller gap is a medium-risk
-    issue (MRI).
-  taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
-  module: "02"
+    In a Well-Architected review, a choice that might do the business significant harm; a
+    medium-risk issue (MRI) would do less. Each best practice's page gives a level, which a written
+    business reason can lower.
+  taught_in: guide/14-capstone/01-the-capstone-review.md
+  also_in:
+    - guide/02-why-the-cloud/05-the-well-architected-framework.md
+    - guide/14-capstone/02-lab-18-well-architected-tool-review.md
+  confused_with: [accepted risk]
+  not_to_confuse: >-
+    A high-risk issue is a finding to deal with; an accepted risk is one the business has decided,
+    in writing, not to fix.
+  module: "14"
 
 - term: homogeneous migration
   definition: >-
@@ -4860,11 +5134,19 @@
     the engine and needs the schema converted first.
   module: "05"
 
+- term: host
+  definition: >-
+    In virtualization, the physical server that virtual machines run on, under its hypervisor. On
+    Amazon EC2 the host is AWS's, and a stopped instance usually starts again on a different one.
+  taught_in: guide/01-on-ramp/04-data-centers-and-virtualization.md
+  module: "01"
+
 - term: host operating system
   definition: >-
     The operating system on the physical machine, beneath the virtualization layer. AWS runs and
     patches it.
   taught_in: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
+  also_in: [guide/01-on-ramp/04-data-centers-and-virtualization.md]
   confused_with: [guest operating system]
   not_to_confuse: >-
     The host operating system runs the physical machine and is AWS's; the guest operating system
@@ -4918,6 +5200,41 @@
     is for work done on GPUs or other special chips.
   module: "06"
 
+- term: HTTP
+  definition: >-
+    The web's request-and-response protocol. A request names a URL and a method; the response
+    carries the page and a status code. Plain HTTP sends everything as readable text, normally on
+    port 80.
+  taught_in: guide/01-on-ramp/02-networks-ip-dns-https.md
+  confused_with: [HTTPS]
+  not_to_confuse: >-
+    HTTP sends readable text that anyone on the path could read or change; HTTPS runs HTTP inside
+    TLS, adding encryption and proof of the server's identity.
+  module: "01"
+
+- term: HTTP method
+  definition: >-
+    The word in an HTTP request that says what to do: GET asks for something, POST or PUT sends
+    something to store, and DELETE removes it. AWS charges some requests by kind, such as S3's GET
+    and PUT.
+  taught_in: guide/01-on-ramp/02-networks-ip-dns-https.md
+  module: "01"
+
+- term: HTTPS
+  definition: >-
+    HTTP run inside TLS, which adds encryption, so nobody on the path can read the conversation, and
+    proof of identity, a certificate showing the server holds the site's name. It normally uses port
+    443.
+  taught_in: guide/01-on-ramp/02-networks-ip-dns-https.md
+  also_in:
+    - guide/01-on-ramp/05-apis-command-line-and-json.md
+    - guide/01-on-ramp/06-everyday-security.md
+  confused_with: [HTTP]
+  not_to_confuse: >-
+    HTTPS encrypts the conversation and proves the server's name; plain HTTP does neither, and a
+    padlock proves the connection and the name, not the business's honesty.
+  module: "01"
+
 - term: hub and spoke
   definition: >-
     A network layout in which every network connects once to a central hub, such as a transit
@@ -4943,6 +5260,13 @@
     Storage Gateway letting software in your building use AWS storage.
   taught_in: guide/05-storing-data/04-hybrid-storage-and-backup.md
   module: "05"
+
+- term: hypervisor
+  definition: >-
+    The software on a host that creates virtual machines, gives each its share of processor, memory
+    and disk, and keeps them apart. On AWS it is AWS's responsibility.
+  taught_in: guide/01-on-ramp/04-data-centers-and-virtualization.md
+  module: "01"
 
 - term: IAM Access Analyzer
   definition: >-
@@ -5060,6 +5384,13 @@
   taught_in: guide/11-paying-for-aws/01-how-aws-charges.md
   module: "11"
 
+- term: image
+  definition: >-
+    A saved template of an operating system and software that a virtual machine starts from, so
+    every one started from the same image is identical. Amazon EC2 calls its images AMIs.
+  taught_in: guide/01-on-ramp/04-data-centers-and-virtualization.md
+  module: "01"
+
 - term: implicit deny
   definition: >-
     The default result when no policy allows a request: nothing has to say "no".
@@ -5070,6 +5401,17 @@
     An implicit deny is only the absence of an allow, and an allow overrides it; an explicit deny is
     a Deny statement, and it overrides every allow.
   module: "04"
+
+- term: improvement plan
+  definition: >-
+    The list of risks a review decided to fix, in order, each with its fix, cost and owner. The
+    Well-Architected Tool's Improvement plan tab lists risky questions and missing best practices,
+    without costs, order or owners.
+  taught_in: guide/14-capstone/01-the-capstone-review.md
+  also_in:
+    - guide/14-capstone/02-lab-18-well-architected-tool-review.md
+    - guide/02-why-the-cloud/05-the-well-architected-framework.md
+  module: "14"
 
 - term: in-memory database
   definition: >-
@@ -5260,6 +5602,13 @@
     and DynamoDB, through a route, for free.
   module: "07"
 
+- term: internet
+  definition: >-
+    A network of networks: homes, businesses and providers joined by routers, so data can travel
+    between any of them. No single company carries it all the way.
+  taught_in: guide/01-on-ramp/02-networks-ip-dns-https.md
+  module: "01"
+
 - term: internet gateway
   definition: >-
     The part attached to a VPC that connects it to the internet in both directions, so either side
@@ -5280,6 +5629,13 @@
     receive commands. AWS IoT Core connects them to AWS.
   taught_in: guide/10-data-ai-and-more/03-people-apps-and-devices.md
   module: "10"
+
+- term: internet service provider
+  abbreviation: ISP
+  definition: >-
+    A company that connects a home or business to the internet.
+  taught_in: guide/01-on-ramp/02-networks-ip-dns-https.md
+  module: "01"
 
 - term: interruption notice
   definition: >-
@@ -5303,6 +5659,17 @@
   also_in: [guide/06-running-applications/05-lab-07-a-lambda-function.md]
   module: "06"
 
+- term: IOPS
+  definition: >-
+    Reads and writes per second: one of the two ways storage speed is counted. The other is
+    throughput.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  confused_with: [throughput]
+  not_to_confuse: >-
+    IOPS counts how many separate reads and writes happen each second; throughput counts how much
+    data moves each second.
+  module: "01"
+
 - term: IoT rule
   definition: >-
     An AWS IoT Core setting with a SQL-like filter on incoming device messages, which sends matching
@@ -5319,6 +5686,7 @@
     The number that identifies a device on a network, such as 10.0.1.25. It can be private, working
     only inside one network, or public, reachable across the internet.
   taught_in: guide/07-connecting-it/01-your-own-network.md
+  also_in: [guide/01-on-ramp/02-networks-ip-dns-https.md]
   module: "07"
 
 - term: IPsec
@@ -5326,6 +5694,28 @@
     The standard AWS Site-to-Site VPN uses to build its encrypted tunnels.
   taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
   module: "07"
+
+- term: IPv4
+  definition: >-
+    The most common version of IP address: four numbers from 0 to 255 separated by dots, such as
+    192.0.2.10. All of its 4.3 billion addresses have been handed out.
+  taught_in: guide/01-on-ramp/02-networks-ip-dns-https.md
+  confused_with: [IPv6]
+  not_to_confuse: >-
+    IPv4 addresses are four numbers separated by dots, and they have run out; IPv6 addresses are
+    groups of letters and digits separated by colons, with vastly more of them.
+  module: "01"
+
+- term: IPv6
+  definition: >-
+    The newer version of IP address: up to eight groups of letters and digits separated by colons,
+    such as 2001:db8:85a3::8a2e:370:7334. It has vastly more addresses than IPv4.
+  taught_in: guide/01-on-ramp/02-networks-ip-dns-https.md
+  confused_with: [IPv4]
+  not_to_confuse: >-
+    IPv6 addresses are groups separated by colons, with plenty to go round; IPv4 addresses are four
+    numbers separated by dots, and they have run out.
+  module: "01"
 
 - term: iSCSI
   definition: >-
@@ -5370,10 +5760,23 @@
 
 - term: JSON
   definition: >-
-    Text with named fields and nested lists: the usual format for documents in a document database,
-    and the format of IAM policies.
-  taught_in: guide/05-storing-data/06-choosing-a-database.md
-  module: "05"
+    JavaScript Object Notation: a text format for data, with name-value pairs in curly-brace objects
+    and lists in square-bracket arrays. It is the AWS CLI's default output, the format of IAM
+    policies, and common in document databases.
+  taught_in: guide/01-on-ramp/05-apis-command-line-and-json.md
+  also_in: [guide/05-storing-data/06-choosing-a-database.md]
+  module: "01"
+
+- term: JSON object
+  definition: >-
+    A set of name-value pairs inside curly braces, separated by commas, with none after the last. A
+    whole JSON document is usually one object.
+  taught_in: guide/01-on-ramp/05-apis-command-line-and-json.md
+  confused_with: [array]
+  not_to_confuse: >-
+    An object, in curly braces, holds named values; an array, in square brackets, holds a list of
+    values in order, and either can hold the other.
+  module: "01"
 
 - term: key (S3)
   definition: >-
@@ -5386,6 +5789,16 @@
     An S3 key names one object in a bucket; a DynamoDB partition key picks the group of items an
     item belongs to.
   module: "05"
+
+- term: key pair
+  definition: >-
+    A public key, which anyone may have, and a private key, which only its owner keeps. Data locked
+    with the public key opens only with the private key, which can also prove who its owner is.
+  taught_in: guide/01-on-ramp/06-everyday-security.md
+  also_in:
+    - guide/06-running-applications/01-ec2.md
+    - guide/06-running-applications/06-lab-08-launch-and-terminate-an-instance.md
+  module: "01"
 
 - term: key policy
   definition: >-
@@ -5410,6 +5823,7 @@
     A database that stores each item under a unique key and fetches it by that key, fast at any
     scale. Amazon DynamoDB is AWS's.
   taught_in: guide/05-storing-data/06-choosing-a-database.md
+  also_in: [guide/01-on-ramp/03-files-vs-databases.md]
   confused_with: [document database]
   not_to_confuse: >-
     A key-value database fetches whole items by one key; a document database stores self-contained
@@ -5511,6 +5925,7 @@
     An extra set of review questions in the Well-Architected Tool for a particular kind of workload
     or industry.
   taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
+  also_in: [guide/14-capstone/02-lab-18-well-architected-tool-review.md]
   module: "02"
 
 - term: License Mobility
@@ -5637,6 +6052,13 @@
     Lost sales happen when demand is above capacity; idle capacity is the waste when demand is below
     it.
   module: "02"
+
+- term: lost update
+  definition: >-
+    Losing a change because two people each saved a whole copy of a shared file, and the last save
+    replaced the other's. Nobody is warned; a database avoids it by changing single records.
+  taught_in: guide/01-on-ramp/03-files-vs-databases.md
+  module: "01"
 
 - term: machine learning
   abbreviation: ML
@@ -5765,6 +6187,20 @@
     creates and pays for the organization and no SCP applies to it.
   module: "09"
 
+- term: memory
+  abbreviation: RAM
+  definition: >-
+    Fast, short-term space for the programs and data a computer is using right now. It needs
+    constant power, so a restart empties it. People often say memory when they mean storage; in
+    computing it never does.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  also_in: [guide/06-running-applications/01-ec2.md]
+  confused_with: [storage]
+  not_to_confuse: >-
+    Memory holds the work in progress and empties when the power goes off; storage is bigger and
+    slower, and keeps files and data with the power off.
+  module: "01"
+
 - term: memory optimized
   definition: >-
     EC2 instance types with a lot of memory for their processors, for work that holds large data
@@ -5859,9 +6295,14 @@
 
 - term: milestone
   definition: >-
-    A saved snapshot of a Well-Architected review, so you can compare later.
-  taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
-  module: "02"
+    A saved record of a workload's review in the Well-Architected Tool, which can't be changed
+    afterwards, so a later review can be compared with it to show progress. Deleting the workload
+    deletes its milestones.
+  taught_in: guide/14-capstone/02-lab-18-well-architected-tool-review.md
+  also_in:
+    - guide/02-why-the-cloud/05-the-well-architected-framework.md
+    - guide/14-capstone/01-the-capstone-review.md
+  module: "14"
 
 - term: minimum billable object size
   definition: >-
@@ -5959,6 +6400,7 @@
     A second proof of identity besides the password, so a stolen password isn't enough on its own.
     AWS recommends passkeys or security keys first.
   taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  also_in: [guide/01-on-ramp/06-everyday-security.md]
   module: "04"
 
 - term: multi-Region
@@ -5993,6 +6435,13 @@
     that waits, and a warm standby is a smaller copy that must scale up.
   module: "03"
 
+- term: name-value pair
+  definition: >-
+    One named value in JSON: a name in double quotes, a colon, then the value, such as "cupcakes":
+    14.
+  taught_in: guide/01-on-ramp/05-apis-command-line-and-json.md
+  module: "01"
+
 - term: NAT gateway
   definition: >-
     Lets servers in private subnets connect out to the internet while outsiders can't connect in.
@@ -6005,6 +6454,19 @@
     gateway is free and works both ways, and a free gateway endpoint is the cheaper path when
     traffic only goes to S3 or DynamoDB.
   module: "07"
+
+- term: nesting
+  definition: >-
+    Putting a JSON object or array inside another, which shows that things belong together.
+    Indenting the nested lines is only for people; programs ignore it.
+  taught_in: guide/01-on-ramp/05-apis-command-line-and-json.md
+  module: "01"
+
+- term: network
+  definition: >-
+    Computers connected so that they can exchange data, such as the devices on a home Wi-Fi.
+  taught_in: guide/01-on-ramp/02-networks-ip-dns-https.md
+  module: "01"
 
 - term: network ACL
   abbreviation: NACL
@@ -6020,6 +6482,12 @@
     guards one resource, only allows and lets replies through; an S3 ACL is unrelated and grants
     access to buckets and objects.
   module: "07"
+
+- term: network connection
+  definition: >-
+    The part of a computer that sends data to other computers and receives data from them.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  module: "01"
 
 - term: network layer attack
   definition: >-
@@ -6204,6 +6672,12 @@
     repeatable process must give the same result every run, so it belongs in a script or a template.
   module: "08"
 
+- term: open source
+  definition: >-
+    Software whose code is published for anyone to use and change, such as Linux.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  module: "01"
+
 - term: operating expense
   abbreviation: OpEx
   definition: >-
@@ -6216,6 +6690,19 @@
     Operating versus capital is about paying as you go or up front; variable versus fixed is about
     whether the amount follows use, and rent is operating yet fixed.
   module: "02"
+
+- term: operating system
+  definition: >-
+    The main program that runs a computer: it starts and stops other programs, shares the processor
+    and memory between them, reads and writes files, and controls who may sign in. Servers mostly
+    run Linux or Windows Server.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  also_in: [guide/01-on-ramp/04-data-centers-and-virtualization.md]
+  confused_with: [application]
+  not_to_confuse: >-
+    The operating system runs the computer and shares its hardware out; an application runs on top
+    of it and does a job for people, such as taking orders.
+  module: "01"
 
 - term: operational excellence pillar
   definition: >-
@@ -6240,6 +6727,17 @@
   taught_in: guide/03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md
   also_in: [guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md]
   module: "03"
+
+- term: option
+  definition: >-
+    A setting added to a command, written as a name that starts with two dashes and then its value,
+    such as --region us-east-1.
+  taught_in: guide/01-on-ramp/05-apis-command-line-and-json.md
+  confused_with: [argument]
+  not_to_confuse: >-
+    An option is a named setting, starting with two dashes; an argument is the value the command
+    acts on, such as a bucket's name.
+  module: "01"
 
 - term: orchestration
   definition: >-
@@ -6315,7 +6813,9 @@
     One small piece of data travelling across a network, labeled with where it comes from and where
     it is going.
   taught_in: guide/07-connecting-it/02-filtering-traffic.md
-  also_in: [guide/07-connecting-it/06-sim-packet-journey.md]
+  also_in:
+    - guide/07-connecting-it/06-sim-packet-journey.md
+    - guide/01-on-ramp/02-networks-ip-dns-https.md
   module: "07"
 
 - term: Paid plan
@@ -6373,11 +6873,24 @@
 
 - term: passkey
   definition: >-
-    A form of MFA kept in your device or password manager; a security key is the same idea as a
-    physical key you touch. AWS recommends them first because they can't be used on a fake sign-in
-    page.
-  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
-  module: "04"
+    A second factor kept in your device or password manager, unlocked by fingerprint, face or PIN
+    and tied to the real site's address, so a fake page gets nothing. AWS recommends passkeys and
+    security keys first.
+  taught_in: guide/01-on-ramp/06-everyday-security.md
+  also_in: [guide/04-shared-responsibility-and-access/05-credentials-and-federation.md]
+  confused_with: [authenticator app]
+  not_to_confuse: >-
+    A passkey works only on the real site, so a fake page gets nothing; an authenticator app's code
+    can be typed into a fake page and used at once.
+  module: "01"
+
+- term: password manager
+  definition: >-
+    An app that creates, stores and fills in a long random password for each account, protected by
+    one strong main password and MFA. Many fill a password only on its own site, which helps against
+    fake pages.
+  taught_in: guide/01-on-ramp/06-everyday-security.md
+  module: "01"
 
 - term: password policy
   definition: >-
@@ -6386,10 +6899,18 @@
   taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
   module: "04"
 
+- term: password reuse
+  definition: >-
+    Using the same password on more than one account. When one site leaks it, attackers try it on
+    other sites and get into every account that shares it.
+  taught_in: guide/01-on-ramp/06-everyday-security.md
+  module: "01"
+
 - term: patch
   definition: >-
     A software update that fixes a flaw, often a security flaw.
   taught_in: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
+  also_in: [guide/01-on-ramp/01-computers-and-servers.md]
   module: "04"
 
 - term: patch management
@@ -6529,6 +7050,29 @@
     four areas that change, and process is a domain, never a perspective.
   module: "13"
 
+- term: phishing
+  definition: >-
+    Tricking someone into giving away a password or code, often with a fake sign-in page or an
+    urgent message.
+  taught_in: guide/01-on-ramp/06-everyday-security.md
+  module: "01"
+
+- term: phishing-resistant
+  definition: >-
+    Describes a second factor that a fake sign-in page can't steal, because it works only on the
+    real site's address. Passkeys and security keys are; codes by text message or authenticator app
+    aren't.
+  taught_in: guide/01-on-ramp/06-everyday-security.md
+  also_in: [guide/04-shared-responsibility-and-access/05-credentials-and-federation.md]
+  module: "01"
+
+- term: physical server
+  definition: >-
+    A real computer you could touch, as opposed to a virtual one. In virtualization it is called the
+    host.
+  taught_in: guide/01-on-ramp/04-data-centers-and-virtualization.md
+  module: "01"
+
 - term: pillar
   definition: >-
     One of the Well-Architected Framework's six areas of concern, each a way of judging a workload:
@@ -6576,6 +7120,7 @@
   definition: >-
     Readable data: data before it is encrypted, or after it is decrypted.
   taught_in: guide/09-protecting-and-governing/02-encryption.md
+  also_in: [guide/01-on-ramp/06-everyday-security.md]
   confused_with: [ciphertext]
   not_to_confuse: >-
     Plaintext is readable by anyone who gets it; ciphertext is scrambled and useless without the
@@ -6645,6 +7190,7 @@
     A number that says which program on a computer traffic is for: a web server listens on 443 for
     HTTPS, and SSH logins use 22.
   taught_in: guide/07-connecting-it/02-filtering-traffic.md
+  also_in: [guide/01-on-ramp/02-networks-ip-dns-https.md]
   module: "07"
 
 - term: portfolio (Service Catalog)
@@ -6712,6 +7258,13 @@
     queries.
   module: "05"
 
+- term: primary key
+  definition: >-
+    A column whose value is different for every row of a table, such as an order number, so it picks
+    out exactly one record. Another table can hold it to link to that row.
+  taught_in: guide/01-on-ramp/03-files-vs-databases.md
+  module: "01"
+
 - term: principal
   definition: >-
     An identity that can make a request to AWS: the root user, an IAM user or an IAM role.
@@ -6729,7 +7282,9 @@
     Giving each identity only the permissions it needs for its task: specific actions, on specific
     resources, under specific conditions, so that less can go wrong if it is misused.
   taught_in: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
-  also_in: [guide/04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md]
+  also_in:
+    - guide/04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md
+    - guide/01-on-ramp/06-everyday-security.md
   module: "04"
 
 - term: prioritized group sharing
@@ -6767,9 +7322,10 @@
 
 - term: private IP address
   definition: >-
-    An IP address that works only inside a private network, such as a VPC. Every server in a VPC
-    has one.
+    An IP address that works only inside a private network, such as a VPC. Every server in a VPC has
+    one.
   taught_in: guide/07-connecting-it/01-your-own-network.md
+  also_in: [guide/01-on-ramp/02-networks-ip-dns-https.md]
   confused_with: [public IP address]
   not_to_confuse: >-
     A private address is reachable only inside the network; a public address can be reached across
@@ -6802,6 +7358,14 @@
     A private subnet has no route to an internet gateway; it can still reach out through a NAT
     gateway or an endpoint, but nothing on the internet can start a connection in.
   module: "07"
+
+- term: processor
+  abbreviation: CPU
+  definition: >-
+    The central processing unit: the part of a computer that carries out a program's instructions,
+    one after another, very fast. A processor with several cores can work on several things at once.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  module: "01"
 
 - term: Procurement insights
   definition: >-
@@ -6845,12 +7409,19 @@
   also_in: [guide/05-storing-data/10-sim-multi-az-vs-read-replica.md]
   module: "05"
 
+- term: prompt
+  definition: >-
+    The text a shell shows, often $, when it is ready for your next command.
+  taught_in: guide/01-on-ramp/05-apis-command-line-and-json.md
+  module: "01"
+
 - term: protocol
   definition: >-
-    The agreed language software uses to talk to storage: NFS and SMB for shared folders of files,
-    and iSCSI for disks.
-  taught_in: guide/05-storing-data/04-hybrid-storage-and-backup.md
-  module: "05"
+    A set of rules both ends of a conversation follow, such as HTTP for web requests, TCP and UDP
+    for packets, or NFS, SMB and iSCSI for storage.
+  taught_in: guide/01-on-ramp/02-networks-ip-dns-https.md
+  also_in: [guide/05-storing-data/04-hybrid-storage-and-backup.md]
+  module: "01"
 
 - term: provisioned capacity
   definition: >-
@@ -6880,7 +7451,10 @@
     address automatically, which is released when it stops; AWS charges by the hour for every public
     IPv4 address, in use or idle.
   taught_in: guide/07-connecting-it/01-your-own-network.md
-  also_in: [guide/06-running-applications/01-ec2.md, guide/06-running-applications/06-lab-08-launch-and-terminate-an-instance.md]
+  also_in:
+    - guide/06-running-applications/01-ec2.md
+    - guide/06-running-applications/06-lab-08-launch-and-terminate-an-instance.md
+    - guide/01-on-ramp/02-networks-ip-dns-https.md
   confused_with: [Elastic IP address, private IP address, public subnet]
   not_to_confuse: >-
     An automatic public address changes after a stop while an Elastic IP address stays yours, and
@@ -6922,6 +7496,17 @@
     type can be bought any way.
   module: "11"
 
+- term: query
+  definition: >-
+    A question sent to a database, such as which orders are for pickup on 24 December, which the
+    engine answers with the matching records. SQL is the standard language for relational queries.
+  taught_in: guide/01-on-ramp/03-files-vs-databases.md
+  confused_with: [query (DynamoDB)]
+  not_to_confuse: >-
+    A query is any question sent to a database; a DynamoDB query is one particular read that finds
+    the items sharing one partition key.
+  module: "01"
+
 - term: query (DynamoDB)
   definition: >-
     A DynamoDB read that finds every item sharing one partition key, optionally narrowed by a
@@ -6946,6 +7531,13 @@
     A queue holds each message until one consumer pulls it; a topic pushes each message at once to
     every subscriber and keeps nothing for later.
   module: "08"
+
+- term: rack
+  definition: >-
+    A tall metal frame that holds many servers, one above another, in a server room or data center.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  also_in: [guide/01-on-ramp/04-data-centers-and-virtualization.md]
+  module: "01"
 
 - term: rate
   definition: >-
@@ -7031,6 +7623,13 @@
     failure (P for a point in your data, T for time).
   module: "03"
 
+- term: redundancy
+  definition: >-
+    Having more than one of something, such as power supplies, cooling or network connections, so
+    that one failure doesn't stop the whole.
+  taught_in: guide/01-on-ramp/04-data-centers-and-virtualization.md
+  module: "01"
+
 - term: refactor
   definition: >-
     The migration strategy, also called re-architect, that redesigns an application to use
@@ -7111,7 +7710,9 @@
     SQL, and changes several tables together in one transaction. On AWS it is Amazon RDS or Amazon
     Aurora.
   taught_in: guide/05-storing-data/05-managed-or-self-managed-databases.md
-  also_in: [guide/05-storing-data/06-choosing-a-database.md]
+  also_in:
+    - guide/05-storing-data/06-choosing-a-database.md
+    - guide/01-on-ramp/03-files-vs-databases.md
   confused_with: [NoSQL]
   not_to_confuse: >-
     A relational database links tables with a fixed schema and joins them; NoSQL databases use other
@@ -7203,6 +7804,16 @@
   also_in: [guide/13-moving-to-aws/05-sim-portfolio-sorter.md]
   module: "13"
 
+- term: request
+  definition: >-
+    What a client sends a server to ask for something, such as a web page, or to save an order. The
+    server sends back a response.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  also_in:
+    - guide/01-on-ramp/02-networks-ip-dns-https.md
+    - guide/01-on-ramp/05-apis-command-line-and-json.md
+  module: "01"
+
 - term: request charge
   definition: >-
     A charge per call or per run, such as per thousand S3 reads or per Lambda invocation. It follows
@@ -7273,6 +7884,15 @@
     sits on the identity and names what it may use.
   module: "04"
 
+- term: response
+  definition: >-
+    What a server sends back to answer a client's request: the result, such as a page, or an error.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  also_in:
+    - guide/01-on-ramp/02-networks-ip-dns-https.md
+    - guide/01-on-ramp/05-apis-command-line-and-json.md
+  module: "01"
+
 - term: restore (S3 Glacier)
   definition: >-
     For S3 Glacier Flexible Retrieval and S3 Glacier Deep Archive, a request that makes a temporary
@@ -7317,6 +7937,25 @@
   taught_in: guide/05-storing-data/03-storage-classes-and-lifecycle.md
   also_in: [guide/05-storing-data/09-sim-lifecycle-cost-timeline.md]
   module: "05"
+
+- term: review question
+  definition: >-
+    One of the Well-Architected Framework's numbered questions for a pillar, such as REL 10 on fault
+    isolation. Each question has its own best practices, and a full review answers them all.
+  taught_in: guide/14-capstone/01-the-capstone-review.md
+  also_in: [guide/14-capstone/02-lab-18-well-architected-tool-review.md]
+  confused_with: [best practice]
+  not_to_confuse: >-
+    A review question, such as REL 10, asks about one area of a pillar; its best practices, such as
+    REL10-BP01, are the specific actions that answer it.
+  module: "14"
+
+- term: review scope
+  definition: >-
+    A written statement of what a review covers and what it leaves out: a boundary, not the size of
+    the job. It tells the owner what wasn't looked at.
+  taught_in: guide/14-capstone/01-the-capstone-review.md
+  module: "14"
 
 - term: rightsizing
   definition: >-
@@ -7399,6 +8038,13 @@
   also_in: [guide/07-connecting-it/05-lab-09-build-a-small-vpc.md]
   module: "07"
 
+- term: router
+  definition: >-
+    A device that passes data from one network toward another, reading each packet's address. A home
+    router is often the Wi-Fi box.
+  taught_in: guide/01-on-ramp/02-networks-ip-dns-https.md
+  module: "01"
+
 - term: routing policy
   definition: >-
     The rule that tells Route 53 how to choose its answer when a user could be sent to more than one
@@ -7406,6 +8052,17 @@
     question.
   taught_in: guide/07-connecting-it/03-names-and-the-edge.md
   module: "07"
+
+- term: row
+  definition: >-
+    One record in a database table, such as one order. Each row has a primary key that no other row
+    shares.
+  taught_in: guide/01-on-ramp/03-files-vs-databases.md
+  confused_with: [column]
+  not_to_confuse: >-
+    A row is one record; a column is one fact that every record in the table has, such as the pickup
+    date.
+  module: "01"
 
 - term: rule (EventBridge)
   definition: >-
@@ -7691,6 +8348,14 @@
     on read, a layout is applied to unchanged files only as a query reads them.
   module: "10"
 
+- term: scoring rubric
+  definition: >-
+    A table that describes weak, good and strong work for each part of a task. The capstone review
+    is scored with one instead of a mastery check.
+  taught_in: guide/14-capstone/01-the-capstone-review.md
+  also_in: [guide/14-capstone/00-brief.md]
+  module: "14"
+
 - term: script
   definition: >-
     A text file holding a list of commands that a computer runs in order. Running it again repeats
@@ -7739,6 +8404,14 @@
     Security in the cloud is what you put there and how you set it up; security of the cloud is the
     infrastructure underneath, which AWS protects.
   module: "04"
+
+- term: security key
+  definition: >-
+    A small hardware key that works like a passkey: you touch it to prove who you are, and it won't
+    work on a fake sign-in page. AWS recommends passkeys and security keys first for MFA.
+  taught_in: guide/01-on-ramp/06-everyday-security.md
+  also_in: [guide/04-shared-responsibility-and-access/05-credentials-and-federation.md]
+  module: "01"
 
 - term: security layer
   definition: >-
@@ -7810,10 +8483,15 @@
 
 - term: server
   definition: >-
-    A computer that runs all the time and answers requests from other computers over a network. A
-    website runs on one or more servers.
-  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
-  module: "02"
+    A computer that runs all the time and answers requests from other computers, its clients, over a
+    network. Being a server is a job, not a kind of machine; a website runs on one or more.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  also_in: [guide/02-why-the-cloud/01-what-cloud-computing-is.md]
+  confused_with: [client]
+  not_to_confuse: >-
+    A server waits for requests and answers them, while a client sends the requests; the same
+    laptop can be either.
+  module: "01"
 
 - term: server-month
   definition: >-
@@ -7840,7 +8518,9 @@
     you pay for what you use, as with AWS Lambda and Fargate. Your code, images, data and
     permissions are still yours to secure.
   taught_in: guide/06-running-applications/03-containers-and-serverless.md
-  also_in: [guide/06-running-applications/04-simpler-paths.md]
+  also_in:
+    - guide/06-running-applications/04-simpler-paths.md
+    - guide/01-on-ramp/04-data-centers-and-virtualization.md
   module: "06"
 
 - term: service (Amazon ECS)
@@ -7949,6 +8629,16 @@
   also_in: [guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md, guide/04-shared-responsibility-and-access/08-sim-responsibility-slider.md]
   module: "04"
 
+- term: shell
+  definition: >-
+    The program that reads what you type at a command line, runs the program you named, shows its
+    output, then waits for the next line.
+  taught_in: guide/01-on-ramp/05-apis-command-line-and-json.md
+  confused_with: [terminal]
+  not_to_confuse: >-
+    The shell reads and runs your commands; the terminal is only the window you type them in.
+  module: "01"
+
 - term: shell variable
   definition: >-
     A short name that holds a value for the rest of a command-line session, such as a bucket name,
@@ -8046,6 +8736,16 @@
     plan, and Elastic Disaster Recovery brings back whole running servers within minutes.
   module: "05"
 
+- term: software
+  definition: >-
+    The programs that run on a computer, written as code. The operating system and applications are
+    both software.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  confused_with: [hardware]
+  not_to_confuse: >-
+    Software is the programs; hardware is the physical parts they run on.
+  module: "01"
+
 - term: software as a service
   abbreviation: SaaS
   definition: >-
@@ -8124,7 +8824,9 @@
     The standard language for querying relational databases. Data warehouses such as Amazon Redshift
     use it too.
   taught_in: guide/05-storing-data/06-choosing-a-database.md
-  also_in: [guide/05-storing-data/05-managed-or-self-managed-databases.md]
+  also_in:
+    - guide/05-storing-data/05-managed-or-self-managed-databases.md
+    - guide/01-on-ramp/03-files-vs-databases.md
   confused_with: [NoSQL]
   not_to_confuse: >-
     SQL is a query language, used by relational databases and Redshift alike; NoSQL describes
@@ -8339,6 +9041,13 @@
   also_in: [guide/08-building-and-operating/06-lab-11-alarm-on-errors.md]
   module: "08"
 
+- term: status code
+  definition: >-
+    The number in an HTTP response that says how the request went, such as 200 (OK) or 404 (not
+    found).
+  taught_in: guide/01-on-ramp/02-networks-ip-dns-https.md
+  module: "01"
+
 - term: stop (EC2 instance)
   definition: >-
     To shut an EC2 instance down so it can be started again later. Instance time stops being
@@ -8354,10 +9063,17 @@
 
 - term: storage
   definition: >-
-    Space to keep files and data; one of the main IT resources.
-  taught_in: guide/02-why-the-cloud/01-what-cloud-computing-is.md
-  also_in: [guide/05-storing-data/01-block-file-object.md]
-  module: "02"
+    Long-term space for files and data, on a disk or SSD, that keeps its contents with the power
+    off; one of the main IT resources. It is bigger and slower than memory.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  also_in:
+    - guide/02-why-the-cloud/01-what-cloud-computing-is.md
+    - guide/05-storing-data/01-block-file-object.md
+  confused_with: [memory]
+  not_to_confuse: >-
+    Storage keeps data with the power off; memory holds only the work in progress and is emptied by
+    a restart.
+  module: "01"
 
 - term: storage charge
   definition: >-
@@ -8395,6 +9111,12 @@
     Streaming data flows in all the time and is handled as it arrives; a batch is a large amount
     handled at once, such as yesterday's orders.
   module: "10"
+
+- term: subcommand
+  definition: >-
+    In the AWS CLI, the part after the command that says what to do, such as ls (list) in aws s3 ls.
+  taught_in: guide/01-on-ramp/05-apis-command-line-and-json.md
+  module: "01"
 
 - term: subnet
   definition: >-
@@ -8478,7 +9200,10 @@
     items in DynamoDB. In DynamoDB you choose only the key in advance, and items needn't share their
     other attributes.
   taught_in: guide/05-storing-data/08-lab-06-a-dynamodb-table.md
-  also_in: [guide/05-storing-data/05-managed-or-self-managed-databases.md, guide/05-storing-data/06-choosing-a-database.md]
+  also_in:
+    - guide/05-storing-data/05-managed-or-self-managed-databases.md
+    - guide/05-storing-data/06-choosing-a-database.md
+    - guide/01-on-ramp/03-files-vs-databases.md
   module: "05"
 
 - term: tag
@@ -8513,7 +9238,9 @@
     that a lab left nothing behind. AWS has said tag management is moving to the AWS Resource
     Explorer console; see the lab.
   taught_in: guide/02-why-the-cloud/06-lab-01-first-resource.md
-  also_in: [guide/03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md]
+  also_in:
+    - guide/03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md
+    - guide/14-capstone/03-lab-19-close-out.md
   module: "02"
 
 - term: Tape Gateway
@@ -8574,6 +9301,16 @@
     groups several of them.
   module: "00"
 
+- term: TCP
+  definition: >-
+    One of the internet's two core protocols, with IP: it splits data into packets, puts them back
+    in order at the far end, and has any that go missing sent again.
+  taught_in: guide/01-on-ramp/02-networks-ip-dns-https.md
+  confused_with: [UDP]
+  not_to_confuse: >-
+    TCP confirms that every packet arrives, in order; UDP skips those checks to be faster.
+  module: "01"
+
 - term: Technical Account Manager
   abbreviation: TAM
   definition: >-
@@ -8619,6 +9356,7 @@
     Whether your instance shares physical hardware with other AWS customers (shared, the default) or
     runs on hardware used only by you (dedicated).
   taught_in: guide/11-paying-for-aws/02-purchasing-options.md
+  also_in: [guide/01-on-ramp/04-data-centers-and-virtualization.md]
   module: "11"
 
 - term: term (commitment)
@@ -8627,6 +9365,16 @@
     the bigger discount. When a Reserved Instance's term ends, it doesn't renew.
   taught_in: guide/11-paying-for-aws/02-purchasing-options.md
   module: "11"
+
+- term: terminal
+  definition: >-
+    The window you type commands in.
+  taught_in: guide/01-on-ramp/05-apis-command-line-and-json.md
+  confused_with: [shell]
+  not_to_confuse: >-
+    The terminal is the window you type in; the shell is the program that reads your typing and runs
+    the commands.
+  module: "01"
 
 - term: terminate (EC2 instance)
   definition: >-
@@ -8672,6 +9420,17 @@
   taught_in: guide/07-connecting-it/03-names-and-the-edge.md
   module: "07"
 
+- term: throughput
+  definition: >-
+    How much data storage reads or writes each second: one of the two ways storage speed is counted.
+    The other is IOPS.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  confused_with: [IOPS]
+  not_to_confuse: >-
+    Throughput counts how much data moves each second; IOPS counts how many separate reads and
+    writes happen.
+  module: "01"
+
 - term: time to live
   abbreviation: TTL
   definition: >-
@@ -8687,6 +9446,13 @@
   taught_in: guide/11-paying-for-aws/01-how-aws-charges.md
   also_in: [guide/11-paying-for-aws/05-lab-15-pricing-calculator.md]
   module: "11"
+
+- term: token
+  definition: >-
+    A short-lived pass issued after you sign in, which stops working by itself, so the access
+    expires without anyone having to remove it.
+  taught_in: guide/01-on-ramp/06-everyday-security.md
+  module: "01"
 
 - term: topic
   definition: >-
@@ -8729,6 +9495,7 @@
     environment to save money. The Framework expects trade-offs, but security and operational
     excellence are generally not traded away.
   taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
+  also_in: [guide/14-capstone/01-the-capstone-review.md]
   module: "02"
 
 - term: trail
@@ -8755,6 +9522,7 @@
     A set of changes, such as an order and its lines, that a relational database applies together:
     all succeed or all fail, so nothing is half-saved.
   taught_in: guide/05-storing-data/06-choosing-a-database.md
+  also_in: [guide/01-on-ramp/03-files-vs-databases.md]
   module: "05"
 
 - term: transactional email
@@ -8810,6 +9578,7 @@
     The protocol that encrypts web traffic and other network connections; the S in HTTPS. A
     certificate lets the client check that the server is who it claims to be.
   taught_in: guide/09-protecting-and-governing/02-encryption.md
+  also_in: [guide/01-on-ramp/02-networks-ip-dns-https.md]
   module: "09"
 
 - term: trigger
@@ -8851,12 +9620,37 @@
   taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
   module: "07"
 
+- term: UDP
+  definition: >-
+    A protocol that sends packets without confirming that they arrive, which makes it faster than
+    TCP. Live video, calls and games often use it.
+  taught_in: guide/01-on-ramp/02-networks-ip-dns-https.md
+  confused_with: [TCP]
+  not_to_confuse: >-
+    UDP is faster because it doesn't check delivery; TCP confirms that every packet arrives and puts
+    them back in order.
+  module: "01"
+
+- term: uninterruptible power supply
+  abbreviation: UPS
+  definition: >-
+    A bank of batteries in a data center that takes over the instant the mains electricity fails,
+    powering the servers until the backup generators are running.
+  taught_in: guide/01-on-ramp/04-data-centers-and-virtualization.md
+  module: "01"
+
 - term: unscored question
   definition: >-
     A question AWS is trying out that doesn't count toward your score. You can't tell which
     questions they are, so answer every one.
   taught_in: guide/00-start-here/03-the-exam-at-a-glance.md
   module: "00"
+
+- term: URL
+  definition: >-
+    A web address, such as https://bakery.example/order, which an HTTP request names.
+  taught_in: guide/01-on-ramp/02-networks-ip-dns-https.md
+  module: "01"
 
 - term: usage plan
   definition: >-
@@ -8944,6 +9738,18 @@
   taught_in: guide/10-data-ai-and-more/03-people-apps-and-devices.md
   module: "10"
 
+- term: virtual machine
+  abbreviation: VM
+  definition: >-
+    A computer made of software, running on a host with its own guest operating system. Cloud
+    providers call it a virtual server, and Amazon EC2 calls it an instance.
+  taught_in: guide/01-on-ramp/04-data-centers-and-virtualization.md
+  confused_with: [container]
+  not_to_confuse: >-
+    A virtual machine carries a whole operating system of its own; a container packages one
+    application and shares its machine's operating system, and often runs inside a virtual machine.
+  module: "01"
+
 - term: virtual private gateway
   definition: >-
     The AWS end of a Site-to-Site VPN, attached to one VPC. To reach many VPCs, a VPN ends on a
@@ -8955,6 +9761,19 @@
     your office.
   module: "07"
 
+- term: virtual private network
+  abbreviation: VPN
+  definition: >-
+    A way to carry a network's traffic across the internet in an encrypted tunnel. It is encrypted,
+    but still over the internet, so it isn't a private connection.
+  taught_in: guide/01-on-ramp/06-everyday-security.md
+  also_in: [guide/07-connecting-it/04-connecting-networks-and-offices.md]
+  confused_with: [private connection]
+  not_to_confuse: >-
+    A VPN encrypts traffic that still crosses the internet; a private connection keeps traffic off
+    the internet's path but isn't encrypted unless you add it.
+  module: "01"
+
 - term: virtual private server
   abbreviation: VPS
   definition: >-
@@ -8963,12 +9782,22 @@
   taught_in: guide/06-running-applications/04-simpler-paths.md
   module: "06"
 
+- term: virtual server
+  definition: >-
+    A cloud provider's name for a virtual machine: what you rent instead of a physical server.
+    Amazon EC2 calls one an instance.
+  taught_in: guide/01-on-ramp/04-data-centers-and-virtualization.md
+  also_in: [guide/01-on-ramp/01-computers-and-servers.md]
+  module: "01"
+
 - term: virtualization
   definition: >-
-    Software that splits one physical computer into several virtual servers. AWS runs the
-    virtualization layer and the host operating system beneath it.
-  taught_in: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
-  module: "04"
+    Software that imitates hardware, so that one physical server runs several virtual machines, kept
+    apart by a hypervisor. AWS runs the virtualization layer and the host operating system beneath
+    it.
+  taught_in: guide/01-on-ramp/04-data-centers-and-virtualization.md
+  also_in: [guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md]
+  module: "01"
 
 - term: VMware
   definition: >-
@@ -9082,6 +9911,12 @@
     subnet's edge, and an S3 access control list grants access to buckets.
   module: "09"
 
+- term: web server
+  definition: >-
+    A server that sends web pages back to the browsers that request them.
+  taught_in: guide/01-on-ramp/01-computers-and-servers.md
+  module: "01"
+
 - term: weighted routing
   definition: >-
     A Route 53 routing policy that sends a share of users to each place you choose, such as 10 in 100
@@ -9098,7 +9933,18 @@
     The set of parts (code, settings and AWS resources) that together deliver something of value,
     such as a shop's ordering site.
   taught_in: guide/02-why-the-cloud/05-the-well-architected-framework.md
+  also_in:
+    - guide/14-capstone/01-the-capstone-review.md
+    - guide/14-capstone/02-lab-18-well-architected-tool-review.md
   module: "02"
+
+- term: workload inventory
+  definition: >-
+    A list of every part of a workload and how it is set up: the starting point of a review. Read it
+    for what is missing as well as what is there, since gaps are often the findings.
+  taught_in: guide/14-capstone/01-the-capstone-review.md
+  also_in: [guide/14-capstone/00-brief.md]
+  module: "14"
 
 - term: write once, read many
   abbreviation: WORM
@@ -9107,6 +9953,14 @@
     Lock provides it.
   taught_in: guide/05-storing-data/02-s3-in-practice.md
   module: "05"
+
+- term: YAML
+  definition: >-
+    A text format for the same kind of data as JSON, written without braces and quotes, in which
+    indentation carries meaning. CloudFormation templates can be written in it.
+  taught_in: guide/01-on-ramp/05-apis-command-line-and-json.md
+  also_in: [guide/08-building-and-operating/02-iac-and-automation.md]
+  module: "01"
 
 - term: Your account health
   definition: >-
