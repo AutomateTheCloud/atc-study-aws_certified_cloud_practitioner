@@ -172,7 +172,7 @@ The **AWS Health Dashboard** shows events that affect AWS services and your acco
 
 Nothing was created, but confirm it anyway; the habit saves you in later labs.
 
-16. Open **Tag Editor**. Choose **All regions**; in **Resource types**, choose the option covering every type (wording such as "all supported resource types"). Enter the tag key `lab` and value `02`, choose **Add**, then **Search resources**. (On 2026-10-24 a banner said tag management is moving to the AWS Resource Explorer console; if it has moved, search there.)
+16. Open **Tag Editor**. Choose **All regions**; in **Resource types**, choose the option covering every type (wording such as "all supported resource types"). Enter the tag key `lab` and value `02`, choose **Add**, then **Search resources**. (On 2026-10-24 a banner said tag management is moving to the AWS Resource Explorer console; if it has moved, search there.) (task card: [Find everything a lab left behind, in every Region](../98-how-to/03-find-what-a-lab-left-behind.md))
     **You should see:** no resources.
 17. Check the Region selector shows **United States (N. Virginia)**, and that you didn't enable any Region in step 5.
 18. **Confirm:** tick "Lab 02: nothing created" in your lab log. No next-day billing check is needed.

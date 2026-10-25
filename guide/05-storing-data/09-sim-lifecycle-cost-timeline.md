@@ -17,7 +17,7 @@ time: "30 minutes"
 cost: "$0 (no AWS account used)"
 worst_case: "$0"
 needs: []
-facts_checked: 2026-10-24
+facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
   - "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html"
@@ -50,9 +50,9 @@ This guide is provided as is, without warranty. We work hard to keep it correct 
 | S3 Glacier Flexible Retrieval | 0.0036 | 0.01 | 90 days | minutes to hours, after a restore |
 | S3 Glacier Deep Archive | 0.00099 | 0.02 | 180 days | 12 to 48 hours, after a restore |
 
-**The rules are AWS's** (Amazon S3 User Guide, checked 2026-10-23):
+**The rules are AWS's** (Amazon S3 User Guide, checked 2026-10-25):
 
-- Delete, overwrite or move a file before its class's minimum duration, and you are billed for the rest of the minimum, pro rata, so you pay for the full minimum in all ([S3 storage classes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)).
+- Delete, overwrite or transition a file to another class before its class's minimum storage duration ends, and you are billed for the rest of that minimum, pro rata, so you pay for the full minimum in all ([S3 storage classes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)).
 - Standard-IA bills any file smaller than 128 KB as 128 KB.
 - With versioning on, every version is billed as a whole file ([S3 Versioning](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html)).
 - Billing changes on the day a lifecycle rule applies, even if S3 moves or deletes the file days later ([Setting an S3 Lifecycle configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-set-lifecycle-configuration-intro.html)).

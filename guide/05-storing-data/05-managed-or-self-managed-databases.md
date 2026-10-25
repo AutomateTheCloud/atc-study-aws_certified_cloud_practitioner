@@ -8,7 +8,7 @@ reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 t
 prerequisites: [clf-04-01, clf-03-01, clf-03-03, clf-05-04]
 terms_introduced: [database, relational database, database engine, DB instance, self-managed database, managed database, Multi-AZ deployment, primary, standby, synchronous replication, asynchronous replication, replication lag, read replica, promote, point-in-time recovery, Amazon Aurora]
 pillars: [reliability, cost-optimization, performance-efficiency, security]
-facts_checked: 2026-10-24
+facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html"
   - "https://aws.amazon.com/rds/faqs/"
@@ -140,7 +140,7 @@ AWS also offers a **Multi-AZ DB cluster**, with two standbys in three AZs that c
 
 A **read replica** is a read-only copy of the database that your application can query. RDS copies changes to it **asynchronously**, using the engine's own replication, so it can lag behind the primary, and the lag can vary a lot ([Working with DB instance read replicas](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html), checked 2026-10-23). You send reports and other read-heavy work to it, and the primary is left free for the website.
 
-- **How many:** up to 15 per database for RDS for MySQL, MariaDB, PostgreSQL and SQL Server; up to 5 for Oracle, whose read-only replicas also need an Active Data Guard license ([MySQL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_MySQL.Replication.ReadReplicas.html), [SQL Server](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.ReadReplicas.html) and [Oracle](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.overview.html), checked 2026-10-24).
+- **How many:** up to 15 per database for RDS for MySQL, MariaDB and PostgreSQL, and for SQL Server, where only Enterprise Edition supports them; up to 5 for Oracle, whose read-only replicas also need an Active Data Guard license ([MySQL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_MySQL.Replication.ReadReplicas.html), [SQL Server](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.ReadReplicas.html) and [Oracle](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.overview.html), checked 2026-10-25).
 - **Where:** in the same AZ, another AZ, or, for most engines, another Region.
 - **Cost:** each replica is billed as a database of its own. Copying data to a replica in the same Region costs nothing extra.
 - **By hand:** you create replicas yourself; RDS doesn't add or remove them as demand changes.
@@ -312,7 +312,7 @@ At work, teams start from a managed database and add protections for named failu
 
    <details><summary>Feedback</summary>
 
-   **Model answer:** Add one or more **read replicas** and send the analytics queries to them. The primary keeps handling writes and the application's normal reads. Multi-AZ wouldn't help, because its standby serves no queries.
+   **Model answer:** Add one or more **read replicas** and send the analytics queries to them. The primary keeps handling writes and the application's normal reads. A Multi-AZ DB instance deployment wouldn't help, because its standby serves no queries.
 
    </details>
 

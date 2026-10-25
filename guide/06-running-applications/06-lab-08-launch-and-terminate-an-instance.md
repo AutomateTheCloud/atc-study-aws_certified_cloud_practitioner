@@ -164,8 +164,8 @@ First write your predictions: after you **stop** the instance, will it keep its 
 
 Part C was the cleanup. Two last checks:
 
-16. **Confirm:** in Tag Editor, search all Regions for the tag `lab` = `08` ([Lab 01, steps 13 to 16](../02-why-the-cloud/06-lab-01-first-resource.md#find-it-by-its-tags)). Expect nothing, or the terminated instance and its deleted volume for a while: both were still listed about two hours after we terminated them, although the volume no longer existed. Tick everything off in your lab log.
-17. **The next day:** check the **Credits** balance and look for an EC2 or VPC charge of a few cents at most. If credits keep falling the day after, something is still running: search all Regions again ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habits 2 and 4).
+16. **Confirm:** in Tag Editor, search all Regions for the tag `lab` = `08` ([Lab 01, steps 13 to 16](../02-why-the-cloud/06-lab-01-first-resource.md#find-it-by-its-tags)). Expect nothing, or the terminated instance and its deleted volume for a while: both were still listed about two hours after we terminated them, although the volume no longer existed. Tick everything off in your lab log. (task card: [Find everything a lab left behind, in every Region](../98-how-to/03-find-what-a-lab-left-behind.md))
+17. **The next day:** check the **Credits** balance and look for an EC2 or VPC charge of a few cents at most. If credits keep falling the day after, something is still running: search all Regions again ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habits 2 and 4). (task card: [Read this month's bill by service and Region](../98-how-to/08-read-this-months-bill.md))
 
 ## Recap
 

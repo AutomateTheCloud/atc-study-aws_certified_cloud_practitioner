@@ -160,7 +160,7 @@ flowchart LR
     **You should see:** a success message, and the bucket gone from the list.
     > **If something went wrong:** a message that the bucket isn't empty means a file was uploaded. Use the **Empty bucket** option the message offers, follow its prompts, then repeat steps 20 and 21. A deleted bucket can't be restored, which is fine here because it held nothing ([Deleting a general purpose bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/delete-bucket.html)).
 22. **Confirm:** in the S3 bucket list, search for your bucket name; nothing should be found. In CloudTrail Event history, look up the event name `DeleteBucket`; you should see your deletion. In Tag Editor, repeat the search from step 16; expect **No resources** (in our run it was empty three minutes after the deletion; if the bucket still shows, wait a few minutes and search again). Tick the bucket off in your lab log.
-23. **The next day:** open the **Credits** page in the Billing and Cost Management console and check that the balance hasn't fallen because of S3. Cost data can take about 24 hours to appear ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4).
+23. **The next day:** open the **Credits** page in the Billing and Cost Management console and check that the balance hasn't fallen because of S3. Cost data can take about 24 hours to appear ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4). (task card: [Read this month's bill by service and Region](../98-how-to/08-read-this-months-bill.md))
 
 ## Recap
 

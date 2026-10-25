@@ -128,7 +128,7 @@ What you should expect to see is the pattern in this chart, drawn for the bakery
 
 12. Delete the bucket as in [Lab 01, steps 20 and 21](../02-why-the-cloud/06-lab-01-first-resource.md#clean-up).
 13. Leave `guide` and `lab` active. Activation is a setting, not a resource, and from now on every lab's costs can be grouped by its number.
-14. **Confirm:** in Tag Editor, search all Regions for the tag `lab` = `16` ([Lab 01, steps 13 to 16](../02-why-the-cloud/06-lab-01-first-resource.md#find-it-by-its-tags)); expect no results. Tick the bucket off in your lab log.
+14. **Confirm:** in Tag Editor, search all Regions for the tag `lab` = `16` ([Lab 01, steps 13 to 16](../02-why-the-cloud/06-lab-01-first-resource.md#find-it-by-its-tags)); expect no results. Tick the bucket off in your lab log. (task card: [Find everything a lab left behind, in every Region](../98-how-to/03-find-what-a-lab-left-behind.md))
 
 ## Recap
 

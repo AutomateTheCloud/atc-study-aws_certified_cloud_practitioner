@@ -13435,7 +13435,7 @@ questions:
   references:
   - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
     reference: 'Module 04, page 04.09: Simulation S4: Predict allow or deny across accounts, boundaries
-      and organizations (clf-04-09), section "Decision 5: thirty staff, twelve accounts"'
+      and organizations (clf-04-09), section "Decision 5: thirty staff, ten shop accounts"'
     url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/04-shared-responsibility-and-access/09-sim-policy-playground.md
 - id: q05-os-disk-survives-stop
   type: multiple_choice
