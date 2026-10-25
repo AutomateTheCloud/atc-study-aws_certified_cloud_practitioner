@@ -26,7 +26,7 @@ sources:
 
 # A Region holds several Availability Zones, and each Availability Zone holds one or more data centers
 
-AWS builds its infrastructure in three nested layers. A **data center** is a building full of servers. An **Availability Zone** groups one or more data centers that share nothing important with the other zones. A **Region** is an area of the world with at least three Availability Zones. Once you see how they nest, you can see how to keep a site running when one building, or one whole zone, fails.
+AWS builds its infrastructure in three nested layers. A **data center** is a building full of servers. An **Availability Zone** groups one or more data centers that share nothing important with the other zones. A **Region** is an area of the world with at least three Availability Zones. Once you see how they nest, you can work out how to keep a site running when one building, or one whole zone, fails.
 
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 25 minutes. Reading works on a phone.
 
@@ -106,7 +106,7 @@ An AZ is one or more data centers, so the app may not be in a single building, a
 
 ## Availability Zones don't share a single point of failure
 
-The whole point of AZs is that they fail separately. AWS builds them so that one event shouldn't take out two of them. The AWS Certified Cloud Practitioner (CLF-C02) exam asks you to recognize this (task [3.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.2)).
+AZs are meant to fail separately: AWS builds them so that one event shouldn't take out two of them. The AWS Certified Cloud Practitioner (CLF-C02) exam asks you to recognize this (task [3.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.2)).
 
 ```mermaid
 flowchart LR
@@ -134,7 +134,7 @@ flowchart LR
 
 AWS states the separate power, cooling and physical security, the distances, and the encrypted fiber links, which are fast enough to keep two copies of a database exactly in step ([Regions and Availability Zones](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/)). Its Fault Isolation Boundaries whitepaper (November 2022) adds the different substations, the unshared generators and cooling, and the updates rolled out to one AZ at a time, so one bad update doesn't hit every AZ ([AWS Fault Isolation Boundaries](https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/abstract-and-introduction.html)). The distance means one fire, flood or tornado is unlikely to reach two AZs.
 
-AWS calls the result **Availability Zone Independence**. Nothing is failure-proof: AWS says failures are rare but can still affect resources in one location. What the design gives you is *separate* failures, so a copy in another AZ keeps running.
+AWS calls the result **Availability Zone Independence**. Nothing is failure-proof: AWS says failures are rare but can still affect resources in one location. The design gives you *separate* failures, so a copy in another AZ keeps running.
 
 > **Check:** Which design feature most directly stops a single utility power cut from taking down two AZs?
 >
