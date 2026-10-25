@@ -146,7 +146,7 @@ flowchart LR
 **AWS Compute Optimizer** analyzes the configuration and use of your AWS resources and recommends better sizes ([What is AWS Compute Optimizer?](https://docs.aws.amazon.com/compute-optimizer/latest/ug/what-is-compute-optimizer.html), checked 2026-10-24):
 
 - **It covers more than EC2:** Auto Scaling groups, EBS volumes, Lambda functions, RDS and Aurora databases, ECS on Fargate and others, including commercial software licenses.
-- **You opt in first.** It then reads the last 14 days of CloudWatch metrics by default; a paid option, enhanced infrastructure metrics, looks back up to 93 days.
+- **You opt in first.** It then reads the last 14 days of CloudWatch metrics by default, or 32 days if you choose, at no charge; a paid option, enhanced infrastructure metrics, looks back up to 93 days.
 - **It recommends; it doesn't resize anything.** You decide, and you make the change. (Since 2025-11-21 it can apply a few EBS volume actions for you, such as upgrading the volume type, but only if you set up its [automation rules](https://docs.aws.amazon.com/compute-optimizer/latest/ug/automation-rules.html).)
 - **For SQL Server, it can recommend a cheaper edition.** If an instance pays for SQL Server Enterprise but uses none of its Enterprise features, it reports the license as not optimized and shows the saving from moving to Standard ([license recommendations](https://docs.aws.amazon.com/compute-optimizer/latest/ug/view-license-recommendations.html)).
 

@@ -68,7 +68,7 @@ Try these before you read on. Guess if you're unsure; the answers are in the les
 
 ![Four columns, each a meter. Time: EC2 web servers, load balancer, NAT gateway, RDS database, public IPv4 addresses; bills while it exists, busy or idle. Storage: S3 photo bucket, EBS disks, RDS storage and backups, snapshots; bills for what you keep. Requests: S3 GET and PUT, Lambda invocations and GB-seconds, Athena data scanned; bills only when used. Data transfer: out to the internet, across AZs, to another Region, in from the internet at $0; bills for where data goes.](../../images/11-01-four-meters.svg)
 
-*Notice the bottom line of each column. Only the time meter runs when nobody is using anything.*
+*Notice the bottom line of each column. The time and storage meters keep running when nobody is using anything; requests and data transfer stop.*
 
 **Long description.** Four columns. Time, measured in the hours or seconds a resource exists or runs: EC2 web servers, the load balancer, a NAT gateway, the RDS database and public IPv4 addresses; it bills while the resource exists, busy or idle. Storage, measured in GB kept per month: the S3 photo bucket, EBS disks billed at the size you set, RDS storage and backups, and snapshots; it bills for what you keep until it's deleted. Requests, measured by the count: S3 GET and PUT requests, Lambda invocations and GB-seconds, and Athena's data scanned; it bills only when someone uses it. Data transfer, measured in GB moved by direction: out to the internet, across Availability Zones and to another Region, while data in from the internet costs $0; it bills for where data goes.
 

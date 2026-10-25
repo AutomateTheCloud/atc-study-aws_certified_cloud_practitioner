@@ -259,9 +259,9 @@ By default your instances share physical servers with other customers' instances
 
 *Notice the "You see" row. Only a Dedicated Host shows the sockets and cores that per-core licenses are counted on.*
 
-**Long description.** Two panels. What's the same: single-tenant hardware, no other customer on it, and no difference in performance or security. Dedicated Host, a whole physical server you place instances on: you see its sockets, cores and host ID; you place instances on the host you choose and keep them there; billed per host; supports per-socket, per-core or per-VM licenses you bring; no Capacity Reservations; Host Reservations give up to 70% off; choose it for software licensed by socket or core. Dedicated Instance, an instance on hardware only your account uses: you see nothing of the hardware; AWS places it and it may move after a stop and start; billed per instance plus a $2 an hour fee per Region while any runs; partial license support; Capacity Reservations supported; Reserved Instances with dedicated tenancy for a discount; choose it for a rule that says no shared hardware.
+**Long description.** Two panels. What's the same: single-tenant hardware, no other customer on it, and, between the two, no difference in performance or security. Dedicated Host, a whole physical server you place instances on: you see its sockets, cores and host ID; you place instances on the host you choose and keep them there; billed per host; supports per-socket, per-core or per-VM licenses you bring; no Capacity Reservations; Host Reservations give up to 70% off; choose it for software licensed by socket or core. Dedicated Instance, an instance on hardware only your account uses: you see nothing of the hardware; AWS places it and it may move after a stop and start; billed per instance plus a $2 an hour fee per Region while any runs; partial license support; Capacity Reservations supported; Reserved Instances with dedicated tenancy for a discount; choose it for a rule that says no shared hardware.
 
-**What's the same:** dedicated physical servers, with no difference in performance, security or hardware. **What differs:** visibility and control. **The principle:** if you bring licenses counted per socket or core (bring your own license, BYOL, which Module 13, "Moving to AWS", compares with license-included), choose a **Dedicated Host**; if you only need "not shared with other customers", a **Dedicated Instance** is simpler.
+**What's the same:** dedicated physical servers; AWS says the two don't differ in performance, security or hardware. **What differs:** visibility and control. **The principle:** if you bring licenses counted per socket or core (bring your own license, BYOL, which Module 13, "Moving to AWS", compares with license-included), choose a **Dedicated Host**; if you only need "not shared with other customers", a **Dedicated Instance** is simpler.
 
 ## Capacity Reservations: a guarantee, not a discount
 
@@ -277,12 +277,12 @@ You may have read that reserving capacity lowers the price, as a Reserved Instan
 >
 > A. A three-year Standard Reserved Instance for ten servers
 > B. Spot Instances
-> C. An On-Demand Capacity Reservation for that period, cancelled afterwards
+> C. An On-Demand Capacity Reservation for that period
 > D. A Compute Savings Plan
 
 <details><summary>Feedback</summary>
 
-**C is right.** It guarantees the capacity in that AZ with no long commitment; the bakery pays the On-Demand rate while it holds the reservation and cancels it after the launch.
+**C is right.** It guarantees the capacity in that AZ without a long commitment. Booked ahead for next month's date, it needs a set duration, so the bakery books it for the launch day and pays the On-Demand rate for that time, used or not.
 
 - **A is wrong.** A zonal one would hold capacity, but three years of payments for one day is a costly mistake.
 - **B is wrong.** Spot is the opposite of guaranteed: capacity may not be there, and it can be taken back.
@@ -419,7 +419,7 @@ Teams review usage before they commit, commit to what they're sure of, and add m
 
    <details><summary>Feedback</summary>
 
-   (a) **A Savings Plan or Reserved Instance:** steady and proven. (b) **On-Demand:** short; a commitment would sit idle. (c) **Spot:** interruptible and flexible. (d) **An On-Demand Capacity Reservation** for the weekend, cancelled afterwards: a guarantee with no long commitment, and no discount unless combined with a Savings Plan or Regional Reserved Instance.
+   (a) **A Savings Plan or Reserved Instance:** steady and proven. (b) **On-Demand:** short; a commitment would sit idle. (c) **Spot:** interruptible and flexible. (d) **An On-Demand Capacity Reservation** for the weekend (created when needed and cancelled afterwards; one booked ahead for a future date needs a set duration): a guarantee with no long commitment, and no discount unless combined with a Savings Plan or Regional Reserved Instance.
 
    </details>
 

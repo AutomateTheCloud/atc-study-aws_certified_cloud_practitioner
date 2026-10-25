@@ -202,7 +202,7 @@ The CloudWatch billing alarm from primer page 05 also only notifies; for "alert 
 
 ## Cost Anomaly Detection tells you when spending is unusual, not when it is high
 
-**AWS Cost Anomaly Detection** uses machine learning to learn your normal spending pattern, including weekly or monthly rhythms and steady growth, and alerts you when spending departs from it ([Detecting unusual spend](https://docs.aws.amazon.com/cost-management/latest/userguide/manage-ad.html), checked 2026-10-24). It differs from Budgets in one way that matters: a budget compares cost with a number *you* chose; anomaly detection compares cost with what is *normal for you*. A sudden $3 a day in a service you never use can be an anomaly long before any budget notices.
+**AWS Cost Anomaly Detection** uses machine learning to learn your normal spending pattern, including weekly or monthly rhythms and steady growth, and alerts you when spending departs from it ([Detecting unusual spend](https://docs.aws.amazon.com/cost-management/latest/userguide/manage-ad.html), checked 2026-10-24). It differs from Budgets in one way that matters: a budget compares cost with a number *you* chose; anomaly detection compares cost with what is *normal for you*. A sudden $3 a day in a service you normally use only a little can be an anomaly long before any budget notices.
 
 - A **cost monitor** says what to watch: all AWS services (the default AWS-managed monitor you saw in primer page 05), or chosen accounts, cost allocation tags or cost categories (lesson 11.04).
 - An **alert subscription** says who hears and when: individual alerts through SNS, or daily or weekly summaries by email, once an anomaly passes your dollar or percentage threshold.

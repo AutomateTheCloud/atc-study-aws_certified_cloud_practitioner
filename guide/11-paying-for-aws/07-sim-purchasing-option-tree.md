@@ -109,7 +109,7 @@ flowchart TD
 | B | **On-Demand** | Peaks come and go; a commitment would be paid for idle hours. (Spot can work for extra web servers if the site keeps no state on them, but it is not the safe first answer) |
 | C | **Spot** | It can be interrupted and restarted, so the two-minute warning costs only time |
 | D | **Database Savings Plan** | Steady for years (its term is one year, so the bakery renews it each year), and it still applies if the bakery changes engine or moves to another database service |
-| E | **Capacity Reservation**, cancelled after Christmas | Only a reservation guarantees capacity in one AZ. It bills whether used or not and gives no discount by itself |
+| E | **Capacity Reservation** for the busy weeks | Only a reservation guarantees capacity in one AZ. It bills whether used or not and gives no discount by itself |
 | F | **Dedicated Host** | Per-core licenses need a physical server you can see. Dedicated Instances isolate the hardware but don't give you control of the server |
 
 </details>

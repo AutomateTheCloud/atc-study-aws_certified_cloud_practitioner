@@ -51,7 +51,7 @@ This guide is provided as is, without warranty. We work hard to keep it correct 
 
 ### How the data gets made
 
-Before a move, size servers from on-premises data: Migration Evaluator collects it and flags servers that are larger than they need to be. After a move, **AWS Compute Optimizer** reads an instance's CloudWatch metrics and labels it **over-provisioned**, **under-provisioned** or **optimized**. It also gives each option a **performance risk**: how likely the new type is to fall short of the workload, from very low to very high.
+Before a move, size servers from on-premises data: Migration Evaluator collects it and flags servers that are larger than they need to be. After a move, **AWS Compute Optimizer** reads an instance's CloudWatch metrics and labels it **over-provisioned**, **under-provisioned** or **optimized** (separately, it can also flag idle resources). It also gives each option a **performance risk**: how likely the new type is to fall short of the workload, from very low to very high.
 
 > **Dated (checked 2026-10-24):** you opt in first. Compute Optimizer needs at least 30 hours of metrics within the last 14 days for an EC2 instance. It sees memory only if the CloudWatch agent runs on the instance. Recommendations are free and look back 14 days, or 32 if you choose; a paid option, enhanced infrastructure metrics, looks back 93 days ([resource requirements](https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html), [pricing](https://aws.amazon.com/compute-optimizer/pricing/)).
 
