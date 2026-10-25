@@ -170,7 +170,7 @@ Register a **backup** factor too, so losing your phone doesn't lock you out; AWS
 
 ## Encryption scrambles data so that only someone with the key can read it
 
-**Encryption** turns readable data, called **plaintext**, into scrambled data, called **ciphertext**, using an **encryption key**: a long secret number. Only someone with the right key can turn it back. You use it twice a day without noticing:
+**Encryption** turns readable data, called **plaintext**, into scrambled data, called **ciphertext**, using an **encryption key**: a long secret number. Only someone with the right key can turn it back. You use it in two ways every day without noticing:
 
 ```mermaid
 flowchart LR
@@ -270,7 +270,7 @@ The owner's habit: for each step, name the failure it covers. A failure with no 
 
 - **Passwords:** long, random and unique for every account, which a password manager makes easy. Reuse turns one leak into many break-ins.
 - **MFA** adds a second kind of proof. Passkeys and security keys resist phishing; codes can be stolen by a fake page. Keep a backup factor.
-- **Encryption** makes stolen data unreadable without the key: at rest for stored data, in transit for data on the move. Protecting the key is protecting the data.
+- **Encryption** makes stolen data unreadable without the key: at rest for stored data, in transit for data on the move. Whoever holds the key can read the data, so protect the key.
 - **Least privilege** gives each person or program only the access its task needs, preferably access that expires. Give people their own limited sign-ins, never a shared password.
 
 ## Practice
