@@ -77,7 +77,7 @@ flowchart TB
 ## Key terms (skip if you know them)
 
 - **AWS Well-Architected Framework**: AWS's published guidance for designing and running systems well in the cloud, as a set of whitepapers.
-- **Pillar**: one of the Framework's six areas of concern. Not a physical column: here it means one way of judging a system.
+- **Pillar**: one of the Framework's six areas of concern. It isn't a physical column; here it means one way of judging a system.
 - **Design principle**: a short, named idea that guides decisions, such as "stop guessing your capacity needs".
 - **Best practice**: a specific recommended action with an ID, such as [COST06-BP02](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_type_size_number_resources_data.html).
 - **Workload**: the set of parts (code, settings, AWS resources) that together deliver something of value, such as the bakery's ordering site.
@@ -245,7 +245,7 @@ As of 2026-10-23, AWS also offers an AI-based **AWS Well-Architected Agent** in 
 
 ## In real work
 
-Teams use the pillars as a shared checklist when they design something new and when they review something that already runs. A good review ends with a short list of high risks, each with an owner, not a score. Throughout this guide, each lesson's "In real work" section names the pillar it touches, and each lab's "Why this matters" cites a best practice, so you meet the Framework again in every module. The pillars you will meet most in the labs are security and cost optimization, the same two the guardrails primer leaned on.
+Teams use the pillars as a shared checklist when they design something new and when they review something that already runs. A good review ends with a short list of high risks, each with an owner, rather than a score. Throughout this guide, each lesson's "In real work" section names the pillar it touches, and each lab's "Why this matters" cites a best practice, so you meet the Framework again in every module. The pillars you will meet most in the labs are security and cost optimization, the same two the guardrails primer leaned on.
 
 ## Summary
 

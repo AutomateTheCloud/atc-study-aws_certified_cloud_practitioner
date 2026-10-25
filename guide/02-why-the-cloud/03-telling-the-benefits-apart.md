@@ -228,7 +228,7 @@ The site crashes because demand is above capacity, not because a part failed, so
 
 ## Durability: stored data isn't lost
 
-**Durability** is about data, not about the system being up. A durable storage service keeps your data safe from loss: from failed disks, failed servers, even a failed data center.
+**Durability** is about the data itself, rather than whether the system is up. A durable storage service keeps your data safe when disks or servers fail, and even when a whole data center fails.
 
 Amazon Simple Storage Service (Amazon S3), AWS's main storage service for files, is the classic example. As of 2026-10-23, AWS says S3 is designed for 99.999999999% durability, often called "eleven nines". For most of its storage options, S3 keeps copies of your data across at least three AZs ([S3 storage classes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html); [S3 FAQs](https://aws.amazon.com/s3/faqs/)).
 
@@ -312,7 +312,7 @@ A scenario about opening a site abroad quickly shows both benefits. If it stress
 
 **Scenario.** A news website normally has 5,000 visitors an hour. When a major news event happens, visitors jump to 200,000 an hour. AWS adds servers within minutes, and removes them when interest drops the next day. Which benefit does this show?
 
-Here is how an experienced reader works through it:
+An experienced reader works through it like this:
 
 1. **Find what changed.** The number of servers went up, then down. That is a change in *capacity*.
 2. **Find what drove it.** Visitors rose, then fell. Capacity followed *demand*, in both directions.
@@ -356,7 +356,7 @@ At work, people ask what a system needs, and each benefit answers a different ne
 - **Elasticity** serves **performance efficiency** (enough capacity as demand changes), **cost optimization** (no paying for capacity you don't need) and **reliability** too: the reliability pillar's design principle "[Stop guessing capacity](https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html)" notes that running out of capacity is a common cause of failure.
 - **Global reach** and **agility** appear in the **performance efficiency** pillar's design principles "[Go global in minutes](https://docs.aws.amazon.com/wellarchitected/latest/framework/perf-dp.html)" and "[Experiment more often](https://docs.aws.amazon.com/wellarchitected/latest/framework/perf-dp.html)".
 
-The benefits are possibilities, not defaults. AWS provides the AZs, the auto scaling and the Regions; you must design your system to use them. A website on one server in one AZ isn't highly available just because it is in the cloud. Module 04 explains this split: AWS is responsible for the cloud itself, and you are responsible for how you use it.
+None of these benefits comes by default. AWS provides the AZs, the auto scaling and the Regions; you must design your system to use them. A website on one server in one AZ isn't highly available just because it is in the cloud. Module 04 explains this split: AWS is responsible for the cloud itself, and you are responsible for how you use it.
 
 ## Summary
 
