@@ -9811,7 +9811,7 @@
 - term: voice engine
   definition: >-
     The kind of speech model behind an Amazon Polly voice, such as Standard, Neural, Generative or
-    Long Form. More natural-sounding engines cost more per character; see the lesson.
+    Long-Form. More natural-sounding engines cost more per character; see the lesson.
   taught_in: guide/10-data-ai-and-more/05-lab-14-polly-text-to-speech.md
   module: "10"
 

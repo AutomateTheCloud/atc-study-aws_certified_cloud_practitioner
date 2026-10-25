@@ -3,7 +3,7 @@
 format_version: '0.2'
 id: b247b7a9-9b89-4b04-8cd5-17aed3c38d61
 title: Practice Questions and Flashcards for the AWS Certified Cloud Practitioner Exam (CLF-C02)
-version: 0.3.3
+version: 0.3.4
 language: en
 subject: Cloud computing
 tags:
@@ -87577,7 +87577,7 @@ flashcards:
     text: What does **voice engine** mean?
   back:
     text: The kind of speech model behind an Amazon Polly voice, such as Standard, Neural, Generative
-      or Long Form. More natural-sounding engines cost more per character; see the lesson.
+      or Long-Form. More natural-sounding engines cost more per character; see the lesson.
   tags:
   - module-10
   - clf-10-05

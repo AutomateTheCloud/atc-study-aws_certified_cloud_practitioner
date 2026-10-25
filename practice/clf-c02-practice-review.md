@@ -1,8 +1,9 @@
-# Review report: CLF-C02 practice bundle, version 0.3.3
+# Review report: CLF-C02 practice bundle, version 0.3.4
 
 **Practice Questions and Flashcards for the AWS Certified Cloud Practitioner Exam (CLF-C02)**,
 built 2026-10-24 from the guide's Modules 01 to 14 and its glossary.
 
+- Version 0.3.4 (2026-10-25) spells "Long-Form" one way on the "voice engine" flashcard.
 - Version 0.3.3 (2026-10-25) writes every date one way (full dates as YYYY-MM-DD, dates without a
   year as "June 3") and spells "canceled" and "traveling" the US way. Three questions' wordings
   changed only in that; all nine wordings pass the dump-similarity check (9 PASS).
