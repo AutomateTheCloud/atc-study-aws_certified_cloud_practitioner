@@ -4,7 +4,7 @@
 """Draw the graphics for lesson 12.02 (tools that watch your account) as SVG.
 
 Usage: python3 -I source/charts/12-02-charts.py
-Writes images/12-02-*.svg. Facts come from AWS pages cited in
+Writes images/12-02-big-picture.svg. Facts come from AWS pages cited in
 guide/12-getting-help/02-tools-that-watch-your-account.md, read 2026-10-24:
 - AWS Trusted Advisor and its check reference (six categories: Cost
   optimization, Performance, Security, Fault tolerance, Service limits,
@@ -140,118 +140,6 @@ def big_picture():
         body, style=STYLE)
 
 
-def ta_access():
-    """Trusted Advisor categories against Support plans: what Basic sees."""
-    w = 700
-    body = [
-        '<text class="title" x="16" y="28">What Trusted Advisor shows on each Support plan</text>',
-        f'<text class="sub" x="16" y="48">Six categories, no check counts: AWS\'s pages disagree on them. Checked {CHECKED}</text>',
-    ]
-    cols = ["Basic|(every account)", "Business|Support+", "Enterprise and|Unified Operations"]
-    rows = [
-        ("Service limits", ["All checks", "All checks", "All checks"]),
-        ("Security", ["A few selected checks, such as root MFA", "All checks", "All checks"]),
-        ("Fault tolerance", ["One selected check", "All checks", "All checks"]),
-        ("Cost optimization", ["None", "All checks", "All checks"]),
-        ("Performance", ["None", "All checks", "All checks"]),
-        ("Operational excellence", ["None", "All checks", "All checks"]),
-        ("Refresh", ["Security checks by hand", "Automatic", "Automatic"]),
-        ("API and EventBridge", ["No", "Yes", "Yes"]),
-        ("Trusted Advisor Priority", ["No", "No", "Yes, from your account team"]),
-    ]
-    lx, lw = 16, 168
-    cw = (w - 32 - lw) / 3
-    top = 66
-    for i, c in enumerate(cols):
-        x = lx + lw + i * cw
-        for j, part in enumerate(c.split("|")):
-            body.append(f'<text class="head" x="{x + cw / 2:.1f}" y="{top + 8 + 16 * j}" text-anchor="middle">{part}</text>')
-    y = top + 30
-    rh = 40
-    for k, (label, vals) in enumerate(rows):
-        if k == 6:
-            body.append(f'<line class="axis" x1="{lx}" x2="{w - 16}" y1="{y + 3}" y2="{y + 3}"/>')
-            y += 8
-        body.append(f'<text class="head" x="{lx}" y="{y + rh / 2 + 5:.1f}">{label}</text>')
-        for i, v in enumerate(vals):
-            x = lx + lw + i * cw
-            if v in ("None", "No"):
-                cls = "none"
-            else:
-                cls = "hi" if i == 0 else "n"
-            body.append(f'<rect class="{cls}" x="{x + 3:.1f}" y="{y + 3}" width="{cw - 6:.1f}" height="{rh - 6}" rx="5"/>')
-            parts = wrap(v, int((cw - 16) / 6.1))
-            ty = y + rh / 2 + 5 - (len(parts) - 1) * 7
-            for part in parts:
-                body.append(f'<text class="cells" x="{x + cw / 2:.1f}" y="{ty:.1f}" text-anchor="middle">{part}</text>')
-                ty += 14
-        y += rh
-    y += 20
-    y = text_lines(body, 16, y, [
-        "Highlighted: what Basic gets. Dashed: not available. From AWS's Trusted Advisor user guide, check reference and",
-        "product page. Basic's selected checks have changed before and can change again: check the live list.",
-    ], cls="note", dy=15)
-    svg("12-02-ta-access.svg", w, y + 2,
-        "Trusted Advisor check categories and features by Support plan",
-        "A grid with three plan columns: Basic, on every account; Business Support+; and Enterprise and Unified "
-        "Operations. Six category rows. Service limits: all checks on every plan. Security: Basic gets a few "
-        "selected checks, such as root MFA and open ports; paid plans get all checks. Fault tolerance: Basic gets "
-        "one selected check; paid plans all. Cost optimization, performance and operational excellence: none on "
-        "Basic; all checks on paid plans. Three feature rows. Refresh: Basic refreshes security checks by hand; "
-        "paid plans refresh automatically. API and EventBridge: no on Basic, yes on paid plans. Trusted Advisor "
-        "Priority: only Enterprise and Unified Operations, from the account team. Basic's cells are highlighted; "
-        f"unavailable cells are dashed. No check counts are given because AWS's pages disagree. Checked {CHECKED}.",
-        body, style=STYLE)
-
-
-def health_views():
-    """One service, AWS Health; two dashboard views; two ways to feed your own tools."""
-    w = 700
-    body = [
-        '<text class="title" x="16" y="28">AWS Health: one dashboard with two views, and two feeds</text>',
-        f'<text class="sub" x="16" y="48">The two old dashboard names are now the two views of one dashboard. Checked {CHECKED}</text>',
-    ]
-    # Outer box: AWS Health.
-    body.append('<rect class="plain" x="16" y="66" width="668" height="332" rx="8"/>')
-    body.append('<text class="boxt" x="30" y="90">AWS Health: events on AWS\'s side that can affect you</text>')
-    # Dashboard box, highlighted, with two views inside.
-    body.append('<rect class="hi" x="30" y="104" width="640" height="168" rx="6"/>')
-    body.append('<text class="boxt" x="44" y="128">AWS Health Dashboard: free for every customer, no setup</text>')
-    card(body, "n", 44, 140, 300, "Service health",
-         ["Public events for all services and Regions",
-          "No sign-in, no account needed",
-          "Service history: the last 12 months",
-          "Older name: Service Health Dashboard"], 118)
-    card(body, "n", 356, 140, 300, "Your account health",
-         ["After you sign in: events that affect your own resources, such as planned maintenance on an instance you run",
-          "Also shows the public events",
-          "Older name: Personal Health Dashboard"], 118)
-    # Feeds.
-    card(body, "n", 30, 286, 312, "Amazon EventBridge",
-         ["Sends Health events to your own rules and tools",
-          "Free for every customer"], 96)
-    card(body, "n", 358, 286, 312, "AWS Health API",
-         ["Your programs ask AWS Health directly",
-          "Business Support+, Enterprise or Unified Operations; on Basic it refuses the call"], 96)
-    y = text_lines(body, 16, 420, [
-        "AWS announced one dashboard bringing the two older ones together on 2022-02-28. From What is AWS Health?, the",
-        "Service health page and AWS's What's New post.",
-    ], cls="note", dy=15)
-    svg("12-02-health-views.svg", w, y + 2,
-        "AWS Health: one dashboard with two views, plus EventBridge and the Health API",
-        "An outer box, AWS Health: events on AWS's side that can affect you. Inside it, highlighted, the AWS Health "
-        "Dashboard, free for every customer with no setup, holds two views. Service health: public events for all "
-        "services and Regions, with no sign-in and no account needed, and 12 months of service history; its older "
-        "name was Service Health Dashboard. Your account health: after you sign in, events that affect your own "
-        "resources, such as planned maintenance on an instance you run, plus the public events; its older name was "
-        "Personal Health Dashboard. Below the dashboard, two feeds. Amazon EventBridge sends Health events to your "
-        "own rules and tools, free for every customer. The AWS Health API lets your programs ask AWS Health "
-        "directly; it needs Business Support+, Enterprise or Unified Operations, and on Basic it refuses the call. "
-        f"AWS announced the single dashboard on 2022-02-28. Checked {CHECKED}.",
-        body, style=STYLE)
-
 
 if __name__ == "__main__":
     big_picture()
-    ta_access()
-    health_views()
