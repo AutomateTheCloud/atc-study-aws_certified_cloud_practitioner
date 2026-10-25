@@ -16,31 +16,31 @@ sections:
   - dir: 01-on-ramp
     title: "Module 01: On-ramp: IT foundations (optional)"
   - dir: 02-why-the-cloud
-    title: "Module 02: Why organizations use the cloud"
+    title: "Module 02: Why organizations use the cloud (Domain 1)"
   - dir: 03-aws-around-the-world
-    title: "Module 03: AWS around the world"
+    title: "Module 03: AWS around the world (Domain 3)"
   - dir: 04-shared-responsibility-and-access
-    title: "Module 04: Who secures what"
+    title: "Module 04: Who secures what (Domain 2)"
   - dir: 05-storing-data
-    title: "Module 05: Storing data"
+    title: "Module 05: Storing data (Domain 3)"
   - dir: 06-running-applications
-    title: "Module 06: Running applications"
+    title: "Module 06: Running applications (Domain 3)"
   - dir: 07-connecting-it
-    title: "Module 07: Connecting it"
+    title: "Module 07: Connecting it (Domain 3)"
   - dir: 08-building-and-operating
-    title: "Module 08: Building and operating"
+    title: "Module 08: Building and operating (Domain 3)"
   - dir: 09-protecting-and-governing
-    title: "Module 09: Protecting, governing and proving compliance"
+    title: "Module 09: Protecting, governing and proving compliance (Domain 2)"
   - dir: 10-data-ai-and-more
-    title: "Module 10: Data, AI and the rest of the catalog"
+    title: "Module 10: Data, AI and the rest of the catalog (Domain 3)"
   - dir: 11-paying-for-aws
-    title: "Module 11: Paying for AWS"
+    title: "Module 11: Paying for AWS (Domain 4)"
   - dir: 12-getting-help
-    title: "Module 12: Getting help"
+    title: "Module 12: Getting help (Domain 4)"
   - dir: 13-moving-to-aws
-    title: "Module 13: Moving to AWS"
+    title: "Module 13: Moving to AWS (Domain 1)"
   - dir: 14-capstone
-    title: "Module 14: Capstone: a Well-Architected review"
+    title: "Module 14: Close-out (optional capstone)"
   - dir: 90-exam-prep
     title: "Exam preparation"
   - dir: 98-how-to

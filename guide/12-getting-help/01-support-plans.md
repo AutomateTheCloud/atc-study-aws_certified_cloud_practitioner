@@ -69,7 +69,7 @@ What Basic can't do is open a **technical** case. "Our database stopped acceptin
 
 > **Dated (checked 2026-10-25):** on the Free plan you can't buy a paid Support plan at all. Our Free plan test account's Support Plans page said: "Only Basic Support is available to accounts on the AWS Free Tier plan. To upgrade your support, first upgrade to a Paid plan." Basic is your plan for as long as you stay on the Free plan.
 
-One limit applies to every plan, paid ones included: AWS Support doesn't write your code, debug your own software, or administer or log in to your systems ([AWS Support FAQs](https://aws.amazon.com/premiumsupport/faqs/), checked 2026-10-24). Hiring someone to do that is lesson 12.04.
+One limit applies to every plan, paid ones included: AWS Support doesn't write your code, debug your own software, or administer or log in to your systems ([AWS Support FAQs](https://aws.amazon.com/premiumsupport/faqs/), checked 2026-10-24). Lesson 12.03 covers hiring someone to do that.
 
 ## Each paid plan adds speed and people
 

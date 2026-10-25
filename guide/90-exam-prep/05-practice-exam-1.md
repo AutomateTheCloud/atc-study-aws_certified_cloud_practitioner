@@ -82,12 +82,12 @@ Where the exam guide uses an older name for a service or plan, the questions use
 - C. AWS Artifact
 - D. AWS Marketplace
 
-**6.** A school district's homework app is busy during school hours and nearly idle at night. It needs a relational database compatible with PostgreSQL whose capacity scales up and down with demand on its own, without the team choosing instance sizes. Which service fits?
+**6.** A veterinary clinic keeps its appointments in a PostgreSQL database on a server in its office. It wants to move the database to AWS and stop doing the operating system patches, database upgrades and backups itself, while its staff keep the same PostgreSQL queries and tools. Which option fits?
 
-- A. Amazon Aurora
-- B. Amazon DynamoDB
-- C. Amazon Neptune
-- D. Amazon DocumentDB
+- A. Amazon ElastiCache
+- B. Amazon DocumentDB
+- C. Amazon RDS
+- D. Amazon EC2, with PostgreSQL installed and run by the clinic
 
 **7.** A sports-league startup has two jobs to run without provisioning or managing any servers: a short piece of code that runs each time a new score file lands in an Amazon S3 bucket, and a containerized web API that must answer requests all day. Which two services fit these jobs? (Select TWO.)
 
@@ -530,7 +530,7 @@ A network ACL has allow and deny rules, so it can refuse a range at the subnet's
 
 **3. C** ([Task 4.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.3))
 
-AWS's whitepapers and guides are longer papers on one topic across services, such as disaster recovery or the Well-Architected Framework. re:Post is a community question-and-answer site, Support Center is for cases about your own account, and Marketplace sells other companies' products. **Reread:** [AWS's own pages explain how AWS works: documentation, whitepapers and blogs](../12-getting-help/03-where-to-find-answers.md#awss-own-pages-explain-how-aws-works-documentation-whitepapers-and-blogs).
+AWS's whitepapers and guides are longer papers on one topic across services, such as disaster recovery or the Well-Architected Framework. re:Post is a community question-and-answer site, Support Center is for cases about your own account, and Marketplace sells other companies' products. **Reread:** [AWS's free pages answer "how does this work?"](../12-getting-help/03-where-to-find-answers.md#awss-free-pages-answer-how-does-this-work).
 
 **4. B** ([Task 1.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.2))
 
@@ -540,9 +540,9 @@ Performance efficiency asks whether you use the right kind and amount of resourc
 
 AWS Marketplace is a curated catalog of other companies' software, including security products such as firewalls and intrusion prevention, billed through your AWS bill. The bank still configures and runs the product itself. Artifact holds AWS's compliance reports, and Security Hub and Trusted Advisor report on your setup; none of them sells third-party products. **Reread:** [AWS Marketplace sells third-party security products, billed through AWS](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md#aws-marketplace-sells-third-party-security-products-billed-through-aws).
 
-**6. A** ([Task 3.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.4))
+**6. C** ([Task 3.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.4))
 
-Aurora is AWS's relational engine, compatible with MySQL and PostgreSQL, and it has a serverless option that scales capacity with demand. DynamoDB also scales on its own, but it is a NoSQL key-value database, not PostgreSQL. Neptune is a graph database for relationships, and DocumentDB stores JSON documents; neither is PostgreSQL. **Reread:** [Amazon Aurora is AWS's own relational engine in the RDS family](../05-storing-data/05-managed-or-self-managed-databases.md#amazon-aurora-is-awss-own-relational-engine-in-the-rds-family).
+Amazon RDS runs PostgreSQL, and other relational engines, as a managed service: AWS patches the operating system and the database and takes the backups, and the clinic's queries keep working. EC2 is tempting because PostgreSQL runs there too, but then the clinic still patches, upgrades and backs up the database itself. ElastiCache is an in-memory cache, not the main database, and DocumentDB stores JSON documents, not PostgreSQL tables. **Reread:** [AWS recommends a managed database unless you have a reason not to](../05-storing-data/05-managed-or-self-managed-databases.md#aws-recommends-a-managed-database-unless-you-have-a-reason-not-to); [The database services side by side](../05-storing-data/05-managed-or-self-managed-databases.md#the-database-services-side-by-side).
 
 **7. A and D** ([Task 3.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.3))
 
@@ -578,7 +578,7 @@ Agility is getting something new quickly and cheaply, and being free to throw it
 
 **15. D** ([Task 3.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.4))
 
-DynamoDB stores items by key, answers in single-digit milliseconds at any scale, and is serverless, with on-demand capacity for traffic that swings. RDS needs instances sized for the load, Neptune is a graph database for relationships, and Redshift is a data warehouse for analysis, not for an application's live reads and writes. **Reread:** [DynamoDB stores items by key, at any scale, with no servers to run](../05-storing-data/06-choosing-a-database.md#dynamodb-stores-items-by-key-at-any-scale-with-no-servers-to-run).
+DynamoDB stores items by key, answers in single-digit milliseconds at any scale, and is serverless, with on-demand capacity for traffic that swings. RDS needs instances sized for the load, Neptune is a graph database for relationships, and Redshift is a data warehouse for analysis, not for an application's live reads and writes. **Reread:** [DynamoDB stores items by key, at any scale, with no servers to run](../05-storing-data/05-managed-or-self-managed-databases.md#dynamodb-stores-items-by-key-at-any-scale-with-no-servers-to-run).
 
 **16. A** ([Task 3.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.1))
 
@@ -586,7 +586,7 @@ When a program calls AWS while it runs, it uses an SDK, which signs each request
 
 **17. A** ([Task 4.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.3))
 
-Prescriptive Guidance collects guides and patterns from AWS experts for larger jobs such as migrations and modernization. The Knowledge Center answers common single problems ("How do I…?"), the Health Dashboard reports events on AWS's side, and Trusted Advisor checks your account's setup. **Reread:** [Prescriptive Guidance is for planning and building, not for fixing one error](../12-getting-help/03-where-to-find-answers.md#prescriptive-guidance-is-for-planning-and-building-not-for-fixing-one-error).
+Prescriptive Guidance collects guides and patterns from AWS experts for larger jobs such as migrations and modernization. The Knowledge Center answers common single problems ("How do I…?"), the Health Dashboard reports events on AWS's side, and Trusted Advisor checks your account's setup. **Reread:** [AWS's free pages answer "how does this work?"](../12-getting-help/03-where-to-find-answers.md#awss-free-pages-answer-how-does-this-work).
 
 **18. A and E** ([Task 3.7](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.7))
 
@@ -606,7 +606,7 @@ AWS states that every Region has at least three isolated, physically separate Av
 
 **22. A** ([Task 3.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.1))
 
-Infrastructure as code describes the end result in files that can be reviewed before a change and deployed again to rebuild the same setup. A CLI command list is tempting because it is written down, but it repeats steps, not the end state, and may fail or duplicate resources on a second run. Console changes leave only the result behind. **Reread:** [Infrastructure as code describes the end result in a file](../08-building-and-operating/01-four-ways-in.md#infrastructure-as-code-describes-the-end-result-in-a-file); [Change sets preview a change; drift detection finds changes made by hand](../08-building-and-operating/02-iac-and-automation.md#change-sets-preview-a-change-drift-detection-finds-changes-made-by-hand).
+Infrastructure as code describes the end result in files that can be reviewed before a change and deployed again to rebuild the same setup. A CLI command list is tempting because it is written down, but it repeats steps, not the end state, and may fail or duplicate resources on a second run. Console changes leave only the result behind. **Reread:** [Infrastructure as code describes the end result in a file](../08-building-and-operating/01-four-ways-in.md#infrastructure-as-code-describes-the-end-result-in-a-file).
 
 **23. B** ([Task 2.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.3))
 
@@ -634,7 +634,7 @@ When no ready-made service fits, SageMaker AI (formerly Amazon SageMaker) is whe
 
 **29. D** ([Task 4.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.3))
 
-The AWS Health API and the full set of Trusted Advisor checks come with Business Support+ and the plans above it; on Basic, the Health API refuses the call and only some checks show. Enterprise Support also includes both but costs far more, adding a designated Technical Account Manager the company didn't ask for. AWS Health needs no switching on, and Trusted Advisor has no price of its own: what you see depends on your Support plan. **Reread:** [What you see in Trusted Advisor depends on your Support plan](../12-getting-help/02-tools-that-watch-your-account.md#what-you-see-in-trusted-advisor-depends-on-your-support-plan); [AWS Health reports problems on AWS's side, through one dashboard with two views](../12-getting-help/02-tools-that-watch-your-account.md#aws-health-reports-problems-on-awss-side-through-one-dashboard-with-two-views).
+The AWS Health API and the full set of Trusted Advisor checks come with Business Support+ and the plans above it; on Basic, the Health API refuses the call and only some checks show. Enterprise Support also includes both but costs far more, adding a designated Technical Account Manager the company didn't ask for. AWS Health needs no switching on, and Trusted Advisor has no price of its own: what you see depends on your Support plan. **Reread:** [Trusted Advisor checks your setup in six categories, and your plan sets how much you see](../12-getting-help/02-tools-that-watch-your-account.md#trusted-advisor-checks-your-setup-in-six-categories-and-your-plan-sets-how-much-you-see); [AWS Health reports problems on AWS's side, in one dashboard with two views](../12-getting-help/02-tools-that-watch-your-account.md#aws-health-reports-problems-on-awss-side-in-one-dashboard-with-two-views).
 
 **30. A and B** ([Task 1.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.3))
 
@@ -642,7 +642,7 @@ Less risk of failure or a breach is reduced business risk, which the CAF describ
 
 **31. A** ([Task 3.6](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.6))
 
-Glacier Instant Retrieval is the archive class for data read about once a quarter that must still come back in milliseconds, with copies in several Availability Zones; AWS gives medical images as a typical use. S3 Standard would work but charges more to store data read so rarely. Deep Archive needs a restore that takes hours, and Express One Zone keeps data in a single zone. **Reread:** [Three Glacier classes: archive by how fast you need it back](../05-storing-data/03-storage-classes-and-lifecycle.md#three-glacier-classes-archive-by-how-fast-you-need-it-back); [The numbers in one place](../05-storing-data/03-storage-classes-and-lifecycle.md#the-numbers-in-one-place).
+Glacier Instant Retrieval is the archive class for data read about once a quarter that must still come back in milliseconds, with copies in several Availability Zones; AWS gives medical images as a typical use. S3 Standard would work but charges more to store data read so rarely. Deep Archive needs a restore that takes hours, and Express One Zone keeps data in a single zone. **Reread:** [Storage classes: how often, how fast, how replaceable](../05-storing-data/02-s3-in-practice.md#storage-classes-how-often-how-fast-how-replaceable).
 
 **32. D** ([Task 1.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.2))
 
