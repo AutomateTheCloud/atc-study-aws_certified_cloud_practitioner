@@ -55,7 +55,7 @@ Every row matches the result you wrote down before you started. A surprise is th
 
 ## Used in
 
-- Lesson: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md). Simulation: [S4, Predict allow or deny across accounts, boundaries and organizations](../04-shared-responsibility-and-access/09-sim-policy-playground.md).
+- Lesson: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md), especially [how AWS decides](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md#how-aws-decides-default-deny-then-allows-then-an-explicit-deny-wins).
 - Labs: [Lab 03](../04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md#test-it-in-the-policy-simulator) (Principal mode); [Lab 04](../04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md#part-a-finish-the-photographers-policy-completion) (Custom mode) and its [break-fix part](../04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md#part-c-uploads-fail-break-fix).
 
 ---

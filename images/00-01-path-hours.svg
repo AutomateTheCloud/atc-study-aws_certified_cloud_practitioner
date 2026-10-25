@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="680" height="286" viewBox="0 0 680 286" role="img" aria-labelledby="t d">
 <title id="t">Estimated study hours on each path</title>
-<desc id="d">Horizontal bar chart of estimated study hours, before the guardrails primer. Fast path, for people who already work in IT or with AWS: about 25 hours. Standard path, for most learners: about 57 hours. On-ramp path, for people new to IT basics: about 62 hours. Every path adds 3 to 4 hours for the guardrails primer.</desc>
+<desc id="d">Horizontal bar chart of estimated study hours, before the guardrails primer. Fast path, for people who already work in IT or with AWS: about 17 hours. Standard path, for most learners: about 36 hours. On-ramp path, for people new to IT basics: about 37.5 hours. Every path adds 3 to 4 hours for the guardrails primer.</desc>
 
 <style>
   svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
@@ -23,35 +23,37 @@
   .lead { stroke: var(--muted); stroke-width: 1; }
 </style>
 <rect width="680" height="286" fill="var(--surface)" style="fill:var(--surface)"/>
-<text class="title" x="16" y="28">The fast path takes less than half the time of the standard path</text>
+<text class="title" x="16" y="28">The fast path takes about half the time of the standard path</text>
 <text class="sub" x="16" y="50">Estimated study hours for each path, before the guardrails primer (3 to 4 hours on every path)</text>
 <line class="axis" x1="250.0" x2="250.0" y1="78" y2="232"/>
 <text class="tick" x="250.0" y="250" text-anchor="middle">0 h</text>
-<line class="grid" x1="292.9" x2="292.9" y1="78" y2="232"/>
-<text class="tick" x="292.9" y="250" text-anchor="middle">10 h</text>
-<line class="grid" x1="335.7" x2="335.7" y1="78" y2="232"/>
-<text class="tick" x="335.7" y="250" text-anchor="middle">20 h</text>
-<line class="grid" x1="378.6" x2="378.6" y1="78" y2="232"/>
-<text class="tick" x="378.6" y="250" text-anchor="middle">30 h</text>
-<line class="grid" x1="421.4" x2="421.4" y1="78" y2="232"/>
-<text class="tick" x="421.4" y="250" text-anchor="middle">40 h</text>
-<line class="grid" x1="464.3" x2="464.3" y1="78" y2="232"/>
-<text class="tick" x="464.3" y="250" text-anchor="middle">50 h</text>
-<line class="grid" x1="507.1" x2="507.1" y1="78" y2="232"/>
-<text class="tick" x="507.1" y="250" text-anchor="middle">60 h</text>
+<line class="grid" x1="287.5" x2="287.5" y1="78" y2="232"/>
+<text class="tick" x="287.5" y="250" text-anchor="middle">5 h</text>
+<line class="grid" x1="325.0" x2="325.0" y1="78" y2="232"/>
+<text class="tick" x="325.0" y="250" text-anchor="middle">10 h</text>
+<line class="grid" x1="362.5" x2="362.5" y1="78" y2="232"/>
+<text class="tick" x="362.5" y="250" text-anchor="middle">15 h</text>
+<line class="grid" x1="400.0" x2="400.0" y1="78" y2="232"/>
+<text class="tick" x="400.0" y="250" text-anchor="middle">20 h</text>
+<line class="grid" x1="437.5" x2="437.5" y1="78" y2="232"/>
+<text class="tick" x="437.5" y="250" text-anchor="middle">25 h</text>
+<line class="grid" x1="475.0" x2="475.0" y1="78" y2="232"/>
+<text class="tick" x="475.0" y="250" text-anchor="middle">30 h</text>
+<line class="grid" x1="512.5" x2="512.5" y1="78" y2="232"/>
+<text class="tick" x="512.5" y="250" text-anchor="middle">35 h</text>
 <line class="grid" x1="550.0" x2="550.0" y1="78" y2="232"/>
-<text class="tick" x="550.0" y="250" text-anchor="middle">70 h</text>
+<text class="tick" x="550.0" y="250" text-anchor="middle">40 h</text>
 <text class="lab" x="16" y="97">Fast path</text>
 <text x="16" y="114">already works in IT or with AWS</text>
-<path class="s1" d="M250.0,84.0 L353.1,84.0 Q357.1,84.0 357.1,88.0 L357.1,102.0 Q357.1,106.0 353.1,106.0 L250.0,106.0 Z"><title>Fast path: about 25 hours</title></path>
-<text class="lab" x="365.1" y="100">about 25 h</text>
+<path class="s1" d="M250.0,84.0 L373.5,84.0 Q377.5,84.0 377.5,88.0 L377.5,102.0 Q377.5,106.0 373.5,106.0 L250.0,106.0 Z"><title>Fast path: about 17 hours</title></path>
+<text class="lab" x="385.5" y="100">about 17 h</text>
 <text class="lab" x="16" y="151">Standard path</text>
 <text x="16" y="168">most learners</text>
-<path class="s1" d="M250.0,138.0 L490.3,138.0 Q494.3,138.0 494.3,142.0 L494.3,156.0 Q494.3,160.0 490.3,160.0 L250.0,160.0 Z"><title>Standard path: about 57 hours</title></path>
-<text class="lab" x="502.3" y="154">about 57 h</text>
+<path class="s1" d="M250.0,138.0 L516.0,138.0 Q520.0,138.0 520.0,142.0 L520.0,156.0 Q520.0,160.0 516.0,160.0 L250.0,160.0 Z"><title>Standard path: about 36 hours</title></path>
+<text class="lab" x="528.0" y="154">about 36 h</text>
 <text class="lab" x="16" y="205">On-ramp path</text>
 <text x="16" y="222">new to IT basics</text>
-<path class="s1" d="M250.0,192.0 L511.7,192.0 Q515.7,192.0 515.7,196.0 L515.7,210.0 Q515.7,214.0 511.7,214.0 L250.0,214.0 Z"><title>On-ramp path: about 62 hours</title></path>
-<text class="lab" x="523.7" y="208">about 62 h</text>
-<text class="tick" x="16" y="274">Estimates until our pilot. At 5 hours a week: about 6, 12 to 13, and 13 to 14 weeks, including the primer.</text>
+<path class="s1" d="M250.0,192.0 L527.2,192.0 Q531.2,192.0 531.2,196.0 L531.2,210.0 Q531.2,214.0 527.2,214.0 L250.0,214.0 Z"><title>On-ramp path: about 37.5 hours</title></path>
+<text class="lab" x="539.2" y="208">about 37.5 h</text>
+<text class="tick" x="16" y="274">Estimates until our pilot. At 5 hours a week: about 4, 8, and 8 to 9 weeks, including the primer.</text>
 </svg>

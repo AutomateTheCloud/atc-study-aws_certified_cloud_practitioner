@@ -415,7 +415,7 @@ flowchart TD
 
 **If Part 1 was 4,** take the test-out of the on-ramp lesson your missed question names under "Taught in", and read that lesson if the test-out shows a gap. Then go on with your path.
 
-**On the fast path,** each module's mastery check decides for that module. Pass it and you skip the lessons, but you still do the module's hardest lab, the spaced review and the mixed practice. Below 80%, work through that module's lessons as the standard path does. Ten of twelve here is a reason to try the fast path, not proof that you can skip anything.
+**On the fast path,** each module's mastery check decides for that module. Pass it and you skip the lessons, but you still do the module's core lab, if it has one, and the mixed practice. Below 80%, work through that module's lessons as the standard path does. Ten of twelve here is a reason to try the fast path, not proof that you can skip anything.
 
 **The diagnostic is a starting point, not a verdict.** Paths join the same modules, and you can switch at any time. If the on-ramp feels slow, its test-outs let you move faster; if the fast path's checks keep sending you back, the standard path will save you time.
 

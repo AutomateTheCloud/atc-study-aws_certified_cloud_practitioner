@@ -25,6 +25,35 @@ The AWS Certified Cloud Practitioner exam, version CLF-C02, in tables. Every fac
 
 **For:** anyone planning to take the exam. Look things up here; the teaching is in the modules.
 
+## How this guide lines up with the exam
+
+The exam guide splits the exam into four **domains** (subject areas), each with a weight: its share of the scored questions. Each of modules 02 to 13 teaches mainly one domain, and spends its time on what that domain's tasks ask.
+
+| Domain | Weight | About how many of the 50 scored questions | Modules that teach it |
+|---|---|---|---|
+| 1 Cloud Concepts | 24% | 12 | [02 Why the cloud](../02-why-the-cloud/00-brief.md), [13 Moving to AWS](../13-moving-to-aws/00-brief.md) |
+| 2 Security and Compliance | 30% | 15 | [04 Who secures what](../04-shared-responsibility-and-access/00-brief.md), [09 Protecting and governing](../09-protecting-and-governing/00-brief.md) |
+| 3 Cloud Technology and Services | 34% | 17 | [03 Around the world](../03-aws-around-the-world/00-brief.md), [05 Storing data](../05-storing-data/00-brief.md), [06 Running applications](../06-running-applications/00-brief.md), [07 Connecting it](../07-connecting-it/00-brief.md), [08 Building and operating](../08-building-and-operating/00-brief.md), [10 Data, AI and more](../10-data-ai-and-more/00-brief.md) |
+| 4 Billing, Pricing, and Support | 12% | 6 | [11 Paying for AWS](../11-paying-for-aws/00-brief.md), [12 Getting help](../12-getting-help/00-brief.md) |
+
+Many modules also touch a task from another domain; the [task table below](#what-the-exam-tests-and-where-this-guide-covers-it) shows the main ones. For every page that teaches each of the 19 tasks, see the [blueprint map](../99-reference/06-blueprint-map.md).
+
+## What the exam leaves out
+
+AWS's exam guide lists what the target candidate isn't expected to do. None of it is tested:
+
+| Not tested | Source |
+|---|---|
+| Writing code | [Exam guide](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html), target candidate |
+| Designing cloud architecture | Same |
+| Troubleshooting | Same |
+| Implementation | Same |
+| Load and performance testing | Same |
+
+The exam asks which service or idea fits a situation, not how to build or fix it. So this guide teaches what each service is for and how it differs from the one it's confused with, not how to configure it. The labs go a little beyond the exam on purpose, because doing a task makes the ideas concrete; each module's Beyond the exam page lists the deeper topics it left out.
+
+The exam guide also lists **out-of-scope services**, such as AWS CodeDeploy, AWS CloudShell, AWS Transfer Family and AWS Network Firewall. They can still appear, but only as wrong answers: recognizing one as a service the exam doesn't cover is enough. This guide mentions them in a line at most, where a question uses them that way.
+
 ## Format and scoring
 
 | Item | As of 2026-10-23 | Source |
@@ -63,7 +92,7 @@ The AWS Certified Cloud Practitioner exam, version CLF-C02, in tables. Every fac
 
 ## What the exam tests, and where this guide covers it
 
-The exam guide splits the exam into four **domains** (subject areas) and 19 **task statements** (the specific things each domain tests). The weights below have been the same in every CLF-C02 exam guide version we checked.
+Each domain has **task statements** (the specific things it tests): 19 in all. The weights have been the same in every CLF-C02 exam guide version we checked.
 
 ![Horizontal bar chart of the four domain weights: Domain 1 Cloud Concepts 24%, about 12 scored questions; Domain 2 Security and Compliance 30%, about 15; Domain 3 Cloud Technology and Services 34%, about 17; Domain 4 Billing, Pricing, and Support 12%, about 6.](../../images/00-03-domain-weights.svg)
 
@@ -91,19 +120,7 @@ The exam guide splits the exam into four **domains** (subject areas) and 19 **ta
 | Task [4.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.2) Billing and cost management | | 11; guardrails primer page 05 |
 | Task [4.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.3) Technical resources and Support | | 12 |
 
-Every task also appears in the mixed practice sets and the practice exams in module 90.
-
-## What the exam doesn't test
-
-| Not tested | Source |
-|---|---|
-| Writing code | [Exam guide](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html), target candidate |
-| Designing cloud architecture | Same |
-| Troubleshooting | Same |
-| Implementation | Same |
-| Load and performance testing | Same |
-
-The exam asks which service or idea fits a situation, not how to build or fix it. This guide's labs go beyond the exam on purpose: doing a task makes the ideas concrete.
+Every task also appears in the mixed practice sets and the practice exams in module 90. The [blueprint map](../99-reference/06-blueprint-map.md) lists every page for each task.
 
 ## When the exam changes
 

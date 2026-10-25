@@ -71,7 +71,7 @@ flowchart LR
 
 ## Used in
 
-- Lessons: [S3 in practice](../05-storing-data/02-s3-in-practice.md#versioning-lets-you-undo-an-overwrite-or-a-delete); [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md).
+- Lesson: [S3 in practice](../05-storing-data/02-s3-in-practice.md#versioning-lets-you-undo-an-overwrite-or-a-delete), with its section on [lifecycle rules](../05-storing-data/02-s3-in-practice.md#lifecycle-rules-move-and-delete-objects-for-you).
 - Labs: [Lab 05](../05-storing-data/07-lab-05-versions-and-lifecycle.md#clean-up); any lab whose bucket you uploaded to ([Lab 01](../02-why-the-cloud/06-lab-01-first-resource.md#clean-up), [Lab 13](../10-data-ai-and-more/04-lab-13-athena-query.md#clean-up)).
 
 ---

@@ -113,7 +113,7 @@ Here is how each part of a lesson fits that loop:
 | **Worked example** | Follow an expert's thinking, step by step | Showing the reasoning helps beginners more than discovering it alone |
 | **Your turn** and **Check** | Answer, write it down, then open the feedback | Retrieval with feedback that explains every option |
 | **Summary** and **Practice** | Recall the whole lesson | One more retrieval before you leave the topic |
-| **Labs** | Build, find and delete real things in your own account | Doing the task, not only reading about it |
+| **Labs** | Build, find and delete real things in your own account: nine core labs, and optional ones for more practice | Doing the task, not only reading about it |
 | **Mastery check** | Score 80% to move on; otherwise reread and take a second check | A gap gets found and fixed before you build on it |
 
 **Use the feedback blocks properly.** Answer first, in writing or aloud, then open the block. Opening it first turns retrieval back into rereading. A wrong answer followed by feedback still teaches you; a skipped question teaches nothing.
@@ -135,7 +135,7 @@ Fill this in now, on paper or in a note:
 
 **What to expect, honestly:**
 
-- The standard path takes about 12 weeks at 5 hours a week. That is an estimate until we test the guide with learners.
+- The standard path takes about 8 weeks at 5 hours a week, including the guardrails primer. That is an estimate until we test the guide with learners.
 - You will get warm-up questions wrong, especially at first. That is the method working, not a sign you are failing.
 - Progress will sometimes feel slow. Look back at your notes on wrong answers every few weeks: the list of things you couldn't answer before, and now can, is your evidence.
 - Liking a session isn't proof you learned from it, and struggling isn't proof you didn't.
