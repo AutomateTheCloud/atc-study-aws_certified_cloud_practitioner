@@ -58,7 +58,7 @@ By the end of this lesson, you can:
 
 Try these before you read on. Guess if you're unsure; the answers are in the lesson.
 
-1. The auditor asks: "Was SSH open to the internet on your web server on 1 March?" CloudTrail, CloudWatch or Config?
+1. The auditor asks: "Was SSH open to the internet on your web server on March 1?" CloudTrail, CloudWatch or Config?
 2. Does CloudTrail record every time someone downloads a photo from the bakery's bucket?
 
 ## The big picture: four records, four questions
@@ -69,7 +69,7 @@ Most wrong answers on this topic come from asking the right question of the wron
 
 *Notice the highlighted questions. They don't overlap: "who did it", "how is it running", "how was it set" and "who can do it" are four different questions.*
 
-**Long description.** Four cards in a two-by-two grid. AWS CloudTrail asks "Who did what, when, and from where?" It records each action taken in the account: who, which action, on what, when and from which address. Bakery example: who opened SSH on `web-sg` on Tuesday? From day one, Event history is on, free, and keeps 90 days per Region. Amazon CloudWatch asks "How is it running, and what happened inside it?" It records metrics, logs and alarms from resources and your own code. Example: why were orders slow at 6 p.m.? From day one, AWS services send basic metrics; logs you send are kept until you set a limit. AWS Config asks "How was it set up, then and now, and is that allowed?" It records each resource's settings over time and whether they pass your rules. Example: was SSH open to the internet on 1 March? It is off until you turn recording on, and you pay per item recorded. IAM access reports ask "Who can do what, and do they still use it?" They show when each user, role or policy last used each service, and who holds which credentials. Example: which permissions has nobody used in 90 days? They are on and free in the IAM console.
+**Long description.** Four cards in a two-by-two grid. AWS CloudTrail asks "Who did what, when, and from where?" It records each action taken in the account: who, which action, on what, when and from which address. Bakery example: who opened SSH on `web-sg` on Tuesday? From day one, Event history is on, free, and keeps 90 days per Region. Amazon CloudWatch asks "How is it running, and what happened inside it?" It records metrics, logs and alarms from resources and your own code. Example: why were orders slow at 6 p.m.? From day one, AWS services send basic metrics; logs you send are kept until you set a limit. AWS Config asks "How was it set up, then and now, and is that allowed?" It records each resource's settings over time and whether they pass your rules. Example: was SSH open to the internet on March 1? It is off until you turn recording on, and you pay per item recorded. IAM access reports ask "Who can do what, and do they still use it?" They show when each user, role or policy last used each service, and who holds which credentials. Example: which permissions has nobody used in 90 days? They are on and free in the IAM console.
 
 ## Key terms (skip if you know them)
 
@@ -139,7 +139,7 @@ CloudWatch can show *that* the web server was overloaded at 6 p.m.; it can't sho
 
 ## AWS Config records how each resource was set, and judges it against your rules
 
-**AWS Config** keeps an inventory of your resources and a history of their settings. Each time a resource changes, Config records a new **configuration item**: a snapshot of its settings at that moment, linked to the CloudTrail event that caused the change ([What is AWS Config?](https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html), checked 2026-10-24). That lets Config answer questions CloudTrail can't: "What did this security group allow on 1 March?" and "Which disks are unencrypted today?"
+**AWS Config** keeps an inventory of your resources and a history of their settings. Each time a resource changes, Config records a new **configuration item**: a snapshot of its settings at that moment, linked to the CloudTrail event that caused the change ([What is AWS Config?](https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html), checked 2026-10-24). That lets Config answer questions CloudTrail can't: "What did this security group allow on March 1?" and "Which disks are unencrypted today?"
 
 - **Recording is off until you turn it on.** You set up a **configuration recorder** and choose which resource types it records.
 - **Config rules** check each resource against a setting you want. AWS provides managed rules, such as `restricted-ssh` (fails any security group that lets SSH in from anywhere) and `encrypted-volumes` (fails any attached EBS disk that isn't encrypted) ([restricted-ssh](https://docs.aws.amazon.com/config/latest/developerguide/restricted-ssh.html)). A resource that fails a rule is marked **noncompliant**, and you can attach an automatic or manual fix.
@@ -159,7 +159,7 @@ The figure follows one change through all three services:
 | **Records** | Actions: who did what, when, from where | Metrics, logs, alarms | Resource settings over time, and rule results |
 | **On by default?** | Event history, 90 days | Basic metrics from AWS services | No: you turn on recording |
 | **Best question** | "Who changed it?" | "How is it running?" | "How was it set, and is that allowed?" |
-| **Bakery example** | Who deleted the backup bucket? | Why were orders slow on Saturday? | Are all disks encrypted? Was SSH open on 1 March? |
+| **Bakery example** | Who deleted the backup bucket? | Why were orders slow on Saturday? | Are all disks encrypted? Was SSH open on March 1? |
 
 **What's the same:** all three are records you read after the fact, and all three are yours to configure. **What differs:** what they record. **The principle:** classify the question first. "Who" is CloudTrail; "how is it running" is CloudWatch; "how was it set" or "does it follow our rules" is Config.
 
@@ -268,7 +268,7 @@ The expert's thinking:
 
 You'll answer the auditor's questions in your own account in [Lab 12: answer the auditor](07-lab-12-answer-the-auditor.md), and step through a Config history in [Simulation S10: the Config timeline](09-sim-config-timeline.md).
 
-> **Your turn:** Answer the first prequestion, then a harder one. The auditor says: "On 1 March, SSH was open on `web-sg`. Who opened it?" Which two records do you need, and in which order?
+> **Your turn:** Answer the first prequestion, then a harder one. The auditor says: "On March 1, SSH was open on `web-sg`. Who opened it?" Which two records do you need, and in which order?
 
 <details><summary>Model answer</summary>
 

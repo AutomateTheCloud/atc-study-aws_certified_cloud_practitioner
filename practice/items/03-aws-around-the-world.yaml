@@ -280,7 +280,7 @@ questions:
           - text: All Regions are enabled in a new account by default.
           - text: A new account can use every Region without enabling any.
         explanation:
-          text: Regions launched after March 20, 2019 are opt-in Regions; they start switched off.
+          text: Regions launched after 2019-03-20 are opt-in Regions; they start switched off.
       - id: stay-put
         text: Resources stay in the Region where you create them.
         variants:
@@ -682,7 +682,7 @@ questions:
     correct_answers: [opt-in]
     explanation:
       text: |
-        Regions that AWS launched after March 20, 2019 are opt-in Regions: switched off in an account
+        Regions that AWS launched after 2019-03-20 are opt-in Regions: switched off in an account
         until someone enables them, and possibly hidden while off. The guide's advice is to leave
         Regions you don't use switched off, because each one is another place to forget a resource.
 
@@ -2641,7 +2641,7 @@ questions:
       text: |
         An online game uses non-web traffic. The company wants fixed internet addresses for its game
         servers in two Regions, with players' traffic entering AWS's network at the nearest edge and
-        travelling on it to the best healthy Region. Nothing needs caching. Which service fits?
+        traveling on it to the best healthy Region. Nothing needs caching. Which service fits?
     choices:
       - id: cloudfront
         text: Amazon CloudFront

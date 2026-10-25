@@ -503,7 +503,7 @@ questions:
           - text: The account reaches twelve months after sign-up
           - text: A full year goes by after the account opens
         explanation:
-          text: Twelve months of free usage was the legacy Free Tier, before 15 July 2025. The Free plan ends sooner.
+          text: Twelve months of free usage was the legacy Free Tier, before 2025-07-15. The Free plan ends sooner.
       - id: credits-used
         text: The account's credits are used up
         variants:
@@ -609,7 +609,7 @@ questions:
           - text: It remains correct for new accounts, on both plans
           - text: New accounts still get it, whichever plan they pick
         explanation:
-          text: Accounts created since 15 July 2025 get credits and a choice of plan instead of 12 months of free usage.
+          text: Accounts created since 2025-07-15 get credits and a choice of plan instead of 12 months of free usage.
       - id: paid-plan-only
         text: It now applies to accounts on the Paid plan instead
         variants:
@@ -627,14 +627,14 @@ questions:
       - id: legacy-program
         text: It describes the legacy Free Tier, before July 2025
         variants:
-          - text: It's the old Free Tier, for accounts before 15 July 2025
+          - text: It's the old Free Tier, for accounts before 2025-07-15
           - text: It describes the program that ended for new accounts in July 2025
         explanation:
-          text: Correct. Accounts created before 15 July 2025 stay on the legacy Free Tier; new accounts get credits and a plan.
+          text: Correct. Accounts created before 2025-07-15 stay on the legacy Free Tier; new accounts get credits and a plan.
     correct_answers: [legacy-program]
     explanation:
       text: |
-        Since 15 July 2025, the AWS Free Tier works through credits and a choice of the Free or Paid
+        Since 2025-07-15, the AWS Free Tier works through credits and a choice of the Free or Paid
         plan. "12 months free" was the legacy Free Tier; accounts created before that date stay on
         it, and much older material still describes it. When a question says "12 months free", read
         it as the old program and answer with the current one where you can.
@@ -930,7 +930,7 @@ questions:
           - text: Early cancellation brings a refund of the remainder
           - text: They can be ended early for a refund of the rest
         explanation:
-          text: Neither can be cancelled. A Standard Reserved Instance can be sold on the Reserved Instance Marketplace, and only a small, recent Savings Plan can be returned.
+          text: Neither can be canceled. A Standard Reserved Instance can be sold on the Reserved Instance Marketplace, and only a small, recent Savings Plan can be returned.
       - id: pay-whether-used
         text: You pay for the commitment whether or not you use it
         variants:
@@ -957,7 +957,7 @@ questions:
       text: |
         Savings Plans and Reserved Instances work the same way at heart: a one- or three-year term,
         All, Partial or No Upfront payment, and a bill for the commitment whether you use it or not.
-        Neither can be cancelled, and a Reserved Instance doesn't renew. The difference is what you
+        Neither can be canceled, and a Reserved Instance doesn't renew. The difference is what you
         commit to: dollars per hour, or one instance configuration.
 
   - id: q11-bigger-discount-choices
@@ -1351,7 +1351,7 @@ questions:
           - text: End it early for a refund of the time left
           - text: Cancel the reservation and recover the rest
         explanation:
-          text: Reserved Instances can't be cancelled.
+          text: Reserved Instances can't be canceled.
       - id: sell-marketplace
         text: Sell it on the Reserved Instance Marketplace
         variants:
@@ -1376,7 +1376,7 @@ questions:
     correct_answers: [sell-marketplace]
     explanation:
       text: |
-        Neither kind of Reserved Instance can be cancelled. What each kind lets you do later
+        Neither kind of Reserved Instance can be canceled. What each kind lets you do later
         differs: a Standard Reserved Instance can be sold on the Reserved Instance Marketplace, and a
         Convertible one can be exchanged for different attributes. That ability to sell unused
         Standard reservations is one of the reasons to pick a Reserved Instance over a Savings Plan.
@@ -1951,7 +1951,7 @@ questions:
           - text: A three-year term is billed for all ten
           - text: The ten slots are charged for three years
         explanation:
-          text: One for immediate use needs no commitment and can be cancelled any time. Only one booked for a future date needs a set duration.
+          text: One for immediate use needs no commitment and can be canceled any time. Only one booked for a future date needs a set duration.
     correct_answers: [on-demand-all-ten]
     explanation:
       text: |
@@ -2064,7 +2064,7 @@ questions:
       text: |
         When capacity in one Availability Zone must be there at a set time, the answer is an
         On-Demand Capacity Reservation. One for immediate use needs no commitment and can be
-        cancelled any time; one booked ahead for a future date, as the promoter would book the sale
+        canceled any time; one booked ahead for a future date, as the promoter would book the sale
         dates, needs a commitment for a set duration, not a one- or three-year term. Either way it
         bills at the On-Demand rate whether used or not, and gives no discount by itself.
         Commitments lower the price over years; they're the wrong tool for a few evenings.

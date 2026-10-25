@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="680" height="604" viewBox="0 0 680 604" role="img" aria-labelledby="t d">
 <title id="t">Four records that answer four different audit questions</title>
-<desc id="d">Four cards in a two-by-two grid, each with a highlighted question. AWS CloudTrail. Question: Who did what, when, and from where? Records: Each action taken in the account: who, which action, on what, when, from which address. Bakery example: Who opened SSH on web-sg on Tuesday?. From day one: Event history: on, free, last 90 days per Region. Amazon CloudWatch. Question: How is it running, and what happened inside it? Records: Metrics, logs and alarms from resources and your own code. Bakery example: Why were orders slow at 6 p.m.?. From day one: Basic metrics from AWS services; logs you send are kept until you set a limit. AWS Config. Question: How was it set up, then and now, and is that allowed? Records: Each resource's settings over time, and whether they pass your rules. Bakery example: Was SSH open to the internet on 1 March?. From day one: Off: you turn recording on, and pay per item recorded. IAM access reports. Question: Who can do what, and do they still use it? Records: When each user, role or policy last used each service; who holds which credentials. Bakery example: Which permissions has nobody used in 90 days?. From day one: On and free, in the IAM console.</desc>
+<desc id="d">Four cards in a two-by-two grid, each with a highlighted question. AWS CloudTrail. Question: Who did what, when, and from where? Records: Each action taken in the account: who, which action, on what, when, from which address. Bakery example: Who opened SSH on web-sg on Tuesday?. From day one: Event history: on, free, last 90 days per Region. Amazon CloudWatch. Question: How is it running, and what happened inside it? Records: Metrics, logs and alarms from resources and your own code. Bakery example: Why were orders slow at 6 p.m.?. From day one: Basic metrics from AWS services; logs you send are kept until you set a limit. AWS Config. Question: How was it set up, then and now, and is that allowed? Records: Each resource's settings over time, and whether they pass your rules. Bakery example: Was SSH open to the internet on March 1?. From day one: Off: you turn recording on, and pay per item recorded. IAM access reports. Question: Who can do what, and do they still use it? Records: When each user, role or policy last used each service; who holds which credentials. Bakery example: Which permissions has nobody used in 90 days?. From day one: On and free, in the IAM console.</desc>
 
 <style>
   svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
@@ -75,7 +75,7 @@
 <text class="small" x="30" y="432.0">Each resource's settings over time, and</text>
 <text class="small" x="30" y="448.0">whether they pass your rules</text>
 <text class="key" x="30" y="472">BAKERY EXAMPLE</text>
-<text class="small" x="30" y="488.0">Was SSH open to the internet on 1 March?</text>
+<text class="small" x="30" y="488.0">Was SSH open to the internet on March 1?</text>
 <text class="key" x="30" y="528">FROM DAY ONE</text>
 <text class="small" x="30" y="544.0">Off: you turn recording on, and pay per item</text>
 <text class="small" x="30" y="560.0">recorded</text>

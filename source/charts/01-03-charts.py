@@ -88,7 +88,7 @@ def big_picture():
     w = 680
     body = [
         '<text class="title" x="16" y="28">The same orders, kept two ways</text>',
-        '<text class="sub" x="16" y="48">Question: which orders are for pickup on 24 December?</text>',
+        '<text class="sub" x="16" y="48">Question: which orders are for pickup on December 24?</text>',
     ]
     top, ph = 70, 318
     # Files panel.
@@ -128,7 +128,7 @@ def big_picture():
     body.append(f'<text class="note" x="16" y="{y}">The orders are made up for teaching. cust_id is short for customer_id.</text>')
     svg("01-03-big-picture.svg", w, y + 16,
         "The same orders kept as files and in a database",
-        "Two panels under the question 'which orders are for pickup on 24 December?'. Files: a folder named orders "
+        "Two panels under the question 'which orders are for pickup on December 24?'. Files: a folder named orders "
         "holds three files, order-1041.txt, order-1042.txt and order-1043.txt; your program opens and reads every "
         "file, one, two, three, however few match. Database, highlighted: your program sends one query to the "
         "database engine and gets two rows back. The engine holds a table named orders with columns order_id, cake, "

@@ -36,7 +36,7 @@ Answer these without looking anything up. If you get all four right, and you did
 
 1. Any two: two people save over each other's changes, and one person's work is lost; finding all orders for one day means reading the whole file; nothing stops someone typing a wrong date or a duplicate order; a crash in the middle of saving can leave the file damaged.
 2. A **row** is one record, such as one order. A **column** is one fact that every record has, such as the pickup date.
-3. A **question sent to a database**, such as "which orders are for pickup on 24 December?", which the database answers with the matching records.
+3. A **question sent to a database**, such as "which orders are for pickup on December 24?", which the database answers with the matching records.
 4. **Photos in files:** each is one whole thing, opened and shown as a whole. **Orders in a database:** they are many small records that many people search and change at once.
 
 </details>
@@ -64,11 +64,11 @@ Try these before you read on. Guess if you're unsure; the answers are in the les
 
 ## The big picture: the same orders, kept two ways
 
-![Two panels answering the question "Which orders are for pickup on 24 December?". Files: a folder named orders holds three files, order-1041.txt, order-1042.txt and order-1043.txt; to answer, a program must open and read every file, one by one. Database (highlighted): one table named orders with columns order_id, cake, pickup_date and customer_id, and one row per order; the question goes to the database engine as one query, and the engine returns only the two matching rows.](../../images/01-03-big-picture.svg)
+![Two panels answering the question "Which orders are for pickup on December 24?". Files: a folder named orders holds three files, order-1041.txt, order-1042.txt and order-1043.txt; to answer, a program must open and read every file, one by one. Database (highlighted): one table named orders with columns order_id, cake, pickup_date and customer_id, and one row per order; the question goes to the database engine as one query, and the engine returns only the two matching rows.](../../images/01-03-big-picture.svg)
 
 *Notice who does the searching. With files, your program opens each one. With a database, you ask one question and the database finds the answer.*
 
-**Long description.** Two panels with the same question at the top: "Which orders are for pickup on 24 December?". Left, files: a folder named orders holds three files, order-1041.txt, order-1042.txt and order-1043.txt, each holding one order as text. Arrows show a program opening and reading every file, one after another, to find the matches. Right, highlighted, a database: one table named orders, with the columns order_id, cake, pickup_date and customer_id, and one row for each of the three orders. One arrow carries the question to the database engine as a query; one arrow returns the two rows whose pickup_date is 24 December. The orders are made up.
+**Long description.** Two panels with the same question at the top: "Which orders are for pickup on December 24?". Left, files: a folder named orders holds three files, order-1041.txt, order-1042.txt and order-1043.txt, each holding one order as text. Arrows show a program opening and reading every file, one after another, to find the matches. Right, highlighted, a database: one table named orders, with the columns order_id, cake, pickup_date and customer_id, and one row for each of the three orders. One arrow carries the question to the database engine as a query; one arrow returns the two rows whose pickup_date is December 24. The orders are made up.
 
 ## Key terms (skip if you know them)
 
@@ -100,7 +100,7 @@ Something like `photos/cakes/lemon-cake.jpg`. The `.jpg` ending says it's a phot
 The bakery started with all its orders in one spreadsheet file, `orders.xlsx`, which three staff open and change. That works for a few orders a day and breaks as the shop grows:
 
 - **Changes get lost.** Each person opens their own copy of the file into memory, and whoever saves last replaces the whole file, wiping out everyone else's changes: a **lost update**.
-- **Questions are slow.** To find "all orders for 24 December", a program must read the whole file.
+- **Questions are slow.** To find "all orders for December 24", a program must read the whole file.
 - **Nothing checks the data.** Someone can type "tomorow" in the date column, or give two orders the same number.
 - **A crash can damage the file.** If the power goes off halfway through a save, part of the file may be new and part old.
 
@@ -149,7 +149,7 @@ Most business data lives in **relational databases**, which organize data into *
 
 **Long description.** Two tables side by side. The customers table: columns customer_id (the primary key, highlighted), name and phone; rows: 7, Ana, 555-0107; 8, Ben, 555-0108. The orders table: columns order_id (its primary key), cake, pickup_date and customer_id; rows: 1041, birthday cake, 2026-12-24, 7; 1042, lemon cake, 2026-12-23, 8; 1043, fruit cake, 2026-12-24, 7. Arrows run from the customer_id value 7 in orders 1041 and 1043 to Ana's row in the customers table. The people and numbers are made up.
 
-You ask a relational database questions in **SQL**. This query asks for every order to be picked up on 24 December:
+You ask a relational database questions in **SQL**. This query asks for every order to be picked up on December 24:
 
 ```sql
 SELECT order_id, cake, customer_id

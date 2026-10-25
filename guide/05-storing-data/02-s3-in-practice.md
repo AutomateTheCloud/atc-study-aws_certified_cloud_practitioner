@@ -80,7 +80,7 @@ How it works:
 
 - **Four settings**, which together block public access granted through ACLs and through policies, both new and existing. AWS recommends turning on all four.
 - **Several levels:** the account, each bucket (and S3 access points), and a whole AWS Organizations organization. Where levels differ, S3 applies the **most restrictive** combination. A bucket with its own setting turned off is still protected if the account setting is on.
-- **On by default for new buckets** created since April 28, 2023 ([ACCT.08](https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/acct-08.html)). In our Lab 01 run on 2026-10-24, the new bucket had all of its Block Public Access boxes ticked.
+- **On by default for new buckets** created since 2023-04-28 ([ACCT.08](https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/acct-08.html)). In our Lab 01 run on 2026-10-24, the new bucket had all of its Block Public Access boxes ticked.
 - **Not on by default for the account.** In the new account we created on 2026-10-23, the account-level settings were all off. That's why the primer had you turn them on.
 
 ```mermaid
@@ -110,7 +110,7 @@ S3 rejects the public policy, because the account-level setting blocks it whatev
 
 ## Encryption at rest is automatic; you choose who holds the keys
 
-Since January 5, 2023, S3 encrypts every new object as it's written, at no extra cost and with no change to how you read it ([Default encryption FAQ](https://docs.aws.amazon.com/AmazonS3/latest/userguide/default-encryption-faq.html)). The default is **SSE-S3**, which uses keys S3 manages. You can't turn encryption off for new uploads. Objects uploaded before that date in an old bucket weren't encrypted automatically.
+Since 2023-01-05, S3 encrypts every new object as it's written, at no extra cost and with no change to how you read it ([Default encryption FAQ](https://docs.aws.amazon.com/AmazonS3/latest/userguide/default-encryption-faq.html)). The default is **SSE-S3**, which uses keys S3 manages. You can't turn encryption off for new uploads. Objects uploaded before that date in an old bucket weren't encrypted automatically.
 
 You can choose a different kind ([Protecting data with encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingEncryption.html)):
 

@@ -449,7 +449,7 @@ A florist says, "Our S3 bucket encrypts everything, so it doesn't matter if we s
 
 - **A is wrong.** S3 decrypts automatically for allowed requests, public ones included.
 - **B is wrong.** With SSE-S3, S3 manages the key and uses it for every allowed request.
-- **D is wrong.** S3 has encrypted every new object by default since January 5, 2023.
+- **D is wrong.** S3 has encrypted every new object by default since 2023-01-05.
 
 </details>
 

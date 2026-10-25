@@ -60,7 +60,7 @@ Questions marked "(Select TWO.)" have two right answers; you need both for the p
 
 - A. Which roles may use DynamoDB but haven't tried to in the past year?
 - B. Who deleted the payroll DynamoDB table last week?
-- C. Was the payroll database's storage encrypted on 1 May?
+- C. Was the payroll database's storage encrypted on May 1?
 - D. Which IAM users have a console password but no MFA device?
 - E. How many read requests did the payroll table serve on Friday?
 
@@ -697,7 +697,7 @@ For learners who passed Check A. Each task has no single right answer; compare y
 
 1. **An organization trail** from the management account, covering every account and Region, delivering to an S3 bucket in a separate log account, with **log file integrity validation** on, so the bakery can prove the files weren't changed. Member accounts can't change or delete it.
 2. **An SCP on the root** that denies stopping or deleting trails and stopping the Config recorder, so even a member account's root user can't switch off the evidence.
-3. **AWS Config recording in every account**, with a conformance pack of the rules the auditor cares about (for example `restricted-ssh` and `encrypted-volumes`), so "how was it set on 1 March?" has an answer, starting now.
+3. **AWS Config recording in every account**, with a conformance pack of the rules the auditor cares about (for example `restricted-ssh` and `encrypted-volumes`), so "how was it set on March 1?" has an answer, starting now.
 4. **CloudTrail data events on the few buckets that hold sensitive data**, such as the tax archive, if the auditor will ask who read what; they cost extra, so only where needed.
 5. **Access reports on a schedule:** the credential report and last accessed information in each account, and the Organizations access report from the management account.
 6. **AWS's side from Artifact**, downloaded fresh for each audit.

@@ -3,7 +3,7 @@
 format_version: '0.2'
 id: b247b7a9-9b89-4b04-8cd5-17aed3c38d61
 title: Practice Questions and Flashcards for the AWS Certified Cloud Practitioner Exam (CLF-C02)
-version: 0.3.2
+version: 0.3.3
 language: en
 subject: Cloud computing
 tags:
@@ -5215,7 +5215,7 @@ questions:
     - text: All Regions are enabled in a new account by default.
     - text: A new account can use every Region without enabling any.
     explanation:
-      text: Regions launched after March 20, 2019 are opt-in Regions; they start switched off.
+      text: Regions launched after 2019-03-20 are opt-in Regions; they start switched off.
   - id: stay-put
     text: Resources stay in the Region where you create them.
     variants:
@@ -5698,7 +5698,7 @@ questions:
   - opt-in
   explanation:
     text: |
-      Regions that AWS launched after March 20, 2019 are opt-in Regions: switched off in an account
+      Regions that AWS launched after 2019-03-20 are opt-in Regions: switched off in an account
       until someone enables them, and possibly hidden while off. The guide's advice is to leave
       Regions you don't use switched off, because each one is another place to forget a resource.
   tags:
@@ -8078,7 +8078,7 @@ questions:
     text: |
       An online game uses non-web traffic. The company wants fixed internet addresses for its game
       servers in two Regions, with players' traffic entering AWS's network at the nearest edge and
-      travelling on it to the best healthy Region. Nothing needs caching. Which service fits?
+      traveling on it to the best healthy Region. Nothing needs caching. Which service fits?
   choices:
   - id: cloudfront
     text: Amazon CloudFront
@@ -13174,7 +13174,7 @@ questions:
   correct_answers:
   - sso-identity-center
   explanation:
-    text: AWS renamed AWS Single Sign-On to AWS IAM Identity Center on July 26, 2022. It's the same service,
+    text: AWS renamed AWS Single Sign-On to AWS IAM Identity Center on 2022-07-26. It's the same service,
       so pick Identity Center when a scenario asks for workforce single sign-on. The old name survives
       in some command names, which is one reason it lingers.
   tags:
@@ -32784,10 +32784,10 @@ questions:
       text: '"Who" points to an action, and actions are CloudTrail events. Config would show the subnet
         disappearing, but the person''s name comes from CloudTrail.'
   - id: sg-rules-in-june
-    text: What inbound rules did the database security group have on 3 June?
+    text: What inbound rules did the database security group have on June 3?
     variants:
-    - text: Which inbound rules did the database security group allow on 3 June?
-    - text: How was the database security group's inbound access set on 3 June?
+    - text: Which inbound rules did the database security group allow on June 3?
+    - text: How was the database security group's inbound access set on June 3?
     explanation:
       text: Correct. A resource's settings on a past date come from Config's configuration history, as
         long as recording was on that day.
@@ -43213,7 +43213,7 @@ questions:
     - text: The account reaches twelve months after sign-up
     - text: A full year goes by after the account opens
     explanation:
-      text: Twelve months of free usage was the legacy Free Tier, before 15 July 2025. The Free plan ends
+      text: Twelve months of free usage was the legacy Free Tier, before 2025-07-15. The Free plan ends
         sooner.
   - id: credits-used
     text: The account's credits are used up
@@ -43341,8 +43341,8 @@ questions:
     - text: It remains correct for new accounts, on both plans
     - text: New accounts still get it, whichever plan they pick
     explanation:
-      text: Accounts created since 15 July 2025 get credits and a choice of plan instead of 12 months
-        of free usage.
+      text: Accounts created since 2025-07-15 get credits and a choice of plan instead of 12 months of
+        free usage.
   - id: paid-plan-only
     text: It now applies to accounts on the Paid plan instead
     variants:
@@ -43361,16 +43361,16 @@ questions:
   - id: legacy-program
     text: It describes the legacy Free Tier, before July 2025
     variants:
-    - text: It's the old Free Tier, for accounts before 15 July 2025
+    - text: It's the old Free Tier, for accounts before 2025-07-15
     - text: It describes the program that ended for new accounts in July 2025
     explanation:
-      text: Correct. Accounts created before 15 July 2025 stay on the legacy Free Tier; new accounts get
+      text: Correct. Accounts created before 2025-07-15 stay on the legacy Free Tier; new accounts get
         credits and a plan.
   correct_answers:
   - legacy-program
   explanation:
     text: |
-      Since 15 July 2025, the AWS Free Tier works through credits and a choice of the Free or Paid
+      Since 2025-07-15, the AWS Free Tier works through credits and a choice of the Free or Paid
       plan. "12 months free" was the legacy Free Tier; accounts created before that date stay on
       it, and much older material still describes it. When a question says "12 months free", read
       it as the old program and answer with the current one where you can.
@@ -43730,7 +43730,7 @@ questions:
     - text: Early cancellation brings a refund of the remainder
     - text: They can be ended early for a refund of the rest
     explanation:
-      text: Neither can be cancelled. A Standard Reserved Instance can be sold on the Reserved Instance
+      text: Neither can be canceled. A Standard Reserved Instance can be sold on the Reserved Instance
         Marketplace, and only a small, recent Savings Plan can be returned.
   - id: pay-whether-used
     text: You pay for the commitment whether or not you use it
@@ -43762,7 +43762,7 @@ questions:
     text: |
       Savings Plans and Reserved Instances work the same way at heart: a one- or three-year term,
       All, Partial or No Upfront payment, and a bill for the commitment whether you use it or not.
-      Neither can be cancelled, and a Reserved Instance doesn't renew. The difference is what you
+      Neither can be canceled, and a Reserved Instance doesn't renew. The difference is what you
       commit to: dollars per hour, or one instance configuration.
   tags:
   - module-11
@@ -44241,7 +44241,7 @@ questions:
     - text: End it early for a refund of the time left
     - text: Cancel the reservation and recover the rest
     explanation:
-      text: Reserved Instances can't be cancelled.
+      text: Reserved Instances can't be canceled.
   - id: sell-marketplace
     text: Sell it on the Reserved Instance Marketplace
     variants:
@@ -44269,7 +44269,7 @@ questions:
   - sell-marketplace
   explanation:
     text: |
-      Neither kind of Reserved Instance can be cancelled. What each kind lets you do later
+      Neither kind of Reserved Instance can be canceled. What each kind lets you do later
       differs: a Standard Reserved Instance can be sold on the Reserved Instance Marketplace, and a
       Convertible one can be exchanged for different attributes. That ability to sell unused
       Standard reservations is one of the reasons to pick a Reserved Instance over a Savings Plan.
@@ -44956,7 +44956,7 @@ questions:
     - text: A three-year term is billed for all ten
     - text: The ten slots are charged for three years
     explanation:
-      text: One for immediate use needs no commitment and can be cancelled any time. Only one booked for
+      text: One for immediate use needs no commitment and can be canceled any time. Only one booked for
         a future date needs a set duration.
   correct_answers:
   - on-demand-all-ten
@@ -45091,7 +45091,7 @@ questions:
     text: |
       When capacity in one Availability Zone must be there at a set time, the answer is an
       On-Demand Capacity Reservation. One for immediate use needs no commitment and can be
-      cancelled any time; one booked ahead for a future date, as the promoter would book the sale
+      canceled any time; one booked ahead for a future date, as the promoter would book the sale
       dates, needs a commitment for a set duration, not a one- or three-year term. Either way it
       bills at the On-Demand rate whether used or not, and gives no discount by itself.
       Commitments lower the price over years; they're the wrong tool for a few evenings.
@@ -58990,7 +58990,7 @@ flashcards:
   front:
     text: What is "AWS Single Sign-On" called now, and when did the name change?
   back:
-    text: AWS IAM Identity Center, renamed on July 26, 2022. It's the same service; the old name lingers
+    text: AWS IAM Identity Center, renamed on 2022-07-26. It's the same service; the old name lingers
       in older questions and some command names.
   tags:
   - module-04
@@ -67502,7 +67502,7 @@ flashcards:
   front:
     text: What does **AWS Free Tier** mean?
   back:
-    text: AWS's offer for trying services without paying. Since 15 July 2025, new customers get credits
+    text: AWS's offer for trying services without paying. Since 2025-07-15, new customers get credits
       and choose a Free plan or a Paid plan, with Always Free allowances on both (amounts in the lesson).
   tags:
   - module-11
@@ -67520,7 +67520,7 @@ flashcards:
     text: How is **AWS Free Tier** different from **legacy Free Tier**?
   back:
     text: Today's Free Tier gives credits and a choice of Free or Paid plan; the legacy Free Tier, for
-      accounts created before 15 July 2025, gave 12 months of free usage instead.
+      accounts created before 2025-07-15, gave 12 months of free usage instead.
   tags:
   - module-11
   - clf-11-01
@@ -78402,7 +78402,7 @@ flashcards:
   front:
     text: What does **legacy Free Tier** mean?
   back:
-    text: The Free Tier as it worked before 15 July 2025, when new accounts got 12 months of free usage
+    text: The Free Tier as it worked before 2025-07-15, when new accounts got 12 months of free usage
       on many services. Accounts created before that date stay on it.
   tags:
   - module-11
@@ -80313,7 +80313,7 @@ flashcards:
     text: What does **opt-in Region** mean?
   back:
     text: A Region that starts switched off in an account until someone turns it on, and may be hidden
-      while off. Regions AWS launched after March 20, 2019 work this way.
+      while off. Regions AWS launched after 2019-03-20 work this way.
   tags:
   - module-03
   - clf-03-05
@@ -82185,7 +82185,7 @@ flashcards:
   front:
     text: What does **query** mean?
   back:
-    text: A question sent to a database, such as which orders are for pickup on 24 December, which the
+    text: A question sent to a database, such as which orders are for pickup on December 24, which the
       engine answers with the matching records. SQL is the standard language for relational queries.
   tags:
   - module-01

@@ -1762,14 +1762,14 @@
 
 - term: AWS Free Tier
   definition: >-
-    AWS's offer for trying services without paying. Since 15 July 2025, new customers get credits
+    AWS's offer for trying services without paying. Since 2025-07-15, new customers get credits
     and choose a Free plan or a Paid plan, with Always Free allowances on both (amounts in the
     lesson).
   taught_in: guide/11-paying-for-aws/01-how-aws-charges.md
   confused_with: [legacy Free Tier]
   not_to_confuse: >-
     Today's Free Tier gives credits and a choice of Free or Paid plan; the legacy Free Tier, for
-    accounts created before 15 July 2025, gave 12 months of free usage instead.
+    accounts created before 2025-07-15, gave 12 months of free usage instead.
   module: "11"
 
 - term: AWS Global Accelerator
@@ -5912,12 +5912,12 @@
 
 - term: legacy Free Tier
   definition: >-
-    The Free Tier as it worked before 15 July 2025, when new accounts got 12 months of free usage on
+    The Free Tier as it worked before 2025-07-15, when new accounts got 12 months of free usage on
     many services. Accounts created before that date stay on it.
   taught_in: guide/11-paying-for-aws/01-how-aws-charges.md
   confused_with: [AWS Free Tier]
   not_to_confuse: >-
-    The legacy Free Tier gave 12 months of free usage to accounts created before 15 July 2025;
+    The legacy Free Tier gave 12 months of free usage to accounts created before 2025-07-15;
     today's Free Tier gives credits and a choice of Free or Paid plan.
   module: "11"
 
@@ -6724,7 +6724,7 @@
 - term: opt-in Region
   definition: >-
     A Region that starts switched off in an account until someone turns it on, and may be hidden
-    while off. Regions AWS launched after March 20, 2019 work this way.
+    while off. Regions AWS launched after 2019-03-20 work this way.
   taught_in: guide/03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md
   also_in: [guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md]
   module: "03"
@@ -7499,7 +7499,7 @@
 
 - term: query
   definition: >-
-    A question sent to a database, such as which orders are for pickup on 24 December, which the
+    A question sent to a database, such as which orders are for pickup on December 24, which the
     engine answers with the matching records. SQL is the standard language for relational queries.
   taught_in: guide/01-on-ramp/03-files-vs-databases.md
   confused_with: [query (DynamoDB)]

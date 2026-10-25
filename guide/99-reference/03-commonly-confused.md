@@ -977,8 +977,8 @@ The exam's wrong answers are often a near neighbor of the right one. These 267 g
   - AWS Cost Anomaly Detection: Anomaly detection compares spending with what is normal for you, so it catches a small new cost early; a budget compares it with a limit you chose, so it catches slow growth.
   - Taught in: [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md)
 - **[AWS Free Tier](01-glossary.md#a)** · **[legacy Free Tier](01-glossary.md#l)**
-  - AWS Free Tier: Today's Free Tier gives credits and a choice of Free or Paid plan; the legacy Free Tier, for accounts created before 15 July 2025, gave 12 months of free usage instead.
-  - legacy Free Tier: The legacy Free Tier gave 12 months of free usage to accounts created before 15 July 2025; today's Free Tier gives credits and a choice of Free or Paid plan.
+  - AWS Free Tier: Today's Free Tier gives credits and a choice of Free or Paid plan; the legacy Free Tier, for accounts created before 2025-07-15, gave 12 months of free usage instead.
+  - legacy Free Tier: The legacy Free Tier gave 12 months of free usage to accounts created before 2025-07-15; today's Free Tier gives credits and a choice of Free or Paid plan.
   - Taught in: [How AWS charges](../11-paying-for-aws/01-how-aws-charges.md)
 - **[AWS-generated tag](01-glossary.md#a)** · **[user-defined tag](01-glossary.md#u)**
   - AWS-generated tag: AWS-generated tags are applied by AWS, show the aws: prefix and cover only resources created after activation; user-defined tags are applied by you and show the user: prefix.

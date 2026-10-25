@@ -182,7 +182,7 @@ On-Demand and Reserved prices: AWS Price List, US East (N. Virginia), as of 2026
     **You should see:** the same estimate, with all its lines.
     > **If something went wrong:** an older version of the estimate means you changed something after sharing. The calculator never updates a saved link; choose **Share** again for a new one ([Sharing your estimate](https://docs.aws.amazon.com/pricing-calculator/latest/userguide/save-share-estimate.html)).
 
-Estimate links made since 31 May 2023 stay valid for one year (checked 2026-10-24). The page also offers exports, such as CSV and PDF; AWS's guide says a PDF export holds a copy of the link.
+Estimate links made since 2023-05-31 stay valid for one year (checked 2026-10-24). The page also offers exports, such as CSV and PDF; AWS's guide says a PDF export holds a copy of the link.
 
 ## Check your work
 

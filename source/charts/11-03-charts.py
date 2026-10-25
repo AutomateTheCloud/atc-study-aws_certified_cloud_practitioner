@@ -12,7 +12,7 @@ Facts and figures:
   expects once December's customers leave. The forgotten instance uses a US East (N. Virginia)
   price from the AWS Price List offer file retrieved 2026-10-24 (research repo,
   sources/raw/pricing/compute-networking-us-east-1-summary.tsv): one r7g.large, Linux, On-Demand,
-  $0.1071 an hour, from 11 January (21 days, $53.98). January total $165.98.
+  $0.1071 an hour, from January 11 (21 days, $53.98). January total $165.98.
 - Budgets: alerts on actual and forecasted cost; data updated up to three times a day, typically
   8-12 hours apart ("Managing your costs with AWS Budgets", AWS Cost Management User Guide, checked
   2026-10-24). The day the forecast alert fires is illustrative.
@@ -32,7 +32,7 @@ from chartkit import line_key, make_style, svg, swatch, text_lines, top_rounded,
 
 BASE_DAY = 112 / 31  # made up: about what lesson 11.01 expects January to cost
 TEST_DAY = 24 * 0.1071  # one r7g.large, Linux, On-Demand
-START, ANOMALY = 11, 12  # the instance starts on 11 January; the anomaly alert day is illustrative
+START, ANOMALY = 11, 12  # the instance starts on January 11; the anomaly alert day is illustrative
 
 STYLE = make_style(
     light_extra=" --base:#a8a69d; --cell:#fcfcfb; --hit:#fbe1d6; --band:#d9e8fb; --band2:#eeeeea;",
@@ -58,7 +58,7 @@ def january_daily():
     days = list(range(1, 32))
     w, h, left, top, pw, ph, ymax = 680, 432, 56, 112, 520, 220, 8
     body = ['<text class="title" x="16" y="28">January in Cost Explorer: daily cost, grouped</text>',
-            '<text class="sub" x="16" y="48">The rest of the bill is flat; one new line starts on 11 January (base made up)</text>']
+            '<text class="sub" x="16" y="48">The rest of the bill is flat; one new line starts on January 11 (base made up)</text>']
     swatch(body, 16, 76, "base", "Everything else, about $3.61 a day")
     swatch(body, 290, 76, "s2", "EC2 instances: one r7g.large, $2.57 a day")
     for v in range(0, ymax + 1, 2):
@@ -84,16 +84,16 @@ def january_daily():
     xa = left + band * (ANOMALY - 1) + band / 2
     ya = top + ph - ph * (BASE_DAY + TEST_DAY) / ymax
     body.append(f'<line class="lead" x1="{xa:.1f}" x2="{xa:.1f}" y1="{ya - 6:.1f}" y2="{top + 4}"/>')
-    body.append(f'<text class="ctb" x="{xa + 6:.1f}" y="{top + 14}">Anomaly alert, about 12 January</text>')
+    body.append(f'<text class="ctb" x="{xa + 6:.1f}" y="{top + 14}">Anomaly alert, about January 12</text>')
     text_lines(body, 16, top + ph + 62, [
         "The base is about what lesson 11.01 expected for January ($112 for the month), made up for teaching.",
         "r7g.large, Linux, On-Demand, US East (N. Virginia): $0.1071 an hour as of 2026-10-24. The alert day is illustrative."],
         cls="note", dy=15)
     svg("11-03-january-daily.svg", w, h,
-        "January's daily cost: a flat base, then a new r7g.large instance from 11 January",
+        "January's daily cost: a flat base, then a new r7g.large instance from January 11",
         "Stacked column chart of 31 days of January. Every day has about $3.61 of 'everything else', made up to "
-        "match the $112 lesson 11.01 expected for the month. From 11 January each column adds $2.57 for one r7g.large "
-        "instance, at $0.1071 an hour in US East (N. Virginia) as of 2026-10-24. A marker on about 12 January "
+        "match the $112 lesson 11.01 expected for the month. From January 11 each column adds $2.57 for one r7g.large "
+        "instance, at $0.1071 an hour in US East (N. Virginia) as of 2026-10-24. A marker on about January 12 "
         "(illustrative) shows when Cost Anomaly Detection would alert.",
         body, style=STYLE)
 
@@ -152,11 +152,11 @@ def budget_month():
         "No alert stops the instance: the line keeps rising to $165.98 until someone terminates it."], cls="note", dy=15)
     svg("11-03-budget-month.svg", w, h,
         "January's month-to-date cost rising past a $150 budget, with three alert points and no stop",
-        "Line chart of month-to-date cost for the 31 days of January: about $3.61 a day until 10 January, then about "
-        "$6.18 a day once a forgotten r7g.large starts on 11 January, ending at $165.98. A solid line marks the $150 "
-        "budget and a dashed line the 85% alert at $127.50. Point A, about 13 January: the forecast passes $150 and a "
-        "forecasted-cost alert is sent (the day is illustrative). Point B, 25 January: actual cost passes $127.50. "
-        "Point C, 29 January: actual cost passes $150. The line keeps rising after every alert, because budget alerts "
+        "Line chart of month-to-date cost for the 31 days of January: about $3.61 a day until January 10, then about "
+        "$6.18 a day once a forgotten r7g.large starts on January 11, ending at $165.98. A solid line marks the $150 "
+        "budget and a dashed line the 85% alert at $127.50. Point A, about January 13: the forecast passes $150 and a "
+        "forecasted-cost alert is sent (the day is illustrative). Point B, January 25: actual cost passes $127.50. "
+        "Point C, January 29: actual cost passes $150. The line keeps rising after every alert, because budget alerts "
         "only send email.",
         body, style=STYLE)
 

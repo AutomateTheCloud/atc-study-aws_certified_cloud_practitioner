@@ -35,7 +35,7 @@ sources:
 3. Optional, once: make N. Virginia your **default Region**, the one the console opens in. Choose the gear icon in the top bar, then **See all user settings**. Next to **Localization and default Region**, choose **Edit**, set **Default Region** to US East (N. Virginia), and choose **Save settings** ([Setting the default Region](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/change-default-region.html), checked 2026-10-24). With no default set, the console reopens in the last Region you visited.
    **You should see:** the new default listed on the settings page.
 
-**Don't** enable an opt-in Region while you're in the list. Regions launched after March 20, 2019 start switched off, and a Region you never look at is one more place to forget a resource ([Enable or disable AWS Regions](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html), checked 2026-10-23).
+**Don't** enable an opt-in Region while you're in the list. Regions launched after 2019-03-20 start switched off, and a Region you never look at is one more place to forget a resource ([Enable or disable AWS Regions](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html), checked 2026-10-23).
 
 ## Check it worked
 

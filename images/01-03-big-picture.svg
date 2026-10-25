@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="680" height="428" viewBox="0 0 680 428" role="img" aria-labelledby="t d">
 <title id="t">The same orders kept as files and in a database</title>
-<desc id="d">Two panels under the question 'which orders are for pickup on 24 December?'. Files: a folder named orders holds three files, order-1041.txt, order-1042.txt and order-1043.txt; your program opens and reads every file, one, two, three, however few match. Database, highlighted: your program sends one query to the database engine and gets two rows back. The engine holds a table named orders with columns order_id, cake, pickup_date and customer_id: 1041, birthday cake, 2026-12-24, 7; 1042, lemon cake, 2026-12-23, 8; 1043, fruit cake, 2026-12-24, 7. Rows 1041 and 1043 are marked as matches.</desc>
+<desc id="d">Two panels under the question 'which orders are for pickup on December 24?'. Files: a folder named orders holds three files, order-1041.txt, order-1042.txt and order-1043.txt; your program opens and reads every file, one, two, three, however few match. Database, highlighted: your program sends one query to the database engine and gets two rows back. The engine holds a table named orders with columns order_id, cake, pickup_date and customer_id: 1041, birthday cake, 2026-12-24, 7; 1042, lemon cake, 2026-12-23, 8; 1043, fruit cake, 2026-12-24, 7. Rows 1041 and 1043 are marked as matches.</desc>
 
 <style>
   svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
@@ -41,7 +41,7 @@
 </style>
 <rect width="680" height="428" fill="var(--surface)" style="fill:var(--surface)"/>
 <text class="title" x="16" y="28">The same orders, kept two ways</text>
-<text class="sub" x="16" y="48">Question: which orders are for pickup on 24 December?</text>
+<text class="sub" x="16" y="48">Question: which orders are for pickup on December 24?</text>
 <rect class="frame" x="16.0" y="70.0" width="230.0" height="318.0" rx="10"/>
 <text class="head" x="30" y="94">Files</text>
 <path class="n" d="M30,114 L86,114 L94,122 L232,122 L232,266 L30,266 Z"/>

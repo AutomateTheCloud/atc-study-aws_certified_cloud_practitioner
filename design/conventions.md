@@ -90,6 +90,9 @@ in `source/sims/`.
 - Name the misconceptions in the course plan section 7 for the module, and refute them; teach the
   confused pairs side by side.
 - Everything the research marks unverified stays labeled for the learner, or is left out.
+- US English spelling ("canceled", "traveling", "labeled").
+- Dates: a full date is written `2025-07-15`; a date without a year, as in the bakery's examples,
+  is written "March 1" (month first). Text quoted from AWS keeps AWS's own format.
 
 ## Links to standards
 

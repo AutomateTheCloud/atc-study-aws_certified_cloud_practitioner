@@ -831,10 +831,10 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [A defense map](../09-protecting-and-governing/06-a-defense-map.md)
 - Don't confuse with: AWS WAF, AWS Shield. Firewall Manager writes no rules of its own; it copies WAF, Shield Advanced and security group policies to every account, while WAF and Shield do the protecting.
 
-**AWS Free Tier**: AWS's offer for trying services without paying. Since 15 July 2025, new customers get credits and choose a Free plan or a Paid plan, with Always Free allowances on both (amounts in the lesson).
+**AWS Free Tier**: AWS's offer for trying services without paying. Since 2025-07-15, new customers get credits and choose a Free plan or a Paid plan, with Always Free allowances on both (amounts in the lesson).
 
 - Taught in: [How AWS charges](../11-paying-for-aws/01-how-aws-charges.md)
-- Don't confuse with: legacy Free Tier. Today's Free Tier gives credits and a choice of Free or Paid plan; the legacy Free Tier, for accounts created before 15 July 2025, gave 12 months of free usage instead.
+- Don't confuse with: legacy Free Tier. Today's Free Tier gives credits and a choice of Free or Paid plan; the legacy Free Tier, for accounts created before 2025-07-15, gave 12 months of free usage instead.
 
 **AWS Global Accelerator**: A service whose fixed anycast IP addresses bring users' traffic onto AWS's network at the nearest edge, then to the best healthy Regional endpoint. It caches nothing, handles any TCP or UDP traffic, and switches Regions without DNS delays.
 
@@ -2927,10 +2927,10 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [IaC and automation](../08-building-and-operating/02-iac-and-automation.md)
 - Don't confuse with: template (CloudFormation). A launch template describes one EC2 instance, so Auto Scaling can launch identical copies; a CloudFormation template describes a whole set of resources and can contain a launch template.
 
-**legacy Free Tier**: The Free Tier as it worked before 15 July 2025, when new accounts got 12 months of free usage on many services. Accounts created before that date stay on it.
+**legacy Free Tier**: The Free Tier as it worked before 2025-07-15, when new accounts got 12 months of free usage on many services. Accounts created before that date stay on it.
 
 - Taught in: [How AWS charges](../11-paying-for-aws/01-how-aws-charges.md)
-- Don't confuse with: AWS Free Tier. The legacy Free Tier gave 12 months of free usage to accounts created before 15 July 2025; today's Free Tier gives credits and a choice of Free or Paid plan.
+- Don't confuse with: AWS Free Tier. The legacy Free Tier gave 12 months of free usage to accounts created before 2025-07-15; today's Free Tier gives credits and a choice of Free or Paid plan.
 
 **lens**: An extra set of review questions in the Well-Architected Tool for a particular kind of workload or industry.
 
@@ -3344,7 +3344,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
 - Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 
-**opt-in Region**: A Region that starts switched off in an account until someone turns it on, and may be hidden while off. Regions AWS launched after March 20, 2019 work this way.
+**opt-in Region**: A Region that starts switched off in an account until someone turns it on, and may be hidden while off. Regions AWS launched after 2019-03-20 work this way.
 
 - Taught in: [Lab 02: See Regions, Availability Zones and AWS Health in your own account](../03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md)
 - Also in: [Regions, Availability Zones and data centers](../03-aws-around-the-world/01-regions-availability-zones-data-centers.md)
@@ -3758,7 +3758,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 ## Q
 
-**query**: A question sent to a database, such as which orders are for pickup on 24 December, which the engine answers with the matching records. SQL is the standard language for relational queries.
+**query**: A question sent to a database, such as which orders are for pickup on December 24, which the engine answers with the matching records. SQL is the standard language for relational queries.
 
 - Taught in: [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
 - Don't confuse with: query (DynamoDB). A query is any question sent to a database; a DynamoDB query is one particular read that finds the items sharing one partition key.

@@ -98,7 +98,7 @@ CloudTrail records each action in your account as an **event**. Event history sh
    **You should see:** an event from the day you did Lab 09, with your IAM user name under **User name**. **Resource name** shows the VPC's ID, starting `vpc-`. In our run the event appeared about a minute and a half after the VPC was deleted.
    > **If something went wrong:** no event means Lab 09 was more than 90 days ago, or you did it in another Region. Write that down: "no evidence inside Event history's window" is a real audit finding, and the fix is a trail, which keeps events in an S3 bucket for as long as you keep the files.
 
-   ![CloudTrail Event history filtered on Event name DeleteVpc: one event at 10:45:25 on October 25, 2026, user name atc-admin, event source ec2.amazonaws.com, resource type AWS::EC2::VPC and the VPC's ID as resource name.](../../images/09-07-deletevpc-lookup.png)
+   ![CloudTrail Event history filtered on Event name DeleteVpc: one event at 10:45:25 on 2026-10-25, user name atc-admin, event source ec2.amazonaws.com, resource type AWS::EC2::VPC and the VPC's ID as resource name.](../../images/09-07-deletevpc-lookup.png)
 
    *Screenshot: the `DeleteVpc` lookup, with the VPC's ID under **Resource name**, captured 2026-10-25 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
 
@@ -200,7 +200,7 @@ Limits, per AWS: activity can take four hours to appear, attempts count as well 
 
 You answered four questions from your own records and one from AWS's, which is the shared responsibility model in audit form. Every source had a limit: a 90-day window, a four-hour delay, new objects only, AWS's side only. Saying the limit is part of a good answer.
 
-> **Reflect:** the auditor asks, "Was port 22 open on the web server's security group on 1 March?" Which source in this lab could answer that, and which couldn't? Write two sentences.
+> **Reflect:** the auditor asks, "Was port 22 open on the web server's security group on March 1?" Which source in this lab could answer that, and which couldn't? Write two sentences.
 >
 > <details><summary>Model answer</summary>
 >
