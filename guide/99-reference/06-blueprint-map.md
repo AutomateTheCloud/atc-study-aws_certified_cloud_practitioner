@@ -31,7 +31,7 @@ The [CLF-C02 exam guide](https://docs.aws.amazon.com/aws-certification/latest/cl
 | [1.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.4) | Cloud economics | 15 | 6 | 5 |
 | [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1) | Shared responsibility | 33 | 22 | 5 |
 | [2.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.2) | Security, governance and compliance concepts | 19 | 11 | 5 |
-| [2.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.3) | Access management | 12 | 5 | 5 |
+| [2.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.3) | Access management | 14 | 5 | 6 |
 | [2.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.4) | Security components and resources | 12 | 7 | 3 |
 | [3.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.1) | Deploying and operating | 8 | 4 | 2 |
 | [3.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.2) | Global infrastructure | 10 | 5 | 3 |
@@ -42,7 +42,7 @@ The [CLF-C02 exam guide](https://docs.aws.amazon.com/aws-certification/latest/cl
 | [3.7](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.7) | AI/ML and analytics | 6 | 2 | 3 |
 | [3.8](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.8) | Other service categories | 12 | 5 | 4 |
 | [4.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.1) | Pricing models | 18 | 9 | 5 |
-| [4.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.2) | Billing, budgets and cost management | 11 | 4 | 5 |
+| [4.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.2) | Billing, budgets and cost management | 12 | 4 | 6 |
 | [4.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.3) | Technical resources and Support | 10 | 5 | 3 |
 
 ## Domain 1: Cloud Concepts (24%)
@@ -114,7 +114,7 @@ Task [1.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practition
 
 ## Domain 2: Security and Compliance (30%)
 
-[Domain 2 in the exam guide](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html). 58 pages cover its 4 tasks.
+[Domain 2 in the exam guide](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html). 59 pages cover its 4 tasks.
 
 ### Task 2.1: Shared responsibility
 
@@ -180,7 +180,7 @@ Task [2.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practition
 
 ### Task 2.3: Access management
 
-Task [2.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.3) in the exam guide. 12 pages:
+Task [2.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.3) in the exam guide. 14 pages:
 
 - [Module 04: Who secures what: shared responsibility and access](../04-shared-responsibility-and-access/00-brief.md) · Module brief
 - [Identities](../04-shared-responsibility-and-access/03-identities.md) · Lesson
@@ -193,6 +193,8 @@ Task [2.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practition
 - [Module 09: Protecting, governing and proving compliance](../09-protecting-and-governing/00-brief.md) · Module brief
 - [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md) · Lesson
 - [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md) · Simulation
+- [Module 14: Capstone: a Well-Architected review](../14-capstone/00-brief.md) · Module brief
+- [Lab 18: Record the bakery's review in the AWS Well-Architected Tool](../14-capstone/02-lab-18-well-architected-tool-review.md) · Lab
 - [Lab 19: Close out the account you used for the course](../14-capstone/03-lab-19-close-out.md) · Lab
 
 ### Task 2.4: Security components and resources
@@ -330,7 +332,7 @@ Task [3.8](https://docs.aws.amazon.com/aws-certification/latest/cloud-practition
 
 ## Domain 4: Billing, Pricing, and Support (12%)
 
-[Domain 4 in the exam guide](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html). 31 pages cover its 3 tasks.
+[Domain 4 in the exam guide](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html). 32 pages cover its 3 tasks.
 
 ### Task 4.1: Pricing models
 
@@ -357,7 +359,7 @@ Task [4.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practition
 
 ### Task 4.2: Billing, budgets and cost management
 
-Task [4.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.2) in the exam guide. 11 pages:
+Task [4.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.2) in the exam guide. 12 pages:
 
 - [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md) · Simulation
 - [Module 11: Paying for AWS](../11-paying-for-aws/00-brief.md) · Module brief
@@ -369,6 +371,7 @@ Task [4.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practition
 - [Simulation S14: Follow a runaway cost and see which guardrails alert and which stop it](../11-paying-for-aws/08-sim-guardrail-timeline.md) · Simulation
 - [Module 14: Capstone: a Well-Architected review](../14-capstone/00-brief.md) · Module brief
 - [The capstone review](../14-capstone/01-the-capstone-review.md) · Lesson
+- [Lab 18: Record the bakery's review in the AWS Well-Architected Tool](../14-capstone/02-lab-18-well-architected-tool-review.md) · Lab
 - [Lab 19: Close out the account you used for the course](../14-capstone/03-lab-19-close-out.md) · Lab
 
 ### Task 4.3: Technical resources and Support
@@ -400,6 +403,7 @@ These pages prepare you or go beyond the blueprint, so their front matter lists 
 - [Files vs databases](../01-on-ramp/03-files-vs-databases.md) · Lesson
 - [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md) · Lesson
 - [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md) · Lesson
+- [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md) · Lesson
 
 ---
 
