@@ -270,7 +270,7 @@ flowchart LR
 | Could someone repeat it exactly? | Only from your notes | Yes, if you saved the commands as a script | Yes: run the same file with a new name |
 | How do you delete everything? | Find each item and delete it | Write the delete commands yourself | Delete the stack; CloudFormation removes what it made |
 
-The console suits a one-time look or a quick experiment. The CLI suits a repeated task you script. A template suits anything that must exist more than once, or be rebuilt the same way later.
+Use the console for a one-time look or a quick experiment, and the CLI for a repeated task you script. A template suits anything that must exist more than once, or be rebuilt the same way later.
 
 </details>
 
