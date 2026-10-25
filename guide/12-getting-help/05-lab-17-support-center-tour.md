@@ -101,7 +101,7 @@ flowchart LR
 
    ![The Manage Support Plan page with a yellow banner: Only Basic Support is available to accounts on the AWS Free Tier plan. To upgrade your support, first upgrade to a Paid plan. Below it four plans: Basic Support, the current plan; Business Support+ from $29 a month per account; Enterprise Support from $5,000 a month; Unified Operations from $50,000 a month.](../../images/12-05-support-plans-free-plan.png)
 
-   *Screenshot: the Support Plans page on a Free plan account. Read it; don't choose any of its buttons, captured 2026-10-25 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+   *Screenshot: the Support Plans page on a Free plan account, captured 2026-10-25 in our test account. Read it, but don't choose any of its buttons. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
 
 4. Choose **Pricing calculator** at the top of the page. Keep the **Business Support+** tab, enter `1200` in **Estimated Monthly AWS charges (USD)** and choose **Calculate**: `1200` is the bakery's grown monthly AWS bill in this module (made up). The calculator only shows an estimate; it changes nothing. Write the estimate in your lab log. If there is no calculator, work it out by hand from the dated prices in [12.01](01-support-plans.md).
    **You should see:** about **$108 a month**: the greater of $29 or 9% of a bill under $10,000 (as of 2026-10-24, [AWS Support pricing](https://aws.amazon.com/premiumsupport/pricing/)).
@@ -119,7 +119,7 @@ A **support case** is a request you open with AWS Support and follow in Support 
 
    *Screenshot: choosing **Technical** on Basic, and the trial offer you leave alone, captured 2026-10-25 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
 
-7. Stop here. Choose **Discard draft**, **Cancel** or simply leave the page; don't submit.
+7. Stop here. Choose **Discard draft**, **Cancel** or just leave the page; don't submit.
    > **If something went wrong:** if you submitted a case by mistake, open it in Support Center and reply that it was opened in error and can be closed. An account and billing case costs nothing.
 
 A genuine account or billing question belongs here, free. Never open a case just to practice: real people answer them.

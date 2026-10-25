@@ -41,7 +41,7 @@ Answer from memory before you look anything up.
 
 <details><summary>Feedback</summary>
 
-1. **No.** A budget alerts you; on its own it stops nothing. Only budget actions you set up yourself take any action. A Support plan is the same kind of thing: it gets you help, it doesn't run your systems for you.
+1. **No.** A budget alerts you; on its own it stops nothing. Only budget actions you set up yourself take any action. A Support plan works the same way: it gets you help but doesn't run your systems for you.
 2. **AWS Shield Advanced, and a qualifying Support plan.** AWS's page names the Business Support or Enterprise Support plan (checked 2026-10-24). This lesson shows why "Business" in that sentence is out of date: AWS's page doesn't yet say whether Business Support+ qualifies, so check the page before you rely on it.
 3. **No.** Changing the Support plan needs IAM permissions, not the root user. It isn't on AWS's list of root-only tasks, although much older material says it is.
 
