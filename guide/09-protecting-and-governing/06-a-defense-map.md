@@ -79,7 +79,7 @@ Try these before you read on. Guess if you're unsure; the answers are in the les
 
 ## Each layer stops different attacks
 
-Here is the map as a table: what each layer protects, what you put there, and where this guide teaches it.
+As a table, the map shows what each layer protects, what you put there, and where this guide teaches it.
 
 | Layer | Protects against | Prevent with | Detect with | Lesson |
 |---|---|---|---|---|
@@ -155,7 +155,7 @@ It's true that AWS applies Shield Standard to every customer automatically, agai
 
 ## Worked example: the bakery's plan after a competitor's attack
 
-A competitor's site was knocked offline this week by a flood of requests. The owner asks for a layered plan she can afford and explain. Here is how an experienced engineer works, threat first, cost always in view.
+A competitor's site was knocked offline this week by a flood of requests. The owner asks for a layered plan she can afford and explain. An experienced engineer works threat first, with cost always in view.
 
 ```mermaid
 flowchart LR

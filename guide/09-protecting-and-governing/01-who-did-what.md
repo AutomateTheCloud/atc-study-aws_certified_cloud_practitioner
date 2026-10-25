@@ -112,7 +112,7 @@ No: Event history keeps only the last 90 days, and with no trail, nothing older 
 
 ## CloudWatch shows how things are running, not who changed them
 
-**Amazon CloudWatch** collects **metrics** (numbers over time, such as CPU use or order errors), **logs** (lines written by services and by your code) and **alarms** that act when a metric crosses a threshold. Module 08 introduced it; here is what matters for evidence:
+**Amazon CloudWatch** collects **metrics** (numbers over time, such as CPU use or order errors), **logs** (lines written by services and by your code) and **alarms** that act when a metric crosses a threshold. Module 08 introduced it. For evidence, three things matter:
 
 - **Logs land in log groups** and, by default, are kept indefinitely until you set a retention period ([Working with log groups](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html), checked 2026-10-24). In Lab 07 you set one week for your Lambda function's logs, so they wouldn't pile up.
 - **Lambda functions log to CloudWatch on their own.** An EC2 server's operating system and application logs reach CloudWatch only if you install the CloudWatch agent to send them.
@@ -146,7 +146,7 @@ CloudWatch can show *that* the web server was overloaded at 6 p.m.; it can't sho
 - **Conformance packs** bundle many rules into one unit you deploy and report on together, also across an organization.
 - **History is kept for 7 years by default** (2,557 days); you can set anything from 30 days up ([Deleting AWS Config data](https://docs.aws.amazon.com/config/latest/developerguide/delete-config-data-with-retention-period.html)).
 
-Here is one change, as the three services see it:
+The figure follows one change through all three services:
 
 ![One security group change at 14:02 seen three ways: CloudTrail names the user, time and address; Config shows web-sg's settings before and after and the restricted-ssh rule turning noncompliant; CloudWatch shows failed SSH sign-ins rising afterward.](../../images/09-01-one-change-three-views.svg)
 
@@ -252,7 +252,7 @@ From the CloudTrail, CloudWatch Logs, AWS Config and IAM user guides, checked 20
 
 ## Worked example: three of the auditor's questions
 
-Here are three of the auditor's questions in the bakery's terms: the first and third come from the brief, and the second is the follow-up she asks after seeing the first answer. An expert sorts each one before touching the console.
+Take three of the auditor's questions in the bakery's terms. The first and third come from the brief; the second is her follow-up after seeing the first answer. An expert sorts each one before touching the console.
 
 | Question | Kind of question | Record | What you show |
 |---|---|---|---|

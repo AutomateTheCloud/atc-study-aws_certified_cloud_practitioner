@@ -103,7 +103,7 @@ In this simulation the bakery turned on Config in `us-east-1` months ago, record
 
 <details><summary>Model answer</summary>
 
-No. Config records and evaluates; on its own it changes nothing. You can attach a remediation action to a rule to fix a noncompliant resource automatically or after approval ([What is AWS Config?](https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html)), which would have closed the port within minutes. To *prevent* the change, `sam-dev`'s IAM permissions shouldn't allow editing production security groups at all; across many accounts, a service control policy can cap that, as in [Simulation S11](10-sim-organizations-and-scps.md). Detect, fix, prevent: three different tools.
+No. Config records and evaluates; on its own it changes nothing. You can attach a remediation action to a rule to fix a noncompliant resource automatically or after approval ([What is AWS Config?](https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html)), which would have closed the port within minutes. To *prevent* the change, `sam-dev`'s IAM permissions shouldn't allow editing production security groups at all; across many accounts, a service control policy can cap that, as in [Simulation S11](10-sim-organizations-and-scps.md). Detecting, fixing and preventing take three different tools.
 
 </details>
 

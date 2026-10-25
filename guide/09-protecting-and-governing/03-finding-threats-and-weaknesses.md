@@ -86,7 +86,7 @@ Ask two questions about any finding: *when* in an attack does it matter, and *wh
 
 **Amazon GuardDuty** is a threat detection service. It reads activity in your account continuously and compares it with threat intelligence (lists of known malicious addresses and domains) and with machine-learning models of normal behavior. When something looks malicious or suspicious, it raises a finding ([What is Amazon GuardDuty?](https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html), checked 2026-10-24).
 
-Three sources are its foundation, and it reads them as soon as you turn it on, with nothing else to set up:
+It starts from three sources, and it reads them as soon as you turn it on, with nothing else to set up:
 
 - **CloudTrail management events:** who called which AWS API, from where (lesson 09.01).
 - **VPC Flow Logs** from EC2 instances: which addresses talked to which, on which ports (lesson 07.02).
@@ -226,7 +226,7 @@ A product from Marketplace is still yours to configure and run; buying it moves 
 
 ## Match a finding to its service by asking what it looked at
 
-Here is the whole family side by side, with Amazon Macie from lesson 09.02:
+The table puts the whole family side by side, with Amazon Macie from lesson 09.02:
 
 | Service | Looks at | Reports | Exam clue |
 |---|---|---|---|
@@ -259,7 +259,7 @@ flowchart TD
 
 ## Worked example: "If someone were in our systems right now, how would we know?"
 
-The competitor's DDoS attack is in the news, and the owner asks what auditors ask in some form: how would the bakery know about an attack, and how does it find weaknesses before attackers do? Today the honest answer is "we wouldn't". Here is how an expert builds a better one.
+The competitor's DDoS attack is in the news, and the owner asks what auditors ask in some form: how would the bakery know about an attack, and how does it find weaknesses before attackers do? Today the honest answer is "we wouldn't". An expert builds a better one step by step.
 
 1. **Split the question.** "Someone is in our systems" is a threat, so it needs activity monitoring. "Weaknesses" are vulnerabilities and bad settings, so they need scanning and checks. Two needs, so at least two services.
 2. **Threats: GuardDuty.** It reads CloudTrail, flow logs and DNS logs with nothing else to set up, so it covers the web servers, the role they use and the account itself from day one. Turn it on in US East (N. Virginia), where the bakery runs, and in any other Region the bakery uses.

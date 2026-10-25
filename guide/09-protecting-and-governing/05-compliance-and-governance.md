@@ -146,7 +146,7 @@ flowchart TD
 
 ## Your remaining duty: what no AWS document does for you
 
-Here is the objective's first half in one list. After the bakery has downloaded AWS's reports, these jobs are still the bakery's:
+This list is the objective's first half. After the bakery has downloaded AWS's reports, these jobs are still the bakery's:
 
 1. **Know which rules apply,** from its industry, countries and contracts.
 2. **Classify its data and choose where it lives:** lesson 03.02's German orders stay in the EU.

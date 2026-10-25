@@ -29,7 +29,7 @@ sources:
 
 # Encryption protects data at rest and in transit; the decision that matters is who holds the key
 
-On AWS, turning encryption on is usually one setting, and many services now do it for you. The real decisions are which data needs which protection, and who controls the key: AWS, you through AWS Key Management Service (AWS KMS), or you on hardware nobody else uses, with AWS CloudHSM. By the end of this lesson you can choose an encryption and key approach for a piece of data, and explain the choice to an auditor.
+On AWS, turning encryption on is usually one setting, and many services now do it for you. The harder choices are which data needs which protection, and who controls the key: AWS, you through AWS Key Management Service (AWS KMS), or you on hardware nobody else uses, with AWS CloudHSM. By the end of this lesson you can choose an encryption and key approach for a piece of data, and explain the choice to an auditor.
 
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 35 minutes. Reading works on a phone.
 
@@ -158,7 +158,7 @@ A customer managed key gives you three things an auditor values:
 - **A record of every use.** Each call to KMS with the key appears in CloudTrail: who, when, and for which resource. One catch for S3: with an **S3 Bucket Key** turned on, S3 calls KMS far less often and the record names the bucket, not each file; to see who read each file, you also need S3 data events in CloudTrail ([Reducing the cost of SSE-KMS with Amazon S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html), checked 2026-10-24).
 - **Control of the key's life.** You can turn on automatic rotation, which makes new key material every 365 days by default while keeping the old material to decrypt older data, so nothing has to be re-encrypted ([Rotate AWS KMS keys](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)).
 
-With control comes a duty. **Deleting a KMS key makes everything encrypted under it unreadable, forever.** KMS forces a waiting period of 7 to 30 days (30 by default) before it deletes a key, and AWS suggests disabling a key instead if you aren't sure ([Delete an AWS KMS key](https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html)). Some choices are also hard to undo: an RDS database is encrypted, or not, when you create it, and you can't change its key afterward; to add encryption later you copy a snapshot with encryption on and restore from the copy ([Encrypting Amazon RDS resources](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html)).
+That control carries a duty. **Deleting a KMS key makes everything encrypted under it unreadable, forever.** KMS forces a waiting period of 7 to 30 days (30 by default) before it deletes a key, and AWS suggests disabling a key instead if you aren't sure ([Delete an AWS KMS key](https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html)). Some choices are also hard to undo: an RDS database is encrypted, or not, when you create it, and you can't change its key afterward; to add encryption later you copy a snapshot with encryption on and restore from the copy ([Encrypting Amazon RDS resources](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html)).
 
 ![Bar chart of the monthly fee to keep one KMS key as of 2026-10-24: $0 for AWS owned and AWS managed keys, $1 for a customer managed key in its first year, $3 after two yearly rotations.](../../images/09-02-key-fees.svg)
 
@@ -257,7 +257,7 @@ Macie starts with a 30-day free trial, then charges per bucket, per object monit
 
 ## Worked example: the bakery chooses protection for each kind of data
 
-The auditor asks how each kind of data is protected, and who holds the keys. Here is how an expert decides, one item at a time.
+The auditor asks how each kind of data is protected, and who holds the keys. An expert decides one item at a time.
 
 | Data | Moving or stored | Requirement | Choice | Why |
 |---|---|---|---|---|
