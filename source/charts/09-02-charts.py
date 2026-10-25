@@ -24,7 +24,7 @@ import sys
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from chartkit import make_style, right_rounded, svg, text_lines, wrap  # noqa: E402
+from chartkit import make_style, svg, text_lines, wrap  # noqa: E402
 
 STYLE = make_style(
     light_extra=" --rest-fill:#d9e8fb; --n-fill:#f1f0ec;",
@@ -126,125 +126,5 @@ def big_picture():
         "Regions on its own network.", body, style=STYLE)
 
 
-OPTIONS = [
-    ("The service's own key", "AWS owned keys; S3's keys in SSE-S3", [
-        ("WHO CONTROLS USE", "The AWS service"),
-        ("SEEN IN CLOUDTRAIL?", "No"),
-        ("FEE TO KEEP IT", "None"),
-        ("BAKERY", "Photo bucket"),
-    ], False),
-    ("AWS managed key", "aws/ebs, aws/rds and so on", [
-        ("WHO CONTROLS USE", "AWS; you can read the policy"),
-        ("SEEN IN CLOUDTRAIL?", "Yes"),
-        ("FEE TO KEEP IT", "None; requests may be billed"),
-        ("BAKERY", "Server disks"),
-    ], False),
-    ("Customer managed key", "a KMS key you create", [
-        ("WHO CONTROLS USE", "You, in its key policy"),
-        ("SEEN IN CLOUDTRAIL?", "Yes"),
-        ("FEE TO KEEP IT", "$1 a month, plus requests"),
-        ("BAKERY", "Tax archive"),
-    ], True),
-    ("AWS CloudHSM", "HSMs only you use", [
-        ("WHO CONTROLS USE", "You, with HSM users outside IAM"),
-        ("SEEN IN CLOUDTRAIL?", "No; its audit logs go to CloudWatch Logs"),
-        ("FEE TO KEEP IT", "Hourly, per HSM, used or not"),
-        ("BAKERY", "Not needed"),
-    ], False),
-]
-
-
-def who_holds_the_key():
-    w, cw, gap = 680, 156, 8
-    top = 112
-    body = [
-        '<text class="title" x="16" y="28">Who holds the key: from least effort to most control</text>',
-        '<text class="sub" x="16" y="48">All four encrypt the data equally well; they differ in control, visibility, cost and work</text>',
-    ]
-    # spectrum arrow
-    body.append('<line class="spec" x1="20" x2="652" y1="76" y2="76"/>')
-    body.append('<path class="head-ink" d="M664,76 L652,70 L652,82 Z"/>')
-    body.append('<text class="small" x="20" y="96">AWS does more of the work</text>')
-    body.append('<text class="small" x="664" y="96" text-anchor="end">You control, and do, more</text>')
-    nrows = len(OPTIONS[0][2])
-    row_h = []
-    for r in range(nrows):
-        n = max(len(wrap(o[2][r][1], 20)) for o in OPTIONS)
-        row_h.append(18 + 15 * n + 12)
-    head_h = 86
-    ch = head_h + sum(row_h)
-    desc = []
-    for i, (name, sub, rows, hl) in enumerate(OPTIONS):
-        x = 16 + i * (cw + gap)
-        rect(body, "hl" if hl else "card", x, top, cw, ch, 8)
-        text_lines(body, x + 10, top + 22, wrap(name, 18), cls="boxt", dy=16)
-        text_lines(body, x + 10, top + 56, wrap(sub, 24), cls="cells", dy=14)
-        y = top + head_h
-        for r, (key, val) in enumerate(rows):
-            text_lines(body, x + 10, y + 12, wrap(key, 26), cls="key", dy=12)
-            text_lines(body, x + 10, y + 12 + 12 * len(wrap(key, 26)) + 4, wrap(val, 20), cls="keyl", dy=15)
-            y += row_h[r]
-        desc.append(f"{name} ({sub}): " + "; ".join(f"{k.lower()}: {v}" for k, v in rows))
-    y_end = top + ch + 16
-    body.append(f'<text class="note" x="16" y="{y_end + 8}">Fees as of 2026-10-24 (AWS KMS pricing page); CloudHSM\'s hourly rate is on the AWS Pricing Calculator. Client-side</text>')
-    body.append(f'<text class="note" x="16" y="{y_end + 23}">encryption, where you encrypt before sending, sits beyond the right edge. The bakery is made up for teaching.</text>')
-    svg("09-02-who-holds-the-key.svg", w, y_end + 36,
-        "Four ways to hold an encryption key on AWS, from least effort to most control",
-        "An arrow runs from AWS does more of the work, on the left, to you control and do more, on the right. Four "
-        "cards sit along it; the third, customer managed key, is highlighted. " + ". ".join(desc) + ". A note says "
-        "client-side encryption, where you encrypt before sending, sits beyond the right edge.", body, style=STYLE)
-
-
-FEES = [
-    ("AWS owned key", 0.0, "$0"),
-    ("AWS managed key", 0.0, "$0 (requests may be billed)"),
-    ("Customer managed key, first year", 1.0, "$1.00"),
-    ("Same key after two yearly rotations", 3.0, "$3.00, the most it reaches"),
-]
-
-
-def key_fees():
-    w, left, right = 680, 262, 560
-    top, bar_h, row_h = 76, 20, 44
-    pw = right - left
-    vmax = 4.0
-    body = [
-        '<text class="title" x="16" y="28">The monthly fee to keep one key in AWS KMS</text>',
-        '<text class="sub" x="16" y="48">US dollars per key per month, as of 2026-10-24, before any request charges</text>',
-    ]
-    ph = row_h * len(FEES)
-    for v in range(0, 5):
-        x = left + pw * v / vmax
-        body.append(f'<line class="{"axis" if v == 0 else "grid"}" x1="{x:.1f}" x2="{x:.1f}" y1="{top}" y2="{top + ph}"/>')
-        body.append(f'<text class="tick" x="{x:.1f}" y="{top + ph + 18}" text-anchor="middle">${v}</text>')
-    desc = []
-    for i, (label, v, txt) in enumerate(FEES):
-        y = top + i * row_h + 12
-        body.append(f'<text class="lab" x="{left - 10}" y="{y + 15}" text-anchor="end">{label}</text>')
-        if v > 0:
-            bw = pw * v / vmax
-            body.append(f'<path class="s1" d="{right_rounded(left, y, bw, bar_h)}"/>')
-            body.append(f'<text class="val" x="{left + bw + 8:.1f}" y="{y + 15}">{txt}</text>')
-        else:
-            body.append(f'<line class="axis" x1="{left}" x2="{left}" y1="{y}" y2="{y + bar_h}" style="stroke:var(--s1);stroke-width:3"/>')
-            body.append(f'<text class="val" x="{left + 10}" y="{y + 15}">{txt}</text>')
-        desc.append(f"{label}: {txt}")
-    y = top + ph + 40
-    y = text_lines(body, 16, y, [
-        "Requests: the first 20,000 a month are free, counted across all Regions; then $0.03 per 10,000 symmetric",
-        "requests. Each of the first two rotations adds $1 a month; later rotations add nothing. A key scheduled for",
-        "deletion costs nothing. AWS CloudHSM is billed per HSM per hour instead (see its pricing page).",
-    ], cls="small", dy=17)
-    body.append(f'<text class="note" x="16" y="{y + 4}">From the AWS KMS pricing page and Developer Guide, checked 2026-10-24. Prices change; check the page.</text>')
-    svg("09-02-key-fees.svg", w, y + 18,
-        "Monthly fee to keep one key in AWS KMS, by kind of key",
-        "Horizontal bars from $0 to $4 per month. " + "; ".join(desc) + ". Notes: the first 20,000 requests a month "
-        "are free across all Regions, then $0.03 per 10,000 symmetric requests; each of the first two rotations adds "
-        "$1 a month and later ones add nothing; a key scheduled for deletion costs nothing; CloudHSM is billed per "
-        "HSM per hour instead.", body, style=STYLE)
-
-
 if __name__ == "__main__":
     big_picture()
-    who_holds_the_key()
-    key_fees()

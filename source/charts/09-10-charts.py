@@ -5,15 +5,10 @@
 
 Usage: python3 -I source/charts/09-10-charts.py
 Writes images/09-10-scp-levels.svg (the model answer to Decision 1: which level decides each
-case) and images/09-10-combined-tiers.svg (S3 Standard storage billed for three separate
-accounts vs one organization).
+case).
 Facts: SCP rules from "Service control policies (SCPs)", AWS Organizations User Guide, retrieved
 2026-10-24 (every level must allow; the management account and service-linked roles are not
-affected; the member root user is). S3 Standard storage in US East (N. Virginia): $0.023 per
-GB-month for the first 50 TB (51,200 GB) and $0.022 for the next 450 TB, from the AmazonS3
-Price List offer file published 2026-10-15, retrieved 2026-10-24. Volume tiers apply to an
-organization's combined usage ("Effective billing date, account activity, and volume
-discounts", AWS Billing User Guide). The organization, accounts and storage amounts are made up.
+affected; the member root user is). The organization and accounts are made up.
 Our own design: no AWS logos, icons, trade dress or AWS diagrams.
 """
 import os
@@ -21,7 +16,7 @@ import sys
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from chartkit import make_style, svg, swatch, text_lines, wrap  # noqa: E402
+from chartkit import make_style, svg, text_lines, wrap  # noqa: E402
 
 STYLE = make_style(
     light_extra=" --cell:#fcfcfb; --hit:#fbe1d6; --na:#f1f0ec;",
@@ -100,45 +95,5 @@ def levels():
         body, style=STYLE)
 
 
-def tiers():
-    w, left, pw = 680, 200, 330
-    gb_total = 92160
-    r1, r2 = 0.023, 0.022
-    body = ['<text class="title" x="16" y="28">Three separate accounts or one organization</text>',
-            '<text class="sub" x="16" y="48">30 TB each in S3 Standard, US East (N. Virginia), monthly, prices as of 2026-10-24</text>']
-    swatch(body, 16, 76, "s1", "Billed at $0.023 per GB-month (first 50 TB)")
-    swatch(body, 340, 76, "s2", "Billed at $0.022 (next 450 TB)")
-    scale = pw / gb_total
-    top, bh = 100, 34
-    rows = [
-        ("Three separate accounts", [(30720, "s1"), (30720, "s1"), (30720, "s1")], 92160 * r1,
-         "each account: 30,720 GB, all at the first-tier rate"),
-        ("One organization", [(51200, "s1"), (40960, "s2")], 51200 * r1 + 40960 * r2,
-         "combined: 51,200 GB at $0.023, then 40,960 GB at $0.022"),
-    ]
-    for i, (name, segs, total, sub) in enumerate(rows):
-        y = top + i * (bh + 46)
-        body.append(f'<text class="lab" x="{left - 10}" y="{y + 22}" text-anchor="end">{name}</text>')
-        x = left
-        for gb, cls in segs:
-            sw = gb * scale
-            body.append(f'<rect class="{cls}" x="{x:.1f}" y="{y}" width="{sw - 2:.1f}" height="{bh}" rx="3"/>')
-            x += sw
-        body.append(f'<text class="lab" x="{left + pw + 8}" y="{y + 22}">${total:,.2f}</text>')
-        body.append(f'<text class="tick" x="{left}" y="{y + bh + 16}">{sub}</text>')
-    yn = top + 2 * (bh + 46) + 6
-    text_lines(body, 16, yn, [
-        f"Difference: ${92160 * r1 - (51200 * r1 + 40960 * r2):,.2f} a month, about 2%. Gaps in the top bar mark the three accounts.",
-        "1 TB = 1,024 GB. Storage only: requests and data transfer are left out."], cls="tick", dy=16)
-    svg("09-10-combined-tiers.svg", w, yn + 26,
-        "S3 Standard storage for three accounts of 30 TB each: $2,119.68 separately, $2,078.72 as one organization",
-        "Two horizontal stacked bars of 92,160 GB each. Three separate accounts: three equal segments of 30,720 GB, "
-        "all billed at $0.023 per GB-month, total $2,119.68 a month. One organization: 51,200 GB at $0.023 and "
-        "40,960 GB at $0.022, total $2,078.72. The difference is $40.96 a month, about 2%. Prices are US East (N. "
-        "Virginia) as of 2026-10-24; storage only.",
-        body, style=STYLE)
-
-
 if __name__ == "__main__":
     levels()
-    tiers()
