@@ -180,7 +180,7 @@ BYOL isn't always cheaper. It saves money when you own eligible licenses that yo
 
    </details>
 
-**Next:** [Simulation S16: the portfolio sorter](05-sim-portfolio-sorter.md), then the [Module 13 mastery check](07-check.md).
+**Next:** the [Module 13 mastery check](07-check.md). For more practice first, try the optional [Simulation S16: the portfolio sorter](05-sim-portfolio-sorter.md).
 
 ## Where to check the current details
 

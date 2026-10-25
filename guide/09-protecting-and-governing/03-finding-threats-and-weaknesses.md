@@ -180,7 +180,7 @@ The prequestion's finding came from **GuardDuty**: it's activity, seen in CloudT
 
    </details>
 
-**Next:** [The front door](04-the-front-door.md), where you choose the protections that do block. To practice matching findings, try [Simulation S9](08-sim-security-findings-tour.md).
+**Next:** [The front door](04-the-front-door.md), where you choose the protections that do block. To practice matching findings, try the optional [Simulation S9](08-sim-security-findings-tour.md).
 
 ## Where to check the current details
 

@@ -171,7 +171,7 @@ You may hear that a database with a live copy elsewhere doesn't need backups. It
 
    </details>
 
-**Next:** [The edge](04-the-edge.md). To practice choosing strategies, try [Simulation S2](06-sim-blast-radius.md).
+**Next:** [The edge](04-the-edge.md). To practice choosing strategies, try the optional [Simulation S2](06-sim-blast-radius.md).
 
 ## Where to check the current details
 

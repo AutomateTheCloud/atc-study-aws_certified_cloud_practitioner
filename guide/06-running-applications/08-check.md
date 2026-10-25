@@ -229,7 +229,7 @@ Request 1: each month an insurer queues about 50,000 container jobs of up to an 
 | A1, B1 | 06.01a | [Choose the family from the bottleneck](01-ec2.md#choose-the-family-from-the-bottleneck) |
 | A2, B2 | 06.01a | [Instance types are not purchasing options](01-ec2.md#instance-types-are-not-purchasing-options) |
 | A3, B3 | 06.02a | [Auto Scaling changes how many](02-auto-scaling-and-load-balancers.md#auto-scaling-changes-how-many-the-load-balancer-chooses-which) |
-| A4, B4 | 06.02a | [An Auto Scaling group](02-auto-scaling-and-load-balancers.md#an-auto-scaling-group-keeps-the-right-number-of-instances-running) and [Simulation S7](07-sim-elasticity-with-auto-scaling.md) |
+| A4, B4 | 06.02a | [An Auto Scaling group](02-auto-scaling-and-load-balancers.md#an-auto-scaling-group-keeps-the-right-number-of-instances-running) and the optional [Simulation S7](07-sim-elasticity-with-auto-scaling.md) |
 | A5, B5 | 06.02a | [Choose ALB, NLB or GWLB](02-auto-scaling-and-load-balancers.md#choose-alb-nlb-or-gwlb-classic-is-the-previous-generation) |
 | A6, B6 | 06.03a | [Fargate](03-containers-and-serverless.md#fargate-runs-containers-without-servers-to-manage) and [Lambda or Fargate](03-containers-and-serverless.md#lambda-or-fargate-short-event-driven-work-or-containers-that-keep-running) |
 | A7, B7 | 06.03a | [Four names, four jobs](03-containers-and-serverless.md#four-names-four-jobs-ecr-stores-ecs-and-eks-orchestrate-fargate-supplies-the-computers) |

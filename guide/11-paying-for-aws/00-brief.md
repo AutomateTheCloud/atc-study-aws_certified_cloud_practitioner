@@ -20,7 +20,7 @@ This module teaches what drives an AWS bill, the ways to pay for the same server
 
 **Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): task [1.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.4); [Domain 4, Billing, Pricing, and Support](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html) (12% of the exam): tasks [4.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.1) and [4.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.2).
 
-**For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. You have finished Modules 02 to 10 and the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md). **Time:** about 2.5 hours, plus 25 minutes for the optional lab.
+**For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. You have finished Modules 02 to 10 and the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md). **Time:** about 2.5 hours, plus 30 minutes for the optional simulation and 25 for the optional lab.
 
 ## The scenario
 
@@ -58,7 +58,7 @@ Task [4.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practition
 **Practice:**
 
 - [Lab 15: price the bakery's setup in the AWS Pricing Calculator](05-lab-15-pricing-calculator.md), after lesson 11.03; no AWS account needed.
-- [Simulation S13: choose how to pay for each workload](07-sim-purchasing-option-tree.md), after lesson 11.02, on paper, because Savings Plans and Reserved Instances aren't available on the Free plan.
+- [Optional simulation S13: choose how to pay for each workload](07-sim-purchasing-option-tree.md), after lesson 11.02, on paper, because Savings Plans and Reserved Instances aren't available on the Free plan. Do it if you want more decisions to make; the main path doesn't need it.
 - [Optional lab 16: turn on cost allocation tags](06-lab-16-cost-allocation-tags.md), after lesson 11.04, in your own account at $0; the exam doesn't need it.
 
 **Before the labs:** check that you still have [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md), [your IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md) and [money alarms](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md).

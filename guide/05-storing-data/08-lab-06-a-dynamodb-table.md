@@ -141,7 +141,7 @@ You built a database without choosing a server, an engine version or a size, sto
 >
 > </details>
 
-**Next:** [Simulation S6](10-sim-multi-az-vs-read-replica.md) looks after the order database, which you can't run cheaply in a lab: RDS bills for every second a database instance runs, with a 10-minute minimum ([Amazon RDS FAQs](https://aws.amazon.com/rds/faqs/)).
+**Next:** the module's [mastery check](11-check.md). If you want more decisions to make first, the optional [Simulation S6](10-sim-multi-az-vs-read-replica.md) looks after the order database, which you can't run cheaply in a lab: RDS bills for every second a database instance runs, with a 10-minute minimum ([Amazon RDS FAQs](https://aws.amazon.com/rds/faqs/)).
 
 ## Where to check the current details
 

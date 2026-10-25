@@ -151,7 +151,7 @@ A tag on a resource is only a label until you activate its key for billing. Then
 >
 > </details>
 
-**Next:** [Simulation S13](07-sim-purchasing-option-tree.md), choosing how to pay for each of the bakery's workloads.
+**Next:** the module's [mastery check](09-check.md), or first the optional [Simulation S13](07-sim-purchasing-option-tree.md), choosing how to pay for each of the bakery's workloads.
 
 ## Where to check the current details
 

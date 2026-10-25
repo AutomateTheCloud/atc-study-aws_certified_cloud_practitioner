@@ -1,7 +1,7 @@
 ---
 type: sim
 id: clf-06-07
-title: "Simulation S7: Scale the bakery's web servers through a December Saturday"
+title: "Optional simulation S7: Scale the bakery's web servers through a December Saturday"
 tasks: ["1.1", "3.3"]
 objectives: ["06.02a"]
 reader: "Adult studying alone, possibly new to IT, who has read lessons 02.02 and 06.02; about 20 minutes; paper or a spreadsheet helps"
@@ -25,9 +25,11 @@ sources:
   - "https://aws.amazon.com/elasticloadbalancing/pricing/"
 ---
 
-# Simulation S7: Scale the bakery's web servers through a December Saturday
+# Optional simulation S7: Scale the bakery's web servers through a December Saturday
 
 **Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): task [1.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.1); [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): task [3.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.3).
+
+> **Note:** This simulation is optional practice for learners who want more decisions to make; the main path and the module's hours leave it out.
 
 ## Before you start: your account, your responsibility
 
@@ -131,6 +133,6 @@ The bakery ran about half the instance-hours of a fixed fleet and survived a zon
 
 ---
 
-"Simulation S7: Scale the bakery's web servers through a December Saturday" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional simulation S7: Scale the bakery's web servers through a December Saturday" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt

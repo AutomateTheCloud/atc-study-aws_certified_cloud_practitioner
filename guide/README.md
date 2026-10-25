@@ -45,7 +45,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [Surviving failure](03-aws-around-the-world/03-surviving-failure.md) · Lesson
 - [The edge](03-aws-around-the-world/04-the-edge.md) · Lesson
 - [Lab 02: See Regions, Availability Zones and AWS Health in your own account](03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md) · Lab
-- [Simulation S2: The blast-radius ladder and three recovery plans](03-aws-around-the-world/06-sim-blast-radius.md) · Simulation
+- [Optional simulation S2: The blast-radius ladder and three recovery plans](03-aws-around-the-world/06-sim-blast-radius.md) · Simulation
 - [Module 03 mastery check](03-aws-around-the-world/07-check.md) · Mastery check
 - [Module 03: beyond the exam](03-aws-around-the-world/08-beyond-the-exam.md) · Page
 
@@ -59,7 +59,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [Credentials and federation](04-shared-responsibility-and-access/05-credentials-and-federation.md) · Lesson
 - [Lab 03: Give a group read-only access to one bucket, and test it in the policy simulator](04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md) · Lab
 - [Optional lab 04: Finish a policy, write one yourself, and find the deny that blocks it](04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md) · Lab
-- [Simulation S3: Slide the line from your own servers to Amazon S3](04-shared-responsibility-and-access/08-sim-responsibility-slider.md) · Simulation
+- [Optional simulation S3: Slide the line from your own servers to Amazon S3](04-shared-responsibility-and-access/08-sim-responsibility-slider.md) · Simulation
 - [Module 04 mastery check](04-shared-responsibility-and-access/10-check.md) · Mastery check
 - [Module 04: beyond the exam](04-shared-responsibility-and-access/11-beyond-the-exam.md) · Page
 
@@ -72,7 +72,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [Managed databases and choosing one](05-storing-data/05-managed-or-self-managed-databases.md) · Lesson
 - [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](05-storing-data/07-lab-05-versions-and-lifecycle.md) · Lab
 - [Optional lab 06: Create a DynamoDB table for carts, put and get items, then delete it](05-storing-data/08-lab-06-a-dynamodb-table.md) · Lab
-- [Simulation S6: Multi-AZ, read replica or backup: protect the order database](05-storing-data/10-sim-multi-az-vs-read-replica.md) · Simulation
+- [Optional simulation S6: Multi-AZ, read replica or backup: protect the order database](05-storing-data/10-sim-multi-az-vs-read-replica.md) · Simulation
 - [Module 05 mastery check](05-storing-data/11-check.md) · Mastery check
 - [Module 05: beyond the exam](05-storing-data/12-beyond-the-exam.md) · Page
 
@@ -85,7 +85,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [Simpler paths: Elastic Beanstalk, Lightsail, Batch and Outposts](06-running-applications/04-simpler-paths.md) · Lesson
 - [Optional lab 07: Run a Lambda function, read its logs, and stop them piling up](06-running-applications/05-lab-07-a-lambda-function.md) · Lab
 - [Lab 08: Launch a virtual server, stop it, terminate it, and prove nothing is left](06-running-applications/06-lab-08-launch-and-terminate-an-instance.md) · Lab
-- [Simulation S7: Scale the bakery's web servers through a December Saturday](06-running-applications/07-sim-elasticity-with-auto-scaling.md) · Simulation
+- [Optional simulation S7: Scale the bakery's web servers through a December Saturday](06-running-applications/07-sim-elasticity-with-auto-scaling.md) · Simulation
 - [Module 06 mastery check](06-running-applications/08-check.md) · Mastery check
 - [Module 06: beyond the exam](06-running-applications/09-beyond-the-exam.md) · Page
 
@@ -121,8 +121,8 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [Compliance and governance](09-protecting-and-governing/05-compliance-and-governance.md) · Lesson
 - [A defense map](09-protecting-and-governing/06-a-defense-map.md) · Lesson
 - [Lab 12: Answer an auditor with evidence from your own account](09-protecting-and-governing/07-lab-12-answer-the-auditor.md) · Lab
-- [Simulation S9: Match security findings to the service that raised them](09-protecting-and-governing/08-sim-security-findings-tour.md) · Simulation
-- [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](09-protecting-and-governing/10-sim-organizations-and-scps.md) · Simulation
+- [Optional simulation S9: Match security findings to the service that raised them](09-protecting-and-governing/08-sim-security-findings-tour.md) · Simulation
+- [Optional simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](09-protecting-and-governing/10-sim-organizations-and-scps.md) · Simulation
 - [Module 09 mastery check](09-protecting-and-governing/11-check.md) · Mastery check
 - [Module 09: beyond the exam](09-protecting-and-governing/12-beyond-the-exam.md) · Page
 
@@ -134,7 +134,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [People, apps and devices](10-data-ai-and-more/03-people-apps-and-devices.md) · Lesson
 - [Optional lab 13: Query a small sales file in S3 with Athena, then delete everything](10-data-ai-and-more/04-lab-13-athena-query.md) · Lab
 - [Optional lab 14: Have Amazon Polly read a product description aloud](10-data-ai-and-more/05-lab-14-polly-text-to-speech.md) · Lab
-- [Simulation S12: Match each request to a service by what goes in and what comes out](10-data-ai-and-more/06-sim-input-output-matcher.md) · Simulation
+- [Optional simulation S12: Match each request to a service by what goes in and comes out](10-data-ai-and-more/06-sim-input-output-matcher.md) · Simulation
 - [Module 10 mastery check](10-data-ai-and-more/07-check.md) · Mastery check
 - [Module 10: beyond the exam](10-data-ai-and-more/08-beyond-the-exam.md) · Page
 
@@ -147,7 +147,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [Many accounts, one bill](11-paying-for-aws/04-many-accounts-one-bill.md) · Lesson
 - [Lab 15: Price the bakery's setup in the AWS Pricing Calculator](11-paying-for-aws/05-lab-15-pricing-calculator.md) · Lab
 - [Optional lab 16: Turn on cost allocation tags and find them in Cost Explorer](11-paying-for-aws/06-lab-16-cost-allocation-tags.md) · Lab
-- [Simulation S13: Choose how to pay for each of the bakery's workloads](11-paying-for-aws/07-sim-purchasing-option-tree.md) · Simulation
+- [Optional simulation S13: Choose how to pay for each of the bakery's workloads](11-paying-for-aws/07-sim-purchasing-option-tree.md) · Simulation
 - [Module 11 mastery check](11-paying-for-aws/09-check.md) · Mastery check
 - [Module 11: beyond the exam](11-paying-for-aws/10-beyond-the-exam.md) · Page
 
@@ -158,7 +158,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [Tools that watch your account](12-getting-help/02-tools-that-watch-your-account.md) · Lesson
 - [Where to find answers and who can help](12-getting-help/03-where-to-find-answers.md) · Lesson
 - [Lab 17: Tour the help every AWS account gets, on the Basic plan](12-getting-help/05-lab-17-support-center-tour.md) · Lab
-- [Simulation S15: Choose the cheapest Support plan that fits](12-getting-help/06-sim-support-plan-chooser.md) · Simulation
+- [Optional simulation S15: Choose the cheapest Support plan that fits](12-getting-help/06-sim-support-plan-chooser.md) · Simulation
 - [Module 12 mastery check](12-getting-help/07-check.md) · Mastery check
 - [Module 12: beyond the exam](12-getting-help/08-beyond-the-exam.md) · Page
 
@@ -169,7 +169,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [Seven migration strategies](13-moving-to-aws/02-seven-migration-strategies.md) · Lesson
 - [Migration tools](13-moving-to-aws/03-migration-tools.md) · Lesson
 - [The business case](13-moving-to-aws/04-the-business-case.md) · Lesson
-- [Simulation S16: Sort the chain's ten applications into the 7 Rs](13-moving-to-aws/05-sim-portfolio-sorter.md) · Simulation
+- [Optional simulation S16: Sort the chain's ten applications into the 7 Rs](13-moving-to-aws/05-sim-portfolio-sorter.md) · Simulation
 - [Module 13 mastery check](13-moving-to-aws/07-check.md) · Mastery check
 - [Module 13: beyond the exam](13-moving-to-aws/08-beyond-the-exam.md) · Page
 
@@ -183,9 +183,9 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 ## Exam preparation
 
 - [How to use the exam preparation](90-exam-prep/01-how-to-use-exam-prep.md) · Page
-- [Mixed set 1: Modules 02 to 05](90-exam-prep/02-mixed-set-1.md) · Mastery check
-- [Mixed set 2: Modules 02 to 09](90-exam-prep/03-mixed-set-2.md) · Mastery check
-- [Mixed set 3: Modules 02 to 13](90-exam-prep/04-mixed-set-3.md) · Mastery check
+- [Optional mixed set 1: Modules 02 to 05](90-exam-prep/02-mixed-set-1.md) · Mastery check
+- [Optional mixed set 2: Modules 02 to 09](90-exam-prep/03-mixed-set-2.md) · Mastery check
+- [Optional mixed set 3: Modules 02 to 13](90-exam-prep/04-mixed-set-3.md) · Mastery check
 - [Practice exam 1](90-exam-prep/05-practice-exam-1.md) · Mastery check
 - [Practice exam 2](90-exam-prep/06-practice-exam-2.md) · Mastery check
 

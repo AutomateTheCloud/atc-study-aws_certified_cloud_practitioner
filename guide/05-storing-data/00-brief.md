@@ -18,7 +18,7 @@ This module teaches where data lives on AWS: on disks, in shared folders, in obj
 
 **Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): task [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1); [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): tasks [3.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.4) and [3.6](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.6); [Domain 4, Billing, Pricing, and Support](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html) (12% of the exam): task [4.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.1).
 
-**For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. You have done Modules [02](../02-why-the-cloud/00-brief.md), [03](../03-aws-around-the-world/00-brief.md) and [04](../04-shared-responsibility-and-access/00-brief.md) and the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md). **Time:** about 3 hours, plus 30 minutes for the optional lab.
+**For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. You have done Modules [02](../02-why-the-cloud/00-brief.md), [03](../03-aws-around-the-world/00-brief.md) and [04](../04-shared-responsibility-and-access/00-brief.md) and the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md). **Time:** about 3 hours, plus 20 minutes for the optional simulation and 30 for the optional lab.
 
 ## The scenario
 
@@ -59,12 +59,12 @@ Task [3.6](https://docs.aws.amazon.com/aws-certification/latest/cloud-practition
 **Practice:**
 
 - [Lab 05: versions and lifecycle](07-lab-05-versions-and-lifecycle.md), after lesson 05.02, in your own account; nothing is billed on the Free plan.
-- [Simulation S6: Multi-AZ vs read replica](10-sim-multi-az-vs-read-replica.md), after lesson 05.05, on paper, because a real database bills by the hour.
+- [Optional simulation S6: Multi-AZ vs read replica](10-sim-multi-az-vs-read-replica.md), after lesson 05.05, on paper, because a real database bills by the hour. Do it if you want more decisions to make; the main path doesn't need it.
 - [Optional lab 06: a DynamoDB table](08-lab-06-a-dynamodb-table.md), if you want to try DynamoDB; the exam doesn't need it.
 
 **Before the labs:** check that you still have [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md), [your IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md), [money alarms](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md) and [Block Public Access for your account](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/06-safe-defaults.md).
 
-**Mastery check:** the module ends with [a mastery check](11-check.md); you pass at 80%. A mixed practice set on Modules 02 to 05 follows. **Beyond the exam:** [what this module left out](12-beyond-the-exam.md), with the AWS pages to read.
+**Mastery check:** the module ends with [a mastery check](11-check.md); you pass at 80%. An optional mixed practice set on Modules 02 to 05 follows. **Beyond the exam:** [what this module left out](12-beyond-the-exam.md), with the AWS pages to read.
 
 ---
 

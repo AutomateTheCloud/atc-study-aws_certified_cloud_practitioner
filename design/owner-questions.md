@@ -2,6 +2,8 @@
 
 ## Still open
 
+- **Lab 17 (2026-10-26, with the next-day checks):** the concise rewrite added two Health Dashboard
+  steps (8–9) that weren't part of its run on 2026-10-25; run them, or drop `last_run_pass`.
 - **Next-day checks (2026-10-26, need sign-in):** Lab 16 steps 9–11 (Cost Explorer group by tag
   `lab`), Lab 19 Part E (credits were $160.00 at 2026-10-25 11:27), and whether the SNS
   subscription for the deleted `clf-lab11-orders-failing` topic has cleared. Then add

@@ -87,7 +87,7 @@ Suppose the bakery grows: a production account, a test account, and an account f
 
 **AWS Resource Access Manager (AWS RAM)** shares a resource you create once, such as VPC subnets or a transit gateway, with other accounts or a whole organization ([What is AWS RAM?](https://docs.aws.amazon.com/ram/latest/userguide/what-is.html)). The owner keeps owning it.
 
-> **Warning:** On the Free plan, don't create or join an organization. Joining AWS Organizations, or setting up a Control Tower landing zone, moves a Free plan account to the Paid plan ([Choosing a plan](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html), checked 2026-10-24). Practice with [Simulation S11](10-sim-organizations-and-scps.md) instead.
+> **Warning:** On the Free plan, don't create or join an organization. Joining AWS Organizations, or setting up a Control Tower landing zone, moves a Free plan account to the Paid plan ([Choosing a plan](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html), checked 2026-10-24). Practice with the optional [Simulation S11](10-sim-organizations-and-scps.md) instead.
 
 ### An SCP is a ceiling: it limits everyone in a member account, and grants nothing
 
@@ -196,7 +196,7 @@ Task [2.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practition
 
    </details>
 
-**Next:** [A defense map](06-a-defense-map.md). To download a real Artifact report, do [Lab 12](07-lab-12-answer-the-auditor.md); to practice SCPs, try [Simulation S11](10-sim-organizations-and-scps.md).
+**Next:** [A defense map](06-a-defense-map.md). To download a real Artifact report, do [Lab 12](07-lab-12-answer-the-auditor.md); to practice SCPs, try the optional [Simulation S11](10-sim-organizations-and-scps.md).
 
 ## Where to check the current details
 

@@ -177,11 +177,11 @@ Basic already gives you billing help, quota requests, AWS Health, a few Trusted 
 > 4. **Hammering from an AWS address:** the abuse form, to AWS Trust & Safety, not AWS Support. Basic is enough.
 > 5. **Suspected AWS outage:** the Health Dashboard first. If the site is down and AWS shows nothing, only a paid plan lets you open a technical case.
 >
-> Issues 3 and 5 are where Basic runs out: that's the plan choice in the simulation.
+> Issues 3 and 5 are where Basic runs out: that's the plan choice in the optional simulation.
 >
 > </details>
 
-**Next:** [Simulation S15](06-sim-support-plan-chooser.md).
+**Next:** the module's [mastery check](07-check.md), or first the optional [Simulation S15](06-sim-support-plan-chooser.md).
 
 ## Where to check the current details
 

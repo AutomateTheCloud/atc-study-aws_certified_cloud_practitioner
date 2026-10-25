@@ -20,7 +20,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **7 Rs**: AWS's seven migration strategies: retire, retain, rehost, relocate, repurchase, replatform, and refactor or re-architect. AWS's 2016 list had six; relocate was added later.
 
 - Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-- Also in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md); [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
+- Also in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md); [Optional simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 - Don't confuse with: AWS Cloud Adoption Framework. The 7 Rs decide what happens to one application; the CAF works on the whole organization's outcomes and readiness, and uses the 7 Rs in its portfolio management.
 
 ## A
@@ -122,7 +122,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Amazon Detective**: A service for investigating a finding: it links CloudTrail events, VPC Flow Logs and GuardDuty findings in a behavior graph, so you can see a problem's root cause and how far it spread, without writing queries.
 
 - Taught in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md)
-- Also in: [Simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md)
+- Also in: [Optional simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md)
 - Don't confuse with: Amazon GuardDuty. GuardDuty detects and raises the alarm; Detective starts from the alarm and investigates how it happened and what else was touched.
 
 **Amazon DocumentDB**: AWS's managed document database, compatible with MongoDB's drivers and tools, for data that is naturally a document, such as a product catalog. Its full name is Amazon DocumentDB (with MongoDB compatibility).
@@ -151,7 +151,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Amazon EC2 Auto Scaling**: AWS's service for sizing EC2 instance groups to demand, between a minimum and maximum, replacing unhealthy instances and spreading them across Availability Zones. It gives EC2 elasticity at no extra charge; the exam guide lists AWS Auto Scaling instead.
 
 - Taught in: [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
-- Also in: [Simulation S7: Scale the bakery's web servers through a December Saturday](../06-running-applications/07-sim-elasticity-with-auto-scaling.md)
+- Also in: [Optional simulation S7: Scale the bakery's web servers through a December Saturday](../06-running-applications/07-sim-elasticity-with-auto-scaling.md)
 - Don't confuse with: Elastic Load Balancing, AWS Auto Scaling. EC2 Auto Scaling changes how many instances run, while Elastic Load Balancing chooses which instance gets each request, and AWS Auto Scaling sets up scaling for several resource types at once.
 
 **Amazon ECR**: Amazon Elastic Container Registry, AWS's store for container images, in private repositories controlled with IAM or in public ones. It can scan images for known flaws, but it runs nothing.
@@ -204,19 +204,19 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Amazon GuardDuty**: A threat detection service that reads CloudTrail management events, VPC Flow Logs and DNS logs, with nothing else to set up, and raises findings on malicious or suspicious activity, such as stolen credentials. It blocks nothing.
 
 - Taught in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md)
-- Also in: [Simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md); [A defense map](../09-protecting-and-governing/06-a-defense-map.md)
+- Also in: [Optional simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md); [A defense map](../09-protecting-and-governing/06-a-defense-map.md)
 - Don't confuse with: Amazon Inspector, Amazon Macie, Amazon Detective. GuardDuty reports attacks happening now, from activity; Inspector reports weaknesses in software, Macie reports sensitive data in S3, and Detective investigates a finding afterward.
 
 **Amazon Inspector**: A vulnerability management service that finds EC2 instances, container images in Amazon ECR and Lambda functions on its own, and scans them continuously for known software flaws and unintended network exposure. It reports findings; it blocks nothing.
 
 - Taught in: [Filtering traffic](../07-connecting-it/02-filtering-traffic.md)
-- Also in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md); [Simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md)
+- Also in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md); [Optional simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md)
 - Don't confuse with: Amazon GuardDuty, security group, network ACL. Inspector reports what could be attacked and changes nothing; GuardDuty reports attacks actually happening, and security groups and network ACLs are the filters you fix.
 
 **Amazon Inspector Classic**: The older version of Amazon Inspector, used through assessment templates, an Inspector agent and scheduled runs. It has been shut down (see the lesson); treat that way of working as out of date.
 
 - Taught in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md)
-- Also in: [Simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md)
+- Also in: [Optional simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md)
 - Don't confuse with: Amazon Inspector. Inspector Classic needed templates, an agent and schedules and is gone; today's Inspector finds workloads and rescans them on its own whenever software or published flaws change.
 
 **Amazon Kendra**: An intelligent search service over company documents, closed to new customers since 2026-07-30 and removed from the 2026 exam guide. AWS points to Amazon Bedrock Knowledge Bases; treat Kendra as a distractor.
@@ -253,7 +253,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Amazon Macie**: A service that inventories your S3 buckets and uses machine learning and pattern matching to find sensitive data, such as personally identifiable information, inside objects. It also flags risky bucket settings, such as public access.
 
 - Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
-- Also in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md); [Simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md)
+- Also in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md); [Optional simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md)
 - Don't confuse with: Amazon GuardDuty, Amazon Inspector. Macie asks what is inside your S3 data; GuardDuty asks whether activity looks malicious, and Inspector asks whether your software has known flaws.
 
 **Amazon Neptune**: AWS's managed graph database, for data where the connections matter most, such as recommendation engines, fraud detection and knowledge graphs.
@@ -300,7 +300,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Amazon RDS**: Amazon Relational Database Service: managed relational databases. AWS installs and patches the operating system and engine, handles backups and failover; you choose settings, control access and tune queries. AWS recommends it for most relational databases, with several engines plus Aurora.
 
 - Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
-- Also in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md); [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../05-storing-data/10-sim-multi-az-vs-read-replica.md); [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
+- Also in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md); [Optional simulation S6: Multi-AZ, read replica or backup: protect the order database](../05-storing-data/10-sim-multi-az-vs-read-replica.md); [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
 - Don't confuse with: Amazon Aurora, Amazon DynamoDB, Amazon Redshift. RDS runs familiar relational engines for transactional work; Aurora is AWS's own engine in the RDS family, DynamoDB is serverless NoSQL fetched by key, and Redshift is a data warehouse for analysis.
 
 **Amazon Redshift**: AWS's fully managed data warehouse, running SQL analysis over very large amounts of data from many sources, on clusters you size or serverless. The exam guide lists it under analytics; it isn't the database that runs a website.
@@ -494,7 +494,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **AWS Business Support+**: The first paid Support plan, and AWS's recommended minimum for production: technical cases around the clock by phone, web and chat, all Trusted Advisor checks, and the AWS Health API. It is charged per account.
 
 - Taught in: [Support plans](../12-getting-help/01-support-plans.md)
-- Also in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md); [Simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
+- Also in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md); [Optional simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
 - Don't confuse with: Basic Support, AWS Enterprise Support, Business Support, Developer Support. Business Support+ adds 24/7 technical cases to Basic but no named TAM, which starts with Enterprise Support; it replaces the retiring Developer and Business Support plans.
 
 **AWS Certificate Manager** (ACM): An AWS service that creates, stores and renews public and private TLS certificates for services such as Elastic Load Balancing, CloudFront and API Gateway, so a certificate doesn't expire unnoticed and take a site down.
@@ -517,7 +517,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **AWS Cloud Adoption Framework** (AWS CAF): AWS's guidance for changing a whole organization to use the cloud well: four business outcomes, four transformation domains, six perspectives of capabilities and four repeated phases. It's advice, not a service.
 
 - Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
-- Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
+- Also in: [Optional simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 - Don't confuse with: 7 Rs. The CAF works on the whole organization's readiness and outcomes; the 7 Rs decide what happens to one application, and are used inside the CAF's portfolio management.
 
 **AWS CloudFormation**: AWS's infrastructure as code service. It reads a template, works out the order, and builds the resources as a stack, which it can update with a preview and delete in one step.
@@ -567,7 +567,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **AWS Control Tower**: A service built on AWS Organizations, Service Catalog and IAM Identity Center that sets up a best-practice multi-account landing zone and keeps it governed with controls, Account Factory and a dashboard.
 
 - Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-- Also in: [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md); [A defense map](../09-protecting-and-governing/06-a-defense-map.md)
+- Also in: [Optional simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md); [A defense map](../09-protecting-and-governing/06-a-defense-map.md)
 - Don't confuse with: AWS Organizations. Control Tower sets up and watches a governed multi-account environment for you; AWS Organizations, which it is built on, gives you accounts, OUs, SCPs and one bill to design yourself.
 
 **AWS Cost and Usage Report** (CUR): AWS's most detailed cost and usage data: every line item, by hour, day or month, optionally with resource IDs and tag columns, delivered as files to your S3 bucket. It's now created through AWS Data Exports.
@@ -635,7 +635,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **AWS Enterprise Support**: The Support plan for business-critical workloads. On top of Business Support+ it adds a designated Technical Account Manager, faster reply targets, Well-Architected reviews, Trusted Advisor Priority and AWS Security Incident Response.
 
 - Taught in: [Support plans](../12-getting-help/01-support-plans.md)
-- Also in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md); [Simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
+- Also in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md); [Optional simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
 - Don't confuse with: AWS Business Support+, AWS Unified Operations, Enterprise On-Ramp. Enterprise Support is the first plan with a named TAM; Unified Operations adds domain specialists, the fastest targets and 24/7 workload monitoring, and Enterprise On-Ramp is a retiring plan whose customers move to Enterprise.
 
 **AWS Fargate**: Serverless compute for containers, used by Amazon ECS or Amazon EKS: you set each task's CPU and memory, and AWS supplies, isolates and patches the servers. It runs containers as long as a task runs, but has no GPUs.
@@ -674,7 +674,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **AWS Health API**: The programmatic way into AWS Health, so your own tools can ask for your account's events. It needs Business Support+ or a higher plan; on Basic it refuses the call, though EventBridge still delivers events.
 
 - Taught in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md)
-- Also in: [Support plans](../12-getting-help/01-support-plans.md); [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md); [Simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
+- Also in: [Support plans](../12-getting-help/01-support-plans.md); [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md); [Optional simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
 - Don't confuse with: AWS Health Dashboard. The Health Dashboard is for people in a browser and free on every plan, while the Health API is for programs and needs a paid Support plan; both read the same events.
 
 **AWS Health Dashboard**: AWS Health's console page, free on every plan with no setup, with two views: Service health for public events and Your account health for events affecting your resources. Older material calls these the Service and Personal Health Dashboards.
@@ -751,7 +751,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **AWS Organizations**: An AWS service that joins several AWS accounts into one organization under a management account, with organizational units, policies such as service control policies, and one consolidated bill.
 
 - Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-- Also in: [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md); [A defense map](../09-protecting-and-governing/06-a-defense-map.md)
+- Also in: [Optional simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md); [A defense map](../09-protecting-and-governing/06-a-defense-map.md)
 - Don't confuse with: AWS Control Tower. Organizations is the foundation that groups accounts, sets policies and gives one bill; Control Tower is built on it and sets up and watches a best-practice multi-account environment for you.
 
 **AWS Outposts**: AWS hardware, services and tools in your own data center or site, operated and maintained by AWS as an extension of a Region, for hybrid systems whose data must stay on premises. You provide the building, power and network connection.
@@ -835,13 +835,13 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **AWS Security Hub**: Today, a newer unified product built on Security Hub CSPM that correlates findings from it, GuardDuty, Inspector, Macie and others into exposure findings. The exam guide's Security Hub is the original, now Security Hub CSPM.
 
 - Taught in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md)
-- Also in: [Simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md)
+- Also in: [Optional simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md)
 - Don't confuse with: AWS Security Hub CSPM. The unified Security Hub joins findings into combined risks; Security Hub CSPM, the original product, runs the standards checks and is what the exam guide means.
 
 **AWS Security Hub CSPM**: The original AWS Security Hub, renamed: it checks your settings against security standards such as CIS and PCI DSS, scores them, and collects other services' findings in one place. Most checks need AWS Config.
 
 - Taught in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md)
-- Also in: [Simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md)
+- Also in: [Optional simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md)
 - Exam name: "AWS Security Hub" in the CLF-C02 exam guide
 - Don't confuse with: AWS Security Hub, AWS Trusted Advisor. Security Hub CSPM checks settings against named standards and gathers findings, as the exam's Security Hub does; the unified Security Hub correlates findings, and Trusted Advisor checks AWS's own best practices.
 
@@ -936,13 +936,13 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **AWS Trusted Advisor**: An AWS service that checks your account against AWS's best practices in six categories, such as cost optimization, security and service limits, and recommends changes; it fixes nothing. Your Support plan decides which checks you see.
 
 - Taught in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md)
-- Also in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md); [Simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md); [Support plans](../12-getting-help/01-support-plans.md); [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md); [Simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
+- Also in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md); [Optional simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md); [Support plans](../12-getting-help/01-support-plans.md); [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md); [Optional simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
 - Don't confuse with: AWS Security Hub CSPM, Amazon Inspector, AWS Health. Trusted Advisor compares your account with AWS's own best practices; Security Hub CSPM checks named standards such as CIS, Inspector finds software flaws, and AWS Health reports problems on AWS's side.
 
 **AWS Unified Operations**: The top Support plan, for mission-critical workloads: the fastest first-reply targets for critical incidents, designated domain specialist engineers alongside a TAM, and 24/7 monitoring of your workloads. You sign up through AWS sales.
 
 - Taught in: [Support plans](../12-getting-help/01-support-plans.md)
-- Also in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md); [Simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
+- Also in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md); [Optional simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
 - Don't confuse with: AWS Enterprise Support. Both include a designated TAM; only Unified Operations adds domain specialist engineers, reply targets of minutes for critical incidents and 24/7 workload monitoring.
 
 **AWS WAF**: A web application firewall. It reads each HTTP and HTTPS request sent to a resource such as CloudFront, an Application Load Balancer or API Gateway, and allows, blocks, counts or challenges it by the rules in a web ACL.
@@ -982,13 +982,13 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **backup and restore**: The cheapest and slowest disaster recovery strategy: only backups of the data and setup are kept in the recovery Region, and everything else is rebuilt after the disaster. Recovery typically takes hours.
 
 - Taught in: [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md)
-- Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md); [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
+- Also in: [Optional simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md); [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
 - Don't confuse with: pilot light. Backup and restore keeps only backups and rebuilds everything; a pilot light also keeps data copied continuously and core parts such as the database running.
 
 **Basic Support**: The free Support plan on every AWS account: account and billing cases, quota increase requests, documentation and re:Post, some Trusted Advisor checks and the AWS Health Dashboard. It can't open technical cases.
 
 - Taught in: [Support plans](../12-getting-help/01-support-plans.md)
-- Also in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md); [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md); [Simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
+- Also in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md); [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md); [Optional simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
 - Don't confuse with: AWS Business Support+. Basic is free and handles account, billing and quota cases only; Business Support+ is the cheapest plan that adds technical cases with AWS engineers.
 
 **block storage**: Storage that a server sees as its own disk: the server's operating system formats it and keeps its files on it. On AWS it is an Amazon EBS volume or EC2 instance store.
@@ -1025,7 +1025,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Business perspective**: The CAF perspective for strategy and outcomes: deciding what to change, in what order and why it's worth it, through capabilities such as strategy, portfolio and innovation management.
 
 - Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
-- Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
+- Also in: [Optional simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 - Don't confuse with: Governance perspective. Business decides whether and in what order to change; Governance oversees the change once decided, measuring benefits, controlling spending and licenses, and managing risk.
 
 **Business Support**: A retiring Support plan, closed to new subscriptions, that ends on a set date (see the lesson). Its customers aren't moved automatically: they choose Business Support+ to keep technical help.
@@ -1043,7 +1043,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Capacity Reservation**: EC2 capacity held for one instance type in one Availability Zone, so launches succeed when needed. It bills at the On-Demand rate whether used or not, and gives no discount of its own.
 
 - Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
-- Also in: [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
+- Also in: [Optional simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Don't confuse with: zonal Reserved Instance. A Capacity Reservation guarantees capacity with no discount and, for immediate use, no long commitment; a zonal Reserved Instance holds capacity and discounts it, for a one- or three-year commitment.
 
 **capital expense** (CapEx): Money spent up front on things that last for years, such as servers or a building.
@@ -1104,7 +1104,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Compute Savings Plan**: The most flexible Savings Plan: it discounts EC2 in any family, size, Region, operating system or tenancy, and also Fargate and Lambda, for a smaller maximum discount.
 
 - Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
-- Also in: [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
+- Also in: [Optional simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Don't confuse with: EC2 Instance Savings Plan. A Compute Savings Plan keeps applying when you change family, Region or compute service; an EC2 Instance Savings Plan stays with one family in one Region for a deeper discount.
 
 **configuration management**: Keeping systems set up correctly. A shared control: AWS keeps its own devices set up, and you keep your operating systems, databases, applications and AWS resource settings set up.
@@ -1114,7 +1114,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **consolidated billing**: The AWS Organizations feature by which the management account receives and pays one bill for every account in the organization, sees each account's charges, and gets combined volume pricing and shared commitment discounts.
 
 - Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-- Also in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md); [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
+- Also in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md); [Optional simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
 
 **container**: A standard package of an application's code with the libraries and settings it depends on, so it runs the same on a laptop or on AWS. It is software, not a place to store data like an S3 bucket.
 
@@ -1140,12 +1140,12 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Control Tower control**: A plain-language rule that AWS Control Tower applies to a whole OU: preventive, built from SCPs and RCPs; detective, from Config rules; or proactive, checking CloudFormation resources before creation. AWS used to call them guardrails.
 
 - Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-- Also in: [A defense map](../09-protecting-and-governing/06-a-defense-map.md); [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
+- Also in: [A defense map](../09-protecting-and-governing/06-a-defense-map.md); [Optional simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
 
 **Convertible Reserved Instance**: A Reserved Instance you can exchange for another Convertible one with a different family, operating system or tenancy, of equal or higher value, in the same Region. It discounts less than Standard and can't be sold.
 
 - Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
-- Also in: [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
+- Also in: [Optional simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Don't confuse with: Standard Reserved Instance. A Convertible Reserved Instance gives up some discount for the right to exchange it; a Standard one discounts more and can be sold, but never exchanged.
 
 **cost allocation tag**: A tag key activated for billing, so Cost Explorer, Budgets, anomaly monitors and the CUR can group costs by it. The two types are AWS-generated and user-defined.
@@ -1244,7 +1244,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Database Savings Plan**: A Savings Plan for database services such as Aurora, RDS, DynamoDB and ElastiCache, across engines, sizes and Regions. It comes with a one-year term and no upfront payment only.
 
 - Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
-- Also in: [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
+- Also in: [Optional simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 
 **decoupling**: Putting something, such as a queue, topic or event bus, between two parts so each can fail, slow down or grow without breaking the other. Parts joined this way are loosely coupled.
 
@@ -1253,13 +1253,13 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Dedicated Host**: A whole physical EC2 server for your use, billed per host, that shows its sockets, cores and host ID and keeps your instances on it. It suits software licensed per socket or core.
 
 - Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
-- Also in: [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md); [The business case](../13-moving-to-aws/04-the-business-case.md)
+- Also in: [Optional simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md); [The business case](../13-moving-to-aws/04-the-business-case.md)
 - Don't confuse with: Dedicated Instance. A Dedicated Host is a whole server you can see, for licenses counted per socket or core; a Dedicated Instance only guarantees hardware no other customer uses, and shows nothing of it.
 
 **Dedicated Instance**: An EC2 instance on hardware used only by your account, billed per instance plus a Region fee. AWS places it, shows you nothing of the hardware, and may move it after a stop and start.
 
 - Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
-- Also in: [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
+- Also in: [Optional simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Don't confuse with: Dedicated Host. A Dedicated Instance meets a rule against shared hardware without showing it; a Dedicated Host is a whole server you can see and control, for licenses counted per socket or core.
 
 **defense in depth**: Several independent layers of controls, from the edge to the organization, so that an attacker must beat all of them and a mistake in one is caught by another.
@@ -1288,7 +1288,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **disaster recovery** (DR): Getting a whole workload working again after a disaster, usually from a separate copy in another Region, within limits the business sets as its RTO and RPO.
 
 - Taught in: [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md)
-- Also in: [Choosing a Region](../03-aws-around-the-world/02-choosing-a-region.md); [Simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md)
+- Also in: [Choosing a Region](../03-aws-around-the-world/02-choosing-a-region.md); [Optional simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md)
 - Don't confuse with: high availability, business continuity. Disaster recovery brings the whole workload back from a separate copy after a larger event; high availability keeps it running through one part failing.
 
 **discount sharing**: Letting one account's unused Reserved Instance or Savings Plans discount cover matching usage in other accounts of the same organization. It's on unless the management account turns it off.
@@ -1328,7 +1328,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **EC2 Instance Savings Plan**: A Savings Plan for one EC2 instance family in one Region, in any size, operating system or tenancy. It gives a deeper maximum discount than a Compute Savings Plan.
 
 - Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
-- Also in: [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
+- Also in: [Optional simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Don't confuse with: Compute Savings Plan. An EC2 Instance Savings Plan discounts more but stays with one family in one Region; a Compute Savings Plan follows any family, Region, Fargate and Lambda.
 
 **economies of scale**: The lower cost per unit that a very large operation reaches by buying, building and running things in bulk. AWS says its scale leads to lower pay-as-you-go prices.
@@ -1344,7 +1344,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Elastic Load Balancing** (ELB): AWS's load balancing service: one front door spreading incoming traffic across healthy targets, such as EC2 instances, containers and IP addresses, in one or more Availability Zones. AWS scales the load balancer itself, and it bills by the hour.
 
 - Taught in: [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
-- Also in: [Simulation S7: Scale the bakery's web servers through a December Saturday](../06-running-applications/07-sim-elasticity-with-auto-scaling.md)
+- Also in: [Optional simulation S7: Scale the bakery's web servers through a December Saturday](../06-running-applications/07-sim-elasticity-with-auto-scaling.md)
 - Don't confuse with: Amazon EC2 Auto Scaling. Elastic Load Balancing decides which healthy target gets each request; Amazon EC2 Auto Scaling decides how many instances there are.
 
 **elasticity**: Capacity that grows when demand rises and shrinks when it falls, so you don't pay for capacity you no longer need. On AWS it is usually automatic, through auto scaling.
@@ -1427,7 +1427,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Free plan**: The Free Tier plan that never charges you: selected services only, with no Savings Plans or Reserved Instances. It ends a set time after sign-up or when the credits run out, and the account then closes.
 
 - Taught in: [How AWS charges](../11-paying-for-aws/01-how-aws-charges.md)
-- Also in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md); [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
+- Also in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md); [Optional simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Don't confuse with: Paid plan. The Free plan can't charge you and closes the account when it ends; the Paid plan offers every service and bills normal rates once the credits are used.
 
 ## G
@@ -1454,7 +1454,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Governance perspective**: The CAF perspective for control and oversight: running the cloud program so benefits arrive and risks stay small, through capabilities such as program, benefits, risk and cloud financial management.
 
 - Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
-- Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
+- Also in: [Optional simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 - Don't confuse with: Business perspective. Governance asks whether the change is going as planned and within budget; Business asks whether it's worth doing and in what order.
 
 **graph database**: A database that stores things (nodes) and the connections between them (edges), for questions about relationships many links deep, such as recommendations or fraud rings. Amazon Neptune is AWS's.
@@ -1464,7 +1464,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **guest operating system**: The operating system, such as Linux or Windows, that runs inside your virtual server. On Amazon EC2 you install its updates and security patches.
 
 - Taught in: [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
-- Also in: [Shared, inherited and customer-specific controls](../04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md); [Simulation S3: Slide the line from your own servers to Amazon S3](../04-shared-responsibility-and-access/08-sim-responsibility-slider.md); [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md)
+- Also in: [Shared, inherited and customer-specific controls](../04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md); [Optional simulation S3: Slide the line from your own servers to Amazon S3](../04-shared-responsibility-and-access/08-sim-responsibility-slider.md); [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md)
 - Don't confuse with: host operating system. The guest operating system is inside your virtual server and yours on EC2; the host operating system is under the virtualization layer and AWS's.
 
 ## H
@@ -1608,7 +1608,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **landing zone**: A multi-account AWS environment set up following security and compliance best practices, as AWS Control Tower builds it, with OUs, logging and sign-in in place.
 
 - Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-- Also in: [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
+- Also in: [Optional simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
 
 **latency**: The delay between a request and its answer. Distance is one of its main causes, so running close to users lowers it.
 
@@ -1661,13 +1661,13 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **management account**: The account that creates an AWS organization and pays every member account's bill. Service control policies don't apply to it, so keep workloads and everyday users out of it.
 
 - Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-- Also in: [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
+- Also in: [Optional simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
 - Don't confuse with: member account. The management account creates and pays for the organization and sits outside every SCP; a member account is limited by the SCPs above it, root user included.
 
 **member account**: Any account in an AWS organization other than the management account. Service control policies limit every user and role in it, including its root user.
 
 - Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-- Also in: [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
+- Also in: [Optional simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
 - Don't confuse with: management account. A member account is limited by the SCPs above it, root user included; the management account creates and pays for the organization and no SCP applies to it.
 
 **memory optimized**: EC2 instance types with a lot of memory for their processors, for work that holds large data sets in memory, such as in-memory databases and analytics. Its letters include R and X.
@@ -1694,7 +1694,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Multi-AZ deployment**: An Amazon RDS setup with a synchronously replicated standby in a second Availability Zone that serves no queries and takes over automatically if the primary fails. It is high availability, not a backup: a mistaken delete reaches the standby too.
 
 - Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
-- Also in: [Regions, Availability Zones and data centers](../03-aws-around-the-world/01-regions-availability-zones-data-centers.md); [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../05-storing-data/10-sim-multi-az-vs-read-replica.md)
+- Also in: [Regions, Availability Zones and data centers](../03-aws-around-the-world/01-regions-availability-zones-data-centers.md); [Optional simulation S6: Multi-AZ, read replica or backup: protect the order database](../05-storing-data/10-sim-multi-az-vs-read-replica.md)
 - Don't confuse with: multi-Region, read replica. Multi-AZ keeps a synchronous standby that fails over by itself inside one Region; a read replica serves reads and must be promoted by hand, and multi-Region runs copies in separate Regions.
 
 **multi-factor authentication** (MFA): A second proof of identity besides the password, so a stolen password isn't enough on its own. AWS recommends passkeys or security keys first.
@@ -1710,7 +1710,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **multi-site active/active**: The most expensive disaster recovery strategy: full copies in two or more Regions, all serving customers, so recovery is near zero. It still needs backups, because it copies data mistakes too.
 
 - Taught in: [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md)
-- Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md)
+- Also in: [Optional simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md)
 - Don't confuse with: warm standby. In multi-site active/active every copy serves customers every day; a hot standby is a full copy that waits, and a warm standby is a smaller copy that must scale up.
 
 ## N
@@ -1763,7 +1763,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **On-Demand Instance**: The EC2 purchasing option with no commitment: you pay the published rate for the time an instance runs, and stop paying when it stops. It's the yardstick for every discount, and suits short, unpredictable or new work.
 
 - Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
-- Also in: [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
+- Also in: [Optional simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Don't confuse with: Reserved Instance, Spot Instance. On-Demand commits you to nothing at the full rate; a Reserved Instance trades a term commitment for a lower rate, and a Spot Instance is cheaper still but AWS can take it back.
 
 **on-premises**: In a building you own or control. On-premises IT means buying, housing and running your own servers instead of renting capacity from a cloud provider.
@@ -1798,12 +1798,12 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Operations perspective**: The CAF perspective for health and availability: keeping services running at the level the business agreed, through capabilities such as observability, incident and problem management, and patch management.
 
 - Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
-- Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
+- Also in: [Optional simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 
 **organizational unit** (OU): A group of accounts in an AWS organization, like a folder, which can sit inside another OU. A policy attached to an OU applies to every account below it.
 
 - Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-- Also in: [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
+- Also in: [Optional simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
 
 ## P
 
@@ -1842,7 +1842,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **People perspective**: The CAF perspective for culture and change: skills, roles and organizational change, through capabilities such as cloud fluency, workforce transformation and change acceleration.
 
 - Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
-- Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
+- Also in: [Optional simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 
 **performance efficiency pillar**: The Well-Architected pillar that asks whether you use the right kind and amount of resources to meet your needs as demand and technology change.
 
@@ -1856,7 +1856,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **perspective (AWS CAF)**: One of six groups of related capabilities in the CAF, each owned by related stakeholders: Business, People, Governance, Platform, Security and Operations.
 
 - Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
-- Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
+- Also in: [Optional simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 
 **pillar**: One of the Well-Architected Framework's six areas of concern, each a way of judging a workload: operational excellence, security, reliability, performance efficiency, cost optimization and sustainability.
 
@@ -1865,13 +1865,13 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **pilot light**: A disaster recovery strategy that copies data continuously to the recovery Region and keeps core parts, such as the database, running, with app servers off until needed. Recovery typically takes tens of minutes; data loss can be much less.
 
 - Taught in: [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md)
-- Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md); [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
+- Also in: [Optional simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md); [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
 - Don't confuse with: warm standby, backup and restore. Ask whether it could serve a customer right now: a pilot light can't until its app servers are switched on, while a warm standby can, at reduced size.
 
 **Platform perspective**: The CAF perspective for infrastructure and applications: building and standardizing the cloud environment, through capabilities such as platform architecture, provisioning and orchestration, and CI/CD.
 
 - Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
-- Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
+- Also in: [Optional simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 
 **policy**: A document, usually written in JSON, that lists permissions as statements allowing or denying actions on resources. Nothing is allowed until a policy allows it.
 
@@ -1920,7 +1920,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **purchasing option**: How you pay for EC2 capacity: On-Demand, Savings Plans, Reserved Instances or Spot Instances, or, for a rule or a guarantee, Dedicated Hosts, Dedicated Instances or Capacity Reservations. It never changes the instance type.
 
 - Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
-- Also in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md); [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
+- Also in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md); [Optional simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Exam name: "Amazon EC2 instance types" in the CLF-C02 exam guide
 - Don't confuse with: instance type. A purchasing option is how you pay; an instance type is the hardware you pay for, and the same type can be bought any way.
 
@@ -1929,25 +1929,25 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **read replica**: A read-only copy of an Amazon RDS database, updated asynchronously, so it can lag. It takes read-heavy work off the primary and can be promoted to a separate database, but outside Aurora it doesn't take over automatically.
 
 - Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
-- Also in: [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../05-storing-data/10-sim-multi-az-vs-read-replica.md)
+- Also in: [Optional simulation S6: Multi-AZ, read replica or backup: protect the order database](../05-storing-data/10-sim-multi-az-vs-read-replica.md)
 - Don't confuse with: Multi-AZ deployment. A read replica serves reads and must be promoted by hand, losing any lag; a Multi-AZ standby serves nothing and fails over automatically with every change, and only a backup can undo a mistaken delete.
 
 **recovery point objective** (RPO): The most data the business accepts losing, measured as the time between the last saved copy and the failure. It looks back from the failure.
 
 - Taught in: [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md)
-- Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md)
+- Also in: [Optional simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md)
 - Don't confuse with: recovery time objective. RPO is the data you can lose, measured back to the last saved copy; RTO is how long you can be without service.
 
 **recovery time objective** (RTO): The longest the business accepts a service being down after a failure. It looks forward from the failure.
 
 - Taught in: [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md)
-- Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md)
+- Also in: [Optional simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md)
 - Don't confuse with: recovery point objective. RTO is time without service; RPO is how much data you accept losing, measured back from the failure (P for a point in your data, T for time).
 
 **refactor**: The migration strategy, also called re-architect, that redesigns an application to use cloud-native features when strong business demand requires it. AWS calls it the most complex and costly strategy.
 
 - Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-- Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
+- Also in: [Optional simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 - Don't confuse with: rehost, relocate, replatform. Refactor changes the application's design; replatform changes only what it runs on, and rehost and relocate move it unchanged.
 
 **Region**: A geographic area holding several Availability Zones (the lesson gives the minimum), isolated from other Regions; resources stay in their Region unless you copy them. Each has a name and code, such as US East (N. Virginia), us-east-1.
@@ -1959,7 +1959,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Regional Reserved Instance**: A Reserved Instance whose discount applies in any Availability Zone of its Region and, for Linux on shared tenancy, to any size in the same family. It reserves no capacity.
 
 - Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
-- Also in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md); [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
+- Also in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md); [Optional simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Don't confuse with: zonal Reserved Instance. A Regional Reserved Instance follows your instances across AZs and sizes but reserves nothing; a zonal one reserves capacity in one AZ, for exact matches only.
 
 **Regional service**: A service AWS runs across several Availability Zones of a Region for you, behind one Regional address, such as Amazon S3 or AWS Lambda.
@@ -1970,7 +1970,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **rehost**: The migration strategy, also called lift and shift, that moves each server to AWS unchanged, as an Amazon EC2 instance running the same software. Optimizing comes later.
 
 - Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-- Also in: [Migration tools](../13-moving-to-aws/03-migration-tools.md); [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
+- Also in: [Migration tools](../13-moving-to-aws/03-migration-tools.md); [Optional simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 - Don't confuse with: refactor, relocate, replatform. Rehost moves servers one by one onto EC2 with nothing changed; relocate moves a whole platform, replatform changes what the application runs on, and refactor redesigns it.
 
 **relational database**: A database that keeps data in tables of rows and columns that link to each other, queried in SQL, and changes several tables together in one transaction. On AWS it is Amazon RDS or Amazon Aurora.
@@ -1987,7 +1987,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **relocate**: The migration strategy that moves many servers at once from an on-premises platform, such as VMware, to a cloud version of the same platform, or moves a resource to another VPC, Region or account.
 
 - Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-- Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
+- Also in: [Optional simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 - Don't confuse with: refactor, rehost, replatform. Relocate moves a whole platform, or a resource between VPCs, Regions or accounts, unchanged; rehost moves servers onto EC2 one by one, and replatform and refactor change the application.
 
 **repeatable process**: A task that will be done again, where each run must give the same result, such as building an identical copy of a setup. Write it down: a template for whole setups, a script for routine tasks.
@@ -1998,18 +1998,18 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **replatform**: The migration strategy, also called lift, tinker and shift, that moves an application with a few changes to what it runs on, such as moving a SQL Server database onto Amazon RDS.
 
 - Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-- Also in: [Migration tools](../13-moving-to-aws/03-migration-tools.md); [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
+- Also in: [Migration tools](../13-moving-to-aws/03-migration-tools.md); [Optional simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 - Don't confuse with: refactor, rehost, relocate. Replatform changes what the application runs on, not its code; rehost and relocate change nothing, and refactor redesigns the application itself.
 
 **repurchase**: The migration strategy, also called drop and shop, that replaces an application with a different product or version, often software as a service.
 
 - Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-- Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
+- Also in: [Optional simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 
 **Reserved Instance** (RI): An EC2 purchasing option in which you commit to one instance configuration for one or three years in return for a lower rate. It's a billing discount on matching running instances, not a machine.
 
 - Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
-- Also in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md); [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md); [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md); [Lab 15: Price the bakery's setup in the AWS Pricing Calculator](../11-paying-for-aws/05-lab-15-pricing-calculator.md)
+- Also in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md); [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md); [Optional simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md); [Lab 15: Price the bakery's setup in the AWS Pricing Calculator](../11-paying-for-aws/05-lab-15-pricing-calculator.md)
 - Don't confuse with: On-Demand Instance, Spot Instance, Savings Plans. A Reserved Instance commits to one configuration for a lower rate; a Savings Plan commits to dollars per hour more flexibly, On-Demand commits to nothing, and Spot can be interrupted.
 
 **resource-based policy**: A policy attached to a resource, such as an S3 bucket, that says who may do what to that resource, so it must name a principal. Within one account an allow here is enough; across accounts both sides must allow.
@@ -2021,12 +2021,12 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **retain**: The migration strategy of keeping an application where it is for now, for reasons such as compliance, high risk, dependencies, a recent upgrade, special hardware or a SaaS version still to come.
 
 - Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-- Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
+- Also in: [Optional simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 
 **retire**: The migration strategy of decommissioning or archiving an application so its servers can be shut down, for example when it has no business value, no recent users or unsupported software.
 
 - Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-- Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
+- Also in: [Optional simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 
 **retrieval fee**: A charge per GB each time you read data from some S3 storage classes: Standard-IA, One Zone-IA and the Glacier classes. It can make a cold class cost more than S3 Standard for data that is read often.
 
@@ -2131,7 +2131,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Savings Plans**: A commitment to spend a set amount per hour on eligible usage for one or three years, charged at lower rates. Commitment unused in an hour is lost. AWS recommends them over Reserved Instances.
 
 - Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
-- Also in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md); [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md); [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
+- Also in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md); [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md); [Optional simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Exam name: "AWS Savings Plans" in the CLF-C02 exam guide
 - Don't confuse with: Reserved Instance. A Savings Plan commits to dollars per hour and follows your usage as it changes; a Reserved Instance commits to one instance configuration, and only a zonal one reserves capacity.
 
@@ -2159,7 +2159,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Security perspective**: The CAF perspective for compliance and assurance: protecting data, identities and systems and proving compliance, through capabilities such as identity and access management, threat detection and incident response.
 
 - Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
-- Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
+- Also in: [Optional simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 
 **security pillar**: The Well-Architected pillar that asks whether data, systems and accounts are protected. It is generally not traded away for other pillars.
 
@@ -2182,7 +2182,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **service control policy** (SCP): A policy set in AWS Organizations that caps what users and roles in a member account can do, including that account's root user. It grants nothing, and it doesn't apply to the organization's management account.
 
 - Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-- Also in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md); [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md); [A defense map](../09-protecting-and-governing/06-a-defense-map.md)
+- Also in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md); [Optional simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md); [A defense map](../09-protecting-and-governing/06-a-defense-map.md)
 - Don't confuse with: identity-based policy. An SCP caps every user and role in a member account, root included, and grants nothing; an IAM identity-based policy grants access, a permissions boundary caps one identity, and an RCP caps access to resources.
 
 **Service health**: The public view of the AWS Health Dashboard: events for every service and Region that aren't about any one account, open to anyone without signing in. Older material calls it the Service Health Dashboard.
@@ -2203,13 +2203,13 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **shared control**: A kind of control that applies on both sides, with AWS and you each doing it for your own things: patch management, configuration management, and awareness and training. "Shared" doesn't mean done together.
 
 - Taught in: [Shared, inherited and customer-specific controls](../04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md)
-- Also in: [Simulation S3: Slide the line from your own servers to Amazon S3](../04-shared-responsibility-and-access/08-sim-responsibility-slider.md)
+- Also in: [Optional simulation S3: Slide the line from your own servers to Amazon S3](../04-shared-responsibility-and-access/08-sim-responsibility-slider.md)
 - Don't confuse with: inherited control, customer-specific control. In a shared control the kind of work is shared but each specific task belongs to one side; an inherited control is all AWS's, and a customer-specific control is all yours.
 
 **shared responsibility model**: AWS's description of which security work AWS does and which you do. AWS secures the cloud itself; you secure what you put in it, and the line moves with the service you choose.
 
 - Taught in: [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
-- Also in: [Shared, inherited and customer-specific controls](../04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md); [Simulation S3: Slide the line from your own servers to Amazon S3](../04-shared-responsibility-and-access/08-sim-responsibility-slider.md)
+- Also in: [Shared, inherited and customer-specific controls](../04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md); [Optional simulation S3: Slide the line from your own servers to Amazon S3](../04-shared-responsibility-and-access/08-sim-responsibility-slider.md)
 
 **Shield Response Team** (SRT): AWS engineers who specialize in DDoS response, available around the clock to Shield Advanced subscribers who also have a qualifying Support plan (see the lesson). With permission, they can change your WAF rules during an attack.
 
@@ -2246,7 +2246,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Spot Instance**: An EC2 purchasing option that uses spare EC2 capacity at a large discount, with no commitment, but AWS can interrupt it after a two-minute warning. It suits flexible work that can stop and restart.
 
 - Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
-- Also in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md); [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
+- Also in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md); [Optional simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Don't confuse with: On-Demand Instance, Reserved Instance. A Spot Instance can be taken back by AWS, so it suits interruptible work only; On-Demand and Reserved Instances run until you stop them.
 
 **SQL injection**: Typing database commands into a form field so that the site's database runs them. It arrives like an honest request, so only something that reads requests, such as AWS WAF, can stop it.
@@ -2273,7 +2273,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Standard Reserved Instance**: The Reserved Instance with the bigger discount and less freedom: you can modify some attributes, such as its Availability Zone or size, and sell it on the Reserved Instance Marketplace, but not exchange it.
 
 - Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
-- Also in: [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
+- Also in: [Optional simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Don't confuse with: Convertible Reserved Instance. A Standard Reserved Instance discounts more and can be sold but not exchanged; a Convertible one discounts less but can be exchanged for another family, operating system or tenancy.
 
 **stateful**: Describes a filter that remembers each conversation, so a reply to an allowed request passes without a rule of its own. Security groups are stateful.
@@ -2308,7 +2308,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Support plan**: The level of AWS Support an account subscribes to. Every account has one; the free one is Basic, and each paid plan includes everything in the plans below it.
 
 - Taught in: [Support plans](../12-getting-help/01-support-plans.md)
-- Also in: [Simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
+- Also in: [Optional simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
 
 **sustainability pillar**: The Well-Architected pillar that asks whether you use as few resources, and as little energy, as you can.
 
@@ -2335,7 +2335,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **Technical Account Manager** (TAM): A named person at AWS assigned to your company, who learns your setup, guides your plans and pulls in AWS specialists. Enterprise Support is the first plan that includes one.
 
 - Taught in: [Support plans](../12-getting-help/01-support-plans.md)
-- Also in: [Simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
+- Also in: [Optional simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
 
 **template (CloudFormation)**: A YAML or JSON text file that describes the resources you want and their settings. CloudFormation builds a stack from it and works out the order itself, so the same file builds the same setup in any Region.
 
@@ -2423,7 +2423,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **warm standby**: A disaster recovery strategy that keeps a smaller but complete working copy in the recovery Region, which only has to scale up to take over. Recovery typically takes minutes.
 
 - Taught in: [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md)
-- Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md)
+- Also in: [Optional simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md)
 - Don't confuse with: pilot light. A warm standby can serve customers at once at reduced size; a pilot light can't until its app servers start, and a hot standby is a full-size copy that takes no customers until failover.
 
 **Wavelength Zone**: AWS compute and storage placed inside telecom carriers' 5G networks, for very low latency to mobile devices. The CLF-C02 exam guide lists AWS Wavelength as out of scope, so know it only to reject it.
@@ -2449,7 +2449,7 @@ The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 
 **zonal Reserved Instance**: A Reserved Instance bought for one Availability Zone: it reserves capacity there, and its discount applies only to exactly matching instances in that AZ.
 
 - Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
-- Also in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md); [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
+- Also in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md); [Optional simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Don't confuse with: Regional Reserved Instance. A zonal Reserved Instance reserves capacity in one AZ and fits only exact matches; a Regional one reserves nothing but applies in any AZ and, for Linux, to any size in the family.
 
 ---

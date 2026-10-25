@@ -177,7 +177,7 @@ First **AWS SCT** (or DMS Schema Conversion), to convert the Oracle schema and c
 
    </details>
 
-**Next:** try [Simulation S6: Multi-AZ vs read replica](10-sim-multi-az-vs-read-replica.md), then the [mastery check](11-check.md).
+**Next:** the [mastery check](11-check.md). For more practice first, try the optional [Simulation S6: Multi-AZ vs read replica](10-sim-multi-az-vs-read-replica.md).
 
 ## Where to check the current details
 

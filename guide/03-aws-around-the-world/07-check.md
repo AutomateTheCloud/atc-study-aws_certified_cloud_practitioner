@@ -210,7 +210,7 @@ Take **Check A** closed-book, then open the answers. A "(Select TWO.)" question 
 | A3, B3 | 03.02a | [Rules first](02-choosing-a-region.md#rules-first-decide-where-the-data-may-live) |
 | A4, B4 | 03.02a | [More than one Region](02-choosing-a-region.md#use-more-than-one-region-only-when-you-have-a-reason) |
 | A5, B5 | 03.02a | [Services, latency and price](02-choosing-a-region.md#then-services-latency-and-price) |
-| A6, B6 | 03.03a | [Four strategies](03-surviving-failure.md#four-strategies-from-cheap-and-slow-to-costly-and-fast); [Simulation S2](06-sim-blast-radius.md) |
+| A6, B6 | 03.03a | [Four strategies](03-surviving-failure.md#four-strategies-from-cheap-and-slow-to-costly-and-fast); the optional [Simulation S2](06-sim-blast-radius.md) |
 | A7, B7 | 03.03a | [RTO and RPO](03-surviving-failure.md#rto-and-rpo-how-long-you-can-be-down-and-how-much-you-can-lose) |
 | A8, B8 | 03.03a | [HA vs DR](03-surviving-failure.md#high-availability-and-disaster-recovery-answer-different-questions); [replication vs backup](03-surviving-failure.md#replication-copies-your-mistakes-backups-undo-them) |
 | A9, B9 | 03.04a | [Local Zones, Outposts and Wavelength](04-the-edge.md#local-zones-outposts-and-wavelength-run-aws-servers-outside-a-region) |

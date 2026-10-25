@@ -4,7 +4,7 @@ id: clf-13-00
 title: "Module 13: Moving to AWS"
 tasks: ["1.3", "1.4"]
 objectives: ["13.01a", "13.02a", "13.03a", "13.04a"]
-reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 to 12; about 2 hours in total"
+reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 to 12; about 1 hour 45 minutes in total"
 prerequisites: [clf-12-00, clf-11-00, clf-04-00, clf-02-00]
 pillars: [cost-optimization, operational-excellence]
 facts_checked: 2026-10-25
@@ -20,7 +20,7 @@ This module teaches how an organization decides to move to the cloud, how it mov
 
 **Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): tasks [1.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.3) and [1.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.4).
 
-**For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely, and who has finished Modules 02 to 12. **Time:** about 2 hours; no AWS account needed.
+**For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely, and who has finished Modules 02 to 12. **Time:** about 1 hour 45 minutes, plus 20 minutes for the optional simulation; no AWS account needed.
 
 ## The scenario: a chain buys the bakery
 
@@ -61,7 +61,7 @@ Task [1.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practition
 3. [Migration tools](03-migration-tools.md)
 4. [The business case](04-the-business-case.md)
 
-**Practice:** [Simulation S16: the portfolio sorter](05-sim-portfolio-sorter.md), on paper. There's no lab: the migration services bill while they run, and two planning tools are closed to new customers.
+**Practice:** [Optional simulation S16: the portfolio sorter](05-sim-portfolio-sorter.md), on paper, if you want more decisions to make; the main path doesn't need it. There's no lab: the migration services bill while they run, and two planning tools are closed to new customers.
 
 > **Dated (checked 2026-10-24):** the exam's AWS Application Migration Service is now AWS Transform MGN, and AWS Application Discovery Service and AWS Migration Hub closed to new customers on 2025-11-07.
 

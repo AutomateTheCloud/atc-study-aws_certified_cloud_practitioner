@@ -4,7 +4,7 @@ id: clf-10-00
 title: "Module 10: Data, AI and the rest of the catalog"
 tasks: ["3.7", "3.8"]
 objectives: ["10.01a", "10.02a", "10.03a"]
-reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 to 09 and the guardrails primer; about 1.5 hours in total"
+reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 to 09 and the guardrails primer; about 1 hour 15 minutes in total"
 prerequisites: [clf-09-00, clf-08-00, clf-07-00, clf-05-00, guardrails-00]
 pillars: [performance-efficiency, cost-optimization, security]
 facts_checked: 2026-10-25
@@ -18,7 +18,7 @@ The rest of the exam's catalog: analytics, AI and machine learning, desktops and
 
 **Exam guide:** [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): tasks [3.7](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.7) and [3.8](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.8).
 
-**For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. You have finished Modules 02 to 09 and the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md). **Time:** about 1.5 hours, plus the optional labs.
+**For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. You have finished Modules 02 to 09 and the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md). **Time:** about 1 hour 15 minutes, plus 20 minutes for the optional simulation and the time for the optional labs.
 
 ## The scenario: six requests from the owner
 
@@ -55,7 +55,7 @@ Task [3.7](https://docs.aws.amazon.com/aws-certification/latest/cloud-practition
 
 **Practice:**
 
-- [Simulation S12: the input and output matcher](06-sim-input-output-matcher.md), after lesson 10.03, on paper.
+- [Optional simulation S12: the input and output matcher](06-sim-input-output-matcher.md), after lesson 10.03, on paper, if you want more decisions to make; the main path doesn't need it.
 - Two optional labs, which the exam doesn't need: [Optional lab 13: query a sales file with Athena](04-lab-13-athena-query.md), after lesson 10.01, and [Optional lab 14: have Polly read a description aloud](05-lab-14-polly-text-to-speech.md), after lesson 10.02.
 
 **Before a lab:** check you still have [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md), [your IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md) and [money alarms](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md). The lessons need no AWS account.

@@ -216,7 +216,7 @@ For each miss, reread the section and redo its practice.
 | A2, B2 | 11.01a | [The Free Tier now](01-how-aws-charges.md#the-free-tier-now-two-plans-credits-and-two-clocks) |
 | A3, B3 | 11.02a | [Reserved Instances](02-purchasing-options.md#reserved-instances-a-billing-discount-on-a-matching-configuration) |
 | A4, B4 | 11.02a | [Dedicated Hosts and Instances](02-purchasing-options.md#dedicated-hosts-and-dedicated-instances-hardware-with-no-other-customers) |
-| A5, B5 | 11.02a | [Choosing an option](02-purchasing-options.md#choosing-an-option-for-a-usage-pattern); [Simulation S13](07-sim-purchasing-option-tree.md) |
+| A5, B5 | 11.02a | [Choosing an option](02-purchasing-options.md#choosing-an-option-for-a-usage-pattern); the optional [Simulation S13](07-sim-purchasing-option-tree.md) |
 | A6, B6 | 11.03a | [AWS Pricing Calculator](03-estimate-watch-analyze.md#aws-pricing-calculator-estimates-a-design-before-it-exists) |
 | A7, B7 | 11.03a | [AWS Budgets](03-estimate-watch-analyze.md#aws-budgets-tells-you-when-you-pass-a-limit-it-stops-nothing-unless-you-add-an-action) |
 | A8, B8 | 11.03a | [Pick the tool by the question](03-estimate-watch-analyze.md#the-big-picture-pick-the-tool-by-the-question-it-answers) |

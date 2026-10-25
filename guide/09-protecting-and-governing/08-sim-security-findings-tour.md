@@ -1,7 +1,7 @@
 ---
 type: sim
 id: clf-09-08
-title: "Simulation S9: Match security findings to the service that raised them"
+title: "Optional simulation S9: Match security findings to the service that raised them"
 tasks: ["2.2", "2.4"]
 objectives: ["09.03a"]
 reader: "Adult studying alone, possibly new to IT, who has read lesson 09.03; about 20 minutes"
@@ -34,9 +34,11 @@ sources:
   - "https://aws.amazon.com/free/security/"
 ---
 
-# Simulation S9: A morning of security findings: match each one to the service that raised it
+# Optional simulation S9: A morning of security findings: match each one to the service that raised it
 
 **Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): tasks [2.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.2) and [2.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.4).
+
+> **Note:** This simulation is optional practice for learners who want more decisions to make; the main path and the module's hours leave it out.
 
 ## Before you start: your account, your responsibility
 
@@ -125,6 +127,6 @@ Ask what the service reads. Activity logs mean GuardDuty, a threat happening now
 
 ---
 
-"Simulation S9: Match security findings to the service that raised them" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional simulation S9: Match security findings to the service that raised them" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt

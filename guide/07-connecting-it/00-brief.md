@@ -4,7 +4,7 @@ id: clf-07-00
 title: "Module 07: Connecting it: networks and the edge"
 tasks: ["3.5", "3.2", "4.1", "2.1", "2.4"]
 objectives: ["07.01a", "07.02a", "07.03a", "07.04a"]
-reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 to 06 and the guardrails primer; about 1.5 hours in total"
+reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 to 06 and the guardrails primer; about 1 hour 15 minutes in total"
 prerequisites: [clf-06-00, clf-05-00, clf-03-00, guardrails-00]
 pillars: [security, reliability, performance-efficiency, cost-optimization]
 facts_checked: 2026-10-25
@@ -18,7 +18,7 @@ This module teaches what each piece of an AWS network is for: your own network a
 
 **Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): tasks [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1) and [2.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.4); [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): tasks [3.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.2) and [3.5](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.5); [Domain 4, Billing, Pricing, and Support](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html) (12% of the exam): task [4.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.1).
 
-**For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. You have done Modules 02 to 06 and the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md). **Time:** about 1.5 hours, plus 50 minutes for the optional lab.
+**For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. You have done Modules 02 to 06 and the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md). **Time:** about 1 hour 15 minutes, plus 50 minutes for the optional lab.
 
 ## The scenario
 

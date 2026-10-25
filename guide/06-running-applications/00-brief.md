@@ -4,7 +4,7 @@ id: clf-06-00
 title: "Module 06: Running applications: compute"
 tasks: ["3.3", "1.1", "2.1", "3.1"]
 objectives: ["06.01a", "06.02a", "06.03a", "06.04a"]
-reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 to 05 and the guardrails primer; about 2.5 hours in total"
+reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 to 05 and the guardrails primer; about 2 hours 15 minutes in total"
 prerequisites: [clf-05-00, clf-04-00, clf-02-00, guardrails-00]
 pillars: [performance-efficiency, reliability, cost-optimization, security]
 facts_checked: 2026-10-25
@@ -18,7 +18,7 @@ This module teaches the ways AWS runs your code: virtual servers, containers and
 
 **Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): task [1.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.1); [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): task [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1); [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): tasks [3.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.1) and [3.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.3).
 
-**For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. You have finished Modules [02](../02-why-the-cloud/00-brief.md) to [05](../05-storing-data/00-brief.md) and the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md). **Time:** about 2.5 hours, plus 30 minutes for the optional lab.
+**For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. You have finished Modules [02](../02-why-the-cloud/00-brief.md) to [05](../05-storing-data/00-brief.md) and the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md). **Time:** about 2 hours 15 minutes, plus 20 minutes for the optional simulation and 30 for the optional lab.
 
 ## The scenario
 
@@ -55,7 +55,7 @@ Task [3.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practition
 **Practice:**
 
 - [Lab 08: launch and terminate an instance](06-lab-08-launch-and-terminate-an-instance.md), after lesson 06.01 or at the end of the module, in your own account. It's time-boxed to 30 minutes, because a server bills by the hour, and costs under 2 cents of Free plan credits.
-- [Simulation S7: elasticity with Auto Scaling](07-sim-elasticity-with-auto-scaling.md), after lesson 06.02, on paper, because a load balancer bills by the hour.
+- [Optional simulation S7: elasticity with Auto Scaling](07-sim-elasticity-with-auto-scaling.md), after lesson 06.02, on paper, because a load balancer bills by the hour. Do it if you want more decisions to make; the main path doesn't need it.
 - [Optional lab 07: a Lambda function](05-lab-07-a-lambda-function.md), if you want to run a function yourself; the exam doesn't need it.
 
 **Before the labs:** check that you still have [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md), [your IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md), [money alarms](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md) and the [EC2 safe defaults](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/06-safe-defaults.md) in `us-east-1`. The lessons need no AWS account.

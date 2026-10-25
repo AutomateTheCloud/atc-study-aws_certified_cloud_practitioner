@@ -169,7 +169,7 @@ You may have studied five plans: Basic, Developer, Business, Enterprise On-Ramp 
 
    </details>
 
-**Next:** [Tools that watch your account](02-tools-that-watch-your-account.md). To practice choosing, try [Simulation S15](06-sim-support-plan-chooser.md).
+**Next:** [Tools that watch your account](02-tools-that-watch-your-account.md). To practice choosing, try the optional [Simulation S15](06-sim-support-plan-chooser.md).
 
 ## Where to check the current details
 

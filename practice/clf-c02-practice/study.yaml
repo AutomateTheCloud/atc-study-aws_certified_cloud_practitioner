@@ -6785,8 +6785,8 @@ questions:
   - blast-radius
   references:
   - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
-    reference: 'Module 03, page 03.06: Simulation S2: The blast-radius ladder and three recovery plans
-      (clf-03-06), section "Decision 1: place each event on the ladder"'
+    reference: 'Module 03, page 03.06: Optional simulation S2: The blast-radius ladder and three recovery
+      plans (clf-03-06), section "Decision 1: place each event on the ladder"'
     url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/03-aws-around-the-world/06-sim-blast-radius.md
 - id: q03-sim-events-only-backups-fix
   type: multiple_choice
@@ -6850,8 +6850,8 @@ questions:
   - blast-radius
   references:
   - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
-    reference: 'Module 03, page 03.06: Simulation S2: The blast-radius ladder and three recovery plans
-      (clf-03-06), section "Decision 1: place each event on the ladder"'
+    reference: 'Module 03, page 03.06: Optional simulation S2: The blast-radius ladder and three recovery
+      plans (clf-03-06), section "Decision 1: place each event on the ladder"'
     url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/03-aws-around-the-world/06-sim-blast-radius.md
 - id: q03-sim-rto-relaxed
   type: multiple_choice
@@ -6909,8 +6909,8 @@ questions:
   - rto-rpo
   references:
   - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
-    reference: 'Module 03, page 03.06: Simulation S2: The blast-radius ladder and three recovery plans
-      (clf-03-06), section "Decision 3: the budget changes"'
+    reference: 'Module 03, page 03.06: Optional simulation S2: The blast-radius ladder and three recovery
+      plans (clf-03-06), section "Decision 3: the budget changes"'
     url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/03-aws-around-the-world/06-sim-blast-radius.md
 - id: q03-sim-near-zero-rto
   type: multiple_choice
@@ -6967,8 +6967,8 @@ questions:
   - dr-strategies
   references:
   - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
-    reference: 'Module 03, page 03.06: Simulation S2: The blast-radius ladder and three recovery plans
-      (clf-03-06), section "Decision 2: choose a strategy for each"'
+    reference: 'Module 03, page 03.06: Optional simulation S2: The blast-radius ladder and three recovery
+      plans (clf-03-06), section "Decision 2: choose a strategy for each"'
     url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/03-aws-around-the-world/06-sim-blast-radius.md
 - id: q03-edge-location-no-servers
   type: multiple_choice
@@ -9286,8 +9286,8 @@ questions:
   - ec2
   references:
   - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
-    reference: 'Module 04, page 04.08: Simulation S3: Slide the line from your own servers to Amazon S3
-      (clf-04-08), section "Decision 1: from the back room to EC2"'
+    reference: 'Module 04, page 04.08: Optional simulation S3: Slide the line from your own servers to
+      Amazon S3 (clf-04-08), section "Decision 1: from the back room to EC2"'
     url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/04-shared-responsibility-and-access/08-sim-responsibility-slider.md
 - id: q04-sim-container-image-rebuild
   type: multiple_choice
@@ -9342,8 +9342,8 @@ questions:
   - lambda
   references:
   - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
-    reference: 'Module 04, page 04.08: Simulation S3: Slide the line from your own servers to Amazon S3
-      (clf-04-08), section "Decision 3: the order functions on Lambda"'
+    reference: 'Module 04, page 04.08: Optional simulation S3: Slide the line from your own servers to
+      Amazon S3 (clf-04-08), section "Decision 3: the order functions on Lambda"'
     url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/04-shared-responsibility-and-access/08-sim-responsibility-slider.md
 - id: q04-sim-line-climbs
   type: multiple_choice
@@ -9396,8 +9396,8 @@ questions:
   - shared-responsibility
   references:
   - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
-    reference: 'Module 04, page 04.08: Simulation S3: Slide the line from your own servers to Amazon S3
-      (clf-04-08), section "The whole slider"'
+    reference: 'Module 04, page 04.08: Optional simulation S3: Slide the line from your own servers to
+      Amazon S3 (clf-04-08), section "The whole slider"'
     url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/04-shared-responsibility-and-access/08-sim-responsibility-slider.md
 - id: q04-expired-token-authentication
   type: multiple_choice
@@ -15731,8 +15731,8 @@ questions:
   - disaster-recovery
   references:
   - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
-    reference: 'Module 05, page 05.10: Simulation S6: Multi-AZ, read replica or backup: protect the order
-      database (clf-05-10), section "Decision 5 (challenge): losing the whole Region"'
+    reference: 'Module 05, page 05.10: Optional simulation S6: Multi-AZ, read replica or backup: protect
+      the order database (clf-05-10), section "Decision 5 (challenge): losing the whole Region"'
     url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/05-storing-data/10-sim-multi-az-vs-read-replica.md
 - id: q05-backups-kept-too-briefly
   type: multiple_choice
@@ -46261,8 +46261,8 @@ questions:
   - cloud-adoption-framework
   references:
   - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
-    reference: 'Module 13, page 13.05: Simulation S16: Sort the chain''s ten applications into the 7 Rs
-      (clf-13-05), section "Decision 3: find the five errors in a consultant''s slide"'
+    reference: 'Module 13, page 13.05: Optional simulation S16: Sort the chain''s ten applications into
+      the 7 Rs (clf-13-05), section "Decision 3: find the five errors in a consultant''s slide"'
     url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/13-moving-to-aws/05-sim-portfolio-sorter.md
 - id: q13-migration-evaluator-board-vote
   type: multiple_choice
@@ -49498,8 +49498,8 @@ flashcards:
   - dr-strategies
   references:
   - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
-    reference: 'Module 03, page 03.06: Simulation S2: The blast-radius ladder and three recovery plans
-      (clf-03-06), section "The rules of this simulation"'
+    reference: 'Module 03, page 03.06: Optional simulation S2: The blast-radius ladder and three recovery
+      plans (clf-03-06), section "The rules of this simulation"'
     url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/03-aws-around-the-world/06-sim-blast-radius.md
 - id: c03-pilot-light-or-warm-standby-test
   front:

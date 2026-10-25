@@ -19,7 +19,7 @@ This module teaches how AWS spreads its infrastructure around the world: Regions
 
 **Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): task [1.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.1); [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): task [3.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.2).
 
-**For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. You have finished [Module 02](../02-why-the-cloud/00-brief.md) and the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md). **Time:** about 1 hour 30 minutes.
+**For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. You have finished [Module 02](../02-why-the-cloud/00-brief.md) and the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md). **Time:** about 1 hour 30 minutes, plus 20 minutes for the optional simulation.
 
 ## The scenario
 
@@ -50,7 +50,7 @@ Task [3.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practition
 **Practice:**
 
 - [Lab 02: see the global infrastructure](05-lab-02-see-the-global-infrastructure.md), after the lessons, in your own account. It only looks; it creates nothing.
-- [Simulation S2: the blast radius](06-sim-blast-radius.md), after Lab 02, on paper: you can't fail a Region for real.
+- [Optional simulation S2: the blast radius](06-sim-blast-radius.md), after Lab 02, on paper, if you want more decisions to make: you can't fail a Region for real. The main path doesn't need it.
 
 **Before Lab 02:** check that you still have [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md), [your IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md) and [money alarms](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md). The lessons need no AWS account.
 

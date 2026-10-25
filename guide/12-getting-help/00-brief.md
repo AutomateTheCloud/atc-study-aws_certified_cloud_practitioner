@@ -20,7 +20,7 @@ This module teaches where help with AWS comes from: Support plans, the tools tha
 
 **Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): task [2.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.4); [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): task [3.8](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.8); [Domain 4, Billing, Pricing, and Support](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html) (12% of the exam): task [4.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.3).
 
-**For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. You have finished [Module 11](../11-paying-for-aws/00-brief.md) and the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md). **Time:** about 2 hours.
+**For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. You have finished [Module 11](../11-paying-for-aws/00-brief.md) and the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md). **Time:** about 2 hours, plus 15 minutes for the optional simulation.
 
 ## The scenario
 
@@ -58,7 +58,7 @@ Task [4.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practition
 **Practice:**
 
 - [Lab 17: tour the help every AWS account gets](05-lab-17-support-center-tour.md), after lesson 12.03, in your own account. You open no case and change no plan, so it costs $0.
-- [Simulation S15: choose the cheapest Support plan that fits](06-sim-support-plan-chooser.md), on paper, because a paid Support plan can't be tried for free.
+- [Optional simulation S15: choose the cheapest Support plan that fits](06-sim-support-plan-chooser.md), on paper, because a paid Support plan can't be tried for free. Do it if you want more decisions to make; the main path doesn't need it.
 
 **Before the lab:** check that you still have [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md), [your IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md) and [money alarms](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md).
 

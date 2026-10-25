@@ -33,22 +33,15 @@ sources:
 
 # Seventeen questions point you to the path through the guide that fits what you already know
 
-This short quiz finds where to start. Part 1 checks the IT basics that the AWS modules take for granted; Part 2 asks one question from each AWS module. Your two scores pick the on-ramp, the standard path or the fast path from [Welcome](01-welcome.md#three-paths-one-destination).
+Part 1 checks the IT basics the AWS modules take for granted; Part 2 asks one question from each AWS module. Your two scores pick a path from [Welcome](01-welcome.md#three-paths-one-destination).
 
 **Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): tasks [1.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.3) and [1.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.4); [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): tasks [2.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.2) and [2.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.3); [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): tasks [3.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.2), [3.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.3), [3.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.4), [3.5](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.5) and [3.7](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.7); [Domain 4, Billing, Pricing, and Support](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html) (12% of the exam): tasks [4.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.1) and [4.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.3).
 
-**For:** an adult studying alone, possibly new to IT, who has read [Welcome](01-welcome.md) and wants to know where to begin. **Time:** about 20 minutes, with no time limit. Reading works on a phone.
+**For:** an adult studying alone, possibly new to IT, who has read [Welcome](01-welcome.md). **Time:** about 20 minutes, with no time limit. Reading works on a phone.
 
 ## How to take the diagnostic
 
-Answer every question before you open any answer.
-
-- **No notes, no searching, no AWS account.** The quiz measures what you know today, so looking things up only sends you down the wrong path.
-- **Mark every guess,** for example with a question mark on paper. A lucky guess counts as wrong when you score, because recognizing a word isn't the same as knowing it.
-- **Expect to miss things in Part 2.** It covers what the whole guide teaches. A low Part 2 score is normal, and it isn't a bad result: it just means the lessons are for you.
-- **Score each part separately.** Each question is worth one point. A "(Select TWO.)" question scores only if both of your choices are right.
-
-The answers explain why each choice is right or wrong, and say where the guide teaches the idea. Read them for the questions you got right, too.
+Answer every question before opening any answer, with no notes, search or AWS account. **Mark every guess** and count it as wrong. Each question is worth one point; a "(Select TWO.)" question scores only if both choices are right. A low Part 2 score is normal: it means the lessons are for you.
 
 ## Part 1: IT basics
 
@@ -63,11 +56,7 @@ These five questions come from the optional on-ramp, Module 01.
 
 <details><summary>Answer</summary>
 
-**B is right.** Memory is the part that runs out first, the **bottleneck**: the report needs 12 GiB in memory and the server has 8. A virtual server is software on a physical server that is already running, so the provider can start it again with a bigger share of memory, on the same machine or another one, in minutes.
-
-- **A is wrong.** The disk is half empty, so storage isn't what runs out. Adding to a part that isn't full changes nothing, however quickly it can be done.
-- **C is wrong.** The processor is only 30% busy. More cores wouldn't give the report anywhere to hold its data.
-- **D is wrong.** More memory is the right change, but the reason isn't. Providers fill machines they already run with many virtual servers; nobody waits for a new machine to be bought.
+**B is right.** Memory is the **bottleneck** (12 GiB needed, 8 available), and a virtual server can be restarted with more memory on hardware already running.
 
 **Taught in:** [Computers and servers](../01-on-ramp/01-computers-and-servers.md) and [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md).
 
@@ -82,11 +71,7 @@ These five questions come from the optional on-ramp, Module 01.
 
 <details><summary>Answer</summary>
 
-**C is right.** Before a browser can send anything, DNS must turn the name into an IP address. The server works when it is reached by its address, so the step that fails is the one that comes before the address is known: the name lookup.
-
-- **A is wrong.** An expired certificate stops the connection after the server has been found, and the browser warns about the certificate. It doesn't say the site can't be found.
-- **B is wrong.** The technician's requests get answers, so the server is answering.
-- **D is wrong.** Requests from the internet to port 443 get through, so no firewall is blocking that port.
+**C is right.** The server answers when reached by its IP address, so the failing step is the one before: DNS turning the name into that address.
 
 **Taught in:** [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md).
 
@@ -101,11 +86,7 @@ These five questions come from the optional on-ramp, Module 01.
 
 <details><summary>Answer</summary>
 
-**A is right.** A **transaction** groups changes so that either all of them are saved or none are, even if the power fails halfway. The shop never ends up with an order that has no payment, or a payment with no order.
-
-- **B is wrong.** That half-saved result is exactly what a transaction prevents.
-- **C is wrong.** Memory empties when the power stops. What the database had confirmed is in storage; an unfinished transaction is not.
-- **D is wrong.** A half-written file is a problem of files. The database engine is in charge of its data and doesn't leave half a change behind.
+**A is right.** A **transaction** is saved whole or not at all, even if the power fails halfway.
 
 **Taught in:** [Files vs databases](../01-on-ramp/03-files-vs-databases.md).
 
@@ -126,11 +107,7 @@ Which statement is correct?
 
 <details><summary>Answer</summary>
 
-**D is right.** Read the shape first. `stops` has square brackets, so it is a list, and it holds two objects. In the second object, `"shop": "Harbor"` sits beside `"boxes": 5`.
-
-- **A is wrong.** Kim is inside `driver`, a separate object, not inside the `stops` list.
-- **B is wrong.** There are two stops, but 12 boxes belong with North, in the first object.
-- **C is wrong.** `driver` has curly brackets, so it is one object with two name-value pairs: the driver's name and start time.
+**D is right.** `stops` is a list (square brackets) of two objects, and the second pairs `"shop": "Harbor"` with `"boxes": 5`; Kim is in the separate `driver` object.
 
 **Taught in:** [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md).
 
@@ -146,11 +123,7 @@ Which statement is correct?
 
 <details><summary>Answer</summary>
 
-**B and E are right.** With a different password for each account, the leaked one opens only the forum. With MFA, the attacker also needs a second proof, such as the bookkeeper's passkey or phone, which the leak didn't contain.
-
-- **A is wrong.** HTTPS protects data while it travels. The attacker would sign in over HTTPS like anyone else.
-- **C is wrong.** Encryption at rest protects stored data from someone who takes the disk. It doesn't stop someone who signs in with a valid password.
-- **D is wrong.** Length stops guessing, not theft. The leak hands over the whole password, however long it is.
+**B and E are right.** A different password per account means the leak opens only the forum, and MFA demands a second proof the leak didn't contain. HTTPS, encryption and length don't stop a valid password.
 
 **Taught in:** [Everyday security](../01-on-ramp/06-everyday-security.md).
 
@@ -158,7 +131,7 @@ Which statement is correct?
 
 ## Part 2: one question from each AWS module
 
-These twelve questions follow the guide's modules in order, from Module 02 to Module 13. If you have never used AWS, answer what you can, mark your guesses, and move on.
+These twelve questions follow Modules 02 to 13 in order. If you have never used AWS, answer what you can and mark your guesses.
 
 **6.** A pumpkin farm's booking website needs 1 server for ten months of the year and 4 servers in September and October. If the farm owns its servers, it must keep 4 all year, at $100 per server-month for everything owning costs. Renting cloud servers costs $150 per server-month, paid only for the servers it runs. All the numbers are made up. If the farm rents exactly what it needs each month, which is cheaper over a year?
 
@@ -169,11 +142,7 @@ These twelve questions follow the guide's modules in order, from Module 02 to Mo
 
 <details><summary>Answer</summary>
 
-**B is right.** Owning means paying for 4 servers every month: 48 server-months at $100, or $4,800. Renting what it needs means 10 months of 1 server plus 2 months of 4: 18 server-months at $150, or $2,700. Renting costs $2,100 less, because the farm stops paying for servers that would sit idle for ten months.
-
-- **A is wrong.** Renting 4 servers all year would cost $7,200, but the farm rents only what it needs. Keeping peak capacity running all year is how the cloud ends up costing more.
-- **C is wrong.** Only owning pays for the peak all year. Renting pays for the peak only in the two months that need it.
-- **D is wrong.** The rate per server-month is lower for owning, but owning pays for many more server-months. The total is what counts.
+**B is right.** Owning pays for 48 server-months ($4,800); renting pays for 18 ($2,700). A lower rate (D) doesn't help when you pay for idle servers.
 
 **Taught in:** [What a data center really costs](../02-why-the-cloud/04-what-a-data-center-really-costs.md), Module 02.
 
@@ -188,11 +157,7 @@ These twelve questions follow the guide's modules in order, from Module 02 to Mo
 
 <details><summary>Answer</summary>
 
-**C is right.** Choose a Region in order: rules first, then services, then closeness to users and price. The contract removes London, which is in the United Kingdom, outside the EU. The missing service removes Stockholm. Of the two Regions left, Frankfurt is faster for the shop's customers.
-
-- **A is wrong.** Closeness comes after rules and services. A Region without a service the shop depends on can't run the shop, however close it is.
-- **B is wrong.** Price only ranks Regions that are still allowed. London is outside the EU, so it breaks the contract. Check the country, not only the word "Europe" in the Region's name.
-- **D is wrong.** Ireland meets the contract and has the service, but the shop's own tests show Frankfurt answers its customers faster. Among the allowed Regions, closeness to users decides.
+**C is right.** Rules first (London is outside the EU), then services (Stockholm lacks one), then closeness: Frankfurt is faster than Ireland.
 
 **Taught in:** [Choosing a Region](../03-aws-around-the-world/02-choosing-a-region.md), Module 03.
 
@@ -207,11 +172,7 @@ These twelve questions follow the guide's modules in order, from Module 02 to Mo
 
 <details><summary>Answer</summary>
 
-**C is right.** AWS evaluates all the policies that apply together. An explicit deny always wins, so uploading is denied however many policies allow it. Reading is allowed by the group's policy and denied by nothing, so it works.
-
-- **A is wrong.** Allows never outweigh an explicit deny.
-- **B is wrong.** The deny names one action, `s3:PutObject`. Other actions are decided on their own.
-- **D is wrong.** Policies add up; one doesn't replace another. And uploading is the action that is denied.
+**C is right.** An explicit deny always wins over any number of allows, and it covers only the action it names, so reading still works.
 
 **Taught in:** [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md), Module 04.
 
@@ -226,11 +187,7 @@ These twelve questions follow the guide's modules in order, from Module 02 to Mo
 
 <details><summary>Answer</summary>
 
-**A is right.** AWS recommends a managed database for most needs, but access to the server's operating system is one of the reasons to run your own. On EC2 the lab gets that access, and with it the work that RDS would have done: patching the operating system and the database software, backups, replication and failover.
-
-- **B is wrong.** On RDS, AWS runs the operating system, and customers don't get access to it. That is what makes it managed.
-- **C is wrong.** Aurora is part of the RDS family, so AWS runs its operating system too. A Multi-AZ deployment adds a standby; it doesn't open the operating system to you.
-- **D is wrong.** A read replica is a managed RDS database as well, with no operating system access. It takes extra reads; it doesn't change who runs the server.
+**A is right.** Operating system access is a reason to run your own database, on EC2, where the lab also takes on patching and backups. RDS, Aurora and replicas give no OS access.
 
 **Taught in:** [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md), Module 05.
 
@@ -245,11 +202,7 @@ These twelve questions follow the guide's modules in order, from Module 02 to Mo
 
 <details><summary>Answer</summary>
 
-**B is right.** The API is already in a container and keeps running, so Amazon ECS on AWS Fargate runs it with no servers for the team to manage.
-
-- **A is wrong.** A Lambda function runs for at most 15 minutes each time it is started; two hours is far too long.
-- **C is wrong.** Fargate runs the servers for you, so it gives you no access to their operating system. Work that needs that control belongs on Amazon EC2.
-- **D is wrong.** A server running all day for a few seconds of work per photo means paying for idle time and managing a server. Short work started by an event fits Lambda.
+**B is right.** A container that runs all day suits ECS on Fargate. Lambda stops at 15 minutes (A), and Fargate gives no OS access (C).
 
 **Taught in:** [Containers and serverless](../06-running-applications/03-containers-and-serverless.md), Module 06.
 
@@ -265,11 +218,7 @@ These twelve questions follow the guide's modules in order, from Module 02 to Mo
 
 <details><summary>Answer</summary>
 
-**A and D are right.** A subnet is public only if its route table sends traffic to an internet gateway, so with no such route the database's subnet has no path to or from the internet. The security group is a second, independent layer: it accepts the database port only from resources in the web servers' security group.
-
-- **B is wrong.** Public addresses let customers reach the web servers. They do nothing to keep anyone away from the database.
-- **C is wrong.** The internet gateway is what lets internet traffic into the public subnet. Attaching it makes nothing private.
-- **E is wrong.** Encryption at rest protects the stored data. It doesn't decide who can connect to the database.
+**A and D are right.** No route to an internet gateway means no internet path, and the security group accepts the database port only from the web servers.
 
 **Taught in:** [Your own network](../07-connecting-it/01-your-own-network.md) and [Filtering traffic](../07-connecting-it/02-filtering-traffic.md), Module 07.
 
@@ -285,11 +234,7 @@ These twelve questions follow the guide's modules in order, from Module 02 to Mo
 
 <details><summary>Answer</summary>
 
-**C and E are right.** Lambda sends its error count to CloudWatch as a metric. A CloudWatch alarm watches that metric against the threshold, and when it goes into the alarm state it notifies an SNS topic. The topic emails every subscriber who has confirmed the subscription.
-
-- **A is wrong.** CloudTrail records who did what in the account, such as who changed the function. It doesn't record the function's errors or send alerts.
-- **B is wrong.** X-Ray traces single requests to find the slow or failing part. It doesn't send email to anyone.
-- **D is wrong.** SES sends a business's own email to customers. An alarm's email is an SNS notification, and needs no SES.
+**C and E are right.** A CloudWatch alarm watches Lambda's `Errors` metric and notifies an SNS topic, which emails confirmed subscribers. SES (D) sends a business's own mail, not alerts.
 
 **Taught in:** [Watching workloads](../08-building-and-operating/03-watching-workloads.md), Module 08.
 
@@ -304,11 +249,7 @@ These twelve questions follow the guide's modules in order, from Module 02 to Mo
 
 <details><summary>Answer</summary>
 
-**A is right.** AWS Config records how each resource was set over time, and its rules mark resources that break a requirement, such as SSH open to everyone, as noncompliant.
-
-- **B is wrong.** CloudTrail records the actions that changed the security group: who, when and from where. It doesn't keep the group's settings day by day or judge them against a rule.
-- **C is wrong.** CloudWatch measures how things run and keeps logs. It doesn't record a security group's settings.
-- **D is wrong.** AWS Artifact provides AWS's own audit reports, about the controls AWS runs. It says nothing about the chain's security groups.
+**A is right.** AWS Config records each resource's settings over time and flags rule breaks. CloudTrail (B) records who changed the group, not its settings day by day.
 
 **Taught in:** [Who did what](../09-protecting-and-governing/01-who-did-what.md), Module 09.
 
@@ -324,11 +265,7 @@ These twelve questions follow the guide's modules in order, from Module 02 to Mo
 
 <details><summary>Answer</summary>
 
-**B and D are right.** Ask what goes in and what must come out. A scanned letter goes into Textract, which returns its text. The text goes into Comprehend, which returns what it mentions, such as places and organizations (its "entities"). Both are ready-made, so the council needs no machine learning skills.
-
-- **A is wrong.** Rekognition describes images and video, such as objects and faces. Reading documents is Textract's job.
-- **C is wrong.** Translate changes text from one language into another. The letters need reading and tagging, not translating.
-- **E is wrong.** Polly turns text into speech. Nothing here needs to be spoken.
+**B and D are right.** Textract turns the scans into text; Comprehend finds the places and organizations in it. Rekognition sees images, Translate changes language, and Polly speaks.
 
 **Taught in:** [AI and machine learning](../10-data-ai-and-more/02-ai-and-ml.md), Module 10.
 
@@ -343,11 +280,7 @@ These twelve questions follow the guide's modules in order, from Module 02 to Mo
 
 <details><summary>Answer</summary>
 
-**C is right.** Spot Instances give the deepest discount, but AWS can take a server back with two minutes' warning. Work that can stop and start again loses only time.
-
-- **A is wrong.** A web tier that must always be up shouldn't depend on servers that can be taken away. Steady, all-year use fits a Savings Plan or a Reserved Instance.
-- **B is wrong.** A three-year commitment is paid whether or not it's used, so it suits steady use for years, not a two-week trial. On-Demand fits the trial.
-- **D is wrong.** A Capacity Reservation guarantees that capacity will be there, at the On-Demand rate. It gives no discount of its own.
+**C is right.** Spot is the cheapest but can be taken back with two minutes' warning, so it suits work that can start again. A Capacity Reservation (D) gives no discount of its own.
 
 **Taught in:** [Purchasing options](../11-paying-for-aws/02-purchasing-options.md), Module 11.
 
@@ -362,11 +295,7 @@ These twelve questions follow the guide's modules in order, from Module 02 to Mo
 
 <details><summary>Answer</summary>
 
-**D is right.** Trusted Advisor checks the setup of your own account against AWS's best practices, and security groups with ports open to everyone are one of its checks.
-
-- **A is wrong.** Planned maintenance is an event on AWS's side, which AWS Health reports in the "Your account health" view. Trusted Advisor looks only at what you built.
-- **B is wrong.** Whether a service is having trouble is also an AWS Health question. Support Center is where you ask a person for help with your own account.
-- **C is wrong.** AWS Health reports AWS's events, not your users' actions. Who deleted something is a question for AWS CloudTrail.
+**D is right.** Trusted Advisor checks your own setup, including ports open to everyone. AWS Health covers AWS's side (A, B); CloudTrail answers who deleted what (C).
 
 **Taught in:** [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md), Module 12.
 
@@ -381,11 +310,7 @@ These twelve questions follow the guide's modules in order, from Module 02 to Mo
 
 <details><summary>Answer</summary>
 
-**B is right.** Map a concern by what is at stake, not by who raises it. Protecting data and deciding who may read it are in the Security perspective.
-
-- **A is wrong.** A marketing director raised it, but the Business perspective is about which work is worth doing and the value it brings, not about protecting data.
-- **C is wrong.** The People perspective covers skills, roles and how the organization changes.
-- **D is wrong.** The Platform perspective covers building the cloud environment and the systems on it, not who may read the data.
+**B is right.** Map a concern by what is at stake, not who raises it: protecting data and deciding who reads it is Security, even when marketing asks.
 
 **Taught in:** [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md), Module 13.
 
@@ -393,37 +318,21 @@ These twelve questions follow the guide's modules in order, from Module 02 to Mo
 
 ## Score yourself, then choose your path
 
-Write down two scores: **Part 1** (questions 1 to 5, out of 5) and **Part 2** (questions 6 to 17, out of 12). Count every guess as wrong. Part 1 decides whether you need the on-ramp first; Part 2 decides between the standard path and the fast path.
-
-```mermaid
-flowchart TD
-  accTitle: Choosing a path from the two diagnostic scores
-  accDescr: If Part 1 is 3 or less out of 5, take the on-ramp. If Part 1 is 4 or 5, look at Part 2. With 9 or less out of 12, take the standard path; with 10 or more, take the fast path. A Part 1 score of 4 adds one step on either path: take the test-out of the on-ramp lesson your missed question points to.
-  S["Part 1 score<br/>(out of 5)"] -->|"0 to 3"| R["On-ramp"]
-  S -->|"4 or 5"| P2{"Part 2 score<br/>(out of 12)"}
-  P2 -->|"0 to 9"| ST["Standard path"]
-  P2 -->|"10 to 12"| FA["Fast path"]
-```
-
-*Notice that Part 2 only matters once Part 1 is solid. The fast path assumes the IT basics; without them, its pretests would mislead you.*
-
-**Long description.** A decision flowchart. Start with the Part 1 score, out of 5. From 0 to 3: the on-ramp. From 4 or 5: look at the Part 2 score, out of 12. From 0 to 9: the standard path. From 10 to 12: the fast path.
+Write down two scores: **Part 1** (questions 1 to 5, out of 5) and **Part 2** (questions 6 to 17, out of 12).
 
 | Part 1 (of 5) | Part 2 (of 12) | Your path | Start here |
 |---|---|---|---|
 | 0 to 3 | Any | **On-ramp** | [Module 01: On-ramp](../01-on-ramp/00-brief.md). Each lesson opens with a test-out, so you skip what you already know |
 | 4 or 5 | 0 to 9 | **Standard** | [Module 02: Why organizations use the cloud](../02-why-the-cloud/00-brief.md), then every module in order |
-| 4 or 5 | 10 to 12 | **Fast** | The fast path's instructions in [Welcome](01-welcome.md#three-paths-one-destination): take each module's mastery check first, as a pretest |
+| 4 or 5 | 10 to 12 | **Fast** | The fast path in [Welcome](01-welcome.md#three-paths-one-destination): take each module's mastery check first, as a pretest |
 
-**If Part 1 was 4,** take the test-out of the on-ramp lesson your missed question names under "Taught in", and read that lesson if the test-out shows a gap. Then go on with your path.
+**If Part 1 was 4,** take the test-out of the on-ramp lesson your missed question names under "Taught in", and read that lesson if the test-out shows a gap.
 
-**On the fast path,** each module's mastery check decides for that module. Pass it and you skip the lessons, but you still do the module's core lab, if it has one, and the mixed practice. Below 80%, work through that module's lessons as the standard path does. Ten of twelve here is a reason to try the fast path, not proof that you can skip anything.
+**On the fast path,** each module's mastery check decides for that module: pass it and skip the lessons (but still do its core lab), or score below 80% and work through them. The diagnostic is a starting point, not a verdict; you can switch paths at any time.
 
-**The diagnostic is a starting point, not a verdict.** Paths join the same modules, and you can switch at any time. If the on-ramp feels slow, its test-outs let you move faster; if the fast path's checks keep sending you back, the standard path will save you time.
+> **Your turn:** Write down your two scores, the path they point to, and the first page you will open.
 
-> **Your turn:** Write down your two scores, the path they point to, and the first page you will open. If you disagree with the result, write one sentence on why, and look at it again after your first module.
-
-Whichever path you take, you set up a safe AWS account with the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md) before Lab 01, the first lab, in Module 02. [Before your first lab](05-before-your-first-lab.md) says what to have ready.
+Whichever path you take, you set up a safe AWS account with the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md) before Lab 01, in Module 02. [Before your first lab](05-before-your-first-lab.md) says what to have ready.
 
 ---
 

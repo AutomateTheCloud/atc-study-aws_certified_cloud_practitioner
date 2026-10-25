@@ -1,7 +1,7 @@
 ---
 type: sim
 id: clf-04-08
-title: "Simulation S3: Slide the line from your own servers to Amazon S3"
+title: "Optional simulation S3: Slide the line from your own servers to Amazon S3"
 tasks: ["2.1"]
 objectives: ["04.01a", "04.02a"]
 reader: "Adult studying alone, possibly new to IT, who has read lessons 04.01 and 04.02; about 20 minutes; paper or a spreadsheet helps"
@@ -26,9 +26,11 @@ sources:
   - "https://docs.aws.amazon.com/lambda/latest/dg/lambda-security.html"
 ---
 
-# Simulation S3: Slide the line from your own servers to Amazon S3
+# Optional simulation S3: Slide the line from your own servers to Amazon S3
 
 **Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): task [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1).
+
+> **Note:** This simulation is optional practice for learners who want more decisions to make; the main path and the module's hours leave it out.
 
 ## Before you start: your account, your responsibility
 
@@ -136,6 +138,6 @@ Moving right, AWS takes on more of the work, but never your data or who can reac
 
 ---
 
-"Simulation S3: Slide the line from your own servers to Amazon S3" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional simulation S3: Slide the line from your own servers to Amazon S3" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt

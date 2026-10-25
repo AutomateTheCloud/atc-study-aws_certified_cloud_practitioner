@@ -1,7 +1,7 @@
 ---
 type: sim
 id: clf-03-06
-title: "Simulation S2: The blast-radius ladder and three recovery plans"
+title: "Optional simulation S2: The blast-radius ladder and three recovery plans"
 tasks: ["3.2", "1.1"]
 objectives: ["03.03a"]
 reader: "Adult studying alone, possibly new to IT; about 20 minutes; paper or a spreadsheet helps"
@@ -23,9 +23,11 @@ sources:
   - "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
 ---
 
-# Simulation S2: The blast-radius ladder and three recovery plans
+# Optional simulation S2: The blast-radius ladder and three recovery plans
 
 **Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): task [1.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.1); [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): task [3.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.2).
+
+> **Note:** This simulation is optional practice for learners who want more decisions to make; the main path and the module's hours leave it out.
 
 ## Before you start: your account, your responsibility
 
@@ -144,6 +146,6 @@ You sorted failures by how far they reach, found two that weren't on the ladder 
 
 ---
 
-"Simulation S2: The blast-radius ladder and three recovery plans" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional simulation S2: The blast-radius ladder and three recovery plans" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt

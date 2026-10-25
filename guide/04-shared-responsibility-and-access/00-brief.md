@@ -4,7 +4,7 @@ id: clf-04-00
 title: "Module 04: Who secures what: shared responsibility and access"
 tasks: ["2.1", "2.3"]
 objectives: ["04.01a", "04.02a", "04.03a", "04.03b", "04.04a", "04.05a"]
-reader: "Adult studying alone, possibly new to IT, who has finished Module 02 and the guardrails primer; about 3 hours in total"
+reader: "Adult studying alone, possibly new to IT, who has finished Module 02 and the guardrails primer; about 2.5 hours in total"
 prerequisites: [clf-02-00, guardrails-00]
 pillars: [security]
 facts_checked: 2026-10-25
@@ -19,7 +19,7 @@ This module teaches how security work is split between AWS and you, and how you 
 
 **Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): tasks [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1) and [2.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.3).
 
-**For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. You have finished [Module 02](../02-why-the-cloud/00-brief.md) and the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md). **Time:** about 3 hours, plus 50 minutes for the optional lab.
+**For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. You have finished [Module 02](../02-why-the-cloud/00-brief.md) and the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md). **Time:** about 2.5 hours, plus 20 minutes for the optional simulation and 50 for the optional lab.
 
 ## The scenario
 
@@ -59,7 +59,7 @@ Task [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practition
 
 **Practice:**
 
-- [Simulation S3: the responsibility slider](08-sim-responsibility-slider.md), after 04.02, on paper.
+- [Optional simulation S3: the responsibility slider](08-sim-responsibility-slider.md), after 04.02, on paper, if you want more decisions to make; the main path doesn't need it.
 - [Lab 03: a group and a policy](06-lab-03-a-group-and-a-policy.md), after lesson 04.04, in your own account; $0 on the Free plan (as of 2026-10-24).
 - [Optional lab 04: finish and fix a policy](07-lab-04-finish-and-fix-a-policy.md), if you want more practice writing policies; the exam doesn't need it.
 

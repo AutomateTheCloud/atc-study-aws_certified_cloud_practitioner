@@ -4,7 +4,7 @@ id: clf-09-00
 title: "Module 09: Protecting, governing and proving compliance"
 tasks: ["2.2", "2.4", "2.3", "2.1"]
 objectives: ["09.01a", "09.02a", "09.03a", "09.04a", "09.05a", "09.06a"]
-reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 to 08 and the guardrails primer; about 4 hours in total"
+reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 to 08 and the guardrails primer; about 3 hours in total"
 prerequisites: [clf-08-00, clf-07-00, clf-04-00, guardrails-00]
 pillars: [security]
 facts_checked: 2026-10-25
@@ -18,7 +18,7 @@ This module teaches the services that protect an AWS account, watch it, and prov
 
 **Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): tasks [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1), [2.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.2), [2.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.3) and [2.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.4).
 
-**For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. You have finished [Module 08](../08-building-and-operating/00-brief.md) and the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md). **Time:** about 4 hours.
+**For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. You have finished [Module 08](../08-building-and-operating/00-brief.md) and the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md). **Time:** about 3 hours, plus 20 minutes for each optional simulation.
 
 ## The scenario
 
@@ -63,7 +63,7 @@ Task [2.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practition
 **Practice:**
 
 - [Lab 12: answer the auditor](07-lab-12-answer-the-auditor.md), after lesson 09.05, in your own account; $0 on the Free plan (as of 2026-10-24).
-- [Simulation S9: security findings](08-sim-security-findings-tour.md) and [Simulation S11: organizations and SCPs](10-sim-organizations-and-scps.md), on paper: GuardDuty and Security Hub CSPM were blocked on the Free plan (checked 2026-10-23), and an organization would upgrade the account.
+- [Optional simulation S9: security findings](08-sim-security-findings-tour.md) and [Optional simulation S11: organizations and SCPs](10-sim-organizations-and-scps.md), if you want more decisions to make; the main path doesn't need them. They're on paper because GuardDuty and Security Hub CSPM were blocked on the Free plan (checked 2026-10-23), and an organization would upgrade the account.
 
 **Before the lab:** check that you still have [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md), [your IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md) and [money alarms](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md).
 
