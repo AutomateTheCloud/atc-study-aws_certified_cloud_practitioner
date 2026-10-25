@@ -8,7 +8,7 @@ reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 t
 prerequisites: [guardrails-05, clf-10-01, clf-06-01, clf-02-02]
 terms_introduced: [AWS Pricing Calculator, estimate, AWS Budgets, budget threshold, forecasted cost, budget action, AWS Cost Anomaly Detection, cost monitor, AWS Cost Explorer, forecast, prediction interval, line item, AWS Data Exports, AWS Cost and Usage Report, CUR 2.0]
 pillars: [cost-optimization]
-facts_checked: 2026-10-24
+facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/pricing-calculator/latest/userguide/what-is-pricing-calculator.html"
   - "https://docs.aws.amazon.com/cost-management/latest/userguide/pc-concepts.html"
@@ -237,7 +237,7 @@ It refreshes at least once every 24 hours, and once switched on it can't be swit
 
 **Long description.** A timeline in months, from 38 months back to 18 months ahead. In blue, the default history: the previous 13 months, at daily or monthly granularity. Then the current month. Then a dashed band, the forecast for the next 18 months. In gray, two options you switch on: multi-year data, reaching back up to 38 months at monthly granularity, and hourly data for the last 14 days, which is charged per usage record. A note says older material gives 12 months of history and a 12-month forecast, and AWS's guide now says 13 and 18.
 
-### "Cost Explorer forecasts 12 months" is out of date
+### Older figures for Cost Explorer's history and forecast are out of date
 
 You may have read that Cost Explorer shows the last 12 months and forecasts the next 12. That's no longer right. As of 2026-10-24, AWS's guide says it shows the current month and up to the previous **13 months**, and forecasts the next **18 months**. You can also switch on multi-year data, up to **38 months** at monthly granularity ([Multi-year data](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-multi-year-data.html)). It's tempting because older AWS wording and many practice questions still say 12 and 12. On the exam, look for "visualize, analyze, forecast", not a number; in real work, check the page.
 

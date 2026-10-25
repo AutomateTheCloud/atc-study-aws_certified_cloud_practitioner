@@ -8,7 +8,7 @@ reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 t
 prerequisites: [clf-05-01, clf-05-02, clf-02-02, clf-03-01]
 terms_introduced: [storage class, S3 Standard, S3 Intelligent-Tiering, S3 Standard-IA, S3 One Zone-IA, S3 Glacier Instant Retrieval, S3 Glacier Flexible Retrieval, S3 Glacier Deep Archive, Amazon Glacier (vault service), retrieval fee, minimum storage duration, minimum billable object size, restore, S3 Lifecycle, lifecycle rule, transition action, expiration action]
 pillars: [cost-optimization, sustainability]
-facts_checked: 2026-10-24
+facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
   - "https://aws.amazon.com/s3/storage-classes/"
@@ -167,9 +167,9 @@ The original standalone service, now called **Amazon Glacier**, is no longer acc
 
 These figures change, so they live in one dated table ([S3 storage class comparison](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)). Learn the patterns, not the digits.
 
-> **Dated: checked 2026-10-23. Check the S3 pages for current values.**
+> **Dated: checked 2026-10-25. Check the S3 pages for current values.**
 >
-> | Class | Designed availability | AZs | Minimum stay | Minimum billed size | Retrieval fee |
+> | Class | Designed availability | AZs | Minimum storage duration | Minimum billed size | Retrieval fee |
 > |---|---|---|---|---|---|
 > | S3 Standard | 99.99% | 3 or more | None | None | None |
 > | S3 Intelligent-Tiering | 99.9% | 3 or more | None | None (under 128 KB: never moved to cheaper tiers) | None; monitoring fee |
@@ -208,7 +208,7 @@ Use **lifecycle rules** when you know how the data cools, as with the records. U
 
 ## Three cost traps
 
-**1. The minimum stay.** Delete, overwrite or transition an object out of a class before its minimum stay, and you're billed for the rest of the stay, pro rata, so you pay for the full minimum in all. A lifecycle rule can spring this trap on its own.
+**1. The minimum stay.** Delete, overwrite or transition an object to another class before its class's minimum storage duration ends, and you're billed for the rest of that minimum, pro rata, so you pay for the full minimum in all. A lifecycle rule can spring this trap on its own.
 
 ![Paired bars for three made-up cases. A: moved to Glacier Flexible Retrieval at day 30 and expired at day 60: 30 days in the class, 90 billed. B: uploaded to Glacier Deep Archive and deleted at day 60: 60 days, 180 billed. C: moved to Standard-IA at day 30 and expired at day 365: 335 days, 335 billed.](../../images/05-03-billed-days.svg)
 

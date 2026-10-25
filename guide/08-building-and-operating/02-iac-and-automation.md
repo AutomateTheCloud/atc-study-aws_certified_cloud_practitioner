@@ -8,7 +8,7 @@ reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 t
 prerequisites: [clf-08-01, clf-07-01, clf-06-02, clf-03-03, clf-02-04]
 terms_introduced: [AWS CloudFormation, template, stack, parameter, rollback, change set, drift, drift detection, StackSet, version control, AWS Service Catalog, product, portfolio, constraint]
 pillars: [operational-excellence, reliability, cost-optimization, security]
-facts_checked: 2026-10-24
+facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html"
   - "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-servicerole.html"
@@ -334,7 +334,7 @@ Three more neighbors: **Elastic Beanstalk** (lesson 06.04) builds the setup for 
 
 **B is right.** Service Catalog publishes approved products and launches them through a role, within constraints.
 
-- **A is wrong.** CloudFormation builds from templates, but whoever creates the stack needs permissions for its resources, unless a CloudFormation service role does the building, and nothing limits which templates they use.
+- **A is wrong.** CloudFormation builds from templates, but whoever creates the stack needs permissions for its resources, unless a [CloudFormation service role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-servicerole.html) does the building, and nothing limits which templates they use.
 - **C is wrong.** Marketplace sells third-party software; it doesn't hold your own approved setups.
 - **D is wrong.** Beanstalk runs application code for you; it doesn't control which environments developers may launch.
 

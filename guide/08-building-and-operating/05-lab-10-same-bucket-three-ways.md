@@ -289,7 +289,7 @@ Delete the stack first, so you watch CloudFormation remove its own bucket.
     ```
 
     **You should see:** `[]` for the buckets, and an error saying the stack does not exist. Then repeat the Tag Editor search for `lab` = `10`, with all supported resource types; expect no results (a deleted item can linger a few minutes). Tick everything off in your lab log.
-24. **The next day:** check that your **Credits** balance hasn't fallen because of S3 ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4).
+24. **The next day:** check that your **Credits** balance hasn't fallen because of S3 ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4). (task card: [Read this month's bill by service and Region](../98-how-to/08-read-this-months-bill.md))
 
 ## Recap
 

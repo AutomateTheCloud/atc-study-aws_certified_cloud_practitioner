@@ -200,7 +200,7 @@ Nothing was created, but confirm it, as in every lab.
     > **If something went wrong:** if the page shows Business Support+, an upgrade went through. To go back, choose **Review downgrade** in the Basic Support section ([Change AWS Support Plans](https://docs.aws.amazon.com/awssupport/latest/user/changing-support-plans.html), checked 2026-10-24). You still pay for at least one month of the paid plan, so note the date and check your bill.
 20. **Cases:** in Support Center, open your case history. **You should see:** no case from today, unless you meant to open one.
 21. **Marketplace:** in AWS Marketplace, open the page that lists your subscriptions (for example **Manage subscriptions**). **You should see:** none.
-22. **Confirm:** in Tag Editor, search all Regions and all resource types for `lab` = `17`, as in [Lab 02, step 16](../03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md#clean-up). Expect no resources. Tick "Lab 17: nothing created" in your lab log.
+22. **Confirm:** in Tag Editor, search all Regions and all resource types for `lab` = `17`, as in [Lab 02, step 16](../03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md#clean-up). Expect no resources. Tick "Lab 17: nothing created" in your lab log. (task card: [Find everything a lab left behind, in every Region](../98-how-to/03-find-what-a-lab-left-behind.md))
 
 ## Recap
 

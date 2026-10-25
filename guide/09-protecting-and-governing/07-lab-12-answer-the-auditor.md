@@ -189,7 +189,7 @@ Limits, per AWS: activity can take four hours to appear, attempts count as well 
 
 23. Delete the `clf-lab12-` bucket as in [Lab 01, steps 20 and 21](../02-why-the-cloud/06-lab-01-first-resource.md#clean-up).
 24. Move the Artifact PDF and the CSV into a private folder, or delete them. The report carries a watermark that traces to your download, and its terms forbid sharing it.
-25. **Confirm:** in Tag Editor, search all Regions for the tag `lab` = `12` ([Lab 01, steps 13 to 16](../02-why-the-cloud/06-lab-01-first-resource.md#find-it-by-its-tags)); expect no results after a few minutes. Your Artifact terms acceptance, if any, stays on record; it costs nothing and changes no setting.
+25. **Confirm:** in Tag Editor, search all Regions for the tag `lab` = `12` ([Lab 01, steps 13 to 16](../02-why-the-cloud/06-lab-01-first-resource.md#find-it-by-its-tags)); expect no results after a few minutes. Your Artifact terms acceptance, if any, stays on record; it costs nothing and changes no setting. (task card: [Find everything a lab left behind, in every Region](../98-how-to/03-find-what-a-lab-left-behind.md))
 
 ## Recap
 

@@ -8,8 +8,9 @@ reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 t
 prerequisites: [clf-09-03, clf-07-02, clf-07-03, clf-03-04]
 terms_introduced: [denial-of-service attack, DDoS attack, network layer attack, application layer attack, AWS Shield Standard, AWS Shield Advanced, Shield Response Team, DDoS cost protection, AWS WAF, web ACL, rate-based rule, SQL injection, cross-site scripting, AWS Firewall Manager, penetration test]
 pillars: [security, reliability]
-facts_checked: 2026-10-24
+facts_checked: 2026-10-25
 sources:
+  - "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-automatic-app-layer-response.html"
   - "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-standard-summary.html"
   - "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-advanced-summary.html"
   - "https://docs.aws.amazon.com/waf/latest/developerguide/manage-protection.html"
@@ -24,6 +25,7 @@ sources:
   - "https://aws.amazon.com/security/ddos-simulation-testing/"
   - "https://docs.aws.amazon.com/whitepapers/latest/aws-best-practices-ddos-resiliency/aws-best-practices-ddos-resiliency.html"
   - "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html"
+  - "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-automatic-app-layer-response-config.html"
 ---
 
 # Shield absorbs floods, WAF reads each web request, and Firewall Manager repeats both in every account: choose the layer that fits the attack
@@ -106,7 +108,7 @@ Shield Standard has limits. It doesn't read web requests, so an HTTP flood or an
 
 **AWS Shield Advanced** is the paid tier. You subscribe and then choose which resources to protect: CloudFront distributions, Route 53 hosted zones, load balancers, Elastic IP addresses on EC2 instances and Global Accelerator accelerators ([AWS Shield Advanced overview](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-advanced-summary.html); [AWS Shield FAQs](https://aws.amazon.com/shield/faqs/), checked 2026-10-24). For those resources it adds:
 
-- **Automatic application layer mitigation:** during an HTTP flood it creates and applies AWS WAF rules for you. It works on web traffic, so it applies to CloudFront distributions and Application Load Balancers, not to the other protected resources ([Editing AWS Shield Advanced protections](https://docs.aws.amazon.com/waf/latest/developerguide/manage-protection.html), checked 2026-10-24). Its subscription also covers the standard WAF fees on protected resources.
+- **Automatic application layer mitigation:** during an HTTP flood it creates and applies AWS WAF rules for you. AWS offers it for CloudFront distributions and Application Load Balancers, and it needs an AWS WAF web ACL on the resource ([Editing AWS Shield Advanced protections](https://docs.aws.amazon.com/waf/latest/developerguide/manage-protection.html) and [Enabling automatic application layer DDoS mitigation](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-automatic-app-layer-response-config.html), checked 2026-10-25). Its subscription also covers the standard WAF fees on protected resources. Since 26 March 2026, AWS's default protection against HTTP floods is the **Anti-DDoS managed rule group** in AWS WAF, which detects and mitigates attacks within seconds; this older feature continues for existing Shield Advanced customers ([Automating application layer DDoS mitigation](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-automatic-app-layer-response.html), checked 2026-10-25).
 - **The Shield Response Team (SRT):** AWS engineers who specialize in DDoS response, available around the clock. With your permission they can analyze your WAF logs and change your rules during an attack.
 - **DDoS cost protection:** credits for the extra charges an attack causes, such as servers Auto Scaling launched to absorb it, requested through AWS Support.
 - **Visibility:** detailed metrics and reports on attacks against your protected resources.

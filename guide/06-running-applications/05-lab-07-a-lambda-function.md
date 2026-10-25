@@ -179,13 +179,13 @@ Delete the function first, so nothing writes a new log group after you delete th
 
 20. In Lambda, select `clf-lab07-box-count` in the functions list, choose **Actions**, then **Delete**. Type `confirm` if asked, and delete.
     **You should see:** the function gone from the list.
-21. In CloudWatch's log groups list, select `/aws/lambda/clf-lab07-box-count`, choose **Actions**, then **Delete log group(s)**, and confirm.
+21. In CloudWatch's log groups list, select `/aws/lambda/clf-lab07-box-count`, choose **Actions**, then **Delete log group(s)**, and confirm. (task card: [Set how long CloudWatch Logs keeps a log group, or delete it](../98-how-to/05-set-log-retention-and-delete-a-log-group.md))
 22. In IAM, choose **Roles**, select the role from step 18, and choose **Delete**. Type the role name to confirm.
     **You should see:** the role gone from the list.
     > **If something went wrong:** if IAM won't delete the role, open it and remove its permissions policy first, then delete it again.
 23. In IAM, choose **Policies** and filter to customer managed policies. If the console made a policy for the role (named like `AWSLambdaBasicExecutionRole-…`, now attached to nothing), delete it too.
 24. **Confirm:** Lambda's functions list, CloudWatch's log groups list and IAM's roles list show nothing with `clf-lab07` in its name. In Tag Editor, search all Regions for the tag `lab` = `07` ([Lab 01, steps 13 to 16](../02-why-the-cloud/06-lab-01-first-resource.md#find-it-by-its-tags)); expect no results. Tick everything off in your lab log.
-25. **The next day:** check that your **Credits** balance hasn't fallen because of Lambda or CloudWatch ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4).
+25. **The next day:** check that your **Credits** balance hasn't fallen because of Lambda or CloudWatch ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4). (task card: [Read this month's bill by service and Region](../98-how-to/08-read-this-months-bill.md))
 
 ## Recap
 
