@@ -128,7 +128,7 @@ A shared control applies to both AWS's infrastructure and your part, "in complet
 
 **Configuration management.** AWS keeps its own infrastructure devices set up correctly. You keep your guest operating systems, databases and applications set up correctly, and the settings of the AWS resources you create. You have done this already: on [primer page 06](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/06-safe-defaults.md) you turned on Block Public Access for your account, and on [primer page 03](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md) you set a password policy. For the bakery, it includes the web server's security group rules.
 
-**Awareness and training.** AWS trains its own employees. You must train yours. AWS's training does nothing for the bakery's staff. The owner, her nephew and the new teammate each need to know the bakery's rules: sign in with MFA, never share a password, and report anything unexpected. This guide is part of your half too.
+**Awareness and training.** AWS trains its own employees, and you must train yours, because AWS's training does nothing for the bakery's staff. The owner, her nephew and the new teammate each need to know the bakery's rules: sign in with MFA, never share a password, and report anything unexpected. This guide is part of your half too.
 
 > **Your turn:** For each shared control, write one sentence for the new teammate's first day: what is AWS's half, and what is hers?
 
@@ -144,7 +144,7 @@ Any answer that gives AWS a half for its own things and her a half for the baker
 
 ## "Shared" doesn't mean both sides do the same task
 
-You may have read that "shared responsibility" means AWS and you work on the same tasks together, so that patching your EC2 server is something AWS helps with. It doesn't. A shared control is a *kind* of work that both sides do, each for its own things. Any specific task belongs to one side only. The guest operating system on EC2 is patched by the customer alone; the host underneath is patched by AWS alone.
+You may have read that "shared responsibility" means AWS and you work on the same tasks together, so that patching your EC2 server is something AWS helps with. It doesn't. A shared control is a *kind* of work that both sides do, each for its own things. Any specific task belongs to one side only. The customer alone patches the guest operating system on EC2; AWS alone patches the host underneath.
 
 Everyday English is the problem: "shared" usually means "done together". Practice questions also offer "both AWS and the customer" as an answer choice. It is almost never right for a specific task, even though patch management, as a whole, is a shared control.
 
@@ -176,7 +176,7 @@ For the bakery, this might look like:
 - the order database accepts connections only from the web server, never from the internet;
 - customers' phone numbers live only in the order database, never in the photo bucket.
 
-You might ask: isn't a database rule configuration management? The setting itself is. What makes it customer-specific is the requirement behind it, which comes only from the bakery's own application. AWS's three groups are examples to reason with, not a complete sorting of every control. The flowchart gives the method.
+You might ask: isn't a database rule configuration management? The setting itself is. What makes it customer-specific is the requirement behind it, which comes only from the bakery's own application. AWS's three groups are examples to reason with, not a complete sorting of every control. To sort one, use the flowchart.
 
 ```mermaid
 flowchart TD

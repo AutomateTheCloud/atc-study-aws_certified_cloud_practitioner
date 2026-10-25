@@ -107,7 +107,7 @@ When you signed in as your IAM admin user in the primer, your password and passk
 
 ## An AWS account has four kinds of identity
 
-Each kind answers a different need. The graphic compares them on the questions that matter most ([IAM identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html)).
+Each kind answers a different need. The graphic compares them on four questions ([IAM identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html)).
 
 ![Four cards comparing the root user, IAM user, IAM user group and IAM role on credentials, signing in, whether IAM policies limit it, and what to use it for. The IAM role card is highlighted: it alone has temporary credentials.](../../images/04-03-identity-kinds.svg)
 
