@@ -23,6 +23,8 @@ sources:
 
 Three tools keep an eye on your account, and each looks in a different direction. Trusted Advisor compares your setup with AWS's best practices, AWS Health tells you when something on AWS's side affects you, and Support Center is where you open a case. Your Support plan decides how much of each you get.
 
+**Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): task [2.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.4); [Domain 4, Billing, Pricing, and Support](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html) (12% of the exam): task [4.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.3).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 15 minutes. Reading works on a phone.
 
 **Before you start:** read [Support plans](01-support-plans.md) first. You met the AWS Health Dashboard in [Lab 02](../03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md).

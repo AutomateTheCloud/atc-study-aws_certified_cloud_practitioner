@@ -28,6 +28,8 @@ sources:
 
 Getting from raw data to an answer takes five jobs, and AWS has a service for each. Place a service on its verb, and you can rule out the ones that only sound similar.
 
+**Exam guide:** [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): task [3.7](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.7).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes. Reading works on a phone.
 
 **Before you start:** this lesson builds on [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md) (Redshift). It answers the first of the bakery's requests in the [module brief](00-brief.md), the sales dashboard.

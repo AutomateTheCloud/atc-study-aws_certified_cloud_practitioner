@@ -25,6 +25,8 @@ sources:
 
 The bakery's head office, the owner's laptop, a second VPC in Europe and a partner's service all need to reach the bakery's VPC. AWS offers a link for each, and they differ on who connects, whether the path avoids the public internet, whether it's encrypted, and how fast you can set it up. AWS also bills the data they carry by direction.
 
+**Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): task [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1); [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): task [3.5](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.5); [Domain 4, Billing, Pricing, and Support](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html) (12% of the exam): task [4.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.1).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 15 minutes. Reading works on a phone.
 
 **Before you start:** this lesson builds on [Your own network](01-your-own-network.md) and [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md). The bakery is in the [module brief](00-brief.md).

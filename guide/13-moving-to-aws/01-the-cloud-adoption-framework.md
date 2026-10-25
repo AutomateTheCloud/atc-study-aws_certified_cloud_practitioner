@@ -23,6 +23,8 @@ sources:
 
 The **AWS Cloud Adoption Framework (AWS CAF)** is AWS's guidance for changing a whole organization to use the cloud well. The exam asks you to name its business outcomes and to say which of its six perspectives deals with a given concern.
 
+**Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): task [1.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.3).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes. Reading works on a phone.
 
 **Before you start:** this lesson compares the CAF with [the Well-Architected Framework](../02-why-the-cloud/05-the-well-architected-framework.md); the chain and its ten applications are in the [module brief](00-brief.md).

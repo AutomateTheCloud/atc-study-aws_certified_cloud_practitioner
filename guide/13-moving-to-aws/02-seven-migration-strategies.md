@@ -22,6 +22,8 @@ sources:
 
 An organization decides, application by application, whether to switch it off, leave it, move it as it is, or change it on the way. AWS names seven such strategies, the **7 Rs**, and the exam asks which one fits a situation.
 
+**Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): task [1.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.3); [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): task [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes. Reading works on a phone.
 
 **Before you start:** this lesson builds on [lesson 13.01](01-the-cloud-adoption-framework.md), on [who patches what](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md) (lesson 04.01) and on AWS DMS from [lesson 05.05](../05-storing-data/05-managed-or-self-managed-databases.md).

@@ -27,6 +27,8 @@ sources:
 
 The last services on the exam's list serve the people and things around the bakery's website. Ask who is on the other end, and one service fits each need: desktops for staff, a contact center and email for customers, a front end for app users, and a gateway for devices.
 
+**Exam guide:** [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): task [3.8](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.8).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes. Reading works on a phone.
 
 **Before you start:** lesson 10.02, [AI and machine learning](02-ai-and-ml.md), introduced Amazon Lex, which returns here. This lesson answers three of the bakery's requests in the [module brief](00-brief.md).

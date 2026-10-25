@@ -23,6 +23,8 @@ sources:
 
 Elasticity, agility, high availability, durability and global reach are all cloud benefits, and exam questions often offer several of them as answers. Each describes a different change, in capacity, speed, surviving failure, keeping data or location, so asking what changed in a scenario names the benefit and rules out the rest.
 
+**Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): task [1.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.1).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 25 minutes. Reading works on a phone.
 
 **Before you start:** read [Before and after: the demand curve](02-before-and-after-the-demand-curve.md) first.

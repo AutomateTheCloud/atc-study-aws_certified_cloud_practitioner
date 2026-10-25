@@ -19,6 +19,8 @@ sources:
 
 When you buy your own servers, you guess how many you'll need, and the guess is wrong somewhere: you pay for idle equipment or turn customers away. In the cloud you add and remove capacity as demand changes, so your costs follow your use, and one picture, the demand curve, explains most of AWS's six advantages.
 
+**Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): tasks [1.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.1) and [1.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.4).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 25 minutes. Reading works on a phone.
 
 **Before you start:** read [What cloud computing is](01-what-cloud-computing-is.md) first.

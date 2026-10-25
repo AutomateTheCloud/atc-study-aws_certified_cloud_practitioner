@@ -24,6 +24,8 @@ sources:
 
 AWS sells help with your account in four plans, and each one includes everything in the plan below it. Basic is free but answers no technical questions; each paid step adds faster replies and more people, for a higher monthly fee.
 
+**Exam guide:** [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): task [3.8](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.8); [Domain 4, Billing, Pricing, and Support](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html) (12% of the exam): task [4.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.3).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes. Reading works on a phone.
 
 **Before you start:** this lesson builds on [AWS changes fast](../00-start-here/04-aws-changes-fast.md), which warned that the Support plans changed. The bakery scenario is in the [module brief](00-brief.md).

@@ -23,6 +23,8 @@ sources:
 
 Many small **edge locations** deliver content and answer requests near users, but never run your servers. When the servers themselves must be closer, **Local Zones** put them in a big city and **Outposts** in your own building. To tell them apart, ask where each one physically is.
 
+**Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): task [1.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.1); [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): task [3.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.2).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 12 minutes. Reading works on a phone.
 
 **Before you start:** read [Regions, Availability Zones and data centers](01-regions-availability-zones-data-centers.md) first.

@@ -19,6 +19,8 @@ sources:
 
 **For:** an adult studying alone, possibly new to IT, who has finished the Module 09 lessons. **Time:** about 15 minutes per check.
 
+**Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): tasks [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1), [2.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.2), [2.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.3) and [2.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.4).
+
 ## How to use this check
 
 Take Check A closed-book; 8 of 10 (80%) is a pass. Below that, reread the sections the correction map names for your misses, then take Check B, the parallel retest. A "(Select TWO.)" question counts only if both choices are right.

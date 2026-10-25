@@ -22,6 +22,8 @@ sources:
 
 Permissions live in **policies**: documents that allow or deny actions on resources. Give each identity only what its task needs, using ready-made AWS managed policies to start and your own customer managed policies to narrow them.
 
+**Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): task [2.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.3).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 15 minutes. You don't need to write code.
 
 **Before you start:** read [lesson 04.03, Identities](03-identities.md) first. The `Admins` group from [primer page 03](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md) is an example here.

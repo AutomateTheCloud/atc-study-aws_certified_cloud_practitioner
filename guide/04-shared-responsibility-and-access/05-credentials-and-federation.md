@@ -30,6 +30,8 @@ sources:
 
 Long-lived secrets are the risk, so AWS advises credentials that expire on their own: central sign-in with MFA for people, roles for programs and other accounts, and a store, not the code, for an application's secrets.
 
+**Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): task [2.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.3).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes.
 
 **Before you start:** read [04.03, Identities](03-identities.md) and [04.04, Policies and least privilege](04-policies-and-least-privilege.md) first. [Primer page 04](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/04-command-line-without-access-keys.md) showed the command line without access keys.

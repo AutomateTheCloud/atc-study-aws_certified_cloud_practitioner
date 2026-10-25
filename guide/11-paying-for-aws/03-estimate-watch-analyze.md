@@ -24,6 +24,8 @@ sources:
 
 AWS has a different cost tool for each job: AWS Pricing Calculator estimates, AWS Budgets alerts, AWS Cost Explorer analyzes and forecasts, and the Cost and Usage Report holds every line item. None of them stops spending on its own, and that's the point most people get wrong.
 
+**Exam guide:** [Domain 4, Billing, Pricing, and Support](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html) (12% of the exam): task [4.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.2).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes. Reading works on a phone.
 
 **Before you start:** on [primer page 05](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md) you created two budgets and set up anomaly alerts; this lesson explains the tools behind them.

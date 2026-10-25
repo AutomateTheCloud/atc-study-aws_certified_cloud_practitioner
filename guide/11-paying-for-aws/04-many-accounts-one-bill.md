@@ -25,6 +25,8 @@ sources:
 
 An organization gets one bill, priced as if it were one account, so a commitment bought in one account can lower another account's costs. To split that bill by team, you tag resources, and the tags reach cost reports only after someone activates them.
 
+**Exam guide:** [Domain 4, Billing, Pricing, and Support](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html) (12% of the exam): tasks [4.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.1) and [4.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.2).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes. Reading works on a phone.
 
 **Before you start:** [Simulation S11](../09-protecting-and-governing/10-sim-organizations-and-scps.md) introduced the chain's organization (the bakery grown into a small chain) and [lesson 11.02](02-purchasing-options.md) the commitments; the ideas you need are restated here.

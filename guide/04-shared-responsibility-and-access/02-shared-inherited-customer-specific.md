@@ -19,6 +19,8 @@ sources:
 
 AWS sorts security safeguards into three kinds. You **inherit** some from AWS without lifting a finger; some are **shared**, with AWS and you each doing the same kind of work on different things; and some are **customer-specific**, so only you can do them.
 
+**Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): task [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 15 minutes. Reading works on a phone.
 
 **Before you start:** read [lesson 04.01](01-security-of-vs-in-the-cloud.md) first; this lesson uses its "line" between AWS's side and yours.

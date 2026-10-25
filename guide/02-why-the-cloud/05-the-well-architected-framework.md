@@ -20,6 +20,8 @@ sources:
 
 AWS's Well-Architected Framework splits "is our system built well?" into six pillars, each with design principles and best practices. The exam asks you to tell the pillars apart, to recognize a trade-off between them, and to keep the Framework (guidance you read) apart from the Well-Architected Tool (a service you use).
 
+**Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): task [1.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.2).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 25 minutes.
 
 **Before you start:** read [What a data center really costs](04-what-a-data-center-really-costs.md) first. You met the Framework briefly on [page 00 of the guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md).

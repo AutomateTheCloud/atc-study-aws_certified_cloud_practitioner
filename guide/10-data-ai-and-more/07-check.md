@@ -21,6 +21,8 @@ sources:
 
 **For:** an adult studying alone, possibly new to IT, who has finished lessons [10.01](01-analytics-in-five-verbs.md), [10.02](02-ai-and-ml.md) and [10.03](03-people-apps-and-devices.md). **Time:** about 15 minutes for each check. No AWS account is needed.
 
+**Exam guide:** [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): tasks [3.7](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.7) and [3.8](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.8).
+
 ## How to use this check
 
 Take Check A closed-book, and write down your answers before you open any feedback. You pass at 8 of 10; a "(Select TWO.)" question counts only if both choices are right. Below 8, use the correction map, then take Check B. Where the exam guide uses an older name, the options use it and the feedback gives today's (as of 2026-10-24).

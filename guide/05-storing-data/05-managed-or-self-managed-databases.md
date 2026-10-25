@@ -27,6 +27,8 @@ sources:
 
 AWS recommends a managed database, Amazon RDS, for most relational databases. On RDS, a Multi-AZ standby keeps the database running, a read replica takes extra reads, and backups take you back in time. Other AWS databases fit other shapes of data: items looked up by a key, documents, relationships, hot data in memory, and years of history for analysis.
 
+**Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): task [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1); [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): task [3.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.4).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 25 minutes. Reading works on a phone.
 
 **Before you start:** this lesson uses who does what on EC2 and RDS from [lesson 04.01](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md), and backup vs replication from [lesson 03.03](../03-aws-around-the-world/03-surviving-failure.md).

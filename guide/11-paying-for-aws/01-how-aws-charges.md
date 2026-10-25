@@ -24,6 +24,8 @@ sources:
 
 Every charge on an AWS bill is something you used, counted, times a price per unit, and time and storage keep billing when nobody uses anything. "Free" changed in 2025: new accounts get credits and a choice of two plans, not 12 free months.
 
+**Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): task [1.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.4); [Domain 4, Billing, Pricing, and Support](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html) (12% of the exam): tasks [4.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.1) and [4.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.2).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes. Reading works on a phone.
 
 **Before you start:** lessons [02.02](../02-why-the-cloud/02-before-and-after-the-demand-curve.md), [06.01](../06-running-applications/01-ec2.md) and [07.04](../07-connecting-it/04-connecting-networks-and-offices.md) help; each idea you need is restated here.
