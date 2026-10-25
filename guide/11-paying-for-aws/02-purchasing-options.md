@@ -396,7 +396,7 @@ Teams review usage before they commit, commit to what they're sure of, and add m
    A. Buying one launches an instance for you\
    B. They renew automatically at the end of the term\
    C. They're a billing discount applied to matching running instances\
-   D. They can be cancelled at any time for a refund
+   D. They can be canceled at any time for a refund
 
    <details><summary>Feedback</summary>
 

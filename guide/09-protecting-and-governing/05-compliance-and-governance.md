@@ -229,7 +229,7 @@ The management account pays for and controls the whole organization, so whoever 
 
 Separate accounts raise a practical question: what if several of them need the same thing, such as one network? **AWS Resource Access Manager (AWS RAM)** shares a resource you create once with other accounts: specific accounts by ID, every account in your organization, or the accounts in chosen OUs ([What is AWS RAM?](https://docs.aws.amazon.com/ram/latest/userguide/what-is.html), checked 2026-10-24). The account that made the resource keeps owning it; the others see it in their own consoles and use it within the permissions the share allows, and their own IAM policies and SCPs still apply. Commonly shared resources include VPC subnets and transit gateways (Module 07). RAM itself costs nothing extra; you pay for the shared resource as usual.
 
-For the chain, that means one network team can build the shops' network in one account and share its subnets, instead of every shop building and paying for its own.
+For the bakery, that means one account can build the network once and share its subnets with the other accounts, instead of each account building and paying for its own.
 
 ## An SCP is a ceiling: it limits everyone in a member account, and grants nothing
 

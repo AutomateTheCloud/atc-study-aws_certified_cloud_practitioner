@@ -60,19 +60,19 @@ Each module has short lessons, hands-on **labs** in your own AWS account, **simu
 | 02 | [Why organizations use the cloud](../02-why-the-cloud/00-brief.md) | Advise a bakery whether to move to the cloud | 4 |
 | 03 | [AWS around the world](../03-aws-around-the-world/00-brief.md) | Choose Regions and a plan for surviving failure | 3 |
 | 04 | [Who secures what](../04-shared-responsibility-and-access/00-brief.md) | Give a teammate exactly the access they need, and prove it | 5 |
-| 05 | Storing data: storage and databases | Place files, backups and archives; pick databases | 4.5 |
-| 06 | Running applications: compute | Choose compute for three different workloads | 3.5 |
-| 07 | Connecting it: networks and the edge | Design a simple, safe network | 3.5 |
-| 08 | Building and operating | Rebuild a setup the same way twice, and get alerts | 3.5 |
-| 09 | Protecting, governing and proving compliance | Answer an auditor and choose layered protections | 5.5 |
-| 10 | Data, AI and the rest of the catalog | Match six business requests to services | 2.5 |
-| 11 | Paying for AWS | Explain a bill, cut it, and estimate a new feature | 4 |
-| 12 | Getting help | Recommend a Support plan and route five issues | 3 |
-| 13 | Moving to AWS | Build the case for moving ten applications | 3.5 |
-| 14 | Capstone: a Well-Architected review | Review your own lab workload and cost the fixes | 3 |
-| 90 | Exam preparation | Mixed practice and full practice exams | 8 |
+| 05 | [Storing data: storage and databases](../05-storing-data/00-brief.md) | Place files, backups and archives; pick databases | 4.5 |
+| 06 | [Running applications: compute](../06-running-applications/00-brief.md) | Choose compute for three different workloads | 3.5 |
+| 07 | [Connecting it: networks and the edge](../07-connecting-it/00-brief.md) | Design a simple, safe network | 3.5 |
+| 08 | [Building and operating](../08-building-and-operating/00-brief.md) | Rebuild a setup the same way twice, and get alerts | 3.5 |
+| 09 | [Protecting, governing and proving compliance](../09-protecting-and-governing/00-brief.md) | Answer an auditor and choose layered protections | 5.5 |
+| 10 | [Data, AI and the rest of the catalog](../10-data-ai-and-more/00-brief.md) | Match six business requests to services | 2.5 |
+| 11 | [Paying for AWS](../11-paying-for-aws/00-brief.md) | Explain a bill, cut it, and estimate a new feature | 4 |
+| 12 | [Getting help](../12-getting-help/00-brief.md) | Recommend a Support plan and route five issues | 3 |
+| 13 | [Moving to AWS](../13-moving-to-aws/00-brief.md) | Build the case for moving ten applications | 3.5 |
+| 14 | [Capstone: a Well-Architected review](../14-capstone/00-brief.md) | Review your own lab workload and cost the fixes | 3 |
+| 90 | [Exam preparation](../90-exam-prep/01-how-to-use-exam-prep.md) | Mixed practice and full practice exams | 8 |
 
-Hours are estimates until tested with learners. Modules without a link are still being written.
+Hours are estimates until tested with learners.
 
 ```mermaid
 flowchart TD

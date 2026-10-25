@@ -91,7 +91,7 @@ The exam guide splits the exam into four **domains** (subject areas) and 19 **ta
 | Task [4.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.2) Billing and cost management | | 11; guardrails primer page 05 |
 | Task [4.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.3) Technical resources and Support | | 12 |
 
-Every task also appears in the mixed practice sets and the practice exams in module 90. Modules [02](../02-why-the-cloud/00-brief.md), [03](../03-aws-around-the-world/00-brief.md) and [04](../04-shared-responsibility-and-access/00-brief.md) are written; the others are in progress.
+Every task also appears in the mixed practice sets and the practice exams in module 90.
 
 ## What the exam doesn't test
 

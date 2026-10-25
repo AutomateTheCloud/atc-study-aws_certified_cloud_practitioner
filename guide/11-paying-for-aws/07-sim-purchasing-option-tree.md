@@ -86,7 +86,7 @@ flowchart TD
 
 *Notice that a commitment is the last "yes" in the tree: you commit only to what is steady, after ruling out cheaper or stricter answers.*
 
-**Long description.** A top-down flowchart of four questions, in the same order as lesson 11.02's. One: does a license or rule tie it to physical hardware? Yes, licenses per socket or core: Dedicated Host; yes, isolation only: Dedicated Instances. Two: can it be interrupted and restarted? Yes: Spot. Three: must capacity be guaranteed in one AZ at a set time? Yes: a Capacity Reservation plus a Savings Plan or Regional RI. Four: steady use for one to three years? Yes: a Savings Plan or RI for the baseline. Otherwise: On-Demand.
+**Long description.** A top-down flowchart of four questions. One: does a license or rule tie it to physical hardware? Yes, licenses per socket or core: Dedicated Host; yes, isolation only: Dedicated Instances. Two: can it be interrupted and restarted? Yes: Spot. Three: must capacity be guaranteed in one AZ at a set time? Yes: a Capacity Reservation plus a Savings Plan or Regional RI. Four: steady use for one to three years? Yes: a Savings Plan or RI for the baseline. Otherwise: On-Demand.
 
 ## Part 1: one option for each workload
 

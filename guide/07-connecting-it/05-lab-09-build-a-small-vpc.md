@@ -197,7 +197,7 @@ One route decided which subnet is public. A security group let the database hear
 >
 > <details><summary>Model answer</summary>
 >
-> No: the private subnet has no route to the internet gateway, and AWS says a server there can't reach the internet even with a public IP address. A public address doesn't make a subnet public; the route table does. The owner needs an encrypted link from home (lesson [07.04](04-connecting-networks-and-offices.md)), not a public database.
+> No: the private subnet has no route to the internet gateway, and AWS says a server there can't reach the internet even with a public IP address, because the route table, not the address, makes a subnet public. The owner needs an encrypted link from home (lesson [07.04](04-connecting-networks-and-offices.md)), not a public database.
 >
 > </details>
 

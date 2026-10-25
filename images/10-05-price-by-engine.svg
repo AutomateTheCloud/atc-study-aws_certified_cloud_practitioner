@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="680" height="375" viewBox="0 0 680 375" role="img" aria-labelledby="t d">
 <title id="t">Amazon Polly's price per million characters, by voice engine</title>
-<desc id="d">Horizontal bar chart of Amazon Polly's pay-as-you-go price per 1 million characters, before any free allowance, checked 2026-10-24. Standard: $4, so the lab's 211-character description costs about $0.0008 to synthesize once. Neural: $16, about $0.0034 once. Generative: $30, about $0.0063 once. Long Form: $100, about $0.0211 once; the lab doesn't use it. You pay each time Polly synthesizes, so speech you will reuse is best synthesized once and kept as a file, which AWS allows at no extra charge.</desc>
+<desc id="d">Horizontal bar chart of Amazon Polly's pay-as-you-go price per 1 million characters, before any free allowance, checked 2026-10-24. Standard: $4, so the lab's 211-character description costs about $0.0008 to synthesize once. Neural: $16, about $0.0034 once. Generative: $30, about $0.0063 once. Long-Form: $100, about $0.0211 once; the lab doesn't use it. You pay each time Polly synthesizes, so speech you will reuse is best synthesized once and kept as a file, which AWS allows at no extra charge.</desc>
 
 <style>
   svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
@@ -49,8 +49,8 @@
 <path class="s1" d="M110.0,184.0 L205.0,184.0 Q209.0,184.0 209.0,188.0 L209.0,202.0 Q209.0,206.0 205.0,206.0 L110.0,206.0 Z"><title>Generative: $30.00 per million characters; the lab's 211 characters once: about $0.0063</title></path>
 <text class="lab" x="217.0" y="195">$30</text>
 <text class="small" x="217.0" y="211">this description once: about $0.0063</text>
-<text class="lab" x="98" y="243" text-anchor="end">Long Form</text>
-<path class="s1" d="M110.0,228.0 L436.0,228.0 Q440.0,228.0 440.0,232.0 L440.0,246.0 Q440.0,250.0 436.0,250.0 L110.0,250.0 Z"><title>Long Form: $100.00 per million characters; the lab's 211 characters once: about $0.0211</title></path>
+<text class="lab" x="98" y="243" text-anchor="end">Long-Form</text>
+<path class="s1" d="M110.0,228.0 L436.0,228.0 Q440.0,228.0 440.0,232.0 L440.0,246.0 Q440.0,250.0 436.0,250.0 L110.0,250.0 Z"><title>Long-Form: $100.00 per million characters; the lab's 211 characters once: about $0.0211</title></path>
 <text class="lab" x="448.0" y="239">$100 (not used in this lab)</text>
 <text class="small" x="448.0" y="255">this description once: about $0.0211</text>
 <text class="small" x="16" y="304.0">The lab's lemon tart description is 211 characters. You pay each time Polly turns text into speech,</text>

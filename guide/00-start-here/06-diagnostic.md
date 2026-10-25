@@ -76,7 +76,7 @@ These five questions come from the optional on-ramp, Module 01.
 - A. Securing the line: the server's certificate has expired
 - B. Answering: the server's processor is too busy to reply
 - C. Looking up the name: DNS isn't giving out the server's address
-- D. Travelling: a firewall on the way blocks traffic to port 443
+- D. Traveling: a firewall on the way blocks traffic to port 443
 
 <details><summary>Answer</summary>
 
