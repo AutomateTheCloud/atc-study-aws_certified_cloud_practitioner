@@ -141,9 +141,9 @@ flowchart LR
 
 > **Check:** A video-streaming company wants viewers around the world to load its video files faster, and to reduce the load on its storage in one Region. Which service fits best?
 >
-> A. Amazon Route 53
-> B. Amazon CloudFront
-> C. AWS Global Accelerator
+> A. Amazon Route 53\
+> B. Amazon CloudFront\
+> C. AWS Global Accelerator\
 > D. A second Availability Zone
 
 <details><summary>Feedback</summary>
@@ -201,9 +201,9 @@ flowchart TD
 
 > **Check:** A hospital must keep patient images on its own premises, but wants to use the same AWS services and tools it uses in its Region. Which option fits?
 >
-> A. A Local Zone
-> B. AWS Outposts
-> C. An edge location
+> A. A Local Zone\
+> B. AWS Outposts\
+> C. An edge location\
 > D. AWS Wavelength
 
 <details><summary>Feedback</summary>
@@ -260,9 +260,9 @@ As always, the benefits are possibilities, not defaults: AWS runs the edge locat
 
 1. **Which statement about edge locations is correct?**
 
-   A. Each edge location is a small Availability Zone inside a Region.
-   B. Edge locations run services such as CloudFront and Route 53 close to users.
-   C. You choose an edge location when you launch an EC2 instance.
+   A. Each edge location is a small Availability Zone inside a Region.\
+   B. Edge locations run services such as CloudFront and Route 53 close to users.\
+   C. You choose an edge location when you launch an EC2 instance.\
    D. There are fewer edge locations than Regions.
 
    <details><summary>Feedback</summary>
@@ -277,9 +277,9 @@ As always, the benefits are possibilities, not defaults: AWS runs the edge locat
 
 2. **A company needs AWS services running inside its own factory so that machines get answers within milliseconds. Which option fits?**
 
-   A. Amazon CloudFront
-   B. AWS Outposts
-   C. A second AWS Region
+   A. Amazon CloudFront\
+   B. AWS Outposts\
+   C. A second AWS Region\
    D. Amazon Route 53
 
    <details><summary>Feedback</summary>

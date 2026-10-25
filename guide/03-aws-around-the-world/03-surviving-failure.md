@@ -157,8 +157,8 @@ The numbers come from what a failure costs the business: an hour down costs a ti
 
 > **Check:** The bakery's owner says, "If the site goes down, it must be back within two hours. And we can't lose more than 15 minutes of orders." Which statement is right?
 >
-> A. RTO is 15 minutes; RPO is 2 hours.
-> B. RTO is 2 hours; RPO is 15 minutes.
+> A. RTO is 15 minutes; RPO is 2 hours.\
+> B. RTO is 2 hours; RPO is 15 minutes.\
 > C. Both are 2 hours, because the larger number decides.
 
 <details><summary>Feedback</summary>
@@ -201,9 +201,9 @@ Two AWS services do much of this work: **AWS Backup** schedules backups across m
 
 > **Check:** A company wants a copy in a second Region that can serve customers immediately, at lower capacity, if the main Region fails. It doesn't want both Regions serving customers every day. Which strategy fits?
 >
-> A. Backup and restore
-> B. Pilot light
-> C. Warm standby
+> A. Backup and restore\
+> B. Pilot light\
+> C. Warm standby\
 > D. Multi-site active/active
 
 <details><summary>Feedback</summary>
@@ -318,9 +318,9 @@ Resilience follows the split you will meet in Module 04: AWS's DR whitepaper cal
 
 1. **A company runs its application in three Availability Zones of one Region. Which event does this design NOT protect it against?**
 
-   A. A power failure in one data center
-   B. A flood that closes one Availability Zone
-   C. A failed disk in one server
+   A. A power failure in one data center\
+   B. A flood that closes one Availability Zone\
+   C. A failed disk in one server\
    D. A large disaster that makes the whole Region unusable
 
    <details><summary>Feedback</summary>

@@ -124,9 +124,9 @@ You may read that a Business Support plan gives you the SRT. That's not right on
 
 > **Check:** Which statement about AWS Shield is correct?
 >
-> A. Shield Standard must be turned on for each resource
-> B. Shield Advanced is included with the Enterprise Support plan
-> C. Shield Standard is automatic and free; Shield Advanced is a paid subscription that adds the SRT and DDoS cost protection
+> A. Shield Standard must be turned on for each resource\
+> B. Shield Advanced is included with the Enterprise Support plan\
+> C. Shield Standard is automatic and free; Shield Advanced is a paid subscription that adds the SRT and DDoS cost protection\
 > D. Shield Standard includes the Shield Response Team
 
 <details><summary>Feedback</summary>
@@ -163,9 +163,9 @@ Its rules live in a **web ACL** (web access control list). Each rule matches som
 
 > **Check:** Answer the second prequestion. An attacker types database commands into the bakery's order form. What stops the request?
 >
-> A. The web servers' security group
-> B. An AWS WAF rule that matches SQL injection, on the web ACL in front of the site
-> C. Shield Standard
+> A. The web servers' security group\
+> B. An AWS WAF rule that matches SQL injection, on the web ACL in front of the site\
+> C. Shield Standard\
 > D. Amazon GuardDuty
 
 <details><summary>Feedback</summary>
@@ -319,9 +319,9 @@ DDoS protection is also a **reliability** question: a site that's down for custo
 
 1. **A company wants protection against SQL injection on its Application Load Balancer. What should it use?**
 
-   A. AWS Shield Standard
-   B. AWS WAF
-   C. A network ACL
+   A. AWS Shield Standard\
+   B. AWS WAF\
+   C. A network ACL\
    D. Amazon Inspector
 
    <details><summary>Feedback</summary>
@@ -336,9 +336,9 @@ DDoS protection is also a **reliability** question: a site that's down for custo
 
 2. **Which of these does every AWS customer get automatically, at no additional charge?**
 
-   A. AWS Shield Advanced
-   B. The Shield Response Team
-   C. AWS Shield Standard
+   A. AWS Shield Advanced\
+   B. The Shield Response Team\
+   C. AWS Shield Standard\
    D. DDoS cost protection
 
    <details><summary>Feedback</summary>

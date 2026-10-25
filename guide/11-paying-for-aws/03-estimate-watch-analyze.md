@@ -185,9 +185,9 @@ The CloudWatch billing alarm from primer page 05 also only notifies; for "alert 
 
 > **Check:** Answer the first prequestion. The bakery's $150 budget sends its 100% alert on 29 January. There is no budget action. What happens to the test instance that caused it?
 >
-> A. AWS stops it at once
-> B. Nothing: it keeps running and billing until someone stops or terminates it
-> C. AWS stops all new launches in the account
+> A. AWS stops it at once\
+> B. Nothing: it keeps running and billing until someone stops or terminates it\
+> C. AWS stops all new launches in the account\
 > D. The extra cost is waived because a budget was set
 
 <details><summary>Feedback</summary>
@@ -243,9 +243,9 @@ You may have read that Cost Explorer shows the last 12 months and forecasts the 
 
 > **Check:** Answer the second prequestion. Which statement about AWS Cost Explorer is correct as of 2026-10-24?
 >
-> A. It forecasts up to 18 months ahead from your past usage
-> B. It emails you when your cost passes a limit you set
-> C. It estimates the cost of a design you haven't built yet
+> A. It forecasts up to 18 months ahead from your past usage\
+> B. It emails you when your cost passes a limit you set\
+> C. It estimates the cost of a design you haven't built yet\
 > D. It delivers line-item files to your S3 bucket
 
 <details><summary>Feedback</summary>
@@ -336,9 +336,9 @@ Teams that manage cloud cost well cover all four stages on a schedule: every new
 
 1. **A startup wants an email when its forecasted monthly cost will exceed $1,000. Which tool should it use?**
 
-   A. AWS Cost Explorer
-   B. AWS Budgets
-   C. AWS Pricing Calculator
+   A. AWS Cost Explorer\
+   B. AWS Budgets\
+   C. AWS Pricing Calculator\
    D. The Cost and Usage Report
 
    <details><summary>Feedback</summary>
@@ -361,9 +361,9 @@ Teams that manage cloud cost well cover all four stages on a schedule: every new
 
 3. **Which statement about budget actions is correct?**
 
-   A. Every budget stops resources when it reaches 100%
-   B. A budget action can apply an IAM policy or SCP, or stop chosen EC2 or RDS instances, automatically or after approval
-   C. A budget action deletes the resources that caused the overspend
+   A. Every budget stops resources when it reaches 100%\
+   B. A budget action can apply an IAM policy or SCP, or stop chosen EC2 or RDS instances, automatically or after approval\
+   C. A budget action deletes the resources that caused the overspend\
    D. Budget actions act the moment a charge occurs
 
    <details><summary>Feedback</summary>

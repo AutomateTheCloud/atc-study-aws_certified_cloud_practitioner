@@ -145,9 +145,9 @@ You may have read AppStream 2.0 and WorkSpaces Web as current product names. The
 
 > **Check:** Answer the first prequestion. December's temporary staff need the bakery's ordering and stock systems, plus email and spreadsheets, on their own laptops for six weeks, with nothing left on the laptops. Which fits best?
 >
-> A. Amazon WorkSpaces, with hourly billing and AutoStop
-> B. AWS Client VPN
-> C. Amazon WorkSpaces Secure Browser
+> A. Amazon WorkSpaces, with hourly billing and AutoStop\
+> B. AWS Client VPN\
+> C. Amazon WorkSpaces Secure Browser\
 > D. Amazon Lightsail
 
 <details><summary>Feedback</summary>
@@ -208,9 +208,9 @@ The bakery would use SES for "Your order is ready" emails. Keep Module 08's comp
 
 > **Check:** The bakery wants to email each customer a styled confirmation with their order details, and a monthly newsletter. Which service?
 >
-> A. Amazon SES
-> B. Amazon Connect
-> C. Amazon Lex
+> A. Amazon SES\
+> B. Amazon Connect\
+> C. Amazon Lex\
 > D. AWS IoT Core
 
 <details><summary>Feedback</summary>
@@ -357,9 +357,9 @@ Who: people using a computer (here, students rather than staff). How much: one a
 
 1. **Which service lets a company stream one specific desktop application to users' web browsers, without giving each user a full desktop?**
 
-   A. Amazon WorkSpaces
-   B. Amazon AppStream 2.0 (now Amazon WorkSpaces Applications)
-   C. AWS Client VPN
+   A. Amazon WorkSpaces\
+   B. Amazon AppStream 2.0 (now Amazon WorkSpaces Applications)\
+   C. AWS Client VPN\
    D. AWS Amplify
 
    <details><summary>Feedback</summary>
@@ -374,9 +374,9 @@ Who: people using a computer (here, students rather than staff). How much: one a
 
 2. **A company wants a cloud call center where customers first talk to a bot, then reach a person if needed. Which two services does it combine?**
 
-   A. Amazon Connect and Amazon Lex
-   B. Amazon SES and Amazon Polly
-   C. Amazon Lex and Amazon Transcribe only
+   A. Amazon Connect and Amazon Lex\
+   B. Amazon SES and Amazon Polly\
+   C. Amazon Lex and Amazon Transcribe only\
    D. AWS IoT Core and Amazon SNS
 
    <details><summary>Feedback</summary>
@@ -391,9 +391,9 @@ Who: people using a computer (here, students rather than staff). How much: one a
 
 3. **Which service connects thousands of sensors to AWS, authenticates each one, and routes their messages to other AWS services?**
 
-   A. Amazon Kinesis Data Streams
-   B. AWS IoT Core
-   C. AWS IoT Greengrass
+   A. Amazon Kinesis Data Streams\
+   B. AWS IoT Core\
+   C. AWS IoT Greengrass\
    D. Amazon SQS
 
    <details><summary>Feedback</summary>

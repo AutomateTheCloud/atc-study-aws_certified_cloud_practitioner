@@ -153,8 +153,8 @@ To run the CLI on your own computer instead, use `aws login`, as on [primer page
 
 > **Check:** A teammate's script creates a bucket and a security group. She runs it on Monday, then again on Tuesday "to make sure everything's there". What most likely happens on Tuesday?
 >
-> A. Nothing: the CLI sees that both already exist and skips them
-> B. The script repeats its steps: the bucket command fails because the name is taken, and the security group command may fail on its name or create a second group
+> A. Nothing: the CLI sees that both already exist and skips them\
+> B. The script repeats its steps: the bucket command fails because the name is taken, and the security group command may fail on its name or create a second group\
 > C. The CLI deletes Monday's resources and builds them again
 
 <details><summary>Feedback</summary>
@@ -238,9 +238,9 @@ flowchart TD
 
 > **Check:** Answer the first prequestion. The bakery's new helper wants to look around the account to see what resources exist and how they're set up. Which way in fits best?
 >
-> A. The console
-> B. An SDK
-> C. A CloudFormation template
+> A. The console\
+> B. An SDK\
+> C. A CloudFormation template\
 > D. A CLI script
 
 <details><summary>Feedback</summary>
@@ -321,9 +321,9 @@ Teams learn a service in the console, then write down anything they'll need agai
 
 1. **Which way in fits best: a company must create the same set of resources for each new customer, identically, several times a month?**
 
-   A. The console, following a written checklist
-   B. Infrastructure as code, with AWS CloudFormation
-   C. AWS CloudShell
+   A. The console, following a written checklist\
+   B. Infrastructure as code, with AWS CloudFormation\
+   C. AWS CloudShell\
    D. AWS Support
 
    <details><summary>Feedback</summary>
@@ -338,9 +338,9 @@ Teams learn a service in the console, then write down anything they'll need agai
 
 2. **A developer's mobile app must upload photos to Amazon S3. Which option lets her code call S3 in the app's programming language?**
 
-   A. The AWS Management Console
-   B. The AWS CLI
-   C. An AWS SDK
+   A. The AWS Management Console\
+   B. The AWS CLI\
+   C. An AWS SDK\
    D. AWS CloudFormation
 
    <details><summary>Feedback</summary>

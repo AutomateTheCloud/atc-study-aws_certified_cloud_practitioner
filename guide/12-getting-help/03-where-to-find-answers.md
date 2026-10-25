@@ -137,8 +137,8 @@ re:Post is public. Describe your problem in general terms, and never post access
 
 > **Check:** Answer the second prequestion. The bakery's developer says, "I searched the Knowledge Center, so there's no point searching re:Post." Is that right?
 >
-> A. Yes: the Knowledge Center and re:Post are separate sites with separate content
-> B. No: the Knowledge Center is part of re:Post, and re:Post also holds community questions and answers the Knowledge Center doesn't have
+> A. Yes: the Knowledge Center and re:Post are separate sites with separate content\
+> B. No: the Knowledge Center is part of re:Post, and re:Post also holds community questions and answers the Knowledge Center doesn't have\
 > C. Yes: re:Post only covers AWS certification exams
 
 <details><summary>Feedback</summary>
@@ -225,9 +225,9 @@ Row 3 needs a word. If someone has broken into *your* account, AWS's Prescriptiv
 
 > **Check:** Answer the first prequestion. A server at an address in AWS's published ranges keeps trying passwords on the bakery's order page. What should the bakery do?
 >
-> A. Open a technical support case, which needs a paid Support plan
-> B. Report it to AWS Trust & Safety through the abuse form, with log lines and timestamps, and block the address itself meanwhile
-> C. Post the attacker's address on re:Post and ask for help
+> A. Open a technical support case, which needs a paid Support plan\
+> B. Report it to AWS Trust & Safety through the abuse form, with log lines and timestamps, and block the address itself meanwhile\
+> C. Post the attacker's address on re:Post and ask for help\
 > D. Nothing: AWS Shield Standard stops all attacks automatically
 
 <details><summary>Feedback</summary>
@@ -289,9 +289,9 @@ Teams that run business-critical systems decide in advance where each kind of pr
 
 1. **Which source holds AWS's official articles on the questions customers ask most often?**
 
-   A. AWS Prescriptive Guidance
-   B. AWS Knowledge Center
-   C. AWS Support Center
+   A. AWS Prescriptive Guidance\
+   B. AWS Knowledge Center\
+   C. AWS Support Center\
    D. AWS Trust & Safety Center
 
    <details><summary>Feedback</summary>
@@ -314,10 +314,10 @@ Teams that run business-critical systems decide in advance where each kind of pr
 
 3. **A website owner's logs show a port scan from an address in AWS's published IP address ranges. Which TWO steps are right?**
 
-   A. Report it to AWS Trust & Safety through the abuse form, with the target address, timestamps and log samples
-   B. Open an account and billing case in Support Center
-   C. Block the address with the owner's own firewall rules
-   D. Ask on re:Post who owns the address
+   A. Report it to AWS Trust & Safety through the abuse form, with the target address, timestamps and log samples\
+   B. Open an account and billing case in Support Center\
+   C. Block the address with the owner's own firewall rules\
+   D. Ask on re:Post who owns the address\
    E. Wait for the AWS Health Dashboard to show the event
 
    <details><summary>Feedback</summary>

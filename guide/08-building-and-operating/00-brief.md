@@ -65,7 +65,7 @@ Both labs run in US East (N. Virginia) and state their cost and worst case.
 
 **Before the labs:** check that you still have [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md), [your IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md), [CloudShell without access keys](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/04-command-line-without-access-keys.md) and [money alarms](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md). The lessons need no AWS account.
 
-**Mastery check:** the module ends with a check; you pass at 80%. Each miss points you to the section to reread, then to a parallel retest.
+**Mastery check:** the module ends with [a mastery check](07-check.md); you pass at 80%. Each miss points you to the section to reread, then to a parallel retest.
 
 **Numbers that change:** limits and prices appear with the date they were checked, and every lesson says where to check the current ones.
 

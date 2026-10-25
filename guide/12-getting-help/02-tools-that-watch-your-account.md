@@ -146,9 +146,9 @@ flowchart TD
 
 > **Check:** Answer the first prequestion. Which statement about Trusted Advisor on the Basic plan is correct?
 >
-> A. Basic gets all cost optimization checks
-> B. Basic gets every service limits check and a few selected security and fault tolerance checks
-> C. Basic gets no Trusted Advisor checks
+> A. Basic gets all cost optimization checks\
+> B. Basic gets every service limits check and a few selected security and fault tolerance checks\
+> C. Basic gets no Trusted Advisor checks\
 > D. Basic gets all checks, but without the API
 
 <details><summary>Feedback</summary>
@@ -196,9 +196,9 @@ You may have read about two dashboards: a Service Health Dashboard showing AWS's
 
 > **Check:** Answer the second prequestion. The bakery's site is slow, and the owner wonders whether AWS is having trouble in N. Virginia. She is on Basic. Where should she look first?
 >
-> A. The AWS Health Dashboard: Service health for AWS-wide events, and Your account health for anything affecting her own resources
-> B. The AWS Health API
-> C. Trusted Advisor's performance checks
+> A. The AWS Health Dashboard: Service health for AWS-wide events, and Your account health for anything affecting her own resources\
+> B. The AWS Health API\
+> C. Trusted Advisor's performance checks\
 > D. The Personal Health Dashboard, a separate product
 
 <details><summary>Feedback</summary>
@@ -296,9 +296,9 @@ Teams watch AWS Health and their own monitoring together, so that the first ques
 
 1. **Which AWS tool tells a company that AWS has scheduled maintenance on hardware that one of its EC2 instances uses?**
 
-   A. AWS Trusted Advisor
-   B. AWS Health, in Your account health
-   C. AWS Support Center
+   A. AWS Trusted Advisor\
+   B. AWS Health, in Your account health\
+   C. AWS Support Center\
    D. AWS Health, in Service health only
 
    <details><summary>Feedback</summary>
@@ -313,9 +313,9 @@ Teams watch AWS Health and their own monitoring together, so that the first ques
 
 2. **A startup on Basic Support wants Trusted Advisor's recommendations for cutting costs. What must change?**
 
-   A. Nothing: Basic includes all cost optimization checks
-   B. It must move to Business Support+ or higher
-   C. It must turn on AWS Health
+   A. Nothing: Basic includes all cost optimization checks\
+   B. It must move to Business Support+ or higher\
+   C. It must turn on AWS Health\
    D. It must enable Trusted Advisor Priority on Basic
 
    <details><summary>Feedback</summary>

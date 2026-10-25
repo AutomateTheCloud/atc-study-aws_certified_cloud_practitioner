@@ -81,6 +81,9 @@ Write every question and task fresh.
 - **Links to standards:** every Well-Architected best-practice ID, design principle, task statement
   and CIS reference links to its official page. When you finish, run the linker command in
   `design/conventions.md` on your files and check what it changed.
+- **Answer choices on separate lines:** the site joins consecutive lines into one paragraph, so end every
+  choice line that is followed by another choice line with a backslash (`A. Elasticity\`), or write
+  the choices as a bulleted list. Otherwise "A. … B. … C. …" shows as one run-on line.
 - **Length:** lessons 2,000–3,500 words; a brief under 800; a lab under 2,000; a sim under 1,500.
 - **Labs** follow conventions "Labs": the liability notice word for word, `us-east-1`, tags
   `guide=clf` (decision B11) and `lab=NN`, a cost box, cleanup in dependency order with a check that nothing

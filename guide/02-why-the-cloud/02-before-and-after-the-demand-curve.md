@@ -178,9 +178,9 @@ The belief is tempting because the cloud often does save money, as it did for th
 
 > **Check:** Which statement best describes "trade fixed expense for variable expense"?
 >
-> A. The cloud always costs less than owning servers.
-> B. You pay for resources as you use them, instead of paying up front for capacity you might not use.
-> C. You pay a fixed monthly fee to a cloud provider instead of buying servers.
+> A. The cloud always costs less than owning servers.\
+> B. You pay for resources as you use them, instead of paying up front for capacity you might not use.\
+> C. You pay a fixed monthly fee to a cloud provider instead of buying servers.\
 > D. Your operating expenses go down because the provider pays for the servers.
 
 <details><summary>Feedback</summary>
@@ -248,9 +248,9 @@ The worked example's warning matters most at work. The cloud *allows* you to pay
 
 1. **On a demand curve with a flat line for owned servers, what does the area where demand is above the line represent?**
 
-   A. Idle capacity
-   B. Lost sales
-   C. Economies of scale
+   A. Idle capacity\
+   B. Lost sales\
+   C. Economies of scale\
    D. Variable expense
 
    <details><summary>Feedback</summary>
@@ -265,9 +265,9 @@ The worked example's warning matters most at work. The cloud *allows* you to pay
 
 2. **A company's website has the same steady demand every hour of every day, and it already owns enough servers for it. Which statement is most accurate?**
 
-   A. Moving to the cloud will certainly lower its costs, because the cloud always costs less.
-   B. Its main benefit from the cloud's variable expense is small, because there is little idle capacity to remove.
-   C. It has a large lost-sales problem.
+   A. Moving to the cloud will certainly lower its costs, because the cloud always costs less.\
+   B. Its main benefit from the cloud's variable expense is small, because there is little idle capacity to remove.\
+   C. It has a large lost-sales problem.\
    D. It should rent its peak capacity all year in the cloud.
 
    <details><summary>Feedback</summary>

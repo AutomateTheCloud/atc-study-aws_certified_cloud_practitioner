@@ -199,9 +199,9 @@ All four move the application to AWS, and their names sound alike. Read the high
 
 > **Check:** Answer the second prequestion. The chain moves its loyalty database from its own SQL Server machine onto Amazon RDS for SQL Server. The application code is unchanged. Which strategy is it?
 >
-> A. Rehost
-> B. Relocate
-> C. Replatform
+> A. Rehost\
+> B. Relocate\
+> C. Replatform\
 > D. Refactor
 
 <details><summary>Feedback</summary>
@@ -300,9 +300,9 @@ The Well-Architected cost optimization pillar backs two of the choices:
 
 1. **Which list contains only strategies from AWS's 7 Rs?**
 
-   A. Rehost, replatform, refactor, rebuild
-   B. Retire, retain, relocate, repurchase
-   C. Rehost, redeploy, replatform, retain
+   A. Rehost, replatform, refactor, rebuild\
+   B. Retire, retain, relocate, repurchase\
+   C. Rehost, redeploy, replatform, retain\
    D. Refactor, reconfigure, retire, rehost
 
    <details><summary>Feedback</summary>
@@ -325,9 +325,9 @@ The Well-Architected cost optimization pillar backs two of the choices:
 
 3. **A retailer must move 400 VMware virtual machines to AWS within six months and wants its operations team to keep using the same VMware tools. Which strategy?**
 
-   A. Rehost
-   B. Relocate
-   C. Refactor
+   A. Rehost\
+   B. Relocate\
+   C. Refactor\
    D. Repurchase
 
    <details><summary>Feedback</summary>

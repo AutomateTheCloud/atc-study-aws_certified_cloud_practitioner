@@ -151,9 +151,9 @@ Lightsail price from its pricing page, retrieved 2026-10-23; EC2 prices for US E
 
 > **Check:** Answer the second prequestion. The owner's sister wants a WordPress site for her flower shop, with a bill she can predict and as little setup as possible. Which service fits best?
 >
-> A. Amazon EC2 with Auto Scaling and a load balancer
-> B. Amazon Lightsail
-> C. AWS Batch
+> A. Amazon EC2 with Auto Scaling and a load balancer\
+> B. Amazon Lightsail\
+> C. AWS Batch\
 > D. AWS Lambda
 
 <details><summary>Feedback</summary>
@@ -207,9 +207,9 @@ How it differs from its neighbors:
 
 > **Check:** An engineering firm runs 5,000 simulations every night. Each takes about two hours and is packaged as a container. The firm wants AWS to provision the compute and remove it when the work is done. Which service fits?
 >
-> A. AWS Lambda
-> B. AWS Batch
-> C. Amazon Lightsail
+> A. AWS Lambda\
+> B. AWS Batch\
+> C. Amazon Lightsail\
 > D. AWS Elastic Beanstalk
 
 <details><summary>Feedback</summary>
@@ -235,9 +235,9 @@ Outposts is AWS's way to build a **hybrid deployment** (task [3.1](https://docs.
 
 > **Check:** A hospital's imaging systems need answers within milliseconds, and its patient data must stay in its own building. It wants to run EC2 instances with the same tools it uses in the AWS Region. Which service fits?
 >
-> A. AWS Outposts
-> B. Amazon Lightsail
-> C. A Local Zone in the nearest city
+> A. AWS Outposts\
+> B. Amazon Lightsail\
+> C. A Local Zone in the nearest city\
 > D. AWS Batch
 
 <details><summary>Feedback</summary>
@@ -324,9 +324,9 @@ Teams reach for these services when assembling compute is work that doesn't set 
 
 1. **Which AWS service lets a developer upload application code and have AWS provision the EC2 instances, load balancing, scaling and health monitoring?**
 
-   A. Amazon Lightsail
-   B. AWS Elastic Beanstalk
-   C. AWS Batch
+   A. Amazon Lightsail\
+   B. AWS Elastic Beanstalk\
+   C. AWS Batch\
    D. AWS Outposts
 
    <details><summary>Feedback</summary>
@@ -349,9 +349,9 @@ Teams reach for these services when assembling compute is work that doesn't set 
 
 3. **Which statement about AWS Batch is correct?**
 
-   A. Batch charges a fee per job on top of the compute used
-   B. Batch runs each job for at most 15 minutes
-   C. Batch launches compute for queued jobs and removes it when it's no longer needed
+   A. Batch charges a fee per job on top of the compute used\
+   B. Batch runs each job for at most 15 minutes\
+   C. Batch launches compute for queued jobs and removes it when it's no longer needed\
    D. Batch requires you to install scheduling software on EC2
 
    <details><summary>Feedback</summary>

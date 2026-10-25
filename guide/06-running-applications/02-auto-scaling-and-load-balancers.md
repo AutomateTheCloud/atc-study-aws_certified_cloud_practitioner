@@ -170,9 +170,9 @@ Both use health checks and help survive an AZ failure; one changes the number of
 
 > **Check:** A company wants its website's capacity to grow during sales and shrink afterwards, without anyone acting. Which service does that?
 >
-> A. Elastic Load Balancing
-> B. Amazon EC2 Auto Scaling
-> C. Amazon CloudFront
+> A. Elastic Load Balancing\
+> B. Amazon EC2 Auto Scaling\
+> C. Amazon CloudFront\
 > D. AWS Global Accelerator
 
 <details><summary>Feedback</summary>
@@ -213,9 +213,9 @@ You may have read that the **Classic Load Balancer** is a current option alongsi
 
 > **Check:** A company runs a multiplayer game that uses UDP and needs a fixed IP address for players' devices. Which load balancer fits?
 >
-> A. Application Load Balancer
-> B. Network Load Balancer
-> C. Gateway Load Balancer
+> A. Application Load Balancer\
+> B. Network Load Balancer\
+> C. Gateway Load Balancer\
 > D. Classic Load Balancer
 
 <details><summary>Feedback</summary>
@@ -289,9 +289,9 @@ Engineers start from these two services for almost every EC2 web tier. The **rel
 
 1. **Which statement about Amazon EC2 Auto Scaling is true?**
 
-   A. It distributes incoming requests across instances.
-   B. It keeps the number of instances between a minimum and a maximum, and replaces unhealthy ones.
-   C. It recommends better instance sizes but doesn't change anything.
+   A. It distributes incoming requests across instances.\
+   B. It keeps the number of instances between a minimum and a maximum, and replaces unhealthy ones.\
+   C. It recommends better instance sizes but doesn't change anything.\
    D. It charges a fee per scaling action.
 
    <details><summary>Feedback</summary>

@@ -65,7 +65,7 @@ Task [3.7](https://docs.aws.amazon.com/aws-certification/latest/cloud-practition
 
 **Before the labs:** check that you still have [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md), [your IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md) and [money alarms](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md). The lessons need no AWS account.
 
-**Mastery check:** pass at 80%. Each miss points to the section to reread, then to a parallel retest.
+**Mastery check:** the [Module 10 mastery check](07-check.md); pass at 80%. Each miss points to the section to reread, then to a parallel retest.
 
 > **Dated (checked 2026-10-24):** names move fast here, and questions may use old or new ones. Amazon QuickSight is now Amazon Quick Sight; Kinesis Data Firehose is now Amazon Data Firehose; AppStream 2.0 is now WorkSpaces Applications; Amazon Connect is now Connect Customer. Amazon Q Business and Amazon Kendra are closed to new customers, and WorkSpaces Secure Browser closes to them on 2026-10-29.
 

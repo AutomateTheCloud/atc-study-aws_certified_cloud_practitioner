@@ -92,9 +92,9 @@ Inheriting a control doesn't remove the need for evidence. AWS suggests reviewin
 
 > **Check:** Which of these is an inherited control for a company running on AWS?
 >
-> A. Training the company's staff to spot fake sign-in pages
-> B. Controlling who can enter the data center building
-> C. Patching the operating system on the company's EC2 servers
+> A. Training the company's staff to spot fake sign-in pages\
+> B. Controlling who can enter the data center building\
+> C. Patching the operating system on the company's EC2 servers\
 > D. Deciding which staff may read customer records
 
 <details><summary>Feedback</summary>
@@ -152,9 +152,9 @@ Use this rule. If a question names **one specific thing** ("who patches the gues
 
 > **Check:** Which statement about patch management is correct?
 >
-> A. AWS and the customer patch the EC2 guest operating system together.
-> B. It is a shared control: AWS patches its infrastructure, and the customer patches its own guest operating systems and applications.
-> C. It is an inherited control, so AWS patches everything.
+> A. AWS and the customer patch the EC2 guest operating system together.\
+> B. It is a shared control: AWS patches its infrastructure, and the customer patches its own guest operating systems and applications.\
+> C. It is an inherited control, so AWS patches everything.\
 > D. It is a customer-specific control, so AWS patches nothing.
 
 <details><summary>Feedback</summary>
@@ -257,9 +257,9 @@ AWS splits other responsibilities the same way. In the disaster recovery whitepa
 
 2. **Which of these is a shared control?**
 
-   A. Physical security of the data centers
-   B. Configuration management
-   C. Zoning sensitive data into a specific security environment
+   A. Physical security of the data centers\
+   B. Configuration management\
+   C. Zoning sensitive data into a specific security environment\
    D. Replacing failed hardware
 
    <details><summary>Feedback</summary>
@@ -282,9 +282,9 @@ AWS splits other responsibilities the same way. In the disaster recovery whitepa
 
 4. **A company runs its application on EC2 and its database on RDS. For patch management, which part is the company's?**
 
-   A. Patching the RDS database software
-   B. Patching the EC2 guest operating system
-   C. Patching the hosts under both services
+   A. Patching the RDS database software\
+   B. Patching the EC2 guest operating system\
+   C. Patching the hosts under both services\
    D. None, because patch management is inherited
 
    <details><summary>Feedback</summary>

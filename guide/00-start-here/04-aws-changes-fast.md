@@ -127,9 +127,9 @@ If a screen or price differs from this guide, trust the live AWS page.
 
 1. **A service is "closed to new customers". Which is true?**
 
-   A. Nobody can use it any more.
-   B. Customers who already use it can keep using it, but a new account can't sign up.
-   C. It is about to be renamed.
+   A. Nobody can use it any more.\
+   B. Customers who already use it can keep using it, but a new account can't sign up.\
+   C. It is about to be renamed.\
    D. It costs more for new customers.
 
    <details><summary>Feedback</summary>

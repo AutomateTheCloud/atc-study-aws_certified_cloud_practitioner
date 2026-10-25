@@ -130,9 +130,9 @@ A role uses both kinds. Its **trust policy** is a resource-based policy saying w
 
 > **Check:** The bakery wants a delivery company's AWS account to read one bucket, without creating any users for the company. Where does the bakery write the permission?
 >
-> A. In an inline policy on the bakery owner's IAM user
-> B. In a resource-based policy (bucket policy) on that bucket, naming the delivery company's account
-> C. In an AWS managed policy
+> A. In an inline policy on the bakery owner's IAM user\
+> B. In a resource-based policy (bucket policy) on that bucket, naming the delivery company's account\
+> C. In an AWS managed policy\
 > D. Nowhere: other accounts can read any bucket by default
 
 <details><summary>Feedback</summary>
@@ -267,9 +267,9 @@ The boxes show the three ways to narrow a policy:
 
 > **Check:** A developer says: "I'll give the new teammate `AdministratorAccess` for now and tighten it later." What is the main problem?
 >
-> A. `AdministratorAccess` can't be attached to a group.
-> B. It breaks least privilege: until "later" arrives, a mistake or a stolen password can affect everything in the account.
-> C. AWS charges more for broad policies.
+> A. `AdministratorAccess` can't be attached to a group.\
+> B. It breaks least privilege: until "later" arrives, a mistake or a stolen password can affect everything in the account.\
+> C. AWS charges more for broad policies.\
 > D. There's no problem: AWS managed policies are always least privilege.
 
 <details><summary>Feedback</summary>
@@ -304,9 +304,9 @@ The free external-access analyzer you created on [primer page 06](https://github
 
 1. **An IAM user is in two groups. Group A's policy allows `s3:GetObject` on a bucket. Group B's policy denies `s3:GetObject` on the same bucket. What happens when the user reads a file there?**
 
-   A. Allowed, because an allow exists.
-   B. Denied, because an explicit deny overrides any allow.
-   C. Allowed, because group A was attached first.
+   A. Allowed, because an allow exists.\
+   B. Denied, because an explicit deny overrides any allow.\
+   C. Allowed, because group A was attached first.\
    D. Denied, because users can't be in two groups.
 
    <details><summary>Feedback</summary>
@@ -329,9 +329,9 @@ The free external-access analyzer you created on [primer page 06](https://github
 
 3. **Which statement about inline policies is true?**
 
-   A. AWS writes and updates them.
-   B. One inline policy can be attached to many users.
-   C. An inline policy is deleted when its identity is deleted.
+   A. AWS writes and updates them.\
+   B. One inline policy can be attached to many users.\
+   C. An inline policy is deleted when its identity is deleted.\
    D. Inline policies can't be edited.
 
    <details><summary>Feedback</summary>

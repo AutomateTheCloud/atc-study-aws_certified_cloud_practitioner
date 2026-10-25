@@ -64,7 +64,7 @@ This module covers task [4.1](https://docs.aws.amazon.com/aws-certification/late
 
 **Before the labs:** check that you still have [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md), [your IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md) and [money alarms](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md). The lessons need no AWS account.
 
-**Mastery check:** the module ends with a check; you pass at 80%. Each miss points you to the section to reread, then to a parallel retest.
+**Mastery check:** the module ends with the [Module 11 mastery check](09-check.md); you pass at 80%. Each miss points you to the section to reread, then to a parallel retest.
 
 > **Dated (checked 2026-10-24):** this module is full of numbers that move: prices, discount maximums, the number of Savings Plans types (four today), and the Free Tier's terms, which changed in July 2025. Every lesson dates them where they appear and says where to check the current value.
 

@@ -130,9 +130,9 @@ You may read that you use Inspector by defining an assessment target, choosing a
 
 > **Check:** Answer the first prequestion. A finding says the web server's instance credentials were used from an address outside AWS. Which service raised it?
 >
-> A. Amazon Inspector
-> B. Amazon GuardDuty
-> C. AWS Trusted Advisor
+> A. Amazon Inspector\
+> B. Amazon GuardDuty\
+> C. AWS Trusted Advisor\
 > D. AWS Config
 
 <details><summary>Feedback</summary>
@@ -299,9 +299,9 @@ Security teams turn these services on in every account and Region from day one, 
 
 1. **Which service continuously scans EC2 instances and container images for software vulnerabilities?**
 
-   A. Amazon GuardDuty
-   B. Amazon Inspector
-   C. Amazon Detective
+   A. Amazon GuardDuty\
+   B. Amazon Inspector\
+   C. Amazon Detective\
    D. AWS Shield
 
    <details><summary>Feedback</summary>
@@ -316,9 +316,9 @@ Security teams turn these services on in every account and Region from day one, 
 
 2. **A company wants to check all of its accounts' settings against the [CIS AWS Foundations Benchmark](https://www.cisecurity.org/benchmark/amazon_web_services) and see a score. Which service fits?**
 
-   A. AWS Security Hub
-   B. Amazon GuardDuty
-   C. AWS Audit Manager
+   A. AWS Security Hub\
+   B. Amazon GuardDuty\
+   C. AWS Audit Manager\
    D. Amazon Macie
 
    <details><summary>Feedback</summary>
@@ -349,9 +349,9 @@ Security teams turn these services on in every account and Region from day one, 
 
 5. **Which statement about AWS Security Hub is correct as of 2026-10-24?**
 
-   A. It is one product that only collects findings
-   B. The original product is now called Security Hub CSPM, and "Security Hub" also names a newer product that correlates findings
-   C. It replaced GuardDuty and Inspector
+   A. It is one product that only collects findings\
+   B. The original product is now called Security Hub CSPM, and "Security Hub" also names a newer product that correlates findings\
+   C. It replaced GuardDuty and Inspector\
    D. It needs Amazon Inspector Classic assessment templates
 
    <details><summary>Feedback</summary>

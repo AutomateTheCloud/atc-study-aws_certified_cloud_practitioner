@@ -128,9 +128,9 @@ It's tempting because the exam guide still lists both, their documentation is st
 
 > **Check:** Which tool collects data about on-premises servers and the connections between them, so you can group them into applications?
 >
-> A. AWS Migration Hub
-> B. AWS Application Discovery Service, closed to new customers, with AWS Transform as the current choice
-> C. Migration Evaluator
+> A. AWS Migration Hub\
+> B. AWS Application Discovery Service, closed to new customers, with AWS Transform as the current choice\
+> C. Migration Evaluator\
 > D. AWS DMS
 
 <details><summary>Feedback</summary>
@@ -200,9 +200,9 @@ The loyalty database shows the choice. MGN could copy its whole SQL Server machi
 
 > **Check:** The loyalty database moves from SQL Server in the data center to Amazon RDS for SQL Server, and shops keep adding customers' points during the move. Which tool or tools does the move need?
 >
-> A. Application Migration Service
-> B. AWS SCT (or DMS Schema Conversion), then AWS DMS
-> C. AWS DMS alone
+> A. Application Migration Service\
+> B. AWS SCT (or DMS Schema Conversion), then AWS DMS\
+> C. AWS DMS alone\
 > D. AWS DataSync
 
 <details><summary>Feedback</summary>
@@ -264,9 +264,9 @@ Lesson 05.04 taught **AWS Elastic Disaster Recovery**: an agent copies a server'
 
 > **Check:** Accounting got new servers eight months ago, so 13.02 retains it until its next refresh. Suppose the finance director wants it running again within minutes if the data center fails before then. Which tool?
 >
-> A. Application Migration Service
-> B. AWS Elastic Disaster Recovery
-> C. AWS DMS
+> A. Application Migration Service\
+> B. AWS Elastic Disaster Recovery\
+> C. AWS DMS\
 > D. AWS Backup alone
 
 <details><summary>Feedback</summary>
@@ -341,9 +341,9 @@ Migration teams build a plan from an inventory, group dependent servers into wav
 
 1. **Which tool rehosts physical and virtual servers onto Amazon EC2 with minimal downtime?**
 
-   A. AWS DMS
-   B. AWS Application Migration Service (AWS Transform MGN)
-   C. AWS Migration Hub
+   A. AWS DMS\
+   B. AWS Application Migration Service (AWS Transform MGN)\
+   C. AWS Migration Hub\
    D. AWS DataSync
 
    <details><summary>Feedback</summary>
@@ -374,9 +374,9 @@ Migration teams build a plan from an inventory, group dependent servers into wav
 
 4. **Which pair is correctly matched?**
 
-   A. Elastic Disaster Recovery: a one-time move that ends at cutover
-   B. Migration Evaluator: a business case from data about current servers
-   C. AWS SCT: ongoing replication of data
+   A. Elastic Disaster Recovery: a one-time move that ends at cutover\
+   B. Migration Evaluator: a business case from data about current servers\
+   C. AWS SCT: ongoing replication of data\
    D. Snowball: the current answer for moving 100 TB
 
    <details><summary>Feedback</summary>

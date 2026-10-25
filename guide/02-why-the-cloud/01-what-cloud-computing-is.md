@@ -209,8 +209,8 @@ A related mistake is to treat "private cloud" as a way of moving to the cloud wh
 
 > **Check:** A hospital runs its patient-records system on servers in its own building. It uses software that lets each department get a share of those servers within minutes. Which deployment model is this?
 >
-> A. Cloud, because departments get resources within minutes
-> B. Hybrid, because it uses sharing software
+> A. Cloud, because departments get resources within minutes\
+> B. Hybrid, because it uses sharing software\
 > C. On-premises, which AWS sometimes calls private cloud
 
 <details><summary>Feedback</summary>
@@ -321,9 +321,9 @@ These groupings describe *what kind of service* you use; the deployment model de
 
 2. **A logistics company keeps its warehouse-control system on servers in its warehouses and runs its customer tracking website on AWS. The website shows data from the warehouse systems. Which deployment model is this?**
 
-   A. Cloud
-   B. Hybrid
-   C. On-premises
+   A. Cloud\
+   B. Hybrid\
+   C. On-premises\
    D. Community
 
    <details><summary>Feedback</summary>
@@ -346,9 +346,9 @@ These groupings describe *what kind of service* you use; the deployment model de
 
 4. **Which statement about on-premises IT is correct?**
 
-   A. You pay for the equipment whether it is busy or idle.
-   B. You can add servers within minutes when demand rises.
-   C. The cloud provider repairs and replaces the equipment.
+   A. You pay for the equipment whether it is busy or idle.\
+   B. You can add servers within minutes when demand rises.\
+   C. The cloud provider repairs and replaces the equipment.\
    D. You pay only for what you use.
 
    <details><summary>Feedback</summary>

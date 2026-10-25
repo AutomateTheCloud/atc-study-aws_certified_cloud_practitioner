@@ -124,8 +124,8 @@ sequenceDiagram
 
 > **Check:** Which problem does the diagram show?
 >
-> A. The file was in the wrong format
-> B. Two people saved whole copies, and the last save replaced the other's change
+> A. The file was in the wrong format\
+> B. Two people saved whole copies, and the last save replaced the other's change\
 > C. The file was too big to open
 
 <details><summary>Feedback</summary>

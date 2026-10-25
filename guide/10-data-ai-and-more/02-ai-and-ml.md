@@ -169,9 +169,9 @@ The two are easy to confuse because Rekognition can find words in a picture too.
 
 > **Check:** Answer the second prequestion. To turn 60 receipt photos a week into text the accountant can use, the bakery needs:
 >
-> A. A data scientist to train a model on Amazon SageMaker AI
-> B. Amazon Textract, called with each photo
-> C. Amazon Comprehend, called with each photo
+> A. A data scientist to train a model on Amazon SageMaker AI\
+> B. Amazon Textract, called with each photo\
+> C. Amazon Comprehend, called with each photo\
 > D. Amazon Rekognition's face analysis
 
 <details><summary>Feedback</summary>
@@ -238,9 +238,9 @@ You may have read that "Amazon Q" is AWS's AI assistant, as if it were one thing
 
 > **Check:** A developer wants an assistant in her code editor that suggests code and explains an error from an AWS service. What fits?
 >
-> A. Amazon Q Developer
-> B. Amazon Q Business
-> C. Amazon Lex
+> A. Amazon Q Developer\
+> B. Amazon Q Business\
+> C. Amazon Lex\
 > D. Amazon Comprehend
 
 <details><summary>Feedback</summary>
@@ -359,9 +359,9 @@ Teams start with a ready-made service and build a model only when nothing fits, 
 
 1. **The bakery wants subtitles for its cake-decorating videos. Which service turns the spoken words into text?**
 
-   A. Amazon Polly
-   B. Amazon Transcribe
-   C. Amazon Translate
+   A. Amazon Polly\
+   B. Amazon Transcribe\
+   C. Amazon Translate\
    D. Amazon Rekognition
 
    <details><summary>Feedback</summary>
@@ -376,9 +376,9 @@ Teams start with a ready-made service and build a model only when nothing fits, 
 
 2. **Which need calls for Amazon SageMaker AI rather than a ready-made AI service?**
 
-   A. Detecting whether product reviews are positive or negative
-   B. Reading totals from scanned invoices
-   C. Predicting next week's flour orders from a supplier's own order history, with a model the supplier's data scientists build
+   A. Detecting whether product reviews are positive or negative\
+   B. Reading totals from scanned invoices\
+   C. Predicting next week's flour orders from a supplier's own order history, with a model the supplier's data scientists build\
    D. Translating the menu into Spanish
 
    <details><summary>Feedback</summary>
@@ -401,9 +401,9 @@ Teams start with a ready-made service and build a model only when nothing fits, 
 
 4. **Which pairing of service and output is correct?**
 
-   A. Amazon Comprehend: tables and form fields from a scanned form
-   B. Amazon Textract: the sentiment of a customer email
-   C. Amazon Rekognition: objects and unsafe content in uploaded photos
+   A. Amazon Comprehend: tables and form fields from a scanned form\
+   B. Amazon Textract: the sentiment of a customer email\
+   C. Amazon Rekognition: objects and unsafe content in uploaded photos\
    D. Amazon Lex: spoken audio from a product description
 
    <details><summary>Feedback</summary>

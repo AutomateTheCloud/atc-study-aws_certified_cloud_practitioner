@@ -152,8 +152,8 @@ Three ideas from the picture:
 
 > **Check:** Which is true of three virtual machines on one host?
 >
-> A. They must all run the same operating system
-> B. Each has its own guest operating system and its own share of the hardware
+> A. They must all run the same operating system\
+> B. Each has its own guest operating system and its own share of the hardware\
 > C. Restarting one restarts the others
 
 <details><summary>Feedback</summary>
@@ -250,9 +250,9 @@ The dashed line in the stack diagram is where the bakery's work ends. Lesson 04.
 
 2. **Which layer does a cloud customer manage on a virtual server such as an EC2 instance?**
 
-   A. The hypervisor
-   B. The guest operating system
-   C. The physical server's disks
+   A. The hypervisor\
+   B. The guest operating system\
+   C. The physical server's disks\
    D. The data center's cooling
 
    <details><summary>Feedback</summary>

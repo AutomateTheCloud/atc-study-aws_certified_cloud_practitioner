@@ -153,9 +153,9 @@ Register a **backup** factor too, so losing your phone doesn't lock you out; AWS
 
 > **Check:** You get an email that looks like it's from AWS, saying your account is locked. The link opens a sign-in page that looks right. What protects you best?
 >
-> A. A longer password
-> B. A passkey, because it won't work on a site that isn't the real one
-> C. An authenticator app code
+> A. A longer password\
+> B. A passkey, because it won't work on a site that isn't the real one\
+> C. An authenticator app code\
 > D. Signing in quickly before the account is deleted
 
 <details><summary>Feedback</summary>
@@ -225,9 +225,9 @@ Three everyday versions you'll meet in AWS:
 
 > **Check:** The bakery's owner wants a weekend helper to update the cake photos on the website. Which is least privilege?
 >
-> A. Share the owner's password, since it's only for weekends
-> B. Give the helper their own sign-in that can change the photos and nothing else
-> C. Give the helper full access, and take it away later
+> A. Share the owner's password, since it's only for weekends\
+> B. Give the helper their own sign-in that can change the photos and nothing else\
+> C. Give the helper full access, and take it away later\
 > D. Give the helper no sign-in, and email photos to the owner instead, forever
 
 <details><summary>Feedback</summary>
@@ -285,9 +285,9 @@ The owner's habit: for each step, name the failure it covers. A failure with no 
 
 2. **Which second factor does AWS recommend first?**
 
-   A. A code by text message
-   B. An authenticator app
-   C. A passkey or security key
+   A. A code by text message\
+   B. An authenticator app\
+   C. A passkey or security key\
    D. A security question
 
    <details><summary>Feedback</summary>

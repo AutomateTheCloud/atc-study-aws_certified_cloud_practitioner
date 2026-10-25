@@ -122,9 +122,9 @@ CloudWatch can show *that* the web server was overloaded at 6 p.m.; it can't sho
 
 > **Check:** The bakery's orders failed for twenty minutes on Saturday. The owner wants to know whether the database was overloaded at the time. Which record?
 >
-> A. CloudTrail Event history
-> B. CloudWatch metrics for the database
-> C. AWS Config's configuration history
+> A. CloudTrail Event history\
+> B. CloudWatch metrics for the database\
+> C. AWS Config's configuration history\
 > D. The IAM credential report
 
 <details><summary>Feedback</summary>
@@ -235,9 +235,9 @@ From the CloudTrail, CloudWatch Logs, AWS Config and IAM user guides, checked 20
 
 > **Check:** Answer the second prequestion. Does CloudTrail record every time a customer's browser downloads a cake photo from the bakery's bucket?
 >
-> A. Yes, in Event history, for 90 days
-> B. Only if the bakery has turned on data events for the bucket
-> C. No: downloads can never be logged
+> A. Yes, in Event history, for 90 days\
+> B. Only if the bakery has turned on data events for the bucket\
+> C. No: downloads can never be logged\
 > D. Yes, but only in CloudWatch metrics
 
 <details><summary>Feedback</summary>
@@ -313,9 +313,9 @@ Security teams turn on a multi-Region trail and Config recording when an account
 
 1. **An auditor asks which IAM user deleted a security group three weeks ago. Which service answers this?**
 
-   A. Amazon CloudWatch
-   B. AWS CloudTrail
-   C. AWS Config
+   A. Amazon CloudWatch\
+   B. AWS CloudTrail\
+   C. AWS Config\
    D. IAM last accessed information
 
    <details><summary>Feedback</summary>
@@ -330,9 +330,9 @@ Security teams turn on a multi-Region trail and Config recording when an account
 
 2. **A company must show, at any moment, which of its resources break its internal rules, such as "no unencrypted disks". Which service fits best?**
 
-   A. AWS Config, with rules
-   B. AWS CloudTrail, with a trail
-   C. Amazon CloudWatch dashboards
+   A. AWS Config, with rules\
+   B. AWS CloudTrail, with a trail\
+   C. Amazon CloudWatch dashboards\
    D. AWS Audit Manager
 
    <details><summary>Feedback</summary>

@@ -157,9 +157,9 @@ flowchart TD
 
 > **Check:** The bakery's shop has three Windows PCs that share a folder of recipes and price lists on an old server in the back room. The owner wants that folder moved to AWS, and the PCs should keep using it the way they do now. Which service fits?
 >
-> A. Amazon EFS
-> B. Amazon FSx for Windows File Server
-> C. Amazon EBS
+> A. Amazon EFS\
+> B. Amazon FSx for Windows File Server\
+> C. Amazon EBS\
 > D. EC2 instance store
 
 <details><summary>Feedback</summary>
@@ -222,9 +222,9 @@ Remember lesson 02.03: durability protects against failing hardware, not against
 
 > **Check:** Which statement about an EBS volume is true?
 >
-> A. It is automatically copied to every AZ in the Region.
-> B. It can be attached to an instance in any AZ of the Region.
-> C. It keeps its data when the instance is stopped.
+> A. It is automatically copied to every AZ in the Region.\
+> B. It can be attached to an instance in any AZ of the Region.\
+> C. It keeps its data when the instance is stopped.\
 > D. Its data is erased when the instance is rebooted.
 
 <details><summary>Feedback</summary>
@@ -327,9 +327,9 @@ Engineers choose storage the way you just did. The **performance efficiency** pi
 
 1. **A video-editing company runs a group of Linux servers that must all read and write the same project files at the same time. Which service fits best?**
 
-   A. Amazon EBS
-   B. Amazon EFS
-   C. EC2 instance store
+   A. Amazon EBS\
+   B. Amazon EFS\
+   C. EC2 instance store\
    D. Amazon S3 Glacier Deep Archive
 
    <details><summary>Feedback</summary>

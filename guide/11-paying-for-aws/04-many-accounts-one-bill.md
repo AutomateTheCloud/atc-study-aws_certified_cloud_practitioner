@@ -168,9 +168,9 @@ Why would anyone turn sharing off, then? Usually so that a business unit that pa
 
 > **Check:** Answer the first prequestion. Sharing is on everywhere. `shop-prod` has an unused Regional m7g.large Reserved Instance this hour, and `shop-dev` runs a matching m7g.large. What happens?
 >
-> A. Nothing: a Reserved Instance only covers the account that bought it
-> B. `shop-dev`'s instance gets the discount, because the organization counts as one account for billing
-> C. `shop-dev` gets the discount and also `shop-prod`'s capacity reservation
+> A. Nothing: a Reserved Instance only covers the account that bought it\
+> B. `shop-dev`'s instance gets the discount, because the organization counts as one account for billing\
+> C. `shop-dev` gets the discount and also `shop-prod`'s capacity reservation\
 > D. `shop-dev` must buy its own Reserved Instance to get any discount
 
 <details><summary>Feedback</summary>
@@ -307,9 +307,9 @@ Teams that split cost well decide the structure first (which accounts, which tag
 
 1. **A company has three accounts in one organization. Account A bought Reserved Instances it no longer fully uses; account C runs matching instances. Nobody has changed the billing preferences. Who benefits from A's unused Reserved Instances?**
 
-   A. Nobody: unused Reserved Instances are wasted
-   B. Account C, because consolidated billing shares discounts across accounts unless the management account turns sharing off
-   C. Only the management account
+   A. Nobody: unused Reserved Instances are wasted\
+   B. Account C, because consolidated billing shares discounts across accounts unless the management account turns sharing off\
+   C. Only the management account\
    D. Account C, but only if C pays A
 
    <details><summary>Feedback</summary>
@@ -324,9 +324,9 @@ Teams that split cost well decide the structure first (which accounts, which tag
 
 2. **A team tagged its EC2 instances `project=atlas` two weeks ago, but Cost Explorer shows no `project` tag. What is the most likely cause?**
 
-   A. EC2 instances can't carry cost allocation tags
-   B. The `project` key was never activated as a cost allocation tag
-   C. Cost Explorer only shows AWS-generated tags
+   A. EC2 instances can't carry cost allocation tags\
+   B. The `project` key was never activated as a cost allocation tag\
+   C. Cost Explorer only shows AWS-generated tags\
    D. Tags appear only in the CUR, never in Cost Explorer
 
    <details><summary>Feedback</summary>

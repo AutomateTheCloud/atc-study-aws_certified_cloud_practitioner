@@ -138,9 +138,9 @@ The exam calls ElastiCache a "memory-based" database. A related service, Amazon 
 
 > **Check:** The bakery's home page shows the same ten best-selling cakes to every visitor, and in December those reads overload the order database. Which change fits best?
 >
-> A. Move the orders to Amazon Redshift
-> B. Put Amazon ElastiCache in front of the database to serve the best-seller list from memory
-> C. Turn on Multi-AZ for the order database
+> A. Move the orders to Amazon Redshift\
+> B. Put Amazon ElastiCache in front of the database to serve the best-seller list from memory\
+> C. Turn on Multi-AZ for the order database\
 > D. Move the orders to Amazon Neptune
 
 <details><summary>Feedback</summary>
@@ -163,9 +163,9 @@ Two more shapes have their own AWS databases.
 
 > **Check:** A bank wants to find rings of accounts that share phone numbers, addresses and devices, several links apart. Which database fits the shape of this data?
 >
-> A. Amazon Neptune
-> B. Amazon DocumentDB
-> C. Amazon ElastiCache
+> A. Amazon Neptune\
+> B. Amazon DocumentDB\
+> C. Amazon ElastiCache\
 > D. Amazon RDS
 
 <details><summary>Feedback</summary>
@@ -324,9 +324,9 @@ At work, choosing a database is a performance and cost decision as much as a tec
 
 1. **Which AWS database is serverless, uses key-value and document models, and gives single-digit millisecond responses at any scale?**
 
-   A. Amazon RDS
-   B. Amazon DynamoDB
-   C. Amazon Redshift
+   A. Amazon RDS\
+   B. Amazon DynamoDB\
+   C. Amazon Redshift\
    D. Amazon ElastiCache
 
    <details><summary>Feedback</summary>
@@ -349,9 +349,9 @@ At work, choosing a database is a performance and cost decision as much as a tec
 
 3. **A gaming company needs a leaderboard that thousands of players read every second, with responses in microseconds. Which service fits?**
 
-   A. Amazon ElastiCache
-   B. Amazon Neptune
-   C. Amazon Redshift
+   A. Amazon ElastiCache\
+   B. Amazon Neptune\
+   C. Amazon Redshift\
    D. AWS DMS
 
    <details><summary>Feedback</summary>

@@ -127,8 +127,8 @@ S3 has its own point-in-time protection, versioning, from lesson [05.02](02-s3-i
 
 > **Check:** On Monday the owner's nephew deletes a test copy of the order database. It had automated backups kept for 7 days, and no manual snapshots, and he didn't choose to retain the automated backups when he deleted it. On Wednesday he wants it back. What happens?
 >
-> A. He restores it from its automated backups, which last 7 days
-> B. He can't restore it: its automated backups were deleted with the database
+> A. He restores it from its automated backups, which last 7 days\
+> B. He can't restore it: its automated backups were deleted with the database\
 > C. He restores it from its Multi-AZ standby
 
 <details><summary>Feedback</summary>
@@ -195,9 +195,9 @@ These three are a confused set on the exam. Each keeps a copy of something in AW
 
 > **Check:** A company has 200 EBS volumes and 30 RDS databases in three accounts. Its auditor wants proof that each is backed up daily, kept 90 days and copied to a second Region. Which service fits best?
 >
-> A. Snapshots taken by each team
-> B. AWS Backup
-> C. AWS Elastic Disaster Recovery
+> A. Snapshots taken by each team\
+> B. AWS Backup\
+> C. AWS Elastic Disaster Recovery\
 > D. AWS Storage Gateway
 
 <details><summary>Feedback</summary>
@@ -311,9 +311,9 @@ The reliability design principle "[Test recovery procedures](https://docs.aws.am
 
 1. **Which AWS service lets an on-premises backup application keep writing to "tapes" while the data is stored in AWS?**
 
-   A. AWS Backup
-   B. Tape Gateway, a type of AWS Storage Gateway
-   C. AWS DataSync
+   A. AWS Backup\
+   B. Tape Gateway, a type of AWS Storage Gateway\
+   C. AWS DataSync\
    D. S3 Glacier Deep Archive
 
    <details><summary>Feedback</summary>
@@ -336,9 +336,9 @@ The reliability design principle "[Test recovery procedures](https://docs.aws.am
 
 3. **A company wants on-premises servers to restart in AWS within minutes after a site failure, losing only seconds of data, and wants to test this without disturbing production. Which service fits?**
 
-   A. AWS Backup
-   B. AWS Elastic Disaster Recovery
-   C. Amazon EBS snapshots
+   A. AWS Backup\
+   B. AWS Elastic Disaster Recovery\
+   C. Amazon EBS snapshots\
    D. AWS Snowball
 
    <details><summary>Feedback</summary>

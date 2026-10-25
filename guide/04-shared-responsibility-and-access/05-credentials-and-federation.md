@@ -143,9 +143,9 @@ Long-term keys still have a few legitimate uses, such as a workload outside AWS 
 
 > **Check:** A program runs on an AWS server and needs to write to a bucket. What should it use?
 >
-> A. An access key for the root user, stored on the server
-> B. An access key for an IAM user, stored in the code
-> C. An IAM role that the server assumes
+> A. An access key for the root user, stored on the server\
+> B. An access key for an IAM user, stored in the code\
+> C. An IAM role that the server assumes\
 > D. The administrator's console password
 
 <details><summary>Feedback</summary>
@@ -316,9 +316,9 @@ The Well-Architected security pillar names the risk directly: long-term credenti
 
 1. **A company wants its 200 employees to sign in once and reach 30 AWS accounts. Which service fits best?**
 
-   A. Amazon Cognito
-   B. AWS IAM Identity Center
-   C. An IAM user for each employee in each account
+   A. Amazon Cognito\
+   B. AWS IAM Identity Center\
+   C. An IAM user for each employee in each account\
    D. AWS Secrets Manager
 
    <details><summary>Feedback</summary>
@@ -333,9 +333,9 @@ The Well-Architected security pillar names the risk directly: long-term credenti
 
 2. **An application's database password must change every 30 days without anyone editing code. Where should it be stored?**
 
-   A. Parameter Store, as a String
-   B. AWS Secrets Manager, with rotation turned on
-   C. In the application's configuration file
+   A. Parameter Store, as a String\
+   B. AWS Secrets Manager, with rotation turned on\
+   C. In the application's configuration file\
    D. In an IAM user's access key
 
    <details><summary>Feedback</summary>

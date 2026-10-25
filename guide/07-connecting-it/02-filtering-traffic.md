@@ -152,8 +152,8 @@ It's tempting because most people meet security groups first, the default networ
 
 > **Check:** Answer the first prequestion. The bakery's web server has a security group with one inbound rule allowing HTTPS from anywhere, and its outbound rules were all removed. The subnet uses the default network ACL. Does a customer's page load?
 >
-> A. No: with no outbound rules, the security group blocks the reply
-> B. Yes: the security group remembers the request and lets the reply out, and the default network ACL allows everything
+> A. No: with no outbound rules, the security group blocks the reply\
+> B. Yes: the security group remembers the request and lets the reply out, and the default network ACL allows everything\
 > C. No: network ACLs block all replies
 
 <details><summary>Feedback</summary>
@@ -187,9 +187,9 @@ From [Infrastructure security in Amazon VPC](https://docs.aws.amazon.com/vpc/lat
 
 > **Check:** Answer the second prequestion. The bakery must stop all traffic from one address, `203.0.113.7`, while everyone else still reaches the site. What should it change?
 >
-> A. Add a deny rule to `web-sg`
-> B. Remove the HTTPS rule from `web-sg`
-> C. Add a deny rule for `203.0.113.7/32` to the public subnets' network ACL, numbered below the rule that allows HTTPS
+> A. Add a deny rule to `web-sg`\
+> B. Remove the HTTPS rule from `web-sg`\
+> C. Add a deny rule for `203.0.113.7/32` to the public subnets' network ACL, numbered below the rule that allows HTTPS\
 > D. Run Amazon Inspector
 
 <details><summary>Feedback</summary>
@@ -297,9 +297,9 @@ Teams treat security groups as the main control and keep their rules as narrow a
 
 1. **Which statement about security groups is correct?**
 
-   A. They support allow and deny rules
-   B. They are stateful: replies to allowed traffic are allowed automatically
-   C. They apply to a whole subnet
+   A. They support allow and deny rules\
+   B. They are stateful: replies to allowed traffic are allowed automatically\
+   C. They apply to a whole subnet\
    D. Their rules are checked in number order
 
    <details><summary>Feedback</summary>
@@ -322,9 +322,9 @@ Teams treat security groups as the main control and keep their rules as narrow a
 
 3. **What does Amazon Inspector do for network security in a VPC?**
 
-   A. It blocks traffic that matches known attacks
-   B. It replaces security groups for EC2 instances
-   C. It scans workloads and reports unintended network exposure as findings
+   A. It blocks traffic that matches known attacks\
+   B. It replaces security groups for EC2 instances\
+   C. It scans workloads and reports unintended network exposure as findings\
    D. It records every packet in the VPC
 
    <details><summary>Feedback</summary>

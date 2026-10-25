@@ -118,9 +118,9 @@ Why both? Because preventive controls fail quietly. A security group rule opened
 
 > **Check:** Answer the second prequestion. A colleague says, "Our security groups are tight and we have WAF, so turning on GuardDuty and keeping CloudTrail trails is a waste." What's the best reply?
 >
-> A. They're right: blocking makes detection unnecessary
-> B. Detection catches what gets past or around the blocking layers, such as a leaked key used through normal API calls, and the records prove what happened
-> C. GuardDuty blocks attacks that WAF misses
+> A. They're right: blocking makes detection unnecessary\
+> B. Detection catches what gets past or around the blocking layers, such as a leaked key used through normal API calls, and the records prove what happened\
+> C. GuardDuty blocks attacks that WAF misses\
 > D. CloudTrail is needed only for billing
 
 <details><summary>Feedback</summary>
@@ -218,9 +218,9 @@ Cost is part of the design too: the cost optimization pillar asks you to match s
 
 1. **Which pair gives the bakery a preventive and a detective control for the threat "someone makes a bucket public by mistake"?**
 
-   A. S3 Block Public Access, and Amazon Macie
-   B. AWS Shield, and AWS WAF
-   C. A network ACL, and a security group
+   A. S3 Block Public Access, and Amazon Macie\
+   B. AWS Shield, and AWS WAF\
+   C. A network ACL, and a security group\
    D. AWS Artifact, and AWS Organizations
 
    <details><summary>Feedback</summary>
@@ -243,9 +243,9 @@ Cost is part of the design too: the cost optimization pillar asks you to match s
 
 3. **An attacker uses a stolen access key through ordinary AWS API calls. Which statement is correct?**
 
-   A. Security groups stop it, because the attacker comes from the internet
-   B. WAF stops it, because it inspects every request to AWS
-   C. Network filters don't see it; MFA and no long-term keys prevent it, GuardDuty and CloudTrail reveal it, and an SCP limits what it can do in a member account
+   A. Security groups stop it, because the attacker comes from the internet\
+   B. WAF stops it, because it inspects every request to AWS\
+   C. Network filters don't see it; MFA and no long-term keys prevent it, GuardDuty and CloudTrail reveal it, and an SCP limits what it can do in a member account\
    D. Shield Standard stops it automatically
 
    <details><summary>Feedback</summary>

@@ -171,9 +171,9 @@ Older practice material often names **AWS Audit Manager** (lesson 09.01). Two co
 
 > **Check:** A wholesale customer's auditor asks the bakery to prove that its own S3 buckets block public access. What should the bakery send?
 >
-> A. AWS's SOC 2 report from Artifact
-> B. Its own evidence, such as AWS Config results or the Block Public Access settings, because bucket settings are the customer's control
-> C. Nothing: S3 is in scope for SOC 2, so the buckets are compliant
+> A. AWS's SOC 2 report from Artifact\
+> B. Its own evidence, such as AWS Config results or the Block Public Access settings, because bucket settings are the customer's control\
+> C. Nothing: S3 is in scope for SOC 2, so the buckets are compliant\
 > D. An Audit Manager assessment report
 
 <details><summary>Feedback</summary>
@@ -271,9 +271,9 @@ AWS publishes an example SCP that denies requests outside a list of Regions whil
 
 > **Check:** Answer the second prequestion. An SCP on the account allows only S3 actions. A user there has `AdministratorAccess`. Can they launch an EC2 instance?
 >
-> A. Yes: `AdministratorAccess` allows everything
-> B. No: the SCP is a ceiling, and EC2 isn't under it
-> C. Yes, if they sign in as the account's root user instead
+> A. Yes: `AdministratorAccess` allows everything\
+> B. No: the SCP is a ceiling, and EC2 isn't under it\
+> C. Yes, if they sign in as the account's root user instead\
 > D. No: SCPs deny everything by default
 
 <details><summary>Feedback</summary>
@@ -331,9 +331,9 @@ Lesson [09.03](03-finding-threats-and-weaknesses.md) adds AWS Marketplace, where
 
 > **Check:** The owner reads that a flaw was found in widely used software, and wants to know whether AWS's own services are affected and whether she must act. Where should she look first?
 >
-> A. AWS Artifact
-> B. AWS Security Bulletins
-> C. AWS Services in Scope
+> A. AWS Artifact\
+> B. AWS Security Bulletins\
+> C. AWS Services in Scope\
 > D. AWS Organizations
 
 <details><summary>Feedback</summary>
@@ -372,9 +372,9 @@ Security teams keep a list of the controls each program requires, mark who carri
 
 1. **Which statement about AWS Artifact is correct?**
 
-   A. It scans your account and reports whether you meet PCI DSS
-   B. It provides AWS's compliance reports and lets you manage agreements with AWS
-   C. It costs a fee per report downloaded
+   A. It scans your account and reports whether you meet PCI DSS\
+   B. It provides AWS's compliance reports and lets you manage agreements with AWS\
+   C. It costs a fee per report downloaded\
    D. It lists which AWS services are in scope for each program
 
    <details><summary>Feedback</summary>
@@ -405,9 +405,9 @@ Security teams keep a list of the controls each program requires, mark who carri
 
 4. **A company wants new accounts created from an approved template, a ready-made set of preventive and detective rules, and a dashboard of rule-breaking resources, set up quickly. Which service fits best?**
 
-   A. AWS Organizations alone
-   B. AWS Control Tower
-   C. AWS Artifact
+   A. AWS Organizations alone\
+   B. AWS Control Tower\
+   C. AWS Artifact\
    D. AWS Audit Manager
 
    <details><summary>Feedback</summary>

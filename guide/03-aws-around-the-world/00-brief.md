@@ -69,7 +69,7 @@ This module covers the AWS Certified Cloud Practitioner (CLF-C02) exam's task [3
 
 **Before Lab 02:** check that you still have [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md), [your IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md), and [money alarms](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md). The lessons need no AWS account.
 
-**Mastery check:** the module ends with a check; you pass at 80%. Each miss points you to the section to reread, then to a parallel retest. Pass first time, and you get optional "going deeper" material.
+**Mastery check:** the module ends with a [mastery check](07-check.md); you pass at 80%. Each miss points you to the section to reread, then to a parallel retest. Pass first time, and you get optional "going deeper" material.
 
 **Numbers that change:** lesson 03.01 keeps the Region and AZ counts in one dated box. Don't memorize them.
 

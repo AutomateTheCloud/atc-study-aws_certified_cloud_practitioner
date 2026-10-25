@@ -183,8 +183,8 @@ Saved copies make DNS fast, but they also mean a change of address takes a while
 
 > **Check:** Answer the first prequestion. The bakery moves its website from the back room to AWS. Customers keep typing `bakery.example`. What has to change?
 >
-> A. The domain name
-> B. The address that DNS gives out for the name
+> A. The domain name\
+> B. The address that DNS gives out for the name\
 > C. Nothing: DNS finds the server wherever it is
 
 <details><summary>Feedback</summary>
@@ -217,8 +217,8 @@ HTTPS normally uses port 443; plain HTTP uses port 80. Many browsers show a padl
 
 > **Check:** Answer the second prequestion. Which statement about a site with a padlock is correct?
 >
-> A. The business has been checked and is honest
-> B. Nobody on the path can read the conversation, and the server holds a certificate for that name
+> A. The business has been checked and is honest\
+> B. Nobody on the path can read the conversation, and the server holds a certificate for that name\
 > C. The data is also encrypted when the server stores it
 
 <details><summary>Feedback</summary>

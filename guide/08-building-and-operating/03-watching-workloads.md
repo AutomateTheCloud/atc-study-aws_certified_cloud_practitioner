@@ -151,9 +151,9 @@ A **dashboard** puts chosen graphs, numbers and alarms on one CloudWatch screen,
 
 > **Check:** The order code logs `PAYMENT_DECLINED` each time a card is refused, but no metric counts declines. The owner wants an email after 10 declines in an hour. What do you add?
 >
-> A. A CloudTrail trail
-> B. A metric filter on the log group, then an alarm on the new metric
-> C. Detailed monitoring on the web server
+> A. A CloudTrail trail\
+> B. A metric filter on the log group, then an alarm on the new metric\
+> C. Detailed monitoring on the web server\
 > D. A dashboard
 
 <details><summary>Feedback</summary>
@@ -208,9 +208,9 @@ Module 09, "Protecting, governing and proving compliance", uses CloudTrail as ev
 
 > **Check:** Answer the first prequestion. "Why was checkout slow at six last night?" and "Who changed the order function's settings?" Which pair is right?
 >
-> A. CloudTrail, then CloudWatch
-> B. CloudWatch metrics and X-Ray traces, then CloudTrail
-> C. CloudWatch for both
+> A. CloudTrail, then CloudWatch\
+> B. CloudWatch metrics and X-Ray traces, then CloudTrail\
+> C. CloudWatch for both\
 > D. X-Ray for both
 
 <details><summary>Feedback</summary>
@@ -306,9 +306,9 @@ Teams agree on a few numbers that show whether the business works (orders placed
 
 1. **Which service records that the nephew's IAM user deleted a security group rule yesterday?**
 
-   A. Amazon CloudWatch metrics
-   B. AWS X-Ray
-   C. AWS CloudTrail
+   A. Amazon CloudWatch metrics\
+   B. AWS X-Ray\
+   C. AWS CloudTrail\
    D. CloudWatch Logs Insights
 
    <details><summary>Feedback</summary>
@@ -331,9 +331,9 @@ Teams agree on a few numbers that show whether the business works (orders placed
 
 3. **A team's web application calls four internal services, and a few requests take ten seconds. Which service shows, for one slow request, how long each call took?**
 
-   A. AWS X-Ray
-   B. AWS CloudTrail
-   C. Amazon CloudWatch detailed monitoring
+   A. AWS X-Ray\
+   B. AWS CloudTrail\
+   C. Amazon CloudWatch detailed monitoring\
    D. AWS Health Dashboard
 
    <details><summary>Feedback</summary>

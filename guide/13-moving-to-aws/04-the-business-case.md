@@ -154,9 +154,9 @@ Keep it apart from its neighbors: **Auto Scaling** (Module 06) changes how *many
 
 > **Check:** Six weeks after the move, the chain wants to know which of its new EC2 instances are bigger than their work needs. What should it use?
 >
-> A. EC2 Auto Scaling
-> B. AWS Compute Optimizer, after opting in
-> C. The AWS TCO Calculator
+> A. EC2 Auto Scaling\
+> B. AWS Compute Optimizer, after opting in\
+> C. The AWS TCO Calculator\
 > D. AWS License Manager
 
 <details><summary>Feedback</summary>
@@ -272,9 +272,9 @@ A migration business case is built by finance and technical staff together, as [
 
 1. **A company asks for the AWS tool that builds a data-driven business case for migrating its on-premises servers, including license options. What do you recommend?**
 
-   A. The AWS TCO Calculator
-   B. Migration Evaluator
-   C. AWS Compute Optimizer
+   A. The AWS TCO Calculator\
+   B. Migration Evaluator\
+   C. AWS Compute Optimizer\
    D. AWS License Manager
 
    <details><summary>Feedback</summary>
@@ -289,9 +289,9 @@ A migration business case is built by finance and technical staff together, as [
 
 2. **Which statement about license-included instances is correct?**
 
-   A. You must own the licenses before you launch them
-   B. They always need a Dedicated Host
-   C. The hourly price covers the software license, and AWS handles license compliance
+   A. You must own the licenses before you launch them\
+   B. They always need a Dedicated Host\
+   C. The hourly price covers the software license, and AWS handles license compliance\
    D. They cost the same per hour as Linux instances
 
    <details><summary>Feedback</summary>

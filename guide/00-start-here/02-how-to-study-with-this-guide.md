@@ -153,9 +153,9 @@ Fill this in now, on paper or in a note:
 
 1. **Which study session is likely to help most for an exam in six weeks?**
 
-   A. Reading the module three times on one evening
-   B. Highlighting the key terms, then rereading the highlights
-   C. Answering the module's questions from memory, checking the feedback, and repeating them a week later
+   A. Reading the module three times on one evening\
+   B. Highlighting the key terms, then rereading the highlights\
+   C. Answering the module's questions from memory, checking the feedback, and repeating them a week later\
    D. Watching a video summary of the module twice
 
    <details><summary>Feedback</summary>

@@ -149,9 +149,9 @@ A FIFO queue. A standard queue may deliver the two out of order, and the cake wo
 
 > **Check:** The owner, the kitchen's tablet app and the accounting system must all hear about each large order at the same moment. Which service fits?
 >
-> A. One SQS standard queue
-> B. An SNS topic with three subscriptions
-> C. A Step Functions workflow
+> A. One SQS standard queue\
+> B. An SNS topic with three subscriptions\
+> C. A Step Functions workflow\
 > D. CloudWatch Logs
 
 <details><summary>Feedback</summary>
@@ -178,9 +178,9 @@ You may read that SNS "sends email", so it's AWS's email service. That's not rig
 
 > **Check:** Answer the first prequestion. Which services send the owner's "orders are failing" email and each customer's confirmation?
 >
-> A. SES for both
-> B. SNS for the owner's alert, SES for the customers' confirmations
-> C. SNS for both
+> A. SES for both\
+> B. SNS for the owner's alert, SES for the customers' confirmations\
+> C. SNS for both\
 > D. SES for the owner's alert, SNS for the customers' confirmations
 
 <details><summary>Feedback</summary>
@@ -335,9 +335,9 @@ Teams put queues and topics between parts so that a slow or failed part delays w
 
 1. **The bakery's web server must hand each order to a packing worker that is sometimes offline for maintenance. No order may be lost. Which service?**
 
-   A. Amazon SNS
-   B. Amazon SQS
-   C. Amazon SES
+   A. Amazon SNS\
+   B. Amazon SQS\
+   C. Amazon SES\
    D. AWS CodePipeline
 
    <details><summary>Feedback</summary>
@@ -352,9 +352,9 @@ Teams put queues and topics between parts so that a slow or failed part delays w
 
 2. **Which service sends the bakery's newsletter, with its logo, from the bakery's own address to customers who signed up?**
 
-   A. Amazon SNS email subscription
-   B. Amazon SES
-   C. Amazon EventBridge
+   A. Amazon SNS email subscription\
+   B. Amazon SES\
+   C. Amazon EventBridge\
    D. Amazon SQS
 
    <details><summary>Feedback</summary>
@@ -385,9 +385,9 @@ Teams put queues and topics between parts so that a slow or failed part delays w
 
 5. **A loan application needs a credit check, then a manager's approval that may take two days, then a contract. Which service coordinates the steps and waits for the manager?**
 
-   A. AWS Lambda
-   B. Amazon SQS
-   C. AWS Step Functions
+   A. AWS Lambda\
+   B. Amazon SQS\
+   C. AWS Step Functions\
    D. AWS Cloud9
 
    <details><summary>Feedback</summary>

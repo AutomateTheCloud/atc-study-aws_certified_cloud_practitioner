@@ -129,8 +129,8 @@ Operating system makers publish updates that fix flaws, often security flaws, an
 
 > **Check:** Which of these is an operating system's job, not an application's?
 >
-> A. Building the bakery's menu page
-> B. Sharing the processor and memory between the programs that are running
+> A. Building the bakery's menu page\
+> B. Sharing the processor and memory between the programs that are running\
 > C. Working out the price of an order
 
 <details><summary>Feedback</summary>
@@ -194,8 +194,8 @@ An expert answers by asking which part runs out first. That part is the **bottle
 
 > **Check:** Answer the prequestion. Would adding more storage fix the December slowdown?
 >
-> A. Yes: more storage holds more orders
-> B. No: the processors and memory are full, so they are the bottleneck
+> A. Yes: more storage holds more orders\
+> B. No: the processors and memory are full, so they are the bottleneck\
 > C. Yes: storage is the slowest part, so it is always the bottleneck
 
 <details><summary>Feedback</summary>

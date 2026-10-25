@@ -149,9 +149,9 @@ You won't need to install anything for this guide's labs. **AWS CloudShell** ope
 
 > **Check:** In `aws s3 ls`, what does `ls` do?
 >
-> A. It names the service
-> B. It's the subcommand: list (here, list your buckets)
-> C. It's an option
+> A. It names the service\
+> B. It's the subcommand: list (here, list your buckets)\
+> C. It's an option\
 > D. It's the prompt
 
 <details><summary>Feedback</summary>
@@ -188,9 +188,9 @@ The whole format comes down to a few rules ([RFC 8259, the JSON standard](https:
 
 > **Check:** Which of these is valid JSON?
 >
-> A. `{'cupcakes': 14}`
-> B. `{"cupcakes": 14, "muffins": 4,}`
-> C. `{"cupcakes": 14, "muffins": 4}`
+> A. `{'cupcakes': 14}`\
+> B. `{"cupcakes": 14, "muffins": 4,}`\
+> C. `{"cupcakes": 14, "muffins": 4}`\
 > D. `{"cupcakes": 14 "muffins": 4}`
 
 <details><summary>Feedback</summary>

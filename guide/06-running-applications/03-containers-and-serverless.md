@@ -135,9 +135,9 @@ It's tempting because you rarely see Fargate alone ("ECS on Fargate"), and with 
 
 > **Check:** Answer the first prequestion. A teammate says, "We'll use Fargate to decide where our containers run and how many copies we need." Which correction is right?
 >
-> A. Use Amazon ECR for that; Fargate only stores images
-> B. Use Amazon ECS or Amazon EKS for that; Fargate is the compute they run the containers on
-> C. Nothing is wrong; Fargate is AWS's orchestrator
+> A. Use Amazon ECR for that; Fargate only stores images\
+> B. Use Amazon ECS or Amazon EKS for that; Fargate is the compute they run the containers on\
+> C. Nothing is wrong; Fargate is AWS's orchestrator\
 > D. Use EC2 Auto Scaling instead; containers can't scale
 
 <details><summary>Feedback</summary>
@@ -202,9 +202,9 @@ Availability is built in, with no maintenance windows ([AWS Lambda FAQs](https:/
 
 > **Check:** Answer the second prequestion. Photos arrive at random times, and each takes a few seconds to shrink. Which fits best?
 >
-> A. An EC2 instance that runs all day and checks for new photos
-> B. ECS on Fargate with a service that always runs
-> C. A Lambda function triggered when each photo is saved to S3
+> A. An EC2 instance that runs all day and checks for new photos\
+> B. ECS on Fargate with a service that always runs\
+> C. A Lambda function triggered when each photo is saved to S3\
 > D. Amazon ECR
 
 <details><summary>Feedback</summary>
@@ -335,9 +335,9 @@ Teams pick the option that leaves them least to run. The Well-Architected Framew
 
 1. **Which AWS service stores container images?**
 
-   A. Amazon ECS
-   B. Amazon ECR
-   C. AWS Fargate
+   A. Amazon ECS\
+   B. Amazon ECR\
+   C. AWS Fargate\
    D. Amazon EKS
 
    <details><summary>Feedback</summary>
@@ -352,9 +352,9 @@ Teams pick the option that leaves them least to run. The Well-Architected Framew
 
 2. **A job processes a file each time one is uploaded, and each run takes about 30 seconds. The company wants no servers to manage and to pay nothing when no files arrive. Which service fits best?**
 
-   A. Amazon EC2 with Auto Scaling
-   B. AWS Lambda
-   C. Amazon ECS on EC2 instances
+   A. Amazon EC2 with Auto Scaling\
+   B. AWS Lambda\
+   C. Amazon ECS on EC2 instances\
    D. Amazon EKS
 
    <details><summary>Feedback</summary>

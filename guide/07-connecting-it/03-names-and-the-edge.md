@@ -144,9 +144,9 @@ When there is more than one place a user could go, a **routing policy** tells Ro
 
 > **Check:** The bakery puts CloudFront in front of its photo bucket. Which change keeps customers seeing the photos while nobody can download them straight from the bucket?
 >
-> A. Turn off Block Public Access so CloudFront can read the bucket
-> B. Keep the bucket private and allow only the CloudFront distribution to read it, with origin access control
-> C. Make the bucket public and set a short cache time
+> A. Turn off Block Public Access so CloudFront can read the bucket\
+> B. Keep the bucket private and allow only the CloudFront distribution to read it, with origin access control\
+> C. Make the bucket public and set a short cache time\
 > D. Move the photos to a second bucket in Frankfurt
 
 <details><summary>Feedback</summary>
@@ -219,9 +219,9 @@ What it gives you ([Amazon API Gateway FAQs](https://aws.amazon.com/api-gateway/
 
 > **Check:** A weather company sells access to its data to other developers. Each customer gets a key and a monthly limit on calls, and the data comes from Lambda functions. Which service fits as the entrance?
 >
-> A. Amazon CloudFront
-> B. Amazon API Gateway
-> C. Application Load Balancer
+> A. Amazon CloudFront\
+> B. Amazon API Gateway\
+> C. Application Load Balancer\
 > D. Amazon Route 53
 
 <details><summary>Feedback</summary>
@@ -316,9 +316,9 @@ Small settings do the damage here: a bucket made public "because CloudFront need
 
 1. **A company runs the same application in two Regions and wants each user sent to whichever Region responds fastest for them. What should it use?**
 
-   A. Route 53 weighted routing
-   B. Route 53 latency routing
-   C. Route 53 geolocation routing
+   A. Route 53 weighted routing\
+   B. Route 53 latency routing\
+   C. Route 53 geolocation routing\
    D. An Application Load Balancer
 
    <details><summary>Feedback</summary>
@@ -333,9 +333,9 @@ Small settings do the damage here: a bucket made public "because CloudFront need
 
 2. **Which statement about AWS Global Accelerator is correct?**
 
-   A. It caches content at edge locations to reduce load on the origin.
-   B. It gives an application fixed IP addresses and carries traffic over AWS's network to healthy endpoints in Regions.
-   C. It registers domain names and answers DNS questions.
+   A. It caches content at edge locations to reduce load on the origin.\
+   B. It gives an application fixed IP addresses and carries traffic over AWS's network to healthy endpoints in Regions.\
+   C. It registers domain names and answers DNS questions.\
    D. It runs your application's code at edge locations.
 
    <details><summary>Feedback</summary>

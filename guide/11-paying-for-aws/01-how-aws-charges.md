@@ -126,9 +126,9 @@ Time-based charges are why every lab in this guide ends with "find, delete, conf
 
 > **Check:** Which of these keeps billing if the bakery's site gets no visitors for a whole day?
 >
-> A. S3 GET requests on the photo bucket
-> B. The NAT gateway's hourly charge
-> C. Data out to the internet
+> A. S3 GET requests on the photo bucket\
+> B. The NAT gateway's hourly charge\
+> C. Data out to the internet\
 > D. Lambda invocations
 
 <details><summary>Feedback</summary>
@@ -301,9 +301,9 @@ The four-meter habit also tells you which tool to reach for. Time-based charges 
 
 1. **Which of these is charged, at the US East (N. Virginia) rates in this lesson?**
 
-   A. 50 GB uploaded from customers' browsers to the bakery's web server
-   B. 50 GB sent from an EC2 instance to an S3 bucket in the same Region
-   C. 50 GB sent from the web server to the database in another Availability Zone
+   A. 50 GB uploaded from customers' browsers to the bakery's web server\
+   B. 50 GB sent from an EC2 instance to an S3 bucket in the same Region\
+   C. 50 GB sent from the web server to the database in another Availability Zone\
    D. 50 GB sent from S3 to CloudFront
 
    <details><summary>Feedback</summary>
@@ -326,9 +326,9 @@ The four-meter habit also tells you which tool to reach for. Time-based charges 
 
 3. **Which statement describes the AWS Free Tier for an account opened today, as of 2026-10-24?**
 
-   A. Twelve months of free usage on many services, then normal rates
-   B. Credits and a choice of plan; the Free plan ends after six months or when the credits run out
-   C. Unlimited free usage of every service on the Free plan
+   A. Twelve months of free usage on many services, then normal rates\
+   B. Credits and a choice of plan; the Free plan ends after six months or when the credits run out\
+   C. Unlimited free usage of every service on the Free plan\
    D. Credits that can buy Reserved Instances on the Free plan
 
    <details><summary>Feedback</summary>

@@ -173,9 +173,9 @@ Prices and features as of 2026-10-24, from [Compare AWS Support plans](https://a
 
 > **Check:** A company wants a designated Technical Account Manager and has no need for 5-minute responses. Which is the cheapest plan that fits?
 >
-> A. Business Support+
-> B. Enterprise Support
-> C. Unified Operations
+> A. Business Support+\
+> B. Enterprise Support\
+> C. Unified Operations\
 > D. Basic
 
 <details><summary>Feedback</summary>
@@ -211,9 +211,9 @@ It's tempting because the times sit in a neat table that looks like a contract, 
 
 > **Check:** Answer the first prequestion. The bakery buys Business Support+, and its site goes down at 9 p.m. on a Sunday. Which statement is right?
 >
-> A. AWS guarantees the site is back within 30 minutes
-> B. AWS aims for an engineer to engage within 30 minutes if the bakery opens the case as business-critical
-> C. AWS replies within 30 minutes only during business hours
+> A. AWS guarantees the site is back within 30 minutes\
+> B. AWS aims for an engineer to engage within 30 minutes if the bakery opens the case as business-critical\
+> C. AWS replies within 30 minutes only during business hours\
 > D. Business Support+ has no response target for outages
 
 <details><summary>Feedback</summary>
@@ -325,9 +325,9 @@ Teams choose a Support plan as part of getting ready to run a production system,
 
 1. **Which is the lowest-cost plan that lets a company open technical support cases at any hour?**
 
-   A. Basic
-   B. Business Support+
-   C. Enterprise Support
+   A. Basic\
+   B. Business Support+\
+   C. Enterprise Support\
    D. Developer Support
 
    <details><summary>Feedback</summary>
@@ -342,9 +342,9 @@ Teams choose a Support plan as part of getting ready to run a production system,
 
 2. **Which plan is the first to include a designated Technical Account Manager?**
 
-   A. Business Support+
-   B. Enterprise Support
-   C. Unified Operations
+   A. Business Support+\
+   B. Enterprise Support\
+   C. Unified Operations\
    D. Basic
 
    <details><summary>Feedback</summary>

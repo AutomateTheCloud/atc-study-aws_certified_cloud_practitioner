@@ -124,9 +124,9 @@ The pair to keep straight: **Site-to-Site VPN joins two networks** through route
 
 > **Check:** Thirty sales staff work from home and hotels and need to reach an internal application in a VPC. Which service fits best?
 >
-> A. AWS Site-to-Site VPN
-> B. AWS Client VPN
-> C. AWS Direct Connect
+> A. AWS Site-to-Site VPN\
+> B. AWS Client VPN\
+> C. AWS Direct Connect\
 > D. VPC peering
 
 <details><summary>Feedback</summary>
@@ -215,9 +215,9 @@ flowchart LR
 
 > **Check:** A company has 40 VPCs across several accounts and two offices on Site-to-Site VPN. Every VPC must reach the shared-services VPC and both offices. Which is the simplest design to run?
 >
-> A. VPC peering between every pair of VPCs
-> B. AWS Transit Gateway as a hub, with each VPC and each VPN attached
-> C. AWS PrivateLink from every VPC to every other VPC
+> A. VPC peering between every pair of VPCs\
+> B. AWS Transit Gateway as a hub, with each VPC and each VPN attached\
+> C. AWS PrivateLink from every VPC to every other VPC\
 > D. One VPC peering connection from each VPC to the shared-services VPC, with the offices reaching the others through it
 
 <details><summary>Feedback</summary>
@@ -348,9 +348,9 @@ The Well-Architected Framework has a best practice for nearly every choice in th
 
 1. **A company needs a connection from its data center to AWS this week. Its traffic is modest and must be encrypted. Which option fits best?**
 
-   A. AWS Direct Connect
-   B. AWS Site-to-Site VPN
-   C. VPC peering
+   A. AWS Direct Connect\
+   B. AWS Site-to-Site VPN\
+   C. VPC peering\
    D. AWS Client VPN
 
    <details><summary>Feedback</summary>
@@ -373,9 +373,9 @@ The Well-Architected Framework has a best practice for nearly every choice in th
 
 3. **Which of these data transfers is free, at the US East (N. Virginia) prices in this lesson?**
 
-   A. A web server sends 1 GB to a database in another Availability Zone
-   B. A customer uploads 1 GB from the internet to the bakery's S3 bucket
-   C. A backup job copies 1 GB to another Region
+   A. A web server sends 1 GB to a database in another Availability Zone\
+   B. A customer uploads 1 GB from the internet to the bakery's S3 bucket\
+   C. A backup job copies 1 GB to another Region\
    D. A web server sends 1 GB to customers on the internet, after the free allowance is used
 
    <details><summary>Feedback</summary>

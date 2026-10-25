@@ -106,8 +106,8 @@ With only one private subnet, the standby would have nowhere to live. And a `/16
 
 > **Check:** The bakery's builder puts one public and one private subnet, both in AZ A, and calls the site "highly available". What's wrong?
 >
-> A. Nothing: two subnets are enough
-> B. Each subnet is in one AZ, so losing AZ A takes out both
+> A. Nothing: two subnets are enough\
+> B. Each subnet is in one AZ, so losing AZ A takes out both\
 > C. Subnets must be in different Regions
 
 <details><summary>Feedback</summary>
@@ -163,8 +163,8 @@ The address still costs money. As of 2026-10-24, every public IPv4 address, in u
 
 > **Check:** Answer the first prequestion. The bakery's database server sits in a subnet whose route table has only the local route, and someone gives it a public IPv4 address. What changes?
 >
-> A. The database is now on the internet
-> B. Nothing reaches the internet, because there's no route to an internet gateway; the address only adds cost
+> A. The database is now on the internet\
+> B. Nothing reaches the internet, because there's no route to an internet gateway; the address only adds cost\
 > C. The subnet becomes public
 
 <details><summary>Feedback</summary>
@@ -257,8 +257,8 @@ flowchart LR
 
 > **Check:** The bakery's private servers send 200 GB of photos a month to its S3 bucket in the same Region, through a NAT gateway. Which change removes the network charge on that traffic?
 >
-> A. Add an interface endpoint for S3
-> B. Add a gateway endpoint for S3, with a route to it in the private route table
+> A. Add an interface endpoint for S3\
+> B. Add a gateway endpoint for S3, with a route to it in the private route table\
 > C. Move the NAT gateway to the other AZ
 
 <details><summary>Feedback</summary>
@@ -353,9 +353,9 @@ Network design at work starts from what must be reachable. The Well-Architected 
 
 1. **Which target, for the route `0.0.0.0/0` in a subnet's route table, makes that subnet a public subnet?**
 
-   A. A NAT gateway
-   B. An internet gateway
-   C. A gateway endpoint
+   A. A NAT gateway\
+   B. An internet gateway\
+   C. A gateway endpoint\
    D. A public IPv4 address
 
    <details><summary>Feedback</summary>

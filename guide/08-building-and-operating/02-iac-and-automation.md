@@ -180,8 +180,8 @@ Delete has three qualifiers, each of which can leave something behind or stop th
 
 > **Check:** Answer the first prequestion. The bakery's test stack holds a VPC, two subnets, a security group and an empty bucket, none with a special deletion policy. The owner deletes the stack. What happens?
 >
-> A. Only the stack's record is deleted; the resources keep running
-> B. CloudFormation deletes all five resources
+> A. Only the stack's record is deleted; the resources keep running\
+> B. CloudFormation deletes all five resources\
 > C. CloudFormation deletes everything except the bucket, which is always kept
 
 <details><summary>Feedback</summary>
@@ -263,9 +263,9 @@ The catch: writing a good template takes skill and time. For a resource you'll m
 
 > **Check:** Which statement about automation and cost is correct?
 >
-> A. Automation lowers costs because AWS gives a discount for resources created by CloudFormation
-> B. Automation lowers costs by cutting staff time per copy, mistakes, and resources left running when nobody needs them
-> C. Automation always costs more, because templates take longer to write than clicking
+> A. Automation lowers costs because AWS gives a discount for resources created by CloudFormation\
+> B. Automation lowers costs by cutting staff time per copy, mistakes, and resources left running when nobody needs them\
+> C. Automation always costs more, because templates take longer to write than clicking\
 > D. Automation only matters for very large companies
 
 <details><summary>Feedback</summary>
@@ -324,9 +324,9 @@ Three more neighbors: **Elastic Beanstalk** (lesson 06.04) builds the setup for 
 
 > **Check:** A company wants its developers to start only pre-approved, compliant environments, without giving them broad permissions to create resources. Which service fits best?
 >
-> A. AWS CloudFormation alone
-> B. AWS Service Catalog
-> C. AWS Marketplace
+> A. AWS CloudFormation alone\
+> B. AWS Service Catalog\
+> C. AWS Marketplace\
 > D. AWS Elastic Beanstalk
 
 <details><summary>Feedback</summary>
@@ -397,9 +397,9 @@ The **AWS Cloud Development Kit (AWS CDK)** lets you describe infrastructure in 
 
 1. **Which AWS service lets a company model its infrastructure in templates and create the same environment in several Regions?**
 
-   A. AWS Service Catalog
-   B. AWS CloudFormation
-   C. AWS Config
+   A. AWS Service Catalog\
+   B. AWS CloudFormation\
+   C. AWS Config\
    D. Amazon CloudWatch
 
    <details><summary>Feedback</summary>
@@ -414,10 +414,10 @@ The **AWS Cloud Development Kit (AWS CDK)** lets you describe infrastructure in 
 
 2. **Which TWO are benefits of automating infrastructure with templates? (Choose two.)**
 
-   A. Environments are built the same way every time, with fewer human errors
-   B. AWS charges less for resources that CloudFormation creates
-   C. Resources can be removed together, so nothing is left running by mistake
-   D. Templates copy a database's data to the new Region
+   A. Environments are built the same way every time, with fewer human errors\
+   B. AWS charges less for resources that CloudFormation creates\
+   C. Resources can be removed together, so nothing is left running by mistake\
+   D. Templates copy a database's data to the new Region\
    E. Templates make IAM permissions unnecessary
 
    <details><summary>Feedback</summary>

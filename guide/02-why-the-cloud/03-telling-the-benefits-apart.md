@@ -162,8 +162,8 @@ flowchart LR
 
 > **Check:** A research team needs a powerful computer for a one-week experiment. In the cloud, they have it running within ten minutes and delete it when the experiment ends. Which benefit does this show best?
 >
-> A. Elasticity
-> B. Agility
+> A. Elasticity\
+> B. Agility\
 > C. Durability
 
 <details><summary>Feedback</summary>
@@ -372,9 +372,9 @@ The benefits are possibilities, not defaults. AWS provides the AZs, the auto sca
 
 1. **A streaming service runs in two Availability Zones so that viewers can keep watching if one AZ fails. Which benefit does this show best?**
 
-   A. High availability
-   B. Durability
-   C. Elasticity
+   A. High availability\
+   B. Durability\
+   C. Elasticity\
    D. Agility
 
    <details><summary>Feedback</summary>
@@ -397,9 +397,9 @@ The benefits are possibilities, not defaults. AWS provides the AZs, the auto sca
 
 3. **From lesson 02.02: which of AWS's six advantages describes not having to decide in advance how many servers you need?**
 
-   A. Benefit from massive economies of scale
-   B. Stop guessing capacity
-   C. Go global in minutes
+   A. Benefit from massive economies of scale\
+   B. Stop guessing capacity\
+   C. Go global in minutes\
    D. Stop spending money running and maintaining data centers
 
    <details><summary>Feedback</summary>

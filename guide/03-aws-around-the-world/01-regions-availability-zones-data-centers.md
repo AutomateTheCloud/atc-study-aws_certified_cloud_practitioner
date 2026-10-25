@@ -138,9 +138,9 @@ AWS calls the result **Availability Zone Independence**. Nothing is failure-proo
 
 > **Check:** Which design feature most directly stops a single utility power cut from taking down two AZs?
 >
-> A. All traffic between AZs is encrypted.
-> B. AZs are designed to draw power from different substations, with their own generators.
-> C. Each Region has at least three AZs.
+> A. All traffic between AZs is encrypted.\
+> B. AZs are designed to draw power from different substations, with their own generators.\
+> C. Each Region has at least three AZs.\
 > D. AZs are within 100 km of each other.
 
 <details><summary>Feedback</summary>
@@ -212,9 +212,9 @@ Amazon Relational Database Service (Amazon RDS) sits in between. It runs a datab
 
 > **Check:** Use the table on the bakery's four parts from the [module brief](00-brief.md). Which would stop working if the AZ holding them failed today?
 >
-> A. The cake photos and the order functions
-> B. The web server and the order database
-> C. All four
+> A. The cake photos and the order functions\
+> B. The web server and the order database\
+> C. All four\
 > D. None, because AWS spreads everything across AZs
 
 <details><summary>Feedback</summary>
@@ -287,9 +287,9 @@ As lesson 02.03 said, the benefits are possibilities, not defaults: AWS builds a
 
 1. **How does AWS describe an Availability Zone?**
 
-   A. A single data center in a Region
-   B. One or more data centers in a Region, with redundant power, networking and connectivity
-   C. A group of Regions on one continent
+   A. A single data center in a Region\
+   B. One or more data centers in a Region, with redundant power, networking and connectivity\
+   C. A group of Regions on one continent\
    D. A small site in a city that caches content near users
 
    <details><summary>Feedback</summary>
@@ -304,9 +304,9 @@ As lesson 02.03 said, the benefits are possibilities, not defaults: AWS builds a
 
 2. **Which statement about Regions is correct?**
 
-   A. Each Region has at least two AZs.
-   B. AWS copies your resources to a second Region automatically.
-   C. Each Region has at least three AZs, and Regions are isolated from each other.
+   A. Each Region has at least two AZs.\
+   B. AWS copies your resources to a second Region automatically.\
+   C. Each Region has at least three AZs, and Regions are isolated from each other.\
    D. All Regions are switched on in every account.
 
    <details><summary>Feedback</summary>
@@ -329,9 +329,9 @@ As lesson 02.03 said, the benefits are possibilities, not defaults: AWS builds a
 
 4. **Which of these does a company need to set up itself to keep working if an AZ fails?**
 
-   A. Copies of its EC2 web servers in a second AZ
-   B. Copies of its S3 objects in a second AZ
-   C. Copies of its Lambda functions in a second AZ
+   A. Copies of its EC2 web servers in a second AZ\
+   B. Copies of its S3 objects in a second AZ\
+   C. Copies of its Lambda functions in a second AZ\
    D. A copy of its IAM users in a second AZ
 
    <details><summary>Feedback</summary>

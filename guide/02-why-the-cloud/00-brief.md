@@ -78,7 +78,7 @@ Later modules come back to all four tasks. Lab 01 goes beyond the exam: the exam
 
 **Before Lab 01:** work through the [guardrails primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md). Lab 01 relies on three of its pages in particular: [securing the root user](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md), [your everyday admin identity](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md), and [money alarms](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md). The lessons themselves need no AWS account.
 
-**Mastery check:** the module ends with a check. You pass at 80%. Each question you miss points you to the section to reread, and then you take a second, parallel check. If you pass the first time, you get optional "going deeper" material.
+**Mastery check:** the module ends with a [mastery check](08-check.md). You pass at 80%. Each question you miss points you to the section to reread, and then you take a second, parallel check. If you pass the first time, you get optional "going deeper" material.
 
 The map shows how the parts fit together and what each gives you for the recommendation.
 

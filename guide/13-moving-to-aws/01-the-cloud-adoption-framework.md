@@ -120,8 +120,8 @@ It's tempting because "people, process and technology" is a familiar trio in IT 
 
 > **Check:** Answer the first prequestion. Which list gives the six CAF perspectives?
 >
-> A. Business, People, Process, Platform, Security, Operations
-> B. Business, People, Governance, Platform, Security, Operations
+> A. Business, People, Process, Platform, Security, Operations\
+> B. Business, People, Governance, Platform, Security, Operations\
 > C. Technology, Process, Organization, Product, People, Security
 
 <details><summary>Feedback</summary>
@@ -221,9 +221,9 @@ These two are the pair people mix up most, because both talk about money, value 
 
 > **Check:** The chain's board has approved the move. Six months in, the chief transformation officer must show that the promised savings are actually arriving, and adjust the plan if they aren't. Which capability is this?
 >
-> A. Strategy management (Business)
-> B. Benefits management (Governance)
-> C. Portfolio management (Business)
+> A. Strategy management (Business)\
+> B. Benefits management (Governance)\
+> C. Portfolio management (Business)\
 > D. Observability (Operations)
 
 <details><summary>Feedback</summary>
@@ -282,8 +282,8 @@ They connect at one point. The Business perspective's **portfolio management** c
 
 > **Check:** A team decides to move the chain's stock system onto Amazon EC2 without changing it. Which statement is right?
 >
-> A. That's a CAF perspective decision
-> B. That's a 7 Rs decision about one application, and the CAF's portfolio management capability is where such decisions are organized
+> A. That's a CAF perspective decision\
+> B. That's a 7 Rs decision about one application, and the CAF's portfolio management capability is where such decisions are organized\
 > C. That's a Well-Architected pillar
 
 <details><summary>Feedback</summary>
@@ -323,9 +323,9 @@ The CAF also meets the Well-Architected Framework in places. Governance's cloud 
 
 1. **The chain's chief risk officer wants someone to coordinate the migration projects and report each quarter whether the promised savings are arriving. Which perspective?**
 
-   A. Business
-   B. Governance
-   C. Operations
+   A. Business\
+   B. Governance\
+   C. Operations\
    D. People
 
    <details><summary>Feedback</summary>
@@ -340,9 +340,9 @@ The CAF also meets the Well-Architected Framework in places. Governance's cloud 
 
 2. **Which of these is a business outcome the AWS CAF names, rather than a transformation domain?**
 
-   A. Process
-   B. Improve environmental, social and governance (ESG) performance
-   C. Organization
+   A. Process\
+   B. Improve environmental, social and governance (ESG) performance\
+   C. Organization\
    D. Technology
 
    <details><summary>Feedback</summary>

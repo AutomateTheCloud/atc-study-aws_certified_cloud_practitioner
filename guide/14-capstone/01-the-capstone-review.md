@@ -141,9 +141,9 @@ A finding that stops orders and could happen any week is high. One that loses a 
 
 > **Check:** Which of these is the better reason for rating "the cart table has no point-in-time recovery" as medium rather than high risk?
 >
-> A. DynamoDB copies data across three Availability Zones, so backups aren't needed
-> B. Losing carts annoys some customers, but orders and payments live elsewhere
-> C. Backups are expensive
+> A. DynamoDB copies data across three Availability Zones, so backups aren't needed\
+> B. Losing carts annoys some customers, but orders and payments live elsewhere\
+> C. Backups are expensive\
 > D. The Tool says so
 
 <details><summary>Feedback</summary>
@@ -356,9 +356,9 @@ The Framework recommends reviews early in design, before launch, and after big c
 
 1. **What does a Well-Architected review produce?**
 
-   A. A pass or fail result from AWS
-   B. A list of risks, ordered by business impact, with actions to fix them
-   C. A certificate that the workload is well-architected
+   A. A pass or fail result from AWS\
+   B. A list of risks, ordered by business impact, with actions to fix them\
+   C. A certificate that the workload is well-architected\
    D. An audit report that AWS publishes in AWS Artifact
 
    <details><summary>Feedback</summary>

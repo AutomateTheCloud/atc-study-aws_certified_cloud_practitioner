@@ -100,9 +100,9 @@ It's tempting because both classes keep copies in at least three AZs and answer 
 
 > **Check:** The bakery makes thumbnail images of its photos, which it can regenerate from the originals at any time. They're read about once a month. Which class is cheapest without risking data the bakery can't replace?
 >
-> A. S3 Standard
-> B. S3 Standard-IA
-> C. S3 One Zone-IA
+> A. S3 Standard\
+> B. S3 Standard-IA\
+> C. S3 One Zone-IA\
 > D. S3 Glacier Deep Archive
 
 <details><summary>Feedback</summary>
@@ -228,9 +228,9 @@ Use **lifecycle rules** when you know how the data cools, as with the records. U
 
 > **Check:** A rule moves objects to Glacier Deep Archive at day 1 and expires them at day 90. What happens to the bill?
 >
-> A. Nothing unusual: 89 days in Deep Archive are billed.
-> B. Each object is billed for 180 days in Deep Archive, because it left after 89.
-> C. The rule is rejected, because Deep Archive can't be expired.
+> A. Nothing unusual: 89 days in Deep Archive are billed.\
+> B. Each object is billed for 180 days in Deep Archive, because it left after 89.\
+> C. The rule is rejected, because Deep Archive can't be expired.\
 > D. S3 waits until day 181 to expire the objects.
 
 <details><summary>Feedback</summary>
@@ -333,9 +333,9 @@ Teams agree how long each kind of data is kept, then put it in lifecycle rules s
 
 1. **A company keeps scanned contracts that are read about once a quarter, but a lawyer may need any one of them in milliseconds. Which class fits best?**
 
-   A. S3 Standard
-   B. S3 Glacier Instant Retrieval
-   C. S3 Glacier Flexible Retrieval
+   A. S3 Standard\
+   B. S3 Glacier Instant Retrieval\
+   C. S3 Glacier Flexible Retrieval\
    D. S3 Glacier Deep Archive
 
    <details><summary>Feedback</summary>
@@ -350,9 +350,9 @@ Teams agree how long each kind of data is kept, then put it in lifecycle rules s
 
 2. **Which statement about S3 One Zone-IA is true?**
 
-   A. It is designed for the same availability as S3 Standard.
-   B. It stores data in one Availability Zone, so data can be lost if that AZ is destroyed.
-   C. It has no minimum storage duration.
+   A. It is designed for the same availability as S3 Standard.\
+   B. It stores data in one Availability Zone, so data can be lost if that AZ is destroyed.\
+   C. It has no minimum storage duration.\
    D. It is the same as the Amazon Glacier vault service.
 
    <details><summary>Feedback</summary>

@@ -121,9 +121,9 @@ Turning HTTPS on isn't the same as requiring it. S3, for example, accepts plain 
 
 > **Check:** The bakery wants HTTPS on its load balancer, without anyone having to remember to renew the certificate. Which service?
 >
-> A. AWS KMS
-> B. AWS Certificate Manager
-> C. AWS CloudHSM
+> A. AWS KMS\
+> B. AWS Certificate Manager\
+> C. AWS CloudHSM\
 > D. Amazon Macie
 
 <details><summary>Feedback</summary>
@@ -222,9 +222,9 @@ flowchart TD
 
 > **Check:** Answer the second prequestion. The accountant must show who may decrypt the tax records and see every time someone does. Nothing requires dedicated hardware. Which fits best?
 >
-> A. SSE-S3, the default
-> B. A customer managed key in AWS KMS
-> C. AWS CloudHSM
+> A. SSE-S3, the default\
+> B. A customer managed key in AWS KMS\
+> C. AWS CloudHSM\
 > D. A certificate from ACM
 
 <details><summary>Feedback</summary>
@@ -313,9 +313,9 @@ Teams classify their data, turn on encryption everywhere by default, use custome
 
 1. **A company must encrypt data sent between users' browsers and its Application Load Balancer. Which AWS service provides the certificate?**
 
-   A. AWS KMS
-   B. AWS Certificate Manager
-   C. AWS CloudHSM
+   A. AWS KMS\
+   B. AWS Certificate Manager\
+   C. AWS CloudHSM\
    D. AWS Secrets Manager
 
    <details><summary>Feedback</summary>
@@ -330,9 +330,9 @@ Teams classify their data, turn on encryption everywhere by default, use custome
 
 2. **Which requirement points to AWS CloudHSM rather than AWS KMS?**
 
-   A. Data in S3 must be encrypted at rest
-   B. The company must see each use of its keys in CloudTrail
-   C. A contract requires single-tenant hardware security modules under the company's exclusive control
+   A. Data in S3 must be encrypted at rest\
+   B. The company must see each use of its keys in CloudTrail\
+   C. A contract requires single-tenant hardware security modules under the company's exclusive control\
    D. The company wants AWS to rotate keys every year
 
    <details><summary>Feedback</summary>
@@ -355,9 +355,9 @@ Teams classify their data, turn on encryption everywhere by default, use custome
 
 4. **Which service finds personally identifiable information stored in Amazon S3 buckets?**
 
-   A. Amazon GuardDuty
-   B. Amazon Inspector
-   C. Amazon Macie
+   A. Amazon GuardDuty\
+   B. Amazon Inspector\
+   C. Amazon Macie\
    D. AWS Config
 
    <details><summary>Feedback</summary>

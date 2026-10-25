@@ -120,8 +120,8 @@ AWS also offers a **Multi-AZ DB cluster**, with two standbys in three AZs that c
 
 > **Check:** Answer the first prequestion. The German partner's nightly reports slow down the website. Would turning on Multi-AZ fix it?
 >
-> A. Yes: the reports would run on the standby
-> B. No: in a Multi-AZ DB instance deployment the standby serves no queries, so the reports still run on the primary
+> A. Yes: the reports would run on the standby\
+> B. No: in a Multi-AZ DB instance deployment the standby serves no queries, so the reports still run on the primary\
 > C. Yes: Multi-AZ doubles the database's capacity
 
 <details><summary>Feedback</summary>
@@ -176,9 +176,9 @@ Here are the three side by side.
 
 > **Check:** A web application runs on EC2 instances in two AZs behind a load balancer. Its RDS database must keep working, with no data lost, if one AZ fails. Which option meets this?
 >
-> A. Add a read replica in the same AZ as the primary
-> B. Take a snapshot every night
-> C. Turn on a Multi-AZ deployment
+> A. Add a read replica in the same AZ as the primary\
+> B. Take a snapshot every night\
+> C. Turn on a Multi-AZ deployment\
 > D. Add a read replica in another Region
 
 <details><summary>Feedback</summary>
@@ -290,9 +290,9 @@ At work, teams start from a managed database and add protections for named failu
 
 1. **Which RDS feature provides high availability by keeping a synchronous standby in another Availability Zone, with automatic failover?**
 
-   A. Read replicas
-   B. Multi-AZ deployment
-   C. Automated backups
+   A. Read replicas\
+   B. Multi-AZ deployment\
+   C. Automated backups\
    D. Manual snapshots
 
    <details><summary>Feedback</summary>
@@ -315,9 +315,9 @@ At work, teams start from a managed database and add protections for named failu
 
 3. **Which task does a customer keep when moving a database from EC2 to Amazon RDS?**
 
-   A. Applying operating system patches
-   B. Installing the database software
-   C. Tuning the application's queries
+   A. Applying operating system patches\
+   B. Installing the database software\
+   C. Tuning the application's queries\
    D. Building failover to a standby
 
    <details><summary>Feedback</summary>

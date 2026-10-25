@@ -203,9 +203,9 @@ In an organization, a Reserved Instance's discount applies first to the account 
 
 > **Check:** The bakery buys a one-year Regional Reserved Instance for one `t3.small` (Linux). During the year it replaces that server with a `t3.medium`. What happens to the discount?
 >
-> A. It's lost: the type no longer matches
-> B. It covers half of the `t3.medium`'s usage
-> C. It covers all of it, because the family is the same
+> A. It's lost: the type no longer matches\
+> B. It covers half of the `t3.medium`'s usage\
+> C. It covers all of it, because the family is the same\
 > D. A new server launches for the reservation
 
 <details><summary>Feedback</summary>
@@ -276,9 +276,9 @@ You may have read that reserving capacity lowers the price, as a Reserved Instan
 
 > **Check:** The bakery runs a big launch on one day next month and must be certain it can start ten extra servers in its AZ that morning. What fits?
 >
-> A. A three-year Standard Reserved Instance for ten servers
-> B. Spot Instances
-> C. An On-Demand Capacity Reservation for that period
+> A. A three-year Standard Reserved Instance for ten servers\
+> B. Spot Instances\
+> C. An On-Demand Capacity Reservation for that period\
 > D. A Compute Savings Plan
 
 <details><summary>Feedback</summary>
@@ -376,9 +376,9 @@ Teams review usage before they commit, commit to what they're sure of, and add m
 
 1. **A company runs a steady fleet of `m5` instances in one Region and is sure it won't change family or Region for three years. Which option gives the deepest discount that still allows changing instance size?**
 
-   A. Compute Savings Plan
-   B. EC2 Instance Savings Plan
-   C. Spot Instances
+   A. Compute Savings Plan\
+   B. EC2 Instance Savings Plan\
+   C. Spot Instances\
    D. On-Demand Capacity Reservation
 
    <details><summary>Feedback</summary>
@@ -393,9 +393,9 @@ Teams review usage before they commit, commit to what they're sure of, and add m
 
 2. **Which statement about Reserved Instances is correct?**
 
-   A. Buying one launches an instance for you
-   B. They renew automatically at the end of the term
-   C. They're a billing discount applied to matching running instances
+   A. Buying one launches an instance for you\
+   B. They renew automatically at the end of the term\
+   C. They're a billing discount applied to matching running instances\
    D. They can be cancelled at any time for a refund
 
    <details><summary>Feedback</summary>

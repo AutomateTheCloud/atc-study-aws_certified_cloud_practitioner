@@ -117,9 +117,9 @@ As the going-deeper box of [lesson 02.01](../02-why-the-cloud/01-what-cloud-comp
 
 > **Check:** Which of these is the customer's responsibility on Amazon EC2?
 >
-> A. Patching the host operating system
-> B. Patching the guest operating system
-> C. Replacing a failed disk in the physical server
+> A. Patching the host operating system\
+> B. Patching the guest operating system\
+> C. Replacing a failed disk in the physical server\
 > D. Controlling who enters the data center
 
 <details><summary>Feedback</summary>
@@ -193,9 +193,9 @@ It's tempting because "serverless" sounds like "nothing to manage", and the serv
 
 > **Check:** The bakery's order functions run on Lambda. A security flaw is found in a code library they use to send emails. Who updates it?
 >
-> A. AWS, because Lambda is serverless
-> B. AWS, because it applies runtime updates automatically
-> C. The bakery, because a function's libraries are the customer's
+> A. AWS, because Lambda is serverless\
+> B. AWS, because it applies runtime updates automatically\
+> C. The bakery, because a function's libraries are the customer's\
 > D. Both, because security is shared
 
 <details><summary>Feedback</summary>
@@ -307,9 +307,9 @@ The model touches two Well-Architected pillars:
 
 2. **A company moves its database from an EC2 virtual server to Amazon RDS. Which task moves from the company to AWS?**
 
-   A. Deciding which employees can read the data
-   B. Installing operating system patches
-   C. Replacing failed server hardware
+   A. Deciding which employees can read the data\
+   B. Installing operating system patches\
+   C. Replacing failed server hardware\
    D. Tuning the company's database queries
 
    <details><summary>Feedback</summary>
@@ -324,9 +324,9 @@ The model touches two Well-Architected pillars:
 
 3. **Which task is the customer's when using AWS Lambda?**
 
-   A. Patching the operating system of the servers that run the functions
-   B. Applying security updates to a supported managed runtime
-   C. Moving a function to a supported runtime before its runtime is retired
+   A. Patching the operating system of the servers that run the functions\
+   B. Applying security updates to a supported managed runtime\
+   C. Moving a function to a supported runtime before its runtime is retired\
    D. Adding servers when traffic grows
 
    <details><summary>Feedback</summary>

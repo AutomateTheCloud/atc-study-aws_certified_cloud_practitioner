@@ -125,9 +125,9 @@ You have met roles already. The IAM dashboard in the primer showed roles you did
 
 > **Check:** Which statement about IAM user groups is true?
 >
-> A. A group can sign in with its own password.
-> B. You can put a group inside another group.
-> C. A policy attached to a group applies to every user in it.
+> A. A group can sign in with its own password.\
+> B. You can put a group inside another group.\
+> C. A policy attached to a group applies to every user in it.\
 > D. A user can belong to only one group.
 
 <details><summary>Feedback</summary>
@@ -242,9 +242,9 @@ The first questions in any security review are about identities: who can sign in
 
 1. **Which kind of identity gets temporary credentials each time it's used?**
 
-   A. The root user
-   B. An IAM user
-   C. An IAM user group
+   A. The root user\
+   B. An IAM user\
+   C. An IAM user group\
    D. An IAM role
 
    <details><summary>Feedback</summary>
@@ -259,10 +259,10 @@ The first questions in any security review are about identities: who can sign in
 
 2. **Which tasks require the root user? (Choose two.)**
 
-   A. Closing a standalone AWS account
-   B. Changing the AWS Support plan
-   C. Creating an IAM user group
-   D. Turning on IAM access to the billing pages
+   A. Closing a standalone AWS account\
+   B. Changing the AWS Support plan\
+   C. Creating an IAM user group\
+   D. Turning on IAM access to the billing pages\
    E. Creating a budget
 
    <details><summary>Feedback</summary>

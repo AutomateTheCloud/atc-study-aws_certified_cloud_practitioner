@@ -163,9 +163,9 @@ The three also hold data for very different lengths of time, which the chart sho
 
 > **Check:** Answer the second prequestion. A teammate says: "We don't need Glue; we'll just use Athena." Where would Athena find the table definitions for the bakery's files?
 >
-> A. In the files themselves, so no catalog is needed
-> B. In a data catalog, such as the AWS Glue Data Catalog
-> C. In Amazon Quick Sight
+> A. In the files themselves, so no catalog is needed\
+> B. In a data catalog, such as the AWS Glue Data Catalog\
+> C. In Amazon Quick Sight\
 > D. In an Amazon SQS queue
 
 <details><summary>Feedback</summary>
@@ -196,9 +196,9 @@ Three services answer questions about data, in different places and with differe
 
 > **Check:** Answer the first prequestion. The bakery keeps a year of website logs as files in S3 and wants to run a few SQL queries this week, without loading the data or running a server. Which service fits?
 >
-> A. Amazon Redshift
-> B. Amazon Athena
-> C. Amazon EMR
+> A. Amazon Redshift\
+> B. Amazon Athena\
+> C. Amazon EMR\
 > D. AWS Glue
 
 <details><summary>Feedback</summary>
@@ -317,9 +317,9 @@ Teams start small (files in S3, a catalog, Athena, a dashboard) and move to a wa
 
 1. **A company wants one service to discover its data in S3, record its columns in a central catalog, and convert CSV files to Parquet each night. Which service?**
 
-   A. Amazon Athena
-   B. AWS Glue
-   C. Amazon Quick Sight
+   A. Amazon Athena\
+   B. AWS Glue\
+   C. Amazon Quick Sight\
    D. Amazon Data Firehose
 
    <details><summary>Feedback</summary>
@@ -334,9 +334,9 @@ Teams start small (files in S3, a catalog, Athena, a dashboard) and move to a wa
 
 2. **A game's click events must be read live by two separate programs: one updates a leaderboard within seconds, the other archives everything. After a bug, the team wants to reprocess the last six hours. Which service?**
 
-   A. Amazon SQS
-   B. Amazon Data Firehose
-   C. Amazon Kinesis Data Streams
+   A. Amazon SQS\
+   B. Amazon Data Firehose\
+   C. Amazon Kinesis Data Streams\
    D. Amazon Redshift
 
    <details><summary>Feedback</summary>

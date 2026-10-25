@@ -128,9 +128,9 @@ It's tempting because "encrypted" sounds like "locked". Encryption and access co
 
 > **Check:** The bakery's photos are encrypted with SSE-S3. An attacker steals the access key of an IAM user who is allowed to read the bucket. What does encryption at rest do to stop the attacker reading the photos?
 >
-> A. Nothing: S3 decrypts the photos for any caller its policies allow.
-> B. It blocks the attacker, because only the bucket owner holds the key.
-> C. It blocks the attacker unless they also have the root user's password.
+> A. Nothing: S3 decrypts the photos for any caller its policies allow.\
+> B. It blocks the attacker, because only the bucket owner holds the key.\
+> C. It blocks the attacker unless they also have the root user's password.\
 > D. It forces the attacker to download the photos over HTTPS.
 
 <details><summary>Feedback</summary>
@@ -258,9 +258,9 @@ Security teams turn on account-level Block Public Access and check it doesn't dr
 
 1. **What does S3 Block Public Access do?**
 
-   A. Encrypts objects so the public can't read them
-   B. Overrides bucket policies and ACLs that would grant public access
-   C. Deletes objects that have been made public
+   A. Encrypts objects so the public can't read them\
+   B. Overrides bucket policies and ACLs that would grant public access\
+   C. Deletes objects that have been made public\
    D. Hides the bucket's name from other AWS accounts
 
    <details><summary>Feedback</summary>
@@ -283,9 +283,9 @@ Security teams turn on account-level Block Public Access and check it doesn't dr
 
 3. **A company must keep audit records unchanged for five years, and even administrators must not be able to delete them early. Which S3 feature meets this?**
 
-   A. Versioning
-   B. Default encryption
-   C. S3 Object Lock in compliance mode
+   A. Versioning\
+   B. Default encryption\
+   C. S3 Object Lock in compliance mode\
    D. Same-Region Replication
 
    <details><summary>Feedback</summary>

@@ -163,9 +163,9 @@ The exam guide also names **partner volume discounts**. AWS's current partner pa
 
 > **Check:** A company makes accounting software that runs on AWS and wants to sell it to AWS customers, billed through their AWS bills. In the exam's words, what kind of partner is it, and where would it list the product?
 >
-> A. A system integrator, in AWS Support Center
-> B. An independent software vendor (ISV), in AWS Marketplace
-> C. AWS Professional Services, in AWS Marketplace
+> A. A system integrator, in AWS Support Center\
+> B. An independent software vendor (ISV), in AWS Marketplace\
+> C. AWS Professional Services, in AWS Marketplace\
 > D. A solutions architect, in the AWS Partner Solutions Finder
 
 <details><summary>Feedback</summary>
@@ -227,9 +227,9 @@ Two more names you may see as wrong answers: **AWS Managed Services (AMS)**, in 
 
 > **Check:** Answer the second prequestion. The bakery wants an expert at AWS to look over its design before its busiest sales week. It has no budget for consultants. What's the best first step?
 >
-> A. Buy AWS Professional Services
-> B. Ask AWS, through its contact form or the bakery's account team, for a solutions architect, and run the Well-Architected Tool meanwhile
-> C. Open a Basic plan technical support case
+> A. Buy AWS Professional Services\
+> B. Ask AWS, through its contact form or the bakery's account team, for a solutions architect, and run the Well-Architected Tool meanwhile\
+> C. Open a Basic plan technical support case\
 > D. Hire an AWS Partner from Marketplace
 
 <details><summary>Feedback</summary>
@@ -293,9 +293,9 @@ Teams use free advice early, buy hands-on help for work they can't staff, and ch
 
 1. **Which option gives a company AWS's own experts to carry out a migration project under a contract?**
 
-   A. AWS Support
-   B. AWS Professional Services
-   C. AWS re:Post
+   A. AWS Support\
+   B. AWS Professional Services\
+   C. AWS re:Post\
    D. AWS Trusted Advisor
 
    <details><summary>Feedback</summary>
@@ -318,10 +318,10 @@ Teams use free advice early, buy hands-on help for work they can't staff, and ch
 
 3. **Which TWO are benefits AWS offers companies that join the AWS Partner Network?**
 
-   A. Free AWS Support at the Unified Operations level
-   B. Partner training and certification
-   C. Partner events such as webinars and workshops
-   D. AWS takes over responsibility for the partner's customers' data
+   A. Free AWS Support at the Unified Operations level\
+   B. Partner training and certification\
+   C. Partner events such as webinars and workshops\
+   D. AWS takes over responsibility for the partner's customers' data\
    E. A free AWS Professional Services engagement for each customer
 
    <details><summary>Feedback</summary>

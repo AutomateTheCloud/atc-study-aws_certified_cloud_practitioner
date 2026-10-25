@@ -130,9 +130,9 @@ For the bakery, all four of its services are on AWS's list of core services, so 
 
 > **Check:** A team wants a Region that opened three months ago, close to its users. One service it relies on isn't in that Region yet. What should it do first?
 >
-> A. Use the Region anyway; AWS adds every service within a month.
-> B. Check whether the service is planned, and meanwhile choose the nearest Region that has it, if the data rules allow.
-> C. Choose the cheapest Region instead.
+> A. Use the Region anyway; AWS adds every service within a month.\
+> B. Check whether the service is planned, and meanwhile choose the nearest Region that has it, if the data rules allow.\
+> C. Choose the cheapest Region instead.\
 > D. Ignore the gap, because latency matters more than services.
 
 <details><summary>Feedback</summary>
@@ -207,9 +207,9 @@ The Well-Architected advice is to pay a higher-priced Region only when latency, 
 
 > **Check:** Which reason for choosing a Region is a trade-off you weigh, rather than a filter that rules Regions out?
 >
-> A. A law says the data must stay in one country.
-> B. The workload needs a service that some Regions don't have.
-> C. One Region charges less than another for the same service.
+> A. A law says the data must stay in one country.\
+> B. The workload needs a service that some Regions don't have.\
+> C. One Region charges less than another for the same service.\
 > D. A contract says the data must stay in the EU.
 
 <details><summary>Feedback</summary>
@@ -317,9 +317,9 @@ Choosing a Region is easy to do and hard to undo, because moving a running workl
 
 1. **Which two are must-haves that can rule a Region out, before you compare anything else?**
 
-   A. Rules about where the data may live
-   B. The price of the services
-   C. Whether the Region offers the services you need
+   A. Rules about where the data may live\
+   B. The price of the services\
+   C. Whether the Region offers the services you need\
    D. How close the Region is to your office
 
    <details><summary>Feedback</summary>
@@ -333,9 +333,9 @@ Choosing a Region is easy to do and hard to undo, because moving a running workl
 
 2. **Which is one of the reasons the exam guide gives for using more than one Region?**
 
-   A. Each Region has only one Availability Zone.
-   B. Data sovereignty: keeping data in the places its rules require
-   C. AWS requires every production workload to run in two Regions.
+   A. Each Region has only one Availability Zone.\
+   B. Data sovereignty: keeping data in the places its rules require\
+   C. AWS requires every production workload to run in two Regions.\
    D. Regions share power, so one Region is risky.
 
    <details><summary>Feedback</summary>
