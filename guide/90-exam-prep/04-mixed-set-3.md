@@ -21,7 +21,7 @@ sources:
 
 # Mixed set 3: thirty questions across all the teaching modules, shuffled together
 
-Thirty questions in the exam's style, drawn from every teaching module, Modules 02 to 13, and weighted like the exam. It's the last mixed set before the practice exams, and the first that can ask about anything the exam covers.
+This set has thirty questions in the exam's style, drawn from every teaching module, Modules 02 to 13, and weighted like the exam. It's the last mixed set before the practice exams, and the first that can ask about anything the exam covers.
 
 **For:** an adult studying alone, possibly new to IT, who has finished Modules 02 to 13. **Time:** about 45 minutes, plus time to go through the answer key.
 

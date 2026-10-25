@@ -590,7 +590,7 @@ Prescriptive Guidance collects guides and patterns from AWS experts for larger j
 
 **18. A and E** ([Task 3.7](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.7))
 
-Textract reads printed and handwritten text, forms and tables from scanned documents, and Translate changes text from one language to another. Rekognition is tempting because it can spot words in a picture, but it doesn't return a document's fields and structure. Comprehend finds meaning in text, and Polly turns text into speech. **Reread:** [Pictures and documents: Rekognition sees, Textract reads](../10-data-ai-and-more/02-ai-and-ml.md#pictures-and-documents-rekognition-sees-textract-reads); [Text in: Comprehend finds meaning, Translate changes the language](../10-data-ai-and-more/02-ai-and-ml.md#text-in-comprehend-finds-meaning-translate-changes-the-language).
+Textract reads printed and handwritten text, forms and tables from scanned documents, and Translate changes text from one language to another. Rekognition can spot words in a picture, which makes it look like a fit, but it doesn't return a document's fields and structure. Comprehend finds meaning in text, and Polly turns text into speech. **Reread:** [Pictures and documents: Rekognition sees, Textract reads](../10-data-ai-and-more/02-ai-and-ml.md#pictures-and-documents-rekognition-sees-textract-reads); [Text in: Comprehend finds meaning, Translate changes the language](../10-data-ai-and-more/02-ai-and-ml.md#text-in-comprehend-finds-meaning-translate-changes-the-language).
 
 **19. B** ([Task 2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1))
 
@@ -618,7 +618,7 @@ A gateway endpoint gives a VPC a private path to S3 or DynamoDB through a route-
 
 **25. C** ([Task 1.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.1))
 
-Both mistakes came from having to guess, in advance, how many servers the busiest days would need. In the cloud there is no fixed amount to choose: capacity can follow the demand. The other advantages are about location, price per unit and data-center chores, none of which caused either year's problem. **Reread:** [Six advantages, one picture](../02-why-the-cloud/02-before-and-after-the-demand-curve.md#six-advantages-one-picture).
+Both mistakes came from having to guess in advance how many servers the busiest days would need. In the cloud there is no fixed amount to choose: capacity can follow the demand. The other advantages are about location, price per unit and data-center chores, none of which caused either year's problem. **Reread:** [Six advantages, one picture](../02-why-the-cloud/02-before-and-after-the-demand-curve.md#six-advantages-one-picture).
 
 **26. B and E** ([Task 2.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.2))
 
@@ -626,7 +626,7 @@ Inspector scans EC2 instances, Lambda functions and container images in Amazon E
 
 **27. C** ([Task 1.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.3))
 
-The AWS CAF lists the capabilities an organization needs for cloud adoption, grouped into six perspectives, each owned by a set of stakeholders. The Well-Architected Framework is tempting because it is also a framework, but it reviews the design of a workload, not the organization's readiness. Migration Evaluator builds a cost case, and the Pricing Calculator estimates a design. **Reread:** [Six perspectives group the capabilities, each owned by different people](../13-moving-to-aws/01-the-cloud-adoption-framework.md#six-perspectives-group-the-capabilities-each-owned-by-different-people); [The CAF and the 7 Rs work at different levels](../13-moving-to-aws/01-the-cloud-adoption-framework.md#the-caf-and-the-7-rs-work-at-different-levels).
+The AWS CAF lists the capabilities an organization needs for cloud adoption, grouped into six perspectives, each owned by a set of stakeholders. It's easy to pick the Well-Architected Framework because it's also a framework, but it reviews the design of a workload, not the organization's readiness. Migration Evaluator builds a cost case, and the Pricing Calculator estimates a design. **Reread:** [Six perspectives group the capabilities, each owned by different people](../13-moving-to-aws/01-the-cloud-adoption-framework.md#six-perspectives-group-the-capabilities-each-owned-by-different-people); [The CAF and the 7 Rs work at different levels](../13-moving-to-aws/01-the-cloud-adoption-framework.md#the-caf-and-the-7-rs-work-at-different-levels).
 
 **28. D** ([Task 3.7](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.7))
 
@@ -702,7 +702,7 @@ Compliance needs differ by industry and by country, and AWS's Compliance Program
 
 **46. C** ([Task 1.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.2))
 
-Reliability asks whether a workload keeps doing its job and recovers when something fails; [Scale horizontally to increase aggregate workload availability](https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html) and [Test recovery procedures](https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html) are two of its design principles. Performance efficiency is tempting because the change is about servers, but the app isn't too slow; the risk is that it stops working. **Reread:** [Pillars that sound alike, side by side](../02-why-the-cloud/05-the-well-architected-framework.md#pillars-that-sound-alike-side-by-side).
+Reliability asks whether a workload keeps doing its job and recovers when something fails; [Scale horizontally to increase aggregate workload availability](https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html) and [Test recovery procedures](https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html) are two of its design principles. You might pick performance efficiency because the change is about servers, but the app isn't too slow; the risk is that it stops working. **Reread:** [Pillars that sound alike, side by side](../02-why-the-cloud/05-the-well-architected-framework.md#pillars-that-sound-alike-side-by-side).
 
 **47. A** ([Task 2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1))
 

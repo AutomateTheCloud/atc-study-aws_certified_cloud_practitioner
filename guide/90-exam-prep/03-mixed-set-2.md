@@ -21,7 +21,7 @@ sources:
 
 # Mixed set 2: thirty questions across Modules 02 to 09, shuffled together
 
-Thirty questions in the exam's style, drawn from everything up to the end of Module 09 and mixed so that no two questions in a row come from the same place. Each question makes you decide first what it's about, which is most of the work on the real exam.
+These thirty questions in the exam's style draw on everything up to the end of Module 09 and are mixed so that no two questions in a row come from the same place. Each one makes you decide first what it's about, and on the real exam that's most of the work.
 
 **For:** an adult studying alone, possibly new to IT, who has finished Modules 02 to 09. **Time:** about 45 minutes, plus time to go through the answer key.
 
