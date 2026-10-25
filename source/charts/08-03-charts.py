@@ -5,15 +5,10 @@
 
 Usage: python3 -I source/charts/08-03-charts.py
 Writes images/08-03-*.svg. Facts, checked 2026-10-24: Amazon CloudWatch User
-Guide (metrics concepts: metrics are Regional and kept 15 months, 1-minute data
-15 days, 5-minute data 63 days, 1-hour data 455 days; alarms: states OK, ALARM
-and INSUFFICIENT_DATA, actions run on a state change; alarm history kept 30
-days); CloudWatch Logs User Guide (log data kept indefinitely by default);
-AWS X-Ray Developer Guide (traces, segments, trace map; trace data kept 30
-days); AWS CloudTrail User Guide (Event history: 90 days of management events
-per Region, no charge to view). The bakery, its numbers, the error counts and
-the trace timings are made up for teaching. Our own design: no AWS logos,
-icons, trade dress or AWS diagrams.
+Guide (metrics, logs and alarms); AWS X-Ray Developer Guide (traces, segments,
+trace map); AWS CloudTrail User Guide (events, one per action on the account).
+The bakery, its numbers and the trace timings are made up for teaching. Our
+own design: no AWS logos, icons, trade dress or AWS diagrams.
 """
 import os
 import sys
@@ -112,98 +107,6 @@ def three_questions():
         desc, body, style=STYLE)
 
 
-# ---------------------------------------------------------------- alarm timeline
-
-# Errors (Sum) for the order function, per 5-minute period from 12:00 to 15:00. Made up.
-ERRORS = [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0,   # 12:00-12:55
-          0, 0, 4, 7, 9, 6, 2, 0, 0, 1, 0, 0,   # 13:00-13:55
-          0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]   # 14:00-14:55
-THRESHOLD = 3  # ALARM when one 5-minute period has 3 or more errors
-
-
-def label(i):
-    m = i * 5
-    return f"{12 + m // 60}:{m % 60:02d}"
-
-
-def states():
-    return ["ALARM" if e >= THRESHOLD else "OK" for e in ERRORS]
-
-
-def alarm_timeline():
-    st = states()
-    first = st.index("ALARM")
-    last = len(st) - 1 - st[::-1].index("ALARM")
-    assert (label(first), label(last + 1)) == ("13:10", "13:30"), "must match the lesson text"
-    assert max(ERRORS) == 9 and label(ERRORS.index(9)) == "13:20"
-    w, left, top, pw, ph, ymax = 680, 56, 104, 600, 200, 10
-    body = [
-        '<text class="title" x="16" y="28">An alarm acts when its state changes, not on every bad period</text>',
-        '<text class="sub" x="16" y="48">Errors in the bakery\'s order function per 5 minutes, one afternoon (made-up figures)</text>',
-        f'<rect class="bar-hi" x="16" y="64" width="12" height="12" rx="2"/><text x="34" y="74">Period at or above the threshold</text>',
-        f'<rect class="bar-n" x="262" y="64" width="12" height="12" rx="2"/><text x="280" y="74">Below it</text>',
-        f'<line class="thr" x1="360" x2="384" y1="70" y2="70"/><text x="390" y="74">Threshold: {THRESHOLD} errors</text>',
-    ]
-    for v in range(0, ymax + 1, 2):
-        y = top + ph - ph * v / ymax
-        body.append(f'<line class="{"axis" if v == 0 else "grid"}" x1="{left}" x2="{left + pw}" y1="{y:.1f}" y2="{y:.1f}"/>')
-        body.append(f'<text class="tick" x="{left - 8}" y="{y + 4:.1f}" text-anchor="end">{v}</text>')
-    body.append(f'<text class="tick" x="16" y="{top - 10}">Errors</text>')
-    band = pw / len(ERRORS)
-    for i, e in enumerate(ERRORS):
-        x = left + band * i + 2
-        if e:
-            hgt = ph * e / ymax
-            cls = "bar-hi" if e >= THRESHOLD else "bar-n"
-            r = min(4, hgt)
-            y0 = top + ph - hgt
-            body.append(f'<path class="{cls}" d="M{x:.1f},{top + ph:.1f} L{x:.1f},{y0 + r:.1f} Q{x:.1f},{y0:.1f} {x + r:.1f},{y0:.1f} '
-                        f'L{x + band - 4 - r:.1f},{y0:.1f} Q{x + band - 4:.1f},{y0:.1f} {x + band - 4:.1f},{y0 + r:.1f} L{x + band - 4:.1f},{top + ph:.1f} Z">'
-                        f'<title>{label(i)} to {label(i + 1)}: {e} error{"s" if e != 1 else ""}</title></path>')
-    for i in range(0, len(ERRORS) + 1, 6):
-        body.append(f'<text class="tick" x="{left + band * i:.1f}" y="{top + ph + 18}" text-anchor="middle">{label(i)}</text>')
-    ty = top + ph - ph * THRESHOLD / ymax
-    body.append(f'<line class="thr" x1="{left}" x2="{left + pw}" y1="{ty:.1f}" y2="{ty:.1f}"/>')
-    peak = ERRORS.index(9)
-    body.append(f'<text class="lab" x="{left + band * peak + band / 2 + 14:.1f}" y="{top + ph - ph * 9 / ymax + 4:.1f}">9 errors, 13:20 to 13:25</text>')
-    # State band.
-    sy = top + ph + 36
-    body.append(f'<text class="rowl" x="16" y="{sy + 17}">State</text>')
-    runs, start = [], 0
-    for i in range(1, len(st) + 1):
-        if i == len(st) or st[i] != st[start]:
-            runs.append((st[start], start, i))
-            start = i
-    for s, a, b in runs:
-        rect(body, "alarm" if s == "ALARM" else "okband", left + band * a, sy, band * (b - a) - 2, 26, 4)
-        body.append(f'<text class="cellt" x="{left + band * (a + b) / 2:.1f}" y="{sy + 17}" text-anchor="middle">{s}</text>')
-    # The two actions.
-    ay = sy + 46
-    xa, xb = left + band * first, left + band * (last + 1)
-    for x in (xa, xb):
-        body.append(f'<line class="tick-line" x1="{x:.1f}" x2="{x:.1f}" y1="{sy + 28}" y2="{ay - 12}"/>')
-    text_lines(body, xa - 4, ay, ["13:10 OK → ALARM:", "email to the owner"], cls="small", dy=15, anchor="end")
-    text_lines(body, xb + 4, ay, ["13:30 ALARM → OK:", "an “all clear” email, if you asked for one"], cls="small", dy=15)
-    y = ay + 46
-    for line in [
-        "Four bad periods, one email: actions run when the state changes. Drawn by period; in practice each change",
-        "comes shortly after the period ends. From the CloudWatch User Guide (alarms), checked 2026-10-24.",
-    ]:
-        body.append(f'<text class="note" x="16" y="{y}">{line}</text>')
-        y += 16
-    rows = ", ".join(f"{label(i)} {e}" for i, e in enumerate(ERRORS) if e)
-    svg("08-03-alarm-timeline.svg", w, y + 10,
-        "Errors per 5 minutes against an alarm threshold, with the alarm's state",
-        "Bar chart, made-up figures: errors in the bakery's order function per 5-minute period from 12:00 to 15:00, "
-        f"with a dashed threshold line at {THRESHOLD} errors. Periods with errors: {rows}; all other periods have 0. "
-        "The four periods from 13:10 to 13:30 are at or above the threshold and are highlighted; the peak is 9 "
-        "errors between 13:20 and 13:25. Below the bars, the alarm's state: OK until 13:10, ALARM from 13:10 to "
-        "13:30, OK after. Two marks show the actions: at 13:10 the change from OK to ALARM sends an email to the "
-        "owner; at 13:30 the change from ALARM to OK can send an all-clear email if one was configured. A note says "
-        "four bad periods produce one email, because actions run when the state changes.",
-        body, style=STYLE)
-
-
 # ---------------------------------------------------------------- trace waterfall
 
 TRACE = [  # (part, start ms, end ms, highlighted)
@@ -257,64 +160,6 @@ def trace_waterfall():
         "about.", body, style=STYLE)
 
 
-# ---------------------------------------------------------------- how long records last
-
-KEEP = [  # (record, days or None for no end, note)
-    ("AWS X-Ray traces", 30, "30 days"),
-    ("CloudWatch alarm history", 30, "30 days"),
-    ("CloudTrail Event history", 90, "90 days, management events, per Region"),
-    ("CloudWatch metrics", 455, "15 months; detail coarsens after 15 and 63 days"),
-    ("CloudWatch Logs", None, "kept until you set retention (the default never expires)"),
-]
-
-
-def retention():
-    w, left, pw, top, rh, xmax = 680, 196, 360, 96, 50, 500
-    body = [
-        '<text class="title" x="16" y="28">How long each record lasts by default</text>',
-        '<text class="sub" x="16" y="48">Days AWS keeps each kind of record unless you send it somewhere else or change a setting</text>',
-    ]
-    for v in range(0, xmax + 1, 100):
-        x = left + pw * v / xmax
-        body.append(f'<line class="{"axis" if v == 0 else "grid"}" x1="{x:.1f}" x2="{x:.1f}" y1="{top - 8}" y2="{top + rh * len(KEEP)}"/>')
-        body.append(f'<text class="tick" x="{x:.1f}" y="{top - 14}" text-anchor="middle">{v}</text>')
-    body.append(f'<text class="tick" x="16" y="{top - 14}">Days</text>')
-    for i, (name, days, note) in enumerate(KEEP):
-        y = top + rh * i
-        body.append(f'<text class="cellt" x="16" y="{y + 22}">{name}</text>')
-        below = days is None or days > 300
-        if days is None:
-            x1 = left + pw + 14
-            body.append(f'<path class="bar-hi" d="M{left},{y + 10} L{x1 - 10},{y + 10} L{x1},{y + 18} L{x1 - 10},{y + 26} L{left},{y + 26} Z">'
-                        f'<title>{name}: {note}</title></path>')
-            body.append(f'<text class="small" x="{left + 6}" y="{y + 42}">{note}</text>')
-        else:
-            x1 = left + pw * days / xmax
-            r = 4
-            body.append(f'<path class="bar-n" d="M{left},{y + 10} L{x1 - r:.1f},{y + 10} Q{x1:.1f},{y + 10} {x1:.1f},{y + 10 + r} '
-                        f'L{x1:.1f},{y + 26 - r} Q{x1:.1f},{y + 26} {x1 - r:.1f},{y + 26} L{left},{y + 26} Z"><title>{name}: {note}</title></path>')
-            if below:
-                body.append(f'<text class="small" x="{left + 6}" y="{y + 42}">{note}</text>')
-            else:
-                body.append(f'<text class="small" x="{x1 + 8:.1f}" y="{y + 22}">{note}</text>')
-    y = top + rh * len(KEEP) + 22
-    for line in [
-        "To keep account activity longer than 90 days, create a CloudTrail trail: it delivers events to an S3 bucket",
-        "you keep. Logs grow until you set retention (Lab 07). From the CloudWatch, CloudWatch Logs, X-Ray and",
-        "CloudTrail user guides, checked 2026-10-24.",
-    ]:
-        body.append(f'<text class="note" x="16" y="{y}">{line}</text>')
-        y += 16
-    svg("08-03-retention.svg", w, y + 10, "How long CloudWatch, X-Ray and CloudTrail keep records by default",
-        "Horizontal bars, in days. AWS X-Ray traces: 30 days. CloudWatch alarm history: 30 days. CloudTrail Event "
-        "history: 90 days of management events, per Region. CloudWatch metrics: 455 days, about 15 months, with "
-        "detail coarsening after 15 and 63 days. CloudWatch Logs, highlighted, with an arrow running off the chart: "
-        "kept until you set retention, because the default never expires. A note says that to keep account activity "
-        "longer than 90 days, you create a CloudTrail trail, which delivers events to an S3 bucket you keep.", body, style=STYLE)
-
-
 if __name__ == "__main__":
     three_questions()
-    alarm_timeline()
     trace_waterfall()
-    retention()
