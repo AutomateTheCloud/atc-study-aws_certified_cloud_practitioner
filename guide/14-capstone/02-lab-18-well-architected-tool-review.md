@@ -1,7 +1,7 @@
 ---
 type: lab
 id: clf-14-02
-title: "Lab 18: Record the bakery's review in the AWS Well-Architected Tool"
+title: "Optional lab 18: Record the bakery's review in the AWS Well-Architected Tool"
 tasks: ["1.2", "2.3", "4.2"]
 objectives: ["14.02a"]
 reader: "Adult studying alone, possibly new to IT, who has read lesson 02.05 and done the guardrails primer; about 50 minutes; a laptop or desktop"
@@ -39,13 +39,13 @@ sources:
   - "https://aws.amazon.com/well-architected-tool/faqs/"
 ---
 
-# Lab 18: Record the bakery's review in the AWS Well-Architected Tool
+# Optional lab 18: Record the bakery's review in the AWS Well-Architected Tool
 
 ## Before you start: your account, your responsibility
 
 This guide is provided as is, without warranty. We work hard to keep it correct and current, but AWS changes often, and its services, prices, and free offers may differ from what is written here. The labs run in your own AWS account. You are responsible for that account, for its security, and for any charges it incurs, including charges from resources you forget to delete. Automate the Cloud Inc. is not liable for any costs, losses, or security incidents that result from following, or failing to follow, this material. Technical guidance here is general information, not advice about your specific systems.
 
-**Who this is for:** you have read [02.05 The Well-Architected Framework](../02-why-the-cloud/05-the-well-architected-framework.md), and ideally done the pillar-by-pillar [capstone review](01-the-capstone-review.md) of the workload in the [module brief](00-brief.md). **Time:** about 50 minutes. This is a challenge lab: Part B gives you the owner's request and the rules, not the clicks.
+**Who this is for:** you have read [02.05 The Well-Architected Framework](../02-why-the-cloud/05-the-well-architected-framework.md), and ideally done the pillar-by-pillar [capstone review](01-the-capstone-review.md) of the bakery's workload. This lab is optional: the exam doesn't need it. **Time:** about 50 minutes. This is a challenge lab: Part B gives you the owner's request and the rules, not the clicks.
 
 **Goal:** you turn your review of the bakery's site into a record in the **AWS Well-Architected Tool**: four questions answered from evidence, the risks the Tool finds, and a saved milestone. Then you delete it. **End state:** your lab log holds your predictions, the Tool's results and one improvement you would make first; your account holds nothing from this lab.
 
@@ -147,7 +147,7 @@ Use your capstone review notes. If you haven't done the review, use this evidenc
 | Budgets, a billing alarm, Cost Explorer and cost anomaly detection | Primer page 05 |
 | A lab log and a cleanup checklist for every lab, with a next-day check | Primer page 07 |
 | Lifecycle rules on the exports and tax archive buckets; a stack whose deletion removes what it made | Labs 05 and 10 |
-| **Not in place:** central sign-in through IAM Identity Center; a secrets store; regular credential audits; a written emergency-access process; detailed cost and usage reports; cost categories or business metrics for cost; any lifecycle rule on the photo bucket; log retention on the order function, whose logs never expire | Primer page 03 explains the first; no lab set up the others; the [module brief](00-brief.md) lists the last two |
+| **Not in place:** central sign-in through IAM Identity Center; a secrets store; regular credential audits; a written emergency-access process; detailed cost and usage reports; cost categories or business metrics for cost; any lifecycle rule on the photo bucket; log retention on the order function, whose logs never expire | Primer page 03 explains the first; no lab set up the others; the inventory in [lesson 14.01](01-the-capstone-review.md) lists the last two |
 
 7. Choose **Start reviewing**, then **AWS Well-Architected Framework** from its list. Answer the four questions, and choose **Save and exit**. Then fill in your predictions.
 
@@ -235,6 +235,6 @@ You turned a review into evidence-backed answers, predicted the risks from the F
 
 ---
 
-"Lab 18: Record the bakery's review in the AWS Well-Architected Tool" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional lab 18: Record the bakery's review in the AWS Well-Architected Tool" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt
