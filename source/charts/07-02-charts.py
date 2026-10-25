@@ -149,75 +149,6 @@ def packet_path():
         "customer's high-numbered port (stateless).", body, style=STYLE)
 
 
-RULES = [("90", "All traffic", "203.0.113.0/24", "Deny"),
-         ("100", "HTTPS (TCP 443)", "0.0.0.0/0", "Allow"),
-         ("*", "All traffic", "0.0.0.0/0", "Deny")]
-PACKETS = [("A", "From 203.0.113.7", "HTTPS",
-            [("no", "Match: denied"), ("skip", "Not checked"), ("skip", "Not checked")], ("no", "Denied by rule 90")),
-           ("B", "From 192.0.2.44", "HTTPS",
-            [("n", "No match"), ("ok", "Match: allowed"), ("skip", "Not checked")], ("ok", "Allowed by rule 100")),
-           ("C", "From 192.0.2.44", "SSH (TCP 22)",
-            [("n", "No match"), ("n", "No match"), ("no", "Match: denied")], ("no", "Denied by rule *"))]
-
-
-def nacl_order():
-    """A network ACL's inbound rules, and which rule decides each of three packets."""
-    w = 680
-    body = [
-        '<text class="title" x="16" y="28">A network ACL stops at the first rule that matches</text>',
-        '<text class="sub" x="16" y="48">Inbound rules for the bakery\'s public subnets, tested against three packets</text>',
-    ]
-    cols = [(16, "Rule"), (50, "Traffic"), (160, "Source"), (276, "Action")]
-    top = 132
-    for x, h in cols:
-        body.append(f'<text class="zlab" x="{x}" y="{top - 8}">{h}</text>')
-    px = [328 + i * 112 for i in range(3)]
-    for x, (pid, src, kind, _, _) in zip(px, PACKETS):
-        body.append(f'<text class="cellt" x="{x}" y="{top - 56}">Packet {pid}</text>')
-        body.append(f'<text class="small" x="{x}" y="{top - 40}">{kind}</text>')
-        body.append(f'<text class="small" x="{x}" y="{top - 24}">{src.lower()}</text>')
-    rh = 46
-    for r, (num, traffic, source, action) in enumerate(RULES):
-        y = top + r * (rh + 6)
-        body.append(f'<line class="grid" x1="16" x2="664" y1="{y - 3}" y2="{y - 3}"/>')
-        body.append(f'<text class="mono" x="16" y="{y + 27}">{num}</text>')
-        body.append(f'<text class="small" x="50" y="{y + 27}">{traffic}</text>')
-        body.append(f'<text class="mono" x="160" y="{y + 27}">{source}</text>')
-        body.append(f'<text class="cellt" x="276" y="{y + 27}">{action}</text>')
-        for x, p in zip(px, PACKETS):
-            cls, txt = p[3][r]
-            rect(body, cls, x, y + 4, 104, rh - 8, 5)
-            body.append(f'<text class="{"cells" if cls == "skip" else "cellt"}" x="{x + 52}" y="{y + 27}" text-anchor="middle">{txt}</text>')
-    y = top + 3 * (rh + 6)
-    body.append(f'<line class="axis" x1="16" x2="664" y1="{y - 3}" y2="{y - 3}"/>')
-    body.append(f'<text class="rowl" x="16" y="{y + 24}">Result</text>')
-    for x, p in zip(px, PACKETS):
-        cls, txt = p[4]
-        rect(body, cls, x, y + 4, 104, 42, 5)
-        a, b = txt.split(" by ")
-        text_lines(body, x + 52, y + 21, [a, "by " + b], cls="cellt", anchor="middle", dy=16)
-    y += 76
-    for line in [
-        "Rules are checked from the lowest number up; the first rule that matches decides, and the rest are skipped.",
-        "Every network ACL ends with the * rule, which denies whatever no numbered rule matched. Rule 90 sits",
-        "below 100 on purpose: numbered 110, it would come after the allow rule and never block HTTPS from that range.",
-        "Addresses are from ranges reserved for examples. From the Amazon VPC User Guide (network ACLs), checked 2026-10-23.",
-    ]:
-        body.append(f'<text class="note" x="16" y="{y}">{line}</text>')
-        y += 16
-    svg("07-02-nacl-order.svg", w, y + 14,
-        "A network ACL's rules checked in order against three packets",
-        "A table of three inbound rules for the bakery's public subnets, in order: rule 90 denies all traffic from "
-        "203.0.113.0/24; rule 100 allows HTTPS (TCP 443) from 0.0.0.0/0; rule * denies all traffic from "
-        "0.0.0.0/0. Three packets are tested. Packet A, HTTPS from 203.0.113.7: rule 90 matches and denies it; "
-        "rules 100 and * are not checked; result, denied by rule 90. Packet B, HTTPS from 192.0.2.44: rule 90 "
-        "does not match; rule 100 matches and allows it; rule * is not checked; result, allowed by rule 100. "
-        "Packet C, SSH (TCP 22) from 192.0.2.44: rules 90 and 100 do not match; rule * matches and denies it; "
-        "result, denied by rule *. Notes: rules are checked from the lowest number up and the first match decides; "
-        "every network ACL ends with the * rule; rule 90 sits below 100 on purpose, because numbered 110 it would "
-        "come after the allow rule and never block HTTPS from that range.", body, style=STYLE)
-
-
 ROWS = ["Guards", "Rules", "How rules are checked", "Replies", "When you create one", "Its usual job", "Cost"]
 COLS = [
     ("Security group",
@@ -287,5 +218,4 @@ def sg_vs_nacl():
 
 if __name__ == "__main__":
     packet_path()
-    nacl_order()
     sg_vs_nacl()

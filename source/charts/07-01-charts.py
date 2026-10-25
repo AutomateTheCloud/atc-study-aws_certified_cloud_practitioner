@@ -11,11 +11,10 @@ subnet sits in one Availability Zone; a subnet is public when its route table
 has a route to an internet gateway, and an instance also needs a public IPv4
 address (or IPv6) to use it; a public NAT gateway sits in a public subnet with an
 Elastic IP address, and connections through it can only start inside the VPC;
-an internet gateway has no charge. Prices are US East (N. Virginia) rows of the
-AWS Price List offer files AmazonEC2 and AmazonVPC, retrieved 2026-10-24
-(research repo sources/raw/pricing/compute-networking-us-east-1-summary.tsv):
-NAT gateway $0.045 per hour and $0.045 per GB processed; public IPv4 address
-$0.005 per hour, in use or idle. Monthly figures use a month of 730 hours.
+an internet gateway has no charge. The price is the US East (N. Virginia) row of the
+AWS Price List offer file AmazonVPC, retrieved 2026-10-24 (research repo
+sources/raw/pricing/compute-networking-us-east-1-summary.tsv): public IPv4
+address $0.005 per hour, in use or idle.
 The bakery and its addresses are made up for teaching. Our own design: no AWS
 logos, icons, trade dress or AWS diagrams.
 """
@@ -25,7 +24,7 @@ import sys
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from chartkit import make_style, right_rounded, svg, swatch, text_lines, wrap  # noqa: E402
+from chartkit import make_style, svg, text_lines, wrap  # noqa: E402
 
 # Public (reachable from the internet) = slot 1 (blue) tint; private = neutral.
 # The one route that makes a subnet public carries the same tint. Words carry
@@ -210,156 +209,6 @@ def public_or_not():
         "reach out it would need a route to a NAT gateway.", body, style=STYLE)
 
 
-def igw_vs_nat():
-    """Two panels: who can start a connection through an internet gateway and through a NAT gateway."""
-    w = 680
-    body = [
-        '<text class="title" x="16" y="28">Internet gateway or NAT gateway: who can start the conversation?</text>',
-        '<text class="sub" x="16" y="48">Replies always come back the way the request went; the difference is who may begin</text>',
-    ]
-    pw = 316
-    px = [16, 16 + pw + 16]
-    top = 66
-    for x, head in zip(px, ["Internet gateway", "NAT gateway"]):
-        rect(body, "region", x, top, pw, 330, 8)
-        body.append(f'<text class="head" x="{x + 12}" y="{top + 22}">{head}</text>')
-    # Left panel: internet, gateway, public subnet with server.
-    x = px[0]
-    bx, bw = x + 78, 160
-    rect(body, "plain", bx, top + 40, bw, 30, 15)
-    body.append(f'<text class="cellt" x="{bx + bw / 2}" y="{top + 60}" text-anchor="middle">The internet</text>')
-    rect(body, "pub", bx, top + 110, bw, 30)
-    body.append(f'<text class="cellt" x="{bx + bw / 2}" y="{top + 130}" text-anchor="middle">Internet gateway</text>')
-    rect(body, "pub", x + 30, top + 180, pw - 60, 70)
-    body.append(f'<text class="cellt" x="{x + 42}" y="{top + 199}">Public subnet</text>')
-    body.append(f'<text class="small" x="{x + 42}" y="{top + 218}">Web server with a public</text>')
-    body.append(f'<text class="small" x="{x + 42}" y="{top + 234}">IPv4 address</text>')
-    cx = bx + bw / 2
-    for y1, y2 in [(top + 71, top + 109), (top + 141, top + 179)]:
-        arrow(body, cx - 8, y1, cx - 8, y2)
-        arrow(body, cx + 8, y2, cx + 8, y1)
-    body.append(f'<text class="arrlab" x="{cx + 20}" y="{top + 94}">either side can start</text>')
-    rows_l = ["Who can start: the internet or your server", "Lives: attached to the VPC",
-              "Cost: no charge for the gateway itself"]
-    text_lines(body, x + 14, top + 280, rows_l, cls="small", dy=17)
-    # Right panel: internet, gateway, NAT gateway in a public subnet, server in a private subnet.
-    x = px[1]
-    bx = x + 78
-    rect(body, "plain", bx, top + 40, bw, 30, 15)
-    body.append(f'<text class="cellt" x="{bx + bw / 2}" y="{top + 60}" text-anchor="middle">The internet</text>')
-    rect(body, "pub", bx, top + 92, bw, 26)
-    body.append(f'<text class="cellt" x="{bx + bw / 2}" y="{top + 110}" text-anchor="middle">Internet gateway</text>')
-    rect(body, "pub", x + 30, top + 140, pw - 60, 44)
-    body.append(f'<text class="cellt" x="{x + 42}" y="{top + 158}">Public subnet</text>')
-    body.append(f'<text class="small" x="{x + 42}" y="{top + 176}">NAT gateway (with an Elastic IP)</text>')
-    rect(body, "priv", x + 30, top + 206, pw - 60, 44)
-    body.append(f'<text class="cellt" x="{x + 42}" y="{top + 224}">Private subnet</text>')
-    body.append(f'<text class="small" x="{x + 42}" y="{top + 242}">Server with no public address</text>')
-    cx = bx + bw / 2
-    for y1, y2 in [(top + 205, top + 185), (top + 139, top + 119), (top + 91, top + 71)]:
-        arrow(body, cx + 8, y1, cx + 8, y2)
-    body.append(f'<text class="arrlab" x="{cx + 20}" y="{top + 200}">only the server starts</text>')
-    # A blocked attempt from the internet.
-    arrow(body, cx - 40, top + 71, cx - 40, top + 132, dashed=True)
-    body.append(f'<line class="cross" x1="{cx - 47}" y1="{top + 128}" x2="{cx - 33}" y2="{top + 142}"/>')
-    body.append(f'<line class="cross" x1="{cx - 33}" y1="{top + 128}" x2="{cx - 47}" y2="{top + 142}"/>')
-    body.append(f'<text class="arrlab" x="{x + 12}" y="{top + 82}">can\'t start</text>')
-    body.append(f'<text class="arrlab" x="{x + 12}" y="{top + 96}">a connection in</text>')
-    rows_r = ["Who can start: only your private server", "Lives: in a public subnet, often one per AZ",
-              "Cost: $0.045 an hour + $0.045 per GB"]
-    text_lines(body, x + 14, top + 280, rows_r, cls="small", dy=17)
-    y = top + 330 + 22
-    body.append(f'<text class="note" x="16" y="{y}">From the Amazon VPC User Guide (internet gateways; NAT gateways), checked 2026-10-23. NAT gateway prices:</text>')
-    body.append(f'<text class="note" x="16" y="{y + 16}">AWS Price List, US East (N. Virginia), retrieved 2026-10-24. The Elastic IP and data transfer are charged on top.</text>')
-    svg("07-01-igw-vs-nat.svg", w, y + 30,
-        "Internet gateway compared with NAT gateway",
-        "Two panels. Left, internet gateway: the internet, then an internet gateway, then a public subnet holding "
-        "a web server with a public IPv4 address. Arrows run both ways between each pair, labeled either side can "
-        "start. Notes: who can start, the internet or your server; it is attached to the VPC; there is no charge "
-        "for the gateway itself. Right, NAT gateway: the internet, an internet gateway, a public subnet holding a "
-        "NAT gateway with an Elastic IP address, and below it a private subnet holding a server with no public "
-        "address. Arrows run upward only, from the server to the NAT gateway, to the internet gateway, to the "
-        "internet, labeled only the server starts. A dashed arrow from the internet is crossed out before it "
-        "reaches the NAT gateway, labeled can't start a connection in. Notes: who can start, only your private "
-        "server; it lives in a public subnet, often one per AZ; cost $0.045 an hour plus $0.045 per GB processed, US "
-        "East (N. Virginia) as of 2026-10-24, with the Elastic IP and data transfer charged on top.",
-        body, style=STYLE)
-
-
-HOURS = 730            # a month of 730 hours, as the guide uses elsewhere
-NAT_HOUR = 0.045       # USD per NAT gateway hour, us-east-1, retrieved 2026-10-24
-NAT_GB = 0.045         # USD per GB processed
-IPV4_HOUR = 0.005      # USD per public IPv4 address hour (an Elastic IP counts)
-SCENARIOS = [
-    ("One NAT gateway, 10 GB processed", 1, 10),
-    ("One NAT gateway, 200 GB processed", 1, 200),
-    ("Two NAT gateways (one per AZ), 200 GB in total", 2, 200),
-    ("Gateway endpoint instead, for 200 GB to S3", 0, 0),
-]
-
-
-def nat_cost():
-    """Stacked horizontal bars: a month of NAT gateway hours, its Elastic IP, and data processed."""
-    w = 680
-    body = [
-        '<text class="title" x="16" y="28">A NAT gateway bills every hour, even when it carries almost nothing</text>',
-        '<text class="sub" x="16" y="48">US dollars for a month of 730 hours, US East (N. Virginia) prices as of 2026-10-24</text>',
-    ]
-    swatch(body, 16, 76, "s1", "NAT gateway hours")
-    swatch(body, 176, 76, "s3c", "Its Elastic IP address")
-    swatch(body, 356, 76, "s2", "Data processed")
-    left, pw = 220, 360
-    vmax = 90.0
-    top = 98
-    # Gridlines.
-    for v in range(0, 91, 30):
-        x = left + pw * v / vmax
-        body.append(f'<line class="{"axis" if v == 0 else "grid"}" x1="{x:.1f}" x2="{x:.1f}" y1="{top}" y2="{top + 4 * 56 - 6}"/>')
-        body.append(f'<text class="tick" x="{x:.1f}" y="{top + 4 * 56 + 10}" text-anchor="middle">${v}</text>')
-    rows = []
-    for i, (label, n, gb) in enumerate(SCENARIOS):
-        parts = [n * HOURS * NAT_HOUR, n * HOURS * IPV4_HOUR, (gb * NAT_GB if n else 0.0)]
-        total = sum(parts)
-        rows.append((label, parts, total))
-        y = top + i * 56 + 8
-        text_lines(body, 16, y + 13, wrap(label, 28), cls="lab", dy=16)
-        x = left
-        segs = [(p, c) for p, c in zip(parts, ["s1", "s3c", "s2"]) if p > 0]
-        for j, (p, cls) in enumerate(segs):
-            sw = pw * p / vmax
-            last = j == len(segs) - 1
-            gapw = 0 if last else 2
-            if last:
-                body.append(f'<path class="{cls}" d="{right_rounded(x, y, sw, 24)}"/>')
-            else:
-                body.append(f'<rect class="{cls}" x="{x:.1f}" y="{y}" width="{max(sw - gapw, 1):.1f}" height="24"/>')
-            x += sw
-        txt = f"${total:,.2f}" if total else "$0: no charge"
-        body.append(f'<text class="val" x="{x + 8:.1f}" y="{y + 17}">{txt}</text>')
-    y = top + 4 * 56 + 34
-    for line in [
-        "NAT gateway: $0.045 an hour and $0.045 per GB processed. Public IPv4 address, including an Elastic IP: $0.005 an hour.",
-        "Data transfer to the internet is charged on top of all bars (lesson 07.04). A partial hour bills as a full hour.",
-        "Source: AWS Price List offer files AmazonEC2 and AmazonVPC, US East (N. Virginia), retrieved 2026-10-24.",
-    ]:
-        body.append(f'<text class="note" x="16" y="{y}">{line}</text>')
-        y += 16
-    svg("07-01-nat-cost.svg", w, y + 14,
-        "Monthly cost of NAT gateways compared with a gateway endpoint",
-        "Horizontal stacked bars of US dollars for a month of 730 hours, US East (N. Virginia) prices as of 2026-10-24. "
-        + " ".join(
-            f"{label}: ${total:,.2f}" + (
-                f" (NAT gateway hours ${p[0]:,.2f}, Elastic IP ${p[1]:,.2f}, data processed ${p[2]:,.2f})." if total
-                else ", no charge.")
-            for label, p, total in rows)
-        + " The hourly part is most of the bill at low traffic, and doubles with a second gateway. Data transfer "
-        "to the internet is charged on top.", body, style=STYLE)
-    return rows
-
-
 if __name__ == "__main__":
     big_picture()
     public_or_not()
-    igw_vs_nat()
-    for label, p, total in nat_cost():
-        print(f"{label}: {p} = {total:.2f}")

@@ -1,7 +1,7 @@
 ---
 type: lab
 id: clf-07-05
-title: "Lab 09: Build a small network with a public and a private subnet, then take it apart"
+title: "Optional lab 09: Build a small network with public and private subnets, then take it apart"
 tasks: ["3.5", "2.1"]
 objectives: ["07.01a", "07.02a"]
 reader: "Adult studying alone, possibly new to IT, who has done Lab 01 and read lessons 07.01 and 07.02; about 50 minutes, plus 5 the next day; a laptop or desktop"
@@ -33,11 +33,13 @@ sources:
   - "https://aws.amazon.com/vpc/pricing/"
 ---
 
-# Lab 09: Build a small network with a public and a private subnet, then take it apart
+# Optional lab 09: Build a small network with a public and a private subnet, then take it apart
 
 ## Before you start: your account, your responsibility
 
 This guide is provided as is, without warranty. We work hard to keep it correct and current, but AWS changes often, and its services, prices, and free offers may differ from what is written here. The labs run in your own AWS account. You are responsible for that account, for its security, and for any charges it incurs, including charges from resources you forget to delete. Automate the Cloud Inc. is not liable for any costs, losses, or security incidents that result from following, or failing to follow, this material. Technical guidance here is general information, not advice about your specific systems.
+
+**This lab is optional.** The exam asks what each part of a network is for, not how to build one; do it if you want to see a VPC for yourself.
 
 **Who this is for:** you have done [Lab 01](../02-why-the-cloud/06-lab-01-first-resource.md) and read [07.01 Your own network](01-your-own-network.md) and [07.02 Filtering traffic](02-filtering-traffic.md). **Time:** about 50 minutes, plus 5 minutes the next day.
 
@@ -201,7 +203,7 @@ One route decided which subnet is public. A security group let the database hear
 >
 > </details>
 
-**Next:** [Simulation S8](06-sim-packet-journey.md): follow packets through a network like this one and find the rule that blocks them.
+**Next:** the [Module 07 mastery check](07-check.md).
 
 ## Where to check the current details
 
@@ -210,6 +212,6 @@ One route decided which subnet is public. A security group let the database hear
 
 ---
 
-"Lab 09: Build a small network with a public and a private subnet, then take it apart" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional lab 09: Build a small network with public and private subnets, then take it apart" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt
