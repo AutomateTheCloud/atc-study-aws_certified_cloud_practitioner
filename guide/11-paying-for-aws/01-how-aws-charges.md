@@ -96,7 +96,7 @@ Lesson 02.02 called this a variable expense. The four meters show what varies:
 
 Prices are from AWS's published price lists, retrieved 2026-10-24 (data transfer published 2026-09-16); see the [EC2 On-Demand](https://aws.amazon.com/ec2/pricing/on-demand/) and [S3](https://aws.amazon.com/s3/pricing/) pricing pages for current ones.
 
-Three details make the arithmetic honest:
+Three details change the arithmetic:
 
 - **The clock is fine-grained.** On-Demand Linux instances bill by the second with a 60-second minimum; RDS bills by the second with a 10-minute minimum (lessons 06.01 and 05.05).
 - **Some rates fall with volume.** S3 Standard costs less per GB after the first 50 TB a month, and data out to the internet gets cheaper after 10 TB. This is economies of scale (task [1.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.4)) passed on per customer.
@@ -146,7 +146,7 @@ Time-based charges are why every lab in this guide ends with "find, delete, conf
 **Storage** is charged per GB per month, prorated for the time the data was kept. Two habits from Module 05 change the total:
 
 - **EBS bills the size you set,** not the data you wrote. An 8 GB disk holding 1 GB bills for 8.
-- **Colder S3 classes are cheaper per GB** but add retrieval fees, minimum storage durations (30, 90 or 180 days) and a minimum billable object size of 128 KB (lesson 05.03). Moving data to the wrong class can cost more, not less.
+- **Colder S3 classes are cheaper per GB** but add retrieval fees, minimum storage durations (30, 90 or 180 days) and a minimum billable object size of 128 KB (lesson 05.03). Moving data to the wrong class can raise the bill instead of lowering it.
 
 **Requests** are charged per call, so they follow customers exactly. In US East (N. Virginia), as of 2026-10-24, S3 Standard charges $0.0004 per 1,000 GET requests and $0.005 per 1,000 PUT, COPY, POST or LIST requests ([Amazon S3 pricing](https://aws.amazon.com/s3/pricing/)). Lambda charges $0.20 per million requests plus a rate per GB-second of run time ([AWS Lambda pricing](https://aws.amazon.com/lambda/pricing/)).
 
@@ -192,7 +192,7 @@ The belief comes from the bill itself: "out to the internet" is usually the bigg
 
 <details><summary>Model answer</summary>
 
-**About $6.00:** 300 GB × $0.01 on each side = 300 × $0.02. It would be free only if both were in the same AZ, which would give up the high availability that two AZs buy (lesson 03.01). Most teams keep the two AZs and pay the small charge: a trade-off, not a mistake.
+**About $6.00:** 300 GB × $0.01 on each side = 300 × $0.02. It would be free only if both were in the same AZ, which would give up the high availability that two AZs buy (lesson 03.01). Most teams keep the two AZs and pay the small charge. That's a trade-off they chose, and it isn't a mistake.
 
 </details>
 
@@ -235,7 +235,7 @@ That's objective 11.01a. Cutting the steady part of the bill with commitments is
 
 <details><summary>Model answer</summary>
 
-**About $110 to $115.** The customer-driven lines (servers, data out, requests, cross-AZ traffic) fall back towards November's $73.48. The NAT gateway's $32.85 of hours stays, plus a few dollars for the GB it processes, and the photo bucket keeps its extra 60 GB. Time-based charges don't fall when customers leave; that's why the expert flagged it.
+**About $110 to $115.** The customer-driven lines (servers, data out, requests, cross-AZ traffic) fall back toward November's $73.48. The NAT gateway's $32.85 of hours stays, plus a few dollars for the GB it processes, and the photo bucket keeps its extra 60 GB. Time-based charges don't fall when customers leave; that's why the expert flagged it.
 
 </details>
 
@@ -280,7 +280,7 @@ A Free plan account runs on **two clocks**: the calendar, which stops it six mon
 
 ## In real work: explain the bill before you cut it
 
-Teams that manage cloud costs well read the bill as data about the business. The Well-Architected Framework names the habits:
+Teams that manage cloud costs well read the bill as data about the business, and the Well-Architected Framework names their habits:
 
 - The cost optimization design principle "[Analyze and attribute expenditure](https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-dp.html)": know which workload, and which team, each charge belongs to. Lesson 11.04 and Lab 16 do this with cost allocation tags.
 - [COST05-BP02 Analyze all components of the workload](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_select_service_analyze_all.html): every component bills, including the ones nobody thinks about, such as a NAT gateway.

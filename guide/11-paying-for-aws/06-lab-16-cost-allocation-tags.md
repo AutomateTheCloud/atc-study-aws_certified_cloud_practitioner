@@ -107,7 +107,7 @@ A tag key appears on the billing page only after it has been on a resource. Earl
 
 ### The next day: find the tags in Cost Explorer
 
-What you should expect to see is the pattern in this chart, drawn for the bakery.
+Expect to see the pattern in this chart, which is drawn for the bakery.
 
 ![A stacked column chart of the bakery's daily cost over ten days. Days 1 to 5 are all gray, cost with no tag value. The key is activated on day 5; from day 6 each column splits into about $17 that carries a team tag value and about $3.50 with none.](../../images/11-06-not-retroactive.svg)
 
