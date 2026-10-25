@@ -179,7 +179,7 @@ flowchart TD
 
 Rightsize from data you trust: enough hours, memory included, and the busy season covered or handled by scaling out. Schedule what isn't needed all the time, upsize what struggles, and commit to discounts only after sizing. For licenses, follow the tree: no license, no decision; no licenses owned, license-included; mobility rights, BYOL on shared hardware or RDS; hardware-bound licenses, a Dedicated Host you can fill.
 
-**Next:** finish the business case in [13.04](04-the-business-case.md) with your saving and license choices, then take the Module 13 mastery check.
+**Next:** finish the business case in [13.04](04-the-business-case.md) with your saving and license choices, then take [the Module 13 mastery check](07-check.md).
 
 ---
 

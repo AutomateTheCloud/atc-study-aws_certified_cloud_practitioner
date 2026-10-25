@@ -223,7 +223,7 @@ You turned "tell me when orders fail" into three parts that each do one job: a m
 >
 > </details>
 
-**Next:** the mastery check for this module follows. Module 09, "Protecting, governing and proving compliance", picks up CloudTrail where the Check above left it.
+**Next:** [the mastery check for this module](07-check.md) follows. Module 09, "Protecting, governing and proving compliance", picks up CloudTrail where the Check above left it.
 
 ## Where to check the current details
 

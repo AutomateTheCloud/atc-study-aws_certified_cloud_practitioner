@@ -168,7 +168,7 @@ flowchart TD
 **Long description.** A flowchart of four questions, top to bottom. First: does anything in production depend on fast technical help? No leads to Basic, $0. Yes leads to: designated domain specialist engineers, or critical workload reviews? Yes leads to Unified Operations, from $50,000 a month. No leads to: a designated TAM or a 15-minute response? Yes leads to Enterprise, from $5,000. No leads to Business Support+, from $29, only on the accounts that need it.
 
 
-**Next:** the Module 12 mastery check. First, retry the practice at the end of [12.01](01-support-plans.md) without looking back.
+**Next:** [the Module 12 mastery check](07-check.md). First, retry the practice at the end of [12.01](01-support-plans.md) without looking back.
 
 ---
 

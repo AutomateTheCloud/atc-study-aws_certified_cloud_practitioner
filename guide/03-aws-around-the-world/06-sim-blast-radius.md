@@ -166,7 +166,7 @@ German customers' backups go to a second EU Region, such as Europe (Ireland); US
 
 You sorted failures by how far they reach, and found two, a mistake and an attack, that weren't on the ladder at all. You then matched three businesses to the cheapest of AWS's four strategies that fits their RTO, RPO and budget. Two rules carry over: high availability doesn't replace disaster recovery, and replication doesn't replace backups.
 
-**Next:** the Module 03 mastery check. Before you take it, retry the practice questions at the end of [03.03](03-surviving-failure.md) and [03.04](04-the-edge.md) without looking back.
+**Next:** [the Module 03 mastery check](07-check.md). Before you take it, retry the practice questions at the end of [03.03](03-surviving-failure.md) and [03.04](04-the-edge.md) without looking back.
 
 ---
 

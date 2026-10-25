@@ -170,7 +170,7 @@ To give console access to accounts, Identity Center works with AWS Organizations
 
 A request is allowed only when every check passes: no explicit deny, inside any SCP and boundary, an allow somewhere, and both halves across accounts. When something is denied, find which check said no, as you did in Lab 04. When you design access, prefer temporary credentials through roles and Identity Center to long-term keys.
 
-**Next:** the Module 04 mastery check. Before you take it, retry the practice questions at the end of [04.04](04-policies-and-least-privilege.md) and [04.05](05-credentials-and-federation.md) without looking back.
+**Next:** [the Module 04 mastery check](10-check.md). Before you take it, retry the practice questions at the end of [04.04](04-policies-and-least-privilege.md) and [04.05](05-credentials-and-federation.md) without looking back.
 
 ---
 

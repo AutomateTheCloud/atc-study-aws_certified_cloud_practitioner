@@ -159,7 +159,7 @@ Scale ahead of the rush. **Predictive scaling** learns from past traffic, foreca
 
 The bakery ran about half the instance-hours of a fixed fleet, kept a server in each AZ through the night, and survived a zone failure at the peak with a few slow minutes instead of an outage. That is **elasticity** plus **high availability**, with the load balancer and the Auto Scaling group each doing one job. Compare [Simulation S1](../02-why-the-cloud/07-sim-demand-curve.md), where scaling was by the month and by hand.
 
-**Next:** the Module 06 mastery check. Before you take it, retry the practice questions at the end of [06.02](02-auto-scaling-and-load-balancers.md) and [06.03](03-containers-and-serverless.md) without looking back.
+**Next:** [the Module 06 mastery check](08-check.md). Before you take it, retry the practice questions at the end of [06.02](02-auto-scaling-and-load-balancers.md) and [06.03](03-containers-and-serverless.md) without looking back.
 
 ---
 

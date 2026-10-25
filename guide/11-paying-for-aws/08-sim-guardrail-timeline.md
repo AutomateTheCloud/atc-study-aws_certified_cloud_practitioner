@@ -174,7 +174,7 @@ The bakery's production account runs the live site. Write four lines: what alert
 
 Every alert arrives after the money is spent, by hours or by a day. Alerts tell a person; only a person deleting resources, or an action set up in advance for a known risk, stops anything, and a budget action stops only what it names or blocks only what comes next. On the Free plan the backstop is the account closing, which is a stop you don't want.
 
-**Next:** the Module 11 mastery check. First, retry the practice questions at the end of [11.03](03-estimate-watch-analyze.md) and [11.04](04-many-accounts-one-bill.md) without looking back.
+**Next:** [the Module 11 mastery check](09-check.md). First, retry the practice questions at the end of [11.03](03-estimate-watch-analyze.md) and [11.04](04-many-accounts-one-bill.md) without looking back.
 
 ## Where to check the current details
 

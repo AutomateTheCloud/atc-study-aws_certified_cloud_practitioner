@@ -438,7 +438,7 @@ Who: people using a computer (here, students rather than staff). How much: one a
 
    </details>
 
-**Next:** test the whole module with [Simulation S12: input → output matcher](06-sim-input-output-matcher.md), then the module's mastery check.
+**Next:** test the whole module with [Simulation S12: input → output matcher](06-sim-input-output-matcher.md), then [the module's mastery check](07-check.md).
 
 ## Where to check the current details
 

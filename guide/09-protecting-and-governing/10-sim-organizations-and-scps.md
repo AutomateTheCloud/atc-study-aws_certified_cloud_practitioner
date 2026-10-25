@@ -167,7 +167,7 @@ The chain stores far less; 30 TB each just makes the effect visible. S3 Standard
 
 An organization groups accounts into OUs. SCPs set the ceiling at each level, and an action must be allowed at every level, so removing FullAWSAccess without a replacement blocks everything below. The management account is outside every ceiling, so keep it nearly empty. Control Tower sets up a governed organization for you. Consolidated billing gives one bill, combined volume tiers and shared commitment discounts, at no extra charge.
 
-**Next:** the module's mastery check. First, retry the practice questions at the end of [09.05](05-compliance-and-governance.md) and [09.06](06-a-defense-map.md) without looking back.
+**Next:** [the module's mastery check](11-check.md). First, retry the practice questions at the end of [09.05](05-compliance-and-governance.md) and [09.06](06-a-defense-map.md) without looking back.
 
 ---
 

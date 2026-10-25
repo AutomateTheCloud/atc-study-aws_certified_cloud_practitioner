@@ -128,7 +128,7 @@ Copy the database backups to a second US Region, such as US East (Ohio), on a sc
 
 Each extra copy has one job. A **Multi-AZ standby** keeps the database running through an AZ or server failure, automatically. A **read replica** spreads reading work, and only becomes a recovery copy if someone promotes it. **Backups** take you back to before a mistake, but only as far back as you keep them. A copy in another Region is a separate decision, driven by the recovery time the business needs.
 
-**Next:** the Module 05 mastery check. Before you take it, retry the practice questions at the end of [05.05](05-managed-or-self-managed-databases.md) and [05.06](06-choosing-a-database.md) without looking back.
+**Next:** [the Module 05 mastery check](11-check.md). Before you take it, retry the practice questions at the end of [05.05](05-managed-or-self-managed-databases.md) and [05.06](06-choosing-a-database.md) without looking back.
 
 ---
 

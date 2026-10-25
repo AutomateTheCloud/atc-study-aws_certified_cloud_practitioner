@@ -155,7 +155,7 @@ No. Amazon Inspector scans EC2 instances, container images and Lambda functions 
 
 To predict whether traffic passes, walk the checks in order; the first "no" decides. A network ACL runs numbered rules, both ways, on every packet, so replies need their own rules and a deny must come before any matching allow. A security group can only allow, remembers what it let through, and still checks connections its own server starts. A subnet reaches the internet only through a route.
 
-**Next:** the Module 07 mastery check. First, retry the practice questions at the end of [07.01](01-your-own-network.md) and [07.02](02-filtering-traffic.md) without looking back.
+**Next:** [the Module 07 mastery check](07-check.md). First, retry the practice questions at the end of [07.01](01-your-own-network.md) and [07.02](02-filtering-traffic.md) without looking back.
 
 ---
 

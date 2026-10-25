@@ -155,7 +155,7 @@ Option C relies on **elasticity**: capacity follows demand up and down. Idle cap
 
 Paying only for what you use beat owning in this comparison because the bakery's demand swings, and only when the bakery scaled down after the peak. With flat demand, or with the cloud left at peak size, the advantage disappeared. When someone says "the cloud is cheaper", ask two questions: how much does the demand move, and will we actually give capacity back?
 
-**Next:** the Module 02 mastery check. Before you take it, retry the practice questions at the end of [02.04](04-what-a-data-center-really-costs.md) and [02.05](05-the-well-architected-framework.md) without looking back.
+**Next:** [the Module 02 mastery check](08-check.md). Before you take it, retry the practice questions at the end of [02.04](04-what-a-data-center-really-costs.md) and [02.05](05-the-well-architected-framework.md) without looking back.
 
 ---
 

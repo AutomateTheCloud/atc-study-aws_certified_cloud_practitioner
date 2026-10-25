@@ -166,7 +166,7 @@ Receipts: no. Textract already does it, so training a model would be building wh
 
 Name what goes in and what must come out, then pick the ready-made service that turns one into the other, and say which near-miss you're ruling out. Pairs work together as often as they compete: Athena under Quick Sight, Lex inside Connect Customer. Build with SageMaker AI only when nothing ready-made fits. Check status before you plan: a service can be on the exam and closed to new customers.
 
-**Next:** the Module 10 mastery check. First, rebuild the grid from Decision 1 from memory, without looking back.
+**Next:** [the Module 10 mastery check](07-check.md). First, rebuild the grid from Decision 1 from memory, without looking back.
 
 ---
 
