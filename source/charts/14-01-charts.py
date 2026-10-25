@@ -33,7 +33,7 @@ R = {"t3": 0.0104, "t4g_ri": 0.0053, "ipv4": 0.005, "gp3": 0.08, "alb": 0.0225, 
      "ddb_w": 0.625 / 1e6, "ddb_r": 0.125 / 1e6, "pitr": 0.20}
 
 # Each bill line is rounded to the cent before it is added, as a bill shows it, so the totals
-# in the charts and in the lesson's table add up from the parts.
+# in the chart and in the lesson add up from the parts.
 c = lambda v: round(v, 2)
 SERVER = c(R["t3"] * H) + c(R["ipv4"] * H) + c(8 * R["gp3"])      # one web server: instance, address, 8 GiB disk
 STORAGE = c(50 * R["std"] + 1 * R["std"] + 2 * R["ia"] + 1 * R["gda"]  # photos, exports, archive
@@ -127,32 +127,5 @@ def web_tier_options():
          pick=2)
 
 
-def bill_before_after():
-    after = [("s1", "web servers", 2 * SERVER), ("s2", "load balancer", LB), ("s3", "storage, requests, backups", STORAGE + NEW_DATA)]
-    rows = [
-        ("As built", "one server, no load balancer", [("s1", "web server", SERVER), ("s3", "storage, requests, backups", STORAGE)]),
-        ("With the fixes", "all eight in the write-up", after),
-        ("Plus Business Support+", "its $29 monthly minimum", after + [("sup", "Business Support+", SUPPORT)]),
-        ("Later: Graviton, 1-year RIs", "after a month of data", [("s1", "web servers", 2 * SERVER - LATER_SAVING)] + after[1:]
-         + [("sup", "Business Support+", SUPPORT)]),
-    ]
-    bars("14-01-bill-before-after.svg",
-         "The bakery's monthly bill before and after the review",
-         "US East (N. Virginia), price lists retrieved 2026-10-24; usage made up for teaching",
-         rows, [("s1", "Web servers"), ("s2", "Load balancer"), ("s3", "Storage, requests, backups"), ("sup", "Support plan")],
-         80, 20,
-         ["Lambda, CloudWatch, SNS email and data out stay inside their free allowances; VPC parts are free.",
-          "Later: two t4g.micro on 1-year Standard RIs, No Upfront, instead of two t3.micro On-Demand."],
-         "The bakery's monthly AWS bill as built, with the review's fixes, with Business Support+, and after later savings",
-         f"Stacked horizontal bars, dollars per month, US East (N. Virginia), price lists retrieved 2026-10-24, usage made up. "
-         f"As built: web server ${SERVER:.2f} plus storage, requests and backups ${STORAGE:.2f}, ${SERVER + STORAGE:.2f}. "
-         f"With the fixes: web servers ${2 * SERVER:.2f}, load balancer ${LB:.2f}, storage, requests and backups "
-         f"${STORAGE + NEW_DATA:.2f}, ${2 * SERVER + LB + STORAGE + NEW_DATA:.2f}. Plus Business Support+ at its $29 minimum: "
-         f"${2 * SERVER + LB + STORAGE + NEW_DATA + SUPPORT:.2f}. Later, with two t4g.micro instances on 1-year Reserved "
-         f"Instances: web servers ${2 * SERVER - LATER_SAVING:.2f}, total "
-         f"${2 * SERVER + LB + STORAGE + NEW_DATA + SUPPORT - LATER_SAVING:.2f}.")
-
-
 if __name__ == "__main__":
     web_tier_options()
-    bill_before_after()

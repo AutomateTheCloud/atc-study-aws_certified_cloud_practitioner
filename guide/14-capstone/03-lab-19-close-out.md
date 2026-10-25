@@ -21,7 +21,6 @@ facts_checked: 2026-10-24
 sources:
   - "https://docs.aws.amazon.com/tag-editor/latest/userguide/find-resources-to-tag.html"
   - "https://docs.aws.amazon.com/ARG/latest/userguide/supported-resources.html"
-  - "https://docs.aws.amazon.com/resource-explorer/latest/userguide/welcome.html"
   - "https://docs.aws.amazon.com/resource-explorer/latest/userguide/using-search-query-syntax.html"
   - "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/getting-viewing-bill.html"
   - "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/checklistforunwantedcharges.html"
@@ -36,72 +35,44 @@ sources:
 
 This guide is provided as is, without warranty. We work hard to keep it correct and current, but AWS changes often, and its services, prices, and free offers may differ from what is written here. The labs run in your own AWS account. You are responsible for that account, for its security, and for any charges it incurs, including charges from resources you forget to delete. Automate the Cloud Inc. is not liable for any costs, losses, or security incidents that result from following, or failing to follow, this material. Technical guidance here is general information, not advice about your specific systems.
 
-**Who this is for:** you have finished the course's labs, or as many as you plan to do. **Time:** about 45 minutes, plus 10 minutes the next day.
+**Who this is for:** you have finished the labs you plan to do. **Time:** about 45 minutes, plus 10 minutes the next day.
 
-**Goal:** every lab ended with its own cleanup. This **close-out** is the final sweep of the whole account: you prove nothing from the course is left in any Region, read the bill, decide what happens to your guardrails, and check again the next day. **End state:** your lab log shows an empty sweep and a credit balance that stopped falling. Then you keep the account, let the Free plan end, or close it.
-
-```mermaid
-flowchart LR
-  accTitle: The close-out in five parts over two days
-  accDescr: On day 1, part A sweeps every Region for the guide=clf tag in Tag Editor; part B checks, service by service, the kinds of resources Tag Editor can't find; part C reads the bill by service and Region and writes down the credit balance; part D reviews the guardrails and keeps them. On day 2, part E checks that the credit balance hasn't fallen. An optional part F closes the account by following primer page 09.
-  subgraph D1["Day 1"]
-    direction LR
-    A["A. Sweep by tag,<br/>all Regions"] --> B["B. Check what tags<br/>can't find"]
-    B --> C["C. Read the bill<br/>and the credits"]
-    C --> D["D. Review the<br/>guardrails"]
-  end
-  D1 -->|"the next day"| E["E. Credits and<br/>bill unchanged"]
-  E -.->|"optional"| F["F. Close the account<br/>(primer page 09)"]
-```
-
-*Notice that the tag search is only the first of three nets. Part B catches what Tag Editor can't find, and the bill in Parts C and E catches anything both nets missed, in any Region.*
-
-**Long description.** Day 1, left to right: A, sweep by tag in all Regions; B, check what tags can't find; C, read the bill and the credits; D, review the guardrails. An arrow labeled "the next day" leads to E, credits and bill unchanged. A dotted arrow labeled "optional" leads from E to F, close the account by following primer page 09.
+**Goal:** every lab ended with its own cleanup; this **close-out** sweeps the whole account, and everyone who ran a lab should do it. It casts three nets: tags in every Region (Part A), names for what tags can't find (Part B), and the bill (Parts C and E), which catches anything both missed. Part D keeps your guardrails. **End state:** your lab log shows an empty sweep and a credit balance that stopped falling. Then you keep the account, let the Free plan end, or close it.
 
 **What it creates:** nothing. You delete only leftovers from earlier labs.
 
-**What it costs:** $0. Tag Editor and the billing pages cost nothing to use ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 2, checked 2026-10-23). **Worst case on a Paid plan:** a leftover you find keeps costing until you delete it, which is why you look. **Free plan:** nothing here upgrades your plan. Never choose **Upgrade plan** during a lab.
+**What it costs:** $0. Tag Editor and the billing pages cost nothing to use ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 2, checked 2026-10-23). **Worst case on a Paid plan:** a leftover you find keeps costing until you delete it. **Free plan:** nothing here upgrades your plan. Never choose **Upgrade plan** during a lab.
 
-> **Warning:** this lab never asks you to change your Support plan, your payment methods or AWS Organizations. A close-out deletes lab leftovers; it doesn't remove the account's settings. Closing the account, if you choose to, follows primer page 09 and nothing more.
+> **Warning:** this lab never asks you to change your Support plan, your payment methods or AWS Organizations. A close-out deletes lab leftovers, not the account's settings. Closing the account, if you choose to, follows primer page 09.
 
-**Before you start, you need these guardrails in place:** [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md) (primer page 02), [an IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md), which you use for this lab (page 03), [budgets and billing alerts](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md) (page 05), [the habits for every lab](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md) and your lab log (page 07), and, if you plan to close the account, [leaving cleanly](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/09-leaving-cleanly.md) (page 09).
+**Guardrails you need first:** [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md) (primer page 02), [an IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md), which you use here (page 03), [budgets and billing alerts](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md) (page 05), [the habits for every lab](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md) and your lab log (page 07), and, to close the account, [leaving cleanly](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/09-leaving-cleanly.md) (page 09).
 
-**Why this matters:** a workload you no longer need should be found and removed on purpose, not left to run out: [COST04-BP02 Implement a decommissioning process](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_decomissioning_resources_implement_process.html), [COST04-BP03 Decommission resources](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_decomissioning_resources_decommission.html) and, because idle resources waste energy too, [SUS02-BP03 Stop the creation and maintenance of unused assets](https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sus_sus_user_a4.html). The next-day check is [COST01-BP06 Monitor cost proactively](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_cloud_financial_management_proactive_process.html).
+**Why this matters:** remove what you no longer need on purpose: [COST04-BP03 Decommission resources](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_decomissioning_resources_decommission.html) and, since idle resources waste energy, [SUS02-BP03 Stop the creation and maintenance of unused assets](https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sus_sus_user_a4.html). The next-day check is [COST01-BP06 Monitor cost proactively](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_cloud_financial_management_proactive_process.html).
 
-> **New sign-up path:** IAM users can't sign in to the console there, so sign in the way that path gives you. The sweep works the same way, in your assigned Region. Closing differs: you close each project first, then the management account, and AWS says you can't close a project while a spend limit has paused it (as of 2026-10-23, [Close a project](https://docs.aws.amazon.com/accounts/latest/reference/close-project.html); [Close your account in AWS Settings](https://docs.aws.amazon.com/accounts/latest/reference/close-account-new-experience.html)). We haven't run this lab on that path.
+> **New sign-up path:** IAM users can't sign in to the console there, so sign in the way that path gives you. The sweep works the same way, in your assigned Region. Closing differs: close each project first, then the management account; AWS says you can't close a project while a spend limit has paused it (as of 2026-10-23, [Close a project](https://docs.aws.amazon.com/accounts/latest/reference/close-project.html); [Close your account in AWS Settings](https://docs.aws.amazon.com/accounts/latest/reference/close-account-new-experience.html)). We haven't run this lab on that path.
 
-**About the screens:** labels in **bold** for Parts A to D are what we saw when we ran them in our test account on 2026-10-25, at the end of a day of labs. AWS changes its console often. If a label differs, look for the option with the same meaning.
+**About the screens:** labels in **bold** for Parts A to D are what we saw in our test account on 2026-10-25. AWS changes its console often; if a label differs, look for the option with the same meaning.
 
 ## Steps
 
 ### Get ready
 
-1. In your lab log, write today's date and "Lab 19: close-out". Keep the log of every earlier lab open beside it: it lists what each lab made.
+1. In your lab log, write today's date and "Lab 19: close-out". Keep your earlier labs' log open: it lists what each lab made.
 2. Sign in to the console as your **IAM admin user** and check that the Region selector shows N. Virginia.
 
 ### Part A: sweep every Region by tag
 
-3. In the console search bar, type `Tag Editor` and open it. (On 2026-10-24 a banner said tag management is moving to the AWS Resource Explorer console; if it has moved, use the same search there.) In **Regions**, choose **All regions**. In **Resource types**, choose **All supported resource types** (the console's wording on 2026-10-25), which covers every type Tag Editor supports; the search won't run without a resource type. Under **Tags**, enter the key `guide` and the value `clf`, choose **Add**, then **Search resources**.
-   **You should see:** no resources. Items deleted in the last few hours can still appear: on the day we ran every lab, Tag Editor still listed Lab 08's terminated instance and its deleted volume two hours later. Before you hunt for a listed item, open it in its own console; if it's gone or terminated there, it's only the index catching up.
-   > **If something went wrong:** for each result, open it and read its `lab` tag. Delete it with that lab's own cleanup steps (table below), in the order they give; Tag Editor only edits tags, it doesn't delete. Then search again.
-4. Remove the tag filter, enter only the key `lab` with no value, and search again. Tag Editor's value box is optional, so this finds anything tagged `lab` whatever its value, including a resource where the `guide` tag was mistyped ([Finding resources to tag](https://docs.aws.amazon.com/tag-editor/latest/userguide/find-resources-to-tag.html)).
-   **You should see:** no resources. Tags are case sensitive, so `Lab` or `Guide` would slip past; your lab logs show whether you ever typed one.
+3. In the console search bar, type `Tag Editor` and open it. (On 2026-10-24 a banner said tag management is moving to the AWS Resource Explorer console; if it has moved, use the same search there.) In **Regions**, choose **All regions**. In **Resource types**, choose **All supported resource types** (the console's wording on 2026-10-25); the search won't run without a resource type. Under **Tags**, enter the key `guide` and the value `clf`, choose **Add**, then **Search resources**.
+   **You should see:** no resources. Items deleted in the last few hours can still appear: we saw Lab 08's terminated instance and deleted volume listed two hours later. Open a listed item in its own console first; if it's gone or terminated there, the index is only catching up.
+   > **If something went wrong:** for each result, open it and read its `lab` tag. Delete it with that lab's own cleanup steps (list below), in the order they give; Tag Editor only edits tags, it doesn't delete. Then search again.
+4. Remove the tag filter, enter only the key `lab` with no value, and search again. This finds anything tagged `lab` whatever its value, even where the `guide` tag was mistyped ([Finding resources to tag](https://docs.aws.amazon.com/tag-editor/latest/userguide/find-resources-to-tag.html)).
+   **You should see:** no resources. Tags are case sensitive, so `Lab` or `Guide` would slip past; your lab logs show if you ever typed one.
 
-| Lab | Clean-up steps | Lab | Clean-up steps |
-|---|---|---|---|
-| 01 | [Lab 01](../02-why-the-cloud/06-lab-01-first-resource.md#clean-up) | 09 | [Lab 09](../07-connecting-it/05-lab-09-build-a-small-vpc.md#clean-up) |
-| 03 | [Lab 03](../04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md#clean-up) | 10 | [Lab 10](../08-building-and-operating/05-lab-10-same-bucket-three-ways.md#clean-up) |
-| 04 | [Lab 04](../04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md#clean-up) | 11 | [Lab 11](../08-building-and-operating/06-lab-11-alarm-on-errors.md#clean-up) |
-| 05 | [Lab 05](../05-storing-data/07-lab-05-versions-and-lifecycle.md#clean-up) | 12 | [Lab 12](../09-protecting-and-governing/07-lab-12-answer-the-auditor.md#clean-up) |
-| 06 | [Lab 06](../05-storing-data/08-lab-06-a-dynamodb-table.md#clean-up) | 13 | [Lab 13](../10-data-ai-and-more/04-lab-13-athena-query.md#clean-up) |
-| 07 | [Lab 07](../06-running-applications/05-lab-07-a-lambda-function.md#clean-up) | 16 | [Lab 16](../11-paying-for-aws/06-lab-16-cost-allocation-tags.md#clean-up) |
-| 08 | [Lab 08](../06-running-applications/06-lab-08-launch-and-terminate-an-instance.md#clean-up) | 18 | [Lab 18](02-lab-18-well-architected-tool-review.md#clean-up) |
-
-Labs 02, 14, 15 and 17 created nothing.
+**Each lab's cleanup steps:** [Lab 01](../02-why-the-cloud/06-lab-01-first-resource.md#clean-up), [Lab 03](../04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md#clean-up), [Lab 04](../04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md#clean-up), [Lab 05](../05-storing-data/07-lab-05-versions-and-lifecycle.md#clean-up), [Lab 06](../05-storing-data/08-lab-06-a-dynamodb-table.md#clean-up), [Lab 07](../06-running-applications/05-lab-07-a-lambda-function.md#clean-up), [Lab 08](../06-running-applications/06-lab-08-launch-and-terminate-an-instance.md#clean-up), [Lab 09](../07-connecting-it/05-lab-09-build-a-small-vpc.md#clean-up), [Lab 10](../08-building-and-operating/05-lab-10-same-bucket-three-ways.md#clean-up), [Lab 11](../08-building-and-operating/06-lab-11-alarm-on-errors.md#clean-up), [Lab 12](../09-protecting-and-governing/07-lab-12-answer-the-auditor.md#clean-up), [Lab 13](../10-data-ai-and-more/04-lab-13-athena-query.md#clean-up), [Lab 16](../11-paying-for-aws/06-lab-16-cost-allocation-tags.md#clean-up), [Lab 18](02-lab-18-well-architected-tool-review.md#clean-up). Labs 02, 14, 15 and 17 created nothing.
 
 ### Part B: check what tags can't find
 
-A tag search finds only resources that carry the tag and whose type Tag Editor supports. AWS's list of types marks IAM roles, CloudWatch Logs log groups, Glue databases and Well-Architected workloads as not supported in Tag Editor, and IAM users and groups aren't on it at all ([Resource types you can use with AWS Resource Groups and Tag Editor](https://docs.aws.amazon.com/ARG/latest/userguide/supported-resources.html), checked 2026-10-24). So check those in each service's own list, by the `clf-lab` names the labs gave them.
+Tag Editor finds only tagged resources of types it supports. AWS's list marks IAM roles, CloudWatch Logs log groups, Glue databases and Well-Architected workloads as not supported in Tag Editor, and IAM users and groups aren't on it ([Resource types you can use with AWS Resource Groups and Tag Editor](https://docs.aws.amazon.com/ARG/latest/userguide/supported-resources.html), checked 2026-10-24). So check those in each service's own list, by the labs' `clf-lab` names.
 
 5. Open each place in this table and compare it with the "should be there" column. Tick each row in your lab log.
 
@@ -120,36 +91,21 @@ A tag search finds only resources that carry the tag and whose type Tag Editor s
    | **VPC**, your VPCs, in N. Virginia | Only the default VPC | `clf-lab09-…` | Lab 09 |
 
    > **If something went wrong:** delete a leftover with the cleanup steps of the lab in the last column. Never delete your admin user, its group, the service-linked roles, the default VPC, or the guardrails from primer pages 05 and 06.
-6. Optional second look: open **AWS Resource Explorer** in N. Virginia and search `tag.key:guide`. Resource Explorer searches your current Region unless someone has set up cross-Region search, and it doesn't index tags on IAM resources ([Search query syntax reference](https://docs.aws.amazon.com/resource-explorer/latest/userguide/using-search-query-syntax.html)), so an empty result here supports Part A rather than replacing it. Don't change its settings.
+6. Optional second look: open **AWS Resource Explorer** in N. Virginia and search `tag.key:guide`. It searches your current Region unless cross-Region search is set up, and it doesn't index tags on IAM resources ([Search query syntax reference](https://docs.aws.amazon.com/resource-explorer/latest/userguide/using-search-query-syntax.html)), so an empty result supports Part A without replacing it. Don't change its settings.
 
 ### Part C: read the bill and the credits
 
-The bill sees every Region and every service, tagged or not. It runs about a day behind ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4), which is why Part E repeats it.
+The bill sees every Region and service, tagged or not, but runs about a day behind ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4), which is why Part E repeats it.
 
 7. In the console search bar, type `Billing` and open **Billing and Cost Management**. Choose **Bills**, keep the current **Billing period**, and choose the **Charges by service** tab.
 8. For each service listed, choose the `+` next to it to see its charges by **Region** ([Understanding your bill](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/getting-viewing-bill.html)). Write each service and Region in your lab log.
-   **You should see:** only services and Regions you used in the labs, with small amounts. A service you never set up can appear at $0.00 for a few API requests the console made for you (we saw Secrets Manager, SQS and KMS that way); open its row to the usage line to check. On the Free plan, credits pay them, so read which services appear, not only the total.
+   **You should see:** only services and Regions you used in the labs, with small amounts. A service you never set up can appear at $0.00 for API requests the console made for you (we saw Secrets Manager, SQS and KMS); open its row to the usage line to check. On the Free plan, credits pay the charges, so read which services appear, not only the total.
    > **If something went wrong:** a service or Region you don't recognize is the lead to follow. Go to that Region, find the resource in that service's console, and delete it, using [primer page 08, Track down an unexpected charge](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/08-when-something-goes-wrong.md#track-down-an-unexpected-charge).
-9. Choose **Credits** in the left menu. Write the remaining balance and today's date in your lab log. Tomorrow you compare against this number. The list may show more credits than you started with: some labs complete AWS's "Explore AWS" activities, each worth $20 (as of 2026-10-25). Our Labs 07 and 08 earned "Create a web app using AWS Lambda" and "Launch an instance using EC2".
+9. Choose **Credits** in the left menu. Write the remaining balance and today's date in your lab log; tomorrow you compare against this number. You may have more credits than you started with: some labs complete AWS's "Explore AWS" activities, $20 each (as of 2026-10-25).
 
 ### Part D: review your guardrails, and keep them
 
-Your guardrails cost nothing and watch the account until its last bill. So the answer to "keep or remove?" is keep, whichever way you leave.
-
-```mermaid
-flowchart TB
-  accTitle: Keep or remove, for each thing left in the account
-  accDescr: For each thing in the account, ask whether a lab made it. If yes, delete it with that lab's cleanup steps. If no, ask whether it is a guardrail from the primer, such as a budget, the billing alarm, the anomaly monitor, the access analyzer or your admin user. If yes, keep it, whether you keep the account or close it. If it is neither, such as the default VPC or a service-linked role, it belongs to the account: leave it.
-  X["Something in the account"] --> L{"Did a lab<br/>make it?"}
-  L -->|"yes"| DEL["Delete it, with that<br/>lab's cleanup steps"]
-  L -->|"no"| G{"Is it a guardrail<br/>from the primer?"}
-  G -->|"yes"| KEEP["Keep it, whether you<br/>keep or close the account"]
-  G -->|"no"| LEAVE["It belongs to the account,<br/>like the default VPC:<br/>leave it"]
-```
-
-*Notice that nothing in the primer's guardrails ever lands on "delete". They go only when the account itself goes.*
-
-**Long description.** For each thing in the account, a first question asks whether a lab made it; if yes, delete it with that lab's cleanup steps. If no, a second question asks whether it is a guardrail from the primer; if yes, keep it, whether you keep or close the account. If no, it belongs to the account, like the default VPC, and you leave it.
+Your guardrails cost nothing and watch the account until its last bill, so keep them, whichever way you leave. Delete what a lab made, with its cleanup steps. Leave what is neither a lab's nor a guardrail, like the default VPC or a service-linked role: it belongs to the account.
 
 10. Check that each guardrail still works, and tick it in your lab log:
 
@@ -162,7 +118,7 @@ flowchart TB
     | Your IAM admin user and root user | **IAM**, **Users**; your MFA devices | MFA on both | $0 |
 
     The `guide` and `lab` cost allocation tags you activated in Lab 16 can stay active; they cost nothing either way.
-    > **If something went wrong:** a budget email showing **Pending**, or an SNS subscription not **Confirmed**, means alerts aren't reaching you. Fix it as on [primer page 05](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md). An analyzer of another kind is billed; delete it as on [primer page 06](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/06-safe-defaults.md).
+    > **If something went wrong:** a budget email showing **Pending**, or an SNS subscription not **Confirmed**, means alerts aren't reaching you; fix it as on [primer page 05](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md). An analyzer of another kind is billed; delete it as on [primer page 06](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/06-safe-defaults.md).
 11. Sign out.
 
 ### Part E: the next day
@@ -192,24 +148,23 @@ This lab created nothing. Anything you deleted in Parts A to C is confirmed by P
 
 ## Recap
 
-You checked the account three ways: by tag, by name where tags can't reach, and by the bill, which misses nothing but arrives late. That is the decommissioning habit professionals apply to a whole workload: find everything, delete on purpose, keep the alarms until the very end, and check the next day.
+You checked the account by tag, by name where tags can't reach, and by the bill, which misses nothing but arrives late. Professionals decommission a whole workload the same way.
 
-> **Reflect:** the bakery's owner decides to shut down an old promotional site. Using this lab, write three sentences on how you would make sure it costs nothing next month.
+> **Reflect:** the bakery's owner shuts down an old promotional site. In two or three sentences, how would you make sure it costs nothing next month?
 >
 > <details><summary>Model answer</summary>
 >
-> I would start by listing everything the site used by its tag across all Regions, then check by name the resource types Tag Editor can't find, such as its roles and log groups. Next I'd delete them in dependency order with a written checklist, keeping the account's budgets and alarms. The next day, and again at month end, I would read the bill by service and Region and investigate any charge that remains.
+> Find everything the site used by its tag in all Regions, and by name what Tag Editor can't find, such as roles and log groups; delete them in dependency order, keeping the account's budgets and alarms. The next day and at month end, read the bill by service and Region and chase any charge that remains.
 >
 > </details>
 
-**Next:** your course is complete. Revisit the [capstone review](01-the-capstone-review.md) and your lab log when you prepare for the exam.
+**Next:** your course is complete. Review your lab log before the exam; the [capstone review](01-the-capstone-review.md) is optional practice.
 
 ## Where to check the current details
 
-- [Finding resources to tag](https://docs.aws.amazon.com/tag-editor/latest/userguide/find-resources-to-tag.html) and [Resource types you can use with AWS Resource Groups and Tag Editor](https://docs.aws.amazon.com/ARG/latest/userguide/supported-resources.html), AWS Resource Groups User Guide (checked 2026-10-24)
-- [What is AWS Resource Explorer?](https://docs.aws.amazon.com/resource-explorer/latest/userguide/welcome.html), AWS Resource Explorer User Guide (checked 2026-10-24)
-- [Understanding your bill](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/getting-viewing-bill.html) and [Understanding unexpected charges](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/checklistforunwantedcharges.html), AWS Billing User Guide (checked 2026-10-24)
-- [Close an AWS account](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-closing.html), AWS Account Management Reference Guide (checked 2026-10-23)
+- [Finding resources to tag](https://docs.aws.amazon.com/tag-editor/latest/userguide/find-resources-to-tag.html) and [Resource types you can use with AWS Resource Groups and Tag Editor](https://docs.aws.amazon.com/ARG/latest/userguide/supported-resources.html) (checked 2026-10-24)
+- [Understanding your bill](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/getting-viewing-bill.html) and [Understanding unexpected charges](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/checklistforunwantedcharges.html) (checked 2026-10-24)
+- [Close an AWS account](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-closing.html) (checked 2026-10-23)
 
 ---
 
