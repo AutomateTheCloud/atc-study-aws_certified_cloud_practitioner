@@ -142,7 +142,7 @@ When two routes match, the more specific one wins. Traffic to `10.0.3.17` matche
 
 An **internet gateway** connects a VPC to the internet in both directions: your servers can reach out, and people on the internet can start connections in. AWS runs it as a redundant, highly available component with no bandwidth limit of its own, and the gateway itself has no charge ([Internet gateways](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html), checked 2026-10-23).
 
-Here is the rule this lesson turns on:
+This lesson turns on one rule:
 
 - A **public subnet** is one whose route table has a route to an internet gateway.
 - A **private subnet** is one whose route table doesn't.

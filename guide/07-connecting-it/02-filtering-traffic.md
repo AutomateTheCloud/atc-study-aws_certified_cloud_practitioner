@@ -228,7 +228,7 @@ flowchart TD
 
 ## Worked example: four requests to the bakery
 
-The bakery's public subnets use a custom network ACL. Inbound: rule 90 denies `203.0.113.0/24`; rule 100 allows HTTPS from anywhere. Outbound: rule 100 allows TCP 1024 to 65535 to anywhere, for replies. The web servers have `web-sg`; the database, in a private subnet whose route table has only the local route, has `db-sg`. Here is how an expert walks each case.
+The bakery's public subnets use a custom network ACL. Inbound: rule 90 denies `203.0.113.0/24`; rule 100 allows HTTPS from anywhere. Outbound: rule 100 allows TCP 1024 to 65535 to anywhere, for replies. The web servers have `web-sg`; the database, in a private subnet whose route table has only the local route, has `db-sg`. An expert walks each case like this.
 
 | Request | Route | Network ACL in | Security group in | Reply | Result |
 |---|---|---|---|---|---|

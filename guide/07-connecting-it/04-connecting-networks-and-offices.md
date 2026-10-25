@@ -316,7 +316,7 @@ Task [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practition
 
 ## Worked example: connecting the bakery
 
-The owner's list, building on the module brief: link the head office to the site VPC securely; let her reach the order system from home; connect the site VPC to the German VPC in Frankfurt; and let the web server use the delivery partner's tracking service without joining the two networks. Here is how an experienced engineer reasons:
+The owner's list, building on the module brief: link the head office to the site VPC securely; let her reach the order system from home; connect the site VPC to the German VPC in Frankfurt; and let the web server use the delivery partner's tracking service without joining the two networks. An experienced engineer reasons like this:
 
 1. **Head office.** A whole network. Must it avoid the internet? Not today: traffic is modest, "securely" means encrypted, and it's needed soon. So **Site-to-Site VPN**: minutes to set up, about $36.50 a month plus data and address charges (as of 2026-10-24). Trigger for later: large volumes or a need for steady performance mean **Direct Connect**, keeping the VPN as backup.
 2. **The owner at home.** One device: **Client VPN**, with an authorization rule that reaches only the order system's subnet.
