@@ -90,7 +90,7 @@ These are on AWS's "time" meter: they bill every hour they exist, busy or idle (
 
 ### Lightsail bills while stopped
 
-**Why it costs:** a Lightsail instance is charged by the hour up to its plan's monthly price whether it's running or stopped. This differs from EC2: only deleting the Lightsail instance ends the charge.
+**Why it costs:** Lightsail charges an instance by the hour, up to its plan's monthly price, whether it's running or stopped. This differs from EC2: only deleting the Lightsail instance ends the charge.
 
 **How to avoid it:** delete Lightsail instances you've finished with, rather than stopping them.
 
@@ -124,7 +124,7 @@ These are on AWS's "time" meter: they bill every hour they exist, busy or idle (
 
 ### Snapshots outlive the volume
 
-**Why it costs:** EBS snapshots are billed on their own, and deleting a volume doesn't delete its snapshots.
+**Why it costs:** AWS bills EBS snapshots on their own, and deleting a volume doesn't delete its snapshots.
 
 **How to avoid it:** after a cleanup, look for snapshots left behind, and set a backup plan's retention so old ones expire.
 
