@@ -214,7 +214,7 @@ One thing never moves: on every service, you decide what data you put in AWS and
 
 Take the second prequestion. The cake photos sit in an S3 **bucket**, S3's name for a storage container, and someone makes it public by mistake.
 
-- **What AWS provides:** S3's **Block Public Access** settings, turned on by default for buckets created on or after April 28, 2023 ([ACCT.08](https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/acct-08.html)). S3 has also encrypted every new upload automatically since January 5, 2023 ([Default encryption FAQ](https://docs.aws.amazon.com/AmazonS3/latest/userguide/default-encryption-faq.html)). Both checked 2026-10-24.
+- **What AWS provides:** S3's **Block Public Access** settings, turned on by default for buckets created on or after 2023-04-28 ([ACCT.08](https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/acct-08.html)). S3 has also encrypted every new upload automatically since 2023-01-05 ([Default encryption FAQ](https://docs.aws.amazon.com/AmazonS3/latest/userguide/default-encryption-faq.html)). Both checked 2026-10-24.
 - **What the customer did:** changed a setting on its own bucket. AWS puts data, encryption options and permissions on the customer's side for S3.
 - **Answer:** the bakery's. AWS's default was safe; the bakery undid it.
 

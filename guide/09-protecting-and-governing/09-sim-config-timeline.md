@@ -55,37 +55,37 @@ In this simulation the bakery turned on Config in `us-east-1` months ago, record
 | Item | Recorded | Inbound rules |
 |---|---|---|
 | 1 | Before this week | TCP 443 from `0.0.0.0/0` |
-| 2 | Wed 14 Oct, 14:06 | TCP 443 from `0.0.0.0/0`; **TCP 22 from `0.0.0.0/0`** |
-| 3 | Fri 16 Oct, 10:41 | TCP 443 from `0.0.0.0/0` |
+| 2 | Wed, October 14, 14:06 | TCP 443 from `0.0.0.0/0`; **TCP 22 from `0.0.0.0/0`** |
+| 3 | Fri, October 16, 10:41 | TCP 443 from `0.0.0.0/0` |
 
 **restricted-ssh results for `web-sg`:**
 
 | Time | Result | Why the rule ran |
 |---|---|---|
-| Wed 14 Oct, 14:07 | NONCOMPLIANT | Configuration change |
-| Fri 16 Oct, 10:42 | COMPLIANT | Configuration change |
-| Sat 17 Oct, 03:00 | COMPLIANT | Periodic check |
+| Wed, October 14, 14:07 | NONCOMPLIANT | Configuration change |
+| Fri, October 16, 10:42 | COMPLIANT | Configuration change |
+| Sat, October 17, 03:00 | COMPLIANT | Periodic check |
 
 **CloudTrail events for `web-sg`:**
 
 | Time | Event name | User name |
 |---|---|---|
-| Wed 14 Oct, 14:05 | `AuthorizeSecurityGroupIngress` | `sam-dev` |
-| Fri 16 Oct, 10:40 | `RevokeSecurityGroupIngress` | `lee-ops` |
+| Wed, October 14, 14:05 | `AuthorizeSecurityGroupIngress` | `sam-dev` |
+| Fri, October 16, 10:40 | `RevokeSecurityGroupIngress` | `lee-ops` |
 
-**CloudWatch, web server CPU:** under 20% all week, except Thursday 15 Oct, 19:00 to 21:00, when it reached 85% during a flood of requests.
+**CloudWatch, web server CPU:** under 20% all week, except Thursday, October 15, 19:00 to 21:00, when it reached 85% during a flood of requests.
 
-![A timeline from Monday 12 to Sunday 18 October in three lanes: CloudTrail events, Config configuration items, and restricted-ssh compliance, with the noncompliant stretch from Wednesday 14:07 to Friday 10:42 highlighted.](../../images/09-09-config-timeline.svg)
+![A timeline from Monday, October 12, to Sunday, October 18, in three lanes: CloudTrail events, Config configuration items, and restricted-ssh compliance, with the noncompliant stretch from Wednesday 14:07 to Friday 10:42 highlighted.](../../images/09-09-config-timeline.svg)
 
 *Notice that each CloudTrail event sits one minute before a configuration item: CloudTrail recorded the request, Config recorded the result.*
 
-**Long description.** A week from Monday 12 to Sunday 18 October in three lanes. CloudTrail lane: Wednesday 14:05 `AuthorizeSecurityGroupIngress` by `sam-dev`; Friday 10:40 `RevokeSecurityGroupIngress` by `lee-ops`. Config lane: item 1 from before the week (443 only), item 2 on Wednesday 14:06 (443 and 22), item 3 on Friday 10:41 (443 only). Compliance lane: compliant until Wednesday 14:07, then a highlighted noncompliant stretch to Friday 10:42, then compliant, with a periodic check on Saturday 03:00.
+**Long description.** A week from Monday, October 12, to Sunday, October 18, in three lanes. CloudTrail lane: Wednesday 14:05 `AuthorizeSecurityGroupIngress` by `sam-dev`; Friday 10:40 `RevokeSecurityGroupIngress` by `lee-ops`. Config lane: item 1 from before the week (443 only), item 2 on Wednesday 14:06 (443 and 22), item 3 on Friday 10:41 (443 only). Compliance lane: compliant until Wednesday 14:07, then a highlighted noncompliant stretch to Friday 10:42, then compliant, with a periodic check on Saturday 03:00.
 
 ## Part 1: read the timeline
 
 ### Decision 1: answer the auditor's four questions
 
-1. What were `web-sg`'s inbound rules on Thursday 15 October at noon?
+1. What were `web-sg`'s inbound rules on Thursday, October 15, at noon?
 2. For how long was `web-sg` noncompliant with restricted-ssh?
 3. Who opened port 22, and who closed it?
 4. Was the high CPU on Thursday evening caused by the open port?
@@ -132,7 +132,7 @@ flowchart TD
 | a | Which user deleted the old photo bucket last month? |
 | b | Are any of our EBS volumes unencrypted right now, and which? |
 | c | Email the owner when the order database's storage is nearly full. |
-| d | What did the database's security group allow on 1 September? |
+| d | What did the database's security group allow on September 1? |
 | e | Who downloaded `lemon-tart.jpg` from the photo bucket yesterday? |
 
 <details><summary>Model answer</summary>

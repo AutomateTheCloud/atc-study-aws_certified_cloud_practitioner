@@ -390,7 +390,7 @@ Choosing a Region is easy to do and hard to undo, because moving a running workl
 - [What is latency?](https://aws.amazon.com/what-is/latency/), AWS (checked 2026-10-23)
 - [Amazon S3 FAQs](https://aws.amazon.com/s3/faqs/), on choosing a Region and why prices vary (checked 2026-10-23)
 - [AWS Price List, data transfer offer file](https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSDataTransfer/current/index.json), published 2026-09-16 (checked 2026-10-23); AWS Pricing Calculator for estimates
-- [AWS Fault Isolation Boundaries](https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/abstract-and-introduction.html), AWS whitepaper, published November 16, 2022 (checked 2026-10-23)
+- [AWS Fault Isolation Boundaries](https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/abstract-and-introduction.html), AWS whitepaper, published 2022-11-16 (checked 2026-10-23)
 - [AWS Regions for your projects](https://docs.aws.amazon.com/accounts/latest/reference/project-regions.html), AWS Account Management Reference Guide (checked 2026-10-23)
 - Well-Architected best practices [SUS01-BP01](https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sus_sus_region_a2.html), [COST07-BP02](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_pricing_model_region_cost.html), [PERF04-BP06](https://docs.aws.amazon.com/wellarchitected/latest/performance-efficiency-pillar/perf_networking_choose_workload_location_network_requirements.html) and [REL10-BP01](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html) (checked 2026-10-24)
 

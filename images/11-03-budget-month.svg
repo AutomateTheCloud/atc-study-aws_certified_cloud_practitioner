@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="680" height="452" viewBox="0 0 680 452" role="img" aria-labelledby="t d">
 <title id="t">January's month-to-date cost rising past a $150 budget, with three alert points and no stop</title>
-<desc id="d">Line chart of month-to-date cost for the 31 days of January: about $3.61 a day until 10 January, then about $6.18 a day once a forgotten r7g.large starts on 11 January, ending at $165.98. A solid line marks the $150 budget and a dashed line the 85% alert at $127.50. Point A, about 13 January: the forecast passes $150 and a forecasted-cost alert is sent (the day is illustrative). Point B, 25 January: actual cost passes $127.50. Point C, 29 January: actual cost passes $150. The line keeps rising after every alert, because budget alerts only send email.</desc>
+<desc id="d">Line chart of month-to-date cost for the 31 days of January: about $3.61 a day until January 10, then about $6.18 a day once a forgotten r7g.large starts on January 11, ending at $165.98. A solid line marks the $150 budget and a dashed line the 85% alert at $127.50. Point A, about January 13: the forecast passes $150 and a forecasted-cost alert is sent (the day is illustrative). Point B, January 25: actual cost passes $127.50. Point C, January 29: actual cost passes $150. The line keeps rising after every alert, because budget alerts only send email.</desc>
 
 <style>
   svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;

@@ -57,7 +57,7 @@ CARDS = [
     ]),
     ("AWS Config", "How was it set up, then and now, and is that allowed?", [
         ("RECORDS", "Each resource's settings over time, and whether they pass your rules"),
-        ("BAKERY EXAMPLE", "Was SSH open to the internet on 1 March?"),
+        ("BAKERY EXAMPLE", "Was SSH open to the internet on March 1?"),
         ("FROM DAY ONE", "Off: you turn recording on, and pay per item recorded"),
     ]),
     ("IAM access reports", "Who can do what, and do they still use it?", [

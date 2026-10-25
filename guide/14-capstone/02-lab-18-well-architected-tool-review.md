@@ -196,7 +196,7 @@ Three calls need judgment. First, people sign in as IAM users, whose passwords a
     **You should see:** the milestone listed on the workload's **Milestones** tab. A saved milestone can't be changed ([Saving a milestone](https://docs.aws.amazon.com/wellarchitected/latest/userguide/milestones-save.html)).
 13. Optional, about 3 minutes: see why that matters. Open COST 4, tick [COST04-BP05](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_decomissioning_resources_data_retention.html) as if the bakery had made fix 7 of the capstone review (log retention, and a rule for old photo versions), and choose **Save and exit**. Only a Low practice is then missing, so COST 4's medium risk goes and the workload's **Medium risks** count drops by one (as it did for us); open the workload's **Milestones** tab and the milestone's counts don't change. That is how a team proves progress next quarter.
 
-    ![The workload's Milestones tab: one milestone, clf-lab18 initial review, with 4/57 questions answered, 2 high risks and 2 medium risks, saved October 25, 2026.](../../images/14-02-milestone.png)
+    ![The workload's Milestones tab: one milestone, clf-lab18 initial review, with 4/57 questions answered, 2 high risks and 2 medium risks, saved 2026-10-25.](../../images/14-02-milestone.png)
 
     *Screenshot: the milestone still showing 2 medium risks after COST 4's risk was fixed, captured 2026-10-25 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
 

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="680" height="432" viewBox="0 0 680 432" role="img" aria-labelledby="t d">
-<title id="t">January's daily cost: a flat base, then a new r7g.large instance from 11 January</title>
-<desc id="d">Stacked column chart of 31 days of January. Every day has about $3.61 of 'everything else', made up to match the $112 lesson 11.01 expected for the month. From 11 January each column adds $2.57 for one r7g.large instance, at $0.1071 an hour in US East (N. Virginia) as of 2026-10-24. A marker on about 12 January (illustrative) shows when Cost Anomaly Detection would alert.</desc>
+<title id="t">January's daily cost: a flat base, then a new r7g.large instance from January 11</title>
+<desc id="d">Stacked column chart of 31 days of January. Every day has about $3.61 of 'everything else', made up to match the $112 lesson 11.01 expected for the month. From January 11 each column adds $2.57 for one r7g.large instance, at $0.1071 an hour in US East (N. Virginia) as of 2026-10-24. A marker on about January 12 (illustrative) shows when Cost Anomaly Detection would alert.</desc>
 
 <style>
   svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
@@ -38,7 +38,7 @@
 </style>
 <rect width="680" height="432" fill="var(--surface)" style="fill:var(--surface)"/>
 <text class="title" x="16" y="28">January in Cost Explorer: daily cost, grouped</text>
-<text class="sub" x="16" y="48">The rest of the bill is flat; one new line starts on 11 January (base made up)</text>
+<text class="sub" x="16" y="48">The rest of the bill is flat; one new line starts on January 11 (base made up)</text>
 <rect class="base" x="16" y="66" width="12" height="12" rx="2"/>
 <text x="34" y="76">Everything else, about $3.61 a day</text>
 <rect class="s2" x="290" y="66" width="12" height="12" rx="2"/>
@@ -115,7 +115,7 @@
 <text class="tick" x="567.6" y="350" text-anchor="middle">31</text>
 <text class="tick" x="316.0" y="368" text-anchor="middle">Day of January</text>
 <line class="lead" x1="248.9" x2="248.9" y1="156.0" y2="116"/>
-<text class="ctb" x="254.9" y="126">Anomaly alert, about 12 January</text>
+<text class="ctb" x="254.9" y="126">Anomaly alert, about January 12</text>
 <text class="note" x="16" y="394.0">The base is about what lesson 11.01 expected for January ($112 for the month), made up for teaching.</text>
 <text class="note" x="16" y="409.0">r7g.large, Linux, On-Demand, US East (N. Virginia): $0.1071 an hour as of 2026-10-24. The alert day is illustrative.</text>
 </svg>

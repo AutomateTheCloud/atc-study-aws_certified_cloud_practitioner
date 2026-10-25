@@ -144,11 +144,11 @@ This is before any always-free allowance and leaves out the website itself and s
 - **Periods:** daily, monthly, quarterly, annually, or a custom range such as a three-month project ([Creating a cost budget](https://docs.aws.amazon.com/cost-management/latest/userguide/create-cost-budget.html)).
 - **Delay.** Budgets data updates up to three times a day, typically 8 to 12 hours apart. You can spend past a threshold before the alert can be sent.
 
-![A line chart of the bakery's January cost, rising slowly to 10 January and faster from 11 January, when a forgotten instance starts, to $165.98. A solid line marks the $150 budget and a dashed line the 85% alert at $127.50. Point A, about 13 January: the forecast passes $150. Point B, 25 January: actual cost passes $127.50. Point C, 29 January: actual cost passes $150. The line keeps rising after every point.](../../images/11-03-budget-month.svg)
+![A line chart of the bakery's January cost, rising slowly to January 10 and faster from January 11, when a forgotten instance starts, to $165.98. A solid line marks the $150 budget and a dashed line the 85% alert at $127.50. Point A, about January 13: the forecast passes $150. Point B, January 25: actual cost passes $127.50. Point C, January 29: actual cost passes $150. The line keeps rising after every point.](../../images/11-03-budget-month.svg)
 
 *Notice that the line doesn't bend at A, B or C. Each point is an email; the spending goes on.*
 
-**Long description.** A line chart of the bakery's month-to-date cost for the 31 days of January, made up for teaching: about $3.61 a day until 10 January, then about $6.18 a day once a forgotten r7g.large instance starts on 11 January, ending at $165.98. A solid horizontal line marks the $150 budget; a dashed line marks the 85% threshold at $127.50. Point A, about 13 January (illustrative): the forecast for the month passes $150, so a forecasted-cost alert is sent. Point B, 25 January: actual cost passes $127.50. Point C, 29 January: actual cost passes $150. A note says Budgets data updates up to three times a day, so each email arrives hours after the line is crossed, and that no alert stops the instance. The worked example below explains the jump.
+**Long description.** A line chart of the bakery's month-to-date cost for the 31 days of January, made up for teaching: about $3.61 a day until January 10, then about $6.18 a day once a forgotten r7g.large instance starts on January 11, ending at $165.98. A solid horizontal line marks the $150 budget; a dashed line marks the 85% threshold at $127.50. Point A, about January 13 (illustrative): the forecast for the month passes $150, so a forecasted-cost alert is sent. Point B, January 25: actual cost passes $127.50. Point C, January 29: actual cost passes $150. A note says Budgets data updates up to three times a day, so each email arrives hours after the line is crossed, and that no alert stops the instance. The worked example below explains the jump.
 
 ### "A budget caps your spending" is wrong
 
@@ -183,7 +183,7 @@ The word "budget" sounds like a limit, and prepaid services elsewhere stop when 
 
 The CloudWatch billing alarm from primer page 05 also only notifies; for "alert me when costs exceed a limit", the exam expects Budgets.
 
-> **Check:** Answer the first prequestion. The bakery's $150 budget sends its 100% alert on 29 January. There is no budget action. What happens to the test instance that caused it?
+> **Check:** Answer the first prequestion. The bakery's $150 budget sends its 100% alert on January 29. There is no budget action. What happens to the test instance that caused it?
 >
 > A. AWS stops it at once\
 > B. Nothing: it keeps running and billing until someone stops or terminates it\
@@ -296,16 +296,16 @@ The finance team needs every line item, with tags and resource IDs, in files it 
 
 Lesson 11.01 explained December's bill from its line items and expected January to fall back to about $110 to $115. The owner then set a $150 monthly budget. January ended at $165.98. Here is how an expert finds out why, with the tools in this lesson.
 
-![Stacked daily columns for January. Every day has about $3.61 of everything else. From 11 January each column adds $2.57 for one r7g.large instance. A marker at about 12 January shows the anomaly alert.](../../images/11-03-january-daily.svg)
+![Stacked daily columns for January. Every day has about $3.61 of everything else. From January 11 each column adds $2.57 for one r7g.large instance. A marker at about January 12 shows the anomaly alert.](../../images/11-03-january-daily.svg)
 
 *Notice that the rest of the bill doesn't move. One new block, starting on one day, usually means one new resource.*
 
-**Long description.** A stacked column chart of the 31 days of January. Every day has about $3.61 of "everything else", made up to match the $112 that lesson 11.01 expected for the month. From 11 January each column adds $2.57 for one r7g.large instance, at $0.1071 an hour in US East (N. Virginia) as of 2026-10-24. A marker at about 12 January, illustrative, shows when Cost Anomaly Detection would alert.
+**Long description.** A stacked column chart of the 31 days of January. Every day has about $3.61 of "everything else", made up to match the $112 that lesson 11.01 expected for the month. From January 11 each column adds $2.57 for one r7g.large instance, at $0.1071 an hour in US East (N. Virginia) as of 2026-10-24. A marker at about January 12, illustrative, shows when Cost Anomaly Detection would alert.
 
-1. **Read the earliest warning.** About 12 January, Cost Anomaly Detection's daily summary reports an anomaly and names its likely cause: EC2, in US East (N. Virginia), instance hours.
+1. **Read the earliest warning.** About January 12, Cost Anomaly Detection's daily summary reports an anomaly and names its likely cause: EC2, in US East (N. Virginia), instance hours.
 2. **Confirm it in Cost Explorer.** Show January, daily, grouped by service: the chart above. Cost Explorer splits EC2 into instance costs and "EC2-Other", which holds items such as NAT gateway hours and data processed; that's where December's new NAT gateway appeared ([Filtering the data](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-filtering.html), checked 2026-10-24). This time the new block is instance cost. Filtered to instances and grouped by instance type, it's one r7g.large: 24 × $0.1071 = $2.57 a day.
 3. **Find whose it is.** Nobody remembers it. CloudTrail's event history, from Module 09, shows who ran `RunInstances`, and when.
-4. **Count what waiting costs.** Nobody acted, because the owner believed the budget would stop the spending; the instance ran to the end of the month, $53.98. Terminated on 12 January, after the anomaly alert, it would have cost about $5. Even the forecasted budget alert, about 13 January, came early enough; the actual-cost alerts on 25 and 29 January did not.
+4. **Count what waiting costs.** Nobody acted, because the owner believed the budget would stop the spending; the instance ran to the end of the month, $53.98. Terminated on January 12, after the anomaly alert, it would have cost about $5. Even the forecasted budget alert, about January 13, came early enough; the actual-cost alerts on January 25 and 29 did not.
 5. **Fix and prevent.** Terminate the instance. Agree who acts on each alert, and what they do. And tag every resource with an owner, so the next stray instance has a name on it: that's [lesson 11.04](04-many-accounts-one-bill.md).
 
 The expert's thinking: **separate the flat from the changed, then drill down one level at a time** (service, then instance type or usage type), and **act on the earliest warning**. Don't open the raw CUR for a question the charts can answer.

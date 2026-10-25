@@ -89,7 +89,7 @@ flowchart LR
 4. Find these three and copy their codes into your lab log: N. Virginia, Ohio and Frankfurt.
    **You should see:** `us-east-1`, `us-east-2` and `eu-central-1`. These are the Regions this module's bakery uses or could use.
 5. Look for Regions that are marked as not enabled, or that you expected and can't find. On 2026-10-25 our selector listed only enabled Regions, with a line at the bottom, "There are 17 Regions that are not enabled for this account", next to **Manage Regions**. **Don't enable them.**
-   Regions launched after March 20, 2019 are **opt-in Regions**: off until someone turns them on, and possibly hidden while off ([Enable or disable AWS Regions](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html), checked 2026-10-23). A Region you don't use is one more place to forget a resource.
+   Regions launched after 2019-03-20 are **opt-in Regions**: off until someone turns them on, and possibly hidden while off ([Enable or disable AWS Regions](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html), checked 2026-10-23). A Region you don't use is one more place to forget a resource.
 6. Choose **United States (N. Virginia)** to close the selector with N. Virginia selected.
    **You should see:** N. Virginia in the selector. (Our test account first opened in US East (Ohio), so check every time.)
 

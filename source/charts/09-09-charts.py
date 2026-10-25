@@ -98,7 +98,7 @@ def timeline():
                 'it caused, and the rule ran one minute after that.</text>')
     svg("09-09-config-timeline.svg", w, bottom + 62,
         "A week of web-sg's history: CloudTrail requests, Config configuration items and restricted-ssh compliance",
-        "A timeline from Monday 12 to Sunday 18 October with three lanes. CloudTrail lane: on Wednesday at 14:05, "
+        "A timeline from Monday, October 12, to Sunday, October 18, with three lanes. CloudTrail lane: on Wednesday at 14:05, "
         "sam-dev, AuthorizeSecurityGroupIngress; on Friday at 10:40, lee-ops, RevokeSecurityGroupIngress. Config "
         "lane: item 1, port 443, until Wednesday 14:06; item 2, ports 443 and 22, until Friday 10:41; item 3, port "
         "443, after that. Rule lane, restricted-ssh: compliant until Wednesday 14:07, then a hatched, thickly "

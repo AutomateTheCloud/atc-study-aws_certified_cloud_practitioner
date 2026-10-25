@@ -87,7 +87,7 @@ No question needs a price, a percentage or a count. Free Tier terms and service 
 
 - **B is wrong.** Remaining credits carry on and apply to later bills after an upgrade.
 - **C is wrong.** The Free plan offers selected services; the Paid plan gives access to all of them, plus short-term trials.
-- **D is wrong.** "Twelve free months" describes the legacy Free Tier, for accounts created before 15 July 2025. Today's accounts get credits and a choice of plan, and can upgrade at any time.
+- **D is wrong.** "Twelve free months" describes the legacy Free Tier, for accounts created before 2025-07-15. Today's accounts get credits and a choice of plan, and can upgrade at any time.
 
 </details>
 
@@ -228,10 +228,10 @@ No question needs a price, a percentage or a count. Free Tier terms and service 
 
 </details>
 
-**A12.** A company's resources have carried the user-defined tag key `costcenter` since March. On 1 June, the management account activates `costcenter` as a cost allocation tag. In July, finance opens Cost Explorer grouped by `costcenter`. Which two statements are accurate? (Select TWO.)
+**A12.** A company's resources have carried the user-defined tag key `costcenter` since March. On June 1, the management account activates `costcenter` as a cost allocation tag. In July, finance opens Cost Explorer grouped by `costcenter`. Which two statements are accurate? (Select TWO.)
 
 - A. Costs from March to May already carry the values, because the resources were tagged then
-- B. Costs from shortly after 1 June onward carry the `costcenter` values
+- B. Costs from shortly after June 1 onward carry the `costcenter` values
 - C. Each member account must also activate `costcenter` before its own costs show it
 - D. The key appears in reports as `aws:costcenter`, because the management account activated it
 - E. Costs from March to May carry the values only if the management account requests a tag backfill
@@ -318,7 +318,7 @@ Take this only after the correction map, and closed-book. The threshold is the s
 **C is right.** A Free plan account runs on two clocks, the calendar and the credit balance; whichever runs out first ends the plan, and the account closes. The Free plan never charges you. AWS keeps the content for a time, and upgrading in that time restores access.
 
 - **A is wrong.** That's what happens on the Paid plan when credits run out; the Free plan never bills.
-- **B is wrong.** "Twelve months free" describes the legacy Free Tier, for accounts created before 15 July 2025.
+- **B is wrong.** "Twelve months free" describes the legacy Free Tier, for accounts created before 2025-07-15.
 - **D is wrong.** Credits come at sign-up, plus a set amount earned through activities; they aren't topped up each month.
 
 </details>
@@ -460,7 +460,7 @@ Take this only after the correction map, and closed-book. The threshold is the s
 
 </details>
 
-**B12.** On 1 March, a company's management account activates the AWS-generated tag `aws:createdBy`. One resource of a supported type was created in January, and another in April. The company has also put a user-defined key, `project`, on its resources since January, but has never activated it. In May, which two statements are accurate? (Select TWO.)
+**B12.** On March 1, a company's management account activates the AWS-generated tag `aws:createdBy`. One resource of a supported type was created in January, and another in April. The company has also put a user-defined key, `project`, on its resources since January, but has never activated it. In May, which two statements are accurate? (Select TWO.)
 
 - A. The April resource's costs can show who created it
 - B. The January resource's costs show who created it, because it still exists after activation

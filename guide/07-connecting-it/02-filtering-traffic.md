@@ -71,7 +71,7 @@ When a customer opens the bakery's website, the request crosses the subnet's net
 
 ## Key terms (skip if you know them)
 
-- **Packet:** one small piece of data travelling across a network, labeled with where it's from and where it's going.
+- **Packet:** one small piece of data traveling across a network, labeled with where it's from and where it's going.
 - **Port:** a number that says which program on a computer the traffic is for. A web server listens on **443** for HTTPS; a PostgreSQL database on **5432**; SSH remote logins use **22**. The other end of a conversation uses a temporary **high-numbered port** for the replies.
 - **Firewall:** something that lets traffic through or stops it according to **rules**. **Inbound** rules cover traffic arriving; **outbound** rules cover traffic leaving.
 - **Security group:** a firewall around a resource, such as an EC2 instance or an RDS database.

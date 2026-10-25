@@ -159,7 +159,7 @@ A Region is a separate geographic area with several AZs. AWS states that each Re
 
 Regions are also isolated from *each other*, so a service failure in one Region stays there. Your resources stay in the Region where you create them: AWS doesn't copy them to another Region unless you set that up ([AWS Regions and Availability Zones](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions-availability-zones.html)). That is why the primer told you to search every Region for lab leftovers.
 
-Each Region has a name and a code. The bakery's site runs in **US East (N. Virginia)**, code `us-east-1`, which the guide's labs use too. Its German shop is near **Europe (Frankfurt)**, `eu-central-1`. An AZ's name is the Region code plus a letter, such as `us-east-1a`. Regions launched after March 20, 2019 start switched off in your account ([AWS Regions](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html)); [primer page 06](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/06-safe-defaults.md) told you to leave them off.
+Each Region has a name and a code. The bakery's site runs in **US East (N. Virginia)**, code `us-east-1`, which the guide's labs use too. Its German shop is near **Europe (Frankfurt)**, `eu-central-1`. An AZ's name is the Region code plus a letter, such as `us-east-1a`. Regions launched after 2019-03-20 start switched off in your account ([AWS Regions](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html)); [primer page 06](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/06-safe-defaults.md) told you to leave them off.
 
 ### "A Region can have just two AZs" is wrong
 
@@ -315,7 +315,7 @@ As lesson 02.03 said, the benefits are possibilities, not defaults: AWS builds a
 
    - **A is wrong.** AWS states a minimum of three. Your account may see two in one Region, but the Region has three.
    - **B is wrong.** Resources stay in their Region unless you copy or replicate them.
-   - **D is wrong.** Regions launched after March 20, 2019 start switched off.
+   - **D is wrong.** Regions launched after 2019-03-20 start switched off.
 
    </details>
 
@@ -359,7 +359,7 @@ As lesson 02.03 said, the benefits are possibilities, not defaults: AWS builds a
 - [AWS Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/), for current Region and AZ counts (checked 2026-10-23)
 - [Regions and Availability Zones](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/), AWS (checked 2026-10-23)
 - [AWS Regions and Availability Zones](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions-availability-zones.html), [AWS Regions](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html) and [AWS Availability Zones](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-availability-zones.html), AWS documentation (checked 2026-10-23)
-- [AWS Fault Isolation Boundaries](https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/abstract-and-introduction.html), AWS whitepaper, published November 16, 2022 (checked 2026-10-23)
+- [AWS Fault Isolation Boundaries](https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/abstract-and-introduction.html), AWS whitepaper, published 2022-11-16 (checked 2026-10-23)
 - [Amazon S3 FAQs](https://aws.amazon.com/s3/faqs/) (checked 2026-10-23)
 - [Multi-AZ deployments for Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html) and [Amazon RDS pricing](https://aws.amazon.com/rds/pricing/) (checked 2026-10-23)
 - [REL10-BP01 Deploy the workload to multiple locations](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html), AWS Well-Architected Framework (checked 2026-10-24)

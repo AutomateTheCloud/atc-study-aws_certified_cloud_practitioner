@@ -31,10 +31,10 @@ questions:
         explanation:
           text: '"Who" points to an action, and actions are CloudTrail events. Config would show the subnet disappearing, but the person''s name comes from CloudTrail.'
       - id: sg-rules-in-june
-        text: What inbound rules did the database security group have on 3 June?
+        text: What inbound rules did the database security group have on June 3?
         variants:
-          - text: Which inbound rules did the database security group allow on 3 June?
-          - text: How was the database security group's inbound access set on 3 June?
+          - text: Which inbound rules did the database security group allow on June 3?
+          - text: How was the database security group's inbound access set on June 3?
         explanation:
           text: Correct. A resource's settings on a past date come from Config's configuration history, as long as recording was on that day.
       - id: cpu-at-month-end

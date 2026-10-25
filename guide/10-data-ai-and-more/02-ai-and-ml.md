@@ -163,7 +163,7 @@ The two are easy to confuse because Rekognition can find words in a picture too.
 |---|---|---|---|
 | **What goes in** | Text | Scanned documents, PDFs, photos of forms | Images and video |
 | **What comes out** | Meaning: sentiment, entities, key phrases, personal data | Text and structure: lines, form fields, tables, receipt totals | What's in the picture: objects, scenes, faces, unsafe content |
-| **Bakery example** | Which reviews are angry? | What did we pay Mill & Co. on 2 October? | Is this uploaded photo really a cake? |
+| **Bakery example** | Which reviews are angry? | What did we pay Mill & Co. on October 2? | Is this uploaded photo really a cake? |
 
 **What's the same:** all three are ready-made, pay-per-use and need no ML skills. **What differs:** the input, and whether you need meaning, structure or a description of a scene. **The principle:** documents go to Textract, pictures of the world go to Rekognition, and text you already have goes to Comprehend.
 

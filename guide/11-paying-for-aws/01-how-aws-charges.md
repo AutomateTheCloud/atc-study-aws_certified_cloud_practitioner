@@ -210,7 +210,7 @@ The owner forwards two monthly bills, November and December, and asks: "What hap
 |---|---|---|---|
 | Web servers, `t3.small` (2 then an average of 4, 730 hours) | Time | $30.37 | $60.74 |
 | Load balancer hours | Time | $16.43 | $16.43 |
-| NAT gateway hours (new on 1 December) | Time | $0.00 | $32.85 |
+| NAT gateway hours (new on December 1) | Time | $0.00 | $32.85 |
 | Server disks, EBS gp3, 8 GB each | Storage | $1.28 | $2.56 |
 | Photo bucket, S3 Standard (200 then 260 GB) | Storage | $4.60 | $5.98 |
 | Photo downloads, S3 GET (2 then 6 million) | Requests | $0.80 | $2.40 |
@@ -241,7 +241,7 @@ That's objective 11.01a. Cutting the steady part of the bill with commitments is
 
 ## The Free Tier now: two plans, credits and two clocks
 
-The **AWS Free Tier** is AWS's offer for trying services without paying. Since 15 July 2025 it works through **credits** and a choice of plan. As of 2026-10-24 ([AWS Free Tier](https://aws.amazon.com/free/); Billing User Guide, [Explore AWS services with AWS Free Tier](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier.html) and [Choosing a plan](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html)):
+The **AWS Free Tier** is AWS's offer for trying services without paying. Since 2025-07-15 it works through **credits** and a choice of plan. As of 2026-10-24 ([AWS Free Tier](https://aws.amazon.com/free/); Billing User Guide, [Explore AWS services with AWS Free Tier](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier.html) and [Choosing a plan](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html)):
 
 - **Credits:** a new customer gets USD $100 in credits at sign-up, on either plan, and can earn up to $100 more by completing short activities (the primer's budget earned $20). Usage beyond the always-free allowances comes out of the credits. AWS's Free Tier page sums it up as up to $200 over 6 months on the Free plan.
 - **The Free plan** never charges you. It offers only selected services, and none that could use up the credits quickly or buy hardware: no Savings Plans and no Reserved Instances, which lesson 11.02 teaches. It ends after six months or when the credits run out, whichever comes first. Then the account closes. AWS keeps your content for 90 days, and upgrading in that time restores access; leftover credits then apply to later bills.
@@ -268,7 +268,7 @@ A Free plan account runs on **two clocks**: the calendar, which stops it six mon
 | Short-term trials | No | Yes |
 | When credits run out | The account closes | You pay normal rates |
 
-> **Misconception:** "A new AWS account is free for 12 months." That was the **legacy Free Tier**: before 15 July 2025, new accounts got 12 months of free usage on many services. Accounts created before that date stay on it; new accounts get credits and a plan instead. Old courses, practice questions and even one AWS page about Regions still say "12 months". It's tempting because it was true for years, and "12 months" still appears in some of AWS's answers about when credits expire. If a question says "12 months free", read it as describing the old program, and answer with the current one where you can.
+> **Misconception:** "A new AWS account is free for 12 months." That was the **legacy Free Tier**: before 2025-07-15, new accounts got 12 months of free usage on many services. Accounts created before that date stay on it; new accounts get credits and a plan instead. Old courses, practice questions and even one AWS page about Regions still say "12 months". It's tempting because it was true for years, and "12 months" still appears in some of AWS's answers about when credits expire. If a question says "12 months free", read it as describing the old program, and answer with the current one where you can.
 
 > **Your turn:** A friend opened a Free plan account three months ago and has $40 of credits left. They want to buy a one-year Reserved Instance "to make the credits last". What actually happens, and when does their account close if they change nothing?
 
@@ -335,7 +335,7 @@ The four-meter habit also tells you which tool to reach for. Time-based charges 
 
    **B is right.**
 
-   - **A is wrong.** That's the legacy Free Tier, for accounts created before 15 July 2025.
+   - **A is wrong.** That's the legacy Free Tier, for accounts created before 2025-07-15.
    - **C is wrong.** The Free plan offers selected services, and usage beyond the always-free allowances comes out of the credits.
    - **D is wrong.** Reserved Instances and Savings Plans aren't available on the Free plan.
 

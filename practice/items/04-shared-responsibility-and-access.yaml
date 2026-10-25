@@ -4274,7 +4274,7 @@ questions:
     correct_answers: [sso-identity-center]
     explanation:
       text: >-
-        AWS renamed AWS Single Sign-On to AWS IAM Identity Center on July 26, 2022. It's the same
+        AWS renamed AWS Single Sign-On to AWS IAM Identity Center on 2022-07-26. It's the same
         service, so pick Identity Center when a scenario asks for workforce single sign-on. The old
         name survives in some command names, which is one reason it lingers.
 
@@ -4818,7 +4818,7 @@ flashcards:
       text: What is "AWS Single Sign-On" called now, and when did the name change?
     back:
       text: >-
-        AWS IAM Identity Center, renamed on July 26, 2022. It's the same service; the old name
+        AWS IAM Identity Center, renamed on 2022-07-26. It's the same service; the old name
         lingers in older questions and some command names.
 
   - id: c04-why-labs-use-iam-user
