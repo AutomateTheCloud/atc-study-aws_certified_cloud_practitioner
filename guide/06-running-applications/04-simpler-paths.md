@@ -111,7 +111,7 @@ AWS now offers two modes: **Standard**, on EC2, and **Cluster**, on Amazon EKS. 
 
 ### "Elastic Beanstalk is serverless" is wrong
 
-You may have read that Beanstalk runs your code "without servers", like Lambda. That's not right. Beanstalk creates real EC2 instances, or an EKS cluster, in your account, and you pay for them while they run. It's tempting because you only upload code and never launch an instance yourself. But the servers exist, appear on your bill, and get updates according to settings you choose.
+You may have read that Beanstalk runs your code "without servers", like Lambda. That's wrong. Beanstalk creates real EC2 instances, or an EKS cluster, in your account, and you pay for them while they run. It feels serverless because you only upload code and never launch an instance yourself. But the servers exist, appear on your bill, and get updates according to settings you choose.
 
 > **Your turn:** The owner's nephew wants a test copy of the bakery's website (lesson 02.05) that he can update by uploading new code, with a load balancer and two servers like the live site. He doesn't want to build those by hand. Which service fits, what does he pay for, and what must he still decide?
 

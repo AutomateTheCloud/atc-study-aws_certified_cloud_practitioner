@@ -204,7 +204,7 @@ Choose the severity honestly. AWS's advice is to use the highest severities only
 
 ### "Response times are guaranteed" is wrong
 
-You may have read that a Support plan guarantees a response, or even a fix, within its stated time. That's not right on two counts.
+It's easy to assume that a Support plan guarantees a response, or even a fix, within its stated time. That's wrong on two counts.
 
 - **They are targets, not promises.** AWS's own footnote says it will make "every reasonable effort" to respond within the stated times ([Compare AWS Support plans](https://aws.amazon.com/premiumsupport/plans/), checked 2026-10-24), and its FAQ calls them service level objectives: goals AWS aims for.
 - **They are about the first reply, not the fix.** "Under 30 minutes" means a person engages with your case within about 30 minutes. How long the fix takes depends on the problem.

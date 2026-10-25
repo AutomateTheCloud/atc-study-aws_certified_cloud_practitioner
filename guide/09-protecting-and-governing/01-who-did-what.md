@@ -98,7 +98,7 @@ Two features matter for audits. **Log file integrity validation** lets you prove
 
 ### "CloudTrail records everything, forever" is wrong
 
-You may have read that CloudTrail is a complete, permanent record of your account. That's not right on two counts. **Time:** Event history keeps 90 days; anything older exists only if you created a trail before it happened. **Scope:** by default CloudTrail records management events, not data events, so it shows who *changed* the photo bucket's settings but not who *downloaded* each photo, unless you turn on data events for that bucket and pay for them.
+A common belief is that CloudTrail is a complete, permanent record of your account. It falls short on two counts. **Time:** Event history keeps 90 days; anything older exists only if you created a trail before it happened. **Scope:** by default CloudTrail records management events, not data events, so it shows who *changed* the photo bucket's settings but not who *downloaded* each photo, unless you turn on data events for that bucket and pay for them.
 
 It's tempting because Event history really is on from day one, with nothing to set up, so it feels complete. The gap shows up only when an auditor asks about last year, or about reads.
 

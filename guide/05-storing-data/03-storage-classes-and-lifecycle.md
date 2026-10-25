@@ -94,7 +94,7 @@ Availability is AWS's design target, as of 2026-10-23; minimum stays are in the 
 
 ### "Standard-IA is as available as Standard" is wrong
 
-You may have read that Standard-IA has the same availability as S3 Standard and only costs less. That's not right. AWS designs S3 Standard for 99.99% availability and Standard-IA for 99.9%. Their *durability* is the same eleven nines, which is where the confusion comes from. One Zone-IA is lower again, 99.5%.
+It's easy to assume that Standard-IA has the same availability as S3 Standard and only costs less. Its availability is lower. AWS designs S3 Standard for 99.99% availability and Standard-IA for 99.9%. Their *durability* is the same eleven nines, which is where the confusion comes from. One Zone-IA is lower again, 99.5%.
 
 It's tempting because both classes keep copies in at least three AZs and answer in milliseconds. Remember lesson 02.03: durability and availability are different promises.
 

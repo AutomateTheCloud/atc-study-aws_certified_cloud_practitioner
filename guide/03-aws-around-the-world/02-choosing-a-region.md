@@ -167,7 +167,7 @@ These are our arithmetic from AWS's figure, and they are lower limits: real cabl
 
 ### "Choose the Region nearest your office" is wrong
 
-You may think the natural Region is the one near you or your company. That's not right. What matters is where your *users* and your *data* are. The Well-Architected Framework lists choosing a Region based on your own location as a common mistake ([SUS01-BP01](https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sus_sus_region_a2.html)) and says user-facing applications belong close to their users ([PERF04-BP06 Choose your workload's location based on network requirements](https://docs.aws.amazon.com/wellarchitected/latest/performance-efficiency-pillar/perf_networking_choose_workload_location_network_requirements.html)).
+You may think the natural Region is the one near you or your company. It usually isn't. What matters is where your *users* and your *data* are. The Well-Architected Framework lists choosing a Region based on your own location as a common mistake ([SUS01-BP01](https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sus_sus_region_a2.html)) and says user-facing applications belong close to their users ([PERF04-BP06 Choose your workload's location based on network requirements](https://docs.aws.amazon.com/wellarchitected/latest/performance-efficiency-pillar/perf_networking_choose_workload_location_network_requirements.html)).
 
 It's tempting because, for a small business, the owner and the customers are often in the same place, as the bakery's first shop was. The German shop breaks that: its customers are an ocean away from N. Virginia.
 

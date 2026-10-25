@@ -89,7 +89,7 @@ AWS doesn't tell you how many data centers an AZ has, and it doesn't let you cho
 
 ### "An Availability Zone is one data center" is wrong
 
-You may have read that an AZ is simply a data center, so "a data center failure" and "an AZ failure" are the same event. That's not right: AWS says an AZ is *one or more* data centers. It's tempting because many diagrams draw an AZ as one box. But the difference changes what a requirement means:
+You may have read that an AZ is simply a data center, so "a data center failure" and "an AZ failure" are the same event. They aren't: AWS says an AZ is *one or more* data centers. Many diagrams draw an AZ as one box, which is where the idea comes from. But the difference changes what a requirement means:
 
 - To survive **losing one data center**, you can't count on staying inside one AZ. You don't know which building your server is in, so you can't place a copy in "the other building". The unit you can control is the AZ.
 - To survive **losing a whole AZ**, you need copies in at least two AZs.
@@ -163,7 +163,7 @@ Each Region has a name and a code. The bakery's site runs in **US East (N. Virgi
 
 ### "A Region can have just two AZs" is wrong
 
-You may have read that a Region needs only two AZs. AWS says every Region has at least three, and in the table we checked, none has fewer (see the dated box).
+Some older notes say a Region needs only two AZs. AWS says every Region has at least three, and in the table we checked, none has fewer (see the dated box).
 
 It's tempting for two reasons. Two is the smallest number that gives high availability, so some material treats it as the minimum. And your *account* may really see two: AWS notes that newer accounts can use only two AZs in US West (N. California), though the Region has three, and that it may stop offering a crowded AZ to new accounts ([AWS Availability Zones](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-availability-zones.html)). What your account can use is a separate question from what the Region has.
 

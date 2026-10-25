@@ -147,7 +147,7 @@ AWS offers **four types** ([Savings Plans types](https://docs.aws.amazon.com/sav
 
 ### "There are two types of Savings Plans" is out of date
 
-You may have read that AWS offers two Savings Plans types, Compute and EC2 Instance. That's not right any more: there are four, with Database and SageMaker AI Savings Plans. It's tempting because the first two came first, still cover the servers most questions are about, and are the pair the exam most likely compares.
+Older notes say AWS offers two Savings Plans types, Compute and EC2 Instance. There are now four, with Database and SageMaker AI Savings Plans. It's tempting because the first two came first, still cover the servers most questions are about, and are the pair the exam most likely compares.
 
 ### Compute or EC2 Instance Savings Plan: flexibility or a deeper discount
 
@@ -167,7 +167,7 @@ A **Reserved Instance** is not a machine. It's a **billing discount** that AWS a
 
 ### "A Reserved Instance is a server set aside for you" is wrong
 
-You may have read that buying a Reserved Instance gives you a server. That's not right. Nothing launches when you buy one, and you don't connect to it. If a matching instance is running, its bill drops; if none is, you pay for the reservation and get nothing. It's tempting because of the name, and because one kind, the zonal Reserved Instance, does hold capacity, below. Even that is a promise of room to launch, not a running machine.
+It's easy to assume that buying a Reserved Instance gives you a server. It doesn't. Nothing launches when you buy one, and you don't connect to it. If a matching instance is running, its bill drops; if none is, you pay for the reservation and get nothing. The name invites the mistake, and one kind, the zonal Reserved Instance, does hold capacity, below. Even that is a promise of room to launch, not a running machine.
 
 ### Standard or Convertible
 
@@ -236,7 +236,7 @@ In an organization, a Reserved Instance's discount applies first to the account 
 
 **Long description.** Horizontal bars of the largest discount off On-Demand that AWS states, as of 2026-10-24: Spot Instances 90%; Standard Reserved Instances 72%, with dots for AWS's stated averages of 40% (1 year) and 60% (3 years); EC2 Instance Savings Plans 72%; Dedicated Host Reservations 70%; Convertible Reserved Instances 66%, averages 31% and 54%; Compute Savings Plans 66%; SageMaker AI Savings Plans 64%; Database Savings Plans 35%; Capacity Reservations and On-Demand, no discount.
 
-You may have read that Reserved Instances save "up to 75%", as if that were the discount. That's wrong twice. The figure is old: AWS's [Reserved Instances pricing](https://aws.amazon.com/ec2/pricing/reserved-instances/) page says up to 72% today, though a few older AWS pages still say 75% (checked 2026-10-24). And any "up to" is a maximum, reached only with the longest term, the most paid upfront and the configurations with the biggest gap. The bakery's one-year, no-upfront reservation on a `t3.small` saves about 38% (lesson 06.01's prices). It's tempting because a single number is easy to memorize. Learn the order instead (Spot deepest, then commitments, Capacity Reservations none), and check the current figures.
+You may have read that Reserved Instances save "up to 75%", as if that were the discount. That's wrong twice. The figure is old: AWS's [Reserved Instances pricing](https://aws.amazon.com/ec2/pricing/reserved-instances/) page says up to 72% today, though a few older AWS pages still say 75% (checked 2026-10-24). And any "up to" is a maximum, reached only with the longest term, the most paid upfront and the configurations with the biggest gap. The bakery's one-year, no-upfront reservation on a `t3.small` saves about 38% (lesson 06.01's prices). The figure sticks because a single number is easy to memorize. Learn the order instead (Spot deepest, then commitments, Capacity Reservations none), and check the current figures.
 
 ## Spot Instances: deep discounts for work that can stop
 
@@ -272,7 +272,7 @@ It's charged at the **On-Demand rate whether you run instances in it or not**. W
 
 ### "A Capacity Reservation gets you a discount" is wrong
 
-You may have read that reserving capacity lowers the price, as a Reserved Instance does. That's not right: a Capacity Reservation gives **no billing discount** on its own. To lower the price, combine it with a Savings Plan or a Regional Reserved Instance, whose discounts apply to it; a zonal Reserved Instance's discount doesn't. It's tempting because "reserved" appears in both names, and a zonal Reserved Instance does both jobs, for a one- or three-year commitment.
+You might expect reserving capacity to lower the price, as a Reserved Instance does. It doesn't: a Capacity Reservation gives **no billing discount** on its own. To lower the price, combine it with a Savings Plan or a Regional Reserved Instance, whose discounts apply to it; a zonal Reserved Instance's discount doesn't. It's tempting because "reserved" appears in both names, and a zonal Reserved Instance does both jobs, for a one- or three-year commitment.
 
 > **Check:** The bakery runs a big launch on one day next month and must be certain it can start ten extra servers in its AZ that morning. What fits?
 >

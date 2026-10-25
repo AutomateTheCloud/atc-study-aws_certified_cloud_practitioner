@@ -139,7 +139,7 @@ With one instance left there is no spare: one more failure stops orders, and one
 
 ## Auto Scaling changes how many; the load balancer chooses which
 
-You may have read that Auto Scaling spreads traffic across instances. That's not right. Auto Scaling changes the number of instances and replaces failed ones; the load balancer spreads the requests. It's tempting because the two are almost always used together.
+Many people think Auto Scaling spreads traffic across instances. It doesn't. Auto Scaling changes the number of instances and replaces failed ones; the load balancer spreads the requests. The two are easy to confuse because they're almost always used together.
 
 ```mermaid
 flowchart LR

@@ -179,7 +179,7 @@ sequenceDiagram
 
 Saved copies make DNS fast, but they also mean a change of address takes a while to reach everyone. Lesson [07.03](../07-connecting-it/03-names-and-the-edge.md) calls that waiting time the TTL.
 
-> **Misconception:** "The domain name is where the website lives." That's not right. A name like `bakery.example` says nothing about where the server is; DNS only hands out its current address, which the owner can change at any time. It's tempting because the name is all you ever see. Amazon Route 53, AWS's DNS service (lesson [03.04](../03-aws-around-the-world/04-the-edge.md)), works the same way: it answers "where is it?" and doesn't store or deliver the site.
+> **Misconception:** "The domain name is where the website lives." That's wrong. A name like `bakery.example` says nothing about where the server is; DNS only hands out its current address, which the owner can change at any time. It feels true because the name is all you ever see. Amazon Route 53, AWS's DNS service (lesson [03.04](../03-aws-around-the-world/04-the-edge.md)), works the same way: it answers "where is it?" and doesn't store or deliver the site.
 
 > **Check:** Answer the first prequestion. The bakery moves its website from the back room to AWS. Customers keep typing `bakery.example`. What has to change?
 >

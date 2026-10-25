@@ -121,7 +121,7 @@ Two middle options exist: **ECS Managed Instances**, EC2 instances that AWS prov
 
 ### "Fargate orchestrates containers" is wrong
 
-You may have read that Fargate is an orchestrator, an alternative to ECS or EKS. That's not right. ECS or EKS decides where containers run and how many, and schedules them onto Fargate ([AWS Fargate FAQs](https://aws.amazon.com/fargate/faqs/)). ECS lists Fargate as a **capacity** option, beside EC2 instances.
+A common belief is that Fargate is an orchestrator, an alternative to ECS or EKS. It isn't. ECS or EKS decides where containers run and how many, and schedules them onto Fargate ([AWS Fargate FAQs](https://aws.amazon.com/fargate/faqs/)). ECS lists Fargate as a **capacity** option, beside EC2 instances.
 
 It's tempting because you rarely see Fargate alone ("ECS on Fargate"), and with no servers to look at, Fargate seems to do everything. Remember: ECS or EKS decides; Fargate runs.
 

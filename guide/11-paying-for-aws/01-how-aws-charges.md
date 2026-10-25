@@ -184,9 +184,9 @@ Lesson 07.04 gave you the rates. Here is the same pattern drawn on the bakery's 
 
 ### "In is free, out is charged" is only half the rule
 
-You may have read that only data going out to the internet costs money. That's not right. Data **across Availability Zones** and **between Regions** is charged too, even though it never leaves AWS. A design with servers in two AZs pays a little for every GB they exchange, and a backup copied to a second Region pays per GB copied.
+A common belief is that only data going out to the internet costs money. That's wrong. Data **across Availability Zones** and **between Regions** is charged too, even though it never leaves AWS. A design with servers in two AZs pays a little for every GB they exchange, and a backup copied to a second Region pays per GB copied.
 
-It's tempting because "out to the internet" is usually the biggest transfer line, and many notes stop there. Exam task [4.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.1) names transfer "from one Region to another" and "within the same Region" on purpose.
+The belief comes from the bill itself: "out to the internet" is usually the biggest transfer line, and many notes stop there. Exam task [4.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.1) names transfer "from one Region to another" and "within the same Region" on purpose.
 
 > **Your turn:** The bakery's web server in AZ a sends 300 GB a month to the database in AZ b. A colleague says, "That's inside AWS, so it's free." What does it cost at the rates above, and what would make it free?
 

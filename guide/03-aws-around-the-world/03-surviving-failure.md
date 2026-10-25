@@ -86,7 +86,7 @@ People call how far a failure reaches its **blast radius**. You will use this la
 
 ## High availability and disaster recovery answer different questions
 
-High availability keeps the system running *through* a failure of one of its parts. Disaster recovery brings the *whole* system back *after* a larger event. AWS's DR whitepaper puts it in one line: availability is about the components of a workload, and DR is about separate copies of the entire workload ([Disaster Recovery of Workloads on AWS](https://docs.aws.amazon.com/pdfs/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-workloads-on-aws.pdf), section "High availability is not disaster recovery").
+High availability keeps the system running *through* the failure of one part. Disaster recovery brings the whole system back *after* a bigger event. AWS's DR whitepaper makes the same split: availability is about the components of a workload, and DR is about separate copies of the entire workload ([Disaster Recovery of Workloads on AWS](https://docs.aws.amazon.com/pdfs/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-workloads-on-aws.pdf), section "High availability is not disaster recovery").
 
 ```mermaid
 flowchart LR
@@ -105,7 +105,7 @@ flowchart LR
   HA ~~~ DR
 ```
 
-*Notice how each panel ends. High availability ends with customers noticing little; disaster recovery ends with a measured return, some downtime and possibly some lost data, within limits set in advance.*
+*Notice how each panel ends. With high availability, customers notice little. With disaster recovery, service comes back after some downtime, perhaps with some data lost, but within limits set in advance.*
 
 **Long description.** Two panels side by side. High availability, inside one Region: one AZ fails; the copies in the other AZ keep serving; customers notice little or nothing. Disaster recovery, a separate copy elsewhere: the whole Region, or the data, is lost; the workload fails over to the copy in the recovery Region, or a backup is restored; service returns within the RTO, and data is back to within the RPO.
 
@@ -121,11 +121,11 @@ The two share tools, such as monitoring and automatic failover, and AWS says to 
 
 ### "High availability is the same as disaster recovery" is wrong
 
-You may have read that a highly available system needs no disaster recovery plan. That's not right. A system spread over three AZs survives a flood in one of them, but not a Region-wide outage, and not a mistake that deletes its data. Those need a separate copy and a plan to use it.
+A common belief is that a highly available system needs no disaster recovery plan. It still needs one. Spreading a system over three AZs gets it through a flood in one of them. A Region-wide outage, or a mistake that deletes its data, takes a separate copy and a plan to use it.
 
-> **Example (AWS Health Dashboard, checked 2026-10-25):** since March 2026, AWS's Middle East (UAE) Region, `me-central-1`, has been "unable to reliably support customer applications", in AWS's words. In its update of September 15, AWS said it was "unable to restore access to the resources and data hosted exclusively in the mec1-az2 Availability Zone", and that "most customers have been able to re-establish their operations in other Regions by restoring backups or copying data that remained accessible" ([AWS Health Dashboard](https://health.aws.amazon.com/health/status)). Data kept in one place was lost; customers with a copy elsewhere recovered. That is the top rung of the ladder, for real.
+> **Example (AWS Health Dashboard, checked 2026-10-25):** since March 2026, AWS's Middle East (UAE) Region, `me-central-1`, has been "unable to reliably support customer applications", in AWS's words. In its update of September 15, AWS said it was "unable to restore access to the resources and data hosted exclusively in the mec1-az2 Availability Zone", and that "most customers have been able to re-establish their operations in other Regions by restoring backups or copying data that remained accessible" ([AWS Health Dashboard](https://health.aws.amazon.com/health/status)). Data kept in one place was lost, and customers with a copy elsewhere recovered. The top rung of the ladder does happen.
 
-It's tempting because the same tools serve both, and a multi-AZ design does survive the smallest disasters. Use the ladder: high availability covers the lower rungs; DR covers the top rung and the box beside it.
+It's an easy mistake to make: the same tools serve both, and a multi-AZ design does survive the smallest disasters. Use the ladder: high availability covers the lower rungs; DR covers the top rung and the box beside it.
 
 > **Your turn:** The bakery's website runs on two servers in two AZs of Europe (Frankfurt), and its database has a standby in the second AZ. The owner says, "So we're safe from any disaster." In two sentences, tell her what this setup protects against, and what it doesn't.
 
@@ -240,7 +240,7 @@ flowchart LR
 
 ### "Replication replaces backup" is wrong
 
-You may have heard that a database with a live copy in another AZ or Region doesn't need backups. That's not right. Replication faithfully copies deletions, corruption and changes made by an attacker. Only a copy that *stops changing*, a point-in-time backup, lets you go back to before the damage. Even multi-site active/active, AWS notes, needs backups for data disasters, and recovering from them means some data loss.
+You may have heard that a database with a live copy in another AZ or Region doesn't need backups. It does. Replication faithfully copies deletions, corruption and changes made by an attacker. Only a copy that *stops changing*, a point-in-time backup, lets you go back to before the damage. Even multi-site active/active, AWS notes, needs backups for data disasters, and recovering from them means some data loss.
 
 It's tempting because replication *looks* like a backup: a second copy, often elsewhere. The difference is time: a replica shows the data as it is now; a backup, as it was.
 

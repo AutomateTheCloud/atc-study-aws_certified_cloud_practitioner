@@ -114,9 +114,9 @@ The chain matters. Moving servers alone (technology) delivers some savings; most
 
 ### "Process is one of the CAF perspectives" is wrong
 
-You may have read a list of CAF perspectives that includes "process". That's not right. The six perspectives are **Business, People, Governance, Platform, Security and Operations**. Process is a **transformation domain**: one of the things that changes, not one of the groups of capabilities that make change possible ([Foundational capabilities](https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/foundational-capabilities.html), checked 2026-10-24).
+You may have read a list of CAF perspectives that includes "process". Process isn't one of them. The six perspectives are **Business, People, Governance, Platform, Security and Operations**. Process is a **transformation domain**: one of the things that changes, not one of the groups of capabilities that make change possible ([Foundational capabilities](https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/foundational-capabilities.html), checked 2026-10-24).
 
-It's tempting because "people, process and technology" is a familiar trio in IT management, and the CAF really does use all three words: People is a perspective, while process and technology are domains. The list that swaps in "process" also tends to drop Governance. If an answer option offers "process perspective", it's a distractor.
+The slip is natural because "people, process and technology" is a familiar trio in IT management, and the CAF really does use all three words: People is a perspective, while process and technology are domains. The list that swaps in "process" also tends to drop Governance. If an answer option offers "process perspective", it's a distractor.
 
 > **Check:** Answer the first prequestion. Which list gives the six CAF perspectives?
 >

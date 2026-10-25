@@ -148,7 +148,7 @@ Three ideas from the picture:
 >
 > **Literally:** a hypervisor divides one computer's processors, memory and disk among several virtual machines and isolates them from each other.
 
-> **Misconception:** "Shared hardware means other customers can see my data." That's not right. The hypervisor keeps each VM's memory and disk apart, and on AWS that layer is AWS's responsibility: the [Shared Responsibility Model](https://aws.amazon.com/compliance/shared-responsibility-model/) puts "the host operating system and virtualization layer" on AWS's side. It's tempting because "shared" sounds like a shared folder, open to all.
+> **Misconception:** "Shared hardware means other customers can see my data." They can't. The hypervisor keeps each VM's memory and disk apart, and on AWS that layer is AWS's responsibility: the [Shared Responsibility Model](https://aws.amazon.com/compliance/shared-responsibility-model/) puts "the host operating system and virtualization layer" on AWS's side. It's tempting because "shared" sounds like a shared folder, open to all.
 
 > **Check:** Which is true of three virtual machines on one host?
 >

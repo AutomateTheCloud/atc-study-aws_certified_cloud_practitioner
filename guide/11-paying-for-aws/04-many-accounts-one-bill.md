@@ -217,7 +217,7 @@ flowchart LR
 
 ### "A tag shows costs" is wrong
 
-You may have read that tagging a resource is enough to see its costs by tag. That's not right. A tag on a resource is invisible to billing until its key is **activated** as a cost allocation tag, and even then it labels usage **from activation onward**: it isn't retroactive by default. A management account can request a **tag backfill**, which re-applies the current activation to up to the previous twelve months, but only where the resource carried the tag at the time ([Backfill cost allocation tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-allocation-backfill.html), checked 2026-10-24). Tagging a resource today never labels last month's costs.
+It's easy to assume that tagging a resource is enough to see its costs by tag. It isn't. A tag on a resource is invisible to billing until its key is **activated** as a cost allocation tag, and even then it labels usage **from activation onward**: it isn't retroactive by default. A management account can request a **tag backfill**, which re-applies the current activation to up to the previous twelve months, but only where the resource carried the tag at the time ([Backfill cost allocation tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-allocation-backfill.html), checked 2026-10-24). Tagging a resource today never labels last month's costs.
 
 It's tempting because Tag Editor finds tagged resources at once, as in Lab 01, so it feels as if billing should too. Finding resources and grouping costs are separate systems, and the billing one waits for activation.
 
