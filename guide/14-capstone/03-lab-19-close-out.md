@@ -54,7 +54,7 @@ flowchart LR
   E -.->|"optional"| F["F. Close the account<br/>(primer page 09)"]
 ```
 
-*Notice that the tag search is only the first of three nets. Part B catches what can't carry tags, and the bill in Parts C and E catches anything both nets missed, in any Region.*
+*Notice that the tag search is only the first of three nets. Part B catches what Tag Editor can't find, and the bill in Parts C and E catches anything both nets missed, in any Region.*
 
 **Long description.** Day 1, left to right: A, sweep by tag in all Regions; B, check what tags can't find; C, read the bill and the credits; D, review the guardrails. An arrow labeled "the next day" leads to E, credits and bill unchanged. A dotted arrow labeled "optional" leads from E to F, close the account by following primer page 09.
 
@@ -198,7 +198,7 @@ You checked the account three ways: by tag, by name where tags can't reach, and 
 >
 > <details><summary>Model answer</summary>
 >
-> First, I would list everything the site used by its tag across all Regions, then check the services whose resources can't carry tags, such as its roles and log groups, by name. Second, I would delete them in dependency order with a written checklist, keeping the account's budgets and alarms. Third, I would read the bill by service and Region the next day and again at month end, and investigate any charge that remains.
+> First, I would list everything the site used by its tag across all Regions, then check by name the resource types Tag Editor can't find, such as its roles and log groups. Second, I would delete them in dependency order with a written checklist, keeping the account's budgets and alarms. Third, I would read the bill by service and Region the next day and again at month end, and investigate any charge that remains.
 >
 > </details>
 

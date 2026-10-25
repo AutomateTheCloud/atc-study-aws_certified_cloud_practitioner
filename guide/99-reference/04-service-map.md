@@ -13,15 +13,13 @@ sources:
 
 # Service map: every in-scope service, what it does and where it is taught
 
-The [CLF-C02 exam guide](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html) lists 111 in-scope services in 19 categories; AWS says the list may change and isn't complete. This page gives each one a line: what it does, in a few words from the [glossary](01-glossary.md), and the page that teaches it. The guide teaches 110 of them so far.
+The [CLF-C02 exam guide](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html) lists 111 in-scope services in 19 categories; AWS says the list may change and isn't complete. This page gives each one a line: what it does, in a few words from the [glossary](01-glossary.md), and the page that teaches it. The guide teaches 111 of them so far.
 
 Names are the exam guide's; where AWS has renamed a service, today's name follows in brackets. The [names page](02-names-exam-vs-current.md) has the details.
 
 ## Not covered yet
 
-1 in-scope services aren't taught yet. Each is marked "not covered yet" in its category below.
-
-- AWS RAM (Security, Identity, and Compliance)
+None: every in-scope service is taught somewhere in the guide.
 
 ## Analytics
 
@@ -203,7 +201,7 @@ Names are the exam guide's; where AWS has renamed a service, today's name follow
 | [Amazon Inspector](01-glossary.md#a) | A vulnerability management service that finds EC2 instances, container images in Amazon ECR and Lambda functions on its own | [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md) |
 | [AWS KMS](01-glossary.md#a) | The AWS service that creates and controls the keys that encrypt your data | [Encryption](../09-protecting-and-governing/02-encryption.md) |
 | [Amazon Macie](01-glossary.md#a) | A service that inventories your S3 buckets and uses machine learning and pattern matching to find sensitive data | [Encryption](../09-protecting-and-governing/02-encryption.md) |
-| AWS RAM | — | **Not covered yet** |
+| AWS RAM | Shares a resource you create once, such as VPC subnets, with other accounts or your organization | [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md) |
 | [AWS Secrets Manager](01-glossary.md#a) | An AWS service that stores secrets | [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md) |
 | [AWS Security Hub](01-glossary.md#a) (now AWS Security Hub CSPM) | Checks your settings against security standards, scores them, and gathers other services' findings in one place | [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md) |
 | [AWS Shield](01-glossary.md#a) | AWS's protection against DDoS attacks | [The front door](../09-protecting-and-governing/04-the-front-door.md) |

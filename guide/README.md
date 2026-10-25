@@ -13,6 +13,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [The exam at a glance](00-start-here/03-the-exam-at-a-glance.md) · Reference
 - [AWS changes fast](00-start-here/04-aws-changes-fast.md) · Lesson
 - [Before your first lab](00-start-here/05-before-your-first-lab.md) · Task card
+- [Diagnostic: choose your path](00-start-here/06-diagnostic.md) · Mastery check
 
 ## Module 01: On-ramp: IT foundations (optional)
 
@@ -34,6 +35,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [The Well-Architected Framework](02-why-the-cloud/05-the-well-architected-framework.md) · Lesson
 - [Lab 01: Create, find and delete your first storage bucket](02-why-the-cloud/06-lab-01-first-resource.md) · Lab
 - [Simulation S1: Finish the bakery's cost comparison](02-why-the-cloud/07-sim-demand-curve.md) · Simulation
+- [Module 02 mastery check](02-why-the-cloud/08-check.md) · Mastery check
 
 ## Module 03: AWS around the world
 
@@ -44,6 +46,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [The edge](03-aws-around-the-world/04-the-edge.md) · Lesson
 - [Lab 02: See Regions, Availability Zones and AWS Health in your own account](03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md) · Lab
 - [Simulation S2: The blast-radius ladder and three recovery plans](03-aws-around-the-world/06-sim-blast-radius.md) · Simulation
+- [Module 03 mastery check](03-aws-around-the-world/07-check.md) · Mastery check
 
 ## Module 04: Who secures what
 
@@ -57,6 +60,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [Lab 04: Finish a policy, write one yourself, and find the deny that blocks it](04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md) · Lab
 - [Simulation S3: Slide the line from your own servers to Amazon S3](04-shared-responsibility-and-access/08-sim-responsibility-slider.md) · Simulation
 - [Simulation S4: Predict allow or deny across accounts, boundaries and organizations](04-shared-responsibility-and-access/09-sim-policy-playground.md) · Simulation
+- [Module 04 mastery check](04-shared-responsibility-and-access/10-check.md) · Mastery check
 
 ## Module 05: Storing data
 
@@ -71,6 +75,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](05-storing-data/08-lab-06-a-dynamodb-table.md) · Lab
 - [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](05-storing-data/09-sim-lifecycle-cost-timeline.md) · Simulation
 - [Simulation S6: Multi-AZ, read replica or backup: protect the order database](05-storing-data/10-sim-multi-az-vs-read-replica.md) · Simulation
+- [Module 05 mastery check](05-storing-data/11-check.md) · Mastery check
 
 ## Module 06: Running applications
 
@@ -82,6 +87,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [Lab 07: Run a Lambda function, read its logs, and stop them piling up](06-running-applications/05-lab-07-a-lambda-function.md) · Lab
 - [Lab 08: Launch a virtual server, stop it, terminate it, and prove nothing is left](06-running-applications/06-lab-08-launch-and-terminate-an-instance.md) · Lab
 - [Simulation S7: Scale the bakery's web servers through a December Saturday](06-running-applications/07-sim-elasticity-with-auto-scaling.md) · Simulation
+- [Module 06 mastery check](06-running-applications/08-check.md) · Mastery check
 
 ## Module 07: Connecting it
 
@@ -92,6 +98,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [Connecting networks and offices](07-connecting-it/04-connecting-networks-and-offices.md) · Lesson
 - [Lab 09: Build a small network with a public and a private subnet, then take it apart](07-connecting-it/05-lab-09-build-a-small-vpc.md) · Lab
 - [Simulation S8: Follow a packet and find the rule that blocks it](07-connecting-it/06-sim-packet-journey.md) · Simulation
+- [Module 07 mastery check](07-connecting-it/07-check.md) · Mastery check
 
 ## Module 08: Building and operating
 
@@ -102,6 +109,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [Connecting parts, shipping software](08-building-and-operating/04-connecting-parts-shipping-software.md) · Lesson
 - [Lab 10: Create the same bucket three ways: console, command line and template](08-building-and-operating/05-lab-10-same-bucket-three-ways.md) · Lab
 - [Lab 11: Email the owner when the order function fails](08-building-and-operating/06-lab-11-alarm-on-errors.md) · Lab
+- [Module 08 mastery check](08-building-and-operating/07-check.md) · Mastery check
 
 ## Module 09: Protecting, governing and proving compliance
 
@@ -116,6 +124,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [Simulation S9: Match security findings to the service that raised them](09-protecting-and-governing/08-sim-security-findings-tour.md) · Simulation
 - [Simulation S10: Read a resource's AWS Config timeline, and tell Config from CloudTrail](09-protecting-and-governing/09-sim-config-timeline.md) · Simulation
 - [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](09-protecting-and-governing/10-sim-organizations-and-scps.md) · Simulation
+- [Module 09 mastery check](09-protecting-and-governing/11-check.md) · Mastery check
 
 ## Module 10: Data, AI and the rest of the catalog
 
@@ -126,6 +135,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [Lab 13: Query a small sales file in S3 with Athena, then delete everything](10-data-ai-and-more/04-lab-13-athena-query.md) · Lab
 - [Lab 14 (optional): Have Amazon Polly read a product description aloud](10-data-ai-and-more/05-lab-14-polly-text-to-speech.md) · Lab
 - [Simulation S12: Match each request to a service by what goes in and what comes out](10-data-ai-and-more/06-sim-input-output-matcher.md) · Simulation
+- [Module 10 mastery check](10-data-ai-and-more/07-check.md) · Mastery check
 
 ## Module 11: Paying for AWS
 
@@ -138,6 +148,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [Lab 16: Turn on cost allocation tags and find them in Cost Explorer](11-paying-for-aws/06-lab-16-cost-allocation-tags.md) · Lab
 - [Simulation S13: Choose how to pay for each of the bakery's workloads](11-paying-for-aws/07-sim-purchasing-option-tree.md) · Simulation
 - [Simulation S14: Follow a runaway cost and see which guardrails alert and which stop it](11-paying-for-aws/08-sim-guardrail-timeline.md) · Simulation
+- [Module 11 mastery check](11-paying-for-aws/09-check.md) · Mastery check
 
 ## Module 12: Getting help
 
@@ -148,6 +159,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [Partners and paid help](12-getting-help/04-partners-and-paid-help.md) · Lesson
 - [Lab 17: Tour the help every AWS account gets, on the Basic plan](12-getting-help/05-lab-17-support-center-tour.md) · Lab
 - [Simulation S15: Choose the cheapest Support plan that fits](12-getting-help/06-sim-support-plan-chooser.md) · Simulation
+- [Module 12 mastery check](12-getting-help/07-check.md) · Mastery check
 
 ## Module 13: Moving to AWS
 
@@ -158,6 +170,7 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [The business case](13-moving-to-aws/04-the-business-case.md) · Lesson
 - [Simulation S16: Sort the chain's ten applications into the 7 Rs](13-moving-to-aws/05-sim-portfolio-sorter.md) · Simulation
 - [Simulation S17: Rightsize the chain's servers and settle their licenses](13-moving-to-aws/06-sim-rightsizing-and-licensing.md) · Simulation
+- [Module 13 mastery check](13-moving-to-aws/07-check.md) · Mastery check
 
 ## Module 14: Capstone: a Well-Architected review
 
@@ -165,6 +178,27 @@ Before your first lab, work through the [guardrails primer](https://github.com/A
 - [The capstone review](14-capstone/01-the-capstone-review.md) · Lesson
 - [Lab 18: Record the bakery's review in the AWS Well-Architected Tool](14-capstone/02-lab-18-well-architected-tool-review.md) · Lab
 - [Lab 19: Close out the account you used for the course](14-capstone/03-lab-19-close-out.md) · Lab
+
+## Exam preparation
+
+- [How to use the exam preparation](90-exam-prep/01-how-to-use-exam-prep.md) · Page
+- [Mixed set 1: Modules 02 to 05](90-exam-prep/02-mixed-set-1.md) · Mastery check
+- [Mixed set 2: Modules 02 to 09](90-exam-prep/03-mixed-set-2.md) · Mastery check
+- [Mixed set 3: Modules 02 to 13](90-exam-prep/04-mixed-set-3.md) · Mastery check
+- [Practice exam 1](90-exam-prep/05-practice-exam-1.md) · Mastery check
+- [Practice exam 2](90-exam-prep/06-practice-exam-2.md) · Mastery check
+
+## How-to task cards
+
+- [Switch the console to US East (N. Virginia)](98-how-to/01-switch-to-us-east-1.md) · Task card
+- [Tag a resource you forgot to tag](98-how-to/02-tag-a-resource-you-forgot-to-tag.md) · Task card
+- [Find everything a lab left behind, in every Region](98-how-to/03-find-what-a-lab-left-behind.md) · Task card
+- [Empty and delete a versioned S3 bucket](98-how-to/04-empty-and-delete-a-versioned-bucket.md) · Task card
+- [Set a CloudWatch Logs retention period, and delete a log group](98-how-to/05-set-log-retention-and-delete-a-log-group.md) · Task card
+- [Find a lab's events in CloudTrail Event history](98-how-to/06-find-a-labs-events-in-cloudtrail.md) · Task card
+- [Check what a policy allows with the IAM policy simulator](98-how-to/07-check-a-policy-in-the-policy-simulator.md) · Task card
+- [Read this month's bill by service and Region](98-how-to/08-read-this-months-bill.md) · Task card
+- [Open an account and billing support case on the Basic plan](98-how-to/09-open-a-billing-support-case.md) · Task card
 
 ## Reference
 

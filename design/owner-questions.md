@@ -107,3 +107,4 @@
   (a bucket policy's explicit deny also blocks root); 05.05 read replica limits for Oracle/SQL Server;
   05.05 "standby serves no reads" vs Multi-AZ DB clusters; align S5 vs 05.03 minimum-duration wording.
 - Sims' and labs' closing "Next: mastery check" lines to link the check pages (final pass).
+- q14-risk-from-worst-missing-practice depends on Lab 18's unconfirmed risk rule: confirm on the live run or cut.

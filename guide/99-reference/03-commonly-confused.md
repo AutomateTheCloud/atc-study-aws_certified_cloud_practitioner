@@ -11,7 +11,7 @@ pillars: []
 
 # Commonly confused terms, side by side
 
-The exam's wrong answers are often a near neighbor of the right one. These 246 groups gather the 492 "don't confuse with" notes in the [glossary](01-glossary.md), one group per set of look-alikes, under the module that first sets them side by side. Each term links to its glossary letter; each group ends with the pages that teach its terms.
+The exam's wrong answers are often a near neighbor of the right one. These 267 groups gather the 529 "don't confuse with" notes in the [glossary](01-glossary.md), one group per set of look-alikes, under the module that first sets them side by side. Each term links to its glossary letter; each group ends with the pages that teach its terms.
 
 **How to use it:** cover the notes, say how the terms differ, then check. A group you can't explain is the page to reread.
 
@@ -29,6 +29,83 @@ The exam's wrong answers are often a near neighbor of the right one. These 246 g
   - domain name: A domain name is a site's name on the internet; an exam domain is one of the broad subject areas of the CLF-C02 exam.
   - task statement: A task statement is one specific thing the exam tests; a domain is the broad subject area that groups several of them.
   - Taught in: [The exam at a glance](../00-start-here/03-the-exam-at-a-glance.md); [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
+
+## Module 01: On-ramp: IT foundations (optional)
+
+19 groups.
+
+- **[application](01-glossary.md#a)** · **[operating system](01-glossary.md#o)**
+  - application: An application does a job for people, such as pricing an order; the operating system runs the computer and shares its hardware between applications.
+  - operating system: The operating system runs the computer and shares its hardware out; an application runs on top of it and does a job for people, such as taking orders.
+  - Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
+- **[argument](01-glossary.md#a)** · **[option](01-glossary.md#o)**
+  - argument: An argument is the value the command acts on; an option is a setting written as a name with two dashes and then its value.
+  - option: An option is a named setting, starting with two dashes; an argument is the value the command acts on, such as a bucket's name.
+  - Taught in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
+- **[array](01-glossary.md#a)** · **[JSON object](01-glossary.md#j)**
+  - array: An array, in square brackets, is a list of values in order; an object, in curly braces, holds named values.
+  - JSON object: An object, in curly braces, holds named values; an array, in square brackets, holds a list of values in order, and either can hold the other.
+  - Taught in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
+- **[authenticator app](01-glossary.md#a)** · **[passkey](01-glossary.md#p)**
+  - authenticator app: An authenticator app's code can be typed into a fake sign-in page and used at once; a passkey is tied to the real site, so a fake page gets nothing.
+  - passkey: A passkey works only on the real site, so a fake page gets nothing; an authenticator app's code can be typed into a fake page and used at once.
+  - Taught in: [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
+- **[client](01-glossary.md#c)** · **[server](01-glossary.md#s)**
+  - client: A client sends requests and a server waits for them and answers, but the same computer can be either, depending on what it is doing.
+  - server: A server waits for requests and answers them, while a client sends the requests; the same laptop can be either.
+  - Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
+- **[column](01-glossary.md#c)** · **[row](01-glossary.md#r)**
+  - column: A column is one fact that every record has; a row is one whole record.
+  - row: A row is one record; a column is one fact that every record in the table has, such as the pickup date.
+  - Taught in: [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
+- **[container](01-glossary.md#c)** · **[virtual machine](01-glossary.md#v)**
+  - virtual machine: A virtual machine carries a whole operating system of its own; a container packages one application and shares its machine's operating system, and often runs inside a virtual machine.
+  - Taught in: [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md); [Containers and serverless](../06-running-applications/03-containers-and-serverless.md)
+- **[database](01-glossary.md#d)** · **[file](01-glossary.md#f)**
+  - database: A database puts one engine in charge of many small records; a file is one whole thing each program opens and saves itself, and a spreadsheet is a file.
+  - file: A file is one whole thing that each program opens and saves itself; a database holds many small records that one engine lets many people search and change at once.
+  - Taught in: [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
+- **[file storage](01-glossary.md#f)** · **[file system](01-glossary.md#f)**
+  - file system: A file system is how files are arranged in folders; file storage is a shared file system that many servers use over the network at once.
+  - Taught in: [Files vs databases](../01-on-ramp/03-files-vs-databases.md); [Block, file and object storage](../05-storing-data/01-block-file-object.md)
+- **[GiB](01-glossary.md#g)** · **[gigabyte](01-glossary.md#g)**
+  - GiB: A GiB is 1,073,741,824 bytes; a gigabyte is exactly a billion, so the GiB is about 7% bigger.
+  - gigabyte: A gigabyte is exactly a billion bytes; a GiB is based on powers of two and is about 7% bigger.
+  - Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
+- **[hardware](01-glossary.md#h)** · **[software](01-glossary.md#s)**
+  - hardware: Hardware is the physical parts you could touch; software is the programs that run on them.
+  - software: Software is the programs; hardware is the physical parts they run on.
+  - Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
+- **[HTTP](01-glossary.md#h)** · **[HTTPS](01-glossary.md#h)**
+  - HTTP: HTTP sends readable text that anyone on the path could read or change; HTTPS runs HTTP inside TLS, adding encryption and proof of the server's identity.
+  - HTTPS: HTTPS encrypts the conversation and proves the server's name; plain HTTP does neither, and a padlock proves the connection and the name, not the business's honesty.
+  - Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
+- **[IOPS](01-glossary.md#i)** · **[throughput](01-glossary.md#t)**
+  - IOPS: IOPS counts how many separate reads and writes happen each second; throughput counts how much data moves each second.
+  - throughput: Throughput counts how much data moves each second; IOPS counts how many separate reads and writes happen.
+  - Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
+- **[IPv4](01-glossary.md#i)** · **[IPv6](01-glossary.md#i)**
+  - IPv4: IPv4 addresses are four numbers separated by dots, and they have run out; IPv6 addresses are groups of letters and digits separated by colons, with vastly more of them.
+  - IPv6: IPv6 addresses are groups separated by colons, with plenty to go round; IPv4 addresses are four numbers separated by dots, and they have run out.
+  - Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
+- **[memory](01-glossary.md#m)** · **[storage](01-glossary.md#s)**
+  - memory: Memory holds the work in progress and empties when the power goes off; storage is bigger and slower, and keeps files and data with the power off.
+  - storage: Storage keeps data with the power off; memory holds only the work in progress and is emptied by a restart.
+  - Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
+- **[private connection](01-glossary.md#p)** · **[virtual private network](01-glossary.md#v)**
+  - virtual private network: A VPN encrypts traffic that still crosses the internet; a private connection keeps traffic off the internet's path but isn't encrypted unless you add it.
+  - Taught in: [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md); [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md)
+- **[query](01-glossary.md#q)** · **[query (DynamoDB)](01-glossary.md#q)**
+  - query: A query is any question sent to a database; a DynamoDB query is one particular read that finds the items sharing one partition key.
+  - Taught in: [Files vs databases](../01-on-ramp/03-files-vs-databases.md); [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](../05-storing-data/08-lab-06-a-dynamodb-table.md)
+- **[shell](01-glossary.md#s)** · **[terminal](01-glossary.md#t)**
+  - shell: The shell reads and runs your commands; the terminal is only the window you type them in.
+  - terminal: The terminal is the window you type in; the shell is the program that reads your typing and runs the commands.
+  - Taught in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
+- **[TCP](01-glossary.md#t)** · **[UDP](01-glossary.md#u)**
+  - TCP: TCP confirms that every packet arrives, in order; UDP skips those checks to be faster.
+  - UDP: UDP is faster because it doesn't check delivery; TCP confirms that every packet arrives and puts them back in order.
+  - Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
 
 ## Module 02: Why organizations use the cloud
 
@@ -1063,6 +1140,18 @@ The exam's wrong answers are often a near neighbor of the right one. These 246 g
   - relocate: Relocate moves a whole platform, or a resource between VPCs, Regions or accounts, unchanged; rehost moves servers onto EC2 one by one, and replatform and refactor change the application.
   - replatform: Replatform changes what the application runs on, not its code; rehost and relocate change nothing, and refactor redesigns the application itself.
   - Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
+
+## Module 14: Capstone: a Well-Architected review
+
+2 groups.
+
+- **[accepted risk](01-glossary.md#a)** · **[high-risk issue](01-glossary.md#h)**
+  - accepted risk: A high-risk issue is a finding to deal with; an accepted risk is a finding the business has decided, in writing, not to fix.
+  - high-risk issue: A high-risk issue is a finding to deal with; an accepted risk is one the business has decided, in writing, not to fix.
+  - Taught in: [The capstone review](../14-capstone/01-the-capstone-review.md)
+- **[best practice](01-glossary.md#b)** · **[review question](01-glossary.md#r)**
+  - review question: A review question, such as REL 10, asks about one area of a pillar; its best practices, such as REL10-BP01, are the specific actions that answer it.
+  - Taught in: [The Well-Architected Framework](../02-why-the-cloud/05-the-well-architected-framework.md); [The capstone review](../14-capstone/01-the-capstone-review.md)
 
 ---
 

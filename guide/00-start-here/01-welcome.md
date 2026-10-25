@@ -115,7 +115,7 @@ Hours leave out the guardrails primer (3 to 4 hours on every path); weeks includ
 
 *Notice that the on-ramp adds only about 5 hours, while the fast path saves more than half. The table above has the same data.*
 
-**Choosing your path.** A short diagnostic quiz (about 15 questions, 20 minutes) is being added to this module. Until it appears, ask yourself: could you explain to a friend what a server, an IP address and a database are? If not, start with the on-ramp. Do you work in IT or with AWS every week? Then try the fast path, and switch to the standard path for any module whose check you don't pass.
+**Choosing your path.** A short diagnostic quiz, [Diagnostic: choose your path](06-diagnostic.md) (17 questions, about 20 minutes), ends this module. If you would rather skip the quiz, ask yourself: could you explain to a friend what a server, an IP address and a database are? If not, start with the on-ramp. Do you work in IT or with AWS every week? Then try the fast path, and switch to the standard path for any module whose check you don't pass.
 
 > **Your turn:** Write down which path you'll start on, and one sentence on why. You can change your mind after the first module.
 
