@@ -183,7 +183,7 @@ Delete in this order: each step removes something the next depends on, and the V
 24. In **Internet gateways**, select `clf-lab09-igw`, choose **Actions**, then **Detach from VPC**; type `detach` and choose **Detach internet gateway**. Then choose **Actions**, **Delete**, type `delete`, and choose **Delete internet gateway**.
 25. In **Your VPCs**, select `clf-lab09-vpc`, choose **Actions**, then **Delete VPC**, type `delete`, and confirm. Its main route table, default network ACL and default security group go with it. Never delete the default VPC.
 26. **Confirm:** **Your VPCs** shows only the default VPC. In Tag Editor, search all Regions and all supported resource types for the tag `lab` = `09` ([Lab 01, steps 13 to 16](../02-why-the-cloud/06-lab-01-first-resource.md#find-it-by-its-tags)); expect no results (a deleted item can linger a few minutes). Tick everything off in your lab log.
-27. **The next day:** check that your **Credits** balance hasn't fallen ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4).
+27. **The next day:** check that your **Credits** balance hasn't fallen ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4). (task card: [Read this month's bill by service and Region](../98-how-to/08-read-this-months-bill.md))
 
 ## Recap
 

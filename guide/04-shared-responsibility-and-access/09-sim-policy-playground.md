@@ -154,7 +154,7 @@ In case 6, the shop account's **root user** signs in and tries to create an IAM 
 
 </details>
 
-### Decision 5: thirty staff, twelve accounts
+### Decision 5: thirty staff, ten shop accounts
 
 The bakery now has ten shops, each with its own account, and thirty staff. Each person needs a different level of access in several accounts. What should the chain use, and why can't you try it in your Free plan lab account?
 

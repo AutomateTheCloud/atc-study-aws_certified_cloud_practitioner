@@ -4455,7 +4455,7 @@ questions:
 
   - id: q04-sim-permission-set
     page: guide/04-shared-responsibility-and-access/09-sim-policy-playground.md
-    section: "Decision 5: thirty staff, twelve accounts"
+    section: "Decision 5: thirty staff, ten shop accounts"
     task: "2.3"
     level: recall
     topics: [federation, identity-center]

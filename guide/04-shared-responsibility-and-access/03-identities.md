@@ -8,7 +8,7 @@ reader: "Adult studying alone, possibly new to IT; has done the guardrails prime
 prerequisites: ["clf-04-01"]
 terms_introduced: [identity, credentials, authentication, authorization, principal, AWS Identity and Access Management (IAM), root user, IAM user, IAM user group, IAM role, assume a role, service-linked role, root-only task]
 pillars: [security]
-facts_checked: 2026-10-24
+facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html"
   - "https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html"
@@ -40,7 +40,7 @@ Answer from memory first, then check.
 
 <details><summary>Feedback</summary>
 
-1. Root can do everything, and IAM policies can't limit it. One wrong click or one stolen session as root can change anything, billing included. Only a few tasks need it; this lesson lists them.
+1. Root can do everything, and you can't attach a policy to it to limit it ([Policies and the root user](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policies-root)). One wrong click or one stolen session as root can change anything, billing included. Only a few tasks need it; this lesson lists them.
 2. When a second admin joins, you add them to the group instead of repeating the setup, and you see in one place who has admin rights.
 3. **Security.** Its design principle "[Implement a strong identity foundation](https://docs.aws.amazon.com/wellarchitected/latest/framework/sec-design.html)" is about exactly this.
 
@@ -146,7 +146,7 @@ You have met roles already. The IAM dashboard in the primer showed roles you did
 You may have read that an IAM user with `AdministratorAccess` is "the same as root". That's not right, for two reasons:
 
 1. **Some tasks need the root user itself.** No policy, however broad, lets an IAM user do them. The next section lists them.
-2. **An admin can be limited; root can't.** An admin's power comes from a policy, which can be removed, narrowed or blocked by a deny. Root's power doesn't come from IAM policies: in general, AWS allows root's requests on the account's own resources ([How IAM works](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html)). A resource's own policy can still block root: a bucket policy with an explicit deny stops root like anyone else (which is why one root-only task is fixing a bucket policy that denies everyone). And AWS Organizations, in module 09, can restrict a member account's root user across the whole account.
+2. **An admin can be limited; root mostly can't.** An admin's power comes from a policy, which can be removed, narrowed or blocked by a deny. Root's power doesn't come from IAM policies: in general, AWS allows root's requests on the account's own resources ([How IAM works](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html)). A resource's own policy can still block root: a bucket policy with an explicit deny stops root like anyone else (which is why one root-only task is fixing a bucket policy that denies everyone). And AWS Organizations, in module 09, can restrict a member account's root user across the whole account.
 
 The idea is tempting because in daily work the two seem to do the same things. The difference shows at the edges, and the exam tests the edges.
 
@@ -280,7 +280,7 @@ The first questions in any security review are about identities: who can sign in
 
    <details><summary>Feedback</summary>
 
-   **Model answer:** The IAM admin can't do root-only tasks, such as closing the account or restoring access after a lockout, so root must stay usable. And root MFA is required by AWS; root is the one identity IAM policies can't limit, so it needs the strongest protection, not the weakest.
+   **Model answer:** The IAM admin can't do root-only tasks, such as closing the account or restoring access after a lockout, so root must stay usable. And root MFA is required by AWS; root is the one identity you can't attach a policy to, so it needs the strongest protection, not the weakest.
 
    </details>
 

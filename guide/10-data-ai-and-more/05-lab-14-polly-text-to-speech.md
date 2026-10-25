@@ -116,8 +116,8 @@ This lab sends 211 characters four times (we count the download as a request): o
 
 10. Choose the **S3 synthesis tasks** tab in the Polly console.
     **You should see:** no tasks. Listen and Download don't store anything in AWS. A task appears only if you chose **Save to S3**; if you did, delete the file it wrote, and any bucket you created for it, as in [Lab 01, steps 20 and 21](../02-why-the-cloud/06-lab-01-first-resource.md#clean-up).
-11. **Confirm:** in Tag Editor, search all Regions for the tag `lab` = `14` ([Lab 01, steps 13 to 16](../02-why-the-cloud/06-lab-01-first-resource.md#find-it-by-its-tags)); expect no results. Tick the lab off in your lab log.
-12. **The next day:** check that your **Credits** balance hasn't fallen by more than a few cents ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4).
+11. **Confirm:** in Tag Editor, search all Regions for the tag `lab` = `14` ([Lab 01, steps 13 to 16](../02-why-the-cloud/06-lab-01-first-resource.md#find-it-by-its-tags)); expect no results. Tick the lab off in your lab log. (task card: [Find everything a lab left behind, in every Region](../98-how-to/03-find-what-a-lab-left-behind.md))
+12. **The next day:** check that your **Credits** balance hasn't fallen by more than a few cents ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4). (task card: [Read this month's bill by service and Region](../98-how-to/08-read-this-months-bill.md))
 
 ## Recap
 

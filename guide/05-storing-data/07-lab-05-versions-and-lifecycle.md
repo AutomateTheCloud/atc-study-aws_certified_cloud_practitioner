@@ -173,12 +173,12 @@ Deep Archive is S3's lowest-cost class; retrieval takes 12 to 48 hours, which fi
 
 ## Clean up
 
-21. In **S3**, choose **General purpose buckets**, select your `clf-lab05-` bucket, and choose **Empty**. Type the confirmation the page asks for and choose **Empty**. In a versioned bucket this deletes every version and delete marker ([Emptying a general purpose bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/empty-bucket.html), checked 2026-10-23).
+21. In **S3**, choose **General purpose buckets**, select your `clf-lab05-` bucket, and choose **Empty**. Type the confirmation the page asks for and choose **Empty**. In a versioned bucket this deletes every version and delete marker ([Emptying a general purpose bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/empty-bucket.html), checked 2026-10-23). (task card: [Empty a versioned S3 bucket, then delete it](../98-how-to/04-empty-and-delete-a-versioned-bucket.md))
     **You should see:** a status page that reports the bucket emptied. If step 19 already removed everything, the page says it found no objects; that's fine, go on.
 22. Delete that bucket as in [Lab 01, steps 20 and 21](../02-why-the-cloud/06-lab-01-first-resource.md#clean-up).
 23. Delete the archive bucket the same way (empty it first if S3 says it isn't empty).
 24. **Confirm:** in the S3 bucket list, search for `clf-lab05`; nothing should be found. In Tag Editor, search all Regions for the tag `lab` = `05` ([Lab 01, steps 13 to 16](../02-why-the-cloud/06-lab-01-first-resource.md#find-it-by-its-tags)); expect no S3 results. Tick both buckets off in your lab log.
-25. **The next day:** check that your **Credits** balance hasn't fallen because of S3 ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4).
+25. **The next day:** check that your **Credits** balance hasn't fallen because of S3 ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4). (task card: [Read this month's bill by service and Region](../98-how-to/08-read-this-months-bill.md))
 
 ## Recap
 

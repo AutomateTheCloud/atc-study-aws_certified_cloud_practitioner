@@ -123,7 +123,7 @@ flowchart LR
     **You should see:** the table's status change to deleting, then the table gone from the list.
     > **If something went wrong:** if DynamoDB says deletion protection is on, open the table's settings, turn deletion protection off, and repeat this step.
 16. **Confirm:** the **Tables** list shows nothing starting `clf-lab06`. In Tag Editor, search all Regions for the tag `lab` = `06` ([Lab 01, steps 13 to 16](../02-why-the-cloud/06-lab-01-first-resource.md#find-it-by-its-tags), with the resource type set to all supported types or to `AWS::DynamoDB::Table`); expect no results. Tick the table off in your lab log.
-17. **The next day:** check that your **Credits** balance hasn't fallen because of DynamoDB ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4).
+17. **The next day:** check that your **Credits** balance hasn't fallen because of DynamoDB ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4). (task card: [Read this month's bill by service and Region](../98-how-to/08-read-this-months-bill.md))
 
 ## Recap
 

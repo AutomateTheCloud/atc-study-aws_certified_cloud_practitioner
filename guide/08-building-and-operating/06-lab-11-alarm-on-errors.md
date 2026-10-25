@@ -211,7 +211,7 @@ Delete the alarm first, so it can't send another email while you remove what it 
     **You should see:** the topic gone. Its email subscription can stay listed under **Subscriptions** for a while (over two hours in our run); it can't send anything, because its topic is gone.
 13. Delete the function, its log group, its role and any policy the console made for the role, as in [Lab 07, steps 20 to 23](../06-running-applications/05-lab-07-a-lambda-function.md#clean-up), looking for `clf-lab11` names.
 14. **Confirm:** CloudWatch's alarm list, SNS's topics and subscriptions, Lambda's functions, CloudWatch's log groups and IAM's roles show nothing named `clf-lab11`. Repeat the Tag Editor search for `lab` = `11`; expect no results (a deleted item can linger a few minutes). Leave your billing alarm from primer page 05 in place. Tick everything off in your lab log.
-15. **The next day:** check that your **Credits** balance hasn't fallen because of Lambda, CloudWatch or SNS ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4).
+15. **The next day:** check that your **Credits** balance hasn't fallen because of Lambda, CloudWatch or SNS ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4). (task card: [Read this month's bill by service and Region](../98-how-to/08-read-this-months-bill.md))
 
 ## Recap
 
@@ -225,7 +225,7 @@ You turned "tell me when orders fail" into three parts that each do one job: a m
 >
 > </details>
 
-**Next:** [the mastery check for this module](07-check.md) follows. Module 09, "Protecting, governing and proving compliance", picks up CloudTrail where the Check above left it.
+**Next:** [the mastery check for this module](07-check.md) follows. [Module 09, "Protecting, governing and proving compliance"](../09-protecting-and-governing/00-brief.md), picks up CloudTrail where the Check above left it.
 
 ## Where to check the current details
 

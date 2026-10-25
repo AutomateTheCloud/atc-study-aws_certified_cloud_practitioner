@@ -204,7 +204,7 @@ The metric says the function as a whole got slower; a trace splits one slow requ
 
 You may read that CloudTrail and CloudWatch both "monitor", so either will do. That's not right. CloudTrail records actions *on your account*, such as someone changing the order function's memory setting. It doesn't see a customer's order fail inside the function, or the server's CPU at 6 p.m.; CloudWatch does. The pair is tempting because both names start with "Cloud", both keep records, and they work together: a trail can send events to CloudWatch Logs, where an alarm can watch for, say, a sign-in by the root user. The question decides the service: *who did it* is CloudTrail; *how is it running* is CloudWatch.
 
-Module 09, "Protecting, governing and proving compliance", uses CloudTrail as evidence for an auditor and adds AWS Config, which records how each resource was set up over time.
+[Module 09, "Protecting, governing and proving compliance"](../09-protecting-and-governing/00-brief.md), uses CloudTrail as evidence for an auditor and adds AWS Config, which records how each resource was set up over time.
 
 > **Check:** Answer the first prequestion. "Why was checkout slow at six last night?" and "Who changed the order function's settings?" Which pair is right?
 >
