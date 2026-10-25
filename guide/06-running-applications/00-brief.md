@@ -64,7 +64,7 @@ Both labs run in your own AWS account and state their cost on the Free plan and 
 
 **Before the labs:** check that you still have [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md), [your IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md), [money alarms](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md) and the [EC2 safe defaults](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/06-safe-defaults.md) in `us-east-1`. The lessons need no AWS account.
 
-**Mastery check:** the module ends with a check; you pass at 80%. Each miss points you to the section to reread, then to a parallel retest.
+**Mastery check:** the module ends with a [mastery check](08-check.md); you pass at 80%. Each miss points you to the section to reread, then to a parallel retest.
 
 **Numbers that change:** every price in this module is for US East (N. Virginia), dated 2026-10-24, with a link to the pricing page to check.
 

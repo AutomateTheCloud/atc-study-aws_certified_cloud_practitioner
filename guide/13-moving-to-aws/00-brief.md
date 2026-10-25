@@ -73,7 +73,7 @@ Task [1.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practition
 
 **Why no lab:** the migration services bill while they run, and two planning tools no longer accept new customers. The simulations teach the same decisions for free.
 
-**Mastery check:** the module ends with a check; you pass at 80%, and each miss points to the section to reread.
+**Mastery check:** the module ends with the [Module 13 mastery check](07-check.md); you pass at 80%, and each miss points to the section to reread.
 
 > **Dated (checked 2026-10-24):** the exam's AWS Application Migration Service is now AWS Transform MGN; AWS Application Discovery Service and AWS Migration Hub closed to new customers on 2025-11-07 (AWS points to AWS Transform). Lesson 13.03 gives both names.
 

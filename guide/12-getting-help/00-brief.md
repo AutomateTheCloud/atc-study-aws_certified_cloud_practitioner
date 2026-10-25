@@ -67,7 +67,7 @@ This module covers task [4.3](https://docs.aws.amazon.com/aws-certification/late
 
 **Before the lab:** check that you still have [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md), [your IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md) and [money alarms](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md). The lessons need no AWS account.
 
-**Mastery check:** the module ends with a check; you pass at 80%. Each miss points you to the section to reread, then to a parallel retest.
+**Mastery check:** the module ends with the [Module 12 mastery check](07-check.md); you pass at 80%. Each miss points you to the section to reread, then to a parallel retest.
 
 **Numbers and names that change:** AWS replaced its Support plans on 2025-12-02, and the old ones end on 2027-01-01 ([end of support notice](https://docs.aws.amazon.com/awssupport/latest/user/support-plans-eos.html), checked 2026-10-24). Lesson 12.01 teaches the current plans, with one dated box that translates the old names still found in much study material. Prices, response times and Trusted Advisor's checks carry the date we checked them.
 

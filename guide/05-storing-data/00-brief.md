@@ -71,7 +71,7 @@ Both labs run in your own AWS account and state their cost on the Free plan and 
 
 **Before the labs:** check that you still have [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md), [your IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md), [money alarms](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md) and [Block Public Access for your account](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/06-safe-defaults.md). The lessons need no AWS account.
 
-**Mastery check:** the module ends with a check; you pass at 80%. Each miss points you to the section to reread, then to a parallel retest.
+**Mastery check:** the module ends with [a mastery check](11-check.md); you pass at 80%. Each miss points you to the section to reread, then to a parallel retest.
 
 **Numbers that change:** lesson 05.03 keeps the storage-class figures in one dated table, and every lesson says where to check current prices.
 

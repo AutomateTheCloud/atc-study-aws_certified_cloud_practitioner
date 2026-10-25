@@ -41,6 +41,8 @@ sections:
     title: "Module 13: Moving to AWS"
   - dir: 14-capstone
     title: "Module 14: Capstone: a Well-Architected review"
+  - dir: 98-how-to
+    title: "How-to task cards"
   - dir: 99-reference
     title: "Reference"
 notices:
