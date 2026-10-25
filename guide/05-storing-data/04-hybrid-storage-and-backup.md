@@ -249,7 +249,7 @@ None of these services has a minimum fee; each charges for what it stores and mo
 
 The owner sends a list. "One: back up the order database and the web server's disk every night, keep each backup 35 days, and keep a copy in a second Region. Two: staff keep saving invoices to the shop's shared folder, but I want the files in AWS. Three: our German partner's accounting software writes weekly backups to tapes someone carries home; stop that. Four: if the till server dies, it must run again in minutes. Five: my nephew says to order a Snowball for ten years of photos on his laptop."
 
-Here is how someone who knows the services works through it. The flowchart is the method.
+Someone who knows the services works through it with the flowchart below.
 
 ```mermaid
 flowchart TD
@@ -276,7 +276,7 @@ flowchart TD
 4. **The till server.** Must restart in minutes. *So:* **Elastic Disaster Recovery**, and a drill to prove the minutes.
 5. **The photos.** A one-time move of a few GB. *So:* not Snowball, and not a gateway; upload them straight to S3. For a large file server, DataSync.
 
-The expert never started from a service name: each answer came from where the software runs, what it expects, and what must come back.
+Each answer came from where the software runs, what it expects and what must come back, never from a service name.
 
 > **Your turn:** The German shop keeps product images on a Linux file server. The partner wants every image also stored in S3, and staff must keep using the shared folder. Which service, which protocol, and where should the data land?
 
@@ -295,7 +295,7 @@ At work, backups are a policy question first: what must be backed up, for how lo
 - [REL09-BP03 Perform data backup automatically](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_backing_up_data_automated_backups_data.html), the job of a backup plan.
 - [REL09-BP04 Perform periodic recovery of the data to verify backup integrity and processes](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_backing_up_data_periodic_recovery_testing_data.html), which drills and restore tests serve.
 
-The reliability design principle "[Test recovery procedures](https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html)" is the habit behind the last one: an untested backup is a hope. And the **cost optimization** pillar reminds you that every copy kept, and every day it is kept, is paid for: retention should come from a real requirement, not "forever, just in case".
+The reliability design principle "[Test recovery procedures](https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html)" is the habit behind the last one: until you've restored from a backup, you don't know it works. And the **cost optimization** pillar reminds you that every copy kept, and every day it is kept, is paid for: retention should come from a real requirement, not "forever, just in case".
 
 ## Summary
 

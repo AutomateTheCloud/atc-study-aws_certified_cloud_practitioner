@@ -245,7 +245,7 @@ Use **lifecycle rules** when you know how the data cools, as with the records. U
 
 ## Worked example: the bakery's storage plan
 
-The owner's data plan needs a class and a rule for the photos and for the monthly sales records that become the tax archive. Here is the expert's reasoning, using the three questions and the traps.
+The owner's data plan needs a class and a rule for the photos and for the monthly sales records that become the tax archive. The expert works through the three questions, then checks for the traps.
 
 ```mermaid
 flowchart TD

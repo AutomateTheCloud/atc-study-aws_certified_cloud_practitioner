@@ -93,7 +93,7 @@ Lesson [04.01](../04-shared-responsibility-and-access/01-security-of-vs-in-the-c
 
 AWS's own advice is direct: the RDS User Guide recommends RDS as the default choice for most relational databases. It names the risk of the alternative, too: when you update the operating system or database software by hand, you are more prone to mistakes, and a slip can take your application down ([What is Amazon RDS?](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html)).
 
-When would you still run your own? AWS's guide doesn't list reasons, so here is our reasoning. If you need a database engine that RDS doesn't offer, RDS can't run it. And if your software needs access to the database server's operating system, a managed service won't give it to you, because AWS runs that layer. Outside cases like these, running your own buys you work, not control you need.
+When would you still run your own? AWS's guide doesn't list reasons, so here is our reasoning. If you need a database engine that RDS doesn't offer, RDS can't run it. And if your software needs access to the database server's operating system, a managed service won't give it to you, because AWS runs that layer. Outside cases like these, running your own adds work without giving you any control you need.
 
 > **Your turn:** The owner's nephew wants to run MySQL on an EC2 server "to save money". His weekly chores would be: apply operating system patches, apply MySQL patches, check the nightly backup script, tune slow queries, and decide who gets a database login. Which chores disappear if the bakery uses RDS for MySQL instead, and which stay?
 
@@ -167,8 +167,6 @@ The third kind of copy, from lesson [05.04](04-hybrid-storage-and-backup.md), is
 
 That makes backups the answer when the data itself is damaged: a deleted table, a bad update, an attack. Neither the standby nor a replica can help there, because both copy the damage.
 
-Here are the three side by side.
-
 ![Three columns compared. Multi-AZ standby: every write copied synchronously to another AZ; answers no queries; takes over automatically, typically in one to two minutes; doesn't save you from a mistaken delete; job, high availability. Read replica: changes copied asynchronously and can lag; answers read-only queries; doesn't take over by itself but can be promoted by hand, losing any lag; doesn't save you from a mistaken delete; job, read scaling and a disaster recovery option. Automated backups and snapshots: a daily snapshot plus a log of every change; answer no queries until restored; restore is a new database; do save you from a mistaken delete; job, going back in time.](../../images/05-05-three-copies.svg)
 
 *Notice the row "Saves you from a mistaken delete?" Only the backup column says yes. And only the standby says yes to "Takes over by itself?"*
@@ -235,7 +233,7 @@ For steady, long-running databases, Reserved Instances (one or three years) and 
 
 The owner writes: "Orders are the business. If a data center fails in December, the site must keep taking orders and lose none. Our German partner runs big sales reports every night and the site crawls. Last month a mistake deleted an afternoon of orders and we couldn't get them back. And my nephew says running our own database on a server would be cheaper."
 
-Here is how someone who knows the options works through it. The flowchart is the method.
+Someone who knows the options takes the problems one at a time, using the flowchart below.
 
 ```mermaid
 flowchart TD

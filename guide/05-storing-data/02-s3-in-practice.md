@@ -186,7 +186,7 @@ The FAQ lists versioning, replication and Object Lock as optional protections on
 
 ## Your side of the line for S3
 
-Lesson 04.01 put S3's data, encryption options and permissions on your side. Here is what that means in practice.
+Lesson 04.01 put S3's data, encryption options and permissions on your side. In practice, the work splits like this.
 
 | Task | AWS | You |
 |---|---|---|

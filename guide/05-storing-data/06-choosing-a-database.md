@@ -155,8 +155,6 @@ The exam calls ElastiCache a "memory-based" database. A related service, Amazon 
 
 ## DocumentDB fits documents; Neptune fits relationships
 
-Two more shapes have their own AWS databases.
-
 **Amazon DocumentDB (with MongoDB compatibility)** is a managed **document** database. It works with MongoDB's drivers and tools, so applications written for MongoDB can use it ([What is Amazon DocumentDB?](https://docs.aws.amazon.com/documentdb/latest/developerguide/what-is.html), checked 2026-10-23). Choose it for data that is naturally a document, such as a product catalog where each cake has different options, and especially when the team already uses MongoDB. DynamoDB also stores documents; the MongoDB link is what points to DocumentDB.
 
 **Amazon Neptune** is a managed **graph** database, for data where the connections matter most. AWS lists uses such as recommendation engines, fraud detection, knowledge graphs and network security ([What is Amazon Neptune?](https://docs.aws.amazon.com/neptune/latest/userguide/intro.html), checked 2026-10-23). "Customers who bought this cake also bought..." is a question about relationships, and so is "which accounts share a card and an address?"
@@ -268,7 +266,7 @@ DynamoDB's on-demand mode is lesson 02.02's variable cost in its purest form: wi
 
 The owner's data plan needs a home for each kind of data. "Orders, of course. Shopping carts, which hammer the site in December. The best-seller list on the home page. My nephew wants a 'customers also bought' box. Our accountant wants three years of sales by month and product. And the German partner's Oracle order system has to come over."
 
-Here is how someone who knows the services works it out. The flowchart is the method.
+Someone who knows the services sorts the list with the flowchart below, one kind of data at a time.
 
 ```mermaid
 flowchart TD
