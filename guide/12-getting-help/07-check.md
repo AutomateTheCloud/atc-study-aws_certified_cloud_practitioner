@@ -389,7 +389,7 @@ Where does each question go first?
 
 **D is right.** Limits are reference facts that AWS keeps current in each service's documentation. The Knowledge Center holds AWS's official articles on the problems customers ask about most. A quota increase can be requested on every plan, in Support Center (or the Service Quotas console).
 
-- **A is wrong.** A blog post is dated and may describe an old limit. re:Post's community answers vary, when an AWS-written article exists. Prescriptive Guidance doesn't raise quotas.
+- **A is wrong.** A blog post is dated and may describe an old limit. re:Post's community answers vary, and an AWS-written article is the better source when one exists. Prescriptive Guidance doesn't raise quotas.
 - **B is wrong.** The Knowledge Center answers common problems, not reference limits; Prescriptive Guidance is for planning bigger jobs; and a quota request isn't a technical case.
 - **C is wrong.** The first step is right, but Prescriptive Guidance doesn't troubleshoot one instance, and nobody on re:Post can raise the charity's quota.
 

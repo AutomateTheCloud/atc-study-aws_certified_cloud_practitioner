@@ -140,7 +140,7 @@ flowchart TD
   B --> C["When you need the number,<br/>read it from the live page,<br/>on the day you need it"]
 ```
 
-*Notice that both paths end with a date. A number about AWS is only as good as the day it was read.*
+*Notice that both paths end with a date. A number about AWS holds only for the day you read it.*
 
 **Long description.** A flowchart. Start: you meet a number about AWS, such as a count of checks. Question: do AWS's current pages agree on it? Yes: learn it with the date you checked it. No: learn the stable rule behind it, which for Trusted Advisor is the six categories and which plans see which checks; then, when you need the number, read it from the live page on the day you need it.
 
@@ -167,7 +167,7 @@ flowchart TD
 
 ![An outer box, AWS Health. Inside it, highlighted, the AWS Health Dashboard, free with no setup, with two views. Service health: public events for all services and Regions, no sign-in needed, 12 months of history, once called the Service Health Dashboard. Your account health: after you sign in, events that affect your own resources, once called the Personal Health Dashboard. Below, two feeds: Amazon EventBridge, free for every customer, and the AWS Health API, which needs Business Support+, Enterprise or Unified Operations.](../../images/12-02-health-views.svg)
 
-*Notice that the two old names are now two views inside one highlighted box. One product, two views.*
+*Notice that the two old names are now two views inside one highlighted box, a single product.*
 
 **Long description.** An outer box, AWS Health: events on AWS's side that can affect you. Inside it, highlighted, the AWS Health Dashboard, free for every customer with no setup, holds two views. Service health: public events for all services and Regions, with no sign-in and no account needed, and 12 months of service history; its older name was the Service Health Dashboard. Your account health: after you sign in, events that affect your own resources, such as planned maintenance on an instance you run, plus the public events; its older name was the Personal Health Dashboard. Below the dashboard, two feeds. Amazon EventBridge sends Health events to your own rules and tools, free for every customer. The AWS Health API lets your programs ask AWS Health directly; it needs Business Support+, Enterprise or Unified Operations, and on Basic it refuses the call. AWS announced the single dashboard on 2022-02-28.
 
@@ -262,7 +262,7 @@ flowchart TD
 
 ## Worked example: the bakery's week
 
-The bakery has just moved to Business Support+, as lesson 12.01 recommended. Three things happen. Here is how an expert decides where each goes.
+The bakery has just moved to Business Support+, as lesson 12.01 recommended. Three things happen that week, and the steps below show where an expert sends each one.
 
 1. **Monday: a slow site at lunchtime.** First question: is it AWS or us? She opens the AWS Health Dashboard. Service health shows no event in N. Virginia, and Your account health shows nothing for her resources. So the cause is probably on the bakery's side, and she turns to CloudWatch and the bakery's own logs. Had there been an AWS event, she would have followed its updates instead of changing her own setup.
 2. **Wednesday: Trusted Advisor's first full refresh.** With all checks now visible, cost optimization flags an Elastic IP address attached to nothing and an underused EBS volume. Fault tolerance flags that the order database runs in one Availability Zone. She deletes the unused address and volume, and puts the Multi-AZ change on next week's list, because it raises the database bill.
