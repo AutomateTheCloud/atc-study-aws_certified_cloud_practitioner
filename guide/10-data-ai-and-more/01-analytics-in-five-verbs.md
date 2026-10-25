@@ -51,7 +51,7 @@ Answer from memory before you look anything up.
 
 1. **AWS CloudTrail.** It records the actions taken in your account; its Event history shows the last 90 days. You found your own bucket there in Lab 01.
 2. **Analytics work.** It reads a large amount of history in a few big queries. Running it on the order database could slow the website, which does many small reads and writes. That's why analytics gets its own tools, the subject of this lesson.
-3. **A fixed expense stays the same however much you use;** a variable expense goes up and down with use. Several services in this lesson charge only for what you use: no queries, no query bill.
+3. **A fixed expense stays the same however much you use;** a variable expense goes up and down with use. Several services in this lesson charge only for what you use, so a month without queries brings no query bill.
 
 </details>
 
@@ -180,7 +180,7 @@ The three also hold data for very different lengths of time, which the chart sho
 
 ## Query: Athena, Redshift and EMR answer questions in three different ways
 
-Three services answer questions about data, in different places and with different amounts for you to manage.
+They differ in where the data has to live and how much of the work you manage yourself.
 
 - **Amazon Athena** runs standard SQL directly on data in S3. It's serverless: there's nothing to set up, and you pay only for the queries you run. You point it at files such as CSV, JSON or Parquet, it applies the table layout as it reads (schema on read), and the files stay as they are ([What is Amazon Athena?](https://docs.aws.amazon.com/athena/latest/ug/what-is.html), checked 2026-10-24).
 - **Amazon Redshift**, from lesson [05.06](../05-storing-data/06-choosing-a-database.md), is a data warehouse. You load data from many sources into it, and its engine is built for complex queries that join many very large tables, run again and again for reports ([When should I use Athena?](https://docs.aws.amazon.com/athena/latest/ug/when-should-i-use-ate.html)). Its Redshift Spectrum feature can also read files in S3.
