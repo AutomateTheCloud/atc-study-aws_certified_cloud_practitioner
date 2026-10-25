@@ -65,7 +65,7 @@ Try these before you read on. Guess if you're unsure; the answers are in the les
 
 ## The big picture: four doors, one set of services
 
-Whichever way you choose, the request reaches the same AWS service. IAM checks the same permissions, and CloudTrail records the change as a management event, whichever way in you used: console, CLI or SDK. Reading and writing the data inside a resource, such as the files in an S3 bucket, are data events, which CloudTrail records only if you turn them on ([What is AWS CloudTrail?](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html), checked 2026-10-24).
+Every way in sends its request to the same AWS service. IAM checks the same permissions, and CloudTrail records the change as a management event, whichever way in you used: console, CLI or SDK. Reading and writing the data inside a resource, such as the files in an S3 bucket, are data events, which CloudTrail records only if you turn them on ([What is AWS CloudTrail?](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html), checked 2026-10-24).
 
 ```mermaid
 flowchart LR
@@ -106,7 +106,7 @@ flowchart LR
 
 The **AWS Management Console** is a web application that gives you one place to reach every AWS service's pages ([What is the AWS Management Console?](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/what-is.html), checked 2026-10-24). It shows you what exists, guides you through choices with forms and defaults, and draws charts and bills. You used it in Lab 01 to create a bucket, and in Lab 09 to build a VPC.
 
-Its strengths are its weaknesses turned around:
+The same traits make it easy and hold it back:
 
 - **It's visual.** You see the settings and their defaults, which makes it the best way to learn a service and to look around an account.
 - **Nothing is saved but the result.** Your clicks build the resource, but the steps live in your memory. To build the same thing again, you click through again, and each pass is another chance to miss one setting.
@@ -188,7 +188,7 @@ The SDK is the way in when **AWS is part of what your program does while it runs
 
 **Infrastructure as code (IaC)** means you write down the resources you want, with their settings, in a text file called a **template**, and a service builds them for you. AWS's DevOps guidance describes it as treating infrastructure the way developers treat code: written down, kept in version control, reviewed and reused ([Infrastructure as code](https://docs.aws.amazon.com/whitepapers/latest/introduction-devops-aws/infrastructure-as-code.html), checked 2026-10-24). On AWS, the service that does this, and the one the exam names, is **AWS CloudFormation**.
 
-The difference from a script is the one that matters:
+It differs from a script in one way:
 
 - **A script says how:** do this step, then that step.
 - **A template says what:** this is the bakery's network, with these subnets and these rules. CloudFormation works out the order, builds it, and can later compare the result with the file.

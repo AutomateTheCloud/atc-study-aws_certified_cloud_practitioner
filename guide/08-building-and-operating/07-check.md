@@ -468,7 +468,7 @@ Take this after you have worked through the correction map. Each item tests the 
 
 - **A is wrong.** CodeDeploy deploys code that's already built. The exam guide lists it as out of scope, so it's most likely the distractor.
 - **B is wrong.** Cloud9 was a code editor in the browser, closed to new customers since 2024-07-25. It doesn't run a pipeline's builds.
-- **C is wrong.** AWS OpsWorks was shut down on 2024-05-01. It isn't an answer to anything.
+- **C is wrong.** AWS OpsWorks was shut down on 2024-05-01. It can't be the answer to any current question.
 
 </details>
 
