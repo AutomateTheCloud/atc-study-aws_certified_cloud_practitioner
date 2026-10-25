@@ -137,7 +137,7 @@ The chart compares a $12 Lightsail plan with similar parts priced separately on 
 
 ![A horizontal bar chart in dollars per month. The Lightsail plan with 2 GB and 2 vCPUs is one bar at $12.00, including the server, 60 GB SSD, a public IPv4 address and 3 TB of transfer. EC2 priced by part is a stacked bar totaling $23.63: a t3.small for 730 hours, $15.18; a 60 GB gp3 disk, $4.80; a public IPv4 address, $3.65. EC2 adds data transfer beyond the free allowance.](../../images/06-04-lightsail-vs-ec2.svg)
 
-*Notice that EC2's bar is made of parts, each a separate line on the bill. Lightsail packs them into one price. For a small, steady site, the bundle is simpler and here cheaper; EC2 earns its place when you need its choices.*
+*Notice that EC2's bar is made of parts, each a separate line on the bill. Lightsail packs them into one price. For a small, steady site, the bundle is simpler and here cheaper; EC2 is worth the extra when you need its choices.*
 
 | Item, per month | Lightsail $12 plan | EC2, priced by part |
 |---|---|---|
@@ -267,7 +267,7 @@ Each path moves the line in its own way:
 
 ## Worked example: matching five requests
 
-The owner forwards five requests from people around the bakery. Here is how someone who knows the services sorts them. The flowchart is the method.
+The owner forwards five requests from people around the bakery. Someone who knows the services sorts them with this flowchart.
 
 ```mermaid
 flowchart TD
@@ -376,7 +376,7 @@ Teams reach for these services when assembling compute is work that doesn't set 
 
    <details><summary>Feedback</summary>
 
-   **Agility:** getting something new quickly and cheaply. Not elasticity, which is capacity following demand.
+   **Agility:** getting something new quickly and cheaply. It isn't elasticity, which is capacity following demand.
 
    </details>
 

@@ -119,7 +119,7 @@ Fixed: 6 × 24 = 144 instance-hours × $0.0208 = **$3.00**. Auto Scaling: 76 × 
 
 **Long description.** Two horizontal bars, prices as of 2026-10-24. Fixed fleet of 6 instances, 144 instance-hours: $3.00 of instances plus $0.54 of load balancer hours, $3.54. Auto Scaling, 76 instance-hours: $1.58 plus $0.54, $2.12. Capacity units and data transfer are left out.
 
-The cents are small because the bakery is small; the share is what matters.
+The cents are small because the bakery is small, so look at the share saved instead.
 
 </details>
 
@@ -141,7 +141,7 @@ Six instances are running, three in each AZ, when AZ b loses power. What happens
 
 The load balancer's health checks fail for the three servers in AZ b, so it sends every order to the three in AZ a, which can handle about 60 of the 120 an hour. The Auto Scaling group replaces the failed instances to get back to six; with AZ b down, they can only start in AZ a. AWS says most replacements take under 5 minutes, so the site is slow or drops orders for a few minutes, then recovers with nobody acting.
 
-To soften it: spread the group over three AZs, so losing one removes a third of the servers, not half (every Region has at least three, lesson 03.01); or set a lower scaling target, so each server has spare room. Both cost a little more every hour: the reliability trade-off.
+To soften it: spread the group over three AZs, so losing one removes a third of the servers, not half (every Region has at least three, lesson 03.01); or set a lower scaling target, so each server has spare room. Both cost a little more every hour, and that's the reliability trade-off.
 
 </details>
 
