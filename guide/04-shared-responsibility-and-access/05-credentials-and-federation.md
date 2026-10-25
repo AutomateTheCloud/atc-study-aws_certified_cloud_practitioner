@@ -187,7 +187,7 @@ One thing doesn't belong in either: AWS's own credentials. For those, Secrets Ma
 
 ## Federation: sign in once, elsewhere, and receive temporary access
 
-With **federation**, people get no IAM user. They sign in with an account held by an identity provider, such as the company's staff directory, and AWS gives them temporary credentials through a role. AWS recommends this for people ([Identity providers and federation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html)). When someone leaves, one account is disabled in one place.
+With **federation**, people get no IAM user. They sign in with an account held by an identity provider, such as the company's staff directory, and AWS gives them temporary credentials through a role. AWS recommends this for people ([Identity providers and federation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html)). When someone leaves, you disable one account in one place.
 
 **AWS IAM Identity Center** is AWS's recommended way to do this for a workforce ([What is IAM Identity Center?](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)). It gives people **single sign-on**: one sign-in, with MFA, to many AWS accounts and to business applications. It has no extra charge (as of 2026-10-23).
 
@@ -214,7 +214,7 @@ You may see "AWS Single Sign-On" or "AWS SSO" in older questions. AWS renamed it
 
 ### Four identity services, side by side
 
-The exam asks you to tell these apart. The key question is *whose* identities they hold.
+The exam asks you to tell these apart. The question to ask is *whose* identities they hold.
 
 | | IAM | IAM Identity Center | Amazon Cognito | AWS Directory Service |
 |---|---|---|---|---|

@@ -161,7 +161,7 @@ Even on RDS, one row stays yours. The RDS User Guide calls it **query tuning**: 
 
 ### Four services side by side
 
-The next graphic puts four services in one picture. Each column uses only what AWS says about that service: the [Shared Responsibility Model](https://aws.amazon.com/compliance/shared-responsibility-model/) page for EC2 and S3, the RDS User Guide for RDS, and the Lambda Developer Guide for **AWS Lambda**. Lambda runs small programs, called **functions**, when something triggers them, and AWS says it manages "server maintenance, capacity provisioning, scaling, and patching" ([What is AWS Lambda?](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)).
+In the next graphic, each column uses only what AWS says about that service: the [Shared Responsibility Model](https://aws.amazon.com/compliance/shared-responsibility-model/) page for EC2 and S3, the RDS User Guide for RDS, and the Lambda Developer Guide for **AWS Lambda**. Lambda runs small programs, called **functions**, when something triggers them, and AWS says it manages "server maintenance, capacity provisioning, scaling, and patching" ([What is AWS Lambda?](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)).
 
 ![A grid of six layers by four services, with a dashed line separating your layers from AWS's. On EC2 the line sits below the operating system. On RDS, Lambda and S3 it sits below your code. The top row, your data and who can access it, is yours on all four.](../../images/04-01-the-line-moves.svg)
 
@@ -177,7 +177,7 @@ The table gives the same data.
 | Operating system | You: the guest OS | AWS | AWS | AWS |
 | Servers, hardware, buildings | AWS | AWS | AWS | AWS |
 
-The Lambda column is easy to oversimplify. A **runtime** is the language software that runs your function's code, such as a version of Python. Lambda's runtime documentation splits the work like this ([Lambda runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html)):
+People often oversimplify the Lambda column. A **runtime** is the language software that runs your function's code, such as a version of Python. Lambda's runtime documentation splits the work like this ([Lambda runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html)):
 
 - **AWS** publishes security updates for the runtimes it manages and, by default, applies them automatically.
 - **You** update your function's code, **including the libraries it depends on**, when they have security flaws.
@@ -244,7 +244,7 @@ d) **The bakery.** AWS puts security group configuration on EC2 customers.
 
 ## Worked example: who patches what at the bakery
 
-The owner asked: "AWS runs the computers now. Do I still have to install security updates? For which parts?" Here is how someone who knows the model works it out. The flowchart is the method.
+The owner asked: "AWS runs the computers now. Do I still have to install security updates? For which parts?" Here is how someone who knows the model works it out, using the flowchart below.
 
 ```mermaid
 flowchart TD
