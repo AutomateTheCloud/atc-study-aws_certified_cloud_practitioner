@@ -52,7 +52,7 @@ flowchart LR
 
 **What it creates:** one empty S3 bucket in US East (N. Virginia), `us-east-1`, tagged `guide` = `clf` and `lab` = `16`, so the tag keys exist on something today. It also changes one billing setting: the keys `guide` and `lab` become active. You delete the bucket at the end and keep the setting.
 
-**What it costs:** $0. An empty bucket costs nothing (Lab 01). AWS's Marketplace guide says cost allocation tags carry no additional charge; we found no other AWS pricing statement about them (checked 2026-10-24). **Worst case on a Paid plan** if you forget the bucket: still $0 while it stays empty. **Free plan:** nothing here should upgrade your plan, but we haven't yet confirmed that the Cost allocation tags page opens on the Free plan (Budgets and Cost Explorer did, when the primer was tested on 2026-10-23). Never choose **Upgrade plan** during a lab.
+**What it costs:** $0. An empty bucket costs nothing (Lab 01). AWS's Marketplace guide says cost allocation tags carry no additional charge; we found no other AWS pricing statement about them (checked 2026-10-24). **Worst case on a Paid plan** if you forget the bucket: still $0 while it stays empty. **Free plan:** nothing here upgrades your plan; the Cost allocation tags page opened normally on our Free plan account on 2026-10-25. Never choose **Upgrade plan** during a lab.
 
 **Before you start, you need these guardrails in place:** [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md) and, on the same page, **IAM user and role access to Billing information** activated (primer page 02); [an IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md), which you use for this lab (page 03); [budgets and billing alerts](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md), which also switched on Cost Explorer (page 05); and [the habits for every lab](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), including your lab log (page 07).
 
@@ -65,7 +65,7 @@ flowchart LR
 
 > **New sign-up path:** we haven't checked the cost allocation tags page in that experience, and we haven't run this lab there. Your projects belong to an organization that AWS manages, and only a management account or a standalone account can use the tag page, so it may not be open to you.
 
-**About the screens:** names in **bold** come from AWS's Billing and Cost Explorer guides (checked 2026-10-24). We haven't yet run this lab, so other labels are hedged where they appear; if one differs, look for the option with the same meaning.
+**About the screens:** labels in **bold** for steps 1 to 8 are what we saw in our test account on 2026-10-25; the next-day Cost Explorer steps follow AWS's guide and what we saw on day one. AWS changes its console often. If a label differs, look for the option with the same meaning.
 
 ## Steps
 
@@ -86,18 +86,18 @@ A tag key appears on the billing page only after it has been on a resource. Earl
 
 ### Activate the two tag keys
 
-5. In **Billing and Cost Management**, in the left menu, choose **Cost allocation tags**. You may need to scroll the menu.
-   **You should see:** a list of tag keys with a status for each, split into the keys you made and the keys AWS made, possibly on separate tabs.
+5. In **Billing and Cost Management**, in the left menu under **Cost Organization**, choose **Cost Allocation Tags**. You may need to scroll the menu.
+   **You should see:** **Cost allocation tags**, one list of tag keys with columns for **Status**, **Type**, **Last updated date** and **Last used month**. On 2026-10-25 the keys you made and the keys AWS made shared that one list.
 
    > **If something went wrong:** if the page says your account is on the Free plan and offers **Upgrade plan**, stop. Don't upgrade. Delete the bucket as in step 12 and read the rest of this lab instead.
 
    Your `guide` and `lab` keys are user-defined tags; keys that start with `aws:`, such as `aws:createdBy`, are AWS-generated tags. [Lesson 11.04](04-many-accounts-one-bill.md#a-tag-reaches-your-cost-reports-only-after-you-activate-it) compares the two types; both must be activated before they reach reports.
-6. In the user-defined list, search for `guide`, then for `lab`.
-   **You should see:** both keys, each with the status **Inactive** (or similar wording).
+6. In the list, find `guide` and `lab` (the search box helps in a long list).
+   **You should see:** both keys, each with the status **Inactive**, beside `aws:createdBy`.
    > **If something went wrong:** if a key isn't listed, AWS says it can take up to 24 hours to appear after you first tag a resource. Write "keys not listed yet" in your lab log, leave the bucket in place, and do steps 6 and 7 tomorrow. Then do the Cost Explorer check the day after that.
-7. Select both keys and choose **Activate**. Confirm if asked.
-   **You should see:** both keys marked active. AWS says activation can take up to 24 hours to take effect ([Activating user-defined cost allocation tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html), checked 2026-10-24).
-8. Look at the top right of the page for **Backfill tags**. Don't choose it. A tag backfill ([lesson 11.04](04-many-accounts-one-bill.md#a-tag-shows-costs-is-wrong)) applies a key's current activation to up to 12 earlier months, and only for months when the tag was already on the resource. AWS documents it for management accounts, at most one request every 24 hours ([Backfill cost allocation tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-allocation-backfill.html), checked 2026-10-24). Write in your lab log whether your standalone account shows the button.
+7. Select both keys and choose **Activate**. A window asks whether to activate the 2 inactive tags; choose **Activate**.
+   **You should see:** "Your tags have been activated successfully", and both keys marked **Active**. AWS says activation can take up to 24 hours to take effect ([Activating user-defined cost allocation tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html), checked 2026-10-24).
+8. Look at the top right of the page for **Backfill tags**. Don't choose it. A tag backfill ([lesson 11.04](04-many-accounts-one-bill.md#a-tag-shows-costs-is-wrong)) applies a key's current activation to up to 12 earlier months, and only for months when the tag was already on the resource. AWS documents it for management accounts, at most one request every 24 hours ([Backfill cost allocation tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-allocation-backfill.html), checked 2026-10-24). Write in your lab log whether your standalone account shows the button: ours did, on 2026-10-25.
 
 ### The next day: find the tags in Cost Explorer
 

@@ -28,7 +28,7 @@ sources:
 
 ## Steps: set a retention period
 
-1. In the console search bar, type `CloudWatch` and open it. In the left menu, open the log groups list: **Logs**, then **Log groups** (AWS's guide also calls the entry **Log Management**; checked 2026-10-24).
+1. In the console search bar, type `CloudWatch` and open it. In the left menu, open the log groups list: **Logs**, then **Log Management** (as of 2026-10-25; older guides call it **Log groups**). It opens on the **Log groups** tab.
 2. Find the log group, and look at its **Retention** column.
    **You should see:** **Never expire** on a new log group. By default CloudWatch Logs keeps log data indefinitely ([Working with log groups and log streams](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html)).
 3. Choose the retention value itself (**Never expire**). In **Expire events after**, choose a period, such as **1 week (7 days)** for a lab, and choose **Save**.

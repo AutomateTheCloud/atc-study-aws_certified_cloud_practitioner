@@ -17,7 +17,9 @@ time: "45 minutes, plus 5 minutes the next day"
 cost: "$0: one alarm, a few emails and a few test runs fit in the CloudWatch, SNS and Lambda always-free allowances (as of 2026-10-24)"
 worst_case: "$0 a month on a Paid plan if everything is left behind and this alarm is one of no more than 10 standard alarms; beyond that free allowance, $0.10 a month for this alarm (as of 2026-10-24)"
 needs: [guardrails-02, guardrails-03, guardrails-04, guardrails-05, guardrails-07, clf-06-05]
-facts_checked: 2026-10-24
+last_run_pass: "2026-10-25, standalone Free plan account, advanced sign-up, us-east-1"
+recorded: 2026-10-25
+facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics.html"
   - "https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html"
@@ -85,7 +87,7 @@ You delete all of it at the end.
 
 > **New sign-up path:** Lambda is supported there, but IAM users can't sign in to the console and your Region is fixed (as of 2026-10-23). We haven't confirmed SNS email or CloudWatch alarms on that path. Use your assigned Region wherever this lab says `us-east-1`, and sign in the way that path gives you.
 
-**About the screens:** the function steps are Lab 07's. CloudWatch and SNS labels come from AWS's guides (checked 2026-10-24) and from the billing alarm in primer page 05 (recorded 2026-10-23). We haven't yet run this lab end to end, so times are estimates. If a label differs, look for the option with the same meaning.
+**About the screens:** labels in **bold** and the times quoted are what we saw when we ran this lab end to end in our test account on 2026-10-25. AWS changes its console often, and times vary. If a label differs, look for the option with the same meaning.
 
 ## Steps
 
@@ -115,17 +117,17 @@ Lesson 08.03, [Watching workloads](03-watching-workloads.md), explains metrics, 
 
 You built the same kind of thing for billing on primer page 05; this time the decisions are yours.
 
-5. Build the topic, the subscription and the alarm. Before you go on, check two things: the subscription's status is **Confirmed**, and a few minutes after you create the alarm, its state is **OK**, not **Insufficient data**.
+5. Build the topic, the subscription and the alarm. Before you go on, check two things: the subscription's status is **Confirmed**, and a few minutes after you create the alarm, its state is **OK**, not **Insufficient data**. If your alarm notifies on **OK**, that first move to **OK** already sends an email: in our run it came about a minute after we created the alarm.
 
 <details><summary>Hints, if you need them</summary>
 
-- **Topic:** in **Simple Notification Service**, choose **Topics**, then **Create topic**. **Type** is chosen once and can't be changed later; email subscriptions work only on standard topics ([Creating an Amazon SNS topic](https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html)). Tags are in a section near the bottom.
+- **Topic:** in **Simple Notification Service**, choose **Topics**, then **Create topic**. The page starts with **FIFO** selected (as of 2026-10-25): choose **Standard**. **Type** is chosen once and can't be changed later; email subscriptions work only on standard topics ([Creating an Amazon SNS topic](https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html)). Tags are in a section near the bottom.
 - **Subscription:** **Subscriptions**, then **Create subscription**; pick your topic's ARN, the protocol **Email**, and your address as the **Endpoint**. Choose **Confirm subscription** in the email AWS sends. The link is valid for two days, and SNS deletes unconfirmed email subscriptions after 48 hours ([Amazon SNS FAQs](https://aws.amazon.com/sns/faqs/); [Email subscription setup](https://docs.aws.amazon.com/sns/latest/dg/sns-email-notifications.html)).
 - **Metric:** in **CloudWatch**, **Alarms**, **Create alarm**, **Select metric**. Choose **Lambda**, then the view by function name, and tick the `Errors` row for your function.
 - **Statistic and period:** each failed run records a 1, so the `Sum` over one minute is the number of failed runs in that minute.
 - **Missing data:** Lambda sends `Errors` data only when the function runs. Look under **Additional configuration** for **Missing data treatment** ([Configuring how CloudWatch alarms treat missing data](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/alarms-and-missing-data.html)).
 - **Two emails:** on the notification page, choose the topic for the **In alarm** state, then **Add notification** for a second state.
-- **Tagging the alarm:** if the alarm pages offer no tags, copy the alarm's ARN from its details and run this in CloudShell, with your ARN:
+- **Tagging the alarm:** the step that names the alarm has a **Tags** section (as of 2026-10-25). If your pages offer no tags, copy the alarm's ARN from its details and run this in CloudShell, with your ARN:
 
   ```bash
   aws cloudwatch tag-resource --resource-arn YOUR-ALARM-ARN --tags Key=guide,Value=clf Key=lab,Value=11
@@ -156,15 +158,15 @@ The alarm is always in one of the three alarm states from lesson 08.03: **OK**, 
 ```mermaid
 flowchart LR
   accTitle: The three states of the order alarm
-  accDescr: A new alarm starts in Insufficient data and moves to OK once it evaluates. From OK, a minute with one or more failed orders moves it to In alarm and sends an email. From In alarm, minutes with no failures, or with no orders at all because missing data counts as good, move it back to OK and send a second email.
-  N["Insufficient data<br/>(just created)"] -->|"first evaluation"| O["OK"]
+  accDescr: A new alarm starts in Insufficient data and moves to OK once it evaluates, which sends an email because the alarm notifies on OK. From OK, a minute with one or more failed orders moves it to In alarm and sends an email. From In alarm, minutes with no failures, or with no orders at all because missing data counts as good, move it back to OK and send a second email.
+  N["Insufficient data<br/>(just created)"] -->|"first evaluation:<br/>email"| O["OK"]
   O -->|"a minute with 1 or more<br/>failed orders: email"| A["In alarm"]
   A -->|"minutes with no failures,<br/>or no orders: email"| O
 ```
 
 *Notice the label "or no orders" on the way back. That is your missing-data choice at work; with the default, the alarm would drift to Insufficient data instead.*
 
-**Long description.** Three states. A new alarm starts in Insufficient data and moves to OK at its first evaluation. From OK, a minute with one or more failed orders moves it to In alarm, which sends an email. From In alarm, minutes with no failures, or with no orders at all, move it back to OK, which sends a second email.
+**Long description.** Three states. A new alarm starts in Insufficient data and moves to OK at its first evaluation, which already sends an email, because you asked for one on OK. From OK, a minute with one or more failed orders moves it to In alarm, which sends an email. From In alarm, minutes with no failures, or with no orders at all, move it back to OK, which sends a second email.
 
 6. Prove the email path on its own first. In **SNS**, open your topic, choose the option to publish a message, give it the subject `Lab 11 test` and a short message, and publish it.
    **You should see:** the email in your inbox within a minute or two.
@@ -175,19 +177,19 @@ flowchart LR
 7. In **Lambda**, open `clf-lab11-box-count` and run the `bad-order` test event three times, a few seconds apart. Write the time in your lab log.
    **You should see:** an error naming `cupcakes` each time, as in Lab 07.
 8. In **CloudWatch**, choose **Alarms** and watch `clf-lab11-box-count-errors`. Refresh every minute.
-   **You should see:** the state change to **In alarm**, and an email whose subject names the alarm and the ALARM state. Write the time it arrived. We expect about two to five minutes, but haven't measured it.
+   **You should see:** the state change to **In alarm**, and an email whose subject names the alarm and the ALARM state. Write the time it arrived. In our run the state changed about a minute and a half after the first failed run, and each email arrived about a minute after its state change.
    > **If something went wrong:**
    > - *Still OK after 10 minutes:* open the alarm and check its metric is `Errors` for `clf-lab11-box-count`, the statistic `Sum`, and the threshold "greater than or equal to 1". Fix it with **Edit**, then run `bad-order` again.
    > - *Insufficient data:* the missing data treatment is still the default. Edit it to treat missing data as good.
    > - *In alarm, but no email:* the alarm has no notification for **In alarm**, or the email is in spam.
 9. Run nothing. Keep watching the alarm.
-   **You should see:** the state return to **OK** a few minutes later, and a second email. The alarm can stay in alarm for a few minutes after the last failure, because CloudWatch looks back over several recent data points before it decides ([Configuring how CloudWatch alarms treat missing data](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/alarms-and-missing-data.html)).
+   **You should see:** the state return to **OK**, and another email: about eight minutes after the last failure in our run. The alarm can stay in alarm for a few minutes after the last failure, because CloudWatch looks back over several recent data points before it decides ([Configuring how CloudWatch alarms treat missing data](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/alarms-and-missing-data.html)).
 10. Open the alarm and choose its **History** tab.
     **You should see:** the state changes, and the notifications sent at each one. Write the minutes from step 7 to each email in your lab log.
 
 ## Check your work
 
-- [ ] Your test message, the ALARM email and the OK email all arrived, and your lab log has their times.
+- [ ] Four emails arrived: the OK from step 5, your test message, the ALARM email and the OK email, and your lab log has their times.
 - [ ] The alarm's settings match the model answer, or you can say why yours differ.
 - [ ] Tag Editor, searching all Regions and all supported resource types for `lab` = `11`, finds your topic, alarm and function ([Lab 01, steps 13 to 16](../02-why-the-cloud/06-lab-01-first-resource.md#find-it-by-its-tags)). If the role or log group lacks tags, its `clf-lab11` name marks it.
 
@@ -203,10 +205,10 @@ flowchart LR
 
 Delete the alarm first, so it can't send another email while you remove what it watches.
 
-11. In **CloudWatch**, **Alarms**, select `clf-lab11-box-count-errors`, choose **Actions**, then **Delete**, and confirm.
+11. In **CloudWatch**, **Alarms**, select `clf-lab11-box-count-errors`, choose **Actions**, then **Delete**, and confirm with **Delete**.
     **You should see:** the alarm gone from the list.
-12. In **SNS**, **Topics**, select `clf-lab11-orders-failing`, choose **Delete**, and type the confirmation the page asks for. Deleting a topic also deletes its subscriptions.
-    **You should see:** the topic gone, and nothing for it under **Subscriptions**.
+12. In **SNS**, **Topics**, select `clf-lab11-orders-failing`, choose **Delete**, type `delete me` as the page asks, and confirm. Deleting a topic also deletes its subscriptions, though not at once.
+    **You should see:** the topic gone. Its email subscription can stay listed under **Subscriptions** for a while (over two hours in our run); it can't send anything, because its topic is gone.
 13. Delete the function, its log group, its role and any policy the console made for the role, as in [Lab 07, steps 20 to 23](../06-running-applications/05-lab-07-a-lambda-function.md#clean-up), looking for `clf-lab11` names.
 14. **Confirm:** CloudWatch's alarm list, SNS's topics and subscriptions, Lambda's functions, CloudWatch's log groups and IAM's roles show nothing named `clf-lab11`. Repeat the Tag Editor search for `lab` = `11`; expect no results (a deleted item can linger a few minutes). Leave your billing alarm from primer page 05 in place. Tick everything off in your lab log.
 15. **The next day:** check that your **Credits** balance hasn't fallen because of Lambda, CloudWatch or SNS ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4).

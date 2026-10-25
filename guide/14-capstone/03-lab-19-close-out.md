@@ -70,7 +70,7 @@ flowchart LR
 
 > **New sign-up path:** IAM users can't sign in to the console there, so sign in the way that path gives you. The sweep works the same way, in your assigned Region. Closing differs: you close each project first, then the management account, and AWS says you can't close a project while a spend limit has paused it (as of 2026-10-23, [Close a project](https://docs.aws.amazon.com/accounts/latest/reference/close-project.html); [Close your account in AWS Settings](https://docs.aws.amazon.com/accounts/latest/reference/close-account-new-experience.html)). We haven't run this lab on that path.
 
-**About the screens:** the Tag Editor labels are what we saw in Lab 01 on 2026-10-24. The **Bills** page labels come from AWS's [Understanding your bill](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/getting-viewing-bill.html), checked 2026-10-24. We haven't yet run this lab end to end, so if a label differs, look for the option with the same meaning.
+**About the screens:** labels in **bold** for Parts A to D are what we saw when we ran them in our test account on 2026-10-25, at the end of a day of labs. AWS changes its console often. If a label differs, look for the option with the same meaning.
 
 ## Steps
 
@@ -81,8 +81,8 @@ flowchart LR
 
 ### Part A: sweep every Region by tag
 
-3. In the console search bar, type `Tag Editor` and open it. (On 2026-10-24 a banner said tag management is moving to the AWS Resource Explorer console; if it has moved, use the same search there.) In **Regions**, choose **All regions**. In **Resource types**, choose **All resource types** (AWS's wording, checked 2026-10-24), which covers every type Tag Editor supports. Under **Tags**, enter the key `guide` and the value `clf`, choose **Add**, then **Search resources**.
-   **You should see:** no resources.
+3. In the console search bar, type `Tag Editor` and open it. (On 2026-10-24 a banner said tag management is moving to the AWS Resource Explorer console; if it has moved, use the same search there.) In **Regions**, choose **All regions**. In **Resource types**, choose **All supported resource types** (the console's wording on 2026-10-25), which covers every type Tag Editor supports; the search won't run without a resource type. Under **Tags**, enter the key `guide` and the value `clf`, choose **Add**, then **Search resources**.
+   **You should see:** no resources. Items deleted in the last few hours can still appear: on the day we ran every lab, Tag Editor still listed Lab 08's terminated instance and its deleted volume two hours later. Before you hunt for a listed item, open it in its own console; if it's gone or terminated there, it's only the index catching up.
    > **If something went wrong:** for each result, open it and read its `lab` tag. Delete it with that lab's own cleanup steps (table below), in the order they give; Tag Editor only edits tags, it doesn't delete. Then search again.
 4. Remove the tag filter, enter only the key `lab` with no value, and search again. Tag Editor's value box is optional, so this finds anything tagged `lab` whatever its value, including a resource where the `guide` tag was mistyped ([Finding resources to tag](https://docs.aws.amazon.com/tag-editor/latest/userguide/find-resources-to-tag.html)).
    **You should see:** no resources. Tags are case sensitive, so `Lab` or `Guide` would slip past; your lab logs show whether you ever typed one.
@@ -113,8 +113,8 @@ A tag search finds only resources that carry the tag and whose type Tag Editor s
    | **IAM**, roles: search `clf-lab` | No match. Leave roles starting `AWSServiceRoleFor`: AWS manages those for its services | A Lambda execution role | Labs 07, 11 |
    | **CloudWatch**, log groups | No `/aws/lambda/clf-lab…` | A log group still holding logs | Labs 07, 11 |
    | **CloudWatch**, alarms | Your billing alarm from primer page 05 | `clf-lab11-box-count-errors` | Lab 11 |
-   | **SNS**, topics and subscriptions | Your billing alarm's topic and its confirmed subscription | `clf-lab11-orders-failing` | Lab 11 |
-   | **Athena** or **AWS Glue**, databases | No `clf_lab13` | The `clf_lab13` database or its table | Lab 13 |
+   | **SNS**, topics and subscriptions | Your billing alarm's topic and its confirmed subscription | The topic `clf-lab11-orders-failing`. Its subscription can stay listed for hours after the topic is deleted; it sends nothing | Lab 11 |
+   | **Athena** or **AWS Glue**, databases | No `clf_lab13`. A database named `default`, which Athena created, can stay | The `clf_lab13` database or its table | Lab 13 |
    | **Well-Architected Tool**, workloads, in N. Virginia | Nothing | `clf-lab18-bakery-site` | Lab 18 |
    | **EC2**, in N. Virginia: instances, volumes, snapshots, Elastic IPs | Nothing running; a terminated instance may linger for a while | A volume, a snapshot or an Elastic IP | Lab 08 |
    | **VPC**, your VPCs, in N. Virginia | Only the default VPC | `clf-lab09-…` | Lab 09 |
@@ -128,9 +128,9 @@ The bill sees every Region and every service, tagged or not. It runs about a day
 
 7. In the console search bar, type `Billing` and open **Billing and Cost Management**. Choose **Bills**, keep the current **Billing period**, and choose the **Charges by service** tab.
 8. For each service listed, choose the `+` next to it to see its charges by **Region** ([Understanding your bill](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/getting-viewing-bill.html)). Write each service and Region in your lab log.
-   **You should see:** only services and Regions you used in the labs, with small amounts. On the Free plan, credits pay them, so read which services appear, not only the total.
+   **You should see:** only services and Regions you used in the labs, with small amounts. A service you never set up can appear at $0.00 for a few API requests the console made for you (we saw Secrets Manager, SQS and KMS that way); open its row to the usage line to check. On the Free plan, credits pay them, so read which services appear, not only the total.
    > **If something went wrong:** a service or Region you don't recognize is the lead to follow. Go to that Region, find the resource in that service's console, and delete it, using [primer page 08, Track down an unexpected charge](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/08-when-something-goes-wrong.md#track-down-an-unexpected-charge).
-9. Choose **Credits** in the left menu. Write the remaining balance and today's date in your lab log. Tomorrow you compare against this number.
+9. Choose **Credits** in the left menu. Write the remaining balance and today's date in your lab log. Tomorrow you compare against this number. The list may show more credits than you started with: some labs complete AWS's "Explore AWS" activities, each worth $20 (as of 2026-10-25). Our Labs 07 and 08 earned "Create a web app using AWS Lambda" and "Launch an instance using EC2".
 
 ### Part D: review your guardrails, and keep them
 

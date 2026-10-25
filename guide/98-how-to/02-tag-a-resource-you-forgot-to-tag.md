@@ -47,7 +47,7 @@ The quickest fix is often on the resource's own page: many services have a **Tag
 |---|---|
 | IAM users and roles | IAM console: open the user or role, then its **Tags** tab. AWS says Tag Editor doesn't support IAM tags ([Tags for IAM resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)). |
 | IAM user groups | Can't be tagged at all. The lab's `clf-labNN` name is what marks them. |
-| CloudWatch Logs log groups | Not taggable in Tag Editor ([supported resource types](https://docs.aws.amazon.com/ARG/latest/userguide/supported-resources.html), checked 2026-10-24). Use the log group's page if it offers tags, or CloudShell, below. |
+| CloudWatch Logs log groups | Not taggable in Tag Editor ([supported resource types](https://docs.aws.amazon.com/ARG/latest/userguide/supported-resources.html), checked 2026-10-24). Use the log group's **Tags** tab, then **Manage tags** (as we did on 2026-10-25), or CloudShell, below. |
 
 To tag a log group from CloudShell ([primer page 04](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/04-command-line-without-access-keys.md)), replace `ACCOUNT-ID` with your 12-digit account ID and use the log group's name:
 

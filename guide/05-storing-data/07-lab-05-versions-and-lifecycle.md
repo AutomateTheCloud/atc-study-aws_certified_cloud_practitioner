@@ -17,8 +17,9 @@ time: "60 minutes, including a 15-minute wait, plus 5 minutes the next day"
 cost: "Nothing billed on the Free plan; about a tenth of a cent of credits at most (US East (N. Virginia) prices as of 2026-10-24)"
 worst_case: "Under a hundredth of a cent a month on a Paid plan if both buckets are left behind: a few kilobytes at $0.023 per GB-month (as of 2026-10-24)"
 needs: [guardrails-02, guardrails-03, guardrails-05, guardrails-07, clf-02-06]
-recorded: 2026-10-24
-facts_checked: 2026-10-24
+last_run_pass: "2026-10-25, standalone Free plan account, advanced sign-up, us-east-1"
+recorded: 2026-10-25
+facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html"
   - "https://docs.aws.amazon.com/AmazonS3/latest/userguide/manage-versioning-examples.html"
@@ -70,7 +71,7 @@ You delete both, with every version.
 
 > **New sign-up path:** S3 is supported there, but IAM users can't sign in to the console and your Region is fixed (as of 2026-10-23). Use your assigned Region instead of `us-east-1`, and sign in the way that path gives you. We haven't run this lab on that path.
 
-**About the screens:** the bucket-creation steps are what we saw running Lab 01 on 2026-10-24; the versioning and lifecycle labels come from AWS's documentation (checked 2026-10-23). We haven't yet run this lab end to end. If a label differs, look for the option with the same meaning.
+**About the screens:** labels in **bold** are what we saw when we ran this lab end to end in our test account on 2026-10-25. AWS changes its console often. If a label differs, look for the option with the same meaning.
 
 ## Get ready
 
@@ -89,12 +90,13 @@ You delete both, with every version.
 **The requirement:** the bakery's nightly order exports go under the **prefix** `exports/` (the start of their names, like a folder). They're used for 30 days, then rarely, but must open at once when needed. Keep each for a year, then delete it. An overwritten export must stay recoverable for 30 days, and no longer.
 
 6. In your bucket, choose the **Management** tab, then **Create lifecycle rule**.
-7. In **Lifecycle rule name**, type `clf-lab05-exports`. Under the rule's scope, choose the option that limits it to specific prefixes or tags, and type `exports/` as the prefix.
+7. In **Lifecycle rule name**, type `clf-lab05-exports`. Under **Choose a rule scope**, choose **Limit the scope of this rule using one or more filters**, and type `exports/` as the **Prefix**.
 8. Under **Lifecycle rule actions**, tick three actions:
    - **Transition current versions of objects between storage classes**;
    - **Expire current versions of objects**;
    - **Permanently delete noncurrent versions of objects**.
-9. For the transition, choose **S3 Standard-IA** and `30` days after object creation. If the page asks you to acknowledge a cost, read it, then tick it.
+9. For the transition, keep **Standard-IA** (the page starts with it) and type `30` in **Days after object creation**. Read the note that each transition is charged as a request, then tick **I acknowledge that this lifecycle rule will incur a transition cost per request.**
+   The page also says that, by default, objects smaller than 128 KB never change storage class: moving them would cost more than it saves. Your text file is far smaller, so this rule would never move it; the bakery's real exports are larger.
 10. From the requirement, fill in the days after creation to expire current versions, and the days after objects become noncurrent to delete them. Leave the number of newer versions to retain empty.
 11. Read the summary of the rule's actions, then choose **Create rule**.
     **You should see:** the rule listed on the **Management** tab under **Lifecycle rules**.
@@ -123,11 +125,11 @@ Start this part once 15 minutes have passed since step 5.
 13. On your computer, change the line to `Order 1001: two lemon tarts`, save, and upload the file again with the same name.
 14. Turn on **Show versions**, next to the search box.
     **You should see:** two rows for `order-note.txt`, each with its own **version ID**. The newest is the **current version**; the older is a **noncurrent version**.
-15. Turn **Show versions** off. Select `order-note.txt`, choose **Delete**, type the confirmation the page asks for, and confirm.
+15. Turn **Show versions** off. Select `order-note.txt` and choose **Delete**. The page says that deleting "adds delete markers"; type `delete` and choose **Delete objects**.
     **You should see:** the file gone from the list.
 16. Turn **Show versions** on.
     **You should see:** three rows: a delete marker on top, then both versions. Nothing was removed.
-17. Select only the delete marker and choose **Delete**. Deleting by version ID is permanent, so the page asks for a stronger confirmation; type it and confirm.
+17. Select only the delete marker and choose **Delete**. Deleting by version ID is permanent, so the page asks for a stronger confirmation: type `permanently delete` and choose **Delete objects**.
     **You should see:** with **Show versions** off, the file is back, saying "two lemon tarts".
 18. Bring back the first text. With **Show versions** on, select the older version (the earlier **Last modified** time), choose **Download**, and upload the downloaded file to the bucket under the name `order-note.txt`.
     **You should see:** three versions; the current one says "one lemon tart".
@@ -147,7 +149,7 @@ Start this part once 15 minutes have passed since step 5.
 
 **Constraints:** your `clf-lab05-archive-` name and the lab tags; only settings from Parts A and B; no uploads.
 
-20. Create and configure the bucket. In your lab log, write each setting next to the requirement it meets.
+20. Create and configure the bucket. In your lab log, write each setting next to the requirement it meets. (A rule for the whole bucket asks you to tick an extra acknowledgement that it applies to all objects.)
 
 <details><summary>Model answer</summary>
 
@@ -172,7 +174,7 @@ Deep Archive is S3's lowest-cost class; retrieval takes 12 to 48 hours, which fi
 ## Clean up
 
 21. In **S3**, choose **General purpose buckets**, select your `clf-lab05-` bucket, and choose **Empty**. Type the confirmation the page asks for and choose **Empty**. In a versioned bucket this deletes every version and delete marker ([Emptying a general purpose bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/empty-bucket.html), checked 2026-10-23).
-    **You should see:** a status page that reports the bucket emptied.
+    **You should see:** a status page that reports the bucket emptied. If step 19 already removed everything, the page says it found no objects; that's fine, go on.
 22. Delete that bucket as in [Lab 01, steps 20 and 21](../02-why-the-cloud/06-lab-01-first-resource.md#clean-up).
 23. Delete the archive bucket the same way (empty it first if S3 says it isn't empty).
 24. **Confirm:** in the S3 bucket list, search for `clf-lab05`; nothing should be found. In Tag Editor, search all Regions for the tag `lab` = `05` ([Lab 01, steps 13 to 16](../02-why-the-cloud/06-lab-01-first-resource.md#find-it-by-its-tags)); expect no S3 results. Tick both buckets off in your lab log.
