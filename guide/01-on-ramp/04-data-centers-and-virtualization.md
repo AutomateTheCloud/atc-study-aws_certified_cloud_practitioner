@@ -113,7 +113,7 @@ flowchart LR
 
 **Long description.** Mains electricity feeds the servers through the UPS batteries. A dashed arrow shows backup generators starting when the mains fails and taking over from the batteries. The servers keep running throughout.
 
-This pattern is **redundancy**: having more than one of something so that one failure doesn't stop the whole. Data centers use it for power, cooling and network connections. Module 03 shows AWS going further, grouping data centers into separate **Availability Zones** so that even a whole building's failure can be survived.
+This pattern is **redundancy**: having more than one of something so that one failure doesn't stop the whole. Data centers use it for power, cooling and network connections. Module 03 shows AWS going further, grouping data centers into separate **Availability Zones** so that a system can survive even a whole building's failure.
 
 The bakery's three servers have none of this: they sit in a room behind the shop, with no generator.
 
