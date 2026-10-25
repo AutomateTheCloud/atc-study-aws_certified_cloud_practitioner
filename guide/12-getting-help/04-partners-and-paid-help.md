@@ -223,7 +223,7 @@ All three were checked on 2026-10-24. A product bought here is still yours to co
 
 **What's the same:** all four are ways to get expert help with AWS, and none of them changes the shared responsibility line. **What differs:** whether they're AWS or another company, whether they do the work, and how you pay. **The principle:** advice is free or included; hands-on work is bought. A solutions architect often starts the conversation and then points you to Support, Professional Services or a partner.
 
-Two more names you may see as wrong answers: **AWS Managed Services (AMS)**, in which AWS operates a customer's infrastructure for an extra fee, and AWS IQ, a service for hiring outside experts that older material describes and that AWS discontinued on 2026-05-28 (its lifecycle list says 2026-05-20) (checked 2026-10-24). The exam guide lists both as out of scope.
+One more name you may see as a wrong answer: **AWS Managed Services (AMS)**, in which AWS operates a customer's infrastructure for an extra fee. The exam guide lists it as out of scope.
 
 > **Check:** Answer the second prequestion. The bakery wants an expert at AWS to look over its design before its busiest sales week. It has no budget for consultants. What's the best first step?
 >

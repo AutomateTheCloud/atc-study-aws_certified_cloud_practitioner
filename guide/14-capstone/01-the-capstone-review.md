@@ -247,7 +247,7 @@ Lesson 12.01's method: start at Basic and move up only for a reason; the review 
 - **Why not Basic:** it can't open technical cases.
 - **Why not Enterprise Support:** its $5,000 minimum is about 99 times the bill.
 
-Basic or Business Support+ is defensible here, with a reason; the rubric rewards the reasoning, not the plan's name.
+Our recommendation is Basic for now, with the gap written down as an accepted risk: $29 a month on a $50 bill is hard to justify. Move to Business Support+ once the bakery depends on the site for much of its revenue. Business Support+ today is also defensible with a reason; the rubric rewards the reasoning, not the plan's name.
 
 > **Your turn:** The owner says, "$29 for support on a $50 bill? I'll take my chances." Write the one line that records her decision in the review.
 
@@ -329,7 +329,7 @@ Do the whole review now, steps 1 to 6 for all six pillars, taking the worked exa
 - **Sustainability (SUS 2, then SUS 5):** the servers run all night for little demand, doubled by the reliability fix, an accepted trade-off. Under [SUS05-BP02 Use instance types with the least impact](https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sus_sus_hardware_a3.html), whose page says Graviton-based instances give the best performance per watt in EC2, test the site on `t4g.micro`: $12.26 a month for two, against $15.18. The function can move to Arm too.
 - **Cost:** under [COST07-BP01 Perform pricing model analysis](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_pricing_model_analysis.html), commit the floor of two servers for a year. Two `t4g.micro` on 1-year Standard Reserved Instances, No Upfront, cost $7.74 a month against $15.18 for two `t3.micro` On-Demand, saving about $7.44. Commit only after the Graviton test: a Standard RI is tied to its instance family, while a Compute Savings Plan would follow a change (lesson 11.02).
 
-**Support plan:** Business Support+, $29 a month (its minimum), because the site now has parts the owner can't fix alone and orders peak in December. Basic is defensible as a written accepted risk; Enterprise Support's $5,000 minimum doesn't fit.
+**Support plan:** Basic, recorded as an accepted risk: Business Support+ would cost $29 a month, more than half the bill. Move to Business Support+, at its $29 minimum, once the site carries much of the bakery's revenue, because it now has parts the owner can't fix alone; review that before December's peak. Enterprise Support's $5,000 minimum doesn't fit.
 
 **Accepted risks:** a Region-wide outage stops the site (a second Region is out of proportion at this size); the order database is unreviewed.
 
@@ -349,7 +349,7 @@ The Framework recommends reviews early in design, before launch, and after big c
 - **Ask each pillar's own question,** such as REL 10, and record strengths as well as gaps.
 - **Rate by harm to the business,** starting from the best practice's level, with a reason for every rating.
 - **Price every fix** with dated rates and hours of work, against the harm avoided. Two servers behind a load balancer add $36.78 a month, most of it hourly.
-- **Recommend the cheapest Support plan that fits,** or record an accepted risk: for the bakery, Business Support+ at its $29 minimum.
+- **Recommend the cheapest Support plan that fits,** or record an accepted risk: for the bakery today, Basic with a written accepted risk, and Business Support+ at its $29 minimum once the site carries much of its revenue.
 - **Write one page,** high risks first, score it with the rubric, and review again when the workload changes.
 
 ## Practice

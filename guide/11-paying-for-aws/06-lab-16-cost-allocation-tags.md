@@ -10,6 +10,7 @@ pillars: [cost-optimization]
 lab: "16"
 rung: L1
 mode: real
+free_plan: true
 signup_path: advanced
 time: "15 minutes, plus 10 minutes the next day"
 cost: "$0 on the Free plan and on a Paid plan (as of 2026-10-24)"

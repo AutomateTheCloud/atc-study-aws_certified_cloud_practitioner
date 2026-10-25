@@ -11,6 +11,7 @@ pillars: [performance-efficiency, cost-optimization]
 lab: "14"
 rung: L1
 mode: real
+free_plan: true
 signup_path: advanced
 time: "15 minutes, plus 5 minutes the next day"
 cost: "About 1.4 cents at list prices before any free allowance; taken from credits on the Free plan (as of 2026-10-24)"
