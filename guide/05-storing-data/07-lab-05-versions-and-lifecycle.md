@@ -129,6 +129,11 @@ Start this part once 15 minutes have passed since step 5.
     **You should see:** the file gone from the list.
 16. Turn **Show versions** on.
     **You should see:** three rows: a delete marker on top, then both versions. Nothing was removed.
+
+    ![The bucket's Objects tab with Show versions on: order-note.txt as a Delete marker of 0 B on top, then two versions of 28.0 B and 27.0 B in Standard, each with its own version ID.](../../images/05-07-delete-marker.png)
+
+    *Screenshot: the delete marker above both versions, with **Show versions** on, captured 2026-10-25 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+
 17. Select only the delete marker and choose **Delete**. Deleting by version ID is permanent, so the page asks for a stronger confirmation: type `permanently delete` and choose **Delete objects**.
     **You should see:** with **Show versions** off, the file is back, saying "two lemon tarts".
 18. Bring back the first text. With **Show versions** on, select the older version (the earlier **Last modified** time), choose **Download**, and upload the downloaded file to the bucket under the name `order-note.txt`.

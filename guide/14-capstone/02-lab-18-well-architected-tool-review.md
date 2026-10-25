@@ -180,6 +180,11 @@ Three calls need judgment. First, people sign in as IAM users, whose passwords a
 8. On the workload's page, in the **Lenses** section, choose **AWS Well-Architected Framework**, then the **Improvement plan** tab.
    **You should see:** improvement items for the questions that show a risk, each marked **High risk** or **Medium risk**, high risks first. Expand **Recommended improvement items** under each: it lists every practice you left unticked, Low ones included, but not those you marked not applicable. Write each question's risk in the last column of your lab log.
    > **If something went wrong:** no items at all means every answered question has no risk, or your answers weren't saved. Open the workload, choose **Continue reviewing**, and check the four questions.
+
+   ![The Improvement plan tab: overall risks 2 high and 2 medium, then four improvement items: SEC 2 and COST 3 marked High risk, SEC 3 and COST 4 marked Medium risk, SEC 3 noting best practices marked as not applicable, each with Recommended improvement items to expand.](../../images/14-02-improvement-plan.png)
+
+   *Screenshot: the improvement plan for the four answered questions, high risks first, captured 2026-10-25 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+
 9. Compare the Tool's results with your predictions. For any that differ, open the question and look again at which practices you ticked and their risk levels. SEC 2 and COST 3 weren't among the capstone's starter questions, so a high risk there is a new finding: add it to your improvement plan.
 10. Expand the recommended improvement items for one high risk, open the guidance for one missing practice, and write one sentence in your lab log: what the bakery would have to do, and whether anything stops it. For example, the guardrails primer keeps you off IAM Identity Center on the Free plan, because creating an organization upgrades the plan ([primer page 03](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md#why-we-dont-use-iam-identity-center-on-the-free-plan)).
 11. Choose **Workloads** in the left menu and find your workload's row.
@@ -190,6 +195,10 @@ Three calls need judgment. First, people sign in as IAM users, whose passwords a
 12. Open the workload and choose **Save milestone**. In **Milestone name**, type `clf-lab18 initial review`, then choose **Save**.
     **You should see:** the milestone listed on the workload's **Milestones** tab. A saved milestone can't be changed ([Saving a milestone](https://docs.aws.amazon.com/wellarchitected/latest/userguide/milestones-save.html)).
 13. Optional, about 3 minutes: see why that matters. Open COST 4, tick [COST04-BP05](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_decomissioning_resources_data_retention.html) as if the bakery had made fix 7 of the capstone review (log retention, and a rule for old photo versions), and choose **Save and exit**. Only a Low practice is then missing, so COST 4's medium risk goes and the workload's **Medium risks** count drops by one (as it did for us); open the workload's **Milestones** tab and the milestone's counts don't change. That is how a team proves progress next quarter.
+
+    ![The workload's Milestones tab: one milestone, clf-lab18 initial review, with 4/57 questions answered, 2 high risks and 2 medium risks, saved October 25, 2026.](../../images/14-02-milestone.png)
+
+    *Screenshot: the milestone still showing 2 medium risks after COST 4's risk was fixed, captured 2026-10-25 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
 
 ## Check your work
 
