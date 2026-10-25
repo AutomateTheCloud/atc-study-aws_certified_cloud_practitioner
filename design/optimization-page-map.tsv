@@ -1,0 +1,12 @@
+deleted_page	old_id	replaced_by
+guide/02-why-the-cloud/07-sim-demand-curve.md	clf-02-07	guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+guide/04-shared-responsibility-and-access/09-sim-policy-playground.md	clf-04-09	guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
+guide/05-storing-data/03-storage-classes-and-lifecycle.md	clf-05-03	guide/05-storing-data/02-s3-in-practice.md
+guide/05-storing-data/06-choosing-a-database.md	clf-05-06	guide/05-storing-data/05-managed-or-self-managed-databases.md
+guide/05-storing-data/09-sim-lifecycle-cost-timeline.md	clf-05-09	guide/05-storing-data/02-s3-in-practice.md
+guide/07-connecting-it/06-sim-packet-journey.md	clf-07-06	guide/07-connecting-it/02-filtering-traffic.md
+guide/08-building-and-operating/02-iac-and-automation.md	clf-08-02	guide/08-building-and-operating/01-four-ways-in.md
+guide/09-protecting-and-governing/09-sim-config-timeline.md	clf-09-09	guide/09-protecting-and-governing/01-who-did-what.md
+guide/11-paying-for-aws/08-sim-guardrail-timeline.md	clf-11-08	guide/11-paying-for-aws/03-estimate-watch-analyze.md
+guide/12-getting-help/04-partners-and-paid-help.md	clf-12-04	guide/12-getting-help/03-where-to-find-answers.md
+guide/13-moving-to-aws/06-sim-rightsizing-and-licensing.md	clf-13-06	guide/13-moving-to-aws/04-the-business-case.md
