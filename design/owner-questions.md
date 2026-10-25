@@ -10,8 +10,8 @@
   "closed since" in 10-00, 10-03, its two charts, S12 and the 00-04 names table. Snowball support
   ends 2026-12-31; legacy Support plans end 2027-01-01 (Module 12's dated box); Amazon Q Developer
   IDE plugins and paid subscriptions end 2027-04-30.
-- **Screenshots:** 65 approved captures of 2026-10-25 are in `_captures/aws-test-account/redacted/`;
-  none is in the guide yet.
+- **Screenshots:** 14 cropped captures from 2026-10-25 are in the guide (`images/`). The other
+  approved captures in `_captures/aws-test-account/redacted/` are optional extras.
 
 ## Decided by the owner on 2026-10-25 (applied)
 
