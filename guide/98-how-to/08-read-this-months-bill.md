@@ -64,7 +64,7 @@ You can name every service and Region on this month's bill and the lab that expl
 
 ## Used in
 
-- Lessons: [How AWS charges](../11-paying-for-aws/01-how-aws-charges.md); [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md#cost-explorer-shows-where-the-money-went-and-forecasts-18-months-ahead).
+- Lessons: [How AWS charges](../11-paying-for-aws/01-how-aws-charges.md); [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md#cost-explorer-shows-where-the-money-went-and-forecasts-what-comes-next).
 - Labs: the next-day check in every lab that creates something; [Lab 16](../11-paying-for-aws/06-lab-16-cost-allocation-tags.md#the-next-day-find-the-tags-in-cost-explorer), which groups by the `lab` tag; [Lab 19, Part C](../14-capstone/03-lab-19-close-out.md#part-c-read-the-bill-and-the-credits).
 - Primer: [habit 4](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md#habit-4-check-again-the-next-day).
 

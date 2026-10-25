@@ -67,7 +67,7 @@ rule; the new sign-up experience's spend limit; account tags for cost allocation
 | 03, "AWS Budgets tells you when you pass a limit; it stops nothing unless you add an action" | Forecasted alerts; data delay | Un, Ap | 2 | 0 | 0 |
 | 03, ""A budget caps your spending" is wrong" | No cap without an action; two of the three actions; SCP actions need the management account; what keeps billing after a stop | Re, Un | 4 | 1 | 2 |
 | 03, "Cost Anomaly Detection tells you when spending is unusual, not when it is high" | Slow growth needs a budget; a small new charge needs anomaly detection; what it does | Un, Ap | 3 | 1 | 1 |
-| 03, "Cost Explorer shows where the money went, and forecasts 18 months ahead" | Forecast and recommendations (no horizon number) | Un | 1 | 1 | 0 |
+| 03, "Cost Explorer shows where the money went, and forecasts what comes next" | Forecast and recommendations (no horizon number) | Un | 1 | 1 | 0 |
 | 03, "The Cost and Usage Report holds every line item, delivered through Data Exports" | Exam name and today's place; line items for chargeback | Re, Ap | 2 | 0 | 0 |
 | 03, "Pick the tool by the question it answers" | Which tools alert; the keyword for the CUR (card) | Un | 1 | 1 | 1 |
 | 03, "Worked example: one forgotten instance in January" | Drill down one level at a time | Ap | 1 | 0 | 0 |

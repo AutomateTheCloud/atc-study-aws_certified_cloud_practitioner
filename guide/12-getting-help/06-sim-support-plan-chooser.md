@@ -119,7 +119,7 @@ Bill: about $1,200 a month a year later, all in one account (made up, like every
 
 <details><summary>Model answer</summary>
 
-**Stay on Business Support+.** The cheapest plan with a TAM is Enterprise, at $5,000 a month for a $1,200 bill: a request is not a must-have. For the review, the developer can run a free Well-Architected Tool review, or pay an AWS Partner for a one-off review (lesson [12.04](04-partners-and-paid-help.md)). Revisit Enterprise if the bill and the stakes grow.
+**Stay on Business Support+.** The cheapest plan with a TAM is Enterprise, at $5,000 a month for a $1,200 bill: a request is not a must-have. For the review, the developer can run a free Well-Architected Tool review, ask an AWS solutions architect for a free review through the account team, or pay an AWS Partner for a one-off review (lesson [12.04](04-partners-and-paid-help.md)). Revisit Enterprise if the bill and the stakes grow.
 
 </details>
 

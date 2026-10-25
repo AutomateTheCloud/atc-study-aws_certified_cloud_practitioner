@@ -208,7 +208,7 @@ Use **lifecycle rules** when you know how the data cools, as with the records. U
 
 ## Three cost traps
 
-**1. The minimum stay.** Delete, overwrite or transition an object out of a class before its minimum stay, and you're billed for the rest of the stay, pro rata. A lifecycle rule can spring this trap on its own.
+**1. The minimum stay.** Delete, overwrite or transition an object out of a class before its minimum stay, and you're billed for the rest of the stay, pro rata, so you pay for the full minimum in all. A lifecycle rule can spring this trap on its own.
 
 ![Paired bars for three made-up cases. A: moved to Glacier Flexible Retrieval at day 30 and expired at day 60: 30 days in the class, 90 billed. B: uploaded to Glacier Deep Archive and deleted at day 60: 60 days, 180 billed. C: moved to Standard-IA at day 30 and expired at day 365: 335 days, 335 billed.](../../images/05-03-billed-days.svg)
 

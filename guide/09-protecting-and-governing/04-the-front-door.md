@@ -12,6 +12,7 @@ facts_checked: 2026-10-24
 sources:
   - "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-standard-summary.html"
   - "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-advanced-summary.html"
+  - "https://docs.aws.amazon.com/waf/latest/developerguide/manage-protection.html"
   - "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-srt-support.html"
   - "https://aws.amazon.com/shield/faqs/"
   - "https://aws.amazon.com/shield/pricing/"
@@ -105,7 +106,7 @@ Shield Standard has limits. It doesn't read web requests, so an HTTP flood or an
 
 **AWS Shield Advanced** is the paid tier. You subscribe and then choose which resources to protect: CloudFront distributions, Route 53 hosted zones, load balancers, Elastic IP addresses on EC2 instances and Global Accelerator accelerators ([AWS Shield Advanced overview](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-advanced-summary.html); [AWS Shield FAQs](https://aws.amazon.com/shield/faqs/), checked 2026-10-24). For those resources it adds:
 
-- **Automatic application layer mitigation:** during an HTTP flood it creates and applies AWS WAF rules for you. Its subscription also covers the standard WAF fees on protected resources.
+- **Automatic application layer mitigation:** during an HTTP flood it creates and applies AWS WAF rules for you. It works on web traffic, so it applies to CloudFront distributions and Application Load Balancers, not to the other protected resources ([Editing AWS Shield Advanced protections](https://docs.aws.amazon.com/waf/latest/developerguide/manage-protection.html), checked 2026-10-24). Its subscription also covers the standard WAF fees on protected resources.
 - **The Shield Response Team (SRT):** AWS engineers who specialize in DDoS response, available around the clock. With your permission they can analyze your WAF logs and change your rules during an attack.
 - **DDoS cost protection:** credits for the extra charges an attack causes, such as servers Auto Scaling launched to absorb it, requested through AWS Support.
 - **Visibility:** detailed metrics and reports on attacks against your protected resources.

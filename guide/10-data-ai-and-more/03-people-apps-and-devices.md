@@ -19,6 +19,7 @@ sources:
   - "https://docs.aws.amazon.com/workspaces-web/latest/adminguide/workspaces-secure-browser-maintenance-mode.html"
   - "https://docs.aws.amazon.com/connect/latest/adminguide/what-is-amazon-connect.html"
   - "https://aws.amazon.com/products/connect/customer/features/"
+  - "https://docs.aws.amazon.com/connect/latest/adminguide/generative-ai-powered-self-service.html"
   - "https://docs.aws.amazon.com/lexv2/latest/dg/what-is.html"
   - "https://docs.aws.amazon.com/ses/latest/dg/Welcome.html"
   - "https://aws.amazon.com/ses/faqs/"
@@ -164,7 +165,7 @@ You may have read AppStream 2.0 and WorkSpaces Web as current product names. The
 
 **Amazon Connect (now Amazon Connect Customer)** is a cloud **contact center**. Administrators get phone numbers, set up queues and routing, and build **flows**, which decide what happens to each contact step by step; agents answer customers by voice, chat, SMS and other channels; supervisors watch performance in real time ([What is Connect Customer?](https://docs.aws.amazon.com/connect/latest/adminguide/what-is-amazon-connect.html), checked 2026-10-24). There's no telephone hardware to buy, and you pay for what you use. AWS renamed the product: "Amazon Connect" is now the brand for a set of AI products, and the contact center is Connect Customer. When the exam says Amazon Connect, it means the contact center.
 
-**Amazon Lex**, from lesson 10.02, builds the bot. Lex integrates with Connect Customer, so a flow can hand a caller to a Lex bot to understand what they want, and pass them to an agent when the bot can't help ([What is Amazon Lex V2?](https://docs.aws.amazon.com/lexv2/latest/dg/what-is.html), checked 2026-10-24).
+**Amazon Lex**, from lesson 10.02, builds the bot. Connect Customer also has AI self-service features of its own, which AWS now steers new builds toward, but Lex is the exam's bot builder ([Connect Customer AI self-service](https://docs.aws.amazon.com/connect/latest/adminguide/generative-ai-powered-self-service.html), checked 2026-10-24). Lex integrates with Connect Customer, so a flow can hand a caller to a Lex bot to understand what they want, and pass them to an agent when the bot can't help ([What is Amazon Lex V2?](https://docs.aws.amazon.com/lexv2/latest/dg/what-is.html), checked 2026-10-24).
 
 Here is the owner's second request, "When the shop is busy, a bot should answer the phone and take simple orders":
 
@@ -187,7 +188,7 @@ flowchart LR
 |---|---|---|
 | **What it is** | A cloud contact center | A service for building chat and voice bots |
 | **Owns** | Phone numbers, queues, routing, flows, agents, call recordings and reports | Understanding what a person wants and collecting the details |
-| **Works without the other?** | Yes, with human agents only | Yes, in a website chat window or a messaging app |
+| **Works without the other?** | Yes, with human agents only, or with its own AI self-service features | Yes, in a website chat window or a messaging app |
 | **Exam category** | Business applications (task [3.8](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.8)) | Machine learning (task [3.7](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.7)) |
 
 **The principle:** a contact center that needs a bot uses both. A website chat bot needs only Lex; a call center with only people needs only Connect.
@@ -196,7 +197,7 @@ flowchart LR
 
 <details><summary>Model answer</summary>
 
-No. Connect Customer is the contact center: it owns the bakery's phone number, the flow each call follows, the queue and the staff who answer. The bot that understands "I'd like to order a cake" is built with Amazon Lex and plugged into a Connect flow.
+No. Connect Customer is the contact center: it owns the bakery's phone number, the flow each call follows, the queue and the staff who answer. Connect Customer has AI self-service features of its own, but the exam-level rule holds: you build the bot that understands "I'd like to order a cake" with Amazon Lex and plug it into a Connect flow.
 
 </details>
 

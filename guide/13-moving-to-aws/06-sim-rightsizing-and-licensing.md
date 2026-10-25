@@ -145,7 +145,7 @@ flowchart TD
 
 **Long description.** Start: does the software need a paid license? No: nothing to decide. Yes: do you own licenses you can use? No: license-included. Yes: do they have License Mobility? Yes: BYOL on shared (default tenancy) instances, or on Amazon RDS for SQL Server. No: are they counted per socket or core, or tied to a physical server? Yes: BYOL on a Dedicated Host, if you can fill it. No: license-included. Whatever you bring, AWS License Manager can track it.
 
-> **Dated (checked 2026-10-24):** per AWS's Microsoft licensing page (last updated in 2019), Windows Server licenses without Software Assurance can come to AWS only on Dedicated Hosts, and only if bought before 2019-10-01. A Dedicated Host is a whole physical server, billed per host, that shows its sockets and cores; a Dedicated Instance doesn't. RDS for SQL Server accepts your own SQL Server 2019 or later licenses with active Software Assurance ("bring your own media"). Microsoft's and other vendors' terms decide; check them.
+> **Dated (checked 2026-10-24):** per AWS's Microsoft licensing page (last updated 2019-11-30), Microsoft licenses without Software Assurance or License Mobility, Windows Server among them, can come to AWS only on Dedicated Hosts, and only if bought before 2019-10-01. AWS states that date for Microsoft licenses generally, not for Windows Server alone. A Dedicated Host is a whole physical server, billed per host, that shows its sockets and cores; a Dedicated Instance doesn't. RDS for SQL Server accepts your own SQL Server 2019 or later licenses with active Software Assurance ("bring your own media"). Microsoft's and other vendors' terms decide; check them.
 
 ### Decision 2: choose a route for each workload
 

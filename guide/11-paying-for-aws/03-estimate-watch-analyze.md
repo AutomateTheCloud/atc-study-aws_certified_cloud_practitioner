@@ -220,11 +220,11 @@ Like Budgets, it only tells people; it never stops anything.
 
 </details>
 
-## Cost Explorer shows where the money went, and forecasts 18 months ahead
+## Cost Explorer shows where the money went, and forecasts what comes next
 
 **AWS Cost Explorer** shows your costs and usage as charts and tables that you filter and group: by service, account, Region, usage type, instance type, cost allocation tag and more ([Analyzing your costs with AWS Cost Explorer](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html), checked 2026-10-24). It's the tool for "where did the money go?" Its other jobs:
 
-- **Forecasts.** It predicts spending from your past usage, with an 80% **prediction interval**: a range the real figure should fall in four times out of five. The steadier your history, the narrower the range. With less than about one full billing cycle of history, it gives no forecast ([Forecasting with Cost Explorer](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-forecast.html)).
+- **Forecasts.** As of 2026-10-24, it looks up to 18 months ahead. It predicts spending from your past usage, with an 80% **prediction interval**: a range the real figure should fall in four times out of five. The steadier your history, the narrower the range. With less than about one full billing cycle of history, it gives no forecast ([Forecasting with Cost Explorer](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-forecast.html)).
 - **Recommendations** for Reserved Instances and Savings Plans, based on your usage.
 - **Questions in plain language** through Amazon Q Developer.
 - **The same data** as the Cost and Usage Report, downloadable as CSV.

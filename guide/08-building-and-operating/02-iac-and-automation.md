@@ -11,6 +11,7 @@ pillars: [operational-excellence, reliability, cost-optimization, security]
 facts_checked: 2026-10-24
 sources:
   - "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html"
+  - "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-servicerole.html"
   - "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-overview.html"
   - "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html"
   - "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html"
@@ -294,7 +295,7 @@ So the owner publishes "Bakery test site", with small sizes and tags already set
 ```mermaid
 flowchart TB
   accTitle: CloudFormation builds; Service Catalog controls who may launch what
-  accDescr: With CloudFormation alone, the template's author creates stacks and needs permissions for every resource in it. With Service Catalog, an administrator adds the template to a portfolio as a product, with constraints, and grants the portfolio to a developer. The developer launches the product; Service Catalog uses the launch role to have CloudFormation build the stack, so the developer needs no direct permissions on the resources.
+  accDescr: With CloudFormation alone, the template's author creates stacks and, by default, needs permissions for every resource in it (a CloudFormation service role can take that over, but nothing limits who may launch what). With Service Catalog, an administrator adds the template to a portfolio as a product, with constraints, and grants the portfolio to a developer. The developer launches the product; Service Catalog uses the launch role to have CloudFormation build the stack, so the developer needs no direct permissions on the resources.
   subgraph CFN["CloudFormation alone"]
     direction TB
     A1["Author, with permissions<br/>for every resource"] -->|"creates stack"| CF1["CloudFormation"] --> ST1["Stack"]
@@ -310,7 +311,7 @@ flowchart TB
 
 *Notice that both paths end in a CloudFormation stack. Service Catalog adds who may launch it, and within which limits.*
 
-**Long description.** Two panels. "CloudFormation alone": an author with permissions for every resource creates a stack through CloudFormation. "With Service Catalog": an administrator publishes a template as a product, with constraints, into a portfolio; the portfolio is granted to a developer; the developer launches the product; Service Catalog, using a launch role, has CloudFormation build the stack.
+**Long description.** Two panels. "CloudFormation alone": an author who, by default, has permissions for every resource creates a stack through CloudFormation (a CloudFormation service role can do the building instead, but nothing limits which templates the author uses). "With Service Catalog": an administrator publishes a template as a product, with constraints, into a portfolio; the portfolio is granted to a developer; the developer launches the product; Service Catalog, using a launch role, has CloudFormation build the stack.
 
 | | AWS CloudFormation | AWS Service Catalog |
 |---|---|---|
@@ -333,7 +334,7 @@ Three more neighbors: **Elastic Beanstalk** (lesson 06.04) builds the setup for 
 
 **B is right.** Service Catalog publishes approved products and launches them through a role, within constraints.
 
-- **A is wrong.** CloudFormation builds from templates, but whoever creates the stack needs permissions for its resources, and nothing limits which templates they use.
+- **A is wrong.** CloudFormation builds from templates, but whoever creates the stack needs permissions for its resources, unless a CloudFormation service role does the building, and nothing limits which templates they use.
 - **C is wrong.** Marketplace sells third-party software; it doesn't hold your own approved setups.
 - **D is wrong.** Beanstalk runs application code for you; it doesn't control which environments developers may launch.
 
@@ -426,7 +427,7 @@ The **AWS Cloud Development Kit (AWS CDK)** lets you describe infrastructure in 
 
    - **B is wrong.** Resources cost the same however they're created.
    - **D is wrong.** A template builds an empty database; data needs backups or replication.
-   - **E is wrong.** Whoever creates a stack still needs permissions, unless a Service Catalog launch role does it for them.
+   - **E is wrong.** Whoever creates a stack still needs permissions, unless a CloudFormation service role or a Service Catalog launch role does the building for them.
 
    </details>
 

@@ -25,6 +25,7 @@ sources:
   - "https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html"
   - "https://aws.amazon.com/api-gateway/faqs/"
   - "https://aws.amazon.com/compliance/shared-responsibility-model/"
+  - "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-how-route-53-chooses-records.html"
 ---
 
 # Route 53 tells users where to go; CloudFront, Global Accelerator and API Gateway shape the trip and guard the door
@@ -114,7 +115,7 @@ When there is more than one place a user could go, a **routing policy** tells Ro
 | **Weighted** | What share of users goes to each place? | Sending 10% of users to a new version first |
 | **Multivalue answer** | Which several healthy addresses can I return? | Up to eight healthy servers, at random |
 
-**Health checks make the answers safe.** A health check can test a web address, combine other health checks, or follow a CloudWatch alarm. Route 53 then leaves unhealthy places out of its failover, latency, weighted and multivalue answers ([Route 53 health checks](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html)). So the first prequestion's answer is yes: failover routing moves customers to a standby with no one acting.
+**Health checks make the answers safe.** A health check can test a web address, combine other health checks, or follow a CloudWatch alarm. Route 53 then leaves unhealthy places out of its answers for most routing policies, such as failover, latency, weighted, geolocation and multivalue ([Route 53 health checks](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html)). So the first prequestion's answer is yes: failover routing moves customers to a standby with no one acting.
 
 **DNS answers are copied, so a switch isn't instant.** Other DNS servers keep Route 53's answer for the record's **TTL**, which you set. Until their copy expires, some users still go to the old place ([Amazon Route 53 FAQs](https://aws.amazon.com/route53/faqs/)). A short TTL switches faster but means more queries.
 

@@ -2911,7 +2911,7 @@ questions:
 
   - id: q11-cost-explorer-two-jobs
     page: guide/11-paying-for-aws/03-estimate-watch-analyze.md
-    section: "Cost Explorer shows where the money went, and forecasts 18 months ahead"
+    section: "Cost Explorer shows where the money went, and forecasts what comes next"
     task: "4.2"
     level: understanding
     topics: [cost-explorer]

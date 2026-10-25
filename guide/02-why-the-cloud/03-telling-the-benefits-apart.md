@@ -19,6 +19,7 @@ sources:
   - "https://aws.amazon.com/s3/faqs/"
   - "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html"
   - "https://docs.aws.amazon.com/wellarchitected/latest/framework/perf-dp.html"
+  - "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html"
 ---
 
 # Each cloud benefit answers a different question: what changed?
@@ -352,7 +353,7 @@ For each scenario, name the benefit it shows best, and say in one line why the s
 At work, people ask what a system needs, and each benefit answers a different need. The AWS Well-Architected Framework, which lesson 02.05 introduces, groups these needs into pillars ([the pillars of the framework](https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html)):
 
 - **High availability and durability** belong to the **reliability** pillar: the system does its job correctly and consistently, and recovers from failure.
-- **Elasticity** serves both **performance efficiency** (enough capacity as demand changes) and **cost optimization** (no paying for capacity you don't need).
+- **Elasticity** serves **performance efficiency** (enough capacity as demand changes), **cost optimization** (no paying for capacity you don't need) and **reliability** too: the reliability pillar's design principle "[Stop guessing capacity](https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html)" notes that running out of capacity is a common cause of failure.
 - **Global reach** and **agility** appear in the **performance efficiency** pillar's design principles "[Go global in minutes](https://docs.aws.amazon.com/wellarchitected/latest/framework/perf-dp.html)" and "[Experiment more often](https://docs.aws.amazon.com/wellarchitected/latest/framework/perf-dp.html)".
 
 The benefits are possibilities, not defaults. AWS provides the AZs, the auto scaling and the Regions; you must design your system to use them. A website on one server in one AZ isn't highly available just because it is in the cloud. Module 04 explains this split: AWS is responsible for the cloud itself, and you are responsible for how you use it.

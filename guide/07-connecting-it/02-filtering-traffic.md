@@ -18,6 +18,7 @@ sources:
   - "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html"
   - "https://aws.amazon.com/vpc/faqs/"
   - "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html"
+  - "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html"
 ---
 
 # Security groups guard each resource and remember each conversation; network ACLs guard each subnet and check every packet both ways
@@ -209,8 +210,8 @@ To predict an outcome, follow the packet the way the VPC does. Ask each question
 ```mermaid
 flowchart TD
   accTitle: Five checks on a request and its reply
-  accDescr: A request must be sent this way by the route table, allowed by the first matching network ACL inbound rule, and allowed by a security group inbound rule, or it never arrives or is dropped. The security group allows the reply automatically, but the network ACL outbound rules must allow the reply's port, or the reply is dropped and the site looks down. The network ACL is the only check on the reply that can fail.
-  R{"Step 1, route: does the route table<br/>send it this way?"} -->|"no"| X1["Never arrives"]
+  accDescr: A request must be sent this way by the route table, allowed by the first matching network ACL inbound rule, and allowed by a security group inbound rule, or it can't get through or is dropped. The security group allows the reply automatically, but the network ACL outbound rules must allow the reply's port, or the reply is dropped and the site looks down. The network ACL is the only check on the reply that can fail.
+  R{"Step 1, route: does the route table<br/>send it this way?"} -->|"no"| X1["Can't get through"]
   R -->|"yes"| N1{"Step 2, network ACL inbound:<br/>first matching rule allows it?"}
   N1 -->|"no"| X2["Dropped at the subnet's edge"]
   N1 -->|"yes"| S1{"Step 3, security group inbound:<br/>any rule allows it?"}
@@ -223,7 +224,7 @@ flowchart TD
 
 *Notice that the security group's step 4 has no question: the only check on a reply that can fail is the network ACL's.*
 
-**Long description.** A flowchart of five steps; any "no" ends the path. Step 1, route: does the route table send it this way? No: it never arrives. Yes: step 2, network ACL inbound: does the first matching rule allow it? No: dropped at the subnet's edge. Yes: step 3, security group inbound: does any rule allow it? No: dropped at the resource. Yes: step 4, security group, reply: allowed automatically. Then step 5, network ACL outbound: does the first matching rule allow the reply's port? No: the reply is dropped and the site looks down. Yes: the conversation works.
+**Long description.** A flowchart of five steps; any "no" ends the path. Step 1, route: does the route table send it this way? No: it can't get through, because without a route there is no way in, and none for a reply to leave. Yes: step 2, network ACL inbound: does the first matching rule allow it? No: dropped at the subnet's edge. Yes: step 3, security group inbound: does any rule allow it? No: dropped at the resource. Yes: step 4, security group, reply: allowed automatically. Then step 5, network ACL outbound: does the first matching rule allow the reply's port? No: the reply is dropped and the site looks down. Yes: the conversation works.
 
 ## Worked example: four requests to the bakery
 
@@ -234,7 +235,7 @@ The bakery's public subnets use a custom network ACL. Inbound: rule 90 denies `2
 | A customer at `192.0.2.44` opens the site (HTTPS) | Public subnet, via the internet gateway | Rule 100 allows | `web-sg` allows 443 | Allowed by `web-sg`; outbound rule 100 allows the high port | **Works** |
 | The same customer tries SSH (port 22) to a web server | Same | No numbered rule matches; `*` denies | — | — | **Dropped at the subnet's edge** |
 | A bot at `203.0.113.7` opens the site | Same | Rule 90 denies first | — | — | **Dropped at the subnet's edge** |
-| Someone on the internet tries the database's port 5432 | No route: the private subnet has no internet gateway route | — | — | — | **Never arrives** |
+| Someone on the internet tries the database's port 5432 | No route: the private subnet has no internet gateway route | — | — | — | **Can't connect** |
 
 The expert's thinking, step by step:
 
@@ -349,7 +350,7 @@ Teams treat security groups as the main control and keep their rules as narrow a
 
    <details><summary>Feedback</summary>
 
-   **No.** The private subnet has no route to an internet gateway, so internet traffic never arrives; the security group never gets to decide. The route is checked first.
+   **No.** The private subnet has no route to an internet gateway, so internet traffic can't connect to it: without that route, nothing can come in and no reply can leave, even before the security group gets to decide. The route is checked first.
 
    </details>
 

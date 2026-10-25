@@ -46198,7 +46198,7 @@ questions:
   references:
   - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
     reference: 'Module 11, page 11.03: Estimate, watch, analyze (clf-11-03), section "Cost Explorer shows
-      where the money went, and forecasts 18 months ahead"'
+      where the money went, and forecasts what comes next"'
     url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/11-paying-for-aws/03-estimate-watch-analyze.md
 - id: q11-cur-name-today
   type: multiple_choice

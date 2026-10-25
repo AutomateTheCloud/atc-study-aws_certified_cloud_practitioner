@@ -104,7 +104,7 @@ Start with what AWS has written down. These sources are free, public, and the sa
 |---|---|---|
 | [AWS documentation](https://docs.aws.amazon.com/) | For each service: user guides, developer guides, API and CLI references, tutorials, code examples | How a service behaves, its limits, the exact steps and settings |
 | [AWS whitepapers and guides](https://aws.amazon.com/whitepapers/) | Longer papers on one topic: technical whitepapers, decision guides, reference architecture diagrams | Concepts and best practice across services, such as the Well-Architected Framework (lesson 02.05) or disaster recovery (lesson 03.03) |
-| AWS blogs, such as the [AWS News Blog](https://aws.amazon.com/blogs/aws/) and the [AWS Security Blog](https://aws.amazon.com/blogs/security/) | Dated posts by topic: announcements on the News Blog, walk-throughs of features and solutions on the others | What's new, and worked examples of one idea |
+| AWS blogs, such as the [AWS News Blog](https://aws.amazon.com/blogs/aws/) and the [AWS Security Blog](https://aws.amazon.com/blogs/security/) | Dated posts by topic: announcements on the News Blog, walk-throughs of features and solutions on the others | What's new, and walk-throughs of a feature or solution |
 
 The exam guide asks you to locate whitepapers, blogs and documentation on AWS's official websites (task [4.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.3)), and the AWS documentation home page also links to re:Post and Prescriptive Guidance (checked 2026-10-24).
 

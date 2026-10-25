@@ -52,7 +52,7 @@ This guide is provided as is, without warranty. We work hard to keep it correct 
 
 **The rules are AWS's** (Amazon S3 User Guide, checked 2026-10-23):
 
-- Delete, overwrite or move a file before its class's minimum duration, and you still pay for the full minimum ([S3 storage classes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)).
+- Delete, overwrite or move a file before its class's minimum duration, and you are billed for the rest of the minimum, pro rata, so you pay for the full minimum in all ([S3 storage classes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)).
 - Standard-IA bills any file smaller than 128 KB as 128 KB.
 - With versioning on, every version is billed as a whole file ([S3 Versioning](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html)).
 - Billing changes on the day a lifecycle rule applies, even if S3 moves or deletes the file days later ([Setting an S3 Lifecycle configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-set-lifecycle-configuration-intro.html)).

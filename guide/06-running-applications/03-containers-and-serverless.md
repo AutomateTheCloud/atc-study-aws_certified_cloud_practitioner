@@ -23,6 +23,7 @@ sources:
   - "https://aws.amazon.com/lambda/pricing/"
   - "https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html"
   - "https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html"
+  - "https://docs.aws.amazon.com/lambda/latest/dg/images-create.html"
   - "https://docs.aws.amazon.com/glossary/latest/reference/glos-chap.html"
   - "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSLambda/current/us-east-1/index.json"
   - "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/us-east-1/index.json"
@@ -223,7 +224,7 @@ Lambda and Fargate are the two serverless compute options the exam names, so que
 
 ![Two panels. AWS Lambda runs a function when an event arrives: you hand over function code; an event starts it; up to 15 minutes per invocation; you size memory from 128 MB to 10,240 MB; billed per request plus GB-seconds; not for long or always-on work or full OS control. AWS Fargate runs containers for ECS or EKS: you hand over a container image; ECS or EKS starts a task or keeps a service running; runs as long as the task runs; you size vCPU and memory; billed per second for vCPU, memory and storage with a 1-minute minimum; not for GPU work.](../../images/06-03-lambda-vs-fargate.svg)
 
-*Notice the "What starts it" and "How long it runs" rows. They decide most questions: an event and a short job point to Lambda; a container that keeps running points to Fargate.*
+*Notice the "What starts it" and "How long it runs" rows. They decide most questions: short, event-driven code points to Lambda; a process that stays up, or a job longer than Lambda allows, points to Fargate. Packaging as a container image doesn't decide it, because Lambda can run a container image too.*
 
 **Long description.** Two panels side by side, headed by what is the same: no servers to manage, AWS scales them, and you pay for what runs. AWS Lambda runs a function when an event arrives. You hand over function code, as a .zip file or a container image. An event starts it, such as a file upload, a web request, a message or a schedule. It runs up to 15 minutes per invocation. You size its memory, from 128 MB to 10,240 MB, and CPU grows with it. It bills per request plus memory times run time, in GB-seconds. It is not for long or always-on work, or when you need full control of the operating system. AWS Fargate runs containers for ECS or EKS. You hand over a container image through ECS or EKS, which starts a task or keeps a service running. It runs as long as the task runs, minutes or months. You size vCPU and memory per task. It bills per second for vCPU, memory and storage, with a 1-minute minimum. It is not for GPU work, which needs EC2. Sources: Lambda quotas and pricing pages, Fargate FAQ and pricing page, checked 2026-10-23.
 
