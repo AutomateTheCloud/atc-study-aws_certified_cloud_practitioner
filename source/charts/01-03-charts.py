@@ -136,44 +136,5 @@ def big_picture():
         "fruit cake, 2026-12-24, 7. Rows 1041 and 1043 are marked as matches.", body, style=STYLE)
 
 
-def two_tables():
-    """An orders table whose customer_id points to rows in a customers table."""
-    w = 680
-    body = [
-        '<text class="title" x="16" y="28">Two tables, linked by a key</text>',
-        '<text class="sub" x="16" y="48">Each order names its customer by customer_id; the customer\'s details are kept once</text>',
-    ]
-    top = 96
-    ocols = [("order_id", 74), ("cake", 108), ("pickup_date", 100), ("customer_id", 98)]
-    body.append(f'<text class="head" x="16" y="{top - 12}">orders</text>')
-    obottom, oxs = table(body, 16, top, ocols, ORDERS, key_col=None, rh=32)
-    body.append(f'<text class="zlab" x="24" y="{obottom + 18}">primary key: order_id</text>')
-    ccols = [("customer_id", 98), ("name", 56), ("phone", 84)]
-    cx = 16 + sum(wd for _, wd in ocols) + 46
-    body.append(f'<text class="head" x="{cx}" y="{top - 12}">customers</text>')
-    customers = [("7", "Ana", "555-0107"), ("8", "Ben", "555-0108")]
-    cbottom, cxs = table(body, cx, top, ccols, customers, key_col=0, rh=32)
-    body.append(f'<text class="cellt" x="{cx + 8}" y="{cbottom + 18}">primary key: customer_id</text>')
-    # Links from orders 1041 and 1043 (customer 7) to Ana's row.
-    ox_end = 16 + sum(wd for _, wd in ocols)
-    ana_y = top + 32 + 16
-    for r in (0, 2):
-        y = top + 32 * (r + 1) + 16
-        body.append(f'<path class="link" d="M{ox_end - 40},{y} L{ox_end + 18},{y} L{ox_end + 18},{ana_y} L{cx - 9},{ana_y}"/>')
-    arrow(body, cx - 12, ana_y, cx - 1, ana_y, cls="link", head="linkhead")
-    y = max(obottom, cbottom) + 52
-    body.append(f'<text class="small" x="16" y="{y}">Ana\'s phone number is stored once. Change it there, and both of her orders see the new number.</text>')
-    y += 26
-    body.append(f'<text class="note" x="16" y="{y}">The people, orders and numbers are made up for teaching; 555-01xx numbers are kept for fiction.</text>')
-    svg("01-03-two-tables.svg", w, y + 16,
-        "An orders table linked to a customers table",
-        "Two tables. orders, with primary key order_id, and columns cake, pickup_date and customer_id: 1041, birthday "
-        "cake, 2026-12-24, customer 7; 1042, lemon cake, 2026-12-23, customer 8; 1043, fruit cake, 2026-12-24, "
-        "customer 7. customers, with primary key customer_id, highlighted, and columns name and phone: 7, Ana, "
-        "555-0107; 8, Ben, 555-0108. Lines run from the customer_id of orders 1041 and 1043 to Ana's row. A note "
-        "says Ana's phone number is stored once, so a change there reaches both orders.", body, style=STYLE)
-
-
 if __name__ == "__main__":
     big_picture()
-    two_tables()

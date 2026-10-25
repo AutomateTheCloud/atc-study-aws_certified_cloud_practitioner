@@ -23,7 +23,7 @@ import sys
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from chartkit import make_style, svg, text_lines, wrap  # noqa: E402
+from chartkit import make_style, svg, text_lines  # noqa: E402
 
 STYLE = make_style(
     light_extra=" --hi-fill:#d9e8fb; --n-fill:#f1f0ec;",
@@ -142,114 +142,5 @@ def big_picture():
         "the page comes back.", body, style=STYLE)
 
 
-def addresses_and_ports():
-    """IPv4 and IPv6 addresses, then one address leading to programs on ports."""
-    w = 680
-    body = [
-        '<text class="title" x="16" y="28">An address finds the computer; a port finds the program</text>',
-        '<text class="sub" x="16" y="48">Two kinds of IP address, and the ports on the bakery\'s web server</text>',
-    ]
-    top = 70
-    # IPv4 panel.
-    rect(body, "frame", 16, top, 316, 156, 10)
-    body.append(f'<text class="head" x="30" y="{top + 24}">IPv4</text>')
-    parts = ["192", "0", "2", "10"]
-    x = 30
-    for i, p in enumerate(parts):
-        rect(body, "n", x, top + 38, 56, 40, 5)
-        body.append(f'<text class="bigmono" x="{x + 28}" y="{top + 66}" text-anchor="middle">{p}</text>')
-        body.append(f'<text class="zlab" x="{x + 28}" y="{top + 94}" text-anchor="middle">0 to 255</text>')
-        if i < 3:
-            body.append(f'<text class="bigmono" x="{x + 64}" y="{top + 66}" text-anchor="middle">.</text>')
-        x += 72
-    text_lines(body, 30, top + 118, ["32 bits; about 4.3 billion addresses,",
-                                     "all already allocated"], cls="small", dy=16)
-    # IPv6 panel.
-    rect(body, "frame", 348, top, 316, 156, 10)
-    body.append(f'<text class="head" x="362" y="{top + 24}">IPv6</text>')
-    rect(body, "n", 362, top + 38, 288, 40, 5)
-    body.append(f'<text class="mono" x="506" y="{top + 63}" text-anchor="middle">2001:db8:85a3::8a2e:370:7334</text>')
-    body.append(f'<text class="zlab" x="506" y="{top + 94}" text-anchor="middle">eight groups of up to four hex digits</text>')
-    text_lines(body, 362, top + 118, ["128 bits; :: stands for groups of zeros;",
-                                      "vastly more addresses than IPv4"], cls="small", dy=16)
-    # Address to ports.
-    y = top + 186
-    rect(body, "plain", 16, y + 40, 128, 60)
-    text_lines(body, 80, y + 64, ["Packets to", "192.0.2.10"], cls="cellt", dy=16, anchor="middle")
-    rect(body, "frame", 196, y, 468, 160, 10)
-    body.append(f'<text class="head" x="210" y="{y + 22}">The bakery\'s web server, 192.0.2.10</text>')
-    arrow(body, 145, y + 70, 195, y + 70)
-    ports = [("443", "HTTPS", "the website, encrypted", True),
-             ("80", "HTTP", "plain web, not encrypted", False),
-             ("22", "SSH", "staff signing in remotely", False)]
-    for i, (num, proto, what, hi) in enumerate(ports):
-        py = y + 36 + i * 40
-        rect(body, "hi" if hi else "n", 210, py, 440, 32, 5)
-        body.append(f'<text class="rowl" x="224" y="{py + 21}">Port {num}</text>')
-        body.append(f'<text class="cellt" x="300" y="{py + 21}">{proto}</text>')
-        body.append(f'<text class="small" x="360" y="{py + 21}">{what}</text>')
-    y += 186
-    body.append(f'<text class="note" x="16" y="{y}">Addresses come from ranges reserved for examples. Other ports appear later, such as 5432 for PostgreSQL.</text>')
-    svg("01-02-addresses-and-ports.svg", w, y + 16,
-        "IPv4 and IPv6 addresses, and ports on one server",
-        "Top left, IPv4: the address 192.0.2.10 as four numbers, each from 0 to 255, separated by dots; 32 bits; "
-        "about 4.3 billion addresses, all already allocated. Top right, IPv6: the address "
-        "2001:db8:85a3::8a2e:370:7334, eight groups of up to four hexadecimal digits; 128 bits; :: stands for "
-        "groups of zeros; vastly more addresses than IPv4. Bottom: packets to 192.0.2.10 arrive at the bakery's web "
-        "server, where three ports lead to programs: port 443, HTTPS, the website, encrypted, highlighted; port 80, "
-        "HTTP, plain web, not encrypted; port 22, SSH, staff signing in remotely.", body, style=STYLE)
-
-
-def http_vs_https():
-    """What someone watching the path sees with HTTP and with HTTPS."""
-    w = 680
-    body = [
-        '<text class="title" x="16" y="28">HTTPS hides the conversation from anyone on the path</text>',
-        '<text class="sub" x="16" y="48">What someone watching a network between the customer and the bakery sees</text>',
-    ]
-    top, pw, ph = 70, 316, 300
-    panels = [
-        ("Plain HTTP, port 80", False,
-         ["Name: Ana", "Address: 12 Mill Lane", "Order: one birthday cake"],
-         ["Readable, and could be changed", "No proof the server is the real bakery", "Browser warns: not secure"]),
-        ("HTTPS, port 443", True,
-         ["x7#Qp!2vL0r@9sK", "mE4+tZ1q%Wb8Yc", "J5^nH3d*Fu6aR"],
-         ["Scrambled: no use to the watcher", "Certificate proves the name bakery.example", "Browser marks it secure"]),
-    ]
-    for i, (head, hi, seen, notes) in enumerate(panels):
-        x = 16 + i * (pw + 16)
-        rect(body, "hi" if hi else "frame", x, top, pw, ph, 10)
-        body.append(f'<text class="head" x="{x + 14}" y="{top + 24}">{head}</text>')
-        # Phone, watcher, server in a row.
-        ry = top + 44
-        rect(body, "plain", x + 14, ry, 64, 40)
-        body.append(f'<text class="small" x="{x + 46}" y="{ry + 25}" text-anchor="middle">Phone</text>')
-        rect(body, "plain", x + pw - 78, ry, 64, 40)
-        body.append(f'<text class="small" x="{x + pw - 46}" y="{ry + 25}" text-anchor="middle">Server</text>')
-        arrow(body, x + 79, ry + 20, x + pw - 79, ry + 20)
-        if hi:
-            padlock(body, x + pw / 2 - 8, ry - 2)
-        # What the watcher sees.
-        wy = ry + 64
-        body.append(f'<text class="zlab" x="{x + 14}" y="{wy}">The watcher on the path sees:</text>')
-        rect(body, "n", x + 14, wy + 8, pw - 28, 80, 5)
-        text_lines(body, x + 26, wy + 32, seen, cls="mono", dy=22)
-        ny = wy + 116
-        for j, note in enumerate(notes):
-            body.append(f'<text class="small" x="{x + 14}" y="{ny + j * 22}">{"✗" if not hi else "✓"}  {note}</text>')
-    y = top + ph + 24
-    body.append(f'<text class="note" x="16" y="{y}">In both, the watcher can still see which two addresses are talking. The customer and order are made up.</text>')
-    svg("01-02-http-vs-https.svg", w, y + 16,
-        "What a watcher on the network sees with HTTP and with HTTPS",
-        "Two panels, each with a phone, a server and an arrow between them. Plain HTTP, port 80: the watcher on the "
-        "path reads 'Name: Ana. Address: 12 Mill Lane. Order: one birthday cake'; it is readable and could be "
-        "changed, nothing proves the server is the real bakery, and the browser warns that it is not secure. HTTPS, port 443, "
-        "highlighted, with a padlock on the arrow: the watcher sees scrambled characters only; the certificate proves "
-        "the name bakery.example; the browser marks the connection as secure. A note says that in both, the watcher can still see "
-        "which two addresses are talking.", body, style=STYLE)
-
-
 if __name__ == "__main__":
     big_picture()
-    addresses_and_ports()
-    http_vs_https()

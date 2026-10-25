@@ -9,8 +9,7 @@ cores (AWS, "What is a CPU?"); memory (RAM) is volatile and needs power to hold
 data, while storage keeps data without power (AWS, "What is flash memory?");
 clients send requests and servers answer them (AWS, "Web server vs application
 server"); servers commonly run Linux or Windows Server (Amazon EC2 FAQs). All
-checked 2026-10-24. The laptop-versus-server rows are general descriptions of
-how the two are usually built. The bakery is made up for teaching. Our own
+checked 2026-10-24. The bakery is made up for teaching. Our own
 design: no AWS logos, icons, trade dress or AWS diagrams.
 """
 import math
@@ -122,109 +121,5 @@ def inside_a_server():
         "laptops send requests to the network connection and receive answers.", body, style=STYLE)
 
 
-def memory_vs_storage():
-    """What survives a restart: memory empties, storage keeps."""
-    w = 680
-    body = [
-        '<text class="title" x="16" y="28">Memory empties when the power goes off; storage keeps</text>',
-        '<text class="sub" x="16" y="48">The same server, while it runs and after a power cut and restart</text>',
-    ]
-    pw, gap = 300, 48
-    top = 74
-    mem_items = ["Website program", "Order 1061, being filled in", "Order 1062, being filled in",
-                 "Order 1063, being filled in"]
-    sto_items = ["Saved order records", "Cake photos", "Operating system"]
-    for p, (head, mem) in enumerate([("While the server runs", mem_items), ("After a restart", None)]):
-        x = 16 + p * (pw + gap)
-        rect(body, "frame", x, top, pw, 330, 10)
-        body.append(f'<text class="head" x="{x + 14}" y="{top + 24}">{head}</text>')
-        # Memory.
-        my = top + 40
-        cls = "plain" if mem else "hi"
-        rect(body, cls, x + 14, my, pw - 28, 150)
-        body.append(f'<text class="cellt" x="{x + 26}" y="{my + 22}">Memory</text>')
-        if mem:
-            for i, item in enumerate(mem):
-                rect(body, "n", x + 26, my + 34 + i * 28, pw - 52, 22, 4)
-                body.append(f'<text class="small" x="{x + 36}" y="{my + 50 + i * 28}">{item}</text>')
-        else:
-            rect(body, "empty", x + 26, my + 34, pw - 52, 106, 4)
-            body.append(f'<text class="cellt" x="{x + pw / 2}" y="{my + 84}" text-anchor="middle">Empty</text>')
-            body.append(f'<text class="small" x="{x + pw / 2}" y="{my + 102}" text-anchor="middle">orders 1061 to 1063 are lost</text>')
-        # Storage.
-        sy = my + 166
-        rect(body, "plain", x + 14, sy, pw - 28, 112)
-        body.append(f'<text class="cellt" x="{x + 26}" y="{sy + 22}">Storage</text>')
-        for i, item in enumerate(sto_items):
-            rect(body, "n", x + 26, sy + 32 + i * 26, pw - 52, 20, 4)
-            body.append(f'<text class="small" x="{x + 36}" y="{sy + 46 + i * 26}">{item}</text>')
-    ax = 16 + pw
-    arrow(body, ax + 6, top + 165, ax + gap - 6, top + 165)
-    text_lines(body, ax + gap / 2, top + 140, ["power", "cut"], cls="arrlab", dy=13, anchor="middle")
-    y = top + 330 + 26
-    body.append(f'<text class="note" x="16" y="{y}">Programs save to storage so that a restart doesn\'t lose the work. The orders are made up for teaching.</text>')
-    svg("01-01-memory-vs-storage.svg", w, y + 16,
-        "What a server keeps through a restart",
-        "Two panels. While the server runs: memory holds the website program and three orders being filled in, "
-        "1061 to 1063; storage holds the saved order records, the cake photos and the operating system. An arrow "
-        "labeled power cut leads to the second panel. After a restart: memory, highlighted, is empty and the three "
-        "orders are lost; storage still holds the saved order records, the cake photos and the operating system.",
-        body, style=STYLE)
-
-
-def laptop_vs_server():
-    """Same four parts, built differently because a server runs all the time for many users."""
-    w = 680
-    body = [
-        '<text class="title" x="16" y="28">A laptop and a server have the same parts, built for different jobs</text>',
-        '<text class="sub" x="16" y="48">How each is usually built and kept</text>',
-    ]
-    rows = [("Used by", "One person at a time", "Many clients at once, over the network"),
-            ("Screen and keyboard", "Built in", "Usually none; managed over the network"),
-            ("Runs", "Until it sleeps or is switched off", "All the time"),
-            ("When a part fails", "One power supply, one disk: it stops", "Often two power supplies and several disks, so one failure doesn't stop it"),
-            ("Lives", "On a desk or in a bag", "In a rack in a server room or data center")]
-    lx, c1, c2 = 16, 176, 420
-    cw1, cw2 = 232, 244
-    top = 76
-    # Column heads with small drawings.
-    # Laptop: a screen and a base.
-    rect(body, "n", c1, top, 46, 30, 3)
-    body.append(f'<path class="n" d="M{c1 - 6},{top + 34} L{c1 + 52},{top + 34} L{c1 + 46},{top + 40} L{c1},{top + 40} Z"/>')
-    body.append(f'<text class="head" x="{c1 + 62}" y="{top + 26}">Laptop</text>')
-    # Server: three units stacked in a rack.
-    for i in range(3):
-        rect(body, "n", c2, top + i * 13, 52, 11, 2)
-        body.append(f'<circle cx="{c2 + 44}" cy="{top + i * 13 + 5.5}" r="2" style="fill:var(--ink2)"/>')
-    body.append(f'<text class="head" x="{c2 + 66}" y="{top + 26}">Server</text>')
-    y = top + 60
-    for label, a, b in rows:
-        la, lb = wrap(a, 36), wrap(b, 38)
-        lines = max(len(la), len(lb), 1)
-        h = 14 + 16 * lines
-        body.append(f'<line class="grid" x1="16" x2="664" y1="{y:.1f}" y2="{y:.1f}"/>')
-        text_lines(body, lx, y + 20, wrap(label, 20), cls="rowl", dy=15)
-        text_lines(body, c1, y + 20, la, cls="small", dy=16)
-        text_lines(body, c2, y + 20, lb, cls="small", dy=16)
-        y += h + 6
-    body.append(f'<line class="axis" x1="16" x2="664" y1="{y:.1f}" y2="{y:.1f}"/>')
-    y += 10
-    rect(body, "hi", 16, y, 648, 44)
-    body.append(f'<text class="rowl" x="28" y="{y + 27}">Both</text>')
-    body.append(f'<text class="cellt" x="{c1}" y="{y + 27}">A processor, memory, storage and a network connection</text>')
-    y += 70
-    body.append(f'<text class="note" x="16" y="{y}">Typical builds; models vary. A rack is a tall metal frame that holds many servers.</text>')
-    svg("01-01-laptop-vs-server.svg", w, y + 16,
-        "A laptop compared with a server",
-        "Two columns, laptop and server, on five rows. Used by: one person at a time; many clients at once, over "
-        "the network. Screen and keyboard: built in; usually none, managed over the network. Runs: until it sleeps "
-        "or is switched off; all the time. When a part fails: one power supply and one disk, so it stops; often two "
-        "power supplies and several disks, so one failure doesn't stop it. Lives: on a desk or in a bag; in a rack "
-        "in a server room or data center. A highlighted bottom row says both have a processor, memory, storage and "
-        "a network connection.", body, style=STYLE)
-
-
 if __name__ == "__main__":
     inside_a_server()
-    memory_vs_storage()
-    laptop_vs_server()
