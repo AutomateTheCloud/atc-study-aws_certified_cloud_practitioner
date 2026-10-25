@@ -95,7 +95,7 @@ Each service watches the bakery from a different side. Start from the question.
 - **Your own code** can send **custom metrics**, such as `OrdersFailed` or `CakesSold`. These are charged.
 - **The CloudWatch agent** is software you install on EC2 instances or on your own servers on premises. It collects measurements from inside the operating system, such as memory used, and log files ([CloudWatch agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html)). Its metrics are billed as custom metrics.
 
-Two facts shape everything you build on metrics. **A metric lives in the Region where it was created.** And CloudWatch **keeps metric data for 15 months**, in less detail as it ages: one-minute data points for 15 days, five-minute ones for 63 days, then one-hour ones.
+Keep two facts in mind when you build on metrics. **A metric lives in the Region where it was created.** And CloudWatch **keeps metric data for 15 months**, in less detail as it ages: one-minute data points for 15 days, five-minute ones for 63 days, then one-hour ones.
 
 > **Your turn:** The owner's request is "email me when orders fail". Which existing metric would you watch, and from which service? Then name one thing it would miss.
 
@@ -129,7 +129,7 @@ Two details catch people out.
 
 ### "OK" means below the threshold, not "working"
 
-You may think an alarm in the OK state proves you'll be told when something goes wrong. It doesn't. OK means only that the metric is below the threshold. The email depends on the action: the SNS topic must exist, and the owner must have confirmed the subscription email. CloudWatch doesn't test or validate the actions you set. A green OK looks like a health check, but it's a reading, not a test. You saw this on [primer page 05](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md), where only the confirmed subscription proved the email path.
+You may think an alarm in the OK state proves you'll be told when something goes wrong. It doesn't. OK means only that the metric is below the threshold. The email depends on the action: the SNS topic must exist, and the owner must have confirmed the subscription email. CloudWatch doesn't test or validate the actions you set. A green OK looks like a health check, but it only reports where the metric stands and tests nothing. You saw this on [primer page 05](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md), where only the confirmed subscription proved the email path.
 
 > **Your turn:** Design the owner's alarm. Give the metric, statistic, period, threshold, what to do with missing data, and the action. Then say what changes when the bakery's setup is rebuilt in a second Region.
 

@@ -123,7 +123,7 @@ No. The partner needs the answer now, so the call has to be synchronous: it wait
 
 ## SQS holds work in a queue until a worker pulls it
 
-**Amazon Simple Queue Service (Amazon SQS) is a queue: producers send messages to it, and consumers ask for messages when they're ready, process them, then delete them** ([What is Amazon SQS?](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html), checked 2026-10-24). Asking is called **polling**: SQS never pushes a message to anyone. What you need to know:
+**Amazon Simple Queue Service (Amazon SQS) is a queue: producers send messages to it, and consumers ask for messages when they're ready, process them, then delete them** ([What is Amazon SQS?](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html), checked 2026-10-24). Asking is called **polling**: SQS never pushes a message to anyone. How it behaves:
 
 - **Messages wait.** SQS keeps a message for 4 days by default; you can set anything from 1 minute to 14 days ([Amazon SQS FAQ](https://aws.amazon.com/sqs/faqs/)).
 - **One worker handles each message.** While a worker processes a message, SQS hides it from the others. If the worker crashes before deleting it, the message reappears for another worker.
@@ -273,7 +273,7 @@ The owner's request: "email me when orders fail". The expert's reasoning:
 1. *Who sends?* Nothing in the code needs to. Lesson 08.03's CloudWatch alarm on the order function's `Errors` decides when.
 2. *Who receives?* The owner, who asked for it, and maybe the nephew too: people who opt in to alerts. That's a topic with email subscriptions, not mail to customers.
 3. *Who waits?* Nobody; it should arrive at once. That rules out a queue.
-4. *So:* the alarm notifies an **SNS topic**; the owner and the nephew subscribe and confirm. If the kitchen's system later needs the same alert, it subscribes an SQS queue to the same topic. Not SES: this is an alert to staff, not mail from the bakery's domain. For US East (Ohio), the topic and the alarm go into the same template as the rest, so the copy alerts too.
+4. *So:* the alarm notifies an **SNS topic**; the owner and the nephew subscribe and confirm. If the kitchen's system later needs the same alert, it subscribes an SQS queue to the same topic. SES doesn't fit, because this is an alert to staff, not mail from the bakery's domain. For US East (Ohio), the topic and the alarm go into the same template as the rest, so the copy alerts too.
 
 ## Shipping software: CodeBuild builds and tests, CodePipeline runs the release
 
@@ -306,7 +306,7 @@ This is how the Ohio copy stays identical to N. Virginia over time: the pipeline
 
 ## Your side of the line
 
-AWS runs the queues, topics, buses, workflows and build machines. You decide who may send, publish and receive: each queue and topic has a resource-based policy, like a bucket policy, and should allow only the parts that need it. You choose whether messages are encrypted, and you keep secrets and card numbers out of message bodies and build logs. You confirm only subscriptions you asked for, and you keep your SES sending reputation clean by mailing only people who asked.
+AWS runs the queues, topics, buses, workflows and build machines. You decide who may send, publish and receive: each queue and topic has a resource-based policy, like a bucket policy, and should allow only the parts that need it. You choose whether messages are encrypted, and you keep secrets and card numbers out of message bodies and build logs. It's also on you to confirm only subscriptions you asked for, and to keep your SES sending reputation clean by mailing only people who asked.
 
 ## What you pay for
 
