@@ -19,7 +19,7 @@ sources:
 
 # Mixed set 1: thirty questions across Modules 02 to 05, shuffled together
 
-Thirty questions in the exam's style that mix everything from the first four teaching modules, so that each question makes you work out first what it's about. Mixing topics feels harder than a module's own check, and that is the point: it's the practice that sticks.
+These thirty questions in the exam's style mix everything from the first four teaching modules, so each question makes you work out first what it's about. Mixing topics feels harder than a module's own check, but that harder practice is the kind that sticks.
 
 **For:** an adult studying alone, possibly new to IT, who has finished Modules 02 to 05. **Time:** about 45 minutes, plus time to go through the answer key.
 
