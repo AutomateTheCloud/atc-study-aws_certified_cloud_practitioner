@@ -10,7 +10,6 @@ pages for AWS Application Discovery Service and AWS Migration Hub (closed to new
 customers from 2025-11-07; AWS points to AWS Transform), the AWS Transform MGN product
 page and FAQs (formerly AWS Application Migration Service), the AWS DMS FAQs, the
 DataSync and Snowball pages, and the Elastic Disaster Recovery user guide and FAQs.
-The transfer-time chart is our own arithmetic, not AWS figures.
 Our own design: no AWS logos, icons, trade dress or AWS diagrams.
 """
 import math
@@ -153,37 +152,6 @@ def mgn_vs_dms():
         "replatform, or database replication.", body, style=STYLE)
 
 
-def transfer_days():
-    tb = 60
-    speeds = [("100 Mbps", 100), ("500 Mbps", 500), ("1 Gbps", 1000), ("10 Gbps", 10000)]
-    days = [(lab, tb * 8_000_000 / (mbps * 0.8) / 86400) for lab, mbps in speeds]
-    assert [round(d, 1) for _, d in days] == [69.4, 13.9, 6.9, 0.7], "must match the lesson"
-    w, left, top, bw, gap, pw = 680, 96, 92, 34, 18, 440
-    xmax = 80
-    body = [
-        '<text class="title" x="16" y="28">How long 60 TB takes over the network</text>',
-        '<text class="sub" x="16" y="48">Days to copy, using 80% of the link. Our arithmetic, not AWS figures.</text>',
-    ]
-    xv = lambda d: left + pw * d / xmax
-    for v in range(0, xmax + 1, 20):
-        body.append(f'<line class="{"axis" if v == 0 else "grid"}" x1="{xv(v):.1f}" x2="{xv(v):.1f}" y1="{top - 8}" y2="{top + 4 * (bw + gap)}"/>')
-        body.append(f'<text class="tick" x="{xv(v):.1f}" y="{top + 4 * (bw + gap) + 16}" text-anchor="middle">{v}</text>')
-    body.append(f'<text class="tick" x="{left + pw / 2:.1f}" y="{top + 4 * (bw + gap) + 34}" text-anchor="middle">Days</text>')
-    for i, (lab, d) in enumerate(days):
-        y = top + i * (bw + gap)
-        body.append(f'<text class="lab" x="{left - 10}" y="{y + bw / 2 + 5:.1f}" text-anchor="end">{lab}</text>')
-        bwid = max(pw * d / xmax, 3)
-        body.append(f'<path class="s1" d="{right_rounded(left, y, bwid, bw)}"><title>{lab}: {d:.1f} days</title></path>')
-        txt = f"{d:.1f} days" if d >= 1 else f"{d:.1f} days (about {d * 24:.0f} hours)"
-        body.append(f'<text class="val" x="{left + bwid + 8:.1f}" y="{y + bw / 2 + 5:.1f}">{txt}</text>')
-    h = top + 4 * (bw + gap) + 64
-    body.append(f'<text class="note" x="16" y="{h - 12}">Formula: TB × 8,000,000 megabits ÷ (link Mbps × 0.8) = seconds; ÷ 86,400 = days.</text>')
-    svg("13-03-transfer-days.svg", w, h,
-        "Days to copy 60 TB over the network at four link speeds",
-        "Horizontal bar chart, our own arithmetic: days to copy 60 TB using 80 percent of the link. 100 Mbps: 69.4 "
-        "days. 500 Mbps: 13.9 days. 1 Gbps: 6.9 days. 10 Gbps: 0.7 days, about 17 hours.", body, style=STYLE)
-
-
 def mgn_vs_drs():
     w = 680
     body = [
@@ -232,5 +200,4 @@ def mgn_vs_drs():
 if __name__ == "__main__":
     big_picture()
     mgn_vs_dms()
-    transfer_days()
     mgn_vs_drs()

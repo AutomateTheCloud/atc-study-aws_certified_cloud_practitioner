@@ -7,7 +7,7 @@ Usage: python3 -I source/charts/13-04-charts.py
 Writes images/13-04-*.svg.
 
 - 13-04-big-picture.svg: made-up three-year figures for teaching, as in the lesson's table.
-- 13-04-license-share.svg and 13-04-five-options.svg: On-Demand prices for US East
+- 13-04-license-share.svg: On-Demand prices for US East
   (N. Virginia) from AWS's EC2 Price List offer file (AmazonEC2, published
   2026-10-23T22:13:55Z, retrieved 2026-10-24), compute and licenses only, no storage:
   m7i.xlarge Linux $0.2016/h; Windows license-included $0.3856/h; Windows with SQL Server
@@ -27,7 +27,6 @@ from chartkit import make_style, svg, swatch, right_rounded  # noqa: E402
 HOURS = 730
 P = {  # USD per hour, price list of 2026-10-23
     "xl_linux": 0.2016, "xl_win": 0.3856, "xl_std": 0.8656, "xl_ent": 1.8856,
-    "2xl_ent": 3.7712, "host_m7i": 10.644,
 }
 
 # Owned infrastructure in neutrals (dark to light), licenses in slot 2 (orange), AWS usage in
@@ -143,53 +142,6 @@ def license_share():
         "Windows with SQL Server Enterprise: plus $0.1840 Windows and $1.5000 SQL Server, $1.8856.", body, style=STYLE)
 
 
-def five_options():
-    opts = [
-        ("A. As-is size, Enterprise", "2 × m7i.2xlarge, license-included", 2 * P["2xl_ent"] * HOURS, "s1l", ""),
-        ("B. Rightsized, Enterprise", "2 × m7i.xlarge, license-included", 2 * P["xl_ent"] * HOURS, "s1l", ""),
-        ("C. Rightsized, Standard", "2 × m7i.xlarge, license-included", 2 * P["xl_std"] * HOURS, "s1", "the choice"),
-        ("D. BYOL on a Dedicated Host", "1 m7i host, 96 physical cores", P["host_m7i"] * HOURS, "s1l", "host only"),
-        ("E. License Mobility", "needs Software Assurance", 2 * P["xl_win"] * HOURS, "na", "+ Software Assurance; not open to the distributor"),
-    ]
-    vals = [round(o[2]) for o in opts]
-    assert vals == [5506, 2753, 1264, 7770, 563], vals
-    w, left, top, bw, gap, pw, xmax = 680, 214, 78, 34, 22, 330, 8000
-    body = [
-        '<text class="title" x="16" y="28">A distributor&#8217;s reporting database: five licensing options, per month</text>',
-        '<text class="sub" x="16" y="48">Two servers, 730 hours, On-Demand, US East (N. Virginia), price list of 2026-10-23</text>',
-    ]
-    xv = lambda v: left + pw * v / xmax
-    n = len(opts)
-    for v in range(0, xmax + 1, 2000):
-        body.append(f'<line class="{"axis" if v == 0 else "grid"}" x1="{xv(v):.1f}" x2="{xv(v):.1f}" y1="{top - 6}" y2="{top + n * (bw + gap) - gap + 6}"/>')
-        body.append(f'<text class="tick" x="{xv(v):.1f}" y="{top + n * (bw + gap) + 12}" text-anchor="middle">${v:,}</text>')
-    body.append(f'<text class="tick" x="{left + pw / 2:.1f}" y="{top + n * (bw + gap) + 30}" text-anchor="middle">USD per month</text>')
-    for i, (lab, sub, v, cls, note) in enumerate(opts):
-        y = top + i * (bw + gap)
-        body.append(f'<text class="lab" x="{left - 10}" y="{y + 14}" text-anchor="end">{lab}</text>')
-        body.append(f'<text class="small" x="{left - 10}" y="{y + 30}" text-anchor="end">{sub}</text>')
-        d = right_rounded(left, y, xv(v) - left, bw)
-        if cls == "na":
-            body.append(f'<path class="na" d="{d}"><title>{lab}: ${v:,.0f} plus Software Assurance</title></path>')
-        else:
-            body.append(f'<path class="{cls}" d="{d}"><title>{lab}: ${v:,.0f}</title></path>')
-        if cls == "s1":
-            body.append(f'<path class="hiring" d="{right_rounded(left - 3, y - 3, xv(v) - left + 6, bw + 6)}"/>')
-        txt = f"${v:,.0f}" + (f" {note}" if note else "")
-        body.append(f'<text class="{"valb" if cls == "s1" else "val"}" x="{xv(v) + 10:.1f}" y="{y + bw / 2 + 5:.1f}">{txt}</text>')
-    h = top + n * (bw + gap) + 50
-    body.append(f'<text class="note" x="16" y="{h - 8}">Compute and licenses only; no storage. E is shown dashed: it needs Software Assurance, which the distributor dropped.</text>')
-    svg("13-04-five-options.svg", w, h,
-        "Monthly cost of the two reporting servers under five licensing options",
-        "Horizontal bar chart, two servers for 730 hours, On-Demand, US East (N. Virginia), price list of 2026-10-23. "
-        "A, as-is size, license-included Enterprise on 2 m7i.2xlarge: $5,506. B, rightsized to 2 m7i.xlarge, "
-        "license-included Enterprise: $2,753. C, rightsized, license-included Standard: $1,264, outlined as the "
-        "choice. D, bring your own licenses to one m7i Dedicated Host with 96 physical cores: $7,770 for the host. "
-        "E, License Mobility, which needs Software Assurance: $563 plus Software Assurance fees, drawn dashed "
-        "because it isn't open to the distributor.", body, style=STYLE)
-
-
 if __name__ == "__main__":
     big_picture()
     license_share()
-    five_options()

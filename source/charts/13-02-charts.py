@@ -7,10 +7,8 @@ Usage: python3 -I source/charts/13-02-charts.py
 Writes images/13-02-*.svg. Facts come from "About the migration strategies" in
 AWS Prescriptive Guidance (Guide for AWS large migrations), checked 2026-10-24:
 the seven strategies, their other names, AWS's examples, "relocate is the quickest",
-"refactor is the most complex and costly", and the zombie (below 5% average CPU and
-memory use) and idle (5 to 20% over 90 days) definitions. The Amazon EVS example
-comes from AWS's "Migrate VMware to the cloud" page, checked 2026-10-24. The chain's
-applications and their usage figures are made up for teaching. The three groups in
+"refactor is the most complex and costly". The Amazon EVS example
+comes from AWS's "Migrate VMware to the cloud" page, checked 2026-10-24. The three groups in
 the big picture are our own way of organizing the seven, not AWS's.
 Our own design: no AWS logos, icons, trade dress or AWS diagrams.
 """
@@ -98,65 +96,6 @@ def big_picture():
         body, style=STYLE)
 
 
-# Made-up 90-day averages for the chain's applications (percent of CPU and memory in use).
-USAGE = [
-    ("Recipe archive", 2),
-    ("Payroll", 8),
-    ("Shop tools (about 30 small apps)", 12),
-    ("Accounting", 16),
-    ("Chain website", 22),
-    ("Email and calendars", 34),
-    ("Loyalty database", 41),
-    ("Stock and ordering", 48),
-    ("Oven control", 57),
-    ("Wholesale portal", 63),
-]
-
-
-def usage_zones():
-    w = 680
-    body = [
-        '<text class="title" x="16" y="28">Low use flags an application for a closer look; it doesn\'t decide its fate</text>',
-        '<text class="sub" x="16" y="48">The chain\'s ten applications: average CPU and memory use over 90 days (made-up figures)</text>',
-    ]
-    left, top, pw = 236, 104, 400
-    rh, gap = 22, 8
-    ph = len(USAGE) * (rh + gap)
-    xmax = 70
-    sx = lambda v: left + pw * v / xmax  # noqa: E731
-    body.append(f'<rect class="zone1" x="{left}" y="{top - 8}" width="{sx(5) - left:.1f}" height="{ph + 8}"/>')
-    body.append(f'<rect class="zone2" x="{sx(5):.1f}" y="{top - 8}" width="{sx(20) - sx(5):.1f}" height="{ph + 8}"/>')
-    body.append(f'<text class="zone" x="{left + 2}" y="{top - 28}">ZOMBIE: BELOW 5%</text>')
-    body.append(f'<text class="zone" x="{sx(5) + 4:.1f}" y="{top - 13}">IDLE: 5 TO 20%</text>')
-    for v in range(0, xmax + 1, 10):
-        x = sx(v)
-        body.append(f'<line class="{"axis" if v == 0 else "grid"}" x1="{x:.1f}" x2="{x:.1f}" y1="{top - 8}" y2="{top + ph}"/>')
-        body.append(f'<text class="tick" x="{x:.1f}" y="{top + ph + 16}" text-anchor="middle">{v}%</text>')
-    for i, (name, v) in enumerate(USAGE):
-        y = top + i * (rh + gap)
-        cls = "s2" if name == "Payroll" else "s1"
-        body.append(f'<path class="{cls}" d="{right_rounded(left, y, sx(v) - left, rh)}"/>')
-        body.append(f'<text class="lab" x="{left - 10}" y="{y + 15}" text-anchor="end">{name}</text>')
-        body.append(f'<text class="val" x="{sx(v) + 6:.1f}" y="{y + 15}">{v}%</text>')
-        if name == "Payroll":
-            body.append(f'<text class="small" x="{sx(v) + 40:.1f}" y="{y + 15}">idle by the number, yet it pays everyone each month</text>')
-    y = top + ph + 40
-    body.append(f'<text class="small" x="16" y="{y}">AWS\'s definitions: below 5% average CPU and memory use is a zombie application; 5 to 20% over 90 days is idle.</text>')
-    body.append(f'<text class="small" x="16" y="{y + 18}">AWS lists low use as a reason to consider retiring, and also as a reason to retain. Business value decides.</text>')
-    body.append(f'<text class="note" x="16" y="{y + 40}">Definitions from "About the migration strategies", AWS Prescriptive Guidance, checked 2026-10-24.</text>')
-    svg("13-02-usage-zones.svg", w, y + 56,
-        "The chain's ten applications by average use, against AWS's zombie and idle thresholds",
-        "A horizontal bar chart of average CPU and memory use over 90 days, made-up figures, on a scale from 0 to "
-        "70 percent. Two shaded zones: below 5 percent, zombie; 5 to 20 percent, idle. Recipe archive 2 percent, "
-        "in the zombie zone. Payroll 8 percent, highlighted, in the idle zone, with the note that it is idle by "
-        "the number, yet it pays everyone each month. Shop tools, about 30 small apps, 12 percent, idle. "
-        "Accounting 16 percent, idle. Chain website 22 percent. Email and calendars 34 percent. Loyalty database "
-        "41 percent. Stock and ordering 48 percent. Oven control 57 percent. Wholesale portal 63 percent. Notes: "
-        "AWS defines below 5 percent average CPU and memory use as a zombie application and 5 to 20 percent over "
-        "90 days as idle, and lists low use as a reason to consider retiring and also as a reason to retain; "
-        "business value decides.", body, style=STYLE)
-
-
 COMPARE = [
     ("Also called", ["Lift and shift", "(no other name)", "Lift, tinker and shift; lift and reshape", "Re-architect"]),
     ("What moves", ["Each server, as it is, onto Amazon EC2",
@@ -220,5 +159,4 @@ def four_compared():
 
 if __name__ == "__main__":
     big_picture()
-    usage_zones()
     four_compared()
