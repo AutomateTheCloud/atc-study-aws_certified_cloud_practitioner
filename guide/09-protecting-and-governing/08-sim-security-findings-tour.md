@@ -108,7 +108,7 @@ The resources are the bakery's: the web server, its role, the photo bucket `bake
 
 - **A, GuardDuty.** Behavior seen in DNS logs: something is happening now. Inspector looks for weaknesses, not activity.
 - **B, Inspector.** A known flaw in installed software. GuardDuty would only notice if someone exploited it and the behavior showed in its logs.
-- **C, Macie.** Only Macie reads what's *inside* S3 objects. The real problem: order exports with personal data sit in a bucket meant for cake photos.
+- **C, Macie.** Only Macie reads what's *inside* S3 objects. Worse, order exports with personal data sit in a bucket meant for cake photos.
 - **D, Security Hub CSPM.** `EC2.13` is a control: a check of a setting against a standard, here using the AWS Config rule `restricted-ssh`.
 - **E, GuardDuty.** Credentials used where they shouldn't be, seen in CloudTrail events.
 - **F, Inspector.** A network reachability finding: Inspector worked out an actual path from the internet to the port. D says "the rule breaks a standard"; F says "the server is reachable". Both point to the same fix.
