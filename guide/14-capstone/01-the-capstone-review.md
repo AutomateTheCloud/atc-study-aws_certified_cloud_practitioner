@@ -25,6 +25,8 @@ sources:
 
 This lesson is optional practice beyond the exam, which only asks you to recognize the pillars. A review isn't a pass-or-fail test: it's a short list of what could hurt the business most, what to do about it, and what that costs.
 
+**Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): task [1.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.2); [Domain 4, Billing, Pricing, and Support](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html) (12% of the exam): tasks [4.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.1) and [4.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.3).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes to read, then about 90 minutes for your own review.
 
 **Before you start:** you need the pillars from [lesson 02.05](../02-why-the-cloud/05-the-well-architected-framework.md), costing from [lesson 11.01](../11-paying-for-aws/01-how-aws-charges.md) and the Support plans from [lesson 12.01](../12-getting-help/01-support-plans.md). No AWS account is needed.

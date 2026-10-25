@@ -29,6 +29,8 @@ sources:
 
 The same server can be paid for in several ways, and each trades something: flexibility for a lower rate, the risk of interruption for a deep discount, or money for dedicated hardware or guaranteed capacity. The exam asks you to match a usage pattern to the right option.
 
+**Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): task [1.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.4); [Domain 4, Billing, Pricing, and Support](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html) (12% of the exam): task [4.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.1).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 25 minutes. Reading works on a phone.
 
 **Before you start:** [How AWS charges](01-how-aws-charges.md) and [Amazon EC2](../06-running-applications/01-ec2.md) help; the key ideas are restated here.

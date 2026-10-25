@@ -28,6 +28,8 @@ sources:
 
 AWS has a service for each shape of conversation between parts (SQS, SNS, EventBridge, Step Functions and SES), and the exam asks you to choose by shape. It also asks which tool builds code (CodeBuild) and which runs the release (CodePipeline).
 
+**Exam guide:** [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): task [3.8](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.8).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes. Reading works on a phone.
 
 **Before you start:** [Watching workloads](03-watching-workloads.md), where an alarm notifies an SNS topic.

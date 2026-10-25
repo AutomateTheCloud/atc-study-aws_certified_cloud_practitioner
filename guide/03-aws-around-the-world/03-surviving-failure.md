@@ -22,6 +22,8 @@ sources:
 
 Two Availability Zones protect the bakery from losing a data center, but not from losing a whole Region, and not from a mistake that wipes its data. Those need disaster recovery, sized by two numbers the business sets: how long it can be down (RTO) and how much data it can lose (RPO).
 
+**Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): task [1.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.1); [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): task [3.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.2).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 15 minutes. Reading works on a phone.
 
 **Before you start:** read [Regions, Availability Zones and data centers](01-regions-availability-zones-data-centers.md) and [Choosing a Region](02-choosing-a-region.md) first.

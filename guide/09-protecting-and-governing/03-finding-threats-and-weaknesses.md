@@ -25,6 +25,8 @@ sources:
 
 Each security service in this lesson reads something different: activity, installed software, settings or a past finding. Ask what a service looked at, and you can name the one that raised a finding.
 
+**Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): tasks [2.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.2) and [2.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.4).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes. Reading works on a phone.
 
 **Before you start:** this lesson builds on [Filtering traffic](../07-connecting-it/02-filtering-traffic.md) (Inspector, VPC Flow Logs) and lesson 09.01, [Who did what](01-who-did-what.md) (CloudTrail).

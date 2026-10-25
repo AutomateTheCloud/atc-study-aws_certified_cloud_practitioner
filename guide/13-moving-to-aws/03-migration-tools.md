@@ -29,6 +29,8 @@ sources:
 
 Each AWS migration tool does one job, and the exam tests whether you can match the job to the tool. Two of the tools the exam names are closed to new customers, and Snowball is being retired, so this lesson also tells you what AWS offers today.
 
+**Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): task [1.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.3); [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): task [3.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.4).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes. Reading works on a phone.
 
 **Before you start:** this lesson builds on [lesson 13.02](02-seven-migration-strategies.md), on [hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md) (Elastic Disaster Recovery, DataSync) and on [managed databases](../05-storing-data/05-managed-or-self-managed-databases.md) (DMS and SCT).

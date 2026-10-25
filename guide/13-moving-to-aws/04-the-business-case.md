@@ -23,6 +23,8 @@ sources:
 
 A **business case** compares every cost of staying, every cost of moving (including the move itself) and the value money doesn't capture. The exam asks about the ideas behind it: on-premises costs, fixed and variable costs, rightsizing, and the difference between license-included and bring-your-own-license.
 
+**Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): tasks [1.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.3) and [1.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.4).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes. Reading works on a phone.
 
 **Before you start:** this lesson builds on [What a data center really costs](../02-why-the-cloud/04-what-a-data-center-really-costs.md) (lesson 02.04) and on Migration Evaluator from [lesson 13.03](03-migration-tools.md).

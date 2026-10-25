@@ -21,6 +21,8 @@ sources:
 
 Running your own servers means paying for the building, power, cooling, network, people and software around them, mostly up front and mostly whether you use them or not. The cloud turns most of those costs into one bill that follows use, which is cheaper only when your use goes up and down and you switch off what you don't need.
 
+**Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): task [1.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.4).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 25 minutes.
 
 **Before you start:** read [Before and after: the demand curve](02-before-and-after-the-demand-curve.md) first.

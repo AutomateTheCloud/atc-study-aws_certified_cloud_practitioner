@@ -22,6 +22,8 @@ sources:
 
 **For:** an adult studying alone, possibly new to IT, who has finished lessons [11.01](01-how-aws-charges.md) to [11.04](04-many-accounts-one-bill.md). **Time:** about 20 minutes per check. No question needs a price.
 
+**Exam guide:** [Domain 4, Billing, Pricing, and Support](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html) (12% of the exam): tasks [4.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.1) and [4.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.2).
+
 ## How to use this check
 
 Take **Check A** closed-book, then open the answers. A "(Select TWO.)" question counts only if both choices are right.

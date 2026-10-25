@@ -20,6 +20,8 @@ sources:
 
 Map concerns to CAF perspectives, choose strategies and tools, and judge a cost case and a license choice.
 
+**Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): tasks [1.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.3) and [1.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.4).
+
 **For:** an adult who has finished the lessons of [Module 13](00-brief.md). **Time:** about 25 minutes per check.
 
 ## How to use this check

@@ -32,6 +32,8 @@ sources:
 
 Most teams that use artificial intelligence on AWS buy it ready-made: AWS has trained the model, and you call it. Each ready-made service is defined by what you give it and what it gives back, and you build your own model with SageMaker AI only when none of them fits.
 
+**Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): task [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1); [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): task [3.7](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.7).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes. Reading works on a phone.
 
 **Before you start:** read lesson 10.01, [Analytics in five verbs](01-analytics-in-five-verbs.md), first. This lesson answers three of the bakery's requests in the [module brief](00-brief.md).

@@ -21,6 +21,8 @@ sources:
 
 **For:** an adult studying alone, possibly new to IT, who has finished lessons [04.01](01-security-of-vs-in-the-cloud.md) to [04.05](05-credentials-and-federation.md). **Time:** about 20 minutes per check.
 
+**Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): tasks [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1) and [2.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.3).
+
 ## How to use this check
 
 Take **Check A** closed-book, then open the answers. A "(Select TWO.)" question counts only if both choices are right.

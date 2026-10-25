@@ -24,6 +24,8 @@ sources:
 
 On AWS, turning encryption on is usually one setting, and many services do it for you. The exam asks which tool fits: a certificate from ACM for data moving, a key in AWS KMS for data stored, AWS CloudHSM only when a rule demands hardware nobody else uses.
 
+**Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): tasks [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1) and [2.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.2).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes. Reading works on a phone.
 
 **Before you start:** this lesson builds on [S3 in practice](../05-storing-data/02-s3-in-practice.md) (SSE-S3, SSE-KMS) and [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md) (encrypted is not the same as private).

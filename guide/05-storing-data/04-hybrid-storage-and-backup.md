@@ -27,6 +27,8 @@ sources:
 
 AWS Storage Gateway connects software in your building to AWS storage without changing the software. AWS Backup runs backups of many AWS services from one set of rules. AWS Elastic Disaster Recovery keeps whole servers ready to launch in minutes.
 
+**Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): task [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1); [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): task [3.6](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.6).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes. Reading works on a phone.
 
 **Before you start:** this lesson uses EBS and S3 from [lesson 05.01](01-block-file-object.md), the S3 Glacier classes from [lesson 05.02](02-s3-in-practice.md), and RTO and RPO from [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md).

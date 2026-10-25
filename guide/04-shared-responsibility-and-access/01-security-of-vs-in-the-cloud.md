@@ -25,6 +25,8 @@ sources:
 
 AWS is responsible for security **of** the cloud: the buildings, machines and software that run its services. You are responsible for security **in** the cloud: what you build, configure and store there, and how much that includes depends on the service you choose.
 
+**Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): task [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes. Reading works on a phone.
 
 **Before you start:** this lesson builds on [What cloud computing is](../02-why-the-cloud/01-what-cloud-computing-is.md) and pages [02](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md) and [06](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/06-safe-defaults.md) of the guardrails primer. The bakery's parts are in the [module brief](00-brief.md).

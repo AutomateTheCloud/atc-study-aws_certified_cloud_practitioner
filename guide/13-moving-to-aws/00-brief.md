@@ -18,6 +18,8 @@ sources:
 
 This module teaches how an organization decides to move to the cloud, how it moves each application, and what it costs.
 
+**Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): tasks [1.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.3) and [1.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.4).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely, and who has finished Modules 02 to 12. **Time:** about 2 hours; no AWS account needed.
 
 ## The scenario: a chain buys the bakery

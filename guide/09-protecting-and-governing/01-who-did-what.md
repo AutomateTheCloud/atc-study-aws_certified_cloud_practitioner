@@ -23,6 +23,8 @@ sources:
 
 AWS keeps several records of your account, and each answers a different kind of question. Name the kind of question first, and the service follows.
 
+**Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): task [2.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.2).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes. Reading works on a phone.
 
 **Before you start:** this lesson builds on [Watching workloads](../08-building-and-operating/03-watching-workloads.md) (CloudWatch, CloudTrail's management and data events) and [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md). The auditor's visit is in the [module brief](00-brief.md).

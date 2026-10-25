@@ -22,6 +22,8 @@ sources:
 
 **For:** an adult studying alone, possibly new to IT, who has finished lessons [03.01](01-regions-availability-zones-data-centers.md) to [03.04](04-the-edge.md). **Time:** about 20 minutes per check.
 
+**Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): task [1.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.1); [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): task [3.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.2).
+
 ## How to use this check
 
 Take **Check A** closed-book, then open the answers. A "(Select TWO.)" question counts only if both choices are right. With **8 or more right (80%)**, go on to Module 04. Otherwise, reread what the [correction map](#correction-map) names for your misses, then take **Check B**, a parallel retest.

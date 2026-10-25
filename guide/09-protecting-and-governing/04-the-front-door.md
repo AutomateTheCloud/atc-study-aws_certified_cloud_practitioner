@@ -23,6 +23,8 @@ sources:
 
 Lesson 09.03's services report problems; this lesson's services stop them, at the site's front door. Name the attack, and the protection follows: AWS Shield for floods of traffic, AWS WAF for bad web requests, AWS Firewall Manager for the same rules in many accounts.
 
+**Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): tasks [2.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.2) and [2.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.4).
+
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes. Reading works on a phone.
 
 **Before you start:** this lesson builds on [Filtering traffic](../07-connecting-it/02-filtering-traffic.md) (security groups and network ACLs) and [Names and the edge](../07-connecting-it/03-names-and-the-edge.md) (Route 53 and CloudFront).
