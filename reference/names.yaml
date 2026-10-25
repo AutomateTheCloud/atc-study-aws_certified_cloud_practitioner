@@ -81,12 +81,12 @@ names:
       Closed to new customers since 2026-05-31; AWS points to Amazon CloudWatch. CloudTrail and
       its trails are unaffected.
     section: feature
-    term: CloudTrail Lake
+    taught_in: guide/09-protecting-and-governing/12-beyond-the-exam.md
     source: https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html
   - name: AWS WAF Classic
     now: The older version of AWS WAF; its sunset period ended on 2026-10-07.
     section: feature
-    taught_in: guide/09-protecting-and-governing/04-the-front-door.md
+    taught_in: guide/09-protecting-and-governing/12-beyond-the-exam.md
     mentions: WAF Classic
     source: https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html
   - name: Amazon FSx File Gateway
@@ -99,7 +99,7 @@ names:
   - name: Simple AD (AWS Directory Service)
     now: A Directory Service directory type closed to new customers since 2026-07-30.
     section: feature
-    taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+    taught_in: guide/04-shared-responsibility-and-access/11-beyond-the-exam.md
     mentions: Simple AD
     source: https://docs.aws.amazon.com/directoryservice/latest/admin-guide/simple-ad-availability-change.html
   - name: AWS X-Ray SDKs and daemon
@@ -153,6 +153,7 @@ names:
     now: Amazon WorkSpaces Secure Browser, which closes to new customers on 2026-10-29.
     section: older
     term: Amazon WorkSpaces Secure Browser
+    mentions: WorkSpaces Web
     source: https://docs.aws.amazon.com/workspaces-web/latest/adminguide/what-is-workspaces-secure-browser.html
   - name: Amazon Elasticsearch Service
     now: Amazon OpenSearch Service, its successor.
@@ -225,12 +226,6 @@ names:
     section: distractor
     term: Amazon Kendra
     source: https://docs.aws.amazon.com/kendra/latest/dg/kendra-availability-change.html
-  - name: AWS AppSync
-    now: Still available, but removed from the 2026 exam guide's list.
-    section: distractor
-    taught_in: guide/10-data-ai-and-more/03-people-apps-and-devices.md
-    mentions: AppSync
-    source: https://docs.aws.amazon.com/appsync/latest/devguide/what-is-appsync.html
   - name: Amazon Kinesis Data Analytics for SQL
     now: >-
       No new applications from 2025-10-15; shut down on 2026-01-27. AWS points to Amazon Managed
@@ -279,7 +274,7 @@ names:
   - name: Amazon MemoryDB for Redis OSS
     now: Amazon MemoryDB; available, but out of the exam's scope. A distractor next to ElastiCache.
     section: distractor
-    taught_in: guide/05-storing-data/06-choosing-a-database.md
+    taught_in: guide/05-storing-data/05-managed-or-self-managed-databases.md
     mentions: MemoryDB
     source: https://aws.amazon.com/memorydb/
   - name: AWS Network Firewall
@@ -296,6 +291,6 @@ names:
   - name: AWS Managed Services (AMS)
     now: Available, but out of the exam's scope. A distractor next to Support and Professional Services.
     section: distractor
-    taught_in: guide/12-getting-help/04-partners-and-paid-help.md
+    taught_in: guide/12-getting-help/03-where-to-find-answers.md
     mentions: AWS Managed Services
     source: https://aws.amazon.com/managed-services/

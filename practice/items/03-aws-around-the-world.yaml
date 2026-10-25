@@ -302,7 +302,7 @@ questions:
 
   - id: q03-what-aws-spreads-for-you
     page: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
-    section: "Where your resources live: in one AZ, across a Region, or everywhere"
+    section: "High availability means running in more than one Availability Zone"
     task: "3.2"
     level: understanding
     topics: [regions-and-azs, high-availability]
@@ -355,7 +355,7 @@ questions:
 
   - id: q03-rds-standby-missing
     page: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
-    section: "Where your resources live: in one AZ, across a Region, or everywhere"
+    section: "High availability means running in more than one Availability Zone"
     task: "3.2"
     level: application
     topics: [regions-and-azs, high-availability]
@@ -404,7 +404,7 @@ questions:
 
   - id: q03-global-service-iam
     page: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
-    section: "Where your resources live: in one AZ, across a Region, or everywhere"
+    section: "High availability means running in more than one Availability Zone"
     task: "3.2"
     level: recall
     topics: [regions-and-azs]
@@ -541,7 +541,7 @@ questions:
 
   - id: q03-cost-of-high-availability
     page: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
-    section: "Worked example: making the bakery survive losing an AZ"
+    section: "High availability means running in more than one Availability Zone"
     task: "3.2"
     level: understanding
     topics: [high-availability]
@@ -589,60 +589,9 @@ questions:
 
   # ---------------------------------------------------------------- Lab 02
 
-  - id: q03-az-id-across-accounts
-    page: guide/03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md
-    section: "List AZ names and AZ IDs in CloudShell"
-    task: "3.2"
-    level: application
-    topics: [regions-and-azs, az-id]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        Two teams use different AWS accounts, both created years ago. They want their databases in
-        the same physical Availability Zone of US East (N. Virginia). How should they name the AZ
-        to each other?
-    choices:
-      - id: az-name
-        text: By its AZ name, such as us-east-1a
-        variants:
-          - text: With the AZ name, for example us-east-1a
-          - text: Using a name like us-east-1a
-        explanation:
-          text: |
-            In AWS's oldest Regions, accounts created before November 2025 have their AZ names
-            mapped separately, so one account's `us-east-1a` can be another's `us-east-1c`.
-      - id: az-id
-        text: By its AZ ID, such as use1-az1
-        variants:
-          - text: With the AZ ID, for example use1-az1
-          - text: Using an ID like use1-az1
-      - id: region-code
-        text: By the Region code, such as us-east-1
-        variants:
-          - text: With the Region code, for example us-east-1
-          - text: Using a code like us-east-1
-        explanation:
-          text: The Region code names the whole Region, not one AZ inside it.
-      - id: street-address
-        text: By the data center's street address
-        variants:
-          - text: With the street address of the building
-          - text: Using the data center's postal address
-        explanation:
-          text: AWS doesn't let you choose or see a data center. The AZ is the most precise place you can name.
-    correct_answers: [az-id]
-    hint:
-      text: One identifier is the same in every account; the other is mapped per account.
-    explanation:
-      text: |
-        An AZ ID, such as `use1-az1`, names the same physical Availability Zone in every account. AZ
-        names are the Region code plus a letter, and in the oldest Regions older accounts have them
-        mapped separately. To agree on a place across accounts, compare AZ IDs.
-
   - id: q03-new-region-missing-from-selector
-    page: guide/03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md
-    section: "List Regions in the Region selector"
+    page: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
+    section: "A Region is at least three Availability Zones in one area"
     task: "3.2"
     level: understanding
     topics: [regions-and-azs, opt-in-regions]
@@ -841,102 +790,9 @@ questions:
         correctly, by choosing Regions that meet the rule and keeping every copy there. Module 04
         calls this split the shared responsibility model.
 
-  - id: q03-location-not-whole-rule
-    page: guide/03-aws-around-the-world/02-choosing-a-region.md
-    section: "Rules first: decide where the data may live"
-    task: "3.2"
-    level: understanding
-    topics: [data-sovereignty]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        After moving its customer data to an EU Region, a company says its data-protection contract
-        is now fully met. The contract also covers who may see the data. What may still be missing?
-    choices:
-      - id: access-and-encryption
-        text: Settings for who may access the data and how it is encrypted
-        variants:
-          - text: Controls on who can see the data and how it is protected
-          - text: Access permissions and encryption settings for the data
-      - id: us-copy
-        text: A second copy of the data stored in a US Region
-        variants:
-          - text: An extra copy of the data kept in a Region in the US
-          - text: A duplicate of the data held in a US Region
-        explanation:
-          text: A US copy would take the data out of the EU and break the location part of the contract.
-      - id: aws-permission
-        text: Written permission from AWS to store data in that Region
-        variants:
-          - text: AWS's written approval to keep data in the Region
-          - text: A signed approval from AWS for using that Region
-        explanation:
-          text: No permission is needed. Customers can put their data in any Region their account can use.
-      - id: edge-copies
-        text: A copy of the data cached at an edge location in each EU country
-        variants:
-          - text: Copies of the data in edge locations across the EU
-          - text: The data cached at an edge location in every EU country
-        explanation:
-          text: Edge locations deliver content near users; they don't satisfy a data-protection contract, and extra copies only add places to protect.
-    correct_answers: [access-and-encryption]
-    explanation:
-      text: |
-        Location isn't the whole rule. Laws and contracts often also say who may see the data and
-        how it must be protected. Choosing an EU Region fixes where the data is; access and
-        encryption settings are still the customer's job (Module 04).
-
-  - id: q03-european-sovereign-cloud
-    page: guide/03-aws-around-the-world/02-choosing-a-region.md
-    section: "Rules first: decide where the data may live"
-    task: "3.2"
-    level: recall
-    topics: [data-sovereignty]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A European government agency has strict sovereignty rules and wants a separate, independent
-        AWS cloud for Europe. Which offering is designed for this?
-    choices:
-      - id: govcloud
-        text: AWS GovCloud (US)
-        variants:
-          - text: The AWS GovCloud (US) Regions
-          - text: GovCloud (US)
-        explanation:
-          text: GovCloud (US) is a set of Regions that needs a separate kind of account, but it is in the United States, not Europe.
-      - id: wavelength
-        text: AWS Wavelength
-        variants:
-          - text: AWS Wavelength Zones
-          - text: Wavelength
-        explanation:
-          text: Wavelength places compute inside 5G carrier networks for mobile devices. It is about latency, not sovereignty, and it's out of scope for the exam.
-      - id: cloudfront
-        text: Amazon CloudFront
-        variants:
-          - text: The Amazon CloudFront service
-          - text: CloudFront
-        explanation:
-          text: CloudFront copies content to edge locations worldwide, which is the opposite of keeping data in one place.
-      - id: esc
-        text: AWS European Sovereign Cloud
-        variants:
-          - text: The AWS European Sovereign Cloud
-          - text: European Sovereign Cloud
-    correct_answers: [esc]
-    explanation:
-      text: |
-        The AWS European Sovereign Cloud is a separate, independent AWS cloud for Europe, aimed at
-        public bodies and highly regulated industries. With Dedicated Local Zones, it is part of
-        what AWS calls its Digital Sovereignty Pledge (checked 2026-10-23). Most workloads meet
-        their data rules simply by choosing the right Regions.
-
   - id: q03-new-region-missing-service
     page: guide/03-aws-around-the-world/02-choosing-a-region.md
-    section: "Then check that the Region has the services you need"
+    section: "Then services, latency and price"
     task: "3.2"
     level: application
     topics: [choosing-a-region]
@@ -985,7 +841,7 @@ questions:
 
   - id: q03-services-differ-by-region
     page: guide/03-aws-around-the-world/02-choosing-a-region.md
-    section: "Then check that the Region has the services you need"
+    section: "Then services, latency and price"
     task: "3.2"
     level: understanding
     topics: [choosing-a-region]
@@ -1029,7 +885,7 @@ questions:
 
   - id: q03-users-not-office
     page: guide/03-aws-around-the-world/02-choosing-a-region.md
-    section: '"Choose the Region nearest your office" is wrong'
+    section: "Then services, latency and price"
     task: "3.2"
     level: application
     topics: [choosing-a-region, latency]
@@ -1078,55 +934,9 @@ questions:
         Brazil, such as South America (São Paulo), gives customers lower latency. Its prices may be
         higher, but paying more is justified when latency requires it.
 
-  - id: q03-distance-latency-floor
-    page: guide/03-aws-around-the-world/02-choosing-a-region.md
-    section: "Pick the shortlisted Region closest to your users"
-    task: "3.2"
-    level: understanding
-    topics: [latency]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A company's servers are in a Region on another continent from its users. Why won't faster
-        servers alone remove the delay its users notice?
-    choices:
-      - id: physics
-        text: Crossing the distance takes time, which sets a minimum delay.
-        variants:
-          - text: Travel time over a long distance puts a floor under the delay.
-          - text: Signals need time to cross the distance, so some delay remains.
-      - id: slow-abroad
-        text: Servers in other continents run at lower speeds than local ones.
-        variants:
-          - text: Servers abroad are slower machines than servers nearby.
-          - text: Faraway servers have lower speeds than servers close to users.
-        explanation:
-          text: The same instance types run at the same speed in any Region. The delay is in the journey, not the server.
-      - id: aws-throttles
-        text: AWS limits traffic between continents to save network capacity.
-        variants:
-          - text: AWS slows traffic between continents to save capacity.
-          - text: Traffic across continents is throttled by AWS to save capacity.
-        explanation:
-          text: There's no such rule. Even on a perfect network, a long trip takes time.
-      - id: az-delay
-        text: Each Availability Zone adds a fixed delay to every request.
-        variants:
-          - text: Every AZ puts a set delay on each request it handles.
-          - text: Requests pick up a fixed delay from each AZ they touch.
-        explanation:
-          text: The links between AZs add about a millisecond at most. The large delay comes from crossing a continent or an ocean.
-    correct_answers: [physics]
-    explanation:
-      text: |
-        Light in a fiber-optic cable takes about 4.9 microseconds per kilometer, so a request and its
-        answer crossing an ocean take tens of milliseconds before any equipment adds its own delay.
-        Only moving the work, or a copy of the content, closer to users shortens that trip.
-
   - id: q03-why-prices-differ
     page: guide/03-aws-around-the-world/02-choosing-a-region.md
-    section: "Weigh the price: the same thing costs different amounts in different Regions"
+    section: "Then services, latency and price"
     task: "3.2"
     level: understanding
     topics: [choosing-a-region]
@@ -1171,7 +981,7 @@ questions:
 
   - id: q03-test-copy-cheap-region
     page: guide/03-aws-around-the-world/02-choosing-a-region.md
-    section: "Weigh the price: the same thing costs different amounts in different Regions"
+    section: "Then services, latency and price"
     task: "3.2"
     level: application
     topics: [choosing-a-region]
@@ -1525,7 +1335,7 @@ questions:
 
   - id: q03-how-dr-is-measured
     page: guide/03-aws-around-the-world/03-surviving-failure.md
-    section: "High availability and disaster recovery answer different questions"
+    section: "RTO and RPO: how long you can be down, and how much you can lose"
     task: "3.2"
     level: recall
     topics: [disaster-recovery, rto-rpo]
@@ -1660,53 +1470,6 @@ questions:
         The RPO is the longest acceptable time between the last saved copy and the failure;
         everything after that copy is lost. To lose no more than an hour of data, the company must
         save a copy at least every hour. Frequent copies meet the RPO; a fast restart meets the RTO.
-
-  - id: q03-plan-costs-more-than-loss
-    page: guide/03-aws-around-the-world/03-surviving-failure.md
-    section: "RTO and RPO: how long you can be down, and how much you can lose"
-    task: "3.2"
-    level: understanding
-    topics: [disaster-recovery]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A proposed recovery plan would cost more each year than the losses it could prevent, and no
-        regulation requires it. What does AWS's guidance suggest?
-    choices:
-      - id: build-anyway
-        text: Build it anyway, because more protection is always worth it
-        variants:
-          - text: Build it regardless, since extra protection always pays
-          - text: Go ahead, because more protection is never wasted
-        explanation:
-          text: Protection that costs more than the loss it prevents wastes money. The business sets the RTO and RPO from what a failure really costs.
-      - id: aws-pays
-        text: Ask AWS to cover the cost under the shared responsibility model
-        variants:
-          - text: Have AWS pay for it as part of shared responsibility
-          - text: Get AWS to fund it under the shared responsibility model
-        explanation:
-          text: Using AWS's infrastructure well, including recovery plans, is the customer's side of the model, and the customer pays for it.
-      - id: dont-build
-        text: Don't build it; pick a cheaper approach sized to the loss
-        variants:
-          - text: Skip it, and choose a cheaper approach that fits the loss
-          - text: Leave it out; use a less costly approach sized to the loss
-      - id: add-region
-        text: Build it in an extra Region so the cost is spread out
-        variants:
-          - text: Put it in one more Region to spread the cost
-          - text: Add another Region so that the cost is shared out
-        explanation:
-          text: Another Region adds cost; it doesn't spread or reduce it.
-    correct_answers: [dont-build]
-    explanation:
-      text: |
-        The RTO and RPO come from what a failure costs the business. AWS warns that if a recovery
-        plan costs more than the loss it prevents, you shouldn't build it, unless something else,
-        such as a regulation, requires it. Every step up in protection costs money every month,
-        disaster or not.
 
   - id: q03-dr-strategies-cost-order
     page: guide/03-aws-around-the-world/03-surviving-failure.md
@@ -1853,7 +1616,7 @@ questions:
 
   - id: q03-pick-backup-restore
     page: guide/03-aws-around-the-world/03-surviving-failure.md
-    section: "Worked example: a resilience plan for the bakery"
+    section: "Four strategies, from cheap and slow to costly and fast"
     task: "3.2"
     level: application
     topics: [dr-strategies]
@@ -1943,50 +1706,6 @@ questions:
         AWS itself calls this pair hard to tell apart. Ask: could it serve a customer right now? A
         warm standby can, at reduced size, and only has to scale up. A pilot light can't until its
         app servers are switched on, which is why it is cheaper and slower.
-
-  - id: q03-backup-restore-needs-iac
-    page: guide/03-aws-around-the-world/03-surviving-failure.md
-    section: "Four strategies, from cheap and slow to costly and fast"
-    task: "3.2"
-    level: understanding
-    topics: [dr-strategies]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: Why does AWS recommend describing the setup as infrastructure as code for a backup and restore strategy?
-    choices:
-      - id: rebuild-fast
-        text: The setup must be rebuilt after a disaster, fast and correctly.
-        variants:
-          - text: The setup has to be recreated after a disaster, quickly and without errors.
-          - text: After a disaster, the setup must be rebuilt quickly and correctly.
-      - id: replaces-backups
-        text: Code that describes the setup replaces the need for data backups.
-        variants:
-          - text: Describing the setup as code makes data backups unnecessary.
-          - text: With the setup written as code, data backups aren't needed.
-        explanation:
-          text: Code rebuilds the setup, not the data. AWS recommends backing up the code along with the data.
-      - id: keeps-running
-        text: Code keeps the servers running in the recovery Region at all times.
-        variants:
-          - text: The code keeps servers switched on in the recovery Region.
-          - text: Servers in the recovery Region stay running because of the code.
-        explanation:
-          text: In backup and restore, nothing runs in the recovery Region before a disaster; that's what keeps it cheap.
-      - id: required-for-copies
-        text: AWS requires it before backups can be copied between Regions.
-        variants:
-          - text: Backups can't be copied across Regions without it.
-          - text: AWS blocks cross-Region backup copies unless it's used.
-        explanation:
-          text: AWS has no such requirement. Backups can be copied to another Region however the setup is described.
-    correct_answers: [rebuild-fast]
-    explanation:
-      text: |
-        In backup and restore, only backups wait in the recovery Region; everything else is rebuilt
-        after the disaster. Rebuilding by hand is slow and error-prone under pressure, so AWS
-        recommends keeping the setup as code (Module 08) and backing that code up with the data.
 
   - id: q03-dr-services
     page: guide/03-aws-around-the-world/03-surviving-failure.md
@@ -2241,7 +1960,7 @@ questions:
 
   - id: q03-sim-rto-relaxed
     page: guide/03-aws-around-the-world/06-sim-blast-radius.md
-    section: "Decision 4: the budget changes"
+    section: "Decision 3: the budget changes"
     task: "3.2"
     level: application
     topics: [dr-strategies, rto-rpo]
@@ -2291,7 +2010,7 @@ questions:
 
   - id: q03-sim-near-zero-rto
     page: guide/03-aws-around-the-world/06-sim-blast-radius.md
-    section: "Decision 3: choose a strategy for each"
+    section: "Decision 2: choose a strategy for each"
     task: "3.2"
     level: application
     topics: [dr-strategies]
@@ -2916,54 +2635,9 @@ questions:
         monitors and maintains them, while the customer provides the building, the power and the
         network connection back to the Region.
 
-  - id: q03-where-wavelength-runs
-    page: guide/03-aws-around-the-world/04-the-edge.md
-    section: "Local Zones, Outposts and Wavelength run AWS servers outside a Region"
-    task: "3.2"
-    level: recall
-    topics: [wavelength]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: Where do AWS Wavelength Zones place AWS compute and storage?
-    choices:
-      - id: own-dc
-        text: Inside the customer's own data center
-        variants:
-          - text: In the customer's own building
-          - text: On the customer's premises
-        explanation:
-          text: That is AWS Outposts.
-      - id: big-city
-        text: In large cities, for users on home and office networks
-        variants:
-          - text: In big cities, serving users on ordinary home and office links
-          - text: In major cities, for users of everyday office and home networks
-        explanation:
-          text: That describes AWS Local Zones, which extend a Region into a large city. Wavelength is defined by being inside 5G mobile networks.
-      - id: edge-cache
-        text: At edge locations that cache content
-        variants:
-          - text: In edge locations that keep cached copies
-          - text: At caching sites near internet users
-        explanation:
-          text: Edge locations run some AWS services, such as CloudFront; you can't run your own servers there.
-      - id: carrier-5g
-        text: Inside telecom carriers' 5G networks
-        variants:
-          - text: Within mobile carriers' 5G networks
-          - text: In telecom providers' 5G networks
-    correct_answers: [carrier-5g]
-    explanation:
-      text: |
-        AWS Wavelength places compute and storage inside telecom carriers' 5G networks, for
-        applications that need very low latency to phones and other mobile devices. The CLF-C02 exam
-        guide lists Wavelength as out of scope as a service (checked 2026-10-24), so expect it
-        mainly as a distractor.
-
   - id: q03-run-servers-outside-region
     page: guide/03-aws-around-the-world/04-the-edge.md
-    section: "Region, AZ, edge location, Local Zone, Outposts: where is it?"
+    section: "Local Zones, Outposts and Wavelength run AWS servers outside a Region"
     task: "3.2"
     level: understanding
     topics: [local-zones, outposts, edge-locations]
@@ -3014,52 +2688,6 @@ questions:
         inside 5G networks, but the exam lists Wavelength as out of scope.) Edge locations never run
         your servers.
 
-  - id: q03-cloudfront-data-rules
-    page: guide/03-aws-around-the-world/04-the-edge.md
-    section: "Worked example: faster photos for the bakery's German customers"
-    task: "3.2"
-    level: understanding
-    topics: [cloudfront, data-sovereignty]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        Before putting Amazon CloudFront in front of some content, which data question should a
-        company ask?
-    choices:
-      - id: three-azs
-        text: Whether the content is stored in at least three Availability Zones
-        variants:
-          - text: Whether the content sits in three or more AZs
-          - text: If the content is kept in a minimum of three AZs
-        explanation:
-          text: How the origin stores the content doesn't decide whether copies may be made elsewhere.
-      - id: copied-outside
-        text: Whether the content may be copied outside its home area
-        variants:
-          - text: If copies of the content may leave the area it belongs to
-          - text: Whether the content may be copied beyond its allowed area
-      - id: multi-az-origin
-        text: Whether the origin database has a Multi-AZ standby
-        variants:
-          - text: If the origin's database runs with a Multi-AZ standby
-          - text: Whether a Multi-AZ standby protects the origin database
-        explanation:
-          text: A standby protects the origin from an AZ failure. It has nothing to do with where cached copies go.
-      - id: fixed-ips
-        text: Whether its users have fixed internet addresses
-        variants:
-          - text: If the users connect from static internet addresses
-          - text: Whether every user has a fixed internet address
-        explanation:
-          text: CloudFront serves users wherever they connect from; their addresses aren't the concern.
-    correct_answers: [copied-outside]
-    explanation:
-      text: |
-        CloudFront keeps copies of content at edge locations around the world. Content such as
-        product photos is usually fine to copy, but data with location rules, such as EU customers'
-        orders, shouldn't be cached outside its allowed area. Ask before caching anything.
-
 flashcards:
 
   - id: c03-data-center-means-two-azs
@@ -3088,7 +2716,7 @@ flashcards:
 
   - id: c03-rds-not-multi-az-by-default
     page: guide/03-aws-around-the-world/01-regions-availability-zones-data-centers.md
-    section: "Where your resources live: in one AZ, across a Region, or everywhere"
+    section: "High availability means running in more than one Availability Zone"
     level: recall
     topics: [regions-and-azs, high-availability]
     front:
@@ -3136,7 +2764,7 @@ flashcards:
 
   - id: c03-when-pay-pricier-region
     page: guide/03-aws-around-the-world/02-choosing-a-region.md
-    section: "Weigh the price: the same thing costs different amounts in different Regions"
+    section: "Then services, latency and price"
     level: understanding
     topics: [choosing-a-region]
     front:
@@ -3194,18 +2822,6 @@ flashcards:
         "Could it serve a customer right now?" A warm standby can, at reduced size. A pilot light
         can't until its app servers are switched on.
 
-  - id: c03-backup-restore-needs-iac
-    page: guide/03-aws-around-the-world/03-surviving-failure.md
-    section: "Four strategies, from cheap and slow to costly and fast"
-    level: understanding
-    topics: [dr-strategies]
-    front:
-      text: Why does a backup and restore strategy need infrastructure as code?
-    back:
-      text: |
-        Everything but the backups is rebuilt after the disaster. Rebuilding by hand is slow and
-        error-prone, so keep the setup as code, and back up that code with the data.
-
   - id: c03-three-edge-services
     revision: 2
     page: guide/03-aws-around-the-world/04-the-edge.md
@@ -3221,7 +2837,7 @@ flashcards:
 
   - id: c03-tell-locations-apart
     page: guide/03-aws-around-the-world/04-the-edge.md
-    section: "Region, AZ, edge location, Local Zone, Outposts: where is it?"
+    section: "Local Zones, Outposts and Wavelength run AWS servers outside a Region"
     level: understanding
     topics: [edge-locations, local-zones, outposts]
     front:

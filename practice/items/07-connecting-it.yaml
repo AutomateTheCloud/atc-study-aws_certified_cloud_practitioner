@@ -112,7 +112,7 @@ questions:
 
   - id: q07-subnet-second-az
     page: guide/07-connecting-it/01-your-own-network.md
-    section: "Each subnet sits in one Availability Zone, so you build them in pairs"
+    section: "A VPC is a private network that you lay out inside one Region"
     task: "3.5"
     level: application
     topics: [subnets, high-availability]
@@ -162,7 +162,7 @@ questions:
 
   - id: q07-route-table-decides
     page: guide/07-connecting-it/01-your-own-network.md
-    section: "A route table decides where traffic leaving a subnet goes"
+    section: "A VPC is a private network that you lay out inside one Region"
     task: "3.5"
     level: recall
     topics: [route-tables]
@@ -205,57 +205,6 @@ questions:
         Every subnet uses exactly one route table; if you don't choose one, it uses the VPC's main route
         table. Each route says "traffic for this destination goes to this target". Security groups and
         network ACLs decide what may pass, not where it goes.
-
-  - id: q07-route-local-wins
-    page: guide/07-connecting-it/01-your-own-network.md
-    section: "A route table decides where traffic leaving a subnet goes"
-    task: "3.5"
-    level: application
-    topics: [route-tables]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A VPC uses the address range `172.16.0.0/16`. A subnet's route table has two routes:
-        `172.16.0.0/16` to `local`, and `0.0.0.0/0` to an internet gateway. A server in that subnet
-        sends traffic to `172.16.20.5`. Where does the traffic go?
-    choices:
-      - id: internet-gateway
-        text: To the internet gateway, because `0.0.0.0/0` matches every address
-        variants:
-          - text: Out through the internet gateway, since `0.0.0.0/0` covers all addresses
-          - text: To the internet gateway, as the `0.0.0.0/0` route matches it
-        explanation:
-          text: "`0.0.0.0/0` does match, but so does the local route, and the more specific match wins."
-      - id: dropped
-        text: Nowhere, because two matching routes cancel each other out
-        variants:
-          - text: It is dropped, since the two matching routes conflict
-          - text: Nowhere, as overlapping routes block each other
-        explanation:
-          text: Overlapping routes are normal. The VPC picks the more specific one.
-      - id: stays-local
-        text: It stays inside the VPC, because the `/16` route is more specific
-        variants:
-          - text: Inside the VPC, since the narrower `/16` route wins
-          - text: It stays local, because `/16` is a closer match than `/0`
-        explanation:
-          text: Correct. The local route covers the VPC's own range and is narrower than `0.0.0.0/0`, so the traffic stays inside.
-      - id: nat-gateway
-        text: To a NAT gateway, because the address is private
-        variants:
-          - text: Through a NAT gateway, since it is a private address
-          - text: To a NAT gateway, as private addresses need one
-        explanation:
-          text: This route table has no NAT gateway route, and traffic inside the VPC never needs one.
-    correct_answers: [stays-local]
-    hint:
-      text: When two routes match, which one does the VPC choose?
-    explanation:
-      text: |
-        Every route table has a local route for the VPC's own range, so subnets in the VPC can reach
-        each other. When two routes match a destination, the more specific one wins: `/16` is narrower
-        than `/0`, so traffic to an address inside the VPC stays local.
 
   - id: q07-public-subnet-defined
     page: guide/07-connecting-it/01-your-own-network.md
@@ -466,62 +415,6 @@ questions:
         route table sends `0.0.0.0/0` to it. Routing the private subnets to the internet gateway would
         make them public instead.
 
-  - id: q07-nat-setup-two-parts
-    page: guide/07-connecting-it/01-your-own-network.md
-    section: "A NAT gateway lets private servers reach out, never the internet reach in, and it bills by the hour"
-    task: "3.5"
-    level: understanding
-    topics: [nat-gateway, route-tables]
-    type: multiple_choice
-    selection: multiple
-    selection_count: 2
-    prompt:
-      text: |
-        A company adds a NAT gateway so that servers in a private subnet can reach the internet. Which
-        two statements describe a correct setup? (Select TWO.)
-    choices:
-      - id: nat-in-private
-        text: The NAT gateway is placed in the private subnet with the servers
-        variants:
-          - text: The NAT gateway sits in the same private subnet as the servers
-          - text: The NAT gateway goes in the private subnet beside the servers
-        explanation:
-          text: The NAT gateway needs a path to the internet, which only a public subnet has.
-      - id: nat-in-public
-        text: The NAT gateway is placed in a public subnet
-        variants:
-          - text: The NAT gateway sits in a public subnet
-          - text: The NAT gateway goes in a public subnet of the VPC
-        explanation:
-          text: Correct. It lives in a public subnet, with an Elastic IP address, so it can pass traffic on to the internet gateway.
-      - id: private-route-to-nat
-        text: The private subnet's route table sends `0.0.0.0/0` to the NAT gateway
-        variants:
-          - text: The private route table points `0.0.0.0/0` at the NAT gateway
-          - text: In the private subnet's route table, `0.0.0.0/0` targets the NAT gateway
-        explanation:
-          text: Correct. That route sends the private servers' internet traffic to the NAT gateway.
-      - id: private-route-to-igw
-        text: The private subnet's route table sends `0.0.0.0/0` to the internet gateway
-        variants:
-          - text: The private route table points `0.0.0.0/0` at the internet gateway
-          - text: In the private subnet's route table, `0.0.0.0/0` targets the internet gateway
-        explanation:
-          text: That route would make the subnet public, which is what the NAT gateway is meant to avoid.
-      - id: public-ip-each-server
-        text: Each private server is given its own public IPv4 address
-        variants:
-          - text: Every server in the private subnet gets a public IPv4 address
-          - text: The private servers each receive a public IPv4 address
-        explanation:
-          text: The servers keep only private addresses. The NAT gateway's Elastic IP address is the one the internet sees.
-    correct_answers: [nat-in-public, private-route-to-nat]
-    explanation:
-      text: |
-        A NAT gateway sits in a public subnet with an Elastic IP address, and the private subnet's route
-        table sends `0.0.0.0/0` to it. The private servers keep private addresses only, and nobody on the
-        internet can start a connection to them through the NAT gateway.
-
   - id: q07-igw-vs-nat-contrast
     page: guide/07-connecting-it/01-your-own-network.md
     section: "A NAT gateway lets private servers reach out, never the internet reach in, and it bills by the hour"
@@ -619,58 +512,6 @@ questions:
         every GB it processes; its Elastic IP address bills too. The internet gateway has no charge.
         Because the hourly charge doesn't depend on traffic, a NAT gateway left running "just in case"
         costs almost as much as a busy one. (Exact rates are on the Amazon VPC pricing page and change.)
-
-  - id: q07-nat-gateway-per-az
-    page: guide/07-connecting-it/01-your-own-network.md
-    section: "\"A NAT gateway is free\" is wrong"
-    task: "3.5"
-    level: understanding
-    topics: [nat-gateway, high-availability]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A company's private servers run in two Availability Zones and reach the internet through one NAT
-        gateway of the usual kind, not AWS's newer Regional option. Why might it run one NAT gateway in
-        each Availability Zone instead of one in total?
-    choices:
-      - id: bandwidth-limit
-        text: One NAT gateway can serve only one private subnet at any one time
-        variants:
-          - text: Each NAT gateway can be used by just one of the private subnets
-          - text: A single NAT gateway handles traffic for only a single subnet
-        explanation:
-          text: Several private subnets can route to one NAT gateway. The concern is where that one gateway lives.
-      - id: az-failure
-        text: It lives in one zone, so losing that zone strands the other zone's servers
-        variants:
-          - text: It sits in one zone, and a failure there cuts off the other zone's servers
-          - text: It belongs to one zone, so if that zone fails the other zone has no way out
-        explanation:
-          text: Correct. One per zone keeps each zone's servers able to reach out if the other zone fails, and it also cuts cross-zone traffic.
-      - id: two-required
-        text: AWS requires at least two NAT gateways in any VPC that uses one
-        variants:
-          - text: A VPC that uses a NAT gateway must, by AWS's rules, have two or more
-          - text: AWS won't let a VPC use NAT gateways unless it has at least two
-        explanation:
-          text: AWS has no such rule; one NAT gateway works. A second one is a design choice for availability, and it adds its own hourly charge.
-      - id: inbound-access
-        text: Two NAT gateways let customers start connections to the private servers
-        variants:
-          - text: With two NAT gateways, people on the internet can reach the private servers
-          - text: A second NAT gateway allows connections in from the internet
-        explanation:
-          text: No number of NAT gateways lets the internet start connections in; that is the point of a NAT gateway.
-    correct_answers: [az-failure]
-    explanation:
-      text: |
-        A NAT gateway lives in one Availability Zone. If that zone fails, servers in the other zone lose
-        their way out through it. A NAT gateway in each zone avoids that, at the cost of a second hourly
-        charge, and AWS also suggests it to cut charges for traffic crossing zones. All of this is about
-        the usual NAT gateway, which lives in one zone; AWS's NAT gateway guide also describes a newer
-        Regional option that spreads across zones by itself, so check its current wording before you
-        design one.
 
   - id: q07-dynamodb-gateway-endpoint
     page: guide/07-connecting-it/01-your-own-network.md
@@ -832,7 +673,7 @@ questions:
 
   - id: q07-free-vpc-parts
     page: guide/07-connecting-it/01-your-own-network.md
-    section: "What you pay for"
+    section: "Summary"
     task: "4.1"
     level: recall
     topics: [cost, amazon-vpc]
@@ -890,7 +731,7 @@ questions:
   - id: q07-network-design-customer
     revision: 2
     page: guide/07-connecting-it/01-your-own-network.md
-    section: "Your side of the line"
+    section: "Summary"
     task: "2.1"
     level: application
     topics: [shared-responsibility, amazon-vpc]
@@ -941,8 +782,8 @@ questions:
         public addresses. A database in a public subnet with a public address is the customer's mistake.
 
   - id: q07-lab-gateway-attached-not-public
-    page: guide/07-connecting-it/05-lab-09-build-a-small-vpc.md
-    section: "Part A: build the network"
+    page: guide/07-connecting-it/01-your-own-network.md
+    section: "A subnet is public because of its route, not because of its addresses"
     task: "3.5"
     level: application
     topics: [subnets, internet-gateway, route-tables]
@@ -992,7 +833,7 @@ questions:
         route.
 
   # ---------------------------------------------------------------------------------------------
-  # Lesson 07.02, Filtering traffic, and Simulation S8
+  # Lesson 07.02, Filtering traffic
   # ---------------------------------------------------------------------------------------------
 
   - id: q07-sg-rule-kinds
@@ -1195,55 +1036,6 @@ questions:
         database accepts it at once, and a terminated server stops counting. A list of addresses would
         need constant edits.
 
-  - id: q07-sg-rule-bad-practice
-    page: guide/07-connecting-it/02-filtering-traffic.md
-    section: "A security group allows traffic to a resource and remembers each conversation"
-    task: "3.5"
-    level: understanding
-    topics: [security-groups, best-practices]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A security review of a company's security groups flags one inbound rule as a bad practice that
-        should be removed. Which rule is it?
-    choices:
-      - id: https-public-web
-        text: HTTPS (TCP 443) from `0.0.0.0/0`, on a public web server
-        variants:
-          - text: TCP 443 from anywhere, on a public web server
-          - text: HTTPS from all addresses, on a public web server
-        explanation:
-          text: A public website must accept HTTPS from customers anywhere, so this rule is normal.
-      - id: db-from-web-sg
-        text: PostgreSQL (TCP 5432) from the web servers' security group, on a database
-        variants:
-          - text: TCP 5432 from the web tier's security group, on a database
-          - text: PostgreSQL from the web servers' group only, on a database
-        explanation:
-          text: "This is the recommended pattern: only the web tier may reach the database, on one port."
-      - id: https-from-lb-sg
-        text: HTTPS (TCP 443) from the load balancer's security group, on a web server
-        variants:
-          - text: TCP 443 from the load balancer's group, on a web server
-          - text: HTTPS from the load balancer's security group only, on a web server
-        explanation:
-          text: Allowing only the load balancer to reach the servers is a tight, sensible rule.
-      - id: ssh-from-anywhere
-        text: SSH (TCP 22) from `0.0.0.0/0`, on an application server
-        variants:
-          - text: TCP 22 from anywhere, on an application server
-          - text: SSH from all addresses, on an application server
-        explanation:
-          text: Correct. AWS's best practices say never to open SSH (22) or RDP (3389) to `0.0.0.0/0`.
-    correct_answers: [ssh-from-anywhere]
-    explanation:
-      text: |
-        AWS advises never opening remote-login ports such as SSH (22) or RDP (3389) to the whole internet,
-        and not opening wide port ranges. Rules should be as narrow as the job allows: the right port,
-        from the right source, often another security group. HTTPS from anywhere is fine for a public
-        website, because its customers are everywhere.
-
   - id: q07-block-range-api
     page: guide/07-connecting-it/02-filtering-traffic.md
     section: "A network ACL checks every packet entering or leaving a subnet, in number order"
@@ -1295,58 +1087,6 @@ questions:
         deciding. A deny rule for the range, numbered below the rule that allows the login traffic,
         stops the attackers at the subnet's edge while everyone else still matches the allow rule.
         Security groups can't deny.
-
-  - id: q07-nacl-first-match-https
-    page: guide/07-connecting-it/02-filtering-traffic.md
-    section: "A network ACL checks every packet entering or leaving a subnet, in number order"
-    task: "3.5"
-    level: application
-    topics: [network-acls]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A subnet's network ACL has these inbound rules: rule 100 allows HTTPS (TCP 443) from `0.0.0.0/0`;
-        rule 200 denies all traffic from `198.51.100.0/24`; rule `*` denies all traffic. An HTTPS request
-        arrives from `198.51.100.7`. What does the network ACL do with it?
-    choices:
-      - id: denied-200
-        text: It denies it, by rule 200, because deny rules are checked first
-        variants:
-          - text: Rule 200 denies it, since denies are checked before allows
-          - text: It is denied by rule 200, as deny rules take priority
-        explanation:
-          text: Network ACLs don't check deny rules first. They check by number, and rule 100 comes first.
-      - id: denied-star
-        text: It denies it, by the `*` rule, because two rules conflict
-        variants:
-          - text: The `*` rule denies it, since rules 100 and 200 conflict
-          - text: It is denied by the `*` rule, as the two numbered rules clash
-        explanation:
-          text: There is no conflict. The first matching rule decides and the others aren't checked.
-      - id: passes-to-sg
-        text: It ignores it, because security groups make every decision
-        variants:
-          - text: It doesn't judge it, since only security groups decide
-          - text: It leaves it alone, as security groups decide everything
-        explanation:
-          text: A network ACL filters every packet crossing the subnet's edge, before any security group sees it.
-      - id: allowed-100
-        text: It allows it, by rule 100, because rule 100 matches first
-        variants:
-          - text: Rule 100 allows it, since rule 100 is the first match
-          - text: It is allowed by rule 100, as that rule matches first
-        explanation:
-          text: Correct. Rule 100 matches HTTPS from any address, so it decides; rule 200 is never reached.
-    correct_answers: [allowed-100]
-    hint:
-      text: Network ACL rules aren't sorted by allow or deny.
-    explanation:
-      text: |
-        A network ACL checks its rules from the lowest number up and stops at the first match. Rule 100
-        matches any HTTPS request, including this one, so the request is allowed and rule 200 never runs.
-        To block the range, the deny rule needs a number below 100. (An SSH attempt from the same range
-        would skip rule 100, which covers only HTTPS, and be denied by rule 200.)
 
   - id: q07-nacl-deny-renumber
     page: guide/07-connecting-it/02-filtering-traffic.md
@@ -1454,7 +1194,7 @@ questions:
 
   - id: q07-sg-replies-no-outbound
     page: guide/07-connecting-it/02-filtering-traffic.md
-    section: "A security group lets replies through on its own; a network ACL checks them again"
+    section: "A security group allows traffic to a resource and remembers each conversation"
     task: "3.5"
     level: understanding
     topics: [security-groups, stateful-stateless]
@@ -1503,7 +1243,7 @@ questions:
 
   - id: q07-custom-nacl-no-outbound
     page: guide/07-connecting-it/02-filtering-traffic.md
-    section: "A security group lets replies through on its own; a network ACL checks them again"
+    section: "\"Return traffic always gets through\" is wrong"
     task: "3.5"
     level: application
     topics: [network-acls, stateful-stateless]
@@ -1709,8 +1449,8 @@ questions:
         network ACL's outbound rules must allow it because it is stateless.
 
   - id: q07-private-subnet-open-sg
-    page: guide/07-connecting-it/02-filtering-traffic.md
-    section: "Predict whether traffic passes by walking the path"
+    page: guide/07-connecting-it/01-your-own-network.md
+    section: "A subnet is public because of its route, not because of its addresses"
     task: "3.5"
     level: application
     topics: [subnets, security-groups]
@@ -1864,112 +1604,6 @@ questions:
         troubleshooting and security analysis. Amazon Inspector scans workloads and reports unintended
         network exposure. Neither blocks anything; security groups and network ACLs do the filtering.
 
-  - id: q07-sim-sg-outbound-db
-    page: guide/07-connecting-it/06-sim-packet-journey.md
-    section: "Decision 4: \"The shop loads, but every order page says the database is unavailable.\""
-    task: "3.5"
-    level: application
-    topics: [security-groups, stateful-stateless]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        To "tighten things up", an administrator replaces a web server's security group outbound rule
-        "All traffic" with "TCP 443 to `0.0.0.0/0`". Customers still get web pages, but the web server can
-        no longer reach its database on TCP 5432. Why?
-    choices:
-      - id: db-sg-blocks
-        text: The database's security group now refuses the web server
-        variants:
-          - text: The database's security group has started rejecting the web server
-          - text: The web server is now refused by the database's security group
-        explanation:
-          text: Nothing changed on the database's side. The connection never leaves the web server.
-      - id: nacl-blocks
-        text: The network ACL now blocks traffic between the two subnets
-        variants:
-          - text: Traffic between the subnets is now blocked by the network ACL
-          - text: The network ACL has started blocking the two subnets' traffic
-        explanation:
-          text: The network ACLs didn't change. The only change was to the web server's security group.
-      - id: replies-blocked
-        text: The database's replies are blocked by the new outbound rule
-        variants:
-          - text: The new outbound rule stops the database's replies
-          - text: Replies from the database are refused by the new outbound rule
-        explanation:
-          text: "The connection fails before any reply exists: the web server's outgoing request is refused."
-      - id: outbound-applies-started
-        text: Outbound rules apply to connections the server starts, and 5432 isn't allowed
-        variants:
-          - text: A connection the server starts is checked by outbound rules, which omit 5432
-          - text: The server starts this connection, and its outbound rules don't allow 5432
-        explanation:
-          text: Correct. Customers still get pages because replies to their requests pass automatically.
-    correct_answers: [outbound-applies-started]
-    hint:
-      text: Who starts each conversation, the customer or the web server?
-    explanation:
-      text: |
-        A security group's outbound rules don't matter for replies, which pass automatically, but they do
-        apply to connections its own server starts. The web server starts the connection to the
-        database, so it needs an outbound rule allowing TCP 5432, for example to the database's security
-        group. Customers' page requests are unaffected because the web server only replies to them.
-
-  - id: q07-sim-test-server-db
-    page: guide/07-connecting-it/06-sim-packet-journey.md
-    section: "Decision 1: for each packet, list the checks it passes, in order, and name the rule that stops it, if any"
-    task: "3.5"
-    level: application
-    topics: [security-groups, network-acls]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A database's subnet has a network ACL that allows TCP 5432 in from the VPC's whole range and
-        allows replies back to it. The database's security group allows TCP 5432 only from the security
-        group `web-sg`. Someone launches a test server in the web servers' subnet with its own security
-        group, `test-sg`, which allows all outbound traffic. The test server tries to connect to the
-        database on port 5432. What happens?
-    choices:
-      - id: connects-nacl
-        text: It connects, because the network ACL allows the VPC's whole range
-        variants:
-          - text: It gets through, since the network ACL lets in the entire VPC range
-          - text: It connects, as the network ACL allows every address in the VPC
-        explanation:
-          text: The network ACL does let it in, but the security group around the database still has to allow it.
-      - id: blocked-db-sg
-        text: The database's security group refuses it, as it lacks `web-sg`
-        variants:
-          - text: The database's security group stops it, as it isn't in `web-sg`
-          - text: It is blocked by the database's security group, lacking `web-sg`
-        explanation:
-          text: Correct. The rule names a security group, not a subnet, so only servers carrying `web-sg` qualify.
-      - id: blocked-nacl
-        text: It is refused by the network ACL, because the test server is new
-        variants:
-          - text: The network ACL stops it, since the test server is new
-          - text: It is blocked at the network ACL, as the test server was just added
-        explanation:
-          text: A network ACL sees only addresses and ports, not how new a server is, and it allows the VPC's range.
-      - id: connects-same-vpc
-        text: It connects, because servers in the same VPC can always reach each other
-        variants:
-          - text: It gets through, since servers in one VPC always reach each other
-          - text: It connects, as anything inside the same VPC can always talk
-        explanation:
-          text: The local route lets the traffic travel, but filters still decide whether it is allowed.
-    correct_answers: [blocked-db-sg]
-    hint:
-      text: The network ACL sees addresses. What does the database's security group look at?
-    explanation:
-      text: |
-        Walk the path: the local route delivers the packet, and both network ACLs allow it because it
-        comes from inside the VPC. The database's security group then decides, and its rule allows only
-        resources carrying `web-sg`. Each layer stops something different; here only the security group
-        can tell the test server from a web server.
-
   # ---------------------------------------------------------------------------------------------
   # Lesson 07.03, Names and the edge
   # ---------------------------------------------------------------------------------------------
@@ -2024,7 +1658,7 @@ questions:
 
   - id: q07-route53-not-a-cdn
     page: guide/07-connecting-it/03-names-and-the-edge.md
-    section: "Route 53 answers \"where is it?\", and it can choose the answer"
+    section: "\"Route 53 is a CDN\" is wrong"
     task: "3.5"
     level: understanding
     topics: [route-53, cloudfront]
@@ -2071,107 +1705,9 @@ questions:
         CloudFront, AWS's content delivery network. The mix-up is tempting because Route 53 also runs at
         the edge.
 
-  - id: q07-alias-record-apex
-    page: guide/07-connecting-it/03-names-and-the-edge.md
-    section: "Route 53 answers \"where is it?\", and it can choose the answer"
-    task: "3.5"
-    level: recall
-    topics: [route-53]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A company wants its bare domain name, such as `example.com` with no `www`, to point at its
-        Amazon CloudFront distribution, whose addresses can change. Which Route 53 feature is designed
-        for this?
-    choices:
-      - id: alias-record
-        text: An alias record
-        variants:
-          - text: A Route 53 alias record
-          - text: An alias record in Route 53
-        explanation:
-          text: Correct. An alias record can point even the bare domain at a CloudFront distribution, a load balancer or an S3 website bucket.
-      - id: health-check
-        text: A health check
-        variants:
-          - text: A Route 53 health check
-          - text: A health check in Route 53
-        explanation:
-          text: A health check tests whether a site works. It doesn't map a name to the distribution.
-      - id: weighted-routing
-        text: Weighted routing
-        variants:
-          - text: A weighted routing policy
-          - text: The weighted routing policy
-        explanation:
-          text: Weighted routing splits users between several places by share. It doesn't solve pointing a name at changing addresses.
-      - id: private-zone
-        text: A private hosted zone
-        variants:
-          - text: A Route 53 private hosted zone
-          - text: A private hosted zone in Route 53
-        explanation:
-          text: A private hosted zone answers only inside chosen VPCs, so customers on the internet couldn't use it.
-    correct_answers: [alias-record]
-    explanation:
-      text: |
-        An alias record is a Route 53 speciality: it can point a name, including the bare domain, at an
-        AWS resource such as a CloudFront distribution, a load balancer or an S3 website bucket, even
-        though that resource's addresses change. Route 53 keeps the answer current for you.
-
-  - id: q07-dns-ttl-slow-switch
-    page: guide/07-connecting-it/03-names-and-the-edge.md
-    section: "Route 53 answers \"where is it?\", and it can choose the answer"
-    task: "3.5"
-    level: understanding
-    topics: [route-53, dns-ttl]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A company's Route 53 failover routing switched to its standby site within a minute of the main site
-        failing. Yet for some time afterward, part of its customers were still sent to the failed site.
-        What explains this?
-    choices:
-      - id: health-check-slow
-        text: Route 53 health checks run only once a day
-        variants:
-          - text: Route 53 checks a site's health just once daily
-          - text: Health checks in Route 53 happen once every day
-        explanation:
-          text: The switch itself happened within a minute, so the health check wasn't the delay.
-      - id: cloudfront-cache
-        text: CloudFront edge locations were still caching the failed site's address
-        variants:
-          - text: CloudFront's edge locations kept the failed site's address in their cache
-          - text: The failed site's address stayed in the caches of CloudFront's edge locations
-        explanation:
-          text: CloudFront caches content, not DNS answers. The copies that matter here are held by other DNS servers.
-      - id: ttl-copies
-        text: Other DNS servers kept the earlier answer until its TTL ran out
-        variants:
-          - text: DNS servers elsewhere held the old answer until its TTL expired
-          - text: Copies of the old DNS answer lasted elsewhere until the TTL ended
-        explanation:
-          text: Correct. Until their copy expires, those servers keep sending users to the old place. A shorter TTL switches faster.
-      - id: manual-step
-        text: Failover routing needs someone to confirm each switch
-        variants:
-          - text: Someone must approve each switch in failover routing
-          - text: A person has to confirm every failover routing switch
-        explanation:
-          text: Failover routing switches with no person acting, once the health check fails.
-    correct_answers: [ttl-copies]
-    explanation:
-      text: |
-        DNS answers are copied. Other DNS servers keep Route 53's answer for the record's time to live
-        (TTL), and until their copy expires, their users still go to the old address. A shorter TTL makes
-        switches reach users sooner, at the cost of more queries.
-
   - id: q07-failover-standby-region
     page: guide/07-connecting-it/03-names-and-the-edge.md
-    section: "A routing policy picks the answer"
+    section: "Route 53 answers \"where is it?\", and it can choose the answer"
     task: "3.5"
     level: application
     topics: [route-53, routing-policies]
@@ -2222,7 +1758,7 @@ questions:
 
   - id: q07-geolocation-contract
     page: guide/07-connecting-it/03-names-and-the-edge.md
-    section: "A routing policy picks the answer"
+    section: "Route 53 answers \"where is it?\", and it can choose the answer"
     task: "3.5"
     level: application
     topics: [route-53, routing-policies]
@@ -2273,7 +1809,7 @@ questions:
 
   - id: q07-weighted-new-version
     page: guide/07-connecting-it/03-names-and-the-edge.md
-    section: "A routing policy picks the answer"
+    section: "Route 53 answers \"where is it?\", and it can choose the answer"
     task: "3.5"
     level: application
     topics: [route-53, routing-policies]
@@ -2324,7 +1860,7 @@ questions:
 
   - id: q07-latency-and-health-checks
     page: guide/07-connecting-it/03-names-and-the-edge.md
-    section: "A routing policy picks the answer"
+    section: "Route 53 answers \"where is it?\", and it can choose the answer"
     task: "3.5"
     level: application
     topics: [route-53, routing-policies]
@@ -2431,57 +1967,6 @@ questions:
         direct request to the bucket is refused. Making the bucket public "because CloudFront needs it"
         is a common and avoidable mistake.
 
-  - id: q07-cloudfront-invalidate-file
-    page: guide/07-connecting-it/03-names-and-the-edge.md
-    section: "CloudFront delivers from near the user, and keeps the origin out of reach"
-    task: "3.2"
-    level: application
-    topics: [cloudfront]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A shop serves its price list through Amazon CloudFront. It uploads a corrected file to the S3
-        origin, but customers keep seeing the old prices because edge locations still hold the old copy.
-        What should the shop do so that customers get the corrected file before the cached copy expires?
-    choices:
-      - id: route53-ttl
-        text: Shorten the TTL on the shop's Route 53 records
-        variants:
-          - text: Lower the TTL of the shop's Route 53 records
-          - text: Reduce the Route 53 records' time to live
-        explanation:
-          text: The DNS TTL governs copies of DNS answers, not CloudFront's copies of files.
-      - id: invalidate
-        text: Invalidate the file in the CloudFront distribution
-        variants:
-          - text: Create a CloudFront invalidation for the file
-          - text: Remove the file from CloudFront's caches with an invalidation
-        explanation:
-          text: Correct. An invalidation withdraws the file from the edge early, so the next request fetches the corrected one.
-      - id: global-accelerator
-        text: Add AWS Global Accelerator in front of the origin
-        variants:
-          - text: Put Global Accelerator in front of the origin
-          - text: Send requests to the origin through Global Accelerator
-        explanation:
-          text: Global Accelerator keeps no copies and isn't used with an S3 origin; it wouldn't clear CloudFront's cache.
-      - id: reupload
-        text: Upload the corrected file to the S3 bucket a second time
-        variants:
-          - text: Put the corrected file into the S3 bucket once again
-          - text: Repeat the upload of the corrected file to S3
-        explanation:
-          text: The origin already has the right file. The edge copies stay until they expire or are invalidated.
-    correct_answers: [invalidate]
-    hint:
-      text: The problem is the copies at the edge, not the file at the origin.
-    explanation:
-      text: |
-        CloudFront keeps copies at edge locations for a cache time, 24 hours by default unless you change
-        it. To withdraw a file early, such as a wrong price list, you invalidate it; the next request then
-        goes to the origin for the corrected file.
-
   - id: q07-cloudfront-what-it-adds
     page: guide/07-connecting-it/03-names-and-the-edge.md
     section: "CloudFront delivers from near the user, and keeps the origin out of reach"
@@ -2543,7 +2028,7 @@ questions:
 
   - id: q07-cloudfront-software-download
     page: guide/07-connecting-it/03-names-and-the-edge.md
-    section: "Choose by what the need is really about"
+    section: "CloudFront delivers from near the user, and keeps the origin out of reach"
     task: "3.2"
     level: application
     topics: [cloudfront]
@@ -2839,66 +2324,9 @@ questions:
         traffic across healthy targets. API Gateway's job is to manage an API: who may call, how often,
         and which version, through authorization, throttling, usage plans, API keys and stages.
 
-  - id: q07-apigw-burst-and-allowance
-    page: guide/07-connecting-it/03-names-and-the-edge.md
-    section: "API Gateway is the managed entrance to your code"
-    task: "3.5"
-    level: application
-    topics: [api-gateway]
-    type: multiple_choice
-    selection: multiple
-    selection_count: 2
-    prompt:
-      text: |
-        A company publishes an API in Amazon API Gateway in front of Lambda functions. It wants to protect
-        the functions from sudden bursts of calls, and to give each outside developer their own allowance
-        of calls. Which two API Gateway features meet these needs? (Select TWO.)
-    choices:
-      - id: throttling
-        text: Throttling
-        variants:
-          - text: Request throttling
-          - text: Throttling of calls
-        explanation:
-          text: Correct. Throttling caps how fast calls arrive, so a spike doesn't overwhelm the functions.
-      - id: oac
-        text: Origin access control
-        variants:
-          - text: An origin access control
-          - text: Origin access control settings
-        explanation:
-          text: Origin access control is a CloudFront feature for keeping an S3 origin private.
-      - id: geolocation
-        text: Geolocation routing
-        variants:
-          - text: The geolocation routing policy
-          - text: Location-based routing by country
-        explanation:
-          text: Geolocation routing is a Route 53 policy. It doesn't limit calls.
-      - id: usage-plans
-        text: Usage plans with API keys
-        variants:
-          - text: API keys tied to usage plans
-          - text: Usage plans and their API keys
-        explanation:
-          text: Correct. Each developer's key is tied to a usage plan that sets their allowance.
-      - id: static-ips
-        text: Static anycast IP addresses
-        variants:
-          - text: Fixed anycast IP addresses
-          - text: Two static IP addresses
-        explanation:
-          text: Static anycast addresses come from AWS Global Accelerator, not API Gateway.
-    correct_answers: [throttling, usage-plans]
-    explanation:
-      text: |
-        API Gateway checks each call before your code runs. Throttling caps how fast calls arrive, and
-        usage plans with API keys give each outside developer their own allowance. Stages, caching and
-        CloudWatch monitoring round out what it adds in front of the code.
-
   - id: q07-edge-customer-side
     page: guide/07-connecting-it/03-names-and-the-edge.md
-    section: "Your side of the line"
+    section: "Summary"
     task: "2.1"
     level: understanding
     topics: [shared-responsibility, cloudfront]
@@ -3106,7 +2534,7 @@ questions:
 
   - id: q07-client-vpn-contractors
     page: guide/07-connecting-it/04-connecting-networks-and-offices.md
-    section: "Client VPN connects people, not networks"
+    section: "A Site-to-Site VPN links an office network over the internet, encrypted"
     task: "3.5"
     level: application
     topics: [client-vpn]
@@ -3156,7 +2584,7 @@ questions:
 
   - id: q07-s2s-vs-client-vpn
     page: guide/07-connecting-it/04-connecting-networks-and-offices.md
-    section: "Client VPN connects people, not networks"
+    section: "A Site-to-Site VPN links an office network over the internet, encrypted"
     task: "3.5"
     level: understanding
     topics: [client-vpn, site-to-site-vpn]
@@ -3252,64 +2680,6 @@ questions:
         location, so the traffic never passes through internet providers. AWS says it can raise bandwidth
         and give a more consistent experience than internet links. Its setup is physical, so it takes
         longer than a VPN, and the existing VPN can stay as a backup.
-
-  - id: q07-dx-add-encryption
-    page: guide/07-connecting-it/04-connecting-networks-and-offices.md
-    section: "Direct Connect is a dedicated line that bypasses the internet"
-    task: "3.5"
-    level: application
-    topics: [direct-connect, private-vs-encrypted]
-    type: multiple_choice
-    selection: multiple
-    selection_count: 2
-    prompt:
-      text: |
-        A bank links its data center to AWS with AWS Direct Connect. A new rule requires all data to be
-        encrypted in transit. Which two options meet the rule while keeping the private path? (Select TWO.)
-    choices:
-      - id: macsec
-        text: Turn on MACsec, if the connection supports it
-        variants:
-          - text: Use MACsec on the connection, where it is supported
-          - text: Enable MACsec on a connection that supports it
-        explanation:
-          text: Correct. MACsec encrypts traffic between your device and the Direct Connect location.
-      - id: already-encrypted
-        text: Change nothing, because Direct Connect encrypts by default
-        variants:
-          - text: Leave it as is, since Direct Connect is encrypted by default
-          - text: Do nothing, as Direct Connect traffic is encrypted already
-        explanation:
-          text: Direct Connect is private, not encrypted. Encryption is something you add.
-      - id: vpn-over-dx
-        text: Run a Site-to-Site VPN over the Direct Connect connection
-        variants:
-          - text: Carry a Site-to-Site VPN across the Direct Connect connection
-          - text: Send a Site-to-Site VPN through the Direct Connect connection
-        explanation:
-          text: Correct. The VPN's IPsec encryption rides on the private line.
-      - id: gateway-endpoint
-        text: Add a gateway endpoint to the VPC's route table
-        variants:
-          - text: Create a gateway endpoint in the VPC's route table
-          - text: Put a gateway endpoint route in the VPC
-        explanation:
-          text: A gateway endpoint reaches S3 or DynamoDB from inside a VPC. It doesn't encrypt the data center link.
-      - id: hosted-connection
-        text: Switch to a hosted connection through a partner
-        variants:
-          - text: Move to a hosted connection from a partner
-          - text: Replace it with a partner's hosted connection
-        explanation:
-          text: Hosted or dedicated describes who provides the port, not whether traffic is encrypted.
-    correct_answers: [macsec, vpn-over-dx]
-    hint:
-      text: Direct Connect gives a private path. What does it not give on its own?
-    explanation:
-      text: |
-        Direct Connect keeps traffic off the internet, but encryption is something you add. Two ways are
-        MACsec, between your device and the Direct Connect location on connections that support it, or a
-        Site-to-Site VPN run over the connection. Either gives a link that is both private and encrypted.
 
   - id: q07-dx-backup-link
     page: guide/07-connecting-it/04-connecting-networks-and-offices.md
@@ -3779,58 +3149,9 @@ questions:
         Regions pays for it every month. Data out to the internet is usually the biggest item, which is
         why the half-truth spreads.
 
-  - id: q07-link-hourly-charge
-    page: guide/07-connecting-it/04-connecting-networks-and-offices.md
-    section: "Data in is free; across, between and out usually costs"
-    task: "4.1"
-    level: recall
-    topics: [cost, site-to-site-vpn, vpc-peering]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A team wants to know which of its network links cost money even in a month when no data moves.
-        Which of these bills for every hour it exists?
-    choices:
-      - id: peering-connection
-        text: A VPC peering connection between two VPCs
-        variants:
-          - text: One peering connection linking two VPCs
-          - text: A peering connection joining a pair of VPCs
-        explanation:
-          text: A peering connection has no hourly charge; you pay only for data moved across zones or Regions.
-      - id: s2s-connection
-        text: A Site-to-Site VPN connection
-        variants:
-          - text: One Site-to-Site VPN connection
-          - text: A VPN connection from an office
-        explanation:
-          text: Correct. A Site-to-Site VPN connection bills by the hour, plus data transfer out and its tunnels' public addresses.
-      - id: internet-gateway
-        text: An internet gateway
-        variants:
-          - text: One internet gateway
-          - text: A VPC's internet gateway
-        explanation:
-          text: The internet gateway has no charge.
-      - id: gateway-endpoint
-        text: A gateway endpoint for S3
-        variants:
-          - text: One S3 gateway endpoint
-          - text: An S3 gateway endpoint
-        explanation:
-          text: Gateway endpoints have no charge.
-    correct_answers: [s2s-connection]
-    explanation:
-      text: |
-        Some links bill for every hour they exist, whether or not data moves: Site-to-Site VPN connections,
-        Transit Gateway attachments, Client VPN associations, interface endpoints and Direct Connect ports.
-        A VPC peering connection, an internet gateway and a gateway endpoint have no hourly charge. (Rates
-        are on AWS's pricing pages and change.)
-
   - id: q07-vpn-customer-side
     page: guide/07-connecting-it/04-connecting-networks-and-offices.md
-    section: "Your side of the line"
+    section: "Summary"
     task: "2.1"
     level: understanding
     topics: [shared-responsibility, site-to-site-vpn]
@@ -3892,7 +3213,7 @@ flashcards:
 
   - id: c07-subnets-in-pairs
     page: guide/07-connecting-it/01-your-own-network.md
-    section: "Each subnet sits in one Availability Zone, so you build them in pairs"
+    section: "A VPC is a private network that you lay out inside one Region"
     task: "3.5"
     level: understanding
     topics: [subnets, high-availability]
@@ -3900,19 +3221,6 @@ flashcards:
       text: Why does a highly available VPC need subnets in pairs?
     back:
       text: Each subnet sits in exactly one Availability Zone, so running copies in two zones takes subnets in two zones.
-
-  - id: c07-specific-route-wins
-    page: guide/07-connecting-it/01-your-own-network.md
-    section: "A route table decides where traffic leaving a subnet goes"
-    task: "3.5"
-    level: recall
-    topics: [route-tables]
-    front:
-      text: Two routes in a route table match the same destination. Which one is used?
-    back:
-      text: |
-        The more specific one, with the larger number after the slash. Traffic for an address inside
-        the VPC matches the local route, not `0.0.0.0/0`.
 
   - id: c07-public-ip-without-route
     page: guide/07-connecting-it/01-your-own-network.md
@@ -3924,33 +3232,6 @@ flashcards:
       text: A server in a subnet with no route to an internet gateway gets a public IPv4 address. What changes?
     back:
       text: Nothing reaches the internet, because there is still no route. The address only adds an hourly charge.
-
-  - id: c07-nat-in-public-subnet
-    revision: 2
-    page: guide/07-connecting-it/01-your-own-network.md
-    section: "A NAT gateway lets private servers reach out, never the internet reach in, and it bills by the hour"
-    task: "3.5"
-    level: understanding
-    topics: [nat-gateway]
-    front:
-      text: Where does a NAT gateway go, and how do private servers reach it?
-    back:
-      text: |
-        In a public subnet, with an Elastic IP address. The private subnet's route table sends
-        `0.0.0.0/0` to the NAT gateway.
-
-  - id: c07-nat-one-per-az
-    page: guide/07-connecting-it/01-your-own-network.md
-    section: "\"A NAT gateway is free\" is wrong"
-    task: "3.5"
-    level: understanding
-    topics: [nat-gateway, high-availability]
-    front:
-      text: Why run one NAT gateway in each Availability Zone?
-    back:
-      text: |
-        A NAT gateway lives in one zone (AWS also describes a newer Regional option). If that zone fails, servers in the other zones lose their way
-        out. One per zone also cuts cross-zone charges.
 
   - id: c07-gateway-endpoint-before-nat
     page: guide/07-connecting-it/01-your-own-network.md
@@ -4002,59 +3283,9 @@ flashcards:
         The deny rule needs a lower number than the allow rule. Rules run from the lowest number up, and
         the first match decides.
 
-  - id: c07-nacl-reply-ports
-    page: guide/07-connecting-it/02-filtering-traffic.md
-    section: "Worked example: four requests to the bakery"
-    task: "3.5"
-    level: application
-    topics: [network-acls, stateful-stateless]
-    front:
-      text: Which outbound network ACL rule lets a web server's replies reach its customers?
-    back:
-      text: |
-        Allow TCP to the customers' temporary high-numbered ports, such as 1024 to 65535. Not port 443:
-        replies go to the customer's port.
-
-  - id: c07-sg-outbound-when
-    page: guide/07-connecting-it/02-filtering-traffic.md
-    section: "A security group lets replies through on its own; a network ACL checks them again"
-    task: "3.5"
-    level: understanding
-    topics: [security-groups, stateful-stateless]
-    front:
-      text: When do a security group's outbound rules matter?
-    back:
-      text: |
-        For connections its own resource starts, such as a web server opening a database connection.
-        Replies to allowed inbound requests pass regardless.
-
-  - id: c07-walk-the-path
-    page: guide/07-connecting-it/02-filtering-traffic.md
-    section: "Predict whether traffic passes by walking the path"
-    task: "3.5"
-    level: recall
-    topics: [security-groups, network-acls, route-tables]
-    front:
-      text: In what order is an inbound request from the internet checked in a VPC?
-    back:
-      text: |
-        The route table, then the network ACL's inbound rules, then the security group's inbound rules.
-        The first "no" stops it.
-
-  - id: c07-dns-switch-not-instant
-    page: guide/07-connecting-it/03-names-and-the-edge.md
-    section: "A routing policy picks the answer"
-    task: "3.5"
-    level: understanding
-    topics: [route-53, dns-ttl]
-    front:
-      text: Why doesn't a Route 53 failover reach every user at once?
-    back:
-      text: Other DNS servers keep the old answer until its TTL expires. A shorter TTL switches faster but means more queries.
-
   - id: c07-geolocation-for-rules
     page: guide/07-connecting-it/03-names-and-the-edge.md
-    section: "A routing policy picks the answer"
+    section: "Route 53 answers \"where is it?\", and it can choose the answer"
     task: "3.5"
     level: understanding
     topics: [route-53, routing-policies]

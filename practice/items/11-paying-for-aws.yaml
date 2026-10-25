@@ -9,8 +9,8 @@ questions:
   # ---------------------------------------------------------------------------------------------
 
   - id: q11-consumption-model-principle
-    page: guide/11-paying-for-aws/01-how-aws-charges.md
-    section: "Pay as you go means every charge is a quantity times a rate"
+    page: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+    section: "Rightsizing and automation keep the variable bill small"
     task: "1.4"
     level: recall
     topics: [cost-drivers, well-architected]
@@ -60,7 +60,7 @@ questions:
 
   - id: q11-rate-falls-with-volume
     page: guide/11-paying-for-aws/01-how-aws-charges.md
-    section: "Pay as you go means every charge is a quantity times a rate"
+    section: "Every charge is a quantity times a rate"
     task: "1.4"
     level: understanding
     topics: [cost-drivers, economies-of-scale]
@@ -110,7 +110,7 @@ questions:
 
   - id: q11-stopped-servers-what-still-bills
     page: guide/11-paying-for-aws/01-how-aws-charges.md
-    section: "Time-based charges run whether or not anyone uses the resource"
+    section: "Every charge is a quantity times a rate"
     task: "4.1"
     level: application
     topics: [cost-drivers, idle-cost]
@@ -171,7 +171,7 @@ questions:
 
   - id: q11-sort-line-onto-meter
     page: guide/11-paying-for-aws/01-how-aws-charges.md
-    section: "Storage bills for what you keep; requests bill for what's used"
+    section: "Every charge is a quantity times a rate"
     task: "4.1"
     level: understanding
     topics: [cost-drivers]
@@ -217,58 +217,6 @@ questions:
         (instances, databases, load balancers, NAT gateways); storage bills per GB-month for what
         you keep; requests bill per call or per run; and data transfer bills per GB, depending on
         direction. Sorting a bill this way shows which charges follow customers and which don't.
-
-  - id: q11-nat-gateway-on-free-path
-    page: guide/11-paying-for-aws/01-how-aws-charges.md
-    section: "Data transfer is priced by direction: in is free, but out, across and between usually cost"
-    task: "4.1"
-    level: application
-    topics: [data-transfer, nat-gateway]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        Instances in a private subnet send 500 GB a month to an S3 bucket in the same Region.
-        The traffic leaves the subnet through a NAT gateway. Data transfer from EC2 to S3 in the
-        same Region has no transfer charge. What does this traffic still add to the bill?
-    choices:
-      - id: nothing
-        text: Nothing, because EC2 to S3 in one Region is free
-        variants:
-          - text: No charge, since same-Region EC2-to-S3 traffic is free
-          - text: Nothing at all, as the path stays inside one Region
-        explanation:
-          text: The transfer itself is free, but a service in the path still charges its own fees. The NAT gateway charges for the data it processes.
-      - id: nat-processing
-        text: The NAT gateway's per-GB fee for the data it processes
-        variants:
-          - text: A per-GB processing charge from the NAT gateway
-          - text: The NAT gateway's charge for each GB passing through it
-        explanation:
-          text: Correct. A NAT gateway bills per GB processed, as well as for every hour it exists, even when the transfer it carries is free.
-      - id: internet-rate
-        text: The data-out-to-the-internet rate for all 500 GB
-        variants:
-          - text: Internet data-out charges on the full 500 GB
-          - text: All 500 GB billed as data out to the internet
-        explanation:
-          text: The data never leaves AWS for the internet; it goes to S3 in the same Region. It isn't billed as data out.
-      - id: cross-region-rate
-        text: The between-Regions rate, charged on both sides
-        variants:
-          - text: Inter-Region transfer charges, applied in each direction
-          - text: The rate for moving data between Regions, both ways
-        explanation:
-          text: Both ends are in the same Region, so no inter-Region charge applies. (The each-direction rule belongs to traffic across Availability Zones.)
-    correct_answers: [nat-processing]
-    explanation:
-      text: |
-        Data transfer from EC2 to S3 in the same Region is free, but services in the path still
-        charge their own fees. A NAT gateway bills for every hour it exists and for every GB it
-        processes, so routing free traffic through it costs money. Lesson 11.01's worked example
-        shows the same line, "data processed by the NAT gateway", appearing on the bakery's bill.
-    hint:
-      text: Separate the price of moving the data from the price of the device it passes through.
 
   - id: q11-cross-az-tradeoff
     page: guide/11-paying-for-aws/01-how-aws-charges.md
@@ -375,7 +323,7 @@ questions:
 
   - id: q11-bill-line-not-following-customers
     page: guide/11-paying-for-aws/01-how-aws-charges.md
-    section: "Worked example: why did the bakery's bill nearly triple?"
+    section: "\"In is free, out is charged\" is only half the rule"
     task: "4.1"
     level: application
     topics: [cost-drivers, explain-a-bill]
@@ -425,56 +373,6 @@ questions:
         bill: that's the line to review.
     hint:
       text: Picture next month, when traffic is back to normal. Which line stays the same?
-
-  - id: q11-expert-question-for-increase
-    page: guide/11-paying-for-aws/01-how-aws-charges.md
-    section: "Worked example: why did the bakery's bill nearly triple?"
-    task: "4.1"
-    level: understanding
-    topics: [explain-a-bill]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A company's AWS bill nearly tripled from one month to the next, and the owner asks whether
-        something is wrong. After sorting the line items by meter, which question about each
-        increase best tells growth apart from a problem?
-    choices:
-      - id: cheapest-region
-        text: Would this line cost less in another Region?
-        variants:
-          - text: Is another Region cheaper for this line?
-          - text: Could this line be cheaper in a different Region?
-        explanation:
-          text: Region prices do differ, but that question is about cutting cost later. It doesn't say whether an increase is normal growth or something that needs attention.
-      - id: biggest-rate
-        text: Which line has the highest rate per unit?
-        variants:
-          - text: Which line's per-unit price is the highest?
-          - text: Which line has the most expensive unit rate?
-        explanation:
-          text: A high unit rate says nothing about why a line grew. A cheap line can still be the one that shouldn't be there.
-      - id: free-tier-ended
-        text: Did the account's Free Tier end this month?
-        variants:
-          - text: Has the Free Tier just run out for this account?
-          - text: Is the jump because the Free Tier ended?
-        explanation:
-          text: That might explain one jump, but it doesn't help judge each line. The expert's test is whether the increase came from customers or from something added.
-      - id: followed-customers
-        text: Did this line grow with customer use, or was it added?
-        variants:
-          - text: Did customers drive this line, or did someone add it?
-          - text: Is this line customer growth, or a newly added item?
-        explanation:
-          text: Correct. Increases that followed customers will fall when demand falls; an item someone added keeps billing, so it needs a decision.
-    correct_answers: [followed-customers]
-    explanation:
-      text: |
-        An expert reads a grown bill in steps: sort by meter, then ask of each increase whether it
-        followed customers. Growth that tracks demand is the business working, and it falls back
-        when demand does. A new resource, such as a NAT gateway someone added, keeps billing every
-        hour and is the item to review.
 
   - id: q11-free-plan-what-ends-it
     page: guide/11-paying-for-aws/01-how-aws-charges.md
@@ -1017,61 +915,9 @@ questions:
         Upfront. Flexibility goes the other way: Convertible Reserved Instances and Compute Savings
         Plans give some discount back in return for freedom to change.
 
-  - id: q11-savings-plan-unused-hour
-    page: guide/11-paying-for-aws/02-purchasing-options.md
-    section: "Savings Plans: commit to dollars per hour, in four types"
-    task: "4.1"
-    level: application
-    topics: [savings-plans]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A company has a Savings Plan with a commitment of $3.00 an hour. Overnight, its eligible
-        usage comes to only $1.80 an hour at the plan's rates. What happens to the other $1.20 in
-        each of those hours?
-    choices:
-      - id: carried-forward
-        text: It carries over to the next busy hour
-        variants:
-          - text: It rolls forward into the next busier hour
-          - text: The next busy hour can use it
-        explanation:
-          text: Each hour stands alone. Unused commitment doesn't carry over.
-      - id: refunded
-        text: It's refunded at the end of the month
-        variants:
-          - text: AWS refunds it when the month closes
-          - text: It comes back as a refund at month end
-        explanation:
-          text: The commitment is billed whether or not it is used; nothing is refunded.
-      - id: spot-covered
-        text: It pays for any Spot usage that hour
-        variants:
-          - text: It covers that hour's Spot Instances
-          - text: Spot usage in that hour soaks it up
-        explanation:
-          text: Savings Plans don't cover Spot usage, and Spot spending doesn't count toward the commitment.
-      - id: paid-and-lost
-        text: It's still billed, and buys nothing
-        variants:
-          - text: It's charged anyway and goes unused
-          - text: It is paid for but covers no usage
-        explanation:
-          text: Correct. You pay the full hourly commitment every hour; whatever usage doesn't fill is lost.
-    correct_answers: [paid-and-lost]
-    explanation:
-      text: |
-        A Savings Plan commits to a fixed amount of spending per hour. Each hour, eligible usage is
-        charged at the plan's lower rates until that hour's commitment is used up; usage beyond it
-        is charged On-Demand. Commitment left unused in an hour is paid for and lost, not carried
-        over, which is why you size a plan to the usage you always have.
-    hint:
-      text: Think about how the commitment is measured, and whether one hour can borrow from another.
-
   - id: q11-two-newer-savings-plan-types
     page: guide/11-paying-for-aws/02-purchasing-options.md
-    section: '"There are two types of Savings Plans" is out of date'
+    section: "Savings Plans: commit to dollars per hour, in four types"
     task: "4.1"
     level: recall
     topics: [savings-plans]
@@ -1128,7 +974,7 @@ questions:
 
   - id: q11-compute-plan-moving-to-fargate
     page: guide/11-paying-for-aws/02-purchasing-options.md
-    section: "Compute or EC2 Instance Savings Plan: flexibility or a deeper discount"
+    section: "Savings Plans: commit to dollars per hour, in four types"
     task: "4.1"
     level: application
     topics: [savings-plans]
@@ -1181,7 +1027,7 @@ questions:
 
   - id: q11-ec2-instance-plan-os-change
     page: guide/11-paying-for-aws/02-purchasing-options.md
-    section: "Compute or EC2 Instance Savings Plan: flexibility or a deeper discount"
+    section: "Savings Plans: commit to dollars per hour, in four types"
     task: "4.1"
     level: application
     topics: [savings-plans, reserved-instances]
@@ -1283,7 +1129,7 @@ questions:
 
   - id: q11-convertible-for-family-change
     page: guide/11-paying-for-aws/02-purchasing-options.md
-    section: "Standard or Convertible"
+    section: "Reserved Instances: a billing discount on a matching configuration"
     task: "4.1"
     level: application
     topics: [reserved-instances]
@@ -1334,7 +1180,7 @@ questions:
 
   - id: q11-standard-ri-sell-when-unneeded
     page: guide/11-paying-for-aws/02-purchasing-options.md
-    section: "Standard or Convertible"
+    section: "Reserved Instances: a billing discount on a matching configuration"
     task: "4.1"
     level: understanding
     topics: [reserved-instances]
@@ -1383,7 +1229,7 @@ questions:
 
   - id: q11-zonal-ri-two-traits
     page: guide/11-paying-for-aws/02-purchasing-options.md
-    section: "Zonal or Regional"
+    section: "Reserved Instances: a billing discount on a matching configuration"
     task: "4.1"
     level: understanding
     topics: [reserved-instances, capacity]
@@ -1439,63 +1285,9 @@ questions:
         tenancy, to any size in the same family. Choose zonal only when you need the capacity
         guarantee.
 
-  - id: q11-size-flexibility-two-mediums
-    page: guide/11-paying-for-aws/02-purchasing-options.md
-    section: "Zonal or Regional"
-    task: "4.1"
-    level: application
-    topics: [reserved-instances, size-flexibility]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A company owns one Regional Reserved Instance for a `t3.large` running Linux on shared
-        tenancy. It replaces that server with two `t3.medium` instances, also Linux. In
-        normalization units, a large counts 4 and a medium 2. How much of the two instances' usage
-        does the reservation cover?
-    choices:
-      - id: none
-        text: None of it, because the type no longer matches
-        variants:
-          - text: Nothing, since the instance type has changed
-          - text: None, as the type is no longer the same
-        explanation:
-          text: That would be true of a zonal Reserved Instance, which has no size flexibility. A Regional one for Linux on shared tenancy applies across sizes in the family.
-      - id: both-fully
-        text: All of both `t3.medium` instances' usage
-        variants:
-          - text: Both `t3.medium` servers, in full
-          - text: The two `t3.medium` instances, completely
-        explanation:
-          text: Correct. One large is worth 4 units and two mediums are 2 units each, so the reservation covers both.
-      - id: one-medium
-        text: Only one of the `t3.medium` instances
-        variants:
-          - text: Just one of the two `t3.medium` servers
-          - text: One `t3.medium`, with the other On-Demand
-        explanation:
-          text: The reservation is worth 4 units, enough for two instances of 2 units each.
-      - id: half-each
-        text: Half of each `t3.medium` instance's usage
-        variants:
-          - text: 50% of each `t3.medium` server's usage
-          - text: Each `t3.medium` is half covered
-        explanation:
-          text: "The units add up to a full match: 2 plus 2 equals the reservation's 4."
-    correct_answers: [both-fully]
-    explanation:
-      text: |
-        A Regional Reserved Instance for Linux on shared tenancy has instance size flexibility: its
-        discount applies to any size in the same family, measured in normalization units (small 1,
-        medium 2, large 4, xlarge 8). A `t3.large` reservation is worth 4 units an hour, which
-        exactly covers two `t3.medium` instances. A smaller reservation would cover a bigger instance
-        only in part.
-    hint:
-      text: Add up the units the two new instances use, and compare with what the reservation is worth.
-
   - id: q11-no-size-flexibility
     page: guide/11-paying-for-aws/02-purchasing-options.md
-    section: "Zonal or Regional"
+    section: "Savings Plans or Reserved Instances: what follows your usage?"
     task: "4.1"
     level: understanding
     topics: [reserved-instances, size-flexibility]
@@ -1598,7 +1390,7 @@ questions:
 
   - id: q11-up-to-figure-in-a-budget
     page: guide/11-paying-for-aws/02-purchasing-options.md
-    section: '"Up to" is a ceiling, not a promise'
+    section: "Savings Plans or Reserved Instances: what follows your usage?"
     task: "4.1"
     level: understanding
     topics: [reserved-instances, discounts]
@@ -1913,7 +1705,7 @@ questions:
 
   - id: q11-capacity-reservation-billing
     page: guide/11-paying-for-aws/02-purchasing-options.md
-    section: '"A Capacity Reservation gets you a discount" is wrong'
+    section: "Capacity Reservations: a guarantee, not a discount"
     task: "4.1"
     level: understanding
     topics: [capacity-reservations]
@@ -2017,8 +1809,8 @@ questions:
   # ---------------------------------------------------------------------------------------------
 
   - id: q11-capacity-on-set-saturdays
-    page: guide/11-paying-for-aws/07-sim-purchasing-option-tree.md
-    section: "Decision 1: choose an option for each workload, and give the reason"
+    page: guide/11-paying-for-aws/02-purchasing-options.md
+    section: "Choosing an option for a usage pattern"
     task: "4.1"
     level: application
     topics: [capacity-reservations, purchasing-options]
@@ -2072,8 +1864,8 @@ questions:
       text: The requirement is a guarantee for a short time. Which option guarantees capacity without a one- or three-year term?
 
   - id: q11-database-savings-plan-engine-change
-    page: guide/11-paying-for-aws/07-sim-purchasing-option-tree.md
-    section: "Decision 1: choose an option for each workload, and give the reason"
+    page: guide/11-paying-for-aws/02-purchasing-options.md
+    section: "Savings Plans: commit to dollars per hour, in four types"
     task: "4.1"
     level: application
     topics: [savings-plans, databases]
@@ -2124,8 +1916,8 @@ questions:
       text: Which commitment is defined by a kind of service rather than one configuration?
 
   - id: q11-commit-to-the-baseline
-    page: guide/11-paying-for-aws/07-sim-purchasing-option-tree.md
-    section: "Decision 2: commit to 0, 2 or 6 servers?"
+    page: guide/11-paying-for-aws/02-purchasing-options.md
+    section: "Choosing an option for a usage pattern"
     task: "4.1"
     level: application
     topics: [savings-plans, reserved-instances, baseline]
@@ -2598,8 +2390,8 @@ questions:
         instances. Nothing is deleted, and whatever the action doesn't cover keeps billing.
 
   - id: q11-deny-policy-running-instances
-    page: guide/11-paying-for-aws/08-sim-guardrail-timeline.md
-    section: "Decision 3: last month you added a budget action to the $5 budget. Which version would have helped?"
+    page: guide/11-paying-for-aws/03-estimate-watch-analyze.md
+    section: "\"A budget caps your spending\" is wrong"
     task: "4.2"
     level: understanding
     topics: [budget-actions]
@@ -2750,7 +2542,7 @@ questions:
 
   - id: q11-slow-growth-needs-budget
     page: guide/11-paying-for-aws/03-estimate-watch-analyze.md
-    section: "Cost Anomaly Detection tells you when spending is unusual, not when it is high"
+    section: "Cost Anomaly Detection tells you when spending is unusual"
     task: "4.2"
     level: application
     topics: [budgets, cost-anomaly-detection]
@@ -2802,7 +2594,7 @@ questions:
 
   - id: q11-new-small-charge-anomaly
     page: guide/11-paying-for-aws/03-estimate-watch-analyze.md
-    section: "Cost Anomaly Detection tells you when spending is unusual, not when it is high"
+    section: "Cost Anomaly Detection tells you when spending is unusual"
     task: "4.2"
     level: application
     topics: [cost-anomaly-detection, budgets]
@@ -2852,62 +2644,6 @@ questions:
         service, account, Region and usage type.
     hint:
       text: The total stays well under the limit. What else about this charge is unusual?
-
-  - id: q11-anomaly-detection-two-traits
-    page: guide/11-paying-for-aws/03-estimate-watch-analyze.md
-    section: "Cost Anomaly Detection tells you when spending is unusual, not when it is high"
-    task: "4.2"
-    level: understanding
-    topics: [cost-anomaly-detection]
-    type: multiple_choice
-    selection: multiple
-    selection_count: 2
-    prompt:
-      text: |
-        Which two statements about AWS Cost Anomaly Detection are correct? (Select TWO.)
-    choices:
-      - id: learns-pattern
-        text: It uses machine learning to learn your normal spending
-        variants:
-          - text: Machine learning teaches it your usual spending pattern
-          - text: It learns your normal spending pattern with machine learning
-        explanation:
-          text: Correct. It learns rhythms such as weekly cycles and steady growth, and alerts when spending departs from them.
-      - id: stops-resource
-        text: It stops the resource that caused an anomaly
-        variants:
-          - text: The resource behind an anomaly is stopped by it
-          - text: It shuts down whatever caused the anomaly
-        explanation:
-          text: Like Budgets alerts, it only tells people; it never stops anything.
-      - id: root-causes
-        text: It names likely root causes, such as service and Region
-        variants:
-          - text: It points to likely causes, such as service and Region
-          - text: Likely root causes, by service and Region, are listed
-        explanation:
-          text: Correct. It ranks likely root causes by cost, by service, account, Region and usage type.
-      - id: no-history
-        text: It detects anomalies in a new service from its first day
-        variants:
-          - text: A service's anomalies are caught from its first day of use
-          - text: New services are covered from the first day they're used
-        explanation:
-          text: A service you've just started using needs about 10 days of history before anomalies in it can be detected.
-      - id: per-monitor-fee
-        text: It charges a monthly fee for each cost monitor
-        variants:
-          - text: Each cost monitor carries a monthly fee
-          - text: Cost monitors are billed monthly, one by one
-        explanation:
-          text: Cost Anomaly Detection has no charge (as of 2026-10-24).
-    correct_answers: [learns-pattern, root-causes]
-    explanation:
-      text: |
-        AWS Cost Anomaly Detection learns your normal spending pattern and alerts when spending
-        departs from it, through a cost monitor (what to watch) and an alert subscription (who hears
-        and when). It names likely root causes and costs nothing. It needs history, works on data up
-        to a day old, and, like Budgets, never stops anything.
 
   - id: q11-cost-explorer-two-jobs
     page: guide/11-paying-for-aws/03-estimate-watch-analyze.md
@@ -3070,7 +2806,7 @@ questions:
 
   - id: q11-which-tools-alert
     page: guide/11-paying-for-aws/03-estimate-watch-analyze.md
-    section: "Pick the tool by the question it answers"
+    section: "The big picture: pick the tool by the question it answers"
     task: "4.2"
     level: understanding
     topics: [cost-tools, budgets, cost-anomaly-detection]
@@ -3126,65 +2862,13 @@ questions:
         and the Cost and Usage Report delivers every line item. None of them changes your resources
         on its own.
 
-  - id: q11-drill-down-next-step
-    page: guide/11-paying-for-aws/03-estimate-watch-analyze.md
-    section: "Worked example: one forgotten instance in January"
-    task: "4.2"
-    level: application
-    topics: [cost-explorer, explain-a-bill]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        In AWS Cost Explorer, an analyst groups last month's daily costs by service and sees that
-        EC2 instance costs jumped on the 11th, while everything else stayed flat. What is the best
-        next step to find the cause?
-    choices:
-      - id: open-cur
-        text: Export the full Cost and Usage Report and search every line
-        variants:
-          - text: Pull the whole CUR and read through every line item
-          - text: Search all line items in a full Cost and Usage Report
-        explanation:
-          text: The raw CUR is for questions the charts can't answer. Here the next level of grouping in Cost Explorer will show the answer in a click.
-      - id: group-instance-type
-        text: Filter to EC2 instances and group by instance type
-        variants:
-          - text: Keep only EC2 instance costs and group them by type
-          - text: Narrow to EC2 instances, then group by instance type
-        explanation:
-          text: Correct. Drilling down one level at a time, from service to instance type or usage type, shows what started on the 11th.
-      - id: new-budget
-        text: Create a new budget for EC2 and wait for its alert
-        variants:
-          - text: Set up an EC2 budget and wait until it alerts
-          - text: Make a budget for EC2, then wait for an alert
-        explanation:
-          text: A budget watches future spending. It doesn't explain a jump that has already happened.
-      - id: pricing-calculator
-        text: Re-price the whole setup in AWS Pricing Calculator
-        variants:
-          - text: Build a fresh estimate of everything in the calculator
-          - text: Estimate the whole setup again in the Pricing Calculator
-        explanation:
-          text: An estimate works from assumptions; it can't show what actually ran on the 11th.
-    correct_answers: [group-instance-type]
-    explanation:
-      text: |
-        The expert's method: separate the flat from the changed, then drill down one level at a
-        time, service first, then instance type or usage type. A new block that starts on one day
-        usually means one new resource. Don't open the raw CUR for a question the charts can answer;
-        once you know the instance type, CloudTrail's event history shows who launched it.
-    hint:
-      text: You already know the service. What's the next level of detail?
-
   # ---------------------------------------------------------------------------------------------
   # Lab 15 and Simulation S14
   # ---------------------------------------------------------------------------------------------
 
   - id: q11-trim-test-copy-hourly-items
-    page: guide/11-paying-for-aws/05-lab-15-pricing-calculator.md
-    section: "Part 2: find the hourly items, and trim the test copy"
+    page: guide/11-paying-for-aws/01-how-aws-charges.md
+    section: "Every charge is a quantity times a rate"
     task: "4.1"
     level: application
     topics: [pricing-calculator, idle-cost]
@@ -3233,111 +2917,6 @@ questions:
         it's stopped, so only deleting the disk ends that charge.
     hint:
       text: Sort each line by whether it bills by the hour, by size, or by use.
-
-  - id: q11-anomaly-silent-new-account
-    page: guide/11-paying-for-aws/08-sim-guardrail-timeline.md
-    section: "Decision 2: why is Cost Anomaly Detection silent?"
-    task: "4.2"
-    level: application
-    topics: [cost-anomaly-detection, billing-data-lag]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A learner opened an AWS account a week ago and has barely used EC2. On Friday evening a
-        tutorial launches several instances, which run all weekend. The account's Cost Anomaly
-        Detection monitor sends nothing by Monday. What is the most likely reason?
-    choices:
-      - id: management-only
-        text: It works in management accounts, not standalone ones
-        variants:
-          - text: Management accounts can use it; standalone ones can't
-          - text: It runs in management accounts, not in standalone ones
-        explanation:
-          text: Anomaly detection works in standalone accounts too; the primer sets it up in one.
-      - id: forecast-only
-        text: It alerts on forecasted cost, not actual cost
-        variants:
-          - text: Its alerts cover forecasts, not actual cost
-          - text: It watches forecasted cost rather than actual cost
-        explanation:
-          text: Forecasted alerts belong to AWS Budgets. Anomaly detection compares actual spending with your normal pattern.
-      - id: needs-history
-        text: It hasn't got enough history for EC2 in this account
-        variants:
-          - text: The account lacks enough EC2 history for it to judge
-          - text: There isn't yet enough EC2 history to compare with
-        explanation:
-          text: Correct. A service needs about 10 days of history before anomalies in it can be detected, and the monitor also works on data up to a day old.
-      - id: weekends-off
-        text: It doesn't watch spending at weekends
-        variants:
-          - text: Weekend spending is outside what it checks
-          - text: It pauses its checks over weekends
-        explanation:
-          text: It runs about three times a day, every day. The problem is the missing history and the data delay.
-    correct_answers: [needs-history]
-    explanation:
-      text: |
-        Cost Anomaly Detection compares spending with your own normal pattern, so it needs a pattern
-        first: about 10 days of history for a service. It also works on data up to 24 hours old, and
-        daily summaries arrive the next day. It's a backstop for established accounts, not a fast
-        alarm for a new one, which is why budgets matter more at the start.
-    hint:
-      text: To call something unusual, a tool must first know what usual looks like.
-
-  - id: q11-production-action-needs-approval
-    page: guide/11-paying-for-aws/08-sim-guardrail-timeline.md
-    section: "Decision 5 (challenge): write the bakery's production guardrails"
-    task: "4.2"
-    level: application
-    topics: [budget-actions, budgets]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        An online shop wants guardrails on the AWS account that runs its live website and order
-        database. Which budget action design best protects against overspending without risking
-        the shop itself?
-    choices:
-      - id: auto-stop-prod
-        text: Stop the live web servers automatically at 100%
-        variants:
-          - text: At 100%, automatically stop the live web servers
-          - text: Have the live web servers stop by themselves at 100%
-        explanation:
-          text: Taking the shop offline to save a small overspend costs far more than it saves. The live site should never be stopped automatically.
-      - id: auto-stop-db
-        text: Stop the order database automatically at 85%
-        variants:
-          - text: At 85%, automatically stop the order database
-          - text: Have the order database stop by itself at 85%
-        explanation:
-          text: Stopping the order database halts every sale. It's exactly what must never be stopped automatically.
-      - id: no-alerts
-        text: Rely on the action alone and turn off alert emails
-        variants:
-          - text: Depend only on the action, with alert emails off
-          - text: Switch off alert emails and trust the action
-        explanation:
-          text: Alerts are how a person learns there's a problem. An action stops only what it names, so alerts must still reach someone who will act.
-      - id: approval-in-prod
-        text: Use an action that waits for a person to approve it
-        variants:
-          - text: Set the action to run only after someone approves
-          - text: Choose an action that needs approval before it runs
-        explanation:
-          text: Correct. In production, an action that waits for approval lets a person judge the alert first. Automatic actions suit sandbox or test accounts.
-    correct_answers: [approval-in-prod]
-    explanation:
-      text: |
-        Budget actions can run automatically or wait until someone approves them. Automatic actions
-        suit known, repeated risks in sandbox or test accounts, such as denying new launches. In
-        production, alerts should reach a shared team address and any action should wait for
-        approval, because stopping the live site or database automatically costs more than it
-        saves.
-    hint:
-      text: What would an automatic stop cost a shop that is taking orders?
 
   # ---------------------------------------------------------------------------------------------
   # Lesson 11.04, Many accounts, one bill (and Lab 16)
@@ -3497,55 +3076,6 @@ questions:
     hint:
       text: For billing, how many accounts does an organization look like?
 
-  - id: q11-ris-before-savings-plans
-    page: guide/11-paying-for-aws/04-many-accounts-one-bill.md
-    section: "A commitment discount goes to its owner first, then to matching usage anywhere in the organization"
-    task: "4.1"
-    level: recall
-    topics: [discount-sharing, reserved-instances, savings-plans]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        An organization owns both Reserved Instances and Savings Plans. In each hour, in what order
-        does AWS apply them to usage?
-    choices:
-      - id: sp-first
-        text: Savings Plans first, then Reserved Instances on the rest
-        variants:
-          - text: First the Savings Plans, then Reserved Instances on what's left
-          - text: Savings Plans before Reserved Instances
-        explanation:
-          text: "It's the other way round: Reserved Instances apply first."
-      - id: customer-choice
-        text: Whichever order the customer sets for each hour
-        variants:
-          - text: In an order the customer chooses for each hour
-          - text: The customer picks the order hour by hour
-        explanation:
-          text: The order is fixed by AWS. The management account controls who shares, not the order.
-      - id: ri-first
-        text: Reserved Instances first, then Savings Plans on the rest
-        variants:
-          - text: First the Reserved Instances, then Savings Plans on what's left
-          - text: Reserved Instances before Savings Plans
-        explanation:
-          text: Correct. Savings Plans then cover the rest, EC2 Instance Savings Plans before Compute Savings Plans.
-      - id: compute-first
-        text: Compute Savings Plans first, then everything else
-        variants:
-          - text: First Compute Savings Plans, then the others
-          - text: Compute Savings Plans ahead of all other commitments
-        explanation:
-          text: Compute Savings Plans come last, after Reserved Instances and EC2 Instance Savings Plans.
-    correct_answers: [ri-first]
-    explanation:
-      text: |
-        Each hour, Reserved Instances are applied first, to the purchasing account's matching usage
-        and then to other accounts with sharing on. Savings Plans then cover what is left: EC2
-        Instance Savings Plans before Compute Savings Plans, the owner's usage first, and the usage
-        with the biggest saving first. Anything still uncovered is billed at On-Demand rates.
-
   - id: q11-zonal-capacity-stays-home
     page: guide/11-paying-for-aws/04-many-accounts-one-bill.md
     section: "A commitment discount goes to its owner first, then to matching usage anywhere in the organization"
@@ -3598,7 +3128,7 @@ questions:
 
   - id: q11-sharing-turned-off
     page: guide/11-paying-for-aws/04-many-accounts-one-bill.md
-    section: "Discounts are shared across the organization unless the management account turns sharing off"
+    section: "A commitment discount goes to its owner first, then to matching usage anywhere in the organization"
     task: "4.1"
     level: understanding
     topics: [discount-sharing]
@@ -3645,58 +3175,6 @@ questions:
         and both the purchasing and the receiving account must have sharing on for a discount to pass
         between them. Unused reservations are still paid for, so turning sharing off can raise the
         monthly bill, which is why AWS offers gentler group sharing.
-
-  - id: q11-prioritized-group-sharing
-    page: guide/11-paying-for-aws/04-many-accounts-one-bill.md
-    section: "Discounts are shared across the organization unless the management account turns sharing off"
-    task: "4.1"
-    level: application
-    topics: [discount-sharing, cost-categories]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A company's retail division paid for a set of Savings Plans and wants its own accounts to
-        get first claim on the discount. Finance doesn't want any of the commitment to go to waste
-        if the retail accounts can't use it all. Which setting fits?
-    choices:
-      - id: prioritized
-        text: Prioritized group sharing for the retail group
-        variants:
-          - text: Retail's accounts in a prioritized sharing group
-          - text: A prioritized group for the retail accounts
-        explanation:
-          text: Correct. A commitment serves its owner, then the group, then the rest of the organization, so retail comes first and nothing is wasted.
-      - id: turn-off-others
-        text: Turn sharing off for every account outside retail
-        variants:
-          - text: Switch off sharing for all non-retail accounts
-          - text: Disable sharing everywhere except retail's accounts
-        explanation:
-          text: That keeps the discount in retail, but any commitment retail can't use is wasted, and the bill can rise.
-      - id: restricted
-        text: Restricted group sharing for the retail group
-        variants:
-          - text: Retail's accounts in a restricted sharing group
-          - text: A restricted group for the retail accounts
-        explanation:
-          text: Restricted group sharing never lets the commitment leave the group, even if it goes unused.
-      - id: separate-org
-        text: Move retail's accounts into their own organization
-        variants:
-          - text: Put the retail accounts in a separate organization
-          - text: Give retail its own new organization
-        explanation:
-          text: A separate organization would stop all sharing with the rest of the company, so unused commitment would be wasted.
-    correct_answers: [prioritized]
-    explanation:
-      text: |
-        Besides turning sharing on or off, the management account can choose group sharing, with
-        groups defined by cost categories. Prioritized group sharing serves the owner, then the group,
-        then the rest of the organization. Restricted group sharing keeps the commitment inside the
-        group even if it goes unused. AWS warns that turning sharing off can raise the bill.
-    hint:
-      text: Two group options exist. Which one still lets leftover discount reach other accounts?
 
   - id: q11-tag-types-in-common
     page: guide/11-paying-for-aws/04-many-accounts-one-bill.md
@@ -4012,7 +3490,7 @@ questions:
 
   - id: q11-accounts-split-without-tags
     page: guide/11-paying-for-aws/04-many-accounts-one-bill.md
-    section: "Give each team a view: accounts first, tags inside shared accounts, cost categories to name the groups"
+    section: "\"A tag shows costs\" is wrong"
     task: "4.2"
     level: understanding
     topics: [cost-allocation, organizations]
@@ -4060,65 +3538,11 @@ questions:
         two together under names the business uses. Use accounts wherever they already split the
         costs, and tag only where they can't.
 
-  - id: q11-split-charge-shared-account
-    page: guide/11-paying-for-aws/04-many-accounts-one-bill.md
-    section: "Give each team a view: accounts first, tags inside shared accounts, cost categories to name the groups"
-    task: "4.2"
-    level: application
-    topics: [cost-categories, cost-allocation]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A company groups costs into a cost category with the values `Sales`, `Support` and
-        `Shared`. The `Shared` value holds a central logging account that every team depends on.
-        Finance wants those logging costs spread across the other two values in proportion to their
-        own costs. Which feature does that?
-    choices:
-      - id: discount-sharing
-        text: Discount sharing between the accounts
-        variants:
-          - text: Sharing discounts across the accounts
-          - text: Commitment discount sharing between accounts
-        explanation:
-          text: Discount sharing decides which account's usage a commitment covers. It doesn't spread one account's costs over others.
-      - id: tag-backfill
-        text: A tag backfill on the logging account
-        variants:
-          - text: Backfilling tags in the logging account
-          - text: A backfill of the logging account's tags
-        explanation:
-          text: A backfill re-applies tag activations to past months; it doesn't divide costs.
-      - id: consolidated-billing
-        text: Consolidated billing for the logging account
-        variants:
-          - text: The logging account's consolidated billing
-          - text: Putting the logging account on consolidated billing
-        explanation:
-          text: Consolidated billing puts all accounts on one bill. It doesn't decide how a shared account's costs are divided.
-      - id: split-charge
-        text: A split charge rule in the cost category
-        variants:
-          - text: The cost category's split charge rule
-          - text: A rule that splits charges, in the cost category
-        explanation:
-          text: Correct. A split charge rule divides one value's costs among others, proportionally, evenly or by fixed percentages.
-    correct_answers: [split-charge]
-    explanation:
-      text: |
-        A cost category is a set of rules that assigns each cost to a value by account, tag, service
-        and more. A split charge rule divides one value's costs among others, proportionally, evenly
-        or by fixed percentages, which is how shared costs such as a logging account get spread
-        fairly. Cost categories aren't named in the exam guide; the guide teaches them as how real
-        organizations finish the job tags start.
-    hint:
-      text: The tool that names the groups also has a rule for dividing one group's costs.
-
 flashcards:
 
   - id: c11-idle-load-balancer-vs-lambda
     page: guide/11-paying-for-aws/01-how-aws-charges.md
-    section: "Time-based charges run whether or not anyone uses the resource"
+    section: "Every charge is a quantity times a rate"
     task: "4.1"
     level: understanding
     topics: [cost-drivers, idle-cost]
@@ -4137,17 +3561,6 @@ flashcards:
       text: Besides data out to the internet, which two kinds of data transfer are charged even though the data never leaves AWS?
     back:
       text: Data across Availability Zones (charged in each direction) and data between Regions.
-
-  - id: c11-explain-bill-question
-    page: guide/11-paying-for-aws/01-how-aws-charges.md
-    section: "Worked example: why did the bakery's bill nearly triple?"
-    task: "4.1"
-    level: understanding
-    topics: [explain-a-bill]
-    front:
-      text: After sorting a grown bill by meter, what question sorts each increase into "fine" or "review this"?
-    back:
-      text: Did it grow with customer use, or did someone add it? Customer-driven lines fall back when demand does; an added resource, such as a NAT gateway, keeps billing.
 
   - id: c11-free-plan-two-clocks
     page: guide/11-paying-for-aws/01-how-aws-charges.md
@@ -4182,20 +3595,9 @@ flashcards:
     back:
       text: Nothing renews. The instance simply carries on at On-Demand rates until you buy a new commitment.
 
-  - id: c11-savings-plan-each-hour
-    page: guide/11-paying-for-aws/02-purchasing-options.md
-    section: "Savings Plans: commit to dollars per hour, in four types"
-    task: "4.1"
-    level: understanding
-    topics: [savings-plans]
-    front:
-      text: In a Savings Plan, what happens to usage above the hourly commitment, and to commitment that goes unused in an hour?
-    back:
-      text: Usage above it is charged at On-Demand rates. Unused commitment is still paid for and lost; it never carries over to another hour.
-
   - id: c11-compute-or-ec2-instance-plan
     page: guide/11-paying-for-aws/02-purchasing-options.md
-    section: "Compute or EC2 Instance Savings Plan: flexibility or a deeper discount"
+    section: "Savings Plans: commit to dollars per hour, in four types"
     task: "4.1"
     level: understanding
     topics: [savings-plans]
@@ -4206,7 +3608,7 @@ flashcards:
 
   - id: c11-standard-or-convertible-later
     page: guide/11-paying-for-aws/02-purchasing-options.md
-    section: "Standard or Convertible"
+    section: "Reserved Instances: a billing discount on a matching configuration"
     task: "4.1"
     level: recall
     topics: [reserved-instances]
@@ -4217,7 +3619,7 @@ flashcards:
 
   - id: c11-zonal-or-regional
     page: guide/11-paying-for-aws/02-purchasing-options.md
-    section: "Zonal or Regional"
+    section: "Reserved Instances: a billing discount on a matching configuration"
     task: "4.1"
     level: understanding
     topics: [reserved-instances, capacity]
@@ -4260,8 +3662,8 @@ flashcards:
       text: It can stop and pick up again, or is split across many instances. EC2 gives a two-minute interruption notice.
 
   - id: c11-commit-to-baseline
-    page: guide/11-paying-for-aws/07-sim-purchasing-option-tree.md
-    section: "Decision 2: commit to 0, 2 or 6 servers?"
+    page: guide/11-paying-for-aws/02-purchasing-options.md
+    section: "Choosing an option for a usage pattern"
     task: "4.1"
     level: understanding
     topics: [baseline, savings-plans]
@@ -4294,7 +3696,7 @@ flashcards:
 
   - id: c11-budget-or-anomaly
     page: guide/11-paying-for-aws/03-estimate-watch-analyze.md
-    section: "Cost Anomaly Detection tells you when spending is unusual, not when it is high"
+    section: "Cost Anomaly Detection tells you when spending is unusual"
     task: "4.2"
     level: understanding
     topics: [budgets, cost-anomaly-detection]
@@ -4305,7 +3707,7 @@ flashcards:
 
   - id: c11-tool-by-keyword
     page: guide/11-paying-for-aws/03-estimate-watch-analyze.md
-    section: "Pick the tool by the question it answers"
+    section: "The Cost and Usage Report holds every line item, delivered through Data Exports"
     task: "4.2"
     level: recall
     topics: [cost-tools]

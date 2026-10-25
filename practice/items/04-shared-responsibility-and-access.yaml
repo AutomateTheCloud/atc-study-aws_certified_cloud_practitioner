@@ -278,7 +278,7 @@ questions:
 
   - id: q04-ec2-to-rds-moves-two
     page: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
-    section: "A database three ways: on-premises, on EC2, on RDS"
+    section: "The line moves with the service: EC2, RDS, Lambda and S3"
     task: "2.1"
     level: understanding
     topics: [shared-responsibility, rds]
@@ -336,7 +336,7 @@ questions:
 
   - id: q04-rds-query-tuning-stays
     page: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
-    section: "A database three ways: on-premises, on EC2, on RDS"
+    section: "The line moves with the service: EC2, RDS, Lambda and S3"
     task: "2.1"
     level: understanding
     topics: [shared-responsibility, rds]
@@ -386,7 +386,7 @@ questions:
   - id: q04-ec2-only-customer-os
     revision: 2
     page: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
-    section: Four services side by side
+    section: "The line moves with the service: EC2, RDS, Lambda and S3"
     task: "2.1"
     level: understanding
     topics: [shared-responsibility]
@@ -439,7 +439,7 @@ questions:
 
   - id: q04-lambda-library-flaw
     page: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
-    section: Four services side by side
+    section: "The line moves with the service: EC2, RDS, Lambda and S3"
     task: "2.1"
     level: application
     topics: [shared-responsibility, lambda]
@@ -493,7 +493,7 @@ questions:
 
   - id: q04-lambda-runtime-deprecated
     page: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
-    section: Four services side by side
+    section: "The line moves with the service: EC2, RDS, Lambda and S3"
     task: "2.1"
     level: application
     topics: [shared-responsibility, lambda]
@@ -548,7 +548,7 @@ questions:
 
   - id: q04-lambda-aws-tasks-two
     page: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
-    section: Four services side by side
+    section: "The line moves with the service: EC2, RDS, Lambda and S3"
     task: "2.1"
     level: understanding
     topics: [shared-responsibility, lambda]
@@ -605,7 +605,7 @@ questions:
 
   - id: q04-serverless-security-claim
     page: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
-    section: '"With serverless, AWS handles the security" is wrong'
+    section: "The line moves with the service: EC2, RDS, Lambda and S3"
     task: "2.1"
     level: understanding
     topics: [shared-responsibility, lambda, misconception]
@@ -759,7 +759,7 @@ questions:
 
   - id: q04-bakery-updates-still-yours-two
     page: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
-    section: "Worked example: who patches what at the bakery"
+    section: "The line moves with the service: EC2, RDS, Lambda and S3"
     task: "2.1"
     level: application
     topics: [shared-responsibility]
@@ -817,7 +817,7 @@ questions:
 
   - id: q04-rds-os-patch-who
     page: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
-    section: "Worked example: who patches what at the bakery"
+    section: "The line moves with the service: EC2, RDS, Lambda and S3"
     task: "2.1"
     level: application
     topics: [shared-responsibility, rds]
@@ -1180,7 +1180,7 @@ questions:
 
   - id: q04-insurer-fire-power-answer
     page: guide/04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md
-    section: "Worked example: answering the insurer's questionnaire"
+    section: "Inherited controls: AWS does all of it"
     task: "2.1"
     level: application
     topics: [shared-responsibility, control-types, compliance]
@@ -1502,57 +1502,6 @@ questions:
         function code, its dependencies, and moving off deprecated runtimes. AWS's automatic runtime
         updates cover functions that use the managed runtimes.
 
-  - id: q04-sim-not-stated-check-docs
-    page: guide/04-shared-responsibility-and-access/08-sim-responsibility-slider.md
-    section: "Decision 5: a cell AWS doesn't fill"
-    task: "2.1"
-    level: understanding
-    topics: [shared-responsibility]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A team is mapping who does each security task for the services it uses. For one task on one service, the AWS pages it is using don't say who is responsible. What should the team do?
-    choices:
-      - id: assume-aws
-        text: Assume AWS does it, because the service is managed
-        variants:
-          - text: Treat it as AWS's, since the service is managed
-          - text: Count it as AWS's job, as the service is managed
-        explanation:
-          text: >-
-            How "managed" a service sounds doesn't decide anything; the service's own statement
-            does.
-      - id: check-service-docs
-        text: Check that service's own documentation before deciding
-        variants:
-          - text: Look it up in the service's documentation first
-          - text: Read that service's documentation before deciding
-      - id: assume-shared
-        text: Record it as shared, so that both sides are covered
-        variants:
-          - text: Mark it as shared, so both sides will cover it
-          - text: Write it down as shared, so neither side misses it
-        explanation:
-          text: >-
-            "Shared" means each side does its own half, not that an unknown task is split. Guessing
-            a split can leave the task undone.
-      - id: assume-nothing
-        text: Leave it out, since unlisted tasks need no owner
-        variants:
-          - text: Drop it, as tasks AWS doesn't list need no owner
-          - text: Skip it, because tasks not listed have no owner
-        explanation:
-          text: >-
-            A task with no owner is a task nobody does. Find out who owns it.
-    correct_answers: [check-service-docs]
-    explanation:
-      text: >-
-        AWS says the customer's share depends on the services it uses, so each service's own
-        documentation fills in the detail. AWS advises reviewing the security chapter of each
-        service's documentation. "AWS doesn't say that here; let me check" is part of the skill,
-        never a guessed split.
-
   - id: q04-sim-line-climbs
     page: guide/04-shared-responsibility-and-access/08-sim-responsibility-slider.md
     section: The whole slider
@@ -1607,7 +1556,7 @@ questions:
 
   - id: q04-expired-token-authentication
     page: guide/04-shared-responsibility-and-access/03-identities.md
-    section: Authentication asks who you are; authorization asks what you may do
+    section: "The big picture: two questions for every request"
     task: "2.3"
     level: application
     topics: [iam, authentication]
@@ -1661,7 +1610,7 @@ questions:
 
   - id: q04-authorization-meaning
     page: guide/04-shared-responsibility-and-access/03-identities.md
-    section: Authentication asks who you are; authorization asks what you may do
+    section: "The big picture: two questions for every request"
     task: "2.3"
     level: recall
     topics: [iam, authentication]
@@ -1812,8 +1761,8 @@ questions:
         changes them, and a group has none.
 
   - id: q04-app-on-ec2-reads-s3
-    page: guide/04-shared-responsibility-and-access/03-identities.md
-    section: "Worked example: an identity for every need at the bakery"
+    page: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+    section: "The big picture: match the credential to who is asking"
     task: "2.3"
     level: application
     topics: [iam, identities, roles]
@@ -1866,7 +1815,7 @@ questions:
 
   - id: q04-team-same-access-group
     page: guide/04-shared-responsibility-and-access/03-identities.md
-    section: "Worked example: an identity for every need at the bakery"
+    section: "An AWS account has four kinds of identity"
     task: "2.3"
     level: application
     topics: [iam, identities, groups]
@@ -1920,8 +1869,8 @@ questions:
         accounts would use IAM Identity Center instead, as lesson 04.05 explains.)
 
   - id: q04-partner-account-role
-    page: guide/04-shared-responsibility-and-access/03-identities.md
-    section: "Worked example: an identity for every need at the bakery"
+    page: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+    section: "Cross-account roles let another account in without new users"
     task: "2.3"
     level: application
     topics: [iam, identities, cross-account]
@@ -1974,7 +1923,7 @@ questions:
 
   - id: q04-admin-cannot-do-root-tasks
     page: guide/04-shared-responsibility-and-access/03-identities.md
-    section: An IAM admin is not the root user
+    section: "\"An IAM admin with `AdministratorAccess` equals root\" is wrong"
     task: "2.3"
     level: understanding
     topics: [iam, root-user, misconception]
@@ -2024,7 +1973,7 @@ questions:
 
   - id: q04-owner-everyday-identity
     page: guide/04-shared-responsibility-and-access/03-identities.md
-    section: "Worked example: an identity for every need at the bakery"
+    section: "Protecting the root user is your job, and you've already done it"
     task: "2.3"
     level: application
     topics: [iam, identities, root-user]
@@ -2074,55 +2023,6 @@ questions:
         uses an IAM identity of her own, protected with MFA. Using root only for the tasks that need
         it is the Well-Architected best practice for the root user; any other use is an
         anti-pattern.
-
-  - id: q04-service-linked-roles
-    page: guide/04-shared-responsibility-and-access/03-identities.md
-    section: An AWS account has four kinds of identity
-    task: "2.3"
-    level: recall
-    topics: [iam, roles]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A new administrator finds roles in IAM that nobody at the company created. An AWS service created them so it can act for the company. What are they?
-    choices:
-      - id: inline-roles
-        text: Inline roles, which you can edit but not reuse
-        variants:
-          - text: Inline roles, editable but never reusable
-          - text: Inline roles, which can be changed but not shared
-        explanation:
-          text: >-
-            "Inline" describes a kind of policy, not a kind of role.
-      - id: cross-account-roles
-        text: Cross-account roles, which you must delete
-        variants:
-          - text: Cross-account roles that must be removed
-          - text: Roles for other accounts, which you have to delete
-        explanation:
-          text: >-
-            A cross-account role lets another account in; nothing in the scenario involves another
-            account.
-      - id: root-sessions
-        text: Root user sessions, which expire on their own
-        variants:
-          - text: Sessions of the root user, which time out
-          - text: Root sessions that expire by themselves
-        explanation:
-          text: >-
-            The root user isn't a role, and its sessions don't appear as roles in IAM.
-      - id: service-linked
-        text: Service-linked roles, which you can view but not edit
-        variants:
-          - text: Service-linked roles, viewable but not editable
-          - text: Service-linked roles, which you can read but not change
-    correct_answers: [service-linked]
-    explanation:
-      text: >-
-        A service-linked role is a role an AWS service creates and owns so it can act for you. You
-        can view its permissions but not edit them. The IAM dashboard shows them even in a new
-        account.
 
   - id: q04-root-only-tasks-two
     page: guide/04-shared-responsibility-and-access/03-identities.md
@@ -2283,7 +2183,7 @@ questions:
 
   - id: q04-root-mfa-requirement
     page: guide/04-shared-responsibility-and-access/03-identities.md
-    section: Root MFA isn't optional
+    section: "\"Root MFA is optional\" is out of date"
     task: "2.3"
     level: recall
     topics: [iam, root-user, mfa, misconception]
@@ -2448,7 +2348,7 @@ questions:
 
   - id: q04-policy-effect-element
     page: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
-    section: "A policy is a list of statements: Effect, Action, Resource"
+    section: "The big picture: policies sit on identities and on resources"
     task: "2.3"
     level: recall
     topics: [iam, policies]
@@ -2964,168 +2864,7 @@ questions:
         (one bucket's ARN, not `*`), and conditions (for example, only with MFA). Each makes a smaller
         grant, so a mistake or a stolen password can do less.
 
-  - id: q04-access-analyzer-validation
-    page: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
-    section: "Least privilege: grant only what the task needs, then keep trimming"
-    task: "2.3"
-    level: understanding
-    topics: [iam, least-privilege, iam-tools]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A security engineer wants IAM to check each new policy as it is written and warn about overly broad statements. Which IAM feature does that?
-    choices:
-      - id: simulator
-        text: The IAM policy simulator
-        variants:
-          - text: IAM's policy simulator
-          - text: The policy simulator in IAM
-        explanation:
-          text: >-
-            The simulator tests whether requests would be allowed or denied; it doesn't review a
-            policy for broad statements.
-      - id: last-accessed
-        text: Last accessed information
-        variants:
-          - text: IAM's last accessed information
-          - text: The last accessed data in IAM
-        explanation:
-          text: >-
-            Last accessed information shows which services an identity has used, after the fact.
-      - id: generation
-        text: IAM Access Analyzer policy generation
-        variants:
-          - text: Policy generation in IAM Access Analyzer
-          - text: Access Analyzer's policy generation
-        explanation:
-          text: >-
-            Policy generation drafts a policy from what an identity actually did, using CloudTrail
-            records. It doesn't check a policy you're writing.
-      - id: validation
-        text: IAM Access Analyzer policy validation
-        variants:
-          - text: Policy validation in IAM Access Analyzer
-          - text: Access Analyzer's policy validation
-    correct_answers: [validation]
-    explanation:
-      text: >-
-        IAM Access Analyzer's policy validation checks a policy as you write it, with over 100
-        checks, and warns about errors and overly broad statements. AWS's IAM best practices ask you
-        to validate policies this way; in the console it appears as a pane under the policy editor.
-
-  - id: q04-trim-unused-permissions-two
-    page: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
-    section: "In real work: permissions shrink over time"
-    task: "2.3"
-    level: application
-    topics: [iam, least-privilege, iam-tools]
-    type: multiple_choice
-    selection: multiple
-    selection_count: 2
-    prompt:
-      text: |
-        A role was given broad permissions a year ago. The team now wants to cut them back to what the role actually uses. Which IAM features help? (Select TWO.)
-    choices:
-      - id: trim-last-accessed
-        text: Last accessed information
-        variants:
-          - text: IAM's last accessed information
-          - text: The last accessed data in IAM
-      - id: trim-simulator
-        text: The IAM policy simulator
-        variants:
-          - text: IAM's policy simulator
-          - text: The policy simulator in IAM
-        explanation:
-          text: >-
-            The simulator tests requests you choose against the policies; it can't tell you what
-            the role has actually used.
-      - id: trim-password-policy
-        text: The account password policy
-        variants:
-          - text: The account's password rules
-          - text: IAM's account password policy
-        explanation:
-          text: >-
-            A password policy sets rules for IAM user passwords; roles have no passwords.
-      - id: trim-generation
-        text: IAM Access Analyzer policy generation
-        variants:
-          - text: Policy generation in IAM Access Analyzer
-          - text: Access Analyzer's policy generation
-      - id: trim-validation
-        text: IAM Access Analyzer policy validation
-        variants:
-          - text: Policy validation in IAM Access Analyzer
-          - text: Access Analyzer's policy validation
-        explanation:
-          text: >-
-            Validation checks a policy's grammar and best practices as you write it; it doesn't
-            know what the role has used.
-    correct_answers: [trim-last-accessed, trim-generation]
-    hint:
-      text: >-
-        You need tools that look at what the role has actually done, not at what it might do.
-    explanation:
-      text: >-
-        Last accessed information shows which services an identity has used and when, so you can
-        remove the rest. Access Analyzer's policy generation drafts a policy from the identity's
-        actual activity in CloudTrail records. Together they support the Well-Architected practice
-        of reducing permissions continuously.
-
   # ------------------------------------------------------------------ Lab 03
-
-  - id: q04-lab03-list-and-get-arns
-    page: guide/04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md
-    section: Write the policy
-    task: "2.3"
-    level: understanding
-    topics: [iam, policies]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A policy must let a group list the files in the bucket `shop-photos` and download them. The bucket's ARN is `arn:aws:s3:::shop-photos`, and the ARN for the files in it is `arn:aws:s3:::shop-photos/*`. Which pairing of actions and resources is correct?
-    choices:
-      - id: both-on-files
-        text: '`s3:ListBucket` and `s3:GetObject`, both on the files ARN'
-        variants:
-          - text: 'Both `s3:ListBucket` and `s3:GetObject` on the ARN ending `/*`'
-          - text: '`s3:ListBucket` plus `s3:GetObject`, each on the files ARN'
-        explanation:
-          text: >-
-            Listing is something you do to the bucket itself, so `s3:ListBucket` needs the bucket's
-            ARN, without `/*`.
-      - id: list-bucket-get-files
-        text: '`s3:ListBucket` on the bucket ARN, `s3:GetObject` on the files ARN'
-        variants:
-          - text: '`s3:GetObject` on the files ARN, `s3:ListBucket` on the bucket ARN'
-          - text: '`s3:ListBucket` on the bucket, `s3:GetObject` on the ARN ending `/*`'
-      - id: swapped
-        text: '`s3:ListBucket` on the files ARN, `s3:GetObject` on the bucket ARN'
-        variants:
-          - text: '`s3:GetObject` on the bucket ARN, `s3:ListBucket` on the files ARN'
-          - text: '`s3:ListBucket` on the ARN ending `/*`, `s3:GetObject` on the bucket'
-        explanation:
-          text: >-
-            That's reversed: downloading acts on files, whose ARN ends in `/*`, and listing acts on
-            the bucket.
-      - id: both-on-bucket
-        text: '`s3:ListBucket` and `s3:GetObject`, both on the bucket ARN'
-        variants:
-          - text: 'Both `s3:ListBucket` and `s3:GetObject` on the ARN without `/*`'
-          - text: '`s3:ListBucket` plus `s3:GetObject`, each on the bucket ARN'
-        explanation:
-          text: >-
-            `s3:GetObject` acts on files, so its resource must be the files ARN, ending in `/*`.
-    correct_answers: [list-bucket-get-files]
-    explanation:
-      text: >-
-        `s3:ListBucket` acts on the bucket, so its resource is the bucket's ARN,
-        `arn:aws:s3:::shop-photos`. `s3:GetObject` acts on files, so its resource is
-        `arn:aws:s3:::shop-photos/*`, meaning every file in the bucket. Getting this wrong is the
-        usual cause of an unexpected "denied" in Lab 03.
 
   - id: q04-lab03-simulator-purpose
     page: guide/04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md
@@ -3146,7 +2885,7 @@ questions:
           - text: Sends genuine requests to resources and shows the outcomes
         explanation:
           text: >-
-            The simulator never sends a request, which is why Lab 04's bucket doesn't need to exist.
+            The simulator never sends a request, which is why the file you test in Lab 03 doesn't need to exist.
       - id: drafts-from-cloudtrail
         text: Drafts a new policy from an identity's activity in CloudTrail
         variants:
@@ -3228,170 +2967,11 @@ questions:
         The simulator reports it as "implicit deny due to no statement(s) matching" (as of
         2026-10-24). Nothing in the policy needs to say "Deny" for the upload to be refused.
 
-  # ------------------------------------------------------------------ Lab 04
-
-  - id: q04-lab04-fix-overbroad-deny
-    page: guide/04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md
-    section: "Part C: uploads fail (break-fix)"
-    task: "2.3"
-    level: application
-    topics: [iam, policy-evaluation]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A group has two policies. One allows uploading photos (`s3:PutObject`) to a bucket. The other was meant only to stop anyone deleting the bucket, but its Deny statement lists both `s3:DeleteBucket` and `s3:PutObject`. Uploads fail. What is the best fix?
-    choices:
-      - id: add-allow
-        text: Add another Allow for `s3:PutObject` to the group
-        variants:
-          - text: Attach a second policy allowing `s3:PutObject`
-          - text: Give the group an extra Allow for `s3:PutObject`
-        explanation:
-          text: >-
-            An explicit deny beats every allow, so another allow changes nothing.
-      - id: delete-protect
-        text: Delete the protecting policy from the group
-        variants:
-          - text: Remove the protecting policy altogether
-          - text: Detach and delete the protecting policy
-        explanation:
-          text: >-
-            Uploads would work, but the protection against deleting the bucket would be gone.
-      - id: remove-putobject
-        text: Remove `s3:PutObject` from the Deny statement
-        variants:
-          - text: Take `s3:PutObject` out of the Deny statement
-          - text: Edit the Deny so it no longer lists `s3:PutObject`
-      - id: bucket-policy-allow
-        text: Allow `s3:PutObject` in the bucket policy instead
-        variants:
-          - text: Grant `s3:PutObject` through the bucket policy
-          - text: Put an Allow for `s3:PutObject` in the bucket policy
-        explanation:
-          text: >-
-            An explicit deny in any applicable policy still overrides an allow from a bucket
-            policy.
-    correct_answers: [remove-putobject]
-    hint:
-      text: >-
-        Keep what the deny was meant to protect, and remove what it blocks by mistake.
-    explanation:
-      text: >-
-        The explicit deny on `s3:PutObject` overrides the upload allow, wherever an allow is added.
-        The fix is to narrow the Deny to its real job: `s3:DeleteBucket` on the bucket's ARN. Uploads
-        are then allowed, and deleting the bucket stays denied.
-
-  - id: q04-lab04-why-keep-deny
-    page: guide/04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md
-    section: "Part C: uploads fail (break-fix)"
-    task: "2.3"
-    level: understanding
-    topics: [iam, policy-evaluation]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        No policy allows a group to delete a bucket, so deleting it is already denied by default. Why might a team still attach an explicit Deny for `s3:DeleteBucket`?
-    choices:
-      - id: implicit-expires
-        text: Implicit denies stop applying after a set time
-        variants:
-          - text: A default deny lapses after a period of time
-          - text: Implicit denies wear off after a while
-        explanation:
-          text: >-
-            The default deny never expires; it applies to every request that nothing allows.
-      - id: holds-if-broadened
-        text: It still holds if a broader policy is attached later
-        variants:
-          - text: It keeps working even if wider rights are added later
-          - text: It stays in force if someone grants more access later
-      - id: groups-need-deny
-        text: Default denies don't apply to members of groups
-        variants:
-          - text: Group members aren't covered by the default deny
-          - text: The default deny skips identities in a group
-        explanation:
-          text: >-
-            Every request from every identity is denied by default, whether or not it's in a group.
-      - id: faster
-        text: An explicit deny makes requests evaluate faster
-        variants:
-          - text: Requests are decided faster with an explicit deny
-          - text: Explicit denies speed up the evaluation of requests
-        explanation:
-          text: >-
-            The reason is protection, not speed.
-    correct_answers: [holds-if-broadened]
-    explanation:
-      text: >-
-        An implicit deny lasts only until something allows the action. An explicit deny keeps
-        working even if someone later attaches a broader policy to the group, because an explicit
-        deny beats every allow. That is what makes it a guardrail: a limit that holds whatever else
-        is granted.
-
-  # ------------------------------------------------------------------ Simulation S4: the policy playground
-
-  - id: q04-sim-cross-account-both-sides-two
-    page: guide/04-shared-responsibility-and-access/09-sim-policy-playground.md
-    section: "Decision 2: fix case 5"
-    task: "2.3"
-    level: understanding
-    topics: [iam, policy-evaluation, cross-account]
-    type: multiple_choice
-    selection: multiple
-    selection_count: 2
-    prompt:
-      text: |
-        A user in Account B needs to download objects from an S3 bucket in Account A. No organization policies are involved. Which policies must allow the request? (Select TWO.)
-    choices:
-      - id: bucket-policy-a
-        text: A bucket policy in Account A that lets Account B in
-        variants:
-          - text: Account A's bucket policy, allowing Account B
-          - text: A policy on Account A's bucket that admits Account B
-      - id: managed-in-a
-        text: An AWS managed policy attached in Account A
-        variants:
-          - text: An AWS managed policy on an identity in Account A
-          - text: A policy managed by AWS, attached in Account A
-        explanation:
-          text: >-
-            A policy on an identity in Account A gives permissions to that identity, not to anyone
-            in Account B.
-      - id: identity-policy-b
-        text: An identity-based policy on the user in Account B
-        variants:
-          - text: Account B's identity-based policy on the user
-          - text: A policy on the user's identity in Account B
-      - id: root-approval-a
-        text: Approval from Account A's root user
-        variants:
-          - text: Sign-off from the root user of Account A
-          - text: Permission from Account A's root user
-        explanation:
-          text: >-
-            Root approval isn't part of policy evaluation; policies decide the request.
-      - id: inline-on-bucket-owner
-        text: An inline policy on Account A's admin user
-        variants:
-          - text: An inline policy on the admin user in Account A
-          - text: Account A's admin user, with an inline policy
-        explanation:
-          text: >-
-            A policy on Account A's admin gives permissions to that admin only.
-    correct_answers: [bucket-policy-a, identity-policy-b]
-    explanation:
-      text: >-
-        Within one account, an allow in either an identity-based or a resource-based policy is
-        enough. Across two accounts, both sides must allow: the resource's policy must let the other
-        account in, and the requester's own account must allow the action through an identity-based
-        policy. Account A can't grant the second half; only Account B can.
+  # ------------------------------------------------------------------ Policy evaluation (SCPs taught in lesson 09.05)
 
   - id: q04-sim-scp-caps-admin
-    page: guide/04-shared-responsibility-and-access/09-sim-policy-playground.md
-    section: "Decision 1: predict all eight"
+    page: guide/09-protecting-and-governing/05-compliance-and-governance.md
+    section: "An SCP is a ceiling: it limits everyone in a member account, and grants nothing"
     task: "2.3"
     level: application
     topics: [iam, policy-evaluation, organizations]
@@ -3443,8 +3023,8 @@ questions:
         allows only S3 actions, so creating an IAM user is denied.
 
   - id: q04-sim-scp-allows-all-no-policy
-    page: guide/04-shared-responsibility-and-access/09-sim-policy-playground.md
-    section: "Decision 1: predict all eight"
+    page: guide/09-protecting-and-governing/05-compliance-and-governance.md
+    section: "An SCP is a ceiling: it limits everyone in a member account, and grants nothing"
     task: "2.3"
     level: understanding
     topics: [iam, policy-evaluation, organizations]
@@ -3494,8 +3074,8 @@ questions:
         request ends in the default deny, however permissive the SCP is.
 
   - id: q04-sim-bucket-policy-same-account
-    page: guide/04-shared-responsibility-and-access/09-sim-policy-playground.md
-    section: "Decision 1: predict all eight"
+    page: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
+    section: "How AWS decides: default deny, then allows, then an explicit deny wins"
     task: "2.3"
     level: application
     topics: [iam, policy-evaluation]
@@ -3708,55 +3288,6 @@ questions:
         or later), gives the CLI temporary credentials from a console sign-in. Neither needs a
         long-term access key.
 
-  - id: q04-access-key-secret-once
-    page: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
-    section: "Access keys are long-term secrets: avoid them where you can"
-    task: "2.3"
-    level: recall
-    topics: [iam, credentials, access-keys]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        Which statement about IAM access keys is true?
-    choices:
-      - id: expire-12h
-        text: They stop working on their own after 12 hours.
-        variants:
-          - text: They expire by themselves after 12 hours.
-          - text: After 12 hours they stop working automatically.
-        explanation:
-          text: >-
-            Access keys are long-term: they work until someone deletes them. Temporary credentials
-            are the ones that expire.
-      - id: mfa-each-use
-        text: They prompt for an MFA code each time they're used.
-        variants:
-          - text: Each use of them asks for an MFA code.
-          - text: They need an MFA code every time they're used.
-        explanation:
-          text: >-
-            An access key lets a program act without a password or MFA, which is part of the risk.
-      - id: root-cannot
-        text: They can't be created for the root user at all.
-        variants:
-          - text: The root user is unable to have them.
-          - text: No access key can ever exist for the root user.
-        explanation:
-          text: >-
-            Root access keys can exist, and that's the danger: AWS advises never creating them.
-      - id: secret-once
-        text: The secret part is shown only once, at creation.
-        variants:
-          - text: The secret access key is shown just once, when created.
-          - text: Their secret is displayed only once, when they're made.
-    correct_answers: [secret-once]
-    explanation:
-      text: >-
-        An access key has two parts: an access key ID and a secret access key, and the secret is
-        shown only once, when the key is created. A key works until someone deletes it, and lets a
-        program act as an IAM user (or the root user) without a password or MFA.
-
   - id: q04-temporary-beats-access-keys
     page: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
     section: "Access keys are long-term secrets: avoid them where you can"
@@ -3807,7 +3338,7 @@ questions:
 
   - id: q04-unavoidable-access-key-practice
     page: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
-    section: '"Access keys are the normal way to use the command line" is out of date'
+    section: "Access keys are long-term secrets: avoid them where you can"
     task: "2.3"
     level: application
     topics: [iam, credentials, access-keys]
@@ -4280,7 +3811,7 @@ questions:
 
   - id: q04-staff-and-customers-two
     page: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
-    section: "Worked example: the bakery grows"
+    section: "Four identity services, side by side"
     task: "2.3"
     level: application
     topics: [federation, identity-center, cognito]
@@ -4391,11 +3922,11 @@ questions:
         then stop working. Roles and federation, including IAM Identity Center, are built on them.
         Passwords and access keys are long-term: they work until someone changes or deletes them.
 
-  # ------------------------------------------------------------------ Simulation S4: decisions 3 and 5
+  # ------------------------------------------------------------------ 04.05 cross-account roles and permission sets
 
   - id: q04-sim-cross-account-role-parts-two
-    page: guide/04-shared-responsibility-and-access/09-sim-policy-playground.md
-    section: "Decision 3: a role instead of a bucket policy"
+    page: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+    section: "Cross-account roles let another account in without new users"
     task: "2.3"
     level: application
     topics: [iam, roles, cross-account]
@@ -4454,8 +3985,8 @@ questions:
         partner's account. Assuming the role gives temporary credentials.
 
   - id: q04-sim-permission-set
-    page: guide/04-shared-responsibility-and-access/09-sim-policy-playground.md
-    section: "Decision 5: thirty staff, ten shop accounts"
+    page: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+    section: "Federation: sign in once, elsewhere, and receive temporary access"
     task: "2.3"
     level: recall
     topics: [federation, identity-center]
@@ -4510,7 +4041,7 @@ flashcards:
 
   - id: c04-layers-that-never-move
     page: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
-    section: "Worked example: who patches what at the bakery"
+    section: "The line moves with the service: EC2, RDS, Lambda and S3"
     task: "2.1"
     level: understanding
     topics: [shared-responsibility]
@@ -4550,7 +4081,7 @@ flashcards:
 
   - id: c04-rds-what-stays
     page: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
-    section: "A database three ways: on-premises, on EC2, on RDS"
+    section: "The line moves with the service: EC2, RDS, Lambda and S3"
     task: "2.1"
     level: recall
     topics: [shared-responsibility, rds]
@@ -4563,7 +4094,7 @@ flashcards:
 
   - id: c04-ec2-to-rds-hands-aws
     page: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
-    section: "A database three ways: on-premises, on EC2, on RDS"
+    section: "The line moves with the service: EC2, RDS, Lambda and S3"
     task: "2.1"
     level: understanding
     topics: [shared-responsibility, rds]
@@ -4576,7 +4107,7 @@ flashcards:
 
   - id: c04-lambda-what-stays
     page: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
-    section: '"With serverless, AWS handles the security" is wrong'
+    section: "The line moves with the service: EC2, RDS, Lambda and S3"
     task: "2.1"
     level: understanding
     topics: [shared-responsibility, lambda, misconception]
@@ -4618,8 +4149,8 @@ flashcards:
   # ------------------------------------------------------------------ 04.03
 
   - id: c04-why-role-for-program
-    page: guide/04-shared-responsibility-and-access/03-identities.md
-    section: "Worked example: an identity for every need at the bakery"
+    page: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+    section: "The big picture: match the credential to who is asking"
     task: "2.3"
     level: understanding
     topics: [iam, roles, credentials]
@@ -4674,7 +4205,7 @@ flashcards:
 
   - id: c04-admin-not-root-reasons
     page: guide/04-shared-responsibility-and-access/03-identities.md
-    section: An IAM admin is not the root user
+    section: "\"An IAM admin with `AdministratorAccess` equals root\" is wrong"
     task: "2.3"
     level: understanding
     topics: [iam, root-user, misconception]
@@ -4689,7 +4220,7 @@ flashcards:
 
   - id: c04-explicit-deny-wins
     page: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
-    section: '"An allow somewhere means it''s allowed" is wrong'
+    section: "How AWS decides: default deny, then allows, then an explicit deny wins"
     task: "2.3"
     level: understanding
     topics: [iam, policy-evaluation]
@@ -4699,33 +4230,6 @@ flashcards:
       text: >-
         The action is denied. An explicit deny in any policy that applies beats every allow,
         wherever the allow is: allows add up only until a deny appears.
-
-  - id: c04-limit-only-policy-types
-    page: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
-    section: "How AWS decides: default deny, then allows, then an explicit deny wins"
-    task: "2.3"
-    level: recall
-    topics: [iam, policy-evaluation]
-    front:
-      text: Which three policy types only set limits and grant nothing by themselves?
-    back:
-      text: >-
-        Service control policies (SCPs), permissions boundaries and session policies. If one
-        applies, it must also allow the request, on top of a real allow elsewhere.
-
-  - id: c04-one-vs-two-accounts
-    page: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
-    section: Identity-based policies follow the identity; resource-based policies sit on the thing
-    task: "2.3"
-    level: understanding
-    topics: [iam, policy-evaluation, cross-account]
-    front:
-      text: Which policies must allow a request within one account, and which across two accounts?
-    back:
-      text: >-
-        Within one account, an allow in either an identity-based or a resource-based policy is
-        enough. Across two accounts, both must allow: the resource's policy and the requester's
-        identity-based policy.
 
   - id: c04-three-ways-to-narrow
     page: guide/04-shared-responsibility-and-access/04-policies-and-least-privilege.md
@@ -4754,33 +4258,7 @@ flashcards:
         written for your own case. AWS managed policies are shared by every customer, so they may
         grant more than you need.
 
-  - id: c04-simulator-implicit-vs-explicit
-    page: guide/04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md
-    section: Recap
-    task: "2.3"
-    level: understanding
-    topics: [iam, policy-evaluation, iam-tools]
-    front:
-      text: In the IAM policy simulator, how do you tell an implicit deny from an explicit deny?
-    back:
-      text: >-
-        An explicit deny names the policy and statement that said Deny. An implicit deny names
-        none, because no statement matched the request.
-
   # ------------------------------------------------------------------ 04.05
-
-  - id: c04-akia-vs-asia
-    page: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
-    section: Warm-up
-    task: "2.3"
-    level: recall
-    topics: [credentials, access-keys]
-    front:
-      text: One access key ID starts with `AKIA`, another with `ASIA`. What's the difference?
-    back:
-      text: >-
-        `AKIA` marks a long-term access key that works until someone deletes it. `ASIA` marks
-        temporary credentials that stop working within hours.
 
   - id: c04-password-policy-no-lockout
     page: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
@@ -4820,17 +4298,3 @@ flashcards:
       text: >-
         AWS IAM Identity Center, renamed on 2022-07-26. It's the same service; the old name
         lingers in older questions and some command names.
-
-  - id: c04-why-labs-use-iam-user
-    page: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
-    section: Why our labs use an IAM user anyway
-    task: "2.3"
-    level: understanding
-    topics: [identity-center, free-plan]
-    front:
-      text: AWS recommends IAM Identity Center for people. Why do this guide's labs use an IAM user instead?
-    back:
-      text: >-
-        In one account, the instance that gives console access creates an organization, which moves
-        a Free plan account to the Paid plan (as of 2026-10-23). An IAM user with MFA is AWS's
-        single-account baseline.

@@ -11,9 +11,9 @@ pillars: []
 
 # Glossary
 
-The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14), each with a link to the page that teaches it; the list grows as modules are written.
+The 456 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13), each with a link to the page that teaches it; the list grows as modules are written.
 
-[A](#a) · [B](#b) · [C](#c) · [D](#d) · [E](#e) · [F](#f) · [G](#g) · [H](#h) · [I](#i) · [J](#j) · [K](#k) · [L](#l) · [M](#m) · [N](#n) · [O](#o) · [P](#p) · [Q](#q) · [R](#r) · [S](#s) · [T](#t) · [U](#u) · [V](#v) · [W](#w) · X · [Y](#y) · [Z](#z)
+[A](#a) · [B](#b) · [C](#c) · [D](#d) · [E](#e) · [F](#f) · [G](#g) · [H](#h) · [I](#i) · J · [K](#k) · [L](#l) · [M](#m) · [N](#n) · [O](#o) · [P](#p) · Q · [R](#r) · [S](#s) · [T](#t) · [U](#u) · [V](#v) · [W](#w) · X · [Y](#y) · [Z](#z)
 
 ## 0–9
 
@@ -28,33 +28,17 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **abstracted service**: AWS's name for the most managed kind of service, such as Amazon S3 or Amazon DynamoDB, where AWS runs the infrastructure, operating system and platform and you work only with your data and its settings.
 
 - Taught in: [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
-- Also in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
 - Don't confuse with: managed service. Abstracted services are the far end of managed services: you never see a server or a database engine, only the service's data and settings.
 
 **abuse**: Using a computing resource to harm others, such as spam, network attacks, port scans or hosting stolen or illegal content. Abuse from AWS resources goes to the AWS Trust & Safety team, not to AWS Support.
 
-- Taught in: [Where to find answers](../12-getting-help/03-where-to-find-answers.md)
-- Also in: [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md)
-
-**abuse report**: A report to AWS Trust & Safety, through its abuse form, that an AWS resource is harming you, with evidence such as the attacked address, times with time zone and log lines. Trust & Safety also sends them to resource owners.
-
-- Taught in: [Where to find answers](../12-getting-help/03-where-to-find-answers.md)
+- Taught in: [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
 - Also in: [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md)
 
 **accelerated computing**: EC2 instance types with GPUs or other special chips, for work such as machine learning, graphics and floating-point calculations. Its letters include P, G, Inf and Trn.
 
 - Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
-- Don't confuse with: compute optimized, HPC optimized. Accelerated computing adds special chips such as GPUs; compute optimized adds ordinary processors, and HPC optimized is for very large, tightly linked computations.
-
-**accepted risk**: A risk the business decides not to fix, written down with the reason and who decided, such as staying on Basic Support. AWS's guidance asks for this when a business chooses not to act.
-
-- Taught in: [The capstone review](../14-capstone/01-the-capstone-review.md)
-- Don't confuse with: high-risk issue. A high-risk issue is a finding to deal with; an accepted risk is a finding the business has decided, in writing, not to fix.
-
-**access control list** (ACL): An older way to grant access to an S3 bucket or object. New buckets have ACLs turned off, and AWS recommends policies instead.
-
-- Taught in: [S3 in practice](../05-storing-data/02-s3-in-practice.md)
-- Don't confuse with: network ACL. An S3 access control list grants access to buckets and objects; a network ACL is a firewall that filters traffic at the edge of a subnet.
+- Don't confuse with: compute optimized. Accelerated computing adds special chips such as GPUs; compute optimized adds ordinary processors, and HPC optimized is for very large, tightly linked computations.
 
 **access key**: A long-term credential, an access key ID plus a secret access key, letting a program act as an IAM user or the root user without a password or MFA. Avoid it where a role or keyless sign-in works.
 
@@ -65,31 +49,6 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md)
 - Also in: [Lab 12: Answer an auditor with evidence from your own account](../09-protecting-and-governing/07-lab-12-answer-the-auditor.md)
 
-**Account Factory**: The AWS Control Tower feature that creates new accounts from an approved template, already governed by the landing zone's controls.
-
-- Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-- Also in: [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
-
-**account team**: The AWS people assigned to a customer, such as an account manager and a solutions architect. An existing customer asks its account team for a solutions architect.
-
-- Taught in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
-- Also in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md)
-
-**account-specific event**: An AWS Health Dashboard event about your own account or resources, such as scheduled maintenance on one of your servers.
-
-- Taught in: [Lab 02: See Regions, Availability Zones and AWS Health in your own account](../03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md)
-- Also in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md)
-- Don't confuse with: public event. An account-specific event is about your resources; a public event is a service issue not tied to any account.
-
-**Action (policy element)**: The part of a policy statement that names what may be done, written as service:action, such as s3:GetObject.
-
-- Taught in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
-
-**agent (contact center)**: A person who answers customers' calls, chats and messages in a contact center, such as a staff member taking the calls Amazon Connect Customer routes to them.
-
-- Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
-- Don't confuse with: bot. An agent is a person answering customers; a bot, built with Lex, is a program that can answer first and hand over to an agent.
-
 **agility**: The ability to get new resources, and try new ideas, quickly and cheaply: a new resource takes minutes rather than weeks, and you can delete it afterward.
 
 - Taught in: [Telling the benefits apart](../02-why-the-cloud/03-telling-the-benefits-apart.md)
@@ -99,20 +58,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **alarm**: A CloudWatch rule that watches one metric against a threshold, period by period, and acts when its state changes, for example by notifying an SNS topic or scaling an Auto Scaling group.
 
 - Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-- Also in: [Lab 11: Email the owner when the order function fails](../08-building-and-operating/06-lab-11-alarm-on-errors.md)
-
-**alarm state**: Where a CloudWatch alarm stands: OK (below the threshold), ALARM (beyond it) or INSUFFICIENT_DATA (not enough data to decide). OK doesn't prove the alarm's email will arrive.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-- Also in: [Lab 11: Email the owner when the order function fails](../08-building-and-operating/06-lab-11-alarm-on-errors.md)
-
-**alias record**: A Route 53 record that points a name, even the bare domain such as bakery.example, at an AWS resource such as a CloudFront distribution, a load balancer or an S3 website bucket, whose addresses can change.
-
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-
-**Align phase**: The second CAF phase: finding capability gaps across the six perspectives and dependencies between teams, surfacing concerns, and planning how to close the gaps.
-
-- Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
+- Also in: [Optional lab 11: Email the owner when the order function fails](../08-building-and-operating/06-lab-11-alarm-on-errors.md)
 
 **Always Free offer**: A monthly allowance on a service, such as Lambda's requests, that renews every month with no end date, on both the Free and Paid plans.
 
@@ -127,13 +73,12 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **Amazon Athena**: A serverless AWS service that runs standard SQL directly on files in S3, such as CSV, JSON or Parquet, applying the table layout as it reads. You pay per query, by the data it scans.
 
 - Taught in: [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md)
-- Also in: [Lab 13: Query a small sales file in S3 with Athena, then delete everything](../10-data-ai-and-more/04-lab-13-athena-query.md)
+- Also in: [Optional lab 13: Query a small sales file in S3 with Athena, then delete everything](../10-data-ai-and-more/04-lab-13-athena-query.md)
 - Don't confuse with: Amazon Redshift, Amazon EMR, AWS Glue, Amazon OpenSearch Service. Athena queries files where they sit, with nothing to run; Redshift is a warehouse you load for repeated reports, EMR runs your own Spark or Hadoop code, Glue prepares data, and OpenSearch Service searches indexed text.
 
 **Amazon Aurora**: AWS's own relational database engine, compatible with MySQL and PostgreSQL and managed through Amazon RDS. Storage grows automatically and is copied across several Availability Zones, its replicas can be the automatic failover target, and it has a serverless option.
 
-- Taught in: [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
-- Also in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
+- Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
 - Don't confuse with: Amazon RDS. Aurora is AWS's MySQL- and PostgreSQL-compatible engine with more performance and availability built in; choose another RDS engine when software needs Oracle, SQL Server, Db2, MariaDB or plain MySQL or PostgreSQL.
 
 **Amazon Bedrock**: An AWS service offering foundation models from Amazon and other AI companies through an API, for building generative AI applications without training a model. Amazon Q is built on it; it isn't on the exam's in-scope list.
@@ -143,14 +88,14 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **Amazon CloudFront**: AWS's content delivery network. A distribution serves cached copies from the edge location nearest each user, fetching from your origin over AWS's network when it has no fresh copy; origin access control lets it read a private bucket.
 
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-- Also in: [The edge](../03-aws-around-the-world/04-the-edge.md)
+- Taught in: [The edge](../03-aws-around-the-world/04-the-edge.md)
+- Also in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
 - Don't confuse with: Amazon Route 53, AWS Global Accelerator. CloudFront caches and delivers content; Route 53 only answers where a site is, and Global Accelerator carries traffic over AWS's network without caching.
 
 **Amazon CloudWatch**: AWS's monitoring service for resources and applications: metrics, logs, alarms and dashboards. It answers how the workload is running and whether anything is wrong.
 
 - Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-- Also in: [Lab 11: Email the owner when the order function fails](../08-building-and-operating/06-lab-11-alarm-on-errors.md); [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md)
+- Also in: [Optional lab 11: Email the owner when the order function fails](../08-building-and-operating/06-lab-11-alarm-on-errors.md); [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md)
 - Don't confuse with: AWS CloudTrail, AWS Config, AWS X-Ray. CloudWatch measures how resources and code run and alerts on it; CloudTrail records who did what to the account, Config records how each resource was set, and X-Ray follows one request through every part.
 
 **Amazon Cognito**: An AWS service that handles sign-up and sign-in for the customers of your web or mobile app, including with accounts such as Google, and can give app users temporary, limited AWS credentials.
@@ -182,13 +127,13 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **Amazon DocumentDB**: AWS's managed document database, compatible with MongoDB's drivers and tools, for data that is naturally a document, such as a product catalog. Its full name is Amazon DocumentDB (with MongoDB compatibility).
 
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
+- Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
 - Don't confuse with: Amazon DynamoDB. DocumentDB is the choice when the team uses MongoDB tools; DynamoDB also stores documents and needs no servers, but has no MongoDB compatibility.
 
 **Amazon DynamoDB**: AWS's main NoSQL database: serverless, fully managed, key-value and document, with single-digit millisecond responses at any scale. You fetch items by key, with no joins or maintenance windows; data is copied across several Availability Zones by default.
 
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-- Also in: [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](../05-storing-data/08-lab-06-a-dynamodb-table.md); [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
+- Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
+- Also in: [Optional lab 06: Create a DynamoDB table for carts, put and get items, then delete it](../05-storing-data/08-lab-06-a-dynamodb-table.md); [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
 - Don't confuse with: Amazon RDS, Amazon ElastiCache, Amazon DocumentDB. DynamoDB is a main store for items fetched by key, answering in milliseconds; RDS joins linked tables, ElastiCache is an in-memory cache answering in microseconds, and DocumentDB is for teams using MongoDB tools.
 
 **Amazon EBS**: Amazon Elastic Block Store, AWS's block storage: volumes that attach to an EC2 instance in their Availability Zone like a local drive. Data is copied within that zone, persists when the instance stops, and is backed up with snapshots.
@@ -229,15 +174,10 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Containers and serverless](../06-running-applications/03-containers-and-serverless.md)
 - Don't confuse with: Amazon ECS, AWS Fargate. EKS orchestrates with Kubernetes and ECS orchestrates AWS's own way; Fargate is not an orchestrator but compute that either one can use.
 
-**Amazon Elastic VMware Service** (Amazon EVS): An AWS service that runs VMware's software on AWS infrastructure, so VMware workloads can be relocated without changing how they're run. It isn't on the exam's service list.
-
-- Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-- Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
-
 **Amazon ElastiCache**: AWS's in-memory service: usually a cache answering repeated reads in microseconds in front of slower databases, and a store for short-lived data like sessions. It runs Valkey, Memcached or Redis OSS, serverless or on nodes you choose.
 
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-- Don't confuse with: Amazon DynamoDB, DynamoDB Accelerator. ElastiCache sits in front of a main store and answers from memory in microseconds; DynamoDB is a main store answering in milliseconds, and DAX is a cache for DynamoDB only.
+- Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
+- Don't confuse with: Amazon DynamoDB. ElastiCache sits in front of a main store and answers from memory in microseconds; DynamoDB is a main store answering in milliseconds, and DAX is a cache for DynamoDB only.
 
 **Amazon EMR**: A managed platform, formerly Amazon Elastic MapReduce, for running big-data frameworks such as Apache Spark and Hadoop with your own code on very large datasets, on clusters you configure or with EMR Serverless.
 
@@ -257,9 +197,9 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **Amazon Glacier**: The original, separate archive service that stores archives in vaults, with its own API. It is closed to new customers, and AWS recommends the S3 Glacier storage classes for new archives.
 
-- Taught in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
 - Also in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
-- Don't confuse with: S3 Glacier storage classes, backup vault. Amazon Glacier keeps archives in vaults and takes no new customers; the S3 Glacier storage classes keep objects in ordinary S3 buckets, and an AWS Backup vault is unrelated.
+- Don't confuse with: S3 Glacier storage classes. Amazon Glacier keeps archives in vaults and takes no new customers; the S3 Glacier storage classes keep objects in ordinary S3 buckets, and an AWS Backup vault is unrelated.
 
 **Amazon GuardDuty**: A threat detection service that reads CloudTrail management events, VPC Flow Logs and DNS logs, with nothing else to set up, and raises findings on malicious or suspicious activity, such as stolen credentials. It blocks nothing.
 
@@ -269,8 +209,8 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **Amazon Inspector**: A vulnerability management service that finds EC2 instances, container images in Amazon ECR and Lambda functions on its own, and scans them continuously for known software flaws and unintended network exposure. It reports findings; it blocks nothing.
 
-- Taught in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md)
-- Also in: [Filtering traffic](../07-connecting-it/02-filtering-traffic.md); [Simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md)
+- Taught in: [Filtering traffic](../07-connecting-it/02-filtering-traffic.md)
+- Also in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md); [Simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md)
 - Don't confuse with: Amazon GuardDuty, security group, network ACL. Inspector reports what could be attacked and changes nothing; GuardDuty reports attacks actually happening, and security groups and network ACLs are the filters you fix.
 
 **Amazon Inspector Classic**: The older version of Amazon Inspector, used through assessment templates, an Inspector agent and scheduled runs. It has been shut down (see the lesson); treat that way of working as out of date.
@@ -318,7 +258,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **Amazon Neptune**: AWS's managed graph database, for data where the connections matter most, such as recommendation engines, fraud detection and knowledge graphs.
 
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
+- Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
 - Don't confuse with: Amazon RDS, Amazon DocumentDB. Neptune is built to follow relationships many links deep; a relational database can store the links but such queries grow complex and slow, and DocumentDB keeps self-contained documents.
 
 **Amazon OpenSearch Service**: A managed AWS service, successor to Amazon Elasticsearch Service, that runs the OpenSearch search and analytics engine for log analytics, application monitoring and website search. It indexes every word, so searches return at once.
@@ -329,7 +269,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **Amazon Polly**: A ready-made AI service that turns text into lifelike speech in many languages and voices, billed by the character. You can store the audio and replay it at no extra charge.
 
 - Taught in: [AI and machine learning](../10-data-ai-and-more/02-ai-and-ml.md)
-- Also in: [Lab 14 (optional): Have Amazon Polly read a product description aloud](../10-data-ai-and-more/05-lab-14-polly-text-to-speech.md)
+- Also in: [Optional lab 14: Have Amazon Polly read a product description aloud](../10-data-ai-and-more/05-lab-14-polly-text-to-speech.md)
 - Don't confuse with: Amazon Transcribe, Amazon Lex. Polly only speaks, text in and audio out; Transcribe does the opposite, and Lex holds a whole conversation, working out what a person wants.
 
 **Amazon Q**: A brand for AWS's generative AI assistants, not one product: Amazon Q Developer, Amazon Q Business (closed to new customers) and Q features inside other services. The exam guide lists just "Amazon Q".
@@ -359,13 +299,13 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **Amazon RDS**: Amazon Relational Database Service: managed relational databases. AWS installs and patches the operating system and engine, handles backups and failover; you choose settings, control access and tune queries. AWS recommends it for most relational databases, with several engines plus Aurora.
 
-- Taught in: [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
-- Also in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md); [Choosing a database](../05-storing-data/06-choosing-a-database.md); [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../05-storing-data/10-sim-multi-az-vs-read-replica.md); [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
+- Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
+- Also in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md); [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../05-storing-data/10-sim-multi-az-vs-read-replica.md); [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
 - Don't confuse with: Amazon Aurora, Amazon DynamoDB, Amazon Redshift. RDS runs familiar relational engines for transactional work; Aurora is AWS's own engine in the RDS family, DynamoDB is serverless NoSQL fetched by key, and Redshift is a data warehouse for analysis.
 
 **Amazon Redshift**: AWS's fully managed data warehouse, running SQL analysis over very large amounts of data from many sources, on clusters you size or serverless. The exam guide lists it under analytics; it isn't the database that runs a website.
 
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
+- Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
 - Also in: [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md)
 - Don't confuse with: Amazon RDS, read replica, Amazon Athena. Redshift studies the business with large queries over data loaded into it; RDS and Aurora run the business, a read replica suits smaller reports, and Athena queries files in S3 where they sit.
 
@@ -374,26 +314,21 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [AI and machine learning](../10-data-ai-and-more/02-ai-and-ml.md)
 - Don't confuse with: Amazon Textract, Amazon Comprehend. Rekognition describes what a picture shows; Textract reads documents and returns their structure, such as a receipt's total, and Comprehend analyzes text you already have.
 
-**Amazon Resource Name** (ARN): The unique name of a resource in AWS, used in policies to say which resource a statement covers. A bucket's ARN, for example, is arn:aws:s3::: followed by the bucket name.
-
-- Taught in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
-- Also in: [Lab 03: Give a group read-only access to one bucket, and test it in the policy simulator](../04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md)
-
 **Amazon Route 53**: AWS's DNS service. It registers domain names, answers DNS questions using routing policies such as latency or failover, and checks the health of sites so it can send users away from one that fails; it never carries your content.
 
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-- Also in: [The edge](../03-aws-around-the-world/04-the-edge.md)
+- Taught in: [The edge](../03-aws-around-the-world/04-the-edge.md)
+- Also in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
 - Don't confuse with: Amazon CloudFront, load balancer. Route 53 only tells users where to go, while CloudFront delivers the content and a load balancer sits in the path of every request to spread it across servers in one Region.
 
 **Amazon S3**: Amazon Simple Storage Service, AWS's object storage: it keeps files, which it calls objects, in containers called buckets, reached through a web API, with no capacity to plan. AWS runs it across several Availability Zones for you.
 
 - Taught in: [Block, file and object storage](../05-storing-data/01-block-file-object.md)
-- Also in: [Lab 01: Create, find and delete your first storage bucket](../02-why-the-cloud/06-lab-01-first-resource.md); [Regions, Availability Zones and data centers](../03-aws-around-the-world/01-regions-availability-zones-data-centers.md); [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md); [S3 in practice](../05-storing-data/02-s3-in-practice.md); [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
+- Also in: [Lab 01: Create, find and delete your first storage bucket](../02-why-the-cloud/06-lab-01-first-resource.md); [Regions, Availability Zones and data centers](../03-aws-around-the-world/01-regions-availability-zones-data-centers.md); [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md); [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
 
 **Amazon SageMaker AI**: A fully managed service, formerly Amazon SageMaker, for building, training and deploying your own machine learning models. AWS runs the servers; the data, the model and the skills are yours.
 
 - Taught in: [AI and machine learning](../10-data-ai-and-more/02-ai-and-ml.md)
-- Don't confuse with: ready-made AI service, Amazon Bedrock. SageMaker AI is for training your own model when nothing fits; a ready-made service already has AWS's trained model, and Bedrock offers foundation models to build on without training.
+- Don't confuse with: Amazon Bedrock. SageMaker AI is for training your own model when nothing fits; a ready-made service already has AWS's trained model, and Bedrock offers foundation models to build on without training.
 
 **Amazon SES**: Amazon Simple Email Service: an email platform that sends and receives email using your own verified addresses and domains, for order confirmations, newsletters and other mail to customers.
 
@@ -404,7 +339,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **Amazon SNS**: Amazon Simple Notification Service: it pushes each message published to a topic to every subscriber at once, such as email addresses, phone numbers, SQS queues and Lambda functions.
 
 - Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-- Also in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md); [Lab 11: Email the owner when the order function fails](../08-building-and-operating/06-lab-11-alarm-on-errors.md)
+- Also in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md); [Optional lab 11: Email the owner when the order function fails](../08-building-and-operating/06-lab-11-alarm-on-errors.md)
 - Don't confuse with: Amazon SQS, Amazon EventBridge, Amazon SES. SNS pushes each message at once to every subscriber; SQS holds it until one worker pulls it, EventBridge routes events by rules on their content, and SES sends your own mail to customers.
 
 **Amazon SQS**: Amazon Simple Queue Service: a managed queue. Producers send messages, which wait until a consumer asks for them, processes them and deletes them; each message goes to one consumer.
@@ -431,12 +366,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **Amazon VPC**: Amazon Virtual Private Cloud: your account's own virtual network in one Region, isolated from everyone else's. You choose its address range, subnets, route tables and gateways; the VPC itself costs nothing, though some parts and data transfer do.
 
 - Taught in: [Your own network](../07-connecting-it/01-your-own-network.md)
-- Also in: [Lab 09: Build a small network with a public and a private subnet, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
-
-**Amazon Web Services** (AWS): The company that rents computing power, storage and many other IT services over the internet: the cloud provider this guide is about.
-
-- Taught in: [Welcome](../00-start-here/01-welcome.md)
-- Also in: [What cloud computing is](../02-why-the-cloud/01-what-cloud-computing-is.md)
+- Also in: [Optional lab 09: Build a small network with public and private subnets, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
 
 **Amazon WorkSpaces**: An AWS service that gives each user a virtual desktop, running Windows or Linux in AWS, streamed to their own device as pixels. It bills monthly, or hourly with AutoStop, which suits part-time staff.
 
@@ -454,28 +384,10 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
 - Don't confuse with: Amazon WorkSpaces, Amazon WorkSpaces Applications. Secure Browser gives only a web browser, for web apps; WorkSpaces Applications streams desktop programs, and WorkSpaces gives a whole desktop.
 
-**analytics workload**: Work that studies the business: fewer, much larger queries over large amounts of data, such as total sales by month over years. A data warehouse such as Amazon Redshift is built for it.
-
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-- Don't confuse with: transactional workload. Analytics work reads large amounts of data in each query; transactional work makes many small changes, and running heavy analytics on the transactional database slows the business down.
-
-**anycast**: Announcing the same address from many places, so each user reaches the nearest one. AWS Global Accelerator announces its addresses this way from AWS's edge locations.
-
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-
 **API**: Application programming interface: a defined set of requests one program can send another, and the responses it returns. Every AWS service has one, which the console, the AWS CLI and programs all use.
 
-- Taught in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
-- Also in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md); [Four ways in](../08-building-and-operating/01-four-ways-in.md)
-
-**API key**: In API Gateway, a key given to each outside developer so their calls can be counted against their usage plan.
-
 - Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-
-**application**: A program that does a job for people, such as a website or a spreadsheet. Applications run on the operating system, which uses the hardware for them.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-- Don't confuse with: operating system. An application does a job for people, such as pricing an order; the operating system runs the computer and shares its hardware between applications.
+- Also in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md); [Four ways in, and infrastructure as code](../08-building-and-operating/01-four-ways-in.md)
 
 **application layer attack**: An attack made of normal-looking web requests, such as thousands of requests a second for the order page, an HTTP flood. AWS calls it a layer 7 attack.
 
@@ -485,31 +397,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **Application Load Balancer** (ALB): The Elastic Load Balancing type for web requests (HTTP, HTTPS and gRPC). It can route by the page address, such as /orders or /photos, and can send requests to Lambda functions.
 
 - Taught in: [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
-- Don't confuse with: Network Load Balancer, Gateway Load Balancer. Choose an ALB for web traffic, a Network Load Balancer for TCP or UDP connections at very high speed or with a fixed IP address, and a Gateway Load Balancer for traffic through appliances.
-
-**application portfolio**: All the applications an organization runs, with the facts that decide what to do with each. The 7 Rs are applied to it one application at a time.
-
-- Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-- Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
-
-**application streaming**: Running a desktop application in AWS and sending only its picture to the user's browser or client, so nothing is installed on the device. Amazon WorkSpaces Applications (AppStream 2.0) does this.
-
-- Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
-
-**archive**: Data kept cheaply and safely after you stop using it, in case it's needed. Retiring an application often means archiving its data first.
-
-- Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-- Don't confuse with: backup. An archive keeps data you no longer use; a backup exists to restore a system that is still in use.
-
-**argument**: A value a command works on, such as the new bucket's name in aws s3 mb s3://example-bakery-photos.
-
-- Taught in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
-- Don't confuse with: option. An argument is the value the command acts on; an option is a setting written as a name with two dashes and then its value.
-
-**array**: In JSON, a list of values in order inside square brackets, such as the actions in a policy statement. Its items can be any value, even objects.
-
-- Taught in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
-- Don't confuse with: JSON object. An array, in square brackets, is a list of values in order; an object, in curly braces, holds named values.
+- Don't confuse with: Network Load Balancer. Choose an ALB for web traffic, a Network Load Balancer for TCP or UDP connections at very high speed or with a fixed IP address, and a Gateway Load Balancer for traffic through appliances.
 
 **Artifact agreement**: A contract with AWS that you review, accept, track and end in AWS Artifact, for one account or a whole organization, such as the Business Associate Addendum.
 
@@ -522,57 +410,16 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Lab 12: Answer an auditor with evidence from your own account](../09-protecting-and-governing/07-lab-12-answer-the-auditor.md)
 - Don't confuse with: Artifact agreement. An Artifact report is AWS's evidence, which you download and hand to an auditor; an Artifact agreement is a contract with AWS that you accept and keep to.
 
-**artificial intelligence** (AI): Computer systems doing tasks that once needed a person, such as understanding speech or reading a page. Machine learning is the most common way to build it today.
-
-- Taught in: [AI and machine learning](../10-data-ai-and-more/02-ai-and-ml.md)
-- Don't confuse with: machine learning. AI is the goal, computers doing tasks that needed a person; machine learning is one way to get there, by learning patterns from many examples.
-
 **assume a role**: To take on a role's permissions for a session, receiving temporary credentials. The role's trust policy says who may do it.
 
 - Taught in: [Identities](../04-shared-responsibility-and-access/03-identities.md)
 - Also in: [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md)
-
-**asynchronous**: Describes handing work over and moving on without waiting; the answer, if any, comes later. A queue, topic or event bus between two parts makes this possible.
-
-- Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-- Don't confuse with: synchronous. In an asynchronous call the caller hands the work over and moves on; in a synchronous one it waits for the answer and fails if the other side fails.
-
-**asynchronous replication**: Sending each change to a copy just after it is written to the primary, so the copy can fall behind. Read replicas are kept this way.
-
-- Taught in: [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
-- Also in: [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../05-storing-data/10-sim-multi-az-vs-read-replica.md)
-- Don't confuse with: synchronous replication. Asynchronous replication lets the copy lag, so the latest changes can be lost in a failure; synchronous replication keeps it in step.
-
-**attachment (Transit Gateway)**: One network's connection to a transit gateway, such as a VPC or a VPN connection, each attached once. Each attachment bills by the hour.
-
-- Taught in: [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md)
-
-**attestation**: An independent auditor's written finding that controls exist and work, such as a SOC 2 report.
-
-- Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-
-**attribute**: One named value in a DynamoDB item, such as Quantity or GiftNote, with a type such as String or Number. Items in one table needn't have the same attributes.
-
-- Taught in: [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](../05-storing-data/08-lab-06-a-dynamodb-table.md)
-- Don't confuse with: item. An attribute is one named value; an item is the whole record that holds its attributes.
-
-**audit**: An independent check that controls exist and work, done by an auditor. AWS makes its auditors' reports available to customers.
-
-- Taught in: [Shared, inherited and customer-specific controls](../04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md)
-- Also in: [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md); [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md); [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-- Don't confuse with: compliance. An audit is the check; compliance is meeting the rules the check looks for.
 
 **authentication**: Proving who you are, for example by signing in.
 
 - Taught in: [Identities](../04-shared-responsibility-and-access/03-identities.md)
 - Also in: [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
 - Don't confuse with: authorization. Authentication asks who you are; authorization asks, on every request, whether that identity may do that action.
-
-**authenticator app**: A phone app that shows a six-digit code that keeps changing, used as a second factor. AWS ranks it after passkeys and security keys, because its codes can be typed into a fake page.
-
-- Taught in: [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
-- Also in: [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md)
-- Don't confuse with: passkey. An authenticator app's code can be typed into a fake sign-in page and used at once; a passkey is tied to the real site, so a fake page gets nothing.
 
 **authorization**: AWS checking, on every request, whether your identity may do that one action on that one resource. If AWS knows who you are and still says no, authorization is what failed.
 
@@ -585,25 +432,9 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
 - Don't confuse with: load balancer. Auto scaling changes how many servers there are; a load balancer spreads requests across the servers there are.
 
-**Auto Scaling group**: A set of identical EC2 instances that Amazon EC2 Auto Scaling manages as one unit, between a minimum and a maximum capacity, launched from a launch template and spread across the Availability Zones you choose.
-
-- Taught in: [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
-- Also in: [Simulation S7: Scale the bakery's web servers through a December Saturday](../06-running-applications/07-sim-elasticity-with-auto-scaling.md)
-
-**automated backup**: Amazon RDS's daily snapshot plus a log of every change, for restoring to any second within the retention period you set. They're deleted with the database unless you retain them; every restore creates a new database.
-
-- Taught in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
-- Also in: [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md); [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../05-storing-data/10-sim-multi-az-vs-read-replica.md)
-- Don't confuse with: snapshot, Multi-AZ deployment. Automated backups go with a deleted database unless retained, and then last only until retention ends, while a manual snapshot stays until you delete it; unlike a Multi-AZ standby, a backup can undo a mistaken delete.
-
 **automation**: Having software do a repeated task, such as building, starting or stopping servers, instead of a person doing it by hand. It cuts mistakes and staff time, keeps copies consistent, and stops forgotten resources billing.
 
-- Taught in: [IaC and automation](../08-building-and-operating/02-iac-and-automation.md)
-- Also in: [What a data center really costs](../02-why-the-cloud/04-what-a-data-center-really-costs.md)
-
-**AutoStop**: An Amazon WorkSpaces setting for hourly billing that stops a desktop after the user disconnects, so hourly charges pause; the monthly part of the fee still applies.
-
-- Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
+- Taught in: [What a data center really costs](../02-why-the-cloud/04-what-a-data-center-really-costs.md)
 
 **Availability Zone** (AZ): One or more data centers inside a Region, with their own power, networking and connections, kept physically apart from the other Availability Zones so they fail separately.
 
@@ -633,8 +464,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **AWS Audit Manager**: A service that gathered evidence about your resources against frameworks such as PCI DSS. It can no longer be set up in new accounts (see the lesson), and AWS points to Config conformance packs; treat it as a wrong answer.
 
 - Taught in: [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md)
-- Also in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md); [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md); [Simulation S10: Read a resource's AWS Config timeline, and tell Config from CloudTrail](../09-protecting-and-governing/09-sim-config-timeline.md)
-- Don't confuse with: conformance pack. Audit Manager can't be set up in new accounts; conformance packs in AWS Config are AWS's pointer for checks against a framework, and no service makes you compliant on its own.
+- Also in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md); [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
 
 **AWS Auto Scaling**: The service the exam guide lists for auto scaling: it sets up scaling for several kinds of resource at once, such as groups of EC2 instances and DynamoDB tables. Groups of EC2 instances are run by Amazon EC2 Auto Scaling.
 
@@ -644,8 +474,8 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **AWS Backup**: A service backing up many AWS services, and some on-premises systems, across accounts from one backup plan. It copies backups across Regions or accounts, keeps them encrypted in backup vaults lockable with Vault Lock, and reports that backups happen.
 
 - Taught in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
-- Also in: [S3 in practice](../05-storing-data/02-s3-in-practice.md); [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
-- Don't confuse with: AWS Elastic Disaster Recovery, snapshot, Tape Gateway. AWS Backup brings back data from recovery points under one set of rules; Elastic Disaster Recovery brings back whole running servers in minutes, a snapshot covers one resource, and Tape Gateway serves existing tape backup software.
+- Also in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md); [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
+- Don't confuse with: AWS Elastic Disaster Recovery, Tape Gateway. AWS Backup brings back data from recovery points under one set of rules; Elastic Disaster Recovery brings back whole running servers in minutes, a snapshot covers one resource, and Tape Gateway serves existing tape backup software.
 
 **AWS Batch**: A service that runs many batch jobs, each packaged as a container, from a job queue. It launches EC2 or Fargate compute while jobs wait and removes it when the queue is empty, with no extra charge beyond that compute.
 
@@ -654,12 +484,11 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **AWS blogs**: AWS's dated posts by topic, such as the AWS News Blog for announcements and the AWS Security Blog for security walk-throughs. A post describes the world on the day it was written.
 
-- Taught in: [Where to find answers](../12-getting-help/03-where-to-find-answers.md)
+- Taught in: [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
 
 **AWS Budgets**: An AWS service that tracks cost or usage against a target you set and alerts by email or SNS when actual or forecasted cost crosses a threshold. It stops nothing unless you add a budget action.
 
 - Taught in: [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md)
-- Also in: [Simulation S14: Follow a runaway cost and see which guardrails alert and which stop it](../11-paying-for-aws/08-sim-guardrail-timeline.md)
 - Don't confuse with: AWS Cost and Usage Report, AWS Cost Explorer, AWS Pricing Calculator. Budgets alerts when spending passes a limit you set; the Pricing Calculator estimates before you build, Cost Explorer shows where money went and forecasts, and the CUR delivers every line item.
 
 **AWS Business Support+**: The first paid Support plan, and AWS's recommended minimum for production: technical cases around the clock by phone, web and chat, all Trusted Advisor checks, and the AWS Health API. It is charged per account.
@@ -676,8 +505,8 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **AWS CLI**: The AWS Command Line Interface: a free, open-source program that sends instructions to AWS as typed commands. Saved in a script, commands suit quick, bulk and routine tasks.
 
-- Taught in: [Four ways in](../08-building-and-operating/01-four-ways-in.md)
-- Also in: [Lab 10: Create the same bucket three ways: console, command line and template](../08-building-and-operating/05-lab-10-same-bucket-three-ways.md); [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
+- Taught in: [Four ways in, and infrastructure as code](../08-building-and-operating/01-four-ways-in.md)
+- Also in: [Optional lab 10: Create the same bucket three ways: console, command line and template](../08-building-and-operating/05-lab-10-same-bucket-three-ways.md); [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
 - Don't confuse with: AWS CloudShell. The AWS CLI is the program that sends the commands; CloudShell is a command line in the browser, already signed in, where the CLI comes installed.
 
 **AWS Client VPN**: One of the AWS VPN services: a managed service that lets individual people connect their own devices, encrypted over the internet, to a VPC, after signing in and subject to authorization rules.
@@ -693,8 +522,8 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **AWS CloudFormation**: AWS's infrastructure as code service. It reads a template, works out the order, and builds the resources as a stack, which it can update with a preview and delete in one step.
 
-- Taught in: [IaC and automation](../08-building-and-operating/02-iac-and-automation.md)
-- Also in: [Four ways in](../08-building-and-operating/01-four-ways-in.md); [Lab 10: Create the same bucket three ways: console, command line and template](../08-building-and-operating/05-lab-10-same-bucket-three-ways.md)
+- Taught in: [Four ways in, and infrastructure as code](../08-building-and-operating/01-four-ways-in.md)
+- Also in: [Optional lab 10: Create the same bucket three ways: console, command line and template](../08-building-and-operating/05-lab-10-same-bucket-three-ways.md)
 - Don't confuse with: AWS Service Catalog, AWS Elastic Beanstalk. CloudFormation builds whatever a template describes; Service Catalog decides who may launch which approved templates, and Elastic Beanstalk builds the setup for your application code without a template of your own.
 
 **AWS CloudHSM**: An AWS service that gives you single-tenant hardware security modules in a cluster in your own VPC. AWS maintains the hardware; you create the users and keys inside them, outside IAM, and carry more of the work.
@@ -704,14 +533,14 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **AWS CloudShell**: A command line that opens in the browser from the console, already signed in with your console credentials, with the AWS CLI installed. The guide's labs use it, but it's outside the CLF-C02 exam's scope.
 
-- Taught in: [Four ways in](../08-building-and-operating/01-four-ways-in.md)
-- Also in: [Lab 10: Create the same bucket three ways: console, command line and template](../08-building-and-operating/05-lab-10-same-bucket-three-ways.md); [Lab 11: Email the owner when the order function fails](../08-building-and-operating/06-lab-11-alarm-on-errors.md); [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
+- Taught in: [Four ways in, and infrastructure as code](../08-building-and-operating/01-four-ways-in.md)
+- Also in: [Optional lab 10: Create the same bucket three ways: console, command line and template](../08-building-and-operating/05-lab-10-same-bucket-three-ways.md); [Optional lab 11: Email the owner when the order function fails](../08-building-and-operating/06-lab-11-alarm-on-errors.md); [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
 - Don't confuse with: AWS CLI. CloudShell is a place to run commands, in the browser and already signed in; the AWS CLI is the program that sends them, and it also runs on your own computer.
 
 **AWS CloudTrail**: The AWS service that records each action taken on your account, by a person, a role or an AWS service, through any way in, as an event: who acted, what they did, when and from where.
 
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-- Also in: [Lab 01: Create, find and delete your first storage bucket](../02-why-the-cloud/06-lab-01-first-resource.md); [Four ways in](../08-building-and-operating/01-four-ways-in.md); [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md); [Lab 12: Answer an auditor with evidence from your own account](../09-protecting-and-governing/07-lab-12-answer-the-auditor.md)
+- Taught in: [Lab 01: Create, find and delete your first storage bucket](../02-why-the-cloud/06-lab-01-first-resource.md)
+- Also in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md); [Four ways in, and infrastructure as code](../08-building-and-operating/01-four-ways-in.md); [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md); [Lab 12: Answer an auditor with evidence from your own account](../09-protecting-and-governing/07-lab-12-answer-the-auditor.md)
 - Don't confuse with: Amazon CloudWatch, AWS Config, AWS X-Ray. CloudTrail records who did what to the account; CloudWatch measures how resources and code are running, AWS Config records how each resource was set, and X-Ray follows single requests through an application.
 
 **AWS CodeBuild**: A fully managed build service: it compiles source code, runs tests and produces packages ready to deploy, with no build servers to set up or manage. You pay for build minutes.
@@ -727,13 +556,12 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **AWS Compute Optimizer**: An AWS service that, once you opt in, analyzes resources' configuration and CloudWatch metrics and reports each as optimized, over-provisioned, under-provisioned or idle, with better sizes. It recommends; you make changes.
 
 - Taught in: [The business case](../13-moving-to-aws/04-the-business-case.md)
-- Also in: [Simulation S17: Rightsize the chain's servers and settle their licenses](../13-moving-to-aws/06-sim-rightsizing-and-licensing.md)
 - Don't confuse with: AWS Trusted Advisor, Amazon EC2 Auto Scaling. Compute Optimizer gives deep, metric-based advice on each resource's size; Trusted Advisor runs broad checks in several categories, and Auto Scaling changes how many instances run.
 
 **AWS Config**: An AWS service that keeps an inventory of your resources and a history of each one's settings, and checks them against rules you choose. Recording is off until you turn it on, and it charges per item recorded.
 
 - Taught in: [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md)
-- Also in: [Simulation S10: Read a resource's AWS Config timeline, and tell Config from CloudTrail](../09-protecting-and-governing/09-sim-config-timeline.md); [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md)
+- Also in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md)
 - Don't confuse with: AWS CloudTrail, Amazon CloudWatch. Config records how each resource was set and whether that follows your rules; CloudTrail records who did what, and CloudWatch measures how things are running.
 
 **AWS Control Tower**: A service built on AWS Organizations, Service Catalog and IAM Identity Center that sets up a best-practice multi-account landing zone and keeps it governed with controls, Account Factory and a dashboard.
@@ -751,19 +579,13 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **AWS Cost Anomaly Detection**: A free AWS service that learns your normal spending pattern with machine learning and alerts when spending departs from it, naming likely root causes. Like Budgets, it never stops anything.
 
 - Taught in: [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md)
-- Also in: [Simulation S14: Follow a runaway cost and see which guardrails alert and which stop it](../11-paying-for-aws/08-sim-guardrail-timeline.md)
 - Don't confuse with: AWS Budgets. Anomaly detection compares spending with what is normal for you, so it catches a small new cost early; a budget compares it with a limit you chose, so it catches slow growth.
 
 **AWS Cost Explorer**: An AWS tool that charts your costs and usage, filtered and grouped by service, account, Region, tag and more, forecasts future spending, and recommends Savings Plans and Reserved Instances. History and forecast lengths are in the lesson.
 
 - Taught in: [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md)
-- Also in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md); [Lab 16: Turn on cost allocation tags and find them in Cost Explorer](../11-paying-for-aws/06-lab-16-cost-allocation-tags.md)
+- Also in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md); [Optional lab 16: Turn on cost allocation tags and find them in Cost Explorer](../11-paying-for-aws/06-lab-16-cost-allocation-tags.md)
 - Don't confuse with: AWS Budgets, AWS Cost and Usage Report, AWS Pricing Calculator. Cost Explorer shows where money went and where it's heading; the Pricing Calculator estimates before you build, Budgets alerts on a limit, and the CUR delivers raw line items as files.
-
-**AWS Customer Incident Response Team** (AWS CIRT): AWS's incident responders, who help when someone has broken into your account, at no extra charge on any Support plan. You reach them with a support case from that account, marked as an urgent security incident.
-
-- Taught in: [Where to find answers](../12-getting-help/03-where-to-find-answers.md)
-- Don't confuse with: AWS Security Incident Response. The AWS CIRT helps any customer with a break-in, through a support case; AWS Security Incident Response is included with Enterprise Support and Unified Operations, and costs extra on Business Support+.
 
 **AWS Data Exports**: The Billing and Cost Management feature that creates exports of billing, cost and carbon emissions data, such as CUR 2.0, delivered as files to your S3 bucket.
 
@@ -775,7 +597,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **AWS Database Migration Service** (AWS DMS): A service that moves database data into AWS, or between on-premises and cloud databases, while the source keeps running. It copies the data once, then can copy every change until you switch over, or keep both in step indefinitely.
 
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
+- Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
 - Also in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md); [Migration tools](../13-moving-to-aws/03-migration-tools.md)
 - Don't confuse with: AWS Schema Conversion Tool, AWS Transform MGN. DMS moves the data inside a database; SCT only converts the schema, when the engine changes, and MGN copies whole servers onto EC2.
 
@@ -797,7 +619,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **AWS documentation**: AWS's reference pages for each service, at docs.aws.amazon.com: user and developer guides, API and CLI references, tutorials and code examples. When an older whitepaper or blog post disagrees with it, trust the documentation.
 
-- Taught in: [Where to find answers](../12-getting-help/03-where-to-find-answers.md)
+- Taught in: [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
 
 **AWS Elastic Beanstalk**: AWS's platform as a service: it builds and runs the setup for your code in your account (EC2 instances or an EKS cluster, load balancing, Auto Scaling, health monitoring). It costs nothing beyond those resources and isn't serverless.
 
@@ -808,17 +630,13 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 - Taught in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
 - Also in: [Migration tools](../13-moving-to-aws/03-migration-tools.md)
-- Don't confuse with: AWS Backup, snapshot, AWS Transform MGN. Elastic Disaster Recovery gives back running servers within minutes and keeps copying; AWS Backup and snapshots give back data only, and MGN's similar copying ends at a one-time cutover.
+- Don't confuse with: AWS Backup, AWS Transform MGN. Elastic Disaster Recovery gives back running servers within minutes and keeps copying; AWS Backup and snapshots give back data only, and MGN's similar copying ends at a one-time cutover.
 
 **AWS Enterprise Support**: The Support plan for business-critical workloads. On top of Business Support+ it adds a designated Technical Account Manager, faster reply targets, Well-Architected reviews, Trusted Advisor Priority and AWS Security Incident Response.
 
 - Taught in: [Support plans](../12-getting-help/01-support-plans.md)
 - Also in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md); [Simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
 - Don't confuse with: AWS Business Support+, AWS Unified Operations, Enterprise On-Ramp. Enterprise Support is the first plan with a named TAM; Unified Operations adds domain specialists, the fastest targets and 24/7 workload monitoring, and Enterprise On-Ramp is a retiring plan whose customers move to Enterprise.
-
-**AWS European Sovereign Cloud**: A separate, independent AWS cloud for Europe, aimed at public bodies and highly regulated industries with strict sovereignty needs.
-
-- Taught in: [Choosing a Region](../03-aws-around-the-world/02-choosing-a-region.md)
 
 **AWS Fargate**: Serverless compute for containers, used by Amazon ECS or Amazon EKS: you set each task's CPU and memory, and AWS supplies, isolates and patches the servers. It runs containers as long as a task runs, but has no GPUs.
 
@@ -838,19 +656,14 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **AWS Global Accelerator**: A service whose fixed anycast IP addresses bring users' traffic onto AWS's network at the nearest edge, then to the best healthy Regional endpoint. It caches nothing, handles any TCP or UDP traffic, and switches Regions without DNS delays.
 
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-- Also in: [The edge](../03-aws-around-the-world/04-the-edge.md)
+- Taught in: [The edge](../03-aws-around-the-world/04-the-edge.md)
+- Also in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
 - Don't confuse with: Amazon CloudFront. Global Accelerator speeds the path to your application without caching, so every request reaches it; CloudFront keeps copies of content near users and answers from them.
 
 **AWS Glue**: AWS's serverless data integration service: it finds data with crawlers, describes it in the Glue Data Catalog, and cleans or converts it with ETL jobs. It prepares data for queries; it doesn't answer them.
 
 - Taught in: [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md)
 - Don't confuse with: Amazon Athena. Glue discovers, catalogs and transforms data; Athena runs the SQL query, reading its table definitions from Glue's Data Catalog.
-
-**AWS Glue Data Catalog**: AWS Glue's central list of your data: for each set of files, a table definition giving where they are and their column names and types. Athena, EMR and Redshift Spectrum read their table definitions from it.
-
-- Taught in: [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md)
-- Also in: [Lab 13: Query a small sales file in S3 with Athena, then delete everything](../10-data-ai-and-more/04-lab-13-athena-query.md)
 
 **AWS Health**: The AWS service that reports events on AWS's side that can affect you: service issues, planned maintenance and account notices. You read them in the AWS Health Dashboard, through Amazon EventBridge or with the AWS Health API.
 
@@ -866,18 +679,13 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **AWS Health Dashboard**: AWS Health's console page, free on every plan with no setup, with two views: Service health for public events and Your account health for events affecting your resources. Older material calls these the Service and Personal Health Dashboards.
 
-- Taught in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md)
-- Also in: [Lab 02: See Regions, Availability Zones and AWS Health in your own account](../03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md); [Watching workloads](../08-building-and-operating/03-watching-workloads.md); [Support plans](../12-getting-help/01-support-plans.md); [Where to find answers](../12-getting-help/03-where-to-find-answers.md); [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md)
+- Taught in: [Lab 02: See Regions, Availability Zones and AWS Health in your own account](../03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md)
+- Also in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md); [Watching workloads](../08-building-and-operating/03-watching-workloads.md); [Support plans](../12-getting-help/01-support-plans.md); [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md); [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md)
 - Don't confuse with: AWS Health API. The Health Dashboard is for people in a browser and free on every plan, while the Health API is for programs and needs a paid Support plan; both read the same events.
-
-**AWS Health event**: One notice from AWS Health: a problem with an AWS service, planned maintenance, or another notice that can affect your resources. It is either a public event or an account-specific event.
-
-- Taught in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md)
 
 **AWS IAM Identity Center**: AWS's recommended way to give a workforce single sign-on to many AWS accounts and business applications, with temporary credentials through permission sets. It was called AWS Single Sign-On (AWS SSO) until 2022.
 
 - Taught in: [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md)
-- Also in: [Simulation S4: Predict allow or deny across accounts, boundaries and organizations](../04-shared-responsibility-and-access/09-sim-policy-playground.md)
 - Don't confuse with: AWS Identity and Access Management, Amazon Cognito, AWS Directory Service. Identity Center is for your staff across many accounts; IAM holds identities inside one account, Cognito signs in your app's customers, and Directory Service runs Microsoft Active Directory.
 
 **AWS Identity and Access Management** (IAM): The AWS service that holds an account's identities and their permissions. It is a global service, not tied to one Region.
@@ -891,10 +699,6 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
 - Don't confuse with: Amazon Kinesis Data Streams. IoT Core connects and authenticates devices and routes their messages; Kinesis Data Streams streams data once it's in AWS, but doesn't connect or manage devices.
 
-**AWS IP address ranges**: The IP address ranges AWS uses, published as the file ip-ranges.json that anyone can download and search, for example to check whether an address attacking you belongs to AWS.
-
-- Taught in: [Where to find answers](../12-getting-help/03-where-to-find-answers.md)
-
 **AWS Key Management Service** (AWS KMS): The AWS service that creates and controls the keys that encrypt your data, on validated hardware security modules, and records each use of your keys in CloudTrail. Most AWS storage services integrate with it.
 
 - Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
@@ -903,59 +707,46 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **AWS Knowledge Center**: AWS's official articles and videos answering the questions customers ask most, such as "How do I…?", written and kept current by AWS. It is part of AWS re:Post, not a separate site.
 
-- Taught in: [Where to find answers](../12-getting-help/03-where-to-find-answers.md)
+- Taught in: [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
 - Also in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md); [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md)
 - Don't confuse with: AWS re:Post, AWS Prescriptive Guidance, AWS Support Center. The Knowledge Center is AWS's articles on common problems; re:Post's other answers come from anyone, Prescriptive Guidance plans bigger jobs, and Support Center answers about your own account.
 
 **AWS Lambda**: AWS's serverless service running your code, as functions, each time an event triggers it, with no servers to manage. It suits short, event-driven work, scales by running copies side by side, and bills per request and GB-second.
 
 - Taught in: [Containers and serverless](../06-running-applications/03-containers-and-serverless.md)
-- Also in: [Lab 07: Run a Lambda function, read its logs, and stop them piling up](../06-running-applications/05-lab-07-a-lambda-function.md); [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
+- Also in: [Optional lab 07: Run a Lambda function, read its logs, and stop them piling up](../06-running-applications/05-lab-07-a-lambda-function.md); [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
 - Don't confuse with: AWS Fargate, AWS Batch. Lambda runs short functions started by events, up to a time limit per run (see the lesson); Fargate runs containers for as long as they need, and Batch runs queues of long jobs.
 
 **AWS License Manager**: An AWS service that tracks the software licenses you use and bring, across accounts, and can stop launches that would exceed what you own. It also shares Marketplace licenses and switches license types without redeploying.
 
-- Taught in: [The business case](../13-moving-to-aws/04-the-business-case.md)
-- Also in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
+- Taught in: [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
+- Also in: [The business case](../13-moving-to-aws/04-the-business-case.md)
 
 **AWS managed key**: A KMS key, named like aws/ebs or aws/rds, that an AWS service creates in your account. You can see it, read its policy and see each use in CloudTrail, but not change it; AWS rotates it yearly.
 
 - Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
-- Don't confuse with: AWS owned key, customer managed key. An AWS managed key is in your account and visible but controlled by AWS; an AWS owned key stays in AWS's accounts unseen, and a customer managed key is one you create and control.
+- Don't confuse with: customer managed key. An AWS managed key is in your account and visible but controlled by AWS; an AWS owned key stays in AWS's accounts unseen, and a customer managed key is one you create and control.
 
 **AWS managed policy**: A policy that AWS writes and updates and every customer can use. It's a quick start, but it may grant more than your case needs.
 
 - Taught in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
-- Don't confuse with: customer managed policy, inline policy. AWS managed policies are written by AWS for everyone; customer managed policies are yours and attach to many identities; inline policies live in one identity and are deleted with it.
-
-**AWS Managed Services** (AMS): An offering in which AWS operates a customer's infrastructure for an extra fee. The exam guide lists it as out of scope, so expect it only as a wrong answer.
-
-- Taught in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
-- Don't confuse with: managed service provider. AWS Managed Services is AWS itself running your infrastructure for a fee; a managed service provider is a partner company that does that work.
+- Don't confuse with: customer managed policy. AWS managed policies are written by AWS for everyone; customer managed policies are yours and attach to many identities; inline policies live in one identity and are deleted with it.
 
 **AWS Management Console**: AWS's web application for working with every AWS service by pointing and clicking. It suits looking around, learning and one-time tasks; it keeps the result, not the steps, so it can't rebuild or copy a setup exactly.
 
-- Taught in: [Four ways in](../08-building-and-operating/01-four-ways-in.md)
-- Also in: [Lab 10: Create the same bucket three ways: console, command line and template](../08-building-and-operating/05-lab-10-same-bucket-three-ways.md)
+- Taught in: [Four ways in, and infrastructure as code](../08-building-and-operating/01-four-ways-in.md)
+- Also in: [Optional lab 10: Create the same bucket three ways: console, command line and template](../08-building-and-operating/05-lab-10-same-bucket-three-ways.md)
 - Don't confuse with: AWS CLI, AWS SDK, infrastructure as code. All four reach the same services under the same permissions: the console is a person clicking, the CLI typed or scripted commands, an SDK a program's own calls, and infrastructure as code a template of the end result.
 
 **AWS Marketplace**: A curated catalog of software, data and services from other companies, billed on your AWS bill, with cost management, governance and entitlement features for buyers. A product bought there is still yours to configure.
 
-- Taught in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
-- Also in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md); [The front door](../09-protecting-and-governing/04-the-front-door.md); [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md); [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md)
-
-**AWS Migration Acceleration Program** (MAP): AWS's program for organizations migrating at scale, in three phases (assess, mobilize, and migrate and modernize). It offers tools, training, partner expertise and funding toward early migration costs.
-
-- Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
+- Taught in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md)
+- Also in: [The front door](../09-protecting-and-governing/04-the-front-door.md); [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md); [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md)
 
 **AWS Migration Hub**: An AWS service that tracks the status of each application's migration in one place, whichever tool does the moving; it moves nothing. It is closed to new customers, and AWS points to AWS Transform.
 
 - Taught in: [Migration tools](../13-moving-to-aws/03-migration-tools.md)
 - Don't confuse with: AWS Application Discovery Service. Migration Hub tracks progress across tools; Discovery Service collects the server inventory and dependencies used to plan the moves.
-
-**AWS News Blog**: The AWS blog that announces new services and features, in dated posts.
-
-- Taught in: [Where to find answers](../12-getting-help/03-where-to-find-answers.md)
 
 **AWS Organizations**: An AWS service that joins several AWS accounts into one organization under a management account, with organizational units, policies such as service control policies, and one consolidated bill.
 
@@ -969,28 +760,18 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Simpler paths: Elastic Beanstalk, Lightsail, Batch and Outposts](../06-running-applications/04-simpler-paths.md)
 - Don't confuse with: Local Zone. Outposts is in your own building; a Local Zone is an AWS site in a big city.
 
-**AWS owned key**: A KMS key that lives in AWS's own accounts, which a service uses to encrypt your data by default. You can't see it, control who uses it or audit its use.
-
-- Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
-- Don't confuse with: AWS managed key, customer managed key. An AWS owned key stays in AWS's accounts out of your sight; an AWS managed key sits in your account where you can see its use, and a customer managed key is yours to control.
-
 **AWS Partner**: A company outside AWS, in the AWS Partner Network, that sells software or services to AWS customers: independent software vendors sell software, and system integrators sell services.
 
-- Taught in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
-- Also in: [Where to find answers](../12-getting-help/03-where-to-find-answers.md)
+- Taught in: [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
 - Don't confuse with: AWS Professional Services. A partner is another company in the AWS Partner Network; Professional Services is part of AWS, though either can be hired to do a project.
 
 **AWS Partner Network** (APN): AWS's global community of partner companies. Joining is free, and members get partner training and certification, events, selling with AWS through Marketplace and co-selling, and programs and incentives.
 
-- Taught in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
-
-**AWS Partner Solutions Finder**: AWS's search tool for finding a partner by industry, use case, workload, solution or AWS Specialization.
-
-- Taught in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
+- Taught in: [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
 
 **AWS Prescriptive Guidance**: Material from AWS experts for bigger jobs such as migrating, modernizing or setting up security: guides for planning, and patterns with hands-on steps and code for building.
 
-- Taught in: [Where to find answers](../12-getting-help/03-where-to-find-answers.md)
+- Taught in: [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
 - Don't confuse with: AWS documentation, AWS Knowledge Center. Prescriptive Guidance tells you how to carry out a plan, often across several services; documentation explains how one service works, and the Knowledge Center fixes one common problem.
 
 **AWS Pricing Calculator**: A free AWS web tool that estimates what services will cost before you use them, from your assumptions about hours, GB and requests. It leaves out tax, and shared estimates sit on public servers.
@@ -1007,20 +788,15 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **AWS Professional Services**: AWS's own consulting organization, hired under a paid contract to design, build, migrate and manage workloads on AWS, often alongside AWS Partners.
 
-- Taught in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
-- Also in: [Support plans](../12-getting-help/01-support-plans.md); [Where to find answers](../12-getting-help/03-where-to-find-answers.md)
+- Taught in: [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
+- Also in: [Support plans](../12-getting-help/01-support-plans.md)
 - Don't confuse with: AWS solutions architect, AWS Partner, AWS Support. Professional Services is AWS's own paid consultants doing the project; a solutions architect advises for free, a partner is another company that can do the work, and Support fixes problems with AWS.
 
 **AWS re:Post**: AWS's public question-and-answer site, where anyone can ask and community members, AWS staff and recognized experts answer. It is free on every Support plan; never post keys or other secrets there.
 
-- Taught in: [Where to find answers](../12-getting-help/03-where-to-find-answers.md)
+- Taught in: [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
 - Also in: [Support plans](../12-getting-help/01-support-plans.md); [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md)
-- Don't confuse with: AWS Knowledge Center, AWS Support Center, AWS re:Post Private. Anyone answers re:Post's questions, in public; the Knowledge Center is AWS's own articles inside re:Post, Support Center is a private case about your account, and re:Post Private is a separate, retiring product.
-
-**AWS re:Post Private**: A separate, private knowledge site for one organization's own teams, which AWS is retiring (see the lesson). The exam's re:Post is the public site.
-
-- Taught in: [Where to find answers](../12-getting-help/03-where-to-find-answers.md)
-- Don't confuse with: AWS re:Post. re:Post Private was one organization's private site and is being retired; re:Post is AWS's public question-and-answer site that every customer can use.
+- Don't confuse with: AWS Knowledge Center, AWS Support Center. Anyone answers re:Post's questions, in public; the Knowledge Center is AWS's own articles inside re:Post, Support Center is a private case about your account, and re:Post Private is a separate, retiring product.
 
 **AWS Resource Access Manager** (AWS RAM): A service that shares a resource you create once, such as VPC subnets or a transit gateway, with chosen accounts, your organization or its OUs. The sharing account keeps owning it; the others use it within the share's permissions.
 
@@ -1028,13 +804,13 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **AWS Schema Conversion Tool** (AWS SCT): A program you download that converts a database's schema (tables, views, stored procedures and functions) for a different engine, and lists what you must convert by hand. DMS Schema Conversion does the same job inside the AWS DMS console.
 
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
+- Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
 - Also in: [Migration tools](../13-moving-to-aws/03-migration-tools.md)
 - Don't confuse with: AWS Database Migration Service. SCT translates the structure when the engine changes and moves no data; DMS moves the data.
 
 **AWS SDK**: A set of code libraries for one programming language that lets a program call AWS services. It signs each request, picks up the temporary credentials of the role the code runs with, and retries brief failures.
 
-- Taught in: [Four ways in](../08-building-and-operating/01-four-ways-in.md)
+- Taught in: [Four ways in, and infrastructure as code](../08-building-and-operating/01-four-ways-in.md)
 - Don't confuse with: AWS CLI. The CLI is for people typing or scripting commands in a terminal; an SDK is for a program's own code that calls AWS while it runs, such as saving each receipt.
 
 **AWS Secrets Manager**: An AWS service that stores secrets, such as database passwords and API keys, always encrypted, and can rotate them automatically on a schedule.
@@ -1069,19 +845,13 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Exam name: "AWS Security Hub" in the CLF-C02 exam guide
 - Don't confuse with: AWS Security Hub, AWS Trusted Advisor. Security Hub CSPM checks settings against named standards and gathers findings, as the exam's Security Hub does; the unified Security Hub correlates findings, and Trusted Advisor checks AWS's own best practices.
 
-**AWS Security Incident Response**: AWS help to prepare for, respond to and recover from security incidents such as an account takeover or ransomware. It is included with Enterprise Support and Unified Operations, and an extra fee on Business Support+.
-
-- Taught in: [Support plans](../12-getting-help/01-support-plans.md)
-- Also in: [Simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
-- Don't confuse with: AWS Customer Incident Response Team. Security Incident Response comes with the higher Support plans; the AWS CIRT helps any customer whose account has been broken into, at no extra charge, through a support case.
-
 **AWS Security Token Service** (AWS STS): The AWS service that issues temporary credentials.
 
 - Taught in: [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md)
 
 **AWS Service Catalog**: A service where administrators publish approved templates as products, and other people launch only those, within set limits and through a launch role, without wider permissions of their own.
 
-- Taught in: [IaC and automation](../08-building-and-operating/02-iac-and-automation.md)
+- Taught in: [Four ways in, and infrastructure as code](../08-building-and-operating/01-four-ways-in.md)
 - Don't confuse with: AWS CloudFormation. CloudFormation is the engine that builds stacks from templates; Service Catalog is the shop front with rules, deciding who may launch which approved templates.
 
 **AWS Shield**: AWS's protection against DDoS attacks, in two tiers: Shield Standard, automatic for every customer, and Shield Advanced, a paid subscription.
@@ -1107,25 +877,16 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md)
 - Don't confuse with: AWS Direct Connect, AWS Client VPN. Site-to-Site VPN is quick and encrypted but shares the internet's path, while Direct Connect is a private line taking longer to set up; Site-to-Site joins a network, while Client VPN joins one person's device.
 
-**AWS Skill Builder**: AWS's platform for digital training, with many free courses, and hands-on labs in a paid subscription.
-
-- Taught in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
-
 **AWS Snowball**: A rugged storage device AWS shipped for moving large amounts of data into AWS. Closed to new customers, nearing end of support and dropped from the current exam guide: treat it as a wrong answer (dates in the lesson).
 
-- Taught in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
-- Also in: [Migration tools](../13-moving-to-aws/03-migration-tools.md)
+- Taught in: [Migration tools](../13-moving-to-aws/03-migration-tools.md)
+- Also in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
 - Don't confuse with: AWS DataSync. Snowball moved data on a shipped device and is being retired; DataSync moves data over the network and is what AWS points new customers to.
 
 **AWS solutions architect**: An AWS technical adviser who helps customers design systems on AWS, for example through architecture and Well-Architected reviews, at no charge. A role, not a product: they advise but don't build.
 
-- Taught in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
-- Also in: [Where to find answers](../12-getting-help/03-where-to-find-answers.md)
+- Taught in: [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
 - Don't confuse with: AWS Professional Services, AWS Support. A solutions architect advises on design at no charge but doesn't build; Professional Services is hired to do the work, and AWS Support fixes problems with AWS services.
-
-**AWS Specialization**: AWS's validation, against a technical bar, of a partner's expertise in one area. The specializations include AWS Competency and AWS Managed Service Provider.
-
-- Taught in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
 
 **AWS Step Functions**: A service that runs workflows, called state machines: steps carried out in order and tracked to the end, with choices, retries, parallel steps and waits for a person's approval.
 
@@ -1140,18 +901,14 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **AWS Support**: AWS's own help service for its customers, sold as Support plans. It helps with AWS services and your account, but doesn't write or debug your code, administer your systems or log in to them.
 
 - Taught in: [Support plans](../12-getting-help/01-support-plans.md)
-- Also in: [Where to find answers](../12-getting-help/03-where-to-find-answers.md); [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
+- Also in: [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
 - Don't confuse with: AWS solutions architect, AWS Professional Services, AWS Partner. AWS Support fixes problems with AWS services and your account; a solutions architect advises on design at no charge, and Professional Services or a partner is hired to do the work.
 
 **AWS Support Center**: The place in the AWS console where you open and follow support cases and ask for quota increases; AWS's documentation calls it the Support Center Console. Any IAM identity with permission can use it, not only the root user.
 
 - Taught in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md)
-- Also in: [Support plans](../12-getting-help/01-support-plans.md); [Where to find answers](../12-getting-help/03-where-to-find-answers.md); [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md)
+- Also in: [Support plans](../12-getting-help/01-support-plans.md); [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md); [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md)
 - Don't confuse with: AWS re:Post, AWS Knowledge Center, AWS Prescriptive Guidance. Support Center is the only one that sees your account, through a private case; re:Post's community answers, the Knowledge Center's AWS articles and Prescriptive Guidance are public and written for every customer.
-
-**AWS Support Plans console**: The console page that shows which Support plan an account is on and where plans are changed. Changing the plan needs IAM permissions, not the root user, and a paid plan starts a monthly fee.
-
-- Taught in: [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md)
 
 **AWS Transform**: An AWS service, launched in 2025, that uses AI agents to help plan and carry out migrations and modernization. AWS points new customers there for discovery and tracking; the exam guide doesn't list it.
 
@@ -1171,14 +928,10 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **AWS Trust & Safety team**: The AWS team that handles reports of abuse coming from AWS resources, through AWS's abuse form. It deals with the resource's owner and shares details only with that owner's permission.
 
-- Taught in: [Where to find answers](../12-getting-help/03-where-to-find-answers.md)
-- Also in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md); [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md)
+- Taught in: [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
+- Also in: [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md)
 - Exam name: "AWS Trust and Safety team" in the CLF-C02 exam guide
 - Don't confuse with: AWS Support. Trust & Safety takes reports of abuse from an AWS resource, on any plan; AWS Support can't, but handles an intruder in your own account through a support case.
-
-**AWS Trust Center**: AWS's page that gathers its security, compliance and privacy commitments in one place.
-
-- Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
 
 **AWS Trusted Advisor**: An AWS service that checks your account against AWS's best practices in six categories, such as cost optimization, security and service limits, and recommends changes; it fixes nothing. Your Support plan decides which checks you see.
 
@@ -1206,12 +959,12 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **AWS Well-Architected Tool**: A service in the AWS console that reviews one workload against the Well-Architected Framework's questions, flags risks and saves milestones. It is a different service from AWS Trusted Advisor, which runs automatic checks on an account.
 
 - Taught in: [The Well-Architected Framework](../02-why-the-cloud/05-the-well-architected-framework.md)
-- Also in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md); [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md); [The capstone review](../14-capstone/01-the-capstone-review.md); [Lab 18: Record the bakery's review in the AWS Well-Architected Tool](../14-capstone/02-lab-18-well-architected-tool-review.md)
+- Also in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md); [Optional: The capstone review](../14-capstone/01-the-capstone-review.md); [Optional lab 18: Record the bakery's review in the AWS Well-Architected Tool](../14-capstone/02-lab-18-well-architected-tool-review.md)
 - Don't confuse with: AWS Well-Architected Framework. The Tool is the service that runs a review; the Framework is the guidance the review is based on.
 
 **AWS whitepapers**: AWS's longer papers on one topic across services, such as the Well-Architected Framework or disaster recovery, alongside decision guides and reference architectures. Check the date: some are marked for historical reference only.
 
-- Taught in: [Where to find answers](../12-getting-help/03-where-to-find-answers.md)
+- Taught in: [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
 
 **AWS X-Ray**: A service that traces requests through an application: each part a request touched and how long it took, to find the slow or failing part. AWS now shows it as part of CloudWatch; see the lesson.
 
@@ -1221,33 +974,10 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **AWS-generated tag**: A cost allocation tag that AWS creates and applies, such as aws:createdBy for who created a resource. Only the management account activates it, and it covers only resources created afterward.
 
 - Taught in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md)
-- Also in: [Lab 16: Turn on cost allocation tags and find them in Cost Explorer](../11-paying-for-aws/06-lab-16-cost-allocation-tags.md)
+- Also in: [Optional lab 16: Turn on cost allocation tags and find them in Cost Explorer](../11-paying-for-aws/06-lab-16-cost-allocation-tags.md)
 - Don't confuse with: user-defined tag. AWS-generated tags are applied by AWS, show the aws: prefix and cover only resources created after activation; user-defined tags are applied by you and show the user: prefix.
 
-**AZ ID**: An identifier, such as use1-az1, that names the same physical Availability Zone in every account. To agree on a place across accounts, compare AZ IDs, not AZ names.
-
-- Taught in: [Regions, Availability Zones and data centers](../03-aws-around-the-world/01-regions-availability-zones-data-centers.md)
-- Also in: [Lab 02: See Regions, Availability Zones and AWS Health in your own account](../03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md)
-- Don't confuse with: AZ name. An AZ ID is the same in every account; an AZ name is your account's label for a zone and may differ from another account's.
-
-**AZ name**: An Availability Zone's name in your account: the Region code plus a letter, such as us-east-1a. In AWS's oldest Regions, older accounts may map the same name to different physical zones.
-
-- Taught in: [Regions, Availability Zones and data centers](../03-aws-around-the-world/01-regions-availability-zones-data-centers.md)
-- Also in: [Lab 02: See Regions, Availability Zones and AWS Health in your own account](../03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md)
-- Don't confuse with: AZ ID. An AZ name such as us-east-1a can point to different places in different accounts; an AZ ID such as use1-az1 means the same physical place in every account.
-
 ## B
-
-**back end**: What runs behind an app's front end: its data, sign-in and business logic. AWS Amplify's libraries and tools add back-end features without wiring each AWS service by hand.
-
-- Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
-- Don't confuse with: front end. The back end holds the data, sign-in and logic out of sight; the front end is the web pages or phone app people actually use.
-
-**backup**: A saved copy of data as it was at one moment. A point-in-time backup lets you go back to that moment, which is the only way to undo a deletion that replication has already copied.
-
-- Taught in: [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md)
-- Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md); [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md); [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
-- Don't confuse with: replication. A backup stops changing, so it can take you back to before a mistake; replication keeps copying every change, mistakes included.
 
 **backup and restore**: The cheapest and slowest disaster recovery strategy: only backups of the data and setup are kept in the recovery Region, and everything else is rebuilt after the disaster. Recovery typically takes hours.
 
@@ -1255,137 +985,38 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md); [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
 - Don't confuse with: pilot light. Backup and restore keeps only backups and rebuilds everything; a pilot light also keeps data copied continuously and core parts such as the database running.
 
-**backup plan**: In AWS Backup, the rules for what to back up, how often, how long to keep each backup and where to copy it. You assign resources to it, for example by tag.
-
-- Taught in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
-
-**backup vault**: In AWS Backup, the container that holds backups, encrypted and unchangeable. It has nothing to do with the vaults of the older Amazon Glacier service.
-
-- Taught in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
-- Don't confuse with: Amazon Glacier. A backup vault holds AWS Backup's recovery points and is current; a Glacier vault belongs to the older Amazon Glacier service, closed to new customers.
-
-**bandwidth**: How much data a network connection can carry each second, counted in megabits or gigabits per second (Mbps, Gbps).
-
-- Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-
-**baseline usage**: The level a workload never drops below, such as two servers running every hour of the year. It's the part of a workload that a commitment fits.
-
-- Taught in: [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
-
-**basic monitoring**: The free default for EC2 metrics in CloudWatch, such as CPU use, network traffic and disk activity, sent every 5 minutes.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-- Don't confuse with: detailed monitoring. Basic monitoring sends EC2's metrics every 5 minutes at no charge; detailed monitoring sends the same metrics every minute, for a charge.
-
 **Basic Support**: The free Support plan on every AWS account: account and billing cases, quota increase requests, documentation and re:Post, some Trusted Advisor checks and the AWS Health Dashboard. It can't open technical cases.
 
 - Taught in: [Support plans](../12-getting-help/01-support-plans.md)
 - Also in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md); [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md); [Simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
 - Don't confuse with: AWS Business Support+. Basic is free and handles account, billing and quota cases only; Business Support+ is the cheapest plan that adds technical cases with AWS engineers.
 
-**batch**: A large amount of data handled at once, such as yesterday's orders exported overnight, rather than record by record as it arrives.
-
-- Taught in: [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md)
-- Don't confuse with: streaming data, batch job. A batch is data moved or processed in one go rather than as a stream; a batch job is a program that runs to completion unattended, such as a nightly report.
-
-**batch job**: A program that runs to completion with no one interacting with it, such as a nightly report or a simulation.
-
-- Taught in: [Simpler paths: Elastic Beanstalk, Lightsail, Batch and Outposts](../06-running-applications/04-simpler-paths.md)
-
-**behavior graph**: Amazon Detective's linked picture of which identities, addresses and resources did what, and when, built from activity logs and GuardDuty findings.
-
-- Taught in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md)
-
-**benefits management**: The CAF Governance perspective capability that makes sure a cloud investment's promised benefits are realized, measuring them against a plan.
-
-- Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
-- Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
-
-**best practice**: A specific recommended action in the Well-Architected Framework, with an ID that shows its pillar and question.
-
-- Taught in: [The Well-Architected Framework](../02-why-the-cloud/05-the-well-architected-framework.md)
-- Also in: [The capstone review](../14-capstone/01-the-capstone-review.md); [Lab 18: Record the bakery's review in the AWS Well-Architected Tool](../14-capstone/02-lab-18-well-architected-tool-review.md)
-- Don't confuse with: design principle. A best practice is a specific action with an ID; a design principle is a broad idea that guides many decisions.
-
-**billing data lag**: The delay between using something and its cost reaching the tools that watch it, such as Budgets and Cost Anomaly Detection, so their alerts arrive hours after the spending.
-
-- Taught in: [Simulation S14: Follow a runaway cost and see which guardrails alert and which stop it](../11-paying-for-aws/08-sim-guardrail-timeline.md)
-
-**blast radius**: How far a failure reaches: one server, a data center, an Availability Zone, or a whole Region. It decides which protection you need.
-
-- Taught in: [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md)
-- Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md)
-
 **block storage**: Storage that a server sees as its own disk: the server's operating system formats it and keeps its files on it. On AWS it is an Amazon EBS volume or EC2 instance store.
 
 - Taught in: [Block, file and object storage](../05-storing-data/01-block-file-object.md)
 - Don't confuse with: file storage, object storage. Block storage is a disk for one server; file storage is a folder tree that many servers share over the network, and object storage keeps whole objects in a bucket reached through a web API.
 
-**block-level replication**: Copying a server's disks piece by piece, below the level of files, then copying every change, so the copy matches the disk, operating system included.
-
-- Taught in: [Migration tools](../13-moving-to-aws/03-migration-tools.md)
-
-**bot**: A program that holds a conversation with a person, in text or by voice, such as one that takes cake orders. Amazon Lex builds them.
-
-- Taught in: [AI and machine learning](../10-data-ai-and-more/02-ai-and-ml.md)
-- Also in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
-- Don't confuse with: agent (contact center). A bot is a program that answers first; an agent is a person in a contact center, who takes over when the bot can't help.
-
-**bottleneck**: The resource a program runs out of first: processor, memory, disk speed or special chips. It is the first thing to find when choosing an EC2 instance family.
-
-- Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
-- Also in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-
 **bring your own license** (BYOL): Using software licenses you already own on AWS, so AWS charges only for the infrastructure. License terms decide how, such as License Mobility or Dedicated Hosts, and compliance is yours.
 
 - Taught in: [The business case](../13-moving-to-aws/04-the-business-case.md)
-- Also in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md); [Simulation S17: Rightsize the chain's servers and settle their licenses](../13-moving-to-aws/06-sim-rightsizing-and-licensing.md)
+- Also in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
 - Don't confuse with: license-included. BYOL reuses licenses you own under their terms, with compliance yours; license-included buys the license by the hour from AWS, which handles compliance.
 
 **bucket**: A container for files (objects) in Amazon S3.
 
 - Taught in: [Lab 01: Create, find and delete your first storage bucket](../02-why-the-cloud/06-lab-01-first-resource.md)
-- Also in: [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md); [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md); [Block, file and object storage](../05-storing-data/01-block-file-object.md); [S3 in practice](../05-storing-data/02-s3-in-practice.md)
+- Also in: [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md); [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md); [Block, file and object storage](../05-storing-data/01-block-file-object.md); [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
 - Don't confuse with: object. A bucket is the container; objects are the files stored in it.
 
 **bucket policy**: A resource-based policy attached to an S3 bucket. Because it can let other identities or accounts in, it deserves the same review as an identity's policies.
 
 - Taught in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
-- Also in: [Simulation S4: Predict allow or deny across accounts, boundaries and organizations](../04-shared-responsibility-and-access/09-sim-policy-playground.md); [S3 in practice](../05-storing-data/02-s3-in-practice.md)
-
-**budget action**: Something AWS Budgets does when a threshold is crossed, automatically or after approval: apply an IAM policy, attach an SCP, or stop chosen EC2 or RDS instances. It never deletes anything.
-
-- Taught in: [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md)
-- Also in: [Simulation S14: Follow a runaway cost and see which guardrails alert and which stop it](../11-paying-for-aws/08-sim-guardrail-timeline.md)
-
-**budget threshold**: A point at which an AWS budget sends an alert, such as 85% of its amount, measured on actual or forecasted cost.
-
-- Taught in: [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md)
-
-**bundle (Lightsail)**: Amazon Lightsail's name for a plan that packs a server, storage and data transfer into one price.
-
-- Taught in: [Simpler paths: Elastic Beanstalk, Lightsail, Batch and Outposts](../06-running-applications/04-simpler-paths.md)
-
-**burstable instance**: An EC2 instance, of the T types, that runs at a baseline level of processor use and bursts above it using credits earned while quiet. It suits web servers and test systems that are mostly idle.
-
-- Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
-
-**Business Associate Addendum** (BAA): An agreement with AWS, accepted in AWS Artifact, that United States healthcare businesses typically need before they handle protected health information on AWS.
-
-- Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-
-**business case**: A document comparing the costs and benefits of the options for a decision, over years, so the people paying can choose. A migration case counts every cost of staying and of moving.
-
-- Taught in: [The business case](../13-moving-to-aws/04-the-business-case.md)
+- Also in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
 
 **business continuity**: Keeping the business running through a major disruption, not just restoring it afterward; one of the reasons to use more than one Region.
 
 - Taught in: [Choosing a Region](../03-aws-around-the-world/02-choosing-a-region.md)
 - Don't confuse with: disaster recovery. Business continuity keeps the business going during a disruption; disaster recovery brings the workload back after it.
-
-**business intelligence** (BI): Tools that turn data into reports and charts for the people who run a business, often as a dashboard: one screen of charts kept up to date. Amazon Quick Sight is AWS's.
-
-- Taught in: [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md)
 
 **business outcome**: A result the business wants from the cloud, not a technical one. The CAF names four: reduce business risk, improve ESG performance, grow revenue and increase operational efficiency.
 
@@ -1402,26 +1033,12 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Support plans](../12-getting-help/01-support-plans.md)
 - Don't confuse with: AWS Business Support+. Business Support is the retiring plan that older material and some AWS pages still name; Business Support+ is the current plan that replaces it.
 
-**byte**: The basic unit of data size, about one letter of text. Larger sizes are counted in megabytes, gigabytes and terabytes: millions, billions and trillions of bytes.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-
 ## C
 
 **cache**: A stored copy kept close by so it can be served again quickly. To cache something is to keep such a copy.
 
 - Taught in: [The edge](../03-aws-around-the-world/04-the-edge.md)
-- Also in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md); [Choosing a database](../05-storing-data/06-choosing-a-database.md); [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-- Don't confuse with: origin. The cache is the nearby copy; the origin is where the original lives, and where the cache fetches from when it has no copy.
-
-**capability (AWS CAF)**: Something an organization is able to do well, such as managing its cloud spending, built from people, processes and tools. The CAF groups its capabilities into six perspectives.
-
-- Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
-
-**capacity**: How much work a system can do.
-
-- Taught in: [Before and after: the demand curve](../02-why-the-cloud/02-before-and-after-the-demand-curve.md)
-- Don't confuse with: demand. Capacity is the work a system can do; demand is the work asked of it, and the gap between them is idle capacity or lost sales.
+- Also in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md); [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
 
 **Capacity Reservation**: EC2 capacity held for one instance type in one Availability Zone, so launches succeed when needed. It bills at the On-Demand rate whether used or not, and gives no discount of its own.
 
@@ -1439,26 +1056,11 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 - Taught in: [Support plans](../12-getting-help/01-support-plans.md)
 - Also in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md)
-- Don't confuse with: severity. Case severity is how serious you say your problem is when you open a support case; a finding's severity is a security service's estimate of how urgent a finding is.
 
 **certificate (TLS)**: A digital document that proves to a browser that a site is who it claims to be, and makes TLS possible. Certificates expire, so they must be renewed.
 
 - Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
 - Also in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-- Don't confuse with: encryption key. A certificate proves a site's identity so TLS can protect data in transit; an encryption key is the secret number that scrambles data, for example at rest.
-
-**certificate authority**: An organization that issues certificates, only after checking that the requester owns or controls the name. It checks control of the name, not the honesty of the business behind it.
-
-- Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-
-**change data capture**: Copying each new change from a source database after the first full copy, so the target stays in step until you switch over. AWS DMS does it, and it is how the exam's database replication migration strategy works.
-
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-
-**change set**: A preview of what an update to a CloudFormation stack would add, change, replace or remove, shown before anything happens. It doesn't promise that the update will succeed.
-
-- Taught in: [IaC and automation](../08-building-and-operating/02-iac-and-automation.md)
-- Don't confuse with: drift detection. A change set previews a change you're about to make through the template; drift detection reports changes already made by hand, outside the template.
 
 **check category (Trusted Advisor)**: One of Trusted Advisor's six groups of checks: cost optimization, performance, security, fault tolerance, service limits and operational excellence. Older material often lists five, leaving out operational excellence.
 
@@ -1466,35 +1068,10 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md); [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md)
 - Don't confuse with: pillar. Check categories are folders of automatic checks on your account; Well-Architected pillars are guidance you apply in a review, and sustainability has no category.
 
-**CIDR block**: A way to write a range of IP addresses, such as 10.0.0.0/16 for every address starting 10.0. A smaller number after the slash means a bigger range; 0.0.0.0/0 means every address.
-
-- Taught in: [Your own network](../07-connecting-it/01-your-own-network.md)
-- Also in: [Lab 09: Build a small network with a public and a private subnet, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
-
-**ciphertext**: Data scrambled by encryption, which can't be read without the right key.
-
-- Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
-- Also in: [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
-- Don't confuse with: plaintext. Ciphertext is scrambled and useless without the key; plaintext is the readable data before encryption or after decryption.
-
 **Classic Load Balancer**: The previous generation of Elastic Load Balancing. AWS recommends moving to a current type, so recognize the name but don't choose it for new work.
 
 - Taught in: [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
 - Don't confuse with: Application Load Balancer. The Classic Load Balancer is not a current peer of the ALB, NLB and GWLB; it is the older generation they replace.
-
-**client**: A computer or program that sends a request to a server and gets back a response, such as a browser asking a website for a page. The client always speaks first.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-- Don't confuse with: server. A client sends requests and a server waits for them and answers, but the same computer can be either, depending on what it is doing.
-
-**client-side encryption**: Encrypting data yourself before you upload it, and managing the keys and tools yourself.
-
-- Taught in: [S3 in practice](../05-storing-data/02-s3-in-practice.md)
-- Don't confuse with: server-side encryption. Client-side encryption happens before the data leaves you; server-side encryption is done by S3 as it stores the data.
-
-**close-out**: The final sweep of an account when its work is done: find every leftover by tag, by name and on the bill, delete on purpose, keep the guardrails, and check the bill again the next day.
-
-- Taught in: [Lab 19: Close out the account you used for the course](../14-capstone/03-lab-19-close-out.md)
 
 **closed to new customers**: A stage in a service's retirement: customers who already use it keep using it, but new customers can't start. This guide still teaches such a service while the exam lists it, but never uses it in a lab.
 
@@ -1510,84 +1087,14 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [What cloud computing is](../02-why-the-cloud/01-what-cloud-computing-is.md)
 - Don't confuse with: hybrid deployment. In a cloud deployment every part runs at a cloud provider, even if there are two providers; in a hybrid deployment some connected parts don't run in the cloud at all.
 
-**cloud financial management**: Tracking and controlling cloud spending once it starts, including the licenses you own and those included with cloud resources: a CAF Governance capability, and a Well-Architected cost optimization design principle.
-
-- Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
-- Also in: [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md); [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
-
-**cloud provider**: A company that owns data centers and rents IT resources to others over the internet. AWS is one.
-
-- Taught in: [What cloud computing is](../02-why-the-cloud/01-what-cloud-computing-is.md)
-
-**cloud readiness**: How well an organization can use the cloud to change, which the CAF says rests on its capabilities.
-
-- Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
-
-**cloud-native**: Designed to use cloud features such as managed services, automatic scaling and serverless computing, rather than only running on cloud servers.
-
-- Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-
-**CloudTrail Lake**: CloudTrail's feature for storing events and querying them with SQL. It is closed to new customers (see the lesson), and AWS points them to Amazon CloudWatch; CloudTrail itself and its trails are unaffected.
-
-- Taught in: [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md)
-
-**CloudWatch agent**: Software you install on EC2 instances or on-premises servers to send CloudWatch measurements from inside the operating system, such as memory used, and log files. Its metrics are billed as custom metrics.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-
-**CloudWatch Logs Insights**: A CloudWatch feature for searching and summarizing log data with queries, such as every line containing an error in the last hour.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-- Don't confuse with: metric filter. Logs Insights searches log lines when you ask it a question; a metric filter keeps counting matching lines as a metric that an alarm can watch.
-
-**code**: The instructions of a program, written in a programming language such as Python.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-
-**column**: One fact that every record in a database table has, such as the pickup date. Each column has a type, such as date, which the database engine enforces.
-
-- Taught in: [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
-- Don't confuse with: row. A column is one fact that every record has; a row is one whole record.
-
-**command**: A line you type at a command line for the computer to run. In the AWS CLI, the word after aws, usually a service such as s3, is called the command.
-
-- Taught in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
-
-**command line**: A way to work with a computer by typing commands instead of clicking. It runs exactly what you type, often at once and with no undo.
-
-- Taught in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
-
-**commitment**: A promise to pay for a set amount of use for a term of one or three years, whether you use it or not, in return for a lower rate. Savings Plans and Reserved Instances are commitments.
-
-- Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
-- Also in: [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
-
-**Common Vulnerabilities and Exposures** (CVE): A public, numbered entry for one known software flaw. Scanners such as Amazon Inspector match installed software against these entries.
-
-- Taught in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md)
-- Also in: [Simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md)
-
-**compensatory scoring**: Passing on your total score for the whole exam, not domain by domain, so strength in one domain can make up for weakness in another.
-
-- Taught in: [The exam at a glance](../00-start-here/03-the-exam-at-a-glance.md)
-
 **compliance**: Meeting the rules that apply to you, from laws, regulators, industry standards or contracts. Each such rule is a compliance requirement, and one can rule out a Region however cheap or close it is.
 
 - Taught in: [Shared, inherited and customer-specific controls](../04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md)
 - Also in: [Choosing a Region](../03-aws-around-the-world/02-choosing-a-region.md); [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-- Don't confuse with: audit. Compliance is meeting the rules; an audit is the independent check that your controls exist and work.
 
 **compliance program**: A standard, law or framework that AWS is audited against or aligns with, such as SOC 2, ISO 27001, PCI DSS or HIPAA. Which ones apply to you depends on your industry and country.
 
 - Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-
-**compute**: Processing power to run programs; one of the main IT resources.
-
-- Taught in: [What cloud computing is](../02-why-the-cloud/01-what-cloud-computing-is.md)
-
-**compute environment**: In AWS Batch, the set of servers jobs run on: EC2 instances, On-Demand or Spot, or Fargate. In a managed compute environment AWS provisions the servers; in an unmanaged one you run them.
-
-- Taught in: [Simpler paths: Elastic Beanstalk, Lightsail, Batch and Outposts](../06-running-applications/04-simpler-paths.md)
 
 **compute optimized**: EC2 instance types with more processor power for their memory, for work that keeps the processors busy, such as batch processing, media transcoding and game servers. Its letter is C.
 
@@ -1600,67 +1107,19 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Don't confuse with: EC2 Instance Savings Plan. A Compute Savings Plan keeps applying when you change family, Region or compute service; an EC2 Instance Savings Plan stays with one family in one Region for a deeper discount.
 
-**Condition (policy element)**: An optional part of a policy statement that adds "only when", such as only when the request was made with MFA.
-
-- Taught in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
-
-**Config rule**: An AWS Config check that compares each resource with a setting you want and marks it compliant or noncompliant, such as the AWS managed rule restricted-ssh. It changes nothing unless you attach a fix.
-
-- Taught in: [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md)
-- Also in: [Simulation S10: Read a resource's AWS Config timeline, and tell Config from CloudTrail](../09-protecting-and-governing/09-sim-config-timeline.md)
-- Don't confuse with: conformance pack. A Config rule checks one setting; a conformance pack bundles many rules, with optional fixes, deployed and reported on as one unit.
-
-**configuration item**: AWS Config's point-in-time record of one resource's settings, saved each time the resource changes and linked to the CloudTrail event behind the change. It stays true until the next item replaces it.
-
-- Taught in: [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md)
-- Also in: [Simulation S10: Read a resource's AWS Config timeline, and tell Config from CloudTrail](../09-protecting-and-governing/09-sim-config-timeline.md)
-- Don't confuse with: event (CloudTrail). A configuration item records what a resource looked like after a change; a CloudTrail event records the request that made the change, and who sent it.
-
 **configuration management**: Keeping systems set up correctly. A shared control: AWS keeps its own devices set up, and you keep your operating systems, databases, applications and AWS resource settings set up.
 
 - Taught in: [Shared, inherited and customer-specific controls](../04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md)
 
-**configuration recorder**: The AWS Config setting that turns recording on and chooses which resource types to record. Config records nothing until you set it up, and it keeps recording, and charging, until you stop it.
-
-- Taught in: [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md)
-- Also in: [Simulation S10: Read a resource's AWS Config timeline, and tell Config from CloudTrail](../09-protecting-and-governing/09-sim-config-timeline.md)
-
-**conformance pack**: A set of AWS Config rules, with optional fixes, deployed and reported on as one unit, also across an organization. AWS points former Audit Manager users to it; it checks only what a rule can test.
-
-- Taught in: [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md)
-- Also in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md); [Simulation S10: Read a resource's AWS Config timeline, and tell Config from CloudTrail](../09-protecting-and-governing/09-sim-config-timeline.md)
-- Don't confuse with: Config rule, AWS Audit Manager. A conformance pack bundles many Config rules into one unit; a Config rule checks one setting, and Audit Manager, an older evidence service, can't be set up in new accounts.
-
 **consolidated billing**: The AWS Organizations feature by which the management account receives and pays one bill for every account in the organization, sees each account's charges, and gets combined volume pricing and shared commitment discounts.
 
-- Taught in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md)
-- Also in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md); [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
-
-**constraint (Service Catalog)**: A limit on launching a Service Catalog product. A template constraint narrows choices, such as instance types; a launch constraint names an IAM role that builds the product, so users need no permissions on the services underneath.
-
-- Taught in: [IaC and automation](../08-building-and-operating/02-iac-and-automation.md)
-
-**consumer**: The part of an application that receives messages or records and processes them, such as a packing worker taking orders from an SQS queue, or your own program reading a Kinesis data stream.
-
-- Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-- Also in: [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md)
-
-**contact center**: The system a business uses to handle customer calls, chats and messages; the people who answer are agents. Amazon Connect Customer is AWS's cloud contact center.
-
-- Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
+- Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
+- Also in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md); [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
 
 **container**: A standard package of an application's code with the libraries and settings it depends on, so it runs the same on a laptop or on AWS. It is software, not a place to store data like an S3 bucket.
 
 - Taught in: [Containers and serverless](../06-running-applications/03-containers-and-serverless.md)
 - Also in: [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md)
-
-**container image**: The template a container starts from, built once so that every container started from it is identical. Images are kept in a container registry.
-
-- Taught in: [Containers and serverless](../06-running-applications/03-containers-and-serverless.md)
-
-**container registry**: A store of container images, from which an orchestrator pulls an image when it starts a container. Amazon ECR is AWS's.
-
-- Taught in: [Containers and serverless](../06-running-applications/03-containers-and-serverless.md)
 
 **content delivery network** (CDN): A network of servers in many places that keeps copies of content near users, so it arrives faster. Amazon CloudFront is AWS's CDN.
 
@@ -1678,15 +1137,10 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
 - Don't confuse with: continuous delivery. Continuous integration builds and tests every change; continuous delivery goes on to prepare every passing change for release, while a person, test or rule decides when it goes live.
 
-**control plane**: The part of an orchestration system that makes the decisions about where containers run. In Amazon EKS, AWS manages the Kubernetes control plane for you.
-
-- Taught in: [Containers and serverless](../06-running-applications/03-containers-and-serverless.md)
-
 **Control Tower control**: A plain-language rule that AWS Control Tower applies to a whole OU: preventive, built from SCPs and RCPs; detective, from Config rules; or proactive, checking CloudFormation resources before creation. AWS used to call them guardrails.
 
 - Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
 - Also in: [A defense map](../09-protecting-and-governing/06-a-defense-map.md); [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
-- Don't confuse with: IT control. A Control Tower control is a specific rule applied to an OU; an IT control is any checkable safeguard, such as a rule, process or setting, that lowers a risk.
 
 **Convertible Reserved Instance**: A Reserved Instance you can exchange for another Convertible one with a different family, operating system or tenancy, of equal or higher value, in the same Region. It discounts less than Standard and can't be sold.
 
@@ -1694,36 +1148,16 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Don't confuse with: Standard Reserved Instance. A Convertible Reserved Instance gives up some discount for the right to exchange it; a Standard one discounts more and can be sold, but never exchanged.
 
-**core**: One processing unit inside a processor. A processor with several cores can work on several things at once.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-
 **cost allocation tag**: A tag key activated for billing, so Cost Explorer, Budgets, anomaly monitors and the CUR can group costs by it. The two types are AWS-generated and user-defined.
 
 - Taught in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md)
-- Also in: [Lab 16: Turn on cost allocation tags and find them in Cost Explorer](../11-paying-for-aws/06-lab-16-cost-allocation-tags.md)
+- Also in: [Optional lab 16: Turn on cost allocation tags and find them in Cost Explorer](../11-paying-for-aws/06-lab-16-cost-allocation-tags.md)
 - Don't confuse with: tag. Any tag labels a resource so you can find it; only a key activated as a cost allocation tag reaches billing tools, and only for usage from activation on.
-
-**cost category**: A set of ordered rules that assigns each cost to a name the business uses, such as a team, by account, tag, service, Region and more. It appears in Cost Explorer, Budgets and the CUR.
-
-- Taught in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md)
-
-**cost driver**: The quantity that makes a charge go up, such as hours run, GB stored, requests made or GB sent out. Each line of a bill is a driver's quantity times its rate.
-
-- Taught in: [How AWS charges](../11-paying-for-aws/01-how-aws-charges.md)
-
-**cost monitor**: In AWS Cost Anomaly Detection, the setting that says what to watch: all AWS services, or chosen accounts, cost allocation tags or cost categories.
-
-- Taught in: [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md)
 
 **cost optimization pillar**: The Well-Architected pillar that asks whether a workload delivers its value at the lowest cost.
 
 - Taught in: [The Well-Architected Framework](../02-why-the-cloud/05-the-well-architected-framework.md)
 - Don't confuse with: sustainability pillar. Both pillars fight waste, but cost optimization measures money and sustainability measures resources and energy.
-
-**crawler**: An AWS Glue program that scans your data, works out its columns and adds tables to the Glue Data Catalog, so nobody has to type them in.
-
-- Taught in: [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md)
 
 **credential report**: A downloadable IAM file (CSV) listing every IAM user in the account and the state of their credentials: password and its last use, MFA, and each access key's last rotation and use.
 
@@ -1740,7 +1174,6 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **cross-account role**: A role in the account that owns the resources, whose trust policy names another account that may assume it. People there get temporary credentials, with no second IAM user.
 
 - Taught in: [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md)
-- Also in: [Simulation S4: Predict allow or deny across accounts, boundaries and organizations](../04-shared-responsibility-and-access/09-sim-policy-playground.md)
 - Don't confuse with: resource-based policy. With a cross-account role, the other account's users assume a role in your account; with a resource-based policy, they use one resource directly without assuming anything.
 
 **cross-site scripting**: Planting a script in a web page so that it runs in other visitors' browsers. AWS WAF has rules that match it.
@@ -1748,61 +1181,24 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [The front door](../09-protecting-and-governing/04-the-front-door.md)
 - Don't confuse with: SQL injection. Cross-site scripting attacks other visitors' browsers through a page; SQL injection attacks the site's own database through a form field.
 
-**CUR 2.0**: The current version of the Cost and Usage Report, created as an export in AWS Data Exports, which AWS calls the recommended way to get this data. The original report is now the legacy export.
-
-- Taught in: [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md)
-- Also in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md)
-
-**current version**: The newest version of an object in a versioned bucket, which is what people see. After a plain delete, the current version is a delete marker.
-
-- Taught in: [S3 in practice](../05-storing-data/02-s3-in-practice.md)
-- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md)
-- Don't confuse with: noncurrent version. The current version is what a plain request returns; noncurrent versions are older ones kept underneath, still stored and billed.
-
-**custom key store**: An AWS KMS feature that keeps KMS keys in your own CloudHSM cluster, so services that use KMS, such as S3 and RDS, can use keys held in HSMs only you control.
-
-- Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
-
-**custom metric**: A metric that your own code or the CloudWatch agent sends to CloudWatch, such as orders failed or an instance's memory use. Custom metrics are charged.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-
-**customer gateway device**: Your router or firewall at the office end of a Site-to-Site VPN. Setting it up and using both tunnels is your side of the line.
-
-- Taught in: [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md)
-- Don't confuse with: virtual private gateway. The customer gateway device is your end of the VPN; the virtual private gateway is AWS's end, attached to a VPC.
-
 **customer managed key**: A KMS key you create. You write its key policy, choose its rotation and can disable or delete it; each use shows in CloudTrail. It carries a monthly fee.
 
 - Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
-- Don't confuse with: AWS managed key, AWS owned key. Only a customer managed key lets you write the key policy and decide who may decrypt; AWS controls an AWS managed key, and an AWS owned key isn't even visible to you.
+- Don't confuse with: AWS managed key. Only a customer managed key lets you write the key policy and decide who may decrypt; AWS controls an AWS managed key, and an AWS owned key isn't even visible to you.
 
 **customer managed policy**: A permissions policy you write and manage yourself, which you can attach to many identities; the usual way to apply least privilege.
 
 - Taught in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
-- Also in: [Lab 03: Give a group read-only access to one bucket, and test it in the policy simulator](../04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md); [Lab 04: Finish a policy, write one yourself, and find the deny that blocks it](../04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md)
+- Also in: [Lab 03: Give a group read-only access to one bucket, and test it in the policy simulator](../04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md); [Optional lab 04: Finish a policy, write one yourself, and find the deny that blocks it](../04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md)
 - Exam name: "custom policy" in the CLF-C02 exam guide
-- Don't confuse with: AWS managed policy, inline policy. A customer managed policy is yours and reusable; an AWS managed policy is AWS's and shared by every customer, and an inline policy belongs to one identity only.
+- Don't confuse with: AWS managed policy. A customer managed policy is yours and reusable; an AWS managed policy is AWS's and shared by every customer, and an inline policy belongs to one identity only.
 
 **customer-specific control**: A control that depends only on what you build, so only you can do it, such as keeping certain data in certain protected areas.
 
 - Taught in: [Shared, inherited and customer-specific controls](../04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md)
 - Don't confuse with: inherited control, shared control. A customer-specific control is yours alone because it comes from what you build; an inherited control is AWS's alone, and a shared control is done by both sides on their own things.
 
-**cutover**: The planned moment you switch users from the old system to the new one in AWS. Copying can run for days; cutover is a short switch.
-
-- Taught in: [Migration tools](../13-moving-to-aws/03-migration-tools.md)
-
 ## D
-
-**dashboard (CloudWatch)**: A CloudWatch screen of chosen graphs, numbers and alarms, so someone can see a workload's health at a glance. It shows data; it sends nothing.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-- Don't confuse with: AWS Health Dashboard. A CloudWatch dashboard shows the metrics and alarms you choose about your own workload; the AWS Health Dashboard shows events about AWS's services and your account, with no setup.
-
-**data catalog**: A list of what data you have, where it is and what its columns are: metadata about the data, not the data itself. The AWS Glue Data Catalog is AWS's.
-
-- Taught in: [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md)
 
 **data center**: A building that holds servers, storage and network equipment, with the power and cooling they need.
 
@@ -1810,50 +1206,15 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [What cloud computing is](../02-why-the-cloud/01-what-cloud-computing-is.md); [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md)
 - Don't confuse with: Availability Zone. A data center is one building; an Availability Zone is one or more data centers, and on AWS you choose Availability Zones, never buildings.
 
-**data classification**: Sorting data by how sensitive it is, which comes before choosing how to protect it. Amazon Macie helps by finding sensitive data in S3.
-
-- Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
-
-**data event**: A CloudTrail event for an action on the data inside a resource, such as reading an object in a bucket. Data events aren't recorded unless you turn them on, and they are charged.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-- Also in: [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md); [Simulation S10: Read a resource's AWS Config timeline, and tell Config from CloudTrail](../09-protecting-and-governing/09-sim-config-timeline.md)
-- Don't confuse with: management event. Data events record actions on the data inside a resource and must be turned on, for a charge; management events record changes to resources and settings and are in Event history by default.
-
-**data in use**: Data in memory while a program works on it: a third state beside data at rest and data in transit, beyond the scope of this exam.
-
-- Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
-
-**data key**: The key a service actually encrypts your data with. The service gets it from AWS KMS and stores it only in encrypted form, protected by your KMS key.
-
-- Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
-- Don't confuse with: KMS key. A data key encrypts the data itself and is stored, encrypted, beside it; the KMS key stays inside KMS and protects the data keys.
-
 **data lake**: One central store that keeps data of many kinds in its original form, for analysis later. On AWS it's usually an S3 bucket, which services such as Athena query in place.
 
 - Taught in: [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md)
 - Don't confuse with: data warehouse. A data lake keeps raw files in their original form, usually in S3; a data warehouse such as Redshift holds data loaded into it and organized for repeated, complex reports.
 
-**data model**: The shape a database gives your data: relational tables, key-value items, documents, a graph, data held in memory, or a data warehouse. Each AWS database is built for one shape.
-
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-
-**data pipeline**: The path data takes from where it's created to the screen where someone reads the answer. On AWS each analytics service does one step: ingest, catalog, query, search or visualize.
-
-- Taught in: [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md)
-
-**data point**: One value of a CloudWatch metric at one moment. An alarm combines each period's data points into one value with a statistic.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-
 **data residency**: Where data is physically stored.
 
 - Taught in: [Choosing a Region](../03-aws-around-the-world/02-choosing-a-region.md)
 - Don't confuse with: data sovereignty. Data residency is only where the data sits; data sovereignty is whose control and laws the data is under, which often decides where it may sit.
-
-**data scanned**: How much data an Athena query read, shown in its statistics. Athena bills each query by it, with a minimum per query (see the lesson), so storing data so queries read less costs less.
-
-- Taught in: [Lab 13: Query a small sales file in S3 with Athena, then delete everything](../10-data-ai-and-more/04-lab-13-athena-query.md)
 
 **data sovereignty**: Keeping data under the control and the laws that apply to it, which often means keeping it in particular countries. AWS gives no single definition; the exam lists it as a reason to use more than one Region.
 
@@ -1871,24 +1232,9 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **data warehouse**: A database built to analyze large amounts of historical data gathered from many sources, through fewer, much larger queries. Amazon Redshift is AWS's; it studies the business rather than running it.
 
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
+- Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
 - Also in: [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md)
 - Don't confuse with: data lake. A data warehouse holds data loaded and organized for repeated, complex reports; a data lake keeps raw data of many kinds in its original form, usually in S3.
-
-**database**: An organized store of records, run by a database engine that keeps them in order, lets many people change them at once without losing work, and answers questions about them; one of the main IT resources.
-
-- Taught in: [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
-- Also in: [What cloud computing is](../02-why-the-cloud/01-what-cloud-computing-is.md); [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md); [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-- Don't confuse with: file. A database puts one engine in charge of many small records; a file is one whole thing each program opens and saves itself, and a spreadsheet is a file.
-
-**database engine**: The database software itself, such as MySQL, PostgreSQL or Microsoft SQL Server.
-
-- Taught in: [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
-- Also in: [Choosing a database](../05-storing-data/06-choosing-a-database.md); [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
-
-**database migration**: Moving a database into AWS from somewhere else, such as an on-premises server, or between databases. AWS DMS moves the data, and AWS SCT converts the schema when the engine changes.
-
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
 
 **database replication**: Copying a database to AWS while the source keeps running, then copying every new change until the switch-over, as AWS DMS does. The exam names it as a migration strategy; it's a technique used inside one.
 
@@ -1900,26 +1246,9 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
 - Also in: [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 
-**DB instance**: Amazon RDS's name for one running database server, whose size you choose and pay for while it runs.
-
-- Taught in: [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
-
-**DDoS cost protection**: A Shield Advanced feature: credits for the extra charges an attack causes, such as servers that Auto Scaling launched to absorb it, requested through AWS Support.
-
-- Taught in: [The front door](../09-protecting-and-governing/04-the-front-door.md)
-
-**dead-letter queue**: A queue that collects messages that keep failing, so one bad message doesn't block the rest and someone can look at it later.
-
-- Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-
 **decoupling**: Putting something, such as a queue, topic or event bus, between two parts so each can fail, slow down or grow without breaking the other. Parts joined this way are loosely coupled.
 
 - Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-
-**dedicated connection**: A Direct Connect connection on a physical port for you alone, at a fixed speed.
-
-- Taught in: [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md)
-- Don't confuse with: hosted connection. A dedicated connection is your own port at a Direct Connect location; a hosted connection comes to you through an AWS Direct Connect Partner.
 
 **Dedicated Host**: A whole physical EC2 server for your use, billed per host, that shows its sockets, cores and host ID and keeps your instances on it. It suits software licensed per socket or core.
 
@@ -1933,36 +1262,9 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Don't confuse with: Dedicated Host. A Dedicated Instance meets a rule against shared hardware without showing it; a Dedicated Host is a whole server you can see and control, for licenses counted per socket or core.
 
-**default VPC**: The VPC AWS creates in each Region of every account, with a public subnet in every Availability Zone, an internet gateway and automatic public IPv4 addresses. It's handy for a first test, but every subnet in it is public.
-
-- Taught in: [Your own network](../07-connecting-it/01-your-own-network.md)
-- Also in: [Lab 09: Build a small network with a public and a private subnet, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
-
 **defense in depth**: Several independent layers of controls, from the edge to the organization, so that an attacker must beat all of them and a mistake in one is caught by another.
 
 - Taught in: [A defense map](../09-protecting-and-governing/06-a-defense-map.md)
-
-**delete marker**: A placeholder S3 puts on top of an object when you delete it in a versioned bucket without naming a version. The object looks gone, but its versions are still there; deleting the marker brings it back.
-
-- Taught in: [S3 in practice](../05-storing-data/02-s3-in-practice.md)
-- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md)
-
-**demand**: How much work customers ask a system to do, such as orders per hour.
-
-- Taught in: [Before and after: the demand curve](../02-why-the-cloud/02-before-and-after-the-demand-curve.md)
-- Don't confuse with: capacity. Demand is the work asked of a system; capacity is the work it can do.
-
-**demand curve**: A chart of demand over time. Drawn against a flat line for the capacity you own, it shows idle capacity below the line and lost sales above it.
-
-- Taught in: [Before and after: the demand curve](../02-why-the-cloud/02-before-and-after-the-demand-curve.md)
-
-**denial-of-service attack** (DoS): An attempt to make a site or service unavailable to its real users, usually by overwhelming it.
-
-- Taught in: [The front door](../09-protecting-and-governing/04-the-front-door.md)
-
-**dependency**: A link between servers or applications, such as an ordering app that calls a database. Servers that depend on each other usually move together in one wave.
-
-- Taught in: [Migration tools](../13-moving-to-aws/03-migration-tools.md)
 
 **deployment model**: Where the parts of a system run. AWS names three: cloud, hybrid and on-premises. "Public, private, community" is a different vocabulary, not AWS's.
 
@@ -1971,18 +1273,6 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **design principle**: A short, named idea in the Well-Architected Framework that guides decisions, such as "stop guessing your capacity needs". There are general principles and principles for each pillar.
 
 - Taught in: [The Well-Architected Framework](../02-why-the-cloud/05-the-well-architected-framework.md)
-- Don't confuse with: best practice. A design principle is a broad guiding idea; a best practice is a specific recommended action with an ID.
-
-**desired capacity**: How many instances an Auto Scaling group should run right now, always between its minimum and maximum. A scaling policy, a schedule or a person changes it, and the group launches or terminates instances to match.
-
-- Taught in: [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
-- Also in: [Simulation S7: Scale the bakery's web servers through a December Saturday](../06-running-applications/07-sim-elasticity-with-auto-scaling.md)
-- Don't confuse with: minimum capacity, maximum capacity. The desired capacity moves with demand; the minimum and maximum are the fixed limits it moves between.
-
-**detailed monitoring**: An EC2 option that sends the same CloudWatch metrics as basic monitoring every minute instead of every 5, for a charge.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-- Don't confuse with: basic monitoring. Detailed monitoring sends EC2's metrics every minute, for a charge; basic monitoring, the free default, sends them every 5 minutes.
 
 **detective control**: A control that notices and records something after it happens, such as a CloudTrail record, a GuardDuty finding or an AWS Config rule.
 
@@ -1994,18 +1284,6 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 - Taught in: [Support plans](../12-getting-help/01-support-plans.md)
 - Don't confuse with: AWS Business Support+. Developer Support is a retiring plan from older material; Business Support+ is the current plan that replaces it, and a Developer customer moves only by choosing it.
-
-**Device Shadow**: AWS IoT Core's stored copy of each device's last reported state, so apps can read it, or set a desired state, even while the device is offline.
-
-- Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
-
-**Direct Connect location**: A data center where AWS's network and customers' networks meet, so a cable can join them for AWS Direct Connect.
-
-- Taught in: [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md)
-
-**disaster**: An event bigger than an ordinary failure. AWS names natural, technical and human kinds, so deleting the wrong data counts if it stops the business.
-
-- Taught in: [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md)
 
 **disaster recovery** (DR): Getting a whole workload working again after a disaster, usually from a separate copy in another Region, within limits the business sets as its RTO and RPO.
 
@@ -2022,38 +1300,11 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [The front door](../09-protecting-and-governing/04-the-front-door.md)
 - Also in: [Module 09: Protecting, governing and proving compliance](../09-protecting-and-governing/00-brief.md); [A defense map](../09-protecting-and-governing/06-a-defense-map.md)
 
-**distribution**: Your Amazon CloudFront setup: which origins it serves, such as an S3 bucket or a web server, and how it caches their content.
-
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-
-**DNS record**: One entry in a hosted zone that maps a name to an answer, such as an address.
-
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-
-**DNS resolver**: The DNS server, usually your internet service provider's, that finds a name's address for your device by asking other DNS servers, then keeps the answer for a while so later lookups are instant.
-
-- Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-
-**Docker**: A widely used tool for building and running containers.
-
-- Taught in: [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md)
-
 **document database**: A database in which each record is a self-contained document, usually JSON, and different documents can have different fields. Amazon DocumentDB is AWS's, and DynamoDB also stores documents.
 
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
+- Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
 - Also in: [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
 - Don't confuse with: key-value database. A document database keeps self-contained documents whose fields can vary and can be searched by those fields; a key-value database fetches each item by its key.
-
-**domain**: One of the four broad subject areas the CLF-C02 exam guide divides the exam into, each with its own share of the questions.
-
-- Taught in: [The exam at a glance](../00-start-here/03-the-exam-at-a-glance.md)
-- Don't confuse with: task statement, domain name. A domain is a broad subject area of the exam and a task statement is one specific thing a domain tests, while a domain name is a website's name on the internet.
-
-**domain name**: A name people use to reach a site, such as bakery.example, which DNS turns into an address. Amazon Route 53 can register domain names and answer DNS questions for them.
-
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-- Also in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-- Don't confuse with: domain. A domain name is a site's name on the internet; an exam domain is one of the broad subject areas of the CLF-C02 exam.
 
 **Domain Name System** (DNS): The internet's address book: it turns a name like example.com into the network address of a server. Amazon Route 53 is AWS's DNS service.
 
@@ -2061,29 +1312,11 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md); [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
 - Don't confuse with: content delivery network. DNS only answers where something is; a CDN delivers the content.
 
-**drift**: A difference between a stack's resources as they are now and as its template describes them, usually from a change made by hand. Copies built later from the template won't have it.
-
-- Taught in: [IaC and automation](../08-building-and-operating/02-iac-and-automation.md)
-
-**drift detection**: A CloudFormation feature that compares a stack's resources with its template and reports each as in sync, modified or deleted. It reports drift; it doesn't fix it.
-
-- Taught in: [IaC and automation](../08-building-and-operating/02-iac-and-automation.md)
-- Don't confuse with: change set. Drift detection reports changes already made by hand, outside the template; a change set previews a change you're about to make through the template.
-
-**drill**: A practice recovery that doesn't disturb the real system, to prove a recovery plan works.
-
-- Taught in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
-
 **durability**: Stored data being kept safe from loss over time, so it will still exist later. It protects against failing hardware, not against someone deleting the data.
 
 - Taught in: [Telling the benefits apart](../02-why-the-cloud/03-telling-the-benefits-apart.md)
-- Also in: [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md); [Block, file and object storage](../05-storing-data/01-block-file-object.md); [S3 in practice](../05-storing-data/02-s3-in-practice.md)
+- Also in: [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md); [Block, file and object storage](../05-storing-data/01-block-file-object.md); [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
 - Don't confuse with: high availability. Durability means the data still exists later; availability means it is reachable right now.
-
-**DynamoDB Accelerator** (DAX): An in-memory cache built only for DynamoDB, which turns its millisecond reads into microsecond reads.
-
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-- Don't confuse with: Amazon ElastiCache. DAX caches DynamoDB only; ElastiCache is a general in-memory cache that can sit in front of other stores, such as an RDS database.
 
 ## E
 
@@ -2091,10 +1324,6 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 - Taught in: [Block, file and object storage](../05-storing-data/01-block-file-object.md)
 - Also in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
-
-**EC2 Instance Connect**: A way to sign in to a Linux EC2 instance with your IAM identity and a key that lasts only seconds, without leaving SSH open to everyone. Each connection is logged in CloudTrail.
-
-- Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
 
 **EC2 Instance Savings Plan**: A Savings Plan for one EC2 instance family in one Region, in any size, operating system or tenancy. It gives a deeper maximum discount than a Compute Savings Plan.
 
@@ -2112,16 +1341,6 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md); [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
 - Don't confuse with: Region, Availability Zone, Local Zone. Edge locations deliver content and answer requests near users but don't run your servers; your servers run in a Region's Availability Zones, or in a Local Zone when they must be in a particular city.
 
-**Effect (policy element)**: The part of a policy statement that says whether it allows or denies: Allow or Deny.
-
-- Taught in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
-
-**Elastic IP address**: A fixed public IPv4 address that you keep in your account and attach to an instance or a NAT gateway. Unlike the address an instance gets automatically, it survives a stop, and it is charged until you release it.
-
-- Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
-- Also in: [Your own network](../07-connecting-it/01-your-own-network.md)
-- Don't confuse with: public IP address. An Elastic IP address stays yours until you release it; an automatic public IP address is released when the instance stops, so it comes back different.
-
 **Elastic Load Balancing** (ELB): AWS's load balancing service: one front door spreading incoming traffic across healthy targets, such as EC2 instances, containers and IP addresses, in one or more Availability Zones. AWS scales the load balancer itself, and it bills by the hour.
 
 - Taught in: [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
@@ -2131,7 +1350,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **elasticity**: Capacity that grows when demand rises and shrinks when it falls, so you don't pay for capacity you no longer need. On AWS it is usually automatic, through auto scaling.
 
 - Taught in: [Telling the benefits apart](../02-why-the-cloud/03-telling-the-benefits-apart.md)
-- Also in: [Simulation S1: Finish the bakery's cost comparison](../02-why-the-cloud/07-sim-demand-curve.md); [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
+- Also in: [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
 - Don't confuse with: scalability, agility. Elasticity is capacity following demand up and down; scalability is only the ability to grow, and agility is how quickly you can get something new.
 
 **encryption**: Scrambling readable data (plaintext) into ciphertext with an encryption key, so that only someone with the right key can turn it back.
@@ -2141,21 +1360,15 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **encryption at rest**: Scrambling stored data, on disks, in databases and in backups, so that only someone with the key can read it. S3 does it for every new object, but anyone your policies allow gets the data decrypted.
 
-- Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
-- Also in: [S3 in practice](../05-storing-data/02-s3-in-practice.md); [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
+- Also in: [Encryption](../09-protecting-and-governing/02-encryption.md); [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
 - Don't confuse with: encryption in transit. Encryption at rest protects data where it is stored; encryption in transit protects it while it travels over the network, for example by HTTPS.
 
 **encryption in transit**: Scrambling data while it travels over the network, for example with TLS, the protection behind HTTPS, so that anyone who intercepts it can't read it.
 
-- Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
-- Also in: [S3 in practice](../05-storing-data/02-s3-in-practice.md); [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md); [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
-- Don't confuse with: encryption at rest, private connection. Encryption in transit protects data on the move and encryption at rest protects it where it is stored, while a private connection only keeps data off the internet's path; none of them decides who may read it.
-
-**encryption key**: A long secret number used to encrypt and decrypt data. It can be copied without anyone noticing, which is why AWS's key services are built never to hand keys out.
-
-- Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
-- Also in: [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
-- Don't confuse with: key (S3). An encryption key is a secret number that scrambles data; an S3 key is just the name of an object in a bucket.
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
+- Also in: [Encryption](../09-protecting-and-governing/02-encryption.md); [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md); [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
+- Don't confuse with: encryption at rest. Encryption in transit protects data on the move and encryption at rest protects it where it is stored, while a private connection only keeps data off the internet's path; none of them decides who may read it.
 
 **end of support**: The stage after a service closes to new customers, when AWS announces the date it will stop, often about a year ahead.
 
@@ -2166,16 +1379,6 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 - Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
 
-**endpoint**: Where an application or API receives traffic, such as a service's web address, a load balancer or an EC2 instance. AWS Global Accelerator sends each user's traffic to the best healthy endpoint in a Region.
-
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-- Also in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
-- Don't confuse with: VPC endpoint. An endpoint is where an application receives traffic; a VPC endpoint is a private path from your VPC out to an AWS service.
-
-**endpoint service**: A service that its owner publishes through AWS PrivateLink, behind a Network Load Balancer, so other VPCs can reach it through interface endpoints.
-
-- Taught in: [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md)
-
 **Enterprise On-Ramp**: A retiring Support plan that sat between Business and Enterprise and ends on a set date (see the lesson). AWS is moving its customers to Enterprise Support automatically.
 
 - Taught in: [Support plans](../12-getting-help/01-support-plans.md)
@@ -2183,93 +1386,17 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **entitlement**: Your right to use a product you've bought, recorded as a license. In AWS Marketplace, subscribing creates licenses, which AWS License Manager can share with your other accounts.
 
-- Taught in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
-
-**entity**: A named thing a text mentions, such as a person, place, organization or date. Amazon Comprehend finds entities, for example a delivery partner's name in reviews.
-
-- Taught in: [AI and machine learning](../10-data-ai-and-more/02-ai-and-ml.md)
-
-**environment (Elastic Beanstalk)**: In AWS Elastic Beanstalk, the set of AWS resources that runs one version of your application. Its resources keep billing until you delete it.
-
-- Taught in: [Simpler paths: Elastic Beanstalk, Lightsail, Batch and Outposts](../06-running-applications/04-simpler-paths.md)
+- Taught in: [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
 
 **environmental, social and governance** (ESG): How an organization treats the planet, people and its own management. Improving ESG performance is one of the CAF's four business outcomes.
 
 - Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
 
-**Envision phase**: The first CAF phase: showing how the cloud will speed up business outcomes, and choosing opportunities, each tied to a stakeholder and a measurable outcome.
-
-- Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
-
-**ephemeral port**: The temporary high-numbered port the client end of a conversation uses, to which replies are sent. A network ACL needs a rule allowing these ports for replies; a security group doesn't.
-
-- Taught in: [Filtering traffic](../07-connecting-it/02-filtering-traffic.md)
-- Also in: [Lab 09: Build a small network with a public and a private subnet, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md); [Simulation S8: Follow a packet and find the rule that blocks it](../07-connecting-it/06-sim-packet-journey.md)
-
-**estimate**: A cost worked out from assumptions about something that doesn't exist yet, as the AWS Pricing Calculator produces. It's only as good as its inputs.
-
-- Taught in: [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md)
-- Also in: [Lab 15: Price the bakery's setup in the AWS Pricing Calculator](../11-paying-for-aws/05-lab-15-pricing-calculator.md)
-- Don't confuse with: forecast. An estimate prices something not yet built, from your assumptions; a forecast predicts future cost from your own past usage.
-
-**estimate link**: The public address that reopens a saved Pricing Calculator estimate. Anyone who has it can read the estimate, so keep names and account IDs out of it.
-
-- Taught in: [Lab 15: Price the bakery's setup in the AWS Pricing Calculator](../11-paying-for-aws/05-lab-15-pricing-calculator.md)
-
-**event**: Something that happened, such as a file landing in S3, a web request or a server stopping, passed on as data. Events start Lambda functions, and Amazon EventBridge routes them to targets by rules.
-
-- Taught in: [Containers and serverless](../06-running-applications/03-containers-and-serverless.md)
-- Also in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-- Don't confuse with: event (CloudTrail). An event in Lambda or EventBridge is a signal that something happened, which starts code or is routed onward; a CloudTrail event is the record of an action someone took on your account.
-
-**event (CloudTrail)**: In AWS CloudTrail, the record of one action taken on your account: who acted, what they did, to which resource, when and from where.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-- Also in: [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md); [Lab 12: Answer an auditor with evidence from your own account](../09-protecting-and-governing/07-lab-12-answer-the-auditor.md)
-- Don't confuse with: event. A CloudTrail event records an action someone took on your account; an event in Lambda or EventBridge is a signal that something happened, which starts code or is routed to targets.
-
-**event bus**: The place in Amazon EventBridge where events arrive to be matched against rules. Every account has a default event bus that receives events from AWS services automatically.
-
-- Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-
-**Event history**: The part of AWS CloudTrail that is on in every account without setup and shows recent account activity, one Region at a time. See the lab for how far back it goes.
-
-- Taught in: [Lab 01: Create, find and delete your first storage bucket](../02-why-the-cloud/06-lab-01-first-resource.md)
-- Also in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md); [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md); [Lab 12: Answer an auditor with evidence from your own account](../09-protecting-and-governing/07-lab-12-answer-the-auditor.md)
-- Don't confuse with: trail. Event history is on from the start but keeps only recent management events; a trail must be created beforehand and keeps events in your bucket as long as you choose.
-
-**event record**: The full entry, written in JSON, that CloudTrail keeps for one event: who acted, when, which service and action, in which Region, from which address, and on which resource.
-
-- Taught in: [Lab 12: Answer an auditor with evidence from your own account](../09-protecting-and-governing/07-lab-12-answer-the-auditor.md)
-
-**EventBridge Scheduler**: An Amazon EventBridge capability that runs a task on a timetable, such as every night at 23:00, or once at a set time.
-
-- Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-
-**execution role**: The IAM role AWS Lambda assumes while a function runs, which decides what the code may touch. By default it allows only writing the function's logs.
-
-- Taught in: [Lab 07: Run a Lambda function, read its logs, and stop them piling up](../06-running-applications/05-lab-07-a-lambda-function.md)
-
-**expiration action**: A lifecycle action that deletes objects a number of days after creation, such as when a retention period ends. In a versioned bucket, expiring the current version only adds a delete marker; removing noncurrent versions takes its own action.
-
-- Taught in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
-- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md); [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../05-storing-data/09-sim-lifecycle-cost-timeline.md)
-- Don't confuse with: transition action. An expiration action deletes objects; a transition action moves them to another class, and either one billed before a class's minimum stay is over costs the rest of that stay.
-
 **explicit deny**: A Deny statement in any policy that applies to a request. It beats every allow, wherever the allow is.
 
 - Taught in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
-- Also in: [Lab 04: Finish a policy, write one yourself, and find the deny that blocks it](../04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md); [Simulation S4: Predict allow or deny across accounts, boundaries and organizations](../04-shared-responsibility-and-access/09-sim-policy-playground.md)
+- Also in: [Optional lab 04: Finish a policy, write one yourself, and find the deny that blocks it](../04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md)
 - Don't confuse with: implicit deny. An explicit deny is written in a policy and always wins; an implicit deny is just the default when nothing allows.
-
-**exposure finding**: A finding from the unified AWS Security Hub that combines several related problems into one real risk, such as a flawed package on a server reachable from the internet, and shows how an attacker could get in.
-
-- Taught in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md)
-- Also in: [Simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md)
-
-**external table**: A table definition, such as one made in Athena, that only describes data kept elsewhere: the columns, the separator and the S3 folder to read. Dropping it deletes the definition, not the files.
-
-- Taught in: [Lab 13: Query a small sales file in S3 with Athena, then delete everything](../10-data-ai-and-more/04-lab-13-athena-query.md)
 
 **extract, transform, load** (ETL): Taking data out of a source, cleaning or reshaping it, and putting it where it will be analyzed. AWS Glue runs ETL jobs, for example to remove duplicate rows or convert CSV files to Parquet.
 
@@ -2277,76 +1404,19 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 ## F
 
-**failback**: Moving work back to the original site once it is fixed, after a failover.
-
-- Taught in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
-- Don't confuse with: failover. Failover moves users to a working copy when the original fails; failback moves them back once the original is fixed.
-
 **failover**: Switching users from a failed copy of a system to a working one.
 
 - Taught in: [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md)
-- Also in: [The edge](../03-aws-around-the-world/04-the-edge.md); [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
-
-**failover routing**: A Route 53 routing policy that sends users to the main site while its health check passes, and to a standby when it fails, with no one acting.
-
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-- Don't confuse with: latency routing, weighted routing. Failover routing asks whether the main site is healthy; latency routing asks which Region is fastest for the user, and weighted routing what share goes where.
-
-**fan-out**: Publishing a message once and having it copied to many receivers, as an SNS topic does for its subscribers, often several SQS queues that each hold it for their own worker.
-
-- Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
+- Also in: [The edge](../03-aws-around-the-world/04-the-edge.md); [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
 
 **federation**: Letting people sign in with an account held somewhere else, such as a company directory, and giving them temporary access to AWS through a role, with no IAM user. AWS recommends it for people.
 
 - Taught in: [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md)
 
-**FIFO queue**: An SQS queue type, first in, first out, that keeps messages in the order sent and processes each exactly once, with lower throughput than a standard queue.
-
-- Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-- Don't confuse with: standard queue. A FIFO queue keeps the order and processes each message exactly once; a standard queue gives more throughput but may deliver a message twice or out of order.
-
-**file**: A named piece of data kept in storage, such as a photo or a document, that a program opens and saves as a whole.
-
-- Taught in: [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
-- Don't confuse with: database. A file is one whole thing that each program opens and saves itself; a database holds many small records that one engine lets many people search and change at once.
-
-**file format**: How a file's contents are laid out, usually shown by the ending of its name: .jpg for a photo, .pdf for a document, .csv for a table as plain text.
-
-- Taught in: [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
-
-**file path**: A file's full location in a file system, its folders and then its name, such as photos/cakes/birthday-cake.jpg.
-
-- Taught in: [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
-
 **file storage**: A shared file system, with folders and file names, that many servers use over the network at the same time, through NFS or SMB. On AWS it is Amazon EFS or Amazon FSx.
 
 - Taught in: [Block, file and object storage](../05-storing-data/01-block-file-object.md)
 - Don't confuse with: block storage, object storage. File storage is mounted by many servers at once as folders and files; block storage is one server's disk, and object storage answers web requests for whole objects.
-
-**file system**: The way an operating system keeps files: a tree of folders and files, each with a name and a path.
-
-- Taught in: [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
-- Don't confuse with: file storage. A file system is how files are arranged in folders; file storage is a shared file system that many servers use over the network at once.
-
-**finding**: A security service's report of one possible problem, naming the resource, what was seen and how severe the service thinks it is. The services that raise findings report; they don't block.
-
-- Taught in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md)
-- Also in: [Simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md); [Filtering traffic](../07-connecting-it/02-filtering-traffic.md)
-
-**finding type**: A name for the kind of problem a finding reports. GuardDuty's names give the kind of threat and the resource, such as UnauthorizedAccess:EC2/SSHBruteForce.
-
-- Taught in: [Simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md)
-- Also in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md)
-
-**firewall**: Something that lets network traffic through or stops it according to rules. In a VPC, security groups and network ACLs are firewalls.
-
-- Taught in: [Filtering traffic](../07-connecting-it/02-filtering-traffic.md)
-- Also in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-
-**first-response time**: How soon AWS aims to send the first reply to a new support case, set by your plan and the case severity. It's a target, not a guarantee, and not the time to fix the problem.
-
-- Taught in: [Support plans](../12-getting-help/01-support-plans.md)
-- Also in: [Simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
 
 **fixed expense**: A cost that stays the same however much you use, such as servers you have bought, or rent.
 
@@ -2354,68 +1424,13 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [What a data center really costs](../02-why-the-cloud/04-what-a-data-center-really-costs.md)
 - Don't confuse with: variable expense, capital expense. Fixed or variable asks whether a cost changes with use; capital or operating asks whether you pay up front or as you go, so rent is fixed but operating.
 
-**flow (Connect Customer)**: A step-by-step plan in Amazon Connect Customer deciding what happens to each contact, such as handing a caller to a Lex bot or putting them in a queue for an agent.
-
-- Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
-
-**folder**: A named container in a file system that holds files and other folders; also called a directory.
-
-- Taught in: [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
-
-**forecast**: A prediction of future cost from your past usage, as AWS Cost Explorer gives with a prediction interval. It needs some history to work from.
-
-- Taught in: [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md)
-- Don't confuse with: estimate. A forecast predicts from your own past usage; an estimate prices something that doesn't exist yet, from your assumptions.
-
-**forecasted cost**: AWS Budgets' prediction of cost for the whole budget period. An alert on it warns before the money is spent, not after.
-
-- Taught in: [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md)
-
-**foundation model**: A very large machine learning model trained on broad data, which many generative AI applications are built on. Amazon Bedrock offers foundation models from Amazon and other AI companies.
-
-- Taught in: [AI and machine learning](../10-data-ai-and-more/02-ai-and-ml.md)
-
 **Free plan**: The Free Tier plan that never charges you: selected services only, with no Savings Plans or Reserved Instances. It ends a set time after sign-up or when the credits run out, and the account then closes.
 
 - Taught in: [How AWS charges](../11-paying-for-aws/01-how-aws-charges.md)
 - Also in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md); [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Don't confuse with: Paid plan. The Free plan can't charge you and closes the account when it ends; the Paid plan offers every service and bills normal rates once the credits are used.
 
-**front end**: The part of an app people see and touch, such as web pages or a phone app. AWS Amplify builds and hosts front ends.
-
-- Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
-- Don't confuse with: back end. The front end is what users see and touch; the back end runs behind it, holding the data, sign-in and business logic.
-
-**FullAWSAccess**: The SCP AWS attaches by default to the root, every OU and every account, allowing every action. Remove it from a level without a replacement and every action below that level fails.
-
-- Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-- Also in: [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
-
-**function (AWS Lambda)**: The code you upload to AWS Lambda, as a .zip file or a container image, which runs each time an event triggers it. Don't count on state between runs: a reused environment may keep data, but nothing guarantees it.
-
-- Taught in: [Containers and serverless](../06-running-applications/03-containers-and-serverless.md)
-- Also in: [Lab 07: Run a Lambda function, read its logs, and stop them piling up](../06-running-applications/05-lab-07-a-lambda-function.md)
-
 ## G
-
-**gateway endpoint**: A VPC endpoint for Amazon S3 or Amazon DynamoDB only, reached through an entry in a route table. It has no charge.
-
-- Taught in: [Your own network](../07-connecting-it/01-your-own-network.md)
-- Don't confuse with: interface endpoint, NAT gateway. A gateway endpoint is a free route to S3 or DynamoDB; an interface endpoint is a billed address in your subnet that reaches many services through PrivateLink.
-
-**Gateway Load Balancer** (GWLB): The Elastic Load Balancing type that passes network traffic through third-party virtual appliances, such as firewalls or intrusion detection systems, and lets them scale.
-
-- Taught in: [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
-- Don't confuse with: Application Load Balancer, Network Load Balancer. A GWLB is chosen for appliances that inspect traffic, not for serving users; ALB and NLB spread users' requests across your servers.
-
-**GB-month**: One GB stored for one month: the unit most AWS storage is billed in, prorated for the time the data was actually kept.
-
-- Taught in: [How AWS charges](../11-paying-for-aws/01-how-aws-charges.md)
-
-**GB-second**: The unit Lambda bills compute in: the memory given to a function, in GB, times the seconds it runs. Fargate bills memory in the same way.
-
-- Taught in: [Containers and serverless](../06-running-applications/03-containers-and-serverless.md)
-- Also in: [Lab 07: Run a Lambda function, read its logs, and stop them piling up](../06-running-applications/05-lab-07-a-lambda-function.md)
 
 **general purpose (instance family)**: EC2 instance types with a balance of processor, memory and network, for work where nothing in particular runs out first, such as web servers and small databases. Its letters include M and T.
 
@@ -2426,22 +1441,6 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 - Taught in: [AI and machine learning](../10-data-ai-and-more/02-ai-and-ml.md)
 
-**geolocation routing**: A Route 53 routing policy that chooses the answer by where the user is, by country or continent, for content or rules that differ by location.
-
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-- Don't confuse with: latency routing. Geolocation routing follows a rule about the user's location; latency routing follows measured speed, so it can't guarantee a country is served from a given Region.
-
-**GiB**: Gibibyte: a unit based on powers of two, 1,073,741,824 bytes, about 7% more than a gigabyte. AWS often states server memory in it, such as 8 GiB.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-- Also in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
-- Don't confuse with: gigabyte. A GiB is 1,073,741,824 bytes; a gigabyte is exactly a billion, so the GiB is about 7% bigger.
-
-**gigabyte** (GB): A billion bytes. A megabyte (MB) is a million bytes and a terabyte (TB) a trillion; a phone photo is a few MB.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-- Don't confuse with: GiB. A gigabyte is exactly a billion bytes; a GiB is based on powers of two and is about 7% bigger.
-
 **global reach**: The ability to run a system in many parts of the world, close to its users, so they get lower latency. AWS calls this advantage "go global in minutes".
 
 - Taught in: [Telling the benefits apart](../02-why-the-cloud/03-telling-the-benefits-apart.md)
@@ -2450,11 +1449,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **global service**: A service not tied to one Region, such as IAM, Amazon Route 53 or Amazon CloudFront.
 
 - Taught in: [Regions, Availability Zones and data centers](../03-aws-around-the-world/01-regions-availability-zones-data-centers.md)
-- Don't confuse with: Regional service, zonal resource. A global service isn't tied to any Region; a Regional service runs inside one Region, and a zonal resource inside one Availability Zone.
-
-**global table**: A DynamoDB table copied across several Regions, for users around the world and for surviving the loss of a Region.
-
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
+- Don't confuse with: Regional service. A global service isn't tied to any Region; a Regional service runs inside one Region, and a zonal resource inside one Availability Zone.
 
 **Governance perspective**: The CAF perspective for control and oversight: running the cloud program so benefits arrive and risks stay small, through capabilities such as program, benefits, risk and cloud financial management.
 
@@ -2464,12 +1459,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **graph database**: A database that stores things (nodes) and the connections between them (edges), for questions about relationships many links deep, such as recommendations or fraud rings. Amazon Neptune is AWS's.
 
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-
-**guardrail**: A limit that holds whatever else is granted, such as an explicit deny that keeps working even if a broader policy is attached later.
-
-- Taught in: [Lab 04: Finish a policy, write one yourself, and find the deny that blocks it](../04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md)
-- Also in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
+- Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
 
 **guest operating system**: The operating system, such as Linux or Windows, that runs inside your virtual server. On Amazon EC2 you install its updates and security patches.
 
@@ -2477,60 +1467,17 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Shared, inherited and customer-specific controls](../04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md); [Simulation S3: Slide the line from your own servers to Amazon S3](../04-shared-responsibility-and-access/08-sim-responsibility-slider.md); [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md)
 - Don't confuse with: host operating system. The guest operating system is inside your virtual server and yours on EC2; the host operating system is under the virtualization layer and AWS's.
 
-**guide (Prescriptive Guidance)**: A Prescriptive Guidance document with planning and implementation advice, best practices and tools, written for architects, managers, technical leads and executives.
-
-- Taught in: [Where to find answers](../12-getting-help/03-where-to-find-answers.md)
-- Don't confuse with: pattern (Prescriptive Guidance). A guide is planning advice for architects, managers and executives; a pattern is hands-on steps and code for the people building one task.
-
 ## H
-
-**handler**: The part of a Lambda function's code that Lambda runs on each invocation, receiving the event's data.
-
-- Taught in: [Lab 07: Run a Lambda function, read its logs, and stop them piling up](../06-running-applications/05-lab-07-a-lambda-function.md)
-
-**hardware**: The physical parts of a computer, such as its processor, memory, storage and network connection.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-- Don't confuse with: software. Hardware is the physical parts you could touch; software is the programs that run on them.
-
-**hardware refresh**: Replacing servers and network equipment when they wear out, go out of support, or become too slow; a recurring up-front cost of running your own IT.
-
-- Taught in: [What a data center really costs](../02-why-the-cloud/04-what-a-data-center-really-costs.md)
 
 **hardware security module** (HSM): A tamper-resistant device that stores keys and does cryptography. AWS KMS runs on validated HSMs shared by many customers; AWS CloudHSM gives you HSMs that only you use.
 
 - Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
 
-**health check**: A regular test of whether a server or endpoint is answering correctly. Load balancers send traffic only to passing targets; Auto Scaling replaces failing instances, using the load balancer's checks only once they're turned on for the group.
-
-- Taught in: [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
-- Also in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-
-**heterogeneous migration**: A database migration that changes the engine, such as Oracle to Aurora PostgreSQL: convert the schema first with AWS SCT or DMS Schema Conversion, then move the data with AWS DMS.
-
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-- Don't confuse with: homogeneous migration. A heterogeneous migration changes the engine, so it uses SCT and then DMS; a homogeneous migration keeps the engine and uses DMS alone.
-
 **high availability**: A system's ability to keep working, with little or no downtime, when some of its parts fail. On AWS you get it mainly by running copies in two or more Availability Zones.
 
 - Taught in: [Telling the benefits apart](../02-why-the-cloud/03-telling-the-benefits-apart.md)
-- Also in: [Regions, Availability Zones and data centers](../03-aws-around-the-world/01-regions-availability-zones-data-centers.md); [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md); [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
+- Also in: [Regions, Availability Zones and data centers](../03-aws-around-the-world/01-regions-availability-zones-data-centers.md); [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md); [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
 - Don't confuse with: durability, disaster recovery. High availability keeps a system working through a part failing; durability keeps stored data from being lost, and disaster recovery brings a whole workload back after a larger event.
-
-**high-risk issue** (HRI): In a Well-Architected review, a choice that might do the business significant harm; a medium-risk issue (MRI) would do less. Each best practice's page gives a level, which a written business reason can lower.
-
-- Taught in: [The capstone review](../14-capstone/01-the-capstone-review.md)
-- Also in: [The Well-Architected Framework](../02-why-the-cloud/05-the-well-architected-framework.md); [Lab 18: Record the bakery's review in the AWS Well-Architected Tool](../14-capstone/02-lab-18-well-architected-tool-review.md)
-- Don't confuse with: accepted risk. A high-risk issue is a finding to deal with; an accepted risk is one the business has decided, in writing, not to fix.
-
-**homogeneous migration**: A database migration that keeps the same engine, such as SQL Server to RDS for SQL Server, so the schema fits as it is and AWS DMS alone can move the data.
-
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-- Don't confuse with: heterogeneous migration. A homogeneous migration keeps the engine and needs only DMS; a heterogeneous migration changes the engine and needs the schema converted first.
-
-**host**: In virtualization, the physical server that virtual machines run on, under its hypervisor. On Amazon EC2 the host is AWS's, and a stopped instance usually starts again on a different one.
-
-- Taught in: [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md)
 
 **host operating system**: The operating system on the physical machine, beneath the virtualization layer. AWS runs and patches it.
 
@@ -2538,56 +1485,10 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md)
 - Don't confuse with: guest operating system. The host operating system runs the physical machine and is AWS's; the guest operating system runs inside your virtual server, and on EC2 it is yours to patch.
 
-**hosted connection**: A Direct Connect connection provided through an AWS Direct Connect Partner rather than on a port of your own.
-
-- Taught in: [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md)
-- Don't confuse with: dedicated connection. A hosted connection comes through a partner; a dedicated connection is a physical port for you alone.
-
-**hosted zone**: In Route 53, the set of DNS records for one domain, such as bakery.example. A public hosted zone answers anyone on the internet; a private one answers only inside the VPCs you choose.
-
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-
-**hot standby**: A variation of multi-site active/active: a full second copy in another Region that takes no customers until a failover.
-
-- Taught in: [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md)
-- Don't confuse with: warm standby, multi-site active/active. A hot standby is full size but idle until failover; a warm standby is smaller and must scale up, and in multi-site active/active every copy serves customers.
-
-**hourly item**: In a cost estimate, a line made of a time-based charge: it bills for every hour the resource exists, so a busy noon and an empty night cost the same.
-
-- Taught in: [Lab 15: Price the bakery's setup in the AWS Pricing Calculator](../11-paying-for-aws/05-lab-15-pricing-calculator.md)
-
-**HPC optimized**: EC2 instance types for high performance computing: very large, tightly linked computations such as complex simulations. Its letters are Hpc.
-
-- Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
-- Don't confuse with: accelerated computing. HPC optimized is for huge computations spread over many linked processors; accelerated computing is for work done on GPUs or other special chips.
-
-**HTTP**: The web's request-and-response protocol. A request names a URL and a method; the response carries the page and a status code. Plain HTTP sends everything as readable text, normally on port 80.
-
-- Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-- Don't confuse with: HTTPS. HTTP sends readable text that anyone on the path could read or change; HTTPS runs HTTP inside TLS, adding encryption and proof of the server's identity.
-
-**HTTP method**: The word in an HTTP request that says what to do: GET asks for something, POST or PUT sends something to store, and DELETE removes it. AWS charges some requests by kind, such as S3's GET and PUT.
-
-- Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-
-**HTTPS**: HTTP run inside TLS, which adds encryption, so nobody on the path can read the conversation, and proof of identity, a certificate showing the server holds the site's name. It normally uses port 443.
-
-- Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-- Also in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md); [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
-- Don't confuse with: HTTP. HTTPS encrypts the conversation and proves the server's name; plain HTTP does neither, and a padlock proves the connection and the name, not the business's honesty.
-
-**hub and spoke**: A network layout in which every network connects once to a central hub, such as a transit gateway, instead of to every other network in a mesh.
-
-- Taught in: [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md)
-
 **hybrid deployment**: A deployment model in which some parts of a system run in the cloud and others don't, and the parts are connected. Most often it joins the cloud to equipment an organization already runs on-premises.
 
 - Taught in: [What cloud computing is](../02-why-the-cloud/01-what-cloud-computing-is.md)
 - Don't confuse with: cloud deployment, on-premises deployment. Hybrid needs parts in both places, connected; all parts in the cloud is a cloud deployment, and all parts in your own buildings is an on-premises deployment.
-
-**hybrid storage**: Storage for a setup where some systems run on premises and some in the cloud, such as AWS Storage Gateway letting software in your building use AWS storage.
-
-- Taught in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
 
 **hypervisor**: The software on a host that creates virtual machines, gives each its share of processor, memory and disk, and keeps them apart. On AWS it is AWS's responsibility.
 
@@ -2598,12 +1499,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **IAM Access Analyzer**: An IAM feature that checks policies as you write them and warns about errors and overly broad statements (policy validation), and can draft a policy from what an identity actually did (policy generation).
 
 - Taught in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
-- Also in: [Lab 03: Give a group read-only access to one bucket, and test it in the policy simulator](../04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md); [Lab 04: Finish a policy, write one yourself, and find the deny that blocks it](../04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md)
-
-**IAM policy simulator**: An IAM tool that works out whether requests would be allowed or denied by the policies you choose, without sending real requests. Its results can differ from the live account, so check for real afterward.
-
-- Taught in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
-- Also in: [Lab 03: Give a group read-only access to one bucket, and test it in the policy simulator](../04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md); [Lab 04: Finish a policy, write one yourself, and find the deny that blocks it](../04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md)
+- Also in: [Lab 03: Give a group read-only access to one bucket, and test it in the policy simulator](../04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md); [Optional lab 04: Finish a policy, write one yourself, and find the deny that blocks it](../04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md)
 
 **IAM role**: A set of permissions not tied to one person, with no password or keys of its own. Whoever you allow can assume it for temporary session credentials; programs on AWS, other accounts and federated people reach an account this way.
 
@@ -2622,11 +1518,6 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Lab 03: Give a group read-only access to one bucket, and test it in the policy simulator](../04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md)
 - Don't confuse with: IAM role. A group gives the same permissions to several IAM users; a role is something people or programs assume to get temporary credentials.
 
-**identity**: Something AWS recognizes and attaches permissions to: the root user, an IAM user, an IAM user group or an IAM role. One person can use several identities, and one role can be used by many people or programs.
-
-- Taught in: [Identities](../04-shared-responsibility-and-access/03-identities.md)
-- Don't confuse with: principal. Every principal is an identity, but not every identity is a principal: an IAM user group holds permissions but can't make a request.
-
 **identity provider** (IdP): The system that holds people's accounts and confirms who they are, which AWS trusts in federation.
 
 - Taught in: [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md)
@@ -2636,78 +1527,30 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
 - Don't confuse with: resource-based policy. An identity-based policy follows the identity and names no principal; a resource-based policy sits on the resource and must name who it applies to.
 
-**idle application**: An application averaging 5 to 20% CPU and memory use over 90 days. Low use is a reason to ask whether to retire or retain it, not an answer.
-
-- Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-- Don't confuse with: zombie application. An idle application averages 5 to 20% use; a zombie averages below 5%, and in both cases business value, not the number, decides.
-
-**idle capacity**: Capacity you pay for but don't use, such as servers bought for the busiest day that do no work on the other days.
-
-- Taught in: [Before and after: the demand curve](../02-why-the-cloud/02-before-and-after-the-demand-curve.md)
-- Also in: [What a data center really costs](../02-why-the-cloud/04-what-a-data-center-really-costs.md); [Simulation S1: Finish the bakery's cost comparison](../02-why-the-cloud/07-sim-demand-curve.md)
-- Don't confuse with: lost sales. Idle capacity is paid-for capacity left unused when demand is below it; lost sales are customers turned away when demand is above it.
-
-**idle cost**: Money paid for capacity nobody used, such as a server or NAT gateway billing by the hour overnight with no customers. Time-based charges create it.
-
-- Taught in: [How AWS charges](../11-paying-for-aws/01-how-aws-charges.md)
-
-**image**: A saved template of an operating system and software that a virtual machine starts from, so every one started from the same image is identical. Amazon EC2 calls its images AMIs.
-
-- Taught in: [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md)
-
 **implicit deny**: The default result when no policy allows a request: nothing has to say "no".
 
 - Taught in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
 - Also in: [Lab 03: Give a group read-only access to one bucket, and test it in the policy simulator](../04-shared-responsibility-and-access/06-lab-03-a-group-and-a-policy.md)
 - Don't confuse with: explicit deny. An implicit deny is only the absence of an allow, and an allow overrides it; an explicit deny is a Deny statement, and it overrides every allow.
 
-**improvement plan**: The list of risks a review decided to fix, in order, each with its fix, cost and owner. The Well-Architected Tool's Improvement plan tab lists risky questions and missing best practices, without costs, order or owners.
-
-- Taught in: [The capstone review](../14-capstone/01-the-capstone-review.md)
-- Also in: [Lab 18: Record the bakery's review in the AWS Well-Architected Tool](../14-capstone/02-lab-18-well-architected-tool-review.md); [The Well-Architected Framework](../02-why-the-cloud/05-the-well-architected-framework.md)
-
 **in-memory database**: A database that keeps data in memory rather than on disk, so it answers in microseconds; usually a cache in front of a slower store. Amazon ElastiCache is AWS's, which the exam calls memory-based.
 
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-
-**inbound rule**: A firewall rule for traffic arriving at a resource or subnet.
-
-- Taught in: [Filtering traffic](../07-connecting-it/02-filtering-traffic.md)
-- Don't confuse with: outbound rule. Inbound rules cover traffic arriving and outbound rules cover traffic leaving; on a stateless network ACL a reply needs a rule for its own direction.
+- Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
 
 **independent software vendor** (ISV): A company that makes and sells its own software, here software that runs on or works with AWS, often sold through AWS Marketplace. Older material calls this a Technology Partner.
 
-- Taught in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
+- Taught in: [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
 - Don't confuse with: system integrator. An ISV sells software it makes; a system integrator sells services, designing, building and connecting systems for customers.
-
-**infrastructure**: The hardware, software, networks and buildings that run AWS's services.
-
-- Taught in: [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
-
-**infrastructure as a service** (IaaS): A cloud model in which the provider supplies basic building blocks (computers, storage and networking) and you manage the most: operating systems, software and data. Amazon EC2 is AWS's example.
-
-- Taught in: [What cloud computing is](../02-why-the-cloud/01-what-cloud-computing-is.md)
-- Also in: [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
-- Don't confuse with: platform as a service, software as a service. IaaS gives you building blocks to run yourself; PaaS gives you a place to run your application, and SaaS a finished application, so the provider runs more at each step.
 
 **infrastructure as code** (IaC): Describing the resources you want, with their settings, in a text file, a template, and letting a service build them. The same file builds the same setup every time; on AWS the service is AWS CloudFormation.
 
-- Taught in: [Four ways in](../08-building-and-operating/01-four-ways-in.md)
-- Also in: [IaC and automation](../08-building-and-operating/02-iac-and-automation.md); [Lab 10: Create the same bucket three ways: console, command line and template](../08-building-and-operating/05-lab-10-same-bucket-three-ways.md)
-
-**ingest**: To bring data into a system, either as streaming data that arrives continuously or in batches. Amazon Kinesis Data Streams and Amazon Data Firehose are the exam's ingest services.
-
-- Taught in: [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md)
+- Taught in: [Four ways in, and infrastructure as code](../08-building-and-operating/01-four-ways-in.md)
+- Also in: [Optional lab 10: Create the same bucket three ways: console, command line and template](../08-building-and-operating/05-lab-10-same-bucket-three-ways.md)
 
 **inherited control**: A control AWS fully carries out and you benefit from, such as physical and environmental controls on its buildings. Your evidence for it is AWS's audit reports.
 
 - Taught in: [Shared, inherited and customer-specific controls](../04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md)
 - Don't confuse with: shared control, customer-specific control. An inherited control is AWS's alone; a shared control is a kind of work both sides do on their own things, and a customer-specific control exists only because of what you build.
-
-**inline policy**: A policy written directly into one identity and deleted with it. Use one only for a strict one-to-one case.
-
-- Taught in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
-- Don't confuse with: customer managed policy, AWS managed policy. An inline policy belongs to one identity and dies with it; managed policies, AWS's or yours, stand alone and can attach to many identities.
 
 **instance**: One virtual server in Amazon EC2, started from an AMI with the hardware of its instance type. You pay for its running time, and separately for its disks and public addresses.
 
@@ -2724,11 +1567,6 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 - Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
 
-**instance state**: Where an EC2 instance is in its life: pending, running, stopped or terminated. You pay for instance time only while it is running.
-
-- Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
-- Also in: [Lab 08: Launch a virtual server, stop it, terminate it, and prove nothing is left](../06-running-applications/06-lab-08-launch-and-terminate-an-instance.md)
-
 **instance store**: Temporary block storage on disks physically attached to an EC2 instance's host, included in its price; not every instance type has it. Data survives a reboot, not a stop, hibernation or termination: use only for caches and scratch data.
 
 - Taught in: [Block, file and object storage](../05-storing-data/01-block-file-object.md)
@@ -2739,152 +1577,27 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
 - Don't confuse with: purchasing option, Amazon Machine Image. An instance type is the hardware; a purchasing option such as On-Demand or Spot is only how you pay for that hardware, and the AMI is the software it runs.
 
-**instance-hour**: One instance running for one hour: the unit for adding up compute use, as when comparing an Auto Scaling group with a fixed fleet over a day.
-
-- Taught in: [Simulation S7: Scale the bakery's web servers through a December Saturday](../06-running-applications/07-sim-elasticity-with-auto-scaling.md)
-
-**instrumenting**: Making an application send trace data to X-Ray, in your own code or through an integrated AWS service such as Lambda. Without it, X-Ray has no traces.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-
-**intent (Amazon Lex)**: Something a customer wants from a Lex bot, such as checking an order, given with example phrases so the bot can recognize it.
-
-- Taught in: [AI and machine learning](../10-data-ai-and-more/02-ai-and-ml.md)
-- Don't confuse with: slot (Amazon Lex). An intent is what the customer wants, such as placing an order; a slot is a detail the bot must collect to do it, such as the order number.
-
-**interface endpoint**: A VPC endpoint, built on AWS PrivateLink, that puts a network interface with a private IP address in your subnet to reach one of many AWS, partner or other accounts' services. Billed hourly in each Availability Zone, plus per GB.
-
-- Taught in: [Your own network](../07-connecting-it/01-your-own-network.md)
-- Also in: [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md)
-- Don't confuse with: gateway endpoint. An interface endpoint reaches many services and is billed; a gateway endpoint reaches only S3 and DynamoDB, through a route, for free.
-
-**internet**: A network of networks: homes, businesses and providers joined by routers, so data can travel between any of them. No single company carries it all the way.
-
-- Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-
 **internet gateway**: The part attached to a VPC that connects it to the internet in both directions, so either side can start a connection. AWS runs it as a highly available component, and it has no charge.
 
 - Taught in: [Your own network](../07-connecting-it/01-your-own-network.md)
-- Also in: [Lab 09: Build a small network with a public and a private subnet, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
+- Also in: [Optional lab 09: Build a small network with public and private subnets, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
 - Don't confuse with: NAT gateway. Through an internet gateway the internet can start connections in, at no charge; through a NAT gateway only your private servers can start connections out, and it bills by the hour and per GB.
 
 **Internet of Things** (IoT): Physical devices, such as sensors and machines, that connect to the internet to send data or receive commands. AWS IoT Core connects them to AWS.
 
 - Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
 
-**internet service provider** (ISP): A company that connects a home or business to the internet.
-
-- Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-
 **interruption notice**: The two-minute warning EC2 gives before it stops, hibernates or terminates a Spot Instance because it needs the capacity back.
 
 - Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
 
-**invalidation**: Removing a file from CloudFront's edge caches before its cache time runs out, for example after fixing a wrong price list.
-
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-
-**invocation**: One run of a Lambda function. Lambda bills each invocation as a request, plus its memory times its run time.
-
-- Taught in: [Containers and serverless](../06-running-applications/03-containers-and-serverless.md)
-- Also in: [Lab 07: Run a Lambda function, read its logs, and stop them piling up](../06-running-applications/05-lab-07-a-lambda-function.md)
-
-**IOPS**: Reads and writes per second: one of the two ways storage speed is counted. The other is throughput.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-- Don't confuse with: throughput. IOPS counts how many separate reads and writes happen each second; throughput counts how much data moves each second.
-
-**IoT rule**: An AWS IoT Core setting with a SQL-like filter on incoming device messages, which sends matching data to other AWS services such as Lambda, S3, DynamoDB or SNS.
-
-- Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
-- Don't confuse with: rule (EventBridge). An IoT rule filters messages arriving from devices in IoT Core; an EventBridge rule matches events on an event bus and sends them to targets.
-
-**IP address**: The number that identifies a device on a network, such as 10.0.1.25. It can be private, working only inside one network, or public, reachable across the internet.
-
-- Taught in: [Your own network](../07-connecting-it/01-your-own-network.md)
-- Also in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-
-**IPsec**: The standard AWS Site-to-Site VPN uses to build its encrypted tunnels.
-
-- Taught in: [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md)
-
-**IPv4**: The most common version of IP address: four numbers from 0 to 255 separated by dots, such as 192.0.2.10. All of its 4.3 billion addresses have been handed out.
-
-- Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-- Don't confuse with: IPv6. IPv4 addresses are four numbers separated by dots, and they have run out; IPv6 addresses are groups of letters and digits separated by colons, with vastly more of them.
-
-**IPv6**: The newer version of IP address: up to eight groups of letters and digits separated by colons, such as 2001:db8:85a3::8a2e:370:7334. It has vastly more addresses than IPv4.
-
-- Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-- Don't confuse with: IPv4. IPv6 addresses are groups separated by colons, with plenty to go around; IPv4 addresses are four numbers separated by dots, and they have run out.
-
-**iSCSI**: A protocol for using disks over a network, read and written as blocks. Volume Gateway and Tape Gateway present their storage over it.
-
-- Taught in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
-- Don't confuse with: NFS, SMB. iSCSI presents disks, as blocks; NFS and SMB present shared folders of files.
-
-**IT control**: A safeguard, such as a rule, a process or a setting, that lowers a risk to computer systems and that someone can check.
-
-- Taught in: [Shared, inherited and customer-specific controls](../04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md)
-
-**IT resources**: What computers provide to the people and programs that use them. The main ones are compute, storage and databases, and cloud providers rent them out.
-
-- Taught in: [What cloud computing is](../02-why-the-cloud/01-what-cloud-computing-is.md)
-
-**item**: One record in a DynamoDB table, stored under a unique key and made of attributes. Items in the same table don't need the same attributes.
-
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-- Also in: [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](../05-storing-data/08-lab-06-a-dynamodb-table.md)
-- Don't confuse with: attribute. An item is a whole record; an attribute is one named value inside it.
-
-## J
-
-**job queue**: In AWS Batch, the list that holds submitted jobs until Batch runs them.
-
-- Taught in: [Simpler paths: Elastic Beanstalk, Lightsail, Batch and Outposts](../06-running-applications/04-simpler-paths.md)
-
-**JSON**: JavaScript Object Notation: a text format for data, with name-value pairs in curly-brace objects and lists in square-bracket arrays. It is the AWS CLI's default output, the format of IAM policies, and common in document databases.
-
-- Taught in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
-- Also in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-
-**JSON object**: A set of name-value pairs inside curly braces, separated by commas, with none after the last. A whole JSON document is usually one object.
-
-- Taught in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
-- Don't confuse with: array. An object, in curly braces, holds named values; an array, in square brackets, holds a list of values in order, and either can hold the other.
-
 ## K
-
-**key (S3)**: An object's name in its S3 bucket, such as cakes/birthday.jpg, by which programs store and fetch it.
-
-- Taught in: [Block, file and object storage](../05-storing-data/01-block-file-object.md)
-- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md)
-- Don't confuse with: partition key. An S3 key names one object in a bucket; a DynamoDB partition key picks the group of items an item belongs to.
-
-**key pair**: A public key, which anyone may have, and a private key, which only its owner keeps. Data locked with the public key opens only with the private key, which can also prove who its owner is.
-
-- Taught in: [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
-- Also in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md); [Lab 08: Launch a virtual server, stop it, terminate it, and prove nothing is left](../06-running-applications/06-lab-08-launch-and-terminate-an-instance.md)
-
-**key policy**: The resource-based policy on a KMS key that says who may use and manage the key. You write it for a customer managed key; you can read an AWS managed key's but not change it.
-
-- Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
-
-**key rotation**: Making new key material for a KMS key on a schedule, while keeping the old material to decrypt older data, so nothing has to be re-encrypted.
-
-- Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
-- Don't confuse with: rotation. Key rotation renews a KMS key's material and still decrypts old data; rotation in Secrets Manager replaces a secret, such as a password, with a new one.
 
 **key-value database**: A database that stores each item under a unique key and fetches it by that key, fast at any scale. Amazon DynamoDB is AWS's.
 
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
+- Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
 - Also in: [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
 - Don't confuse with: document database. A key-value database fetches whole items by one key; a document database stores self-contained documents whose fields can vary, and DynamoDB supports both.
-
-**KMS key**: A key in AWS KMS that protects your data, usually by encrypting the data keys that services use. It comes in three kinds: AWS owned, AWS managed and customer managed.
-
-- Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
-- Don't confuse with: data key. A KMS key never leaves KMS unencrypted and protects data keys; a data key encrypts the data itself and is stored, encrypted, beside it.
 
 **Kubernetes**: A widely used open-source system for orchestrating containers. Amazon EKS runs it for you, so teams can keep their existing Kubernetes tools.
 
@@ -2897,65 +1610,20 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
 - Also in: [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
 
-**last accessed information**: IAM's report, on the Last Accessed tab of a user, group, role or policy, of which services it may use and when it last tried each. It counts attempts, and covers identity-based policies only.
-
-- Taught in: [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md)
-- Also in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md); [Lab 12: Answer an auditor with evidence from your own account](../09-protecting-and-governing/07-lab-12-answer-the-auditor.md); [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
-
 **latency**: The delay between a request and its answer. Distance is one of its main causes, so running close to users lowers it.
 
 - Taught in: [Choosing a Region](../03-aws-around-the-world/02-choosing-a-region.md)
 - Also in: [Telling the benefits apart](../02-why-the-cloud/03-telling-the-benefits-apart.md)
-
-**latency routing**: A Route 53 routing policy that sends each user to the Region that answers them fastest.
-
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-- Don't confuse with: geolocation routing. Latency routing picks the fastest Region, which is usually but not always the nearest; when a rule says where a user's country must be served, use geolocation routing.
-
-**launch (EC2 instance)**: To start a new EC2 instance, choosing its AMI, instance type, storage, network and security group, and how you sign in. The instance bills from launch until you terminate it.
-
-- Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
-- Also in: [Lab 08: Launch a virtual server, stop it, terminate it, and prove nothing is left](../06-running-applications/06-lab-08-launch-and-terminate-an-instance.md)
-
-**Launch phase**: The third CAF phase: delivering pilots in production and showing value step by step.
-
-- Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
-
-**launch template**: The recipe an Auto Scaling group uses for each new instance: the AMI, the instance type, the security group and other launch settings.
-
-- Taught in: [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
-- Also in: [IaC and automation](../08-building-and-operating/02-iac-and-automation.md)
-- Don't confuse with: template (CloudFormation). A launch template describes one EC2 instance, so Auto Scaling can launch identical copies; a CloudFormation template describes a whole set of resources and can contain a launch template.
 
 **legacy Free Tier**: The Free Tier as it worked before 2025-07-15, when new accounts got 12 months of free usage on many services. Accounts created before that date stay on it.
 
 - Taught in: [How AWS charges](../11-paying-for-aws/01-how-aws-charges.md)
 - Don't confuse with: AWS Free Tier. The legacy Free Tier gave 12 months of free usage to accounts created before 2025-07-15; today's Free Tier gives credits and a choice of Free or Paid plan.
 
-**lens**: An extra set of review questions in the Well-Architected Tool for a particular kind of workload or industry.
-
-- Taught in: [The Well-Architected Framework](../02-why-the-cloud/05-the-well-architected-framework.md)
-- Also in: [Lab 18: Record the bakery's review in the AWS Well-Architected Tool](../14-capstone/02-lab-18-well-architected-tool-review.md)
-
-**License Mobility**: A Software Assurance right to move eligible Microsoft licenses, such as SQL Server, to a cloud provider's shared servers, such as ordinary EC2 instances. Windows Server isn't eligible.
-
-- Taught in: [The business case](../13-moving-to-aws/04-the-business-case.md)
-- Also in: [Simulation S17: Rightsize the chain's servers and settle their licenses](../13-moving-to-aws/06-sim-rightsizing-and-licensing.md)
-
 **license-included**: Buying software such as Windows Server or SQL Server in the hourly price of an EC2 instance or database. You pay as you go, and AWS handles license compliance.
 
 - Taught in: [The business case](../13-moving-to-aws/04-the-business-case.md)
-- Also in: [Simulation S17: Rightsize the chain's servers and settle their licenses](../13-moving-to-aws/06-sim-rightsizing-and-licensing.md)
 - Don't confuse with: bring your own license. License-included puts the license in AWS's hourly price and AWS handles compliance; with BYOL you use licenses you own, pay AWS only for infrastructure, and compliance is yours.
-
-**lifecycle rule**: One rule in a bucket's S3 Lifecycle configuration: which objects it covers, and its transition and expiration actions.
-
-- Taught in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
-- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md); [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../05-storing-data/09-sim-lifecycle-cost-timeline.md)
-
-**line item**: One row of a bill: one product, one kind of usage, one operation, for one period. The Cost and Usage Report holds every one.
-
-- Taught in: [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md)
 
 **load balancer**: One front door that spreads users' requests across servers, called targets, in one or more Availability Zones and skips any that fail its health checks. Elastic Load Balancing is AWS's.
 
@@ -2963,108 +1631,38 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Regions, Availability Zones and data centers](../03-aws-around-the-world/01-regions-availability-zones-data-centers.md)
 - Don't confuse with: auto scaling. A load balancer decides which server gets each request; auto scaling decides how many servers there are.
 
-**local route**: The route every route table has for the VPC's own address range, which keeps traffic for those addresses inside the VPC and lets its subnets reach each other.
-
-- Taught in: [Lab 09: Build a small network with a public and a private subnet, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
-- Also in: [Your own network](../07-connecting-it/01-your-own-network.md)
-
 **Local Zone**: An extension of a Region in a large city running selected services, such as compute and storage, for users who need single-digit-millisecond latency or data that must stay in that city. You turn one on before using it.
 
 - Taught in: [The edge](../03-aws-around-the-world/04-the-edge.md)
 - Don't confuse with: edge location, AWS Outposts, Wavelength Zone. A Local Zone runs your servers at an AWS site in a big city; an edge location runs only AWS's networking services, Outposts is AWS hardware in your own building, and a Wavelength Zone sits inside a 5G network.
-
-**log file integrity validation**: A CloudTrail feature that lets you prove a trail's log files weren't changed or deleted after CloudTrail delivered them.
-
-- Taught in: [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md)
-
-**log group**: In Amazon CloudWatch Logs, a set of log streams that share settings, such as how long their data is kept. A Lambda function writes to its own log group.
-
-- Taught in: [Lab 07: Run a Lambda function, read its logs, and stop them piling up](../06-running-applications/05-lab-07-a-lambda-function.md)
-- Also in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-- Don't confuse with: log stream. A log group holds many streams and their shared settings; a log stream is one run of lines from one source.
-
-**log retention**: How long CloudWatch Logs keeps a log group's data before deleting it. By default logs never expire, so set a period that fits your needs.
-
-- Taught in: [Lab 07: Run a Lambda function, read its logs, and stop them piling up](../06-running-applications/05-lab-07-a-lambda-function.md)
-- Also in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-
-**log stream**: In Amazon CloudWatch Logs, a run of log lines from one source, kept inside a log group.
-
-- Taught in: [Lab 07: Run a Lambda function, read its logs, and stop them piling up](../06-running-applications/05-lab-07-a-lambda-function.md)
-- Don't confuse with: log group. A log stream is one source's lines; the log group around it sets how long they are kept.
 
 **long-term credentials**: Credentials that keep working until someone changes or deletes them: passwords and access keys.
 
 - Taught in: [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md)
 - Don't confuse with: temporary credentials. Long-term credentials work until someone removes them; temporary credentials expire on their own, which is why AWS prefers them.
 
-**lost sales**: Customers you can't serve because demand is above your capacity.
-
-- Taught in: [Before and after: the demand curve](../02-why-the-cloud/02-before-and-after-the-demand-curve.md)
-- Also in: [Simulation S1: Finish the bakery's cost comparison](../02-why-the-cloud/07-sim-demand-curve.md)
-- Don't confuse with: idle capacity. Lost sales happen when demand is above capacity; idle capacity is the waste when demand is below it.
-
-**lost update**: Losing a change because two people each saved a whole copy of a shared file, and the last save replaced the other's. Nobody is warned; a database avoids it by changing single records.
-
-- Taught in: [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
-
 ## M
 
 **machine learning** (ML): The most common way to build AI today: instead of writing every rule, people show a computer many examples and it learns the patterns, producing a model.
 
 - Taught in: [AI and machine learning](../10-data-ai-and-more/02-ai-and-ml.md)
-- Don't confuse with: artificial intelligence. Machine learning is a method, learning patterns from examples; artificial intelligence is the broader goal of computers doing tasks that needed a person.
-
-**MACsec**: Encryption between your device and the Direct Connect location, on connections that support it. It is one way to make a private Direct Connect path encrypted too.
-
-- Taught in: [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md)
-
-**main route table**: The route table AWS creates with a VPC, used by every subnet you don't link to another route table. It starts with only the local route and is deleted with the VPC.
-
-- Taught in: [Lab 09: Build a small network with a public and a private subnet, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
-- Also in: [Your own network](../07-connecting-it/01-your-own-network.md)
 
 **managed database**: A database a provider runs for you, such as Amazon RDS: AWS installs and patches the software, takes backups and provides failover, while you choose the settings, control access and tune queries.
 
-- Taught in: [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
+- Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
 - Don't confuse with: self-managed database. A managed database leaves the operating system, patches and backups to AWS; a self-managed database on EC2 leaves them all to you.
-
-**managed platform updates**: An Elastic Beanstalk setting that applies new patch and minor platform versions, with operating system and language updates, in a weekly maintenance window. Major version upgrades stay yours to start.
-
-- Taught in: [Simpler paths: Elastic Beanstalk, Lightsail, Batch and Outposts](../06-running-applications/04-simpler-paths.md)
-
-**managed rule group**: A ready-made set of AWS WAF rules, from AWS or from sellers in AWS Marketplace, kept up to date by its authors, such as rules against SQL injection.
-
-- Taught in: [The front door](../09-protecting-and-governing/04-the-front-door.md)
 
 **managed service**: A service where AWS runs the servers and software underneath and you use it through its settings, such as Amazon RDS or Amazon S3. The more AWS runs, the less you have to secure.
 
 - Taught in: [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
-- Also in: [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
+- Also in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
 - Don't confuse with: abstracted service. Every abstracted service is managed, but not every managed service is abstracted: on Amazon RDS you still choose and tune a database engine, while on Amazon S3 you only handle data and settings.
-
-**managed service provider**: A partner that runs a customer's systems day to day, such as watching and patching servers. AWS Managed Service Provider is one of the AWS Specializations.
-
-- Taught in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
-- Don't confuse with: managed service, AWS Managed Services. A managed service provider is a partner that runs your systems; a managed service is an AWS service whose servers AWS runs, and AWS Managed Services is AWS operating your infrastructure.
 
 **management account**: The account that creates an AWS organization and pays every member account's bill. Service control policies don't apply to it, so keep workloads and everyday users out of it.
 
 - Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-- Also in: [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md); [Simulation S4: Predict allow or deny across accounts, boundaries and organizations](../04-shared-responsibility-and-access/09-sim-policy-playground.md)
+- Also in: [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
 - Don't confuse with: member account. The management account creates and pays for the organization and sits outside every SCP; a member account is limited by the SCPs above it, root user included.
-
-**management event**: A CloudTrail event for an action that creates, changes or deletes resources and settings, such as changing a function's memory. Event history shows recent ones at no charge.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-- Also in: [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md); [Lab 12: Answer an auditor with evidence from your own account](../09-protecting-and-governing/07-lab-12-answer-the-auditor.md)
-- Don't confuse with: data event. Management events record changes to resources and settings and appear in Event history by default; data events record actions on the data inside, such as reading objects, and you turn them on and pay.
-
-**maximum capacity**: The most instances an Auto Scaling group may run. It caps the cost if a fault or a flood of traffic drives demand up.
-
-- Taught in: [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
-- Also in: [Simulation S7: Scale the bakery's web servers through a December Saturday](../06-running-applications/07-sim-elasticity-with-auto-scaling.md)
-- Don't confuse with: minimum capacity, desired capacity. The maximum is the ceiling the group never passes; the desired capacity is how many it runs now, which a scaling policy moves between the minimum and the maximum.
 
 **member account**: Any account in an AWS organization other than the management account. Service control policies limit every user and role in it, including its root user.
 
@@ -3072,107 +1670,30 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
 - Don't confuse with: management account. A member account is limited by the SCPs above it, root user included; the management account creates and pays for the organization and no SCP applies to it.
 
-**memory** (RAM): Fast, short-term space for the programs and data a computer is using right now. It needs constant power, so a restart empties it. People often say memory when they mean storage; in computing it never does.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-- Also in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
-- Don't confuse with: storage. Memory holds the work in progress and empties when the power goes off; storage is bigger and slower, and keeps files and data with the power off.
-
 **memory optimized**: EC2 instance types with a lot of memory for their processors, for work that holds large data sets in memory, such as in-memory databases and analytics. Its letters include R and X.
 
 - Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
 - Don't confuse with: compute optimized, storage optimized. Memory optimized is for data that must fit in RAM; compute optimized is for processor-bound work, and storage optimized for fast reads and writes to local disks.
 
-**message**: A small piece of data one part of an application sends another, such as an order to pack. The sender is the producer and the receiver is the consumer.
-
-- Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-
-**metadata**: Facts about stored data rather than the data itself, such as an S3 object's type. Each S3 object is stored with its metadata.
-
-- Taught in: [Block, file and object storage](../05-storing-data/01-block-file-object.md)
-
 **metric**: One measurement tracked over time, such as a function's errors or a server's CPU use. Many AWS services send metrics to CloudWatch on their own; each metric lives in one Region.
 
 - Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-- Also in: [Lab 11: Email the owner when the order function fails](../08-building-and-operating/06-lab-11-alarm-on-errors.md)
-
-**metric filter**: A CloudWatch Logs setting that turns log lines matching a pattern into a metric, so an alarm can watch, for example, how often a card is declined.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-- Don't confuse with: CloudWatch Logs Insights. A metric filter keeps counting matching log lines as a metric an alarm can watch; Logs Insights searches log lines when you ask it a question.
-
-**MFA Delete**: A versioning setting that requires a code from the account's MFA device to delete an object version permanently. Only the root user can turn it on, and not in the console.
-
-- Taught in: [S3 in practice](../05-storing-data/02-s3-in-practice.md)
-- Don't confuse with: S3 Object Lock. MFA Delete only adds an MFA code to permanent deletes; Object Lock forbids deletes until a set date.
+- Also in: [Optional lab 11: Email the owner when the order function fails](../08-building-and-operating/06-lab-11-alarm-on-errors.md)
 
 **Migration Evaluator**: An AWS service that builds a migration business case from measured data about your current servers: it finds over-sized ones, matches each to an EC2 instance and projects costs, including license options.
 
 - Taught in: [Migration tools](../13-moving-to-aws/03-migration-tools.md)
-- Also in: [The business case](../13-moving-to-aws/04-the-business-case.md); [Simulation S17: Rightsize the chain's servers and settle their licenses](../13-moving-to-aws/06-sim-rightsizing-and-licensing.md)
+- Also in: [The business case](../13-moving-to-aws/04-the-business-case.md)
 - Don't confuse with: AWS Pricing Calculator. Migration Evaluator starts from data about the servers you run today and sizes them for you; the Pricing Calculator prices only the AWS setup you describe.
-
-**Migration Readiness Assessment**: AWS's process for finding how ready an organization is to migrate, and planning how to close the gaps, using the CAF. It comes at the start of a large migration.
-
-- Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
-
-**migration strategy**: The approach used to move one workload into the AWS Cloud. AWS lists seven, the 7 Rs; database replication is a technique used inside one, not an eighth.
-
-- Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-
-**migration wave**: A group of applications, or of servers that depend on each other, moved together; waves follow one another, usually starting with simpler applications to build skill.
-
-- Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-- Also in: [Migration tools](../13-moving-to-aws/03-migration-tools.md)
-
-**milestone**: A saved record of a workload's review in the Well-Architected Tool, which can't be changed afterward, so a later review can be compared with it to show progress. Deleting the workload deletes its milestones.
-
-- Taught in: [Lab 18: Record the bakery's review in the AWS Well-Architected Tool](../14-capstone/02-lab-18-well-architected-tool-review.md)
-- Also in: [The Well-Architected Framework](../02-why-the-cloud/05-the-well-architected-framework.md); [The capstone review](../14-capstone/01-the-capstone-review.md)
-
-**minimum billable object size**: The smallest size some S3 storage classes bill an object as; a smaller object is billed as that size. It makes those classes expensive for many tiny files.
-
-- Taught in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
-- Also in: [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../05-storing-data/09-sim-lifecycle-cost-timeline.md)
-- Don't confuse with: minimum storage duration. The minimum billable size charges small objects as larger ones; the minimum storage duration charges early leavers for the full stay.
-
-**minimum capacity**: The fewest instances an Auto Scaling group may run. Set it to at least one per Availability Zone you use, so the loss of one zone still leaves servers running.
-
-- Taught in: [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
-- Also in: [Simulation S7: Scale the bakery's web servers through a December Saturday](../06-running-applications/07-sim-elasticity-with-auto-scaling.md)
-- Don't confuse with: maximum capacity, desired capacity. The minimum is the floor kept for availability, the maximum is the ceiling that caps the cost, and the desired capacity is the number the group aims for right now, between the two.
 
 **minimum storage duration**: The shortest stay an S3 storage class bills for. Delete, overwrite or move an object out of the class earlier, and you pay for the rest of the stay; see the lesson for each class's minimum.
 
-- Taught in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
-- Also in: [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../05-storing-data/09-sim-lifecycle-cost-timeline.md); [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md)
-- Don't confuse with: minimum billable object size. The minimum storage duration is about time, billing a short stay as the full minimum; the minimum billable object size is about size, billing a small object as a larger one.
-
-**missing data treatment**: An alarm setting that says how a period with no data counts, such as not breaching. Without it, a metric with no data, such as a function nobody ran overnight, can leave the alarm in INSUFFICIENT_DATA.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-- Also in: [Lab 11: Email the owner when the order function fails](../08-building-and-operating/06-lab-11-alarm-on-errors.md)
-
-**model (machine learning)**: What machine learning produces: a learned set of patterns that takes an input and gives an answer, such as "this review is negative". Training is the step that builds it.
-
-- Taught in: [AI and machine learning](../10-data-ai-and-more/02-ai-and-ml.md)
-- Don't confuse with: data model. A machine learning model is learned patterns that give answers; a data model is the shape a database gives your data, such as tables or key-value items.
-
-**modernize**: To improve an application's design or technology, usually after it has moved to AWS, for example by replatforming or refactoring it.
-
-- Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-
-**monolith**: An application built as one large program, so any change means testing and releasing the whole thing. A monolith that slows delivery is a reason to refactor.
-
-- Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-
-**MQTT**: A lightweight protocol that small devices use to publish short messages to named topics. Devices usually speak it to AWS IoT Core; HTTPS also works.
-
-- Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
+- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md)
 
 **Multi-AZ deployment**: An Amazon RDS setup with a synchronously replicated standby in a second Availability Zone that serves no queries and takes over automatically if the primary fails. It is high availability, not a backup: a mistaken delete reaches the standby too.
 
-- Taught in: [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
+- Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
 - Also in: [Regions, Availability Zones and data centers](../03-aws-around-the-world/01-regions-availability-zones-data-centers.md); [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../05-storing-data/10-sim-multi-az-vs-read-replica.md)
 - Don't confuse with: multi-Region, read replica. Multi-AZ keeps a synchronous standby that fails over by itself inside one Region; a read replica serves reads and must be promoted by hand, and multi-Region runs copies in separate Regions.
 
@@ -3186,44 +1707,24 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Choosing a Region](../03-aws-around-the-world/02-choosing-a-region.md)
 - Don't confuse with: Multi-AZ deployment. Multi-Region uses separate Regions; Multi-AZ uses several Availability Zones inside one Region, which AWS says meets most resilience goals.
 
-**multi-Region trail**: A CloudTrail trail that covers every Region enabled in your account. AWS recommends it, and trails created in the console are multi-Region.
-
-- Taught in: [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md)
-
 **multi-site active/active**: The most expensive disaster recovery strategy: full copies in two or more Regions, all serving customers, so recovery is near zero. It still needs backups, because it copies data mistakes too.
 
 - Taught in: [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md)
 - Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md)
-- Don't confuse with: hot standby, warm standby. In multi-site active/active every copy serves customers every day; a hot standby is a full copy that waits, and a warm standby is a smaller copy that must scale up.
+- Don't confuse with: warm standby. In multi-site active/active every copy serves customers every day; a hot standby is a full copy that waits, and a warm standby is a smaller copy that must scale up.
 
 ## N
-
-**name-value pair**: One named value in JSON: a name in double quotes, a colon, then the value, such as "cupcakes": 14.
-
-- Taught in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
 
 **NAT gateway**: A gateway that lets servers in private subnets reach the internet while outsiders can't connect in. The usual, zonal kind sits in one AZ's public subnet with an Elastic IP address. Billed hourly and per GB.
 
 - Taught in: [Your own network](../07-connecting-it/01-your-own-network.md)
-- Don't confuse with: internet gateway, gateway endpoint. A NAT gateway carries private servers' traffic out to the internet and bills hourly; an internet gateway is free and works both ways, and a free gateway endpoint is the cheaper path when traffic only goes to S3 or DynamoDB.
-
-**nesting**: Putting a JSON object or array inside another, which shows that things belong together. Indenting the nested lines is only for people; programs ignore it.
-
-- Taught in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
-
-**network**: Computers connected so that they can exchange data, such as the devices on a home Wi-Fi.
-
-- Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
+- Don't confuse with: internet gateway. A NAT gateway carries private servers' traffic out to the internet and bills hourly; an internet gateway is free and works both ways, and a free gateway endpoint is the cheaper path when traffic only goes to S3 or DynamoDB.
 
 **network ACL** (NACL): Network access control list: a stateless firewall at a subnet's edge, with numbered allow and deny rules checked lowest first until one matches, ending in a catch-all deny. The default allows everything; a new custom one denies everything.
 
 - Taught in: [Filtering traffic](../07-connecting-it/02-filtering-traffic.md)
-- Also in: [Lab 09: Build a small network with a public and a private subnet, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md); [Simulation S8: Follow a packet and find the rule that blocks it](../07-connecting-it/06-sim-packet-journey.md)
-- Don't confuse with: security group, access control list. A network ACL guards a whole subnet, can deny and checks replies again, while a security group guards one resource, only allows and lets replies through; an S3 ACL is unrelated and grants access to buckets and objects.
-
-**network connection**: The part of a computer that sends data to other computers and receives data from them.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
+- Also in: [Optional lab 09: Build a small network with public and private subnets, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
+- Don't confuse with: security group. A network ACL guards a whole subnet, can deny and checks replies again, while a security group guards one resource, only allows and lets replies through; an S3 ACL is unrelated and grants access to buckets and objects.
 
 **network layer attack**: A flood of traffic aimed at the network itself, such as a SYN flood or UDP reflection. AWS calls these network and transport layer, or layer 3 and 4, attacks; Shield Standard defends against the common ones.
 
@@ -3233,34 +1734,13 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **Network Load Balancer** (NLB): The Elastic Load Balancing type for connections (TCP, UDP and TLS), for very high volume with very low delay, or when clients need a fixed IP address.
 
 - Taught in: [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
-- Don't confuse with: Application Load Balancer, Gateway Load Balancer. An NLB works with connections and can have a fixed IP address; an ALB understands web requests and their addresses, and a GWLB passes traffic through appliances.
-
-**NFS**: A common way for computers to share files over a network, used mostly by Linux. Amazon EFS and S3 File Gateway can use it.
-
-- Taught in: [Block, file and object storage](../05-storing-data/01-block-file-object.md)
-- Also in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
-- Don't confuse with: SMB, iSCSI. NFS shares files, mostly for Linux; SMB shares files, mostly for Windows, and iSCSI presents disks as blocks rather than files.
-
-**noncompliant**: AWS Config's result for a resource that fails a rule, such as a security group that lets SSH in from anywhere under the restricted-ssh rule.
-
-- Taught in: [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md)
-- Also in: [Simulation S10: Read a resource's AWS Config timeline, and tell Config from CloudTrail](../09-protecting-and-governing/09-sim-config-timeline.md)
-
-**noncurrent version**: An older version of an object in a versioned bucket, kept under the current one and billed in full. Lifecycle rules can delete noncurrent versions a set number of days after they stop being current.
-
-- Taught in: [S3 in practice](../05-storing-data/02-s3-in-practice.md)
-- Also in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md); [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md)
-- Don't confuse with: current version. A noncurrent version is kept but hidden behind the current one, which is what people see.
-
-**normalization factor**: The units in which instance size flexibility counts sizes: small is 1, medium 2, large 4, xlarge 8 and so on, so one reservation can cover part or all of a bigger instance.
-
-- Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
+- Don't confuse with: Application Load Balancer. An NLB works with connections and can have a fixed IP address; an ALB understands web requests and their addresses, and a GWLB passes traffic through appliances.
 
 **NoSQL**: Databases that use a model other than relational tables, such as key-value or documents. Amazon DynamoDB is AWS's main NoSQL database.
 
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-- Also in: [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](../05-storing-data/08-lab-06-a-dynamodb-table.md)
-- Don't confuse with: relational database, SQL. NoSQL databases are shaped around how the data will be read and don't join tables; relational databases link tables with a fixed schema and join them in SQL.
+- Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
+- Also in: [Optional lab 06: Create a DynamoDB table for carts, put and get items, then delete it](../05-storing-data/08-lab-06-a-dynamodb-table.md)
+- Don't confuse with: relational database. NoSQL databases are shaped around how the data will be read and don't join tables; relational databases link tables with a fixed schema and join them in SQL.
 
 ## O
 
@@ -3280,16 +1760,10 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [What cloud computing is](../02-why-the-cloud/01-what-cloud-computing-is.md)
 - Also in: [Before and after: the demand curve](../02-why-the-cloud/02-before-and-after-the-demand-curve.md)
 
-**on-demand capacity**: A DynamoDB capacity mode that bills per read and write request, with no capacity to plan: the table scales up for a spike and back down, and an idle table pays only for its storage.
-
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-- Also in: [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](../05-storing-data/08-lab-06-a-dynamodb-table.md)
-- Don't confuse with: provisioned capacity. On-demand capacity bills each request with nothing to plan; provisioned capacity bills by the hour for the reads and writes per second you set, which can cost less for steady traffic.
-
 **On-Demand Instance**: The EC2 purchasing option with no commitment: you pay the published rate for the time an instance runs, and stop paying when it stops. It's the yardstick for every discount, and suits short, unpredictable or new work.
 
-- Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
-- Also in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md); [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
+- Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
+- Also in: [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Don't confuse with: Reserved Instance, Spot Instance. On-Demand commits you to nothing at the full rate; a Reserved Instance trades a term commitment for a lower rate, and a Spot Instance is cheaper still but AWS can take it back.
 
 **on-premises**: In a building you own or control. On-premises IT means buying, housing and running your own servers instead of renting capacity from a cloud provider.
@@ -3306,34 +1780,16 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [What cloud computing is](../02-why-the-cloud/01-what-cloud-computing-is.md)
 - Don't confuse with: hybrid deployment, private cloud. On-premises means every part is in your own buildings, even when software shares the servers out flexibly (a private cloud); once a connected part runs at a cloud provider, it is hybrid.
 
-**on-premises network**: The network in a building you run, such as an office or data center.
-
-- Taught in: [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md)
-
-**one-time migration cost**: Money spent once to move: planning, tools, people's time, training, and running old and new systems side by side during the move.
-
-- Taught in: [The business case](../13-moving-to-aws/04-the-business-case.md)
-
 **one-time operation**: A task done once, or rarely, where nobody needs to repeat it exactly. One item suits the console; many items, even once, suit the CLI.
 
-- Taught in: [Four ways in](../08-building-and-operating/01-four-ways-in.md)
+- Taught in: [Four ways in, and infrastructure as code](../08-building-and-operating/01-four-ways-in.md)
 - Don't confuse with: repeatable process. A one-time operation needn't be repeated exactly, so the console or a CLI command will do; a repeatable process must give the same result every run, so it belongs in a script or a template.
-
-**open source**: Software whose code is published for anyone to use and change, such as Linux.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
 
 **operating expense** (OpEx): Money spent on running costs as you go, such as rent, electricity, salaries or a monthly cloud bill.
 
 - Taught in: [What a data center really costs](../02-why-the-cloud/04-what-a-data-center-really-costs.md)
 - Also in: [Before and after: the demand curve](../02-why-the-cloud/02-before-and-after-the-demand-curve.md)
 - Don't confuse with: capital expense, variable expense. Operating versus capital is about paying as you go or up front; variable versus fixed is about whether the amount follows use, and rent is operating yet fixed.
-
-**operating system**: The main program that runs a computer: it starts and stops other programs, shares the processor and memory between them, reads and writes files, and controls who may sign in. Servers mostly run Linux or Windows Server.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-- Also in: [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md)
-- Don't confuse with: application. The operating system runs the computer and shares its hardware out; an application runs on top of it and does a job for people, such as taking orders.
 
 **operational excellence pillar**: The Well-Architected pillar that asks whether you can run a workload well day to day, see what it is doing, and keep improving how you work.
 
@@ -3344,60 +1800,12 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
 - Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 
-**opt-in Region**: A Region that starts switched off in an account until someone turns it on, and may be hidden while off. Regions AWS launched after 2019-03-20 work this way.
-
-- Taught in: [Lab 02: See Regions, Availability Zones and AWS Health in your own account](../03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md)
-- Also in: [Regions, Availability Zones and data centers](../03-aws-around-the-world/01-regions-availability-zones-data-centers.md)
-
-**option**: A setting added to a command, written as a name that starts with two dashes and then its value, such as --region us-east-1.
-
-- Taught in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
-- Don't confuse with: argument. An option is a named setting, starting with two dashes; an argument is the value the command acts on, such as a bucket's name.
-
-**orchestration**: Deciding where containers run and how many copies there are, and replacing copies that fail. Amazon ECS and Amazon EKS orchestrate; AWS Fargate does not.
-
-- Taught in: [Containers and serverless](../06-running-applications/03-containers-and-serverless.md)
-
-**organization**: A group of AWS accounts joined in AWS Organizations: one management account and its member accounts, arranged in organizational units under a root.
-
-- Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-- Also in: [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
-
-**organization trail**: A CloudTrail trail created from an AWS Organizations management account that logs every account in the organization. Member accounts can't change or delete it.
-
-- Taught in: [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md)
-- Also in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md); [A defense map](../09-protecting-and-governing/06-a-defense-map.md)
-
 **organizational unit** (OU): A group of accounts in an AWS organization, like a folder, which can sit inside another OU. A policy attached to an OU applies to every account below it.
 
 - Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
 - Also in: [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
 
-**Organizations access report**: An IAM access report, run from an organization's management account, that shows when the services its service control policies allow were last used in each account.
-
-- Taught in: [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md)
-
-**origin**: The place where the original content lives, such as an S3 bucket in a Region, from which a CDN fetches what it hasn't cached.
-
-- Taught in: [The edge](../03-aws-around-the-world/04-the-edge.md)
-- Also in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-- Don't confuse with: cache. The origin holds the original content; a cache holds nearby copies of it.
-
-**origin access control** (OAC): A CloudFront feature that lets only your distribution read a private S3 bucket, so customers see the content through CloudFront while the bucket stays private with Block Public Access on.
-
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-
-**outbound rule**: A firewall rule for traffic leaving a resource or subnet. A new security group has one outbound rule that lets everything out.
-
-- Taught in: [Filtering traffic](../07-connecting-it/02-filtering-traffic.md)
-- Don't confuse with: inbound rule. Outbound rules on a security group cover conversations the resource starts, not replies; on a network ACL they also decide whether replies may leave.
-
 ## P
-
-**packet**: One small piece of data traveling across a network, labeled with where it comes from and where it is going.
-
-- Taught in: [Filtering traffic](../07-connecting-it/02-filtering-traffic.md)
-- Also in: [Simulation S8: Follow a packet and find the rule that blocks it](../07-connecting-it/06-sim-packet-journey.md); [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
 
 **Paid plan**: The Free Tier plan with every service, short-term trials, Savings Plans and Reserved Instances. Usage beyond the credits is billed at normal rates, and moving to it can't be undone.
 
@@ -3405,57 +1813,18 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md)
 - Don't confuse with: Free plan. The Paid plan can bill you and never closes for lack of credits; the Free plan can't bill you, offers fewer services and closes the account when it ends.
 
-**parameter (CloudFormation)**: A value a template asks for when you create a stack, such as an environment name or a bucket name, so one template fits several uses, like production and a test copy.
-
-- Taught in: [IaC and automation](../08-building-and-operating/02-iac-and-automation.md)
-- Also in: [Lab 10: Create the same bucket three ways: console, command line and template](../08-building-and-operating/05-lab-10-same-bucket-three-ways.md)
-- Don't confuse with: Parameter Store. A CloudFormation parameter is a value given when a stack is created; Parameter Store is a Systems Manager capability that keeps configuration values for your code to read.
-
 **Parameter Store**: A capability of AWS Systems Manager that keeps configuration values, such as settings, IDs and addresses, out of your code, optionally encrypted.
 
 - Taught in: [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md)
 - Don't confuse with: AWS Secrets Manager. Parameter Store holds configuration; Secrets Manager holds secrets and can rotate them, so "rotate automatically" points to Secrets Manager.
 
-**partition key**: The part of a DynamoDB item's key that picks which group the item belongs to, such as a cart ID. A query finds every item that shares one partition key.
-
-- Taught in: [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](../05-storing-data/08-lab-06-a-dynamodb-table.md)
-- Don't confuse with: sort key, key (S3). The partition key picks the group and the sort key tells the items in that group apart, together making each item's full key; an S3 key is simply an object's name in its bucket.
-
-**Partner Path**: The route a company takes into the AWS Partner Network, by what it offers, such as the Software, Services or Training Path. Paths replaced the older technology and consulting partner types.
-
-- Taught in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
-
-**passkey**: A second factor kept in your device or password manager, unlocked by fingerprint, face or PIN and tied to the real site's address, so a fake page gets nothing. AWS recommends passkeys and security keys first.
-
-- Taught in: [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
-- Also in: [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md)
-- Don't confuse with: authenticator app. A passkey works only on the real site, so a fake page gets nothing; an authenticator app's code can be typed into a fake page and used at once.
-
-**password manager**: An app that creates, stores and fills in a long random password for each account, protected by one strong main password and MFA. Many fill a password only on its own site, which helps against fake pages.
-
-- Taught in: [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
-
 **password policy**: An account's rules for IAM user passwords, such as minimum length, required character types and expiry. It doesn't cover the root user or access keys.
 
 - Taught in: [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md)
 
-**password reuse**: Using the same password on more than one account. When one site leaks it, attackers try it on other sites and get into every account that shares it.
-
-- Taught in: [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
-
-**patch**: A software update that fixes a flaw, often a security flaw.
-
-- Taught in: [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
-- Also in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-
 **patch management**: Keeping software updated with fixes. A shared control: AWS patches its infrastructure, and you patch your guest operating systems and applications.
 
 - Taught in: [Shared, inherited and customer-specific controls](../04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md)
-
-**pattern (Prescriptive Guidance)**: A Prescriptive Guidance document with hands-on steps, architectures, tools and code for one migration, optimization or modernization task, written for the people building it.
-
-- Taught in: [Where to find answers](../12-getting-help/03-where-to-find-answers.md)
-- Don't confuse with: guide (Prescriptive Guidance). A pattern is hands-on steps and code for one task; a guide is planning advice for architects, managers and executives.
 
 **pay as you go**: Paying only for what you use, for as long as you use it; when you delete a resource, you stop paying for it. One of the three features of cloud computing.
 
@@ -3480,66 +1849,18 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [The Well-Architected Framework](../02-why-the-cloud/05-the-well-architected-framework.md)
 - Don't confuse with: reliability pillar. Performance efficiency is about the right resources for the job; reliability is about something failing and recovering.
 
-**performance risk**: AWS Compute Optimizer's rating, from very low to very high, of how likely a recommended instance type is to fall short of the workload.
-
-- Taught in: [Simulation S17: Rightsize the chain's servers and settle their licenses](../13-moving-to-aws/06-sim-rightsizing-and-licensing.md)
-
-**period (CloudWatch alarm)**: The stretch of time, such as 1 or 5 minutes, over which a CloudWatch alarm judges its metric, one period at a time.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-- Also in: [Lab 11: Email the owner when the order function fails](../08-building-and-operating/06-lab-11-alarm-on-errors.md)
-
-**permission set**: IAM Identity Center's bundle of permissions. Identity Center creates the matching IAM roles in the accounts you assign it to.
-
-- Taught in: [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md)
-- Also in: [Simulation S4: Predict allow or deny across accounts, boundaries and organizations](../04-shared-responsibility-and-access/09-sim-policy-playground.md)
-
-**permissions boundary**: A limit on what an identity's own policies can grant. It grants nothing by itself.
-
-- Taught in: [Simulation S4: Predict allow or deny across accounts, boundaries and organizations](../04-shared-responsibility-and-access/09-sim-policy-playground.md)
-- Also in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
-- Don't confuse with: service control policy. A permissions boundary caps one identity; a service control policy caps every identity in a member account.
-
-**persistent**: Kept when the server stops or is deleted; the opposite is temporary. An EBS volume is persistent, and instance store is temporary.
-
-- Taught in: [Block, file and object storage](../05-storing-data/01-block-file-object.md)
-
-**personal data**: Information about a person, such as names, addresses and card numbers. Comprehend can find it in text and Transcribe can remove it from transcripts; keep it in private, encrypted storage.
-
-- Taught in: [AI and machine learning](../10-data-ai-and-more/02-ai-and-ml.md)
-- Don't confuse with: personally identifiable information. Personal data is any information about a person, including card numbers; PII is the part that identifies someone, such as a name or ID number, and is what Macie finds in S3.
-
 **personally identifiable information** (PII): Information that identifies a person, such as a name, an address or an ID number: one kind of sensitive data that Amazon Macie finds in S3.
 
 - Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
-- Don't confuse with: personal data. PII identifies a person, such as a name or ID number, and is what Macie finds in S3; personal data is any information about a person, including card numbers, as Comprehend and Transcribe handle it.
 
 **perspective (AWS CAF)**: One of six groups of related capabilities in the CAF, each owned by related stakeholders: Business, People, Governance, Platform, Security and Operations.
 
 - Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
 - Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
-- Don't confuse with: transformation domain. A perspective groups capabilities owned by related people; a transformation domain is one of the four areas that change, and process is a domain, never a perspective.
-
-**phishing**: Tricking someone into giving away a password or code, often with a fake sign-in page or an urgent message.
-
-- Taught in: [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
-
-**phishing-resistant**: Describes a second factor that a fake sign-in page can't steal, because it works only on the real site's address. Passkeys and security keys are; codes by text message or authenticator app aren't.
-
-- Taught in: [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
-- Also in: [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md)
-
-**physical server**: A real computer you could touch, as opposed to a virtual one. In virtualization it is called the host.
-
-- Taught in: [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md)
 
 **pillar**: One of the Well-Architected Framework's six areas of concern, each a way of judging a workload: operational excellence, security, reliability, performance efficiency, cost optimization and sustainability.
 
 - Taught in: [The Well-Architected Framework](../02-why-the-cloud/05-the-well-architected-framework.md)
-
-**pilot (AWS CAF)**: A small first project run for real in production, in the CAF's Launch phase, chosen so its lessons shape what follows.
-
-- Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
 
 **pilot light**: A disaster recovery strategy that copies data continuously to the recovery Region and keeps core parts, such as the database, running, with app servers off until needed. Recovery typically takes tens of minutes; data loss can be much less.
 
@@ -3547,80 +1868,14 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md); [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
 - Don't confuse with: warm standby, backup and restore. Ask whether it could serve a customer right now: a pilot light can't until its app servers are switched on, while a warm standby can, at reduced size.
 
-**pipeline (CodePipeline)**: In AWS CodePipeline, the model of a release: a series of stages that each code change passes through in order, stopping if one fails.
-
-- Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-
-**pixel streaming**: Sending only a moving picture of a screen to the user's device while the software runs elsewhere; keyboard and mouse input goes the other way. The WorkSpaces family works this way, keeping data off the device.
-
-- Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
-
-**plaintext**: Readable data: data before it is encrypted, or after it is decrypted.
-
-- Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
-- Also in: [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
-- Don't confuse with: ciphertext. Plaintext is readable by anyone who gets it; ciphertext is scrambled and useless without the right key.
-
-**platform (Elastic Beanstalk)**: The operating system, language and web server software that Elastic Beanstalk runs your code on, such as a version of Python.
-
-- Taught in: [Simpler paths: Elastic Beanstalk, Lightsail, Batch and Outposts](../06-running-applications/04-simpler-paths.md)
-
-**platform as a service** (PaaS): A cloud model in which the provider runs the hardware and operating system and gives you a place to run your application; you manage the application and its data.
-
-- Taught in: [What cloud computing is](../02-why-the-cloud/01-what-cloud-computing-is.md)
-- Also in: [Simpler paths: Elastic Beanstalk, Lightsail, Batch and Outposts](../06-running-applications/04-simpler-paths.md)
-- Don't confuse with: infrastructure as a service, software as a service. PaaS runs your own application for you; IaaS leaves the operating system to you, and SaaS gives you someone else's finished application.
-
 **Platform perspective**: The CAF perspective for infrastructure and applications: building and standardizing the cloud environment, through capabilities such as platform architecture, provisioning and orchestration, and CI/CD.
 
 - Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
 - Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 
-**point-in-time recovery**: Restoring data to how it was at a chosen moment within the retention period, as RDS automated backups and DynamoDB's backups allow. On RDS the restore creates a new database.
-
-- Taught in: [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
-- Also in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md); [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-
 **policy**: A document, usually written in JSON, that lists permissions as statements allowing or denying actions on resources. Nothing is allowed until a policy allows it.
 
 - Taught in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
-
-**policy version**: A saved earlier text of a managed policy. When you edit the policy, IAM keeps the old text as a version and lets you choose which version is the default.
-
-- Taught in: [Lab 04: Finish a policy, write one yourself, and find the deny that blocks it](../04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md)
-
-**polling**: Asking a queue for messages when you're ready for them, as SQS consumers do. SQS never pushes a message to anyone.
-
-- Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-
-**port**: A number that says which program on a computer traffic is for: a web server listens on 443 for HTTPS, and SSH logins use 22.
-
-- Taught in: [Filtering traffic](../07-connecting-it/02-filtering-traffic.md)
-- Also in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-
-**portfolio (Service Catalog)**: A collection of AWS Service Catalog products that administrators grant to IAM users, groups or roles.
-
-- Taught in: [IaC and automation](../08-building-and-operating/02-iac-and-automation.md)
-
-**portfolio management**: The CAF Business perspective capability that chooses and orders initiatives for their value, using discovery tools and the 7 Rs to sort existing applications and build a business case.
-
-- Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
-- Also in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-
-**prediction interval**: The range a forecast's real figure should fall in, which Cost Explorer sets at 80%: four times out of five. Steadier history gives a narrower range.
-
-- Taught in: [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md)
-
-**predictive scaling**: A way of scaling that forecasts traffic from past daily or weekly patterns and adds capacity before the rise arrives.
-
-- Taught in: [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
-- Also in: [Simulation S7: Scale the bakery's web servers through a December Saturday](../06-running-applications/07-sim-elasticity-with-auto-scaling.md)
-- Don't confuse with: scheduled scaling, target tracking. Predictive scaling acts on a forecast learned from past patterns; scheduled scaling acts at times you set, and target tracking reacts once the load has changed.
-
-**prefix**: The start of an S3 object's key, such as exports/, which works like a folder. A lifecycle rule can be limited to objects with a given prefix.
-
-- Taught in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md)
-- Also in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
 
 **preventive control**: A control that stops something from happening, such as a security group rule, a WAF rule or an SCP.
 
@@ -3628,185 +1883,54 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
 - Don't confuse with: detective control. A preventive control stops something before it happens; a detective control finds and records it afterward, and you need both because preventive controls fail quietly.
 
-**primary**: In a database with copies, the copy that takes the writes.
-
-- Taught in: [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
-- Also in: [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../05-storing-data/10-sim-multi-az-vs-read-replica.md)
-- Don't confuse with: standby, read replica. The primary takes the writes; a standby waits to take over, and a read replica answers read-only queries.
-
-**primary key**: A column whose value is different for every row of a table, such as an order number, so it picks out exactly one record. Another table can hold it to link to that row.
-
-- Taught in: [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
-
-**principal**: An identity that can make a request to AWS: the root user, an IAM user or an IAM role. Resource-based policies name the principals they apply to.
-
-- Taught in: [Identities](../04-shared-responsibility-and-access/03-identities.md)
-- Also in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
-- Don't confuse with: identity. A principal is an identity that can make a request; an IAM user group is an identity but not a principal.
-
 **principle of least privilege**: Giving each identity only the permissions it needs for its task: specific actions, on specific resources, under specific conditions, so that less can go wrong if it is misused.
 
 - Taught in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
-- Also in: [Lab 04: Finish a policy, write one yourself, and find the deny that blocks it](../04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md); [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
-
-**prioritized group sharing**: A discount sharing setting in which a commitment serves its owner, then a group of accounts you define, then the rest of the organization.
-
-- Taught in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md)
-- Don't confuse with: restricted group sharing. Prioritized group sharing lets an unused discount leave the group after serving it; restricted group sharing keeps it in the group even if it goes unused.
+- Also in: [Optional lab 04: Finish a policy, write one yourself, and find the deny that blocks it](../04-shared-responsibility-and-access/07-lab-04-finish-and-fix-a-policy.md); [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
 
 **private cloud**: AWS's name for an on-premises deployment in which software shares the organization's own servers out flexibly. It is still on-premises, and AWS notes it lacks many of the cloud's benefits.
 
 - Taught in: [What cloud computing is](../02-why-the-cloud/01-what-cloud-computing-is.md)
 - Don't confuse with: cloud deployment, on-premises deployment. A private cloud runs on the organization's own equipment, so it is an on-premises deployment; building one is not moving to the cloud.
 
-**private connection**: In networking, a connection whose path doesn't use the public internet at all, such as AWS Direct Connect. It describes the path, not whether the data is encrypted.
-
-- Taught in: [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md)
-- Don't confuse with: encryption in transit. Private is about the path and encrypted is about the protection: a VPN is encrypted but not private, and Direct Connect is private but not encrypted unless you add it.
-
-**private IP address**: An IP address that works only inside a private network, such as a VPC. Every server in a VPC has one.
-
-- Taught in: [Your own network](../07-connecting-it/01-your-own-network.md)
-- Also in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-- Don't confuse with: public IP address. A private address is reachable only inside the network; a public address can be reached across the internet, when a route allows it.
-
 **Private Marketplace**: AWS Marketplace's governance feature: administrators give each part of an organization a catalog of approved products. It blocks new subscriptions to anything else but doesn't control what can be deployed.
 
-- Taught in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
+- Taught in: [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
 
 **private offer**: An AWS Marketplace offer with pricing and terms negotiated for one buyer, instead of the product's public price.
 
-- Taught in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
+- Taught in: [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
 
 **private subnet**: A subnet whose route table has no route to an internet gateway, so the internet can't reach what is in it, even a server with a public address. It is where a database belongs.
 
 - Taught in: [Your own network](../07-connecting-it/01-your-own-network.md)
-- Also in: [Lab 09: Build a small network with a public and a private subnet, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
+- Also in: [Optional lab 09: Build a small network with public and private subnets, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
 - Don't confuse with: public subnet. A private subnet has no route to an internet gateway; it can still reach out through a NAT gateway or an endpoint, but nothing on the internet can start a connection in.
-
-**processor** (CPU): The central processing unit: the part of a computer that carries out a program's instructions, one after another, very fast. A processor with several cores can work on several things at once.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-
-**Procurement insights**: AWS Marketplace's cost management dashboard, showing Marketplace costs and agreements across all the accounts in an organization.
-
-- Taught in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
-
-**producer**: The part of an application that sends messages, for example to an SQS queue or an SNS topic.
-
-- Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-
-**product (Service Catalog)**: An approved setup in AWS Service Catalog, defined by a CloudFormation template or a Terraform configuration. Launching it builds a stack; a new version reaches everyone who can use it.
-
-- Taught in: [IaC and automation](../08-building-and-operating/02-iac-and-automation.md)
-
-**product detail page**: AWS Marketplace's page for one product: what it is, who sells it, how it's delivered and how it's priced.
-
-- Taught in: [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md)
 
 **programmatic access**: Using AWS from code or commands rather than console clicks. The exam's examples are APIs, SDKs and the AWS CLI.
 
-- Taught in: [Four ways in](../08-building-and-operating/01-four-ways-in.md)
-
-**promote**: To turn a read replica into a separate database that accepts writes, for example to recover in another Region. Someone has to do it and point the application at the new database.
-
-- Taught in: [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
-- Also in: [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../05-storing-data/10-sim-multi-az-vs-read-replica.md)
-
-**prompt**: The text a shell shows, often $, when it is ready for your next command.
-
-- Taught in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
-
-**protocol**: A set of rules both ends of a conversation follow, such as HTTP for web requests, TCP and UDP for packets, or NFS, SMB and iSCSI for storage.
-
-- Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-- Also in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
-
-**provisioned capacity**: A DynamoDB capacity mode in which you set the reads and writes per second and pay for them by the hour, which can cost less for steady, predictable traffic.
-
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-- Don't confuse with: on-demand capacity. Provisioned capacity is paid by the hour whether it is used or not; on-demand capacity is paid per request.
-
-**public event**: An AWS service issue shown in the AWS Health Dashboard that isn't tied to any one account.
-
-- Taught in: [Lab 02: See Regions, Availability Zones and AWS Health in your own account](../03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md)
-- Also in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md)
-- Don't confuse with: account-specific event. A public event is a service issue for everyone; an account-specific event concerns your own account or resources.
-
-**public IP address**: An IP address that can be reached across the internet. An EC2 instance can get a public IPv4 address automatically, which is released when it stops; AWS charges by the hour for every public IPv4 address, in use or idle.
-
-- Taught in: [Your own network](../07-connecting-it/01-your-own-network.md)
-- Also in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md); [Lab 08: Launch a virtual server, stop it, terminate it, and prove nothing is left](../06-running-applications/06-lab-08-launch-and-terminate-an-instance.md); [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-- Don't confuse with: Elastic IP address, private IP address, public subnet. An automatic public address changes after a stop while an Elastic IP address stays yours, and neither makes a subnet public: only a route to an internet gateway does.
+- Taught in: [Four ways in, and infrastructure as code](../08-building-and-operating/01-four-ways-in.md)
 
 **public subnet**: A subnet whose route table has a route to an internet gateway. A server in it also needs a public IP address to use that route.
 
 - Taught in: [Your own network](../07-connecting-it/01-your-own-network.md)
-- Also in: [Lab 09: Build a small network with a public and a private subnet, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
-- Don't confuse with: private subnet, public IP address. A subnet is public because of its route to an internet gateway, not because its servers have public addresses; a private subnet has no such route.
-
-**purchasing account**: The account that bought a Reserved Instance or Savings Plan, also called the owner account. Its own matching usage gets the discount first.
-
-- Taught in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md)
+- Also in: [Optional lab 09: Build a small network with public and private subnets, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
+- Don't confuse with: private subnet. A subnet is public because of its route to an internet gateway, not because its servers have public addresses; a private subnet has no such route.
 
 **purchasing option**: How you pay for EC2 capacity: On-Demand, Savings Plans, Reserved Instances or Spot Instances, or, for a rule or a guarantee, Dedicated Hosts, Dedicated Instances or Capacity Reservations. It never changes the instance type.
 
-- Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
-- Also in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md); [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
+- Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
+- Also in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md); [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Exam name: "Amazon EC2 instance types" in the CLF-C02 exam guide
 - Don't confuse with: instance type. A purchasing option is how you pay; an instance type is the hardware you pay for, and the same type can be bought any way.
 
-## Q
-
-**query**: A question sent to a database, such as which orders are for pickup on December 24, which the engine answers with the matching records. SQL is the standard language for relational queries.
-
-- Taught in: [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
-- Don't confuse with: query (DynamoDB). A query is any question sent to a database; a DynamoDB query is one particular read that finds the items sharing one partition key.
-
-**query (DynamoDB)**: A DynamoDB read that finds every item sharing one partition key, optionally narrowed by a condition on the sort key, such as loading one customer's cart.
-
-- Taught in: [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](../05-storing-data/08-lab-06-a-dynamodb-table.md)
-
-**query result location**: The S3 location where Amazon Athena writes each query's answer as files. You pay S3 for those files until you delete them.
-
-- Taught in: [Lab 13: Query a small sales file in S3 with Athena, then delete everything](../10-data-ai-and-more/04-lab-13-athena-query.md)
-
-**queue**: A place where messages wait until a consumer asks for them. In Amazon SQS, each message goes to one consumer, which deletes it when done.
-
-- Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-- Don't confuse with: topic. A queue holds each message until one consumer pulls it; a topic pushes each message at once to every subscriber and keeps nothing for later.
-
 ## R
-
-**rack**: A tall metal frame that holds many servers, one above another, in a server room or data center.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-- Also in: [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md)
-
-**rate**: The price of one unit of something you use, such as an instance-hour or a GB stored for a month. Rates differ by Region, change over time and sometimes fall as volume grows.
-
-- Taught in: [How AWS charges](../11-paying-for-aws/01-how-aws-charges.md)
-
-**rate-based rule**: An AWS WAF rule that limits how many requests one client address may send in a time window: the usual answer to a small flood of web requests.
-
-- Taught in: [The front door](../09-protecting-and-governing/04-the-front-door.md)
-- Also in: [A defense map](../09-protecting-and-governing/06-a-defense-map.md)
 
 **read replica**: A read-only copy of an Amazon RDS database, updated asynchronously, so it can lag. It takes read-heavy work off the primary and can be promoted to a separate database, but outside Aurora it doesn't take over automatically.
 
-- Taught in: [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
-- Also in: [Choosing a database](../05-storing-data/06-choosing-a-database.md); [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../05-storing-data/10-sim-multi-az-vs-read-replica.md)
-- Don't confuse with: Multi-AZ deployment, standby, automated backup. A read replica serves reads and must be promoted by hand, losing any lag; a Multi-AZ standby serves nothing and fails over automatically with every change, and only a backup can undo a mistaken delete.
-
-**ready-made AI service**: An AWS service whose model AWS has already trained, such as Comprehend, Textract or Polly. You send input through an API and get a result back, with no machine learning skills.
-
-- Taught in: [AI and machine learning](../10-data-ai-and-more/02-ai-and-ml.md)
-- Don't confuse with: Amazon SageMaker AI. A ready-made service answers a common need with AWS's trained model and nothing to train; SageMaker AI is for building, training and hosting your own model when nothing ready-made fits.
-
-**recovery point**: In AWS Backup, one saved backup of a resource, kept in a backup vault.
-
-- Taught in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
-- Don't confuse with: recovery point objective. A recovery point is one saved backup; the recovery point objective is how much data the business accepts losing, measured back to the last saved copy.
+- Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
+- Also in: [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../05-storing-data/10-sim-multi-az-vs-read-replica.md)
+- Don't confuse with: Multi-AZ deployment. A read replica serves reads and must be promoted by hand, losing any lag; a Multi-AZ standby serves nothing and fails over automatically with every change, and only a backup can undo a mistaken delete.
 
 **recovery point objective** (RPO): The most data the business accepts losing, measured as the time between the last saved copy and the failure. It looks back from the failure.
 
@@ -3814,20 +1938,11 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md)
 - Don't confuse with: recovery time objective. RPO is the data you can lose, measured back to the last saved copy; RTO is how long you can be without service.
 
-**recovery Region**: The second Region where a disaster recovery plan keeps its copy of the workload. It inherits the data's rules, so it must be inside any area the data has to stay in.
-
-- Taught in: [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md)
-- Also in: [The edge](../03-aws-around-the-world/04-the-edge.md)
-
 **recovery time objective** (RTO): The longest the business accepts a service being down after a failure. It looks forward from the failure.
 
 - Taught in: [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md)
 - Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md)
 - Don't confuse with: recovery point objective. RTO is time without service; RPO is how much data you accept losing, measured back from the failure (P for a point in your data, T for time).
-
-**redundancy**: Having more than one of something, such as power supplies, cooling or network connections, so that one failure doesn't stop the whole.
-
-- Taught in: [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md)
 
 **refactor**: The migration strategy, also called re-architect, that redesigns an application to use cloud-native features when strong business demand requires it. AWS calls it the most complex and costly strategy.
 
@@ -3841,11 +1956,6 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Before your first lab](../00-start-here/05-before-your-first-lab.md); [Telling the benefits apart](../02-why-the-cloud/03-telling-the-benefits-apart.md); [Choosing a Region](../03-aws-around-the-world/02-choosing-a-region.md); [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
 - Don't confuse with: Availability Zone, edge location, Local Zone. A Region is a whole area holding several Availability Zones; an Availability Zone is one or more data centers inside it, and edge locations and Local Zones are smaller sites outside the Regions.
 
-**Region code**: A Region's short code, such as us-east-1 or eu-central-1, used in commands, settings and resource names.
-
-- Taught in: [Regions, Availability Zones and data centers](../03-aws-around-the-world/01-regions-availability-zones-data-centers.md)
-- Also in: [Lab 02: See Regions, Availability Zones and AWS Health in your own account](../03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md)
-
 **Regional Reserved Instance**: A Reserved Instance whose discount applies in any Availability Zone of its Region and, for Linux on shared tenancy, to any size in the same family. It reserves no capacity.
 
 - Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
@@ -3855,7 +1965,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **Regional service**: A service AWS runs across several Availability Zones of a Region for you, behind one Regional address, such as Amazon S3 or AWS Lambda.
 
 - Taught in: [Regions, Availability Zones and data centers](../03-aws-around-the-world/01-regions-availability-zones-data-centers.md)
-- Don't confuse with: zonal resource, global service. A Regional service is spread across one Region's Availability Zones; a zonal resource lives in a single Availability Zone, and a global service isn't tied to one Region.
+- Don't confuse with: global service. A Regional service is spread across one Region's Availability Zones; a zonal resource lives in a single Availability Zone, and a global service isn't tied to one Region.
 
 **rehost**: The migration strategy, also called lift and shift, that moves each server to AWS unchanged, as an Amazon EC2 instance running the same software. Optimizing comes later.
 
@@ -3865,8 +1975,8 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **relational database**: A database that keeps data in tables of rows and columns that link to each other, queried in SQL, and changes several tables together in one transaction. On AWS it is Amazon RDS or Amazon Aurora.
 
-- Taught in: [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
-- Also in: [Choosing a database](../05-storing-data/06-choosing-a-database.md); [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
+- Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
+- Also in: [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
 - Don't confuse with: NoSQL. A relational database links tables with a fixed schema and joins them; NoSQL databases use other models, such as items fetched by key or documents, and don't join tables.
 
 **reliability pillar**: The Well-Architected pillar that asks whether a workload does its job correctly whenever it is needed, and recovers when something fails. High availability and durability belong here.
@@ -3882,7 +1992,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **repeatable process**: A task that will be done again, where each run must give the same result, such as building an identical copy of a setup. Write it down: a template for whole setups, a script for routine tasks.
 
-- Taught in: [Four ways in](../08-building-and-operating/01-four-ways-in.md)
+- Taught in: [Four ways in, and infrastructure as code](../08-building-and-operating/01-four-ways-in.md)
 - Don't confuse with: one-time operation. A repeatable process must give the same result every run, so it belongs in a script or a template; a one-time operation needn't be repeated, so the console or one CLI command will do.
 
 **replatform**: The migration strategy, also called lift, tinker and shift, that moves an application with a few changes to what it runs on, such as moving a SQL Server database onto Amazon RDS.
@@ -3891,78 +2001,22 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Migration tools](../13-moving-to-aws/03-migration-tools.md); [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 - Don't confuse with: refactor, rehost, relocate. Replatform changes what the application runs on, not its code; rehost and relocate change nothing, and refactor redesigns the application itself.
 
-**replay**: Reading records in a Kinesis data stream again after they were first read, for example after fixing a bug. It works because records stay in the stream for its retention period.
-
-- Taught in: [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md)
-
-**replication**: Copying every change to a second place as it happens. It copies mistakes, deletions and corruption too, so it doesn't replace backups.
-
-- Taught in: [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md)
-- Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md); [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
-- Don't confuse with: backup. A replica shows the data as it is now, mistakes included; a backup shows it as it was, so only a backup can undo damage.
-
-**replication lag**: How far a copy kept by asynchronous replication, such as a read replica, is behind its primary. It varies, and changes not yet copied are lost if the copy has to take over.
-
-- Taught in: [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
-- Also in: [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../05-storing-data/10-sim-multi-az-vs-read-replica.md)
-
 **repurchase**: The migration strategy, also called drop and shop, that replaces an application with a different product or version, often software as a service.
 
 - Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
 - Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 
-**request**: What a client sends a server to ask for something, such as a web page, or to save an order. The server sends back a response.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-- Also in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md); [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
-
-**request charge**: A charge per call or per run, such as per thousand S3 reads or per Lambda invocation. It follows use exactly, so a service nobody uses charges nothing for requests.
-
-- Taught in: [How AWS charges](../11-paying-for-aws/01-how-aws-charges.md)
-
 **Reserved Instance** (RI): An EC2 purchasing option in which you commit to one instance configuration for one or three years in return for a lower rate. It's a billing discount on matching running instances, not a machine.
 
-- Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
-- Also in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md); [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md); [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md); [Lab 15: Price the bakery's setup in the AWS Pricing Calculator](../11-paying-for-aws/05-lab-15-pricing-calculator.md)
+- Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
+- Also in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md); [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md); [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md); [Lab 15: Price the bakery's setup in the AWS Pricing Calculator](../11-paying-for-aws/05-lab-15-pricing-calculator.md)
 - Don't confuse with: On-Demand Instance, Spot Instance, Savings Plans. A Reserved Instance commits to one configuration for a lower rate; a Savings Plan commits to dollars per hour more flexibly, On-Demand commits to nothing, and Spot can be interrupted.
-
-**Resource (policy element)**: The part of a policy statement that names which resources it covers, by their ARNs; * means all.
-
-- Taught in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
-
-**resource control policy** (RCP): An AWS Organizations policy that caps what anyone, even someone outside the organization, can do to resources in member accounts.
-
-- Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-- Don't confuse with: service control policy. An RCP caps what anyone can do to the resources in member accounts; an SCP caps what the users and roles in member accounts can do.
-
-**resource map**: A tab in the VPC console that draws how a VPC's parts connect: subnets, route tables and gateways.
-
-- Taught in: [Lab 09: Build a small network with a public and a private subnet, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
-
-**resource timeline**: The AWS Config console view of one resource's configuration items and rule results over time, which can also show the CloudTrail events behind each change.
-
-- Taught in: [Simulation S10: Read a resource's AWS Config timeline, and tell Config from CloudTrail](../09-protecting-and-governing/09-sim-config-timeline.md)
 
 **resource-based policy**: A policy attached to a resource, such as an S3 bucket, that says who may do what to that resource, so it must name a principal. Within one account an allow here is enough; across accounts both sides must allow.
 
 - Taught in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
 - Also in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
 - Don't confuse with: identity-based policy, cross-account role. A resource-based policy sits on the resource and names who may use it; an identity-based policy sits on the identity and names what it may use.
-
-**response**: What a server sends back to answer a client's request: the result, such as a page, or an error.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-- Also in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md); [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
-
-**restore (S3 Glacier)**: For S3 Glacier Flexible Retrieval and S3 Glacier Deep Archive, a request that makes a temporary readable copy of an object, which you must wait for before you can read it.
-
-- Taught in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
-- Also in: [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../05-storing-data/09-sim-lifecycle-cost-timeline.md)
-
-**restricted group sharing**: A discount sharing setting in which a commitment's discount never leaves a group of accounts you define, even if it goes unused.
-
-- Taught in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md)
-- Don't confuse with: prioritized group sharing. Restricted group sharing keeps a discount inside the group even when it is wasted; prioritized group sharing serves the group first, then the rest of the organization.
 
 **retain**: The migration strategy of keeping an application where it is for now, for reasons such as compliance, high risk, dependencies, a recent upgrade, special hardware or a SaaS version still to come.
 
@@ -3976,89 +2030,36 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **retrieval fee**: A charge per GB each time you read data from some S3 storage classes: Standard-IA, One Zone-IA and the Glacier classes. It can make a cold class cost more than S3 Standard for data that is read often.
 
-- Taught in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
-- Also in: [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../05-storing-data/09-sim-lifecycle-cost-timeline.md)
-
-**review question**: One of the Well-Architected Framework's numbered questions for a pillar, such as REL 10 on fault isolation. Each question has its own best practices, and a full review answers them all.
-
-- Taught in: [The capstone review](../14-capstone/01-the-capstone-review.md)
-- Also in: [Lab 18: Record the bakery's review in the AWS Well-Architected Tool](../14-capstone/02-lab-18-well-architected-tool-review.md)
-- Don't confuse with: best practice. A review question, such as REL 10, asks about one area of a pillar; its best practices, such as REL10-BP01, are the specific actions that answer it.
-
-**review scope**: A written statement of what a review covers and what it leaves out: a boundary, not the size of the job. It tells the owner what wasn't looked at.
-
-- Taught in: [The capstone review](../14-capstone/01-the-capstone-review.md)
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
 
 **rightsizing**: Choosing the type, size and number of resources that meet your needs at the lowest cost, and repeating the choice as usage, prices and resource types change.
 
 - Taught in: [What a data center really costs](../02-why-the-cloud/04-what-a-data-center-really-costs.md)
-- Also in: [The business case](../13-moving-to-aws/04-the-business-case.md); [Simulation S17: Rightsize the chain's servers and settle their licenses](../13-moving-to-aws/06-sim-rightsizing-and-licensing.md)
-
-**rollback (CloudFormation)**: Undoing a failed stack operation, returning to the state before it started. A failed create deletes what it made; a failed update returns to the last working state.
-
-- Taught in: [IaC and automation](../08-building-and-operating/02-iac-and-automation.md)
-- Also in: [Lab 10: Create the same bucket three ways: console, command line and template](../08-building-and-operating/05-lab-10-same-bucket-three-ways.md)
-
-**root (AWS Organizations)**: The top of an organization's tree, above every organizational unit and account. A policy attached to it, such as an SCP, applies to every member account.
-
-- Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-- Also in: [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
-- Don't confuse with: root user. The organization root is the top of the account tree, where policies attach; the root user is the all-powerful sign-in identity of one account.
+- Also in: [The business case](../13-moving-to-aws/04-the-business-case.md)
 
 **root user**: The identity created with an AWS account from the sign-up email and password, with complete account access. IAM policies can't be attached to it, so keep it for root-only tasks, protected by MFA, with no access keys.
 
 - Taught in: [Identities](../04-shared-responsibility-and-access/03-identities.md)
-- Also in: [Simulation S4: Predict allow or deny across accounts, boundaries and organizations](../04-shared-responsibility-and-access/09-sim-policy-playground.md)
 - Don't confuse with: IAM user. The root user's power can't be narrowed by IAM policies; even an IAM admin user gets its power from policies and can't do root-only tasks.
-
-**root volume**: The EBS volume that holds an EC2 instance's operating system. It is usually set to be deleted when the instance is terminated; if it isn't, it keeps billing until you delete it.
-
-- Taught in: [Lab 08: Launch a virtual server, stop it, terminate it, and prove nothing is left](../06-running-applications/06-lab-08-launch-and-terminate-an-instance.md)
-- Also in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
 
 **root-only task**: A task that needs the root user's credentials. Such tasks change the account itself or rescue it from a lockout; see the lesson for the current list.
 
 - Taught in: [Identities](../04-shared-responsibility-and-access/03-identities.md)
 
-**rotation**: Replacing a secret with a new one on a schedule. Of AWS's two stores, only Secrets Manager does it automatically.
-
-- Taught in: [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md)
-
-**route**: One line in a route table: a destination, which is a range of addresses, and a target, such as an internet gateway, a NAT gateway or an endpoint. When two routes match, the more specific one wins.
-
-- Taught in: [Your own network](../07-connecting-it/01-your-own-network.md)
-
 **route table**: A list of routes that decides where traffic leaving a subnet goes. Every subnet uses exactly one; if you don't choose one, it uses the VPC's main route table.
 
 - Taught in: [Your own network](../07-connecting-it/01-your-own-network.md)
-- Also in: [Lab 09: Build a small network with a public and a private subnet, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
-
-**router**: A device that passes data from one network toward another, reading each packet's address. A home router is often the Wi-Fi box.
-
-- Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
+- Also in: [Optional lab 09: Build a small network with public and private subnets, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
 
 **routing policy**: The rule that tells Route 53 how to choose its answer when a user could be sent to more than one place. Each policy, such as failover, latency, geolocation or weighted, answers a different question.
 
 - Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
 
-**row**: One record in a database table, such as one order. Each row has a primary key that no other row shares.
-
-- Taught in: [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
-- Don't confuse with: column. A row is one record; a column is one fact that every record in the table has, such as the pickup date.
-
-**rule (EventBridge)**: An EventBridge setting holding a pattern, such as "an EC2 instance stopped", that sends each matching event on a bus to the rule's targets.
-
-- Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-
-**runaway cost**: Spending that keeps growing because something nobody is watching keeps running, such as forgotten instances and a NAT gateway left on over a weekend.
-
-- Taught in: [Simulation S14: Follow a runaway cost and see which guardrails alert and which stop it](../11-paying-for-aws/08-sim-guardrail-timeline.md)
-
 ## S
 
 **S3 Block Public Access**: S3 settings that override any bucket policy or ACL making data public. Settable per organization, account and bucket; the strictest combination wins. New buckets have them on; check account-level settings, which started off in new accounts (see the lesson).
 
-- Taught in: [S3 in practice](../05-storing-data/02-s3-in-practice.md)
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
 - Don't confuse with: bucket policy, encryption at rest. A bucket policy grants or denies access and encryption protects the stored bytes; Block Public Access overrides any grant to the public, whatever the policy says, and doesn't affect access given to named identities.
 
 **S3 File Gateway**: The Storage Gateway type that presents a shared folder over NFS or SMB and stores each file as an object in an S3 bucket, keeping recently used files in a local cache. Its full name is Amazon S3 File Gateway.
@@ -4068,75 +2069,64 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 **S3 Glacier Deep Archive**: S3's cheapest storage class, for records read less than once a year and kept for years, such as for compliance, replacing tape. Objects must be restored before reading, taking many hours, and it has S3's longest minimum stay.
 
-- Taught in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
-- Also in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md); [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md); [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../05-storing-data/09-sim-lifecycle-cost-timeline.md)
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
+- Also in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md); [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md)
 - Don't confuse with: S3 Glacier Flexible Retrieval, S3 Glacier Instant Retrieval. Deep Archive is the cheapest to store but the slowest to get back; Flexible Retrieval restores in minutes to hours, and Instant Retrieval reads in milliseconds.
 
 **S3 Glacier Flexible Retrieval**: The S3 Glacier class for backups and disaster recovery copies read once or twice a year. You restore an object before reading it, which takes minutes to hours depending on the option; the class was formerly named S3 Glacier.
 
-- Taught in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
-- Also in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md); [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../05-storing-data/09-sim-lifecycle-cost-timeline.md)
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
+- Also in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
 - Don't confuse with: S3 Glacier Instant Retrieval, S3 Glacier Deep Archive. Flexible Retrieval needs a restore of minutes to hours; Instant Retrieval needs none but costs more to store, and Deep Archive costs less but its restores take many hours.
 
 **S3 Glacier Instant Retrieval**: The S3 Glacier class for archive data read about once a quarter that must come back in milliseconds, with no restore step. It charges per GB read and has a minimum stay; see the lesson.
 
-- Taught in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
 - Don't confuse with: S3 Glacier Flexible Retrieval, S3 Glacier Deep Archive, S3 Standard-IA. Instant Retrieval reads in milliseconds like Standard-IA, for data read even less often; Flexible Retrieval and Deep Archive cost less to store but need a restore first, taking minutes to hours and many hours.
 
 **S3 Glacier storage classes**: S3 archive storage classes, for data you must keep but rarely read: S3 Glacier Instant Retrieval, S3 Glacier Flexible Retrieval and S3 Glacier Deep Archive. They're ordinary classes in ordinary buckets; pick by how fast you need data back.
 
-- Taught in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
 - Also in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
 - Exam name: "Amazon S3 Glacier" in the CLF-C02 exam guide
 - Don't confuse with: Amazon Glacier. The S3 Glacier storage classes live in S3 buckets and use the S3 API and lifecycle rules; Amazon Glacier is the older, separate vault service, closed to new customers.
 
 **S3 Intelligent-Tiering**: An S3 storage class for unknown or changing access patterns: S3 moves each object to cheaper tiers when unread for a while, and back when read. No retrieval fees, but small per-object monitoring fees; tiny objects are never moved.
 
-- Taught in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
 - Don't confuse with: S3 Standard-IA, S3 One Zone-IA, S3 Lifecycle. Intelligent-Tiering moves each object by its reads, for unpredictable patterns; Standard-IA and One Zone-IA suit data you know is read about monthly and charge per GB read, and lifecycle rules you set move objects by age.
 
 **S3 Lifecycle**: Rules on an S3 bucket that transition objects to colder storage classes, or expire (delete) them, a number of days after creation. Rules can cover the whole bucket or a prefix or tag, and can act on noncurrent versions.
 
-- Taught in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
-- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md); [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../05-storing-data/09-sim-lifecycle-cost-timeline.md)
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
+- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md)
 - Don't confuse with: S3 Intelligent-Tiering. Lifecycle rules move objects by age on a schedule you set, for data whose cooling you know; Intelligent-Tiering moves each object by its own reads, for data you can't predict.
 
 **S3 Object Lock**: An S3 feature that stops object versions from being deleted or overwritten until a date you set: write once, read many (WORM). In its compliance mode nobody, not even the root user, can remove the protection early.
 
-- Taught in: [S3 in practice](../05-storing-data/02-s3-in-practice.md)
-- Also in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
-- Don't confuse with: versioning, MFA Delete, Vault Lock. Object Lock forbids deletes until a date; versioning keeps old versions that someone with permission can still delete, MFA Delete only demands an MFA code for such deletes, and Vault Lock protects AWS Backup vaults rather than S3 objects.
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
+- Don't confuse with: versioning. Object Lock forbids deletes until a date; versioning keeps old versions that someone with permission can still delete, MFA Delete only demands an MFA code for such deletes, and Vault Lock protects AWS Backup vaults rather than S3 objects.
 
 **S3 One Zone-IA**: An S3 storage class like Standard-IA but cheaper, storing data in a single Availability Zone, so the data can be lost if that zone is destroyed. Use it only for infrequently read data you can recreate.
 
-- Taught in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
 - Also in: [Block, file and object storage](../05-storing-data/01-block-file-object.md)
 - Don't confuse with: S3 Standard-IA. One Zone-IA keeps data in one Availability Zone and suits data you can recreate; Standard-IA costs more but survives the loss of a zone.
 
 **S3 Replication**: An S3 feature that copies new objects automatically to another bucket, in another Region (Cross-Region Replication) or the same Region (Same-Region Replication), in the same account or another.
 
-- Taught in: [S3 in practice](../05-storing-data/02-s3-in-practice.md)
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
 - Don't confuse with: versioning. S3 Replication keeps a copy in another bucket, which protects against losing the first bucket; versioning keeps earlier versions inside the same bucket, which protects against overwrites and deletes.
 
 **S3 Standard**: The default S3 storage class, for data read often: no minimum stay and no retrieval fee, with copies across several Availability Zones and the highest designed availability of the classes (see the lesson for the figures).
 
-- Taught in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
-- Also in: [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../05-storing-data/09-sim-lifecycle-cost-timeline.md)
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
 - Don't confuse with: S3 Standard-IA. Standard costs more to store but nothing to read; Standard-IA is cheaper to store, charges per GB read and is designed for lower availability, with the same durability.
 
 **S3 Standard-IA**: An S3 storage class for infrequent access: data read about monthly that must still return in milliseconds. Cheaper to store than S3 Standard but charged per GB read, with a minimum stay, a minimum billed size and lower designed availability.
 
-- Taught in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
-- Also in: [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../05-storing-data/09-sim-lifecycle-cost-timeline.md)
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
 - Don't confuse with: S3 One Zone-IA, S3 Intelligent-Tiering, S3 Standard. Standard-IA keeps copies across several Availability Zones for a known monthly pattern; One Zone-IA is cheaper but in one zone, Intelligent-Tiering suits unknown patterns, and Standard has higher designed availability.
-
-**SageMaker AI Savings Plan**: A Savings Plan for SageMaker AI instances in any family, size, Region or component.
-
-- Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
-
-**sampling (X-Ray)**: X-Ray tracing some requests rather than all, to keep costs down. Its default rule records the first request each second and a small share of the rest.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
 
 **Savings Plans**: A commitment to spend a set amount per hour on eligible usage for one or three years, charged at lower rates. Commitment unused in an hour is lost. AWS recommends them over Reserved Instances.
 
@@ -4150,75 +2140,16 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Telling the benefits apart](../02-why-the-cloud/03-telling-the-benefits-apart.md)
 - Don't confuse with: elasticity. Scalability means a system can grow; elasticity means capacity follows demand in both directions, which is the answer when a scenario shows capacity rising and falling.
 
-**Scale phase**: The fourth CAF phase: expanding pilots to the size the business needs and making sure the benefits are realized and kept, before the cycle repeats.
-
-- Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
-
-**scaled score**: A score adjusted so that every version of the exam is equally hard to pass. The exam reports pass or fail on this scale; see the lesson for the range and the pass mark.
-
-- Taught in: [The exam at a glance](../00-start-here/03-the-exam-at-a-glance.md)
-
-**scaling policy**: A rule that changes an Auto Scaling group's desired capacity as load changes, for example "keep average processor use near 50%".
-
-- Taught in: [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
-- Also in: [Simulation S7: Scale the bakery's web servers through a December Saturday](../06-running-applications/07-sim-elasticity-with-auto-scaling.md)
-
-**scheduled action**: One planned change to an Auto Scaling group's capacity at a time you set, such as raising the minimum before a busy morning. Scheduled scaling is made of these.
-
-- Taught in: [Simulation S7: Scale the bakery's web servers through a December Saturday](../06-running-applications/07-sim-elasticity-with-auto-scaling.md)
-
-**scheduled scaling**: A way of scaling that changes an Auto Scaling group's capacity at times you set, such as before opening hours. Each planned change is a scheduled action.
-
-- Taught in: [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
-- Also in: [Simulation S7: Scale the bakery's web servers through a December Saturday](../06-running-applications/07-sim-elasticity-with-auto-scaling.md)
-- Don't confuse with: target tracking, predictive scaling. Scheduled scaling follows a timetable you write; predictive scaling writes its own forecast from past traffic, and target tracking reacts to the load it measures.
-
-**schema**: The fixed layout a relational database expects: which tables, which columns and which types. AWS SCT converts it when a database moves to a different engine.
-
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-
-**schema on read**: Applying a table's layout when files are queried rather than when they're stored, so the files themselves never change. Amazon Athena works this way on files in S3.
-
-- Taught in: [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md)
-- Don't confuse with: schema. A relational database's schema is fixed before data goes in, and data must fit it; with schema on read, a layout is applied to unchanged files only as a query reads them.
-
-**scoring rubric**: A table that describes weak, good and strong work for each part of a task. The capstone review is scored with one instead of a mastery check.
-
-- Taught in: [The capstone review](../14-capstone/01-the-capstone-review.md)
-- Also in: [Module 14: Capstone: a Well-Architected review](../14-capstone/00-brief.md)
-
-**script**: A text file holding a list of commands that a computer runs in order. Running it again repeats the steps, which may fail or make duplicates, because a script doesn't know what the end result should be.
-
-- Taught in: [Four ways in](../08-building-and-operating/01-four-ways-in.md)
-- Don't confuse with: template (CloudFormation). A script lists steps to run in order; a CloudFormation template describes the end result, so CloudFormation works out the order, compares what exists, and builds the same setup again.
-
-**search index**: A structure listing which words appear in which records, so a search finds them fast. Amazon OpenSearch Service builds one over text and logs.
-
-- Taught in: [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md)
-
-**secret**: Any value that grants access, such as a password, an API key or a token.
-
-- Taught in: [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md)
-
 **security group**: A stateful firewall around a resource, such as an EC2 instance, with allow rules only: a new one lets nothing in and everything out, and replies to allowed requests pass automatically. AWS provides it; its rules are yours to write.
 
 - Taught in: [Filtering traffic](../07-connecting-it/02-filtering-traffic.md)
-- Also in: [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md); [Shared, inherited and customer-specific controls](../04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md); [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md); [Lab 08: Launch a virtual server, stop it, terminate it, and prove nothing is left](../06-running-applications/06-lab-08-launch-and-terminate-an-instance.md); [Lab 09: Build a small network with a public and a private subnet, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
+- Also in: [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md); [Shared, inherited and customer-specific controls](../04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md); [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md); [Lab 08: Launch a virtual server, stop it, terminate it, and prove nothing is left](../06-running-applications/06-lab-08-launch-and-terminate-an-instance.md); [Optional lab 09: Build a small network with public and private subnets, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
 - Don't confuse with: network ACL. A security group guards one resource, only allows and lets replies through; a network ACL guards a whole subnet, can deny, and checks replies again.
 
 **security in the cloud**: Your side of the shared responsibility model: your data, your settings, who can reach them, and any software you run. How much it includes depends on the service.
 
 - Taught in: [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
 - Don't confuse with: security of the cloud. Security in the cloud is what you put there and how you set it up; security of the cloud is the infrastructure underneath, which AWS protects.
-
-**security key**: A small hardware key that works like a passkey: you touch it to prove who you are, and it won't work on a fake sign-in page. AWS recommends passkeys and security keys first for MFA.
-
-- Taught in: [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
-- Also in: [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md)
-
-**security layer**: One place in the path from the internet to your data where you can put controls: the edge, the network, compute, data, identity and account, or the organization.
-
-- Taught in: [A defense map](../09-protecting-and-governing/06-a-defense-map.md)
 
 **security of the cloud**: AWS's side of the shared responsibility model: the infrastructure that runs its services, from the host operating system and virtualization layer down to the buildings.
 
@@ -4234,54 +2165,25 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 - Taught in: [The Well-Architected Framework](../02-why-the-cloud/05-the-well-architected-framework.md)
 
-**security standard**: A published list of recommended settings, such as the CIS AWS Foundations Benchmark or PCI DSS. A service can check your settings against one and report each setting that fails.
-
-- Taught in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md)
-
 **self-managed database**: A database you install and run yourself, for example on EC2, so the operating system, patches, backups, replication and failover are yours. Choose it only for a real reason, such as an engine RDS lacks or needing operating system access.
 
-- Taught in: [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
-- Also in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
+- Taught in: [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md)
 - Don't confuse with: managed database. On a self-managed database you run everything from the operating system up; on a managed database AWS runs that, and you keep your data, access and query tuning.
-
-**sensitive data**: Data that needs extra protection, such as personal or financial details and credentials. Amazon Macie finds it in S3.
-
-- Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
-
-**sentiment**: The feeling a piece of text expresses: positive, negative, neutral or mixed. Amazon Comprehend detects it, for example to find the angry customer reviews.
-
-- Taught in: [AI and machine learning](../10-data-ai-and-more/02-ai-and-ml.md)
-
-**server**: A computer that runs all the time and answers requests from other computers, its clients, over a network. Being a server is a job, not a kind of machine; a website runs on one or more.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-- Also in: [What cloud computing is](../02-why-the-cloud/01-what-cloud-computing-is.md)
-- Don't confuse with: client. A server waits for requests and answers them, while a client sends the requests; the same laptop can be either.
-
-**server-month**: One server running for one month: a unit for comparing the cost of owning capacity with renting it.
-
-- Taught in: [Simulation S1: Finish the bakery's cost comparison](../02-why-the-cloud/07-sim-demand-curve.md)
-- Also in: [Before and after: the demand curve](../02-why-the-cloud/02-before-and-after-the-demand-curve.md)
 
 **server-side encryption**: Encryption that the storage service, such as S3, applies as it stores your data and removes when an allowed caller reads it. Its kinds differ in who holds the key: SSE-S3, SSE-KMS or SSE-C.
 
-- Taught in: [S3 in practice](../05-storing-data/02-s3-in-practice.md)
-- Don't confuse with: client-side encryption. With server-side encryption S3 encrypts the data after receiving it; with client-side encryption you encrypt it before uploading and manage the keys and tools yourself.
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
 
 **serverless**: A way of running things where AWS provisions, scales and patches the servers out of sight and you pay for what you use, as with AWS Lambda and Fargate. Your code, images, data and permissions are still yours to secure.
 
 - Taught in: [Containers and serverless](../06-running-applications/03-containers-and-serverless.md)
 - Also in: [Simpler paths: Elastic Beanstalk, Lightsail, Batch and Outposts](../06-running-applications/04-simpler-paths.md); [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md)
 
-**service (Amazon ECS)**: In Amazon ECS, a setting that keeps a chosen number of tasks running, replacing any that stop, for apps that run all the time such as a web API.
-
-- Taught in: [Containers and serverless](../06-running-applications/03-containers-and-serverless.md)
-
 **service control policy** (SCP): A policy set in AWS Organizations that caps what users and roles in a member account can do, including that account's root user. It grants nothing, and it doesn't apply to the organization's management account.
 
 - Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-- Also in: [Simulation S4: Predict allow or deny across accounts, boundaries and organizations](../04-shared-responsibility-and-access/09-sim-policy-playground.md); [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md); [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md); [A defense map](../09-protecting-and-governing/06-a-defense-map.md)
-- Don't confuse with: identity-based policy, permissions boundary, resource control policy. An SCP caps every user and role in a member account, root included, and grants nothing; an IAM identity-based policy grants access, a permissions boundary caps one identity, and an RCP caps access to resources.
+- Also in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md); [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md); [A defense map](../09-protecting-and-governing/06-a-defense-map.md)
+- Don't confuse with: identity-based policy. An SCP caps every user and role in a member account, root included, and grants nothing; an IAM identity-based policy grants access, a permissions boundary caps one identity, and an RCP caps access to resources.
 
 **Service health**: The public view of the AWS Health Dashboard: events for every service and Region that aren't about any one account, open to anyone without signing in. Older material calls it the Service Health Dashboard.
 
@@ -4289,33 +2191,14 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md)
 - Don't confuse with: Your account health. Service health shows public events to anyone, with no sign-in; Your account health, after you sign in, adds the events that affect your own resources.
 
-**service link**: The network connection between an AWS Outpost and the AWS Region it extends.
-
-- Taught in: [Simpler paths: Elastic Beanstalk, Lightsail, Batch and Outposts](../06-running-applications/04-simpler-paths.md)
-
 **service quota**: The most of something an account may have or use, such as how many of a resource it can run in a Region. Older pages call quotas limits; you ask for more in Support Center or the Service Quotas console.
 
 - Taught in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md)
 - Also in: [Support plans](../12-getting-help/01-support-plans.md); [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md)
 
-**service-linked role**: A role an AWS service creates and owns so it can act for you. You can view its permissions but not edit them.
-
-- Taught in: [Identities](../04-shared-responsibility-and-access/03-identities.md)
-
 **Services in Scope**: AWS's page listing, for each compliance program, which AWS services were included in the assessment. A service missing from the list isn't forbidden; you decide whether it will handle regulated data.
 
 - Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
-
-**SES sandbox**: The limited state every new Amazon SES account starts in, separately in each Region: it sends only to verified addresses, in small numbers, until you request production access.
-
-- Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-- Also in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
-
-**severity**: A security service's estimate of how urgent a finding is, such as Low, Medium, High or Critical. Your knowledge of the business still decides what to handle first.
-
-- Taught in: [Simulation S9: Match security findings to the service that raised them](../09-protecting-and-governing/08-sim-security-findings-tour.md)
-- Also in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md)
-- Don't confuse with: case severity. A finding's severity is a security service's estimate of how urgent it is; case severity is how serious you say your problem is when you open a support case.
 
 **shared control**: A kind of control that applies on both sides, with AWS and you each doing it for your own things: patch management, configuration management, and awareness and training. "Shared" doesn't mean done together.
 
@@ -4327,15 +2210,6 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 - Taught in: [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
 - Also in: [Shared, inherited and customer-specific controls](../04-shared-responsibility-and-access/02-shared-inherited-customer-specific.md); [Simulation S3: Slide the line from your own servers to Amazon S3](../04-shared-responsibility-and-access/08-sim-responsibility-slider.md)
-
-**shell**: The program that reads what you type at a command line, runs the program you named, shows its output, then waits for the next line.
-
-- Taught in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
-- Don't confuse with: terminal. The shell reads and runs your commands; the terminal is only the window you type them in.
-
-**shell variable**: A short name that holds a value for the rest of a command-line session, such as a bucket name, so you type the value only once.
-
-- Taught in: [Lab 10: Create the same bucket three ways: console, command line and template](../08-building-and-operating/05-lab-10-same-bucket-three-ways.md)
 
 **Shield Response Team** (SRT): AWS engineers who specialize in DDoS response, available around the clock to Shield Advanced subscribers who also have a qualifying Support plan (see the lesson). With permission, they can change your WAF rules during an attack.
 
@@ -4365,71 +2239,15 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Before and after: the demand curve](../02-why-the-cloud/02-before-and-after-the-demand-curve.md)
 - Also in: [What cloud computing is](../02-why-the-cloud/01-what-cloud-computing-is.md); [Telling the benefits apart](../02-why-the-cloud/03-telling-the-benefits-apart.md)
 
-**slot (Amazon Lex)**: A detail a Lex bot must collect to fulfill an intent, such as the order number or pickup time; the bot asks for any that are missing.
-
-- Taught in: [AI and machine learning](../10-data-ai-and-more/02-ai-and-ml.md)
-- Don't confuse with: intent (Amazon Lex). A slot is a detail the bot collects, such as the order number; the intent is what the customer wants done with it, such as checking that order.
-
-**SMB**: A common way for computers to share files over a network, used mostly by Windows. Amazon FSx for Windows File Server and S3 File Gateway can use it.
-
-- Taught in: [Block, file and object storage](../05-storing-data/01-block-file-object.md)
-- Also in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
-- Don't confuse with: NFS, iSCSI. SMB is the usual Windows way to share files and NFS the usual Linux way, so Windows shared folders point to SMB; iSCSI presents disks, not files.
-
-**snapshot**: A point-in-time copy of one disk or database, such as an EBS volume or an RDS database, which you restore to create a new one as it was then. Each service has its own snapshots, schedules and settings.
-
-- Taught in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
-- Also in: [Block, file and object storage](../05-storing-data/01-block-file-object.md); [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md); [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../05-storing-data/10-sim-multi-az-vs-read-replica.md)
-- Don't confuse with: AWS Backup, AWS Elastic Disaster Recovery. A snapshot brings back one resource's data; AWS Backup runs backups of many resources under one plan, and Elastic Disaster Recovery brings back whole running servers within minutes.
-
-**software**: The programs that run on a computer, written as code. The operating system and applications are both software.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-- Don't confuse with: hardware. Software is the programs; hardware is the physical parts they run on.
-
 **software as a service** (SaaS): A cloud model in which the provider runs a finished application entirely, such as web-based email; you manage only how you use it and your data in it.
 
-- Taught in: [What cloud computing is](../02-why-the-cloud/01-what-cloud-computing-is.md)
-- Also in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-- Don't confuse with: infrastructure as a service, platform as a service. SaaS is a finished application you only use; PaaS runs an application you wrote, and IaaS gives you building blocks to run yourself.
-
-**Software Assurance**: A Microsoft program, paid on top of a license, that adds rights such as License Mobility.
-
-- Taught in: [The business case](../13-moving-to-aws/04-the-business-case.md)
-- Also in: [Simulation S17: Rightsize the chain's servers and settle their licenses](../13-moving-to-aws/06-sim-rightsizing-and-licensing.md)
-
-**sort key**: The second part of a DynamoDB item's key, which tells apart the items that share a partition key, such as the product in a cart.
-
-- Taught in: [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](../05-storing-data/08-lab-06-a-dynamodb-table.md)
-- Don't confuse with: partition key. The sort key distinguishes items within one group; the partition key chooses the group.
-
-**source server**: A server you are moving or protecting, in your data center or in another cloud, whose disks MGN or Elastic Disaster Recovery copies.
-
-- Taught in: [Migration tools](../13-moving-to-aws/03-migration-tools.md)
-
-**speech synthesis**: Turning text into spoken audio, as Amazon Polly does. Polly returns the audio right away, so nothing is stored in your account unless you save it.
-
-- Taught in: [Lab 14 (optional): Have Amazon Polly read a product description aloud](../10-data-ai-and-more/05-lab-14-polly-text-to-speech.md)
-
-**split charge rule**: A cost category rule that divides one value's costs among others, proportionally, evenly or by fixed percentages, so shared costs such as a logging account are spread fairly.
-
-- Taught in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md)
+- Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
 
 **Spot Instance**: An EC2 purchasing option that uses spare EC2 capacity at a large discount, with no commitment, but AWS can interrupt it after a two-minute warning. It suits flexible work that can stop and restart.
 
-- Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
-- Also in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md); [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
+- Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
+- Also in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md); [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Don't confuse with: On-Demand Instance, Reserved Instance. A Spot Instance can be taken back by AWS, so it suits interruptible work only; On-Demand and Reserved Instances run until you stop them.
-
-**Spot price**: The hourly price of a Spot Instance, set by EC2 for each instance type in each Availability Zone, which moves gradually with long-term supply and demand.
-
-- Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
-
-**SQL**: The standard language for querying relational databases. Data warehouses such as Amazon Redshift use it too.
-
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-- Also in: [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md); [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
-- Don't confuse with: NoSQL. SQL is a query language, used by relational databases and Redshift alike; NoSQL describes databases built on models other than relational tables.
 
 **SQL injection**: Typing database commands into a form field so that the site's database runs them. It arrives like an honest request, so only something that reads requests, such as AWS WAF, can stop it.
 
@@ -4437,80 +2255,26 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [A defense map](../09-protecting-and-governing/06-a-defense-map.md)
 - Don't confuse with: cross-site scripting. SQL injection attacks the site's database through a form; cross-site scripting plants a script that runs in other visitors' browsers.
 
-**SQL Server edition**: The version of Microsoft SQL Server you license, such as Enterprise or Standard. Enterprise has more features and costs much more, so check whether its features are used.
-
-- Taught in: [The business case](../13-moving-to-aws/04-the-business-case.md)
-- Also in: [Simulation S17: Rightsize the chain's servers and settle their licenses](../13-moving-to-aws/06-sim-rightsizing-and-licensing.md)
-
-**SSE-C**: Server-side encryption with a key you supply with each request. New buckets have it turned off until you deliberately enable it.
-
-- Taught in: [S3 in practice](../05-storing-data/02-s3-in-practice.md)
-- Don't confuse with: SSE-S3, SSE-KMS. With SSE-C you send the key every time; with SSE-S3 and SSE-KMS the key stays in AWS.
-
 **SSE-KMS**: Server-side encryption with a key in AWS Key Management Service (AWS KMS), where you control who may use the key. Choose it when you must show who can decrypt the data; it adds AWS KMS request charges.
 
-- Taught in: [S3 in practice](../05-storing-data/02-s3-in-practice.md)
-- Don't confuse with: SSE-S3, SSE-C. SSE-KMS lets you control, and show, who can use the key; SSE-S3 leaves the key entirely to S3, and SSE-C has you send the key with each request.
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
+- Don't confuse with: SSE-S3. SSE-KMS lets you control, and show, who can use the key; SSE-S3 leaves the key entirely to S3, and SSE-C has you send the key with each request.
 
 **SSE-S3**: Server-side encryption with keys that S3 manages. It is S3's default, applied automatically to every new object at no extra charge, and you can't turn encryption off for new uploads.
 
-- Taught in: [S3 in practice](../05-storing-data/02-s3-in-practice.md)
-- Don't confuse with: SSE-KMS, SSE-C. SSE-S3 uses keys S3 manages for you; SSE-KMS uses a key in AWS KMS whose use you control, and SSE-C uses a key you send with each request.
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
+- Don't confuse with: SSE-KMS. SSE-S3 uses keys S3 manages for you; SSE-KMS uses a key in AWS KMS whose use you control, and SSE-C uses a key you send with each request.
 
 **stack (CloudFormation)**: The set of resources CloudFormation creates from one template, created, changed and deleted as one unit. Deleting the stack deletes its resources, except any set to be kept.
 
-- Taught in: [IaC and automation](../08-building-and-operating/02-iac-and-automation.md)
-- Also in: [Lab 10: Create the same bucket three ways: console, command line and template](../08-building-and-operating/05-lab-10-same-bucket-three-ways.md)
-- Don't confuse with: StackSet. A stack is one template's resources in one account and Region; a StackSet creates and updates stacks from one template across several accounts and Regions together.
-
-**stack event**: One line on a CloudFormation stack's Events tab: one step CloudFormation took, with its time and status, such as a failed create and its reason.
-
-- Taught in: [Lab 10: Create the same bucket three ways: console, command line and template](../08-building-and-operating/05-lab-10-same-bucket-three-ways.md)
-
-**StackSet**: A way to create and update stacks from one CloudFormation template across several accounts and Regions together, such as an organization's standard setup.
-
-- Taught in: [IaC and automation](../08-building-and-operating/02-iac-and-automation.md)
-- Don't confuse with: stack (CloudFormation). A StackSet manages stacks from one template across many accounts and Regions at once; a stack is one template's resources in one account and Region.
-
-**stage (API Gateway)**: A named version of an API in API Gateway, such as test or production.
-
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-- Don't confuse with: stage (CodePipeline). An API Gateway stage is a named version of a live API, such as test or production; a CodePipeline stage is one step a code change passes through on its way to release.
-
-**stage (CodePipeline)**: One step of a release in AWS CodePipeline, such as source, build, test, approval or deploy. A failed stage stops the release before it reaches customers.
-
-- Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-- Don't confuse with: stage (API Gateway). A CodePipeline stage is one step a code change passes through on its way to release; an API Gateway stage is a named version of a live API, such as test or production.
-
-**staging area**: In Elastic Disaster Recovery and AWS Transform MGN, the low-cost storage and very little compute in an AWS Region that receive the continuous copies of your servers, ready to launch from.
-
-- Taught in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
-- Also in: [Migration tools](../13-moving-to-aws/03-migration-tools.md)
-
-**stakeholder**: A person with a say in, or a stake in, a change, such as the CFO. Many appear in more than one CAF perspective, so a job title doesn't settle the perspective.
-
-- Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
-
-**standard queue**: The default SQS queue type: nearly unlimited throughput, each message delivered at least once (occasionally twice), and order kept only on a best-effort basis.
-
-- Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-- Don't confuse with: FIFO queue. A standard queue gives the most throughput but may deliver a message twice or out of order; a FIFO queue keeps the order and processes each message exactly once.
+- Taught in: [Four ways in, and infrastructure as code](../08-building-and-operating/01-four-ways-in.md)
+- Also in: [Optional lab 10: Create the same bucket three ways: console, command line and template](../08-building-and-operating/05-lab-10-same-bucket-three-ways.md)
 
 **Standard Reserved Instance**: The Reserved Instance with the bigger discount and less freedom: you can modify some attributes, such as its Availability Zone or size, and sell it on the Reserved Instance Marketplace, but not exchange it.
 
 - Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
 - Also in: [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Don't confuse with: Convertible Reserved Instance. A Standard Reserved Instance discounts more and can be sold but not exchanged; a Convertible one discounts less but can be exchanged for another family, operating system or tenancy.
-
-**standby**: A second copy, such as a database in another Availability Zone, that takes over if the first fails. Amazon RDS adds one when you turn on a Multi-AZ deployment.
-
-- Taught in: [Regions, Availability Zones and data centers](../03-aws-around-the-world/01-regions-availability-zones-data-centers.md)
-- Also in: [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md); [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md); [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../05-storing-data/10-sim-multi-az-vs-read-replica.md)
-- Don't confuse with: warm standby, read replica. A standby database in another Availability Zone gives in-Region high availability, serving no queries; a read replica serves reads but doesn't take over automatically; a warm standby is a smaller working copy of a workload in another Region.
-
-**state machine**: A Step Functions workflow: a series of steps, each called a state, run in order and tracked to the end. Standard workflows can run for up to a year; Express ones are short and high-volume.
-
-- Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
 
 **stateful**: Describes a filter that remembers each conversation, so a reply to an allowed request passes without a rule of its own. Security groups are stateful.
 
@@ -4522,43 +2286,10 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Filtering traffic](../07-connecting-it/02-filtering-traffic.md)
 - Don't confuse with: stateful. A stateless filter needs rules for both halves of every conversation; a stateful one allows the reply because it remembers the request.
 
-**statement**: One permission inside a policy: an Effect, an Action, a Resource, and an optional Condition. A policy can hold several.
-
-- Taught in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md)
-
-**static IP address**: An internet address that doesn't change. AWS Global Accelerator gives an application static addresses that stay the same while you move the endpoints behind them.
-
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-
-**statistic (CloudWatch)**: How CloudWatch combines a period's data points into one value, such as Sum, which adds them up, or Average.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-- Also in: [Lab 11: Email the owner when the order function fails](../08-building-and-operating/06-lab-11-alarm-on-errors.md)
-
-**status code**: The number in an HTTP response that says how the request went, such as 200 (OK) or 404 (not found).
-
-- Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-
-**stop (EC2 instance)**: To shut an EC2 instance down so it can be started again later. Instance time stops being billed, but its EBS volumes and any Elastic IP address are still charged, and instance store is erased.
-
-- Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
-- Also in: [Lab 08: Launch a virtual server, stop it, terminate it, and prove nothing is left](../06-running-applications/06-lab-08-launch-and-terminate-an-instance.md)
-- Don't confuse with: terminate (EC2 instance). A stopped instance can be started again and still costs money for its disks; a terminated instance is gone for good, with its volumes deleted if they are set to be.
-
-**storage**: Long-term space for files and data, on a disk or SSD, that keeps its contents with the power off; one of the main IT resources. It is bigger and slower than memory.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-- Also in: [What cloud computing is](../02-why-the-cloud/01-what-cloud-computing-is.md); [Block, file and object storage](../05-storing-data/01-block-file-object.md)
-- Don't confuse with: memory. Storage keeps data with the power off; memory holds only the work in progress and is emptied by a restart.
-
-**storage charge**: A charge per GB kept per month, prorated for how long the data was kept. EBS bills the size you set, not the data you wrote.
-
-- Taught in: [How AWS charges](../11-paying-for-aws/01-how-aws-charges.md)
-
 **storage class**: A setting on each S3 object that decides how it is stored, how fast you get it back and how it is billed. New objects go to S3 Standard unless you choose otherwise.
 
-- Taught in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
-- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md); [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../05-storing-data/09-sim-lifecycle-cost-timeline.md)
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
+- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md)
 
 **storage optimized**: EC2 instance types with large, fast local disks, for work that reads and writes a lot of data on them, such as high-throughput databases. Its letters include I, D and H.
 
@@ -4568,26 +2299,11 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **streaming data**: Data that arrives continuously, a little at a time, such as clicks on a website, and is handled seconds after it happens.
 
 - Taught in: [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md)
-- Don't confuse with: batch. Streaming data flows in all the time and is handled as it arrives; a batch is a large amount handled at once, such as yesterday's orders.
-
-**subcommand**: In the AWS CLI, the part after the command that says what to do, such as ls (list) in aws s3 ls.
-
-- Taught in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
 
 **subnet**: A slice of a VPC's address range that sits entirely in one Availability Zone; you launch servers and databases into subnets. High availability therefore needs subnets in at least two zones.
 
 - Taught in: [Your own network](../07-connecting-it/01-your-own-network.md)
-- Also in: [Lab 09: Build a small network with a public and a private subnet, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
-
-**subscription (Amazon SNS)**: The link between an SNS topic and one endpoint, such as an email address, an SQS queue or a Lambda function. An email subscription delivers nothing until its owner confirms it.
-
-- Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-- Also in: [Lab 11: Email the owner when the order function fails](../08-building-and-operating/06-lab-11-alarm-on-errors.md)
-
-**support case**: One request for help, opened in AWS Support Center and tracked until it's closed. Every plan can open account and billing cases and quota increase requests; technical cases need a paid plan.
-
-- Taught in: [Support plans](../12-getting-help/01-support-plans.md)
-- Also in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md); [Where to find answers](../12-getting-help/03-where-to-find-answers.md); [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md)
+- Also in: [Optional lab 09: Build a small network with public and private subnets, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
 
 **Support plan**: The level of AWS Support an account subscribes to. Every account has one; the free one is Basic, and each paid plan includes everything in the plans below it.
 
@@ -4599,98 +2315,37 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [The Well-Architected Framework](../02-why-the-cloud/05-the-well-architected-framework.md)
 - Don't confuse with: cost optimization pillar. Sustainability measures resources and energy; cost optimization measures money, though the two usually point the same way.
 
-**synchronous**: Describes a call where the caller waits for the answer, as a browser waits for a page. If the other side fails, the caller fails with it.
-
-- Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-- Don't confuse with: asynchronous. In a synchronous call the caller waits and fails with the other side; in an asynchronous one it hands the work over, often through a queue or topic, and moves on.
-
-**synchronous replication**: Writing each change to a copy at the same moment as to the primary, so the copy is always up to date and each write waits for both. A Multi-AZ standby is kept this way.
-
-- Taught in: [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md)
-- Also in: [Simulation S6: Multi-AZ, read replica or backup: protect the order database](../05-storing-data/10-sim-multi-az-vs-read-replica.md)
-- Don't confuse with: asynchronous replication. Synchronous replication keeps the copy always in step but makes each write slightly slower; asynchronous replication sends changes just after, so the copy can lag.
-
 **system integrator**: A partner company that sells services: it designs, builds, migrates and connects systems for customers, and some also run them day to day. Older material calls this a Consulting Partner.
 
-- Taught in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
+- Taught in: [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
 - Don't confuse with: independent software vendor. A system integrator sells services; an independent software vendor sells software it makes.
 
 ## T
-
-**table**: A named collection of related records in a database: rows and columns in a relational database, items in DynamoDB. In DynamoDB you choose only the key in advance, and items needn't share their other attributes.
-
-- Taught in: [Lab 06: Create a DynamoDB table for shopping carts, put and get items, and delete it](../05-storing-data/08-lab-06-a-dynamodb-table.md)
-- Also in: [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md); [Choosing a database](../05-storing-data/06-choosing-a-database.md); [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
 
 **tag**: A label you attach to an AWS resource, made of a key and a value that you choose. Tags let one search find everything with that label, in every Region.
 
 - Taught in: [Before your first lab](../00-start-here/05-before-your-first-lab.md)
 - Also in: [Lab 01: Create, find and delete your first storage bucket](../02-why-the-cloud/06-lab-01-first-resource.md); [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md)
 
-**tag activation**: Choosing, in the billing console of a management or standalone account, which tag keys billing tools use. It labels usage from then on, not before.
-
-- Taught in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md)
-- Also in: [Lab 16: Turn on cost allocation tags and find them in Cost Explorer](../11-paying-for-aws/06-lab-16-cost-allocation-tags.md)
-
-**tag backfill**: A management account's request to apply its current cost allocation tag activations to past months, back to a limit, but only where the resource carried the tag at the time.
-
-- Taught in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md)
-- Also in: [Lab 16: Turn on cost allocation tags and find them in Cost Explorer](../11-paying-for-aws/06-lab-16-cost-allocation-tags.md)
-
-**Tag Editor**: A console tool that finds resources by their tags across Regions, which makes it a quick check that a lab left nothing behind. AWS has said tag management is moving to the AWS Resource Explorer console; see the lab.
-
-- Taught in: [Lab 01: Create, find and delete your first storage bucket](../02-why-the-cloud/06-lab-01-first-resource.md)
-- Also in: [Lab 02: See Regions, Availability Zones and AWS Health in your own account](../03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md); [Lab 19: Close out the account you used for the course](../14-capstone/03-lab-19-close-out.md)
-
 **Tape Gateway**: The Storage Gateway type that presents a virtual tape library over iSCSI to existing backup software. Tapes are stored in S3 and archived to the S3 Glacier classes, so physical tapes can go without changing backup jobs.
 
 - Taught in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
 - Don't confuse with: AWS Backup, S3 File Gateway. Tape Gateway lets existing backup software keep writing tapes; AWS Backup is AWS's own service that runs backups of resources by a plan, and S3 File Gateway is for people saving files.
 
-**target**: Where AWS passes work on to. For a load balancer, a target is a server, container, IP address or Lambda function receiving requests; for an EventBridge rule, a service, such as a Lambda function or SNS topic, receiving matching events.
-
-- Taught in: [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
-- Also in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-
-**target tracking**: A way of scaling that adds or removes instances to keep a measure, such as average processor use, near a value you set. It suits most websites.
-
-- Taught in: [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md)
-- Also in: [Simulation S7: Scale the bakery's web servers through a December Saturday](../06-running-applications/07-sim-elasticity-with-auto-scaling.md)
-- Don't confuse with: scheduled scaling, predictive scaling. Target tracking reacts to load as it happens; scheduled scaling changes capacity at times you set, and predictive scaling adds capacity before a forecast rise.
-
-**task (Amazon ECS)**: In Amazon ECS, running containers that do a piece of work, started from a task definition. A task can run for a while and stop, or a service can keep it running.
-
-- Taught in: [Containers and serverless](../06-running-applications/03-containers-and-serverless.md)
-
-**task definition**: In Amazon ECS, the description of an app's containers, such as which image to use and how much CPU and memory they get, from which ECS starts tasks.
-
-- Taught in: [Containers and serverless](../06-running-applications/03-containers-and-serverless.md)
-
-**task statement**: One of the specific things a domain of the exam tests, numbered within its domain. The exam guide lists them, and each page of this guide names the ones it covers.
-
-- Taught in: [The exam at a glance](../00-start-here/03-the-exam-at-a-glance.md)
-- Don't confuse with: domain. A task statement is one specific thing the exam tests; a domain is the broad subject area that groups several of them.
-
-**TCP**: One of the internet's two core protocols, with IP: it splits data into packets, puts them back in order at the far end, and has any that go missing sent again.
-
-- Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-- Don't confuse with: UDP. TCP confirms that every packet arrives, in order; UDP skips those checks to be faster.
-
 **Technical Account Manager** (TAM): A named person at AWS assigned to your company, who learns your setup, guides your plans and pulls in AWS specialists. Enterprise Support is the first plan that includes one.
 
 - Taught in: [Support plans](../12-getting-help/01-support-plans.md)
-- Also in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md); [Simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
+- Also in: [Simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
 
 **template (CloudFormation)**: A YAML or JSON text file that describes the resources you want and their settings. CloudFormation builds a stack from it and works out the order itself, so the same file builds the same setup in any Region.
 
-- Taught in: [IaC and automation](../08-building-and-operating/02-iac-and-automation.md)
-- Also in: [Four ways in](../08-building-and-operating/01-four-ways-in.md); [Lab 10: Create the same bucket three ways: console, command line and template](../08-building-and-operating/05-lab-10-same-bucket-three-ways.md)
-- Don't confuse with: launch template. A CloudFormation template describes a whole set of resources; a launch template describes one EC2 instance, so Auto Scaling can launch identical copies, and a CloudFormation template can contain one.
+- Taught in: [Four ways in, and infrastructure as code](../08-building-and-operating/01-four-ways-in.md)
+- Also in: [Optional lab 10: Create the same bucket three ways: console, command line and template](../08-building-and-operating/05-lab-10-same-bucket-three-ways.md)
 
 **temporary credentials**: Credentials AWS issues for a limited time, from minutes to hours, and then stops accepting. AWS STS issues them, and roles and federation are built on them.
 
 - Taught in: [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md)
-- Also in: [Identities](../04-shared-responsibility-and-access/03-identities.md); [Simulation S4: Predict allow or deny across accounts, boundaries and organizations](../04-shared-responsibility-and-access/09-sim-policy-playground.md); [Four ways in](../08-building-and-operating/01-four-ways-in.md)
+- Also in: [Identities](../04-shared-responsibility-and-access/03-identities.md); [Four ways in, and infrastructure as code](../08-building-and-operating/01-four-ways-in.md)
 - Don't confuse with: long-term credentials. Temporary credentials expire on their own; long-term credentials, such as access keys, work until someone deletes them.
 
 **tenancy**: Whether your instance shares physical hardware with other AWS customers (shared, the default) or runs on hardware used only by you (dedicated).
@@ -4698,175 +2353,22 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
 - Also in: [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md)
 
-**term (commitment)**: The length of a Savings Plan or Reserved Instance commitment, one or three years; three earns the bigger discount. When a Reserved Instance's term ends, it doesn't renew.
-
-- Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
-
-**terminal**: The window you type commands in.
-
-- Taught in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
-- Don't confuse with: shell. The terminal is the window you type in; the shell is the program that reads your typing and runs the commands.
-
-**terminate (EC2 instance)**: To delete an EC2 instance for good. It also deletes the volumes set to delete on termination and any instance store data, and ends the instance's charges.
-
-- Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
-- Also in: [Lab 08: Launch a virtual server, stop it, terminate it, and prove nothing is left](../06-running-applications/06-lab-08-launch-and-terminate-an-instance.md)
-- Don't confuse with: stop (EC2 instance). Terminating is permanent and ends the charges; stopping can be undone and leaves the disks billed.
-
-**test event**: Sample input that you save in the Lambda console and send to a function, standing in for what a real event would send.
-
-- Taught in: [Lab 07: Run a Lambda function, read its logs, and stop them piling up](../06-running-applications/05-lab-07-a-lambda-function.md)
-
-**threat**: Someone or something actively trying to cause harm, such as an attacker using stolen credentials. Amazon GuardDuty reports threats.
-
-- Taught in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md)
-- Don't confuse with: vulnerability. A threat is harmful activity, possibly happening now; a vulnerability is a weakness that does nothing until someone uses it.
-
-**threshold (CloudWatch alarm)**: The line a CloudWatch alarm compares its metric with, such as 3 or more errors in a period. Breaching it for the set number of periods moves the alarm to ALARM.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-- Also in: [Lab 11: Email the owner when the order function fails](../08-building-and-operating/06-lab-11-alarm-on-errors.md)
-
-**throttling**: Capping how fast calls may arrive, so a spike doesn't overwhelm the code behind an API.
-
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-
-**throughput**: How much data storage reads or writes each second: one of the two ways storage speed is counted. The other is IOPS.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-- Don't confuse with: IOPS. Throughput counts how much data moves each second; IOPS counts how many separate reads and writes happen.
-
-**time to live** (TTL): How long other DNS servers may keep a copy of a DNS answer before asking again. Until copies expire, some users still go to the old place, so a DNS switch isn't instant.
-
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-
-**time-based charge**: A charge for every second or hour a resource exists or runs, whether or not it does any work, as for EC2 instances, NAT gateways, load balancers and public IPv4 addresses.
-
-- Taught in: [How AWS charges](../11-paying-for-aws/01-how-aws-charges.md)
-- Also in: [Lab 15: Price the bakery's setup in the AWS Pricing Calculator](../11-paying-for-aws/05-lab-15-pricing-calculator.md)
-
-**token**: A short-lived pass issued after you sign in, which stops working by itself, so the access expires without anyone having to remove it.
-
-- Taught in: [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
-
-**topic**: A named channel in Amazon SNS. Each message published to it is pushed at once to all its subscriptions.
-
-- Taught in: [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md)
-- Also in: [Lab 11: Email the owner when the order function fails](../08-building-and-operating/06-lab-11-alarm-on-errors.md)
-- Don't confuse with: queue. A topic pushes each message at once to every subscriber and keeps nothing; a queue holds each message until one consumer pulls it.
-
 **total cost of ownership** (TCO): Every cost of owning and running something over its whole life, not only the purchase price. A server's TCO is usually far above its price tag.
 
 - Taught in: [What a data center really costs](../02-why-the-cloud/04-what-a-data-center-really-costs.md)
 - Also in: [The business case](../13-moving-to-aws/04-the-business-case.md)
-
-**trace**: The record X-Ray keeps of everything one request did, as segments with start and end times, so you can see which call took the time.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-
-**trace map**: An X-Ray drawing of the parts of an application that call each other, from the client to the services behind it, so slow or failing links stand out.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-
-**trade-off**: Accepting less of one good thing to get more of another, such as less reliability in a test environment to save money. The Framework expects trade-offs, but security and operational excellence are generally not traded away.
-
-- Taught in: [The Well-Architected Framework](../02-why-the-cloud/05-the-well-architected-framework.md)
-- Also in: [The capstone review](../14-capstone/01-the-capstone-review.md)
-
-**trail**: A CloudTrail setting that delivers events to an S3 bucket you choose, and optionally to CloudWatch Logs and EventBridge, so you can keep account activity as long as you need.
-
-- Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
-- Also in: [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md); [Lab 12: Answer an auditor with evidence from your own account](../09-protecting-and-governing/07-lab-12-answer-the-auditor.md)
-- Don't confuse with: Event history. A trail must be created beforehand and keeps events in your bucket as long as you choose; Event history is on from the start but keeps only recent management events.
-
-**training (machine learning)**: The step that builds a machine learning model from many examples. AWS has already trained the models behind its ready-made AI services; with Amazon SageMaker AI you train your own.
-
-- Taught in: [AI and machine learning](../10-data-ai-and-more/02-ai-and-ml.md)
-
-**transaction**: A set of changes, such as an order and its lines, that a relational database applies together: all succeed or all fail, so nothing is half-saved.
-
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-- Also in: [Files vs databases](../01-on-ramp/03-files-vs-databases.md)
-
-**transactional email**: Email an application sends to one customer, such as an order confirmation or a password reset. Amazon SES sends it, along with marketing email and newsletters.
-
-- Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
-
-**transactional workload**: Work that runs the business: many small reads and writes all day, each touching a few rows, such as saving an order. Amazon RDS and Amazon Aurora are built for it.
-
-- Taught in: [Choosing a database](../05-storing-data/06-choosing-a-database.md)
-- Don't confuse with: analytics workload. Transactional work is many small requests that change data; analytics work is fewer, larger queries that read much of it, and both can use SQL.
-
-**transformation domain**: One of the four areas the CAF says change, each enabling the next: technology, process, organization and product. Process is a domain, not a perspective.
-
-- Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
-- Don't confuse with: perspective (AWS CAF). A transformation domain is an area that changes (technology, process, organization, product); a perspective groups the capabilities that make change possible, and process is never one.
-
-**transition action**: A lifecycle action that moves objects to another storage class a number of days after they were created, or after they became noncurrent. Each transition is a billed request.
-
-- Taught in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md)
-- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md); [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../05-storing-data/09-sim-lifecycle-cost-timeline.md)
-- Don't confuse with: expiration action. A transition action moves an object to another class; an expiration action deletes it.
-
-**transitive**: Passing along: traffic can travel through one network to reach a third. VPC peering is not transitive; a transit gateway is.
-
-- Taught in: [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md)
 
 **Transport Layer Security** (TLS): The protocol that encrypts web traffic and other network connections; the S in HTTPS. A certificate lets the client check that the server is who it claims to be.
 
 - Taught in: [Encryption](../09-protecting-and-governing/02-encryption.md)
 - Also in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
 
-**trigger**: The connection that tells AWS Lambda which events start a function, for example "a new object in this bucket".
-
-- Taught in: [Containers and serverless](../06-running-applications/03-containers-and-serverless.md)
-
-**trust policy**: The resource-based policy on a role that says who may assume it. The role's separate permissions policy says what it may do.
-
-- Taught in: [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md)
-- Also in: [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md); [Simulation S4: Predict allow or deny across accounts, boundaries and organizations](../04-shared-responsibility-and-access/09-sim-policy-playground.md)
-
-**Trusted Advisor check**: One automatic test Trusted Advisor runs on your account, such as whether the root user has MFA. AWS adds and retires checks, so learn the categories and which plans see which checks, not a count.
-
-- Taught in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md)
-- Also in: [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md)
-
-**Trusted Advisor Priority**: A Trusted Advisor feature on Enterprise Support and Unified Operations: your AWS account team picks out the recommendations that matter most for your business, so you work on those first.
-
-- Taught in: [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md)
-- Also in: [Support plans](../12-getting-help/01-support-plans.md); [Simulation S15: Choose the cheapest Support plan that fits](../12-getting-help/06-sim-support-plan-chooser.md)
-
-**tunnel**: An encrypted connection carried across another network, such as the internet. Each Site-to-Site VPN connection comes with a second tunnel, for high availability.
-
-- Taught in: [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md)
-
 ## U
-
-**UDP**: A protocol that sends packets without confirming that they arrive, which makes it faster than TCP. Live video, calls and games often use it.
-
-- Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-- Don't confuse with: TCP. UDP is faster because it doesn't check delivery; TCP confirms that every packet arrives and puts them back in order.
-
-**uninterruptible power supply** (UPS): A bank of batteries in a data center that takes over the instant the mains electricity fails, powering the servers until the backup generators are running.
-
-- Taught in: [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md)
-
-**unscored question**: A question AWS is trying out that doesn't count toward your score. You can't tell which questions they are, so answer every one.
-
-- Taught in: [The exam at a glance](../00-start-here/03-the-exam-at-a-glance.md)
-
-**URL**: A web address, such as https://bakery.example/order, which an HTTP request names.
-
-- Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-
-**usage plan**: In API Gateway, an allowance of calls given to an outside developer, tied to their API key.
-
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
 
 **user-defined tag**: A cost allocation tag you create and apply yourself, with Tag Editor, the console or the API. Reports show it with the user: prefix, and keys are case-sensitive.
 
 - Taught in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md)
-- Also in: [Lab 16: Turn on cost allocation tags and find them in Cost Explorer](../11-paying-for-aws/06-lab-16-cost-allocation-tags.md)
+- Also in: [Optional lab 16: Turn on cost allocation tags and find them in Cost Explorer](../11-paying-for-aws/06-lab-16-cost-allocation-tags.md)
 - Don't confuse with: AWS-generated tag. You apply user-defined tags yourself, prefixed user: in reports; AWS applies AWS-generated tags such as aws:createdBy, and only the management account can activate those.
 
 ## V
@@ -4877,78 +2379,26 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [What a data center really costs](../02-why-the-cloud/04-what-a-data-center-really-costs.md)
 - Don't confuse with: fixed expense, operating expense. Variable or fixed asks whether a cost follows use; operating or capital asks when you pay, so a flat monthly fee is an operating expense but not a variable one.
 
-**Vault Lock**: An AWS Backup feature that stops backups in a vault being deleted before their retention ends, a defense against mistakes and ransomware. In governance mode, permitted users can remove it; in compliance mode, after its grace period, no one can.
-
-- Taught in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
-- Don't confuse with: S3 Object Lock. Vault Lock protects backups in an AWS Backup vault; S3 Object Lock protects object versions in an S3 bucket.
-
-**vCPU**: A virtual processor: the unit in which EC2 instance types, and Fargate tasks, state their processing power.
-
-- Taught in: [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md)
-- Also in: [Containers and serverless](../06-running-applications/03-containers-and-serverless.md)
-
-**version control**: A system, such as Git, that keeps every version of a file with who changed it and when, so an earlier version can be brought back. Templates belong in it, like code.
-
-- Taught in: [IaC and automation](../08-building-and-operating/02-iac-and-automation.md)
-
-**version ID**: The identifier S3 gives each version of an object in a versioned bucket. Deleting by version ID removes that version for good.
-
-- Taught in: [S3 in practice](../05-storing-data/02-s3-in-practice.md)
-- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md)
-
 **versioning**: An S3 bucket setting keeping every version of each object under its key so overwrites and deletes can be undone. Off by default; once on, it can be suspended but never disabled, and each version is billed in full.
 
-- Taught in: [S3 in practice](../05-storing-data/02-s3-in-practice.md)
-- Also in: [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md); [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md); [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../05-storing-data/09-sim-lifecycle-cost-timeline.md)
-- Don't confuse with: S3 Replication, backup, S3 Object Lock. Versioning keeps earlier versions inside the same bucket, so it undoes mistakes but is lost with the bucket; replication or a backup keeps a copy somewhere else, and only Object Lock stops someone with permission deleting a version for good.
-
-**virtual desktop**: A complete desktop, with start menu, apps and files, that runs on a server somewhere else and appears on your screen. Amazon WorkSpaces provides them.
-
-- Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
+- Taught in: [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
+- Also in: [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md)
+- Don't confuse with: S3 Replication, S3 Object Lock. Versioning keeps earlier versions inside the same bucket, so it undoes mistakes but is lost with the bucket; replication or a backup keeps a copy somewhere else, and only Object Lock stops someone with permission deleting a version for good.
 
 **virtual machine** (VM): A computer made of software, running on a host with its own guest operating system. Cloud providers call it a virtual server, and Amazon EC2 calls it an instance.
 
 - Taught in: [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md)
 - Don't confuse with: container. A virtual machine carries a whole operating system of its own; a container packages one application and shares its machine's operating system, and often runs inside a virtual machine.
 
-**virtual private gateway**: The AWS end of a Site-to-Site VPN, attached to one VPC. To reach many VPCs, a VPN ends on a transit gateway instead.
-
-- Taught in: [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md)
-- Don't confuse with: customer gateway device. The virtual private gateway is AWS's end of the VPN; the customer gateway device is the router at your office.
-
 **virtual private network** (VPN): A way to carry a network's traffic across the internet in an encrypted tunnel. It is encrypted, but still over the internet, so it isn't a private connection.
 
 - Taught in: [Everyday security: passwords, MFA, encryption and least privilege](../01-on-ramp/06-everyday-security.md)
 - Also in: [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md)
-- Don't confuse with: private connection. A VPN encrypts traffic that still crosses the internet; a private connection keeps traffic off the internet's path but isn't encrypted unless you add it.
-
-**virtual private server** (VPS): A virtual server rented on its own, usually at a monthly price. Amazon Lightsail's servers are of this kind, though Lightsail calls them instances.
-
-- Taught in: [Simpler paths: Elastic Beanstalk, Lightsail, Batch and Outposts](../06-running-applications/04-simpler-paths.md)
-
-**virtual server**: A cloud provider's name for a virtual machine: what you rent instead of a physical server. Amazon EC2 calls one an instance.
-
-- Taught in: [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md)
-- Also in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
 
 **virtualization**: Software that imitates hardware, so that one physical server runs several virtual machines, kept apart by a hypervisor. AWS runs the virtualization layer and the host operating system beneath it.
 
-- Taught in: [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md)
-- Also in: [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
-
-**VMware**: A widely used software platform that runs many virtual machines on shared physical servers. Moving it whole to AWS is the common case of relocate.
-
-- Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-- Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
-
-**voice engine**: The kind of speech model behind an Amazon Polly voice, such as Standard, Neural, Generative or Long-Form. More natural-sounding engines cost more per character; see the lesson.
-
-- Taught in: [Lab 14 (optional): Have Amazon Polly read a product description aloud](../10-data-ai-and-more/05-lab-14-polly-text-to-speech.md)
-
-**volume**: One block storage disk, of a size you choose, such as an Amazon EBS volume attached to an EC2 instance.
-
-- Taught in: [Block, file and object storage](../05-storing-data/01-block-file-object.md)
-- Also in: [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md)
+- Taught in: [Security of the cloud vs security in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)
+- Also in: [Data centers and virtualization](../01-on-ramp/04-data-centers-and-virtualization.md)
 
 **Volume Gateway**: The Storage Gateway type presenting disks to on-premises servers over iSCSI. Cached mode keeps all data in S3 and frequently used data locally; stored mode keeps it all on premises, with point-in-time EBS snapshots in AWS.
 
@@ -4958,7 +2408,6 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **VPC endpoint**: A private path from a VPC to an AWS service, such as Amazon S3, that keeps traffic on AWS's network with no internet gateway or NAT gateway. It comes in two kinds, gateway and interface.
 
 - Taught in: [Your own network](../07-connecting-it/01-your-own-network.md)
-- Don't confuse with: endpoint. A VPC endpoint is a private path from your VPC to a service; an endpoint, as Global Accelerator uses the word, is where an application receives traffic.
 
 **VPC Flow Logs**: A VPC feature that records information about the traffic to and from your network interfaces, for troubleshooting and security analysis. It records traffic; it doesn't block any.
 
@@ -4969,59 +2418,25 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md)
 - Don't confuse with: AWS Transit Gateway, AWS PrivateLink. Peering joins two whole VPCs, each pair needing its own connection; Transit Gateway joins many networks through one hub, and PrivateLink exposes one service without joining networks.
 
-**vulnerability**: A weakness an attacker could use, such as an unpatched software flaw or a port left open. It does nothing until someone uses it; Amazon Inspector finds them.
-
-- Taught in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md)
-- Don't confuse with: threat. A vulnerability is a weakness that could be attacked; a threat is someone actually trying to cause harm.
-
 ## W
 
 **warm standby**: A disaster recovery strategy that keeps a smaller but complete working copy in the recovery Region, which only has to scale up to take over. Recovery typically takes minutes.
 
 - Taught in: [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md)
 - Also in: [Simulation S2: The blast-radius ladder and three recovery plans](../03-aws-around-the-world/06-sim-blast-radius.md)
-- Don't confuse with: pilot light, hot standby, standby. A warm standby can serve customers at once at reduced size; a pilot light can't until its app servers start, and a hot standby is a full-size copy that takes no customers until failover.
+- Don't confuse with: pilot light. A warm standby can serve customers at once at reduced size; a pilot light can't until its app servers start, and a hot standby is a full-size copy that takes no customers until failover.
 
 **Wavelength Zone**: AWS compute and storage placed inside telecom carriers' 5G networks, for very low latency to mobile devices. The CLF-C02 exam guide lists AWS Wavelength as out of scope, so know it only to reject it.
 
 - Taught in: [The edge](../03-aws-around-the-world/04-the-edge.md)
 - Don't confuse with: Local Zone. A Wavelength Zone is inside a mobile carrier's 5G network; a Local Zone is in a big city for any nearby users.
 
-**web ACL**: Web access control list: the set of rules AWS WAF applies to requests, each matching something about a request and taking an action. AWS's newer console calls it a protection pack.
-
-- Taught in: [The front door](../09-protecting-and-governing/04-the-front-door.md)
-- Also in: [A defense map](../09-protecting-and-governing/06-a-defense-map.md)
-- Don't confuse with: network ACL, access control list. A web ACL holds WAF rules that read web requests; a network ACL filters addresses and ports at a subnet's edge, and an S3 access control list grants access to buckets.
-
-**web server**: A server that sends web pages back to the browsers that request them.
-
-- Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
-
-**weighted routing**: A Route 53 routing policy that sends a share of users to each place you choose, such as 10 in 100 to a new version of a site.
-
-- Taught in: [Names and the edge](../07-connecting-it/03-names-and-the-edge.md)
-- Don't confuse with: failover routing. Weighted routing splits users by shares you set; failover routing sends everyone to the main site until its health check fails.
-
 **workload**: The set of parts (code, settings and AWS resources) that together deliver something of value, such as a shop's ordering site.
 
 - Taught in: [The Well-Architected Framework](../02-why-the-cloud/05-the-well-architected-framework.md)
-- Also in: [The capstone review](../14-capstone/01-the-capstone-review.md); [Lab 18: Record the bakery's review in the AWS Well-Architected Tool](../14-capstone/02-lab-18-well-architected-tool-review.md)
-
-**workload inventory**: A list of every part of a workload and how it is set up: the starting point of a review. Read it for what is missing as well as what is there, since gaps are often the findings.
-
-- Taught in: [The capstone review](../14-capstone/01-the-capstone-review.md)
-- Also in: [Module 14: Capstone: a Well-Architected review](../14-capstone/00-brief.md)
-
-**write once, read many** (WORM): Storage that, once written, can be read but not changed or deleted for a set time. S3 Object Lock provides it.
-
-- Taught in: [S3 in practice](../05-storing-data/02-s3-in-practice.md)
+- Also in: [Optional: The capstone review](../14-capstone/01-the-capstone-review.md); [Optional lab 18: Record the bakery's review in the AWS Well-Architected Tool](../14-capstone/02-lab-18-well-architected-tool-review.md)
 
 ## Y
-
-**YAML**: A text format for the same kind of data as JSON, written without braces and quotes, in which indentation carries meaning. CloudFormation templates can be written in it.
-
-- Taught in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
-- Also in: [IaC and automation](../08-building-and-operating/02-iac-and-automation.md)
 
 **Your account health**: The signed-in view of the AWS Health Dashboard: events that affect your own resources, such as maintenance planned on a server you run, plus the public events. Older material calls it the Personal Health Dashboard.
 
@@ -5031,21 +2446,11 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 ## Z
 
-**zombie application**: An application averaging below 5% CPU and memory use over 90 days: in AWS's guidance, a reason to consider retiring it, though business value decides.
-
-- Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
-- Don't confuse with: idle application. A zombie application averages below 5% use over 90 days; an idle one averages 5 to 20%, and either may still have business value.
-
 **zonal Reserved Instance**: A Reserved Instance bought for one Availability Zone: it reserves capacity there, and its discount applies only to exactly matching instances in that AZ.
 
 - Taught in: [Purchasing options](../11-paying-for-aws/02-purchasing-options.md)
 - Also in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md); [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Don't confuse with: Regional Reserved Instance. A zonal Reserved Instance reserves capacity in one AZ and fits only exact matches; a Regional one reserves nothing but applies in any AZ and, for Linux, to any size in the family.
-
-**zonal resource**: A resource that lives in one Availability Zone and fails with it, such as an EC2 virtual server. For high availability you put copies in other Availability Zones yourself.
-
-- Taught in: [Regions, Availability Zones and data centers](../03-aws-around-the-world/01-regions-availability-zones-data-centers.md)
-- Don't confuse with: Regional service, global service. A zonal resource sits in one Availability Zone you choose; a Regional service is spread across Availability Zones for you, and a global service isn't tied to one Region.
 
 ---
 

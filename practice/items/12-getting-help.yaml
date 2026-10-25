@@ -117,68 +117,9 @@ questions:
         clock. On Basic, the company's other options are the documentation, the Knowledge Center and
         re:Post.
 
-  - id: q12-bplus-adds-two
-    page: guide/12-getting-help/01-support-plans.md
-    section: "Business Support+ adds technical help around the clock"
-    task: "4.3"
-    level: understanding
-    topics: [support-plans, business-support-plus]
-    type: multiple_choice
-    selection: multiple
-    selection_count: 2
-    prompt:
-      text: |
-        A software company's production systems run on AWS, and it has just moved from Basic to the
-        first paid plan. Its operations lead lists what changed. Which two items belong on the list?
-        (Select TWO.)
-    choices:
-      - id: ta-priority
-        text: Trusted Advisor Priority from its account team
-        variants:
-          - text: Its account team's Trusted Advisor Priority
-          - text: Trusted Advisor Priority, run by its account team
-        explanation:
-          text: Trusted Advisor Priority comes only with Enterprise Support and Unified Operations. The first paid plan unlocks all checks, but no account team picks among them.
-      - id: third-party-software
-        text: Help with the operating systems on its instances
-        variants:
-          - text: Support for the OS running on its instances
-          - text: Help with its instances' operating systems
-        explanation:
-          text: Correct. Business Support+ adds help with third-party software, such as the operating systems on your EC2 instances.
-      - id: wa-reviews
-        text: Well-Architected reviews led by a TAM
-        variants:
-          - text: TAM-led Well-Architected reviews
-          - text: Well-Architected reviews run by its TAM
-        explanation:
-          text: Reviews led by a Technical Account Manager start with Enterprise Support.
-      - id: health-support-api
-        text: Programmatic access to AWS Health and Support
-        variants:
-          - text: The AWS Health API and the AWS Support API
-          - text: API access to AWS Health and to AWS Support
-        explanation:
-          text: Correct. Business Support+ unlocks the AWS Health API and the AWS Support API, so the company's own tools can read them.
-      - id: workload-monitoring
-        text: AWS monitoring its workloads around the clock
-        variants:
-          - text: 24/7 monitoring of its workloads by AWS
-          - text: Around-the-clock workload monitoring by AWS
-        explanation:
-          text: 24/7 workload monitoring comes only with Unified Operations, the top plan.
-    correct_answers: [third-party-software, health-support-api]
-    explanation:
-      text: |
-        Business Support+ is the first paid plan. On top of Basic it adds technical cases around the
-        clock, AI help that uses your account's context, all Trusted Advisor checks, the AWS Health
-        API and Support API, and help with third-party software such as operating systems. A TAM, its
-        reviews and Trusted Advisor Priority start with Enterprise Support, and workload monitoring with Unified
-        Operations (as of 2026-10-24).
-
   - id: q12-enterprise-over-bplus-two
     page: guide/12-getting-help/01-support-plans.md
-    section: "Enterprise Support adds a named person who knows your setup"
+    section: "Each paid plan adds speed and people"
     task: "4.3"
     level: recall
     topics: [support-plans, enterprise-support]
@@ -235,7 +176,7 @@ questions:
 
   - id: q12-security-incident-response-plan
     page: guide/12-getting-help/01-support-plans.md
-    section: "Enterprise Support adds a named person who knows your setup"
+    section: "Each paid plan adds speed and people"
     task: "4.3"
     level: application
     topics: [support-plans, enterprise-support]
@@ -286,7 +227,7 @@ questions:
 
   - id: q12-unified-ops-specialists
     page: guide/12-getting-help/01-support-plans.md
-    section: "Unified Operations is for systems where minutes matter"
+    section: "Each paid plan adds speed and people"
     task: "4.3"
     level: application
     topics: [support-plans, unified-operations]
@@ -338,7 +279,7 @@ questions:
 
   - id: q12-fastest-response-plan
     page: guide/12-getting-help/01-support-plans.md
-    section: "Unified Operations is for systems where minutes matter"
+    section: "Each paid plan adds speed and people"
     task: "4.3"
     level: recall
     topics: [support-plans, response-times]
@@ -493,9 +434,9 @@ questions:
         of 2026-10-24). So moving up a plan only for these targets buys nothing.
 
   - id: q12-srt-needs-shield-advanced
-    page: guide/12-getting-help/01-support-plans.md
-    section: "Choose by starting at Basic and moving up only for a reason"
-    task: "4.3"
+    page: guide/09-protecting-and-governing/04-the-front-door.md
+    section: "\"Any Business Support plan brings the Shield Response Team\" is wrong"
+    task: "2.4"
     level: understanding
     topics: [support-plans, shield]
     type: multiple_choice
@@ -543,7 +484,7 @@ questions:
 
   - id: q12-florist-plan-and-review-two
     page: guide/12-getting-help/01-support-plans.md
-    section: "Worked example: the bakery's recommendation"
+    section: "Each paid plan adds speed and people"
     task: "3.8"
     level: application
     topics: [support-plans, business-support-plus]
@@ -600,7 +541,7 @@ questions:
         The worst day is the shop down with a problem the owner can't solve, so she needs technical
         cases: Business Support+ is the cheapest plan that has them. The review can be met far more
         cheaply than with Enterprise Support: a free self-review in the Well-Architected Tool, or a
-        solutions architect or partner (lesson 12.04).
+        solutions architect or partner (lesson 12.03).
 
   - id: q12-current-lineup-two
     page: guide/12-getting-help/01-support-plans.md
@@ -709,8 +650,8 @@ questions:
         Support. The old plans end on 2027-01-01 (as of 2026-10-24).
 
   - id: q12-yoga-studio-basic
-    page: guide/12-getting-help/06-sim-support-plan-chooser.md
-    section: "Decision 2: the bakery in Module 11"
+    page: guide/12-getting-help/01-support-plans.md
+    section: "Every account starts on Basic, which answers account questions but not technical ones"
     task: "3.8"
     level: application
     topics: [support-plans, basic-support]
@@ -760,8 +701,8 @@ questions:
         Revisit the choice when the site becomes business-critical.
 
   - id: q12-studio-accounts-production-only
-    page: guide/12-getting-help/06-sim-support-plan-chooser.md
-    section: "Decision 5: a design studio with four accounts"
+    page: guide/12-getting-help/01-support-plans.md
+    section: "Each paid plan adds speed and people"
     task: "3.8"
     level: application
     topics: [support-plans, business-support-plus]
@@ -812,8 +753,8 @@ questions:
         cost optimization pillar.
 
   - id: q12-ticket-seller-enterprise
-    page: guide/12-getting-help/06-sim-support-plan-chooser.md
-    section: "Decision 6: an online retailer and a payments processor"
+    page: guide/12-getting-help/01-support-plans.md
+    section: "Each paid plan adds speed and people"
     task: "3.8"
     level: application
     topics: [support-plans, enterprise-support]
@@ -870,7 +811,7 @@ questions:
 
   - id: q12-ta-what-it-does
     page: guide/12-getting-help/02-tools-that-watch-your-account.md
-    section: "Trusted Advisor checks your setup against AWS's best practices, in six categories"
+    section: "Trusted Advisor checks your setup in six categories, and your plan sets how much you see"
     task: "4.3"
     level: understanding
     topics: [trusted-advisor]
@@ -917,7 +858,7 @@ questions:
 
   - id: q12-ta-low-utilization-category
     page: guide/12-getting-help/02-tools-that-watch-your-account.md
-    section: "Trusted Advisor checks your setup against AWS's best practices, in six categories"
+    section: "Trusted Advisor checks your setup in six categories, and your plan sets how much you see"
     task: "4.3"
     level: understanding
     topics: [trusted-advisor]
@@ -968,7 +909,7 @@ questions:
 
   - id: q12-ta-categories-two
     page: guide/12-getting-help/02-tools-that-watch-your-account.md
-    section: "Trusted Advisor checks your setup against AWS's best practices, in six categories"
+    section: "Trusted Advisor checks your setup in six categories, and your plan sets how much you see"
     task: "4.3"
     level: recall
     topics: [trusted-advisor]
@@ -1024,7 +965,7 @@ questions:
 
   - id: q12-ta-basic-checks-two
     page: guide/12-getting-help/02-tools-that-watch-your-account.md
-    section: "What you see in Trusted Advisor depends on your Support plan"
+    section: "Trusted Advisor checks your setup in six categories, and your plan sets how much you see"
     task: "2.4"
     level: understanding
     topics: [trusted-advisor, basic-support]
@@ -1082,7 +1023,7 @@ questions:
 
   - id: q12-ta-empty-cost-category
     page: guide/12-getting-help/02-tools-that-watch-your-account.md
-    section: "What you see in Trusted Advisor depends on your Support plan"
+    section: "Trusted Advisor checks your setup in six categories, and your plan sets how much you see"
     task: "4.3"
     level: application
     topics: [trusted-advisor, basic-support]
@@ -1134,7 +1075,7 @@ questions:
 
   - id: q12-ta-priority-what-it-gives
     page: guide/12-getting-help/02-tools-that-watch-your-account.md
-    section: "What you see in Trusted Advisor depends on your Support plan"
+    section: "Trusted Advisor checks your setup in six categories, and your plan sets how much you see"
     task: "4.3"
     level: recall
     topics: [trusted-advisor, enterprise-support]
@@ -1233,7 +1174,7 @@ questions:
 
   - id: q12-ta-open-port-who-fixes
     page: guide/12-getting-help/02-tools-that-watch-your-account.md
-    section: "Trusted Advisor checks your setup against AWS's best practices, in six categories"
+    section: "Trusted Advisor checks your setup in six categories, and your plan sets how much you see"
     task: "2.4"
     level: understanding
     topics: [trusted-advisor, shared-responsibility]
@@ -1281,7 +1222,7 @@ questions:
 
   - id: q12-ta-automatic-checks-not-wa-tool
     page: guide/12-getting-help/02-tools-that-watch-your-account.md
-    section: "Trusted Advisor checks your setup against AWS's best practices, in six categories"
+    section: "Trusted Advisor checks your setup in six categories, and your plan sets how much you see"
     task: "4.3"
     level: application
     topics: [trusted-advisor, well-architected-tool]
@@ -1333,7 +1274,7 @@ questions:
 
   - id: q12-health-region-problem-first
     page: guide/12-getting-help/02-tools-that-watch-your-account.md
-    section: "AWS Health reports problems on AWS's side, through one dashboard with two views"
+    section: "AWS Health reports problems on AWS's side, in one dashboard with two views"
     task: "4.3"
     level: application
     topics: [aws-health]
@@ -1385,7 +1326,7 @@ questions:
 
   - id: q12-health-own-resource-events
     page: guide/12-getting-help/02-tools-that-watch-your-account.md
-    section: "AWS Health reports problems on AWS's side, through one dashboard with two views"
+    section: "AWS Health reports problems on AWS's side, in one dashboard with two views"
     task: "4.3"
     level: understanding
     topics: [aws-health]
@@ -1483,7 +1424,7 @@ questions:
 
   - id: q12-health-dashboard-two
     page: guide/12-getting-help/02-tools-that-watch-your-account.md
-    section: "AWS Health reports problems on AWS's side, through one dashboard with two views"
+    section: "AWS Health reports problems on AWS's side, in one dashboard with two views"
     task: "4.3"
     level: understanding
     topics: [aws-health]
@@ -1538,7 +1479,7 @@ questions:
 
   - id: q12-health-events-eventbridge-basic
     page: guide/12-getting-help/02-tools-that-watch-your-account.md
-    section: "AWS Health reports problems on AWS's side, through one dashboard with two views"
+    section: "AWS Health reports problems on AWS's side, in one dashboard with two views"
     task: "4.3"
     level: application
     topics: [aws-health, eventbridge]
@@ -1589,7 +1530,7 @@ questions:
 
   - id: q12-quota-warning-on-basic
     page: guide/12-getting-help/02-tools-that-watch-your-account.md
-    section: "Support Center is where you open cases and ask for more quota"
+    section: "Support Center is where you open cases"
     task: "4.3"
     level: application
     topics: [support-center, service-quotas]
@@ -1639,7 +1580,7 @@ questions:
 
   - id: q12-billing-case-iam-not-root
     page: guide/12-getting-help/02-tools-that-watch-your-account.md
-    section: "Support Center is where you open cases and ask for more quota"
+    section: "Support Center is where you open cases"
     task: "4.3"
     level: understanding
     topics: [support-center, iam]
@@ -1685,71 +1626,13 @@ questions:
         Support plan. Keep the root user for the few tasks only it can do, such as closing the
         account. Account and billing cases are open on every plan.
 
-  - id: q12-free-checks-pillars-two
-    page: guide/12-getting-help/05-lab-17-support-center-tour.md
-    section: "Stop 4: the free Trusted Advisor checks, mapped to pillars"
-    task: "4.3"
-    level: understanding
-    topics: [trusted-advisor, well-architected]
-    type: multiple_choice
-    selection: multiple
-    selection_count: 2
-    prompt:
-      text: |
-        On Basic Support, Trusted Advisor's free checks include root MFA, S3 bucket permissions,
-        security groups with ports open to everyone, every service limits check, and one check on
-        AWS STS endpoint use. Which two Well-Architected pillars do these free checks mainly serve?
-        (Select TWO.)
-    choices:
-      - id: security
-        text: The security pillar
-        variants:
-          - text: The Framework's security pillar
-          - text: Security, as a pillar
-        explanation:
-          text: Correct. Root MFA, bucket permissions and open ports are all security checks.
-      - id: cost-optimization
-        text: The cost optimization pillar
-        variants:
-          - text: The Framework's cost optimization pillar
-          - text: Cost optimization, as a pillar
-        explanation:
-          text: None of the free checks looks for waste; cost optimization checks need a paid plan.
-      - id: sustainability
-        text: The sustainability pillar
-        variants:
-          - text: The Framework's sustainability pillar
-          - text: Sustainability, as a pillar
-        explanation:
-          text: Trusted Advisor has no category that maps to sustainability.
-      - id: reliability
-        text: The reliability pillar
-        variants:
-          - text: The Framework's reliability pillar
-          - text: Reliability, as a pillar
-        explanation:
-          text: Correct. Service limits checks and the STS endpoint check both protect against failures, which is the reliability pillar's concern.
-      - id: performance-efficiency
-        text: The performance efficiency pillar
-        variants:
-          - text: The Framework's performance efficiency pillar
-          - text: Performance efficiency, as a pillar
-        explanation:
-          text: Performance checks, such as high CPU use, need a paid plan; none is free.
-    correct_answers: [security, reliability]
-    explanation:
-      text: |
-        Basic's free checks are security checks plus the service limits and fault tolerance checks,
-        and both of the last two serve the reliability pillar. So the free checks serve mainly two of
-        the six pillars. A page of green checks isn't a Well-Architected review.
-
   # ---------------------------------------------------------------------------------------------
   # Lesson 12.03, Where to find answers
   # ---------------------------------------------------------------------------------------------
 
   - id: q12-docs-for-api-parameters
     page: guide/12-getting-help/03-where-to-find-answers.md
-    section: "AWS's own pages explain how AWS works: documentation, whitepapers and blogs"
+    section: "AWS's free pages answer \"how does this work?\""
     task: "4.3"
     level: application
     topics: [documentation]
@@ -1800,7 +1683,7 @@ questions:
 
   - id: q12-whitepaper-disagrees-with-docs
     page: guide/12-getting-help/03-where-to-find-answers.md
-    section: "AWS's own pages explain how AWS works: documentation, whitepapers and blogs"
+    section: "AWS's free pages answer \"how does this work?\""
     task: "4.3"
     level: understanding
     topics: [documentation, whitepapers, moving-target]
@@ -1849,7 +1732,7 @@ questions:
 
   - id: q12-security-blog-walkthroughs
     page: guide/12-getting-help/03-where-to-find-answers.md
-    section: "AWS's own pages explain how AWS works: documentation, whitepapers and blogs"
+    section: "AWS's free pages answer \"how does this work?\""
     task: "2.4"
     level: application
     topics: [blogs, security-resources]
@@ -1902,7 +1785,7 @@ questions:
 
   - id: q12-knowledge-center-who-writes
     page: guide/12-getting-help/03-where-to-find-answers.md
-    section: "re:Post is where people answer questions; the Knowledge Center is AWS's own articles inside it"
+    section: "AWS's free pages answer \"how does this work?\""
     task: "4.3"
     level: recall
     topics: [knowledge-center, re-post]
@@ -1950,7 +1833,7 @@ questions:
 
   - id: q12-repost-for-unusual-error
     page: guide/12-getting-help/03-where-to-find-answers.md
-    section: "re:Post is where people answer questions; the Knowledge Center is AWS's own articles inside it"
+    section: "AWS's free pages answer \"how does this work?\""
     task: "4.3"
     level: application
     topics: [re-post]
@@ -2002,7 +1885,7 @@ questions:
 
   - id: q12-knowledge-center-common-error
     page: guide/12-getting-help/03-where-to-find-answers.md
-    section: "re:Post is where people answer questions; the Knowledge Center is AWS's own articles inside it"
+    section: "AWS's free pages answer \"how does this work?\""
     task: "4.3"
     level: application
     topics: [knowledge-center]
@@ -2052,7 +1935,7 @@ questions:
 
   - id: q12-prescriptive-guidance-pattern
     page: guide/12-getting-help/03-where-to-find-answers.md
-    section: "Prescriptive Guidance is for planning and building, not for fixing one error"
+    section: "AWS's free pages answer \"how does this work?\""
     task: "4.3"
     level: application
     topics: [prescriptive-guidance]
@@ -2102,7 +1985,7 @@ questions:
 
   - id: q12-only-support-center-sees-account
     page: guide/12-getting-help/03-where-to-find-answers.md
-    section: "Support Center is the only door about your own account"
+    section: "AWS's free pages answer \"how does this work?\""
     task: "4.3"
     level: understanding
     topics: [support-center]
@@ -2258,105 +2141,6 @@ questions:
         show the activity (a CSV file for many attacking addresses). For content, it asks for the URL
         and a description.
 
-  - id: q12-check-address-is-aws
-    page: guide/12-getting-help/03-where-to-find-answers.md
-    section: "Abuse from an AWS address goes to AWS Trust & Safety, not to Support"
-    task: "4.3"
-    level: recall
-    topics: [trust-and-safety, ip-ranges]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        Before filing an abuse report, a website owner wants to confirm that the attacking address
-        belongs to AWS. How can she check?
-    choices:
-      - id: ip-ranges-json
-        text: Search AWS's published ip-ranges.json file
-        variants:
-          - text: Look it up in AWS's public ip-ranges.json file
-          - text: Check the address against AWS's ip-ranges.json
-        explanation:
-          text: Correct. AWS publishes its IP address ranges as a file that anyone can download and search.
-      - id: support-case
-        text: Ask AWS Support in an account and billing case
-        variants:
-          - text: Open an account and billing case to ask Support
-          - text: Ask AWS Support through a billing case
-        explanation:
-          text: AWS Support doesn't handle abuse questions, and the answer is already public.
-      - id: trusted-advisor
-        text: Look the address up in AWS Trusted Advisor
-        variants:
-          - text: Search for the address in Trusted Advisor
-          - text: Run the address through Trusted Advisor
-        explanation:
-          text: Trusted Advisor checks your own account's setup. It doesn't look up addresses.
-      - id: health-dashboard
-        text: Find the address on the AWS Health Dashboard
-        variants:
-          - text: Search the AWS Health Dashboard for the address
-          - text: Look for the address in the AWS Health Dashboard
-        explanation:
-          text: The Health Dashboard reports AWS's events. It doesn't list AWS's addresses.
-    correct_answers: [ip-ranges-json]
-    explanation:
-      text: |
-        AWS publishes the IP address ranges it uses as a file, `ip-ranges.json`, that anyone can
-        download and search. If the attacking address is in it, the abuse goes to AWS Trust & Safety
-        through the abuse form.
-
-  - id: q12-own-instance-abuse-notice
-    page: guide/12-getting-help/03-where-to-find-answers.md
-    section: '"Abuse goes to AWS Support" is wrong'
-    task: "2.4"
-    level: application
-    topics: [trust-and-safety, abuse]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A company receives a notice from AWS Trust & Safety saying that one of its EC2 instances is
-        scanning other networks. What should the company do?
-    choices:
-      - id: ask-support
-        text: Open a support case asking Support about the notice
-        variants:
-          - text: Ask AWS Support about the notice in a case
-          - text: Raise a support case to question the notice
-        explanation:
-          text: AWS Support can't help with questions about Trust & Safety notifications.
-      - id: reply-investigate
-        text: Reply to Trust & Safety and investigate the instance
-        variants:
-          - text: Answer Trust & Safety and look into the instance
-          - text: Respond to Trust & Safety and examine the instance
-        explanation:
-          text: Correct. Answer the notice as it asks, and find out why the instance is scanning; it may have been compromised.
-      - id: post-repost
-        text: Post the notice on AWS re:Post for advice
-        variants:
-          - text: Share the notice on AWS re:Post and ask for help
-          - text: Ask the AWS re:Post community about the notice
-        explanation:
-          text: re:Post is public and can't act on the notice. Posting account details there is also a risk.
-      - id: wait
-        text: Wait, since the notice needs no reply from the company
-        variants:
-          - text: Do nothing, since such notices need no response
-          - text: Ignore it, as the notice expects no reply
-        explanation:
-          text: The notice is about the company's own resource harming others. Fixing that resource is the company's job.
-    correct_answers: [reply-investigate]
-    hint:
-      text: This time the misbehaving resource is the company's own. Who sent the notice?
-    explanation:
-      text: |
-        When AWS tells you that your resource is causing abuse, answer Trust & Safety and fix the
-        resource. AWS Support can't help with questions about Trust & Safety notifications. If the
-        investigation shows someone has broken into the account, that part becomes a support case
-        marked as an urgent security incident.
-
   - id: q12-intruder-in-own-account
     page: guide/12-getting-help/03-where-to-find-answers.md
     section: '"Abuse goes to AWS Support" is wrong'
@@ -2466,12 +2250,12 @@ questions:
         traffic yourself meanwhile.
 
   # ---------------------------------------------------------------------------------------------
-  # Lesson 12.04, Partners and paid help
+  # Lesson 12.03, Where to find answers and who can help (paid help; was lesson 12.04)
   # ---------------------------------------------------------------------------------------------
 
   - id: q12-support-wont-rewrite-code
-    page: guide/12-getting-help/04-partners-and-paid-help.md
-    section: "AWS Support fixes problems with AWS; it doesn't build or run your systems"
+    page: guide/12-getting-help/01-support-plans.md
+    section: "Every account starts on Basic, which answers account questions but not technical ones"
     task: "4.3"
     level: understanding
     topics: [aws-support-scope]
@@ -2519,8 +2303,8 @@ questions:
         rewrite; the code stays on the customer's side of the shared responsibility line either way.
 
   - id: q12-solutions-architect-design-review
-    page: guide/12-getting-help/04-partners-and-paid-help.md
-    section: "Solutions architects advise on design, free, through your account team"
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "When you need people, ask who does the work"
     task: "4.3"
     level: application
     topics: [solutions-architects]
@@ -2570,8 +2354,8 @@ questions:
         that they point you to Professional Services or partners.
 
   - id: q12-professional-services-own-consultants
-    page: guide/12-getting-help/04-partners-and-paid-help.md
-    section: "AWS Professional Services does the project for you, for a fee"
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "When you need people, ask who does the work"
     task: "4.3"
     level: application
     topics: [professional-services]
@@ -2620,8 +2404,8 @@ questions:
         advise; partners also deliver projects, but as other companies.
 
   - id: q12-system-integrator-term
-    page: guide/12-getting-help/04-partners-and-paid-help.md
-    section: "AWS Partners are other companies: software vendors and services firms"
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "When you need people, ask who does the work"
     task: "4.3"
     level: recall
     topics: [aws-partners]
@@ -2669,8 +2453,8 @@ questions:
         Older material calls them Consulting Partners; today AWS groups them under the Services Path.
 
   - id: q12-isv-sells-waf-rules
-    page: guide/12-getting-help/04-partners-and-paid-help.md
-    section: "AWS Marketplace sells partners' products, with three services for the buyer"
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "AWS Marketplace sells partners' products, with three services for buyers"
     task: "4.3"
     level: application
     topics: [aws-marketplace, aws-partners]
@@ -2720,8 +2504,8 @@ questions:
         pays the seller.
 
   - id: q12-partner-night-operations
-    page: guide/12-getting-help/04-partners-and-paid-help.md
-    section: "Worked example: five requests, five kinds of help"
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "When you need people, ask who does the work"
     task: "3.8"
     level: application
     topics: [aws-partners, managed-services]
@@ -2771,8 +2555,8 @@ questions:
         not whose job it is.
 
   - id: q12-partner-benefits-two
-    page: guide/12-getting-help/04-partners-and-paid-help.md
-    section: "What partners get from joining"
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "When you need people, ask who does the work"
     task: "4.3"
     level: recall
     topics: [aws-partners]
@@ -2827,57 +2611,9 @@ questions:
         guide also names partner volume discounts; AWS publishes no discount levels, so learn the
         idea without a figure. Joining the APN is free.
 
-  - id: q12-partner-with-specialization
-    page: guide/12-getting-help/04-partners-and-paid-help.md
-    section: "AWS Partners are other companies: software vendors and services firms"
-    task: "4.3"
-    level: application
-    topics: [aws-partners]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A hospital wants to hire a partner whose expertise in healthcare workloads has been validated
-        by AWS against a technical bar. How should it look for one?
-    choices:
-      - id: solutions-finder
-        text: Search the Partner Solutions Finder for an AWS Specialization
-        variants:
-          - text: Filter the Partner Solutions Finder by AWS Specialization
-          - text: Use the Partner Solutions Finder to find an AWS Specialization
-        explanation:
-          text: Correct. The finder searches by industry, use case, workload, solution or AWS Specialization, and a Specialization means AWS validated the expertise.
-      - id: ask-support
-        text: Open a support case asking AWS Support to assign a partner
-        variants:
-          - text: Ask AWS Support, through a case, to name a partner
-          - text: Have AWS Support pick a partner through a support case
-        explanation:
-          text: AWS Support helps with AWS services and your account. It doesn't assign partners.
-      - id: repost-answers
-        text: Look for partners answering questions on AWS re:Post
-        variants:
-          - text: Find a partner among the answers on AWS re:Post
-          - text: Pick a partner from those posting on AWS re:Post
-        explanation:
-          text: Answering on re:Post shows nothing about whether AWS has validated a company's expertise.
-      - id: trusted-advisor
-        text: Check Trusted Advisor for a list of approved partners
-        variants:
-          - text: Find approved partners listed in Trusted Advisor
-          - text: Look up approved partners in AWS Trusted Advisor
-        explanation:
-          text: Trusted Advisor checks your account against best practices; it doesn't list partners.
-    correct_answers: [solutions-finder]
-    explanation:
-      text: |
-        Customers find partners in the AWS Partner Solutions Finder. A partner with an AWS
-        Specialization, such as an AWS Competency or AWS Managed Service Provider, has had its
-        expertise in an area validated by AWS against a technical bar.
-
   - id: q12-private-marketplace-vetted-tools
-    page: guide/12-getting-help/04-partners-and-paid-help.md
-    section: "AWS Marketplace sells partners' products, with three services for the buyer"
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "AWS Marketplace sells partners' products, with three services for buyers"
     task: "4.3"
     level: application
     topics: [aws-marketplace, governance]
@@ -2928,8 +2664,8 @@ questions:
         deployed, so IAM permissions still matter.
 
   - id: q12-share-license-test-account
-    page: guide/12-getting-help/04-partners-and-paid-help.md
-    section: "AWS Marketplace sells partners' products, with three services for the buyer"
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "AWS Marketplace sells partners' products, with three services for buyers"
     task: "4.3"
     level: application
     topics: [aws-marketplace, entitlement]
@@ -2980,8 +2716,8 @@ questions:
         learning and data products.
 
   - id: q12-marketplace-spend-across-accounts
-    page: guide/12-getting-help/04-partners-and-paid-help.md
-    section: "AWS Marketplace sells partners' products, with three services for the buyer"
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "AWS Marketplace sells partners' products, with three services for buyers"
     task: "4.3"
     level: application
     topics: [aws-marketplace, cost-management]
@@ -3028,8 +2764,8 @@ questions:
         Cost Explorer split Marketplace usage by team, once they're activated.
 
   - id: q12-marketplace-private-offer
-    page: guide/12-getting-help/04-partners-and-paid-help.md
-    section: "AWS Marketplace sells partners' products, with three services for the buyer"
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "AWS Marketplace sells partners' products, with three services for buyers"
     task: "4.3"
     level: recall
     topics: [aws-marketplace]
@@ -3076,8 +2812,8 @@ questions:
         governance feature that limits which products staff may buy.
 
   - id: q12-marketplace-firewall-who-configures
-    page: guide/12-getting-help/04-partners-and-paid-help.md
-    section: "AWS Marketplace sells partners' products, with three services for the buyer"
+    page: guide/09-protecting-and-governing/03-finding-threats-and-weaknesses.md
+    section: "AWS Marketplace sells third-party security products, billed through AWS"
     task: "2.4"
     level: understanding
     topics: [aws-marketplace, shared-responsibility]
@@ -3124,8 +2860,8 @@ questions:
         account are on your side of the shared responsibility line.
 
   - id: q12-hands-on-help-two
-    page: guide/12-getting-help/04-partners-and-paid-help.md
-    section: "Professional Services, partners, Support or a solutions architect: compare them side by side"
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "When you need people, ask who does the work"
     task: "4.3"
     level: understanding
     topics: [professional-services, aws-partners, solutions-architects]
@@ -3217,20 +2953,9 @@ flashcards:
     back:
       text: It falls back to Basic. AWS doesn't move Developer or Business customers automatically; only Enterprise On-Ramp customers are moved, to Enterprise Support.
 
-  - id: c12-support-never-does
-    page: guide/12-getting-help/01-support-plans.md
-    section: "Every account starts on Basic, which answers account questions but not technical ones"
-    task: "4.3"
-    level: recall
-    topics: [aws-support-scope]
-    front:
-      text: Name three things AWS Support won't do for you on any plan, the top one included.
-    back:
-      text: Write or debug your own code; administer or log in to your systems; sell you support for just one service.
-
   - id: c12-bplus-fee-rule
     page: guide/12-getting-help/01-support-plans.md
-    section: "Business Support+ adds technical help around the clock"
+    section: "Each paid plan adds speed and people"
     task: "4.3"
     level: understanding
     topics: [business-support-plus, pricing-model]
@@ -3243,7 +2968,7 @@ flashcards:
 
   - id: c12-ta-basic-rule
     page: guide/12-getting-help/02-tools-that-watch-your-account.md
-    section: "What you see in Trusted Advisor depends on your Support plan"
+    section: "Trusted Advisor checks your setup in six categories, and your plan sets how much you see"
     task: "4.3"
     level: recall
     topics: [trusted-advisor, basic-support]
@@ -3263,20 +2988,9 @@ flashcards:
     back:
       text: AWS adds and retires checks, so the count changes, and AWS's own pages gave different totals. The categories and which plans see which checks hold steady.
 
-  - id: c12-ta-categories-are-not-pillars
-    page: guide/12-getting-help/02-tools-that-watch-your-account.md
-    section: "Trusted Advisor checks your setup against AWS's best practices, in six categories"
-    task: "1.2"
-    level: understanding
-    topics: [trusted-advisor, well-architected]
-    front:
-      text: Trusted Advisor's categories sound like the Well-Architected pillars. Name two signs that they aren't the same thing.
-    back:
-      text: Sustainability has no category; and fault tolerance and service limits both serve one pillar, reliability. Categories are folders of automatic checks, not review guidance.
-
   - id: c12-is-it-aws-or-us
     page: guide/12-getting-help/02-tools-that-watch-your-account.md
-    section: "Worked example: the bakery's week"
+    section: "AWS Health reports problems on AWS's side, in one dashboard with two views"
     task: "4.3"
     level: understanding
     topics: [aws-health]
@@ -3289,7 +3003,7 @@ flashcards:
 
   - id: c12-when-to-open-a-case
     page: guide/12-getting-help/03-where-to-find-answers.md
-    section: "Support Center is the only door about your own account"
+    section: "AWS's free pages answer \"how does this work?\""
     task: "4.3"
     level: understanding
     topics: [support-center, routing]
@@ -3300,7 +3014,7 @@ flashcards:
 
   - id: c12-we-want-to-or-how-do-i
     page: guide/12-getting-help/03-where-to-find-answers.md
-    section: "Prescriptive Guidance is for planning and building, not for fixing one error"
+    section: "AWS's free pages answer \"how does this work?\""
     task: "4.3"
     level: understanding
     topics: [prescriptive-guidance, routing]
@@ -3322,7 +3036,7 @@ flashcards:
 
   - id: c12-reporting-does-not-block
     page: guide/12-getting-help/03-where-to-find-answers.md
-    section: "Abuse from an AWS address goes to AWS Trust & Safety, not to Support"
+    section: "\"Abuse goes to AWS Support\" is wrong"
     task: "2.4"
     level: understanding
     topics: [trust-and-safety, abuse]
@@ -3331,11 +3045,11 @@ flashcards:
     back:
       text: Trust & Safety acts on the attacker's resource, on its own schedule. Protecting your site now is your job, for example with a network ACL deny rule or AWS WAF.
 
-  # Lesson 12.04, Partners and paid help
+  # Lesson 12.03, Where to find answers and who can help (paid help; was lesson 12.04)
 
   - id: c12-advice-or-hands-on
-    page: guide/12-getting-help/04-partners-and-paid-help.md
-    section: "Professional Services, partners, Support or a solutions architect: compare them side by side"
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "When you need people, ask who does the work"
     task: "4.3"
     level: understanding
     topics: [professional-services, aws-partners, solutions-architects]
@@ -3345,8 +3059,8 @@ flashcards:
       text: Professional Services and services partners, for a fee. AWS Support and solutions architects guide you while you do the work.
 
   - id: c12-marketplace-buyer-jobs
-    page: guide/12-getting-help/04-partners-and-paid-help.md
-    section: "AWS Marketplace sells partners' products, with three services for the buyer"
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "AWS Marketplace sells partners' products, with three services for buyers"
     task: "4.3"
     level: recall
     topics: [aws-marketplace]
@@ -3356,8 +3070,8 @@ flashcards:
       text: 'Cost management: Procurement insights and cost allocation tags. Governance: Private Marketplace. Entitlement: licenses shared through AWS License Manager.'
 
   - id: c12-private-marketplace-needs-iam-too
-    page: guide/12-getting-help/04-partners-and-paid-help.md
-    section: "AWS Marketplace sells partners' products, with three services for the buyer"
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "AWS Marketplace sells partners' products, with three services for buyers"
     task: "4.3"
     level: understanding
     topics: [aws-marketplace, governance]

@@ -220,7 +220,7 @@ questions:
 
   - id: q10-after-the-read-two
     page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
-    section: "Data Streams, Firehose or SQS: what happens after the data is read"
+    section: "Ingest: Data Streams holds records for your programs; Firehose delivers them for you"
     task: "3.7"
     level: understanding
     topics: [kinesis, data-streams, data-firehose, sqs]
@@ -325,7 +325,7 @@ questions:
 
   - id: q10-kda-sql-new-app
     page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
-    section: "Data Streams, Firehose or SQS: what happens after the data is read"
+    section: "Ingest: Data Streams holds records for your programs; Firehose delivers them for you"
     task: "3.7"
     level: understanding
     topics: [kinesis, retired-services]
@@ -632,54 +632,6 @@ questions:
         control the clusters' configuration and software, and EMR Serverless removes the clusters when
         you don't need that control.
 
-  - id: q10-athena-files-unchanged
-    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
-    section: "Query: Athena, Redshift and EMR answer questions in three different ways"
-    task: "3.7"
-    level: understanding
-    topics: [athena, schema-on-read]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        An analyst points Amazon Athena at a folder of CSV files in Amazon S3 and runs a SQL query.
-        What happens to the files?
-    choices:
-      - id: loaded-into-athena
-        text: Athena loads them into its own storage before the query can run
-        variants:
-          - text: They are copied into Athena's own storage before the query starts
-          - text: Athena first moves them into storage of its own, then queries
-        explanation:
-          text: Loading data before querying is how a warehouse such as Redshift works. Athena reads the files where they sit.
-      - id: rewritten-parquet
-        text: Athena rewrites them as Parquet so later queries are cheaper
-        variants:
-          - text: They are converted to Parquet to cut the cost of later queries
-          - text: Athena turns them into Parquet files for cheaper queries later
-        explanation:
-          text: Converting to Parquet does make queries cheaper, but that's a job you run, for example with a Glue ETL job. Athena doesn't change your files.
-      - id: deleted-after
-        text: Athena deletes them from the bucket once the results are written
-        variants:
-          - text: They are removed from the bucket after the query results are saved
-          - text: Once results are written, Athena removes them from the bucket
-        explanation:
-          text: Athena never deletes your data. It writes results as new files and leaves the source files alone.
-      - id: unchanged
-        text: They stay as they are; Athena applies the table layout as it reads
-        variants:
-          - text: They remain untouched, and the table layout is applied at read time
-          - text: Nothing changes in them; the columns are applied as Athena reads
-        explanation:
-          text: Correct. This is schema on read. The table definition describes the files, and the files never change.
-    correct_answers: [unchanged]
-    explanation:
-      text: |
-        Athena uses schema on read: the table layout, kept in a data catalog, is applied when you query
-        the files, not when you store them. The data stays in S3 untouched, which is why Athena needs no
-        loading step and no servers.
-
   - id: q10-athena-redshift-two
     page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
     section: "Query: Athena, Redshift and EMR answer questions in three different ways"
@@ -893,7 +845,7 @@ questions:
 
   - id: q10-pipeline-order
     page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
-    section: "Worked example: the owner's sales dashboard"
+    section: "The big picture: five verbs, from raw data to a dashboard"
     task: "3.7"
     level: understanding
     topics: [analytics-pipeline]
@@ -942,7 +894,7 @@ questions:
 
   - id: q10-hotel-query-step-changes
     page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
-    section: "Worked example: the owner's sales dashboard"
+    section: "Query: Athena, Redshift and EMR answer questions in three different ways"
     task: "3.7"
     level: application
     topics: [analytics-pipeline, redshift, athena]
@@ -994,8 +946,8 @@ questions:
         questions on files in S3.
 
   - id: q10-analytics-customer-side-two
-    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
-    section: "Your side of the line"
+    page: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
+    section: "You are responsible for security in the cloud, and how much depends on the service"
     task: "2.1"
     level: understanding
     topics: [shared-responsibility, analytics-pipeline]
@@ -1049,107 +1001,6 @@ questions:
         keeps the service available. The data and who can reach it stay with the customer: access to
         the bucket, tables, results and dashboards, encryption settings where there's a choice, and any
         code or sizing the customer controls.
-
-  - id: q10-athena-bill-lower
-    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
-    section: "What you pay for (as of 2026-10-24)"
-    task: "3.7"
-    level: application
-    topics: [athena, cost]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A marketing team's Amazon Athena bill keeps growing. Its queries read large, uncompressed CSV
-        files in S3, though most questions need only a few columns and the last month of data. Which
-        change lowers the cost of each query?
-    choices:
-      - id: run-at-night
-        text: Run the queries at night, when Athena charges less
-        variants:
-          - text: Schedule the queries overnight, when Athena's rate is lower
-          - text: Move the queries to the night, when Athena costs less
-        explanation:
-          text: Athena charges by the data a query scans, not by the time of day.
-      - id: bigger-instance
-        text: Give Athena a larger instance so each query finishes sooner
-        variants:
-          - text: Move Athena to a bigger instance so queries end sooner
-          - text: Pick a larger Athena instance to make each query quicker
-        explanation:
-          text: Athena is serverless; there's no instance to choose, and time isn't what it bills.
-      - id: glacier
-        text: Move the files to an S3 Glacier storage class
-        variants:
-          - text: Shift the files into an S3 Glacier storage class
-          - text: Store the files in one of the S3 Glacier classes instead
-        explanation:
-          text: That cuts the storage bill, not the query bill, and archived files aren't something to query week to week.
-      - id: parquet-partition
-        text: Convert the files to Parquet and partition them by month
-        variants:
-          - text: Rewrite the files as Parquet, split into monthly partitions
-          - text: Store the data as Parquet, partitioned by month
-        explanation:
-          text: Correct. A columnar format lets a query read only the columns it needs, and partitions let it skip the months it doesn't.
-    correct_answers: [parquet-partition]
-    hint:
-      text: Think about what Athena's charge is measured in.
-    explanation:
-      text: |
-        Athena charges each query by the amount of data it scans. Compressing files, partitioning them
-        and converting them to a columnar format such as Parquet mean each query scans less data, so it
-        runs faster and costs less. That's the Well-Architected practice PERF03-BP04, improving query
-        performance in the data store.
-
-  - id: q10-drop-external-table
-    page: guide/10-data-ai-and-more/04-lab-13-athena-query.md
-    section: "Clean up"
-    task: "3.7"
-    level: understanding
-    topics: [athena, glue]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        In Athena, a learner created an external table over a folder of CSV files in S3, and then runs
-        `DROP TABLE` on it. What does the statement remove?
-    choices:
-      - id: definition-only
-        text: Only its definition in the catalog; the CSV files stay in S3
-        variants:
-          - text: The catalog's definition of it, while the files remain in S3
-          - text: Just the table definition; the CSV files in S3 are untouched
-        explanation:
-          text: Correct. An external table is only a description of the files, so dropping it deletes the description and nothing else.
-      - id: files-too
-        text: The table's definition and every CSV file in the folder it pointed to
-        variants:
-          - text: Both the definition and all the CSV files in the table's folder
-          - text: The catalog entry along with every CSV file in its S3 folder
-        explanation:
-          text: Dropping an external table doesn't touch the data. The files stay until you delete them in S3.
-      - id: results-only
-        text: Only the query result files in the result location; the table stays
-        variants:
-          - text: Just the files in the query result location, leaving the table
-          - text: The saved query results, while the table itself remains
-        explanation:
-          text: The result files stay in the bucket until you delete them, and the table is what `DROP TABLE` removes.
-      - id: whole-database
-        text: The whole database, with every table and file inside it
-        variants:
-          - text: The entire database, including all its tables and files
-          - text: Everything in the database, every table and file included
-        explanation:
-          text: '`DROP TABLE` removes one table definition. Removing the database is a separate statement, and neither deletes files in S3.'
-    correct_answers: [definition-only]
-    explanation:
-      text: |
-        An external table is only a description: the columns, how fields are separated, and the folder
-        to read. The data stays in S3, and the definition lives in the AWS Glue Data Catalog. Dropping
-        the table deletes the definition; the files, and Athena's result files, stay until you delete
-        them in S3.
 
   # ---------------------------------------------------------------------------------------------
   # Lesson 10.02, AI and machine learning (and Lab 14)
@@ -1410,7 +1261,7 @@ questions:
 
   - id: q10-polly-voicemail-mixup
     page: guide/10-data-ai-and-more/02-ai-and-ml.md
-    section: '"Polly listens to customers" mixes up two services'
+    section: "Sound and conversation: Transcribe listens, Polly speaks, Lex holds the conversation"
     task: "3.7"
     level: understanding
     topics: [polly, transcribe]
@@ -1455,55 +1306,6 @@ questions:
         Polly turns text into speech; Amazon Transcribe turns speech into text. The two are easy to
         confuse because both are "voice" services, and a bot built with Lex handles both directions in
         one conversation. Remember the arrow: Polly speaks, Transcribe writes down.
-
-  - id: q10-lex-slot-collected
-    page: guide/10-data-ai-and-more/02-ai-and-ml.md
-    section: "Sound and conversation: Transcribe listens, Polly speaks, Lex holds the conversation"
-    task: "3.7"
-    level: recall
-    topics: [lex]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A veterinary practice builds an Amazon Lex bot for booking check-ups. "Book a check-up" is
-        one thing customers want, and the bot must ask for the pet's name and the preferred day. In
-        Lex, what are the pet's name and the day?
-    choices:
-      - id: intents
-        text: Intents
-        variants:
-          - text: The bot's intents
-          - text: Two intents
-        explanation:
-          text: The intent is the thing the customer wants, here "book a check-up". The details it needs are something else.
-      - id: entities
-        text: Entities
-        variants:
-          - text: The bot's entities
-          - text: Two entities
-        explanation:
-          text: Entities are what Amazon Comprehend finds in text, such as people, places and dates. They aren't how a Lex bot defines what to collect.
-      - id: flows
-        text: Flows
-        variants:
-          - text: The bot's flows
-          - text: Two flows
-        explanation:
-          text: Flows belong to Amazon Connect Customer, where they decide what happens to each contact.
-      - id: slots
-        text: Slots
-        variants:
-          - text: The bot's slots
-          - text: Two slots
-        explanation:
-          text: Correct. Slots are the details the bot must collect to fulfill the intent.
-    correct_answers: [slots]
-    explanation:
-      text: |
-        A Lex bot is built from intents, the things customers want, each with example phrases, and
-        slots, the details the bot must collect for that intent. Lex understands the request, asks for
-        any missing slot, and replies, often calling the business's own code, such as a Lambda function.
 
   - id: q10-lex-library-chat
     page: guide/10-data-ai-and-more/02-ai-and-ml.md
@@ -1926,7 +1728,7 @@ questions:
 
   - id: q10-sagemaker-today-name
     page: guide/10-data-ai-and-more/02-ai-and-ml.md
-    section: '"Amazon SageMaker is the ML service" uses an old name'
+    section: "When nothing ready-made fits, SageMaker AI builds your own model"
     task: "3.7"
     level: recall
     topics: [sagemaker-ai, service-names]
@@ -1975,7 +1777,7 @@ questions:
 
   - id: q10-q-developer-console-help
     page: guide/10-data-ai-and-more/02-ai-and-ml.md
-    section: "Amazon Q is a family of assistants, not one product"
+    section: "Amazon Q, and the AI names that are closed"
     task: "3.7"
     level: application
     topics: [amazon-q]
@@ -2027,7 +1829,7 @@ questions:
 
   - id: q10-amazon-q-brand
     page: guide/10-data-ai-and-more/02-ai-and-ml.md
-    section: '"Amazon Q is one product" leads to wrong answers'
+    section: "Amazon Q, and the AI names that are closed"
     task: "3.7"
     level: understanding
     topics: [amazon-q, retired-services]
@@ -2076,7 +1878,7 @@ questions:
 
   - id: q10-kendra-policy-search
     page: guide/10-data-ai-and-more/02-ai-and-ml.md
-    section: '"Kendra is the answer for searching company documents" is out of date'
+    section: "Amazon Q, and the AI names that are closed"
     task: "3.7"
     level: understanding
     topics: [retired-services]
@@ -2126,7 +1928,7 @@ questions:
 
   - id: q10-new-customer-can-use-two
     page: guide/10-data-ai-and-more/02-ai-and-ml.md
-    section: "Some AI names are closed or gone: recognize them, don't choose them"
+    section: "Amazon Q, and the AI names that are closed"
     task: "3.7"
     level: understanding
     topics: [retired-services]
@@ -2230,114 +2032,6 @@ questions:
         for personal data), whether content may be used to improve the service, and checking results
         where money or customers are affected.
 
-  - id: q10-ai-opt-out-policy
-    page: guide/10-data-ai-and-more/02-ai-and-ml.md
-    section: "Your side of the line"
-    task: "2.1"
-    level: recall
-    topics: [shared-responsibility, organizations]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A law firm doesn't want AWS AI services to store or use its content to improve those services.
-        What can it use to opt out across all its accounts?
-    choices:
-      - id: block-public-access
-        text: S3 Block Public Access, turned on for each of its buckets
-        variants:
-          - text: Turning on S3 Block Public Access for each of its buckets
-          - text: S3 Block Public Access, applied to each bucket it owns
-        explanation:
-          text: Block Public Access stops buckets from being made public. It says nothing about how AWS AI services use content sent to them.
-      - id: opt-out-policy
-        text: An AI services opt-out policy in AWS Organizations
-        variants:
-          - text: An AWS Organizations AI services opt-out policy
-          - text: The AI services opt-out policy type in AWS Organizations
-        explanation:
-          text: Correct. An AI services opt-out policy applies the choice to the accounts in an organization.
-      - id: config-rule
-        text: An AWS Config rule that checks each AI service's settings
-        variants:
-          - text: AWS Config rules that evaluate each AI service's settings
-          - text: A Config rule checking the settings of each AI service
-        explanation:
-          text: Config records and evaluates resource settings. It doesn't opt content out of service improvement.
-      - id: delete-users
-        text: Removing the IAM users that call the AI services
-        variants:
-          - text: Deleting the IAM users who call AI services
-          - text: Taking away the IAM users that use AI services
-        explanation:
-          text: That stops the firm from using the services at all, rather than changing how its content is used.
-    correct_answers: [opt-out-policy]
-    explanation:
-      text: |
-        AWS AI services may store and use customer content to improve the service. Whether to allow that
-        is the customer's decision, and an AI services opt-out policy in AWS Organizations records it for
-        the organization's accounts.
-
-  - id: q10-polly-lesson-audio-two
-    page: guide/10-data-ai-and-more/05-lab-14-polly-text-to-speech.md
-    section: "Recap"
-    task: "3.7"
-    level: application
-    topics: [polly, cost]
-    type: multiple_choice
-    selection: multiple
-    selection_count: 2
-    prompt:
-      text: |
-        An online cooking school has 300 short lesson summaries that rarely change, and thousands of
-        students press "listen" each month. It uses Amazon Polly. Which two choices keep its Polly
-        costs low? (Select TWO.)
-    choices:
-      - id: synthesize-once
-        text: Synthesize each summary once, store the audio, and replay the file
-        variants:
-          - text: Make each summary's audio once, keep it, and play the stored file
-          - text: Create the audio for each summary once and replay the saved copy
-        explanation:
-          text: Correct. Polly charges per character each time it makes speech, and stored output can be replayed at no extra charge.
-      - id: call-every-play
-        text: Ask Polly for fresh audio every time a student presses listen
-        variants:
-          - text: Request new audio from Polly on each press of listen
-          - text: Have Polly make the speech again for every listen
-        explanation:
-          text: That pays for the same characters thousands of times.
-      - id: cheaper-engine
-        text: Use a lower-cost voice engine, such as Standard, where it sounds good enough
-        variants:
-          - text: Pick a cheaper engine, such as Standard, where its voice is acceptable
-          - text: Choose a less costly engine like Standard where its sound will do
-        explanation:
-          text: Correct. The rate per character depends on the engine; the most natural-sounding engines cost several times more.
-      - id: own-voice-model
-        text: Train and host a voice model of its own in SageMaker AI
-        variants:
-          - text: Build and host its own voice model in SageMaker AI
-          - text: Host a custom voice model it trains in SageMaker AI
-        explanation:
-          text: Building and hosting a model costs far more than a ready-made service for a solved problem.
-      - id: transcribe-cache
-        text: Use Amazon Transcribe to cache the audio between plays
-        variants:
-          - text: Cache the audio between plays with Amazon Transcribe
-          - text: Keep the audio between plays in Amazon Transcribe
-        explanation:
-          text: Transcribe turns speech into text. It isn't a cache, and it adds cost.
-    correct_answers: [synthesize-once, cheaper-engine]
-    hint:
-      text: Ask what Polly charges for, and what makes that rate higher or lower.
-    explanation:
-      text: |
-        Polly charges for the characters it turns into speech, each time, at a rate set by the voice
-        engine. Generating each summary once and replaying the stored audio pays for the characters once;
-        choosing a cheaper engine where it sounds good enough lowers the rate. Prices change, so check the
-        Polly pricing page.
-
   # ---------------------------------------------------------------------------------------------
   # Lesson 10.03, People, apps and devices
   # ---------------------------------------------------------------------------------------------
@@ -2393,113 +2087,6 @@ questions:
         the device as pixels, so the firm's files stay in AWS. There's no hardware to buy, users can be
         added and removed as needs change, and removing the desktops when the season ends stops their
         charges.
-
-  - id: q10-workspaces-part-time-billing
-    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
-    section: "WorkSpaces gives each person a whole desktop that runs in AWS"
-    task: "3.8"
-    level: application
-    topics: [workspaces, cost]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A charity gives WorkSpaces desktops to volunteers who each log in for about two hours a week.
-        Which billing setup is likely to cost the least for these desktops?
-    choices:
-      - id: monthly
-        text: Monthly billing, with one fixed fee per desktop for unlimited use
-        variants:
-          - text: The monthly mode, a fixed fee per desktop however much it's used
-          - text: Monthly billing, paying one flat fee per desktop for any amount of use
-        explanation:
-          text: A fixed monthly fee suits full-time users past the break-even point. Two hours a week is far below it.
-      - id: hourly-autostop
-        text: Hourly billing with AutoStop, paying a low monthly fee plus the hours used
-        variants:
-          - text: The hourly mode with AutoStop, a small monthly fee plus each hour run
-          - text: Hourly billing and AutoStop, with a low monthly part and a charge per hour
-        explanation:
-          text: Correct. Desktops stop after users disconnect, so the volunteers pay for few hours on top of a small monthly fee.
-      - id: monthly-autostop
-        text: Monthly billing with AutoStop, so the fixed fee pauses while stopped
-        variants:
-          - text: The monthly mode plus AutoStop, pausing the fixed fee when stopped
-          - text: Monthly billing and AutoStop, with the flat fee paused while stopped
-        explanation:
-          text: The monthly fee is fixed however much the desktop is used. AutoStop pauses hourly charges, which only the hourly mode has.
-      - id: hourly-always-on
-        text: Hourly billing, with every desktop left running all week
-        variants:
-          - text: The hourly mode, keeping each desktop running all week long
-          - text: Hourly billing, where the desktops stay on through the week
-        explanation:
-          text: Paying by the hour for desktops that run all week throws away the saving. AutoStop stops a desktop when the user disconnects.
-    correct_answers: [hourly-autostop]
-    hint:
-      text: Picture the cost line for each billing mode at very low hours.
-    explanation:
-      text: |
-        WorkSpaces offers two billing modes. Monthly is one fixed fee, however much the desktop is used;
-        hourly is a low monthly fee plus a charge for each hour the desktop runs. With AutoStop, a
-        desktop stops after the user disconnects and hourly charges pause. Light, part-time use sits
-        below the break-even point, where hourly costs less.
-
-  - id: q10-workspaces-billing-two
-    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
-    section: "WorkSpaces gives each person a whole desktop that runs in AWS"
-    task: "3.8"
-    level: understanding
-    topics: [workspaces, cost]
-    type: multiple_choice
-    selection: multiple
-    selection_count: 2
-    prompt:
-      text: |
-        Which two statements about Amazon WorkSpaces billing are accurate? (Select TWO.)
-    choices:
-      - id: monthly-rises
-        text: The monthly mode's fee rises with each hour the desktop is used
-        variants:
-          - text: In the monthly mode, the fee goes up with every hour of use
-          - text: Monthly billing charges more for each extra hour of use
-        explanation:
-          text: The monthly mode is one fixed fee, however much the desktop is used.
-      - id: hourly-has-monthly-part
-        text: The hourly mode has a low monthly fee as well as a charge for each hour
-        variants:
-          - text: Hourly billing adds a charge per hour to a small monthly fee
-          - text: In the hourly mode, a low monthly fee comes with a per-hour charge
-        explanation:
-          text: Correct. The monthly part still applies even in hours the desktop isn't running.
-      - id: autostop-pauses
-        text: With AutoStop, hourly charges pause while the desktop is stopped
-        variants:
-          - text: AutoStop pauses the hourly charges while a desktop is stopped
-          - text: A stopped desktop with AutoStop runs up no hourly charges
-        explanation:
-          text: Correct. AutoStop stops the desktop after the user disconnects (60 minutes by default), and hourly charges pause.
-      - id: autostop-free-month
-        text: AutoStop also removes the monthly part of the hourly mode
-        variants:
-          - text: With AutoStop, the hourly mode's monthly fee goes away too
-          - text: AutoStop cancels the monthly fee in the hourly mode as well
-        explanation:
-          text: The monthly part still applies. AutoStop affects only the hourly charges.
-      - id: partial-free
-        text: Partial hours aren't billed in the hourly mode
-        variants:
-          - text: The hourly mode doesn't bill for part of an hour
-          - text: Hourly billing ignores any partial hour
-        explanation:
-          text: Partial hours count as full hours.
-    correct_answers: [hourly-has-monthly-part, autostop-pauses]
-    explanation:
-      text: |
-        WorkSpaces bills monthly (one fixed fee) or hourly (a low monthly fee plus each hour the
-        desktop runs), and you can switch. With AutoStop, the desktop stops after the user disconnects
-        and hourly charges pause, but the monthly part still applies and partial hours count as full
-        ones (checked 2026-10-24).
 
   - id: q10-applications-cad-course
     page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
@@ -2712,7 +2299,7 @@ questions:
 
   - id: q10-appstream-name-today
     page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
-    section: '"AppStream 2.0" and "WorkSpaces Web" are older names'
+    section: "WorkSpaces Applications streams single apps; Secure Browser streams one web browser"
     task: "3.8"
     level: recall
     topics: [workspaces-applications, service-names]
@@ -2967,55 +2554,6 @@ questions:
         as newsletters, with no mail servers to run. SNS sends short notifications to subscribers and is
         not an email platform.
 
-  - id: q10-ses-sandbox-verified-only
-    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
-    section: "SES sends email at scale"
-    task: "3.8"
-    level: understanding
-    topics: [ses]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A pet-food shop's developer has just turned on Amazon SES in the shop's new AWS account. Her
-        "your order has shipped" test reaches her own verified address, but the same message to real
-        customers is refused. What explains this, and what should she do next?
-    choices:
-      - id: suspended
-        text: The account is suspended for spam; open an abuse case with AWS
-        variants:
-          - text: AWS suspended the account for spam; file an abuse case
-          - text: Spam got the account suspended; raise an abuse case with AWS
-        explanation:
-          text: Nothing was suspended. Every new account starts with SES in a restricted mode.
-      - id: subscribe-first
-        text: Customers must subscribe before SES can mail them; send each a subscription link
-        variants:
-          - text: Each customer has to subscribe first; send them all a subscription link
-          - text: SES mails only subscribers; send every customer a link to subscribe
-        explanation:
-          text: Subscriptions belong to Amazon SNS topics. SES sends to any address once the account has production access.
-      - id: sandbox
-        text: SES starts in a sandbox; ask AWS for production access
-        variants:
-          - text: New accounts start in the SES sandbox; request production access
-          - text: SES begins in its sandbox; apply to AWS for production access
-        explanation:
-          text: Correct. In the sandbox you can send only to verified addresses, with low limits, until AWS grants production access.
-      - id: own-domain-only
-        text: SES delivers only inside the shop's own domain; pick another service
-        variants:
-          - text: SES can reach addresses in the shop's own domain alone; switch services
-          - text: Mail from SES stays within the shop's own domain; choose another service
-        explanation:
-          text: SES sends to customers anywhere; that's its main job. The limit she hit is the sandbox's.
-    correct_answers: [sandbox]
-    explanation:
-      text: |
-        Every new account starts in the SES sandbox: you can send only to addresses you've verified, with
-        low limits, until you ask AWS for production access. The sandbox protects SES's reputation, and
-        so yours, from spam sent by mistake or on purpose.
-
   - id: q10-amplify-nonprofit-app
     page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
     section: "Amplify builds and hosts web and mobile front ends"
@@ -3170,60 +2708,9 @@ questions:
         picks the readings that matter and hands them to another service, such as an SNS topic that emails
         or texts. Another rule could send every reading to S3 for history.
 
-  - id: q10-device-shadow-vending
-    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
-    section: "IoT Core connects devices and routes what they send"
-    task: "3.8"
-    level: application
-    topics: [iot-core]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A company's vending machines report their stock levels through AWS IoT Core. Its app must show
-        each machine's last known stock even while a machine's mobile connection drops for a few minutes.
-        Which IoT Core feature helps?
-    choices:
-      - id: device-shadow
-        text: The Device Shadow, a stored copy of each machine's last reported state
-        variants:
-          - text: Device Shadow, keeping a copy of each machine's last reported state
-          - text: Each machine's Device Shadow, holding its last reported state
-        explanation:
-          text: Correct. The app reads the shadow instead of the machine, and the machine updates it when it reconnects.
-      - id: iot-rule
-        text: An IoT rule that resends old readings when a machine is offline
-        variants:
-          - text: An IoT rule resending earlier readings while a machine is offline
-          - text: An IoT rule that replays past readings whenever a machine drops off
-        explanation:
-          text: A rule filters and routes incoming messages. It doesn't stand in for an offline device.
-      - id: kinesis-replay
-        text: Kinesis Data Streams replay, which reads the machine's records again
-        variants:
-          - text: Replay in Kinesis Data Streams, reading the machine's records again
-          - text: Kinesis Data Streams, replaying the machine's records once more
-        explanation:
-          text: Replay lets your programs reread a stream. It isn't how an app gets a device's current state from IoT Core.
-      - id: greengrass
-        text: AWS IoT Greengrass, which keeps the app connected to each machine
-        variants:
-          - text: AWS IoT Greengrass, holding the app's connection to each machine
-          - text: IoT Greengrass, which keeps each machine linked to the app
-        explanation:
-          text: Greengrass is software that runs on devices, and it's out of the exam's scope.
-    correct_answers: [device-shadow]
-    hint:
-      text: The app needs a copy of the state that doesn't depend on the machine being online.
-    explanation:
-      text: |
-        A Device Shadow is IoT Core's stored copy of each device's last reported state. Apps read it, or
-        set a desired state, even while the device is offline, and the device updates it when it
-        reconnects.
-
   - id: q10-euc-iot-customer-side-two
-    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
-    section: "Your side of the line"
+    page: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
+    section: "You are responsible for security in the cloud, and how much depends on the service"
     task: "2.1"
     level: understanding
     topics: [shared-responsibility, workspaces, iot-core]
@@ -3281,7 +2768,7 @@ questions:
 
   - id: q10-resort-needs-matched-two
     page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
-    section: "Worked example: finishing the owner's requests"
+    section: "The big picture: four kinds of user, seven services"
     task: "3.8"
     level: application
     topics: [end-user-computing, iot-core, amplify, ses, connect]
@@ -3364,7 +2851,7 @@ flashcards:
 
   - id: c10-streams-or-firehose
     page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
-    section: "Data Streams, Firehose or SQS: what happens after the data is read"
+    section: "Ingest: Data Streams holds records for your programs; Firehose delivers them for you"
     task: "3.7"
     level: understanding
     topics: [data-streams, data-firehose]
@@ -3375,7 +2862,7 @@ flashcards:
 
   - id: c10-sqs-not-a-stream
     page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
-    section: "Data Streams, Firehose or SQS: what happens after the data is read"
+    section: "Ingest: Data Streams holds records for your programs; Firehose delivers them for you"
     task: "3.7"
     level: understanding
     topics: [sqs, data-streams]
@@ -3386,7 +2873,7 @@ flashcards:
 
   - id: c10-kda-sql-as-answer
     page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
-    section: "Data Streams, Firehose or SQS: what happens after the data is read"
+    section: "Ingest: Data Streams holds records for your programs; Firehose delivers them for you"
     task: "3.7"
     level: recall
     topics: [kinesis, retired-services]
@@ -3395,20 +2882,9 @@ flashcards:
     back:
       text: As a wrong answer. New SQL applications stopped on 2025-10-15 and AWS began deleting existing ones on 2026-01-27 (checked 2026-10-24).
 
-  - id: c10-athena-cost-driver
-    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
-    section: "What you pay for (as of 2026-10-24)"
-    task: "3.7"
-    level: understanding
-    topics: [athena, cost]
-    front:
-      text: What sets the cost of an Athena query, and how do you lower it?
-    back:
-      text: The amount of data it scans. Compress the files, partition them, and convert them to a columnar format such as Parquet.
-
   - id: c10-when-redshift-not-athena
     page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
-    section: "Worked example: the owner's sales dashboard"
+    section: "Query: Athena, Redshift and EMR answer questions in three different ways"
     task: "3.7"
     level: understanding
     topics: [redshift, athena]
@@ -3427,17 +2903,6 @@ flashcards:
       text: A question asks for dashboards for business users. Why isn't the answer Athena or Redshift?
     back:
       text: They run the queries. Amazon Quick Sight draws the dashboards, using services such as Athena or Redshift as its data sources.
-
-  - id: c10-ai-method-questions
-    page: guide/10-data-ai-and-more/02-ai-and-ml.md
-    section: "Worked example: three of the owner's requests"
-    task: "3.7"
-    level: understanding
-    topics: [ready-made-ai]
-    front:
-      text: In what order do you ask the questions that pick an AI service?
-    back:
-      text: 1. Does a ready-made service cover it (if not, SageMaker AI)? 2. What goes in? 3. Only if text goes in, what must come out?
 
   - id: c10-documents-pictures-text
     page: guide/10-data-ai-and-more/02-ai-and-ml.md
@@ -3474,7 +2939,7 @@ flashcards:
 
   - id: c10-closed-to-new-customers
     page: guide/10-data-ai-and-more/02-ai-and-ml.md
-    section: "Some AI names are closed or gone: recognize them, don't choose them"
+    section: "Amazon Q, and the AI names that are closed"
     task: "3.7"
     level: understanding
     topics: [retired-services]
@@ -3482,17 +2947,6 @@ flashcards:
       text: What does "closed to new customers" mean for a service such as Amazon Kendra?
     back:
       text: Existing customers keep using it; new customers can't sign up. Treat it as a wrong answer for a new design.
-
-  - id: c10-polly-synthesize-once
-    page: guide/10-data-ai-and-more/05-lab-14-polly-text-to-speech.md
-    section: "Recap"
-    task: "3.7"
-    level: understanding
-    topics: [polly, cost]
-    front:
-      text: Why should a site synthesize each fixed product description with Polly once, rather than on every play?
-    back:
-      text: Polly charges per character each time it makes speech. Stored audio can be replayed at no extra charge, so you pay for the characters once.
 
   - id: c10-workspaces-family-by-view
     page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
@@ -3504,17 +2958,6 @@ flashcards:
       text: How do you choose among WorkSpaces, WorkSpaces Applications and WorkSpaces Secure Browser?
     back:
       text: 'By what the user sees: a whole desktop (WorkSpaces), one or a few apps (WorkSpaces Applications), or one web browser (Secure Browser).'
-
-  - id: c10-workspaces-billing-choice
-    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
-    section: "WorkSpaces gives each person a whole desktop that runs in AWS"
-    task: "3.8"
-    level: application
-    topics: [workspaces, cost]
-    front:
-      text: Which WorkSpaces billing mode suits part-time staff, and which suits full-time staff?
-    back:
-      text: Part-time, hourly with AutoStop (a low monthly fee plus the hours run). Full-time, past the break-even point, monthly (one fixed fee).
 
   - id: c10-connect-lex-which
     page: guide/10-data-ai-and-more/03-people-apps-and-devices.md

@@ -119,7 +119,7 @@ questions:
 
   - id: q13-domain-chain-order
     page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
-    section: "Four domains change, each enabling the next"
+    section: "The CAF aims at four business outcomes"
     task: "1.3"
     level: recall
     topics: [cloud-adoption-framework, caf-domains]
@@ -1571,7 +1571,7 @@ questions:
 
   - id: q13-refactor-fitness-monolith
     page: guide/13-moving-to-aws/02-seven-migration-strategies.md
-    section: "Refactor: redesign for the cloud when the business demands it"
+    section: "Rehost, relocate, replatform, refactor side by side"
     task: "1.3"
     level: application
     topics: [migration-strategies, refactor]
@@ -1624,7 +1624,7 @@ questions:
 
   - id: q13-refactor-in-large-migration
     page: guide/13-moving-to-aws/02-seven-migration-strategies.md
-    section: "Refactor: redesign for the cloud when the business demands it"
+    section: "Rehost, relocate, replatform, refactor side by side"
     task: "1.3"
     level: understanding
     topics: [migration-strategies, refactor]
@@ -1724,8 +1724,8 @@ questions:
         wants.
 
   - id: q13-after-replatform-customer-keeps
-    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
-    section: "Your side of the line"
+    page: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
+    section: "Your data, and who can reach it, are always yours"
     task: "2.1"
     level: understanding
     topics: [migration-strategies, shared-responsibility]
@@ -1783,7 +1783,7 @@ questions:
 
   - id: q13-slide-two-corrections
     page: guide/13-moving-to-aws/05-sim-portfolio-sorter.md
-    section: "Decision 4: the slide below has five errors; find them"
+    section: "Decision 3: find the five errors in a consultant's slide"
     task: "1.3"
     level: understanding
     topics: [migration-strategies, cloud-adoption-framework]
@@ -1846,7 +1846,7 @@ questions:
 
   - id: q13-migration-evaluator-board-vote
     page: guide/13-moving-to-aws/03-migration-tools.md
-    section: "Migration Evaluator prices the move before anyone commits"
+    section: "Planning tools build the cost case and the inventory"
     task: "1.3"
     level: application
     topics: [migration-tools, migration-evaluator, business-case]
@@ -1897,57 +1897,9 @@ questions:
         reports projected costs, including bringing your own Windows Server and SQL Server licenses.
         You request an assessment from AWS rather than switching it on in the console.
 
-  - id: q13-migration-evaluator-collector
-    page: guide/13-moving-to-aws/03-migration-tools.md
-    section: "Migration Evaluator prices the move before anyone commits"
-    task: "1.3"
-    level: recall
-    topics: [migration-tools, migration-evaluator]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        Which statement about how Migration Evaluator gathers its data is correct?
-    choices:
-      - id: agent-everywhere
-        text: An agent must be installed on every server it assesses
-        variants:
-          - text: Each assessed server needs its own installed agent
-          - text: It needs an agent on each server it looks at
-        explanation:
-          text: Nothing is installed on each server. Installing an agent on each source server is how AWS Transform MGN and Elastic Disaster Recovery work.
-      - id: one-collector
-        text: An agentless collector on one Windows Server machine gathers it
-        variants:
-          - text: One agentless collector, on a single Windows Server VM, gathers it
-          - text: It uses one agentless collector running on a Windows Server VM
-        explanation:
-          text: Correct. The collector reads inventory and use from the systems you already have, or you upload exports from your own inventory tools.
-      - id: maps-dependencies
-        text: It maps the dependencies between applications to plan waves
-        variants:
-          - text: It traces which applications depend on which, to plan waves
-          - text: It charts application dependencies so waves can be planned
-        explanation:
-          text: Migration Evaluator doesn't map dependencies. That was Application Discovery Service's job, and AWS Transform's today.
-      - id: reads-cloudwatch
-        text: It reads CloudWatch metrics from EC2 instances already in AWS
-        variants:
-          - text: It uses CloudWatch metrics of EC2 instances already running
-          - text: It analyzes CloudWatch data from EC2 instances already on AWS
-        explanation:
-          text: Reading CloudWatch metrics of running instances is what Compute Optimizer does after a move. Migration Evaluator works before the move.
-    correct_answers: [one-collector]
-    explanation:
-      text: |
-        Migration Evaluator's collector is agentless: it runs on one Windows Server virtual machine on
-        your network and reads inventory and use from the systems you already have. It covers x86
-        servers only and doesn't map dependencies between applications. Its job is the cost case, not
-        the migration plan.
-
   - id: q13-discovery-which-talks-to-which
     page: guide/13-moving-to-aws/03-migration-tools.md
-    section: "The discovery and tracking tools are closed to new customers"
+    section: "Planning tools build the cost case and the inventory"
     task: "1.3"
     level: application
     topics: [migration-tools, application-discovery-service, closed-services]
@@ -2098,55 +2050,6 @@ questions:
         AWS's tool for the rehost strategy: it copies whole servers from physical machines, VMware,
         Hyper-V or another cloud and launches them as EC2 instances, without changing the
         applications. Test launches before cutover keep the switch short.
-
-  - id: q13-mgn-short-downtime
-    page: guide/13-moving-to-aws/03-migration-tools.md
-    section: "Application Migration Service, now AWS Transform MGN, rehosts whole servers"
-    task: "1.3"
-    level: understanding
-    topics: [migration-tools, application-migration-service]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        How does AWS Application Migration Service (now AWS Transform MGN) keep downtime short when it
-        rehosts a server?
-    choices:
-      - id: block-replication
-        text: It copies the disks block by block, then every change, while the server runs
-        variants:
-          - text: It replicates the disks at block level, then each change, as the server keeps running
-          - text: It copies every disk block, then each new change, without stopping the server
-        explanation:
-          text: Correct. Continuous block-level replication keeps the copy in AWS current, so cutover is only a short switch.
-      - id: overnight-image
-        text: It stops the server, copies an image overnight, then starts it on EC2
-        variants:
-          - text: It shuts the server down, copies its image overnight, then launches it on EC2
-          - text: It halts the server for an overnight image copy, then starts it in EC2
-        explanation:
-          text: Stopping the server for the whole copy would mean a long outage. The source keeps running until cutover.
-      - id: nightly-files
-        text: It copies changed files each night, then rebuilds the server on EC2
-        variants:
-          - text: It sends each night's changed files, then rebuilds the server in EC2
-          - text: It copies the day's changed files nightly, then rebuilds it on EC2
-        explanation:
-          text: It works below the level of files and doesn't rebuild anything. The copy in AWS is identical to the disks, operating system included.
-      - id: containers
-        text: It converts the server's applications into containers that start at once
-        variants:
-          - text: It turns the server's applications into containers that start immediately
-          - text: It repackages the applications as containers that launch instantly
-        explanation:
-          text: MGN doesn't change the applications; it rehosts them. Moving into containers would be a replatform.
-    correct_answers: [block-replication]
-    explanation:
-      text: |
-        An agent on the source server copies its disks block by block into a low-cost staging area in
-        AWS, then keeps copying every change while the server keeps running. You can launch test
-        instances from the staging area as often as you like. At cutover you launch from the latest
-        copy and switch users over, a window AWS says is typically measured in minutes.
 
   - id: q13-dms-vet-postgresql
     page: guide/13-moving-to-aws/03-migration-tools.md
@@ -2462,7 +2365,7 @@ questions:
 
   - id: q13-job-tool-pairs-select-two
     page: guide/13-moving-to-aws/03-migration-tools.md
-    section: "Worked example: a tool for each of the chain's jobs"
+    section: "Summary"
     task: "1.3"
     level: understanding
     topics: [migration-tools]
@@ -2517,7 +2420,7 @@ questions:
 
   - id: q13-who-patches-rehosted-server
     page: guide/13-moving-to-aws/03-migration-tools.md
-    section: "Your side of the line"
+    section: "Application Migration Service, now AWS Transform MGN, rehosts whole servers"
     task: "2.1"
     level: understanding
     topics: [migration-tools, shared-responsibility]
@@ -2566,7 +2469,7 @@ questions:
         that job to AWS.
 
   # ---------------------------------------------------------------------------------------------
-  # Lesson 13.04, The business case (and Simulation S17)
+  # Lesson 13.04, The business case
   # ---------------------------------------------------------------------------------------------
 
   - id: q13-draft-case-missing-two
@@ -2679,7 +2582,7 @@ questions:
 
   - id: q13-pricing-calculator-in-case
     page: guide/13-moving-to-aws/04-the-business-case.md
-    section: "There is no TCO Calculator: use Migration Evaluator for the case, and the Pricing Calculator for estimates"
+    section: "\"Use the AWS TCO Calculator\" is out of date"
     task: "1.4"
     level: understanding
     topics: [business-case, pricing-calculator, closed-services]
@@ -2834,58 +2737,6 @@ questions:
         doesn't resize; keep it apart from Auto Scaling, which changes how many instances run, and
         from Migration Evaluator, which works before the move.
 
-  - id: q13-sql-enterprise-features-unused
-    page: guide/13-moving-to-aws/04-the-business-case.md
-    section: "Rightsize twice: before the move from measured data, and after it with Compute Optimizer"
-    task: "1.4"
-    level: application
-    topics: [rightsizing, compute-optimizer, licensing]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A company runs license-included SQL Server Enterprise on EC2 instances. Its database team
-        suspects that no Enterprise-only features are in use. Which AWS service can report the
-        license as not optimized and show the saving from moving to Standard edition?
-    choices:
-      - id: license-manager
-        text: AWS License Manager
-        variants:
-          - text: License Manager
-          - text: The AWS License Manager service
-        explanation:
-          text: The word "license" makes this tempting. License Manager tracks the licenses you bring and limits launches; it doesn't analyze which edition's features you use.
-      - id: budgets
-        text: AWS Budgets
-        variants:
-          - text: Budgets
-          - text: The AWS Budgets service
-        explanation:
-          text: Budgets tracks spending against a limit you set. It doesn't look at how software is used.
-      - id: migration-evaluator
-        text: Migration Evaluator
-        variants:
-          - text: The Migration Evaluator service
-          - text: AWS's Migration Evaluator
-        explanation:
-          text: Migration Evaluator works before a move, from on-premises data. These instances already run on AWS.
-      - id: compute-optimizer
-        text: AWS Compute Optimizer
-        variants:
-          - text: Compute Optimizer
-          - text: The AWS Compute Optimizer service
-        explanation:
-          text: Correct. Its license recommendations flag SQL Server Enterprise that uses no Enterprise features and show the saving from Standard.
-    correct_answers: [compute-optimizer]
-    hint:
-      text: The question is about using something bigger than the work needs, applied to a license.
-    explanation:
-      text: |
-        AWS Compute Optimizer's recommendations include commercial software licenses. If an instance
-        pays for SQL Server Enterprise but uses none of its Enterprise features, it reports the
-        license as not optimized and shows the saving from Standard. Edition choice is rightsizing
-        applied to software, and it can be worth more than the instance size.
-
   - id: q13-byol-terms-responsibility
     page: guide/13-moving-to-aws/04-the-business-case.md
     section: "License-included or bring your own license: who pays the software vendor"
@@ -2934,114 +2785,6 @@ questions:
         for following the license terms, and its licensing page isn't legal advice. With
         license-included software, AWS handles the licensing. AWS License Manager helps by tracking
         licenses across accounts and stopping launches that would exceed what you own.
-
-  - id: q13-license-routes-select-two
-    page: guide/13-moving-to-aws/04-the-business-case.md
-    section: "License-included or bring your own license: who pays the software vendor"
-    task: "1.4"
-    level: application
-    topics: [licensing, dedicated-hosts]
-    type: multiple_choice
-    selection: multiple
-    selection_count: 2
-    prompt:
-      text: |
-        A logistics firm's IT manager lists the Microsoft licenses the firm owns, each with the place
-        on AWS where she'd like to use it. Going by the license terms AWS describes, which two of her
-        plans can go ahead? (Select TWO.)
-    choices:
-      - id: sql-sa-shared
-        text: SQL Server with active Software Assurance, on shared EC2 instances
-        variants:
-          - text: SQL Server covered by active Software Assurance, on default-tenancy instances
-          - text: SQL Server licenses with current Software Assurance, on shared instances
-        explanation:
-          text: Correct. With active Software Assurance, SQL Server is eligible for License Mobility to ordinary shared instances, after verification with Microsoft.
-      - id: windows-sa-shared
-        text: Windows Server with active Software Assurance, on shared EC2 instances
-        variants:
-          - text: Windows Server covered by active Software Assurance, on default-tenancy instances
-          - text: Windows Server licenses with current Software Assurance, on shared instances
-        explanation:
-          text: Windows Server isn't on the License Mobility eligible list, even with Software Assurance.
-      - id: windows-2018-host
-        text: Windows Server bought in 2018, without Software Assurance, on Dedicated Hosts
-        variants:
-          - text: Windows Server licenses from 2018, no Software Assurance, on Dedicated Hosts
-          - text: Windows Server purchased in 2018 without Software Assurance, on Dedicated Hosts
-        explanation:
-          text: Correct. Licenses without Software Assurance bought before 2019-10-01 can come to AWS on Dedicated Hosts.
-      - id: sql-2022-host
-        text: SQL Server bought in 2022, without Software Assurance, on Dedicated Hosts
-        variants:
-          - text: SQL Server licenses from 2022, no Software Assurance, on Dedicated Hosts
-          - text: SQL Server purchased in 2022 without Software Assurance, on Dedicated Hosts
-        explanation:
-          text: The Dedicated Hosts route without Software Assurance is only for licenses bought before 2019-10-01.
-      - id: windows-2023-host
-        text: Windows Server bought in 2023, without Software Assurance, on Dedicated Hosts
-        variants:
-          - text: Windows Server licenses from 2023, no Software Assurance, on Dedicated Hosts
-          - text: Windows Server purchased in 2023 without Software Assurance, on Dedicated Hosts
-        explanation:
-          text: Bought after 2019-10-01 and without Software Assurance, these licenses have no route to AWS. License-included instances are the way to run Windows Server here.
-    correct_answers: [sql-sa-shared, windows-2018-host]
-    explanation:
-      text: |
-        How licenses may come to AWS depends on their terms. With active Software Assurance, eligible
-        products such as SQL Server move to shared instances under License Mobility; Windows Server
-        isn't eligible. Without Software Assurance, licenses bought before 2019-10-01 can go on
-        Dedicated Hosts. Anything else runs license-included. Vendors' terms decide; check them.
-
-  - id: q13-rds-bring-own-sql
-    page: guide/13-moving-to-aws/04-the-business-case.md
-    section: "License-included or bring your own license: who pays the software vendor"
-    task: "1.4"
-    level: recall
-    topics: [licensing, rds]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A company moves its SQL Server 2019 Standard database to Amazon RDS for SQL Server and brings
-        its own SQL Server licenses, which have active Software Assurance. Which statement is
-        correct?
-    choices:
-      - id: no-patching
-        text: RDS stops patching the database, since the company owns its license
-        variants:
-          - text: RDS no longer patches the database, because the license is the company's
-          - text: Owning the license means RDS no longer patches the database
-        explanation:
-          text: Who owns the license doesn't change what RDS manages. It still handles patching and backups.
-      - id: needs-host
-        text: The database must run on a Dedicated Host to use the company's licenses
-        variants:
-          - text: Using the company's licenses requires a Dedicated Host under the database
-          - text: The company's licenses work only if the database runs on a Dedicated Host
-        explanation:
-          text: Dedicated Hosts are the route for older licenses without Software Assurance on EC2. RDS accepts licenses with active Software Assurance directly.
-      - id: no-fees
-        text: AWS charges nothing for the database, since the company owns its licenses
-        variants:
-          - text: The database costs nothing on AWS, because the licenses are the company's
-          - text: Owning its licenses means the company pays AWS nothing for the database
-        explanation:
-          text: The company still pays for the infrastructure and the Windows fee. Only the SQL Server license fee goes away.
-      - id: no-sql-fee
-        text: AWS charges no SQL Server license fee, and RDS still handles patching and backups
-        variants:
-          - text: There's no SQL Server license fee from AWS, and RDS still patches and backs up
-          - text: AWS drops the SQL Server license fee, while RDS keeps doing patches and backups
-        explanation:
-          text: Correct. AWS calls this Bring Your Own Media. The company still pays for the infrastructure and the Windows fee, and must keep its Software Assurance active.
-    correct_answers: [no-sql-fee]
-    explanation:
-      text: |
-        Amazon RDS for SQL Server offers the same split as EC2: license-included, or your own licenses
-        for SQL Server 2019 or later, Enterprise or Standard edition, with active Software Assurance.
-        With your own licenses, AWS charges no SQL Server license fee, but the infrastructure and
-        Windows fee remain, and RDS still does the patching and backups.
 
   - id: q13-license-manager-twelve-accounts
     page: guide/13-moving-to-aws/04-the-business-case.md
@@ -3095,59 +2838,9 @@ questions:
         license-included and BYOL without rebuilding them. Since compliance with BYOL terms is the
         customer's, it's the customer's main helper.
 
-  - id: q13-host-costs-the-most
-    page: guide/13-moving-to-aws/04-the-business-case.md
-    section: "Worked example: licensing a distributor's reporting database"
-    task: "1.4"
-    level: understanding
-    topics: [licensing, dedicated-hosts]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A company owns SQL Server Enterprise licenses from 2018, without Software Assurance, for two
-        small reporting servers. Running them on one EC2 Dedicated Host turns out to cost more than
-        rightsized license-included instances. Why?
-    choices:
-      - id: whole-server
-        text: A host is billed as a whole server, and two small instances leave most of it idle
-        variants:
-          - text: The host is charged as an entire server, mostly empty with two small instances
-          - text: Billing is for the whole server, and two small instances use little of it
-        explanation:
-          text: Correct. A Dedicated Host bills per host, however many instances run on it, and per-core licenses may also have to cover all its physical cores.
-      - id: charged-again
-        text: AWS charges the SQL Server license fee again on licenses you bring
-        variants:
-          - text: AWS bills the SQL Server license a second time when you bring your own
-          - text: Licenses you bring are charged for again by AWS
-        explanation:
-          text: With BYOL, AWS charges only for the infrastructure. The problem is how that infrastructure is billed.
-      - id: one-instance
-        text: A Dedicated Host can run only one instance at a time
-        variants:
-          - text: Only a single instance fits on a Dedicated Host at once
-          - text: A Dedicated Host holds just one instance at a time
-        explanation:
-          text: A host can run many instances; that's why filling it is what makes it pay off.
-      - id: no-os-charge
-        text: License-included instances carry no operating system charge at all
-        variants:
-          - text: License-included instances include the operating system free of charge
-          - text: There's no charge for the operating system on license-included instances
-        explanation:
-          text: License-included Windows instances do charge for Windows; it's part of their hourly price.
-    correct_answers: [whole-server]
-    explanation:
-      text: |
-        Bring your own license isn't always cheaper. A Dedicated Host is billed as a whole physical
-        server, so it pays off when you can fill it, for example with dozens of Windows servers, not
-        two. Licenses already paid for are a sunk cost: what was spent in the past doesn't change
-        which option is cheapest from today.
-
   - id: q13-rightsize-then-commit
-    page: guide/13-moving-to-aws/06-sim-rightsizing-and-licensing.md
-    section: "Decision 1: for each server, choose downsize, upsize, keep, schedule or wait, and say why"
+    page: guide/13-moving-to-aws/04-the-business-case.md
+    section: "Rightsize twice: before the move from measured data, and after it with Compute Optimizer"
     task: "1.4"
     level: application
     topics: [rightsizing, savings-plans]
@@ -3198,8 +2891,8 @@ questions:
         hour for one or three years.
 
   - id: q13-schedule-weekday-test
-    page: guide/13-moving-to-aws/06-sim-rightsizing-and-licensing.md
-    section: "Decision 1: for each server, choose downsize, upsize, keep, schedule or wait, and say why"
+    page: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
+    section: "Rightsizing and automation keep the variable bill small"
     task: "1.4"
     level: application
     topics: [rightsizing]
@@ -3249,61 +2942,9 @@ questions:
         can be acted on with a smaller type. Commitments come last, and only for what runs all the
         time.
 
-  - id: q13-no-memory-data
-    page: guide/13-moving-to-aws/06-sim-rightsizing-and-licensing.md
-    section: "Decision 1: for each server, choose downsize, upsize, keep, schedule or wait, and say why"
-    task: "1.4"
-    level: application
-    topics: [rightsizing, compute-optimizer]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        AWS Compute Optimizer reports an EC2 instance as over-provisioned because its CPU use peaks
-        at 9%. The CloudWatch agent isn't installed on it, so there is no memory data. What should
-        the team do?
-    choices:
-      - id: agent-then-decide
-        text: Install the CloudWatch agent, collect enough data, then decide
-        variants:
-          - text: Add the CloudWatch agent, gather enough data, and then decide
-          - text: Get memory data through the CloudWatch agent before deciding
-        explanation:
-          text: Correct. Compute Optimizer sees memory only if the agent runs on the instance. Downsizing blind could leave the server short of memory.
-      - id: downsize-now
-        text: Downsize it right away, since its CPU use is so low
-        variants:
-          - text: Move it to a smaller type now, as CPU use is very low
-          - text: Shrink it at once, because its CPU use is tiny
-        explanation:
-          text: Low CPU says nothing about memory. A smaller type has less memory, and nobody knows how much this server uses.
-      - id: upsize
-        text: Upsize it, since missing data means the risk is high
-        variants:
-          - text: Move it to a larger type, as the missing data makes it risky
-          - text: Give it a bigger type, because without data the risk is high
-        explanation:
-          text: Nothing shows the server is short of resources. Missing data is a reason to collect it, not to spend more.
-      - id: ignore-ec2
-        text: Ignore the finding, since Compute Optimizer can't assess EC2
-        variants:
-          - text: Disregard it, because Compute Optimizer doesn't cover EC2
-          - text: Set the finding aside, as EC2 is outside Compute Optimizer's scope
-        explanation:
-          text: Compute Optimizer does cover EC2. The finding is real but incomplete.
-    correct_answers: [agent-then-decide]
-    hint:
-      text: Check the data before acting on the finding.
-    explanation:
-      text: |
-        Rightsize from data you trust: enough hours of metrics, memory included, and the busy season
-        covered. Compute Optimizer sees an instance's memory only when the CloudWatch agent runs on it,
-        so a CPU-only finding is half the picture. Install the agent, wait for enough data, then
-        follow the finding.
-
   - id: q13-upsize-nightly-batch
-    page: guide/13-moving-to-aws/06-sim-rightsizing-and-licensing.md
-    section: "Decision 1: for each server, choose downsize, upsize, keep, schedule or wait, and say why"
+    page: guide/13-moving-to-aws/04-the-business-case.md
+    section: "Rightsize twice: before the move from measured data, and after it with Compute Optimizer"
     task: "1.4"
     level: understanding
     topics: [rightsizing, compute-optimizer]
@@ -3351,8 +2992,8 @@ questions:
         more than a larger instance.
 
   - id: q13-per-core-license-host
-    page: guide/13-moving-to-aws/06-sim-rightsizing-and-licensing.md
-    section: "Decision 2: choose a route for each workload"
+    page: guide/11-paying-for-aws/02-purchasing-options.md
+    section: "Dedicated Hosts and Dedicated Instances: hardware with no other customers"
     task: "1.4"
     level: application
     topics: [licensing, dedicated-hosts]
@@ -3404,20 +3045,9 @@ questions:
 
 flashcards:
 
-  - id: c13-servers-alone-partial
-    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
-    section: "Four domains change, each enabling the next"
-    task: "1.3"
-    level: understanding
-    topics: [cloud-adoption-framework, caf-domains]
-    front:
-      text: Why does moving servers to AWS deliver only part of what the AWS CAF promises?
-    back:
-      text: Moving servers is the technology domain, the first link in the chain. Most of the larger outcomes come from what it makes possible next, in process, organization and product.
-
   - id: c13-capability-words-trap
     page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
-    section: "Six perspectives group the capabilities, each owned by different people"
+    section: "Map a concern by asking what is at stake, not who is asking"
     task: "1.3"
     level: understanding
     topics: [cloud-adoption-framework, caf-perspectives]
@@ -3470,20 +3100,9 @@ flashcards:
     back:
       text: Relocate. The application's architecture stays as it is, and the team keeps operating the platform the same way.
 
-  - id: c13-sensitive-tables-refactor
-    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
-    section: "Refactor: redesign for the cloud when the business demands it"
-    task: "1.3"
-    level: understanding
-    topics: [migration-strategies, refactor]
-    front:
-      text: A database's sensitive tables must stay on premises while the rest of the application moves. Which strategy does AWS list for this, and why?
-    back:
-      text: Refactor. The database has to be split, which changes the application's design. Retain would keep all of it; rehost or replatform would move all of it.
-
   - id: c13-always-customers
-    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
-    section: "Your side of the line"
+    page: guide/04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md
+    section: "Your data, and who can reach it, are always yours"
     task: "2.1"
     level: recall
     topics: [migration-strategies, shared-responsibility]
@@ -3503,28 +3122,6 @@ flashcards:
     back:
       text: The exam wants AWS Application Discovery Service. It has been closed to new customers since 2025-11-07, so a new customer uses AWS Transform (checked 2026-10-24).
 
-  - id: c13-mgn-waves
-    page: guide/13-moving-to-aws/03-migration-tools.md
-    section: "Application Migration Service, now AWS Transform MGN, rehosts whole servers"
-    task: "1.3"
-    level: understanding
-    topics: [migration-tools, application-migration-service]
-    front:
-      text: Why does AWS Application Migration Service (AWS Transform MGN) let you group servers into applications and waves?
-    back:
-      text: So servers that depend on each other cut over together, as one group, rather than one by one with broken links between them.
-
-  - id: c13-network-arithmetic
-    page: guide/13-moving-to-aws/03-migration-tools.md
-    section: "Files move over the network with DataSync; Snowball is no longer the answer"
-    task: "1.3"
-    level: understanding
-    topics: [migration-tools, datasync]
-    front:
-      text: About how long does copying 60 TB take over a 1 Gbps link at 80% use, and what does that suggest?
-    back:
-      text: About a week (6.9 days). "Large" alone no longer means "ship a device"; do the arithmetic, then use DataSync if the network can finish in time.
-
   - id: c13-move-as-is-costs-more
     page: guide/13-moving-to-aws/04-the-business-case.md
     section: "Rightsize twice: before the move from measured data, and after it with Compute Optimizer"
@@ -3538,7 +3135,7 @@ flashcards:
 
   - id: c13-tco-idea-lives
     page: guide/13-moving-to-aws/04-the-business-case.md
-    section: "There is no TCO Calculator: use Migration Evaluator for the case, and the Pricing Calculator for estimates"
+    section: "\"Use the AWS TCO Calculator\" is out of date"
     task: "1.4"
     level: understanding
     topics: [business-case, closed-services]
@@ -3547,20 +3144,9 @@ flashcards:
     back:
       text: Yes. The idea lives on, and AWS's Cloud Economics Center still uses "TCO" as a label. The calculator's address now opens the AWS Pricing Calculator (checked 2026-10-24).
 
-  - id: c13-finance-and-tech-together
-    page: guide/13-moving-to-aws/04-the-business-case.md
-    section: "In real work: finance and technology build the case together"
-    task: "1.4"
-    level: understanding
-    topics: [business-case]
-    front:
-      text: In a migration business case, what does finance own and what do engineers own?
-    back:
-      text: Finance owns the on-premises numbers and the license agreements. Engineers own the measured use and the instance choices. COST01-BP02 asks for this partnership.
-
   - id: c13-sunk-cost-licenses
     page: guide/13-moving-to-aws/04-the-business-case.md
-    section: "Worked example: licensing a distributor's reporting database"
+    section: "License-included or bring your own license: who pays the software vendor"
     task: "1.4"
     level: understanding
     topics: [licensing, business-case]
@@ -3568,36 +3154,3 @@ flashcards:
       text: A company already paid for its licenses years ago. Does that make bringing them to AWS the cheapest option?
     back:
       text: No. Licenses already paid for are a sunk cost. Compare the options from today, including any Dedicated Host or Software Assurance the route needs.
-
-  - id: c13-windows-no-license-mobility
-    page: guide/13-moving-to-aws/04-the-business-case.md
-    section: "License-included or bring your own license: who pays the software vendor"
-    task: "1.4"
-    level: recall
-    topics: [licensing]
-    front:
-      text: Can Windows Server licenses move to ordinary shared EC2 instances under License Mobility?
-    back:
-      text: No. Windows Server isn't eligible for License Mobility, even with Software Assurance. Older licenses can go on Dedicated Hosts; otherwise use license-included.
-
-  - id: c13-pre-2019-dedicated-hosts
-    page: guide/13-moving-to-aws/04-the-business-case.md
-    section: "License-included or bring your own license: who pays the software vendor"
-    task: "1.4"
-    level: recall
-    topics: [licensing, dedicated-hosts]
-    front:
-      text: Without Software Assurance, which SQL Server licenses can a company bring to EC2, and where can they run?
-    back:
-      text: Only those bought before 2019-10-01 (or added as a true-up under an Enterprise Enrollment effective before then), and only on Dedicated Hosts.
-
-  - id: c13-optimizer-needs-data
-    page: guide/13-moving-to-aws/06-sim-rightsizing-and-licensing.md
-    section: "How the data gets made"
-    task: "1.4"
-    level: recall
-    topics: [rightsizing, compute-optimizer]
-    front:
-      text: What does Compute Optimizer need before it gives a trustworthy EC2 finding?
-    back:
-      text: Your opt-in; at least 30 hours of metrics within the last 14 days; and the CloudWatch agent on the instance if memory is to count (checked 2026-10-24).
