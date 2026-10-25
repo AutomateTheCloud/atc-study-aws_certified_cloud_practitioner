@@ -169,7 +169,7 @@ These twelve questions follow the guide's modules in order, from Module 02 to Mo
 
 **B is right.** Owning means paying for 4 servers every month: 48 server-months at $100, or $4,800. Renting what it needs means 10 months of 1 server plus 2 months of 4: 18 server-months at $150, or $2,700. Renting costs $2,100 less, because the farm stops paying for servers that would sit idle for ten months.
 
-- **A is wrong.** Renting 4 servers all year would cost $7,200, but the farm rents only what it needs. Keeping peak capacity running all year is how the cloud ends up dearer.
+- **A is wrong.** Renting 4 servers all year would cost $7,200, but the farm rents only what it needs. Keeping peak capacity running all year is how the cloud ends up costing more.
 - **C is wrong.** Only owning pays for the peak all year. Renting pays for the peak only in the two months that need it.
 - **D is wrong.** The rate per server-month is lower for owning, but owning pays for many more server-months. The total is what counts.
 
