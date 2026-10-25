@@ -96,7 +96,7 @@ How they relate to the rest:
 
 Edge locations give you three benefits: faster answers, because the first trip is short; fewer requests reaching your servers, because the edge answers many; and attack traffic absorbed far from your servers. CloudFront includes AWS Shield Standard, which protects against common network attacks, at no extra cost (checked 2026-10-23; Module 09 covers Shield).
 
-> **Dated (checked 2026-10-23):** don't memorize these counts. When we checked, AWS's CloudFront features page listed more than 750 points of presence in more than 100 cities across more than 50 countries, plus more than 1,140 smaller "embedded" points of presence inside internet providers' networks. For Region and AZ counts, see the dated box in [lesson 03.01](01-regions-availability-zones-data-centers.md) or AWS's [Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/) page. Older material quotes smaller numbers; the pattern, not the number, is what matters.
+> **Dated (checked 2026-10-23):** don't memorize these counts. When we checked, AWS's CloudFront features page listed more than 750 points of presence in more than 100 cities across more than 50 countries, plus more than 1,140 smaller "embedded" points of presence inside internet providers' networks. For Region and AZ counts, see the dated box in [lesson 03.01](01-regions-availability-zones-data-centers.md) or AWS's [Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/) page. Older material quotes smaller numbers, so learn the pattern rather than the number.
 
 > **Your turn:** Answer the second prequestion in two sentences: is an edge location a small Availability Zone where the bakery could run its web server?
 
@@ -221,7 +221,7 @@ flowchart TD
 German customers say the order page loads slowly, especially the cake photos. The order site for German customers runs in Europe (Frankfurt), but the photos all sit in one S3 bucket in US East (N. Virginia). Here is how an experienced engineer reasons:
 
 1. **Find what's slow and why.** The photos cross the Atlantic on every request: distance, so latency.
-2. **Ask what kind of content it is.** Photos rarely change and are the same for every customer: exactly what a CDN caches well.
+2. **Ask what kind of content it is.** Photos rarely change and are the same for every customer: the kind of content a CDN caches well.
 3. **Pick the edge service.** **CloudFront**, with the photo bucket as its origin. After the first request, customers near Munich get photos from a nearby edge location.
 4. **Rule out the others, one at a time:**
    - *Route 53?* It already sends German customers to Frankfurt. It can't deliver photos.
