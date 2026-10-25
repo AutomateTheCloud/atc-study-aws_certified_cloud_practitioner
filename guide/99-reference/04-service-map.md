@@ -107,8 +107,8 @@ None: every in-scope service is taught somewhere in the guide.
 | Service | What it does | Taught in |
 |---|---|---|
 | [Amazon AppStream 2.0](01-glossary.md#a) (now Amazon WorkSpaces Applications) | Streams individual desktop applications from AWS to a user's browser or client | [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md) |
-| [Amazon WorkSpaces](01-glossary.md#a) | An AWS service giving each user a virtual desktop, running Windows or Linux in AWS, streamed to their own device as pixels | [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md) |
-| [Amazon WorkSpaces Secure Browser](01-glossary.md#a) | An AWS service giving users an isolated web browser that runs in AWS, streamed to their own browser, for internal websites and SaaS apps | [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md) |
+| [Amazon WorkSpaces](01-glossary.md#a) | An AWS service that gives each user a virtual desktop, running Windows or Linux in AWS, streamed to their own device as pixels | [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md) |
+| [Amazon WorkSpaces Secure Browser](01-glossary.md#a) | An AWS service that gives users an isolated web browser that runs in AWS, streamed to their own browser, for internal websites and SaaS apps | [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md) |
 
 ## Frontend Web and Mobile
 

@@ -90,7 +90,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
 - Don't confuse with: bot. An agent is a person answering customers; a bot, built with Lex, is a program that can answer first and hand over to an agent.
 
-**agility**: The ability to get new resources, and try new ideas, quickly and cheaply: a new resource takes minutes rather than weeks, and you can delete it afterwards.
+**agility**: The ability to get new resources, and try new ideas, quickly and cheaply: a new resource takes minutes rather than weeks, and you can delete it afterward.
 
 - Taught in: [Telling the benefits apart](../02-why-the-cloud/03-telling-the-benefits-apart.md)
 - Also in: [Lab 01: Create, find and delete your first storage bucket](../02-why-the-cloud/06-lab-01-first-resource.md)
@@ -438,7 +438,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Welcome](../00-start-here/01-welcome.md)
 - Also in: [What cloud computing is](../02-why-the-cloud/01-what-cloud-computing-is.md)
 
-**Amazon WorkSpaces**: An AWS service giving each user a virtual desktop, running Windows or Linux in AWS, streamed to their own device as pixels. It bills monthly, or hourly with AutoStop, which suits part-time staff.
+**Amazon WorkSpaces**: An AWS service that gives each user a virtual desktop, running Windows or Linux in AWS, streamed to their own device as pixels. It bills monthly, or hourly with AutoStop, which suits part-time staff.
 
 - Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
 - Don't confuse with: Amazon WorkSpaces Applications, Amazon WorkSpaces Secure Browser, AWS Client VPN. WorkSpaces gives a whole desktop; WorkSpaces Applications streams one or a few apps, Secure Browser only a web browser, and Client VPN gives a device a network path but no computer.
@@ -449,7 +449,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Exam name: "Amazon AppStream 2.0" in the CLF-C02 exam guide
 - Don't confuse with: Amazon WorkSpaces, Amazon WorkSpaces Secure Browser. WorkSpaces Applications streams chosen programs; WorkSpaces gives each person a whole desktop, and Secure Browser gives only a web browser for web apps.
 
-**Amazon WorkSpaces Secure Browser**: An AWS service, formerly WorkSpaces Web, giving users an isolated web browser that runs in AWS, streamed to their own browser, for internal websites and SaaS apps. It is closed to new customers from 2026-10-29.
+**Amazon WorkSpaces Secure Browser**: An AWS service, formerly WorkSpaces Web, that gives users an isolated web browser that runs in AWS, streamed to their own browser, for internal websites and SaaS apps. It is closed to new customers from 2026-10-29.
 
 - Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
 - Don't confuse with: Amazon WorkSpaces, Amazon WorkSpaces Applications. Secure Browser gives only a web browser, for web apps; WorkSpaces Applications streams desktop programs, and WorkSpaces gives a whole desktop.
@@ -620,7 +620,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md)
 - Don't confuse with: AWS Elastic Beanstalk, Amazon Lightsail. Amplify serves front-end and mobile developers, hosting sites deployed from Git; Elastic Beanstalk runs server-side applications on EC2 instances, and Lightsail rents a simple server at a fixed price.
 
-**AWS Application Discovery Service**: An AWS service that collects data about on-premises servers and databases, their use and the connections between them, to group them into applications. Closed to new customers; AWS points to AWS Transform.
+**AWS Application Discovery Service**: An AWS service that collects data about on-premises servers and databases, their use and the connections between them, to group them into applications. It is closed to new customers, and AWS points to AWS Transform.
 
 - Taught in: [Migration tools](../13-moving-to-aws/03-migration-tools.md)
 - Don't confuse with: AWS Migration Hub. Discovery Service collects inventory, use and dependencies; Migration Hub only tracks each application's migration status, and neither moves anything.
@@ -944,11 +944,11 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
 - Also in: [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md); [The front door](../09-protecting-and-governing/04-the-front-door.md); [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md); [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md)
 
-**AWS Migration Acceleration Program** (MAP): AWS's program for organizations migrating at scale, in three phases (assess, mobilize, and migrate and modernize), offering tools, training, partner expertise and funding toward early migration costs.
+**AWS Migration Acceleration Program** (MAP): AWS's program for organizations migrating at scale, in three phases (assess, mobilize, and migrate and modernize). It offers tools, training, partner expertise and funding toward early migration costs.
 
 - Taught in: [The Cloud Adoption Framework](../13-moving-to-aws/01-the-cloud-adoption-framework.md)
 
-**AWS Migration Hub**: An AWS service that tracks the status of each application's migration in one place, whichever tool does the moving; it moves nothing. Closed to new customers; AWS points to AWS Transform.
+**AWS Migration Hub**: An AWS service that tracks the status of each application's migration in one place, whichever tool does the moving; it moves nothing. It is closed to new customers, and AWS points to AWS Transform.
 
 - Taught in: [Migration tools](../13-moving-to-aws/03-migration-tools.md)
 - Don't confuse with: AWS Application Discovery Service. Migration Hub tracks progress across tools; Discovery Service collects the server inventory and dependencies used to plan the moves.
@@ -1022,7 +1022,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Where to find answers](../12-getting-help/03-where-to-find-answers.md)
 - Don't confuse with: AWS re:Post. re:Post Private was one organization's private site and is being retired; re:Post is AWS's public question-and-answer site that every customer can use.
 
-**AWS Resource Access Manager** (AWS RAM): Shares a resource you create once, such as VPC subnets or a transit gateway, with chosen accounts, your organization or its OUs. The sharing account keeps owning it; the others use it within the share's permissions.
+**AWS Resource Access Manager** (AWS RAM): A service that shares a resource you create once, such as VPC subnets or a transit gateway, with chosen accounts, your organization or its OUs. The sharing account keeps owning it; the others use it within the share's permissions.
 
 - Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
 
@@ -1218,7 +1218,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Watching workloads](../08-building-and-operating/03-watching-workloads.md)
 - Don't confuse with: Amazon CloudWatch, AWS CloudTrail. X-Ray follows one request across the parts it touches; CloudWatch measures how resources and code run overall, and CloudTrail records who did what to the account.
 
-**AWS-generated tag**: A cost allocation tag that AWS creates and applies, such as aws:createdBy for who created a resource. Only the management account activates it, and it covers only resources created afterwards.
+**AWS-generated tag**: A cost allocation tag that AWS creates and applies, such as aws:createdBy for who created a resource. Only the management account activates it, and it covers only resources created afterward.
 
 - Taught in: [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md)
 - Also in: [Lab 16: Turn on cost allocation tags and find them in Cost Explorer](../11-paying-for-aws/06-lab-16-cost-allocation-tags.md)
@@ -1378,7 +1378,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 - Taught in: [The business case](../13-moving-to-aws/04-the-business-case.md)
 
-**business continuity**: Keeping the business running through a major disruption, not just restoring it afterwards; one of the reasons to use more than one Region.
+**business continuity**: Keeping the business running through a major disruption, not just restoring it afterward; one of the reasons to use more than one Region.
 
 - Taught in: [Choosing a Region](../03-aws-around-the-world/02-choosing-a-region.md)
 - Don't confuse with: disaster recovery. Business continuity keeps the business going during a disruption; disaster recovery brings the workload back after it.
@@ -1933,7 +1933,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Also in: [Simulation S13: Choose how to pay for each of the bakery's workloads](../11-paying-for-aws/07-sim-purchasing-option-tree.md)
 - Don't confuse with: Dedicated Host. A Dedicated Instance meets a rule against shared hardware without showing it; a Dedicated Host is a whole server you can see and control, for licenses counted per socket or core.
 
-**default VPC**: The VPC AWS creates in each Region of every account, with a public subnet in every Availability Zone, an internet gateway and automatic public IPv4 addresses. Handy for a first test, but every subnet in it is public.
+**default VPC**: The VPC AWS creates in each Region of every account, with a public subnet in every Availability Zone, an internet gateway and automatic public IPv4 addresses. It's handy for a first test, but every subnet in it is public.
 
 - Taught in: [Your own network](../07-connecting-it/01-your-own-network.md)
 - Also in: [Lab 09: Build a small network with a public and a private subnet, then take it apart](../07-connecting-it/05-lab-09-build-a-small-vpc.md)
@@ -2816,7 +2816,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 **IPv6**: The newer version of IP address: up to eight groups of letters and digits separated by colons, such as 2001:db8:85a3::8a2e:370:7334. It has vastly more addresses than IPv4.
 
 - Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
-- Don't confuse with: IPv4. IPv6 addresses are groups separated by colons, with plenty to go round; IPv4 addresses are four numbers separated by dots, and they have run out.
+- Don't confuse with: IPv4. IPv6 addresses are groups separated by colons, with plenty to go around; IPv4 addresses are four numbers separated by dots, and they have run out.
 
 **iSCSI**: A protocol for using disks over a network, read and written as blocks. Volume Gateway and Tape Gateway present their storage over it.
 
@@ -3125,7 +3125,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
 - Also in: [Migration tools](../13-moving-to-aws/03-migration-tools.md)
 
-**milestone**: A saved record of a workload's review in the Well-Architected Tool, which can't be changed afterwards, so a later review can be compared with it to show progress. Deleting the workload deletes its milestones.
+**milestone**: A saved record of a workload's review in the Well-Architected Tool, which can't be changed afterward, so a later review can be compared with it to show progress. Deleting the workload deletes its milestones.
 
 - Taught in: [Lab 18: Record the bakery's review in the AWS Well-Architected Tool](../14-capstone/02-lab-18-well-architected-tool-review.md)
 - Also in: [The Well-Architected Framework](../02-why-the-cloud/05-the-well-architected-framework.md); [The capstone review](../14-capstone/01-the-capstone-review.md)
@@ -3202,7 +3202,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 - Taught in: [APIs, the command line and JSON](../01-on-ramp/05-apis-command-line-and-json.md)
 
-**NAT gateway**: Lets servers in private subnets connect out to the internet while outsiders can't connect in. The usual, zonal kind sits in one AZ's public subnet with an Elastic IP address. Billed hourly and per GB (see the lesson).
+**NAT gateway**: A gateway that lets servers in private subnets reach the internet while outsiders can't connect in. The usual, zonal kind sits in one AZ's public subnet with an Elastic IP address. Billed hourly and per GB.
 
 - Taught in: [Your own network](../07-connecting-it/01-your-own-network.md)
 - Don't confuse with: internet gateway, gateway endpoint. A NAT gateway carries private servers' traffic out to the internet and bills hourly; an internet gateway is free and works both ways, and a free gateway endpoint is the cheaper path when traffic only goes to S3 or DynamoDB.
@@ -3373,7 +3373,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md)
 - Also in: [Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill](../09-protecting-and-governing/10-sim-organizations-and-scps.md)
 
-**Organizations access report**: An IAM access report, run from an organization's management account, showing when the services its service control policies allow were last used in each account.
+**Organizations access report**: An IAM access report, run from an organization's management account, that shows when the services its service control policies allow were last used in each account.
 
 - Taught in: [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md)
 
@@ -3394,7 +3394,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 ## P
 
-**packet**: One small piece of data travelling across a network, labeled with where it comes from and where it is going.
+**packet**: One small piece of data traveling across a network, labeled with where it comes from and where it is going.
 
 - Taught in: [Filtering traffic](../07-connecting-it/02-filtering-traffic.md)
 - Also in: [Simulation S8: Follow a packet and find the rule that blocks it](../07-connecting-it/06-sim-packet-journey.md); [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
@@ -4407,7 +4407,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 - Taught in: [Migration tools](../13-moving-to-aws/03-migration-tools.md)
 
-**speech synthesis**: Turning text into spoken audio, as Amazon Polly does. Polly returns the audio straight away, so nothing is stored in your account unless you save it.
+**speech synthesis**: Turning text into spoken audio, as Amazon Polly does. Polly returns the audio right away, so nothing is stored in your account unless you save it.
 
 - Taught in: [Lab 14 (optional): Have Amazon Polly read a product description aloud](../10-data-ai-and-more/05-lab-14-polly-text-to-speech.md)
 
