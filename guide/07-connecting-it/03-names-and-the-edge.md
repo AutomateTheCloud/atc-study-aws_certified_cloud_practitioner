@@ -86,7 +86,7 @@ When a customer types `bakery.example`, two things happen. First the browser ask
 - **Static IP address:** an internet address that doesn't change. **Anycast:** the same address is announced from many places, and each user reaches the nearest one.
 - **API (application programming interface):** a defined way for one program to ask another for something, such as "what is the status of order 1234?"
 
-"Cache" doesn't mean a hidden store, its everyday sense. In computing it is a nearby copy kept so that the next request is fast.
+"Cache" doesn't mean a hidden store here, as it does in everyday speech. In computing it is a nearby copy kept so that the next request is fast.
 
 ## Route 53 answers "where is it?", and it can choose the answer
 
@@ -280,7 +280,7 @@ Lesson [07.04](04-connecting-networks-and-offices.md) charts data transfer price
 
 ## Worked example: the bakery's names and edge
 
-The owner's requirements, from Module 03 and this lesson: one address, `bakery.example`, for everyone; German customers served from Europe (Frankfurt), because the partner's contract keeps their data in the EU; fast photos; a private bucket; and order-status checks for the delivery partner's app. Here is how an experienced engineer reasons:
+The owner's requirements, from Module 03 and this lesson: one address, `bakery.example`, for everyone; German customers served from Europe (Frankfurt), because the partner's contract keeps their data in the EU; fast photos; a private bucket; and order-status checks for the delivery partner's app. An experienced engineer reasons like this:
 
 1. **The name first.** Put `bakery.example` in a Route 53 public hosted zone, with alias records pointing at the site.
 2. **Which policy?** The German rule is about *where the user is*, not speed. So **geolocation**: Germany to Frankfurt, a default record for everyone else to N. Virginia. Latency routing would usually agree, but "usually" doesn't satisfy a contract.
