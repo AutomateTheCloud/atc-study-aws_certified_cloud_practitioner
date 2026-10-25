@@ -75,7 +75,7 @@ Try these before you read on. Guess if you're unsure; the answers are in the les
 - **Persistent:** kept when the server stops or is deleted. The opposite is **temporary**.
 - **NFS** and **SMB:** two common ways for computers to share files over a network. Linux usually uses NFS; Windows usually uses SMB.
 
-"Object" is an everyday word with a narrow meaning here. In S3, an object is one stored file plus its key and metadata, nothing more.
+"Object" is an everyday word with a narrow meaning here. In S3, an object is just one stored file plus its key and metadata.
 
 ## Block storage: a disk attached to one server
 
@@ -246,7 +246,7 @@ Remember lesson 02.03: durability protects against failing hardware, not against
 | How it's reached | Attached to the server | Mounted over the network (NFS or SMB) | Web API requests (HTTPS) |
 | Choose it for | Boot disks, a database on one server, scratch space | Shared content and home folders; moving an existing file server | Photos, media, backups, archives, data lakes, website files |
 
-What's the same: AWS runs the hardware for all three. What differs: who can reach the data, and how. **The principle:** decide how the data is used; the shape follows, then the service.
+AWS runs the hardware for all three, so what differs is who can reach the data, and how. **The principle:** decide how the data is used; the shape follows, then the service.
 
 ## Worked example: placing the bakery's data
 
