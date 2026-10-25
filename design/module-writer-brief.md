@@ -84,7 +84,7 @@ Write every question and task fresh.
 - **Answer choices on separate lines:** the site joins consecutive lines into one paragraph, so end every
   choice line that is followed by another choice line with a backslash (`A. Elasticity\`), or write
   the choices as a bulleted list. Otherwise "A. … B. … C. …" shows as one run-on line.
-- **Length:** lessons 2,000–3,500 words; a brief under 800; a lab under 2,000; a sim under 1,500.
+- **Length** (raised 2026-10-25 to match the written modules, owner decision): lessons 2,000–5,000 words by full count (the capstone lesson up to 5,500); a brief under 1,000; a lab under 3,000; a sim under 2,000.
 - **Labs** follow conventions "Labs": the liability notice word for word, `us-east-1`, tags
   `guide=clf` (decision B11) and `lab=NN`, a cost box, cleanup in dependency order with a check that nothing
   tagged with the lab's number remains, and a `**New sign-up path:**` callout. Our labs haven't been

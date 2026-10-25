@@ -8,7 +8,7 @@ reader: "Adult studying alone, possibly new to IT, who has finished Module 02 an
 prerequisites: [clf-02-03, clf-03-01, clf-03-02]
 terms_introduced: [disaster, disaster recovery, failover, recovery Region, recovery time objective, recovery point objective, replication, backup, point-in-time backup, backup and restore, pilot light, warm standby, multi-site active/active, hot standby]
 pillars: [reliability, cost-optimization]
-facts_checked: 2026-10-24
+facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/pdfs/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-workloads-on-aws.pdf"
   - "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
@@ -18,6 +18,7 @@ sources:
   - "https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html"
   - "https://docs.aws.amazon.com/drs/latest/userguide/what-is-drs.html"
   - "https://aws.amazon.com/disaster-recovery/faqs/"
+  - "https://health.aws.amazon.com/health/status"
 ---
 
 # High availability keeps the site running through a failure; disaster recovery brings it back after a bigger one
@@ -121,6 +122,8 @@ The two share tools, such as monitoring and automatic failover, and AWS says to 
 ### "High availability is the same as disaster recovery" is wrong
 
 You may have read that a highly available system needs no disaster recovery plan. That's not right. A system spread over three AZs survives a flood in one of them, but not a Region-wide outage, and not a mistake that deletes its data. Those need a separate copy and a plan to use it.
+
+> **A real case (AWS Health Dashboard, checked 2026-10-25):** since March 2026, AWS's Middle East (UAE) Region, `me-central-1`, has been "unable to reliably support customer applications", in AWS's words. In its update of September 15, AWS said it was "unable to restore access to the resources and data hosted exclusively in the mec1-az2 Availability Zone", and that "most customers have been able to re-establish their operations in other Regions by restoring backups or copying data that remained accessible" ([AWS Health Dashboard](https://health.aws.amazon.com/health/status)). Data kept in one place was lost; customers with a copy elsewhere recovered. That is the top rung of the ladder, for real.
 
 It's tempting because the same tools serve both, and a multi-AZ design does survive the smallest disasters. Use the ladder: high availability covers the lower rungs; DR covers the top rung and the box beside it.
 

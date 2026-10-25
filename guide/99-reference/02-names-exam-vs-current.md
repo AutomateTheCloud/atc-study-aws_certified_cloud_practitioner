@@ -132,7 +132,7 @@ AWS renames, splits and retires services faster than the CLF-C02 exam guide chan
 | [AWS CloudShell](01-glossary.md#a) | Available, and used in this guide's labs, but on the exam guide's out-of-scope list. | [Four ways in](../08-building-and-operating/01-four-ways-in.md) |
 | AWS CodeDeploy | Available, but on the exam guide's out-of-scope list; a likely distractor next to CodeBuild and CodePipeline. | [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md) |
 | AWS CodeStar | Shut down on 2024-07-25. | [AWS changes fast](../00-start-here/04-aws-changes-fast.md) |
-| AWS IQ | Discontinued: 2026-05-28 on its own page, 2026-05-20 in AWS's lifecycle list. Out of the exam's scope. | [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md) |
+| AWS IQ | Discontinued: 2026-05-28 on its own page, 2026-05-20 in AWS's lifecycle list. Out of the exam's scope. | [AWS changes fast](../00-start-here/04-aws-changes-fast.md) |
 | AWS Managed Services (AMS) | Available, but out of the exam's scope. A distractor next to Support and Professional Services. | [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md) |
 | AWS Network Firewall | Available, but out of the exam's scope. A distractor next to AWS WAF and security groups. | [Filtering traffic](../07-connecting-it/02-filtering-traffic.md) |
 | AWS OpsWorks | Shut down on 2024-05-01. | [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md) |
