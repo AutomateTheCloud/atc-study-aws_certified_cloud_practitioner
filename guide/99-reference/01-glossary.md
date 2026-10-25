@@ -4941,7 +4941,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 - Taught in: [Seven migration strategies](../13-moving-to-aws/02-seven-migration-strategies.md)
 - Also in: [Simulation S16: Sort the chain's ten applications into the 7 Rs](../13-moving-to-aws/05-sim-portfolio-sorter.md)
 
-**voice engine**: The kind of speech model behind an Amazon Polly voice, such as Standard, Neural, Generative or Long Form. More natural-sounding engines cost more per character; see the lesson.
+**voice engine**: The kind of speech model behind an Amazon Polly voice, such as Standard, Neural, Generative or Long-Form. More natural-sounding engines cost more per character; see the lesson.
 
 - Taught in: [Lab 14 (optional): Have Amazon Polly read a product description aloud](../10-data-ai-and-more/05-lab-14-polly-text-to-speech.md)
 

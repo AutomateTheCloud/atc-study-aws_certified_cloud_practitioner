@@ -5,7 +5,7 @@
 format_version: "0.2"
 id: b247b7a9-9b89-4b04-8cd5-17aed3c38d61
 title: "Practice Questions and Flashcards for the AWS Certified Cloud Practitioner Exam (CLF-C02)"
-version: 0.3.3
+version: 0.3.4
 language: en
 subject: Cloud computing
 tags: [aws, cloud-practitioner, clf-c02, certification, cloud-computing]

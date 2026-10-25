@@ -14,7 +14,7 @@ Written 2026-10-25 so a new session can pick up without the old conversation. Re
   and US spelling. The learning site's daily release workflow opens the publishing pull request.
   The primer's latest release is `v0.1.2`. A further release follows the Lab 16 and 19 next-day
   checks.
-- **Practice bundle:** `practice/`, version 0.3.3: 922 questions (three wordings per choice) and
+- **Practice bundle:** `practice/`, version 0.3.4: 922 questions (three wordings per choice) and
   1,693 flashcards. Every item was solved blind against the guide; every wording passes the
   dump-similarity check (0 REVIEW, 0 REJECT). The site doesn't publish `practice/`.
 - **Owner review:** the owner reviews from the published site. Decisions taken without them, and
