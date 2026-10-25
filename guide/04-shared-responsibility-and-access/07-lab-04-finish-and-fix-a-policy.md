@@ -1,7 +1,7 @@
 ---
 type: lab
 id: clf-04-07
-title: "Lab 04: Finish a policy, write one yourself, and find the deny that blocks it"
+title: "Optional lab 04: Finish a policy, write one yourself, and find the deny that blocks it"
 tasks: ["2.3"]
 objectives: ["04.04a"]
 reader: "Adult studying alone, possibly new to IT, who has done Lab 03; about 50 minutes; a laptop or desktop"
@@ -28,11 +28,13 @@ sources:
   - "https://aws.amazon.com/iam/faqs/"
 ---
 
-# Lab 04: Finish a policy, write one yourself, and find the deny that blocks it
+# Optional lab 04: Finish a policy, write one yourself, and find the deny that blocks it
 
 ## Before you start: your account, your responsibility
 
 This guide is provided as is, without warranty. We work hard to keep it correct and current, but AWS changes often, and its services, prices, and free offers may differ from what is written here. The labs run in your own AWS account. You are responsible for that account, for its security, and for any charges it incurs, including charges from resources you forget to delete. Automate the Cloud Inc. is not liable for any costs, losses, or security incidents that result from following, or failing to follow, this material. Technical guidance here is general information, not advice about your specific systems.
+
+**This lab is optional.** The exam asks which kind of policy fits and why least privilege matters, not how to write one; do it if you want more practice.
 
 **Who this is for:** you have done [Lab 03](06-lab-03-a-group-and-a-policy.md) and read [04.04 Policies and least privilege](04-policies-and-least-privilege.md). **Time:** about 50 minutes. Each part takes away more of the help.
 
@@ -59,7 +61,7 @@ flowchart LR
 
 **Why this matters:** writing a policy for one job, checking it, and testing it before use is [SEC03-BP02 Grant least privilege access](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_permissions_least_privileges.html) in practice. AWS's IAM best practices also ask you to validate policies with IAM Access Analyzer ([Security best practices in IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)). Part C shows the rule from [04.04](04-policies-and-least-privilege.md) that surprises people most: an explicit deny in any policy beats every allow.
 
-> **New sign-up path:** policy validation is listed as available there, but IAM users can't sign in to the console (as of 2026-10-23). We haven't run this lab on that path. Read the steps, then do [Simulation S4](09-sim-policy-playground.md).
+> **New sign-up path:** policy validation is listed as available there, but IAM users can't sign in to the console (as of 2026-10-23). We haven't run this lab on that path. Read the steps instead.
 
 **About the screens:** labels in **bold** come from AWS's documentation or our test account (2026-10-23 and 2026-10-24). We ran this lab end to end in our test account on 2026-10-24. If a label differs, look for the option with the same meaning.
 
@@ -229,7 +231,7 @@ You let Access Analyzer catch problems in a policy before it existed, wrote a le
 >
 > </details>
 
-**Next:** [Simulation S4](09-sim-policy-playground.md) adds the policy types a single account can't show you: organization-wide limits, permissions boundaries and access from other accounts.
+**Next:** the [Module 04 mastery check](10-check.md). [Module 04: beyond the exam](11-beyond-the-exam.md) lists the policy types a single account can't show you.
 
 ## Where to check the current details
 
@@ -240,6 +242,6 @@ You let Access Analyzer catch problems in a policy before it existed, wrote a le
 
 ---
 
-"Lab 04: Finish a policy, write one yourself, and find the deny that blocks it" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional lab 04: Finish a policy, write one yourself, and find the deny that blocks it" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt

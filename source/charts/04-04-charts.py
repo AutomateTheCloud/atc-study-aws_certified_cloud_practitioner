@@ -4,9 +4,8 @@
 """Draw the graphics for lesson 04.04 (policies and least privilege) as SVG.
 
 Usage: python3 -I source/charts/04-04-charts.py
-Writes images/04-04-*.svg. The policy is the lesson's own example for the made-up bakery
-bucket; the wording is the lesson's summary of the IAM User Guide (policies, managed vs
-inline, least privilege; checked 2026-10-23), not AWS text. Our own design: no AWS logos,
+Writes images/04-04-*.svg. The wording is the lesson's summary of the IAM User Guide
+(managed vs inline policies, least privilege; checked 2026-10-23), not AWS text. Our own design: no AWS logos,
 icons or trade dress.
 """
 import os
@@ -29,76 +28,6 @@ STYLE = make_style(rules_extra="""
   .box { fill: var(--surface); stroke: var(--muted); stroke-width: 1; }
   .box-s1 { fill: var(--surface); stroke: var(--s1); stroke-width: 2; }
   .attach { stroke: var(--muted); stroke-width: 1.5; fill: none; }""")
-
-POLICY = [
-    ('{', 0, None),
-    ('"Version": "2012-10-17",', 1, None),
-    ('"Statement": [', 1, None),
-    ('{', 2, None),
-    ('"Sid": "SeeTheBucket",', 3, "sid"),
-    ('"Effect": "Allow",', 3, "effect"),
-    ('"Action": "s3:ListBucket",', 3, "action"),
-    ('"Resource": "arn:aws:s3:::bakery-cake-photos"', 3, "resource"),
-    ('},', 2, None),
-    ('{', 2, None),
-    ('"Sid": "ReadAndAddPhotos",', 3, None),
-    ('"Effect": "Allow",', 3, None),
-    ('"Action": ["s3:GetObject", "s3:PutObject"],', 3, None),
-    ('"Resource": "arn:aws:s3:::bakery-cake-photos/*"', 3, None),
-    ('}', 2, None),
-    (']', 1, None),
-    ('}', 0, None),
-]
-NOTES = {
-    "effect": ("Effect", "Allow or Deny."),
-    "action": ("Action", "What may be done, written service:action."),
-    "resource": ("Resource", "Which thing, by its ARN; /* means every file in the bucket."),
-}
-
-
-def policy_anatomy():
-    w, lh, top = 680, 19, 70
-    body = [
-        '<text class="title" x="16" y="28">Anatomy of an identity-based policy</text>',
-        '<text class="sub" x="16" y="48">Two statements, each saying Allow or Deny, which actions, and on which resources</text>',
-    ]
-    codew = 424
-    ch = lh * len(POLICY) + 20
-    body.append(f'<rect class="codebg" x="16" y="{top}" width="{codew}" height="{ch}" rx="6"/>')
-    # statement brackets on the left margin of the code box
-    y = top + 22
-    ys = {}
-    for i, (txt, ind, tag) in enumerate(POLICY):
-        cls = "code" if ind >= 3 or ind == 2 else "code-dim"
-        body.append(f'<text class="{cls}" x="{28 + ind * 14}" y="{y}" xml:space="preserve">{txt}</text>')
-        ys[i] = y
-        if tag:
-            ys[tag] = y
-        y += lh
-    # notes on the right, each with a lead line to its line in statement 1
-    nx = codew + 34
-    ny = top + 40
-    for tag in ("effect", "action", "resource"):
-        title, text = NOTES[tag]
-        ly = ys[tag] - 4
-        body.append(f'<line class="lead" x1="{codew + 16}" x2="{nx - 6}" y1="{ly}" y2="{ny - 4}"/>')
-        body.append(f'<text class="key" x="{nx}" y="{ny}">{title.upper()}</text>')
-        ny = text_lines(body, nx, ny + 16, wrap(text, 28), cls="small", dy=15) + 14
-    # statement 2 note
-    s2y = ys[11] - 4
-    body.append(f'<text class="key" x="{nx}" y="{s2y}">STATEMENT 2</text>')
-    text_lines(body, nx, s2y + 16, wrap("Same parts again: read and add files inside the bucket.", 28), cls="small", dy=15)
-    h = top + ch + 40
-    text_lines(body, 16, top + ch + 26, ["No Principal line: an identity-based policy applies to whoever it is attached to."], cls="sub")
-    svg("04-04-policy-anatomy.svg", w, h,
-        "Anatomy of an identity-based policy for the bakery's photo bucket",
-        "A JSON policy with two statements. Statement 1, labeled SeeTheBucket: Effect Allow, Action s3:ListBucket, "
-        "Resource arn:aws:s3:::bakery-cake-photos. Statement 2, labeled ReadAndAddPhotos: Effect Allow, Actions "
-        "s3:GetObject and s3:PutObject, Resource arn:aws:s3:::bakery-cake-photos/* (the files in the bucket). Notes "
-        "explain: Effect is Allow or Deny; Action is what may be done, as service:action; "
-        "Resource is which thing, by its ARN, where /* means every file in the bucket. A footnote says there is no Principal line, because an identity-based "
-        "policy applies to whoever it is attached to.", body, style=STYLE)
-
 
 KINDS = [
     ("AWS managed", "AWS", "No", "Many users, groups and roles, in any account",
@@ -193,6 +122,5 @@ def narrowing_scope():
 
 
 if __name__ == "__main__":
-    policy_anatomy()
     managed_vs_inline()
     narrowing_scope()
