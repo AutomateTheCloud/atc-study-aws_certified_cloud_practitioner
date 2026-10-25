@@ -22,7 +22,7 @@ import sys
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from chartkit import make_style, right_rounded, svg, text_lines, wrap  # noqa: E402
+from chartkit import make_style, svg, text_lines, wrap  # noqa: E402
 
 STYLE = make_style(
     light_extra=" --card-fill:#f1f0ec;",
@@ -112,86 +112,7 @@ def four_paths():
 
 
 HOURS = 730
-EC2_PARTS = [  # label, monthly dollars, class
-    ("t3.small instance, 730 hours", 0.0208 * HOURS, "s1"),
-    ("60 GB gp3 disk", 60 * 0.08, "s1l"),
-    ("Public IPv4 address", 0.005 * HOURS, "s2"),
-]
-LIGHTSAIL = 12.0
-
-
-def lightsail_vs_ec2():
-    w = 680
-    left, top, pw = 150, 92, 470
-    bh, gapb = 40, 34
-    xmax = 25
-    ec2_total = sum(v for _, v, _ in EC2_PARTS)
-    assert abs(ec2_total - 23.63) < 0.01
-    body = [
-        '<text class="title" x="16" y="28">A small, steady web server for a month: a bundle or the parts</text>',
-        '<text class="sub" x="16" y="48">Amazon Lightsail\'s $12 plan against similar pieces on Amazon EC2, US East (N. Virginia)</text>',
-    ]
-
-    def X(v):
-        return left + pw * v / xmax
-
-    for v in range(0, xmax + 1, 5):
-        body.append(f'<line class="{"axis" if v == 0 else "grid"}" x1="{X(v):.1f}" x2="{X(v):.1f}" y1="{top - 6}" y2="{top + 2 * bh + gapb + 6}"/>')
-        body.append(f'<text class="tick" x="{X(v):.1f}" y="{top + 2 * bh + gapb + 22}" text-anchor="middle">${v}</text>')
-    body.append(f'<text class="tick" x="{left + pw / 2}" y="{top + 2 * bh + gapb + 40}" text-anchor="middle">Dollars per month</text>')
-    # Lightsail bar
-    y = top
-    body.append(f'<text class="lab" x="{left - 10}" y="{y + 17}" text-anchor="end">Lightsail plan</text>')
-    body.append(f'<text class="tick" x="{left - 10}" y="{y + 33}" text-anchor="end">2 GB, 2 vCPUs</text>')
-    body.append(f'<path class="bundle" d="{right_rounded(X(0), y, X(LIGHTSAIL) - X(0), bh)}"><title>Lightsail plan: $12.00 a month</title></path>')
-    body.append(f'<text class="vlab" x="{X(LIGHTSAIL) + 8:.1f}" y="{y + 17}">$12.00, one price that includes the server,</text>')
-    body.append(f'<text class="vlab" x="{X(LIGHTSAIL) + 8:.1f}" y="{y + 33}">60 GB SSD, a public IPv4 address and 3 TB transfer</text>')
-    # EC2 stacked bar
-    y = top + bh + gapb
-    body.append(f'<text class="lab" x="{left - 10}" y="{y + 17}" text-anchor="end">EC2, priced by part</text>')
-    body.append(f'<text class="tick" x="{left - 10}" y="{y + 33}" text-anchor="end">2 GiB, 2 vCPUs</text>')
-    x = X(0)
-    for i, (lab, v, cls) in enumerate(EC2_PARTS):
-        wv = X(v) - X(0)
-        if i == len(EC2_PARTS) - 1:
-            body.append(f'<path class="{cls}" d="{right_rounded(x, y, wv, bh)}"><title>{lab}: ${v:.2f}</title></path>')
-        else:
-            body.append(f'<rect class="{cls}" x="{x:.1f}" y="{y}" width="{wv:.1f}" height="{bh}"><title>{lab}: ${v:.2f}</title></rect>')
-        if i:
-            body.append(f'<line class="seg-gap" x1="{x:.1f}" x2="{x:.1f}" y1="{y}" y2="{y + bh}"/>')
-        x += wv
-    body.append(f'<text class="vlab" x="{x + 8:.1f}" y="{y + 25}">${ec2_total:.2f}</text>')
-    # segment labels under the EC2 bar
-    ly = y + bh + 56
-    x = X(0)
-    labs = []
-    for lab, v, cls in EC2_PARTS:
-        labs.append((x, lab, v, cls))
-        x += X(v) - X(0)
-    lx = 16
-    for x0, lab, v, cls in labs:
-        body.append(f'<rect class="{cls}" x="{lx}" y="{ly - 10}" width="12" height="12" rx="2"/>')
-        body.append(f'<text class="ann" x="{lx + 18}" y="{ly}">{lab}: ${v:.2f}</text>')
-        lx += 18 + 7 * len(f"{lab}: ${v:.2f}") + 26
-    y = ly + 28
-    for line in (
-        "Plus, on EC2 only: data transfer out to the internet beyond the free allowance, $0.09 per GB (price list of 2026-09-16).",
-        "Lightsail: pricing page, retrieved 2026-10-23. EC2: AWS Price List offer files, retrieved 2026-10-24; t3.small",
-        "$0.0208 an hour, gp3 $0.08 per GB-month, public IPv4 $0.005 an hour, for 730 hours. Prices change.",
-        "Not the same machine: EC2 offers far more instance types, pricing options and network control.",
-    ):
-        body.append(f'<text class="note" x="16" y="{y}">{line}</text>')
-        y += 15
-    svg("06-04-lightsail-vs-ec2.svg", w, y + 4,
-        "Monthly cost of a small web server: a $12 Lightsail plan against EC2 priced by part",
-        "A horizontal bar chart in dollars per month, from 0 to 25. The Lightsail plan with 2 GB of memory and 2 vCPUs "
-        "is one bar at $12.00, with the server, 60 GB of SSD storage, a public IPv4 address and 3 TB of data transfer "
-        f"included. EC2 priced by part, for 2 GiB and 2 vCPUs, is a stacked bar totaling ${ec2_total:.2f}: a t3.small "
-        f"instance for 730 hours, ${EC2_PARTS[0][1]:.2f}; a 60 GB gp3 disk, ${EC2_PARTS[1][1]:.2f}; a public IPv4 "
-        f"address, ${EC2_PARTS[2][1]:.2f}. EC2 adds data transfer out beyond the free allowance at $0.09 per GB. "
-        "Lightsail prices retrieved 2026-10-23; EC2 prices as of 2026-10-24.", body, style=STYLE)
 
 
 if __name__ == "__main__":
     four_paths()
-    lightsail_vs_ec2()

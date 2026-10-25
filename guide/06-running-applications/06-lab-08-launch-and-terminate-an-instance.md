@@ -40,18 +40,7 @@ This guide is provided as is, without warranty. We work hard to keep it correct 
 
 **Goal:** the bakery's website runs on an Amazon EC2 instance. You launch a small one, see the public address AWS gives it, stop it and see what changes, then terminate it and prove that the instance, its disk and its address are gone. **End state:** nothing left, and your lab log shows what each state still bills for.
 
-```mermaid
-flowchart LR
-  accTitle: The stages of Lab 08
-  accDescr: Part A launches an instance with guidance, Part B stops it after you predict what will happen, and Part C, on your own, terminates it and proves it's gone. The next day, you check the Credits balance. The help fades from every click, to a prediction to test, to only the goal.
-  A["Part A: launch<br/>(guided)"] --> B["Part B: stop<br/>(predict, then check)"]
-  B --> C["Part C: terminate<br/>and prove it's gone<br/>(on your own)"]
-  C -->|"the next day"| D["Check the Credits<br/>balance"]
-```
-
-*Notice that the help fades: every click in Part A, a prediction to test in Part B, only the goal in Part C.*
-
-**Long description.** Four stages left to right. Part A, launch, guided. Part B, stop, where you predict and then check. Part C, terminate and prove it's gone, on your own. Then, the next day, check the Credits balance.
+Part A guides every click, Part B asks you to predict before you check, and Part C gives only the goal.
 
 **What it creates**, in US East (N. Virginia), `us-east-1`, tagged `guide` = `clf` and `lab` = `08` where the console lets you:
 
@@ -74,11 +63,11 @@ Under 2 cents in all, even if every partial hour were billed as a full one. **Fr
 
 *Notice that stopping removes most of the cost, not all of it. Only terminating takes it to zero.*
 
-**Long description.** Three horizontal bars, US East (N. Virginia) prices as of 2026-10-24, assuming an 8 GiB gp3 volume and a 730-hour month, as in lesson 06.01. Left running: $11.88, made of $7.59 of instance hours, $3.65 for the public IPv4 address and $0.64 for the volume. Stopped but not terminated: $0.64, the volume alone. Terminated: $0.00.
+**Long description.** Three horizontal bars, US East (N. Virginia) prices as of 2026-10-24, assuming an 8 GiB gp3 volume and a 730-hour month. Left running: $11.88, made of $7.59 of instance hours, $3.65 for the public IPv4 address and $0.64 for the volume. Stopped but not terminated: $0.64, the volume alone. Terminated: $0.00.
 
 **Before you start, you need these guardrails in place:** [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md) (primer page 02), [an IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md), which you use for this lab (page 03), [budgets and billing alerts](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md) (page 05), [the safe EC2 defaults](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/06-safe-defaults.md) in N. Virginia: EBS encryption by default and IMDSv2 required (page 06), and [the habits for every lab](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md) (page 07).
 
-**Why this matters:** an instance bills from launch until you terminate it, used or not ([Tutorial 1: Launch my very first Amazon EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/tutorial-launch-my-first-ec2-instance.html)). Knowing what each state still costs serves [COST04-BP03 Decommission resources](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_decomissioning_resources_decommission.html). A security group that lets nothing in follows [SEC05-BP02 Control traffic flow within your network layers](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_network_protection_layered.html) and the primer's rule: never open SSH or RDP to the world.
+**Why this matters:** an instance bills from launch until you terminate it, used or not ([Tutorial 1: Launch my very first Amazon EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/tutorial-launch-my-first-ec2-instance.html)), and the exam expects you to know what a stopped instance still costs.
 
 > **New sign-up path:** your Region is fixed and IAM users can't sign in to the console (as of 2026-10-23). Use your assigned Region wherever this lab says `us-east-1`, check primer page 06's EC2 settings there first, and sign in the way that path gives you. We haven't run this lab on that path.
 
@@ -173,7 +162,7 @@ Part C was the cleanup. Two last checks:
 
 ## Recap
 
-You rented a server in about a minute and gave it back. You saw the three things that bill for it (running hours, public address, disk) and which each state stops. You also saw your side of the line on EC2: AWS ran the hardware; you chose the image, firewall rules, login method and disk settings.
+You rented a server in about a minute and gave it back, and saw the three things that bill for it (running hours, public address, disk) and which each state stops. AWS ran the hardware; you chose the image, firewall rules, login method and disk settings.
 
 > **Reflect:** the bakery's owner wants to "switch the web server off at night to save money" by stopping it. Write two sentences on what that saves, what it doesn't, and what else to check.
 >
@@ -183,15 +172,13 @@ You rented a server in about a minute and gave it back. You saw the three things
 >
 > </details>
 
-**Next:** [Simulation S7](07-sim-elasticity-with-auto-scaling.md) scales the bakery's web servers with demand, using a load balancer that would bill by the hour if you built it for real.
+**Next:** the [Module 06 mastery check](08-check.md).
 
 ## Where to check the current details
 
-- [Tutorial 1: Launch my very first Amazon EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/tutorial-launch-my-first-ec2-instance.html), Amazon EC2 User Guide (checked 2026-10-23)
-- [Track your Free Tier usage for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-free-tier-usage.html), Amazon EC2 User Guide (checked 2026-10-23)
-- [Terminate Amazon EC2 instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html), Amazon EC2 User Guide (checked 2026-10-23)
-- [Amazon EC2 FAQs](https://aws.amazon.com/ec2/faqs/) (checked 2026-10-23)
-- [Amazon EC2 On-Demand pricing](https://aws.amazon.com/ec2/pricing/on-demand/), [Amazon VPC pricing](https://aws.amazon.com/vpc/pricing/) and [Amazon EBS pricing](https://aws.amazon.com/ebs/pricing/) (prices from AWS's price list, 2026-10-24)
+- [Track your Free Tier usage for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-free-tier-usage.html) (checked 2026-10-23)
+- [Terminate Amazon EC2 instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html) and the [Amazon EC2 FAQs](https://aws.amazon.com/ec2/faqs/) (checked 2026-10-23)
+- [Amazon EC2 On-Demand pricing](https://aws.amazon.com/ec2/pricing/on-demand/) (prices from AWS's price list, 2026-10-24)
 
 ---
 
