@@ -234,7 +234,7 @@ flowchart TB
 
 ### "Amazon Q is one product" leads to wrong answers
 
-You may have read that "Amazon Q" is AWS's AI assistant, as if it were one thing. That's not right. Q Developer helps with code and AWS; Q Business worked over company data, and new customers can no longer sign up for it. The exam guide lists just "Amazon Q", which makes the single-product idea tempting. When a question describes help with code, the AWS console or AWS resources, the answer is Q Developer.
+You may have read that "Amazon Q" is AWS's AI assistant, as if it were one thing. It isn't. Q Developer helps with code and AWS; Q Business worked over company data, and new customers can no longer sign up for it. The exam guide lists just "Amazon Q", which makes the single-product idea tempting. When a question describes help with code, the AWS console or AWS resources, the answer is Q Developer.
 
 > **Check:** A developer wants an assistant in her code editor that suggests code and explains an error from an AWS service. What fits?
 >
@@ -278,7 +278,7 @@ AWS retires services faster than practice questions are rewritten. These names s
 
 ### "Kendra is the answer for searching company documents" is out of date
 
-You may have seen Amazon Kendra as the answer whenever a question says "intelligent search" or "search our internal documents". It isn't any more. The 2026 exam guide no longer lists Kendra, and AWS closed it to new customers on 2026-07-30, pointing them to Amazon Bedrock Knowledge Bases ([Kendra availability change](https://docs.aws.amazon.com/kendra/latest/dg/kendra-availability-change.html)). It's tempting because many practice banks were written when Kendra was current, and a name that sounds like an exact fit feels safe. If Kendra appears among the options, treat it as a distractor.
+You may have seen Amazon Kendra as the answer whenever a question says "intelligent search" or "search our internal documents". It isn't any more. The 2026 exam guide no longer lists Kendra, and AWS closed it to new customers on 2026-07-30, pointing them to Amazon Bedrock Knowledge Bases ([Kendra availability change](https://docs.aws.amazon.com/kendra/latest/dg/kendra-availability-change.html)). The trap works because many practice banks were written when Kendra was current, and a name that sounds like an exact fit feels safe. If Kendra appears among the options, treat it as a distractor.
 
 ## Your side of the line
 

@@ -234,7 +234,7 @@ Amazon Simple Storage Service (Amazon S3), AWS's main storage service for files,
 
 ### Durability isn't availability
 
-You may have read that durability and availability are the same thing. That isn't right, and S3 shows why. The default storage option, S3 Standard, is designed for eleven nines of *durability* but 99.99% *availability* (as of 2026-10-23). The two numbers measure different things:
+It's easy to treat durability and availability as the same thing. They aren't, and S3 shows why. The default storage option, S3 Standard, is designed for eleven nines of *durability* but 99.99% *availability* (as of 2026-10-23). The two numbers measure different things:
 
 ```mermaid
 flowchart LR

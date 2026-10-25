@@ -149,9 +149,9 @@ You can also **promote** a read replica into a separate, writable database. AWS 
 
 ### "A read replica gives you high availability" is wrong
 
-You may have read that adding a read replica makes a database highly available. For the RDS engines above, that's not right. A read replica doesn't take over automatically: if the primary fails, someone has to promote the replica, and the application has to be pointed at its new address. And because the copy is asynchronous, the last changes before the failure may never have reached it. For high availability, AWS's FAQ recommends Multi-AZ, whose standby is always in step and fails over by itself.
+Some study material says that adding a read replica makes a database highly available. For the RDS engines above, it doesn't. A read replica doesn't take over automatically: if the primary fails, someone has to promote the replica, and the application has to be pointed at its new address. And because the copy is asynchronous, the last changes before the failure may never have reached it. For high availability, AWS's FAQ recommends Multi-AZ, whose standby is always in step and fails over by itself.
 
-It's tempting because a replica is a second running copy, often in another AZ, and it can be promoted. It's also partly true in one place: in **Amazon Aurora**, a replica can be the automatic failover target. For the other RDS engines, keep the jobs apart: standby for availability, replica for reads.
+The idea seems reasonable at first: a replica is a second running copy, often in another AZ, and it can be promoted. It's also partly true in one place: in **Amazon Aurora**, a replica can be the automatic failover target. For the other RDS engines, keep the jobs apart: standby for availability, replica for reads.
 
 > **Your turn:** Answer the second prequestion in two sentences: can a read replica take over automatically if the main database fails, and why does the answer matter for the bakery's orders?
 

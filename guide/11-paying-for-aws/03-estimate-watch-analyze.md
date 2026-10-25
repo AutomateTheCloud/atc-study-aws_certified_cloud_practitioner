@@ -152,7 +152,7 @@ This is before any always-free allowance and leaves out the website itself and s
 
 ### "A budget caps your spending" is wrong
 
-You may have read that a budget stops you from spending more than its amount. That's not right. A budget on its own sends alerts and does nothing to your resources. They keep running and billing until someone changes them.
+Many people expect a budget to stop them from spending more than its amount. It doesn't. A budget on its own sends alerts and does nothing to your resources. They keep running and billing until someone changes them.
 
 What you *can* add is a **budget action**: something AWS Budgets does for you when a threshold is crossed, either automatically or after someone approves it ([Configuring budget actions](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-controls.html), checked 2026-10-24). There are three kinds:
 
@@ -179,7 +179,7 @@ flowchart TD
 
 **Long description.** A flowchart. Actual or forecasted cost crosses a threshold. An alert goes out by email or SNS, hours after the spending. Then: is a budget action set? No, the usual case: nothing else happens, and resources keep running and billing. Yes: does it run automatically? Yes: it applies an IAM policy or SCP, or stops chosen EC2 or RDS instances. No: it waits until someone approves, then does the same. Either way, whatever the action didn't cover keeps billing, and nothing is deleted.
 
-It's tempting because "budget" sounds like a limit, and prepaid services elsewhere stop when the money runs out. AWS doesn't. The habit that saves money is primer page 07's: delete what you create. [Simulation S14](08-sim-guardrail-timeline.md) lets you watch alerts and stops play out over time.
+The word "budget" sounds like a limit, and prepaid services elsewhere stop when the money runs out. AWS doesn't. The habit that saves money is primer page 07's: delete what you create. [Simulation S14](08-sim-guardrail-timeline.md) lets you watch alerts and stops play out over time.
 
 The CloudWatch billing alarm from primer page 05 also only notifies; for "alert me when costs exceed a limit", the exam expects Budgets.
 

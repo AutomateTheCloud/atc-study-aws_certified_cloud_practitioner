@@ -222,7 +222,7 @@ The second chart follows the money month by month: the total spent so far under 
 
 > **Misconception:** "Moving to the cloud always cuts an organization's operating costs."
 >
-> That's not right. What the cloud changes for certain is the *shape* of the bill: fixed costs become variable, and large up-front payments become payments as you go. Whether the total goes down depends on how your demand moves and on how well you match what you run to that demand. In Step 3 above, the same move cost nearly twice as much as owning. A workload that runs flat out all day, every day, gains little from paying by the hour, because it has no idle capacity to give back.
+> Not always. What the cloud changes for certain is the *shape* of the bill: fixed costs become variable, and large up-front payments become payments as you go. Whether the total goes down depends on how your demand moves and on how well you match what you run to that demand. In Step 3 above, the same move cost nearly twice as much as owning. A workload that runs flat out all day, every day, gains little from paying by the hour, because it has no idle capacity to give back.
 >
 > It is tempting because pay-as-you-go makes waste easy to stop, many organizations do save, and AWS's economies of scale lower its prices ([Six advantages of cloud computing](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html)). But the meter runs for anything you leave on. AWS's own [Cost Optimization Pillar](https://docs.aws.amazon.com/pdfs/wellarchitected/latest/cost-optimization-pillar/wellarchitected-cost-optimization-pillar.pdf) is a whole guide to avoiding cloud waste.
 

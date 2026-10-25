@@ -144,9 +144,9 @@ Any answer that gives AWS a half for its own things and her a half for the baker
 
 ## "Shared" doesn't mean both sides do the same task
 
-You may have read that "shared responsibility" means AWS and you work on the same tasks together, so that patching your EC2 server is something AWS helps with. That's not right. A shared control is a *kind* of work that both sides do, each for its own things. Any specific task belongs to one side only. The guest operating system on EC2 is patched by the customer alone; the host underneath is patched by AWS alone.
+You may have read that "shared responsibility" means AWS and you work on the same tasks together, so that patching your EC2 server is something AWS helps with. It doesn't. A shared control is a *kind* of work that both sides do, each for its own things. Any specific task belongs to one side only. The guest operating system on EC2 is patched by the customer alone; the host underneath is patched by AWS alone.
 
-It's tempting because "shared" in everyday English usually means "done together". Practice questions also offer "both AWS and the customer" as an answer choice. It is almost never right for a specific task, even though patch management, as a whole, is a shared control.
+Everyday English is the problem: "shared" usually means "done together". Practice questions also offer "both AWS and the customer" as an answer choice. It is almost never right for a specific task, even though patch management, as a whole, is a shared control.
 
 Use this rule. If a question names **one specific thing** ("who patches the guest OS on EC2?"), the answer is one side. If it asks which **type of control** is shared ("which is a shared control?"), patch management, configuration management and training are the answers.
 

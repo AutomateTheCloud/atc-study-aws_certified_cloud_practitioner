@@ -129,7 +129,7 @@ Two details catch people out.
 
 ### "OK" means below the threshold, not "working"
 
-You may think an alarm in the OK state proves you'll be told when something goes wrong. That's not right. OK means only that the metric is below the threshold. The email depends on the action: the SNS topic must exist, and the owner must have confirmed the subscription email. CloudWatch doesn't test or validate the actions you set. It's tempting because a green OK looks like a health check; it's a reading, not a test. You saw this on [primer page 05](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md), where only the confirmed subscription proved the email path.
+You may think an alarm in the OK state proves you'll be told when something goes wrong. It doesn't. OK means only that the metric is below the threshold. The email depends on the action: the SNS topic must exist, and the owner must have confirmed the subscription email. CloudWatch doesn't test or validate the actions you set. A green OK looks like a health check, but it's a reading, not a test. You saw this on [primer page 05](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md), where only the confirmed subscription proved the email path.
 
 > **Your turn:** Design the owner's alarm. Give the metric, statistic, period, threshold, what to do with missing data, and the action. Then say what changes when the bakery's setup is rebuilt in a second Region.
 
@@ -202,7 +202,7 @@ The metric says the function as a whole got slower; a trace splits one slow requ
 
 ### "CloudTrail monitors my application" is wrong
 
-You may read that CloudTrail and CloudWatch both "monitor", so either will do. That's not right. CloudTrail records actions *on your account*, such as someone changing the order function's memory setting. It doesn't see a customer's order fail inside the function, or the server's CPU at 6 p.m.; CloudWatch does. The pair is tempting because both names start with "Cloud", both keep records, and they work together: a trail can send events to CloudWatch Logs, where an alarm can watch for, say, a sign-in by the root user. The question decides the service: *who did it* is CloudTrail; *how is it running* is CloudWatch.
+You may read that CloudTrail and CloudWatch both "monitor", so either will do. They do different jobs. CloudTrail records actions *on your account*, such as someone changing the order function's memory setting. It doesn't see a customer's order fail inside the function, or the server's CPU at 6 p.m.; CloudWatch does. The pair is tempting because both names start with "Cloud", both keep records, and they work together: a trail can send events to CloudWatch Logs, where an alarm can watch for, say, a sign-in by the root user. The question decides the service: *who did it* is CloudTrail; *how is it running* is CloudWatch.
 
 [Module 09, "Protecting, governing and proving compliance"](../09-protecting-and-governing/00-brief.md), uses CloudTrail as evidence for an auditor and adds AWS Config, which records how each resource was set up over time.
 

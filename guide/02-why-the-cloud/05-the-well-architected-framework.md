@@ -110,7 +110,7 @@ Each pillar also has a numbered list of best practices. The ID tells you where o
 
 > **Misconception:** "The Framework has five pillars."
 >
-> That's not right. It has six. Older material lists five because it was written before AWS added the sustainability pillar, and one older AWS security whitepaper, now marked by AWS as for historical reference only, still says five. The CLF-C02 exam guide, under task [1.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.2), lists all six. It's tempting because much study material online predates the change.
+> It has six. Older material lists five because it was written before AWS added the sustainability pillar, and one older AWS security whitepaper, now marked by AWS as for historical reference only, still says five. The CLF-C02 exam guide, under task [1.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.2), lists all six. The old figure lingers because much study material online predates the change.
 
 > **Your turn:** match each bakery concern to a pillar, and say in one line why.
 >

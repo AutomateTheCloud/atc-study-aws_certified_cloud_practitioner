@@ -122,7 +122,7 @@ Both stopped accepting new customers on **2025-11-07**. Existing customers can k
 
 You may read, in courses written before late 2025, that any team planning a migration should turn on Application Discovery Service and track the work in Migration Hub. That's out of date. A team starting today can't sign up for either; it would use AWS Transform, or a Partner's discovery tool.
 
-It's tempting because the exam guide still lists both, their documentation is still online, and existing customers still use them. On the exam, "collect server inventory and dependencies" still points to Application Discovery Service, and "track migrations across tools" to Migration Hub. In real work, check a service's status page before you plan around it.
+The belief survives because the exam guide still lists both, their documentation is still online, and existing customers still use them. On the exam, "collect server inventory and dependencies" still points to Application Discovery Service, and "track migrations across tools" to Migration Hub. In real work, check a service's status page before you plan around it.
 
 > **Dated (checked 2026-10-24):** Application Discovery Service and Migration Hub have been closed to new customers since 2025-11-07, and their product pages redirect to AWS Transform. Application Migration Service has been renamed AWS Transform MGN. None of the three is shut down; existing customers keep using them. See the [AWS Transform](https://aws.amazon.com/transform/) page for what it offers now.
 

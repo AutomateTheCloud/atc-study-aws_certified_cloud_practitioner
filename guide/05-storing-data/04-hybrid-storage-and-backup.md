@@ -169,9 +169,9 @@ It protects physical servers, VMware and Hyper-V virtual machines, other clouds,
 
 ### "Elastic Disaster Recovery is a backup service" is wrong
 
-You may have read that Elastic Disaster Recovery and AWS Backup do the same job. That's not right. AWS's FAQ draws the line: a backup is an extra copy of your **data**; disaster recovery quickly restores access to your **applications and servers**. After an AWS Backup restore, someone still rebuilds or relaunches the servers; Elastic Disaster Recovery gives back running servers in minutes.
+Many people assume Elastic Disaster Recovery and AWS Backup do the same job. They don't. AWS's FAQ draws the line: a backup is an extra copy of your **data**; disaster recovery quickly restores access to your **applications and servers**. After an AWS Backup restore, someone still rebuilds or relaunches the servers; Elastic Disaster Recovery gives back running servers in minutes.
 
-It's tempting because both keep copies in AWS, and both can go back to an earlier point. But they answer different questions, and AWS designs them to be used together.
+They're easy to confuse because both keep copies in AWS, and both can go back to an earlier point. But they answer different questions, and AWS designs them to be used together.
 
 > **Your turn:** Answer the second prequestion. The till server must run again within 15 minutes if its hardware dies, losing at most a minute of sales. A nightly backup to AWS exists. Is it enough? If not, what closes the gap?
 

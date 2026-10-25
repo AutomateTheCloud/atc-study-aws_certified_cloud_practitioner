@@ -172,7 +172,7 @@ You may see the same idea called **CapEx versus OpEx** in other material. **Capi
 
 ### The cloud doesn't always cut operating costs
 
-You may have read that moving to the cloud reduces operating costs. That isn't right as a general rule. What the cloud changes is the *kind* of cost: an up-front purchase becomes a running bill. Your operating bills often go *up*, because costs that used to be purchases now arrive every month. Whether your *total* cost falls depends on your demand and your habits.
+A popular claim is that moving to the cloud reduces operating costs. That isn't right as a general rule. What the cloud changes is the *kind* of cost: an up-front purchase becomes a running bill. Your operating bills often go *up*, because costs that used to be purchases now arrive every month. Whether your *total* cost falls depends on your demand and your habits.
 
 The belief is tempting because the cloud often does save money, as it did for the bakery. But the owner's six-servers-all-year plan above costs twice as much as owning. A system with steady, predictable demand gains less from paying by use. AWS offers lower prices in exchange for a commitment to steady use; module 11 covers those options.
 

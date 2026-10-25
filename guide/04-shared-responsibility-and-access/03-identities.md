@@ -143,7 +143,7 @@ You have met roles already. The IAM dashboard in the primer showed roles you did
 
 ## An IAM admin is not the root user
 
-You may have read that an IAM user with `AdministratorAccess` is "the same as root". That's not right, for two reasons:
+You may have read that an IAM user with `AdministratorAccess` is "the same as root". That's wrong, for two reasons:
 
 1. **Some tasks need the root user itself.** No policy, however broad, lets an IAM user do them. The next section lists them.
 2. **An admin can be limited; root mostly can't.** An admin's power comes from a policy, which can be removed, narrowed or blocked by a deny. Root's power doesn't come from IAM policies: in general, AWS allows root's requests on the account's own resources ([How IAM works](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html)). A resource's own policy can still block root: a bucket policy with an explicit deny stops root like anyone else (which is why one root-only task is fixing a bucket policy that denies everyone). And AWS Organizations, in module 09, can restrict a member account's root user across the whole account.

@@ -107,7 +107,7 @@ The exam guide lists "Amazon Kinesis", but **Amazon Kinesis** is a family of ser
 
 **Amazon Data Firehose** (formerly Amazon Kinesis Data Firehose) delivers streaming data to a destination for you: Amazon S3, Amazon Redshift, Amazon OpenSearch Service, Splunk, Apache Iceberg tables or an HTTP endpoint. You write no programs and manage no servers. It gathers data until a size or time limit is reached, then delivers it, and it can transform data on the way, for example into the compact Parquet format ([What is Amazon Data Firehose?](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html); [Firehose FAQ](https://aws.amazon.com/firehose/faqs/), checked 2026-10-24).
 
-> **Misconception:** "Kinesis Data Firehose is the current name." It isn't. AWS renamed it **Amazon Data Firehose**; older AWS pages and most practice material still use the old name. It's the same service, so an answer that says "Kinesis Data Firehose" means Firehose. It's tempting because the service still belongs to the Kinesis family and can read from a Kinesis data stream.
+> **Misconception:** "Kinesis Data Firehose is the current name." It isn't. AWS renamed it **Amazon Data Firehose**; older AWS pages and most practice material still use the old name. It's the same service, so an answer that says "Kinesis Data Firehose" means Firehose. The mistake is easy to make because the service still belongs to the Kinesis family and can read from a Kinesis data stream.
 
 ### Data Streams, Firehose or SQS: what happens after the data is read
 
@@ -231,7 +231,7 @@ The difference from Athena is the search index: Athena reads files to answer a S
 
 Quick Sight is now a feature of a wider product, **Amazon Quick**, which also offers AI agents, automation and research tools. AWS's documentation says Quick grew out of Amazon QuickSight, which continues as Quick Sight inside it, with existing integrations still working ([What is Amazon Quick?](https://docs.aws.amazon.com/quick/latest/userguide/what-is.html), checked 2026-10-24). The exam guide writes "Amazon Quick Sight".
 
-> **Misconception:** "QuickSight is the current name." You'll see "Amazon QuickSight", one word, in older questions and courses. That's the same BI service, now **Amazon Quick Sight**, part of **Amazon Quick**. It's tempting because some AWS pages still use the old name.
+> **Misconception:** "QuickSight is the current name." You'll see "Amazon QuickSight", one word, in older questions and courses. That's the same BI service, now **Amazon Quick Sight**, part of **Amazon Quick**. Some AWS pages still use the old name, which keeps the confusion alive.
 
 > **Dated (checked 2026-10-24):** Amazon Quick is changing fast, and AWS's pages don't give a date for the rename. For the exam, remember the job: dashboards and BI. Check the [Amazon Quick documentation](https://docs.aws.amazon.com/quick/latest/userguide/what-is.html) for today's features.
 

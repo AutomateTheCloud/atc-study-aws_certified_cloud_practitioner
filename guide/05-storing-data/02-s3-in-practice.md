@@ -122,7 +122,7 @@ For data on the move, S3 supports encryption in transit with TLS, the protection
 
 ### "Encrypted means safe from everyone" is wrong
 
-You may think that because S3 encrypts everything, nobody can read your data. That's not right. Encryption at rest protects the stored bytes, for example on a disk that leaves a data center. Anyone your policies allow to read an object gets it decrypted automatically. If the bucket were public, the whole world would get readable photos.
+You may think that because S3 encrypts everything, nobody can read your data. That's wrong. Encryption at rest protects the stored bytes, for example on a disk that leaves a data center. Anyone your policies allow to read an object gets it decrypted automatically. If the bucket were public, the whole world would get readable photos.
 
 It's tempting because "encrypted" sounds like "locked". Encryption and access control answer different questions: *Can the stored bytes be read without the key?* and *Who is allowed to ask?* You need both.
 
@@ -163,9 +163,9 @@ What to know:
 
 ### "S3 is so durable that AWS can always get my file back" is wrong
 
-You may think eleven nines of durability means a deleted photo can be recovered. That's not right. The S3 FAQ says plainly that durability doesn't protect against accidental or malicious deletes: when you tell S3 to delete data, it is deleted at once and AWS can't recover it. Recovering from your own mistakes is your side of the line.
+You may think eleven nines of durability means a deleted photo can be recovered. It doesn't. The S3 FAQ says plainly that durability doesn't protect against accidental or malicious deletes: when you tell S3 to delete data, it is deleted at once and AWS can't recover it. Recovering from your own mistakes is your side of the line.
 
-It's tempting because "durable" sounds like "can't be lost". Durability means the hardware won't lose your data; it faithfully does what you ask, including deleting. That's the first prequestion's answer: with default settings, the photo is gone. With versioning on, it comes back.
+The word misleads: "durable" sounds like "can't be lost". Durability means the hardware won't lose your data; it faithfully does what you ask, including deleting. That's the first prequestion's answer: with default settings, the photo is gone. With versioning on, it comes back.
 
 > **Your turn:** In two sentences, explain to the owner why versioning is like the point-in-time backups of lesson 03.03, and one way it isn't.
 

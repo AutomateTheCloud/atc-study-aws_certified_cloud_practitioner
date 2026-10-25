@@ -147,9 +147,9 @@ Every conversation has two halves: the request and the reply. A customer's brows
 
 ### "Return traffic always gets through" is wrong
 
-You may have read that replies are always allowed back, because security groups are stateful. That's not right. The security group lets the reply through, but the reply still has to cross the subnet's network ACL, which is stateless. With the default network ACL, which allows everything, you never notice. With a custom network ACL whose outbound rules allow only port 443, the customer's request gets in, the server answers, and the reply is dropped at the subnet's edge: to the customer the site looks down.
+You may have read that replies are always allowed back, because security groups are stateful. They aren't always. The security group lets the reply through, but the reply still has to cross the subnet's network ACL, which is stateless. With the default network ACL, which allows everything, you never notice. With a custom network ACL whose outbound rules allow only port 443, the customer's request gets in, the server answers, and the reply is dropped at the subnet's edge: to the customer the site looks down.
 
-It's tempting because most people meet security groups first, the default network ACL hides the problem, and "stateful" sounds like a property of the whole VPC. It's a property of the security group only.
+The belief is easy to pick up: most people meet security groups first, the default network ACL hides the problem, and "stateful" sounds like a property of the whole VPC. It's a property of the security group only.
 
 > **Check:** Answer the first prequestion. The bakery's web server has a security group with one inbound rule allowing HTTPS from anywhere, and its outbound rules were all removed. The subnet uses the default network ACL. Does a customer's page load?
 >

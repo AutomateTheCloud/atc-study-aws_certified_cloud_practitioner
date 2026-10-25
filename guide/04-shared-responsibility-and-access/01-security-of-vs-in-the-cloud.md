@@ -187,7 +187,7 @@ You also choose, through the function's IAM **role**, which other AWS resources 
 
 ### "With serverless, AWS handles the security" is wrong
 
-You may have read that on Lambda, AWS takes care of security and you only write code, or only code and permissions. That's not right. AWS runs and patches the servers, but you still own your code's libraries, the move off retired runtimes, the function's permissions, and your data.
+A common belief is that on Lambda, AWS takes care of security and you only write code, or only code and permissions. That's wrong. AWS runs and patches the servers, but you still own your code's libraries, the move off retired runtimes, the function's permissions, and your data.
 
 It's tempting because "serverless" sounds like "nothing to manage", and the servers really are gone from your list. But an old library or an over-broad permission is a common way in, and both stay with you.
 
@@ -222,9 +222,9 @@ You already did some of this work. On [primer page 06](https://github.com/Automa
 
 ### "AWS protects my data, because it's in AWS" is wrong
 
-You may have heard that putting data in AWS makes it AWS's job to protect. That's not right. AWS protects the infrastructure your data sits on. Who may read or change the data, and whether a bucket is public, are settings you choose and check.
+You may have heard that putting data in AWS makes it AWS's job to protect. That's only half true. AWS protects the infrastructure your data sits on. Who may read or change the data, and whether a bucket is public, are settings you choose and check.
 
-It's tempting because AWS's defaults are often safe. But a safe default helps only until someone changes it. Lessons 04.03 to 04.05 teach you to decide who can do what, which is how you give the new teammate the photos and nothing else.
+People believe it because AWS's defaults are often safe. But a safe default helps only until someone changes it. Lessons 04.03 to 04.05 teach you to decide who can do what, which is how you give the new teammate the photos and nothing else.
 
 > **Your turn:** For each task, say who does it, AWS or the bakery, and name the fact that decides it.
 >
