@@ -97,7 +97,7 @@ flowchart TD
 ### Worked example: the recipe archive
 
 1. *Does anyone need it?* No sign-ins for a year is well past the 90 days without connections that AWS's guide treats as a sign to retire, and use of about 2% is below its 5% mark for "zombie" applications.
-2. *Anything to keep?* The recipes, not the application. Its operating system gets no security updates, a risk anywhere.
+2. *Anything to keep?* The recipes, not the application. Its operating system gets no security updates, which is a risk wherever it runs.
 3. **Retire.** Export the recipes to an archive storage class (Module 05), shut the servers down, and take their cost out of the business case.
 
 ### Decision 1: give each of the other nine applications a strategy and a one-line reason

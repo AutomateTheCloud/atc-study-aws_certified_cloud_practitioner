@@ -196,7 +196,7 @@ How much of the hourly price is license? A lot, for SQL Server:
 
 > **Dated (checked 2026-10-24):** prices are On-Demand for US East (N. Virginia), from AWS's EC2 price list published 2026-10-23, for compute and licenses only, with no storage. They change; check [Amazon EC2 On-Demand pricing](https://aws.amazon.com/ec2/pricing/on-demand/) or the AWS Pricing Calculator for today's figures.
 
-Two more pieces complete the picture:
+Two more things matter when you choose:
 
 - **AWS License Manager** tracks the licenses you bring, across accounts, and can stop a launch that would take you over what you own. It can also switch some EC2 instances between license-included and BYOL without rebuilding them ([What is AWS License Manager?](https://docs.aws.amazon.com/license-manager/latest/userguide/license-manager.html)).
 - **Compliance is yours with BYOL.** AWS's licensing page says plainly that you are responsible for following your license terms, and it isn't legal advice. With license-included, AWS handles the licensing. That's the control you placed in the warm-up.
