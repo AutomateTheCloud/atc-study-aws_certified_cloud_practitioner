@@ -17,7 +17,9 @@ time: "50 minutes, plus 5 minutes the next day"
 cost: "$0 on the Free plan and on a Paid plan (as of 2026-10-24)"
 worst_case: "$0 on a Paid plan if everything is left behind: the VPC, subnets, route tables, internet gateway, security groups and network ACLs have no charge. Only a NAT gateway or a public IPv4 address would bill by the hour, and this lab creates neither"
 needs: [guardrails-02, guardrails-03, guardrails-05, guardrails-07, clf-02-06]
-facts_checked: 2026-10-24
+last_run_pass: "2026-10-25, standalone Free plan account, advanced sign-up, us-east-1"
+recorded: 2026-10-25
+facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/vpc/latest/userguide/create-vpc.html"
   - "https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html"
@@ -57,7 +59,7 @@ This guide is provided as is, without warranty. We work hard to keep it correct 
 
 > **New sign-up path:** Amazon VPC is supported there, but IAM users can't sign in to the console and your Region is fixed (as of 2026-10-23). Use your assigned Region and its AZs wherever this lab says `us-east-1`, and sign in the way that path gives you. We haven't run this lab on that path.
 
-**About the screens:** step 5 follows AWS's [Create a VPC](https://docs.aws.amazon.com/vpc/latest/userguide/create-vpc.html) page (checked 2026-10-23). We haven't yet run this lab, so other labels are as AWS usually words them; if one differs, look for the option with the same meaning.
+**About the screens:** labels in **bold** are what we saw when we ran this lab end to end in our test account on 2026-10-25. AWS changes its console often. If a label differs, look for the option with the same meaning.
 
 ## Steps
 
@@ -87,7 +89,8 @@ This guide is provided as is, without warranty. We work hard to keep it correct 
    - **Name tag:** `clf-lab09-vpc`
    - **IPv4 CIDR block:** keep **IPv4 CIDR manual input** and type `10.0.0.0/16`
    - **IPv6 CIDR block:** none; **Tenancy:** **Default** (dedicated hardware costs more)
-   - **Tags:** besides `Name`, choose **Add new tag** for `guide` = `clf` and `lab` = `09`.
+   - **VPC encryption control ($):** keep **None**. The other two modes are charged extras.
+   - **Tags:** besides `Name`, which the page adds from the name tag, choose **Add tag** for `guide` = `clf` and `lab` = `09`.
 
    Choose **Create VPC**.
    **You should see:** your VPC's details page, with its state **Available**.
@@ -98,7 +101,7 @@ This guide is provided as is, without warranty. We work hard to keep it correct 
    **You should see:** both subnets in the list, each in its own AZ. A subnet always sits in exactly one AZ ([Subnets for your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html)).
 8. In the left menu, choose **Internet gateways**, then **Create internet gateway**. Name it `clf-lab09-igw`, add the two tags, and create it.
    **You should see:** the state **Detached**.
-9. Choose **Actions**, then the option to attach it to a VPC. Choose `clf-lab09-vpc` and confirm.
+9. Choose **Actions**, then **Attach to VPC**. In **Available VPCs**, pick the suggestion that shows your VPC's ID and `clf-lab09-vpc` (not one starting with **Use:**), and choose **Attach internet gateway**.
    **You should see:** the state **Attached**.
 
 > **Your turn:** the gateway is attached. Predict: is either subnet public yet? Write yes or no, and why, in your lab log.
@@ -111,11 +114,11 @@ This guide is provided as is, without warranty. We work hard to keep it correct 
 
 10. In the left menu, choose **Route tables**, then **Create route table**. Name it `clf-lab09-public-rt`, choose the VPC `clf-lab09-vpc`, add the two tags, and create it.
     **You should see:** one route, `10.0.0.0/16` to `local`. This **local route** lets everything in the VPC reach everything else in it.
-11. On the route table's **Routes** tab, choose **Edit routes**, then **Add route**. Destination: `0.0.0.0/0`, meaning any address not matched by a more specific route. Target: **Internet Gateway**, then `clf-lab09-igw`. Save.
+11. On the route table's **Routes** tab, choose **Edit routes**, then **Add route**. Destination: `0.0.0.0/0`, meaning any address not matched by a more specific route. Target: **Internet Gateway**, then pick `clf-lab09-igw` from the box that appears. Choose **Save changes**.
 12. On the **Subnet associations** tab, choose **Edit subnet associations**, tick `clf-lab09-public-a` only, and save.
     **You should see:** `clf-lab09-public-a` listed. The private subnet stays with the **main route table**, which AWS made with the VPC; it holds only the local route.
 13. Choose **Your VPCs**, select `clf-lab09-vpc`, and open its **Resource map** tab, a picture of how the VPC's parts connect.
-    **You should see:** the public subnet → `clf-lab09-public-rt` → the internet gateway; the private subnet → the main route table, with no line to the gateway.
+    **You should see:** the public subnet → `clf-lab09-public-rt` → the internet gateway, in a column called **Network Connections**; the private subnet → the main route table, shown only by its `rtb-` ID because it has no name, with no line to the gateway.
 
 ### Part B: security groups
 
@@ -138,7 +141,7 @@ This guide is provided as is, without warranty. We work hard to keep it correct 
 
 ### Part C: a network ACL that blocks a bad range
 
-16. In the left menu, choose **Network ACLs**, then **Create network ACL**. Name it `clf-lab09-public-nacl`, choose the VPC `clf-lab09-vpc`, add the two tags, and create it.
+16. In the left menu, choose **Network ACLs**, then **Create network ACL**. Name it `clf-lab09-public-nacl`, choose the VPC `clf-lab09-vpc`, add the two tags with **Add tag**, and create it.
     **You should see:** inbound and outbound, a single rule numbered `*` that denies all traffic. A new network ACL blocks everything until you add rules; the VPC's default one allows everything.
 17. Open the **Inbound rules** tab and choose **Edit inbound rules**. Add two rules, then save:
 
@@ -172,13 +175,13 @@ This guide is provided as is, without warranty. We work hard to keep it correct 
 Delete in this order: each step removes something the next depends on, and the VPC goes last.
 
 20. In **Security groups**, delete `clf-lab09-db-sg`, then `clf-lab09-web-sg`.
-    > **If something went wrong:** "referenced by another group" means `clf-lab09-db-sg` still exists. Delete it first.
+    > **If something went wrong:** a window saying "Some security groups can't be deleted", with `clf-lab09-web-sg` marked **Will not be deleted** because "1 security group associated", means `clf-lab09-db-sg` still refers to it. Cancel, delete `clf-lab09-db-sg` first, then try again.
 21. In **Subnets**, delete both `clf-lab09-` subnets. Their route table and network ACL associations go with them.
 22. In **Route tables**, delete `clf-lab09-public-rt`. Don't try to delete the main route table; it goes with the VPC.
-    > **If something went wrong:** a message about dependencies means a subnet is still associated. Check step 21.
+    > **If something went wrong:** a message that the route table has associations means a subnet is still associated, or the page hasn't caught up: right after deleting the subnets, we had to reload the page before the delete worked. Reload, then check step 21.
 23. In **Network ACLs**, delete `clf-lab09-public-nacl`.
-24. In **Internet gateways**, select `clf-lab09-igw`, choose **Actions** and detach it from the VPC. Then delete it.
-25. In **Your VPCs**, delete `clf-lab09-vpc`, typing any confirmation text asked for. Its main route table, default network ACL and default security group go with it. Never delete the default VPC.
+24. In **Internet gateways**, select `clf-lab09-igw`, choose **Actions**, then **Detach from VPC**; type `detach` and choose **Detach internet gateway**. Then choose **Actions**, **Delete**, type `delete`, and choose **Delete internet gateway**.
+25. In **Your VPCs**, select `clf-lab09-vpc`, choose **Actions**, then **Delete VPC**, type `delete`, and confirm. Its main route table, default network ACL and default security group go with it. Never delete the default VPC.
 26. **Confirm:** **Your VPCs** shows only the default VPC. In Tag Editor, search all Regions and all supported resource types for the tag `lab` = `09` ([Lab 01, steps 13 to 16](../02-why-the-cloud/06-lab-01-first-resource.md#find-it-by-its-tags)); expect no results (a deleted item can linger a few minutes). Tick everything off in your lab log.
 27. **The next day:** check that your **Credits** balance hasn't fallen ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), habit 4).
 

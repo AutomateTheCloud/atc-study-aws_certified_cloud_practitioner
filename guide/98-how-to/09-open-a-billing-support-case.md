@@ -30,8 +30,8 @@ sources:
 ## Steps
 
 1. Choose the question mark icon at the top right of the console, then **Support Center**.
-   **You should see:** Support Center. It may first ask you to describe the issue and offer AI-generated troubleshooting before a case form ([AI-enhanced troubleshooting](https://docs.aws.amazon.com/awssupport/latest/user/ai-enhanced-support.html)). Read what it suggests; it may answer you. If not, look for the option to create a case.
-2. Choose **Create case** (or the equivalent), then the case type **Account and billing**.
+   **You should see:** Support Center. It may first ask you to describe the issue and offer AI-generated troubleshooting before a case form ([AI-enhanced troubleshooting](https://docs.aws.amazon.com/awssupport/latest/user/ai-enhanced-support.html)). On 2026-10-25 it opened on **Hi. How can we help?**: describe your issue there and send it. Read what the AI suggests; it may answer you. If not, choose **Create a case** below its answer.
+2. In the case form that opens, choose the **Case type** **Account and billing**. (Basic lists **Technical** too, but can't open it: choosing it shows a paid-plan trial offer. Don't start the trial.)
 3. Choose the **Service** and **Category** closest to your question, such as billing and an unexpected charge. Links to help pages may appear; read them first.
    **You should see:** on Basic, no choice of severity, or only the default; severity levels belong to paid plans.
 4. Write a short **Subject**, such as "Charge for EC2 in us-east-1 I can't explain, October 2026".

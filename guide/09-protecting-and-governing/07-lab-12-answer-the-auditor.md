@@ -17,7 +17,9 @@ time: "50 minutes"
 cost: "$0 on the Free plan (as of 2026-10-24)"
 worst_case: "$0 on a Paid plan if the empty bucket is left behind; viewing Event history, IAM last accessed information and AWS Artifact has no charge"
 needs: [guardrails-02, guardrails-03, guardrails-05, guardrails-06, guardrails-07, clf-02-06]
-facts_checked: 2026-10-24
+last_run_pass: "2026-10-25, standalone Free plan account, advanced sign-up, us-east-1"
+recorded: 2026-10-25
+facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html"
   - "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events-console.html"
@@ -79,7 +81,7 @@ flowchart LR
 
 > **New sign-up path:** IAM users can't sign in to the console there, and AWS lists the HIPAA and SEC addenda in Artifact as not supported (as of 2026-10-23). We haven't checked Event history or Artifact on that path, and we haven't run this lab there. Read the steps, and use whatever sign-in that path gives you.
 
-**About the screens:** the CloudTrail labels are what we saw in our test account on 2026-10-23 and 2026-10-24; the IAM, S3 and Artifact labels follow AWS's documentation, checked 2026-10-24. We haven't yet run this lab end to end. If a label differs, look for the option with the same meaning.
+**About the screens:** labels in **bold** are what we saw when we ran this lab in our test account on 2026-10-25. We stopped at Artifact's terms prompt and didn't download a report, so steps 19 and 20 follow AWS's documentation. AWS changes its console often. If a label differs, look for the option with the same meaning.
 
 ## Steps
 
@@ -93,7 +95,7 @@ flowchart LR
 CloudTrail records each action in your account as an **event**. Event history shows the last 90 days of **management events**, the actions that create, change or delete settings and resources, one Region at a time. It doesn't show *data events*, such as downloading a file from a bucket ([Limitations of Event history](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html)).
 
 3. Open **CloudTrail** and choose **Event history**. The filter starts on **Read-only** (as it did for us on 2026-10-24). Change it to **Event name**, type `DeleteVpc`, and press Enter.
-   **You should see:** an event from the day you did Lab 09, with your IAM user name under **User name**. **Resource name** should show the VPC's ID, starting `vpc-` (we haven't run this lookup ourselves).
+   **You should see:** an event from the day you did Lab 09, with your IAM user name under **User name**. **Resource name** shows the VPC's ID, starting `vpc-`. In our run the event appeared about a minute and a half after the VPC was deleted.
    > **If something went wrong:** no event means Lab 09 was more than 90 days ago, or you did it in another Region. Write that down: "no evidence inside Event history's window" is a real audit finding, and the fix is a trail, which keeps events in an S3 bucket for as long as you keep the files.
 4. Choose the event name to open it, and scroll to **Event record**. This **event record** is the full entry, written in JSON, that CloudTrail keeps for one event.
 
@@ -105,7 +107,7 @@ CloudTrail records each action in your account as an **event**. Event history sh
 
 5. In your lab log, under question 1, copy the `eventName`, the `eventTime` (it's in UTC), your user name and the VPC ID. Don't copy the IP address into anything you share: it can identify you.
 6. Clear the filter. Choose **User name** and type `root`.
-   **You should see:** only the root user's actions, probably from when you set up the primer. Root sign-ins, called `ConsoleLogin` events, may be recorded in US East (Ohio) or US West (Oregon) instead, so switch the Region selector to each of those and look again ([sign-in events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-aws-console-sign-in-events.html)). Switch back to N. Virginia.
+   **You should see:** only the root user's actions, probably from when you set up the primer. Root sign-ins, called `ConsoleLogin` events, may be recorded in US East (Ohio) or US West (Oregon) instead, so switch the Region selector to each of those and look again. In our account, every console sign-in, root's and the admin user's, was in US East (Ohio) ([sign-in events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-aws-console-sign-in-events.html)). Switch back to N. Virginia.
 7. Under question 2, write the date of the latest root event you found in the three Regions, and what it was.
 
 ### Part B: finish the lookups (completion)
@@ -127,14 +129,15 @@ Event history accepts one lookup attribute at a time, plus a time range. Fill in
 
 8. Run the four lookups. For each, note the date, the user name and the resource name.
 9. With the `TerminateInstances` lookup still applied, choose **Download events**, then **Download as CSV**. Open the file in a plain text editor, not a spreadsheet: AWS warns that event text can be read as commands by spreadsheet programs ([Downloading events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events-console.html#downloading-events)).
-   **You should see:** one line of column names and one line per event.
+   **You should see:** a file named `event_history.csv` in your downloads folder, with one line of column names and one line per event. The columns include **AWS access key** and **Source IP address**: keep the file private.
+   Other lookups show more than changes: an **Event source** lookup for `iam.amazonaws.com` also lists read-only calls such as `ListRoles`, some made by AWS services, and Lambda's event names carry a version, such as `DeleteFunction20150331`.
 
 ### Part C: find permissions nobody uses (follow-along)
 
 **Last accessed information** is IAM's report of when an identity last tried to use each service its policies allow. It's one of the "access reports" the exam guide names ([Refine permissions using last accessed information](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed.html)).
 
 10. Open **IAM**, choose **Users**, then your admin user. Choose the **Last Accessed** tab.
-    **You should see:** a table of services with a **Last accessed** column. A few show a number of days, such as S3, EC2, Lambda and DynamoDB from your labs; most say **Not accessed in the tracking period**.
+    **You should see:** **Allowed services**, a table with a **Last accessed** column: "Today" or a number of days for the services you touched, such as S3, EC2, Lambda and DynamoDB from your labs, and **Not accessed in the tracking period** for most. The **Filter by services access history** list can show only **Services accessed** or **Services not accessed**. Expect some services you never opened on purpose: the console calls services such as Route 53 Resolver or Resource Access Manager in the background, and those count as accessed.
 11. Count, roughly, the services you used and the services you didn't. Then choose **Amazon S3** in the **Service** column.
     **You should see:** S3 management actions, such as `CreateBucket`, each with a Region and when it was last attempted.
 12. Under question 3, write the two counts. Your user can use every service, through `AdministratorAccess`, and has touched only a handful.
@@ -154,7 +157,7 @@ Limits, per AWS: activity can take four hours to appear, attempts count as well 
 
 16. In the console search bar, type `Artifact` and open **AWS Artifact**. Choose **View reports**.
     **You should see:** a **Reports** page with an **AWS reports** tab.
-17. Search for `SOC`. Choose a report's title to read its details page, and pick one, for example a SOC 2 report.
+17. Search for `SOC`. Choose a suggestion such as **Title = System and Organization Controls (SOC) 2 Report**. Each report's row shows its **Reporting period** and a description; read them, and pick one, for example the SOC 2 report.
 18. Select it and choose **Download report**.
     **You should see:** possibly a prompt, **Accept terms to download report**. These are confidentiality terms for that one report: you may share it only inside your company, with your regulators and with your auditors ([Downloading reports](https://docs.aws.amazon.com/artifact/latest/ug/downloading-documents.html)). Read them. If you agree, select **I have read and agree to the terms** and choose **Accept terms and download report**. If you don't, cancel and answer question 5 from the report's details page instead.
 19. Open the PDF. Some reports carry the audit itself as an attachment inside the PDF; AWS suggests Adobe Acrobat Reader or Firefox to see attachments.

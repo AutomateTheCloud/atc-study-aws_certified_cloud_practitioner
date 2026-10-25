@@ -17,8 +17,9 @@ time: "30 minutes, plus 5 minutes the next day"
 cost: "Nothing billed on the Free plan; far less than one cent of credits (as of 2026-10-24)"
 worst_case: "$0 a month on a Paid plan if the table is left behind unused: on-demand tables charge per request, and its few kilobytes fit in the always-free 25 GB"
 needs: [guardrails-02, guardrails-03, guardrails-05, guardrails-07, clf-02-06]
-recorded: 2026-10-24
-facts_checked: 2026-10-24
+last_run_pass: "2026-10-25, standalone Free plan account, advanced sign-up, us-east-1"
+recorded: 2026-10-25
+facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/getting-started-step-1.html"
   - "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html"
@@ -60,7 +61,7 @@ flowchart LR
 
 > **New sign-up path:** DynamoDB is on that experience's list of supported services, but IAM users can't sign in to the console and your Region is fixed (as of 2026-10-23). Use your assigned Region wherever this lab says `us-east-1`, and sign in the way that path gives you. We haven't run this lab on that path.
 
-**About the screens:** the labels for creating a table come from AWS's DynamoDB getting-started guide (checked 2026-10-23). We haven't yet run this lab, so the steps for adding and finding items describe what to look for rather than exact labels. If a label differs, look for the option with the same meaning.
+**About the screens:** labels in **bold** are what we saw when we ran this lab end to end in our test account on 2026-10-25. AWS changes its console often. If a label differs, look for the option with the same meaning.
 
 ## Steps
 
@@ -87,8 +88,8 @@ flowchart LR
 
 ### Put three items into two carts
 
-8. Choose your table, then the option to explore its items (a button such as **Explore table items**). Choose **Create item**.
-9. Type `cart-1001` for **CartId** and `lemon-tart` for **Product**. Add a new attribute of type **Number**, named `Quantity`, with the value `2`. Choose **Create item**.
+8. Choose your table, then **Explore items**. Choose **Create item**. The page opens in **Form** view, with rows for `CartId` and `Product`.
+9. Type `cart-1001` for **CartId** and `lemon-tart` for **Product**. Choose **Add new attribute**, then **Number**, and fill in the new row: name `Quantity`, value `2`. Choose **Create item**.
    **You should see:** the item in the list of items.
    > **If something went wrong:** if you picked String instead of Number for `Quantity`, open the item, remove that attribute, add it again as a Number, and save.
 10. Create a second item: `cart-1001`, `rye-loaf`, `Quantity` `1`. Before you save it, add one more attribute of type **String**, named `GiftNote`, with the value `Happy birthday!`.
@@ -103,7 +104,7 @@ flowchart LR
 
 ### Get one item, then query one cart
 
-12. In the panel for finding items (it may be labeled **Scan or query items**), choose **Query**. Type `cart-1001` for **CartId**. For the sort key, choose the condition **Equal to** and type `lemon-tart`. Run the query.
+12. Above the items list, the panel offers **Scan**, **Query** and **Search**; choose **Query**. Type `cart-1001` for **CartId**. For the sort key, choose the condition **Equal to** and type `lemon-tart`. Choose **Run**. Below the results, a line reports the items returned and the read capacity used.
     **You should see:** one item, `lemon-tart`, quantity 2. Giving both parts of the key works as a get: it finds exactly one item.
 13. Clear the sort key value and run the query again.
     **You should see:** two items, `lemon-tart` and `rye-loaf`, the whole of cart 1001 and nothing from cart 1002. A **query** finds every item that shares a partition key, which is how the bakery's site would load one customer's cart.
@@ -118,7 +119,7 @@ flowchart LR
 
 ## Clean up
 
-15. In **Tables**, select `clf-lab06-carts` and choose **Delete**. If the dialog offers to create a backup first, leave that cleared: a backup is a new resource that keeps costing until you delete it. Type the confirmation the dialog asks for, and delete.
+15. In **Tables**, select `clf-lab06-carts` and choose **Delete**. The dialog offers to create an on-demand backup first: leave that cleared (it was, for us), because a backup is a new resource that keeps costing until you delete it. Leave **Delete all CloudWatch alarms** ticked, type `confirm`, and choose **Delete**.
     **You should see:** the table's status change to deleting, then the table gone from the list.
     > **If something went wrong:** if DynamoDB says deletion protection is on, open the table's settings, turn deletion protection off, and repeat this step.
 16. **Confirm:** the **Tables** list shows nothing starting `clf-lab06`. In Tag Editor, search all Regions for the tag `lab` = `06` ([Lab 01, steps 13 to 16](../02-why-the-cloud/06-lab-01-first-resource.md#find-it-by-its-tags), with the resource type set to all supported types or to `AWS::DynamoDB::Table`); expect no results. Tick the table off in your lab log.

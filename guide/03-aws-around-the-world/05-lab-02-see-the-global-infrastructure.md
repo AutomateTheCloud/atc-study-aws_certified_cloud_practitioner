@@ -17,7 +17,9 @@ time: "20 minutes"
 cost: "$0 (as of 2026-10-23)"
 worst_case: "$0 on a Paid plan: the lab is read-only and creates nothing"
 needs: [guardrails-02, guardrails-03, guardrails-04, guardrails-05, guardrails-07]
-facts_checked: 2026-10-24
+last_run_pass: "2026-10-25, standalone Free plan account, advanced sign-up, us-east-1"
+recorded: 2026-10-25
+facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-availability-zones.html"
   - "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html"
@@ -69,7 +71,7 @@ flowchart LR
 
 > **New sign-up path:** that experience assigns your Region from your contact country (US East (Ohio), Europe (Stockholm) or Asia Pacific (Sydney), as of 2026-10-23), and you can't change it. Run step 9 in your assigned Region and skip the `--region` part of step 10. We haven't run this lab on that path, and we haven't confirmed how CloudShell and the Health Dashboard behave there.
 
-**About the screens:** we wrote this lab from AWS's documentation and our test account's observations of 2026-10-23, and haven't yet run it end to end. AWS changes its console often; if a label differs, look for the option with the same meaning.
+**About the screens:** labels in **bold** are what we saw when we ran this lab end to end in our test account on 2026-10-25. AWS changes its console often. If a label differs, look for the option with the same meaning.
 
 ## Steps
 
@@ -86,7 +88,7 @@ flowchart LR
    **You should see:** a list of Regions grouped by part of the world. Each has a name and a **Region code**, such as `us-east-1`.
 4. Find these three and copy their codes into your lab log: N. Virginia, Ohio and Frankfurt.
    **You should see:** `us-east-1`, `us-east-2` and `eu-central-1`. These are the Regions this module's bakery uses or could use.
-5. Look for Regions that are marked as not enabled, or that you expected and can't find. **Don't enable them.**
+5. Look for Regions that are marked as not enabled, or that you expected and can't find. On 2026-10-25 our selector listed only enabled Regions, with a line at the bottom, "There are 17 Regions that are not enabled for this account", next to **Manage Regions**. **Don't enable them.**
    Regions launched after March 20, 2019 are **opt-in Regions**: off until someone turns them on, and possibly hidden while off ([Enable or disable AWS Regions](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html), checked 2026-10-23). A Region you don't use is one more place to forget a resource.
 6. Choose **United States (N. Virginia)** to close the selector with N. Virginia selected.
    **You should see:** N. Virginia in the selector. (Our test account first opened in US East (Ohio), so check every time.)
@@ -122,7 +124,7 @@ flowchart LR
    +--------------+--------------+
    ```
 
-   AWS listed six AZ IDs for N. Virginia on 2026-10-23; your account may show fewer, because AWS can stop offering a crowded AZ to new accounts ([AWS Availability Zones](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-availability-zones.html)). Copy every row into your lab log.
+   Our account showed six on 2026-10-25, from `use1-az1` to `use1-az6`, and the letters didn't follow the ID numbers (`us-east-1c` was `use1-az4`); your account may show fewer, because AWS can stop offering a crowded AZ to new accounts ([AWS Availability Zones](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-availability-zones.html)). Copy every row into your lab log.
    > **If something went wrong:**
    > - *The output fills the screen and ends in `(END)` or a colon:* the CLI opened its page viewer. Press `q` to return to the prompt.
    > - *`UnauthorizedOperation` or access denied:* sign in as your IAM admin user and try again.
@@ -153,11 +155,11 @@ The **AWS Health Dashboard** shows events that affect AWS services and your acco
 
 13. In the console search bar, type `Health` and open **AWS Health Dashboard**.
     **You should see:** your account's view: open and recent issues, scheduled changes, other notifications, and an event log covering 90 days ([Getting started with your AWS Health Dashboard](https://docs.aws.amazon.com/health/latest/ug/getting-started-phd.html)). These are **account-specific events**, such as scheduled maintenance on one of your servers. A new account may have none. Note what the page shows, even "no open issues".
-14. In the dashboard's left menu, look for **Service health**, and open it.
+14. In the dashboard's left menu, under **Service health**, choose **Open and recent issues**. It opens AWS's public status page, `health.aws.amazon.com`.
     **You should see:** **public events**, which are AWS service issues not tied to any one account, for every Region ([Concepts for AWS Health](https://docs.aws.amazon.com/health/latest/ug/aws-health-concepts-and-terms.html)).
     > **If something went wrong:** if you can't find it, open a private browser window and go to `https://health.aws.amazon.com/health/status`, AWS's public status page. It needs no sign-in ([AWS Health Dashboard](https://docs.aws.amazon.com/health/latest/ug/aws-health-dashboard-status.html)).
-15. Open the **service history** (the last 12 months, in AWS's docs) and filter by Region: first `us-east-1`, then `eu-central-1`.
-    **You should see:** past events, if any, each naming a service and the affected Region, as in AWS's own example, "Operational issue – Amazon Elastic Compute Cloud (N. Virginia)". Write down one event's service and Region, or "none listed", and note whether it names one Region or several. An event confined to one Region is the Region isolation of lesson 03.01 at work.
+15. Choose the **Service history** tab (the last 12 months), then **List of events**. It filters by **Locales**, not by Region: keep **North America** and find `us-east-1` in the **Region** column, then switch to **Europe** and find `eu-central-1`.
+    **You should see:** past events, each naming a service and its Region, such as "Amazon Elastic Compute Cloud [Increased Error Rates]" in `us-east-1`, as we saw on 2026-10-25. Global services such as CloudFront show `-` instead of a Region. Write down one event's service and Region, or "none listed", and note whether it names one Region or several. An event confined to one Region is the Region isolation of lesson 03.01 at work.
 
 ## Check your work
 

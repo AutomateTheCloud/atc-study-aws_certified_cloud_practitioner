@@ -17,7 +17,9 @@ time: "50 minutes, plus 5 minutes the next day"
 cost: "$0 on the Free plan (as of 2026-10-24)"
 worst_case: "$0 on a Paid plan if the three empty buckets and the stack are left behind: CloudFormation has no charge for AWS resource types, and empty buckets store nothing (as of 2026-10-24)"
 needs: [guardrails-02, guardrails-03, guardrails-04, guardrails-05, guardrails-07, clf-02-06]
-facts_checked: 2026-10-24
+last_run_pass: "2026-10-25, standalone Free plan account, advanced sign-up, us-east-1"
+recorded: 2026-10-25
+facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html"
   - "https://docs.aws.amazon.com/cloudshell/latest/userguide/getting-started.html"
@@ -63,7 +65,7 @@ flowchart LR
 
 > **New sign-up path:** S3 is supported there, but IAM users can't sign in to the console and your Region is fixed (as of 2026-10-23). We haven't confirmed how CloudShell or CloudFormation behave on that path. Use your assigned Region wherever this lab says `us-east-1`, and sign in the way that path gives you.
 
-**About the screens:** the bucket steps are what we saw running Lab 01 on 2026-10-24, and CloudShell is as primer page 04 recorded it on 2026-10-23. CloudFormation labels and command outputs come from AWS's guides (checked 2026-10-24). We haven't yet run this lab end to end. If a label or an output differs, look for the option or line with the same meaning.
+**About the screens:** labels in **bold** and the command outputs are what we saw when we ran this lab end to end in our test account on 2026-10-25. AWS changes its console often. If a label or an output differs, look for the option or line with the same meaning.
 
 ## Steps
 
@@ -105,7 +107,7 @@ flowchart LR
    aws s3api create-bucket --bucket "$BUCKET" --region us-east-1
    ```
 
-   **You should see:** a few lines of JSON, including `"Location": "/clf-lab10-cli-…"`.
+   **You should see:** a few lines of JSON: `"Location": "/clf-lab10-cli-…"` and a `"BucketArn"` line holding the new bucket's ARN.
    > **If something went wrong:** `BucketAlreadyExists` means another account owns that name; change the digits, set `BUCKET=` again, and rerun. `InvalidBucketName` means a capital letter, space or underscore crept in.
 8. Add the two tags. This command replaces all of a bucket's tags with the set you give it:
 
@@ -123,6 +125,8 @@ flowchart LR
    ```
 
    **You should see:** your two tags; four Block Public Access settings, each `true`; and `"SSEAlgorithm": "AES256"`, which is SSE-S3. You never asked for those protections. S3 applies them to every new bucket, whichever tool creates it ([Creating a general purpose bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)).
+
+   Look closer and one setting differs: the encryption output says `"BucketKeyEnabled": false`, while the console's **Create bucket** page had **Bucket Key** set to **Enabled** for your Part A bucket (as we saw on 2026-10-25). Bucket Key only lowers the cost of KMS encryption, so it changes nothing for SSE-S3, but it makes this lab's point for you: two tools with different defaults don't build identical buckets unless every setting is written down. Note it in your lab log.
 
 ### Part C: a template you finish (completion)
 
@@ -150,7 +154,7 @@ flowchart LR
     edit lab10-bucket.yaml
     ```
 
-    **You should see:** an editor tab for an empty file ([Getting started with AWS CloudShell](https://docs.aws.amazon.com/cloudshell/latest/userguide/getting-started.html), step 9).
+    **You should see:** an editor tab named `lab10-bucket.yaml`, with an empty file, where the terminal tab was ([Getting started with AWS CloudShell](https://docs.aws.amazon.com/cloudshell/latest/userguide/getting-started.html), step 9). Closing the editor tab brings the terminal back.
     > **If something went wrong:** if `edit` isn't found, type `nano lab10-bucket.yaml` instead; after pasting, save with Ctrl+O and Enter, and leave with Ctrl+X.
 11. Paste this template. If CloudShell warns about pasting several lines, check the text and allow it. Keep the indentation exactly: in YAML, the spaces show what belongs to what.
 
@@ -209,7 +213,7 @@ flowchart LR
     ```
 
     **You should see:** JSON that lists the parameter `BucketName` and your description.
-    > **If something went wrong:** a "Template format error" usually means the indentation moved when you pasted. Run `edit lab10-bucket.yaml`, compare it with the template above line by line, save, and validate again. This check confirms that the file is well formed; some mistakes, such as a misspelled resource type, may show only in step 14.
+    > **If something went wrong:** a "Template format error" usually means the indentation moved when you pasted. Run `edit lab10-bucket.yaml`, compare it with the template above line by line, save, and validate again. A blank left in place gives a `ValidationError` instead: for `BLANK-1`, it names `typeNameList` and the pattern a type must follow, three names joined by `::`. This check confirms that the file is well formed; some mistakes, such as a misspelled resource type, may show only in step 14.
 14. Create the stack. Type your own `clf-lab10-cfn-` name after `ParameterValue=`. The `--tags` option tags the stack itself:
 
     ```bash
@@ -220,21 +224,21 @@ flowchart LR
       --region us-east-1
     ```
 
-    **You should see:** a `StackId` line holding an ARN that contains `stack/clf-lab10-stack/`. Sending the template from CloudShell keeps it out of S3; the console's upload option would store it in a bucket that CloudFormation creates in your account ([Create a stack from the CloudFormation console](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-create-stack.html)).
+    **You should see:** a `StackId` line holding an ARN that contains `stack/clf-lab10-stack/`, and an `OperationId` line. Sending the template from CloudShell keeps it out of S3; the console's upload option would store it in a bucket that CloudFormation creates in your account ([Create a stack from the CloudFormation console](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-create-stack.html)).
 15. Wait for it to finish:
 
     ```bash
     aws cloudformation wait stack-create-complete --stack-name clf-lab10-stack --region us-east-1
     ```
 
-    **You should see:** the prompt return after a short wait, with no message.
+    **You should see:** the prompt return with no message, after about a minute in our run.
     > **If something went wrong:** a message that the waiter failed means the stack didn't finish. Open it in the console (step 16) and read the **Events** tab for a `CREATE_FAILED` line and its reason. By default, CloudFormation then rolls back: it deletes what it made. Delete the failed stack as in step 19, fix the template, and repeat steps 13 to 15.
 16. In the console search bar, type `CloudFormation` and open it. Choose **Stacks**, then `clf-lab10-stack`.
     **You should see:** the status `CREATE_COMPLETE`.
 17. Choose the **Events** tab and read it from the bottom up. Each line is a **stack event**: one step CloudFormation took, with its time and status. Then open the **Resources** tab and the **Outputs** tab ([Creating your first stack](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/gettingstarted.walkthrough.html)).
-    **You should see:** `CREATE_IN_PROGRESS` and `CREATE_COMPLETE` events for `PhotoBucket` and for the stack. **Resources** lists `PhotoBucket` with your bucket's name as its physical ID; **Outputs** shows `BucketArn`.
+    **You should see:** `CREATE_IN_PROGRESS` and `CREATE_COMPLETE` events for `PhotoBucket` and for the stack, grouped under one **Operation ID**, newest first. `PhotoBucket` has two `CREATE_IN_PROGRESS` lines; the **Status reason** column, further right, says what each one marks. **Resources** lists `PhotoBucket` with your bucket's name as its physical ID; **Outputs** shows `BucketArn`.
 18. Open **S3**, then your `clf-lab10-cfn-` bucket, and its **Properties** tab. Scroll to **Tags**.
-    **You should see:** `guide` and `lab`. You may also see tags starting with `aws:cloudformation:`, which CloudFormation adds to name the stack that owns the bucket ([Resource tags](https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-properties-resource-tags.html)).
+    **You should see:** `guide` and `lab` under **User-defined tags**. Choose **AWS-generated tags** beside it: three tags starting with `aws:cloudformation:` (`logical-id`, `stack-id` and `stack-name`), which CloudFormation adds to name the stack that owns the bucket ([Resource tags](https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-properties-resource-tags.html)).
 
 ## Check your work
 
@@ -265,8 +269,8 @@ The console suits a one-time look or a quick experiment. The CLI suits a repeate
 
 Delete the stack first, so you watch CloudFormation remove its own bucket.
 
-19. In **CloudFormation**, select `clf-lab10-stack`, choose **Delete**, and confirm.
-    **You should see:** the status `DELETE_IN_PROGRESS`, then the stack leaves the list. In S3, the `clf-lab10-cfn-` bucket is gone too.
+19. In **CloudFormation**, select `clf-lab10-stack` and choose **Delete stack**. In the dialog, leave **Express mode** cleared, type the stack name to confirm, and choose **Delete stack**.
+    **You should see:** a banner that the delete was initiated. The list doesn't update by itself: choose the refresh button to watch the status go to `DELETE_IN_PROGRESS`, then the stack leave the list (within a minute for us). In S3, the `clf-lab10-cfn-` bucket is gone too.
     > **If something went wrong:** `DELETE_FAILED` on `PhotoBucket` means something was uploaded to the bucket; CloudFormation deletes only empty buckets ([AWS::S3::Bucket](https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-s3-bucket.html)). Empty it in S3, then delete the stack again.
 20. In CloudShell, delete the CLI bucket with the CLI. Set `BUCKET=` again first if CloudShell restarted.
 

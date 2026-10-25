@@ -48,7 +48,7 @@ flowchart LR
 1. Open **S3** and choose **General purpose buckets**. Open the bucket and turn on **Show versions** next to the search box.
    **You should see:** every version and delete marker. Every older version is billed in full as stored data until it's gone ([S3 Versioning](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html); [Cost traps](../99-reference/05-cost-traps.md#old-versions-are-billed-in-full)). Check the names: is this the right bucket?
 2. Go back to **General purpose buckets**. Select the option next to the bucket and choose **Empty**.
-3. On the **Empty bucket** page, type the confirmation the page asks for (AWS's guide says the bucket name; checked 2026-10-24), then choose **Empty**.
+3. On the **Empty bucket** page, type `permanently delete` (the confirmation the page asked for on 2026-10-25), then choose **Empty**. If the bucket holds nothing, not even old versions, the page says no objects were found.
    **You should see:** a status page that reports the bucket emptied. In a versioned bucket, Empty removes every version and every delete marker.
 4. Leave the status page (it may offer a button such as **Exit**) and go back to **General purpose buckets**. Select the bucket again and choose **Delete**.
 5. Type the bucket name to confirm, and choose **Delete bucket** ([Deleting a general purpose bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/delete-bucket.html)).
