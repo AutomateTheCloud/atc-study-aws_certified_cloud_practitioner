@@ -1,0 +1,2126 @@
+# Module 14, Capstone: a Well-Architected review. Practice questions and concept cards.
+# Written from the guide's pages in guide/14-capstone/; see practice/work/blueprint-14.md.
+# Build fields (page, section, task, level, topics) are described in source/practice/build_bundle.py.
+
+questions:
+
+  # ---------------------------------------------------------------------------------------------
+  # Lesson 14.01, The capstone review
+  # ---------------------------------------------------------------------------------------------
+
+  - id: q14-unreviewed-part-out-of-scope
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Step 1: start from the inventory, and write down what's out of scope"
+    task: "1.2"
+    level: understanding
+    topics: [well-architected-review, review-scope]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A consultant reviews a florist's online shop against the six Well-Architected pillars. The
+        shop's payment database was set up by another company, and the consultant has no access to
+        it. What should the review say about the database?
+    choices:
+      - id: omit-silently
+        text: Nothing, since a review covers only what the reviewer can see
+        variants:
+          - text: Nothing, as reviews cover only what reviewers can see
+          - text: Nothing, because a review covers only the parts it can see
+        explanation:
+          text: |
+            Leaving it out silently is the problem: the owner would assume it was checked. A review
+            names what it didn't look at.
+      - id: rate-high
+        text: That it's a high-risk issue, because it wasn't reviewed
+        variants:
+          - text: That it counts as a high risk, because nobody reviewed it
+          - text: A high-risk rating, since no one examined it
+        explanation:
+          text: |
+            A risk rating needs evidence of a gap and its harm. A part nobody looked at is unknown,
+            not proven risky; the scope records that it's unknown.
+      - id: assume-like-rest
+        text: That it's probably built as well as the parts reviewed
+        variants:
+          - text: That it's likely as sound as the parts that were reviewed
+          - text: That it can be assumed to match the reviewed parts
+        explanation:
+          text: |
+            A review reports what the evidence shows. Guessing about a part nobody saw would give
+            the owner false comfort.
+      - id: state-out-of-scope
+        text: That it's outside the scope of this review
+        variants:
+          - text: That this review's scope leaves it out
+          - text: That it falls outside what this review covers
+        explanation:
+          text: |
+            Correct. The scope says what the review covers and what it leaves out, so the owner
+            knows which parts still need someone to look at them.
+    correct_answers: [state-out-of-scope]
+    explanation:
+      text: |
+        A review's scope is written down in a sentence or two: what is in, and what is out. The
+        bakery's review, for example, leaves out an order database that no lab built. Writing the
+        boundary down tells the owner exactly what the review didn't look at, so nothing is assumed
+        safe by accident.
+
+  - id: q14-zero-risks-too-few-questions
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Step 2: ask each pillar's own question"
+    task: "1.2"
+    level: understanding
+    topics: [well-architected-review, well-architected-tool]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A team answers three questions in the AWS Well-Architected Tool for its booking system,
+        leaves the rest unanswered, and sees no high or medium risks. The team lead wants to tell
+        management the system is well architected. What is the best reading of the result?
+    choices:
+      - id: tool-certifies
+        text: The Tool has confirmed the system meets the Framework
+        variants:
+          - text: The Tool has certified that the system follows the Framework
+          - text: The system has been confirmed by the Tool as meeting the Framework
+        explanation:
+          text: |
+            The Tool doesn't certify anything. It records the answers the team gives and shows the
+            risks those answers imply.
+      - id: tool-scanned
+        text: The Tool scanned the system's resources and found no faults
+        variants:
+          - text: The Tool inspected the system's resources and found nothing wrong
+          - text: A scan of the system's resources by the Tool found no problems
+        explanation:
+          text: |
+            The Well-Architected Tool doesn't inspect an account. Its risks come only from the
+            answers the team records.
+      - id: too-few-questions
+        text: The review asked too few questions to show much
+        variants:
+          - text: Too few questions were answered for the result to mean much
+          - text: The review covered too few questions to say much
+        explanation:
+          text: |
+            Correct. Unanswered questions aren't counted as risks, so three answers can't describe
+            the whole system. A review that finds nothing probably asked too few questions.
+      - id: unanswered-are-fine
+        text: Unanswered questions count as having no risk, so the system is sound
+        variants:
+          - text: Questions left unanswered count as no risk, so the system is sound
+          - text: The system is sound, since unanswered questions are scored as no risk
+        explanation:
+          text: |
+            An unanswered question stays "unanswered", a value of its own. It hides a possible risk;
+            it doesn't prove there isn't one.
+    correct_answers: [too-few-questions]
+    hint:
+      text: Think about what the Tool counts for a question nobody answered.
+    explanation:
+      text: |
+        A Well-Architected review's risks come from the questions you answer. Questions left
+        unanswered aren't counted as risks, so a clean result after three answers says little about
+        the rest of the system. The lesson's rule of thumb: a review that finds nothing probably
+        asked too few questions.
+
+  - id: q14-highest-risk-finding
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Step 3: rate each finding by what it would do to the business"
+    task: "1.2"
+    level: application
+    topics: [well-architected-review, risk-rating]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A review of a bakery's ordering site lists four findings. Every order passes through the
+        site's web server. Rated by the harm to the business, which finding is the highest risk?
+    choices:
+      - id: cart-no-recovery
+        text: The shopping-cart table has no point-in-time recovery
+        variants:
+          - text: Point-in-time recovery is off on the shopping-cart table
+          - text: The table of shopping carts can't be restored to a point in time
+        explanation:
+          text: |
+            Losing carts annoys some customers, but orders and payments live elsewhere. The lesson
+            rates this medium.
+      - id: logs-never-expire
+        text: The order function's logs are kept forever
+        variants:
+          - text: The order function's logs never expire
+          - text: Nothing ever deletes the order function's logs
+        explanation:
+          text: |
+            Logs that never expire make the bill creep up slowly. That costs a little money; it
+            doesn't stop orders.
+      - id: single-web-server
+        text: The only web server runs in one Availability Zone
+        variants:
+          - text: The site has one web server, in a single Availability Zone
+          - text: One web server in one Availability Zone serves the site
+        explanation:
+          text: |
+            Correct. If that instance or its Availability Zone fails, the site stops taking orders
+            until someone rebuilds it by hand.
+      - id: size-by-label
+        text: The instance size was chosen from a free-tier label
+        variants:
+          - text: The instance type was picked because it was free-tier eligible
+          - text: A free-tier label, not data, decided the instance size
+        explanation:
+          text: |
+            An instance size chosen without data is worth measuring, but nothing suggests it is
+            failing customers today. The lesson rates it medium.
+    correct_answers: [single-web-server]
+    hint:
+      text: Ask of each finding what happens to the business if it goes wrong, and how soon.
+    explanation:
+      text: |
+        A review rates each finding by what it would do to the business and how likely it is. A
+        single web server in one Availability Zone is the one part every order passes through, and
+        nothing replaces it if it fails, so a failure stops sales: a high risk. The other findings
+        cost a little money or annoy a few customers, which makes them medium.
+
+  - id: q14-same-gap-lower-harm
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Step 3: rate each finding by what it would do to the business"
+    task: "1.2"
+    level: application
+    topics: [well-architected-review, risk-rating]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A school's staff wiki runs on one Amazon EC2 instance in one Availability Zone. A few
+        teachers read it each week, and a day of downtime would cost nothing but some patience. How
+        should a Well-Architected review rate this single point of failure?
+    choices:
+      - id: lower-with-reason
+        text: Medium, or an accepted risk, with the business reason written down
+        variants:
+          - text: Medium or an accepted risk, recording the business reason for it
+          - text: An accepted risk or medium, with the reason from the business recorded
+        explanation:
+          text: |
+            Correct. A best practice's page gives a starting level, and AWS lets a business lower it
+            when it writes down why. Here the harm is small.
+      - id: always-high
+        text: High, because a single instance in one AZ is a single point of failure
+        variants:
+          - text: High, since one instance in one AZ is a single point of failure
+          - text: High, as a lone instance in one AZ makes a single point of failure
+        explanation:
+          text: |
+            The same gap does different harm in different workloads. The rating follows the harm to
+            the business, not the shape of the architecture alone.
+      - id: not-a-finding
+        text: Not at all, since a review covers only customer-facing systems
+        variants:
+          - text: Not rated, because reviews look only at customer-facing systems
+          - text: Leave it out, since only systems customers use are reviewed
+        explanation:
+          text: |
+            Any workload can be reviewed. The gap is still a finding; the question is only how
+            serious it is for this business.
+      - id: fix-first
+        text: High, and fixed before any other finding, whatever the cost
+        variants:
+          - text: High, and fixed ahead of every other finding at any price
+          - text: High, with the fix put first regardless of what it costs
+        explanation:
+          text: |
+            A fix is weighed against the harm it avoids. Paying for a second instance to protect a
+            wiki that can wait a day would cost more than the outage.
+    correct_answers: [lower-with-reason]
+    hint:
+      text: Compare this wiki with a shop where every order passes through one server.
+    explanation:
+      text: |
+        Ratings come from the harm to the business, starting from the level on the best practice's
+        page. A shop that loses orders when its only server fails has a high risk; a wiki a few
+        people can do without for a day has the same gap but much less harm. Writing the reason down
+        is what makes the lower rating legitimate.
+
+  - id: q14-three-az-copies-not-backups
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Step 3: rate each finding by what it would do to the business"
+    task: "1.2"
+    level: understanding
+    topics: [well-architected-review, backups, reliability]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        During a review, a developer says a DynamoDB table needs no point-in-time recovery because
+        DynamoDB already keeps copies in several Availability Zones. What does that argument miss?
+    choices:
+      - id: az-copies-not-real
+        text: DynamoDB keeps its data in a single Availability Zone
+        variants:
+          - text: A DynamoDB table lives in just one Availability Zone
+          - text: DynamoDB stores a table in only one Availability Zone
+        explanation:
+          text: |
+            The developer is right that DynamoDB spreads copies across Availability Zones. The flaw
+            is in what those copies protect against.
+      - id: copies-cost-extra
+        text: The copies are billed separately and cost more than backups
+        variants:
+          - text: The extra copies carry their own charge, higher than a backup's
+          - text: The copies cost more than backups, on a separate line of the bill
+        explanation:
+          text: |
+            Price isn't the point here, and the lesson says price is a reason for ordering fixes,
+            not for rating risk. The copies don't replace a backup at any price.
+      - id: copies-need-trail
+        text: The copies are made only while a CloudTrail trail is on
+        variants:
+          - text: DynamoDB copies data only when a CloudTrail trail exists
+          - text: Without a CloudTrail trail, DynamoDB makes no copies
+        explanation:
+          text: |
+            CloudTrail records API activity; it has nothing to do with how DynamoDB stores data.
+      - id: bad-write-everywhere
+        text: A bad write or a deletion reaches every copy
+        variants:
+          - text: A mistaken write or delete is copied to every replica
+          - text: Every copy receives a bad write or a deletion too
+        explanation:
+          text: |
+            Correct. Copies in several Availability Zones survive a failed AZ, but a mistake is
+            copied to all of them. Only a backup lets you go back.
+    correct_answers: [bad-write-everywhere]
+    explanation:
+      text: |
+        Copies in several Availability Zones give high availability: the table survives the loss of
+        one AZ. They don't protect against a bad write or a deletion, because that change reaches
+        every copy at once. Point-in-time recovery is a backup that lets you restore the table to a
+        moment before the mistake.
+
+  - id: q14-hourly-charges-select-two
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Step 4: price each fix with dated rates, and count people's time"
+    task: "4.1"
+    level: understanding
+    topics: [pricing-fixes, hourly-charges]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A shop plans to put its web servers behind an Application Load Balancer. When pricing the
+        change, the reviewer looks for the charges that bill all month, even in a week with no
+        customers. Which two charges are those? (Select TWO.)
+    choices:
+      - id: alb-hours
+        text: The hours the load balancer runs
+        variants:
+          - text: Each hour the load balancer is running
+          - text: The load balancer's running hours
+        explanation:
+          text: |
+            Correct. A load balancer bills for every hour it exists, whether or not anyone visits.
+      - id: capacity-units
+        text: The capacity units the load balancer uses
+        variants:
+          - text: Capacity units used by the load balancer
+          - text: The load balancer's used capacity units
+        explanation:
+          text: |
+            Capacity units measure the work the load balancer does, so they track traffic. In the
+            lesson's estimate they are a small, assumed part of the cost.
+      - id: public-ipv4
+        text: The load balancer's public IPv4 addresses
+        variants:
+          - text: The public IPv4 addresses the load balancer uses
+          - text: Public IPv4 addresses held by the load balancer
+        explanation:
+          text: |
+            Correct. A public IPv4 address bills by the hour, including the addresses a load
+            balancer uses.
+      - id: s3-requests
+        text: Requests to Amazon S3 for product photos
+        variants:
+          - text: Amazon S3 requests for product photos
+          - text: Product-photo requests sent to Amazon S3
+        explanation:
+          text: |
+            S3 charges per request, so a week without customers brings few requests and little
+            charge.
+      - id: data-out
+        text: Data the site sends out to customers
+        variants:
+          - text: Data transferred out to customers
+          - text: Data that goes out to customers' browsers
+        explanation:
+          text: |
+            Data transfer out is charged per gigabyte sent, so with no customers there is almost
+            nothing to send.
+    correct_answers: [alb-hours, public-ipv4]
+    explanation:
+      text: |
+        "Find the hourly lines" is the first habit for pricing a fix: hourly charges bill all month,
+        with or without customers. In the bakery's reliability fix, most of the extra cost is hourly:
+        the load balancer's hours and its public IPv4 addresses. Charges that follow use, such as S3
+        requests, data sent out and the load balancer's capacity units, fall when traffic falls.
+
+  - id: q14-pillar-single-az-web-server
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Worked example: the reliability pillar"
+    task: "1.2"
+    level: understanding
+    topics: [well-architected-pillars, reliability]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A reviewer notes that a travel agency's booking site runs on one Amazon EC2 instance in one
+        Availability Zone, and nothing would replace the instance if it failed. Which
+        Well-Architected pillar does this finding belong to?
+    choices:
+      - id: performance
+        text: Performance efficiency
+        variants:
+          - text: The performance efficiency pillar
+          - text: Performance efficiency, as a pillar
+        explanation:
+          text: |
+            Performance efficiency is about choosing and using resources that fit the work. The
+            finding is about surviving a failure, not about speed.
+      - id: security
+        text: Security
+        variants:
+          - text: The security pillar
+          - text: Security, as a pillar
+        explanation:
+          text: |
+            Security covers protecting data and systems and detecting events. A server that stops
+            when its AZ fails is a recovery problem, not a security one.
+      - id: reliability
+        text: Reliability
+        variants:
+          - text: The reliability pillar
+          - text: Reliability, as a pillar
+        explanation:
+          text: |
+            Correct. Reliability asks how a workload isolates faults and recovers from them; its
+            question REL 10 covers deploying to more than one location.
+      - id: sustainability
+        text: Sustainability
+        variants:
+          - text: The sustainability pillar
+          - text: Sustainability, as a pillar
+        explanation:
+          text: |
+            Sustainability is about the environmental impact of what runs. Adding a second server
+            would actually raise energy use, a trade-off the review writes down.
+    correct_answers: [reliability]
+    explanation:
+      text: |
+        A single instance in one Availability Zone, with nothing to replace it, is a fault-isolation
+        gap: reliability's question REL 10 and its best practice REL10-BP01, deploy the workload to
+        multiple locations. The fix spreads servers across two AZs behind a load balancer, with Auto
+        Scaling to replace a failed one.
+
+  - id: q14-auto-scaling-group-of-one-gap
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Worked example: the reliability pillar"
+    task: "3.3"
+    level: understanding
+    topics: [reliability, auto-scaling]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        To save money, a shop puts its only web server, which has a public IPv4 address, in an Auto
+        Scaling group with a minimum and maximum of one, and no load balancer. At night the instance
+        itself fails its health checks. What problem remains?
+    choices:
+      - id: no-replacement
+        text: Nothing replaces the server until someone rebuilds it
+        variants:
+          - text: The server stays down until a person rebuilds it
+          - text: No new server starts until someone builds one by hand
+        explanation:
+          text: |
+            An Auto Scaling group does replace a failed instance, usually within minutes. That is
+            the part this design gets right.
+      - id: new-address
+        text: The replacement gets a new address customers can't find
+        variants:
+          - text: Customers can't find the replacement's new address
+          - text: The new server's new address is unknown to customers
+        explanation:
+          text: |
+            Correct. Without a load balancer in front, the replacement starts with a new public
+            address, and the site's address must be updated before customers reach it.
+      - id: keeps-billing
+        text: The failed instance keeps running and billing beside the new one
+        variants:
+          - text: The broken instance stays up and keeps billing next to the new one
+          - text: The failed instance goes on running and billing next to the new one
+        explanation:
+          text: |
+            Auto Scaling terminates an instance that fails its health checks and launches a
+            replacement, so the group still holds one server. This option costs nothing extra.
+      - id: other-region
+        text: The replacement starts in a different Region from the old server
+        variants:
+          - text: The new server is launched in another Region than the old one
+          - text: The replacement comes up in another Region than the old one
+        explanation:
+          text: |
+            An Auto Scaling group works within one Region, across the subnets it's given. The
+            replacement starts in the same Region.
+    correct_answers: [new-address]
+    explanation:
+      text: |
+        An Auto Scaling group of one is a fair, free step: it replaces a failed server within
+        minutes. But without a load balancer, the new server has a new public address, so customers
+        can't reach it until the site's address is updated, and a person still has to act. Two
+        servers in two AZs behind a load balancer keep the site up, at a higher monthly cost.
+
+  - id: q14-weigh-fix-against-harm
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Worked example: the reliability pillar"
+    task: "1.2"
+    level: application
+    topics: [pricing-fixes, risk-rating]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A reviewer recommends a second web server and a load balancer that would add a steady
+        monthly charge to a small shop's AWS bill. The owner asks whether it's worth it. Which
+        comparison should decide?
+    choices:
+      - id: vs-harm-avoided
+        text: The fix's cost compared with what an outage would cost
+        variants:
+          - text: The fix's price next to what an outage would lose
+          - text: How the fix's cost compares with the loss from an outage
+        explanation:
+          text: |
+            Correct. The lesson's question is not "is this a lot?" but "is it less than the risk
+            would cost us?" A few hours of lost sales on a busy day can pay for a year of the fix.
+      - id: vs-current-bill
+        text: The fix's cost compared with the size of the current bill
+        variants:
+          - text: How big the fix's cost is next to today's bill
+          - text: The fix's price as a share of the current bill
+        explanation:
+          text: |
+            A fix can double a small bill and still be cheap next to the loss it prevents. The size
+            of the bill isn't what is at stake.
+      - id: vs-other-shops
+        text: The fix's cost compared with what similar shops spend
+        variants:
+          - text: The fix's price next to similar shops' spending
+          - text: How the fix's cost compares with other shops' bills
+        explanation:
+          text: |
+            Other shops have different revenue and different risks. The decision rests on this
+            business's own losses.
+      - id: vs-free-option
+        text: The fix's cost compared with the cheapest option on offer
+        variants:
+          - text: The fix's price next to the cheapest option available
+          - text: How the fix's cost compares with the lowest-priced option
+        explanation:
+          text: |
+            The cheapest option may leave the gap open. Price alone can't say whether the
+            protection is worth having.
+    correct_answers: [vs-harm-avoided]
+    hint:
+      text: "Think in the owner's terms: what does an hour of downtime cost her?"
+    explanation:
+      text: |
+        A fix is weighed against the harm it avoids. In the lesson's worked example, the reliability
+        fix adds about $441 a year, while three hours of outage on a busy Saturday would lose about
+        the same in orders (made-up figures, prices as of 2026-10-24). Count the work too: a fix
+        that costs nothing can still take a day.
+
+  - id: q14-support-plan-small-bill
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Step 5: recommend a Support plan from the review's findings"
+    task: "4.3"
+    level: application
+    topics: [support-plans]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A small shop's AWS bill is well under $100 a month, but after a review its site now uses a
+        load balancer and Auto Scaling that the owner can't troubleshoot alone. She wants to be able
+        to open technical cases with AWS at any hour, for the lowest fee. Which plan fits?
+    choices:
+      - id: basic
+        text: Basic Support
+        variants:
+          - text: The Basic Support plan
+          - text: AWS Basic Support
+        explanation:
+          text: |
+            Basic is free, but it can't open technical cases: only account, billing and quota
+            requests.
+      - id: enterprise
+        text: AWS Enterprise Support
+        variants:
+          - text: The AWS Enterprise Support plan
+          - text: Enterprise Support
+        explanation:
+          text: |
+            Enterprise Support adds a Technical Account Manager, but its monthly minimum is many
+            times this shop's whole bill.
+      - id: business-plus
+        text: AWS Business Support+
+        variants:
+          - text: The AWS Business Support+ plan
+          - text: Business Support+
+        explanation:
+          text: |
+            Correct. It is the first paid plan, with technical cases 24/7; on a small bill the fee
+            is its monthly minimum.
+      - id: unified-ops
+        text: AWS Unified Operations
+        variants:
+          - text: The AWS Unified Operations plan
+          - text: Unified Operations
+        explanation:
+          text: |
+            Unified Operations is the top plan, for mission-critical systems where minutes matter.
+            Its minimum is far beyond a small shop's needs.
+    correct_answers: [business-plus]
+    hint:
+      text: Start at the free plan and move up one step only for a reason.
+    explanation:
+      text: |
+        Start at Basic and move up only for a reason. The reason here is technical help at any
+        hour, which Basic doesn't give and AWS Business Support+ does. On a small bill its fee is
+        the plan's monthly minimum (as of 2026-10-24); the plans above it cost far more than the
+        whole bill. Staying on Basic is also defensible if it is written down as an accepted risk.
+
+  - id: q14-record-declined-support
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Step 5: recommend a Support plan from the review's findings"
+    task: "1.2"
+    level: application
+    topics: [well-architected-review, accepted-risk]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A review recommends a paid Support plan for a small shop. The owner declines: she'd rather
+        rely on the documentation and community forums. How should the reviewer handle this in the
+        review?
+    choices:
+      - id: delete-recommendation
+        text: Drop the recommendation, since the owner rejected it
+        variants:
+          - text: Remove the recommendation, because the owner said no
+          - text: Take the recommendation out, as the owner turned it down
+        explanation:
+          text: |
+            Deleting it loses the record that a risk exists. Next year, nobody would know it was
+            ever considered.
+      - id: accepted-risk
+        text: Record an accepted risk, with the reason and who decided
+        variants:
+          - text: Log an accepted risk, giving the reason and the decider
+          - text: Write down an accepted risk, its reason and who decided
+        explanation:
+          text: |
+            Correct. An accepted risk records what the business chose not to fix, why, and who
+            decided, with a date to look at it again.
+      - id: buy-anyway
+        text: Sign up for the plan anyway, since the review recommended it
+        variants:
+          - text: Buy the plan regardless, because the review called for it
+          - text: Subscribe to the plan anyway, as the review advised it
+        explanation:
+          text: |
+            The owner decides what to fund. A reviewer advises and records; buying a plan against
+            the owner's decision isn't the reviewer's call.
+      - id: mark-fixed
+        text: Mark the finding as fixed, since a decision was made
+        variants:
+          - text: Close the finding as fixed, because it was decided
+          - text: Treat the finding as resolved, as a decision exists
+        explanation:
+          text: |
+            Nothing changed in the account, so the risk is still there. Calling it fixed would
+            mislead the next reviewer.
+    correct_answers: [accepted-risk]
+    explanation:
+      text: |
+        When a business chooses not to act on a finding, the review records an accepted risk: what
+        stays as it is, the reason, who decided and when, and when to look again. The bakery's model
+        line reads, in effect, "Support stays on Basic, so no technical cases can be opened; decided
+        by the owner; revisit before next December."
+
+  - id: q14-order-of-fixes
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Step 6: write the improvement plan the owner can act on"
+    task: "1.2"
+    level: application
+    topics: [improvement-plan, risk-rating]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A review's improvement plan has three findings. Finding 1 is a high risk whose fix takes a
+        day and adds a monthly charge. Finding 2 is a medium risk fixed free in five minutes.
+        Finding 3 is a high risk fixed free in an hour. In what order should the plan list them?
+    choices:
+      - id: three-one-two
+        text: Finding 3, then finding 1, then finding 2
+        variants:
+          - text: First 3, then 1, and finding 2 last
+          - text: 3 first, 1 second, 2 third
+        explanation:
+          text: |
+            Correct. High risks come first, and between the two high risks the quick, free one goes
+            first, so something improves this week.
+      - id: two-three-one
+        text: Finding 2, then finding 3, then finding 1
+        variants:
+          - text: First 2, then 3, and finding 1 last
+          - text: 2 first, 3 second, 1 third
+        explanation:
+          text: |
+            Finding 2 is the quickest, but it's a medium risk. A cheap fix doesn't jump ahead of a
+            high risk just because it's cheap.
+      - id: one-three-two
+        text: Finding 1, then finding 3, then finding 2
+        variants:
+          - text: First 1, then 3, and finding 2 last
+          - text: 1 first, 3 second, 2 third
+        explanation:
+          text: |
+            Both high risks come before the medium one, but among risks of the same level, the
+            quick, cheap fix goes first.
+      - id: three-two-one
+        text: Finding 3, then finding 2, then finding 1
+        variants:
+          - text: First 3, then 2, and finding 1 last
+          - text: 3 first, 2 second, 1 third
+        explanation:
+          text: |
+            This sorts by cost, so the medium risk lands ahead of a high one. The risk level comes
+            before the price.
+    correct_answers: [three-one-two]
+    hint:
+      text: Sort by risk level first; use speed and cost only to break ties.
+    explanation:
+      text: |
+        An improvement plan lists high risks first. Among risks of the same level, quick and cheap
+        fixes come first, so the owner sees progress this week. A cheap fix never jumps ahead of a
+        high risk just because it's cheap.
+
+  - id: q14-pillar-logs-never-expire
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Your review, then the model answer"
+    task: "1.2"
+    level: understanding
+    topics: [well-architected-pillars, cost-optimization, log-retention]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A review finds that an AWS Lambda function's logs in Amazon CloudWatch Logs are never
+        deleted, so the storage charge for them grows a little every month. Under which
+        Well-Architected pillar does the review list this finding?
+    choices:
+      - id: reliability
+        text: Reliability
+        variants:
+          - text: The reliability pillar
+          - text: Reliability, as a pillar
+        explanation:
+          text: |
+            Reliability covers recovering from failures. Logs that pile up don't make the function
+            fail.
+      - id: performance
+        text: Performance efficiency
+        variants:
+          - text: The performance efficiency pillar
+          - text: Performance efficiency, as a pillar
+        explanation:
+          text: |
+            Old logs don't slow the function down. Performance efficiency is about resources that
+            fit the work.
+      - id: security
+        text: Security
+        variants:
+          - text: The security pillar
+          - text: Security, as a pillar
+        explanation:
+          text: |
+            Security wants logging turned on, and the function has it. The finding is about how long
+            the logs are kept and what that costs.
+      - id: cost
+        text: Cost optimization
+        variants:
+          - text: The cost optimization pillar
+          - text: Cost optimization, as a pillar
+        explanation:
+          text: |
+            Correct. Keeping data longer than needed raises the bill; the best practice is COST04-BP05,
+            enforce data retention policies.
+    correct_answers: [cost]
+    explanation:
+      text: |
+        Data kept forever costs a little more every month. The bakery's review lists the function's
+        logs under cost optimization, best practice COST04-BP05 (enforce data retention policies),
+        and fixes it with a 30-day retention setting on the log group: five minutes of work that
+        stops a slow rise.
+
+  - id: q14-pillar-size-chosen-by-label
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Your review, then the model answer"
+    task: "1.2"
+    level: understanding
+    topics: [well-architected-pillars, performance-efficiency, rightsizing]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A review notes that a web server's instance type was picked because it was free-tier
+        eligible, and nobody has measured whether it suits the site's load. Under which
+        Well-Architected pillar does the review list this finding?
+    choices:
+      - id: performance
+        text: Performance efficiency
+        variants:
+          - text: The performance efficiency pillar
+          - text: Performance efficiency, as a pillar
+        explanation:
+          text: |
+            Correct. Its question PERF 2 asks how you select and use compute, and its best practice
+            PERF02-BP04 is to configure and right-size compute from data.
+      - id: reliability
+        text: Reliability
+        variants:
+          - text: The reliability pillar
+          - text: Reliability, as a pillar
+        explanation:
+          text: |
+            Reliability is about surviving failures. The finding is about whether the size fits the
+            work, which nobody has measured.
+      - id: security
+        text: Security
+        variants:
+          - text: The security pillar
+          - text: Security, as a pillar
+        explanation:
+          text: |
+            An instance's size doesn't change who can reach it or what is logged.
+      - id: operational
+        text: Operational excellence
+        variants:
+          - text: The operational excellence pillar
+          - text: Operational excellence, as a pillar
+        explanation:
+          text: |
+            Operational excellence covers how a team runs and improves the workload, such as alerts
+            and templates. Choosing a resource size to fit the load belongs to another pillar.
+    correct_answers: [performance]
+    explanation:
+      text: |
+        Choosing compute that fits the work, and checking it with data, is performance efficiency:
+        question PERF 2 and best practice PERF02-BP04, configure and right-size compute resources.
+        The bakery's fix is to measure first: after the redesign, opt in to AWS Compute Optimizer and
+        read a month of the servers' metrics before changing the size.
+
+  - id: q14-security-findings-select-two
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Your review, then the model answer"
+    task: "1.2"
+    level: understanding
+    topics: [well-architected-pillars, security]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A bakery's review lists the findings below. Which two belong to the security pillar?
+        (Select TWO.)
+    choices:
+      - id: event-history-only
+        text: Only 90 days of CloudTrail Event history, and no trail
+        variants:
+          - text: No CloudTrail trail, only the 90 days of Event history
+          - text: CloudTrail Event history's 90 days and no trail at all
+        explanation:
+          text: |
+            Correct. Security's question SEC 4 asks how you detect and investigate security events;
+            without a trail, who did what is lost after 90 days.
+      - id: single-az
+        text: One web server in one Availability Zone
+        variants:
+          - text: A single web server in a single Availability Zone
+          - text: The only web server, in one Availability Zone
+        explanation:
+          text: |
+            A single server in one AZ is a reliability finding: fault isolation, question REL 10.
+      - id: patching-unowned
+        text: Nobody owns patching the servers' operating system
+        variants:
+          - text: No one is responsible for patching the servers' OS
+          - text: Patching the servers' operating system has no owner
+        explanation:
+          text: |
+            Correct. Vulnerability management, best practice SEC06-BP01, is a security practice, and
+            on Amazon EC2 patching the guest OS is the customer's job.
+      - id: logs-forever
+        text: The function's logs are kept forever
+        variants:
+          - text: The function's logs never expire
+          - text: Nothing ever deletes the function's logs
+        explanation:
+          text: |
+            Logs kept forever are a cost finding: data retention, best practice COST04-BP05.
+      - id: built-by-hand
+        text: Most parts were built by hand in the console
+        variants:
+          - text: Most of the parts were set up by hand in the console
+          - text: The console was used by hand to build most parts
+        explanation:
+          text: |
+            Hand-built parts are an operational excellence finding: configuration management, best
+            practice OPS05-BP03.
+    correct_answers: [event-history-only, patching-unowned]
+    explanation:
+      text: |
+        The bakery's review lists two security findings: only 90 days of Event history with nothing
+        kept or watched (SEC 4, fixed with a trail), and nobody owning patching of the web servers
+        (SEC06-BP01, vulnerability management). The others belong to reliability, cost optimization
+        and operational excellence.
+
+  - id: q14-who-changed-it-months-ago
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Your review, then the model answer"
+    task: "2.2"
+    level: application
+    topics: [cloudtrail, security]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A dental practice's AWS account has never had a CloudTrail trail. Its office manager wants
+        to be able to find out, a year from now, who changed a security group's rules. What should
+        the practice set up now?
+    choices:
+      - id: trail-to-bucket
+        text: A CloudTrail trail that delivers events to an S3 bucket
+        variants:
+          - text: An AWS CloudTrail trail delivering events to an Amazon S3 bucket
+          - text: A trail in CloudTrail that sends events to an S3 bucket
+        explanation:
+          text: |
+            Correct. A trail delivers events to a bucket, where they're kept as long as the bucket's
+            rules allow.
+      - id: longer-event-history
+        text: A longer retention period for CloudTrail Event history
+        variants:
+          - text: Extended retention for CloudTrail Event history
+          - text: A raised retention setting on CloudTrail Event history
+        explanation:
+          text: |
+            Event history keeps 90 days, and you can't lengthen it. A trail is how events are kept
+            longer.
+      - id: trusted-advisor
+        text: All AWS Trusted Advisor checks through a paid Support plan
+        variants:
+          - text: The full set of AWS Trusted Advisor checks, from a paid Support plan
+          - text: Every AWS Trusted Advisor check, unlocked by a paid Support plan
+        explanation:
+          text: |
+            Trusted Advisor checks an account against good practice. It doesn't record who changed
+            what.
+      - id: inspector
+        text: Amazon Inspector scans of the account's instances
+        variants:
+          - text: Scans of the account's instances by Amazon Inspector
+          - text: Amazon Inspector scanning the account's instances
+        explanation:
+          text: |
+            Inspector looks for software vulnerabilities and unintended network exposure. It doesn't
+            keep a history of API calls.
+    correct_answers: [trail-to-bucket]
+    hint:
+      text: The built-in history is short. What keeps events beyond it?
+    explanation:
+      text: |
+        CloudTrail Event history shows the last 90 days of management events, and nothing older. A
+        trail delivers events to an S3 bucket, kept for as long as you choose, and the first copy of
+        management events has no CloudTrail charge; you pay for the S3 storage (as of 2026-10-24).
+        The bakery's fix is a multi-Region trail to its own private bucket, with a rule that deletes
+        logs after a year.
+
+  - id: q14-actionable-alerts-select-two
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Your review, then the model answer"
+    task: "1.2"
+    level: application
+    topics: [operational-excellence, alarms]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A shop's site now runs two web servers behind an Application Load Balancer. Its only
+        CloudWatch alarm watches an AWS Lambda function and emails one person through an Amazon SNS
+        topic. The review's finding: if the web servers stopped, the alert wouldn't reliably reach
+        anyone. Which two changes close this gap? (Select TWO.)
+    choices:
+      - id: healthy-host-alarm
+        text: An alarm on the load balancer's count of healthy servers
+        variants:
+          - text: A CloudWatch alarm when the healthy server count drops
+          - text: An alarm on fewer healthy servers behind the load balancer
+        explanation:
+          text: |
+            Correct. An alarm on the load balancer's healthy servers (`HealthyHostCount`) dropping
+            below two, sent to the SNS topic, tells someone when the web tier fails.
+      - id: second-subscriber
+        text: A second email address subscribed to the SNS topic
+        variants:
+          - text: Another email address added to the SNS topic
+          - text: One more email subscription on the Amazon SNS topic
+        explanation:
+          text: |
+            Correct. An alert that reaches one person goes unread when that person is away. A
+            second address makes the alert actionable.
+      - id: trail
+        text: A CloudTrail trail that keeps every API call
+        variants:
+          - text: An AWS CloudTrail trail recording every API call
+          - text: A trail in CloudTrail that stores all API calls
+        explanation:
+          text: |
+            A trail records who did what, for investigations. It doesn't tell anyone that the site
+            is down.
+      - id: larger-instances
+        text: Larger instance types for both web servers
+        variants:
+          - text: Bigger instance types on both web servers
+          - text: Both web servers moved to larger instance types
+        explanation:
+          text: |
+            Bigger servers can still fail, and nobody would hear about it. The gap is that nothing
+            watches them.
+      - id: config-rule
+        text: An AWS Config rule that records the servers' settings
+        variants:
+          - text: An AWS Config rule tracking the servers' configuration
+          - text: AWS Config recording the servers' settings with a rule
+        explanation:
+          text: |
+            AWS Config records and checks configuration. It doesn't watch whether the servers are
+            serving customers.
+    correct_answers: [healthy-host-alarm, second-subscriber]
+    explanation:
+      text: |
+        This is operational excellence, best practice OPS08-BP04, create actionable alerts. An alarm
+        on the load balancer's healthy servers watches the web tier, and sending it to an SNS topic
+        with a second address means someone acts on it. In the bakery's review the fix costs nothing
+        within CloudWatch's free alarms (as of 2026-10-24) and takes about an hour.
+
+  - id: q14-noisy-error-alarm
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Your review, then the model answer"
+    task: "1.2"
+    level: application
+    topics: [operational-excellence, alarms]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A shop's order function has a CloudWatch alarm that goes off whenever one or more errors
+        occur in a single minute. In a quiet month that's rare, but in the holiday rush an
+        occasional failed order is expected. What should the review recommend for this alarm?
+    choices:
+      - id: delete-alarm
+        text: Delete it, since errors are expected in busy months
+        variants:
+          - text: Remove it, because busy months bring expected errors
+          - text: Get rid of it, as errors are normal when it's busy
+        explanation:
+          text: |
+            Without the alarm, nobody would hear about a real failure. The aim is fewer false alarms,
+            not none at all.
+      - id: more-addresses
+        text: Send it to more email addresses, so someone always reads it
+        variants:
+          - text: Add email addresses, so it always reaches someone
+          - text: Email it to more people, so it's always read
+        explanation:
+          text: |
+            More recipients of a noisy alarm means more people learning to ignore it. A second
+            address helps an alert that matters, not one that's noisy.
+      - id: several-minutes
+        text: Evaluate it over several minutes, so it fires on a pattern
+        variants:
+          - text: Have it look at several minutes, so it fires on a trend
+          - text: Spread it over several minutes, so a pattern sets it off
+        explanation:
+          text: |
+            Correct. An alarm that fires on every stray error is ignored; one that waits for errors
+            over several minutes signals a real problem.
+      - id: billing-alarm
+        text: Replace it with a billing alarm on the account
+        variants:
+          - text: Swap it for a billing alarm on the account
+          - text: Use an account billing alarm in its place
+        explanation:
+          text: |
+            A billing alarm watches spending, not the function's errors. Failed orders wouldn't show
+            up in it.
+    correct_answers: [several-minutes]
+    hint:
+      text: An alert is useful only if people still act on it after the hundredth time.
+    explanation:
+      text: |
+        Operational excellence asks for actionable alerts (OPS08-BP04): ones people act on. An
+        alarm that fires on a single error in a minute will be noisy at real volume, and noisy
+        alarms get ignored. The bakery's review loosens the error alarm to several minutes, so it
+        fires when errors form a pattern.
+
+  - id: q14-log-retention-fix
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Your review, then the model answer"
+    task: "1.2"
+    level: application
+    topics: [cost-optimization, log-retention]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A review finds that an AWS Lambda function's log group in Amazon CloudWatch Logs keeps
+        everything forever. The team needs about a month of logs to investigate problems. What is
+        the simplest fix?
+    choices:
+      - id: retention-setting
+        text: Set a 30-day retention period on the log group
+        variants:
+          - text: Give the log group a retention period of 30 days
+          - text: Change the log group to keep logs for 30 days
+        explanation:
+          text: |
+            Correct. A retention setting on the log group deletes logs older than the period, and
+            takes minutes to set.
+      - id: s3-lifecycle
+        text: Add an S3 lifecycle rule that moves the logs to Glacier Deep Archive
+        variants:
+          - text: Use an S3 lifecycle rule to move the logs to Glacier Deep Archive
+          - text: Move the logs to Glacier Deep Archive with an S3 lifecycle rule
+        explanation:
+          text: |
+            These logs are in CloudWatch Logs, not in an S3 bucket, so an S3 lifecycle rule doesn't
+            reach them. Archiving would also keep them forever.
+      - id: turn-off-logging
+        text: Remove the function's permission to write logs
+        variants:
+          - text: Take away the function's permission to write logs
+          - text: Stop the function from writing logs by removing its permission
+        explanation:
+          text: |
+            That would also remove the logs the team needs. Security wants logging on; the fix is
+            how long the logs are kept.
+      - id: rebuild-function
+        text: Delete the function and create it again each month
+        variants:
+          - text: Rebuild the function from scratch every month
+          - text: Recreate the function once a month after deleting it
+        explanation:
+          text: |
+            Deleting a function doesn't delete its log group, and a monthly rebuild is far more work
+            than a setting.
+    correct_answers: [retention-setting]
+    explanation:
+      text: |
+        CloudWatch Logs keeps a log group's events until you set a retention period. Setting one,
+        such as 30 days, deletes older events automatically, which applies best practice COST04-BP05,
+        enforce data retention policies. In the bakery's review it takes five minutes and stops a
+        slow rise in the bill.
+
+  - id: q14-patching-the-web-servers
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Your review, then the model answer"
+    task: "2.1"
+    level: application
+    topics: [shared-responsibility, security, patching]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A review finds that nobody owns patching the operating system of a shop's web servers,
+        which run on Amazon EC2 in an Auto Scaling group with a launch template. What should the
+        improvement plan say?
+    choices:
+      - id: aws-patches
+        text: Nothing; AWS patches the operating system of EC2 instances
+        variants:
+          - text: Nothing, as AWS applies operating system patches on EC2
+          - text: No action; EC2 instances' operating systems are patched by AWS
+        explanation:
+          text: |
+            AWS patches the hosts and the virtualization layer. The guest operating system on an EC2
+            instance is the customer's responsibility.
+      - id: support-plan-patches
+        text: Buy a paid Support plan, whose engineers patch the servers
+        variants:
+          - text: Sign up for a paid Support plan, so its engineers patch the servers
+          - text: Get a paid Support plan, which has engineers patch the servers
+        explanation:
+          text: |
+            Support engineers answer cases and give guidance. They don't take over patching the
+            customer's servers.
+      - id: load-balancer-enough
+        text: Nothing; the load balancer in front makes patching unnecessary
+        variants:
+          - text: No action, as the load balancer in front removes the need to patch
+          - text: Nothing, since patching isn't needed behind a load balancer
+        explanation:
+          text: |
+            The load balancer shields the servers, which is why the review rates this medium. The
+            servers still need patching.
+      - id: monthly-new-image
+        text: Update the launch template's image monthly and replace the servers
+        variants:
+          - text: Each month, refresh the template's image and replace the servers
+          - text: Replace the servers monthly from an updated launch template image
+        explanation:
+          text: |
+            Correct. The customer patches the guest OS. Updating the launch template to the newest
+            Amazon Linux image and replacing the servers gives the job an owner and a schedule.
+    correct_answers: [monthly-new-image]
+    hint:
+      text: Under the shared responsibility model, who owns software installed on an instance?
+    explanation:
+      text: |
+        On Amazon EC2, the customer patches the guest operating system; AWS secures the hardware and
+        the virtualization layer. The bakery's review gives the job an owner and a schedule: every
+        month, update the launch template to the newest Amazon Linux image and replace the servers.
+        It's a security finding under SEC06-BP01, perform vulnerability management.
+
+  - id: q14-when-to-commit-reserved
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Your review, then the model answer"
+    task: "4.1"
+    level: application
+    topics: [cost-optimization, reserved-instances, savings-plans]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A shop is about to double its web servers for reliability, and plans to test whether its
+        site runs well on Graviton-based instances. The owner wants to buy 1-year Standard Reserved
+        Instances for the servers today. What should the review advise?
+    choices:
+      - id: buy-now
+        text: Buy them today, since a commitment saves money from the first hour
+        variants:
+          - text: Buy them now, as a commitment saves from the very first hour
+          - text: Purchase them today, because savings start at the first hour
+        explanation:
+          text: |
+            Savings start at once only if the commitment matches what runs. Here the design and
+            maybe the instance family are about to change.
+      - id: wait-for-steady
+        text: Wait until the redesign and test settle, then commit to what runs
+        variants:
+          - text: Commit only after the redesign and test, once the floor is steady
+          - text: Hold off until the redesign and test are done, then commit
+        explanation:
+          text: |
+            Correct. A Standard Reserved Instance is tied to its instance family, so an early one
+            could pay for servers that no longer match what runs.
+      - id: never-commit
+        text: Never commit, since a small shop's servers change too often
+        variants:
+          - text: Don't commit at all, as a small shop's servers change too much
+          - text: Avoid commitments, because small shops change servers too often
+        explanation:
+          text: |
+            Once a month of data shows a steady floor of servers, committing to it is the right
+            move. The issue is timing, not commitments as such.
+      - id: spot-instead
+        text: Run the web servers on Spot Instances instead of committing
+        variants:
+          - text: Move the web servers to Spot Instances in place of a commitment
+          - text: Use Spot Instances for the web servers rather than committing
+        explanation:
+          text: |
+            AWS can reclaim Spot capacity at short notice, which would undo the reliability fix for
+            a site that must stay up.
+    correct_answers: [wait-for-steady]
+    hint:
+      text: A commitment pays off only if it matches what will actually run for the year.
+    explanation:
+      text: |
+        Commit only after the design stops changing. The bakery's review waits a month: the
+        redesign doubles the servers, and a test may move them to Graviton. A Standard Reserved
+        Instance is tied to its instance family, while a Compute Savings Plan would follow such a
+        change. Once the floor of servers is steady, a commitment saves money on it (best practice
+        COST07-BP01, perform pricing model analysis).
+
+  - id: q14-review-timing-select-two
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "In real work: review early, review again, and keep the list short"
+    task: "1.2"
+    level: recall
+    topics: [well-architected-review]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A company is planning a new customer portal on AWS. When does the Well-Architected
+        Framework recommend reviewing it? (Select TWO.)
+    choices:
+      - id: early-design
+        text: Early in its design
+        variants:
+          - text: At an early stage of the design
+          - text: While the design is still early
+        explanation:
+          text: |
+            Correct. Early reviews give hard-to-reverse decisions the most attention, before they
+            are built in.
+      - id: trusted-advisor-flags
+        text: When AWS Trusted Advisor flags it
+        variants:
+          - text: Whenever AWS Trusted Advisor raises a flag on it
+          - text: Once AWS Trusted Advisor has flagged it
+        explanation:
+          text: |
+            Trusted Advisor runs automatic checks on an account. It doesn't schedule or trigger
+            Well-Architected reviews, which the team plans itself.
+      - id: after-big-changes
+        text: After significant changes to it
+        variants:
+          - text: Whenever it changes significantly
+          - text: Following major changes to it
+        explanation:
+          text: |
+            Correct. A review describes a workload on one day, so it's repeated when the workload
+            changes.
+      - id: when-aws-asks
+        text: When AWS sends a request for one
+        variants:
+          - text: Whenever AWS asks the company for one
+          - text: Once AWS has requested one
+        explanation:
+          text: |
+            Reviews are the team's own practice. Anyone can run one in the Well-Architected Tool at
+            no additional charge.
+      - id: once-at-end
+        text: As a sign-off when the project ends
+        variants:
+          - text: At the project's end, as its sign-off
+          - text: As the project's closing sign-off
+        explanation:
+          text: |
+            A review at the end comes too late to change design decisions, and the workload keeps
+            changing after it.
+    correct_answers: [early-design, after-big-changes]
+    explanation:
+      text: |
+        The Framework recommends reviews early in design, before launch, and after significant
+        changes, so hard-to-reverse decisions get attention while they can still change. Teams keep
+        their answers in the Well-Architected Tool, whose milestones let the next review start where
+        this one ended.
+
+  # ---------------------------------------------------------------------------------------------
+  # Lab 18, Record the bakery's review in the AWS Well-Architected Tool
+  # ---------------------------------------------------------------------------------------------
+
+  - id: q14-wa-tool-charge
+    page: guide/14-capstone/02-lab-18-well-architected-tool-review.md
+    section: "Before you start: your account, your responsibility"
+    task: "1.2"
+    level: recall
+    topics: [well-architected-tool]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A two-person startup on the Basic Support plan wants to record a Well-Architected review of
+        its app in the AWS Well-Architected Tool. What does using the Tool cost?
+    choices:
+      - id: per-workload-fee
+        text: A monthly fee for each workload defined
+        variants:
+          - text: A fee each month for every workload
+          - text: A monthly charge per workload in the Tool
+        explanation:
+          text: |
+            A workload in the Tool is a record of answers, not a running resource, and AWS doesn't
+            charge for it.
+      - id: paid-support-needed
+        text: The fee of a paid Support plan, which it requires
+        variants:
+          - text: A paid Support plan's fee, since it needs one
+          - text: The cost of the paid Support plan it requires
+        explanation:
+          text: |
+            The Tool works on Basic. The separate AWS Well-Architected Agent, in preview, is the one
+            AWS says needs Business Support+ or higher (as of 2026-10-24).
+      - id: no-charge
+        text: No additional charge for the Tool itself
+        variants:
+          - text: Nothing extra; the Tool itself has no charge
+          - text: The Tool itself carries no additional charge
+        explanation:
+          text: |
+            Correct. AWS says the Tool has no additional charge; you pay only for the resources your
+            workload uses.
+      - id: per-milestone-fee
+        text: A fee for each milestone saved
+        variants:
+          - text: A charge for every milestone saved
+          - text: A fee per saved milestone
+        explanation:
+          text: |
+            Milestones are saved snapshots of the review, and saving one costs nothing.
+    correct_answers: [no-charge]
+    explanation:
+      text: |
+        The AWS Well-Architected Tool has no additional charge; you pay only for the AWS resources
+        your workload itself uses (checked 2026-10-24). That's why Lab 18 costs $0 even on a Paid
+        plan: a workload in the Tool is a written description and your answers, and nothing is built
+        or run.
+
+  - id: q14-risk-from-worst-missing-practice
+    page: guide/14-capstone/02-lab-18-well-architected-tool-review.md
+    section: "Part B: answer four questions from evidence (challenge)"
+    task: "1.2"
+    level: understanding
+    topics: [well-architected-tool, risk-rating]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        In the AWS Well-Architected Tool, a team answers a cost question by ticking four of its six
+        best practices. Of the two it leaves unticked, one is rated Medium risk if missing and the
+        other Low. What risk should the team expect the question to show?
+    choices:
+      - id: high
+        text: A high risk
+        variants:
+          - text: High risk
+          - text: A risk rated high
+        explanation:
+          text: |
+            A high risk needs a missing practice rated High. Neither unticked practice is rated
+            High.
+      - id: none
+        text: No risk
+        variants:
+          - text: No risk at all
+          - text: A rating of no risk
+        explanation:
+          text: |
+            No risk is expected only when nothing worse than Low is missing. Here a Medium practice
+            is missing.
+      - id: unanswered
+        text: Unanswered
+        variants:
+          - text: An unanswered question
+          - text: A status of unanswered
+        explanation:
+          text: |
+            "Unanswered" means nobody answered the question. This one was answered; leaving a
+            practice unticked is part of an answer.
+      - id: medium
+        text: A medium risk
+        variants:
+          - text: Medium risk
+          - text: A risk rated medium
+        explanation:
+          text: |
+            Correct. The worst missing practice is rated Medium, so the question shows a medium
+            risk. The Low one doesn't lower it, and the ticks don't cancel it.
+    correct_answers: [medium]
+    hint:
+      text: Does the risk come from what you ticked, or from what you didn't?
+    explanation:
+      text: |
+        Each best practice's page states the level of risk if that practice is missing. Lab 18
+        predicts that an answered question shows a high risk when any unticked practice is rated
+        High, a medium risk when the worst is Medium, and no risk when only Low ones are missing.
+        The risk comes from what is missing, not from what is ticked; the lab asks you to check
+        that prediction against what the Tool shows.
+
+  - id: q14-practice-that-cannot-apply
+    page: guide/14-capstone/02-lab-18-well-architected-tool-review.md
+    section: "Part B: answer four questions from evidence (challenge)"
+    task: "1.2"
+    level: application
+    topics: [well-architected-tool]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A one-person business with a single AWS account answers a question in the AWS
+        Well-Architected Tool. One of its best practices is about sharing resources across an
+        organization of accounts, which the business doesn't have. What should it do with that
+        practice?
+    choices:
+      - id: tick-anyway
+        text: Tick it, so the Tool doesn't count it as missing
+        variants:
+          - text: Select it, so the Tool won't treat it as missing
+          - text: Tick it to stop the Tool counting it as missing
+        explanation:
+          text: |
+            A tick says the business follows the practice. Ticking one it doesn't follow makes the
+            Tool's results dishonest.
+      - id: leave-unticked
+        text: Leave it unticked, as the business doesn't follow it
+        variants:
+          - text: Leave it unselected, since the business doesn't do it
+          - text: Not tick it, because the business doesn't follow it
+        explanation:
+          text: |
+            Left unticked, it counts as missing and can raise a risk that doesn't apply to this
+            business.
+      - id: mark-not-applicable
+        text: Mark it as not applicable, and give the reason
+        variants:
+          - text: Mark it not applicable, with the reason why
+          - text: Record it as not applicable, stating the reason
+        explanation:
+          text: |
+            Correct. The Tool lets you mark a best practice that doesn't apply to the workload and
+            choose a reason, so it isn't counted as a gap.
+      - id: skip-pillar
+        text: Skip every question in that practice's pillar
+        variants:
+          - text: Leave the whole pillar's questions unanswered
+          - text: Pass over all the questions in that pillar
+        explanation:
+          text: |
+            One practice that can't apply is no reason to drop a whole pillar. The other questions
+            still matter.
+    correct_answers: [mark-not-applicable]
+    explanation:
+      text: |
+        Where a best practice can't apply to a workload, such as sharing within an organization for
+        a one-account business, mark it as not applicable and give the reason. Ticking it would be
+        dishonest, and leaving it unticked would count it as a missing practice. The Tool's results
+        are only as honest as the answers.
+
+  - id: q14-tool-plan-needs-costs-owners
+    page: guide/14-capstone/02-lab-18-well-architected-tool-review.md
+    section: "Part B: answer four questions from evidence (challenge)"
+    task: "1.2"
+    level: understanding
+    topics: [well-architected-tool, improvement-plan]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        After answering questions in the AWS Well-Architected Tool, a reviewer opens its
+        **Improvement plan** tab to prepare a plan the owner can act on. Which two things must the
+        reviewer add from their own work? (Select TWO.)
+    choices:
+      - id: missing-practices
+        text: The missing best practices that would remove each risk
+        variants:
+          - text: Which missing best practices would clear each risk
+          - text: The best practices still missing for each risk
+        explanation:
+          text: |
+            The Tool lists these: for each question with a risk, the missing best practices that
+            would remove it.
+      - id: cost-of-fixes
+        text: What each fix would cost the business
+        variants:
+          - text: The cost of each fix to the business
+          - text: How much each fix would cost the business
+        explanation:
+          text: |
+            Correct. The Tool doesn't price fixes. The reviewer adds dated costs and the hours of
+            work.
+      - id: risk-levels
+        text: Whether each question's risk is high or medium
+        variants:
+          - text: Each question's risk level, high or medium
+          - text: The level of each question's risk, high or medium
+        explanation:
+          text: |
+            The Tool shows each item's risk level, and counts high and medium risks for the
+            workload.
+      - id: owners
+        text: Who will carry out each fix
+        variants:
+          - text: The person who will make each fix
+          - text: Which person owns each fix
+        explanation:
+          text: |
+            Correct. The Tool doesn't assign owners. A plan without them leaves every fix to
+            nobody.
+      - id: questions-at-risk
+        text: Which answered questions show a risk
+        variants:
+          - text: The answered questions that show a risk
+          - text: Which of the answered questions carry a risk
+        explanation:
+          text: |
+            That's exactly what the Tool's improvement plan lists: the questions where the answers
+            show a risk.
+    correct_answers: [cost-of-fixes, owners]
+    explanation:
+      text: |
+        The Tool's **Improvement plan** lists the questions where your answers show a risk, marked
+        high or medium, with the missing best practices that would remove each one. It doesn't know
+        your costs, your order or your owners. The lesson's improvement plan adds them, so the owner
+        can fund and assign each fix.
+
+  - id: q14-milestone-to-show-progress
+    page: guide/14-capstone/02-lab-18-well-architected-tool-review.md
+    section: "Part D: save a milestone (follow-along)"
+    task: "1.2"
+    level: application
+    topics: [well-architected-tool, milestones]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A team has just finished its first review of a workload in the AWS Well-Architected Tool. It
+        will fix risks over the next quarter and wants to show then how far it has come. What should
+        it do in the Tool today?
+    choices:
+      - id: save-milestone
+        text: Save a milestone of the review
+        variants:
+          - text: Save the review as a milestone
+          - text: Record a milestone of the review
+        explanation:
+          text: |
+            Correct. A milestone is a snapshot of the review that can't be changed, so next
+            quarter's answers can be compared with it.
+      - id: add-lens
+        text: Apply a second lens to the workload
+        variants:
+          - text: Add another lens to the workload
+          - text: Put a second lens on the workload
+        explanation:
+          text: |
+            A lens adds a set of questions for a kind of workload. It doesn't keep a record of
+            today's answers.
+      - id: date-tag
+        text: Tag the workload with today's date
+        variants:
+          - text: Add a tag with today's date to the workload
+          - text: Put today's date on the workload as a tag
+        explanation:
+          text: |
+            A tag labels the workload, but the answers keep changing as the team updates them.
+            Nothing keeps today's version.
+      - id: trusted-advisor
+        text: Turn on AWS Trusted Advisor for the workload
+        variants:
+          - text: Activate AWS Trusted Advisor on the workload
+          - text: Switch on AWS Trusted Advisor for the workload
+        explanation:
+          text: |
+            Trusted Advisor runs automatic checks on resources. It doesn't freeze the review's
+            answers for a later comparison.
+    correct_answers: [save-milestone]
+    explanation:
+      text: |
+        A milestone saves the state of a review at a point in time, and a saved milestone can't be
+        changed. After the team fixes risks and updates its answers, the workload's counts drop
+        while the milestone's stay, which is how a team proves progress. Deleting the workload
+        deletes its milestones too.
+
+  - id: q14-tool-records-what-you-tell-it
+    page: guide/14-capstone/02-lab-18-well-architected-tool-review.md
+    section: "Recap"
+    task: "1.2"
+    level: understanding
+    topics: [well-architected-tool]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A manager reads a workload's risk counts in the AWS Well-Architected Tool and assumes the
+        Tool found them itself. Which statement describes where the Tool's risks come from?
+    choices:
+      - id: from-answers
+        text: It works them out from the answers the team records
+        variants:
+          - text: It derives them from the answers the team enters
+          - text: It calculates them from the team's recorded answers
+        explanation:
+          text: |
+            Correct. The Tool records what the team tells it, so its list is only as honest as the
+            answers and the evidence in the Notes.
+      - id: scans-resources
+        text: It reads the account's resources and finds the gaps itself
+        variants:
+          - text: It inspects the account's resources and spots the gaps
+          - text: It examines what runs in the account and finds the gaps
+        explanation:
+          text: |
+            The Tool doesn't inspect the account. A separate preview service, the AWS
+            Well-Architected Agent, is the one that scans deployed resources.
+      - id: from-cloudtrail
+        text: It reads CloudTrail logs to answer the questions
+        variants:
+          - text: It answers the questions from CloudTrail logs
+          - text: It uses CloudTrail logs to fill in the answers
+        explanation:
+          text: |
+            The Tool doesn't read CloudTrail. People answer the questions, from evidence they
+            gather.
+      - id: aws-reviewers
+        text: AWS staff review the workload and enter them
+        variants:
+          - text: AWS staff examine the workload and record them
+          - text: They're entered by AWS staff who review the workload
+        explanation:
+          text: |
+            Anyone can run a self-review in the Tool. AWS staff aren't involved unless the business
+            asks for help, such as through Enterprise Support or a partner.
+    correct_answers: [from-answers]
+    explanation:
+      text: |
+        The AWS Well-Architected Tool doesn't inspect your account; it records the answers you give
+        to the Framework's questions and works out the risks from the best practices you leave
+        missing. That's why Lab 18 asks for evidence in each question's Notes: the Tool's list is
+        only as honest as what you tell it.
+
+  # ---------------------------------------------------------------------------------------------
+  # Lab 19, Close out the account you used for the course
+  # ---------------------------------------------------------------------------------------------
+
+  - id: q14-find-tagged-leftovers
+    page: guide/14-capstone/03-lab-19-close-out.md
+    section: "Part A: sweep every Region by tag"
+    task: "4.2"
+    level: recall
+    topics: [close-out, tag-editor]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A trainer tagged everything her workshop created with `project` = `workshop`. Before the
+        next class, she wants a list of every resource still carrying that tag, in any AWS Region.
+        Which tool does that?
+    choices:
+      - id: trusted-advisor
+        text: AWS Trusted Advisor
+        variants:
+          - text: The AWS Trusted Advisor checks
+          - text: Trusted Advisor, from AWS
+        explanation:
+          text: |
+            Trusted Advisor runs checks for cost, security and limits. It doesn't list resources by
+            tag.
+      - id: artifact
+        text: AWS Artifact
+        variants:
+          - text: The AWS Artifact portal
+          - text: Artifact, from AWS
+        explanation:
+          text: |
+            AWS Artifact holds AWS's compliance reports and agreements. It knows nothing about the
+            trainer's resources.
+      - id: budgets
+        text: AWS Budgets
+        variants:
+          - text: The AWS Budgets service
+          - text: Budgets, from AWS
+        explanation:
+          text: |
+            Budgets alerts on spending. It doesn't search for resources.
+      - id: tag-editor
+        text: Tag Editor in AWS Resource Groups
+        variants:
+          - text: Resource Groups Tag Editor
+          - text: AWS Resource Groups Tag Editor
+        explanation:
+          text: |
+            Correct. Tag Editor searches for resources by tag, and with **All regions** chosen it
+            covers every Region at once.
+    correct_answers: [tag-editor]
+    explanation:
+      text: |
+        Tag Editor, part of AWS Resource Groups, finds resources by tag key and value. With **All
+        regions** and **All resource types** chosen, one search covers the whole account, which is
+        how Lab 19 sweeps for anything tagged `guide` = `clf`. It only finds and edits tags; you
+        delete what it finds in each service's own console (as of 2026-10-24, tag management is
+        moving to the AWS Resource Explorer console).
+
+  - id: q14-empty-tag-search-misses-select-two
+    page: guide/14-capstone/03-lab-19-close-out.md
+    section: "Part B: check what tags can't find"
+    task: "4.2"
+    level: understanding
+    topics: [close-out, tag-editor]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A learner's Tag Editor search across all Regions for the tag key `lab` comes back empty.
+        Which two reasons could still leave leftovers in the account? (Select TWO.)
+    choices:
+      - id: unsupported-type
+        text: Some resource types aren't supported by Tag Editor
+        variants:
+          - text: Tag Editor doesn't support some resource types
+          - text: Some kinds of resource are outside what Tag Editor supports
+        explanation:
+          text: |
+            Correct. A tag search finds only types Tag Editor supports; the lab checks the others,
+            such as roles and log groups, by name in each service.
+      - id: one-region-only
+        text: Tag Editor searches the current Region and no other
+        variants:
+          - text: A Tag Editor search covers the current Region alone
+          - text: Tag Editor looks in the console's current Region alone
+        explanation:
+          text: |
+            Tag Editor offers **All regions**, which the learner chose. The Region isn't the gap.
+      - id: case-differs
+        text: A resource was tagged `Lab`, with a capital letter
+        variants:
+          - text: A resource carries the key `Lab`, capitalized
+          - text: One resource's key was typed as `Lab`
+        explanation:
+          text: |
+            Correct. Tag keys are case sensitive, so a search for `lab` misses `Lab`. The lab log
+            shows whether anyone typed it that way.
+      - id: stopped-hidden
+        text: Tag Editor hides resources that are stopped
+        variants:
+          - text: Stopped resources don't appear in Tag Editor
+          - text: Tag Editor leaves stopped resources out
+        explanation:
+          text: |
+            A tag search doesn't care whether a resource is running. A stopped resource with the
+            tag still shows up.
+      - id: ninety-days
+        text: Tag Editor drops resources older than 90 days
+        variants:
+          - text: Resources older than 90 days drop out of Tag Editor
+          - text: Tag Editor leaves out resources over 90 days old
+        explanation:
+          text: |
+            Tag Editor has no such window. The 90-day limit belongs to CloudTrail Event history.
+    correct_answers: [unsupported-type, case-differs]
+    explanation:
+      text: |
+        A tag search finds only resources that carry the exact tag and whose type Tag Editor
+        supports. Tag keys are case sensitive, and some types, such as IAM roles and CloudWatch Logs
+        log groups, aren't supported in Tag Editor (as of 2026-10-24). So Lab 19 also checks those
+        services by name, and reads the bill, which sees every Region and service.
+
+  - id: q14-charge-in-unknown-region
+    page: guide/14-capstone/03-lab-19-close-out.md
+    section: "Part C: read the bill and the credits"
+    task: "4.2"
+    level: application
+    topics: [close-out, billing]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        On the **Bills** page, a learner expands a service's charges by Region and sees a small
+        Amazon EC2 charge in a Region she doesn't remember using. What should she do next?
+    choices:
+      - id: ignore-credits
+        text: Ignore it, because her credits pay for small charges
+        variants:
+          - text: Leave it alone, since credits cover small charges
+          - text: Do nothing, as her credits pay for small amounts
+        explanation:
+          text: |
+            Credits hide the cost, but the resource keeps running and using them up. A charge she
+            doesn't recognize is a lead to follow.
+      - id: go-find-it
+        text: Go to that Region, find the resource, and delete it
+        variants:
+          - text: Switch to that Region and delete the resource there
+          - text: Open that Region, locate the resource, and delete it
+        explanation:
+          text: |
+            Correct. The bill shows which service and Region to look in; the resource is deleted in
+            that Region's console.
+      - id: ask-support
+        text: Ask AWS Support to delete the resource for her
+        variants:
+          - text: Have AWS Support delete the resource for her
+          - text: Request that AWS Support remove the resource
+        explanation:
+          text: |
+            AWS Support can explain a charge, but it doesn't delete resources in a customer's
+            account. That's the customer's job.
+      - id: new-budget
+        text: Create a budget for that Region, then wait a month
+        variants:
+          - text: Set up a budget for that Region and wait a month
+          - text: Add a budget for that Region, then wait for a month
+        explanation:
+          text: |
+            A budget alerts on spending; it doesn't stop the resource. Waiting lets the charge
+            grow.
+    correct_answers: [go-find-it]
+    hint:
+      text: The bill already tells her which service and which Region to look in.
+    explanation:
+      text: |
+        The bill sees every Region and service, tagged or not, so it catches what a tag search
+        misses. A service or Region you don't recognize is the lead: go to that Region, find the
+        resource in the service's console, and delete it. Then check the bill again the next day.
+
+  - id: q14-keep-the-guardrails
+    page: guide/14-capstone/03-lab-19-close-out.md
+    section: "Part D: review your guardrails, and keep them"
+    task: "4.2"
+    level: application
+    topics: [close-out, guardrails]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A learner finishing a course plans to close her AWS account next month. During her
+        close-out sweep, which of these should she keep?
+    choices:
+      - id: lab-role
+        text: The execution role a lab's Lambda function used
+        variants:
+          - text: A lab's Lambda function execution role
+          - text: The role a lab's Lambda function ran with
+        explanation:
+          text: |
+            A lab made it, so it goes, with that lab's cleanup steps. Roles can't be found by tag,
+            so it's checked by name.
+      - id: lab-vpc
+        text: The VPC a lab built, with its subnets
+        variants:
+          - text: A lab's VPC and its subnets
+          - text: The lab-built VPC and its subnets
+        explanation:
+          text: |
+            A lab made it, so it goes. The default VPC is the one that stays, because it belongs to
+            the account.
+      - id: budgets-and-alarm
+        text: The zero-spend budget and the billing alarm
+        variants:
+          - text: The billing alarm and the zero-spend budget
+          - text: Her zero-spend budget and billing alarm
+        explanation:
+          text: |
+            Correct. Guardrails cost nothing and watch the account until its last bill, so they stay
+            whether she keeps or closes the account.
+      - id: lab-log-group
+        text: The log group a lab's function wrote to
+        variants:
+          - text: A lab function's CloudWatch Logs log group
+          - text: The log group that a lab's function filled
+        explanation:
+          text: |
+            A lab made it, so it goes. A log group that is left keeps its logs, and their storage,
+            until it is deleted.
+    correct_answers: [budgets-and-alarm]
+    explanation:
+      text: |
+        A close-out deletes what the labs made and keeps the guardrails: budgets, the billing alarm,
+        the anomaly monitor, the access analyzer and the admin user. They cost nothing and watch the
+        account until its last bill, so they go only when the account itself goes.
+
+  - id: q14-check-bill-next-day
+    page: guide/14-capstone/03-lab-19-close-out.md
+    section: "Part E: the next day"
+    task: "4.2"
+    level: understanding
+    topics: [close-out, billing]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        After deleting every leftover she found, a learner checks her credit balance on the **Bills**
+        and **Credits** pages. Why does the close-out ask her to check again the next day?
+    choices:
+      - id: refund-next-day
+        text: AWS refunds the deleted resources' charges on the next day
+        variants:
+          - text: The deleted resources' charges are refunded a day later
+          - text: A day later, AWS refunds what the deleted resources cost
+        explanation:
+          text: |
+            Deleting a resource stops future charges; it doesn't refund past ones.
+      - id: bill-lags
+        text: The bill lags about a day, so a missed resource shows then
+        variants:
+          - text: Billing runs a day behind, so a leftover shows up then
+          - text: The bill is a day late, so a missed resource appears then
+        explanation:
+          text: |
+            Correct. If the balance keeps falling after a day, something is still running, and the
+            sweep is repeated for that service and Region.
+      - id: tag-editor-delay
+        text: Tag Editor needs a day to list newly tagged resources
+        variants:
+          - text: Newly tagged resources take a day to appear in Tag Editor
+          - text: Tag Editor lists new tags only after a day
+        explanation:
+          text: |
+            The next-day check reads the bill, not Tag Editor. The bill is the net that sees every
+            Region and service.
+      - id: plan-ends
+        text: The Free plan ends the day after a close-out
+        variants:
+          - text: A close-out ends the Free plan the following day
+          - text: The day after a close-out, the Free plan stops
+        explanation:
+          text: |
+            A close-out doesn't change the plan. The Free plan ends on its own date, which the
+            learner keeps in her calendar.
+    correct_answers: [bill-lags]
+    explanation:
+      text: |
+        The bill sees every Region and service, but it runs about a day behind. Comparing the credit
+        balance, or the month-to-date total, a day apart shows whether anything is still running: the
+        same number, or a few cents as yesterday's usage arrives, means the sweep worked. This is
+        best practice COST01-BP06, monitor cost proactively.
+
+flashcards:
+
+  # ---------------------------------------------------------------------------------------------
+  # Lesson 14.01, The capstone review
+  # ---------------------------------------------------------------------------------------------
+
+  - id: c14-zero-dollar-fix-still-costs-work
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Step 4: price each fix with dated rates, and count people's time"
+    level: understanding
+    topics: [pricing-fixes]
+    front:
+      text: Why does a review count hours of work as well as the monthly charge for each fix?
+    back:
+      text: |
+        A fix that adds $0 to the bill can still take a day of work. Counting the work is one of the
+        lesson's three habits for pricing a fix honestly.
+
+  - id: c14-record-strengths
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Step 2: ask each pillar's own question"
+    level: understanding
+    topics: [well-architected-review]
+    front:
+      text: Why does a Well-Architected review record strengths as well as gaps?
+    back:
+      text: |
+        So the owner knows what to keep. A review that lists only faults doesn't say which choices,
+        such as private, encrypted buckets, are worth protecting.
+
+  - id: c14-launch-template-in-the-fix
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Worked example: the reliability pillar"
+    level: understanding
+    topics: [reliability, auto-scaling]
+    front:
+      text: Why does the bakery's reliability fix include a launch template?
+    back:
+      text: |
+        Auto Scaling needs one to start servers, and it means no server is ever rebuilt by hand from
+        memory.
+
+  - id: c14-alb-needs-two-public-subnets
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Worked example: the reliability pillar"
+    level: understanding
+    topics: [reliability, load-balancing]
+    front:
+      text: Why does the bakery's reliability fix need a new public subnet, not just a second server?
+    back:
+      text: |
+        An Application Load Balancer needs subnets in at least two Availability Zones, and the
+        existing subnet in the second AZ is private, so it can't serve.
+
+  - id: c14-cheap-fix-does-not-jump
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Step 6: write the improvement plan the owner can act on"
+    level: understanding
+    topics: [improvement-plan]
+    front:
+      text: In an improvement plan, does a $0 medium-risk fix go ahead of a costly high-risk one?
+    back:
+      text: |
+        No. High risks come first. Quick, cheap fixes go first only among risks of the same level.
+
+  - id: c14-standard-ri-vs-compute-savings-plan
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Your review, then the model answer"
+    level: understanding
+    topics: [reserved-instances, savings-plans]
+    front:
+      text: Why buy a Standard Reserved Instance only after testing a move to Graviton?
+    back:
+      text: |
+        A Standard RI is tied to its instance family, so a move to Graviton would leave it
+        unmatched. A Compute Savings Plan would follow the change.
+
+  - id: c14-graviton-for-sustainability
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "Your review, then the model answer"
+    level: recall
+    topics: [sustainability, graviton]
+    front:
+      text: Which change does the bakery's sustainability finding say to test, and why?
+    back:
+      text: |
+        Running the web servers on Graviton-based `t4g.micro` instances. SUS05-BP02's page says
+        Graviton gives the best performance per watt in Amazon EC2.
+
+  - id: c14-reviewing-is-operational-excellence
+    page: guide/14-capstone/01-the-capstone-review.md
+    section: "In real work: review early, review again, and keep the list short"
+    level: recall
+    topics: [well-architected-review, operational-excellence]
+    front:
+      text: Which Well-Architected pillar does the act of reviewing a workload itself belong to?
+    back:
+      text: |
+        Operational excellence: reviewing is how a team learns and improves.
+
+  # ---------------------------------------------------------------------------------------------
+  # Labs 18 and 19
+  # ---------------------------------------------------------------------------------------------
+
+  - id: c14-confirm-workload-deleted
+    page: guide/14-capstone/02-lab-18-well-architected-tool-review.md
+    section: "Clean up"
+    level: recall
+    topics: [well-architected-tool, close-out]
+    front:
+      text: How do you confirm a Well-Architected Tool workload is deleted?
+    back:
+      text: |
+        Check the Tool's own **Workloads** list in the Region you made it in. Tag Editor doesn't
+        support Well-Architected workloads, so it can't find them.
+
+  - id: c14-search-tag-key-alone
+    page: guide/14-capstone/03-lab-19-close-out.md
+    section: "Part A: sweep every Region by tag"
+    level: understanding
+    topics: [close-out, tag-editor]
+    front:
+      text: In a close-out, why search Tag Editor for the key `lab` with no value?
+    back:
+      text: |
+        The value box is optional, so the search finds anything tagged `lab`, whatever its value,
+        including a resource whose `guide` tag was mistyped.

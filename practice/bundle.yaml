@@ -5,7 +5,7 @@
 format_version: "0.2"
 id: b247b7a9-9b89-4b04-8cd5-17aed3c38d61
 title: "Practice Questions and Flashcards for the AWS Certified Cloud Practitioner Exam (CLF-C02)"
-version: 0.2.0
+version: 0.3.0
 language: en
 subject: Cloud computing
 tags: [aws, cloud-practitioner, clf-c02, certification, cloud-computing]
@@ -19,8 +19,8 @@ description: |
   not what it looks like. The flashcards cover the guide's glossary terms, the pairs people mix
   up, and the major ideas of each module.
 
-  **What it covers.** Modules 02 (why organizations use the cloud) to 13 (moving to AWS): all
-  four exam domains. Items for the capstone (Module 14) are added when it is written.
+  **What it covers.** Modules 02 (why organizations use the cloud) to 14 (the capstone review):
+  all four exam domains, plus flashcards for the optional IT on-ramp (Module 01).
 
   **Following along with the guide.** Every item is tagged so you can practice one part at a
   time:
@@ -55,5 +55,5 @@ license:
     https://automatethe.cloud/licenses/atc-internal-training-permission.txt
 sources:
   - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
-    reference: Modules 02 to 13 and the glossary
+    reference: Modules 01 to 14 and the glossary
     url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner

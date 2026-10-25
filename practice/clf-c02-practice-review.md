@@ -1,11 +1,12 @@
-# Review report: CLF-C02 practice bundle, version 0.2.0
+# Review report: CLF-C02 practice bundle, version 0.3.0
 
 **Practice Questions and Flashcards for the AWS Certified Cloud Practitioner Exam (CLF-C02)**,
-built 2026-10-24 from the guide's Modules 02 to 13 and its glossary.
+built 2026-10-24 from the guide's Modules 01 to 14 and its glossary.
 
 - Bundle: `clf-c02-practice.waymark` (OpenWaymark 0.2), built from `clf-c02-practice/study.yaml`.
-- **889 questions** (710 with one answer, 179 "Select TWO") and **1,570 flashcards**.
-- Version 0.1.0 (Modules 02–07) kept every item and choice `id`; 0.2.0 adds Modules 08–13.
+- **922 questions** (737 with one answer, 185 "Select TWO") and **1,693 flashcards**.
+- Each version kept every item and choice `id`: 0.1.0 had Modules 02–07, 0.2.0 added 08–13, and 0.3.0 adds
+  the capstone (Module 14), the on-ramp's glossary cards (Module 01) and AWS RAM.
 
 ## Source and license
 
@@ -32,6 +33,7 @@ choices use the exam's name or both, and the explanation teaches today's.
 | Module | Questions | Select TWO | Recall | Understanding | Application | Concept cards | Glossary cards |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 00 Start here | 0 | 0 | 0 | 0 | 0 | 0 | 14 |
+| 01 On-ramp (optional) | 0 | 0 | 0 | 0 | 0 | 0 | 111 |
 | 02 Why organizations use the cloud | 71 | 14 | 13 | 33 | 25 | 18 | 92 |
 | 03 AWS around the world | 63 | 12 | 10 | 29 | 24 | 15 | 70 |
 | 04 Who secures what | 85 | 19 | 14 | 37 | 34 | 24 | 102 |
@@ -39,12 +41,13 @@ choices use the exam's name or both, and the explanation teaches today's.
 | 06 Running applications | 77 | 15 | 13 | 35 | 29 | 18 | 117 |
 | 07 Connecting it | 75 | 15 | 12 | 25 | 38 | 18 | 108 |
 | 08 Building and operating | 71 | 14 | 15 | 25 | 31 | 18 | 111 |
-| 09 Protecting, governing and proving compliance | 90 | 18 | 14 | 37 | 39 | 24 | 155 |
+| 09 Protecting, governing and proving compliance | 90 | 18 | 14 | 37 | 39 | 24 | 157 |
 | 10 Data, AI and the rest of the catalog | 64 | 13 | 7 | 26 | 31 | 18 | 114 |
 | 11 Paying for AWS | 78 | 15 | 11 | 36 | 31 | 20 | 93 |
 | 12 Getting help | 61 | 14 | 10 | 22 | 29 | 16 | 93 |
 | 13 Moving to AWS | 65 | 13 | 11 | 22 | 32 | 18 | 81 |
-| **Total** | **889** | **179** | **143** | **370** | **376** | **229** | **1,341** |
+| 14 Capstone | 33 | 6 | 3 | 14 | 16 | 10 | 12 |
+| **Total** | **922** | **185** | **146** | **384** | **392** | **239** | **1,454** |
 
 **Questions per exam task (all 19 tasks are covered):**
 
@@ -84,19 +87,19 @@ Business Support+ qualifies for the Shield Response Team); and the labs' console
 ## Checks
 
 - **OpenWaymark lint:** 0 errors, 0 warnings, on the folder and on the packed file.
-- **`check_items.py`:** 0 warnings. Correct-answer positions: A 175, B 181, C 180, D 174. The correct
-  choice is the longest in 198 of 710 single-answer questions (28%). The 1,058 notes are judgment
+- **`check_items.py`:** 0 warnings. Correct-answer positions: A 183, B 186, C 188, D 180. The correct
+  choice is the longest in 204 of 737 single-answer questions (28%). The 1,058 notes are judgment
   calls, almost all about a service name's long form being longer than its short form.
 - **Blind solve:** a fresh solver per module answered every question from the guide pages, without
-  the key. All 889 matched (02: 71, 03: 63, 04: 85, 05: 89, 06: 77, 07: 75, 08: 71, 09: 90,
-  10: 64, 11: 78, 12: 61, 13: 65). Every flag they raised (giveaways, drifting variants,
+  the key. All 922 matched (02: 71, 03: 63, 04: 85, 05: 89, 06: 77, 07: 75, 08: 71, 09: 90,
+  10: 64, 11: 78, 12: 61, 13: 65, 14: 33). Every flag they raised (giveaways, drifting variants,
   partly supported cards, claims true only in the guide) was fixed, and every changed item was solved
   blind again by new helpers until they agreed with the key and raised no flags.
 - **Exam vs today:** where the exam guide still expects a closed or renamed service (for example
   Application Discovery Service, Application Migration Service), questions are framed so only one
   answer applies, and the explanation gives today's status.
 - **Similarity to known dump questions** (`tools/check_similarity.py`, run blind): all 889 questions
-  in all three wordings, 2,667 candidates: 2,661 PASS, 6 REVIEW, 0 REJECT.
+  in all three wordings, 2,766 candidates: 2,760 PASS, 6 REVIEW, 0 REJECT.
 - **Guide pages:** the checks found 40-odd places where the guide had simplified a fact too far.
   Each was checked against current AWS documentation and corrected on the page, with the source.
 

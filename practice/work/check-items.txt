@@ -1,19 +1,25 @@
 # Item check
 
-889 questions (710 single answer, 179 multiple answer), 1570 flashcards.
-Correct-answer positions (single answer): A: 175, B: 181, C: 180, D: 174.
-Correct choice is the longest in 198 of 710 single-answer questions.
+922 questions (737 single answer, 185 multiple answer), 1693 flashcards.
+Correct-answer positions (single answer): A: 183, B: 186, C: 188, D: 180.
+Correct choice is the longest in 204 of 737 single-answer questions.
 Items citing each section:
-  - Glossary: 1340
+  - Glossary: 1453
   - Section 00.01: 2
   - Section 00.03: 7
   - Section 00.04: 4
   - Section 00.05: 1
-  - Section 02.01: 41
+  - Section 01.01: 31
+  - Section 01.02: 21
+  - Section 01.03: 15
+  - Section 01.04: 13
+  - Section 01.05: 18
+  - Section 01.06: 13
+  - Section 02.01: 38
   - Section 02.02: 28
   - Section 02.03: 34
   - Section 02.04: 26
-  - Section 02.05: 40
+  - Section 02.05: 37
   - Section 02.06: 8
   - Section 02.07: 4
   - Section 03.01: 32
@@ -22,11 +28,11 @@ Items citing each section:
   - Section 03.04: 34
   - Section 03.05: 6
   - Section 03.06: 5
-  - Section 04.01: 36
+  - Section 04.01: 35
   - Section 04.02: 22
   - Section 04.03: 42
   - Section 04.04: 41
-  - Section 04.05: 50
+  - Section 04.05: 49
   - Section 04.06: 3
   - Section 04.07: 5
   - Section 04.08: 4
@@ -34,14 +40,14 @@ Items citing each section:
   - Section 05.01: 39
   - Section 05.02: 44
   - Section 05.03: 48
-  - Section 05.04: 51
+  - Section 05.04: 50
   - Section 05.05: 38
-  - Section 05.06: 65
+  - Section 05.06: 64
   - Section 05.07: 2
   - Section 05.08: 9
   - Section 05.09: 2
   - Section 05.10: 4
-  - Section 06.01: 58
+  - Section 06.01: 57
   - Section 06.02: 51
   - Section 06.03: 51
   - Section 06.04: 34
@@ -50,7 +56,7 @@ Items citing each section:
   - Section 06.07: 6
   - Section 07.01: 49
   - Section 07.02: 39
-  - Section 07.03: 59
+  - Section 07.03: 58
   - Section 07.04: 48
   - Section 07.05: 4
   - Section 07.06: 2
@@ -64,7 +70,7 @@ Items citing each section:
   - Section 09.02: 61
   - Section 09.03: 42
   - Section 09.04: 45
-  - Section 09.05: 56
+  - Section 09.05: 58
   - Section 09.06: 13
   - Section 09.07: 3
   - Section 09.08: 4
@@ -94,14 +100,17 @@ Items citing each section:
   - Section 13.04: 29
   - Section 13.05: 1
   - Section 13.06: 7
+  - Section 14.01: 40
+  - Section 14.02: 8
+  - Section 14.03: 7
   - Section 2.0: 1
-Most used tags: glossary-term (1341), exam-style (889), understanding (536), domain-3 (429), application (383), confused-pair (348), module-05 (302), domain-2 (273), module-09 (269), concept (229), module-06 (212), module-04 (211).
+Most used tags: glossary-term (1454), exam-style (922), understanding (557), domain-3 (430), application (399), confused-pair (369), module-05 (300), domain-2 (275), module-09 (271), concept (239), module-06 (211), module-04 (209).
 
 ## Warnings (0)
 
 None.
 
-## Notes (1058)
+## Notes (1247)
 
 - `q02-economies-of-scale-scenario`: a variant of `stop-guessing` is 38 characters against 22 for its choice; wordings of different lengths stand out when mixed.
 - `q02-economies-of-scale-scenario`: a variant of `stop-guessing` is 38 characters against 22 for its choice; wordings of different lengths stand out when mixed.
@@ -359,10 +368,12 @@ None.
 - `abbr-access-control-list` and `abbr-extract-transform-load` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-access-control-list` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-access-control-list` and `abbr-machine-learning` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-access-control-list` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-access-control-list` and `abbr-multi-factor-authentication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-access-control-list` and `abbr-network-acl` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-access-control-list` and `abbr-network-load-balancer` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-access-control-list` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-access-control-list` and `abbr-processor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-access-control-list` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-access-control-list` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-access-control-list` and `abbr-technical-account-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -475,12 +486,15 @@ None.
 - `abbr-amazon-machine-image` and `abbr-independent-software-vendor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-machine-image` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-machine-image` and `abbr-internet-of-things` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-amazon-machine-image` and `abbr-internet-service-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-machine-image` and `abbr-machine-learning` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-amazon-machine-image` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-machine-image` and `abbr-multi-factor-authentication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-machine-image` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-machine-image` and `abbr-personally-identifiable-information` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-machine-image` and `abbr-reserved-instance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-machine-image` and `abbr-technical-account-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-amazon-machine-image` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-amazon-q` and `term-amazon-quick` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-amazon-q` and `term-amazon-rds` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-amazon-q` and `term-amazon-s3` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -510,6 +524,7 @@ None.
 - `abbr-amazon-resource-name` and `abbr-dynamodb-accelerator` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-resource-name` and `abbr-high-risk-issue` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-resource-name` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-amazon-resource-name` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-resource-name` and `abbr-multi-factor-authentication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-resource-name` and `abbr-network-load-balancer` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-resource-name` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -519,6 +534,7 @@ None.
 - `abbr-amazon-resource-name` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-resource-name` and `abbr-shield-response-team` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-resource-name` and `abbr-technical-account-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-amazon-resource-name` and `abbr-virtual-private-network` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-amazon-s3` and `term-amazon-ses` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-amazon-s3` and `term-amazon-sns` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-amazon-s3` and `term-amazon-sqs` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -538,6 +554,7 @@ None.
 - `abbr-amazon-web-services` and `abbr-aws-managed-services` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-web-services` and `abbr-aws-migration-acceleration-program` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-web-services` and `abbr-aws-partner-network` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-amazon-web-services` and `abbr-aws-resource-access-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-web-services` and `abbr-aws-schema-conversion-tool` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-web-services` and `abbr-aws-security-token-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-web-services` and `abbr-business-associate-addendum` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -549,6 +566,8 @@ None.
 - `abbr-amazon-web-services` and `abbr-independent-software-vendor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-web-services` and `abbr-infrastructure-as-a-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-web-services` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-amazon-web-services` and `abbr-internet-service-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-amazon-web-services` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-web-services` and `abbr-multi-factor-authentication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-web-services` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-web-services` and `abbr-platform-as-a-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -557,7 +576,10 @@ None.
 - `abbr-amazon-web-services` and `abbr-software-as-a-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-web-services` and `abbr-technical-account-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-web-services` and `abbr-transport-layer-security` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-amazon-web-services` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-amazon-web-services` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-application` and `term-idle-application` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-application` and `term-replication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-application-load-balancer` and `abbr-artificial-intelligence` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-application-load-balancer` and `abbr-availability-zone` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-application-load-balancer` and `abbr-aws-certificate-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -571,8 +593,10 @@ None.
 - `abbr-application-load-balancer` and `abbr-elastic-load-balancing` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-application-load-balancer` and `abbr-extract-transform-load` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-application-load-balancer` and `abbr-gateway-load-balancer` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-application-load-balancer` and `abbr-gigabyte` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-application-load-balancer` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-application-load-balancer` and `abbr-machine-learning` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-application-load-balancer` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-application-load-balancer` and `abbr-multi-factor-authentication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-application-load-balancer` and `abbr-network-acl` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-application-load-balancer` and `abbr-network-load-balancer` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -581,6 +605,7 @@ None.
 - `abbr-application-load-balancer` and `abbr-time-to-live` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-application-load-balancer` and `abbr-transport-layer-security` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-archive` and `term-cache` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-argument` and `term-target` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-artificial-intelligence` and `abbr-availability-zone` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-artificial-intelligence` and `abbr-aws-certificate-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-artificial-intelligence` and `abbr-aws-identity-and-access-management` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -593,13 +618,16 @@ None.
 - `abbr-artificial-intelligence` and `abbr-continuous-integration` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-artificial-intelligence` and `abbr-disaster-recovery` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-artificial-intelligence` and `abbr-dynamodb-accelerator` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-artificial-intelligence` and `abbr-gigabyte` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-artificial-intelligence` and `abbr-high-risk-issue` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-artificial-intelligence` and `abbr-identity-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-artificial-intelligence` and `abbr-independent-software-vendor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-artificial-intelligence` and `abbr-infrastructure-as-a-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-artificial-intelligence` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-artificial-intelligence` and `abbr-internet-of-things` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-artificial-intelligence` and `abbr-internet-service-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-artificial-intelligence` and `abbr-machine-learning` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-artificial-intelligence` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-artificial-intelligence` and `abbr-multi-factor-authentication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-artificial-intelligence` and `abbr-network-acl` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-artificial-intelligence` and `abbr-organizational-unit` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -609,6 +637,7 @@ None.
 - `abbr-artificial-intelligence` and `abbr-reserved-instance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-artificial-intelligence` and `abbr-software-as-a-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-artificial-intelligence` and `abbr-technical-account-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-artificial-intelligence` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-asynchronous` and `term-synchronous` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-asynchronous-replication` and `term-synchronous-replication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-authorization` and `term-automation` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -624,9 +653,11 @@ None.
 - `abbr-availability-zone` and `abbr-continuous-integration` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-availability-zone` and `abbr-disaster-recovery` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-availability-zone` and `abbr-dynamodb-accelerator` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-availability-zone` and `abbr-gigabyte` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-availability-zone` and `abbr-infrastructure-as-a-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-availability-zone` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-availability-zone` and `abbr-machine-learning` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-availability-zone` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-availability-zone` and `abbr-multi-factor-authentication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-availability-zone` and `abbr-network-acl` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-availability-zone` and `abbr-organizational-unit` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -635,6 +666,7 @@ None.
 - `abbr-availability-zone` and `abbr-reserved-instance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-availability-zone` and `abbr-software-as-a-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-availability-zone` and `abbr-technical-account-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-availability-zone` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-aws-backup` and `term-backup` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-aws-batch` and `term-batch` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-aws-business-support` and `term-business-support` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -652,14 +684,18 @@ None.
 - `abbr-aws-certificate-manager` and `abbr-hardware-security-module` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-certificate-manager` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-certificate-manager` and `abbr-machine-learning` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-certificate-manager` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-certificate-manager` and `abbr-multi-factor-authentication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-certificate-manager` and `abbr-network-acl` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-certificate-manager` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-certificate-manager` and `abbr-processor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-certificate-manager` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-certificate-manager` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-certificate-manager` and `abbr-technical-account-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-certificate-manager` and `abbr-total-cost-of-ownership` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-certificate-manager` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-cloud-adoption-framework` and `abbr-aws-customer-incident-response-team` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-cloud-adoption-framework` and `abbr-aws-resource-access-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-cloud-adoption-framework` and `abbr-aws-schema-conversion-tool` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-aws-cloudformation` and `term-stack-cloudformation` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-aws-codepipeline` and `term-stage-codepipeline` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -671,8 +707,10 @@ None.
 - `abbr-aws-cost-and-usage-report` and `abbr-disaster-recovery` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-cost-and-usage-report` and `abbr-high-risk-issue` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-cost-and-usage-report` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-cost-and-usage-report` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-cost-and-usage-report` and `abbr-organizational-unit` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-cost-and-usage-report` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-cost-and-usage-report` and `abbr-processor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-cost-and-usage-report` and `abbr-recovery-point-objective` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-cost-and-usage-report` and `abbr-recovery-time-objective` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-cost-and-usage-report` and `abbr-reserved-instance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -680,16 +718,20 @@ None.
 - `abbr-aws-cost-and-usage-report` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-cost-and-usage-report` and `abbr-shield-response-team` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-cost-and-usage-report` and `abbr-total-cost-of-ownership` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-cost-and-usage-report` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-customer-incident-response-team` and `abbr-aws-elastic-disaster-recovery` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-customer-incident-response-team` and `abbr-aws-resource-access-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-customer-incident-response-team` and `abbr-aws-schema-conversion-tool` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-customer-incident-response-team` and `abbr-aws-security-token-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-customer-incident-response-team` and `abbr-shield-response-team` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-database-migration-service` and `abbr-aws-elastic-disaster-recovery` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-database-migration-service` and `abbr-aws-key-management-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-database-migration-service` and `abbr-aws-managed-services` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-database-migration-service` and `abbr-aws-resource-access-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-database-migration-service` and `abbr-aws-schema-conversion-tool` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-database-migration-service` and `abbr-aws-security-token-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-elastic-disaster-recovery` and `abbr-aws-key-management-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-elastic-disaster-recovery` and `abbr-aws-resource-access-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-elastic-disaster-recovery` and `abbr-aws-schema-conversion-tool` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-elastic-disaster-recovery` and `abbr-aws-security-token-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-aws-health` and `term-aws-health-api` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -707,13 +749,17 @@ None.
 - `abbr-aws-identity-and-access-management` and `abbr-infrastructure-as-a-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-identity-and-access-management` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-identity-and-access-management` and `abbr-internet-of-things` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-identity-and-access-management` and `abbr-internet-service-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-identity-and-access-management` and `abbr-machine-learning` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-identity-and-access-management` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-identity-and-access-management` and `abbr-multi-factor-authentication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-identity-and-access-management` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-identity-and-access-management` and `abbr-personally-identifiable-information` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-identity-and-access-management` and `abbr-reserved-instance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-identity-and-access-management` and `abbr-technical-account-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-identity-and-access-management` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-key-management-service` and `abbr-aws-managed-services` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-key-management-service` and `abbr-aws-resource-access-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-key-management-service` and `abbr-aws-schema-conversion-tool` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-key-management-service` and `abbr-aws-security-token-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-managed-services` and `abbr-aws-migration-acceleration-program` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -727,7 +773,9 @@ None.
 - `abbr-aws-managed-services` and `abbr-independent-software-vendor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-managed-services` and `abbr-infrastructure-as-a-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-managed-services` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-managed-services` and `abbr-internet-service-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-managed-services` and `abbr-machine-learning` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-managed-services` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-managed-services` and `abbr-multi-factor-authentication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-managed-services` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-managed-services` and `abbr-platform-as-a-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -736,6 +784,8 @@ None.
 - `abbr-aws-managed-services` and `abbr-software-as-a-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-managed-services` and `abbr-technical-account-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-managed-services` and `abbr-transport-layer-security` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-managed-services` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-managed-services` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-managed-services` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-migration-acceleration-program` and `abbr-aws-partner-network` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-migration-acceleration-program` and `abbr-business-associate-addendum` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -744,14 +794,20 @@ None.
 - `abbr-aws-migration-acceleration-program` and `abbr-hardware-security-module` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-migration-acceleration-program` and `abbr-identity-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-migration-acceleration-program` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-migration-acceleration-program` and `abbr-internet-service-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-migration-acceleration-program` and `abbr-machine-learning` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-migration-acceleration-program` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-migration-acceleration-program` and `abbr-multi-factor-authentication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-migration-acceleration-program` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-migration-acceleration-program` and `abbr-personally-identifiable-information` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-migration-acceleration-program` and `abbr-processor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-migration-acceleration-program` and `abbr-recovery-point-objective` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-migration-acceleration-program` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-migration-acceleration-program` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-migration-acceleration-program` and `abbr-technical-account-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-migration-acceleration-program` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-migration-acceleration-program` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-migration-acceleration-program` and `abbr-virtual-private-network` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-migration-acceleration-program` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-aws-organizations` and `term-organization` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-aws-organizations` and `term-root-aws-organizations` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -762,17 +818,24 @@ None.
 - `abbr-aws-partner-network` and `abbr-dynamodb-accelerator` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-partner-network` and `abbr-identity-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-partner-network` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-partner-network` and `abbr-internet-service-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-partner-network` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-partner-network` and `abbr-multi-factor-authentication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-partner-network` and `abbr-network-load-balancer` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-partner-network` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-partner-network` and `abbr-personally-identifiable-information` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-partner-network` and `abbr-processor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-partner-network` and `abbr-recovery-point-objective` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-partner-network` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-partner-network` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-partner-network` and `abbr-technical-account-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-partner-network` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-partner-network` and `abbr-virtual-private-network` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-partner-network` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-aws-prescriptive-guidance` and `term-guide-prescriptive-guidance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-aws-prescriptive-guidance` and `term-pattern-prescriptive-guidance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-resource-access-manager` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-aws-resource-access-manager` and `abbr-write-once-read-many` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-aws-schema-conversion-tool` and `abbr-aws-security-token-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-aws-security-blog` and `term-aws-security-hub` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-aws-security-hub` and `term-aws-security-hub-cspm` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -781,8 +844,11 @@ None.
 - `diff-basic-support` and `diff-business-support` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-batch` and `term-batch-job` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-batch` and `term-patch` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-bot` and `term-byte` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-bot` and `term-host` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-bot` and `term-port` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-bring-your-own-license` and `abbr-business-intelligence` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-bring-your-own-license` and `abbr-gigabyte` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-bring-your-own-license` and `abbr-machine-learning` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-bring-your-own-license` and `abbr-organizational-unit` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-bucket` and `term-packet` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -790,8 +856,10 @@ None.
 - `abbr-business-associate-addendum` and `abbr-business-intelligence` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-business-associate-addendum` and `abbr-dynamodb-accelerator` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-business-associate-addendum` and `abbr-elastic-load-balancing` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-business-associate-addendum` and `abbr-gigabyte` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-business-associate-addendum` and `abbr-infrastructure-as-a-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-business-associate-addendum` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-business-associate-addendum` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-business-associate-addendum` and `abbr-multi-factor-authentication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-business-associate-addendum` and `abbr-network-load-balancer` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-business-associate-addendum` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -803,24 +871,31 @@ None.
 - `abbr-business-intelligence` and `abbr-disaster-recovery` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-business-intelligence` and `abbr-elastic-load-balancing` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-business-intelligence` and `abbr-gateway-load-balancer` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-business-intelligence` and `abbr-gigabyte` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-business-intelligence` and `abbr-high-risk-issue` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-business-intelligence` and `abbr-identity-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-business-intelligence` and `abbr-independent-software-vendor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-business-intelligence` and `abbr-infrastructure-as-a-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-business-intelligence` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-business-intelligence` and `abbr-internet-of-things` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-business-intelligence` and `abbr-internet-service-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-business-intelligence` and `abbr-machine-learning` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-business-intelligence` and `abbr-network-load-balancer` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-business-intelligence` and `abbr-organizational-unit` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-business-intelligence` and `abbr-personally-identifiable-information` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-business-intelligence` and `abbr-reserved-instance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-business-intelligence` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-capacity` and `term-idle-capacity` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-capital-expense` and `abbr-common-vulnerabilities-and-exposures` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-capital-expense` and `abbr-dynamodb-accelerator` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-capital-expense` and `abbr-operating-expense` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-capital-expense` and `abbr-processor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-capital-expense` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-capital-expense` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-case-severity` and `term-severity` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-code` and `term-core` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-column` and `term-volume` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-command` and `term-subcommand` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-commitment` and `term-term-commitment` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-common-vulnerabilities-and-exposures` and `abbr-content-delivery-network` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-common-vulnerabilities-and-exposures` and `abbr-continuous-delivery` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -831,9 +906,12 @@ None.
 - `abbr-common-vulnerabilities-and-exposures` and `abbr-independent-software-vendor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-common-vulnerabilities-and-exposures` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-common-vulnerabilities-and-exposures` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-common-vulnerabilities-and-exposures` and `abbr-processor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-common-vulnerabilities-and-exposures` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-common-vulnerabilities-and-exposures` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-common-vulnerabilities-and-exposures` and `abbr-total-cost-of-ownership` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-common-vulnerabilities-and-exposures` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-common-vulnerabilities-and-exposures` and `abbr-virtual-private-network` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-common-vulnerabilities-and-exposures` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-compute` and `term-route` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-content-delivery-network` and `abbr-continuous-delivery` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -846,41 +924,50 @@ None.
 - `abbr-content-delivery-network` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-content-delivery-network` and `abbr-network-load-balancer` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-content-delivery-network` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-content-delivery-network` and `abbr-processor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-content-delivery-network` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-content-delivery-network` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-content-delivery-network` and `abbr-total-cost-of-ownership` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-content-delivery-network` and `abbr-virtual-private-network` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-delivery` and `abbr-continuous-integration` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-delivery` and `abbr-denial-of-service-attack` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-delivery` and `abbr-disaster-recovery` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-delivery` and `abbr-distributed-denial-of-service-attack` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-delivery` and `abbr-domain-name-system` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-delivery` and `abbr-dynamodb-accelerator` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-continuous-delivery` and `abbr-gigabyte` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-delivery` and `abbr-identity-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-delivery` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-delivery` and `abbr-machine-learning` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-delivery` and `abbr-network-acl` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-delivery` and `abbr-organizational-unit` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-delivery` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-continuous-delivery` and `abbr-processor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-delivery` and `abbr-reserved-instance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-delivery` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-delivery` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-delivery` and `abbr-total-cost-of-ownership` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-continuous-delivery` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-integration` and `abbr-disaster-recovery` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-continuous-integration` and `abbr-gigabyte` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-integration` and `abbr-high-risk-issue` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-integration` and `abbr-identity-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-integration` and `abbr-independent-software-vendor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-integration` and `abbr-infrastructure-as-a-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-integration` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-integration` and `abbr-internet-of-things` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-continuous-integration` and `abbr-internet-service-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-integration` and `abbr-machine-learning` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-integration` and `abbr-network-acl` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-integration` and `abbr-organizational-unit` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-integration` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-integration` and `abbr-personally-identifiable-information` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-continuous-integration` and `abbr-processor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-integration` and `abbr-reserved-instance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-integration` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-integration` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-continuous-integration` and `abbr-total-cost-of-ownership` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-continuous-integration` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-current-version` and `term-noncurrent-version` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-customer-managed-key` and `term-customer-managed-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-data-center` and `term-data-event` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -899,6 +986,7 @@ None.
 - `abbr-denial-of-service-attack` and `abbr-identity-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-denial-of-service-attack` and `abbr-independent-software-vendor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-denial-of-service-attack` and `abbr-internet-of-things` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-denial-of-service-attack` and `abbr-internet-service-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-denial-of-service-attack` and `abbr-organizational-unit` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-denial-of-service-attack` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-denial-of-service-attack` and `abbr-recovery-point-objective` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -907,19 +995,23 @@ None.
 - `abbr-denial-of-service-attack` and `abbr-shield-response-team` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-denial-of-service-attack` and `abbr-total-cost-of-ownership` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-denial-of-service-attack` and `abbr-transport-layer-security` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-denial-of-service-attack` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-denial-of-service-attack` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-disaster-recovery` and `abbr-distributed-denial-of-service-attack` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-disaster-recovery` and `abbr-domain-name-system` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-disaster-recovery` and `abbr-dynamodb-accelerator` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-disaster-recovery` and `abbr-gigabyte` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-disaster-recovery` and `abbr-high-risk-issue` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-disaster-recovery` and `abbr-identity-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-disaster-recovery` and `abbr-machine-learning` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-disaster-recovery` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-disaster-recovery` and `abbr-organizational-unit` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-disaster-recovery` and `abbr-recovery-point-objective` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-disaster-recovery` and `abbr-recovery-time-objective` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-disaster-recovery` and `abbr-reserved-instance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-disaster-recovery` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-disaster-recovery` and `abbr-shield-response-team` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-disaster-recovery` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-disaster-recovery` and `abbr-write-once-read-many` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-distributed-denial-of-service-attack` and `abbr-domain-name-system` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-distributed-denial-of-service-attack` and `abbr-organizational-unit` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -928,14 +1020,18 @@ None.
 - `abbr-domain-name-system` and `abbr-hardware-security-module` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-domain-name-system` and `abbr-identity-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-domain-name-system` and `abbr-independent-software-vendor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-domain-name-system` and `abbr-internet-service-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-domain-name-system` and `abbr-network-load-balancer` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-domain-name-system` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-domain-name-system` and `abbr-shield-response-team` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-domain-name-system` and `abbr-transport-layer-security` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-domain-name-system` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-domain-name-system` and `abbr-virtual-private-network` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-domain-name-system` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-durability` and `term-vulnerability` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-dynamodb-accelerator` and `abbr-identity-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-dynamodb-accelerator` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-dynamodb-accelerator` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-dynamodb-accelerator` and `abbr-multi-factor-authentication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-dynamodb-accelerator` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-dynamodb-accelerator` and `abbr-technical-account-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -944,6 +1040,7 @@ None.
 - `abbr-elastic-load-balancing` and `abbr-environmental-social-and-governance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-elastic-load-balancing` and `abbr-extract-transform-load` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-elastic-load-balancing` and `abbr-gateway-load-balancer` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-elastic-load-balancing` and `abbr-gigabyte` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-elastic-load-balancing` and `abbr-machine-learning` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-elastic-load-balancing` and `abbr-network-load-balancer` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-elastic-load-balancing` and `abbr-time-to-live` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -953,11 +1050,14 @@ None.
 - `term-entitlement` and `term-sentiment` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-entity` and `term-identity` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-environmental-social-and-governance` and `abbr-extract-transform-load` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-environmental-social-and-governance` and `abbr-gigabyte` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-environmental-social-and-governance` and `abbr-hardware-security-module` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-environmental-social-and-governance` and `abbr-independent-software-vendor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-environmental-social-and-governance` and `abbr-internet-service-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-environmental-social-and-governance` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-environmental-social-and-governance` and `abbr-shield-response-team` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-environmental-social-and-governance` and `abbr-transport-layer-security` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-environmental-social-and-governance` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-environmental-social-and-governance` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-estimate` and `term-estimate-link` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-event` and `term-event-bus` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -971,59 +1071,90 @@ None.
 - `abbr-extract-transform-load` and `abbr-time-to-live` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-extract-transform-load` and `abbr-total-cost-of-ownership` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-extract-transform-load` and `abbr-transport-layer-security` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-failover` and `term-file` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-gateway-load-balancer` and `abbr-gigabyte` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-gateway-load-balancer` and `abbr-machine-learning` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-gateway-load-balancer` and `abbr-network-load-balancer` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-gigabyte` and `abbr-machine-learning` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-gigabyte` and `abbr-network-load-balancer` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-gigabyte` and `abbr-organizational-unit` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-gigabyte` and `abbr-reserved-instance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-gigabyte` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-guest-operating-system` and `term-host-operating-system` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-guest-operating-system` and `term-operating-system` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-hardware-security-module` and `abbr-high-risk-issue` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-hardware-security-module` and `abbr-independent-software-vendor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-hardware-security-module` and `abbr-internet-service-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-hardware-security-module` and `abbr-machine-learning` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-hardware-security-module` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-hardware-security-module` and `abbr-multi-factor-authentication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-hardware-security-module` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-hardware-security-module` and `abbr-shield-response-team` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-hardware-security-module` and `abbr-technical-account-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-hardware-security-module` and `abbr-transport-layer-security` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-hardware-security-module` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-hardware-security-module` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-hardware-security-module` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-heterogeneous-migration` and `term-homogeneous-migration` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-high-risk-issue` and `abbr-identity-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-high-risk-issue` and `abbr-independent-software-vendor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-high-risk-issue` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-high-risk-issue` and `abbr-internet-of-things` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-high-risk-issue` and `abbr-internet-service-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-high-risk-issue` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-high-risk-issue` and `abbr-personally-identifiable-information` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-high-risk-issue` and `abbr-recovery-point-objective` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-high-risk-issue` and `abbr-recovery-time-objective` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-high-risk-issue` and `abbr-reserved-instance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-high-risk-issue` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-high-risk-issue` and `abbr-shield-response-team` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-host` and `term-rehost` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-host-operating-system` and `term-operating-system` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-hot-standby` and `term-standby` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-http` and `term-https` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-http` and `term-tcp` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-identity-provider` and `abbr-independent-software-vendor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-identity-provider` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-identity-provider` and `abbr-internet-of-things` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-identity-provider` and `abbr-internet-service-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-identity-provider` and `abbr-personally-identifiable-information` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-identity-provider` and `abbr-processor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-identity-provider` and `abbr-recovery-point-objective` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-identity-provider` and `abbr-reserved-instance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-identity-provider` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-identity-provider` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-identity-provider` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-identity-provider` and `abbr-virtual-private-network` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-identity-provider` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-idle-application` and `term-zombie-application` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-image` and `term-message` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-inbound-rule` and `term-outbound-rule` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-independent-software-vendor` and `abbr-infrastructure-as-a-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-independent-software-vendor` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-independent-software-vendor` and `abbr-internet-of-things` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-independent-software-vendor` and `abbr-internet-service-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-independent-software-vendor` and `abbr-personally-identifiable-information` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-independent-software-vendor` and `abbr-reserved-instance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-independent-software-vendor` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-independent-software-vendor` and `abbr-shield-response-team` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-independent-software-vendor` and `abbr-transport-layer-security` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-independent-software-vendor` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-independent-software-vendor` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-independent-software-vendor` and `abbr-virtual-private-network` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-independent-software-vendor` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-infrastructure-as-a-service` and `abbr-infrastructure-as-code` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-infrastructure-as-a-service` and `abbr-internet-service-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-infrastructure-as-a-service` and `abbr-platform-as-a-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-infrastructure-as-a-service` and `abbr-reserved-instance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-infrastructure-as-a-service` and `abbr-software-as-a-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-infrastructure-as-code` and `abbr-internet-of-things` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-infrastructure-as-code` and `abbr-internet-service-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-infrastructure-as-code` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-infrastructure-as-code` and `abbr-multi-factor-authentication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-infrastructure-as-code` and `abbr-network-acl` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-infrastructure-as-code` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-infrastructure-as-code` and `abbr-personally-identifiable-information` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-infrastructure-as-code` and `abbr-processor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-infrastructure-as-code` and `abbr-reserved-instance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-infrastructure-as-code` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-infrastructure-as-code` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -1036,6 +1167,7 @@ None.
 - `term-instance-state` and `term-instance-type` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-instance-store` and `term-instance-type` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-instance-store` and `term-instance-hour` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-internet-of-things` and `abbr-internet-service-provider` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-internet-of-things` and `abbr-organizational-unit` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-internet-of-things` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-internet-of-things` and `abbr-personally-identifiable-information` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -1047,6 +1179,19 @@ None.
 - `abbr-internet-of-things` and `abbr-time-to-live` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-internet-of-things` and `abbr-total-cost-of-ownership` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-internet-of-things` and `abbr-transport-layer-security` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-internet-service-provider` and `abbr-personally-identifiable-information` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-internet-service-provider` and `abbr-processor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-internet-service-provider` and `abbr-recovery-point-objective` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-internet-service-provider` and `abbr-reserved-instance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-internet-service-provider` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-internet-service-provider` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-internet-service-provider` and `abbr-shield-response-team` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-internet-service-provider` and `abbr-transport-layer-security` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-internet-service-provider` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-internet-service-provider` and `abbr-virtual-private-network` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-internet-service-provider` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-iops` and `term-ipsec` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-ipv4` and `term-ipv6` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-job-queue` and `term-queue` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-key-s3` and `term-sse-s3` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `diff-key-s3` and `diff-sort-key` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -1055,6 +1200,7 @@ None.
 - `term-latency` and `term-tenancy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-lens` and `term-nfs` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-local-route` and `term-local-zone` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-machine-learning` and `abbr-memory` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-machine-learning` and `abbr-multi-factor-authentication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-machine-learning` and `abbr-network-acl` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-machine-learning` and `abbr-network-load-balancer` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -1063,26 +1209,44 @@ None.
 - `abbr-machine-learning` and `abbr-technical-account-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-machine-learning` and `abbr-time-to-live` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-machine-learning` and `abbr-transport-layer-security` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-machine-learning` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-machine-learning` and `abbr-write-once-read-many` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-main-route-table` and `term-route-table` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-managed-database` and `term-self-managed-database` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-maximum-capacity` and `term-minimum-capacity` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-memory` and `abbr-multi-factor-authentication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-memory` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-memory` and `abbr-recovery-point-objective` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-memory` and `abbr-recovery-time-objective` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-memory` and `abbr-reserved-instance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-memory` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-memory` and `abbr-shield-response-team` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-memory` and `abbr-technical-account-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-memory` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-memory` and `abbr-write-once-read-many` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-multi-factor-authentication` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-multi-factor-authentication` and `abbr-technical-account-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-multi-factor-authentication` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-nat-gateway` and `term-tape-gateway` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-network-acl` and `abbr-network-load-balancer` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-network-acl` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-network-load-balancer` and `abbr-time-to-live` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-network-load-balancer` and `abbr-transport-layer-security` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-network-load-balancer` and `abbr-virtual-private-network` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-nosql` and `term-sql` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-operating-expense` and `abbr-organizational-unit` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-option` and `term-rotation` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-organizational-unit` and `abbr-origin-access-control` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-organizational-unit` and `abbr-processor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-organizational-unit` and `abbr-recovery-point-objective` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-organizational-unit` and `abbr-recovery-time-objective` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-organizational-unit` and `abbr-reserved-instance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-organizational-unit` and `abbr-total-cost-of-ownership` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-organizational-unit` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-organizational-unit` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-organizational-unit` and `abbr-write-once-read-many` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-origin` and `term-region` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-origin-access-control` and `abbr-processor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-origin-access-control` and `abbr-recovery-point-objective` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-origin-access-control` and `abbr-recovery-time-objective` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-origin-access-control` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -1090,14 +1254,29 @@ None.
 - `abbr-origin-access-control` and `abbr-technical-account-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-origin-access-control` and `abbr-total-cost-of-ownership` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-packet` and `term-stackset` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-personally-identifiable-information` and `abbr-processor` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-personally-identifiable-information` and `abbr-recovery-point-objective` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-personally-identifiable-information` and `abbr-reserved-instance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-personally-identifiable-information` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-personally-identifiable-information` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-personally-identifiable-information` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-personally-identifiable-information` and `abbr-virtual-private-network` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-personally-identifiable-information` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-platform-as-a-service` and `abbr-software-as-a-service` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-platform-as-a-service` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-platform-as-a-service` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-primary` and `term-primary-key` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-processor` and `abbr-recovery-point-objective` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-processor` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-processor` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-processor` and `abbr-total-cost-of-ownership` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-processor` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-processor` and `abbr-virtual-private-network` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-processor` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-producer` and `term-router` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-promote` and `term-prompt` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-promote` and `term-route` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-rack` and `term-trace` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-rate` and `term-relocate` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-rate` and `term-route` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-rate` and `term-trace` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -1107,6 +1286,8 @@ None.
 - `abbr-recovery-point-objective` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-recovery-point-objective` and `abbr-shield-response-team` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-recovery-point-objective` and `abbr-total-cost-of-ownership` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-recovery-point-objective` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-recovery-point-objective` and `abbr-virtual-private-network` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-recovery-point-objective` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-recovery-time-objective` and `abbr-reserved-instance` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-recovery-time-objective` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -1121,14 +1302,18 @@ None.
 - `term-replication` and `term-s3-replication` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-reserved-instance` and `abbr-resource-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-reserved-instance` and `abbr-shield-response-team` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-reserved-instance` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-reserved-instance` and `abbr-write-once-read-many` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-resource-control-policy` and `abbr-service-control-policy` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-resource-control-policy` and `abbr-shield-response-team` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-resource-control-policy` and `abbr-total-cost-of-ownership` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-resource-control-policy` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-resource-control-policy` and `abbr-virtual-private-network` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-resource-control-policy` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-retain` and `term-retire` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-retain` and `term-rotation` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-rollback-cloudformation` and `term-stack-cloudformation` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-route` and `term-router` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-s3-standard` and `term-s3-standard-ia` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-script` and `term-secret` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-secret` and `term-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -1136,14 +1321,18 @@ None.
 - `term-security-layer` and `term-security-pillar` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-server` and `term-serverless` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-server` and `term-severity` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-server` and `term-web-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-service-control-policy` and `abbr-shield-response-team` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-service-control-policy` and `abbr-total-cost-of-ownership` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-service-control-policy` and `abbr-transport-layer-security` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-service-control-policy` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-service-control-policy` and `abbr-virtual-private-network` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-service-control-policy` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-shield-response-team` and `abbr-technical-account-manager` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-shield-response-team` and `abbr-time-to-live` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-shield-response-team` and `abbr-total-cost-of-ownership` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-shield-response-team` and `abbr-transport-layer-security` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-shield-response-team` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-shield-response-team` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-sse-c` and `term-sse-kms` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-sse-c` and `term-sse-s3` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
@@ -1152,12 +1341,21 @@ None.
 - `term-statement` and `term-task-statement` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-storage` and `term-trace` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-tag` and `term-target` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `term-tcp` and `term-vcpu` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-technical-account-manager` and `abbr-time-to-live` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-technical-account-manager` and `abbr-total-cost-of-ownership` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-technical-account-manager` and `abbr-transport-layer-security` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-technical-account-manager` and `abbr-virtual-machine` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-time-to-live` and `abbr-total-cost-of-ownership` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-time-to-live` and `abbr-transport-layer-security` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-total-cost-of-ownership` and `abbr-transport-layer-security` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-trace` and `term-trace-map` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-transport-layer-security` and `abbr-uninterruptible-power-supply` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `abbr-transport-layer-security` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-uninterruptible-power-supply` and `abbr-virtual-private-network` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-uninterruptible-power-supply` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
 - `term-version-id` and `term-versioning` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-virtual-machine` and `abbr-virtual-private-network` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-virtual-machine` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-virtual-machine` and `abbr-write-once-read-many` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
+- `abbr-virtual-private-network` and `abbr-virtual-private-server` have very similar prompts. Fine for a contrasting pair; otherwise make them easier to tell apart.
