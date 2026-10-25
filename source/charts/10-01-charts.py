@@ -207,79 +207,23 @@ def panels(name, title, sub, cols, rows, hi_row, label_w, wrap_w, note, desc):
     svg(name, w, y + 14, title, desc, body, style=STYLE)
 
 
-INGEST_ROWS = ["What it is", "Who reads the data", "After it's read", "How long it holds data",
-               "Do you write code?", "Choose it when"]
-INGEST_COLS = [
-    ("Kinesis Data Streams",
-     ["A stream of records, kept in the order they arrive",
-      "Your own programs; several can read the same records",
-      "Records stay: another program can read them, or replay them",
-      "24 hours by default, up to 365 days",
-      "Yes: you write or choose the programs that read it",
-      "Custom real-time processing, several readers, replay"]),
-    ("Amazon Data Firehose",
-     ["A delivery service for streaming data",
-      "Firehose itself: it delivers to S3, Redshift, OpenSearch Service and others",
-      "Delivered to the destination; nothing is kept for other readers",
-      "Only while it buffers, up to 900 seconds, then it delivers",
-      "No: you configure it",
-      "Land streaming data in a store, with no code"]),
-    ("Amazon SQS",
-     ["A queue of messages between parts of an application",
-      "A worker program; each message goes to one worker at a time",
-      "The worker deletes the message when its job is done",
-      "4 days by default; from 1 minute to 14 days",
-      "Yes: your programs send and receive messages",
-      "Hand work from one part of an application to another"]),
-]
-
-
-def ingest_compared():
-    panels("10-01-ingest-compared.svg",
-           "Data Streams, Firehose or SQS: three ways data waits",
-           "All three accept data from producers; read down a column, across a row to compare",
-           INGEST_COLS, INGEST_ROWS, "After it's read", 112, 24,
-           ["Retention periods as of 2026-10-24. From the Kinesis Data Streams, Data Firehose and Amazon SQS",
-            "documentation and FAQs."],
-           "Three columns compared on six rows. Kinesis Data Streams: a stream of records, kept in the order they "
-           "arrive; read by your own programs, and several can read the same records; after it's read, the "
-           "record stays, so another program can read or replay it; holds data 24 hours by default, up to 365 days; "
-           "you write or choose the programs that read it; choose it for custom real-time processing, several "
-           "readers, or replay. Amazon Data Firehose: a delivery service for streaming data; Firehose itself reads "
-           "it and delivers it to S3, Redshift, OpenSearch Service and others; after delivery nothing is kept for "
-           "other readers; it holds data only while it buffers, up to 900 seconds; you configure it rather than "
-           "write code; choose it to land streaming data in a store with no code. Amazon SQS: a queue of messages "
-           "between parts of an application; each message goes to one worker program at a time; the worker deletes "
-           "the message when its job is done; holds messages 4 days by default, from 1 minute to 14 days; your "
-           "programs send and receive messages; choose it to hand work from one part of an application to another. "
-           "The row about what happens after the data is read is highlighted.")
-
-
-QUERY_ROWS = ["Main job", "Where the data is", "What you manage", "What you pay for", "Choose it when"]
+QUERY_ROWS = ["Main job", "Where the data is", "Choose it when"]
 QUERY_COLS = [
     ("Amazon Athena",
      ["Runs SQL on files where they sit",
       "In S3, left unchanged",
-      "Nothing: it's serverless",
-      "Each query, by the data it scans",
       "Ad hoc questions about files in S3"]),
     ("Amazon Redshift",
      ["Data warehouse: stores data for analysis and runs SQL on it",
-      "Loaded into Redshift; Spectrum also reads S3",
-      "Cluster size, or nothing with Serverless",
-      "Cluster hours, or Serverless use by the second",
+      "Loaded into Redshift",
       "Regular, complex reports over years of data from many sources"]),
     ("Amazon EMR",
      ["Runs Spark, Hadoop and similar frameworks",
       "Usually S3, read by your code",
-      "Clusters and their software, or EMR Serverless",
-      "Per second of use, one-minute minimum",
       "Custom big-data code with full control"]),
     ("AWS Glue",
      ["Catalogs and prepares data (ETL); not for asking questions",
       "Wherever it connects; the catalog describes it",
-      "Nothing: it's serverless",
-      "Job and crawler time; catalog storage above a free tier",
       "Make data findable and clean before others query it"]),
 ]
 
@@ -289,86 +233,17 @@ def query_compared():
            "Athena, Redshift, EMR or Glue: who does what",
            "Three of them answer questions about data; Glue gets the data ready",
            QUERY_COLS, QUERY_ROWS, "Main job", 92, 17,
-           ["Pricing models as of 2026-10-24; check each service's pricing page for rates. From the Athena, Redshift,",
-            "EMR and Glue documentation, FAQs and pricing pages."],
-           "Four columns compared on five rows. Main job, highlighted: Amazon Athena runs SQL on files where they "
+           ["From the Athena, Redshift, EMR and Glue documentation, checked 2026-10-24."],
+           "Four columns compared on three rows. Main job, highlighted: Amazon Athena runs SQL on files where they "
            "sit; Amazon Redshift is a data warehouse that stores data for analysis and runs SQL on it; Amazon EMR "
            "runs Spark, Hadoop and similar frameworks; AWS Glue catalogs and prepares data (ETL) and is not for "
-           "asking questions. Where the data is: Athena, in S3, left unchanged; Redshift, loaded into Redshift, and "
-           "Redshift Spectrum also reads S3; EMR, usually S3, read by your code; Glue, wherever it connects, and its "
-           "catalog describes it. What you manage: Athena, nothing, it's serverless; Redshift, cluster size, or "
-           "nothing with Redshift Serverless; EMR, clusters and their software, or EMR Serverless; Glue, nothing, "
-           "it's serverless. What you pay for: Athena, each query by the data it scans; Redshift, cluster hours or "
-           "Serverless use by the second; EMR, per second of use with a one-minute minimum; Glue, job and crawler "
-           "time plus catalog storage above a free tier. Choose it when: Athena, ad hoc questions about files in "
-           "S3; Redshift, regular complex reports over years of data from many sources; EMR, custom big-data code "
-           "with full control; Glue, to make data findable and clean before others query it.")
-
-
-# Times in seconds.
-MIN, HOUR, DAY = 60, 3600, 86400
-TICKS = [(1, "1 second"), (MIN, "1 minute"), (HOUR, "1 hour"), (DAY, "1 day"), (7 * DAY, "1 week"),
-         (365 * DAY, "1 year")]
-SPANS = [
-    ("Amazon Data Firehose", 1, 900, None, "buffers up to 900 seconds, then delivers"),
-    ("Amazon SQS", MIN, 14 * DAY, 4 * DAY, "1 minute to 14 days; default 4 days"),
-    ("Kinesis Data Streams", DAY, 365 * DAY, DAY, "24 hours (default) to 365 days"),
-]
-
-
-def how_long():
-    """Range chart, log time axis: how long each service can hold data that nobody has removed."""
-    w = 680
-    body = [
-        '<text class="title" x="16" y="28">How long each one can hold your data</text>',
-        '<text class="sub" x="16" y="48">The range you can set for each, on a time scale where each step is much longer than the last</text>',
-    ]
-    left, right = 172, 650
-    top = 92
-    lo, hi = math.log10(1), math.log10(365 * DAY)
-
-    def xpos(t):
-        return left + (right - left) * (math.log10(t) - lo) / (hi - lo)
-
-    rh = 58
-    ph = rh * len(SPANS)
-    for t, lab in TICKS:
-        x = xpos(t)
-        body.append(f'<line class="grid" x1="{x:.1f}" x2="{x:.1f}" y1="{top - 6}" y2="{top + ph}"/>')
-        body.append(f'<text class="tick" x="{x:.1f}" y="{top + ph + 18}" text-anchor="middle">{lab}</text>')
-    body.append(f'<line class="axis" x1="{left}" x2="{right}" y1="{top + ph}" y2="{top + ph}"/>')
-    for i, (name, a, b, d, lab) in enumerate(SPANS):
-        y = top + i * rh + 10
-        body.append(f'<text class="cellt" x="16" y="{y + 15}">{name}</text>')
-        x1, x2 = xpos(a), xpos(b)
-        body.append(f'<rect class="range" x="{x1:.1f}" y="{y + 4}" width="{x2 - x1:.1f}" height="14" rx="4"/>')
-        if d:
-            body.append(f'<circle class="dflt" cx="{xpos(d):.1f}" cy="{y + 11}" r="6"/>')
-        lx = min(x1, right - 250) if x2 > right - 120 else x1
-        body.append(f'<text class="small" x="{lx:.1f}" y="{y + 36}">{lab}</text>')
-    y = top + ph + 44
-    body.append(f'<circle class="dflt" cx="22" cy="{y - 4}" r="6"/>')
-    body.append(f'<text class="small" x="34" y="{y}">the default setting</text>')
-    y += 24
-    for line in [
-        "Firehose doesn't store data for readers; it holds it only until it delivers. SQS deletes a message sooner",
-        "when a worker finishes with it. Data Streams keeps records after they're read, for the whole period.",
-        "Values as of 2026-10-24, from the Kinesis Data Streams and Amazon SQS documentation and the Firehose FAQ.",
-    ]:
-        body.append(f'<text class="note" x="16" y="{y}">{line}</text>')
-        y += 16
-    svg("10-01-how-long-data-waits.svg", w, y + 14,
-        "How long Data Firehose, SQS and Kinesis Data Streams can hold data",
-        "A range chart on a time axis that grows by large steps: 1 second, 1 minute, 1 hour, 1 day, 1 week, "
-        "1 year. Amazon Data Firehose: from a moment up to 900 seconds (15 minutes), while it buffers "
-        "before delivering. Amazon SQS: settable from 1 minute to 14 days, with a default of 4 days, marked. "
-        "Kinesis Data Streams: from 24 hours, the default, marked, up to 365 days. Notes: Firehose doesn't store "
-        "data for readers; SQS deletes a message sooner when a worker finishes with it; Data Streams keeps records "
-        "after they are read, for the whole period.", body, style=STYLE)
+           "asking questions. Where the data is: Athena, in S3, left unchanged; Redshift, loaded into Redshift; "
+           "EMR, usually S3, read by your code; Glue, wherever it connects, and its catalog describes it. Choose it "
+           "when: Athena, ad hoc questions about files in S3; Redshift, regular complex reports over years of data "
+           "from many sources; EMR, custom big-data code with full control; Glue, to make data findable and clean "
+           "before others query it.")
 
 
 if __name__ == "__main__":
     pipeline()
-    ingest_compared()
     query_compared()
-    how_long()

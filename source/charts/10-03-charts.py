@@ -10,9 +10,7 @@ guide/10-data-ai-and-more/03-people-apps-and-devices.md, checked 2026-10-23 and
 Applications (formerly AppStream 2.0), Amazon WorkSpaces Secure Browser (and its
 availability-change page: closed to new customers from 2026-10-29), Amazon Connect
 Customer (formerly Amazon Connect), Amazon SES, AWS Amplify Hosting and AWS IoT
-Core; the WorkSpaces FAQ for hourly and monthly billing (hourly = a low monthly
-fee plus an hourly usage fee; monthly = a fixed fee for unlimited use). The billing
-chart shows the shape only: its numbers are made up and are not AWS prices.
+Core.
 Our own design: no AWS logos, icons, trade dress or AWS diagrams.
 """
 import math
@@ -21,7 +19,7 @@ import sys
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from chartkit import make_style, svg, text_lines, wrap, line_key  # noqa: E402
+from chartkit import make_style, svg, text_lines, wrap  # noqa: E402
 
 # AWS service = slot 1 (blue) tint; people, devices and screens = neutral cards; the
 # one highlighted element = slot 2 (orange) outline. Words name every part.
@@ -179,61 +177,6 @@ def what_user_sees():
         body, style=STYLE)
 
 
-def billing_shape():
-    """Hourly vs monthly WorkSpaces billing: the shape of the trade-off, with made-up numbers."""
-    w, h = 680, 380
-    left, top, pw, ph = 70, 76, 560, 220
-    hmax = 200
-    base, rate, flat = 10.0, 0.30, 34.0  # made up, for shape only; not AWS prices
-    ymax = 70.0
-
-    def X(v):
-        return left + pw * v / hmax
-
-    def Y(v):
-        return top + ph - ph * v / ymax
-
-    body = [
-        '<text class="title" x="16" y="28">Hourly or monthly WorkSpaces billing: it depends on hours used</text>',
-        '<text class="sub" x="16" y="48">The shape of the trade-off only. The numbers are made up; check real prices in the calculator.</text>',
-    ]
-    cross = (flat - base) / rate
-    body.append(f'<rect class="band" x="{X(0):.1f}" y="{top}" width="{X(60) - X(0):.1f}" height="{ph}"/>')
-    body.append(f'<text class="ann" x="{X(4):.1f}" y="{top + 16}">Part-time,</text>')
-    body.append(f'<text class="ann" x="{X(4):.1f}" y="{top + 32}">seasonal staff</text>')
-    body.append(f'<text class="ann" x="{X(196):.1f}" y="{top + ph - 10}" text-anchor="end">Full-time staff →</text>')
-    for v in (0, 50, 100, 150, 200):
-        body.append(f'<line class="{"axis" if v == 0 else "grid"}" x1="{X(v):.1f}" x2="{X(v):.1f}" y1="{top}" y2="{top + ph}"/>')
-        body.append(f'<text class="tick" x="{X(v):.1f}" y="{top + ph + 18}" text-anchor="middle">{v}</text>')
-    body.append(f'<line class="axis" x1="{left}" x2="{left + pw}" y1="{top + ph}" y2="{top + ph}"/>')
-    body.append(f'<text class="tick" x="{left + pw / 2}" y="{top + ph + 38}" text-anchor="middle">Hours the WorkSpace runs in a month</text>')
-    body.append(f'<text class="tick" x="16" y="{top - 10}">Cost in a month (no scale: shape only)</text>')
-    body.append(f'<path class="line-s1" d="M{X(0):.1f},{Y(flat):.1f} L{X(hmax):.1f},{Y(flat):.1f}"/>')
-    end = min(hmax, (ymax - base) / rate)
-    body.append(f'<path class="line-s2" d="M{X(0):.1f},{Y(base):.1f} L{X(end):.1f},{Y(base + rate * end):.1f}"/>')
-    body.append(f'<circle class="dot-s1" cx="{X(cross):.1f}" cy="{Y(flat):.1f}" r="5"/>')
-    body.append(f'<line class="lead" x1="{X(cross):.1f}" x2="{X(cross):.1f}" y1="{Y(flat) + 6:.1f}" y2="{top + ph}"/>')
-    body.append(f'<text class="ann" x="{X(cross) - 8:.1f}" y="{Y(flat) - 30:.1f}" text-anchor="end">Break-even: beyond it,</text>')
-    body.append(f'<text class="ann" x="{X(cross) - 8:.1f}" y="{Y(flat) - 14:.1f}" text-anchor="end">monthly is cheaper</text>')
-    body.append(f'<text class="ann" x="{X(196):.1f}" y="{Y(flat) + 18:.1f}" text-anchor="end">Monthly: one fixed fee, unlimited use</text>')
-    body.append(f'<text class="ann" x="{X(150):.1f}" y="{Y(65):.1f}" text-anchor="end">Hourly: a low monthly fee</text>')
-    body.append(f'<text class="ann" x="{X(150):.1f}" y="{Y(65) + 16:.1f}" text-anchor="end">plus a charge per hour it runs</text>')
-    y = top + ph + 64
-    line_key(body, 16, y, "line-s2", "Hourly billing")
-    line_key(body, 150, y, "line-s1", "Monthly billing")
-    body.append(f'<text class="note" x="16" y="{y + 22}">Billing models from the Amazon WorkSpaces FAQ, checked 2026-10-24. AutoStop stops hourly WorkSpaces when idle.</text>')
-    svg("10-03-billing-shape.svg", w, y + 36,
-        "The shape of hourly versus monthly WorkSpaces billing",
-        "A line chart of cost in a month against hours the WorkSpace runs in a month, from 0 to 200 hours, with no "
-        "cost scale because the numbers are made up and only the shape matters. Monthly billing is a flat line: "
-        "one fixed fee for unlimited use. Hourly billing starts lower, at a low monthly fee, and rises steadily with "
-        "each hour the WorkSpace runs. The lines cross at a break-even point; above it, monthly is cheaper. A shaded "
-        "band at low hours is labeled part-time, seasonal staff, where hourly is cheaper; the high-hours end is "
-        "labeled full-time staff, where monthly is cheaper.",
-        body, style=STYLE)
-
-
 if __name__ == "__main__":
     big_picture()
     what_user_sees()
-    billing_shape()
