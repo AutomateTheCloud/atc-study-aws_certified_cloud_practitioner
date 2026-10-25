@@ -34,7 +34,7 @@ sources:
 3. Choose the retention value itself (**Never expire**). In **Expire events after**, choose a period, such as **1 week (7 days)** for a lab, and choose **Save**.
    **You should see:** the new period in the **Retention** column.
 
-Log events past the period are marked for deletion and stop adding to storage cost; the actual deletion usually happens within 72 hours.
+CloudWatch Logs marks log events past the period for deletion, and they stop adding to storage cost; the actual deletion usually happens within 72 hours.
 
 ## Steps: delete a log group
 
