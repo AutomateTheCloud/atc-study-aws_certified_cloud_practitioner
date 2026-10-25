@@ -4,9 +4,8 @@
 """Draw the graphics for lesson 01.05 (APIs, the command line and JSON) as SVG.
 
 Usage: python3 -I source/charts/01-05-charts.py
-Writes images/01-05-*.svg. The command's parts follow "Command structure in the AWS
-CLI" (AWS CLI User Guide, checked 2026-10-24); the JSON is the lesson's own made-up
-bakery order. Our own design: no AWS logos, icons, trade dress or AWS diagrams.
+Writes images/01-05-*.svg. The JSON is the lesson's own made-up bakery order;
+its parts follow RFC 8259. Our own design: no AWS logos, icons, trade dress or AWS diagrams.
 """
 import os
 import sys
@@ -28,58 +27,6 @@ STYLE = make_style(rules_extra=f"""
 
 CH = 9.03  # width of one monospace character at 15px (measured: DejaVu Sans Mono 0.602 em)
 CH_S = 7.83  # at 13px
-
-
-def command_anatomy():
-    """`aws s3 mb s3://... --region us-east-1`, each part bracketed and named."""
-    w, h = 680, 372
-    body = [
-        '<text class="title" x="16" y="28">Anatomy of one AWS CLI command</text>',
-        '<text class="sub" x="16" y="48">Read it left to right: which program, which service, what to do, to what, and how</text>',
-    ]
-    parts = [
-        ("$ ", None, None),
-        ("aws", "PROGRAM", "The AWS CLI itself"),
-        (" ", None, None),
-        ("s3", "COMMAND", "Which service: Amazon S3"),
-        (" ", None, None),
-        ("mb", "SUBCOMMAND", "What to do: make a bucket"),
-        (" ", None, None),
-        ("s3://example-bakery-photos", "ARGUMENT", "What to do it to: the new bucket's name"),
-        (" ", None, None),
-        ("--region us-east-1", "OPTION", "A setting: a name with two dashes, then its value"),
-    ]
-    x0, cy = 28, 112
-    body.append(f'<rect class="codebg" x="16" y="{cy - 26}" width="{w - 32}" height="40" rx="6"/>')
-    x = x0
-    spans = []
-    for txt, label, note in parts:
-        cls = "code-dim" if txt.startswith("$") else "code"
-        body.append(f'<text class="{cls}" x="{x:.1f}" y="{cy}" xml:space="preserve">{txt}</text>')
-        if label:
-            spans.append((x, x + len(txt) * CH, label, note))
-        x += len(txt) * CH
-    # brackets under each part, labels staggered on three rows so they never collide
-    for i, (a, b, label, note) in enumerate(spans):
-        by = cy + 24
-        body.append(f'<path class="brk" d="M{a + 1:.1f},{by - 6} L{a + 1:.1f},{by} L{b - 1:.1f},{by} L{b - 1:.1f},{by - 6}"/>')
-        mid = (a + b) / 2
-        row = [0, 1, 2, 0, 1][i]
-        ty = by + 26 + row * 64
-        body.append(f'<line class="lead" x1="{mid:.1f}" x2="{mid:.1f}" y1="{by}" y2="{ty - 13}"/>')
-        anchor = "start" if mid < 200 else "middle"
-        tx = mid - 6 if anchor == "start" else mid
-        body.append(f'<text class="key" x="{tx:.1f}" y="{ty}" text-anchor="{anchor}">{label}</text>')
-        text_lines(body, tx, ty + 16, wrap(note, 24), cls="small", dy=15, anchor=anchor)
-    text_lines(body, 16, h - 14, ["$ is the prompt: the shell showing it is ready. You don't type it."], cls="sub")
-    svg("01-05-command-anatomy.svg", w, h,
-        "The parts of one AWS CLI command",
-        "The command aws s3 mb s3://example-bakery-photos --region us-east-1, after a $ prompt, with each part "
-        "bracketed and named. aws: the program, the AWS CLI itself. s3: the command, which service, Amazon S3. mb: the "
-        "subcommand, what to do, make a bucket. s3://example-bakery-photos: the argument, what to do it to, the new "
-        "bucket's name. --region us-east-1: an option, a setting written as a name with two dashes, then its value. "
-        "A footnote says the $ is the prompt, the shell showing it is ready, and you don't type it.",
-        body, style=STYLE)
 
 
 ORDER = [
@@ -149,5 +96,4 @@ def json_anatomy():
 
 
 if __name__ == "__main__":
-    command_anatomy()
     json_anatomy()
