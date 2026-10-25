@@ -1,7 +1,7 @@
 ---
 type: lab
 id: clf-10-04
-title: "Lab 13: Query a small sales file in S3 with Athena, then delete everything"
+title: "Optional lab 13: Query a small sales file in S3 with Athena, then delete everything"
 tasks: ["3.7"]
 objectives: ["10.01a"]
 reader: "Adult studying alone, possibly new to IT, who has done Lab 01 and read lesson 10.01; about 35 minutes, plus 5 the next day; a laptop or desktop"
@@ -37,7 +37,7 @@ sources:
   - "https://aws.amazon.com/s3/pricing/"
 ---
 
-# Lab 13: Query a small sales file in S3 with Athena, then delete everything
+# Optional lab 13: Query a small sales file in S3 with Athena, then delete everything
 
 ## Before you start: your account, your responsibility
 
@@ -266,6 +266,6 @@ You answered a business question with SQL over a file, with no database to build
 
 ---
 
-"Lab 13: Query a small sales file in S3 with Athena, then delete everything" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional lab 13: Query a small sales file in S3 with Athena, then delete everything" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt

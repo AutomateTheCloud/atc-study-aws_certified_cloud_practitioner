@@ -1,7 +1,7 @@
 ---
 type: lab
 id: clf-10-05
-title: "Lab 14 (optional): Have Amazon Polly read a product description aloud"
+title: "Optional lab 14: Have Amazon Polly read a product description aloud"
 tasks: ["3.7"]
 objectives: ["10.02a"]
 reader: "Adult studying alone, possibly new to IT, who has done Lab 01 and read lesson 10.02; about 15 minutes, plus 5 the next day; a laptop or desktop with sound"
@@ -30,7 +30,7 @@ sources:
   - "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html"
 ---
 
-# Lab 14 (optional): Have Amazon Polly read a product description aloud
+# Optional lab 14: Have Amazon Polly read a product description aloud
 
 ## Before you start: your account, your responsibility
 
@@ -140,6 +140,6 @@ You turned text into speech without building or training anything: Polly ran the
 
 ---
 
-"Lab 14 (optional): Have Amazon Polly read a product description aloud" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional lab 14: Have Amazon Polly read a product description aloud" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt

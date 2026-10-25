@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="680" height="549" viewBox="0 0 680 549" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="392" viewBox="0 0 680 392" role="img" aria-labelledby="t d">
 <title id="t">Athena, Redshift, EMR or Glue: who does what</title>
-<desc id="d">Four columns compared on five rows. Main job, highlighted: Amazon Athena runs SQL on files where they sit; Amazon Redshift is a data warehouse that stores data for analysis and runs SQL on it; Amazon EMR runs Spark, Hadoop and similar frameworks; AWS Glue catalogs and prepares data (ETL) and is not for asking questions. Where the data is: Athena, in S3, left unchanged; Redshift, loaded into Redshift, and Redshift Spectrum also reads S3; EMR, usually S3, read by your code; Glue, wherever it connects, and its catalog describes it. What you manage: Athena, nothing, it's serverless; Redshift, cluster size, or nothing with Redshift Serverless; EMR, clusters and their software, or EMR Serverless; Glue, nothing, it's serverless. What you pay for: Athena, each query by the data it scans; Redshift, cluster hours or Serverless use by the second; EMR, per second of use with a one-minute minimum; Glue, job and crawler time plus catalog storage above a free tier. Choose it when: Athena, ad hoc questions about files in S3; Redshift, regular complex reports over years of data from many sources; EMR, custom big-data code with full control; Glue, to make data findable and clean before others query it.</desc>
+<desc id="d">Four columns compared on three rows. Main job, highlighted: Amazon Athena runs SQL on files where they sit; Amazon Redshift is a data warehouse that stores data for analysis and runs SQL on it; Amazon EMR runs Spark, Hadoop and similar frameworks; AWS Glue catalogs and prepares data (ETL) and is not for asking questions. Where the data is: Athena, in S3, left unchanged; Redshift, loaded into Redshift; EMR, usually S3, read by your code; Glue, wherever it connects, and its catalog describes it. Choose it when: Athena, ad hoc questions about files in S3; Redshift, regular complex reports over years of data from many sources; EMR, custom big-data code with full control; Glue, to make data findable and clean before others query it.</desc>
 
 <style>
   svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
@@ -38,7 +38,7 @@
   .range { fill: var(--s1); }
   .dflt { fill: var(--ink); stroke: var(--surface); stroke-width: 2; }
 </style>
-<rect width="680" height="549" fill="var(--surface)" style="fill:var(--surface)"/>
+<rect width="680" height="392" fill="var(--surface)" style="fill:var(--surface)"/>
 <text class="title" x="16" y="28">Athena, Redshift, EMR or Glue: who does what</text>
 <text class="sub" x="16" y="48">Three of them answer questions about data; Glue gets the data ready</text>
 <rect class="n" x="108.0" y="66.0" width="133.0" height="32.0" rx="6"/>
@@ -75,9 +75,7 @@
 <text class="small" x="116.0" y="203.0">In S3, left</text>
 <text class="small" x="116.0" y="218.0">unchanged</text>
 <text class="small" x="257.0" y="203.0">Loaded into</text>
-<text class="small" x="257.0" y="218.0">Redshift;</text>
-<text class="small" x="257.0" y="233.0">Spectrum also</text>
-<text class="small" x="257.0" y="248.0">reads S3</text>
+<text class="small" x="257.0" y="218.0">Redshift</text>
 <text class="small" x="398.0" y="203.0">Usually S3, read</text>
 <text class="small" x="398.0" y="218.0">by your code</text>
 <text class="small" x="539.0" y="203.0">Wherever it</text>
@@ -85,50 +83,21 @@
 <text class="small" x="539.0" y="233.0">catalog describes</text>
 <text class="small" x="539.0" y="248.0">it</text>
 <line class="grid" x1="16" x2="664" y1="262" y2="262"/>
-<text class="rowl" x="16" y="281.0">What you</text>
-<text class="rowl" x="16" y="296.0">manage</text>
-<text class="small" x="116.0" y="281.0">Nothing: it's</text>
-<text class="small" x="116.0" y="296.0">serverless</text>
-<text class="small" x="257.0" y="281.0">Cluster size, or</text>
-<text class="small" x="257.0" y="296.0">nothing with</text>
-<text class="small" x="257.0" y="311.0">Serverless</text>
-<text class="small" x="398.0" y="281.0">Clusters and</text>
-<text class="small" x="398.0" y="296.0">their software,</text>
-<text class="small" x="398.0" y="311.0">or EMR Serverless</text>
-<text class="small" x="539.0" y="281.0">Nothing: it's</text>
-<text class="small" x="539.0" y="296.0">serverless</text>
-<line class="grid" x1="16" x2="664" y1="325" y2="325"/>
-<text class="rowl" x="16" y="344.0">What you pay</text>
-<text class="rowl" x="16" y="359.0">for</text>
-<text class="small" x="116.0" y="344.0">Each query, by</text>
-<text class="small" x="116.0" y="359.0">the data it scans</text>
-<text class="small" x="257.0" y="344.0">Cluster hours, or</text>
-<text class="small" x="257.0" y="359.0">Serverless use by</text>
-<text class="small" x="257.0" y="374.0">the second</text>
-<text class="small" x="398.0" y="344.0">Per second of</text>
-<text class="small" x="398.0" y="359.0">use, one-minute</text>
-<text class="small" x="398.0" y="374.0">minimum</text>
-<text class="small" x="539.0" y="344.0">Job and crawler</text>
-<text class="small" x="539.0" y="359.0">time; catalog</text>
-<text class="small" x="539.0" y="374.0">storage above a</text>
-<text class="small" x="539.0" y="389.0">free tier</text>
-<line class="grid" x1="16" x2="664" y1="403" y2="403"/>
-<text class="rowl" x="16" y="422.0">Choose it</text>
-<text class="rowl" x="16" y="437.0">when</text>
-<text class="small" x="116.0" y="422.0">Ad hoc questions</text>
-<text class="small" x="116.0" y="437.0">about files in S3</text>
-<text class="small" x="257.0" y="422.0">Regular, complex</text>
-<text class="small" x="257.0" y="437.0">reports over</text>
-<text class="small" x="257.0" y="452.0">years of data</text>
-<text class="small" x="257.0" y="467.0">from many sources</text>
-<text class="small" x="398.0" y="422.0">Custom big-data</text>
-<text class="small" x="398.0" y="437.0">code with full</text>
-<text class="small" x="398.0" y="452.0">control</text>
-<text class="small" x="539.0" y="422.0">Make data</text>
-<text class="small" x="539.0" y="437.0">findable and</text>
-<text class="small" x="539.0" y="452.0">clean before</text>
-<text class="small" x="539.0" y="467.0">others query it</text>
-<line class="grid" x1="16" x2="664" y1="481" y2="481"/>
-<text class="note" x="16" y="503">Pricing models as of 2026-10-24; check each service's pricing page for rates. From the Athena, Redshift,</text>
-<text class="note" x="16" y="519">EMR and Glue documentation, FAQs and pricing pages.</text>
+<text class="rowl" x="16" y="281.0">Choose it</text>
+<text class="rowl" x="16" y="296.0">when</text>
+<text class="small" x="116.0" y="281.0">Ad hoc questions</text>
+<text class="small" x="116.0" y="296.0">about files in S3</text>
+<text class="small" x="257.0" y="281.0">Regular, complex</text>
+<text class="small" x="257.0" y="296.0">reports over</text>
+<text class="small" x="257.0" y="311.0">years of data</text>
+<text class="small" x="257.0" y="326.0">from many sources</text>
+<text class="small" x="398.0" y="281.0">Custom big-data</text>
+<text class="small" x="398.0" y="296.0">code with full</text>
+<text class="small" x="398.0" y="311.0">control</text>
+<text class="small" x="539.0" y="281.0">Make data</text>
+<text class="small" x="539.0" y="296.0">findable and</text>
+<text class="small" x="539.0" y="311.0">clean before</text>
+<text class="small" x="539.0" y="326.0">others query it</text>
+<line class="grid" x1="16" x2="664" y1="340" y2="340"/>
+<text class="note" x="16" y="362">From the Athena, Redshift, EMR and Glue documentation, checked 2026-10-24.</text>
 </svg>

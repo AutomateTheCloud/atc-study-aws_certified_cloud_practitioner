@@ -8,19 +8,11 @@ Writes images/10-02-*.svg. Facts come from AWS pages cited in
 guide/10-data-ai-and-more/02-ai-and-ml.md, checked 2026-10-23 and 2026-10-24:
 the "What is" pages for Amazon Comprehend, Translate, Polly, Transcribe, Lex V2,
 Rekognition, Textract (AnalyzeExpense for invoices and receipts), SageMaker AI
-(renamed from Amazon SageMaker on 2024-12-03), Amazon Bedrock (foundation models
-from Amazon and other companies through an API) and Amazon Q Developer (built on
-Amazon Bedrock; IDE plugins and paid subscriptions end of support 2027-04-30, no new
-IDE sign-ups or subscriptions from 2026-05-15, per the Q Developer end of support
-announcement on the AWS DevOps blog). Status dates: the Kendra
-and Fraud Detector availability-change pages (closed to new customers 2026-07-30
-and 2025-11-07), the Q Business availability-change page, the Forecast developer
-guide banner, and AWS's Maintenance lifecycle list (announcement dates: Forecast
-2024-07-29, Q Business 2026-06-30). The bakery's receipt is made up for teaching,
+(renamed from Amazon SageMaker on 2024-12-03).
+The bakery's receipt is made up for teaching,
 and the service outputs shown are illustrations, not real API responses.
 Our own design: no AWS logos, icons, trade dress or AWS diagrams.
 """
-import datetime as dt
 import math
 import os
 import sys
@@ -198,134 +190,6 @@ def one_receipt_three_services():
         body, style=STYLE)
 
 
-def how_much_you_build():
-    w = 680
-    body = [
-        '<text class="title" x="16" y="28">The further right, the more you build, and the more you control</text>',
-        '<text class="sub" x="16" y="48">Four ways to use AI on AWS. Start from the left; move right only when the left can\'t do the job.</text>',
-    ]
-    cards = [
-        ("FINISHED ASSISTANT", ["Amazon", "Q Developer"],
-         ["You ask; it answers", "and writes code", "", "Nothing to build", "No ML skills"], "aws"),
-        ("READY-MADE SERVICE", ["Comprehend, Textract,", "Polly, Lex and more"],
-         ["You call an API", "AWS trained the model", "", "Nothing to train", "No ML skills"], "hi"),
-        ("MODELS TO BUILD ON", ["Amazon", "Bedrock"],
-         ["Foundation models", "from several companies", "", "You build a generative", "AI app around one"], "aws"),
-        ("YOUR OWN MODEL", ["Amazon", "SageMaker AI"],
-         ["You bring data and", "ML skills; you build,", "train and deploy", "", "Most work, most control"], "aws"),
-    ]
-    cw, ch, gap, top = 156, 182, 8, 68
-    for i, (kind, names, lines, cls) in enumerate(cards):
-        x = 16 + i * (cw + gap)
-        body.append(f'<rect class="{cls}" x="{x}" y="{top}" width="{cw}" height="{ch}" rx="8"/>')
-        body.append(f'<text class="colh" x="{x + 10}" y="{top + 20}" style="font-size:10.5px">{kind}</text>')
-        text_lines(body, x + 10, top + 42, names, cls="boxt", dy=16)
-        text_lines(body, x + 10, top + 80, lines, cls="cells", dy=16)
-    ay = top + ch + 26
-    arrow(body, 24, ay, w - 24, ay)
-    body.append(f'<text class="small" x="24" y="{ay + 20}">Less to build, less to run, less control</text>')
-    body.append(f'<text class="small" x="{w - 24}" y="{ay + 20}" text-anchor="end">More to build and run, more control</text>')
-    y = ay + 46
-    y = text_lines(body, 16, y, [
-        "Amazon Bedrock isn't on the exam's in-scope list; it's shown because Amazon Q is built on it, and because",
-        "AWS now points some closed services to it.",
-    ], cls="small", dy=17)
-    body.append(f'<text class="note" x="16" y="{y + 4}">Our summary of the Q Developer, Bedrock and SageMaker AI documentation, checked 2026-10-24.</text>')
-    svg("10-02-how-much-you-build.svg", w, y + 18,
-        "Four ways to use AI on AWS, from a finished assistant to your own model",
-        "Four cards left to right, with an arrow underneath from less to build, less to run and less control, to "
-        "more to build and run and more control. A finished assistant: Amazon Q Developer; you ask and it answers "
-        "and writes code; nothing to build; no ML skills. A ready-made service, highlighted: Comprehend, "
-        "Textract, Polly, Lex and others; you call an API; AWS trained the model; no ML skills. Models to build on: "
-        "Amazon Bedrock; foundation models from several companies; you build a generative AI app around one. Your "
-        "own model: Amazon SageMaker AI; you bring data and ML skills, and build, train and deploy; most work, "
-        "most control. A note says Amazon Bedrock isn't on the exam's in-scope list, and is shown because Amazon "
-        "Q is built on it and AWS points some closed services to it.",
-        body, style=STYLE)
-
-
-TODAY = dt.date(2026, 10, 24)
-START, END = dt.date(2024, 6, 1), dt.date(2027, 6, 1)
-EVENTS = [  # (date, kind, text)
-    (dt.date(2024, 7, 29), "closed", "Amazon Forecast: closure to new customers announced"),
-    (dt.date(2024, 12, 3), "renamed", "Amazon SageMaker renamed Amazon SageMaker AI"),
-    (dt.date(2025, 11, 7), "closed", "Amazon Fraud Detector closes to new customers"),
-    (dt.date(2026, 5, 15), "closed", "Q Developer: no new code-editor sign-ups or subscriptions"),
-    (dt.date(2026, 6, 30), "closed", "Amazon Q Business: closure to new customers announced"),
-    (dt.date(2026, 7, 30), "closed", "Amazon Kendra closes to new customers"),
-    (dt.date(2027, 4, 30), "ends", "Q Developer IDE plugins and paid subscriptions end"),
-]
-KIND = {"renamed": "RENAMED", "closed": "CLOSED TO NEW CUSTOMERS", "ends": "END OF SUPPORT"}
-
-
-def status_timeline():
-    w, spine, top, ph = 680, 120, 92, 560
-    span = (END - START).days
-
-    def ypos(d):
-        return top + ph * (d - START).days / span
-
-    body = [
-        '<text class="title" x="16" y="28">AI names that changed: what you may still read, and what\'s true now</text>',
-        '<text class="sub" x="16" y="50">Renames, closures to new customers and an end of support, mid-2024 to 2027 (checked 2026-10-24)</text>',
-        f'<line class="spine" x1="{spine}" x2="{spine}" y1="{top}" y2="{top + ph}"/>',
-    ]
-    for yr in (2025, 2026, 2027):
-        y = ypos(dt.date(yr, 1, 1))
-        body.append(f'<line class="axis" x1="{spine - 6}" x2="{spine}" y1="{y:.1f}" y2="{y:.1f}"/>')
-        body.append(f'<text class="tick" x="{spine - 10}" y="{y + 4:.1f}" text-anchor="end">Jan {yr}</text>')
-    ty = ypos(TODAY)
-    body.append(f'<line class="today" x1="{spine - 8}" x2="{w - 16}" y1="{ty:.1f}" y2="{ty:.1f}"/>')
-    body.append(f'<text class="zone" x="{w - 16}" y="{ty - 6:.1f}" text-anchor="end">ALREADY HAPPENED ↑</text>')
-    body.append(f'<text class="zone" x="{w - 16}" y="{ty + 15:.1f}" text-anchor="end">ANNOUNCED, STILL TO COME ↓</text>')
-    body.append(f'<text class="lab" x="16" y="{ty + 4:.1f}">Today</text>')
-    body.append(f'<text class="tick" x="16" y="{ty + 20:.1f}">2026-10-24</text>')
-    label_x = spine + 28
-    # Place labels: past events upward from just above the today line, future ones below it.
-    pos = {}
-    limit = ty - 30
-    for when, kind, text in reversed([e for e in EVENTS if e[0] < TODAY]):
-        ly = min(ypos(when) + 4, limit)
-        pos[when] = ly
-        limit = ly - 44
-    prev = ty + 26
-    for when, kind, text in [e for e in EVENTS if e[0] > TODAY]:
-        ly = max(ypos(when) + 4, prev + 18)
-        pos[when] = ly
-        prev = ly + 26
-    last = 0
-    for when, kind, text in EVENTS:
-        y = ypos(when)
-        ly = pos[when]
-        if kind == "renamed":
-            body.append(f'<rect class="sq" x="{spine - 6}" y="{y - 6:.1f}" width="12" height="12" rx="2"/>')
-        elif when > TODAY:
-            body.append(f'<circle class="ring" cx="{spine}" cy="{y:.1f}" r="6"/>')
-        else:
-            body.append(f'<circle class="dot-s1" cx="{spine}" cy="{y:.1f}" r="6"/>')
-        body.append(f'<line class="lead" x1="{spine + 8}" x2="{label_x - 4}" y1="{y:.1f}" y2="{ly - 4:.1f}"/>')
-        body.append(f'<text class="date" x="{label_x}" y="{ly:.1f}">{when.isoformat()}</text>')
-        body.append(f'<text class="zone" x="{label_x + 82}" y="{ly:.1f}">{KIND[kind]}</text>')
-        body.append(f'<text class="lab2" x="{label_x + 82}" y="{ly + 18:.1f}">{text}</text>')
-        last = max(last, ly + 18)
-    h = int(max(top + ph, last) + 56)
-    body.append(f'<text class="tick" x="16" y="{h - 26}">Square: renamed. Filled dot: closed to new customers. Ring: still to come.</text>')
-    body.append(f'<text class="note" x="16" y="{h - 10}">Existing customers keep using closed services. Dates from AWS availability notices and lifecycle lists.</text>')
-    svg("10-02-status-timeline.svg", w, h,
-        "AI service renames, closures and an end of support from 2024 to 2027",
-        "A vertical timeline with a line marking today, 2026-10-24. Already happened: 2024-07-29, closed to new "
-        "customers, Amazon Forecast's closure to new customers announced; 2024-12-03, renamed, Amazon SageMaker "
-        "renamed Amazon SageMaker AI; 2025-11-07, closed to new customers, Amazon Fraud Detector; 2026-05-15, closed to new "
-        "customers, no new Amazon Q Developer sign-ups in code editors or new subscriptions; 2026-06-30, "
-        "closed to new customers, Amazon Q Business's closure announced; 2026-07-30, closed to new customers, "
-        "Amazon Kendra. Still to come: 2027-04-30, end of support, Amazon Q Developer IDE plugins and paid "
-        "subscriptions. Existing "
-        "customers keep using closed services.",
-        body, style=STYLE)
-
-
 if __name__ == "__main__":
     input_output_grid()
     one_receipt_three_services()
-    how_much_you_build()
-    status_timeline()
