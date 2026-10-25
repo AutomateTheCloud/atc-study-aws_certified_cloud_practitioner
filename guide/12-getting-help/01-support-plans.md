@@ -8,7 +8,7 @@ reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 t
 prerequisites: [clf-12-00, clf-04-03, clf-00-04]
 terms_introduced: [AWS Support, Support plan, support case, Basic Support, AWS Business Support+, AWS Enterprise Support, AWS Unified Operations, case severity, first-response time, Technical Account Manager, Developer Support, Business Support, Enterprise On-Ramp]
 pillars: [operational-excellence, cost-optimization]
-facts_checked: 2026-10-24
+facts_checked: 2026-10-25
 sources:
   - "https://aws.amazon.com/premiumsupport/plans/"
   - "https://aws.amazon.com/premiumsupport/pricing/"
@@ -88,6 +88,8 @@ Try these before you read on. Guess if you're unsure; the answers are in the les
 - **Some AWS Trusted Advisor checks** and the **AWS Health Dashboard** (lesson 12.02).
 
 What Basic can't do is open a **technical** case. "Our database stopped accepting connections" or "why does this Lambda function time out?" needs a paid plan ([Case management](https://docs.aws.amazon.com/awssupport/latest/user/case-management.html), checked 2026-10-24). The [guardrails primer, page 08](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/08-when-something-goes-wrong.md), already showed you the free part: a charge you don't recognize goes in an account and billing case, which every account can open.
+
+On the Free plan you can't buy a paid Support plan at all. Our Free plan test account's Support Plans page said: "Only Basic Support is available to accounts on the AWS Free Tier plan. To upgrade your support, first upgrade to a Paid plan" (seen 2026-10-25). So Basic is your plan for as long as you stay on the Free plan.
 
 Two limits apply to every plan, paid ones included. AWS Support doesn't write your code, debug your own software, administer your systems or log in to them for you, and you can't buy support for just one service ([AWS Support FAQs](https://aws.amazon.com/premiumsupport/faqs/), checked 2026-10-24). Paid help with your own systems is a different product: lesson 12.04 covers partners and AWS Professional Services.
 

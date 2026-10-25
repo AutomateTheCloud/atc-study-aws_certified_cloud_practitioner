@@ -263,7 +263,7 @@ names:
       Discontinued: 2026-05-28 on its own page, 2026-05-20 in AWS's lifecycle list. Out of the
       exam's scope.
     section: distractor
-    taught_in: guide/12-getting-help/04-partners-and-paid-help.md
+    taught_in: guide/00-start-here/04-aws-changes-fast.md
     source: https://aws.amazon.com/iq/
   - name: AWS CodeDeploy
     now: Available, but on the exam guide's out-of-scope list; a likely distractor next to CodeBuild and CodePipeline.
