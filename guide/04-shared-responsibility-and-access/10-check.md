@@ -424,7 +424,7 @@ A logistics firm's audit report says configuration management is a shared contro
 **A is right.** AWS configures its infrastructure devices; the customer configures its own operating systems, applications and resource settings, such as security groups. Each side works on its own things.
 
 - **B is wrong.** "Shared" doesn't mean a task is done together. Each instance's setup is the firm's alone.
-- **C is wrong.** Security group rules are written by the EC2 customer, not by AWS.
+- **C is wrong.** The EC2 customer writes the security group rules, not AWS.
 - **D is wrong.** Customers can't reach AWS's network devices; those are AWS's half.
 
 </details>
