@@ -6,15 +6,14 @@
 Usage: python3 -I source/charts/02-04-charts.py
 Writes images/02-04-*.svg. All numbers are the made-up teaching figures from the
 worked example in guide/02-why-the-cloud/04-what-a-data-center-really-costs.md;
-change them here and rerun when the lesson changes. One assumption is ours: the
-$500 a year of licenses is paid at the start of each year (months 1, 13 and 25).
+change them here and rerun when the lesson changes.
 """
 import os
 import sys
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from chartkit import line_key, make_style, svg, swatch, text_lines, top_rounded, wrap  # noqa: E402
+from chartkit import make_style, svg, swatch, text_lines, top_rounded, wrap  # noqa: E402
 
 MONTHS_TOTAL = 36
 NEEDED = [1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 3, 6]  # servers needed each month, from lesson 02.02
@@ -45,82 +44,6 @@ STYLE = make_style(
 
 def money(v):
     return f"${v:,.0f}"
-
-
-def monthly_costs():
-    """Cost in each of the 36 months for the three options, from the lesson's tables."""
-    own, cloud, peak = [], [], []
-    for m in range(1, MONTHS_TOTAL + 1):
-        o = sum(ONPREM_MONTHLY.values())
-        if m == 1:
-            o += HARDWARE
-        if m % 12 == 1:
-            o += LICENSES_A_YEAR
-        own.append(o)
-        cloud.append(NEEDED[(m - 1) % 12] * RENT + CLOUD_STAFF)
-        peak.append(PEAK * RENT + CLOUD_STAFF)
-    return own, cloud, peak
-
-
-def running(xs):
-    out, t = [0], 0
-    for x in xs:
-        t += x
-        out.append(t)
-    return out
-
-
-def cumulative_cost():
-    own, cloud, peak = (running(s) for s in monthly_costs())
-    assert (own[-1], cloud[-1], peak[-1]) == (29340, 22350, 57600), "totals must match the lesson"
-    cross = next(m for m in range(1, MONTHS_TOTAL + 1) if peak[m] > own[m])
-    w, h, left, top, pw, ph, ymax = 680, 430, 64, 112, 440, 260, 60000
-    body = [
-        '<text class="title" x="16" y="28">Owning pays most of its cost in month 1; the cloud pays as it goes</text>',
-        '<text class="sub" x="16" y="48">Total spent so far, month by month, over three years (made-up figures)</text>',
-    ]
-    line_key(body, 16, 76, "line-ink", "Own 6 servers")
-    line_key(body, 150, 76, "line-s1", "Cloud, matched to demand")
-    line_key(body, 360, 76, "line-s2", "Cloud, left at peak size")
-    yv = lambda v: top + ph - ph * v / ymax
-    xv = lambda m: left + pw * m / MONTHS_TOTAL
-    for v in range(0, ymax + 1, 10000):
-        body.append(f'<line class="{"axis" if v == 0 else "grid"}" x1="{left}" x2="{left + pw}" y1="{yv(v):.1f}" y2="{yv(v):.1f}"/>')
-        body.append(f'<text class="tick" x="{left - 8}" y="{yv(v) + 4:.1f}" text-anchor="end">{money(v)}</text>')
-    body.append(f'<text class="tick" x="16" y="{top - 14}">Spent so far</text>')
-    for m in (1, 6, 12, 18, 24, 30, 36):
-        body.append(f'<text class="tick" x="{xv(m):.1f}" y="{top + ph + 18}" text-anchor="middle">{m}</text>')
-    body.append(f'<text class="tick" x="{left + pw / 2:.1f}" y="{top + ph + 38}" text-anchor="middle">Month</text>')
-    for cls, series in (("line-s2", peak), ("line-s1", cloud), ("line-ink", own)):
-        body.append(f'<polyline class="{cls}" points="' + " ".join(f"{xv(m):.1f},{yv(v):.1f}" for m, v in enumerate(series)) + '"/>')
-    # month-by-month hover targets on the owning and matched lines
-    for m in range(1, MONTHS_TOTAL + 1):
-        body.append(f'<rect x="{xv(m - 0.5):.1f}" y="{top}" width="{pw / MONTHS_TOTAL:.1f}" height="{ph}" fill="transparent">'
-                    f'<title>Month {m}: owning {money(own[m])}; cloud matched {money(cloud[m])}; cloud at peak {money(peak[m])}</title></rect>')
-    # month 1: the up-front jump
-    x1 = xv(1)
-    body.append(f'<circle cx="{x1:.1f}" cy="{yv(own[1]):.1f}" r="5" class="ring" style="fill:var(--ink)"/>')
-    body.append(f'<line class="lead" x1="{x1:.1f}" y1="{yv(own[1]) - 7:.1f}" x2="{x1:.1f}" y2="{yv(46500):.1f}"/>')
-    text_lines(body, x1 + 6, yv(52000), [f"Month 1: {money(own[1])} owning,", "mostly 6 servers paid up front;",
-                                          f"{money(cloud[1])} in the cloud"], cls="lab")
-    # where the cloud left at peak size passes owning
-    xc = xv(cross)
-    body.append(f'<circle cx="{xc:.1f}" cy="{yv(peak[cross]):.1f}" r="5" class="ring" style="fill:var(--s2)"/>')
-    text_lines(body, xc + 4, yv(25000), [f"Month {cross}: peak size", "passes owning"], cls="lab", anchor="end")
-    # direct end labels, two lines each
-    xe = xv(MONTHS_TOTAL) + 10
-    for name, v, dy in (("Cloud, peak size", peak[-1], -2), ("Own 6 servers", own[-1], -6), ("Cloud, matched", cloud[-1], 8)):
-        y = yv(v) + dy
-        body.append(f'<text class="lab" x="{xe:.1f}" y="{y:.1f}">{money(v)}</text>')
-        body.append(f'<text class="small" x="{xe:.1f}" y="{y + 15:.1f}">{name}</text>')
-    svg("02-04-cumulative-cost.svg", w, h,
-        "Total spent over three years: owning 6 servers, the cloud matched to demand, and the cloud left at peak size",
-        f"Line chart of the total spent so far, month 1 to month 36, made-up figures. Owning 6 servers jumps to "
-        f"{money(own[1])} in month 1, because the hardware is paid up front, then rises slowly to {money(own[-1])}. "
-        f"The cloud matched to demand starts at {money(cloud[1])} and rises in steps with the bakery's busy months to "
-        f"{money(cloud[-1])}. The cloud left at peak size rises by {money(peak[1])} every month, passes owning in month "
-        f"{cross}, and reaches {money(peak[-1])}.", body, style=STYLE)
-    return own, cloud, peak, cross
 
 
 def totals_by_category():
@@ -229,6 +152,5 @@ def capex_opex_grid():
 
 
 if __name__ == "__main__":
-    cumulative_cost()
     totals_by_category()
     capex_opex_grid()
