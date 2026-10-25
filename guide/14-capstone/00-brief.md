@@ -16,7 +16,7 @@ sources:
 
 # Module 14: Review the bakery's workload against all six pillars, price the fixes, and recommend a Support plan
 
-This module asks you to do the whole job the course has been building towards: look at a running workload, find what could hurt the business, and say what to do about it and what it costs.
+This module asks you to do the whole job the course has been building toward: look at a running workload, find what could hurt the business, and say what to do about it and what it costs.
 
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. You have finished Modules 02 to 13 and Labs 05 to 11. **Time:** about 3 hours, over two or three sessions.
 
@@ -40,7 +40,7 @@ Each lab deleted what it built, so you review the workload from the inventory be
 | Error alarm | 11 | One or more function errors in a minute emails one address through SNS, on ALARM and on OK |
 | Account | [primer](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/00-read-this-first.md) | Root MFA; an IAM admin user with MFA in an `Admins` group; budgets, a billing alarm and anomaly alerts; the safe defaults and a free external access analyzer; CloudTrail Event history only, no trail |
 
-Everything except the photo bucket was built by hand in the console. **Not there:** a load balancer, Auto Scaling, a second web server, backups, a trail, CloudFront, a NAT gateway. The RDS order database is outside the review: no lab built it.
+You built everything except the photo bucket by hand in the console. **Not there:** a load balancer, Auto Scaling, a second web server, backups, a trail, CloudFront, a NAT gateway. The RDS order database is outside the review: no lab built it.
 
 ```mermaid
 flowchart LR

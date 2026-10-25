@@ -198,7 +198,7 @@ You checked the account three ways: by tag, by name where tags can't reach, and 
 >
 > <details><summary>Model answer</summary>
 >
-> First, I would list everything the site used by its tag across all Regions, then check by name the resource types Tag Editor can't find, such as its roles and log groups. Second, I would delete them in dependency order with a written checklist, keeping the account's budgets and alarms. Third, I would read the bill by service and Region the next day and again at month end, and investigate any charge that remains.
+> I would start by listing everything the site used by its tag across all Regions, then check by name the resource types Tag Editor can't find, such as its roles and log groups. Next I'd delete them in dependency order with a written checklist, keeping the account's budgets and alarms. The next day, and again at month end, I would read the bill by service and Region and investigate any charge that remains.
 >
 > </details>
 
