@@ -118,67 +118,6 @@ def of_and_in():
         "EC2, and that the line sits higher on RDS, Lambda and S3.", body, style=STYLE)
 
 
-RDS_ROWS = [  # (task, on-premises, EC2, RDS): the RDS User Guide's comparison table, top row first
-    ("Application optimization", "you", "you", "you"),
-    ("Scaling", "you", "you", "aws"),
-    ("High availability", "you", "you", "aws"),
-    ("Database backups", "you", "you", "aws"),
-    ("Database software patching", "you", "you", "aws"),
-    ("Database software install", "you", "you", "aws"),
-    ("Operating system patching", "you", "you", "aws"),
-    ("Operating system installation", "you", "you", "aws"),
-    ("Server maintenance", "you", "aws", "aws"),
-    ("Hardware lifecycle", "you", "aws", "aws"),
-    ("Power, network and cooling", "you", "aws", "aws"),
-]
-
-
-def who_does_what():
-    """The RDS User Guide's three-way comparison, as a grid with the line drawn per column."""
-    w = 680
-    left, cw, gap, rh = 214, 146, 6, 26
-    rg = 8
-    cols = ["On-premises", "Database on EC2", "Amazon RDS"]
-    body = [
-        '<text class="title" x="16" y="28">Who does each database task, in three setups</text>',
-        '<text class="sub" x="16" y="48">The line moves up as AWS takes on more. From the Amazon RDS User Guide, checked 2026-10-24.</text>',
-    ]
-    top = 92
-    for i, c in enumerate(cols):
-        cx = left + i * (cw + gap) + cw / 2
-        body.append(f'<text class="head" x="{cx:.1f}" y="{top - 12}" text-anchor="middle">{c}</text>')
-    for r, (task, *who) in enumerate(RDS_ROWS):
-        y = top + r * (rh + rg)
-        body.append(f'<text class="rowl" x="{left - 12}" y="{y + rh / 2 + 4.5:.1f}" text-anchor="end">{task}</text>')
-        for i, wv in enumerate(who):
-            x = left + i * (cw + gap)
-            cell(body, x, y, cw, rh, wv, "You" if wv == "you" else "AWS")
-    # the line in each column: below the last "you" row
-    for i in range(3):
-        last_you = max([r for r, row in enumerate(RDS_ROWS) if row[1 + i] == "you"], default=-1)
-        y = top + (last_you + 1) * (rh + rg) - rg / 2
-        x = left + i * (cw + gap)
-        body.append(f'<line class="theline" x1="{x - 2}" x2="{x + cw + 2}" y1="{y}" y2="{y}"/>')
-    yb = top + len(RDS_ROWS) * (rh + rg) + 10
-    counts = [sum(1 for row in RDS_ROWS if row[1 + i] == "aws") for i in range(3)]
-    body.append(f'<text class="small" x="{left - 12}" y="{yb + 4}" text-anchor="end">Tasks AWS does</text>')
-    for i, n in enumerate(counts):
-        cx = left + i * (cw + gap) + cw / 2
-        body.append(f'<text class="head" x="{cx:.1f}" y="{yb + 4}" text-anchor="middle">{n} of 11</text>')
-    yb += 26
-    body.append(f'<text class="note" x="16" y="{yb}">The dashed line marks where your tasks end in each column. Even on RDS, the top row stays yours:</text>')
-    body.append(f'<text class="note" x="16" y="{yb + 16}">AWS names it "query tuning", making your database requests run well.</text>')
-    h = yb + 32
-    svg("04-01-who-does-what.svg", w, h,
-        "Who does each database task: on-premises, a database on EC2, and Amazon RDS",
-        "A grid of 11 tasks by three setups. On-premises: you do all 11. Database on EC2: AWS does server "
-        "maintenance, hardware lifecycle, and power, network and cooling (3 of 11); you do application "
-        "optimization, scaling, high availability, database backups, database software patching and install, "
-        "and operating system patching and installation. Amazon RDS: AWS does 10 of 11; you keep application "
-        "optimization, which AWS calls query tuning. A dashed line in each column marks where your tasks end, "
-        "and it moves up from the bottom (on-premises) to near the top (RDS).", body, style=STYLE)
-
-
 SERVICES = ["Amazon EC2", "Amazon RDS", "AWS Lambda", "Amazon S3"]
 LAYERS = [  # layer name, then per service: (who, main, sub lines)
     ("Your data, and who can access it", [
@@ -276,5 +215,4 @@ def the_line_moves():
 
 if __name__ == "__main__":
     of_and_in()
-    who_does_what()
     the_line_moves()

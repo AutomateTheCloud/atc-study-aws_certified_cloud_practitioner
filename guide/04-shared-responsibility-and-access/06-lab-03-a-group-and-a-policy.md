@@ -24,8 +24,6 @@ sources:
   - "https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_managed-policies.html"
   - "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html"
   - "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-policy-validation.html"
-  - "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html"
-  - "https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html"
   - "https://aws.amazon.com/iam/faqs/"
 ---
 
@@ -37,7 +35,7 @@ This guide is provided as is, without warranty. We work hard to keep it correct 
 
 **Who this is for:** you have done [Lab 01](../02-why-the-cloud/06-lab-01-first-resource.md) and read [04.04 Policies and least privilege](04-policies-and-least-privilege.md). **Time:** about 35 minutes.
 
-**Goal:** the bakery's shop staff want to look at the cake photos on the site, but they must not change them. You build that access and prove it works, without creating any new sign-in. **End state:** a group whose only permission is to list one bucket and download its files, a set of simulator results that show it, and then nothing left behind.
+**Goal:** the bakery's shop staff may look at the cake photos but not change them. You build that access and prove it works, without creating any new sign-in. **End state:** a group that can only list one bucket and download its files, simulator results that show it, and then nothing left behind.
 
 ```mermaid
 flowchart LR
@@ -61,15 +59,15 @@ flowchart LR
 
 You delete all three at the end.
 
-**What it costs:** $0. IAM has no extra charge ([IAM FAQs](https://aws.amazon.com/iam/faqs/), checked 2026-10-24), and an empty bucket costs nothing (see Lab 01). **Worst case on a Paid plan** if you forget to clean up: still $0, but leftover permissions are clutter you must audit later. **Free plan:** nothing here upgrades your plan. Never choose **Upgrade plan** during a lab.
+**What it costs:** $0. IAM has no extra charge ([IAM FAQs](https://aws.amazon.com/iam/faqs/), checked 2026-10-24), and an empty bucket costs nothing (see Lab 01). **Worst case on a Paid plan** if you forget to clean up: still $0. **Free plan:** nothing here upgrades your plan. Never choose **Upgrade plan** during a lab.
 
 **Before you start, you need these guardrails in place:** [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md) (primer page 02), [an IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md), which you use for this lab (page 03), [budgets and billing alerts](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md) (page 05), and [the habits for every lab](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), including your lab log (page 07).
 
-**Why this matters:** in the primer you gave yourself `AdministratorAccess`, which suits the one owner of a lab account. Shop staff need far less. Granting only what a job needs is [SEC03-BP02 Grant least privilege access](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_permissions_least_privileges.html); giving permissions to a group rather than to each person is [SEC02-BP06 Employ user groups and attributes](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_identities_groups_attributes.html).
+**Why this matters:** your own `AdministratorAccess` suits the one owner of a lab account; shop staff need far less. Granting only what a job needs, to a group rather than to each person, is least privilege in practice ([SEC03-BP02 Grant least privilege access](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_permissions_least_privileges.html)).
 
-> **New sign-up path:** there, IAM users can't sign in to the console, and AWS lists IAM Access Analyzer as not supported apart from policy validation (as of 2026-10-23). We haven't run this lab on that path. Read the steps, then practice the same reasoning in [Simulation S4](09-sim-policy-playground.md).
+> **New sign-up path:** there, IAM users can't sign in to the console, and AWS lists IAM Access Analyzer as not supported apart from policy validation (as of 2026-10-23). We haven't run this lab on that path. Read the steps, and review [lesson 04.04](04-policies-and-least-privilege.md) instead.
 
-**About the screens:** names in **bold** are what AWS's documentation or our own test account showed on 2026-10-23 or 2026-10-24. We ran this lab end to end in our test account on 2026-10-24, but AWS changes its console often. If a label differs, look for the option with the same meaning.
+**About the screens:** names in **bold** are what AWS's documentation or our test account showed on 2026-10-23 or 2026-10-24, when we ran this lab end to end. If a label differs, look for the option with the same meaning.
 
 ## Steps
 
@@ -134,7 +132,7 @@ You delete all three at the end.
 
 ### Test it in the policy simulator
 
-The **IAM policy simulator** works out whether a request would be allowed or denied by the policies you choose, without sending the request ([IAM policy testing with the IAM policy simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html)). On 2026-10-24 it opened inside the IAM console, with a notice that this is the new simulator and that the older, separate one will be retired.
+The **IAM policy simulator** works out whether a request would be allowed or denied by the policies you choose, without sending it ([IAM policy testing with the IAM policy simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html)). On 2026-10-24 it opened inside the IAM console, with a notice that the older, separate simulator will be retired.
 
 13. Open the group `clf-lab03-photo-viewers` and choose its **Permissions** tab. Next to **Permissions policies**, choose **Simulate**. The simulator opens in a new browser tab. (You can also open it from IAM's left menu: **Policy simulator**.)
     **You should see:** **Principal** selected at the top, your group under **Identities**, and `clf-lab03-photo-viewing` ticked under **Identity-based policies**.
@@ -167,7 +165,7 @@ The **IAM policy simulator** works out whether a request would be allowed or den
     *Screenshot: simulation results, after test 5 changed GetObject to another bucket, captured 2026-10-24 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
 
 
-The file `cakes/lemon-tart.jpg` doesn't exist, and that doesn't matter: the simulator checks permissions, not files. AWS warns that its results can differ from your live account, so in real work you would also test with a real sign-in.
+The file `cakes/lemon-tart.jpg` doesn't need to exist: the simulator checks permissions, not files. AWS warns that its results can differ from your live account, so in real work you would also test with a real sign-in.
 
 ## Check your work
 
@@ -177,7 +175,7 @@ The file `cakes/lemon-tart.jpg` doesn't exist, and that doesn't matter: the simu
 
 ## Clean up
 
-Delete in this order, because a policy can't be deleted while it is attached.
+Delete in this order: a policy can't be deleted while attached.
 
 18. In IAM, choose **IAM user groups**, select `clf-lab03-photo-viewers`, and choose **Delete**. Type the group name if asked, and confirm.
     **You should see:** the group gone from the list.
@@ -189,24 +187,23 @@ Delete in this order, because a policy can't be deleted while it is attached.
 
 ## Recap
 
-You granted a group exactly two actions on one bucket and proved, before anyone relied on it, that everything else is denied by default. In real work you would now add the shop staff to the group; for people, AWS recommends signing in through IAM Identity Center rather than IAM users ([04.05](05-credentials-and-federation.md) explains why our labs use an IAM user anyway).
+You granted a group exactly two actions on one bucket and proved that everything else is denied by default. In real work you would now add the shop staff to the group; for people, AWS recommends IAM Identity Center ([04.05](05-credentials-and-federation.md) explains why our labs use an IAM user anyway).
 
 > **Reflect:** test 6 was denied, so a viewer can't get the list of all the bucket names in the account. Would you add `s3:ListAllMyBuckets` to the policy? Write two sentences.
 >
 > <details><summary>Model answer</summary>
 >
-> It depends on whether the staff need it. Listing all buckets shows the name of every bucket in the account, not what's inside them, but it is still more than "the photos and nothing else". Leave it out unless the staff can't do their job without it; if you add it later, you add it deliberately, which is how least privilege works in practice.
+> Only if the staff need it. Listing all buckets shows every bucket's name, not what's inside, but it's still more than "the photos and nothing else"; add it later, deliberately, if their job requires it.
 >
 > </details>
 
-**Next:** [Lab 04](07-lab-04-finish-and-fix-a-policy.md), where you finish a policy, write one for the new teammate yourself, and find a deny that blocks her.
+**Next:** the [mastery check](10-check.md). For more practice writing policies, try [Optional lab 04](07-lab-04-finish-and-fix-a-policy.md).
 
 ## Where to check the current details
 
 - [IAM tutorial: Create and attach your first customer managed policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_managed-policies.html), IAM User Guide (checked 2026-10-24)
 - [IAM policy testing with the IAM policy simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html), IAM User Guide (checked 2026-10-24)
 - [Validate policies with IAM Access Analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-policy-validation.html), IAM User Guide (checked 2026-10-24)
-- [Policies and permissions in IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html), IAM User Guide (checked 2026-10-24)
 
 ---
 

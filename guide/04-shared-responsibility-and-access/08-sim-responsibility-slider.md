@@ -4,7 +4,7 @@ id: clf-04-08
 title: "Simulation S3: Slide the line from your own servers to Amazon S3"
 tasks: ["2.1"]
 objectives: ["04.01a", "04.02a"]
-reader: "Adult studying alone, possibly new to IT, who has read lessons 04.01 and 04.02; about 30 minutes; paper or a spreadsheet helps"
+reader: "Adult studying alone, possibly new to IT, who has read lessons 04.01 and 04.02; about 20 minutes; paper or a spreadsheet helps"
 prerequisites: ["clf-04-01", "clf-04-02"]
 terms_introduced: []
 pillars: [security]
@@ -13,7 +13,7 @@ rung: L2
 mode: sim
 free_plan: "not needed"
 signup_path: "none"
-time: "30 minutes"
+time: "20 minutes"
 cost: "$0 (no AWS account used)"
 worst_case: "$0"
 needs: []
@@ -32,16 +32,16 @@ sources:
 
 This guide is provided as is, without warranty. We work hard to keep it correct and current, but AWS changes often, and its services, prices, and free offers may differ from what is written here. The labs run in your own AWS account. You are responsible for that account, for its security, and for any charges it incurs, including charges from resources you forget to delete. Automate the Cloud Inc. is not liable for any costs, losses, or security incidents that result from following, or failing to follow, this material. Technical guidance here is general information, not advice about your specific systems.
 
-**Who this is for:** you have read [04.01](01-security-of-vs-in-the-cloud.md) and [04.02](02-shared-inherited-customer-specific.md). **Time:** about 30 minutes. **Cost:** $0; this simulation uses no AWS account.
+**Who this is for:** you have read [04.01](01-security-of-vs-in-the-cloud.md) and [04.02](02-shared-inherited-customer-specific.md). **Time:** about 20 minutes. **Cost:** $0; this simulation uses no AWS account.
 
-**Goal:** move the bakery's site one step at a time from servers in its back room to Amazon S3, and at each step decide which security tasks pass to AWS and which stay with the bakery. **End state:** a filled-in grid, and a three-sentence note for the owner on who patches what.
+**Goal:** move the bakery's site one step at a time from servers in its back room to Amazon S3, and at each step decide which security tasks pass to AWS and which stay with the bakery. **End state:** a filled-in grid.
 
-**Why this matters:** the owner asked whether she still has to install security updates. The honest answer is "it depends on the service", and this grid shows it. Choosing services that leave less for you to run is [SEC01-BP05 Reduce security management scope](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_securely_operate_reduce_management_scope.html).
+**Why this matters:** the exam asks how responsibilities shift between EC2, RDS and Lambda (task [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1)), and the owner asked whether she still has to install security updates. The honest answer is "it depends on the service", and this grid shows it.
 
 ## The rules
 
-1. **Use only what AWS publishes.** Every answer here comes from an AWS page, cited in the model answers. AWS's [shared responsibility model](https://aws.amazon.com/compliance/shared-responsibility-model/) says your share depends on the services you choose, so each service's own documentation fills in the detail.
-2. **"Not stated" is a real answer.** If the pages don't say who does a task for a service, write "not stated" and go to that service's documentation. Never guess a split.
+1. **Use only what AWS publishes.** Every answer comes from an AWS page, cited in the model answers.
+2. **"Not stated" is a real answer.** If the pages don't say who does a task for a service, write "not stated" rather than guess.
 3. **You** means the customer: the bakery.
 
 ## The data
@@ -100,7 +100,7 @@ Sort these eight statements into **AWS** and **You**, for the bakery's functions
 
 **You:** 4 to 8. The runtimes page puts your code *and its dependencies*, the move off a deprecated runtime, and container-image rebuilds on you. The security page adds the sensitivity of your data, your company's requirements and the laws that apply ([Security in AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/lambda-security.html)). The permissions you give the function's role are yours too, as on every service.
 
-You may have read that on Lambda the customer manages only the code and its permissions. That's too narrow: it leaves out the dependencies, the runtime deadline and container images. It's tempting because Lambda really does remove the servers from your list; it doesn't remove everything.
+"On Lambda you manage only the code and its permissions" is too narrow: it leaves out the dependencies, the runtime deadline and container images.
 
 </details>
 
@@ -112,27 +112,7 @@ What is left for the bakery in the S3 column? Then judge this case: a photo buck
 
 For services such as S3, AWS runs the infrastructure, the operating system and the platform; you manage your data, including its encryption options, classify it, and set permissions with IAM ([Shared Responsibility Model](https://aws.amazon.com/compliance/shared-responsibility-model/)). So only the last row is **You**, and the "your code" row doesn't apply: no code of yours runs in S3.
 
-The leak is the bakery's responsibility: who can access the data is the customer's job on every service. In Lab 01 you saw that a new bucket blocks public access by default, so someone changed that setting.
-
-</details>
-
-### Decision 5: a cell AWS doesn't fill
-
-Who is responsible for backing up the photos in S3? Look back at rule 2 before you answer.
-
-<details><summary>Model answer</summary>
-
-**Not stated** on the pages this simulation uses, so check the S3 documentation rather than guess; Module 05 covers how S3 keeps your data. Saying "AWS doesn't say that here; let me check" is part of the skill.
-
-</details>
-
-### Decision 6: write the owner's note
-
-The owner asked: "Do I still have to install security updates? For which parts?" Write three sentences: one for the server, one for the database, one for the functions.
-
-<details><summary>Model answer</summary>
-
-On the EC2 web server, yes: you patch its operating system and every piece of software you install on it, while AWS looks after the hardware and the buildings. On the RDS database, AWS patches the operating system and the database software; you still tune its queries and decide who can reach it. On the Lambda functions, AWS keeps the servers patched and, by default, applies the managed runtime's updates, but you must fix flaws in the libraries your code uses and move to a new runtime before the old one is retired.
+The leak is the bakery's responsibility: who can access the data is the customer's job on every service. A new bucket blocks public access by default (Lab 01), so someone changed that setting.
 
 </details>
 
@@ -150,7 +130,7 @@ Patching is the **shared control** from [04.02](02-shared-inherited-customer-spe
 
 Moving right, AWS takes on more of the work, but never your data or who can reach it. The exam's examples, EC2, RDS and Lambda, sit at three different points on the slider. When someone says "AWS handles security now", ask: which service, and which row?
 
-**Next:** [Simulation S4](09-sim-policy-playground.md), on the row that never moves: who can access what.
+**Next:** [Identities](03-identities.md), on the row that never moves: who can access what.
 
 ---
 
