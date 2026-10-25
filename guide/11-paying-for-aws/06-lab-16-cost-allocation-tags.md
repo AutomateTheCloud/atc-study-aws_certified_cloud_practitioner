@@ -1,7 +1,7 @@
 ---
 type: lab
 id: clf-11-06
-title: "Lab 16: Turn on cost allocation tags and find them in Cost Explorer"
+title: "Optional lab 16: Turn on cost allocation tags and find them in Cost Explorer"
 tasks: ["4.2"]
 objectives: ["11.04a"]
 reader: "Adult studying alone, possibly new to IT, who has done Lab 01 and the guardrails primer; about 15 minutes, plus 10 the next day; a laptop or desktop"
@@ -28,11 +28,13 @@ sources:
   - "https://docs.aws.amazon.com/marketplace/latest/buyerguide/cost-allocation-tagging.html"
 ---
 
-# Lab 16: Turn on cost allocation tags, then find them in Cost Explorer the next day
+# Optional lab 16: Turn on cost allocation tags, then find them in Cost Explorer the next day
 
 ## Before you start: your account, your responsibility
 
 This guide is provided as is, without warranty. We work hard to keep it correct and current, but AWS changes often, and its services, prices, and free offers may differ from what is written here. The labs run in your own AWS account. You are responsible for that account, for its security, and for any charges it incurs, including charges from resources you forget to delete. Automate the Cloud Inc. is not liable for any costs, losses, or security incidents that result from following, or failing to follow, this material. Technical guidance here is general information, not advice about your specific systems.
+
+**This lab is optional.** The exam asks what cost allocation tags do and that they must be activated, not how to activate them; do it if you want to see a tag reach Cost Explorer.
 
 **Who this is for:** you have done [Lab 01](../02-why-the-cloud/06-lab-01-first-resource.md), where you first tagged a resource. Lesson [11.04 Many accounts, one bill](04-many-accounts-one-bill.md) explains the ideas; you can start without it. **Time:** about 15 minutes, plus 10 minutes the next day.
 
@@ -158,6 +160,6 @@ A tag on a resource is only a label until you activate its key for billing. Then
 
 ---
 
-"Lab 16: Turn on cost allocation tags and find them in Cost Explorer" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional lab 16: Turn on cost allocation tags and find them in Cost Explorer" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt

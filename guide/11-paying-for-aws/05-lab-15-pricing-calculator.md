@@ -22,13 +22,9 @@ recorded: 2026-10-25
 facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/pricing-calculator/latest/userguide/what-is-pricing-calculator.html"
-  - "https://docs.aws.amazon.com/pricing-calculator/latest/userguide/create-configure-estimate.html"
-  - "https://docs.aws.amazon.com/pricing-calculator/latest/userguide/ec2-estimates.html"
   - "https://docs.aws.amazon.com/pricing-calculator/latest/userguide/save-share-estimate.html"
   - "https://aws.amazon.com/ec2/pricing/on-demand/"
-  - "https://aws.amazon.com/elasticloadbalancing/pricing/"
   - "https://aws.amazon.com/vpc/pricing/"
-  - "https://aws.amazon.com/s3/pricing/"
   - "https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html"
   - "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html"
 ---
@@ -39,34 +35,19 @@ sources:
 
 This guide is provided as is, without warranty. We work hard to keep it correct and current, but AWS changes often, and its services, prices, and free offers may differ from what is written here. The labs run in your own AWS account. You are responsible for that account, for its security, and for any charges it incurs, including charges from resources you forget to delete. Automate the Cloud Inc. is not liable for any costs, losses, or security incidents that result from following, or failing to follow, this material. Technical guidance here is general information, not advice about your specific systems.
 
-**Who this is for:** you have read [06.01 Amazon EC2](../06-running-applications/01-ec2.md) and [06.02 Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md). Lessons [11.02 Purchasing options](02-purchasing-options.md) and [11.03 Estimate, watch, analyze](03-estimate-watch-analyze.md) help, but you can start without them. **Time:** about 45 minutes.
+**Who this is for:** you have read [06.01 Amazon EC2](../06-running-applications/01-ec2.md) and [06.02 Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md); lessons [11.02](02-purchasing-options.md) and [11.03](03-estimate-watch-analyze.md) help. **Time:** about 45 minutes.
 
-**Goal:** the bakery's bill has grown, and the owner wants to add a new feature: a cake designer where customers build their own cake. You price the site's web tier, find the lines that charge by the hour, trim a test copy for the new feature, compare ways to pay for the web servers, and share the estimate. **End state:** your lab log holds a priced estimate, a trimmed test copy, a table of purchasing options, and a link that opens the estimate.
+**Goal:** you price the bakery's web tier, find the lines that charge by the hour, trim a test copy for a new cake designer feature, compare ways to pay for the web servers, and share the estimate. **End state:** your lab log holds the estimate, the test copy, a table of purchasing options and a working link.
 
-```mermaid
-flowchart LR
-  accTitle: The four parts of Lab 15
-  accDescr: Part 1 prices the bakery's live web tier. Part 2 marks the hourly items and trims a test copy for the new feature. Part 3 compares purchasing options for the two web servers. Part 4 saves the estimate as a public link and checks that it opens.
-  A["1. Price the<br/>live web tier"] --> B["2. Find the hourly items;<br/>trim the test copy"]
-  B --> C["3. Compare ways to pay<br/>for the web servers"]
-  C --> D["4. Share the estimate<br/>and open the link"]
-```
+**What it creates:** nothing in AWS. The public **AWS Pricing Calculator** website needs no AWS account ([What is AWS Pricing Calculator?](https://docs.aws.amazon.com/pricing-calculator/latest/userguide/what-is-pricing-calculator.html)).
 
-*Notice that you price first and decide second: every cut in Part 2 and every choice in Part 3 rests on the numbers from Part 1.*
+**What it costs:** $0. **Worst case:** still $0. Watch privacy instead: anyone with a shared estimate's link can open it, so never put names, addresses or account IDs in it.
 
-**Long description.** Four stages from left to right: price the live web tier; find the hourly items and trim the test copy; compare ways to pay for the web servers; share the estimate and open the link.
+**Before you start:** no guardrails are needed, because you don't sign in to AWS. You need a browser and your lab log ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md)).
 
-**What it creates:** nothing in AWS. The **AWS Pricing Calculator** is a free website for estimating AWS costs before you build anything, and it needs no AWS account ([What is AWS Pricing Calculator?](https://docs.aws.amazon.com/pricing-calculator/latest/userguide/what-is-pricing-calculator.html)). AWS also offers a version inside the Billing and Cost Management console that can use your account's discounts; this lab uses the public website.
+> **New sign-up path:** AWS lists the Pricing Calculator as not supported in that experience (as of 2026-10-23). We read that as the version inside the console; the public website needs no account, so it should work the same for you.
 
-**What it costs:** $0. **Worst case:** still $0. The one thing to watch is privacy: a shared estimate is stored on AWS's public servers and anyone with the link can open it, so never put names, addresses or account IDs in it.
-
-**Before you start:** no guardrails are needed, because you don't sign in to AWS. You need a web browser and your lab log ([primer page 07](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md)).
-
-**Why this matters:** estimating before you build is [COST06-BP01 Perform cost modeling](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_type_size_number_resources_cost_modeling.html), and an estimate is the starting point for [COST01-BP03 Establish cloud budgets and forecasts](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_cloud_financial_management_budget_forecast.html). Comparing ways to pay is [COST07-BP01 Perform pricing model analysis](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_pricing_model_analysis.html).
-
-> **New sign-up path:** AWS lists the Pricing Calculator as not supported in that experience (as of 2026-10-23). We read that as the version inside the console. This lab uses the public website, which needs no account at all, so it should work the same for you.
-
-**About the screens:** labels in **bold** and the figures quoted are what we saw when we ran this lab end to end on 2026-10-25. The calculator's pages change often. If a label differs, look for the option with the same meaning.
+**About the screens:** labels in **bold** and the figures quoted are what we saw when we ran this lab end to end on 2026-10-25. The calculator changes often; if a label differs, look for the option with the same meaning.
 
 > **Dated (checked 2026-10-24):** the prices in this lab are On-Demand, Linux, US East (N. Virginia), from AWS's Price List files: `t3.small` $0.0208 an hour; Application Load Balancer $0.0225 an hour plus capacity units; public IPv4 address $0.005 an hour; gp3 disk $0.08 per GB-month; S3 Standard $0.023 per GB-month. The calculator counts 730 hours in a month. Your calculator shows today's prices; trust it over this box.
 
@@ -74,7 +55,7 @@ flowchart LR
 
 ### Get ready
 
-1. In your lab log, write today's date, `Lab 15`, and this table. You'll fill in the last column. The settings are round numbers for practice, not a copy of the bill in [lesson 11.01](01-how-aws-charges.md), which has smaller disks and more photos.
+1. In your lab log, write today's date, `Lab 15`, and this table. You'll fill in the last column. The settings are round numbers for practice.
 
    | Line | Service to search for | Settings | Monthly cost |
    |---|---|---|---|
@@ -110,7 +91,7 @@ flowchart LR
 
 ### Part 2: find the hourly items, and trim the test copy
 
-An **hourly item** is a line made of a time-based charge ([lesson 11.01](01-how-aws-charges.md)): it bills for every hour the resource exists, whether it does any work or not. A busy noon and an empty 3 a.m. cost the same.
+An **hourly item** is a line made of a time-based charge ([lesson 11.01](01-how-aws-charges.md)): it bills for every hour the resource exists, whether it does any work or not.
 
 14. Next to each line in your log, write **H** if it bills by the hour, **S** if it bills for a size you set, or **U** if it bills only for what you use.
 
@@ -118,13 +99,7 @@ An **hourly item** is a line made of a time-based charge ([lesson 11.01](01-how-
 
 <details><summary>Model answer</summary>
 
-![A bar chart of the web tier's monthly cost: two web servers $30.37, load balancer $16.43 and two public IPv4 addresses $7.30, all charged every hour; two 20 GB disks $3.20, charged for their size; 50 GB of photos $1.15, charged for what is stored.](../../images/11-05-live-estimate.svg)
-
-*Notice how short the only "pay for what you use" bar is. The three hourly lines are $54.10 of $58.45, about 93%.*
-
-**Long description.** Horizontal bars, dollars per month, On-Demand, US East (N. Virginia), as of 2026-10-24. Charged every hour it exists: two `t3.small` web servers for 730 hours, $30.37; the load balancer's hourly charge, $16.43; two public IPv4 addresses, $7.30. Charged for the size you set: two 20 GB gp3 disks, $3.20. Charged for what you store: 50 GB of photos in S3 Standard, $1.15. Load balancer capacity units and data transfer are left out.
-
-**H:** the servers, the load balancer and the public addresses. **S:** the disks, which bill for 20 GB whether they hold 1 GB or 20. **U:** the photos, which grow only when the bakery stores more (and with requests and downloads, which you left at zero). Your load balancer line is a little higher because of capacity units.
+**H:** the servers ($30.37), the load balancer ($16.43) and the public addresses ($7.30): $54.10 of about $58.45, about 93%. **S:** the disks, which bill for 20 GB whether they hold 1 GB or 20. **U:** the photos, which grow only when the bakery stores more.
 
 </details>
 
@@ -134,17 +109,11 @@ An **hourly item** is a line made of a time-based charge ([lesson 11.01](01-how-
     **You should see:** about $3.62 for the server, but only about $0.38 for the disk, $4.00 in all. The calculator explains why in a note under the usage field: for usage below 100%, it "assumes that the attached EBS volume is deleted while the instance is not running". Your plan only stops the server, and a disk is billed for as long as it exists, so the real cost of this line is $3.62 + $1.60 = $5.22. Write both figures in your log.
     > **If something went wrong:** if you find no utilization or hours field, look for a workload option based on a usage pattern, such as a daily spike, and choose one that runs about 8 hours a day.
 
-> **Your turn:** what did you remove, and why is the disk the one cost the trimmed copy can't shrink by running fewer hours?
+> **Your turn:** what did you remove, and why can't fewer hours shrink the disk's cost?
 
 <details><summary>Model answer</summary>
 
-![Two stacked bars of monthly cost: the nephew's draft at $57.30, made of servers, load balancer and public IPv4, all hourly, plus disks; the trimmed copy, one server running 40 hours a week and its disk, at $5.22.](../../images/11-05-test-copy.svg)
-
-*Notice that most of the saving comes from removing whole hourly items, not from making them smaller.*
-
-**Long description.** Two stacked horizontal bars, dollars per month, as of 2026-10-24. The nephew's draft totals $57.30: servers $30.37, load balancer $16.43, public IPv4 $7.30, disks $3.20. The trimmed copy totals $5.22: one `t3.small` for about 174 hours, $3.62, and its 20 GB disk, $1.60.
-
-Remove the **load balancer**: with one server there is nothing to balance. Remove the **second server** and its address: one tester needs one. Run the remaining server **only in working hours**, and stop it outside them. The **disk** bills for its size for as long as it exists, even while the server is stopped (lesson 06.01), so only deleting it ends that charge. That's why the calculator's $4.00 understates this plan: it assumes the disk is deleted whenever the server is off.
+The draft costs $57.30 a month; the trimmed copy $5.22. Remove the **load balancer** (one server has nothing to balance) and the **second server** and its address (one tester needs one), and run the remaining server **only in working hours**. Most of the saving comes from removing whole hourly items. The **disk** bills for its size for as long as it exists, even while the server is stopped (lesson 06.01), which is why the calculator's $4.00 understates this plan.
 
 </details>
 
@@ -152,26 +121,26 @@ Remove the **load balancer**: with one server there is nothing to balance. Remov
 
 18. The two live web servers run all year. On the **My Estimate** page, choose the **Edit** icon next to `Bakery live - web servers`. Try each payment option the calculator offers, choosing a **1-year** term and **no upfront** payment wherever it asks: On-Demand, Compute Savings Plans, EC2 Instance Savings Plans, Standard Reserved Instances, and Spot. Reserved Instances are in a collapsed section, **Other purchasing options**, which also offers Convertible Reserved Instances. The total includes the two disks ($3.20); subtract them to compare the servers. For each, write the monthly cost and any upfront cost. Then set the line back to the option you would choose, and save.
 
-> **Your turn:** fill in a table like this, then choose an option for the two always-on servers and give two reasons. Which option would you refuse, and why?
+> **Your turn:** fill in a table like this, choose an option for the two always-on servers, and say which you would refuse.
 
 <details><summary>Model answer</summary>
 
 | Option, 1 year, no upfront | Monthly, 2 × `t3.small` | Commitment |
 |---|---|---|
 | On-Demand | $30.37 | None |
-| Standard Reserved Instances | $18.98 ($0.013 an hour each) | 1 year of this instance type |
-| Convertible Reserved Instances | $21.90 | 1 year, but you may exchange it for other instance types |
-| EC2 Instance Savings Plans | $18.98 | 1 year of dollars per hour on one family in one Region |
-| Compute Savings Plans | $21.90 | 1 year of dollars per hour on any EC2, Lambda or Fargate |
-| Spot | $11.54, using the calculator's 62% historical average discount | None, but AWS can reclaim the servers with a two-minute warning |
+| Standard Reserved Instances | $18.98 ($0.013 an hour each) | This instance type |
+| Convertible Reserved Instances | $21.90 | Exchangeable for other types |
+| EC2 Instance Savings Plans | $18.98 | Dollars per hour, one family, one Region |
+| Compute Savings Plans | $21.90 | Dollars per hour, any EC2, Lambda or Fargate |
+| Spot | $11.54 (the calculator's 62% average discount) | None, but interruptible with two minutes' warning |
 
-On-Demand and Reserved prices: AWS Price List, US East (N. Virginia), as of 2026-10-24. The Savings Plans, Convertible and Spot figures are the calculator's, for two `t3.small` servers, on 2026-10-25; yours may differ. AWS describes Compute Savings Plans as up to 66% off On-Demand and EC2 Instance Savings Plans as up to 72% off ([Savings Plans types](https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html), checked 2026-10-24). "Up to" is the best case, so read your own figures.
+On-Demand and Reserved prices: AWS Price List, US East (N. Virginia), as of 2026-10-24. The other figures are the calculator's on 2026-10-25; yours may differ.
 
-**A good choice:** a 1-year **Savings Plan** sized to the two servers. They run every hour, so a commitment is paid for by real use, and the discount is large. A **Compute** Savings Plan keeps working if the bakery moves the servers to another family, such as Graviton, or onto Lambda; an **EC2 Instance** Savings Plan or a **Reserved Instance** can save more (AWS's maximum is 72% against 66%) but ties you to the `t3` family in one Region. **Refuse Spot** for these two servers: they are the site's only floor, and losing both with two minutes' warning would take orders offline.
+**A good choice:** a 1-year **Savings Plan** sized to the two servers, which run every hour. **Compute** keeps working if the bakery moves to another family or onto Lambda; **EC2 Instance** or a **Reserved Instance** can save more but ties you to `t3` in one Region. **Refuse Spot:** these servers are the site's only floor, and losing both with two minutes' warning would take orders offline.
 
 </details>
 
-> **Note:** on the Free plan you can't buy any of these commitments: AWS leaves Savings Plans and Reserved Instances out of it ([Choosing a plan](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html), checked 2026-10-24). That is why you compare them here, on paper.
+> **Note:** the Free plan leaves out Savings Plans and Reserved Instances ([Choosing a plan](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html), checked 2026-10-24), so you compare them here, on paper.
 
 ### Part 4: share the estimate
 
@@ -182,7 +151,7 @@ On-Demand and Reserved prices: AWS Price List, US East (N. Virginia), as of 2026
     **You should see:** the same estimate, with all its lines.
     > **If something went wrong:** an older version of the estimate means you changed something after sharing. The calculator never updates a saved link; choose **Share** again for a new one ([Sharing your estimate](https://docs.aws.amazon.com/pricing-calculator/latest/userguide/save-share-estimate.html)).
 
-Estimate links made since 2023-05-31 stay valid for one year (checked 2026-10-24). The page also offers exports, such as CSV and PDF; AWS's guide says a PDF export holds a copy of the link.
+Estimate links made since 2023-05-31 stay valid for one year (checked 2026-10-24).
 
 ## Check your work
 
@@ -198,25 +167,23 @@ Estimate links made since 2023-05-31 stay valid for one year (checked 2026-10-24
 
 ## Recap
 
-You priced a setup before building it, saw that the hourly items make up almost all of its bill, cut a test copy by removing whole hourly items, and compared paying by the hour with committing for a year. Estimates come before the bill; Budgets, Cost Explorer and anomaly alerts watch the bill afterward.
+You priced a setup before building it, saw that hourly items make up almost all of its bill, cut a test copy by removing them, and compared paying by the hour with committing for a year.
 
 > **Reflect:** the owner asks, "Is $58 a month what we'll pay?" Write two sentences on what your estimate leaves out and how you would check it once the site runs.
 >
 > <details><summary>Model answer</summary>
 >
-> No: it leaves out data transfer to customers, load balancer traffic beyond the minimum, requests to S3, the database, tax and any change in prices, and it assumes On-Demand. Once the site runs, compare the estimate with Cost Explorer each month, and set a budget a little above the estimate so an alert says when reality drifts.
+> No: it leaves out data transfer to customers, requests, the database, tax and price changes. Once the site runs, compare it with Cost Explorer monthly, and set a budget a little above it.
 >
 > </details>
 
-**Next:** [Simulation S13](07-sim-purchasing-option-tree.md), where you choose a purchasing option for each of the bakery's workloads.
+**Next:** [Many accounts, one bill](04-many-accounts-one-bill.md).
 
 ## Where to check the current details
 
-- [What is AWS Pricing Calculator?](https://docs.aws.amazon.com/pricing-calculator/latest/userguide/what-is-pricing-calculator.html), AWS Pricing Calculator User Guide (checked 2026-10-24)
-- [Create and configure an estimate](https://docs.aws.amazon.com/pricing-calculator/latest/userguide/create-configure-estimate.html) and [Generating Amazon EC2 estimates](https://docs.aws.amazon.com/pricing-calculator/latest/userguide/ec2-estimates.html) (checked 2026-10-24)
+- [What is AWS Pricing Calculator?](https://docs.aws.amazon.com/pricing-calculator/latest/userguide/what-is-pricing-calculator.html) (checked 2026-10-24)
 - [Sharing your estimate](https://docs.aws.amazon.com/pricing-calculator/latest/userguide/save-share-estimate.html) (checked 2026-10-24)
-- [Amazon EC2 On-Demand pricing](https://aws.amazon.com/ec2/pricing/on-demand/), [Elastic Load Balancing pricing](https://aws.amazon.com/elasticloadbalancing/pricing/), [Amazon VPC pricing](https://aws.amazon.com/vpc/pricing/), [Amazon S3 pricing](https://aws.amazon.com/s3/pricing/) (prices as of 2026-10-24)
-- [Savings Plans types](https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html), Savings Plans User Guide (checked 2026-10-24)
+- [Amazon EC2 On-Demand pricing](https://aws.amazon.com/ec2/pricing/on-demand/) (prices as of 2026-10-24)
 
 ---
 
