@@ -4,7 +4,7 @@ id: clf-09-08
 title: "Simulation S9: Match security findings to the service that raised them"
 tasks: ["2.2", "2.4"]
 objectives: ["09.03a"]
-reader: "Adult studying alone, possibly new to IT, who has read lesson 09.03; about 30 minutes"
+reader: "Adult studying alone, possibly new to IT, who has read lesson 09.03; about 20 minutes"
 prerequisites: ["clf-09-03", "clf-07-02", "clf-05-02"]
 terms_introduced: [finding type, severity]
 pillars: [security]
@@ -13,7 +13,7 @@ rung: L2
 mode: sim
 free_plan: "not needed"
 signup_path: "none"
-time: "30 minutes"
+time: "20 minutes"
 cost: "$0 (no AWS account used)"
 worst_case: "$0"
 needs: []
@@ -32,7 +32,6 @@ sources:
   - "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html"
   - "https://aws.amazon.com/security-hub/faqs/"
   - "https://aws.amazon.com/free/security/"
-  - "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html"
 ---
 
 # Simulation S9: A morning of security findings: match each one to the service that raised it
@@ -41,34 +40,15 @@ sources:
 
 This guide is provided as is, without warranty. We work hard to keep it correct and current, but AWS changes often, and its services, prices, and free offers may differ from what is written here. The labs run in your own AWS account. You are responsible for that account, for its security, and for any charges it incurs, including charges from resources you forget to delete. Automate the Cloud Inc. is not liable for any costs, losses, or security incidents that result from following, or failing to follow, this material. Technical guidance here is general information, not advice about your specific systems.
 
-**Who this is for:** you have read [09.03 Finding threats and weaknesses](03-finding-threats-and-weaknesses.md). **Time:** about 30 minutes. **Cost:** $0; no AWS account is used.
+**Who this is for:** you have read [09.03 Finding threats and weaknesses](03-finding-threats-and-weaknesses.md). **Time:** about 20 minutes. **Cost:** $0; no AWS account is used.
 
-**Why a simulation:** in our Free plan test account on 2026-10-23, Amazon GuardDuty and AWS Security Hub CSPM each opened a page headed "Free account plan access limitations" with an **Upgrade plan** button, and no trial. Amazon Inspector and Amazon Macie have free trials (15 and 30 days), but AWS lists them as Paid plan offers, the Free plan includes always-free offers and not short-term trials, and after a trial each service bills (as of 2026-10-24, [free security trials](https://aws.amazon.com/free/security/), [Choosing a plan](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html)). On a Paid plan, GuardDuty and Macie can generate *sample findings* for practice, which is what this page imitates.
+**Why a simulation:** in our Free plan test account on 2026-10-23, Amazon GuardDuty and AWS Security Hub CSPM each opened a page headed "Free account plan access limitations" with an **Upgrade plan** button, and no trial. Amazon Inspector and Amazon Macie have free trials, but AWS lists them as Paid plan offers, and after a trial each service bills (as of 2026-10-24, [free security trials](https://aws.amazon.com/free/security/)).
 
-**Goal:** it's the week the auditor visits. Overnight, the bakery's security services raised eight findings. You name the service behind each, decide which two to handle first, and answer three questions from the owner. **End state:** eight matches, a priority order and three short answers in your notes.
-
-**Why this matters:** collecting findings in one place is [SEC04-BP02 Capture logs, findings, and metrics in standardized locations](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_detect_investigate_events_logs.html); finding known weaknesses before attackers do is [SEC06-BP01 Perform vulnerability management](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_protect_compute_vulnerability_management.html); finding sensitive data automatically is [SEC07-BP03 Automate identification and classification](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_data_classification_auto_classification.html).
+**Goal:** overnight, the bakery's security services raised eight findings. You name the service behind each and answer two questions from the owner. **End state:** eight matches and two short answers in your notes.
 
 ## The rules of this simulation
 
 A **finding** is a service's report of one possible problem. Each has a **finding type**, a name for the kind of problem, and a **severity**, the service's estimate of how urgent it is, such as Low, Medium, High or Critical. The four services look at different things:
-
-```mermaid
-flowchart LR
-  accTitle: Where each security service looks, and where its findings go
-  accDescr: GuardDuty reads activity logs (CloudTrail management events, VPC Flow Logs and DNS logs) and reports threats. Inspector reads software packages, code and network paths on EC2 instances, container images and Lambda functions, and reports weaknesses. Macie reads the contents and settings of S3 buckets and reports sensitive data and risky bucket settings. Security Hub CSPM checks account settings against security standards. All four send findings to Security Hub CSPM, which collects them in one place.
-  L["Activity logs<br/>CloudTrail, VPC Flow Logs, DNS"] --> GD["GuardDuty<br/>threats happening now"]
-  W["Software, code, network paths<br/>EC2, container images, Lambda"] --> IN["Inspector<br/>weaknesses to fix"]
-  D["Objects and settings<br/>in S3 buckets"] --> MA["Macie<br/>sensitive data, risky buckets"]
-  C["Account settings vs<br/>security standards"] --> SH["Security Hub CSPM<br/>checks, and collects<br/>everyone's findings"]
-  GD -->|"findings"| SH
-  IN -->|"findings"| SH
-  MA -->|"findings"| SH
-```
-
-*Notice that the question "what does it read?" separates the first three, and that Security Hub CSPM is the only one that both checks something itself and gathers the others' findings.*
-
-**Long description.** Four sources on the left, each feeding one service. Activity logs (CloudTrail, VPC Flow Logs, DNS logs) feed GuardDuty, which reports threats happening now. Software, code and network paths on EC2, container images and Lambda feed Inspector, which reports weaknesses to fix. Objects and settings in S3 buckets feed Macie, which reports sensitive data and risky buckets. Account settings compared with security standards feed Security Hub CSPM. Arrows labeled "findings" run from GuardDuty, Inspector and Macie to Security Hub CSPM.
 
 | Service | Reads | Reports | On our Free plan account (2026-10-23) |
 |---|---|---|---|
@@ -79,7 +59,7 @@ flowchart LR
 
 A **CVE** (Common Vulnerabilities and Exposures) is a public, numbered entry for a known software flaw; Inspector's package findings name them.
 
-> **Dated (checked 2026-10-24):** the product the exam calls "AWS Security Hub" is now **AWS Security Hub CSPM** (cloud security posture management), and the name **AWS Security Hub** now belongs to a newer, unified product that correlates findings from Security Hub CSPM, GuardDuty, Inspector and Macie ([Security Hub FAQs](https://aws.amazon.com/security-hub/faqs/)). **Amazon Inspector Classic**, which used assessment templates you scheduled, shut down on 2026-05-20; today's Inspector finds workloads and scans them continuously on its own ([What is Amazon Inspector?](https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html)).
+> **Dated (checked 2026-10-24):** the product the exam calls "AWS Security Hub" is now **AWS Security Hub CSPM**; the name **AWS Security Hub** now belongs to a newer product that correlates findings ([Security Hub FAQs](https://aws.amazon.com/security-hub/faqs/)).
 
 ## Part 1: match the findings
 
@@ -117,17 +97,9 @@ The resources are the bakery's: the web server, its role, the photo bucket `bake
 
 </details>
 
-## Part 2: decide what to do
+## Part 2: answer the owner
 
-### Decision 2: which two do you handle first, and why?
-
-<details><summary>Model answer</summary>
-
-**E, then A.** Both describe an attack under way: someone outside AWS holds the server's credentials (E), and the server is probably running a miner (A). They are likely the same incident. Contain it first: cut the server off from the network and revoke the role's sessions, then investigate. Next come C and G together, because personal data in a bucket that may now be public is a data breach in waiting. B, D and F are weaknesses that may explain *how* the attacker got in; fix them as part of the cleanup. H is critical but not an attack: fix it today. Severity is the service's estimate; your knowledge of the business decides the order.
-
-</details>
-
-### Decision 3: the owner asks, "Do I really have to open four consoles every morning?"
+### Decision 2: the owner asks, "Do I really have to open four consoles every morning?"
 
 <details><summary>Model answer</summary>
 
@@ -135,7 +107,7 @@ No. GuardDuty, Inspector and Macie send their findings to Security Hub CSPM, whi
 
 </details>
 
-### Decision 4: the owner asks, "Will GuardDuty stop the attacker?"
+### Decision 3: the owner asks, "Will GuardDuty stop the attacker?"
 
 <details><summary>Model answer</summary>
 
@@ -143,19 +115,11 @@ No. All four services report; none of them blocks traffic or deletes anything on
 
 </details>
 
-### Decision 5: an older study guide says, "Create an Inspector assessment template and install the Inspector agent." What do you tell a friend who is studying from it?
-
-<details><summary>Model answer</summary>
-
-That describes Amazon Inspector Classic, which shut down on 2026-05-20. Today's Inspector finds EC2 instances, container images and Lambda functions automatically and rescans them when software changes or a new CVE is published. EC2 scanning uses the Systems Manager agent or works without an agent; there's no separate Inspector agent and no template to schedule.
-
-</details>
-
 ## Recap
 
 Ask what the service reads. Activity logs mean GuardDuty, a threat happening now. Software and network paths mean Inspector, a weakness to fix. What's inside S3 means Macie. A setting checked against a standard means Security Hub CSPM, which also collects everyone's findings. None of them blocks anything.
 
-**Next:** [Simulation S10](09-sim-config-timeline.md), where the question changes from "is something wrong now?" to "what did this resource look like last Tuesday?"
+**Next:** [Simulation S11](10-sim-organizations-and-scps.md), where many accounts are governed together.
 
 ---
 

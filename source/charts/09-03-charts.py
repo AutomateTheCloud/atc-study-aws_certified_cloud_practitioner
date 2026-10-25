@@ -104,13 +104,6 @@ def card(body, cls, x, y, w, title, lines, h=None, bullets=False):
     return h
 
 
-def card_height(w, lines, bullets=False):
-    wrapped = card_lines(w, lines, bullets)
-    n = sum(1 for ln in wrapped if ln is not None)
-    gaps = sum(1 for ln in wrapped if ln is None)
-    return 30 + 15 * n + 5 * gaps + 8
-
-
 def before_during_after():
     """Big picture: which service answers which question, before, during and after an attack."""
     w = 680
@@ -185,109 +178,5 @@ def before_during_after():
         body, style=STYLE)
 
 
-def two_security_hubs():
-    """The name 'Security Hub' now covers two products."""
-    w = 680
-    body = [
-        '<text class="title" x="16" y="28">One name, two products: Security Hub CSPM and Security Hub</text>',
-        '<text class="sub" x="16" y="48">The exam says "AWS Security Hub" and means the job on the left</text>',
-    ]
-    left = [
-        "Was called simply \"Security Hub\" until AWS renamed it",
-        "Checks your settings against standards: AWS Foundational Security Best Practices, CIS, PCI DSS, NIST",
-        "Gives each standard a security score",
-        "Collects findings from GuardDuty, Inspector, Macie and partner products in one format",
-        "Needs AWS Config recording for most of its checks",
-        "30-day free trial, then billed per check and per finding",
-    ]
-    right = [
-        "A newer product that builds on Security Hub CSPM",
-        "Correlates signals from Security Hub CSPM, Inspector, GuardDuty, Macie and IAM Access Analyzer",
-        "Turns related problems into exposure findings, with a graph of how an attacker could get in",
-        "Adds response workflows and ticketing",
-        "Turning it on also turns on Security Hub CSPM",
-        "Priced as an essentials plan plus an optional threat analytics add-on",
-    ]
-    pw, top = 316, 72
-    hmax = max(card_height(pw, left, True), card_height(pw, right, True))
-    card(body, "hi", 16, top, pw, "AWS Security Hub CSPM", left, h=hmax, bullets=True)
-    card(body, "n", 16 + pw + 16, top, pw, "AWS Security Hub (unified)", right, h=hmax, bullets=True)
-    arrow(body, 16 + pw + 2, top + 40, 16 + pw + 14, top + 40)
-    body.append(f'<text class="small" x="{16 + pw / 2}" y="{top + hmax + 22}" text-anchor="middle">Exam: "one place for findings" or</text>')
-    body.append(f'<text class="small" x="{16 + pw / 2}" y="{top + hmax + 38}" text-anchor="middle">"check against CIS or PCI DSS"</text>')
-    body.append(f'<text class="small" x="{16 + pw + 16 + pw / 2}" y="{top + hmax + 22}" text-anchor="middle">Real work: "which of these problems</text>')
-    body.append(f'<text class="small" x="{16 + pw + 16 + pw / 2}" y="{top + hmax + 38}" text-anchor="middle">together put us at risk?"</text>')
-    y = top + hmax + 64
-    y = text_lines(body, 16, y, [
-        "From the Security Hub and Security Hub CSPM user guides and the Security Hub FAQ, checked 2026-10-24.",
-        "Names and pricing models change; check the Security Hub pages before you rely on them.",
-    ], cls="note", dy=15)
-    svg("09-03-two-security-hubs.svg", w, y + 4,
-        "AWS Security Hub CSPM compared with the newer, unified AWS Security Hub",
-        "Two panels. Left, highlighted: AWS Security Hub CSPM. It was called simply Security Hub until AWS renamed "
-        "it. It checks your settings against standards: AWS Foundational Security Best Practices, CIS, PCI DSS "
-        "and NIST. It gives each standard a security score. It collects findings from GuardDuty, Inspector, Macie "
-        "and partner products in one format. It needs AWS Config recording for most of its checks. It has a "
-        "30-day free trial, then bills per check and per finding. Under it: the exam's wording, one place for "
-        "findings, or check against CIS or PCI DSS. Right: AWS Security Hub, the unified product. It builds on "
-        "Security Hub CSPM. It correlates signals from Security Hub CSPM, Inspector, GuardDuty, Macie and IAM "
-        "Access Analyzer, turns related problems into exposure findings with a graph of how an attacker could get "
-        "in, and adds response workflows and ticketing. Turning it on also turns on Security Hub CSPM. It is "
-        "priced as an essentials plan plus an optional threat analytics add-on. Under it: the real-work question, "
-        "which of these problems together put us at risk. An arrow points from left to right: the unified "
-        "product builds on the original.", body, style=STYLE)
-
-
-def three_checkers():
-    """Trusted Advisor, Security Hub CSPM and Inspector all 'check', but different things."""
-    w = 680
-    body = [
-        '<text class="title" x="16" y="28">Three services that check, and what each one checks</text>',
-        '<text class="sub" x="16" y="48">Read across a row to tell them apart; the highlighted row is the one that separates them</text>',
-    ]
-    cols = ["Trusted Advisor", "Security Hub CSPM", "Amazon Inspector"]
-    rows = [
-        ("Looks at", ["Your account and its resources", "Your resources' settings", "The software inside EC2, Lambda and container images, and network paths to them"]),
-        ("Compares with", ["AWS's own best practices, in six categories", "Named standards: FSBP, CIS, PCI DSS, NIST", "Published vulnerabilities (CVEs) and open network paths"], True),
-        ("Example finding", ["Root user has no MFA", "EBS volumes not encrypted by default (a control fails)", "A package on the web server has a critical CVE"]),
-        ("Who gets it", ["All plans: a few security checks; paid Support plans: all checks", "Anyone who turns it on; blocked on the Free plan when we checked", "Anyone who turns it on; its free trial needs the Paid plan"]),
-    ]
-    lw, cw, top = 112, 176, 70
-    x0 = 16 + lw
-    for i, c in enumerate(cols):
-        body.append(f'<text class="head" x="{x0 + i * (cw + 8) + 8}" y="{top + 4}">{c}</text>')
-    y = top + 16
-    for label, cells, *hi in rows:
-        hi = bool(hi and hi[0])
-        wrapped = [wrap(c, int((cw - 16) / CH)) for c in cells]
-        h = 14 + 15 * max(len(x) for x in wrapped) + 4
-        body.append(f'<text class="boxt" x="16" y="{y + 20}">{label}</text>')
-        for i, lines in enumerate(wrapped):
-            x = x0 + i * (cw + 8)
-            body.append(f'<rect class="{"hi" if hi else "n"}" x="{x}" y="{y}" width="{cw}" height="{h}" rx="5"/>')
-            text_lines(body, x + 8, y + 19, lines, cls="cells", dy=15)
-        y += h + 8
-    y += 12
-    y = text_lines(body, 16, y, [
-        "Free and Paid plan are AWS's account plans; we checked a new Free plan account on 2026-10-23. From the Trusted",
-        "Advisor, Security Hub CSPM and Inspector user guides, checked 2026-10-24.",
-    ], cls="note", dy=15)
-    svg("09-03-three-checkers.svg", w, y + 4,
-        "Trusted Advisor, Security Hub CSPM and Amazon Inspector compared",
-        "A grid with three columns and four rows. Looks at: Trusted Advisor, your account and its resources; "
-        "Security Hub CSPM, your resources' settings; Amazon Inspector, the software inside EC2 instances, Lambda "
-        "functions and container images, and network paths to them. Compares with, highlighted: Trusted Advisor, "
-        "AWS's own best practices in six categories; Security Hub CSPM, named standards such as AWS Foundational "
-        "Security Best Practices, CIS, PCI DSS and NIST; Inspector, published vulnerabilities (CVEs) and open "
-        "network paths. Example finding: Trusted Advisor, the root user has no MFA; Security Hub CSPM, EBS volumes "
-        "aren't encrypted by default, so a control fails; Inspector, a package on the web server has a critical "
-        "CVE. Who gets it: Trusted Advisor, all plans get a few security checks and paid Support plans get all "
-        "checks; Security Hub CSPM, anyone who turns it on, though its console was blocked on a new Free plan account "
-        "when we checked on 2026-10-23; Inspector, anyone who turns it on, and its free trial needs the Paid plan.",
-        body, style=STYLE)
-
-
 if __name__ == "__main__":
     before_during_after()
-    two_security_hubs()
-    three_checkers()
