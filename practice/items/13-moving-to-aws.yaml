@@ -1,0 +1,3603 @@
+# Module 13, Moving to AWS. Practice questions and concept cards.
+# Written from the guide's pages in guide/13-moving-to-aws/; see practice/work/blueprint-13.md.
+# Build fields (page, section, task, level, topics) are described in source/practice/build_bundle.py.
+
+questions:
+
+  # ---------------------------------------------------------------------------------------------
+  # Lesson 13.01, The Cloud Adoption Framework
+  # ---------------------------------------------------------------------------------------------
+
+  - id: q13-caf-outcomes-select-two
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: "The CAF aims at four business outcomes"
+    task: "1.3"
+    level: recall
+    topics: [cloud-adoption-framework, caf-outcomes]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A board member reads that the AWS Cloud Adoption Framework (AWS CAF) aims at four business
+        outcomes. Which two are among them? (Select TWO.)
+    choices:
+      - id: reduce-risk
+        text: Reduce business risk
+        variants:
+          - text: Lower the risk the business carries
+          - text: Cut the business's risk
+        explanation:
+          text: Correct. Reducing business risk covers better reliability and performance and stronger security.
+      - id: automate-processes
+        text: Automate business processes
+        variants:
+          - text: Digitize how the business runs
+          - text: Make business processes automatic
+        explanation:
+          text: Digitizing and automating how the business runs describes the Process transformation domain, one of the areas that change. It isn't one of the four outcomes.
+      - id: improve-esg
+        text: Improve ESG performance
+        variants:
+          - text: Improve environmental, social and governance (ESG) performance
+          - text: Do better on ESG measures
+        explanation:
+          text: Correct. ESG stands for environmental, social and governance; the CAF counts insights that improve sustainability and transparency as an outcome.
+      - id: faster-servers
+        text: Run on faster servers
+        variants:
+          - text: Get faster server hardware
+          - text: Move onto quicker servers
+        explanation:
+          text: Faster servers are a technical result. The CAF's outcomes are results the business wants, such as lower risk or more revenue.
+      - id: product-teams
+        text: Organize teams around products
+        variants:
+          - text: Build teams around each product
+          - text: Regroup staff into product teams
+        explanation:
+          text: Changing how teams work describes the Organization transformation domain, not an outcome.
+    correct_answers: [reduce-risk, improve-esg]
+    explanation:
+      text: |
+        The AWS CAF names four business outcomes: reduce business risk, improve ESG performance, grow
+        revenue and increase operational efficiency. They are results the business wants, which is
+        why technical results and the four transformation domains (technology, process, organization,
+        product) don't count as outcomes.
+
+  - id: q13-outcome-new-cities
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: "The CAF aims at four business outcomes"
+    task: "1.3"
+    level: application
+    topics: [cloud-adoption-framework, caf-outcomes]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A regional bus company plans to sell tickets through a mobile app to riders in two nearby
+        cities it doesn't serve today. Its board lists this as a goal of moving to AWS. Which AWS CAF
+        business outcome does the goal serve?
+    choices:
+      - id: revenue
+        text: Grow revenue
+        variants:
+          - text: Increase revenue
+          - text: Earn more revenue
+        explanation:
+          text: Correct. New customers in a new market segment are what the CAF means by growing revenue.
+      - id: efficiency
+        text: Increase operational efficiency
+        variants:
+          - text: Make operations more efficient
+          - text: Raise operational efficiency
+        explanation:
+          text: Operational efficiency is about lower operating costs and more productivity. Selling to new riders brings in new income rather than cutting costs.
+      - id: risk
+        text: Reduce business risk
+        variants:
+          - text: Lower the risk the business carries
+          - text: Cut the business's risk
+        explanation:
+          text: Risk reduction is about reliability, performance and security. Nothing in the goal is about avoiding a failure.
+      - id: esg
+        text: Improve ESG performance
+        variants:
+          - text: Improve environmental, social and governance (ESG) performance
+          - text: Do better on ESG measures
+        explanation:
+          text: ESG performance is about sustainability and transparency, such as reporting energy use. Ticket sales in new cities don't touch it.
+    correct_answers: [revenue]
+    hint:
+      text: Ask what the goal changes for the business. Costs, risk, the environment, or where income comes from?
+    explanation:
+      text: |
+        Growing revenue covers new products and services, new customers and new market segments.
+        Riders in cities the company doesn't serve yet are a new market segment. Mapping a board's
+        goal to one of the four outcomes is how the CAF starts: from what the business wants, not from
+        technology.
+
+  - id: q13-domain-chain-order
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: "Four domains change, each enabling the next"
+    task: "1.3"
+    level: recall
+    topics: [cloud-adoption-framework, caf-domains]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        The AWS CAF describes four transformation domains that form a chain, each one enabling the
+        next. Which order is correct?
+    choices:
+      - id: product-first
+        text: Product, then organization, then process, then technology
+        variants:
+          - text: First product, next organization, then process, last technology
+          - text: Product enables organization, which enables process, then technology
+        explanation:
+          text: This is the chain backwards. New products are the end of the chain, made possible by the changes before them.
+      - id: technology-first
+        text: Technology, then process, then organization, then product
+        variants:
+          - text: First technology, next process, then organization, last product
+          - text: Technology enables process, which enables organization, then product
+        explanation:
+          text: Correct. Moving and modernizing technology makes better processes possible, which let teams reorganize, which lets the business offer new products.
+      - id: process-first
+        text: Process, then technology, then product, then organization
+        variants:
+          - text: First process, next technology, then product, last organization
+          - text: Process enables technology, which enables product, then organization
+        explanation:
+          text: The chain starts with technology. Processes are digitized and automated on top of the moved or modernized technology.
+      - id: organization-first
+        text: Organization, then technology, then product, then process
+        variants:
+          - text: First organization, next technology, then product, last process
+          - text: Organization enables technology, which enables product, then process
+        explanation:
+          text: The CAF puts organizational change third, after technology and process have changed.
+    correct_answers: [technology-first]
+    explanation:
+      text: |
+        The four transformation domains are technology, process, organization and product, and each
+        enables the next. Moving servers (technology) delivers some savings; most of the larger
+        outcomes come from what the move makes possible next: better processes, new ways of
+        organizing teams, and new products.
+
+  - id: q13-process-in-perspective-list
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: '"Process is one of the CAF perspectives" is wrong'
+    task: "1.3"
+    level: understanding
+    topics: [cloud-adoption-framework, caf-perspectives]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A study group's notes list the AWS CAF perspectives as Business, People, Process, Platform,
+        Security and Operations. What is wrong with the list?
+    choices:
+      - id: process-is-phase
+        text: Process is a CAF phase; Product is the missing perspective
+        variants:
+          - text: Process belongs to the phases, and Product should replace it
+          - text: Process is one of the phases; the list lacks Product
+        explanation:
+          text: The phases are Envision, Align, Launch and Scale, and Product is a transformation domain. Neither half of this correction holds.
+      - id: process-is-outcome
+        text: Process is a business outcome; Technology is the missing perspective
+        variants:
+          - text: Process belongs to the outcomes, and Technology should replace it
+          - text: Process is one of the outcomes; the list lacks Technology
+        explanation:
+          text: The outcomes are results such as growing revenue, and Technology, like Process, is a transformation domain.
+      - id: platform-is-domain
+        text: Platform is a transformation domain; Governance is the missing perspective
+        variants:
+          - text: Platform belongs to the domains, and Governance should replace it
+          - text: Platform is one of the domains; the list lacks Governance
+        explanation:
+          text: Governance is indeed missing, but Platform is a real perspective (infrastructure and applications). The item that doesn't belong is Process.
+      - id: process-is-domain
+        text: Process is a transformation domain; Governance is the missing perspective
+        variants:
+          - text: Process belongs to the domains, and Governance should replace it
+          - text: Process is one of the domains; the list lacks Governance
+        explanation:
+          text: Correct. Process is one of the four areas that change. The six perspectives are Business, People, Governance, Platform, Security and Operations.
+    correct_answers: [process-is-domain]
+    explanation:
+      text: |
+        The six AWS CAF perspectives are Business, People, Governance, Platform, Security and
+        Operations. Process is a transformation domain, one of the things that change. The wrong list
+        is tempting because "people, process, technology" is a familiar trio; the CAF uses all three
+        words, but in different parts.
+
+  - id: q13-perspectives-select-two
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: '"Process is one of the CAF perspectives" is wrong'
+    task: "1.3"
+    level: recall
+    topics: [cloud-adoption-framework, caf-perspectives]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A shipping company sets up one working group for each perspective of the AWS Cloud Adoption
+        Framework, named after that perspective. Which two working groups belong on its list?
+        (Select TWO.)
+    choices:
+      - id: governance
+        text: Governance
+        variants:
+          - text: A Governance group
+          - text: The Governance group
+        explanation:
+          text: Correct. Governance covers control and oversight, such as program management, benefits, risk and cloud spending.
+      - id: technology
+        text: Technology
+        variants:
+          - text: A Technology group
+          - text: The Technology group
+        explanation:
+          text: Technology is a transformation domain, the first link in the chain of change, not a perspective.
+      - id: operations
+        text: Operations
+        variants:
+          - text: An Operations group
+          - text: The Operations group
+        explanation:
+          text: Correct. Operations covers health and availability, such as observability, incident management and patching.
+      - id: product
+        text: Product
+        variants:
+          - text: A Product group
+          - text: The Product group
+        explanation:
+          text: Product is the last transformation domain, new offers and ways to earn money. It isn't a perspective.
+      - id: envision
+        text: Envision
+        variants:
+          - text: An Envision group
+          - text: The Envision group
+        explanation:
+          text: Envision is the first of the CAF's four phases, not a perspective.
+    correct_answers: [governance, operations]
+    explanation:
+      text: |
+        The six perspectives are Business, People, Governance, Platform, Security and Operations, each
+        a group of capabilities owned by its own stakeholders. Technology and Product are
+        transformation domains, and Envision is a phase. Keeping the CAF's parts apart (outcomes,
+        domains, perspectives, phases) is what most CAF questions test.
+
+  - id: q13-people-cloud-skills
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: "Six perspectives group the capabilities, each owned by different people"
+    task: "1.3"
+    level: application
+    topics: [cloud-adoption-framework, caf-perspectives]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A newspaper publisher's IT staff have only ever run the company's own servers. Before the
+        move to AWS, the CIO wants a plan to build their cloud skills and to redesign some of their
+        roles. Which AWS CAF perspective deals with this concern?
+    choices:
+      - id: people
+        text: People
+        variants:
+          - text: The People perspective
+          - text: People, as a CAF perspective
+        explanation:
+          text: Correct. Cloud fluency and workforce transformation are People capabilities. The concern is about skills and roles, not technology.
+      - id: platform
+        text: Platform
+        variants:
+          - text: The Platform perspective
+          - text: Platform, as a CAF perspective
+        explanation:
+          text: The staff are technical, which makes Platform tempting. But Platform covers building the environment itself, not the skills of the people who run it.
+      - id: operations
+        text: Operations
+        variants:
+          - text: The Operations perspective
+          - text: Operations, as a CAF perspective
+        explanation:
+          text: Operations keeps services healthy through monitoring, incident management and patching. Training staff and changing roles isn't part of it.
+      - id: governance
+        text: Governance
+        variants:
+          - text: The Governance perspective
+          - text: Governance, as a CAF perspective
+        explanation:
+          text: Governance oversees the program, its benefits, spending and risk. It doesn't own building people's skills.
+    correct_answers: [people]
+    hint:
+      text: The people involved are technical. Is the concern about technology, or about the people?
+    explanation:
+      text: |
+        The People perspective covers culture and change: capabilities such as cloud fluency (building
+        the skills to use the cloud) and workforce transformation (planning how roles and talent
+        change). A concern about staff skills and roles belongs there even when the staff are
+        engineers.
+
+  - id: q13-security-records-audit
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: "Six perspectives group the capabilities, each owned by different people"
+    task: "1.3"
+    level: application
+    topics: [cloud-adoption-framework, caf-perspectives]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A pharmacy chain's compliance lead says that after the move, prescription records must stay
+        encrypted, only pharmacists may read them, and the chain must still pass its health-privacy
+        audit. Which AWS CAF perspective deals with this concern?
+    choices:
+      - id: governance
+        text: Governance
+        variants:
+          - text: The Governance perspective
+          - text: Governance, as a CAF perspective
+        explanation:
+          text: Governance has risk management and oversees the program, which makes it tempting. But protecting data, controlling who reads it and proving compliance are Security's capabilities.
+      - id: operations
+        text: Operations
+        variants:
+          - text: The Operations perspective
+          - text: Operations, as a CAF perspective
+        explanation:
+          text: Operations keeps services healthy and available. The concern here is about protecting data, not about the service running well.
+      - id: security
+        text: Security
+        variants:
+          - text: The Security perspective
+          - text: Security, as a CAF perspective
+        explanation:
+          text: Correct. Identity and access management, data protection and compliance and assurance are Security capabilities.
+      - id: platform
+        text: Platform
+        variants:
+          - text: The Platform perspective
+          - text: Platform, as a CAF perspective
+        explanation:
+          text: Platform builds and standardizes the environment. Encryption and access rules for sensitive records belong to Security.
+    correct_answers: [security]
+    hint:
+      text: Ask what is at stake if the concern isn't handled.
+    explanation:
+      text: |
+        The Security perspective's focus is compliance and assurance. Its capabilities include
+        identity and access management, data protection and threat detection, and its stakeholders
+        include the chief compliance officer and internal audit. Protecting data and proving
+        compliance is what's at stake here, so Security owns it.
+
+  - id: q13-operations-alerts-patching
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: "Map a concern by asking what is at stake, not who is asking"
+    task: "1.3"
+    level: application
+    topics: [cloud-adoption-framework, caf-perspectives]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A ferry operator's IT manager asks: "When the booking site slows down at night, who gets
+        alerted? And how do we keep the servers patched every month?" Which AWS CAF perspective deals
+        with these questions?
+    choices:
+      - id: security
+        text: Security
+        variants:
+          - text: The Security perspective
+          - text: Security, as a CAF perspective
+        explanation:
+          text: Security cares about vulnerabilities, but alerts on slow service and routine patching are about keeping the service healthy, which is Operations' job.
+      - id: platform
+        text: Platform
+        variants:
+          - text: The Platform perspective
+          - text: Platform, as a CAF perspective
+        explanation:
+          text: Platform builds and standardizes the environment. Running it day to day, with alerts and patches, is Operations.
+      - id: people
+        text: People
+        variants:
+          - text: The People perspective
+          - text: People, as a CAF perspective
+        explanation:
+          text: People covers skills, culture and organizational change. "Who gets alerted" here is about the incident process, not about training anyone.
+      - id: operations
+        text: Operations
+        variants:
+          - text: The Operations perspective
+          - text: Operations, as a CAF perspective
+        explanation:
+          text: Correct. Observability, incident and problem management, and patch management are Operations capabilities.
+    correct_answers: [operations]
+    hint:
+      text: Is the worry about building something, protecting something, or keeping something running?
+    explanation:
+      text: |
+        The Operations perspective's focus is health and availability. Watching for a slow service,
+        alerting someone, handling the incident and applying patches as routine work are all
+        Operations capabilities. Security has the related "incident response", but that is about
+        security events, not a slow booking site.
+
+  - id: q13-platform-standard-build
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: "Map a concern by asking what is at stake, not who is asking"
+    task: "1.3"
+    level: application
+    topics: [cloud-adoption-framework, caf-perspectives]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A university's cloud architect wants every new research team to receive AWS accounts, a
+        network and a deployment pipeline built from one standard design, the same way every time.
+        Which AWS CAF perspective deals with this goal?
+    choices:
+      - id: operations
+        text: Operations
+        variants:
+          - text: The Operations perspective
+          - text: Operations, as a CAF perspective
+        explanation:
+          text: Operations runs services once they exist. Designing a standard, repeatable environment comes before that.
+      - id: platform
+        text: Platform
+        variants:
+          - text: The Platform perspective
+          - text: Platform, as a CAF perspective
+        explanation:
+          text: Correct. Platform architecture, provisioning and orchestration, and continuous integration and delivery are Platform capabilities.
+      - id: governance
+        text: Governance
+        variants:
+          - text: The Governance perspective
+          - text: Governance, as a CAF perspective
+        explanation:
+          text: "\"The same way every time\" sounds like control, but Governance oversees the program's benefits, spending and risk. Building the environment is Platform's."
+      - id: business
+        text: Business
+        variants:
+          - text: The Business perspective
+          - text: Business, as a CAF perspective
+        explanation:
+          text: Business decides what is worth changing and in what order. It doesn't design accounts, networks or pipelines.
+    correct_answers: [platform]
+    hint:
+      text: The goal is to build something. Which perspective builds?
+    explanation:
+      text: |
+        The Platform perspective's focus is infrastructure and applications. A standard way to set up
+        accounts, networks and delivery pipelines is its platform architecture and provisioning
+        capabilities at work. Operations then keeps what Platform builds healthy.
+
+  - id: q13-cfo-raises-training
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: "Map a concern by asking what is at stake, not who is asking"
+    task: "1.3"
+    level: application
+    topics: [cloud-adoption-framework, caf-perspectives]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A hospital group's chief financial officer says: "Our billing clerks have used the same
+        desktop software for 15 years. Who will train them on the new cloud-based billing tools and
+        help them through the change?" Which AWS CAF perspective deals with this concern?
+    choices:
+      - id: business
+        text: Business
+        variants:
+          - text: The Business perspective
+          - text: Business, as a CAF perspective
+        explanation:
+          text: The CFO is a Business stakeholder, which makes this tempting. But a job title doesn't decide the perspective; the concern does.
+      - id: governance
+        text: Governance
+        variants:
+          - text: The Governance perspective
+          - text: Governance, as a CAF perspective
+        explanation:
+          text: The CFO is also a Governance stakeholder, and "billing" sounds like money. The concern, though, is about people learning new tools.
+      - id: people
+        text: People
+        variants:
+          - text: The People perspective
+          - text: People, as a CAF perspective
+        explanation:
+          text: Correct. Training staff and helping them through change is the People perspective, whoever raises it.
+      - id: operations
+        text: Operations
+        variants:
+          - text: The Operations perspective
+          - text: Operations, as a CAF perspective
+        explanation:
+          text: Operations keeps services healthy. Nothing here is about a service failing or being monitored.
+    correct_answers: [people]
+    hint:
+      text: Ignore who is speaking. What is the concern about?
+    explanation:
+      text: |
+        Map a concern by what is at stake, not by who raises it. Several job titles appear in more
+        than one perspective: the CFO is a stakeholder in both Business and Governance. The subject
+        here is staff skills and change, so the People perspective owns it.
+
+  - id: q13-governance-branch-spend
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: "Business or Governance: deciding what to do, or overseeing how it goes"
+    task: "1.3"
+    level: application
+    topics: [cloud-adoption-framework, caf-perspectives, business-vs-governance]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Six months into its migration, a travel agency's finance director wants each branch's AWS
+        spending reported monthly and kept within budget, and wants to be sure the company isn't
+        paying twice for the same software licenses. Which AWS CAF perspective deals with this?
+    choices:
+      - id: governance
+        text: Governance
+        variants:
+          - text: The Governance perspective
+          - text: Governance, as a CAF perspective
+        explanation:
+          text: Correct. Cloud financial management, a Governance capability, tracks and controls spending and covers the licenses you own and those included with cloud resources.
+      - id: business
+        text: Business
+        variants:
+          - text: The Business perspective
+          - text: Business, as a CAF perspective
+        explanation:
+          text: Money and a finance director suggest Business. But Business decides whether a move is worth paying for; tracking and controlling spending once it starts is Governance.
+      - id: operations
+        text: Operations
+        variants:
+          - text: The Operations perspective
+          - text: Operations, as a CAF perspective
+        explanation:
+          text: Operations watches the health of services, not spending against a budget.
+      - id: platform
+        text: Platform
+        variants:
+          - text: The Platform perspective
+          - text: Platform, as a CAF perspective
+        explanation:
+          text: Platform builds the environment. Reporting and controlling its cost is a Governance capability.
+    correct_answers: [governance]
+    hint:
+      text: The decision to move was made months ago. Is this about choosing what to do, or overseeing how it goes?
+    explanation:
+      text: |
+        Business decides what is worth doing; Governance oversees how it goes. Reporting spend by
+        branch, holding it to a budget and managing licenses are part of Governance's cloud financial
+        management capability. That's the line between the two perspectives that people mix up most.
+
+  - id: q13-business-which-first
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: "Business or Governance: deciding what to do, or overseeing how it goes"
+    task: "1.3"
+    level: application
+    topics: [cloud-adoption-framework, caf-perspectives, business-vs-governance]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Before any migration budget is approved, a supermarket chain's chief executive asks which of
+        its applications would bring the most value if moved first, and whether the move is worth
+        paying for at all. Which AWS CAF perspective deals with these questions?
+    choices:
+      - id: people
+        text: People
+        variants:
+          - text: The People perspective
+          - text: People, as a CAF perspective
+        explanation:
+          text: People covers skills, culture and organizational change, not which investments to make.
+      - id: governance
+        text: Governance
+        variants:
+          - text: The Governance perspective
+          - text: Governance, as a CAF perspective
+        explanation:
+          text: Governance tracks spending and benefits once the work is approved. Deciding what to fund, and in what order, comes before that.
+      - id: platform
+        text: Platform
+        variants:
+          - text: The Platform perspective
+          - text: Platform, as a CAF perspective
+        explanation:
+          text: Platform builds the cloud environment. It doesn't decide which applications are worth moving.
+      - id: business
+        text: Business
+        variants:
+          - text: The Business perspective
+          - text: Business, as a CAF perspective
+        explanation:
+          text: Correct. Strategy management and portfolio management, which chooses and orders initiatives for their value, are Business capabilities.
+    correct_answers: [business]
+    hint:
+      text: Nothing has been approved yet. Is this choosing what to do, or overseeing how it goes?
+    explanation:
+      text: |
+        The Business perspective asks what to change, in what order, and why it is worth it. Its
+        portfolio management capability chooses and orders initiatives and builds the business case.
+        Once the money is approved, Governance takes over tracking spend and benefits.
+
+  - id: q13-governance-two-concerns
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: "Business or Governance: deciding what to do, or overseeing how it goes"
+    task: "1.3"
+    level: understanding
+    topics: [cloud-adoption-framework, caf-perspectives, business-vs-governance]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        Which two concerns belong to the Governance perspective of the AWS CAF? (Select TWO.)
+    choices:
+      - id: coordinate-projects
+        text: Coordinating migration projects that keep delaying each other
+        variants:
+          - text: Keeping related migration projects from blocking one another
+          - text: Coordinating migration projects that hold each other up
+        explanation:
+          text: Correct. Coordinating related projects is program and project management, a Governance capability.
+      - id: new-products
+        text: Choosing which new products the cloud should let the business offer
+        variants:
+          - text: Deciding which new offers the cloud should make possible
+          - text: Picking the new products the business should launch on the cloud
+        explanation:
+          text: Choosing what to offer is Business, through capabilities such as innovation management and product management.
+      - id: savings-arrive
+        text: Measuring whether the savings promised in the business case arrive
+        variants:
+          - text: Checking that the business case's promised savings are realized
+          - text: Tracking whether the promised savings actually show up
+        explanation:
+          text: Correct. Making sure the benefits of the investment are realized is benefits management, a Governance capability.
+      - id: build-skills
+        text: Building cloud skills among the operations staff
+        variants:
+          - text: Training the operations team to work in the cloud
+          - text: Giving operations staff the skills the cloud needs
+        explanation:
+          text: Skills and training belong to the People perspective.
+      - id: alert-on-call
+        text: Alerting the on-call engineer when a service slows down
+        variants:
+          - text: Paging the engineer on duty when a service gets slow
+          - text: Notifying the on-call engineer about a slow service
+        explanation:
+          text: Alerts and incidents belong to the Operations perspective.
+    correct_answers: [coordinate-projects, savings-arrive]
+    explanation:
+      text: |
+        Governance is control and oversight: program and project management, benefits management,
+        risk management and cloud financial management, among others. It runs the work once it is
+        decided. Choosing what to do is Business; skills are People; alerts are Operations.
+
+  - id: q13-phase-order
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: "Four phases, repeated: Envision, Align, Launch, Scale"
+    task: "1.3"
+    level: recall
+    topics: [cloud-adoption-framework, caf-phases]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Which list gives the AWS CAF's four phases in the order the CAF suggests working through them?
+    choices:
+      - id: assess-mobilize
+        text: Assess, mobilize, migrate, modernize
+        variants:
+          - text: Assess, then mobilize, then migrate, then modernize
+          - text: First assess, next mobilize, then migrate, last modernize
+        explanation:
+          text: These words come from the AWS Migration Acceleration Program, whose three phases are assess, mobilize, and migrate and modernize. They aren't the CAF's phases.
+      - id: envision-align
+        text: Envision, align, launch, scale
+        variants:
+          - text: Envision, then align, then launch, then scale
+          - text: First envision, next align, then launch, last scale
+        explanation:
+          text: Correct. Envision chooses the outcomes, Align finds the gaps, Launch delivers pilots, and Scale expands them; then the cycle repeats.
+      - id: align-envision
+        text: Align, envision, scale, launch
+        variants:
+          - text: Align, then envision, then scale, then launch
+          - text: First align, next envision, then scale, last launch
+        explanation:
+          text: The right names in the wrong order. You can't find capability gaps (Align) before choosing the outcomes (Envision), or scale pilots before launching them.
+      - id: plan-build
+        text: Plan, build, launch, operate
+        variants:
+          - text: Plan, then build, then launch, then operate
+          - text: First plan, next build, then launch, last operate
+        explanation:
+          text: This sounds like a project life cycle, but only "launch" is a CAF phase name.
+    correct_answers: [envision-align]
+    explanation:
+      text: |
+        The CAF's four phases are Envision, Align, Launch and Scale, repeated for each round of change
+        so that every round shows value quickly. Don't confuse them with the Migration Acceleration
+        Program's phases (assess, mobilize, and migrate and modernize).
+
+  - id: q13-phase-align-workshops
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: "Four phases, repeated: Envision, Align, Launch, Scale"
+    task: "1.3"
+    level: application
+    topics: [cloud-adoption-framework, caf-phases]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A city council has agreed what it wants from the cloud. Next, workshops with leaders from all
+        six AWS CAF perspectives find that nobody can read a cloud bill and that the security team has
+        no cloud experience, and they plan how to close those gaps. Which phase is the council in?
+    choices:
+      - id: envision
+        text: Envision
+        variants:
+          - text: The Envision phase
+          - text: Envision, the CAF phase
+        explanation:
+          text: Envision is where the council chose its outcomes, which the question says is already done.
+      - id: launch
+        text: Launch
+        variants:
+          - text: The Launch phase
+          - text: Launch, the CAF phase
+        explanation:
+          text: Launch delivers pilots in production. Nothing has been built or moved yet.
+      - id: align
+        text: Align
+        variants:
+          - text: The Align phase
+          - text: Align, the CAF phase
+        explanation:
+          text: Correct. Align finds capability gaps across the six perspectives, surfaces concerns and plans how to close the gaps.
+      - id: scale
+        text: Scale
+        variants:
+          - text: The Scale phase
+          - text: Scale, the CAF phase
+        explanation:
+          text: Scale expands pilots to the size the business needs. It comes after a pilot has shown value.
+    correct_answers: [align]
+    hint:
+      text: The goals are set, nothing has moved yet, and the work is finding what's missing.
+    explanation:
+      text: |
+        In the Align phase, the CAF's capability lists are put to work: leaders from all six
+        perspectives find the gaps and dependencies and plan how to close them. Here, a gap in
+        reading cloud bills is Governance and a gap in cloud security skills touches People and
+        Security.
+
+  - id: q13-caf-vs-seven-rs
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: "The CAF and the 7 Rs work at different levels"
+    task: "1.3"
+    level: understanding
+    topics: [cloud-adoption-framework, migration-strategies]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Which statement correctly contrasts the AWS CAF with the 7 Rs migration strategies?
+    choices:
+      - id: org-vs-app
+        text: The CAF works on the whole organization; the 7 Rs decide what happens to each application
+        variants:
+          - text: The CAF looks at the organization's readiness; the 7 Rs settle each application's fate
+          - text: The CAF is about the whole organization; the 7 Rs work one application at a time
+        explanation:
+          text: Correct. The CAF asks whether the organization is ready and what it wants; the 7 Rs choose a strategy for one application.
+      - id: app-vs-org
+        text: The CAF decides what happens to each application; the 7 Rs judge the organization's readiness
+        variants:
+          - text: The CAF settles each application's fate; the 7 Rs look at the organization's readiness
+          - text: The CAF works one application at a time; the 7 Rs are about the whole organization
+        explanation:
+          text: This swaps the two levels. Readiness is the CAF's subject; one application's fate is a 7 Rs decision.
+      - id: pillars
+        text: The CAF reviews one workload against six pillars; the 7 Rs add a seventh pillar to it
+        variants:
+          - text: The CAF checks a single workload against six pillars; the 7 Rs extend those pillars to seven
+          - text: The CAF judges one workload by six pillars; the 7 Rs are those pillars plus one more
+        explanation:
+          text: Reviewing one workload against six pillars is the Well-Architected Framework. The 7 Rs aren't pillars.
+      - id: replaced
+        text: The 7 Rs replaced the CAF in AWS's guidance; the CAF is now only of historical interest
+        variants:
+          - text: AWS's guidance swapped the CAF for the 7 Rs; the CAF now matters only as history
+          - text: The CAF was superseded by the 7 Rs; AWS's guidance no longer relies on it
+        explanation:
+          text: Both are current. The 7 Rs are used inside the CAF, by the Business perspective's portfolio management capability.
+    correct_answers: [org-vs-app]
+    explanation:
+      text: |
+        The CAF works on the organization: its readiness, its outcomes and a roadmap. The 7 Rs work on
+        one application at a time: retire it, keep it, move it as it is, or change it on the way. They
+        meet in the Business perspective's portfolio management capability, which uses the 7 Rs to
+        sort the existing applications.
+
+  - id: q13-capability-uses-seven-rs
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: "The CAF and the 7 Rs work at different levels"
+    task: "1.3"
+    level: recall
+    topics: [cloud-adoption-framework, migration-strategies]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        In the AWS CAF, which capability uses the 7 Rs to sort an organization's existing
+        applications and build a business case?
+    choices:
+      - id: benefits
+        text: Benefits management, in the Governance perspective
+        variants:
+          - text: The Governance perspective's benefits management
+          - text: Governance's benefits management capability
+        explanation:
+          text: Benefits management checks that promised benefits arrive after the decisions are made. It doesn't sort the applications.
+      - id: platform-architecture
+        text: Platform architecture, in the Platform perspective
+        variants:
+          - text: The Platform perspective's platform architecture
+          - text: Platform's platform architecture capability
+        explanation:
+          text: Platform architecture designs the cloud environment, not what happens to each existing application.
+      - id: change-acceleration
+        text: Change acceleration, in the People perspective
+        variants:
+          - text: The People perspective's change acceleration
+          - text: People's change acceleration capability
+        explanation:
+          text: Change acceleration helps people through change. It doesn't decide the fate of applications.
+      - id: portfolio
+        text: Portfolio management, in the Business perspective
+        variants:
+          - text: The Business perspective's portfolio management
+          - text: Business's portfolio management capability
+        explanation:
+          text: Correct. It chooses and orders initiatives, and uses discovery tools and the 7 Rs to sort the applications and build the case.
+    correct_answers: [portfolio]
+    explanation:
+      text: |
+        The Business perspective's portfolio management capability is where the CAF and the 7 Rs
+        meet: it uses automated discovery tools and the 7 Rs to sort the application portfolio and
+        build a business case. So the 7 Rs are a tool used inside the CAF, not a part of its
+        structure.
+
+  - id: q13-review-workload-design
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: "The CAF and the 7 Rs work at different levels"
+    task: "1.3"
+    level: understanding
+    topics: [cloud-adoption-framework, well-architected]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A charity's donation website has run on AWS for a year. Its new technical lead wants to
+        compare that one workload's design with AWS's good practice, pillar by pillar, starting with
+        reliability and cost. What should she use?
+    choices:
+      - id: readiness-assessment
+        text: A Migration Readiness Assessment
+        variants:
+          - text: An AWS Migration Readiness Assessment
+          - text: A Migration Readiness Assessment from AWS
+        explanation:
+          text: A Migration Readiness Assessment uses the CAF to judge how ready a whole organization is to migrate. This workload has already moved.
+      - id: align-workshops
+        text: Workshops from the CAF's Align phase
+        variants:
+          - text: The AWS CAF's Align-phase workshops
+          - text: Align-phase workshops from the AWS CAF
+        explanation:
+          text: Align workshops find capability gaps across the organization's six perspectives. They don't review one workload's design.
+      - id: well-architected-review
+        text: A review in the AWS Well-Architected Tool
+        variants:
+          - text: An AWS Well-Architected Tool review
+          - text: A workload review in the Well-Architected Tool
+        explanation:
+          text: Correct. The Well-Architected Framework reviews one workload against six pillars, including reliability and cost optimization, and the tool runs the review.
+      - id: evaluator-assessment
+        text: A Migration Evaluator assessment
+        variants:
+          - text: An assessment from Migration Evaluator
+          - text: A Migration Evaluator business case
+        explanation:
+          text: Migration Evaluator projects what on-premises servers would cost on AWS. It doesn't judge a running workload's design.
+    correct_answers: [well-architected-review]
+    explanation:
+      text: |
+        Three levels are easy to blur. The CAF, and assessments built on it, work on the
+        organization's readiness; the 7 Rs decide what happens to each application during a
+        migration; the Well-Architected Framework reviews one workload's design against six pillars.
+        A design check of one running system is a Well-Architected review.
+
+  # ---------------------------------------------------------------------------------------------
+  # Lesson 13.02, Seven migration strategies (and Simulation S16)
+  # ---------------------------------------------------------------------------------------------
+
+  - id: q13-which-are-seven-rs
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: '"There are six Rs" is wrong'
+    task: "1.3"
+    level: recall
+    topics: [migration-strategies]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        Which two names are among AWS's seven migration strategies, the 7 Rs? (Select TWO.)
+    choices:
+      - id: relocate
+        text: Relocate
+        variants:
+          - text: The relocate strategy
+          - text: Relocate, as a migration strategy
+        explanation:
+          text: Correct. Relocate is the newest of the seven, added after AWS's 2016 list of six.
+      - id: replicate
+        text: Replicate
+        variants:
+          - text: The replicate strategy
+          - text: Replicate, as a migration strategy
+        explanation:
+          text: Database replication is a technique used inside a strategy, for example to replatform a database with little downtime. It isn't one of the 7 Rs.
+      - id: retain
+        text: Retain
+        variants:
+          - text: The retain strategy
+          - text: Retain, as a migration strategy
+        explanation:
+          text: Correct. Retain keeps an application where it is for now, perhaps to move it later.
+      - id: reinstall
+        text: Reinstall
+        variants:
+          - text: The reinstall strategy
+          - text: Reinstall, as a migration strategy
+        explanation:
+          text: There's no "reinstall" strategy. Moving a server unchanged is rehost.
+      - id: resize
+        text: Resize
+        variants:
+          - text: The resize strategy
+          - text: Resize, as a migration strategy
+        explanation:
+          text: Choosing the right size is rightsizing, a cost practice used before and after a move. It isn't one of the 7 Rs.
+    correct_answers: [relocate, retain]
+    explanation:
+      text: |
+        AWS's current guidance lists seven strategies: retire, retain, rehost, relocate, repurchase,
+        replatform, and refactor or re-architect. The 2016 list had six; relocate is the one added
+        since. Words such as "replicate" and "resize" describe real migration work, but not
+        strategies.
+
+  - id: q13-retire-feedback-site
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: "Retire and retain: decide first what doesn't move"
+    task: "1.3"
+    level: application
+    topics: [migration-strategies, retire]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A university's old course-feedback website has had no inbound connections for six months, and
+        it runs on an operating system that no longer gets security updates. The feedback it holds
+        must be kept for five years. Which migration strategy fits the website?
+    choices:
+      - id: retain
+        text: Retain
+        variants:
+          - text: The retain strategy
+          - text: Retain it
+        explanation:
+          text: Keeping the data isn't a reason to keep the application. Nothing here, such as compliance or special hardware, ties the website to where it is.
+      - id: retire
+        text: Retire
+        variants:
+          - text: The retire strategy
+          - text: Retire it
+        explanation:
+          text: Correct. No connections for over 90 days and an unsupported operating system are both AWS criteria for retiring. Archive the feedback first, then shut the servers down.
+      - id: rehost
+        text: Rehost
+        variants:
+          - text: The rehost strategy
+          - text: Rehost it
+        explanation:
+          text: Rehosting would carry an unpatched operating system to AWS and keep paying to host something nobody uses.
+      - id: replatform
+        text: Replatform
+        variants:
+          - text: The replatform strategy
+          - text: Replatform it
+        explanation:
+          text: Replatforming makes an application run better on AWS. Improving an application nobody uses has no business value.
+    correct_answers: [retire]
+    hint:
+      text: Separate the data, which has value, from the application, which may not.
+    explanation:
+      text: |
+        Retire means decommissioning or archiving an application so its servers can be shut down.
+        AWS's criteria include no business value, no connections in the last 90 days, and an
+        operating system that is out of support. The data that must be kept goes to an archive, such
+        as a low-cost S3 storage class, before the application is switched off.
+
+  - id: q13-idle-invoicing-app
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: "Retire and retain: decide first what doesn't move"
+    task: "1.3"
+    level: understanding
+    topics: [migration-strategies, retire]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company's invoicing application averaged 9% CPU and memory use over the last 90 days, so by
+        AWS's criteria it's an idle application. For two days at each month end it works hard and
+        sends every customer's invoice. What should the migration team conclude?
+    choices:
+      - id: retire-idle
+        text: "Retire it: 90 days of idle use usually outweighs two busy days"
+        variants:
+          - text: "Retire it: the 90-day idle figure generally counts for more than a short peak"
+          - text: "Switch it off: idle use over 90 days tends to matter more than two busy days"
+        explanation:
+          text: Low use is a reason to consider retiring, not a weight that usually beats business value. An application that sends every invoice clearly still has value.
+      - id: refactor-idle
+        text: "Refactor it: idle applications are usually best redesigned first"
+        variants:
+          - text: "Refactor it: an idle application generally needs redesigning before it moves"
+          - text: "Redesign it: idle applications tend to be best rebuilt before a move"
+        explanation:
+          text: Nothing in AWS's criteria ties low use to refactoring, usually or otherwise. Refactoring is driven by strong business demand that the current design blocks.
+      - id: value-decides
+        text: "Don't retire it: here its business value outweighs the low use"
+        variants:
+          - text: "Keep it in service: here its business value matters more than its low use"
+          - text: "Don't switch it off: in this case business value, not the idle figure, decides"
+        explanation:
+          text: Correct. Low use is a reason to ask questions. Whether the application still has business value decides, and this one does.
+      - id: retain-runs-poorly
+        text: "Retain it: low use usually means it won't run well on AWS"
+        variants:
+          - text: "Retain it: idle applications generally run poorly on AWS"
+          - text: "Keep it where it is: low use tends to mean it won't suit AWS"
+        explanation:
+          text: How busy an application is says nothing about how well it runs on AWS. Low use isn't a reason in itself to keep an application where it is.
+    correct_answers: [value-decides]
+    explanation:
+      text: |
+        AWS calls an application averaging below 5% CPU and memory use a zombie, and one averaging 5
+        to 20% over 90 days idle. It lists low use under both retire and retain, because low use
+        alone doesn't decide anything. The deciding question is whether the application still has
+        business value; one that bills every customer each month does.
+
+  - id: q13-retain-bottling-line
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: "Retire and retain: decide first what doesn't move"
+    task: "1.3"
+    level: application
+    topics: [migration-strategies, retain]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A brewery is moving most of its systems to AWS. Its bottling-line control software talks
+        directly to the machines on the bottling line in the brewery. Which migration strategy fits
+        the control software?
+    choices:
+      - id: rehost
+        text: Rehost
+        variants:
+          - text: The rehost strategy
+          - text: Rehost it
+        explanation:
+          text: Rehosting would put the software on EC2, far from the machines it has to talk to directly.
+      - id: relocate
+        text: Relocate
+        variants:
+          - text: The relocate strategy
+          - text: Relocate it
+        explanation:
+          text: Relocate moves a whole platform, such as VMware, to its AWS version. The tie here is to physical machines, which no platform move can carry.
+      - id: retire
+        text: Retire
+        variants:
+          - text: The retire strategy
+          - text: Retire it
+        explanation:
+          text: The software runs the bottling line every day, so it still has business value.
+      - id: retain
+        text: Retain
+        variants:
+          - text: The retain strategy
+          - text: Retain it
+        explanation:
+          text: Correct. A physical dependency on special hardware with no cloud equivalent is one of AWS's reasons to retain.
+    correct_answers: [retain]
+    hint:
+      text: What does the software depend on that can't go to a cloud data center?
+    explanation:
+      text: |
+        Retain means keeping an application where it is, at least for now. AWS's criteria include
+        physical dependencies: an application that relies on special hardware with no cloud
+        equivalent, such as machines in a factory. The rest of the brewery's systems can still move.
+
+  - id: q13-retain-reasons-select-two
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: "Retire and retain: decide first what doesn't move"
+    task: "1.3"
+    level: understanding
+    topics: [migration-strategies, retain]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        AWS gives criteria for each migration strategy. Which two are reasons AWS gives to retain an
+        application for now? (Select TWO.)
+    choices:
+      - id: data-must-stay
+        text: Rules require its data to stay where it is
+        variants:
+          - text: Compliance rules say where its data must stay
+          - text: A regulation keeps its data in its current location
+        explanation:
+          text: Correct. Compliance rules on where data must stay are AWS's first retain criterion.
+      - id: no-connections
+        text: Nobody has connected to it in the last 90 days
+        variants:
+          - text: It has had no inbound connections for 90 days
+          - text: No one has used it in the past 90 days
+        explanation:
+          text: No connections in 90 days is a criterion for retiring an application, not for keeping it.
+      - id: saas-coming
+        text: The vendor's SaaS version isn't released yet
+        variants:
+          - text: Its vendor hasn't yet released a SaaS version
+          - text: A software-as-a-service version is still on its way
+        explanation:
+          text: Correct. Waiting for a SaaS version the vendor hasn't released is a retain criterion; once it ships, repurchase becomes the likely choice.
+      - id: needs-scale
+        text: Strong business demand requires it to scale
+        variants:
+          - text: The business urgently needs it to scale much further
+          - text: Strong demand means it must handle far more users
+        explanation:
+          text: Strong business demand to scale is what drives refactoring.
+      - id: os-unsupported
+        text: Its operating system is out of support
+        variants:
+          - text: Its operating system no longer gets support
+          - text: It runs on an unsupported operating system
+        explanation:
+          text: An unsupported operating system is a security risk, and AWS lists it as a reason to retire.
+    correct_answers: [data-must-stay, saas-coming]
+    explanation:
+      text: |
+        AWS's retain criteria include compliance, high risk, dependencies on applications that must
+        move first, a recent upgrade, no business value in moving, waiting for a SaaS version,
+        physical dependencies, and mainframe or non-x86 Unix systems. Unused applications and
+        unsupported operating systems point to retire; strong demand to scale points to refactor.
+
+  - id: q13-rehost-colocation-exit
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: "Rehost and relocate: move without changing the application"
+    task: "1.3"
+    level: application
+    topics: [migration-strategies, rehost]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A media company must leave a colocation facility in four months. It runs 25 physical Windows
+        and Linux servers, has no time to change its applications, and plans to improve them once
+        they run on AWS. Which migration strategy fits?
+    choices:
+      - id: refactor
+        text: Refactor
+        variants:
+          - text: The refactor strategy
+          - text: Refactor the applications
+        explanation:
+          text: Refactoring redesigns applications, the most complex and costly strategy. With four months and no time for changes, it doesn't fit.
+      - id: rehost
+        text: Rehost
+        variants:
+          - text: The rehost strategy
+          - text: Rehost the applications
+        explanation:
+          text: Correct. Rehosting, or lift and shift, moves each server unchanged onto EC2, and the company can optimize afterwards.
+      - id: repurchase
+        text: Repurchase
+        variants:
+          - text: The repurchase strategy
+          - text: Repurchase the applications
+        explanation:
+          text: Repurchase replaces an application with a different product. Nothing suggests a product to buy, and the company wants to keep its applications.
+      - id: relocate
+        text: Relocate
+        variants:
+          - text: The relocate strategy
+          - text: Relocate the applications
+        explanation:
+          text: Relocate moves a whole platform, such as VMware, to its AWS version. These are physical servers, with no platform to carry over.
+    correct_answers: [rehost]
+    hint:
+      text: Physical servers, a deadline, and no changes now. Which strategy moves servers one by one as they are?
+    explanation:
+      text: |
+        Rehost moves an application to AWS without changing it: each server becomes an EC2 instance
+        running the same operating system and software. It gains no cloud optimizations at first,
+        but an application already on AWS is easier to improve later. AWS's main service for it is
+        AWS Transform MGN, which the exam calls AWS Application Migration Service.
+
+  - id: q13-relocate-county-vmware
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: "Rehost and relocate: move without changing the application"
+    task: "1.3"
+    level: application
+    topics: [migration-strategies, relocate]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        An airline's administrators look after 300 virtual machines on VMware vSphere. Under its
+        plan, they will keep managing the same virtual machines, with the tools they use today, but
+        on AWS infrastructure instead of the airline's own hardware. Which of the 7 Rs is this plan?
+    choices:
+      - id: rehost
+        text: Rehost
+        variants:
+          - text: The rehost strategy
+          - text: A rehost
+        explanation:
+          text: Rehosting would turn each virtual machine into an EC2 instance, one by one, and change how the administrators run them. The plan keeps the VMware platform.
+      - id: relocate
+        text: Relocate
+        variants:
+          - text: The relocate strategy
+          - text: A relocate
+        explanation:
+          text: Correct. Relocate moves a whole platform to a cloud version of it, here a VMware-based service on AWS such as Amazon Elastic VMware Service, and operations stay the same.
+      - id: repurchase
+        text: Repurchase
+        variants:
+          - text: The repurchase strategy
+          - text: A repurchase
+        explanation:
+          text: Repurchase swaps applications for different products. The airline keeps its own virtual machines and what runs on them.
+      - id: retain
+        text: Retain
+        variants:
+          - text: The retain strategy
+          - text: A retain
+        explanation:
+          text: Retain keeps applications where they are. This plan moves them off the airline's hardware.
+    correct_answers: [relocate]
+    hint:
+      text: Ask what moves as a unit, the servers one by one, or the platform they run on.
+    explanation:
+      text: |
+        Relocate moves many servers at once from an on-premises platform to a cloud version of the
+        same platform: no new hardware, no rewriting, and the same way of operating. AWS rates it the
+        fastest way to get a workload running and operated on AWS. Amazon Elastic VMware Service
+        isn't on the exam's service list; the strategy is.
+
+  - id: q13-relocate-rds-other-account
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: "Rehost and relocate: move without changing the application"
+    task: "1.3"
+    level: understanding
+    topics: [migration-strategies, relocate]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        While reorganizing its AWS accounts, a company moves an Amazon RDS database from one AWS
+        account to another. Neither the database nor the application changes. Which of the 7 Rs
+        describes this move?
+    choices:
+      - id: relocate
+        text: Relocate
+        variants:
+          - text: The relocate strategy
+          - text: Relocate, among the 7 Rs
+        explanation:
+          text: Correct. AWS's relocate strategy also covers moving resources to a different VPC, AWS Region or AWS account.
+      - id: rehost
+        text: Rehost
+        variants:
+          - text: The rehost strategy
+          - text: Rehost, among the 7 Rs
+        explanation:
+          text: Rehost moves servers from where they run today onto EC2. This database is already on AWS and stays on RDS.
+      - id: replatform
+        text: Replatform
+        variants:
+          - text: The replatform strategy
+          - text: Replatform, among the 7 Rs
+        explanation:
+          text: Replatforming changes what an application runs on. The database stays on RDS, unchanged.
+      - id: retain
+        text: Retain
+        variants:
+          - text: The retain strategy
+          - text: Retain, among the 7 Rs
+        explanation:
+          text: Retain keeps an application where it is. This database moves to a different account.
+    correct_answers: [relocate]
+    explanation:
+      text: |
+        Relocate has two uses in AWS's guidance: moving a whole platform, such as VMware, to its
+        cloud version, and moving resources to a different VPC, AWS Region or AWS account, such as an
+        RDS database moved to another account. In both, nothing in the application changes.
+
+  - id: q13-replatform-mysql-rds
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: "Replatform and repurchase: change something on the way"
+    task: "1.3"
+    level: application
+    topics: [migration-strategies, replatform]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A charity keeps its donor records in PostgreSQL on a server its two-person IT team patches by
+        hand. Its plan: put the database on Amazon RDS for PostgreSQL, leave the donor application's
+        code exactly as it is, and stop patching database software. What do AWS's 7 Rs call this
+        plan?
+    choices:
+      - id: rehost
+        text: Rehost
+        variants:
+          - text: The rehost strategy
+          - text: A rehost
+        explanation:
+          text: Rehost would copy the same database server onto EC2 unchanged, and the IT team would still patch it.
+      - id: replatform
+        text: Replatform
+        variants:
+          - text: The replatform strategy
+          - text: A replatform
+        explanation:
+          text: Correct. Moving onto a managed database changes what the application runs on, while its code stays the same.
+      - id: retire
+        text: Retire
+        variants:
+          - text: The retire strategy
+          - text: A retire
+        explanation:
+          text: The donor records are in daily use. Retire is for applications with no business value.
+      - id: repurchase
+        text: Repurchase
+        variants:
+          - text: The repurchase strategy
+          - text: A repurchase
+        explanation:
+          text: Repurchase replaces the application with a different product. The charity keeps its own application.
+    correct_answers: [replatform]
+    hint:
+      text: The code is unchanged, but is what it runs on unchanged too?
+    explanation:
+      text: |
+        Replatform, also called "lift, tinker and shift", moves an application and makes a few
+        changes so it runs more efficiently or uses cloud features. AWS's own example is a database
+        moved onto Amazon RDS. The managed service also moves the line of responsibility: AWS patches
+        the database software and its operating system.
+
+  - id: q13-replatform-into-containers
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: "Replatform and repurchase: change something on the way"
+    task: "1.3"
+    level: application
+    topics: [migration-strategies, replatform]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A game studio's matchmaking service runs on three virtual machines. As part of its move to
+        AWS, the team packages the same code into container images and runs them on Amazon ECS. Not
+        a line of the code changes. Which migration strategy describes this?
+    choices:
+      - id: refactor
+        text: Refactor
+        variants:
+          - text: The refactor strategy
+          - text: A refactor
+        explanation:
+          text: Containers sound cloud-native, which makes this tempting. But refactoring changes the application's design, and here the code doesn't change.
+      - id: relocate
+        text: Relocate
+        variants:
+          - text: The relocate strategy
+          - text: A relocate
+        explanation:
+          text: Relocate moves a whole platform, such as VMware, to its cloud version, so the virtual machines stay virtual machines. Here they become containers.
+      - id: replatform
+        text: Replatform
+        variants:
+          - text: The replatform strategy
+          - text: A replatform
+        explanation:
+          text: Correct. Moving virtual machines into containers without code changes is one of AWS's replatform use cases.
+      - id: rehost
+        text: Rehost
+        variants:
+          - text: The rehost strategy
+          - text: A rehost
+        explanation:
+          text: Rehost moves each server as it is onto EC2. Moving into containers changes what the service runs on.
+    correct_answers: [replatform]
+    hint:
+      text: The code is the same. What changed is what it runs on.
+    explanation:
+      text: |
+        AWS's replatform use cases include moving to a managed or serverless service, upgrading the
+        operating system, moving from Windows to Linux, and moving virtual machines into containers
+        without code changes. In each, the application barely changes; what it runs on does.
+
+  - id: q13-repurchase-dental-scheduling
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: "Replatform and repurchase: change something on the way"
+    task: "1.3"
+    level: application
+    topics: [migration-strategies, repurchase]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A chain of dental clinics runs a licensed appointment-scheduling package on its own servers.
+        The vendor now sells the same product as a subscription service that the vendor runs. The
+        clinics want to stop looking after those servers. Which migration strategy fits?
+    choices:
+      - id: rehost
+        text: Rehost
+        variants:
+          - text: The rehost strategy
+          - text: Rehost the package
+        explanation:
+          text: Rehosting would move the servers to EC2, and the clinics would still look after them.
+      - id: repurchase
+        text: Repurchase
+        variants:
+          - text: The repurchase strategy
+          - text: Repurchase the package
+        explanation:
+          text: Correct. Swapping a traditional license for the vendor's software as a service (SaaS) is AWS's first repurchase use case.
+      - id: replatform
+        text: Replatform
+        variants:
+          - text: The replatform strategy
+          - text: Replatform the package
+        explanation:
+          text: Replatforming changes what the clinics' own copy runs on. The clinics want to stop running a copy at all.
+      - id: retain
+        text: Retain
+        variants:
+          - text: The retain strategy
+          - text: Retain the package
+        explanation:
+          text: Waiting for a SaaS version is a reason to retain, but the vendor has now released it.
+    correct_answers: [repurchase]
+    hint:
+      text: The clinics would no longer run the software at all.
+    explanation:
+      text: |
+        Repurchase, also called "drop and shop", replaces an application with a different product or
+        version, often SaaS. AWS says it typically cuts maintenance, infrastructure and licensing
+        costs. Before the vendor released its service, retain would have been the right call.
+
+  - id: q13-repurchase-work-remains
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: "Replatform and repurchase: change something on the way"
+    task: "1.3"
+    level: understanding
+    topics: [migration-strategies, repurchase]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A company replaces its on-premises HR application with a software-as-a-service (SaaS)
+        product. Which two tasks does the company still have to do? (Select TWO.)
+    choices:
+      - id: move-records
+        text: Move its staff records into the new product
+        variants:
+          - text: Load its employee records into the new service
+          - text: Bring its staff data over to the new product
+        explanation:
+          text: Correct. The data still has to move from the old application to the new product.
+      - id: patch-servers
+        text: Patch the servers the new product runs on
+        variants:
+          - text: Apply patches to the new service's servers
+          - text: Keep the product's servers up to date
+        explanation:
+          text: With SaaS, the vendor runs everything underneath the application, servers included.
+      - id: train-staff
+        text: Train its staff to use the new product
+        variants:
+          - text: Teach employees how to use the new service
+          - text: Show its staff how the new product works
+        explanation:
+          text: Correct. A different product means new screens and steps, so staff need training.
+      - id: rewrite-code
+        text: Rewrite the new product's code for the cloud
+        variants:
+          - text: Rework the service's code to suit the cloud
+          - text: Redesign the new product's code for AWS
+        explanation:
+          text: The vendor owns and builds the product. Rewriting code is what refactoring does to your own application.
+      - id: buy-hardware
+        text: Buy hardware to host the new product
+        variants:
+          - text: Purchase servers to run the new service
+          - text: Acquire hardware for the new product to run on
+        explanation:
+          text: The vendor hosts a SaaS product. Not buying or running hardware is part of the point.
+    correct_answers: [move-records, train-staff]
+    explanation:
+      text: |
+        Repurchasing hands the running of the application to the vendor, but the work doesn't vanish.
+        The company still checks security and compliance before buying, then trains staff, moves the
+        data, connects the product to its sign-in system and sets up the network. Its data, and who
+        can reach it, stay its responsibility.
+
+  - id: q13-refactor-fitness-monolith
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: "Refactor: redesign for the cloud when the business demands it"
+    task: "1.3"
+    level: application
+    topics: [migration-strategies, refactor]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A fitness-video startup runs one large program in its own server room. Each release takes
+        weeks of testing, and the business must serve ten times as many subscribers within a year.
+        It has its own developers and no deadline to leave the server room. Which migration strategy
+        fits?
+    choices:
+      - id: rehost
+        text: Rehost
+        variants:
+          - text: The rehost strategy
+          - text: Rehost the program
+        explanation:
+          text: Rehosting would move the program quickly, but it keeps the design that slows every release. With no deadline, nothing forces a move-first approach.
+      - id: relocate
+        text: Relocate
+        variants:
+          - text: The relocate strategy
+          - text: Relocate the program
+        explanation:
+          text: Relocate moves a whole platform, such as VMware, as it is. It doesn't change the design that blocks the business.
+      - id: retain
+        text: Retain
+        variants:
+          - text: The retain strategy
+          - text: Retain the program
+        explanation:
+          text: None of AWS's retain criteria apply, and staying put does nothing for the growth the business needs.
+      - id: refactor
+        text: Refactor
+        variants:
+          - text: The refactor strategy
+          - text: Refactor the program
+        explanation:
+          text: Correct. A monolith that slows delivery, plus strong business demand to scale, are AWS's refactor criteria.
+    correct_answers: [refactor]
+    hint:
+      text: The business needs something the current design blocks. Which strategy changes the design?
+    explanation:
+      text: |
+        Refactor, or re-architect, changes an application's design to use cloud-native features, for
+        agility, performance and scale. AWS says it's driven by strong business demand, and lists a
+        monolith that already slows delivery among its use cases. It is the most complex and costly
+        strategy, so it fits when the business really needs what the old design blocks.
+
+  - id: q13-refactor-in-large-migration
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: "Refactor: redesign for the cloud when the business demands it"
+    task: "1.3"
+    level: understanding
+    topics: [migration-strategies, refactor]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A retailer must leave its data center in 12 months and move 80 applications. One of them, a
+        monolith, meets AWS's criteria for refactoring. What does AWS's guidance for large
+        migrations recommend for it?
+    choices:
+      - id: refactor-first
+        text: Refactor it first, before any other application moves
+        variants:
+          - text: Redesign it first, ahead of the other applications
+          - text: Rework it before moving anything else
+        explanation:
+          text: Refactoring is the most complex and costly strategy. Doing it first would put the deadline for all 80 applications at risk.
+      - id: retire-monolith
+        text: Retire it, because a monolith can't run on AWS
+        variants:
+          - text: Switch it off, since monoliths can't run on AWS
+          - text: Retire it, as AWS doesn't run monolithic programs
+        explanation:
+          text: Monoliths run on AWS. A monolith slows delivery, but it still has business value.
+      - id: move-then-modernize
+        text: Rehost or replatform it now, and refactor it on AWS later
+        variants:
+          - text: Move it with little change now, then redesign it on AWS
+          - text: Lift it to AWS first, and re-architect it once there
+        explanation:
+          text: Correct. AWS recommends refactoring in a large migration only when no other strategy is acceptable; move first, modernize after.
+      - id: retain-until-others
+        text: Retain it until the other 79 applications are refactored
+        variants:
+          - text: Keep it where it is until the other 79 have been redesigned
+          - text: Leave it in place until the rest are all re-architected
+        explanation:
+          text: Most of the other applications don't need refactoring at all, and the data center closes in 12 months.
+    correct_answers: [move-then-modernize]
+    explanation:
+      text: |
+        AWS calls refactoring the most complex and costly strategy. In a large migration, it
+        recommends refactoring only when no other strategy is acceptable: rehost, relocate or
+        replatform first, then modernize once the application runs on AWS. The principle is the least
+        change that meets the business's need now.
+
+  - id: q13-replication-carries-replatform
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: "Database replication is a technique, used inside a strategy"
+    task: "1.3"
+    level: understanding
+    topics: [migration-strategies, database-replication, dms]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A ticketing company replatforms its customer database onto Amazon RDS. Customers must keep
+        buying tickets during the copy, with only a short switch-over at the end. How does the exam
+        guide's "database replication" fit this plan?
+    choices:
+      - id: technique
+        text: It's the technique, with AWS DMS, that carries out the replatform with little downtime
+        variants:
+          - text: It's how the replatform happens, using AWS DMS to keep downtime short
+          - text: It's the method, through AWS DMS, that does the replatform with a brief outage
+        explanation:
+          text: Correct. AWS DMS copies the database while the source keeps running, then copies each new change until the switch-over.
+      - id: eighth-r
+        text: It's an eighth migration strategy, which replaces replatform in this plan
+        variants:
+          - text: It's an eighth R, used here instead of replatform
+          - text: It's a further strategy beyond the 7 Rs, chosen in place of replatform
+        explanation:
+          text: Database replication isn't an eighth R. The strategy is still replatform; replication is how the data gets there.
+      - id: nightly-copy
+        text: It keeps the database on premises and copies it to AWS each night for reports
+        variants:
+          - text: It leaves the database in place and sends a copy to AWS nightly for reporting
+          - text: It keeps the original on premises with a nightly reporting copy in AWS
+        explanation:
+          text: That describes a reporting copy, not a migration. Here the database moves to RDS and the old one is switched off.
+      - id: disaster-recovery
+        text: It's the Elastic Disaster Recovery feature that copies the database server
+        variants:
+          - text: It refers to Elastic Disaster Recovery copying the database server
+          - text: It's what Elastic Disaster Recovery does to the database server
+        explanation:
+          text: Elastic Disaster Recovery keeps standby copies of whole servers for recovery. It doesn't move data into RDS.
+    correct_answers: [technique]
+    explanation:
+      text: |
+        The exam guide names database replication as an example of a migration strategy, but it's a
+        technique used inside one. AWS DMS copies the database to AWS while customers keep using the
+        old one, then keeps copying every change until cutover, so downtime is short. When a question
+        asks how to migrate a database with minimal downtime, database replication is the answer it
+        wants.
+
+  - id: q13-after-replatform-customer-keeps
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: "Your side of the line"
+    task: "2.1"
+    level: understanding
+    topics: [migration-strategies, shared-responsibility]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A company replatforms its database from an EC2 instance onto Amazon RDS. Under the AWS
+        shared responsibility model, which two remain the company's responsibility after the move?
+        (Select TWO.)
+    choices:
+      - id: engine-patches
+        text: Patching the database engine
+        variants:
+          - text: Applying patches to the database software
+          - text: Keeping the database engine patched
+        explanation:
+          text: On RDS, AWS patches the database software. Handing that job over is a big reason teams replatform.
+      - id: who-connects
+        text: Deciding which applications and users may connect
+        variants:
+          - text: Choosing who and what can connect to the database
+          - text: Controlling which users and applications reach it
+        explanation:
+          text: Correct. Access stays the customer's, through security groups and database users, whatever the strategy.
+      - id: os-patches
+        text: Patching the operating system under the database
+        variants:
+          - text: Applying patches to the database host's operating system
+          - text: Keeping the underlying operating system patched
+        explanation:
+          text: On RDS, AWS patches the operating system as well as the database software.
+      - id: the-data
+        text: The data stored in the database
+        variants:
+          - text: The data the database holds
+          - text: The records kept in the database
+        explanation:
+          text: Correct. The data, and who can reach it, are always the customer's, whichever strategy is used.
+      - id: disks
+        text: Replacing failed disks in the host
+        variants:
+          - text: Swapping out the host's failed disks
+          - text: Replacing broken disks in the server
+        explanation:
+          text: Physical hardware is AWS's responsibility on RDS, as it was on EC2.
+    correct_answers: [who-connects, the-data]
+    explanation:
+      text: |
+        The strategy you choose moves the line of responsibility. Rehosting onto EC2 leaves the
+        operating system and database software with you; replatforming onto RDS hands both to AWS.
+        But the data and the decisions about who can reach it stay with the customer under every
+        strategy.
+
+  - id: q13-slide-two-corrections
+    page: guide/13-moving-to-aws/05-sim-portfolio-sorter.md
+    section: "Decision 4: the slide below has five errors; find them"
+    task: "1.3"
+    level: understanding
+    topics: [migration-strategies, cloud-adoption-framework]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A consultant's slide for a hotel group says: "AWS's six migration strategies are rehost,
+        replatform, repurchase, refactor, retire and retain. Our readiness review covers the six CAF
+        perspectives: business, process, people, platform, operations and security." Which two
+        corrections should be made? (Select TWO.)
+    choices:
+      - id: add-relocate
+        text: Add relocate, making seven strategies
+        variants:
+          - text: Add relocate as a seventh strategy
+          - text: Include relocate, so there are seven
+        explanation:
+          text: Correct. AWS's current list has seven strategies; relocate was added after the 2016 list of six.
+      - id: governance-for-process
+        text: Replace process with governance among the perspectives
+        variants:
+          - text: Swap process for governance in the perspective list
+          - text: Put governance where process sits in the perspectives
+        explanation:
+          text: Correct. Process is a transformation domain; Governance is the missing perspective.
+      - id: replicate-for-retain
+        text: Replace retain with replicate among the strategies
+        variants:
+          - text: Swap retain for replicate in the strategy list
+          - text: Put replicate where retain sits in the strategies
+        explanation:
+          text: Retain is a real strategy. Database replication is a technique used inside a strategy.
+      - id: technology-for-platform
+        text: Replace platform with technology among the perspectives
+        variants:
+          - text: Swap platform for technology in the perspective list
+          - text: Put technology where platform sits in the perspectives
+        explanation:
+          text: Platform is a real perspective. Technology is a transformation domain.
+      - id: drop-repurchase
+        text: Remove repurchase, which AWS no longer lists
+        variants:
+          - text: Delete repurchase, since AWS has dropped it
+          - text: Take out repurchase, as it's no longer on AWS's list
+        explanation:
+          text: Repurchase is still one of the 7 Rs, often used to move to SaaS.
+    correct_answers: [add-relocate, governance-for-process]
+    explanation:
+      text: |
+        Two common errors sit in this slide. AWS now lists seven migration strategies, adding
+        relocate to the six of 2016. And the CAF's six perspectives are Business, People, Governance,
+        Platform, Security and Operations: process is a transformation domain. Both errors circulate
+        in older courses, which is why they're worth catching.
+
+  # ---------------------------------------------------------------------------------------------
+  # Lesson 13.03, Migration tools
+  # ---------------------------------------------------------------------------------------------
+
+  - id: q13-migration-evaluator-board-vote
+    page: guide/13-moving-to-aws/03-migration-tools.md
+    section: "Migration Evaluator prices the move before anyone commits"
+    task: "1.3"
+    level: application
+    topics: [migration-tools, migration-evaluator, business-case]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Before its board votes on a migration, a manufacturer wants a projection of what its 300
+        on-premises servers would cost on AWS, based on how much of each server is really used, and
+        including the option of bringing its own Windows Server and SQL Server licenses. Which AWS
+        offering fits?
+    choices:
+      - id: pricing-calculator
+        text: AWS Pricing Calculator
+        variants:
+          - text: The AWS Pricing Calculator
+          - text: Pricing Calculator
+        explanation:
+          text: The Pricing Calculator prices whatever setup you type in. It doesn't measure the servers, so someone would first have to work out each server's size and license by hand.
+      - id: compute-optimizer
+        text: AWS Compute Optimizer
+        variants:
+          - text: Compute Optimizer
+          - text: The AWS Compute Optimizer service
+        explanation:
+          text: Compute Optimizer analyzes resources already running in AWS. These servers haven't moved yet.
+      - id: migration-evaluator
+        text: Migration Evaluator
+        variants:
+          - text: The Migration Evaluator service
+          - text: AWS's Migration Evaluator
+        explanation:
+          text: Correct. It starts from measured data about the servers you run, finds the over-sized ones, and models license options such as bringing Windows Server and SQL Server licenses.
+      - id: tco-calculator
+        text: AWS TCO Calculator
+        variants:
+          - text: The AWS TCO Calculator
+          - text: AWS Total Cost of Ownership Calculator
+        explanation:
+          text: The TCO Calculator no longer exists; its address opens the AWS Pricing Calculator (checked 2026-10-24). Older material still names it.
+    correct_answers: [migration-evaluator]
+    hint:
+      text: The projection must start from data about the servers the company runs today.
+    explanation:
+      text: |
+        Migration Evaluator builds the business case for a migration from data about what you run
+        today. It matches each server to an EC2 instance by its size, licenses and real use, and
+        reports projected costs, including bringing your own Windows Server and SQL Server licenses.
+        You request an assessment from AWS rather than switching it on in the console.
+
+  - id: q13-migration-evaluator-collector
+    page: guide/13-moving-to-aws/03-migration-tools.md
+    section: "Migration Evaluator prices the move before anyone commits"
+    task: "1.3"
+    level: recall
+    topics: [migration-tools, migration-evaluator]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Which statement about how Migration Evaluator gathers its data is correct?
+    choices:
+      - id: agent-everywhere
+        text: An agent must be installed on every server it assesses
+        variants:
+          - text: Each assessed server needs its own installed agent
+          - text: It needs an agent on each server it looks at
+        explanation:
+          text: Nothing is installed on each server. Installing an agent on each source server is how AWS Transform MGN and Elastic Disaster Recovery work.
+      - id: one-collector
+        text: An agentless collector on one Windows Server machine gathers it
+        variants:
+          - text: One agentless collector, on a single Windows Server VM, gathers it
+          - text: It uses one agentless collector running on a Windows Server VM
+        explanation:
+          text: Correct. The collector reads inventory and use from the systems you already have, or you upload exports from your own inventory tools.
+      - id: maps-dependencies
+        text: It maps the dependencies between applications to plan waves
+        variants:
+          - text: It traces which applications depend on which, to plan waves
+          - text: It charts application dependencies so waves can be planned
+        explanation:
+          text: Migration Evaluator doesn't map dependencies. That was Application Discovery Service's job, and AWS Transform's today.
+      - id: reads-cloudwatch
+        text: It reads CloudWatch metrics from EC2 instances already in AWS
+        variants:
+          - text: It uses CloudWatch metrics of EC2 instances already running
+          - text: It analyzes CloudWatch data from EC2 instances already on AWS
+        explanation:
+          text: Reading CloudWatch metrics of running instances is what Compute Optimizer does after a move. Migration Evaluator works before the move.
+    correct_answers: [one-collector]
+    explanation:
+      text: |
+        Migration Evaluator's collector is agentless: it runs on one Windows Server virtual machine on
+        your network and reads inventory and use from the systems you already have. It covers x86
+        servers only and doesn't map dependencies between applications. Its job is the cost case, not
+        the migration plan.
+
+  - id: q13-discovery-which-talks-to-which
+    page: guide/13-moving-to-aws/03-migration-tools.md
+    section: "The discovery and tracking tools are closed to new customers"
+    task: "1.3"
+    level: application
+    topics: [migration-tools, application-discovery-service, closed-services]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Before deciding which servers move together, a hospital group's migration team must learn
+        how busy each of its 400 on-premises servers is and which servers send traffic to which.
+        Which AWS service was built to collect that data?
+    choices:
+      - id: migration-hub
+        text: AWS Migration Hub
+        variants:
+          - text: Migration Hub
+          - text: The AWS Migration Hub service
+        explanation:
+          text: Migration Hub tracks the status of each application's migration. It can show discovery data, but it doesn't collect it.
+      - id: migration-evaluator
+        text: Migration Evaluator
+        variants:
+          - text: The Migration Evaluator service
+          - text: AWS's Migration Evaluator
+        explanation:
+          text: Migration Evaluator reads inventory and use to build the cost case, but it doesn't map the connections between servers.
+      - id: discovery-service
+        text: AWS Application Discovery Service
+        variants:
+          - text: Application Discovery Service
+          - text: The AWS Application Discovery Service
+        explanation:
+          text: Correct. It collects each on-premises server's configuration, use and network connections, so a team can group servers into applications and spot dependencies.
+      - id: mgn
+        text: AWS Application Migration Service
+        variants:
+          - text: Application Migration Service
+          - text: The AWS Application Migration Service
+        explanation:
+          text: Now called AWS Transform MGN, its agent copies a server's disks so the server can be moved. It doesn't record which servers talk to each other.
+    correct_answers: [discovery-service]
+    hint:
+      text: Pick the planning tool that records the network connections between servers, not one that prices, tracks or moves them.
+    explanation:
+      text: |
+        AWS Application Discovery Service collects data about on-premises servers: their
+        configuration, how busy they are and the network connections between them. On the exam, this
+        job still points to it. In real work it has been closed to new customers since 2025-11-07;
+        existing customers keep using it, and AWS points new customers to AWS Transform, which offers
+        the discovery features (checked 2026-10-24).
+
+  - id: q13-migration-hub-in-plan
+    page: guide/13-moving-to-aws/03-migration-tools.md
+    section: '"The discovery tools are open to new customers" is wrong'
+    task: "1.3"
+    level: recall
+    topics: [migration-tools, migration-hub, closed-services]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A project plan for a company new to AWS's migration services says: "Track every migration
+        wave in AWS Migration Hub." Which statement about that step is correct?
+    choices:
+      - id: renamed-mgn
+        text: Migration Hub was renamed AWS Transform MGN, so only the name needs updating
+        variants:
+          - text: Migration Hub is now called AWS Transform MGN, so just rename the step
+          - text: Migration Hub became AWS Transform MGN, so only the label in the plan changes
+        explanation:
+          text: The service renamed AWS Transform MGN is Application Migration Service, which moves servers. Migration Hub tracks progress, and its status is a closure, not a rename.
+      - id: shut-for-all
+        text: Migration Hub has shut down for everyone, existing customers included
+        variants:
+          - text: Migration Hub no longer runs for any customer, old or new
+          - text: Migration Hub is switched off for all customers, existing ones too
+        explanation:
+          text: Existing customers can keep using it to finish their projects. It's closed to new customers, not shut down.
+      - id: databases-only
+        text: Migration Hub is open, but it tracks only database migrations
+        variants:
+          - text: Migration Hub accepts new customers but follows only database moves
+          - text: Migration Hub is still open, limited to tracking database migrations
+        explanation:
+          text: Migration Hub tracked migrations whichever tool did the moving, and it no longer accepts new customers.
+      - id: closed-new
+        text: Migration Hub is closed to new customers; AWS points them to AWS Transform
+        variants:
+          - text: New customers can't sign up for Migration Hub; AWS directs them to AWS Transform
+          - text: Migration Hub takes no new customers, and AWS recommends AWS Transform instead
+        explanation:
+          text: Correct. It has been closed to new customers since 2025-11-07 (checked 2026-10-24), and AWS Transform offers its tracking features.
+    correct_answers: [closed-new]
+    explanation:
+      text: |
+        AWS Migration Hub gave one place to track each application's migration, whichever tool did
+        the moving. Since 2025-11-07 it has been closed to new customers, like Application Discovery
+        Service; existing customers keep using it, and AWS points new customers to AWS Transform
+        (checked 2026-10-24). In real work, check a service's status before planning around it.
+
+  - id: q13-mgn-sixty-servers
+    page: guide/13-moving-to-aws/03-migration-tools.md
+    section: "Application Migration Service, now AWS Transform MGN, rehosts whole servers"
+    task: "1.3"
+    level: application
+    topics: [migration-tools, application-migration-service]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        An engineering firm must move 60 servers, physical machines and VMware virtual machines,
+        onto Amazon EC2 without changing them. It wants to test each server in AWS before switching
+        over, and only a few minutes of downtime at cutover. Which AWS service fits?
+    choices:
+      - id: dms
+        text: AWS DMS
+        variants:
+          - text: AWS Database Migration Service (AWS DMS)
+          - text: AWS Database Migration Service
+        explanation:
+          text: AWS DMS copies the data inside databases. It doesn't copy whole servers with their operating systems and applications.
+      - id: datasync
+        text: AWS DataSync
+        variants:
+          - text: DataSync
+          - text: The AWS DataSync service
+        explanation:
+          text: DataSync copies files and objects between storage systems. It doesn't turn servers into EC2 instances.
+      - id: mgn
+        text: AWS Application Migration Service
+        variants:
+          - text: Application Migration Service
+          - text: The AWS Application Migration Service
+        explanation:
+          text: Correct. It copies whole servers, physical or virtual, and launches them as EC2 instances, with test launches and a short cutover.
+      - id: migration-hub
+        text: AWS Migration Hub
+        variants:
+          - text: Migration Hub
+          - text: The AWS Migration Hub service
+        explanation:
+          text: Migration Hub tracked migrations but moved nothing, and it has been closed to new customers since 2025-11-07 (checked 2026-10-24).
+    correct_answers: [mgn]
+    hint:
+      text: The unit that moves is the whole server, unchanged.
+    explanation:
+      text: |
+        AWS Application Migration Service, the exam's name, is now called AWS Transform MGN. It is
+        AWS's tool for the rehost strategy: it copies whole servers from physical machines, VMware,
+        Hyper-V or another cloud and launches them as EC2 instances, without changing the
+        applications. Test launches before cutover keep the switch short.
+
+  - id: q13-mgn-short-downtime
+    page: guide/13-moving-to-aws/03-migration-tools.md
+    section: "Application Migration Service, now AWS Transform MGN, rehosts whole servers"
+    task: "1.3"
+    level: understanding
+    topics: [migration-tools, application-migration-service]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        How does AWS Application Migration Service (now AWS Transform MGN) keep downtime short when it
+        rehosts a server?
+    choices:
+      - id: block-replication
+        text: It copies the disks block by block, then every change, while the server runs
+        variants:
+          - text: It replicates the disks at block level, then each change, as the server keeps running
+          - text: It copies every disk block, then each new change, without stopping the server
+        explanation:
+          text: Correct. Continuous block-level replication keeps the copy in AWS current, so cutover is only a short switch.
+      - id: overnight-image
+        text: It stops the server, copies an image overnight, then starts it on EC2
+        variants:
+          - text: It shuts the server down, copies its image overnight, then launches it on EC2
+          - text: It halts the server for an overnight image copy, then starts it in EC2
+        explanation:
+          text: Stopping the server for the whole copy would mean a long outage. The source keeps running until cutover.
+      - id: nightly-files
+        text: It copies changed files each night, then rebuilds the server on EC2
+        variants:
+          - text: It sends each night's changed files, then rebuilds the server in EC2
+          - text: It copies the day's changed files nightly, then rebuilds it on EC2
+        explanation:
+          text: It works below the level of files and doesn't rebuild anything. The copy in AWS is identical to the disks, operating system included.
+      - id: containers
+        text: It converts the server's applications into containers that start at once
+        variants:
+          - text: It turns the server's applications into containers that start immediately
+          - text: It repackages the applications as containers that launch instantly
+        explanation:
+          text: MGN doesn't change the applications; it rehosts them. Moving into containers would be a replatform.
+    correct_answers: [block-replication]
+    explanation:
+      text: |
+        An agent on the source server copies its disks block by block into a low-cost staging area in
+        AWS, then keeps copying every change while the server keeps running. You can launch test
+        instances from the staging area as often as you like. At cutover you launch from the latest
+        copy and switch users over, a window AWS says is typically measured in minutes.
+
+  - id: q13-dms-vet-postgresql
+    page: guide/13-moving-to-aws/03-migration-tools.md
+    section: "MGN moves servers; DMS moves the data inside databases"
+    task: "3.4"
+    level: application
+    topics: [migration-tools, dms]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A veterinary hospital moves its PostgreSQL database from its own server into Amazon RDS for
+        PostgreSQL. Staff keep booking appointments while the data is copied, and the switch-over
+        must be short. Which AWS service does the move need?
+    choices:
+      - id: dms
+        text: AWS DMS
+        variants:
+          - text: AWS Database Migration Service (AWS DMS)
+          - text: AWS Database Migration Service
+        explanation:
+          text: Correct. DMS copies the data, then every new change, until cutover. The engine stays PostgreSQL, so no schema conversion is needed.
+      - id: mgn
+        text: AWS Application Migration Service
+        variants:
+          - text: Application Migration Service
+          - text: The AWS Application Migration Service
+        explanation:
+          text: Application Migration Service, now called AWS Transform MGN, would land the whole database server on EC2, not the data in RDS, and the hospital would keep patching the database software itself.
+      - id: drs
+        text: AWS Elastic Disaster Recovery
+        variants:
+          - text: Elastic Disaster Recovery
+          - text: The AWS Elastic Disaster Recovery service
+        explanation:
+          text: Elastic Disaster Recovery keeps standby copies of whole servers for recovery. It doesn't load data into RDS.
+      - id: datasync
+        text: AWS DataSync
+        variants:
+          - text: DataSync
+          - text: The AWS DataSync service
+        explanation:
+          text: DataSync copies files and objects, not live database tables that keep changing.
+    correct_answers: [dms]
+    hint:
+      text: What lands in AWS here, a server or the data inside a database?
+    explanation:
+      text: |
+        AWS DMS copies the data inside a database while the source keeps running, and can keep copying
+        every change until you switch over. Because the engine doesn't change (PostgreSQL to
+        PostgreSQL), the schema fits as it is. The result is a managed database where AWS runs the
+        database software.
+
+  - id: q13-oracle-to-aurora-tools
+    page: guide/13-moving-to-aws/03-migration-tools.md
+    section: "MGN moves servers; DMS moves the data inside databases"
+    task: "3.4"
+    level: application
+    topics: [migration-tools, dms, sct]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        To stop paying for Oracle licenses, a ticketing company is moving its booking database onto
+        Amazon Aurora PostgreSQL. Bookings keep arriving while the data is copied. Which two AWS
+        tools does the move need? (Select TWO.)
+    choices:
+      - id: sct
+        text: AWS SCT
+        variants:
+          - text: AWS Schema Conversion Tool (AWS SCT)
+          - text: AWS Schema Conversion Tool
+        explanation:
+          text: Correct. The engine changes from Oracle to PostgreSQL, so the schema must be converted first. DMS Schema Conversion, in the DMS console, does the same job.
+      - id: drs
+        text: AWS Elastic Disaster Recovery
+        variants:
+          - text: Elastic Disaster Recovery
+          - text: The AWS Elastic Disaster Recovery service
+        explanation:
+          text: Elastic Disaster Recovery keeps standby copies of whole servers so they can be launched after a disaster. It doesn't turn an Oracle database into Aurora PostgreSQL.
+      - id: dms
+        text: AWS DMS
+        variants:
+          - text: AWS Database Migration Service (AWS DMS)
+          - text: AWS Database Migration Service
+        explanation:
+          text: Correct. DMS copies the data into Aurora once the schema exists there, and can keep copying changes until cutover.
+      - id: datasync
+        text: AWS DataSync
+        variants:
+          - text: DataSync
+          - text: The AWS DataSync service
+        explanation:
+          text: DataSync copies files and objects, not database tables.
+      - id: migration-evaluator
+        text: Migration Evaluator
+        variants:
+          - text: The Migration Evaluator service
+          - text: AWS's Migration Evaluator
+        explanation:
+          text: Migration Evaluator prices a migration before it starts. It moves nothing.
+    correct_answers: [sct, dms]
+    explanation:
+      text: |
+        A move between database engines takes two steps. AWS SCT, or DMS Schema Conversion, converts
+        the schema from the old engine to the new one; then AWS DMS copies the data and, if needed,
+        every change until cutover. When the engine stays the same, DMS alone is enough.
+
+  - id: q13-dms-rather-than-mgn
+    page: guide/13-moving-to-aws/03-migration-tools.md
+    section: "MGN moves servers; DMS moves the data inside databases"
+    task: "1.3"
+    level: understanding
+    topics: [migration-tools, dms, application-migration-service]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A team could copy its SQL Server database server to AWS with AWS Application Migration Service
+        (AWS Transform MGN). Why might it use AWS DMS to move the data into Amazon RDS for SQL Server
+        instead?
+    choices:
+      - id: aws-runs-engine
+        text: After DMS, AWS runs and patches the database software; after MGN, the team still does
+        variants:
+          - text: With DMS into RDS, AWS patches the database software; with MGN, that stays the team's job
+          - text: DMS ends with AWS running the database software; MGN leaves the team running it
+        explanation:
+          text: Correct. MGN lands the server on EC2 unchanged; DMS puts only the data into a managed database where AWS runs the software.
+      - id: dms-whole-server
+        text: DMS copies the whole server, operating system included, which MGN can't do
+        variants:
+          - text: DMS moves the entire server with its operating system, which MGN can't
+          - text: DMS can copy the whole server and its operating system; MGN can't
+        explanation:
+          text: This is reversed. MGN copies whole servers; DMS copies the data inside a database.
+      - id: mgn-not-live
+        text: MGN can't copy a server while it runs; DMS can copy a running database
+        variants:
+          - text: MGN needs the server stopped to copy it; DMS copies while it runs
+          - text: Only DMS copies while the source keeps running; MGN can't
+        explanation:
+          text: Both copy while the source keeps running, and both keep downtime short. The difference is what lands in AWS.
+      - id: dms-stops
+        text: DMS stops copying at cutover, while MGN can keep copying for months
+        variants:
+          - text: DMS ends at cutover, while MGN keeps replicating for months
+          - text: DMS copying stops at the switch; MGN can carry on for months
+        explanation:
+          text: This is reversed too. DMS can keep copying changes for as long as you need; MGN stops replicating after cutover.
+    correct_answers: [aws-runs-engine]
+    explanation:
+      text: |
+        MGN and DMS both copy continuously and cut over with little downtime. The difference is what
+        lands in AWS: MGN delivers a whole server as an EC2 instance that you still patch and back up;
+        DMS delivers the data into a managed database such as RDS, where AWS runs the database
+        software. If the job is "the data, into a managed database", choose DMS.
+
+  - id: q13-drs-imaging-clinic
+    page: guide/13-moving-to-aws/03-migration-tools.md
+    section: "MGN or Elastic Disaster Recovery: same copying, different ending"
+    task: "1.3"
+    level: application
+    topics: [migration-tools, elastic-disaster-recovery]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A medical imaging clinic will keep its imaging servers in its own building for two more
+        years. If the building loses power for days, the clinic wants those servers running in AWS
+        within minutes. Which AWS service fits?
+    choices:
+      - id: mgn
+        text: AWS Application Migration Service
+        variants:
+          - text: Application Migration Service
+          - text: The AWS Application Migration Service
+        explanation:
+          text: The copying is similar, but Application Migration Service (now AWS Transform MGN) is for moving servers once, and it stops replicating at cutover. These servers are staying where they are.
+      - id: dms
+        text: AWS DMS
+        variants:
+          - text: AWS Database Migration Service (AWS DMS)
+          - text: AWS Database Migration Service
+        explanation:
+          text: DMS copies database data. It doesn't give back running servers.
+      - id: datasync
+        text: AWS DataSync
+        variants:
+          - text: DataSync
+          - text: The AWS DataSync service
+        explanation:
+          text: DataSync copies files and objects. Someone would still have to build servers to use them.
+      - id: drs
+        text: AWS Elastic Disaster Recovery
+        variants:
+          - text: Elastic Disaster Recovery
+          - text: The AWS Elastic Disaster Recovery service
+        explanation:
+          text: Correct. It keeps a current copy of the servers in AWS and launches them within minutes when needed, then can fail back.
+    correct_answers: [drs]
+    hint:
+      text: Should the servers in the building still exist after AWS is used?
+    explanation:
+      text: |
+        Elastic Disaster Recovery copies a server's disks continuously into a staging area in AWS, as
+        MGN does, but it never ends: after a disaster you launch recovery servers in minutes, then
+        fail back to the repaired site or stay in AWS. It serves none of the 7 Rs; it protects
+        servers that aren't migrating.
+
+  - id: q13-mgn-drs-what-differs
+    page: guide/13-moving-to-aws/03-migration-tools.md
+    section: "MGN or Elastic Disaster Recovery: same copying, different ending"
+    task: "1.3"
+    level: understanding
+    topics: [migration-tools, elastic-disaster-recovery, application-migration-service]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        AWS Application Migration Service (AWS Transform MGN) and AWS Elastic Disaster Recovery both
+        install an agent and copy a server's disks continuously into AWS. What separates them?
+    choices:
+      - id: files-vs-disks
+        text: MGN copies only files; Elastic Disaster Recovery copies whole disks
+        variants:
+          - text: MGN moves files alone; Elastic Disaster Recovery moves entire disks
+          - text: Only files go with MGN; whole disks go with Elastic Disaster Recovery
+        explanation:
+          text: Both copy whole disks at block level. Copying files is DataSync's job.
+      - id: ending
+        text: MGN stops replicating after cutover; Elastic Disaster Recovery keeps replicating
+        variants:
+          - text: MGN's replication ends at cutover; Elastic Disaster Recovery's carries on
+          - text: Replication stops after MGN's cutover but continues under Elastic Disaster Recovery
+        explanation:
+          text: Correct. MGN is a one-time move that ends at cutover; Elastic Disaster Recovery is ongoing protection, with drills and failback.
+      - id: reversed
+        text: Elastic Disaster Recovery is a one-time move; MGN gives ongoing protection
+        variants:
+          - text: Elastic Disaster Recovery moves servers once; MGN protects them continuously
+          - text: A single move is Elastic Disaster Recovery's job; ongoing protection is MGN's
+        explanation:
+          text: This swaps the two. MGN moves servers once; Elastic Disaster Recovery protects servers that stay.
+      - id: database-only
+        text: MGN copies only database servers; Elastic Disaster Recovery copies any server
+        variants:
+          - text: MGN handles database servers alone; Elastic Disaster Recovery handles any server
+          - text: Only database servers go with MGN; any server goes with Elastic Disaster Recovery
+        explanation:
+          text: MGN copies any server, with its operating system, applications and data. Moving just the data in databases is DMS.
+    correct_answers: [ending]
+    explanation:
+      text: |
+        The mechanics are similar; the ending differs. Ask whether the old server should still exist
+        afterwards. If not, it's a migration, and MGN replicates until cutover, then stops. If it
+        should, and AWS is the recovery site, it's disaster recovery: Elastic Disaster Recovery keeps
+        replicating for as long as you protect the server.
+
+  - id: q13-datasync-studio-files
+    page: guide/13-moving-to-aws/03-migration-tools.md
+    section: "Files move over the network with DataSync; Snowball is no longer the answer"
+    task: "1.3"
+    level: application
+    topics: [migration-tools, datasync, closed-services]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A design studio has 40 TB of project files on a file server and a 1 Gbps internet link. The
+        files must be in Amazon S3 within six weeks, and the studio has never used AWS's
+        data-transfer devices. Which AWS service should it use?
+    choices:
+      - id: datasync
+        text: AWS DataSync
+        variants:
+          - text: DataSync
+          - text: The AWS DataSync service
+        explanation:
+          text: Correct. It copies files over the network into S3, with encryption and checks that the copy is complete. At 80% of 1 Gbps, 40 TB takes about five days.
+      - id: snowball
+        text: AWS Snowball Edge
+        variants:
+          - text: An AWS Snowball Edge device
+          - text: AWS Snowball
+        explanation:
+          text: Snowball Edge has been closed to new customers since 2025-11-07, its support in commercial Regions ends on 2026-12-31, and the current exam guide no longer lists the Snow Family (checked 2026-10-24).
+      - id: dms
+        text: AWS DMS
+        variants:
+          - text: AWS Database Migration Service (AWS DMS)
+          - text: AWS Database Migration Service
+        explanation:
+          text: DMS copies data inside databases. These are files on a file server.
+      - id: mgn
+        text: AWS Application Migration Service
+        variants:
+          - text: Application Migration Service
+          - text: The AWS Application Migration Service
+        explanation:
+          text: Application Migration Service, now called AWS Transform MGN, copies whole servers onto EC2. The studio wants its files in S3, not its file server in AWS.
+    correct_answers: [datasync]
+    hint:
+      text: Work out how long the link needs before assuming it's too slow.
+    explanation:
+      text: |
+        AWS DataSync copies files and objects over the network into AWS storage such as S3. Whether
+        the network is fast enough is arithmetic: 40 TB at 80% of a 1 Gbps link takes about five days,
+        well inside six weeks. For physical transfers, AWS now points new customers to AWS Data
+        Transfer Terminal or AWS Partners, not Snowball.
+
+  - id: q13-job-tool-pairs-select-two
+    page: guide/13-moving-to-aws/03-migration-tools.md
+    section: "Worked example: a tool for each of the chain's jobs"
+    task: "1.3"
+    level: understanding
+    topics: [migration-tools]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        Which two pairs of a migration job and an AWS tool are correctly matched? (Select TWO.)
+    choices:
+      - id: files-datasync
+        text: "Copy file shares into Amazon S3: AWS DataSync"
+        variants:
+          - text: "Move file shares to Amazon S3: DataSync"
+          - text: "Transfer file shares into S3: AWS DataSync"
+        explanation:
+          text: Correct. DataSync copies files and objects over the network into AWS storage.
+      - id: standby-mgn
+        text: "Keep standby copies of servers that stay: AWS Application Migration Service"
+        variants:
+          - text: "Hold recovery copies of servers that stay put: AWS Application Migration Service"
+          - text: "Protect servers that aren't moving: AWS Application Migration Service"
+        explanation:
+          text: Standby copies for servers that stay are Elastic Disaster Recovery's job. MGN stops replicating after cutover.
+      - id: servers-mgn
+        text: "Rehost whole servers onto Amazon EC2: AWS Application Migration Service"
+        variants:
+          - text: "Move whole servers unchanged to EC2: AWS Application Migration Service"
+          - text: "Lift and shift entire servers onto EC2: AWS Application Migration Service"
+        explanation:
+          text: Correct. Application Migration Service, now called AWS Transform MGN, copies whole servers and launches them as EC2 instances.
+      - id: tables-datasync
+        text: "Copy live database tables into Amazon RDS: AWS DataSync"
+        variants:
+          - text: "Move changing database tables into RDS: DataSync"
+          - text: "Transfer live tables into Amazon RDS: AWS DataSync"
+        explanation:
+          text: Data inside a database that keeps changing is AWS DMS's job.
+      - id: cost-optimizer
+        text: "Project the AWS cost of current servers: AWS Compute Optimizer"
+        variants:
+          - text: "Forecast what today's servers would cost on AWS: Compute Optimizer"
+          - text: "Price the current servers on AWS: AWS Compute Optimizer"
+        explanation:
+          text: A cost case for servers that haven't moved comes from Migration Evaluator. Compute Optimizer works on resources already running in AWS.
+    correct_answers: [files-datasync, servers-mgn]
+    explanation:
+      text: |
+        Name the unit that moves, or what the job produces, before naming any tool. Whole servers:
+        AWS Application Migration Service (now AWS Transform MGN). Data inside a database: AWS DMS. Files and objects: AWS DataSync. A cost
+        case: Migration Evaluator. A standby copy of a server that stays: Elastic Disaster Recovery.
+
+  - id: q13-who-patches-rehosted-server
+    page: guide/13-moving-to-aws/03-migration-tools.md
+    section: "Your side of the line"
+    task: "2.1"
+    level: understanding
+    topics: [migration-tools, shared-responsibility]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company rehosts a server onto Amazon EC2 with AWS Application Migration Service (AWS
+        Transform MGN). After cutover, who is responsible for patching the instance's operating
+        system?
+    choices:
+      - id: aws-mgn-launched
+        text: AWS, because MGN launched the instance
+        variants:
+          - text: AWS, since the instance was launched by MGN
+          - text: AWS, as MGN created the instance
+        explanation:
+          text: MGN's own software is AWS's to run, but the instance it launches is an EC2 instance like any other.
+      - id: agent-patches
+        text: The MGN agent, which keeps patching it
+        variants:
+          - text: The MGN agent, which goes on applying patches
+          - text: MGN's replication agent, which keeps it patched
+        explanation:
+          text: The agent copies disks for the move; it doesn't patch anything, and replication stops after cutover.
+      - id: company
+        text: The company that rehosted the server
+        variants:
+          - text: The company that moved the server
+          - text: The customer that migrated the server
+        explanation:
+          text: Correct. On EC2, the customer patches the guest operating system, as it did on premises.
+      - id: aws-hardware
+        text: AWS, because it now runs on AWS hardware
+        variants:
+          - text: AWS, since it now runs on AWS's hardware
+          - text: AWS, as the hardware underneath is AWS's
+        explanation:
+          text: AWS secures the hardware and the virtualization layer. The operating system inside the instance is the customer's.
+    correct_answers: [company]
+    explanation:
+      text: |
+        The migration tools are AWS's to run and secure, but what they produce is yours. After
+        cutover, a rehosted server is an EC2 instance like any other: the customer patches its
+        operating system, sets its security groups and backs it up. Moving a server doesn't move
+        that job to AWS.
+
+  # ---------------------------------------------------------------------------------------------
+  # Lesson 13.04, The business case (and Simulation S17)
+  # ---------------------------------------------------------------------------------------------
+
+  - id: q13-draft-case-missing-two
+    page: guide/13-moving-to-aws/04-the-business-case.md
+    section: "Count every cost on both sides, including the move itself"
+    task: "1.4"
+    level: understanding
+    topics: [business-case]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A manager's draft business case compares three years of on-premises costs (hardware,
+        facilities, staff and licenses) with three years of AWS charges for compute, storage, data
+        transfer and license-included software. Which two costs are missing from the AWS side?
+        (Select TWO.)
+    choices:
+      - id: one-time
+        text: One-time costs of the move, including running both environments meanwhile
+        variants:
+          - text: The move's one-time costs, such as running old and new systems side by side
+          - text: One-off migration costs, including both environments running during the move
+        explanation:
+          text: Correct. Planning, tools, people's time, training and running both environments during the move all belong on the AWS side. Leaving them out flatters the move.
+      - id: staff
+        text: Staff who still run, secure and improve the systems in AWS
+        variants:
+          - text: The people who still operate, secure and improve what runs in AWS
+          - text: Staff time to keep running, securing and improving the AWS systems
+        explanation:
+          text: Correct. People stop racking servers and replacing disks, but staff costs don't drop to zero.
+      - id: refresh
+        text: The next refresh of the on-premises hardware
+        variants:
+          - text: Replacing the on-premises servers at the next refresh
+          - text: The coming hardware refresh in the data center
+        explanation:
+          text: The hardware refresh is a cost of staying. It belongs in the on-premises column, where it often starts the conversation.
+      - id: power-cooling
+        text: Power and cooling for the company's data center
+        variants:
+          - text: The data center's electricity and cooling
+          - text: Running the data center's power and cooling
+        explanation:
+          text: Facilities costs belong to the on-premises side. They're part of what the move removes.
+      - id: aws-buildings
+        text: A share of AWS's own data center construction costs
+        variants:
+          - text: Part of what AWS spends building its data centers
+          - text: A portion of AWS's data center building costs
+        explanation:
+          text: AWS's facilities are already in the prices of the services you use. A customer doesn't add them as a separate line.
+    correct_answers: [one-time, staff]
+    explanation:
+      text: |
+        A business case compares every cost of staying with every cost of moving. The move side needs
+        AWS usage, licenses (from AWS or from vendors), staff, and one-time migration costs, which
+        include running both environments for as long as the slowest wave lasts. A draft that omits
+        them compares a partial bill with a full one.
+
+  - id: q13-licenses-own-line
+    page: guide/13-moving-to-aws/04-the-business-case.md
+    section: "Count every cost on both sides, including the move itself"
+    task: "1.4"
+    level: understanding
+    topics: [business-case, licensing]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A cloud economist advises that every migration business case should show software licenses
+        as their own line, whether AWS or a vendor bills them. Why?
+    choices:
+      - id: marketplace-only
+        text: AWS bills software licenses only through AWS Marketplace
+        variants:
+          - text: AWS charges for licenses only via AWS Marketplace
+          - text: Licenses from AWS are billed only through AWS Marketplace
+        explanation:
+          text: License-included EC2 instances and RDS databases include the license in their hourly price, without AWS Marketplace.
+      - id: one-time-cost
+        text: Licenses are a one-time cost that ends once the move is over
+        variants:
+          - text: Licenses are paid once and stop when the migration finishes
+          - text: License costs are one-off and stop after the move
+        explanation:
+          text: Licenses are an ongoing cost on both sides. One-time migration costs are planning, tools, people's time, training and running both environments.
+      - id: computing-looks-dear
+        text: Otherwise a license-included price makes AWS computing look expensive
+        variants:
+          - text: Without it, license-included prices make computing on AWS seem costly
+          - text: If hidden, licenses in the hourly price make AWS compute look dear
+        explanation:
+          text: Correct. A license-included hourly price bundles the license with the instance; separating them compares like with like.
+      - id: licenses-vanish
+        text: Licenses no longer cost anything once servers move to AWS
+        variants:
+          - text: Software licenses become free once the servers run on AWS
+          - text: Moving servers to AWS ends the need to pay for licenses
+        explanation:
+          text: Licenses are still paid, either in a license-included price or to the vendor for licenses you bring.
+    correct_answers: [computing-looks-dear]
+    explanation:
+      text: |
+        On AWS, licenses can arrive inside a license-included hourly price or be bought from the
+        vendor and brought along. Either way they are a real, ongoing cost. Giving them their own line
+        keeps the comparison fair and makes the licensing decision visible, which is often where the
+        biggest savings are.
+
+  - id: q13-pricing-calculator-in-case
+    page: guide/13-moving-to-aws/04-the-business-case.md
+    section: "There is no TCO Calculator: use Migration Evaluator for the case, and the Pricing Calculator for estimates"
+    task: "1.4"
+    level: understanding
+    topics: [business-case, pricing-calculator, closed-services]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A finance team is building a business case for moving to AWS. Which statement describes what
+        the AWS Pricing Calculator contributes to it?
+    choices:
+      - id: measures-servers
+        text: It measures the on-premises servers and works out what they cost to run today
+        variants:
+          - text: It gauges the servers in the data center and calculates their current running cost
+          - text: It inspects the on-premises servers and computes today's cost of running them
+        explanation:
+          text: The Pricing Calculator doesn't price your data center. The on-premises side comes from your own numbers, and measured server data from a tool such as Migration Evaluator.
+      - id: tco-renamed
+        text: It's the renamed TCO Calculator and compares both sides automatically
+        variants:
+          - text: It's the old TCO Calculator under a new name, comparing both sides for you
+          - text: It replaced the TCO Calculator and still compares on-premises and AWS costs itself
+        explanation:
+          text: The TCO Calculator's old address now opens the Pricing Calculator (checked 2026-10-24), but the Pricing Calculator doesn't compare on-premises and AWS costs for you.
+      - id: past-spend
+        text: It shows what the company's AWS accounts spent last month, by service
+        variants:
+          - text: It reports the AWS accounts' spending for last month, service by service
+          - text: It breaks down last month's AWS spending across services
+        explanation:
+          text: Showing what you have already spent is Cost Explorer's job. The Pricing Calculator estimates before you build.
+      - id: prices-described-setup
+        text: It prices an AWS setup you describe; on-premises figures come from your finance team
+        variants:
+          - text: It estimates an AWS design you enter; the on-premises side is your own finance data
+          - text: It costs the AWS services you specify; your finance team supplies the on-premises numbers
+        explanation:
+          text: Correct. It prices AWS service by service from what you enter. It doesn't price the data center for you.
+    correct_answers: [prices-described-setup]
+    explanation:
+      text: |
+        A migration cost case today comes from two places. Migration Evaluator starts from measured
+        data about your servers and projects their AWS cost, license options included; the AWS Pricing
+        Calculator prices an AWS setup you describe. The on-premises side is your own numbers. The old
+        TCO Calculator no longer exists (checked 2026-10-24).
+
+  - id: q13-compute-optimizer-after-move
+    page: guide/13-moving-to-aws/04-the-business-case.md
+    section: "Rightsize twice: before the move from measured data, and after it with Compute Optimizer"
+    task: "1.4"
+    level: application
+    topics: [rightsizing, compute-optimizer]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Two months after rehosting its servers, a publisher wants to know which of its EC2 instances
+        are bigger than their work needs, with a suggested size for each. Which AWS service should it
+        use?
+    choices:
+      - id: auto-scaling
+        text: Amazon EC2 Auto Scaling
+        variants:
+          - text: EC2 Auto Scaling
+          - text: Amazon EC2 Auto Scaling groups
+        explanation:
+          text: Auto Scaling changes how many instances run. It doesn't judge each instance's size or report waste.
+      - id: license-manager
+        text: AWS License Manager
+        variants:
+          - text: License Manager
+          - text: The AWS License Manager service
+        explanation:
+          text: License Manager tracks software licenses, not instance sizes.
+      - id: migration-evaluator
+        text: Migration Evaluator
+        variants:
+          - text: The Migration Evaluator service
+          - text: AWS's Migration Evaluator
+        explanation:
+          text: Migration Evaluator sizes servers before a move, from on-premises data. After the move, the instances' own metrics are the better guide.
+      - id: compute-optimizer
+        text: AWS Compute Optimizer
+        variants:
+          - text: Compute Optimizer
+          - text: The AWS Compute Optimizer service
+        explanation:
+          text: Correct. After you opt in, it reads the instances' CloudWatch metrics and reports which are over-provisioned, with recommended sizes.
+    correct_answers: [compute-optimizer]
+    hint:
+      text: The instances are already running in AWS, and the question is about their size.
+    explanation:
+      text: |
+        Rightsize twice: before the move from measured on-premises data, and after it with AWS
+        Compute Optimizer. It analyzes about 14 days of CloudWatch metrics by default and reports each
+        resource as optimized, over-provisioned, under-provisioned or idle. You decide on the change
+        and make it.
+
+  - id: q13-compute-optimizer-select-two
+    page: guide/13-moving-to-aws/04-the-business-case.md
+    section: "Rightsize twice: before the move from measured data, and after it with Compute Optimizer"
+    task: "1.4"
+    level: recall
+    topics: [rightsizing, compute-optimizer]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        Which two statements about AWS Compute Optimizer are correct? (Select TWO.)
+    choices:
+      - id: opt-in
+        text: You opt in before it analyzes your resources
+        variants:
+          - text: It analyzes resources only after you opt in
+          - text: An opt-in comes before any analysis
+        explanation:
+          text: Correct. Compute Optimizer does nothing until you opt in; then it reads your resources' metrics.
+      - id: resizes-ec2
+        text: It resizes over-provisioned EC2 instances by itself
+        variants:
+          - text: It shrinks over-sized EC2 instances on its own
+          - text: It changes over-provisioned EC2 instances for you
+        explanation:
+          text: It recommends; you decide and make the change. Its automation rules apply only a few EBS volume actions, and only if you set them up.
+      - id: beyond-ec2
+        text: It covers EBS volumes, Lambda and RDS as well as EC2
+        variants:
+          - text: Its advice spans EBS, Lambda and RDS, not just EC2
+          - text: Besides EC2, it covers EBS volumes, Lambda and RDS
+        explanation:
+          text: Correct. It also covers Auto Scaling groups, Aurora, ECS on Fargate and commercial software licenses.
+      - id: on-prem
+        text: It projects costs for servers still on premises
+        variants:
+          - text: It forecasts costs for servers not yet moved
+          - text: It prices servers still in the data center
+        explanation:
+          text: Projecting costs for servers that haven't moved is Migration Evaluator's job. Compute Optimizer works on resources in AWS.
+      - id: instance-count
+        text: It changes how many instances a group runs
+        variants:
+          - text: It adjusts the number of instances in a group
+          - text: It sets how many instances run in a group
+        explanation:
+          text: Changing the number of instances is Auto Scaling's job. Compute Optimizer advises on size and type.
+    correct_answers: [opt-in, beyond-ec2]
+    explanation:
+      text: |
+        AWS Compute Optimizer gives deep, metric-based advice on the size and type of each resource
+        after you opt in. It covers far more than EC2, including software licenses. It recommends and
+        doesn't resize; keep it apart from Auto Scaling, which changes how many instances run, and
+        from Migration Evaluator, which works before the move.
+
+  - id: q13-sql-enterprise-features-unused
+    page: guide/13-moving-to-aws/04-the-business-case.md
+    section: "Rightsize twice: before the move from measured data, and after it with Compute Optimizer"
+    task: "1.4"
+    level: application
+    topics: [rightsizing, compute-optimizer, licensing]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company runs license-included SQL Server Enterprise on EC2 instances. Its database team
+        suspects that no Enterprise-only features are in use. Which AWS service can report the
+        license as not optimized and show the saving from moving to Standard edition?
+    choices:
+      - id: license-manager
+        text: AWS License Manager
+        variants:
+          - text: License Manager
+          - text: The AWS License Manager service
+        explanation:
+          text: The word "license" makes this tempting. License Manager tracks the licenses you bring and limits launches; it doesn't analyze which edition's features you use.
+      - id: budgets
+        text: AWS Budgets
+        variants:
+          - text: Budgets
+          - text: The AWS Budgets service
+        explanation:
+          text: Budgets tracks spending against a limit you set. It doesn't look at how software is used.
+      - id: migration-evaluator
+        text: Migration Evaluator
+        variants:
+          - text: The Migration Evaluator service
+          - text: AWS's Migration Evaluator
+        explanation:
+          text: Migration Evaluator works before a move, from on-premises data. These instances already run on AWS.
+      - id: compute-optimizer
+        text: AWS Compute Optimizer
+        variants:
+          - text: Compute Optimizer
+          - text: The AWS Compute Optimizer service
+        explanation:
+          text: Correct. Its license recommendations flag SQL Server Enterprise that uses no Enterprise features and show the saving from Standard.
+    correct_answers: [compute-optimizer]
+    hint:
+      text: The question is about using something bigger than the work needs, applied to a license.
+    explanation:
+      text: |
+        AWS Compute Optimizer's recommendations include commercial software licenses. If an instance
+        pays for SQL Server Enterprise but uses none of its Enterprise features, it reports the
+        license as not optimized and shows the saving from Standard. Edition choice is rightsizing
+        applied to software, and it can be worth more than the instance size.
+
+  - id: q13-byol-terms-responsibility
+    page: guide/13-moving-to-aws/04-the-business-case.md
+    section: "License-included or bring your own license: who pays the software vendor"
+    task: "1.4"
+    level: recall
+    topics: [licensing, shared-responsibility]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company brings its own Microsoft licenses to Amazon EC2. Who is responsible for making sure
+        it follows those licenses' terms?
+    choices:
+      - id: aws-infrastructure
+        text: AWS, because the software runs on AWS infrastructure
+        variants:
+          - text: AWS, since the software runs on its infrastructure
+          - text: AWS, as the owner of the infrastructure underneath
+        explanation:
+          text: AWS handles license compliance only for license-included software. Terms you bring come from your own agreements.
+      - id: microsoft
+        text: Microsoft, which checks each cloud deployment
+        variants:
+          - text: Microsoft, which reviews every cloud deployment
+          - text: Microsoft, as it audits each deployment in the cloud
+        explanation:
+          text: The license terms are Microsoft's, but following them is the customer's job.
+      - id: customer
+        text: The company, with AWS License Manager to help track them
+        variants:
+          - text: The company itself, helped by AWS License Manager
+          - text: The company, which can track them in AWS License Manager
+        explanation:
+          text: Correct. AWS's licensing page says the customer is responsible for following its license terms when it brings its own licenses.
+      - id: shared-equally
+        text: AWS and the company equally, as a shared control
+        variants:
+          - text: AWS and the company together, as a shared control
+          - text: Both AWS and the company, as a shared control
+        explanation:
+          text: There's no AWS half to this control. It's customer-specific, because the terms come from the customer's own agreements.
+    correct_answers: [customer]
+    explanation:
+      text: |
+        With bring your own license (BYOL), compliance is yours: AWS says the customer is responsible
+        for following the license terms, and its licensing page isn't legal advice. With
+        license-included software, AWS handles the licensing. AWS License Manager helps by tracking
+        licenses across accounts and stopping launches that would exceed what you own.
+
+  - id: q13-license-routes-select-two
+    page: guide/13-moving-to-aws/04-the-business-case.md
+    section: "License-included or bring your own license: who pays the software vendor"
+    task: "1.4"
+    level: application
+    topics: [licensing, dedicated-hosts]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A logistics firm's IT manager lists the Microsoft licenses the firm owns, each with the place
+        on AWS where she'd like to use it. Going by the license terms AWS describes, which two of her
+        plans can go ahead? (Select TWO.)
+    choices:
+      - id: sql-sa-shared
+        text: SQL Server with active Software Assurance, on shared EC2 instances
+        variants:
+          - text: SQL Server covered by active Software Assurance, on default-tenancy instances
+          - text: SQL Server licenses with current Software Assurance, on shared instances
+        explanation:
+          text: Correct. With active Software Assurance, SQL Server is eligible for License Mobility to ordinary shared instances, after verification with Microsoft.
+      - id: windows-sa-shared
+        text: Windows Server with active Software Assurance, on shared EC2 instances
+        variants:
+          - text: Windows Server covered by active Software Assurance, on default-tenancy instances
+          - text: Windows Server licenses with current Software Assurance, on shared instances
+        explanation:
+          text: Windows Server isn't on the License Mobility eligible list, even with Software Assurance.
+      - id: windows-2018-host
+        text: Windows Server bought in 2018, without Software Assurance, on Dedicated Hosts
+        variants:
+          - text: Windows Server licenses from 2018, no Software Assurance, on Dedicated Hosts
+          - text: Windows Server purchased in 2018 without Software Assurance, on Dedicated Hosts
+        explanation:
+          text: Correct. Licenses without Software Assurance bought before 2019-10-01 can come to AWS on Dedicated Hosts.
+      - id: sql-2022-host
+        text: SQL Server bought in 2022, without Software Assurance, on Dedicated Hosts
+        variants:
+          - text: SQL Server licenses from 2022, no Software Assurance, on Dedicated Hosts
+          - text: SQL Server purchased in 2022 without Software Assurance, on Dedicated Hosts
+        explanation:
+          text: The Dedicated Hosts route without Software Assurance is only for licenses bought before 2019-10-01.
+      - id: windows-2023-host
+        text: Windows Server bought in 2023, without Software Assurance, on Dedicated Hosts
+        variants:
+          - text: Windows Server licenses from 2023, no Software Assurance, on Dedicated Hosts
+          - text: Windows Server purchased in 2023 without Software Assurance, on Dedicated Hosts
+        explanation:
+          text: Bought after 2019-10-01 and without Software Assurance, these licenses have no route to AWS. License-included instances are the way to run Windows Server here.
+    correct_answers: [sql-sa-shared, windows-2018-host]
+    explanation:
+      text: |
+        How licenses may come to AWS depends on their terms. With active Software Assurance, eligible
+        products such as SQL Server move to shared instances under License Mobility; Windows Server
+        isn't eligible. Without Software Assurance, licenses bought before 2019-10-01 can go on
+        Dedicated Hosts. Anything else runs license-included. Vendors' terms decide; check them.
+
+  - id: q13-rds-bring-own-sql
+    page: guide/13-moving-to-aws/04-the-business-case.md
+    section: "License-included or bring your own license: who pays the software vendor"
+    task: "1.4"
+    level: recall
+    topics: [licensing, rds]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company moves its SQL Server 2019 Standard database to Amazon RDS for SQL Server and brings
+        its own SQL Server licenses, which have active Software Assurance. Which statement is
+        correct?
+    choices:
+      - id: no-patching
+        text: RDS stops patching the database, since the company owns its license
+        variants:
+          - text: RDS no longer patches the database, because the license is the company's
+          - text: Owning the license means RDS no longer patches the database
+        explanation:
+          text: Who owns the license doesn't change what RDS manages. It still handles patching and backups.
+      - id: needs-host
+        text: The database must run on a Dedicated Host to use the company's licenses
+        variants:
+          - text: Using the company's licenses requires a Dedicated Host under the database
+          - text: The company's licenses work only if the database runs on a Dedicated Host
+        explanation:
+          text: Dedicated Hosts are the route for older licenses without Software Assurance on EC2. RDS accepts licenses with active Software Assurance directly.
+      - id: no-fees
+        text: AWS charges nothing for the database, since the company owns its licenses
+        variants:
+          - text: The database costs nothing on AWS, because the licenses are the company's
+          - text: Owning its licenses means the company pays AWS nothing for the database
+        explanation:
+          text: The company still pays for the infrastructure and the Windows fee. Only the SQL Server license fee goes away.
+      - id: no-sql-fee
+        text: AWS charges no SQL Server license fee, and RDS still handles patching and backups
+        variants:
+          - text: There's no SQL Server license fee from AWS, and RDS still patches and backs up
+          - text: AWS drops the SQL Server license fee, while RDS keeps doing patches and backups
+        explanation:
+          text: Correct. AWS calls this Bring Your Own Media. The company still pays for the infrastructure and the Windows fee, and must keep its Software Assurance active.
+    correct_answers: [no-sql-fee]
+    explanation:
+      text: |
+        Amazon RDS for SQL Server offers the same split as EC2: license-included, or your own licenses
+        for SQL Server 2019 or later, Enterprise or Standard edition, with active Software Assurance.
+        With your own licenses, AWS charges no SQL Server license fee, but the infrastructure and
+        Windows fee remain, and RDS still does the patching and backups.
+
+  - id: q13-license-manager-twelve-accounts
+    page: guide/13-moving-to-aws/04-the-business-case.md
+    section: "License-included or bring your own license: who pays the software vendor"
+    task: "1.4"
+    level: application
+    topics: [licensing, license-manager]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company brings its own SQL Server licenses to AWS and runs them across 12 accounts. It
+        wants to track how many it uses and to stop any launch that would take it over the number it
+        owns. Which AWS service fits?
+    choices:
+      - id: license-manager
+        text: AWS License Manager
+        variants:
+          - text: License Manager
+          - text: The AWS License Manager service
+        explanation:
+          text: Correct. It tracks the licenses you bring across accounts and can stop a launch that would exceed what you own.
+      - id: compute-optimizer
+        text: AWS Compute Optimizer
+        variants:
+          - text: Compute Optimizer
+          - text: The AWS Compute Optimizer service
+        explanation:
+          text: Compute Optimizer can recommend a cheaper edition, but it doesn't count owned licenses or block launches.
+      - id: migration-evaluator
+        text: Migration Evaluator
+        variants:
+          - text: The Migration Evaluator service
+          - text: AWS's Migration Evaluator
+        explanation:
+          text: Migration Evaluator models license options before a move. It doesn't track licenses in use afterwards.
+      - id: budgets
+        text: AWS Budgets
+        variants:
+          - text: Budgets
+          - text: The AWS Budgets service
+        explanation:
+          text: Budgets alerts on spending against a limit. It doesn't count licenses or stop launches.
+    correct_answers: [license-manager]
+    hint:
+      text: The job is counting licenses, not money or instance sizes.
+    explanation:
+      text: |
+        AWS License Manager tracks licenses you bring, across accounts, and can stop a launch that
+        would take you over what you own. It can also switch some EC2 instances between
+        license-included and BYOL without rebuilding them. Since compliance with BYOL terms is the
+        customer's, it's the customer's main helper.
+
+  - id: q13-host-costs-the-most
+    page: guide/13-moving-to-aws/04-the-business-case.md
+    section: "Worked example: licensing a distributor's reporting database"
+    task: "1.4"
+    level: understanding
+    topics: [licensing, dedicated-hosts]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company owns SQL Server Enterprise licenses from 2018, without Software Assurance, for two
+        small reporting servers. Running them on one EC2 Dedicated Host turns out to cost more than
+        rightsized license-included instances. Why?
+    choices:
+      - id: whole-server
+        text: A host is billed as a whole server, and two small instances leave most of it idle
+        variants:
+          - text: The host is charged as an entire server, mostly empty with two small instances
+          - text: Billing is for the whole server, and two small instances use little of it
+        explanation:
+          text: Correct. A Dedicated Host bills per host, however many instances run on it, and per-core licenses may also have to cover all its physical cores.
+      - id: charged-again
+        text: AWS charges the SQL Server license fee again on licenses you bring
+        variants:
+          - text: AWS bills the SQL Server license a second time when you bring your own
+          - text: Licenses you bring are charged for again by AWS
+        explanation:
+          text: With BYOL, AWS charges only for the infrastructure. The problem is how that infrastructure is billed.
+      - id: one-instance
+        text: A Dedicated Host can run only one instance at a time
+        variants:
+          - text: Only a single instance fits on a Dedicated Host at once
+          - text: A Dedicated Host holds just one instance at a time
+        explanation:
+          text: A host can run many instances; that's why filling it is what makes it pay off.
+      - id: no-os-charge
+        text: License-included instances carry no operating system charge at all
+        variants:
+          - text: License-included instances include the operating system free of charge
+          - text: There's no charge for the operating system on license-included instances
+        explanation:
+          text: License-included Windows instances do charge for Windows; it's part of their hourly price.
+    correct_answers: [whole-server]
+    explanation:
+      text: |
+        Bring your own license isn't always cheaper. A Dedicated Host is billed as a whole physical
+        server, so it pays off when you can fill it, for example with dozens of Windows servers, not
+        two. Licenses already paid for are a sunk cost: what was spent in the past doesn't change
+        which option is cheapest from today.
+
+  - id: q13-rightsize-then-commit
+    page: guide/13-moving-to-aws/06-sim-rightsizing-and-licensing.md
+    section: "Decision 1: for each server, choose downsize, upsize, keep, schedule or wait, and say why"
+    task: "1.4"
+    level: application
+    topics: [rightsizing, savings-plans]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company has just rehosted 40 servers onto EC2 at the sizes they had on premises. Its finance
+        team wants to buy a three-year Savings Plan to cover them right away. What should happen
+        first?
+    choices:
+      - id: auto-scaling-shrink
+        text: Buy the plan now, then let Auto Scaling shrink each instance
+        variants:
+          - text: Commit now, and rely on Auto Scaling to make each instance smaller
+          - text: Buy the plan first, then have Auto Scaling shrink the instances
+        explanation:
+          text: Auto Scaling changes how many instances run, not how big each one is.
+      - id: rightsize-first
+        text: Rightsize the instances from their measured use, then commit
+        variants:
+          - text: Size each instance from its measured use, then buy the plan
+          - text: Match the instances to their measured use, and only then commit
+        explanation:
+          text: Correct. A commitment bought for oversized servers locks the waste in for one or three years.
+      - id: dedicated-hosts
+        text: Move the instances to Dedicated Hosts so the plan covers more
+        variants:
+          - text: Put the instances on Dedicated Hosts to widen the plan's coverage
+          - text: Shift the instances to Dedicated Hosts so more is covered
+        explanation:
+          text: Dedicated Hosts are for licenses tied to physical hardware. They don't make a commitment go further.
+      - id: tco-check
+        text: Confirm the plan's value with the AWS TCO Calculator, then commit
+        variants:
+          - text: Check the plan with the AWS TCO Calculator, then buy it
+          - text: Run the AWS TCO Calculator on the plan, then commit
+        explanation:
+          text: The TCO Calculator no longer exists; its address opens the AWS Pricing Calculator (checked 2026-10-24). And no calculator fixes the oversized instances.
+    correct_answers: [rightsize-first]
+    hint:
+      text: Servers bought on premises were sized for a guess about the future.
+    explanation:
+      text: |
+        On-premises servers are bought for a guess years ahead, so many are bigger than their work
+        needs, and a rehost copies them at that size. Rightsize from measured use first, then commit:
+        a Savings Plan or Reserved Instance bought for an oversized server pays for the waste every
+        hour for one or three years.
+
+  - id: q13-schedule-weekday-test
+    page: guide/13-moving-to-aws/06-sim-rightsizing-and-licensing.md
+    section: "Decision 1: for each server, choose downsize, upsize, keep, schedule or wait, and say why"
+    task: "1.4"
+    level: application
+    topics: [rightsizing]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A test copy of a web application runs on an over-provisioned EC2 instance around the clock,
+        but testers use it only from 9:00 to 19:00 on weekdays. What should the team do first to cut
+        its cost?
+    choices:
+      - id: reserved
+        text: Buy a three-year Reserved Instance for it
+        variants:
+          - text: Cover it with a three-year Reserved Instance
+          - text: Purchase a Reserved Instance for three years
+        explanation:
+          text: A three-year commitment pays for every hour, including the roughly 118 hours a week nobody uses it. It locks the waste in.
+      - id: dedicated-host
+        text: Move it onto a Dedicated Host of its own
+        variants:
+          - text: Give it a Dedicated Host of its own
+          - text: Run it on its own Dedicated Host
+        explanation:
+          text: A Dedicated Host bills for a whole physical server. It's for licenses tied to hardware, not for saving money on a test copy.
+      - id: more-instances
+        text: Add more instances in an Auto Scaling group
+        variants:
+          - text: Put it in an Auto Scaling group with more instances
+          - text: Scale it out with extra instances in a group
+        explanation:
+          text: More instances would cost more. Auto Scaling handles peaks; this server's problem is idle hours.
+      - id: schedule
+        text: Run it only during the testing hours
+        variants:
+          - text: Schedule it to run only when testers work
+          - text: Stop it outside the hours testers use it
+        explanation:
+          text: Correct. It's needed about 50 of 168 hours a week, so stopping it the rest of the time saves the most. Then move it to a smaller type.
+    correct_answers: [schedule]
+    hint:
+      text: Count the hours in a week it's needed against the hours it runs.
+    explanation:
+      text: |
+        A server needed only part of the time should be scheduled before anything else: a test copy
+        used 50 hours of a 168-hour week can stop for the other 118. Then the over-provisioned finding
+        can be acted on with a smaller type. Commitments come last, and only for what runs all the
+        time.
+
+  - id: q13-no-memory-data
+    page: guide/13-moving-to-aws/06-sim-rightsizing-and-licensing.md
+    section: "Decision 1: for each server, choose downsize, upsize, keep, schedule or wait, and say why"
+    task: "1.4"
+    level: application
+    topics: [rightsizing, compute-optimizer]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        AWS Compute Optimizer reports an EC2 instance as over-provisioned because its CPU use peaks
+        at 9%. The CloudWatch agent isn't installed on it, so there is no memory data. What should
+        the team do?
+    choices:
+      - id: agent-then-decide
+        text: Install the CloudWatch agent, collect enough data, then decide
+        variants:
+          - text: Add the CloudWatch agent, gather enough data, and then decide
+          - text: Get memory data through the CloudWatch agent before deciding
+        explanation:
+          text: Correct. Compute Optimizer sees memory only if the agent runs on the instance. Downsizing blind could leave the server short of memory.
+      - id: downsize-now
+        text: Downsize it right away, since its CPU use is so low
+        variants:
+          - text: Move it to a smaller type now, as CPU use is very low
+          - text: Shrink it at once, because its CPU use is tiny
+        explanation:
+          text: Low CPU says nothing about memory. A smaller type has less memory, and nobody knows how much this server uses.
+      - id: upsize
+        text: Upsize it, since missing data means the risk is high
+        variants:
+          - text: Move it to a larger type, as the missing data makes it risky
+          - text: Give it a bigger type, because without data the risk is high
+        explanation:
+          text: Nothing shows the server is short of resources. Missing data is a reason to collect it, not to spend more.
+      - id: ignore-ec2
+        text: Ignore the finding, since Compute Optimizer can't assess EC2
+        variants:
+          - text: Disregard it, because Compute Optimizer doesn't cover EC2
+          - text: Set the finding aside, as EC2 is outside Compute Optimizer's scope
+        explanation:
+          text: Compute Optimizer does cover EC2. The finding is real but incomplete.
+    correct_answers: [agent-then-decide]
+    hint:
+      text: Check the data before acting on the finding.
+    explanation:
+      text: |
+        Rightsize from data you trust: enough hours of metrics, memory included, and the busy season
+        covered. Compute Optimizer sees an instance's memory only when the CloudWatch agent runs on it,
+        so a CPU-only finding is half the picture. Install the agent, wait for enough data, then
+        follow the finding.
+
+  - id: q13-upsize-nightly-batch
+    page: guide/13-moving-to-aws/06-sim-rightsizing-and-licensing.md
+    section: "Decision 1: for each server, choose downsize, upsize, keep, schedule or wait, and say why"
+    task: "1.4"
+    level: understanding
+    topics: [rightsizing, compute-optimizer]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        An instance that runs a nightly ordering batch peaks at 97% CPU every night, and AWS Compute
+        Optimizer marks it under-provisioned. What does rightsizing mean for this instance?
+    choices:
+      - id: keep-only-smaller
+        text: Keep it as it is, since rightsizing only moves to smaller types
+        variants:
+          - text: Leave it alone, because rightsizing only ever shrinks instances
+          - text: Change nothing, as rightsizing only means going smaller
+        explanation:
+          text: Rightsizing aims for the right size, not the smallest. Sometimes the right size is bigger.
+      - id: downsize-idle-day
+        text: Move it to a smaller type, since it's quiet during the day
+        variants:
+          - text: Shrink it, because it does little during the day
+          - text: Downsize it, as its daytime use is low
+        explanation:
+          text: The night's peak is what matters. A smaller type would make the batch finish even later.
+      - id: upsize
+        text: Move it to a larger type, even though that costs more
+        variants:
+          - text: Give it a bigger type, even at a higher cost
+          - text: Upsize it, accepting the higher price
+        explanation:
+          text: Correct. At 97% the batch risks finishing late and the shops wait. The aim is the right size, not the cheapest.
+      - id: retire
+        text: Retire it, since constant high use shows it's worn out
+        variants:
+          - text: Switch it off, as heavy use shows it's at end of life
+          - text: Decommission it, because high use means it's worn out
+        explanation:
+          text: High use shows the server is needed. Retiring is for applications with no business value.
+    correct_answers: [upsize]
+    explanation:
+      text: |
+        Compute Optimizer labels instances over-provisioned, under-provisioned or optimized.
+        Rightsizing follows the finding in either direction: downsize the over-provisioned, upsize the
+        under-provisioned. Rightsizing can cost more; a batch that finishes late costs the business
+        more than a larger instance.
+
+  - id: q13-per-core-license-host
+    page: guide/13-moving-to-aws/06-sim-rightsizing-and-licensing.md
+    section: "Decision 2: choose a route for each workload"
+    task: "1.4"
+    level: application
+    topics: [licensing, dedicated-hosts]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company rehosts a server running commercial database software that is licensed per
+        physical processor core. The vendor allows the software on any hardware dedicated to the
+        company. Where should it run on AWS, and what must the company check?
+    choices:
+      - id: dedicated-instance
+        text: On a Dedicated Instance, after checking how many vCPUs it has
+        variants:
+          - text: On a Dedicated Instance, once its vCPU count is checked
+          - text: A Dedicated Instance, after confirming its number of vCPUs
+        explanation:
+          text: A Dedicated Instance runs on hardware used only by you, but it doesn't show the server's physical cores, which the license counts.
+      - id: dedicated-host
+        text: On a Dedicated Host, after checking how many physical cores it has
+        variants:
+          - text: On a Dedicated Host, once its physical core count is checked
+          - text: A Dedicated Host, after confirming its number of physical cores
+        explanation:
+          text: Correct. Only a Dedicated Host shows its sockets and physical cores. A whole host often has far more cores than the licenses cover.
+      - id: shared-instance
+        text: On a shared instance, after checking how many vCPUs it has
+        variants:
+          - text: On a default-tenancy instance, once its vCPU count is checked
+          - text: A shared-tenancy instance, after confirming its number of vCPUs
+        explanation:
+          text: A shared instance isn't hardware dedicated to the company, and vCPUs aren't the physical cores the license counts.
+      - id: spot-instance
+        text: On a Spot Instance, after checking how often it's interrupted
+        variants:
+          - text: On a Spot Instance, once its interruption rate is checked
+          - text: A Spot Instance, after confirming how often it's reclaimed
+        explanation:
+          text: Spot is a way to pay less for spare capacity that can be taken back. It does nothing for a license tied to physical cores.
+    correct_answers: [dedicated-host]
+    hint:
+      text: Which option lets you see the physical hardware that the license counts?
+    explanation:
+      text: |
+        A license counted per physical core needs a server whose cores you can see and that is
+        dedicated to you: a Dedicated Host. Check the host's core count first. A whole host often has
+        far more cores than the licenses cover, and if the vendor counts every core on the host, the
+        company must buy more licenses or choose a host type with fewer cores.
+
+flashcards:
+
+  - id: c13-servers-alone-partial
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: "Four domains change, each enabling the next"
+    task: "1.3"
+    level: understanding
+    topics: [cloud-adoption-framework, caf-domains]
+    front:
+      text: Why does moving servers to AWS deliver only part of what the AWS CAF promises?
+    back:
+      text: Moving servers is the technology domain, the first link in the chain. Most of the larger outcomes come from what it makes possible next, in process, organization and product.
+
+  - id: c13-capability-words-trap
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: "Six perspectives group the capabilities, each owned by different people"
+    task: "1.3"
+    level: understanding
+    topics: [cloud-adoption-framework, caf-perspectives]
+    front:
+      text: A concern mentions "governance" or an "incident". Does that word settle which CAF perspective owns it?
+    back:
+      text: No. Security has security governance and incident response; Operations has incident and problem management. Ask what is at stake, such as protecting data (Security) or keeping a service running (Operations).
+
+  - id: c13-phases-repeat
+    page: guide/13-moving-to-aws/01-the-cloud-adoption-framework.md
+    section: "Four phases, repeated: Envision, Align, Launch, Scale"
+    task: "1.3"
+    level: understanding
+    topics: [cloud-adoption-framework, caf-phases]
+    front:
+      text: Why does the AWS CAF repeat Envision, Align, Launch and Scale, rather than run them once?
+    back:
+      text: So that each round shows value quickly, instead of betting everything on one large plan. Lessons from each round's pilots shape the next.
+
+  - id: c13-retire-retain-first
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: "Retire and retain: decide first what doesn't move"
+    task: "1.3"
+    level: understanding
+    topics: [migration-strategies]
+    front:
+      text: Why sort out the applications to retire and retain before planning any moves?
+    back:
+      text: The cheapest migration is the one you don't do. An application switched off, or kept where it is for now, needs no move planned yet.
+
+  - id: c13-rehost-easier-later
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: "Rehost and relocate: move without changing the application"
+    task: "1.3"
+    level: understanding
+    topics: [migration-strategies, rehost]
+    front:
+      text: Rehosting gains no cloud optimizations at first. Why is it still a sound choice, not just a quick one?
+    back:
+      text: An application already running on AWS is easier to improve later. You can replatform or refactor it once it's there, without holding up the move.
+
+  - id: c13-relocate-quickest
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: "Rehost and relocate: move without changing the application"
+    task: "1.3"
+    level: recall
+    topics: [migration-strategies, relocate]
+    front:
+      text: Which of the 7 Rs does AWS rate the fastest way to get a workload running and operated on AWS, and why?
+    back:
+      text: Relocate. The application's architecture stays as it is, and the team keeps operating the platform the same way.
+
+  - id: c13-sensitive-tables-refactor
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: "Refactor: redesign for the cloud when the business demands it"
+    task: "1.3"
+    level: understanding
+    topics: [migration-strategies, refactor]
+    front:
+      text: A database's sensitive tables must stay on premises while the rest of the application moves. Which strategy does AWS list for this, and why?
+    back:
+      text: Refactor. The database has to be split, which changes the application's design. Retain would keep all of it; rehost or replatform would move all of it.
+
+  - id: c13-always-customers
+    page: guide/13-moving-to-aws/02-seven-migration-strategies.md
+    section: "Your side of the line"
+    task: "2.1"
+    level: recall
+    topics: [migration-strategies, shared-responsibility]
+    front:
+      text: Whatever migration strategy you choose, what always stays the customer's responsibility?
+    back:
+      text: The data, and who can reach it. Strategies move patching and hardware work to AWS or a SaaS vendor, never that.
+
+  - id: c13-discovery-exam-vs-today
+    page: guide/13-moving-to-aws/03-migration-tools.md
+    section: '"The discovery tools are open to new customers" is wrong'
+    task: "1.3"
+    level: recall
+    topics: [migration-tools, closed-services]
+    front:
+      text: An exam question asks for the tool that collects on-premises server inventory and dependencies. What does the exam want, and what would a new customer use today?
+    back:
+      text: The exam wants AWS Application Discovery Service. It has been closed to new customers since 2025-11-07, so a new customer uses AWS Transform (checked 2026-10-24).
+
+  - id: c13-mgn-waves
+    page: guide/13-moving-to-aws/03-migration-tools.md
+    section: "Application Migration Service, now AWS Transform MGN, rehosts whole servers"
+    task: "1.3"
+    level: understanding
+    topics: [migration-tools, application-migration-service]
+    front:
+      text: Why does AWS Application Migration Service (AWS Transform MGN) let you group servers into applications and waves?
+    back:
+      text: So servers that depend on each other cut over together, as one group, rather than one by one with broken links between them.
+
+  - id: c13-network-arithmetic
+    page: guide/13-moving-to-aws/03-migration-tools.md
+    section: "Files move over the network with DataSync; Snowball is no longer the answer"
+    task: "1.3"
+    level: understanding
+    topics: [migration-tools, datasync]
+    front:
+      text: About how long does copying 60 TB take over a 1 Gbps link at 80% use, and what does that suggest?
+    back:
+      text: About a week (6.9 days). "Large" alone no longer means "ship a device"; do the arithmetic, then use DataSync if the network can finish in time.
+
+  - id: c13-move-as-is-costs-more
+    page: guide/13-moving-to-aws/04-the-business-case.md
+    section: "Rightsize twice: before the move from measured data, and after it with Compute Optimizer"
+    task: "1.4"
+    level: understanding
+    topics: [business-case, rightsizing]
+    front:
+      text: Why can moving every server to AWS at its current size cost more than staying on premises?
+    back:
+      text: Servers bought for a guess years ahead are often far bigger than their work needs. Copied at that size, you pay for the guess every hour.
+
+  - id: c13-tco-idea-lives
+    page: guide/13-moving-to-aws/04-the-business-case.md
+    section: "There is no TCO Calculator: use Migration Evaluator for the case, and the Pricing Calculator for estimates"
+    task: "1.4"
+    level: understanding
+    topics: [business-case, closed-services]
+    front:
+      text: The AWS TCO Calculator is gone. Is total cost of ownership still the right idea for a migration case?
+    back:
+      text: Yes. The idea lives on, and AWS's Cloud Economics Center still uses "TCO" as a label. The calculator's address now opens the AWS Pricing Calculator (checked 2026-10-24).
+
+  - id: c13-finance-and-tech-together
+    page: guide/13-moving-to-aws/04-the-business-case.md
+    section: "In real work: finance and technology build the case together"
+    task: "1.4"
+    level: understanding
+    topics: [business-case]
+    front:
+      text: In a migration business case, what does finance own and what do engineers own?
+    back:
+      text: Finance owns the on-premises numbers and the license agreements. Engineers own the measured use and the instance choices. COST01-BP02 asks for this partnership.
+
+  - id: c13-sunk-cost-licenses
+    page: guide/13-moving-to-aws/04-the-business-case.md
+    section: "Worked example: licensing a distributor's reporting database"
+    task: "1.4"
+    level: understanding
+    topics: [licensing, business-case]
+    front:
+      text: A company already paid for its licenses years ago. Does that make bringing them to AWS the cheapest option?
+    back:
+      text: No. Licenses already paid for are a sunk cost. Compare the options from today, including any Dedicated Host or Software Assurance the route needs.
+
+  - id: c13-windows-no-license-mobility
+    page: guide/13-moving-to-aws/04-the-business-case.md
+    section: "License-included or bring your own license: who pays the software vendor"
+    task: "1.4"
+    level: recall
+    topics: [licensing]
+    front:
+      text: Can Windows Server licenses move to ordinary shared EC2 instances under License Mobility?
+    back:
+      text: No. Windows Server isn't eligible for License Mobility, even with Software Assurance. Older licenses can go on Dedicated Hosts; otherwise use license-included.
+
+  - id: c13-pre-2019-dedicated-hosts
+    page: guide/13-moving-to-aws/04-the-business-case.md
+    section: "License-included or bring your own license: who pays the software vendor"
+    task: "1.4"
+    level: recall
+    topics: [licensing, dedicated-hosts]
+    front:
+      text: Without Software Assurance, which SQL Server licenses can a company bring to EC2, and where can they run?
+    back:
+      text: Only those bought before 2019-10-01 (or added as a true-up under an Enterprise Enrollment effective before then), and only on Dedicated Hosts.
+
+  - id: c13-optimizer-needs-data
+    page: guide/13-moving-to-aws/06-sim-rightsizing-and-licensing.md
+    section: "How the data gets made"
+    task: "1.4"
+    level: recall
+    topics: [rightsizing, compute-optimizer]
+    front:
+      text: What does Compute Optimizer need before it gives a trustworthy EC2 finding?
+    back:
+      text: Your opt-in; at least 30 hours of metrics within the last 14 days; and the CloudWatch agent on the instance if memory is to count (checked 2026-10-24).

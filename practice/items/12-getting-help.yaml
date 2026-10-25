@@ -1,0 +1,3367 @@
+# Module 12, Getting help. Practice questions and concept cards.
+# Written from the guide's pages in guide/12-getting-help/; see practice/work/blueprint-12.md.
+# Build fields (page, section, task, level, topics) are described in source/practice/build_bundle.py.
+
+questions:
+
+  # ---------------------------------------------------------------------------------------------
+  # Lesson 12.01, Support plans (and Simulation S15)
+  # ---------------------------------------------------------------------------------------------
+
+  - id: q12-basic-includes-two
+    page: guide/12-getting-help/01-support-plans.md
+    section: "Every account starts on Basic, which answers account questions but not technical ones"
+    task: "4.3"
+    level: understanding
+    topics: [support-plans, basic-support]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A new company stays on the free Basic Support plan. Which two of these does its AWS account
+        get? (Select TWO.)
+    choices:
+      - id: technical-case
+        text: Technical cases about a Lambda timeout
+        variants:
+          - text: Engineer help with a Lambda timeout
+          - text: A technical case on Lambda timeouts
+        explanation:
+          text: A question about how a service behaves is a technical case, and Basic can't open one. Technical cases start with Business Support+.
+      - id: billing-cases
+        text: Cases about its account and its bill
+        variants:
+          - text: Account and billing cases with AWS
+          - text: Help from AWS with billing questions
+        explanation:
+          text: Correct. Every account, Basic included, can open account and billing cases, answered one to one by AWS customer service.
+      - id: health-api
+        text: Calls to the AWS Health API
+        variants:
+          - text: Use of the AWS Health API by its tools
+          - text: Programmatic access to the AWS Health API
+        explanation:
+          text: The AWS Health API needs Business Support+ or a higher plan; on Basic it refuses the call. The AWS Health Dashboard, which people read in a browser, is free.
+      - id: repost
+        text: Questions and answers on AWS re:Post
+        variants:
+          - text: Access to the AWS re:Post community
+          - text: Asking questions on AWS re:Post
+        explanation:
+          text: Correct. re:Post, AWS's public question-and-answer site, is open on every plan. Paid plans only add prioritized responses there.
+      - id: cost-checks
+        text: Trusted Advisor's cost optimization checks
+        variants:
+          - text: The cost checks in Trusted Advisor
+          - text: Trusted Advisor's money-saving checks
+        explanation:
+          text: Basic sees Trusted Advisor's service limits checks and a few security and fault tolerance checks. The cost optimization checks need a paid plan.
+    correct_answers: [billing-cases, repost]
+    explanation:
+      text: |
+        Basic Support is free on every account. It covers account and billing cases, service quota
+        increase requests, the documentation, whitepapers and re:Post, some Trusted Advisor checks
+        and the AWS Health Dashboard. What it lacks is technical help: no technical cases, no Health
+        API and no cost optimization checks (as of 2026-10-24).
+
+  - id: q12-basic-database-down-next-step
+    page: guide/12-getting-help/01-support-plans.md
+    section: "Every account starts on Basic, which answers account questions but not technical ones"
+    task: "4.3"
+    level: application
+    topics: [support-plans, basic-support]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A small company is on Basic Support. After a settings change, its Amazon RDS database stops
+        accepting connections, and the developer wants an AWS engineer to help find the cause. What is
+        the cheapest way for the company to open that kind of case?
+    choices:
+      - id: billing-case-urgent
+        text: Open an account and billing case and mark it urgent
+        variants:
+          - text: File it as an urgent account and billing case
+          - text: Use an account and billing case, flagged as urgent
+        explanation:
+          text: Account and billing cases are for the account and the bill. A database that won't accept connections is a technical question, whatever urgency you choose.
+      - id: root-user
+        text: Sign in as the root user and open a technical case
+        variants:
+          - text: Open the technical case while signed in as root
+          - text: Use the root user, which can open technical cases
+        explanation:
+          text: The root user gets no extra Support features. Which cases an account can open depends on its Support plan, not on who signs in.
+      - id: move-to-bplus
+        text: Move the account to Business Support+ first
+        variants:
+          - text: Upgrade the account to Business Support+ first
+          - text: Subscribe the account to Business Support+ first
+        explanation:
+          text: Correct. Business Support+ is the first plan with technical cases, 24/7 by phone, web and chat.
+      - id: developer-support
+        text: Subscribe to Developer Support, the cheapest technical plan
+        variants:
+          - text: Buy Developer Support, the lowest-cost technical plan
+          - text: Choose Developer Support, the cheapest plan for technical help
+        explanation:
+          text: Developer Support has taken no new subscriptions since 2025-12-02 and ends on 2027-01-01. Older material calls it the cheapest technical plan; today that's Business Support+.
+    correct_answers: [move-to-bplus]
+    hint:
+      text: Ask which kind of case this is, and which plans can open that kind.
+    explanation:
+      text: |
+        A question about how a service is behaving is a technical case, and Basic can't open one.
+        The cheapest plan that can is Business Support+, which adds technical cases around the
+        clock. On Basic, the company's other options are the documentation, the Knowledge Center and
+        re:Post.
+
+  - id: q12-bplus-adds-two
+    page: guide/12-getting-help/01-support-plans.md
+    section: "Business Support+ adds technical help around the clock"
+    task: "4.3"
+    level: understanding
+    topics: [support-plans, business-support-plus]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A software company's production systems run on AWS, and it has just moved from Basic to the
+        first paid plan. Its operations lead lists what changed. Which two items belong on the list?
+        (Select TWO.)
+    choices:
+      - id: ta-priority
+        text: Trusted Advisor Priority from its account team
+        variants:
+          - text: Its account team's Trusted Advisor Priority
+          - text: Trusted Advisor Priority, run by its account team
+        explanation:
+          text: Trusted Advisor Priority comes only with Enterprise Support and Unified Operations. The first paid plan unlocks all checks, but no account team picks among them.
+      - id: third-party-software
+        text: Help with the operating systems on its instances
+        variants:
+          - text: Support for the OS running on its instances
+          - text: Help with its instances' operating systems
+        explanation:
+          text: Correct. Business Support+ adds help with third-party software, such as the operating systems on your EC2 instances.
+      - id: wa-reviews
+        text: Well-Architected reviews led by a TAM
+        variants:
+          - text: TAM-led Well-Architected reviews
+          - text: Well-Architected reviews run by its TAM
+        explanation:
+          text: Reviews led by a Technical Account Manager start with Enterprise Support.
+      - id: health-support-api
+        text: Programmatic access to AWS Health and Support
+        variants:
+          - text: The AWS Health API and the AWS Support API
+          - text: API access to AWS Health and to AWS Support
+        explanation:
+          text: Correct. Business Support+ unlocks the AWS Health API and the AWS Support API, so the company's own tools can read them.
+      - id: workload-monitoring
+        text: AWS monitoring its workloads around the clock
+        variants:
+          - text: 24/7 monitoring of its workloads by AWS
+          - text: Around-the-clock workload monitoring by AWS
+        explanation:
+          text: 24/7 workload monitoring comes only with Unified Operations, the top plan.
+    correct_answers: [third-party-software, health-support-api]
+    explanation:
+      text: |
+        Business Support+ is the first paid plan. On top of Basic it adds technical cases around the
+        clock, AI help that uses your account's context, all Trusted Advisor checks, the AWS Health
+        API and Support API, and help with third-party software such as operating systems. A TAM, its
+        reviews and Trusted Advisor Priority start with Enterprise Support, and workload monitoring with Unified
+        Operations (as of 2026-10-24).
+
+  - id: q12-enterprise-over-bplus-two
+    page: guide/12-getting-help/01-support-plans.md
+    section: "Enterprise Support adds a named person who knows your setup"
+    task: "4.3"
+    level: recall
+    topics: [support-plans, enterprise-support]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        Which two of these come with Enterprise Support but not with Business Support+? (Select
+        TWO.)
+    choices:
+      - id: health-api
+        text: Access to the AWS Health API
+        variants:
+          - text: Use of the AWS Health API
+          - text: The AWS Health API for its tools
+        explanation:
+          text: The Health API already comes with Business Support+, the first paid plan.
+      - id: technical-cases
+        text: Technical cases by phone, web and chat, 24/7
+        variants:
+          - text: 24/7 technical cases by phone, web and chat
+          - text: Phone, web and chat technical cases at any hour
+        explanation:
+          text: Every paid plan has 24/7 technical cases; they start with Business Support+.
+      - id: designated-tam
+        text: A designated Technical Account Manager
+        variants:
+          - text: A named Technical Account Manager (TAM)
+          - text: A TAM assigned to the company by name
+        explanation:
+          text: Correct. The designated TAM is Enterprise Support's biggest addition.
+      - id: domain-specialists
+        text: Designated Domain Specialist Engineers
+        variants:
+          - text: Named domain specialist engineers
+          - text: Domain Specialist Engineers assigned to you
+        explanation:
+          text: Designated domain specialists come only with Unified Operations, the plan above Enterprise Support.
+      - id: ta-priority
+        text: Trusted Advisor Priority
+        variants:
+          - text: The Trusted Advisor Priority feature
+          - text: Trusted Advisor Priority access
+        explanation:
+          text: Correct. Trusted Advisor Priority, where your account team picks the recommendations that matter most, comes with Enterprise Support and Unified Operations.
+    correct_answers: [designated-tam, ta-priority]
+    explanation:
+      text: |
+        Enterprise Support adds a designated Technical Account Manager, a first-reply target under 15
+        minutes for business-critical cases, Well-Architected reviews, Trusted Advisor Priority and
+        AWS Security Incident Response included. Technical cases and the Health API already come with
+        Business Support+, and domain specialists only with Unified Operations (as of 2026-10-24).
+
+  - id: q12-security-incident-response-plan
+    page: guide/12-getting-help/01-support-plans.md
+    section: "Enterprise Support adds a named person who knows your setup"
+    task: "4.3"
+    level: application
+    topics: [support-plans, enterprise-support]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A fintech startup wants AWS Security Incident Response to be part of its Support plan, with
+        no separate fee for it. Which plan is the cheapest that includes it?
+    choices:
+      - id: unified-operations
+        text: Unified Operations
+        variants:
+          - text: AWS Unified Operations
+          - text: The Unified Operations plan
+        explanation:
+          text: Unified Operations includes Security Incident Response too, but it starts far above Enterprise Support's price and adds things the startup didn't ask for.
+      - id: basic
+        text: Basic Support
+        variants:
+          - text: AWS Basic Support
+          - text: The free Basic plan
+        explanation:
+          text: Basic has no technical help at all, and Security Incident Response isn't included.
+      - id: business-support-plus
+        text: Business Support+
+        variants:
+          - text: AWS Business Support+
+          - text: The Business Support+ plan
+        explanation:
+          text: On Business Support+, AWS Security Incident Response is available only for an extra fee.
+      - id: enterprise-support
+        text: Enterprise Support
+        variants:
+          - text: AWS Enterprise Support
+          - text: The Enterprise Support plan
+        explanation:
+          text: Correct. Enterprise Support is the first plan that includes AWS Security Incident Response.
+    correct_answers: [enterprise-support]
+    hint:
+      text: Look for the step on the ladder where this service stops being an add-on.
+    explanation:
+      text: |
+        AWS Security Incident Response helps a company prepare for, respond to and recover from
+        incidents such as an account takeover. It costs extra on Business Support+ and is included
+        from Enterprise Support up (as of 2026-10-24). Choosing the cheapest plan that includes a
+        must-have is the whole method of this lesson.
+
+  - id: q12-unified-ops-specialists
+    page: guide/12-getting-help/01-support-plans.md
+    section: "Unified Operations is for systems where minutes matter"
+    task: "4.3"
+    level: application
+    topics: [support-plans, unified-operations]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        An airline's booking platform runs across many AWS accounts. It wants designated AWS engineers
+        who specialize in its applications, and AWS monitoring its workloads around the clock for
+        security and performance problems. Which Support plan provides both?
+    choices:
+      - id: enterprise-support
+        text: Enterprise Support
+        variants:
+          - text: AWS Enterprise Support
+          - text: The Enterprise Support plan
+        explanation:
+          text: Enterprise Support gives a designated TAM, not designated domain specialists, and it doesn't include 24/7 workload monitoring.
+      - id: unified-operations
+        text: Unified Operations
+        variants:
+          - text: AWS Unified Operations
+          - text: The Unified Operations plan
+        explanation:
+          text: Correct. Designated Domain Specialist Engineers and 24/7 workload monitoring come only with Unified Operations.
+      - id: business-support-plus
+        text: Business Support+
+        variants:
+          - text: AWS Business Support+
+          - text: The Business Support+ plan
+        explanation:
+          text: Business Support+ gives 24/7 technical cases, but no named people and no monitoring of your workloads.
+      - id: developer-support
+        text: Developer Support
+        variants:
+          - text: AWS Developer Support
+          - text: The Developer Support plan
+        explanation:
+          text: Developer Support takes no new subscriptions and ends on 2027-01-01. It never offered named engineers or monitoring.
+    correct_answers: [unified-operations]
+    hint:
+      text: Find the plan that adds people who learn your applications, not just one adviser.
+    explanation:
+      text: |
+        Unified Operations is the top plan, for mission-critical workloads. It adds designated Domain
+        Specialist Engineers beside the TAM, 24/7 monitoring of your workloads, critical workload
+        reviews, and a first reply in under 5 minutes for critical incidents (as of 2026-10-24).
+        Enterprise Support stops at a designated TAM.
+
+  - id: q12-fastest-response-plan
+    page: guide/12-getting-help/01-support-plans.md
+    section: "Unified Operations is for systems where minutes matter"
+    task: "4.3"
+    level: recall
+    topics: [support-plans, response-times]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Which of today's AWS Support plans has the fastest first-response target for a critical
+        incident?
+    choices:
+      - id: enterprise-on-ramp
+        text: Enterprise On-Ramp
+        variants:
+          - text: AWS Enterprise On-Ramp Support
+          - text: The Enterprise On-Ramp plan
+        explanation:
+          text: Enterprise On-Ramp is a retiring plan that ends on 2027-01-01; during 2026 AWS is moving its customers to Enterprise Support.
+      - id: business-support-plus
+        text: Business Support+
+        variants:
+          - text: AWS Business Support+
+          - text: The Business Support+ plan
+        explanation:
+          text: Business Support+ aims for under 30 minutes on a business-critical case, the slowest of the paid plans' top targets.
+      - id: enterprise-support
+        text: Enterprise Support
+        variants:
+          - text: AWS Enterprise Support
+          - text: The Enterprise Support plan
+        explanation:
+          text: Enterprise Support aims for under 15 minutes on a business-critical case, fast but not the fastest.
+      - id: unified-operations
+        text: Unified Operations
+        variants:
+          - text: AWS Unified Operations
+          - text: The Unified Operations plan
+        explanation:
+          text: Correct. Unified Operations aims for a reply in under 5 minutes, from an Incident Management Engineer.
+    correct_answers: [unified-operations]
+    explanation:
+      text: |
+        Each paid plan has a faster target for its most serious cases: under 30 minutes on Business
+        Support+, under 15 on Enterprise Support, and under 5 on Unified Operations, from an Incident
+        Management Engineer (as of 2026-10-24). All three are targets for a first reply, not
+        promises of a fix.
+
+  - id: q12-response-times-two
+    page: guide/12-getting-help/01-support-plans.md
+    section: '"Response times are guaranteed" is wrong'
+    task: "4.3"
+    level: understanding
+    topics: [response-times]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A manager is comparing the response times listed for AWS Support plans. Which two statements
+        about those times are correct? (Select TWO.)
+    choices:
+      - id: business-hours
+        text: They hold only for cases opened in business hours
+        variants:
+          - text: They apply only to cases opened during office hours
+          - text: They count only for cases opened in working hours
+        explanation:
+          text: Every paid plan offers technical help 24/7, and the targets apply around the clock.
+      - id: first-reply
+        text: They measure the time to a first reply, not to a fix
+        variants:
+          - text: They cover AWS's first response, not the repair
+          - text: They time the first reply, not the solution
+        explanation:
+          text: Correct. "Under 30 minutes" means a person engages with your case in about that time; how long the fix takes depends on the problem.
+      - id: basic-targets
+        text: They also apply to technical cases on Basic Support
+        variants:
+          - text: Basic Support's technical cases get them too
+          - text: They cover technical cases opened on Basic as well
+        explanation:
+          text: Basic can't open technical cases at all, so it has no technical response targets.
+      - id: reasonable-effort
+        text: They are targets AWS makes every reasonable effort to meet
+        variants:
+          - text: They are goals AWS makes every reasonable effort to hit
+          - text: AWS aims for them with every reasonable effort, as targets
+        explanation:
+          text: Correct. AWS's own footnote says it makes "every reasonable effort" to respond within these times; its FAQ calls them service level objectives.
+      - id: differ-every-row
+        text: Each paid plan has a different target for every severity
+        variants:
+          - text: Every severity's target differs from one paid plan to the next
+          - text: The paid plans differ in their target at every severity
+        explanation:
+          text: The paid plans differ only for business-critical cases. Production down, impaired and general guidance have the same targets on all three.
+    correct_answers: [first-reply, reasonable-effort]
+    explanation:
+      text: |
+        Support response times are targets for AWS's first reply on a case of a given severity.
+        They aren't promises, and they aren't the time to fix anything. Plan your own recovery so it
+        doesn't depend on AWS replying in time, which is why the guide had the bakery design for
+        failure.
+
+  - id: q12-production-down-stay-bplus
+    page: guide/12-getting-help/01-support-plans.md
+    section: "Response times are targets for a first reply, not guarantees"
+    task: "4.3"
+    level: understanding
+    topics: [response-times, business-support-plus]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Two subsidiaries of one group use different plans: one has Business Support+, the other
+        Enterprise Support. Each opens a case rated "production system down". How do the
+        first-response targets for those two cases compare?
+    choices:
+      - id: enterprise-15
+        text: Enterprise aims for 15 minutes, Business Support+ for an hour
+        variants:
+          - text: Business Support+ aims for an hour, Enterprise for 15 minutes
+          - text: An hour on Business Support+, 15 minutes on Enterprise
+        explanation:
+          text: The 15-minute target is Enterprise Support's for business-critical cases. For production system down, both plans aim for under an hour.
+      - id: enterprise-only
+        text: Only the Enterprise case has a target at this severity
+        variants:
+          - text: Business Support+ sets no target for this severity
+          - text: This severity has a target on Enterprise Support only
+        explanation:
+          text: Every paid plan has targets for every severity of technical case.
+      - id: same
+        text: Both cases have the same target, under an hour
+        variants:
+          - text: The target is under an hour on both plans
+          - text: Under an hour on either plan; they're the same
+        explanation:
+          text: Correct. The paid plans share every target below business-critical, so production down is under 1 hour on both.
+      - id: day-vs-hour
+        text: Business Support+ aims for a day, Enterprise for an hour
+        variants:
+          - text: A day on Business Support+, an hour on Enterprise
+          - text: Enterprise aims for an hour, Business Support+ for a day
+        explanation:
+          text: Under 24 hours is the target for general guidance, on every paid plan, not for a production system that is down.
+    correct_answers: [same]
+    explanation:
+      text: |
+        The paid plans differ only in the top row, business-critical system down: under 30, 15 or 5
+        minutes. For production down (under 1 hour), production impaired, system impaired and
+        general guidance, Business Support+ aims for the same reply times as the plans above it (as
+        of 2026-10-24). So moving up a plan only for these targets buys nothing.
+
+  - id: q12-srt-needs-shield-advanced
+    page: guide/12-getting-help/01-support-plans.md
+    section: "Choose by starting at Basic and moving up only for a reason"
+    task: "4.3"
+    level: understanding
+    topics: [support-plans, shield]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company wants the AWS Shield Response Team's help if it suffers a DDoS attack. Besides a
+        qualifying Support plan, what does AWS's page say the company also needs?
+    choices:
+      - id: shield-standard
+        text: AWS Shield Standard
+        variants:
+          - text: The Shield Standard protection
+          - text: Shield Standard, turned on
+        explanation:
+          text: Shield Standard is automatic and free for every customer. It doesn't bring the Shield Response Team.
+      - id: guardduty
+        text: Amazon GuardDuty
+        variants:
+          - text: The Amazon GuardDuty service
+          - text: GuardDuty, turned on
+        explanation:
+          text: GuardDuty detects threats from logs. It has nothing to do with access to the Shield Response Team.
+      - id: ta-priority
+        text: Trusted Advisor Priority
+        variants:
+          - text: The Trusted Advisor Priority feature
+          - text: Trusted Advisor Priority, turned on
+        explanation:
+          text: Trusted Advisor Priority highlights recommendations; it isn't a condition for DDoS help.
+      - id: shield-advanced
+        text: AWS Shield Advanced
+        variants:
+          - text: The Shield Advanced subscription
+          - text: Shield Advanced, subscribed
+        explanation:
+          text: Correct. The Shield Response Team needs Shield Advanced as well as a qualifying Support plan.
+    correct_answers: [shield-advanced]
+    explanation:
+      text: |
+        DDoS help from the Shield Response Team sounds like a Support plan feature, but it needs AWS
+        Shield Advanced too. Which plans qualify is a separate question: AWS's page names Business
+        Support or Enterprise Support and, when the guide checked on 2026-10-24, didn't yet say
+        whether Business Support+ qualifies, so check the live page before relying on it.
+
+  - id: q12-florist-plan-and-review-two
+    page: guide/12-getting-help/01-support-plans.md
+    section: "Worked example: the bakery's recommendation"
+    task: "3.8"
+    level: application
+    topics: [support-plans, business-support-plus]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A florist's online shop now brings in most of its sales and runs in one AWS account. The
+        owner wants AWS engineers she can phone at any hour if the shop fails. She would also like
+        someone to check the design before Mother's Day, but her budget is small. Which two actions
+        fit best? (Select TWO.)
+    choices:
+      - id: enterprise-reviews
+        text: Subscribe to Enterprise Support for its TAM-led reviews
+        variants:
+          - text: Buy Enterprise Support to get reviews led by a TAM
+          - text: Choose Enterprise Support so a TAM reviews the design
+        explanation:
+          text: Enterprise Support's minimum fee is many times what a small shop's plan costs. A wish for a review isn't a must-have that justifies it.
+      - id: business-support-plus
+        text: Subscribe the shop's account to Business Support+
+        variants:
+          - text: Put the shop's account on Business Support+
+          - text: Buy Business Support+ for the shop's account
+        explanation:
+          text: Correct. It's the cheapest plan with technical cases 24/7 by phone, web and chat.
+      - id: basic-technical
+        text: Stay on Basic and open technical cases when it fails
+        variants:
+          - text: Keep Basic and open a technical case during an outage
+          - text: Remain on Basic, using technical cases if the shop fails
+        explanation:
+          text: Basic can't open technical cases, so the owner would have no AWS engineer to call.
+      - id: wa-tool
+        text: Run a free review in the AWS Well-Architected Tool
+        variants:
+          - text: Review the design herself with the Well-Architected Tool
+          - text: Use the free AWS Well-Architected Tool for a self-review
+        explanation:
+          text: Correct. The Well-Architected Tool asks the Framework's questions about one workload at no charge; it fits a small budget.
+      - id: unified-ops
+        text: Subscribe to Unified Operations for 24/7 monitoring
+        variants:
+          - text: Buy Unified Operations so AWS monitors the shop
+          - text: Choose Unified Operations for round-the-clock monitoring
+        explanation:
+          text: Unified Operations is for mission-critical workloads and starts at a price far beyond a small shop's needs.
+    correct_answers: [business-support-plus, wa-tool]
+    hint:
+      text: Start at Basic and move up only for a real must-have. Is the review a must-have?
+    explanation:
+      text: |
+        The worst day is the shop down with a problem the owner can't solve, so she needs technical
+        cases: Business Support+ is the cheapest plan that has them. The review can be met far more
+        cheaply than with Enterprise Support: a free self-review in the Well-Architected Tool, or a
+        solutions architect or partner (lesson 12.04).
+
+  - id: q12-current-lineup-two
+    page: guide/12-getting-help/01-support-plans.md
+    section: "Older material uses plan names that are being retired"
+    task: "4.3"
+    level: recall
+    topics: [support-plans, legacy-support-plans]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        AWS's current Support lineup, the one the exam guide lists, has four plans. Which two of
+        these are among them? (Select TWO.)
+    choices:
+      - id: developer
+        text: Developer Support
+        variants:
+          - text: AWS Developer Support
+          - text: The Developer Support plan
+        explanation:
+          text: Developer Support takes no new subscriptions and ends on 2027-01-01. Its customers can move to Business Support+.
+      - id: unified-operations
+        text: Unified Operations
+        variants:
+          - text: AWS Unified Operations
+          - text: The Unified Operations plan
+        explanation:
+          text: Correct. Unified Operations is the new top plan, with no older plan behind it.
+      - id: enterprise-on-ramp
+        text: Enterprise On-Ramp Support
+        variants:
+          - text: AWS Enterprise On-Ramp
+          - text: The Enterprise On-Ramp plan
+        explanation:
+          text: Enterprise On-Ramp ends on 2027-01-01; during 2026, AWS is moving its customers to Enterprise Support.
+      - id: business-support-plus
+        text: Business Support+
+        variants:
+          - text: AWS Business Support+
+          - text: The Business Support+ plan
+        explanation:
+          text: Correct. Business Support+ is today's first paid plan.
+      - id: managed-services
+        text: AWS Managed Services
+        variants:
+          - text: AWS Managed Services (AMS)
+          - text: The AWS Managed Services offering
+        explanation:
+          text: AWS Managed Services, in which AWS operates a customer's infrastructure for an extra fee, isn't a Support plan. The exam guide lists it as out of scope.
+    correct_answers: [unified-operations, business-support-plus]
+    explanation:
+      text: |
+        AWS replaced its Support lineup on 2025-12-02. Today's four plans are Basic, Business
+        Support+, Enterprise Support and Unified Operations. Developer, Business and Enterprise
+        On-Ramp end on 2027-01-01 (as of 2026-10-24), so they appear in older material but are never
+        the answer for a new customer. Watch the "+": Business Support+ is the new plan, and Business
+        Support without it is the retiring one.
+
+  - id: q12-old-guide-developer-today
+    page: guide/12-getting-help/01-support-plans.md
+    section: '"Developer, Business and Enterprise On-Ramp are current plans" is out of date'
+    task: "4.3"
+    level: understanding
+    topics: [legacy-support-plans]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A study guide from 2024 recommends Developer Support for a small team that wants to ask AWS
+        technical questions. Which current plan is today's cheapest way for a new customer to do that?
+    choices:
+      - id: business-support-plus
+        text: Business Support+
+        variants:
+          - text: AWS Business Support+
+          - text: The Business Support+ plan
+        explanation:
+          text: Correct. Developer and Business both map to Business Support+, today's cheapest plan with technical cases.
+      - id: basic
+        text: Basic Support
+        variants:
+          - text: AWS Basic Support
+          - text: The free Basic plan
+        explanation:
+          text: Basic can't open technical cases. A Developer customer who chooses no new plan falls back to Basic, but that doesn't meet the team's need.
+      - id: enterprise-support
+        text: Enterprise Support
+        variants:
+          - text: AWS Enterprise Support
+          - text: The Enterprise Support plan
+        explanation:
+          text: 'Enterprise Support can open technical cases too, but it isn''t the cheapest: it adds a TAM and other extras at a far higher price. It''s where Enterprise On-Ramp leads.'
+      - id: developer-support
+        text: Developer Support
+        variants:
+          - text: AWS Developer Support
+          - text: The Developer Support plan
+        explanation:
+          text: Developer Support has taken no new subscriptions since 2025-12-02 and ends on 2027-01-01.
+    correct_answers: [business-support-plus]
+    explanation:
+      text: |
+        When older material names a retired plan, translate it before you answer. "Developer" or
+        "Business" means today's Business Support+, and "Enterprise On-Ramp" means Enterprise
+        Support. The old plans end on 2027-01-01 (as of 2026-10-24).
+
+  - id: q12-yoga-studio-basic
+    page: guide/12-getting-help/06-sim-support-plan-chooser.md
+    section: "Decision 2: the bakery in Module 11"
+    task: "3.8"
+    level: application
+    topics: [support-plans, basic-support]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A neighborhood yoga studio's website shows class times and takes a few bookings. If it's
+        down for a day, staff phone their members, and a volunteer fixes things at the weekend. Which
+        is the cheapest Support plan that covers what the studio needs?
+    choices:
+      - id: business-support-plus
+        text: Business Support+
+        variants:
+          - text: AWS Business Support+
+          - text: The Business Support+ plan
+        explanation:
+          text: Business Support+ would be reasonable insurance, but nothing the studio must have needs technical cases at any hour.
+      - id: enterprise-support
+        text: Enterprise Support
+        variants:
+          - text: AWS Enterprise Support
+          - text: The Enterprise Support plan
+        explanation:
+          text: Enterprise Support's minimum fee would cost far more than the studio's whole AWS bill, for a TAM it doesn't need.
+      - id: basic
+        text: Basic Support
+        variants:
+          - text: AWS Basic Support
+          - text: The Basic Support plan
+        explanation:
+          text: Correct. No must-have needs a paid plan, and Basic still gives billing cases, the documentation and re:Post.
+      - id: unified-operations
+        text: Unified Operations
+        variants:
+          - text: AWS Unified Operations
+          - text: The Unified Operations plan
+        explanation:
+          text: Unified Operations is for mission-critical workloads where minutes matter, the opposite of this site.
+    correct_answers: [basic]
+    hint:
+      text: List the must-haves first. Does anything here need an AWS engineer quickly?
+    explanation:
+      text: |
+        Choose the cheapest plan that covers every must-have. When an outage can wait a day and
+        nobody needs an AWS engineer quickly, no must-have needs a paid plan, so Basic is enough.
+        Revisit the choice when the site becomes business-critical.
+
+  - id: q12-studio-accounts-production-only
+    page: guide/12-getting-help/06-sim-support-plan-chooser.md
+    section: "Decision 5: a design studio with four accounts"
+    task: "3.8"
+    level: application
+    topics: [support-plans, business-support-plus]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        An architecture firm has four AWS accounts. One production account runs client portals that
+        must be fixed fast if they fail; three sandbox accounts hold experiments that can wait. The
+        firm wants the lowest Support cost that still covers its needs. What should it do?
+    choices:
+      - id: all-bplus
+        text: Put all four accounts on Business Support+
+        variants:
+          - text: Subscribe every account to Business Support+
+          - text: Give each of the four accounts Business Support+
+        explanation:
+          text: This covers production, but the sandbox accounts would each pay at least the monthly minimum for help nobody needs.
+      - id: production-only
+        text: Put only production on Business Support+
+        variants:
+          - text: Subscribe just production to Business Support+
+          - text: Give Business Support+ to production alone
+        explanation:
+          text: Correct. Business Support+ is charged per account, so the sandbox accounts can stay on Basic.
+      - id: all-basic
+        text: Keep all four accounts on Basic Support
+        variants:
+          - text: Leave every account on the free Basic plan
+          - text: Stay on Basic Support in all four accounts
+        explanation:
+          text: Basic can't open technical cases, so production's must-have, fast help when portals fail, isn't covered.
+      - id: all-enterprise
+        text: Put all four accounts on Enterprise Support
+        variants:
+          - text: Subscribe every account to Enterprise Support
+          - text: Give each of the four accounts Enterprise Support
+        explanation:
+          text: Enterprise Support adds a TAM nobody asked for, and its minimum fee is far above what this firm needs.
+    correct_answers: [production-only]
+    hint:
+      text: How is the Business Support+ fee worked out, per company or per account?
+    explanation:
+      text: |
+        Business Support+ is charged per account, as the greater of a monthly minimum and a share of
+        that account's charges. So a company can buy it only where a must-have needs it, and leave
+        accounts that can wait on Basic. Paying for help that no must-have needs works against the
+        cost optimization pillar.
+
+  - id: q12-ticket-seller-enterprise
+    page: guide/12-getting-help/06-sim-support-plan-chooser.md
+    section: "Decision 6: an online retailer and a payments processor"
+    task: "3.8"
+    level: application
+    topics: [support-plans, enterprise-support]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A concert-ticket seller loses heavy revenue for every minute its checkout is down. It needs a
+        first reply within 15 minutes when checkout fails, and a named AWS contact to help plan its
+        big on-sale days. It doesn't need domain specialists or AWS monitoring its workloads. Which
+        is the cheapest plan that fits?
+    choices:
+      - id: business-support-plus
+        text: Business Support+
+        variants:
+          - text: AWS Business Support+
+          - text: The Business Support+ plan
+        explanation:
+          text: Business Support+ misses both must-haves. Its fastest target is under 30 minutes, and it has no named TAM.
+      - id: enterprise-support
+        text: Enterprise Support
+        variants:
+          - text: AWS Enterprise Support
+          - text: The Enterprise Support plan
+        explanation:
+          text: Correct. It has an under-15-minute target for business-critical cases and a designated TAM.
+      - id: unified-operations
+        text: Unified Operations
+        variants:
+          - text: AWS Unified Operations
+          - text: The Unified Operations plan
+        explanation:
+          text: Unified Operations fits, but costs far more and adds a 5-minute target, domain specialists and monitoring the seller didn't ask for.
+      - id: enterprise-on-ramp
+        text: Enterprise On-Ramp
+        variants:
+          - text: AWS Enterprise On-Ramp Support
+          - text: The Enterprise On-Ramp plan
+        explanation:
+          text: Enterprise On-Ramp ends on 2027-01-01, and during 2026 AWS is moving its customers to Enterprise Support. It isn't a choice for a new customer.
+    correct_answers: [enterprise-support]
+    hint:
+      text: Cross out every plan that misses a must-have, then take the cheapest left.
+    explanation:
+      text: |
+        List the must-haves, cross out every plan that misses one, and take the cheapest left. A
+        15-minute target and a named TAM rule out Business Support+; Unified Operations covers them
+        but adds what the seller doesn't need. Enterprise Support is the cheapest fit (as of
+        2026-10-24).
+
+  # ---------------------------------------------------------------------------------------------
+  # Lesson 12.02, Tools that watch your account (and Lab 17)
+  # ---------------------------------------------------------------------------------------------
+
+  - id: q12-ta-what-it-does
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: "Trusted Advisor checks your setup against AWS's best practices, in six categories"
+    task: "4.3"
+    level: understanding
+    topics: [trusted-advisor]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A new cloud team asks what AWS Trusted Advisor does. Which statement describes it?
+    choices:
+      - id: checks-setup
+        text: It checks your account's setup against AWS best practices
+        variants:
+          - text: It compares your account's setup with AWS's best practices
+          - text: It inspects your account and recommends improvements
+        explanation:
+          text: Correct. It flags where you could save money, improve availability or performance, or close a security gap.
+      - id: fixes-automatically
+        text: It changes risky settings in your account automatically
+        variants:
+          - text: It corrects unsafe settings in your account for you
+          - text: It fixes the problems it finds in your account on its own
+        explanation:
+          text: Trusted Advisor only reports. If it flags an open port, you change the security group yourself.
+      - id: reports-aws-events
+        text: It reports AWS service issues and maintenance that affect you
+        variants:
+          - text: It tells you about AWS outages and planned maintenance
+          - text: It announces problems and maintenance on AWS's side
+        explanation:
+          text: That's AWS Health, which looks at AWS's side. Trusted Advisor looks at your side, at what you built.
+      - id: workload-questionnaire
+        text: It reviews one workload question by question, by pillar
+        variants:
+          - text: It asks the pillars' questions about one workload you choose
+          - text: It runs a pillar-by-pillar questionnaire on one workload
+        explanation:
+          text: That's the AWS Well-Architected Tool. Trusted Advisor runs automatic checks on your resources and groups them into categories, not pillars.
+    correct_answers: [checks-setup]
+    explanation:
+      text: |
+        Trusted Advisor inspects the resources in your account and compares them with AWS's best
+        practices, in six categories. It has no separate price; what you see depends on your Support
+        plan. It only recommends: fixing what it finds stays your job.
+
+  - id: q12-ta-low-utilization-category
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: "Trusted Advisor checks your setup against AWS's best practices, in six categories"
+    task: "4.3"
+    level: understanding
+    topics: [trusted-advisor]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Trusted Advisor flags several Amazon EC2 instances that have run at very low CPU use for
+        weeks. Which check category does this finding belong to?
+    choices:
+      - id: performance
+        text: The performance category
+        variants:
+          - text: Trusted Advisor's performance checks
+          - text: Checks filed under performance
+        explanation:
+          text: Performance flags resources working too hard, such as instances with high CPU use. Low use is the opposite problem.
+      - id: fault-tolerance
+        text: The fault tolerance category
+        variants:
+          - text: Trusted Advisor's fault tolerance checks
+          - text: Checks filed under fault tolerance
+        explanation:
+          text: Fault tolerance looks for single points of failure and missing backups, such as a database in one Availability Zone.
+      - id: service-limits
+        text: The service limits category
+        variants:
+          - text: Trusted Advisor's service limits checks
+          - text: Checks filed under service limits
+        explanation:
+          text: Service limits flags usage close to a service quota, not instances that sit idle.
+      - id: cost-optimization
+        text: The cost optimization category
+        variants:
+          - text: Trusted Advisor's cost optimization checks
+          - text: Checks filed under cost optimization
+        explanation:
+          text: Correct. An instance that barely works still costs money, so "Low utilization Amazon EC2 instances" is a cost optimization check.
+    correct_answers: [cost-optimization]
+    hint:
+      text: Is the problem that the instances work too hard, or that they're paid for and barely used?
+    explanation:
+      text: |
+        Trusted Advisor's cost optimization category looks for money spent on things you don't use,
+        and an instance that runs at very low use for weeks is the classic case. High CPU use would be
+        a performance finding instead. Sorting a finding into its category is how you decide who acts
+        on it.
+
+  - id: q12-ta-categories-two
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: "Trusted Advisor checks your setup against AWS's best practices, in six categories"
+    task: "4.3"
+    level: recall
+    topics: [trusted-advisor]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        Which two of these are check categories in AWS Trusted Advisor? (Select TWO.)
+    choices:
+      - id: sustainability
+        text: A sustainability category
+        variants:
+          - text: Checks grouped under sustainability
+          - text: A category named sustainability
+        explanation:
+          text: Sustainability is a Well-Architected pillar, but Trusted Advisor has no category for it.
+      - id: fault-tolerance
+        text: A fault tolerance category
+        variants:
+          - text: Checks grouped under fault tolerance
+          - text: A category named fault tolerance
+        explanation:
+          text: Correct. Fault tolerance looks for single points of failure and missing backups. AWS's product page calls it "resilience".
+      - id: compliance
+        text: A compliance category
+        variants:
+          - text: Checks grouped under compliance
+          - text: A category named compliance
+        explanation:
+          text: Trusted Advisor has no compliance category. Proving compliance is the work of other services, such as AWS Artifact and AWS Config.
+      - id: incident-response
+        text: An incident response category
+        variants:
+          - text: Checks grouped under incident response
+          - text: A category named incident response
+        explanation:
+          text: Incident response isn't a Trusted Advisor category. Trusted Advisor reports on settings; it doesn't respond to incidents.
+      - id: operational-excellence
+        text: An operational excellence category
+        variants:
+          - text: Checks grouped under operational excellence
+          - text: A category named operational excellence
+        explanation:
+          text: Correct. Operational excellence flags missing logs and operating practices. It's the category many older sources leave out.
+    correct_answers: [fault-tolerance, operational-excellence]
+    explanation:
+      text: |
+        Trusted Advisor's six categories are cost optimization, performance, security, fault
+        tolerance, service limits and operational excellence (checked 2026-10-24). They point in the
+        same directions as several Well-Architected pillars but aren't the pillars: there's no
+        sustainability category.
+
+  - id: q12-ta-basic-checks-two
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: "What you see in Trusted Advisor depends on your Support plan"
+    task: "2.4"
+    level: understanding
+    topics: [trusted-advisor, basic-support]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A company on Basic Support opens Trusted Advisor. Which two of these checks can it see
+        results for? (Select TWO.)
+    choices:
+      - id: high-cpu
+        text: EC2 instances with high CPU use
+        variants:
+          - text: Instances running at high CPU utilization
+          - text: EC2 instances whose CPU runs hot
+        explanation:
+          text: High CPU use is a performance check. Basic sees no performance checks.
+      - id: quota-usage
+        text: Usage that is close to a service quota
+        variants:
+          - text: Usage nearing the account's service quotas
+          - text: Resources close to their quota in a Region
+        explanation:
+          text: Correct. Basic sees every check in the service limits category.
+      - id: low-utilization
+        text: EC2 instances with low utilization
+        variants:
+          - text: Instances that sit almost idle for weeks
+          - text: EC2 instances that are barely used
+        explanation:
+          text: Low utilization is a cost optimization check. Basic sees no cost optimization checks.
+      - id: vpc-flow-logs
+        text: VPCs that record no flow logs
+        variants:
+          - text: VPCs without flow logs turned on
+          - text: A VPC that keeps no flow logs
+        explanation:
+          text: This is an operational excellence check. Basic sees none of that category.
+      - id: root-mfa
+        text: Whether the root user has MFA turned on
+        variants:
+          - text: A root user that has no MFA
+          - text: MFA on the account's root user
+        explanation:
+          text: Correct. "MFA on root account" is one of the few security checks every plan gets.
+    correct_answers: [quota-usage, root-mfa]
+    explanation:
+      text: |
+        The rule AWS defines is this: Basic sees the whole service limits category plus a few chosen
+        security and fault tolerance checks, such as root MFA, public snapshots, S3 bucket permissions
+        and security groups with ports open to everyone. Every other check, including all cost
+        optimization, performance and operational excellence checks, needs Business Support+ or
+        higher (as of 2026-10-24).
+
+  - id: q12-ta-empty-cost-category
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: "What you see in Trusted Advisor depends on your Support plan"
+    task: "4.3"
+    level: application
+    topics: [trusted-advisor, basic-support]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A charity's finance lead opens Trusted Advisor hoping to find unused resources to cut, but
+        the cost optimization category offers no checks she can open. The account is on Basic
+        Support. What explains this?
+    choices:
+      - id: needs-paid-plan
+        text: Cost checks need Business Support+ or a higher plan
+        variants:
+          - text: Its cost checks start with Business Support+
+          - text: Only Business Support+ and above unlock cost checks
+        explanation:
+          text: Correct. The money-saving part of Trusted Advisor starts with Business Support+.
+      - id: manual-refresh
+        text: Each cost check must first be refreshed by hand
+        variants:
+          - text: The cost checks appear only after a manual refresh
+          - text: She must refresh every cost check before it shows
+        explanation:
+          text: On Basic you refresh the security checks by hand, but no refresh unlocks checks the plan doesn't include.
+      - id: cost-explorer-first
+        text: Cost Explorer must be turned on before cost checks show
+        variants:
+          - text: The cost checks appear only once Cost Explorer is on
+          - text: Turning on Cost Explorer is what unlocks the cost checks
+        explanation:
+          text: Cost Explorer analyzes the bill; it doesn't unlock Trusted Advisor checks. What unlocks them is the Support plan.
+      - id: nothing-found
+        text: There's nothing to save, so the category stays hidden
+        variants:
+          - text: The account wastes nothing, so no cost checks show
+          - text: No savings exist, so Trusted Advisor hides the checks
+        explanation:
+          text: A plan that includes the checks shows them even when they pass. The checks are missing because of the plan, not the findings.
+    correct_answers: [needs-paid-plan]
+    hint:
+      text: What you see in Trusted Advisor depends on something outside Trusted Advisor.
+    explanation:
+      text: |
+        Every account can open Trusted Advisor, but a Basic account sees only the service limits
+        checks and a few security and fault tolerance checks. Cost optimization, performance and
+        operational excellence checks come with Business Support+ and higher, which is one reason a
+        paid plan can save more than it costs.
+
+  - id: q12-ta-priority-what-it-gives
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: "What you see in Trusted Advisor depends on your Support plan"
+    task: "4.3"
+    level: recall
+    topics: [trusted-advisor, enterprise-support]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company on Enterprise Support turns to Trusted Advisor Priority. What does that feature
+        give it?
+    choices:
+      - id: api-access
+        text: Its own tools can read check results through an API
+        variants:
+          - text: An API its programs use to read the check results
+          - text: Programmatic access to the results of every check
+        explanation:
+          text: That's the Trusted Advisor API, which already comes with Business Support+.
+      - id: faster-cases
+        text: Its support cases are answered ahead of other customers'
+        variants:
+          - text: Its cases jump ahead of other customers' in the queue
+          - text: AWS answers its cases before other customers' cases
+        explanation:
+          text: Trusted Advisor Priority has nothing to do with support cases. Case response targets depend on the plan and the severity.
+      - id: account-team-picks
+        text: Its account team flags the findings that matter most
+        variants:
+          - text: AWS people pick which findings to act on first
+          - text: Its AWS account team highlights the key findings
+        explanation:
+          text: Correct. The account team highlights the recommendations that matter most for the business, so it works on those first.
+      - id: auto-fix
+        text: Trusted Advisor fixes the highest-risk findings for it
+        variants:
+          - text: The riskiest findings are repaired for it automatically
+          - text: Trusted Advisor corrects its most urgent findings itself
+        explanation:
+          text: Trusted Advisor never changes your resources, on any plan. It reports; you fix.
+    correct_answers: [account-team-picks]
+    explanation:
+      text: |
+        Trusted Advisor Priority adds people to the checks: your AWS account team picks out the
+        recommendations that matter most for your business. It comes only with Enterprise Support and
+        Unified Operations (as of 2026-10-24). The API and EventBridge alerts already come with every
+        paid plan.
+
+  - id: q12-ta-check-count-unstable
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: '"Basic gets a fixed number of checks" is wrong'
+    task: "4.3"
+    level: understanding
+    topics: [trusted-advisor, moving-target]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A practice test asks for the exact number of Trusted Advisor checks a Basic account gets. Why
+        does the guide advise against memorizing such a number?
+    choices:
+      - id: secret
+        text: AWS keeps the number private and doesn't publish it
+        variants:
+          - text: AWS doesn't publish how many checks there are
+          - text: The number is confidential to AWS customers
+        explanation:
+          text: AWS publishes totals; the trouble is that its pages, updated at different times, gave different ones.
+      - id: always-zero
+        text: Basic gets no checks, so the number is zero
+        variants:
+          - text: The answer is zero, since Basic has no checks
+          - text: Basic sees no checks at all, so there's nothing to count
+        explanation:
+          text: 'Basic does get checks: every service limits check and a few security and fault tolerance checks.'
+      - id: changes
+        text: AWS adds and retires checks, and its pages disagreed
+        variants:
+          - text: The checks change, and AWS's pages gave different totals
+          - text: Checks come and go, and AWS's own totals differed
+        explanation:
+          text: 'Correct. What stays steady is the rule: which categories exist, and which plans see which checks.'
+      - id: same-for-all
+        text: Every plan gets the same number, so it isn't worth learning
+        variants:
+          - text: All plans see the same number of checks anyway
+          - text: The count is identical on every plan, so it doesn't matter
+        explanation:
+          text: 'Plans differ sharply: paid plans see all checks, Basic only part of them.'
+    correct_answers: [changes]
+    explanation:
+      text: |
+        When the guide checked, three AWS pages gave three different totals for Trusted Advisor's
+        checks, because AWS adds checks, retires them and adds quotas to watch. So learn the stable
+        rule (six categories; Basic sees service limits plus a few security and fault tolerance
+        checks; paid plans see everything) and read any count from the live page on the day you need
+        it.
+
+  - id: q12-ta-open-port-who-fixes
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: "Trusted Advisor checks your setup against AWS's best practices, in six categories"
+    task: "2.4"
+    level: understanding
+    topics: [trusted-advisor, shared-responsibility]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Trusted Advisor flags a security group that leaves a database port open to the whole
+        internet. What happens next?
+    choices:
+      - id: ta-closes
+        text: Trusted Advisor closes the port after a grace period
+        variants:
+          - text: Trusted Advisor shuts the port once a grace period ends
+          - text: After a waiting period, Trusted Advisor closes the port
+        explanation:
+          text: Trusted Advisor changes nothing in your account, on any plan.
+      - id: customer-fixes
+        text: The customer fixes it; Trusted Advisor only reports
+        variants:
+          - text: Trusted Advisor only reports, so the customer fixes it
+          - text: The customer changes the rule; the tool just reports
+        explanation:
+          text: Correct. Trusted Advisor recommends; the customer makes the change.
+      - id: support-closes
+        text: AWS Support closes the port if the plan is a paid one
+        variants:
+          - text: On a paid plan, AWS Support shuts the port for you
+          - text: AWS Support fixes the port for customers on paid plans
+        explanation:
+          text: AWS Support doesn't administer or log in to your systems, on any plan.
+      - id: shield-blocks
+        text: AWS Shield blocks the port's traffic automatically
+        variants:
+          - text: AWS Shield stops traffic to that port on its own
+          - text: Shield automatically blocks traffic to the open port
+        explanation:
+          text: Shield protects against DDoS attacks; it doesn't close ports you've opened in a security group.
+    correct_answers: [customer-fixes]
+    explanation:
+      text: |
+        Trusted Advisor only reports, like Security Hub CSPM and Amazon Inspector. Security group
+        rules are configuration in your account, so closing the port is the customer's side of the
+        shared responsibility line. Treat Trusted Advisor's findings as a to-do list.
+
+  - id: q12-ta-automatic-checks-not-wa-tool
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: "Trusted Advisor checks your setup against AWS's best practices, in six categories"
+    task: "4.3"
+    level: application
+    topics: [trusted-advisor, well-architected-tool]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A team wants automatic checks across every resource in its account that flag unused Elastic
+        IP addresses and databases running in a single Availability Zone. It doesn't want to answer a
+        questionnaire. Which AWS service fits?
+    choices:
+      - id: wa-tool
+        text: AWS Well-Architected Tool
+        variants:
+          - text: The AWS Well-Architected Tool
+          - text: A review in the Well-Architected Tool
+        explanation:
+          text: 'The Well-Architected Tool is the questionnaire: it asks the Framework''s questions about one workload and records your answers.'
+      - id: health-dashboard
+        text: AWS Health Dashboard
+        variants:
+          - text: The AWS Health Dashboard
+          - text: A look at the AWS Health Dashboard
+        explanation:
+          text: AWS Health reports events on AWS's side. It doesn't inspect how you set up your own resources.
+      - id: trusted-advisor
+        text: AWS Trusted Advisor
+        variants:
+          - text: The AWS Trusted Advisor service
+          - text: A run of Trusted Advisor's checks
+        explanation:
+          text: Correct. Its cost optimization and fault tolerance checks flag exactly these, automatically (all checks need a paid plan).
+      - id: support-center
+        text: AWS Support Center
+        variants:
+          - text: The AWS Support Center console
+          - text: A case in AWS Support Center
+        explanation:
+          text: Support Center is where you ask a person at AWS for help. It doesn't scan your resources.
+    correct_answers: [trusted-advisor]
+    hint:
+      text: One service asks you questions; another inspects your resources by itself.
+    explanation:
+      text: |
+        Trusted Advisor runs automatic checks on the resources in your account: an unattached Elastic
+        IP address is a cost optimization finding, and a single-AZ database a fault tolerance one. The
+        Well-Architected Tool is a question-by-question review of one workload. Seeing every check
+        needs Business Support+ or higher.
+
+  - id: q12-health-region-problem-first
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: "AWS Health reports problems on AWS's side, through one dashboard with two views"
+    task: "4.3"
+    level: application
+    topics: [aws-health]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Users of a photo-sharing app report failed uploads, all handled by servers in one Region. The
+        team is on Basic Support and wants to know whether AWS has a known problem there before
+        changing its own setup. Where should it look first?
+    choices:
+      - id: cloudwatch
+        text: Amazon CloudWatch
+        variants:
+          - text: The Amazon CloudWatch console
+          - text: Metrics in Amazon CloudWatch
+        explanation:
+          text: CloudWatch shows how your own resources are performing. It's the next stop if AWS shows no problem, but it doesn't report AWS's events.
+      - id: health-api
+        text: AWS Health API
+        variants:
+          - text: The AWS Health API
+          - text: A call to the AWS Health API
+        explanation:
+          text: The Health API needs Business Support+ or higher; on Basic it refuses the call. It's also built for programs, not a quick look.
+      - id: trusted-advisor
+        text: AWS Trusted Advisor
+        variants:
+          - text: The AWS Trusted Advisor service
+          - text: Trusted Advisor's checks
+        explanation:
+          text: Trusted Advisor checks your own setup against best practices. It can't tell you AWS is having a problem.
+      - id: health-dashboard
+        text: AWS Health Dashboard
+        variants:
+          - text: The AWS Health Dashboard
+          - text: A look at the AWS Health Dashboard
+        explanation:
+          text: Correct. It's free on every plan and shows AWS's public events by Region, plus events affecting your own resources.
+    correct_answers: [health-dashboard]
+    hint:
+      text: The first question in any outage is "is it AWS or us?" Which tool looks at AWS's side?
+    explanation:
+      text: |
+        AWS Health reports events on AWS's side, and its dashboard is free for everyone with no
+        setup. Service health shows public events by service and Region; Your account health shows
+        events that touch your own resources. If neither shows anything, look on your own side, with
+        CloudWatch and your logs.
+
+  - id: q12-health-own-resource-events
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: "AWS Health reports problems on AWS's side, through one dashboard with two views"
+    task: "4.3"
+    level: understanding
+    topics: [aws-health]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        An administrator wants to know whether AWS has planned maintenance on the hardware under her
+        company's own instances. Where does AWS show events like this?
+    choices:
+      - id: service-health
+        text: The Service health view, open without signing in
+        variants:
+          - text: Service health, the public view anyone can open
+          - text: The public Service health view, with no sign-in
+        explanation:
+          text: Service health shows public events that aren't about any one account. It can't know which resources are yours.
+      - id: your-account-health
+        text: The Your account health view, after signing in
+        variants:
+          - text: Your account health, the view shown once signed in
+          - text: The signed-in Your account health view
+        explanation:
+          text: Correct. Once you sign in, this view shows account-specific events, such as planned maintenance on resources you run, as well as the public events.
+      - id: ta-fault-tolerance
+        text: Trusted Advisor's fault tolerance category
+        variants:
+          - text: The fault tolerance checks in Trusted Advisor
+          - text: Trusted Advisor, under fault tolerance
+        explanation:
+          text: Fault tolerance checks look for single points of failure in your setup. They don't report AWS's planned maintenance.
+      - id: case-history
+        text: The case history in AWS Support Center
+        variants:
+          - text: Past cases listed in AWS Support Center
+          - text: Support Center's list of earlier cases
+        explanation:
+          text: Case history lists the cases you opened. AWS's events reach you through AWS Health instead.
+    correct_answers: [your-account-health]
+    explanation:
+      text: |
+        The AWS Health Dashboard has two views. Service health is public and shows events for every
+        service and Region; Your account health appears after you sign in and adds the events that
+        affect your own resources. Planned maintenance on hardware you use is an account-specific
+        event.
+
+  - id: q12-health-old-dashboard-name
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: '"The Personal and Service Health Dashboards are separate products" is out of date'
+    task: "4.3"
+    level: understanding
+    topics: [aws-health, old-names]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        An older course tells learners to open the "Personal Health Dashboard". How should a learner
+        read that name today?
+    choices:
+      - id: separate-product
+        text: As a separate product that still needs its own setup
+        variants:
+          - text: As its own product, set up apart from AWS Health
+          - text: As a standalone dashboard that needs separate setup
+        explanation:
+          text: AWS joined the two old dashboards into one AWS Health Dashboard, announced on 2022-02-28. Nothing needs setting up.
+      - id: paid-view
+        text: As a paid view that needs Business Support+
+        variants:
+          - text: As a view that only paid plans can open
+          - text: As a view kept for Business Support+ and up
+        explanation:
+          text: The AWS Health Dashboard, both views included, is free on every plan. Only the AWS Health API needs a paid plan.
+      - id: service-health
+        text: As the Service health view, open without signing in
+        variants:
+          - text: As the public Service health view
+          - text: As Service health, the view anyone can open
+        explanation:
+          text: Service health is the old Service Health Dashboard. The personal one showed your own account's events.
+      - id: your-account-health
+        text: As the dashboard's Your account health view
+        variants:
+          - text: As Your account health, in the AWS Health Dashboard
+          - text: As the signed-in Your account health view
+        explanation:
+          text: Correct. The old Personal Health Dashboard lives on as the Your account health view.
+    correct_answers: [your-account-health]
+    explanation:
+      text: |
+        On 2022-02-28, AWS announced a single AWS Health Dashboard that brought together the old
+        Service Health Dashboard and Personal Health Dashboard. They live on as its two views: Service
+        health and Your account health. If an answer choice names an old dashboard, read it as the
+        matching view.
+
+  - id: q12-health-dashboard-two
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: "AWS Health reports problems on AWS's side, through one dashboard with two views"
+    task: "4.3"
+    level: understanding
+    topics: [aws-health]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        Which two statements about the AWS Health Dashboard are correct? (Select TWO.)
+    choices:
+      - id: needs-bplus
+        text: It shows events only on Business Support+ or higher
+        variants:
+          - text: It needs Business Support+ before it shows events
+          - text: Accounts below Business Support+ see no events in it
+        explanation:
+          text: The dashboard is free on every plan. It's the AWS Health API that needs a paid plan.
+      - id: free-every-plan
+        text: It's free on every Support plan, Basic included
+        variants:
+          - text: Every plan, Basic too, gets it at no charge
+          - text: It costs nothing on any plan, including Basic
+        explanation:
+          text: Correct. The AWS Health Dashboard is free for every customer and needs no setup.
+      - id: own-cpu
+        text: It shows the CPU use of the customer's own instances
+        variants:
+          - text: It graphs CPU use on the customer's own instances
+          - text: It reports how hard the customer's instances are working
+        explanation:
+          text: Your own resources' performance is Amazon CloudWatch's job. AWS Health reports AWS's side.
+      - id: no-sign-in
+        text: Its Service health view opens without signing in
+        variants:
+          - text: Anyone can open its Service health view, signed in or not
+          - text: Its public Service health view needs no sign-in
+        explanation:
+          text: Correct. Service health is public; anyone can open it, with no AWS account.
+      - id: programs-free
+        text: It lets programs query events on any plan
+        variants:
+          - text: Programs can query it for events on every plan
+          - text: It answers program queries for events on all plans
+        explanation:
+          text: Programs ask AWS Health through the Health API, which needs Business Support+ or higher. Programs can also receive events through Amazon EventBridge on every plan.
+    correct_answers: [free-every-plan, no-sign-in]
+    explanation:
+      text: |
+        The AWS Health Dashboard is free for every customer. Its Service health view is public, and
+        Your account health appears once you sign in. Programs use the AWS Health API, which needs a
+        paid plan, or listen through Amazon EventBridge, which works on every plan.
+
+  - id: q12-health-events-eventbridge-basic
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: "AWS Health reports problems on AWS's side, through one dashboard with two views"
+    task: "4.3"
+    level: application
+    topics: [aws-health, eventbridge]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company on Basic Support wants its team chat to receive a message automatically whenever
+        AWS posts an event affecting its resources. It doesn't want to change its Support plan. What
+        should it use?
+    choices:
+      - id: poll-health-api
+        text: A script that polls the AWS Health API
+        variants:
+          - text: A program that calls the AWS Health API regularly
+          - text: Scheduled calls to the AWS Health API
+        explanation:
+          text: The Health API needs Business Support+ or higher; on Basic it refuses the call.
+      - id: ta-priority
+        text: Alerts from Trusted Advisor Priority
+        variants:
+          - text: Trusted Advisor Priority notifications
+          - text: Messages sent by Trusted Advisor Priority
+        explanation:
+          text: Trusted Advisor Priority is an Enterprise and Unified Operations feature about your own setup, not AWS's events.
+      - id: daily-case
+        text: A daily support case asking about new events
+        variants:
+          - text: A support case each day asking for new events
+          - text: Opening a case every day to ask about events
+        explanation:
+          text: Support cases are for getting help from people, not for feeding events to a tool.
+      - id: eventbridge
+        text: An Amazon EventBridge rule for AWS Health events
+        variants:
+          - text: AWS Health events routed by Amazon EventBridge
+          - text: An EventBridge rule that receives AWS Health events
+        explanation:
+          text: Correct. Every customer can receive AWS Health events through EventBridge at no extra cost, and route them to a chat channel.
+    correct_answers: [eventbridge]
+    hint:
+      text: Two feeds let tools hear about AWS Health events. Which one does every plan get?
+    explanation:
+      text: |
+        Your own tools can hear about AWS Health events in two ways. Amazon EventBridge delivers
+        them on every plan, Basic included, at no extra cost. The AWS Health API lets programs ask
+        directly, but it needs Business Support+, Enterprise Support or Unified Operations.
+
+  - id: q12-quota-warning-on-basic
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: "Support Center is where you open cases and ask for more quota"
+    task: "4.3"
+    level: application
+    topics: [support-center, service-quotas]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Just before a product launch, Trusted Advisor warns a startup on Basic Support that it is
+        close to its quota for a resource in one Region. What should the startup do?
+    choices:
+      - id: upgrade-first
+        text: Move to Business Support+, which is needed to ask for more
+        variants:
+          - text: Upgrade to Business Support+, required for a quota request
+          - text: Buy Business Support+ first, since quota requests need it
+        explanation:
+          text: Quota increase requests are open to every plan, Basic included. No upgrade is needed.
+      - id: request-increase
+        text: Ask for an increase in Service Quotas or Support Center
+        variants:
+          - text: Request a higher quota in Service Quotas or Support Center
+          - text: Raise a quota request through Service Quotas or Support Center
+        explanation:
+          text: Correct. Trusted Advisor warns; Service Quotas or a service limit increase case in Support Center is where you ask for more.
+      - id: ta-raises
+        text: Wait for Trusted Advisor to raise the quota by itself
+        variants:
+          - text: Let Trusted Advisor increase the quota on its own
+          - text: Leave it to Trusted Advisor to lift the quota
+        explanation:
+          text: Trusted Advisor only reports. It never changes quotas or anything else in your account.
+      - id: trust-safety
+        text: Report the warning to AWS Trust & Safety
+        variants:
+          - text: Send the warning to the AWS Trust & Safety team
+          - text: File the warning with AWS Trust & Safety
+        explanation:
+          text: Trust & Safety handles abuse coming from AWS resources, not quotas.
+    correct_answers: [request-increase]
+    hint:
+      text: One tool warns about the quota; where do you ask for more, and which plans can?
+    explanation:
+      text: |
+        Trusted Advisor's service limits checks warn you when usage nears a quota, and Basic sees all
+        of them. To raise a quota, request it in the Service Quotas console or open a service limit
+        increase case in Support Center: both work on every plan.
+
+  - id: q12-billing-case-iam-not-root
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: "Support Center is where you open cases and ask for more quota"
+    task: "4.3"
+    level: understanding
+    topics: [support-center, iam]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A finance manager signs in with her IAM user to open an account and billing case about an
+        unfamiliar charge. A colleague says she must sign in as the root user first. Who is right?
+    choices:
+      - id: root-billing
+        text: The colleague, since only root may open billing cases
+        variants:
+          - text: The colleague, because billing cases are for root alone
+          - text: The colleague, as only the root user opens billing cases
+        explanation:
+          text: Account and billing cases aren't root-only. Any IAM identity with the right permissions can open them.
+      - id: manager
+        text: The manager, if her IAM user has the right permissions
+        variants:
+          - text: The manager, provided her IAM user is permitted
+          - text: The manager, as long as her IAM user has permission
+        explanation:
+          text: Correct. Any IAM identity with the right permissions can open cases; the root user isn't needed.
+      - id: root-technical
+        text: The colleague, though technical cases don't need root
+        variants:
+          - text: The colleague, but only billing cases need root
+          - text: The colleague; root is needed for billing, not technical
+        explanation:
+          text: Neither kind of case needs the root user. Which cases you can open depends on the plan, and who can open them on IAM permissions.
+      - id: neither
+        text: Neither, since billing cases need a paid Support plan
+        variants:
+          - text: Neither, because a paid plan is required for billing cases
+          - text: Neither; billing cases need Business Support+ or higher
+        explanation:
+          text: Every plan, Basic included, can open account and billing cases.
+    correct_answers: [manager]
+    explanation:
+      text: |
+        Opening a support case needs IAM permissions, not the root user, and so does changing the
+        Support plan. Keep the root user for the few tasks only it can do, such as closing the
+        account. Account and billing cases are open on every plan.
+
+  - id: q12-free-checks-pillars-two
+    page: guide/12-getting-help/05-lab-17-support-center-tour.md
+    section: "Stop 4: the free Trusted Advisor checks, mapped to pillars"
+    task: "4.3"
+    level: understanding
+    topics: [trusted-advisor, well-architected]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        On Basic Support, Trusted Advisor's free checks include root MFA, S3 bucket permissions,
+        security groups with ports open to everyone, every service limits check, and one check on
+        AWS STS endpoint use. Which two Well-Architected pillars do these free checks mainly serve?
+        (Select TWO.)
+    choices:
+      - id: security
+        text: The security pillar
+        variants:
+          - text: The Framework's security pillar
+          - text: Security, as a pillar
+        explanation:
+          text: Correct. Root MFA, bucket permissions and open ports are all security checks.
+      - id: cost-optimization
+        text: The cost optimization pillar
+        variants:
+          - text: The Framework's cost optimization pillar
+          - text: Cost optimization, as a pillar
+        explanation:
+          text: None of the free checks looks for waste; cost optimization checks need a paid plan.
+      - id: sustainability
+        text: The sustainability pillar
+        variants:
+          - text: The Framework's sustainability pillar
+          - text: Sustainability, as a pillar
+        explanation:
+          text: Trusted Advisor has no category that maps to sustainability.
+      - id: reliability
+        text: The reliability pillar
+        variants:
+          - text: The Framework's reliability pillar
+          - text: Reliability, as a pillar
+        explanation:
+          text: Correct. Service limits checks and the STS endpoint check both protect against failures, which is the reliability pillar's concern.
+      - id: performance-efficiency
+        text: The performance efficiency pillar
+        variants:
+          - text: The Framework's performance efficiency pillar
+          - text: Performance efficiency, as a pillar
+        explanation:
+          text: Performance checks, such as high CPU use, need a paid plan; none is free.
+    correct_answers: [security, reliability]
+    explanation:
+      text: |
+        Basic's free checks are security checks plus the service limits and fault tolerance checks,
+        and both of the last two serve the reliability pillar. So the free checks serve mainly two of
+        the six pillars. A page of green checks isn't a Well-Architected review.
+
+  # ---------------------------------------------------------------------------------------------
+  # Lesson 12.03, Where to find answers
+  # ---------------------------------------------------------------------------------------------
+
+  - id: q12-docs-for-api-parameters
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "AWS's own pages explain how AWS works: documentation, whitepapers and blogs"
+    task: "4.3"
+    level: application
+    topics: [documentation]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A developer needs the exact parameters that one Amazon SQS API action accepts, and the values
+        each one allows. Where should she look?
+    choices:
+      - id: documentation
+        text: The AWS documentation
+        variants:
+          - text: AWS's documentation for SQS
+          - text: AWS's documentation for the service
+        explanation:
+          text: Correct. Each service's documentation includes an API reference that lists every action's parameters, and AWS keeps it current.
+      - id: news-blog
+        text: The AWS News Blog
+        variants:
+          - text: A post on the AWS News Blog
+          - text: AWS's News Blog announcements
+        explanation:
+          text: The News Blog announces what's new in dated posts. A post can be out of date, and it isn't a full reference.
+      - id: prescriptive-guidance
+        text: AWS Prescriptive Guidance
+        variants:
+          - text: The AWS Prescriptive Guidance library
+          - text: A guide in AWS Prescriptive Guidance
+        explanation:
+          text: Prescriptive Guidance helps plan and carry out bigger jobs, such as migrations. It isn't a reference for one API's parameters.
+      - id: repost
+        text: AWS re:Post
+        variants:
+          - text: A question on AWS re:Post
+          - text: The AWS re:Post community
+        explanation:
+          text: re:Post is for problems the documentation doesn't cover. Community answers vary and should be checked against the documentation anyway.
+    correct_answers: [documentation]
+    hint:
+      text: Exact reference facts live where AWS keeps them current for each service.
+    explanation:
+      text: |
+        AWS documentation holds each service's user guides, developer guides, API and CLI references,
+        tutorials and code examples. It answers "how does this work?" and "what exactly does this
+        accept?", and AWS keeps it current. Blogs and community answers describe the world on the day
+        they were written.
+
+  - id: q12-whitepaper-disagrees-with-docs
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "AWS's own pages explain how AWS works: documentation, whitepapers and blogs"
+    task: "4.3"
+    level: understanding
+    topics: [documentation, whitepapers, moving-target]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A learner notices that a well-known AWS whitepaper gives a different figure from the
+        service's documentation page. What should he do?
+    choices:
+      - id: whitepaper-reviewed
+        text: Use the whitepaper, since AWS experts review it in depth
+        variants:
+          - text: Follow the whitepaper, as AWS experts review it closely
+          - text: Go with the whitepaper, which AWS experts review in depth
+        explanation:
+          text: AWS experts do write and review whitepapers, but a review on the day of writing doesn't keep a paper current. Some are now marked "for historical reference only"; reference facts are kept current in the documentation.
+      - id: ask-repost
+        text: Ask on AWS re:Post and use the figure the community gives
+        variants:
+          - text: Post on AWS re:Post and go with the community's figure
+          - text: Ask the AWS re:Post community and follow its answer
+        explanation:
+          text: re:Post helps when the documentation doesn't cover your case, but here it does. Community answers come from whoever responds, so you would still have to check them against the documentation.
+      - id: news-blog-figure
+        text: Use the AWS News Blog's figure, since it announces changes
+        variants:
+          - text: Go with the AWS News Blog, which announces changes
+          - text: Follow the figure in the AWS News Blog's announcements
+        explanation:
+          text: The News Blog does announce changes, but each post is dated and describes the world on the day it was written. A later change may never get its own post; the documentation is what AWS keeps current.
+      - id: trust-docs
+        text: Use the documentation's figure and note the paper's date
+        variants:
+          - text: Go with the documentation, noting the paper's date
+          - text: Follow the documentation and record the paper's date
+        explanation:
+          text: Correct. The documentation is kept current; a whitepaper or post describes the world on the day it was written.
+    correct_answers: [trust-docs]
+    explanation:
+      text: |
+        Check the date on everything you read about AWS. Some widely quoted whitepapers, such as *How
+        AWS Pricing Works*, now carry AWS's "for historical reference only" banner (checked
+        2026-10-23). When a whitepaper or blog post disagrees with a service's current documentation,
+        trust the documentation and note the date of what you read.
+
+  - id: q12-security-blog-walkthroughs
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "AWS's own pages explain how AWS works: documentation, whitepapers and blogs"
+    task: "2.4"
+    level: application
+    topics: [blogs, security-resources]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A compliance lead has already downloaded AWS's audit reports for her auditors. Now she wants
+        dated, AWS-written walk-throughs that show her engineers how to build a whole solution from
+        several features, such as encryption and logging, rather than how to fix one common error.
+        Which source fits best?
+    choices:
+      - id: aws-artifact
+        text: AWS Artifact
+        variants:
+          - text: The AWS Artifact console
+          - text: Reports in AWS Artifact
+        explanation:
+          text: AWS Artifact is where she got the audit reports. It proves AWS's own controls; it doesn't teach anyone to use features.
+      - id: security-blog
+        text: The AWS Security Blog
+        variants:
+          - text: AWS's Security Blog
+          - text: Articles on the AWS Security Blog
+        explanation:
+          text: Correct. AWS's blogs publish dated articles by topic, and the Security Blog walks through security features and solutions.
+      - id: news-blog
+        text: The AWS News Blog
+        variants:
+          - text: AWS's News Blog
+          - text: Articles on the AWS News Blog
+        explanation:
+          text: The News Blog is dated and written by AWS, but its job is announcing what's new. Walk-throughs of features and solutions live on the topic blogs.
+      - id: knowledge-center
+        text: The AWS Knowledge Center
+        variants:
+          - text: AWS's Knowledge Center
+          - text: Articles in the AWS Knowledge Center
+        explanation:
+          text: Knowledge Center articles are written by AWS, but each answers one common problem ("How do I…?", "Why can't I…?"), not how to build a solution from several features.
+    correct_answers: [security-blog]
+    hint:
+      text: Separate proving AWS's controls from teaching yours, and announcing a feature from walking through a solution.
+    explanation:
+      text: |
+        AWS publishes blogs by topic: the AWS News Blog for announcements, and others, such as the
+        AWS Security Blog, for walk-throughs of features and solutions. AWS Artifact, by contrast,
+        holds AWS's audit reports, which prove AWS's controls rather than teach you to use them.
+        Each blog post is dated, so check that what it describes is still current.
+
+  - id: q12-knowledge-center-who-writes
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "re:Post is where people answer questions; the Knowledge Center is AWS's own articles inside it"
+    task: "4.3"
+    level: recall
+    topics: [knowledge-center, re-post]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A learner wants to know how far she can trust an article in the AWS Knowledge Center. Who
+        writes those articles?
+    choices:
+      - id: community
+        text: Any member of the re:Post community
+        variants:
+          - text: Whoever in the re:Post community chooses to
+          - text: Community members on re:Post, anyone at all
+        explanation:
+          text: Community members answer questions on re:Post. Knowledge Center articles are a separate, official part written by AWS.
+      - id: partners
+        text: AWS Partners listed in the Solutions Finder
+        variants:
+          - text: Partner companies from the Partner Solutions Finder
+          - text: AWS Partners, found through the Solutions Finder
+        explanation:
+          text: Partners are other companies. Knowledge Center articles come from AWS itself.
+      - id: aws
+        text: AWS, which marks each one as official
+        variants:
+          - text: AWS itself, marked as AWS official
+          - text: AWS, with each article marked official
+        explanation:
+          text: Correct. Knowledge Center articles and videos are written by AWS and marked as AWS official, on re:Post.
+      - id: tam
+        text: The customer's Technical Account Manager
+        variants:
+          - text: Each customer's own designated TAM
+          - text: A TAM assigned on Enterprise Support
+        explanation:
+          text: A TAM guides one company. Knowledge Center articles are public and the same for every customer.
+    correct_answers: [aws]
+    explanation:
+      text: |
+        The AWS Knowledge Center is AWS's own set of articles and videos on the questions customers
+        ask most, marked as AWS official. It's part of AWS re:Post, not a separate site; the rest of
+        re:Post is community questions and answers, whose quality varies.
+
+  - id: q12-repost-for-unusual-error
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "re:Post is where people answer questions; the Knowledge Center is AWS's own articles inside it"
+    task: "4.3"
+    level: application
+    topics: [re-post]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A hobbyist's AWS Lambda function fails with an odd error that appears only when it writes to
+        one particular DynamoDB table. Nothing in the documentation or the Knowledge Center matches, and her
+        account is on Basic Support. Where can she turn next?
+    choices:
+      - id: billing-case
+        text: An account and billing case
+        variants:
+          - text: A case about her account and bill
+          - text: An account and billing support case
+        explanation:
+          text: Every plan can open account and billing cases, but they're for the account and the bill, not for how a service behaves.
+      - id: repost
+        text: A question on AWS re:Post
+        variants:
+          - text: The AWS re:Post community
+          - text: A post on AWS re:Post
+        explanation:
+          text: Correct. On re:Post the community, AWS staff and recognized experts answer questions, on every plan, Basic included.
+      - id: technical-case
+        text: A technical case in Support Center
+        variants:
+          - text: A technical support case
+          - text: Support Center, with a technical case
+        explanation:
+          text: Technical cases need Business Support+ or higher. On Basic, she can't open one.
+      - id: health-dashboard
+        text: The AWS Health Dashboard
+        variants:
+          - text: AWS's Health Dashboard
+          - text: The Health Dashboard's events
+        explanation:
+          text: The Health Dashboard reports AWS's events. An error that appears only with her own table is a question about her setup.
+    correct_answers: [repost]
+    hint:
+      text: The written sources have run out, and her plan limits which cases she can open.
+    explanation:
+      text: |
+        When the documentation and the Knowledge Center don't cover a problem, someone has often met
+        it before. AWS re:Post is AWS's public question-and-answer site, open to every customer on any
+        plan. Describe the problem in general terms, never post keys or passwords, and check the
+        answers against the documentation.
+
+  - id: q12-knowledge-center-common-error
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "re:Post is where people answer questions; the Knowledge Center is AWS's own articles inside it"
+    task: "4.3"
+    level: application
+    topics: [knowledge-center]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        An administrator can't connect to an EC2 instance over SSH, a problem many customers run
+        into. He wants AWS's own step-by-step troubleshooting article. Where is it most likely to be?
+    choices:
+      - id: prescriptive-guidance
+        text: AWS Prescriptive Guidance
+        variants:
+          - text: The AWS Prescriptive Guidance library
+          - text: A guide in AWS Prescriptive Guidance
+        explanation:
+          text: Prescriptive Guidance covers bigger jobs, such as migrations and modernization, rather than one common error.
+      - id: knowledge-center
+        text: AWS Knowledge Center
+        variants:
+          - text: The AWS Knowledge Center
+          - text: An article in the Knowledge Center
+        explanation:
+          text: Correct. The Knowledge Center holds AWS-written articles on the most common problems, such as an instance that won't answer.
+      - id: health-dashboard
+        text: AWS Health Dashboard
+        variants:
+          - text: The AWS Health Dashboard
+          - text: The Health Dashboard
+        explanation:
+          text: The Health Dashboard reports AWS's events. A connection problem with one instance needs troubleshooting steps, not an event.
+      - id: marketplace
+        text: AWS Marketplace
+        variants:
+          - text: The AWS Marketplace catalog
+          - text: A listing in AWS Marketplace
+        explanation:
+          text: Marketplace sells third-party software, data and services. It doesn't publish AWS's troubleshooting articles.
+    correct_answers: [knowledge-center]
+    hint:
+      text: The problem is common, and he wants an answer written by AWS.
+    explanation:
+      text: |
+        A common "How do I…?" or "Why can't I…?" problem is what the Knowledge Center is for: AWS's
+        official articles on the questions customers ask most, published on re:Post. If no article
+        fits, the next step is a question on re:Post.
+
+  - id: q12-prescriptive-guidance-pattern
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "Prescriptive Guidance is for planning and building, not for fixing one error"
+    task: "4.3"
+    level: application
+    topics: [prescriptive-guidance]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A team wants tested, step-by-step instructions, with an architecture and code, written by AWS
+        experts for moving an on-premises database to Amazon RDS. Which source offers this?
+    choices:
+      - id: knowledge-center
+        text: AWS Knowledge Center
+        variants:
+          - text: The AWS Knowledge Center
+          - text: An article in the Knowledge Center
+        explanation:
+          text: The Knowledge Center answers common questions about one problem, not full migration tasks with architecture and code.
+      - id: news-blog
+        text: AWS News Blog
+        variants:
+          - text: The AWS News Blog
+          - text: A post on the AWS News Blog
+        explanation:
+          text: The News Blog announces new services and features. It isn't a library of tested migration steps.
+      - id: repost
+        text: AWS re:Post
+        variants:
+          - text: The AWS re:Post community
+          - text: A post on AWS re:Post
+        explanation:
+          text: re:Post answers come from whoever responds, for one person's problem; they aren't tested step-by-step guidance from AWS experts.
+      - id: prescriptive-guidance
+        text: AWS Prescriptive Guidance
+        variants:
+          - text: Prescriptive Guidance
+          - text: AWS's Prescriptive Guidance
+        explanation:
+          text: Correct. Its patterns give hands-on steps, architectures, tools and code for a specific migration, optimization or modernization task.
+    correct_answers: [prescriptive-guidance]
+    hint:
+      text: The question starts "We want to…" and spans a whole task, not one setting.
+    explanation:
+      text: |
+        AWS Prescriptive Guidance collects material from AWS experts for bigger jobs. Its guides help
+        architects and managers plan; its patterns give the people building it hands-on steps,
+        architectures and code for one task, such as a database migration.
+
+  - id: q12-only-support-center-sees-account
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "Support Center is the only door about your own account"
+    task: "4.3"
+    level: understanding
+    topics: [support-center]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Which of these sources of help can look at a customer's own account when it answers?
+    choices:
+      - id: knowledge-center
+        text: AWS Knowledge Center articles
+        variants:
+          - text: Articles in the AWS Knowledge Center
+          - text: The Knowledge Center's AWS-written articles
+        explanation:
+          text: Knowledge Center articles are the same for every customer, so they can't see anyone's account.
+      - id: prescriptive-guidance
+        text: AWS Prescriptive Guidance patterns
+        variants:
+          - text: Patterns in AWS Prescriptive Guidance
+          - text: Prescriptive Guidance's step-by-step patterns
+        explanation:
+          text: Prescriptive Guidance is written for many organizations at once, not for one account.
+      - id: support-center
+        text: A case in AWS Support Center
+        variants:
+          - text: AWS Support Center, through a case
+          - text: A support case opened in Support Center
+        explanation:
+          text: Correct. A case is opened from your account and is a private conversation with AWS Support about it.
+      - id: repost
+        text: Answers on AWS re:Post
+        variants:
+          - text: Community answers on AWS re:Post
+          - text: Replies to a question on AWS re:Post
+        explanation:
+          text: re:Post is public. Nobody answering there can see your account, which is why you never post keys or account details.
+    correct_answers: [support-center]
+    explanation:
+      text: |
+        Every other source of help is public and written for many customers, which is why it can be
+        free. Support Center is the one door about your own account: a case is a private conversation
+        between your account and AWS Support. Search the public sources first; open a case when the
+        answer depends on your account or your bill.
+
+  - id: q12-spam-from-aws-address
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "Abuse from an AWS address goes to AWS Trust & Safety, not to Support"
+    task: "4.3"
+    level: application
+    topics: [trust-and-safety, abuse]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A school's mail administrator traces a steady stream of spam to an address in AWS's published
+        IP ranges. Where should she report it?
+    choices:
+      - id: trust-safety
+        text: AWS Trust & Safety, through the abuse form
+        variants:
+          - text: The abuse form, to AWS Trust & Safety
+          - text: AWS's abuse form, read by Trust & Safety
+        explanation:
+          text: Correct. Trust & Safety handles reports of abuse coming from AWS resources, including spam.
+      - id: repost
+        text: A question on AWS re:Post
+        variants:
+          - text: The AWS re:Post community
+          - text: A public post on AWS re:Post
+        explanation:
+          text: re:Post is a public question-and-answer site. Nobody there can act on another customer's resource.
+      - id: technical-case
+        text: A technical case in AWS Support Center
+        variants:
+          - text: AWS Support, through a technical case
+          - text: A technical support case in Support Center
+        explanation:
+          text: AWS Support can't help with abuse reports, on any plan; a case only delays the report.
+      - id: billing-case
+        text: An account and billing case in Support Center
+        variants:
+          - text: AWS Support, through an account and billing case
+          - text: A billing case opened in Support Center
+        explanation:
+          text: Account and billing cases are about your own account and bill. Abuse reports don't go to AWS Support at all.
+    correct_answers: [trust-safety]
+    hint:
+      text: Whose resource is misbehaving, and which AWS team deals with that?
+    explanation:
+      text: |
+        Abuse means someone using an AWS resource to harm others: spam, scanning, attacks, or stolen
+        or illegal content. Report it to the AWS Trust & Safety team through the abuse form, with
+        evidence. Trust & Safety investigates and deals with the customer who controls the resource.
+
+  - id: q12-abuse-report-evidence-two
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "Abuse from an AWS address goes to AWS Trust & Safety, not to Support"
+    task: "4.3"
+    level: application
+    topics: [trust-and-safety, abuse]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A shop's login page is flooded with password attempts from an address in AWS's published
+        ranges. Its administrator is filling in the AWS abuse form. Which two pieces of evidence
+        should the report include? (Select TWO.)
+    choices:
+      - id: attacker-account-id
+        text: The attacker's AWS account ID
+        variants:
+          - text: The AWS account ID behind the attack
+          - text: The attacking account's AWS ID
+        explanation:
+          text: The shop can't know which account controls the address. Trust & Safety finds that out and doesn't share it without the owner's permission.
+      - id: log-lines
+        text: Log lines that show the attempts
+        variants:
+          - text: Log samples showing the attempts
+          - text: Extracts from logs of the attempts
+        explanation:
+          text: Correct. Log lines show what the address did, which Trust & Safety needs to investigate.
+      - id: ta-report
+        text: A Trusted Advisor report on the shop
+        variants:
+          - text: The shop's Trusted Advisor results
+          - text: Trusted Advisor findings for the shop
+        explanation:
+          text: Trusted Advisor checks the shop's own setup. It says nothing about the attacking resource.
+      - id: time-zone
+        text: The time of the attempts, with its time zone
+        variants:
+          - text: When the attempts happened, with the time zone
+          - text: The attempts' timestamps, including time zone
+        explanation:
+          text: Correct. Times with their time zone let Trust & Safety match the report to the resource's activity.
+      - id: plan-level
+        text: The shop's current Support plan
+        variants:
+          - text: Which Support plan the shop is on
+          - text: The Support plan the shop pays for
+        explanation:
+          text: Abuse reports work the same on any plan; the plan isn't evidence.
+    correct_answers: [log-lines, time-zone]
+    hint:
+      text: Trust & Safety must match your report to what the resource did, and when.
+    explanation:
+      text: |
+        AWS's Knowledge Center article on reporting abuse asks, for network activity such as login
+        floods, for the address that was attacked, the time with its time zone, and log lines that
+        show the activity (a CSV file for many attacking addresses). For content, it asks for the URL
+        and a description.
+
+  - id: q12-check-address-is-aws
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "Abuse from an AWS address goes to AWS Trust & Safety, not to Support"
+    task: "4.3"
+    level: recall
+    topics: [trust-and-safety, ip-ranges]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Before filing an abuse report, a website owner wants to confirm that the attacking address
+        belongs to AWS. How can she check?
+    choices:
+      - id: ip-ranges-json
+        text: Search AWS's published ip-ranges.json file
+        variants:
+          - text: Look it up in AWS's public ip-ranges.json file
+          - text: Check the address against AWS's ip-ranges.json
+        explanation:
+          text: Correct. AWS publishes its IP address ranges as a file that anyone can download and search.
+      - id: support-case
+        text: Ask AWS Support in an account and billing case
+        variants:
+          - text: Open an account and billing case to ask Support
+          - text: Ask AWS Support through a billing case
+        explanation:
+          text: AWS Support doesn't handle abuse questions, and the answer is already public.
+      - id: trusted-advisor
+        text: Look the address up in AWS Trusted Advisor
+        variants:
+          - text: Search for the address in Trusted Advisor
+          - text: Run the address through Trusted Advisor
+        explanation:
+          text: Trusted Advisor checks your own account's setup. It doesn't look up addresses.
+      - id: health-dashboard
+        text: Find the address on the AWS Health Dashboard
+        variants:
+          - text: Search the AWS Health Dashboard for the address
+          - text: Look for the address in the AWS Health Dashboard
+        explanation:
+          text: The Health Dashboard reports AWS's events. It doesn't list AWS's addresses.
+    correct_answers: [ip-ranges-json]
+    explanation:
+      text: |
+        AWS publishes the IP address ranges it uses as a file, `ip-ranges.json`, that anyone can
+        download and search. If the attacking address is in it, the abuse goes to AWS Trust & Safety
+        through the abuse form.
+
+  - id: q12-own-instance-abuse-notice
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: '"Abuse goes to AWS Support" is wrong'
+    task: "2.4"
+    level: application
+    topics: [trust-and-safety, abuse]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company receives a notice from AWS Trust & Safety saying that one of its EC2 instances is
+        scanning other networks. What should the company do?
+    choices:
+      - id: ask-support
+        text: Open a support case asking Support about the notice
+        variants:
+          - text: Ask AWS Support about the notice in a case
+          - text: Raise a support case to question the notice
+        explanation:
+          text: AWS Support can't help with questions about Trust & Safety notifications.
+      - id: reply-investigate
+        text: Reply to Trust & Safety and investigate the instance
+        variants:
+          - text: Answer Trust & Safety and look into the instance
+          - text: Respond to Trust & Safety and examine the instance
+        explanation:
+          text: Correct. Answer the notice as it asks, and find out why the instance is scanning; it may have been compromised.
+      - id: post-repost
+        text: Post the notice on AWS re:Post for advice
+        variants:
+          - text: Share the notice on AWS re:Post and ask for help
+          - text: Ask the AWS re:Post community about the notice
+        explanation:
+          text: re:Post is public and can't act on the notice. Posting account details there is also a risk.
+      - id: wait
+        text: Wait, since the notice needs no reply from the company
+        variants:
+          - text: Do nothing, since such notices need no response
+          - text: Ignore it, as the notice expects no reply
+        explanation:
+          text: The notice is about the company's own resource harming others. Fixing that resource is the company's job.
+    correct_answers: [reply-investigate]
+    hint:
+      text: This time the misbehaving resource is the company's own. Who sent the notice?
+    explanation:
+      text: |
+        When AWS tells you that your resource is causing abuse, answer Trust & Safety and fix the
+        resource. AWS Support can't help with questions about Trust & Safety notifications. If the
+        investigation shows someone has broken into the account, that part becomes a support case
+        marked as an urgent security incident.
+
+  - id: q12-intruder-in-own-account
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: '"Abuse goes to AWS Support" is wrong'
+    task: "2.4"
+    level: application
+    topics: [incident-response, aws-cirt]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        An administrator finds IAM users and access keys in the company's account that nobody
+        created. The account is on Basic Support. How should the company get AWS's help?
+    choices:
+      - id: abuse-form
+        text: Report it to AWS Trust & Safety through the public abuse form
+        variants:
+          - text: File it with Trust & Safety on the abuse form
+          - text: Use the abuse form to tell AWS Trust & Safety
+        explanation:
+          text: The abuse form is for someone else's AWS resource harming you. An intruder inside your own account is a support case.
+      - id: upgrade-enterprise
+        text: Upgrade to Enterprise Support first, so that AWS will respond
+        variants:
+          - text: Move to Enterprise Support before AWS can help
+          - text: Buy Enterprise Support so that AWS steps in
+        explanation:
+          text: AWS's incident responders help at no additional charge on any Support plan. No upgrade is needed.
+      - id: ask-repost
+        text: Ask on AWS re:Post how to remove the intruder from the account
+        variants:
+          - text: Post on AWS re:Post asking how to evict the intruder
+          - text: Get advice on AWS re:Post about removing the intruder
+        explanation:
+          text: re:Post is public and can't see the account. Posting details of a break-in there adds risk.
+      - id: urgent-case
+        text: Open a case from that account as an urgent security incident
+        variants:
+          - text: From that account, open a case as an urgent security incident
+          - text: Raise an urgent security incident case from that account
+        explanation:
+          text: Correct. Opening it from the affected account lets AWS confirm you own it, and the AWS CIRT can then help.
+    correct_answers: [urgent-case]
+    hint:
+      text: Is the harmful resource someone else's, or is someone inside your own account?
+    explanation:
+      text: |
+        An intruder in your own account is different from abuse coming at you from someone else's
+        resource. Open a support case from the affected account, choose the service closest to the
+        problem, and say it's an urgent security incident. The AWS Customer Incident Response Team
+        (AWS CIRT) can then help, at no additional charge and on any Support plan.
+
+  - id: q12-abuse-reporting-facts-two
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: '"Abuse goes to AWS Support" is wrong'
+    task: "4.3"
+    level: understanding
+    topics: [trust-and-safety, abuse]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        Which two statements about reporting abuse that comes from AWS resources are correct?
+        (Select TWO.)
+    choices:
+      - id: support-cant
+        text: AWS Support can't take abuse reports, on any plan
+        variants:
+          - text: On every plan, AWS Support can't accept abuse reports
+          - text: No Support plan lets AWS Support handle abuse reports
+        explanation:
+          text: Correct. AWS's own article says AWS Support can't help with abuse reports; they go through the abuse form.
+      - id: needs-paid
+        text: A paid Support plan is needed to file a report
+        variants:
+          - text: Filing a report needs a paid Support plan
+          - text: Only paid Support plans can file a report
+        explanation:
+          text: The abuse form works the same on any plan, Basic included.
+      - id: blocks-at-once
+        text: Trust & Safety blocks the traffic to the victim at once
+        variants:
+          - text: Trust & Safety stops the traffic to the victim right away
+          - text: The victim's traffic is blocked at once by Trust & Safety
+        explanation:
+          text: Trust & Safety acts on the attacker's resource, on its own schedule. Blocking the traffic now stays the victim's job, with a network ACL or AWS WAF.
+      - id: no-owner-name
+        text: Trust & Safety won't name the resource's owner without consent
+        variants:
+          - text: Without the owner's consent, Trust & Safety won't reveal who it is
+          - text: Trust & Safety keeps the owner's identity unless the owner agrees
+        explanation:
+          text: Correct. Trust & Safety shares information only with the permission of the party that controls the resource.
+      - id: root-only
+        text: Only the victim account's root user may file a report
+        variants:
+          - text: A report must come from the victim's root user
+          - text: Filing a report needs the victim account's root user
+        explanation:
+          text: Anyone with the right evidence can use the abuse form; it isn't a root-only task.
+    correct_answers: [support-cant, no-owner-name]
+    explanation:
+      text: |
+        Abuse from an AWS resource goes to AWS Trust & Safety through the abuse form, on any plan,
+        not to AWS Support. Trust & Safety investigates and deals with the resource's owner, and shares
+        details only with that owner's permission. Reporting doesn't protect your site: block the
+        traffic yourself meanwhile.
+
+  # ---------------------------------------------------------------------------------------------
+  # Lesson 12.04, Partners and paid help
+  # ---------------------------------------------------------------------------------------------
+
+  - id: q12-support-wont-rewrite-code
+    page: guide/12-getting-help/04-partners-and-paid-help.md
+    section: "AWS Support fixes problems with AWS; it doesn't build or run your systems"
+    task: "4.3"
+    level: understanding
+    topics: [aws-support-scope]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A retailer's app is slow because of inefficient queries in its own code. The retailer is on
+        Business Support+ and asks AWS Support to rewrite that code. What should it expect?
+    choices:
+      - id: outside-scope
+        text: Support explains the service, but the rewrite is outside its scope
+        variants:
+          - text: Support can explain the service; rewriting code isn't its job
+          - text: Support helps with the service, but won't rewrite the code
+        explanation:
+          text: Correct. Custom code development and software debugging are outside AWS Support's scope on every plan.
+      - id: support-rewrites
+        text: Support rewrites it, since technical cases cover custom code
+        variants:
+          - text: Support does the rewrite, as technical cases include custom code
+          - text: Technical cases cover custom code, so Support rewrites it
+        explanation:
+          text: Technical cases cover how AWS services behave, not the customer's own code.
+      - id: enterprise-only
+        text: Support rewrites it, but only on Enterprise Support or higher
+        variants:
+          - text: Only Enterprise Support or higher gets the code rewritten
+          - text: On Enterprise Support or above, Support rewrites the code
+        explanation:
+          text: No plan includes custom code development. Higher plans add advice and named people, not hands-on coding.
+      - id: logs-in
+        text: Support signs in to its systems and tunes the code directly
+        variants:
+          - text: Support logs in to the retailer's systems to tune the code
+          - text: Support staff access its systems and fix the code themselves
+        explanation:
+          text: Support staff don't log in to customers' systems or administer them.
+    correct_answers: [outside-scope]
+    explanation:
+      text: |
+        AWS Support helps with AWS services, errors from them and problems with your account. Custom
+        code development, software debugging and system administration are outside its scope, on
+        every plan. The retailer's own developers, AWS Professional Services or a partner could do the
+        rewrite; the code stays on the customer's side of the shared responsibility line either way.
+
+  - id: q12-solutions-architect-design-review
+    page: guide/12-getting-help/04-partners-and-paid-help.md
+    section: "Solutions architects advise on design, free, through your account team"
+    task: "4.3"
+    level: application
+    topics: [solutions-architects]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A startup is about to build a data platform on AWS and wants an AWS expert to review its
+        proposed design before it starts. It has no budget for consultants. Which kind of help fits?
+    choices:
+      - id: solutions-architect
+        text: An AWS solutions architect
+        variants:
+          - text: A solutions architect from AWS
+          - text: A solutions architect at AWS
+        explanation:
+          text: Correct. Solutions architects review architectures and advise on design at no charge, and AWS suggests involving one before you build.
+      - id: professional-services
+        text: AWS Professional Services
+        variants:
+          - text: The AWS Professional Services team
+          - text: A Professional Services engagement
+        explanation:
+          text: Professional Services is AWS's own consulting organization, hired under a paid contract. The startup has no budget for that.
+      - id: partner
+        text: An AWS Partner from the Partner Solutions Finder
+        variants:
+          - text: A partner found in the Partner Solutions Finder
+          - text: An AWS Partner chosen through the Solutions Finder
+        explanation:
+          text: A partner can review a design, but at the partner's own prices.
+      - id: trust-safety
+        text: The AWS Trust & Safety team
+        variants:
+          - text: AWS's Trust & Safety team
+          - text: AWS Trust & Safety
+        explanation:
+          text: Trust & Safety handles abuse reports. It doesn't review designs.
+    correct_answers: [solutions-architect]
+    hint:
+      text: Which kind of help advises rather than builds, and costs nothing?
+    explanation:
+      text: |
+        AWS solutions architects are AWS's technical advisers. They review architectures and run
+        Well-Architected reviews as a conversation, at no charge; a new customer reaches one through
+        AWS's contact form, an existing one through its account team. They don't do the build: for
+        that they point you to Professional Services or partners.
+
+  - id: q12-professional-services-own-consultants
+    page: guide/12-getting-help/04-partners-and-paid-help.md
+    section: "AWS Professional Services does the project for you, for a fee"
+    task: "4.3"
+    level: application
+    topics: [professional-services]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A bank wants AWS's own consultants to design and carry out the modernization of its core
+        applications, under a contract. Which option fits?
+    choices:
+      - id: solutions-architect
+        text: An AWS solutions architect
+        variants:
+          - text: A solutions architect from AWS
+          - text: An AWS solutions architect, free
+        explanation:
+          text: A solutions architect advises while you build; doing the project under a contract isn't the role.
+      - id: tam
+        text: A TAM through Enterprise Support
+        variants:
+          - text: Enterprise Support's designated TAM
+          - text: The TAM that Enterprise Support assigns
+        explanation:
+          text: A TAM guides your plans and pulls in specialists, but AWS Support doesn't build or run your systems.
+      - id: professional-services
+        text: AWS Professional Services
+        variants:
+          - text: The AWS Professional Services team
+          - text: A Professional Services contract
+        explanation:
+          text: Correct. Professional Services is AWS's own consulting organization, hired to design, build, migrate and manage workloads.
+      - id: partner
+        text: A services partner in the APN
+        variants:
+          - text: A system integrator from the APN
+          - text: An APN partner that sells services
+        explanation:
+          text: A services partner could do the project, but partners are other companies, not AWS's own consultants.
+    correct_answers: [professional-services]
+    hint:
+      text: The bank asked for AWS's own people, doing the work, under a contract.
+    explanation:
+      text: |
+        AWS Professional Services is AWS's own consulting organization: you hire it, under a
+        contract, to design, build, migrate and manage workloads. Solutions architects and TAMs
+        advise; partners also deliver projects, but as other companies.
+
+  - id: q12-system-integrator-term
+    page: guide/12-getting-help/04-partners-and-paid-help.md
+    section: "AWS Partners are other companies: software vendors and services firms"
+    task: "4.3"
+    level: recall
+    topics: [aws-partners]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        In the exam's terms, what is a company in the AWS Partner Network called if it designs,
+        builds and migrates systems for its customers?
+    choices:
+      - id: isv
+        text: An independent software vendor (ISV)
+        variants:
+          - text: An ISV, an independent software vendor
+          - text: A software vendor (ISV) partner
+        explanation:
+          text: An ISV makes and sells its own software. Selling services to build and migrate systems is the other kind of partner.
+      - id: system-integrator
+        text: A system integrator
+        variants:
+          - text: A system integrator partner
+          - text: A system integrator firm
+        explanation:
+          text: 'Correct. A system integrator sells services: it designs, builds, migrates and connects systems for customers.'
+      - id: professional-services
+        text: AWS Professional Services
+        variants:
+          - text: The AWS Professional Services team
+          - text: AWS's Professional Services group
+        explanation:
+          text: Professional Services does this kind of work too, but it's part of AWS, not a partner company.
+      - id: solutions-architect
+        text: An AWS solutions architect
+        variants:
+          - text: A solutions architect from AWS
+          - text: An AWS solutions architect role
+        explanation:
+          text: A solutions architect is an AWS role that advises on design, not a partner company.
+    correct_answers: [system-integrator]
+    explanation:
+      text: |
+        The exam names two kinds of partner: independent software vendors, which make software, and
+        system integrators, which sell services such as designing, building and migrating systems.
+        Some system integrators also run customers' systems day to day as managed service providers.
+        Older material calls them Consulting Partners; today AWS groups them under the Services Path.
+
+  - id: q12-isv-sells-waf-rules
+    page: guide/12-getting-help/04-partners-and-paid-help.md
+    section: "AWS Marketplace sells partners' products, with three services for the buyer"
+    task: "4.3"
+    level: application
+    topics: [aws-marketplace, aws-partners]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A security company has built a managed rule group for AWS WAF. It wants AWS customers to
+        subscribe to it, with the charges on their AWS bills. Where should it sell the product?
+    choices:
+      - id: marketplace
+        text: AWS Marketplace
+        variants:
+          - text: The AWS Marketplace catalog
+          - text: A listing in AWS Marketplace
+        explanation:
+          text: Correct. Marketplace sells third-party products, including rules for AWS WAF, and every charge arrives on the buyer's AWS bill.
+      - id: prescriptive-guidance
+        text: AWS Prescriptive Guidance
+        variants:
+          - text: The Prescriptive Guidance library
+          - text: A pattern in Prescriptive Guidance
+        explanation:
+          text: Prescriptive Guidance publishes AWS experts' guides and patterns. It doesn't sell products.
+      - id: professional-services
+        text: AWS Professional Services
+        variants:
+          - text: The AWS Professional Services team
+          - text: A Professional Services offering
+        explanation:
+          text: Professional Services is AWS's own consulting organization. It doesn't resell another company's product.
+      - id: support-center
+        text: AWS Support Center
+        variants:
+          - text: The AWS Support Center console
+          - text: A case in AWS Support Center
+        explanation:
+          text: Support Center is where customers open support cases, not where products are sold.
+    correct_answers: [marketplace]
+    hint:
+      text: Look for the place that both sells another company's product and bills it through AWS.
+    explanation:
+      text: |
+        A company that makes its own software for AWS is, in the exam's words, an independent software
+        vendor, and AWS Marketplace is where ISVs often sell. Marketplace offers machine images, SaaS,
+        CloudFormation templates and rules for AWS WAF, with charges on the buyer's AWS bill; AWS then
+        pays the seller.
+
+  - id: q12-partner-night-operations
+    page: guide/12-getting-help/04-partners-and-paid-help.md
+    section: "Worked example: five requests, five kinds of help"
+    task: "3.8"
+    level: application
+    topics: [aws-partners, managed-services]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company wants another company to watch and patch its EC2 servers every night, as an
+        ongoing service. Which kind of help fits?
+    choices:
+      - id: support-bplus
+        text: AWS Support on Business Support+
+        variants:
+          - text: AWS Support, on the Business Support+ plan
+          - text: Business Support+ from AWS Support
+        explanation:
+          text: AWS Support doesn't administer or run customers' systems, on any plan.
+      - id: msp-partner
+        text: A partner offering managed services
+        variants:
+          - text: An AWS Partner that runs managed services
+          - text: A managed service provider partner
+        explanation:
+          text: Correct. Partners that offer managed services run customers' systems day to day, such as watching and patching servers.
+      - id: solutions-architect
+        text: An AWS solutions architect
+        variants:
+          - text: A solutions architect from AWS
+          - text: An AWS solutions architect, free
+        explanation:
+          text: A solutions architect advises on design. Running servers every night is hands-on work.
+      - id: trusted-advisor
+        text: AWS Trusted Advisor's checks
+        variants:
+          - text: The checks in AWS Trusted Advisor
+          - text: AWS Trusted Advisor, with all checks
+        explanation:
+          text: Trusted Advisor only reports on your setup. It doesn't patch anything.
+    correct_answers: [msp-partner]
+    hint:
+      text: The work is hands-on and ongoing, and it comes from another company.
+    explanation:
+      text: |
+        Ongoing operations are hands-on work, which AWS Partners that offer managed services provide.
+        AWS Support helps with AWS services but doesn't run your systems. Patching the guest
+        operating systems stays the customer's responsibility; hiring a partner changes who does it,
+        not whose job it is.
+
+  - id: q12-partner-benefits-two
+    page: guide/12-getting-help/04-partners-and-paid-help.md
+    section: "What partners get from joining"
+    task: "4.3"
+    level: recall
+    topics: [aws-partners]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A software company is deciding whether to join the AWS Partner Network. Which two are
+        benefits AWS lists for partners? (Select TWO.)
+    choices:
+      - id: free-unified-ops
+        text: A free Unified Operations Support plan
+        variants:
+          - text: Unified Operations Support at no charge
+          - text: The Unified Operations plan, free of charge
+        explanation:
+          text: Support plans are bought separately; a free plan isn't a benefit AWS lists for partners.
+      - id: selling-with-aws
+        text: Listing in AWS Marketplace and co-selling with AWS
+        variants:
+          - text: Co-selling with AWS and listing in AWS Marketplace
+          - text: Selling with AWS, including Marketplace listings
+        explanation:
+          text: Correct. Partners can list products and services in AWS Marketplace and co-sell with AWS's sales teams.
+      - id: data-responsibility
+        text: AWS taking over the security of its customers' data
+        variants:
+          - text: AWS becoming responsible for its customers' data security
+          - text: AWS securing the data of the partner's customers
+        explanation:
+          text: Customer data stays on the customer's side of the shared responsibility line, whoever the customer buys from.
+      - id: free-proserv
+        text: A free AWS Professional Services project per customer
+        variants:
+          - text: One free Professional Services project for each customer
+          - text: Professional Services at no charge for each customer
+        explanation:
+          text: Professional Services is a separate, paid AWS offering.
+      - id: incentives
+        text: Funding incentives and reseller programs
+        variants:
+          - text: Reseller programs and funding incentives
+          - text: Partner incentives, such as funding and reselling
+        explanation:
+          text: Correct. AWS lists funding incentives and reseller programs among its partner programs.
+    correct_answers: [selling-with-aws, incentives]
+    explanation:
+      text: |
+        AWS's partner pages list partner-only training and certification, events, selling with AWS
+        (Marketplace listings and co-selling) and programs and incentives (as of 2026-10-24). The exam
+        guide also names partner volume discounts; AWS publishes no discount levels, so learn the
+        idea without a figure. Joining the APN is free.
+
+  - id: q12-partner-with-specialization
+    page: guide/12-getting-help/04-partners-and-paid-help.md
+    section: "AWS Partners are other companies: software vendors and services firms"
+    task: "4.3"
+    level: application
+    topics: [aws-partners]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A hospital wants to hire a partner whose expertise in healthcare workloads has been validated
+        by AWS against a technical bar. How should it look for one?
+    choices:
+      - id: solutions-finder
+        text: Search the Partner Solutions Finder for an AWS Specialization
+        variants:
+          - text: Filter the Partner Solutions Finder by AWS Specialization
+          - text: Use the Partner Solutions Finder to find an AWS Specialization
+        explanation:
+          text: Correct. The finder searches by industry, use case, workload, solution or AWS Specialization, and a Specialization means AWS validated the expertise.
+      - id: ask-support
+        text: Open a support case asking AWS Support to assign a partner
+        variants:
+          - text: Ask AWS Support, through a case, to name a partner
+          - text: Have AWS Support pick a partner through a support case
+        explanation:
+          text: AWS Support helps with AWS services and your account. It doesn't assign partners.
+      - id: repost-answers
+        text: Look for partners answering questions on AWS re:Post
+        variants:
+          - text: Find a partner among the answers on AWS re:Post
+          - text: Pick a partner from those posting on AWS re:Post
+        explanation:
+          text: Answering on re:Post shows nothing about whether AWS has validated a company's expertise.
+      - id: trusted-advisor
+        text: Check Trusted Advisor for a list of approved partners
+        variants:
+          - text: Find approved partners listed in Trusted Advisor
+          - text: Look up approved partners in AWS Trusted Advisor
+        explanation:
+          text: Trusted Advisor checks your account against best practices; it doesn't list partners.
+    correct_answers: [solutions-finder]
+    explanation:
+      text: |
+        Customers find partners in the AWS Partner Solutions Finder. A partner with an AWS
+        Specialization, such as an AWS Competency or AWS Managed Service Provider, has had its
+        expertise in an area validated by AWS against a technical bar.
+
+  - id: q12-private-marketplace-vetted-tools
+    page: guide/12-getting-help/04-partners-and-paid-help.md
+    section: "AWS Marketplace sells partners' products, with three services for the buyer"
+    task: "4.3"
+    level: application
+    topics: [aws-marketplace, governance]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A university's IT office wants departments to subscribe only to the third-party analytics
+        tools it has vetted, while staff can still browse others and request them. Which AWS
+        Marketplace feature does this?
+    choices:
+      - id: private-marketplace
+        text: Private Marketplace
+        variants:
+          - text: A Private Marketplace catalog
+          - text: Marketplace's Private Marketplace
+        explanation:
+          text: Correct. Private Marketplace gives each part of an organization a catalog of approved products, and users can request more.
+      - id: procurement-insights
+        text: The Procurement insights dashboard
+        variants:
+          - text: Marketplace's Procurement insights
+          - text: The Procurement insights view
+        explanation:
+          text: Procurement insights shows Marketplace costs and agreements across accounts. It's cost management, not governance.
+      - id: license-manager
+        text: AWS License Manager
+        variants:
+          - text: AWS's License Manager
+          - text: License Manager sharing
+        explanation:
+          text: License Manager shares and tracks licenses you've bought. It's entitlement, not a control on what can be bought.
+      - id: private-offer
+        text: A private offer
+        variants:
+          - text: A negotiated private offer
+          - text: A seller's private offer
+        explanation:
+          text: A private offer is pricing and terms negotiated for one buyer. It doesn't limit what staff can subscribe to.
+    correct_answers: [private-marketplace]
+    hint:
+      text: Of Marketplace's three buyer services, which one is about control?
+    explanation:
+      text: |
+        Governance in AWS Marketplace is Private Marketplace: administrators give the organization,
+        its OUs or its accounts catalogs of approved products, and approve or decline requests for
+        more. It blocks new subscriptions to unapproved products, but it doesn't control what can be
+        deployed, so IAM permissions still matter.
+
+  - id: q12-share-license-test-account
+    page: guide/12-getting-help/04-partners-and-paid-help.md
+    section: "AWS Marketplace sells partners' products, with three services for the buyer"
+    task: "4.3"
+    level: application
+    topics: [aws-marketplace, entitlement]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company bought a machine-image product through AWS Marketplace in its production account.
+        It wants the same subscription to cover its test account, in the same organization. What
+        should it use?
+    choices:
+      - id: procurement-insights
+        text: The Procurement insights dashboard
+        variants:
+          - text: Marketplace's Procurement insights
+          - text: The Procurement insights view
+        explanation:
+          text: Procurement insights shows costs and agreements; it doesn't share licenses between accounts.
+      - id: license-manager
+        text: AWS License Manager
+        variants:
+          - text: AWS's License Manager
+          - text: License Manager sharing
+        explanation:
+          text: Correct. Subscribing creates licenses, and License Manager shares the subscription with other accounts in the organization and tracks its use.
+      - id: private-marketplace
+        text: Private Marketplace
+        variants:
+          - text: A Private Marketplace catalog
+          - text: Marketplace's Private Marketplace
+        explanation:
+          text: Private Marketplace controls which products may be bought. It doesn't extend an existing subscription to another account.
+      - id: support-case
+        text: A support case to move it
+        variants:
+          - text: A case asking Support to move it
+          - text: AWS Support, through a case
+        explanation:
+          text: Sharing a Marketplace subscription is something the company does itself, through License Manager.
+    correct_answers: [license-manager]
+    hint:
+      text: The question is who may use what was bought, and where.
+    explanation:
+      text: |
+        Entitlement is your right to use what you bought. In AWS Marketplace, subscribing creates
+        licenses automatically, and AWS License Manager lets a company share those subscriptions with
+        its other accounts and track their use. Sharing covers machine image, container, machine
+        learning and data products.
+
+  - id: q12-marketplace-spend-across-accounts
+    page: guide/12-getting-help/04-partners-and-paid-help.md
+    section: "AWS Marketplace sells partners' products, with three services for the buyer"
+    task: "4.3"
+    level: application
+    topics: [aws-marketplace, cost-management]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A finance team wants one place to see its organization's AWS Marketplace costs and
+        agreements across all of its accounts. Which feature fits?
+    choices:
+      - id: license-manager
+        text: AWS License Manager
+        variants:
+          - text: AWS's License Manager
+          - text: License Manager tracking
+        explanation:
+          text: License Manager tracks and shares licenses, the entitlement job. It isn't a cost view.
+      - id: private-marketplace
+        text: Private Marketplace
+        variants:
+          - text: A Private Marketplace catalog
+          - text: Marketplace's Private Marketplace
+        explanation:
+          text: Private Marketplace limits which products can be bought, the governance job.
+      - id: procurement-insights
+        text: The Procurement insights dashboard
+        variants:
+          - text: Marketplace's Procurement insights
+          - text: The Procurement insights view
+        explanation:
+          text: Correct. Procurement insights shows Marketplace costs and agreements for all the accounts in an organization.
+      - id: ta-cost-checks
+        text: Trusted Advisor's cost checks
+        variants:
+          - text: Cost checks in Trusted Advisor
+          - text: Trusted Advisor's cost category
+        explanation:
+          text: Trusted Advisor's cost checks look for unused AWS resources, not Marketplace spending and agreements.
+    correct_answers: [procurement-insights]
+    explanation:
+      text: |
+        AWS Marketplace's cost management for buyers is the Procurement insights dashboard, which
+        shows costs and agreements across an organization's accounts. Cost allocation tags then let
+        Cost Explorer split Marketplace usage by team, once they're activated.
+
+  - id: q12-marketplace-private-offer
+    page: guide/12-getting-help/04-partners-and-paid-help.md
+    section: "AWS Marketplace sells partners' products, with three services for the buyer"
+    task: "4.3"
+    level: recall
+    topics: [aws-marketplace]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A large buyer negotiates special pricing and terms for one AWS Marketplace product, just for
+        its own company. What is that arrangement called?
+    choices:
+      - id: private-marketplace
+        text: A Private Marketplace
+        variants:
+          - text: A Private Marketplace catalog
+          - text: Its own Private Marketplace
+        explanation:
+          text: Private Marketplace is a catalog of approved products, a governance feature. It doesn't set prices.
+      - id: byol
+        text: Bring your own license (BYOL)
+        variants:
+          - text: A BYOL arrangement
+          - text: Using its own license (BYOL)
+        explanation:
+          text: BYOL means using a license you already hold. It isn't a negotiated Marketplace price.
+      - id: private-offer
+        text: A private offer
+        variants:
+          - text: A seller's private offer
+          - text: A negotiated private offer
+        explanation:
+          text: Correct. A private offer carries pricing and terms negotiated for that one buyer, instead of the public price.
+      - id: savings-plan
+        text: A Savings Plan
+        variants:
+          - text: A Compute Savings Plan
+          - text: A Savings Plans commitment
+        explanation:
+          text: Savings Plans discount AWS compute in return for a commitment; they don't apply to a seller's Marketplace price.
+    correct_answers: [private-offer]
+    explanation:
+      text: |
+        In AWS Marketplace a buyer can accept a product's public price or a private offer, with
+        pricing and terms negotiated for that buyer. Don't confuse it with Private Marketplace, the
+        governance feature that limits which products staff may buy.
+
+  - id: q12-marketplace-firewall-who-configures
+    page: guide/12-getting-help/04-partners-and-paid-help.md
+    section: "AWS Marketplace sells partners' products, with three services for the buyer"
+    task: "2.4"
+    level: understanding
+    topics: [aws-marketplace, shared-responsibility]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company subscribes to a third-party firewall product through AWS Marketplace. Who is
+        responsible for configuring and securing it in the company's account?
+    choices:
+      - id: aws-billing
+        text: AWS, since the charges appear on the AWS bill
+        variants:
+          - text: AWS, because it bills the product
+          - text: AWS, as the product is on the AWS bill
+        explanation:
+          text: Marketplace changes who you pay, not who configures the product.
+      - id: seller
+        text: The seller, which configures it automatically
+        variants:
+          - text: The seller, which sets it up for every buyer
+          - text: The seller, as part of every subscription
+        explanation:
+          text: The seller makes and supports the product; setting it up in your account is your job unless you hire someone.
+      - id: support
+        text: AWS Support, on any paid Support plan
+        variants:
+          - text: AWS Support, for customers on paid plans
+          - text: AWS Support, once the plan is a paid one
+        explanation:
+          text: AWS Support doesn't administer customers' systems, on any plan.
+      - id: customer
+        text: The company that subscribed to it
+        variants:
+          - text: The subscribing company itself
+          - text: The company, as the buyer
+        explanation:
+          text: Correct. A product bought in Marketplace is still the buyer's to configure and secure.
+    correct_answers: [customer]
+    explanation:
+      text: |
+        AWS Marketplace sells other companies' products and puts the charges on your AWS bill, but
+        buying there changes who you pay, not who configures the product. Its settings in your
+        account are on your side of the shared responsibility line.
+
+  - id: q12-hands-on-help-two
+    page: guide/12-getting-help/04-partners-and-paid-help.md
+    section: "Professional Services, partners, Support or a solutions architect: compare them side by side"
+    task: "4.3"
+    level: understanding
+    topics: [professional-services, aws-partners, solutions-architects]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A manufacturer has no staff free to carry out a project it has already planned. It wants
+        experts who will put their own hands on the work, not only advise. Which two could it hire?
+        (Select TWO.)
+    choices:
+      - id: tam
+        text: A Technical Account Manager on Enterprise Support
+        variants:
+          - text: Enterprise Support's designated TAM
+          - text: The TAM that comes with Enterprise Support
+        explanation:
+          text: A TAM guides plans and pulls in specialists, but AWS Support doesn't build or run customers' systems.
+      - id: services-partner
+        text: A services partner, such as a system integrator
+        variants:
+          - text: A system integrator or other services partner
+          - text: An APN partner that sells services
+        explanation:
+          text: Correct. Services partners deliver projects and can run systems, under the customer's contract with them.
+      - id: knowledge-center
+        text: The AWS Knowledge Center's articles
+        variants:
+          - text: Articles in the AWS Knowledge Center
+          - text: AWS Knowledge Center guidance
+        explanation:
+          text: Knowledge Center articles explain how to do things; nobody does the work for you.
+      - id: solutions-architect
+        text: An AWS solutions architect
+        variants:
+          - text: A solutions architect from AWS
+          - text: An AWS solutions architect, free
+        explanation:
+          text: Solutions architects advise and point you to people who build; they don't do the build.
+      - id: professional-services
+        text: AWS Professional Services
+        variants:
+          - text: The AWS Professional Services team
+          - text: AWS's Professional Services group
+        explanation:
+          text: Correct. Professional Services designs, builds, migrates and manages workloads, on a project you hire it for.
+    correct_answers: [services-partner, professional-services]
+    explanation:
+      text: |
+        Exam questions about "who can help" usually turn on whether the customer wants advice or the
+        work done. TAMs and solutions architects advise; Professional Services and services partners
+        do the work, for a fee. None of them moves the shared responsibility line.
+
+flashcards:
+
+  # Lesson 12.01, Support plans
+
+  - id: c12-response-target-is-not
+    page: guide/12-getting-help/01-support-plans.md
+    section: '"Response times are guaranteed" is wrong'
+    task: "4.3"
+    level: understanding
+    topics: [response-times]
+    front:
+      text: A plan lists "under 15 minutes" for a business-critical system that is down. What two things is that time *not*?
+    back:
+      text: Not a guarantee (AWS makes "every reasonable effort" to meet it), and not the time to a fix. It's a target for AWS's first reply.
+
+  - id: c12-translate-old-plan-names
+    page: guide/12-getting-help/01-support-plans.md
+    section: '"Developer, Business and Enterprise On-Ramp are current plans" is out of date'
+    task: "4.3"
+    level: recall
+    topics: [legacy-support-plans]
+    front:
+      text: A practice question offers only Developer, Business and Enterprise On-Ramp Support. How do you translate them into today's plans?
+    back:
+      text: Developer and Business mean Business Support+. Enterprise On-Ramp means Enterprise Support. All three old plans end on 2027-01-01 (as of 2026-10-24).
+
+  - id: c12-developer-no-choice-falls-to-basic
+    page: guide/12-getting-help/01-support-plans.md
+    section: "Older material uses plan names that are being retired"
+    task: "4.3"
+    level: recall
+    topics: [legacy-support-plans]
+    front:
+      text: What happens to a Developer Support customer who doesn't choose a new plan before Developer Support ends?
+    back:
+      text: It falls back to Basic. AWS doesn't move Developer or Business customers automatically; only Enterprise On-Ramp customers are moved, to Enterprise Support.
+
+  - id: c12-support-never-does
+    page: guide/12-getting-help/01-support-plans.md
+    section: "Every account starts on Basic, which answers account questions but not technical ones"
+    task: "4.3"
+    level: recall
+    topics: [aws-support-scope]
+    front:
+      text: Name three things AWS Support won't do for you on any plan, the top one included.
+    back:
+      text: Write or debug your own code; administer or log in to your systems; sell you support for just one service.
+
+  - id: c12-bplus-fee-rule
+    page: guide/12-getting-help/01-support-plans.md
+    section: "Business Support+ adds technical help around the clock"
+    task: "4.3"
+    level: understanding
+    topics: [business-support-plus, pricing-model]
+    front:
+      text: How is the Business Support+ fee worked out (the rule, not the figures)?
+    back:
+      text: The greater of a monthly minimum or a share of that account's AWS charges, with the share falling as the bill grows. It's charged per account.
+
+  # Lesson 12.02, Tools that watch your account
+
+  - id: c12-ta-basic-rule
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: "What you see in Trusted Advisor depends on your Support plan"
+    task: "4.3"
+    level: recall
+    topics: [trusted-advisor, basic-support]
+    front:
+      text: What rule decides which Trusted Advisor checks a Basic Support account sees?
+    back:
+      text: Every service limits check, plus a few chosen security and fault tolerance checks. All other checks, and the API, need Business Support+ or higher.
+
+  - id: c12-ta-learn-the-rule-not-a-count
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: '"Basic gets a fixed number of checks" is wrong'
+    task: "4.3"
+    level: understanding
+    topics: [trusted-advisor, moving-target]
+    front:
+      text: Why learn Trusted Advisor's categories and plan rule instead of how many checks it runs?
+    back:
+      text: AWS adds and retires checks, so the count changes, and AWS's own pages gave different totals. The categories and which plans see which checks hold steady.
+
+  - id: c12-ta-categories-are-not-pillars
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: "Trusted Advisor checks your setup against AWS's best practices, in six categories"
+    task: "1.2"
+    level: understanding
+    topics: [trusted-advisor, well-architected]
+    front:
+      text: Trusted Advisor's categories sound like the Well-Architected pillars. Name two signs that they aren't the same thing.
+    back:
+      text: Sustainability has no category; and fault tolerance and service limits both serve one pillar, reliability. Categories are folders of automatic checks, not review guidance.
+
+  - id: c12-is-it-aws-or-us
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: "Worked example: the bakery's week"
+    task: "4.3"
+    level: understanding
+    topics: [aws-health]
+    front:
+      text: The site is slow. Where do you look first to ask "is it AWS or us?", and where next if it shows nothing?
+    back:
+      text: 'First the AWS Health Dashboard, free on every plan. If it shows no event, the cause is probably on your side: check CloudWatch and your own logs.'
+
+  # Lesson 12.03, Where to find answers
+
+  - id: c12-when-to-open-a-case
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "Support Center is the only door about your own account"
+    task: "4.3"
+    level: understanding
+    topics: [support-center, routing]
+    front:
+      text: When should you open a support case instead of searching AWS's public sources?
+    back:
+      text: 'When the answer depends on your own account or bill. Otherwise search first: the documentation, the Knowledge Center and re:Post are written for every customer.'
+
+  - id: c12-we-want-to-or-how-do-i
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "Prescriptive Guidance is for planning and building, not for fixing one error"
+    task: "4.3"
+    level: understanding
+    topics: [prescriptive-guidance, routing]
+    front:
+      text: A quick test for routing a question to Prescriptive Guidance or to the documentation and Knowledge Center?
+    back:
+      text: '"We want to…" (a plan or task across services) goes to Prescriptive Guidance. "Why does…" or "How do I…" for one setting goes to the documentation and Knowledge Center first.'
+
+  - id: c12-abuse-or-intruder
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: '"Abuse goes to AWS Support" is wrong'
+    task: "2.4"
+    level: understanding
+    topics: [trust-and-safety, incident-response]
+    front:
+      text: Someone else's AWS resource attacks you, or an intruder is inside your own account. Where does each go?
+    back:
+      text: The attack goes to AWS Trust & Safety through the abuse form. The intruder goes in a support case from that account, marked as an urgent security incident.
+
+  - id: c12-reporting-does-not-block
+    page: guide/12-getting-help/03-where-to-find-answers.md
+    section: "Abuse from an AWS address goes to AWS Trust & Safety, not to Support"
+    task: "2.4"
+    level: understanding
+    topics: [trust-and-safety, abuse]
+    front:
+      text: Why must you still block attack traffic yourself after reporting it to AWS Trust & Safety?
+    back:
+      text: Trust & Safety acts on the attacker's resource, on its own schedule. Protecting your site now is your job, for example with a network ACL deny rule or AWS WAF.
+
+  # Lesson 12.04, Partners and paid help
+
+  - id: c12-advice-or-hands-on
+    page: guide/12-getting-help/04-partners-and-paid-help.md
+    section: "Professional Services, partners, Support or a solutions architect: compare them side by side"
+    task: "4.3"
+    level: understanding
+    topics: [professional-services, aws-partners, solutions-architects]
+    front:
+      text: Of AWS Support, solutions architects, AWS Professional Services and AWS Partners, which do the hands-on work?
+    back:
+      text: Professional Services and services partners, for a fee. AWS Support and solutions architects guide you while you do the work.
+
+  - id: c12-marketplace-buyer-jobs
+    page: guide/12-getting-help/04-partners-and-paid-help.md
+    section: "AWS Marketplace sells partners' products, with three services for the buyer"
+    task: "4.3"
+    level: recall
+    topics: [aws-marketplace]
+    front:
+      text: Match AWS Marketplace's three buyer services (cost management, governance, entitlement) to their features.
+    back:
+      text: 'Cost management: Procurement insights and cost allocation tags. Governance: Private Marketplace. Entitlement: licenses shared through AWS License Manager.'
+
+  - id: c12-private-marketplace-needs-iam-too
+    page: guide/12-getting-help/04-partners-and-paid-help.md
+    section: "AWS Marketplace sells partners' products, with three services for the buyer"
+    task: "4.3"
+    level: understanding
+    topics: [aws-marketplace, governance]
+    front:
+      text: A company uses Private Marketplace. Why does it still need IAM permissions to control software?
+    back:
+      text: Private Marketplace only blocks new subscriptions to unapproved products. It doesn't stop existing subscriptions or control what can be deployed in an account.

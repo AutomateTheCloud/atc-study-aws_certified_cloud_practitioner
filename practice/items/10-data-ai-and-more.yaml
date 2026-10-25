@@ -1,0 +1,3539 @@
+# Module 10, Data, AI and the rest of the catalog. Practice questions and concept cards.
+# Written from the guide's pages in guide/10-data-ai-and-more/; see practice/work/blueprint-10.md.
+# Build fields (page, section, task, level, topics) are described in source/practice/build_bundle.py.
+
+questions:
+
+  # ---------------------------------------------------------------------------------------------
+  # Lesson 10.01, Analytics in five verbs (and Lab 13)
+  # ---------------------------------------------------------------------------------------------
+
+  - id: q10-verb-and-service-pair
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "The big picture: five verbs, from raw data to a dashboard"
+    task: "3.7"
+    level: understanding
+    topics: [analytics-pipeline]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        An analytics pipeline has five jobs: ingest, catalog, query, search and visualize. Which
+        pairing of a job and the AWS service that does it is correct?
+    choices:
+      - id: visualize-athena
+        text: Visualize, with Amazon Athena
+        variants:
+          - text: The visualize job, done by Athena
+          - text: Athena, for the visualize step
+        explanation:
+          text: Athena runs SQL queries and returns tables of results. Turning results into dashboards is Amazon Quick Sight's job.
+      - id: catalog-glue
+        text: Catalog, with AWS Glue
+        variants:
+          - text: The catalog job, done by Glue
+          - text: AWS Glue, for the catalog step
+        explanation:
+          text: Correct. Glue's Data Catalog records where each set of files is and what its columns are, and its crawlers fill it in.
+      - id: search-data-streams
+        text: Search, with Amazon Kinesis Data Streams
+        variants:
+          - text: The search job, done by Kinesis Data Streams
+          - text: Kinesis Data Streams, for the search step
+        explanation:
+          text: Kinesis Data Streams ingests records as they happen. Finding words and patterns in text and logs is Amazon OpenSearch Service's job.
+      - id: ingest-quick-sight
+        text: Ingest, with Amazon Quick Sight
+        variants:
+          - text: The ingest job, done by Quick Sight
+          - text: Amazon Quick Sight, for the ingest step
+        explanation:
+          text: Quick Sight sits at the other end of the pipeline. It shows results as dashboards; it doesn't bring data in.
+    correct_answers: [catalog-glue]
+    explanation:
+      text: |
+        Each analytics service on the exam does one of the five jobs. Kinesis Data Streams and Amazon
+        Data Firehose ingest; AWS Glue catalogs; Athena, Redshift and EMR query; OpenSearch Service
+        searches; Amazon Quick Sight visualizes. Placing a service on its verb first is the quickest
+        way to rule out the look-alikes.
+
+  - id: q10-two-ingest-services
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "The big picture: five verbs, from raw data to a dashboard"
+    task: "3.7"
+    level: recall
+    topics: [analytics-pipeline, kinesis]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A team is drawing its analytics pipeline. Which two AWS services belong in the first step,
+        bringing data in as it is created? (Select TWO.)
+    choices:
+      - id: data-streams
+        text: Amazon Kinesis Data Streams
+        variants:
+          - text: Kinesis Data Streams
+          - text: The Amazon Kinesis Data Streams service
+        explanation:
+          text: Correct. Data Streams collects records as they happen and keeps them for your own programs to read.
+      - id: glue
+        text: AWS Glue
+        variants:
+          - text: Glue
+          - text: The AWS Glue service
+        explanation:
+          text: Glue describes and prepares data that has already arrived. It is the catalog step, not the ingest step.
+      - id: firehose
+        text: Amazon Data Firehose
+        variants:
+          - text: Data Firehose
+          - text: The Amazon Data Firehose service
+        explanation:
+          text: Correct. Firehose takes in streaming data and delivers it to a store such as S3, with no code. Its old name is Kinesis Data Firehose.
+      - id: quick-sight
+        text: Amazon Quick Sight
+        variants:
+          - text: Quick Sight
+          - text: The Amazon Quick Sight service
+        explanation:
+          text: Quick Sight is the last step, turning answers into dashboards.
+      - id: opensearch
+        text: Amazon OpenSearch Service
+        variants:
+          - text: OpenSearch Service
+          - text: The Amazon OpenSearch Service
+        explanation:
+          text: OpenSearch Service is the search step. Firehose can deliver data into it, but it doesn't ingest data on its own.
+    correct_answers: [data-streams, firehose]
+    explanation:
+      text: |
+        Ingest is the job of getting data into the pipeline as it happens. On the exam's list, that's
+        Amazon Kinesis Data Streams and Amazon Data Firehose (formerly Kinesis Data Firehose). Glue
+        catalogs, OpenSearch Service searches and Quick Sight visualizes.
+
+  - id: q10-firehose-gate-scans-to-s3
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Ingest: Data Streams holds records for your programs; Firehose delivers them for you"
+    task: "3.7"
+    level: application
+    topics: [kinesis, data-firehose]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A ski resort's lift gates send an event each time a pass is scanned. The resort wants the
+        events saved as Parquet files in an S3 bucket every few minutes, for reports the next day.
+        It has no developers to write or run programs for this. Which service should it use?
+    choices:
+      - id: data-streams
+        text: Amazon Kinesis Data Streams
+        variants:
+          - text: Kinesis Data Streams
+          - text: A stream in Amazon Kinesis Data Streams
+        explanation:
+          text: Data Streams holds the events, but getting them into S3 takes consumer programs the resort would write and run. Nothing here needs to react within seconds or replay data.
+      - id: sqs
+        text: Amazon SQS
+        variants:
+          - text: Amazon Simple Queue Service (Amazon SQS)
+          - text: An Amazon SQS queue
+        explanation:
+          text: SQS hands jobs to worker programs, which delete each message when done. It doesn't deliver anything to S3 by itself.
+      - id: glue-crawler
+        text: An AWS Glue crawler
+        variants:
+          - text: A crawler in AWS Glue
+          - text: AWS Glue, with a crawler
+        explanation:
+          text: A crawler scans data that is already stored and adds tables to the Data Catalog. It doesn't take in a stream of events.
+      - id: firehose
+        text: Amazon Data Firehose
+        variants:
+          - text: Data Firehose
+          - text: A Firehose stream in Amazon Data Firehose
+        explanation:
+          text: Correct. Firehose buffers the events and delivers them to S3, and it can convert them to Parquet on the way, with no code to write.
+    correct_answers: [firehose]
+    hint:
+      text: Look for the service that delivers streaming data to a store for you, rather than holding it for your own programs.
+    explanation:
+      text: |
+        Amazon Data Firehose (formerly Amazon Kinesis Data Firehose) delivers streaming data to a
+        destination such as S3, Redshift or OpenSearch Service. It gathers data until a size or time
+        limit is reached, can transform it into a format such as Parquet, and needs no code. A delay of
+        a few minutes doesn't matter for next-day reports.
+
+  - id: q10-data-streams-reprocess
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Ingest: Data Streams holds records for your programs; Firehose delivers them for you"
+    task: "3.7"
+    level: application
+    topics: [kinesis, data-streams]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A delivery company's vans report their position every few seconds. Three of its own programs
+        read the same positions: one updates a live map, one estimates arrival times, and one archives
+        everything. A bug in the arrival-time program is fixed, and the team wants it to read the last
+        five hours of positions again. Which service supports this design?
+    choices:
+      - id: data-streams
+        text: Amazon Kinesis Data Streams
+        variants:
+          - text: Kinesis Data Streams
+          - text: A Kinesis data stream
+        explanation:
+          text: Correct. Several consumers read the same records independently, and records stay for the retention period, 24 hours by default, so the fixed program can replay them.
+      - id: firehose
+        text: Amazon Data Firehose
+        variants:
+          - text: Data Firehose
+          - text: A Firehose stream
+        explanation:
+          text: Firehose delivers data to a destination and keeps nothing for other programs to read. It can't give three programs the same records or replay them.
+      - id: sqs
+        text: Amazon SQS
+        variants:
+          - text: Amazon Simple Queue Service
+          - text: An SQS queue
+        explanation:
+          text: A worker deletes each SQS message once it has handled it, so three programs can't each read every position, and nothing is left to replay.
+      - id: athena
+        text: Amazon Athena
+        variants:
+          - text: Athena
+          - text: An Athena query
+        explanation:
+          text: Athena runs SQL on files in S3. It doesn't feed live records to programs within seconds.
+    correct_answers: [data-streams]
+    hint:
+      text: Ask which service keeps records after they've been read.
+    explanation:
+      text: |
+        Kinesis Data Streams keeps records in a stream for your own programs, called consumers, to
+        read. Several consumers can read the same records, and because records stay after they're read
+        (24 hours by default, up to 365 days at extra cost), a consumer can go back and read them again,
+        which is called replay.
+
+  - id: q10-after-the-read-two
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Data Streams, Firehose or SQS: what happens after the data is read"
+    task: "3.7"
+    level: understanding
+    topics: [kinesis, data-streams, data-firehose, sqs]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        Kinesis Data Streams, Amazon Data Firehose and Amazon SQS all accept data and hold it for a
+        while. Which two statements correctly describe what happens after the data is read? (Select
+        TWO.)
+    choices:
+      - id: sqs-shared-replay
+        text: An SQS message can be read by several programs and replayed later
+        variants:
+          - text: Several programs can each read an SQS message and read it again later
+          - text: SQS keeps each message for many readers and for later replay
+        explanation:
+          text: The worker that handles an SQS message deletes it when the job is done, so it can't be shared or replayed.
+      - id: streams-keep
+        text: Records in Data Streams stay after they're read, so they can be replayed
+        variants:
+          - text: Data Streams keeps records after a read, so programs can read them again
+          - text: A record read from Data Streams remains there and can be replayed
+        explanation:
+          text: Correct. Records stay for the retention period, whoever reads them.
+      - id: firehose-consumers
+        text: Firehose keeps data for consumer programs that you write
+        variants:
+          - text: Firehose holds data for your own consumer programs to read
+          - text: Your own consumer programs read the data that Firehose keeps
+        explanation:
+          text: That describes Data Streams. Firehose has no consumers of your own; it delivers the data itself.
+      - id: firehose-delivers
+        text: Firehose delivers data to its destination and keeps none for other readers
+        variants:
+          - text: Firehose hands data on to a destination and keeps nothing for other readers
+          - text: After delivery to a destination, Firehose keeps no data for other readers
+        explanation:
+          text: Correct. It holds data only while it buffers, then delivers it to a store such as S3.
+      - id: streams-delete
+        text: Data Streams deletes each record as soon as one program has read it
+        variants:
+          - text: A record in Data Streams is removed once one program reads it
+          - text: Data Streams removes each record after its first read
+        explanation:
+          text: That is closer to SQS, where the worker deletes the message. Data Streams keeps records after they're read.
+    correct_answers: [streams-keep, firehose-delivers]
+    explanation:
+      text: |
+        The difference after the read settles most questions about these three. Records stay in Kinesis
+        Data Streams, so several programs can read them and replay them. Firehose hands data on to a
+        destination. An SQS message is deleted by the worker that handled it.
+
+  - id: q10-firehose-old-name
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Ingest: Data Streams holds records for your programs; Firehose delivers them for you"
+    task: "3.7"
+    level: recall
+    topics: [data-firehose, service-names]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A practice test written a few years ago offers "Amazon Kinesis Data Firehose" as an answer.
+        What should a learner know about that name today?
+    choices:
+      - id: became-data-streams
+        text: It was merged into Kinesis Data Streams
+        variants:
+          - text: AWS folded it into Kinesis Data Streams
+          - text: It now lives on as part of Kinesis Data Streams
+        explanation:
+          text: Data Streams is a separate service that holds records for your own programs. Firehose still exists on its own.
+      - id: became-glue
+        text: It was replaced by AWS Glue
+        variants:
+          - text: AWS Glue took over its job
+          - text: AWS retired it in favor of AWS Glue
+        explanation:
+          text: Glue catalogs and transforms data. It doesn't take in streaming data and deliver it.
+      - id: renamed-data-firehose
+        text: It is the same service, now named Amazon Data Firehose
+        variants:
+          - text: AWS renamed it Amazon Data Firehose
+          - text: It carries on under the name Amazon Data Firehose
+        explanation:
+          text: Correct. Same service, new name. An answer that says Kinesis Data Firehose means Firehose.
+      - id: shut-down
+        text: It was shut down, like Kinesis Data Analytics for SQL
+        variants:
+          - text: AWS closed it, as it did Kinesis Data Analytics for SQL
+          - text: It is gone, along with Kinesis Data Analytics for SQL
+        explanation:
+          text: Kinesis Data Analytics for SQL applications was discontinued; Firehose was only renamed.
+    correct_answers: [renamed-data-firehose]
+    explanation:
+      text: |
+        AWS renamed Amazon Kinesis Data Firehose to Amazon Data Firehose. It still belongs to the
+        Kinesis family and can read from a Kinesis data stream, which is why the old name lingers.
+        Older AWS pages and most practice material still use it, so treat the two names as one service.
+
+  - id: q10-kda-sql-new-app
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Data Streams, Firehose or SQS: what happens after the data is read"
+    task: "3.7"
+    level: understanding
+    topics: [kinesis, retired-services]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        In 2026, an engineer finds an old design document that calls for a new "Kinesis Data
+        Analytics for SQL" application to run SQL continuously on a stream. What is the situation
+        today?
+    choices:
+      - id: still-current
+        text: It is current and is the exam's answer for SQL on a stream
+        variants:
+          - text: It is still offered and is the exam's pick for streaming SQL
+          - text: It remains available and is what the exam expects for stream SQL
+        explanation:
+          text: The service isn't current. It is tempting because its name fits the job so well; treat it as a wrong answer.
+      - id: renamed-firehose
+        text: It was renamed Amazon Data Firehose
+        variants:
+          - text: AWS gave it the new name Amazon Data Firehose
+          - text: It carries on as Amazon Data Firehose
+        explanation:
+          text: That rename belongs to Kinesis Data Firehose. Firehose delivers streaming data to a store; it isn't a SQL engine for streams.
+      - id: discontinued
+        text: AWS no longer allows new ones and has begun deleting existing ones
+        variants:
+          - text: New ones can't be created, and AWS has started deleting the old ones
+          - text: AWS stopped new ones and has started removing those that exist
+        explanation:
+          text: Correct. New applications stopped on 2025-10-15 and AWS began deleting existing ones on 2026-01-27 (checked 2026-10-24).
+      - id: became-athena
+        text: It became part of Amazon Athena
+        variants:
+          - text: AWS merged it into Amazon Athena
+          - text: Its features moved into Amazon Athena
+        explanation:
+          text: Athena runs SQL on files in S3, not on a live stream, and it didn't absorb this service.
+    correct_answers: [discontinued]
+    explanation:
+      text: |
+        AWS stopped new Kinesis Data Analytics for SQL applications on 2025-10-15 and began deleting
+        existing ones on 2026-01-27 (checked 2026-10-24). AWS points users to Amazon Managed Service
+        for Apache Flink, which isn't on the exam's service list. Treat Kinesis Data Analytics as a
+        distractor.
+
+  - id: q10-glue-discover-convert
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Catalog: Glue records what your data looks like and gets it ready"
+    task: "3.7"
+    level: application
+    topics: [glue]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A research institute has thousands of CSV files from field instruments in Amazon S3. It wants
+        their columns worked out automatically and recorded in one central list of tables, and a job
+        each night that removes duplicate rows and rewrites the files as Parquet, with no servers to
+        manage. Which service does all of this?
+    choices:
+      - id: redshift
+        text: Amazon Redshift
+        variants:
+          - text: Redshift
+          - text: An Amazon Redshift data warehouse
+        explanation:
+          text: Redshift is a data warehouse for running complex reports on data loaded into it. It doesn't discover and catalog files in S3 or run nightly clean-up jobs on them.
+      - id: data-streams
+        text: Amazon Kinesis Data Streams
+        variants:
+          - text: Kinesis Data Streams
+          - text: A Kinesis data stream
+        explanation:
+          text: Data Streams brings in records as they happen. The files here are already in S3.
+      - id: opensearch
+        text: Amazon OpenSearch Service
+        variants:
+          - text: OpenSearch Service
+          - text: An Amazon OpenSearch Service domain
+        explanation:
+          text: OpenSearch Service indexes text and logs for fast searching. It doesn't keep a catalog of S3 files or rewrite them.
+      - id: glue
+        text: AWS Glue
+        variants:
+          - text: Glue
+          - text: The AWS Glue service
+        explanation:
+          text: Correct. Crawlers work out the columns, the Data Catalog holds the tables, and ETL jobs clean and convert the files, all serverless.
+    correct_answers: [glue]
+    hint:
+      text: The request has three parts, discover, catalog and transform, and one service has a part for each.
+    explanation:
+      text: |
+        AWS Glue is a serverless data integration service with three parts that match this request:
+        crawlers scan data and work out its columns, the Glue Data Catalog keeps a table definition for
+        each set of files, and ETL jobs clean or reshape data on a schedule. Glue prepares and describes
+        data; another service queries it.
+
+  - id: q10-glue-wont-answer
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Catalog: Glue records what your data looks like and gets it ready"
+    task: "3.7"
+    level: understanding
+    topics: [glue, athena]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A sales director says, "We set up AWS Glue last week, so Glue can now tell us total revenue by
+        region." What is the accurate correction?
+    choices:
+      - id: glue-prepares-athena-answers
+        text: Glue prepares the data; a query service such as Athena answers it
+        variants:
+          - text: Glue gets the data ready; a service like Athena runs the question
+          - text: A query service such as Athena answers; Glue prepares the data
+        explanation:
+          text: Correct. Glue's catalog lets Athena treat the files as tables, and Athena runs the SQL that totals revenue.
+      - id: glue-is-storage
+        text: Glue is a storage service that holds the data, like Amazon S3
+        variants:
+          - text: Glue keeps the data itself, in the way Amazon S3 keeps files
+          - text: Glue holds the files, much as Amazon S3 holds objects
+        explanation:
+          text: Glue stores metadata about data, not the data itself. The files stay in S3 or wherever Glue connects to.
+      - id: glue-draws-dashboards
+        text: Glue builds the revenue charts, and Quick Sight runs the query
+        variants:
+          - text: Glue draws the charts, while Quick Sight does the querying
+          - text: Quick Sight queries the data, and Glue turns it into charts
+        explanation:
+          text: The roles are reversed and wrong. Quick Sight draws dashboards; Glue neither queries nor draws charts.
+      - id: glue-streaming-only
+        text: Glue can answer it, but just for data that arrives as a stream
+        variants:
+          - text: Glue answers questions, provided the data arrives as a stream
+          - text: Glue can total the revenue, as long as the records are streamed
+        explanation:
+          text: Glue doesn't answer questions about any data, streaming or stored.
+    correct_answers: [glue-prepares-athena-answers]
+    explanation:
+      text: |
+        Glue discovers, catalogs and transforms data so that a query service can answer questions. If
+        a question asks what runs the query, Glue is wrong; if it asks what discovers, catalogs or
+        transforms data, Glue is right. Glue appears in the same diagrams as Athena because Athena reads
+        its table definitions from Glue's Data Catalog.
+
+  - id: q10-athena-transit-logs
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Query: Athena, Redshift and EMR answer questions in three different ways"
+    task: "3.7"
+    level: application
+    topics: [athena]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A city transit agency keeps two years of ticket-gate logs as JSON files in Amazon S3. An
+        analyst needs to run about a dozen SQL questions against them this month. The agency doesn't
+        want to load the data anywhere, choose any capacity, or pay for compute while no queries run.
+        Which option fits?
+    choices:
+      - id: emr
+        text: An Amazon EMR cluster on EC2
+        variants:
+          - text: Amazon EMR on EC2
+          - text: EMR running on an EC2 cluster
+        explanation:
+          text: EMR on EC2 runs big-data frameworks such as Spark for your own code on a cluster you size and pay for while it runs. It is far more than a dozen SQL questions need.
+      - id: athena
+        text: Amazon Athena
+        variants:
+          - text: Athena
+          - text: Amazon Athena queries
+        explanation:
+          text: Correct. Athena runs SQL on the files where they sit, with nothing to set up, and bills per query.
+      - id: redshift
+        text: A provisioned Amazon Redshift cluster
+        variants:
+          - text: Amazon Redshift on a provisioned cluster
+          - text: An Amazon Redshift provisioned cluster
+        explanation:
+          text: A provisioned Redshift cluster is billed by the hour while it runs, whether or not anyone queries it, and is built for data loaded into it and queried again and again.
+      - id: opensearch
+        text: An Amazon OpenSearch Service domain
+        variants:
+          - text: Amazon OpenSearch Service
+          - text: An OpenSearch Service domain
+        explanation:
+          text: OpenSearch Service would need the logs loaded into an index first, and it is for finding words and patterns rather than SQL totals over files.
+    correct_answers: [athena]
+    hint:
+      text: Look for the serverless service that reads files in S3 where they already are.
+    explanation:
+      text: |
+        Amazon Athena runs standard SQL directly on files in S3, such as CSV, JSON or Parquet. It's
+        serverless, applies the table layout as it reads, and charges by the data each query scans, so
+        no queries means no query bill. That fits occasional questions over files that are already in
+        S3.
+
+  - id: q10-redshift-daily-joins
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Query: Athena, Redshift and EMR answer questions in three different ways"
+    task: "3.7"
+    level: application
+    topics: [redshift]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A hardware retailer combines data from its store tills, its online shop, its loyalty program
+        and its suppliers. Each morning the finance team runs the same set of complex reports that join
+        all four sources over five years of history. Which service is built for this?
+    choices:
+      - id: glue
+        text: AWS Glue
+        variants:
+          - text: Glue
+          - text: AWS Glue jobs
+        explanation:
+          text: Glue can move and clean the data on its way in, but it doesn't run the reports.
+      - id: quick-sight
+        text: Amazon Quick Sight
+        variants:
+          - text: Quick Sight
+          - text: Amazon Quick Sight dashboards
+        explanation:
+          text: Quick Sight can show the report results, but it needs a query engine underneath to run the heavy joins.
+      - id: redshift
+        text: Amazon Redshift
+        variants:
+          - text: Redshift
+          - text: An Amazon Redshift data warehouse
+        explanation:
+          text: Correct. A data warehouse holds combined history from many sources and is built for complex, repeated reports with many joins.
+      - id: data-streams
+        text: Amazon Kinesis Data Streams
+        variants:
+          - text: Kinesis Data Streams
+          - text: A Kinesis data stream
+        explanation:
+          text: Data Streams brings in records as they happen. It doesn't run reports over years of history.
+    correct_answers: [redshift]
+    hint:
+      text: Data from many sources, combined, and the same heavy reports every day.
+    explanation:
+      text: |
+        Amazon Redshift is a data warehouse: you load data from many sources into it, and its engine is
+        built for complex queries that join many very large tables, run again and again for reports.
+        Athena suits occasional questions over files in S3; regular, heavy reporting over combined
+        history is the warehouse's case.
+
+  - id: q10-emr-own-spark
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Query: Athena, Redshift and EMR answer questions in three different ways"
+    task: "3.7"
+    level: application
+    topics: [emr]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A genetics lab has written its own Apache Spark programs to process very large sequencing
+        files. It wants a managed service to run them on clusters, while keeping control of the
+        clusters' configuration and the software installed on them. Which service fits?
+    choices:
+      - id: emr
+        text: Amazon EMR
+        variants:
+          - text: EMR
+          - text: The Amazon EMR service
+        explanation:
+          text: Correct. EMR is a managed cluster platform for Spark, Hadoop and similar frameworks, and with EMR on EC2 you control the cluster's configuration and software.
+      - id: athena
+        text: Amazon Athena
+        variants:
+          - text: Athena
+          - text: Amazon Athena queries
+        explanation:
+          text: Athena runs SQL that you type. It doesn't run your own Spark programs, and it has no clusters for you to configure.
+      - id: redshift
+        text: Amazon Redshift
+        variants:
+          - text: Redshift
+          - text: An Amazon Redshift cluster
+        explanation:
+          text: Redshift is a data warehouse queried with SQL. It isn't a platform for running your own Spark code.
+      - id: quick-sight
+        text: Amazon Quick Sight
+        variants:
+          - text: Quick Sight
+          - text: Amazon Quick Sight analyses
+        explanation:
+          text: Quick Sight builds dashboards from query results. It doesn't process data with Spark.
+    correct_answers: [emr]
+    hint:
+      text: The lab already has code written for a big-data framework.
+    explanation:
+      text: |
+        Amazon EMR (formerly Amazon Elastic MapReduce) is a managed cluster platform for big-data
+        frameworks such as Apache Spark and Apache Hadoop. You bring your own code; with EMR on EC2 you
+        control the clusters' configuration and software, and EMR Serverless removes the clusters when
+        you don't need that control.
+
+  - id: q10-athena-files-unchanged
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Query: Athena, Redshift and EMR answer questions in three different ways"
+    task: "3.7"
+    level: understanding
+    topics: [athena, schema-on-read]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        An analyst points Amazon Athena at a folder of CSV files in Amazon S3 and runs a SQL query.
+        What happens to the files?
+    choices:
+      - id: loaded-into-athena
+        text: Athena loads them into its own storage before the query can run
+        variants:
+          - text: They are copied into Athena's own storage before the query starts
+          - text: Athena first moves them into storage of its own, then queries
+        explanation:
+          text: Loading data before querying is how a warehouse such as Redshift works. Athena reads the files where they sit.
+      - id: rewritten-parquet
+        text: Athena rewrites them as Parquet so later queries are cheaper
+        variants:
+          - text: They are converted to Parquet to cut the cost of later queries
+          - text: Athena turns them into Parquet files for cheaper queries later
+        explanation:
+          text: Converting to Parquet does make queries cheaper, but that's a job you run, for example with a Glue ETL job. Athena doesn't change your files.
+      - id: deleted-after
+        text: Athena deletes them from the bucket once the results are written
+        variants:
+          - text: They are removed from the bucket after the query results are saved
+          - text: Once results are written, Athena removes them from the bucket
+        explanation:
+          text: Athena never deletes your data. It writes results as new files and leaves the source files alone.
+      - id: unchanged
+        text: They stay as they are; Athena applies the table layout as it reads
+        variants:
+          - text: They remain untouched, and the table layout is applied at read time
+          - text: Nothing changes in them; the columns are applied as Athena reads
+        explanation:
+          text: Correct. This is schema on read. The table definition describes the files, and the files never change.
+    correct_answers: [unchanged]
+    explanation:
+      text: |
+        Athena uses schema on read: the table layout, kept in a data catalog, is applied when you query
+        the files, not when you store them. The data stays in S3 untouched, which is why Athena needs no
+        loading step and no servers.
+
+  - id: q10-athena-redshift-two
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Query: Athena, Redshift and EMR answer questions in three different ways"
+    task: "3.7"
+    level: understanding
+    topics: [athena, redshift]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        Which two statements about Amazon Athena and Amazon Redshift are accurate? (Select TWO.)
+    choices:
+      - id: athena-serverless-per-scan
+        text: Athena is serverless and charges each query by the data it scans
+        variants:
+          - text: Athena has no servers to run and bills each query by data scanned
+          - text: With Athena there's nothing to set up, and each query is billed by the data it reads
+        explanation:
+          text: Correct. No queries means no query bill, though S3 still charges for the stored files.
+      - id: athena-cluster-first
+        text: Athena needs a cluster sized and started before the first query
+        variants:
+          - text: Athena requires you to size and start a cluster before querying
+          - text: Before Athena can run a query, you must size and launch a cluster
+        explanation:
+          text: Athena is serverless; there is nothing to size. Clusters belong to Redshift (unless you use Redshift Serverless) and EMR.
+      - id: redshift-warehouse
+        text: Redshift is a data warehouse that you load data into for repeated, complex reports
+        variants:
+          - text: Redshift is a warehouse where loaded data serves complex reports run again and again
+          - text: Redshift holds loaded data as a warehouse for heavy reports that are run repeatedly
+        explanation:
+          text: Correct. Its engine is built for complex queries joining very large tables, run regularly.
+      - id: redshift-for-website
+        text: Redshift is the database for a website's many small reads and writes
+        variants:
+          - text: Redshift is built to run a website's many small reads and writes
+          - text: A website's stream of small reads and writes is Redshift's main job
+        explanation:
+          text: That's transactional work, for a service such as RDS or Aurora. Redshift is for analytics over history.
+      - id: athena-dashboards
+        text: Athena turns query results into dashboards for business users
+        variants:
+          - text: Athena builds dashboards from its results for business users
+          - text: Business users get dashboards drawn by Athena from its results
+        explanation:
+          text: Dashboards are Amazon Quick Sight's job. Athena can be a data source for Quick Sight.
+    correct_answers: [athena-serverless-per-scan, redshift-warehouse]
+    explanation:
+      text: |
+        Athena and Redshift both answer questions with SQL, in different places and with different
+        amounts for you to manage. Athena reads files in S3 with no servers and bills by data scanned;
+        Redshift is a warehouse that holds loaded data for regular, complex reports. Neither runs a
+        website's transactions or draws dashboards.
+
+  - id: q10-opensearch-error-phrase
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Search: OpenSearch Service finds words and patterns in text and logs"
+    task: "3.7"
+    level: application
+    topics: [opensearch]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A ferry operator's booking system writes application logs all day. When customers complain,
+        the support team wants to find, within seconds, every log line from the last hour that
+        contains a phrase such as "card declined", and to watch charts of error patterns. Which
+        service fits?
+    choices:
+      - id: glue
+        text: AWS Glue
+        variants:
+          - text: Glue
+          - text: The AWS Glue Data Catalog
+        explanation:
+          text: Glue catalogs and transforms data. It doesn't search text or return matching lines.
+      - id: athena
+        text: Amazon Athena
+        variants:
+          - text: Athena
+          - text: Amazon Athena queries
+        explanation:
+          text: Athena could scan log files with SQL, but it reads the files for each question rather than looking words up in an index, so it isn't built for instant phrase searches.
+      - id: data-streams
+        text: Amazon Kinesis Data Streams
+        variants:
+          - text: Kinesis Data Streams
+          - text: A Kinesis data stream
+        explanation:
+          text: Data Streams can carry the logs in, but your own programs would have to do the searching.
+      - id: opensearch
+        text: Amazon OpenSearch Service
+        variants:
+          - text: OpenSearch Service
+          - text: An Amazon OpenSearch Service domain
+        explanation:
+          text: Correct. It indexes every word in the logs, so phrase searches come back at once, and OpenSearch Dashboards draws the charts.
+    correct_answers: [opensearch]
+    hint:
+      text: Finding a phrase fast depends on a structure built before anyone searches.
+    explanation:
+      text: |
+        Amazon OpenSearch Service (successor to Amazon Elasticsearch Service) runs the open-source
+        OpenSearch engine for you. It is used for log analytics, application monitoring and website
+        search, and its search index lets it find words and patterns at once. OpenSearch Dashboards
+        draws charts of what it finds.
+
+  - id: q10-index-makes-search-fast
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Search: OpenSearch Service finds words and patterns in text and logs"
+    task: "3.7"
+    level: understanding
+    topics: [opensearch, athena]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A search for every product review that mentions "nut-free" returns at once from Amazon
+        OpenSearch Service, but takes longer as a SQL query in Amazon Athena. What explains the
+        difference?
+    choices:
+      - id: index-built
+        text: OpenSearch Service has already indexed every word in the reviews
+        variants:
+          - text: Every word in the reviews is already in OpenSearch Service's index
+          - text: OpenSearch Service built an index of each word ahead of time
+        explanation:
+          text: Correct. A search index lists which words appear in which records, so the lookup is fast. Athena reads the files to answer each question.
+      - id: memory-only
+        text: OpenSearch Service keeps all its data in memory and never on disk
+        variants:
+          - text: OpenSearch Service holds its data only in memory, not on disk
+          - text: All of OpenSearch Service's data lives in memory rather than storage
+        explanation:
+          text: OpenSearch Service domains use storage you choose and pay for. The speed comes from the index.
+      - id: athena-no-text
+        text: Athena can't read text files, so it converts them first
+        variants:
+          - text: Athena must convert text files before it can read them
+          - text: Text files have to be converted before Athena can read them
+        explanation:
+          text: Athena reads CSV, JSON and other text formats directly from S3.
+      - id: uses-glue
+        text: OpenSearch Service reads its tables from the Glue Data Catalog
+        variants:
+          - text: OpenSearch Service takes its table definitions from Glue
+          - text: The Glue Data Catalog supplies OpenSearch Service's tables
+        explanation:
+          text: The Glue Data Catalog serves Athena, EMR and Redshift Spectrum. It isn't what makes searching fast.
+    correct_answers: [index-built]
+    explanation:
+      text: |
+        The difference is the search index. OpenSearch Service indexes every word as data arrives, so
+        a phrase search is a quick lookup. Athena answers a SQL question by reading the files each
+        time, which suits totals and joins over files in S3, not instant text search.
+
+  - id: q10-quick-sight-charity-board
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Visualize: Quick Sight turns answers into dashboards"
+    task: "3.7"
+    level: application
+    topics: [quick-sight, analytics-pipeline]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A wildlife charity's analyst answers donation questions with SQL in Amazon Athena and emails
+        the result tables to the board each month. Board members want to open one screen themselves,
+        filter donations by campaign and region, and see it kept up to date. The analyst proposes
+        adding Amazon Quick Sight. What job would Quick Sight do in this design?
+    choices:
+      - id: run-sql-itself
+        text: Run the SQL against the files in S3 itself, so Athena is no longer needed
+        variants:
+          - text: Take over from Athena by running the SQL on the S3 files directly
+          - text: Query the S3 files with SQL on its own, replacing Athena entirely
+        explanation:
+          text: Athena stays the query engine. Quick Sight uses it as a data source rather than replacing it.
+      - id: crawl-files
+        text: Scan the donation files and record their columns in a central catalog
+        variants:
+          - text: Crawl the donation files and add their columns to a central catalog
+          - text: Work out the files' columns and list them in one central catalog
+        explanation:
+          text: That is the catalog step, done by an AWS Glue crawler and the Glue Data Catalog.
+      - id: dashboards-from-athena
+        text: Read results through Athena and show them as dashboards the board can filter
+        variants:
+          - text: Use Athena as its source and present filterable dashboards to the board
+          - text: Turn Athena's answers into interactive dashboards for board members
+        explanation:
+          text: Correct. Visualizing for business users is Quick Sight's job, with Athena underneath as the query engine.
+      - id: stream-donations
+        text: Stream each donation into S3 as it is made, ready for querying
+        variants:
+          - text: Bring each donation into S3 as a stream the moment it happens
+          - text: Deliver donations to S3 as they arrive, so they can be queried
+        explanation:
+          text: That is the ingest step, the job of Amazon Data Firehose or Kinesis Data Streams.
+    correct_answers: [dashboards-from-athena]
+    hint:
+      text: Find the one of the five verbs that the charity hasn't covered yet.
+    explanation:
+      text: |
+        Amazon Quick Sight is AWS's business intelligence service: it connects to sources such as
+        Athena, Redshift or RDS and builds interactive dashboards for the people who read them. In a
+        pipeline it is the visualize step, on top of the service that runs the query. Older material
+        calls it Amazon QuickSight; it is now part of Amazon Quick.
+
+  - id: q10-pipeline-order
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Worked example: the owner's sales dashboard"
+    task: "3.7"
+    level: understanding
+    topics: [analytics-pipeline]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A sports club wants a morning dashboard built from its website's page-view events. Which
+        sequence places the services in the order the data flows through them?
+    choices:
+      - id: glue-first
+        text: AWS Glue, then Data Firehose, then Quick Sight, then Athena
+        variants:
+          - text: Glue first, Data Firehose second, Quick Sight third, Athena last
+          - text: Glue → Data Firehose → Quick Sight → Athena
+        explanation:
+          text: Glue catalogs data that has already arrived, so it can't come before the ingest step, and the dashboard comes last, after the query.
+      - id: athena-first
+        text: Athena, then AWS Glue, then Data Firehose, then Quick Sight
+        variants:
+          - text: Athena first, Glue second, Data Firehose third, Quick Sight last
+          - text: Athena → Glue → Data Firehose → Quick Sight
+        explanation:
+          text: Athena can't query data that hasn't arrived or been described yet.
+      - id: quick-sight-first
+        text: Quick Sight, then Athena, then AWS Glue, then Data Firehose
+        variants:
+          - text: Quick Sight first, Athena second, Glue third, Data Firehose last
+          - text: Quick Sight → Athena → Glue → Data Firehose
+        explanation:
+          text: This runs the pipeline backwards. The dashboard is the last step, not the first.
+      - id: firehose-first
+        text: Data Firehose, then AWS Glue, then Athena, then Quick Sight
+        variants:
+          - text: Data Firehose first, Glue second, Athena third, Quick Sight last
+          - text: Data Firehose → Glue → Athena → Quick Sight
+        explanation:
+          text: Correct. Ingest, catalog, query, visualize.
+    correct_answers: [firehose-first]
+    explanation:
+      text: |
+        The events flow through the verbs in order. Amazon Data Firehose ingests them into S3, an AWS
+        Glue crawler adds them as a table to the Data Catalog, Amazon Athena queries the table, and
+        Amazon Quick Sight shows the results as a dashboard. Search, with OpenSearch Service, is a side
+        branch that this request doesn't need.
+
+  - id: q10-hotel-query-step-changes
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Worked example: the owner's sales dashboard"
+    task: "3.7"
+    level: application
+    topics: [analytics-pipeline, redshift, athena]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A small hotel started with booking files in S3, a Glue catalog, Athena and a Quick Sight
+        dashboard. Two years later it has 30 hotels, a reservation system, a restaurant system and a
+        spa system, and its finance team runs the same 50 complex reports every morning, joining all
+        of them. What is the right change to the pipeline?
+    choices:
+      - id: replace-quick-sight
+        text: Replace Quick Sight with Redshift, which draws better reports
+        variants:
+          - text: Swap Quick Sight for Redshift, since Redshift draws better reports
+          - text: Use Redshift instead of Quick Sight for drawing the reports
+        explanation:
+          text: Redshift runs queries; it doesn't draw dashboards. Quick Sight stays as the visualize step.
+      - id: query-to-redshift
+        text: Move the query step to Redshift, and keep Quick Sight on top
+        variants:
+          - text: Run the queries in Redshift instead, with Quick Sight still on top
+          - text: Switch the query step to Redshift and leave Quick Sight in place
+        explanation:
+          text: Correct. Combined data from many sources, queried every day with heavy joins, is the warehouse's case. Quick Sight can read from Redshift.
+      - id: glue-for-reports
+        text: Replace Athena with AWS Glue, which runs the reports each morning
+        variants:
+          - text: Use AWS Glue in place of Athena to run the morning reports
+          - text: Swap Athena for AWS Glue as the engine for the daily reports
+        explanation:
+          text: Glue prepares and catalogs data. It doesn't run reports.
+      - id: opensearch-for-reports
+        text: Replace Athena with OpenSearch Service to run the heavy joins
+        variants:
+          - text: Run the heavy joins in OpenSearch Service instead of Athena
+          - text: Use OpenSearch Service in place of Athena for the many joins
+        explanation:
+          text: OpenSearch Service is for searching text and logs, not complex reports that join many systems.
+    correct_answers: [query-to-redshift]
+    hint:
+      text: Only one of the five verbs is under new strain.
+    explanation:
+      text: |
+        Teams start with the simplest service for each verb and move to a warehouse when the data and
+        questions demand it. Many sources, combined for regular complex reports, point the query step to
+        Amazon Redshift. Ingest and visualize can stay the same, and Athena can still answer one-off
+        questions on files in S3.
+
+  - id: q10-analytics-customer-side-two
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Your side of the line"
+    task: "2.1"
+    level: understanding
+    topics: [shared-responsibility, analytics-pipeline]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A company builds its reporting on Amazon S3, AWS Glue and Amazon Athena. Under the AWS shared
+        responsibility model, which two tasks are the company's? (Select TWO.)
+    choices:
+      - id: patch-athena
+        text: Patching the servers that run Athena's queries
+        variants:
+          - text: Applying patches to the servers behind Athena
+          - text: Keeping Athena's query servers patched
+        explanation:
+          text: Athena is serverless; AWS runs and patches the servers out of sight.
+      - id: who-reads
+        text: Deciding who may read the bucket, the Glue tables and the query results
+        variants:
+          - text: Controlling who can read the bucket, Glue tables and Athena results
+          - text: Choosing who has access to the bucket, the tables and the results
+        explanation:
+          text: Correct. Access to the data stays with the customer for every managed service.
+      - id: glue-available
+        text: Keeping the Glue service available when hardware fails
+        variants:
+          - text: Keeping AWS Glue running through hardware failures
+          - text: Making sure Glue stays up when hardware fails
+        explanation:
+          text: Keeping a managed service available is AWS's side of the line.
+      - id: encryption-settings
+        text: Choosing encryption settings where a service offers a choice
+        variants:
+          - text: Picking the encryption options a service makes available
+          - text: Setting encryption wherever a service offers options for it
+        explanation:
+          text: Correct. Where a service offers encryption choices, setting them is the customer's job.
+      - id: scale-athena
+        text: Adding capacity to Athena before a busy reporting week
+        variants:
+          - text: Scaling Athena up ahead of a heavy week of reports
+          - text: Giving Athena more capacity before a busy week of queries
+        explanation:
+          text: There is no Athena capacity to add; AWS scales the service.
+    correct_answers: [who-reads, encryption-settings]
+    explanation:
+      text: |
+        These services are managed or serverless, so AWS runs the servers, patches the software and
+        keeps the service available. The data and who can reach it stay with the customer: access to
+        the bucket, tables, results and dashboards, encryption settings where there's a choice, and any
+        code or sizing the customer controls.
+
+  - id: q10-athena-bill-lower
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "What you pay for (as of 2026-10-24)"
+    task: "3.7"
+    level: application
+    topics: [athena, cost]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A marketing team's Amazon Athena bill keeps growing. Its queries read large, uncompressed CSV
+        files in S3, though most questions need only a few columns and the last month of data. Which
+        change lowers the cost of each query?
+    choices:
+      - id: run-at-night
+        text: Run the queries at night, when Athena charges less
+        variants:
+          - text: Schedule the queries overnight, when Athena's rate is lower
+          - text: Move the queries to the night, when Athena costs less
+        explanation:
+          text: Athena charges by the data a query scans, not by the time of day.
+      - id: bigger-instance
+        text: Give Athena a larger instance so each query finishes sooner
+        variants:
+          - text: Move Athena to a bigger instance so queries end sooner
+          - text: Pick a larger Athena instance to make each query quicker
+        explanation:
+          text: Athena is serverless; there's no instance to choose, and time isn't what it bills.
+      - id: glacier
+        text: Move the files to an S3 Glacier storage class
+        variants:
+          - text: Shift the files into an S3 Glacier storage class
+          - text: Store the files in one of the S3 Glacier classes instead
+        explanation:
+          text: That cuts the storage bill, not the query bill, and archived files aren't something to query week to week.
+      - id: parquet-partition
+        text: Convert the files to Parquet and partition them by month
+        variants:
+          - text: Rewrite the files as Parquet, split into monthly partitions
+          - text: Store the data as Parquet, partitioned by month
+        explanation:
+          text: Correct. A columnar format lets a query read only the columns it needs, and partitions let it skip the months it doesn't.
+    correct_answers: [parquet-partition]
+    hint:
+      text: Think about what Athena's charge is measured in.
+    explanation:
+      text: |
+        Athena charges each query by the amount of data it scans. Compressing files, partitioning them
+        and converting them to a columnar format such as Parquet mean each query scans less data, so it
+        runs faster and costs less. That's the Well-Architected practice PERF03-BP04, improving query
+        performance in the data store.
+
+  - id: q10-drop-external-table
+    page: guide/10-data-ai-and-more/04-lab-13-athena-query.md
+    section: "Clean up"
+    task: "3.7"
+    level: understanding
+    topics: [athena, glue]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        In Athena, a learner created an external table over a folder of CSV files in S3, and then runs
+        `DROP TABLE` on it. What does the statement remove?
+    choices:
+      - id: definition-only
+        text: Only its definition in the catalog; the CSV files stay in S3
+        variants:
+          - text: The catalog's definition of it, while the files remain in S3
+          - text: Just the table definition; the CSV files in S3 are untouched
+        explanation:
+          text: Correct. An external table is only a description of the files, so dropping it deletes the description and nothing else.
+      - id: files-too
+        text: The table's definition and every CSV file in the folder it pointed to
+        variants:
+          - text: Both the definition and all the CSV files in the table's folder
+          - text: The catalog entry along with every CSV file in its S3 folder
+        explanation:
+          text: Dropping an external table doesn't touch the data. The files stay until you delete them in S3.
+      - id: results-only
+        text: Only the query result files in the result location; the table stays
+        variants:
+          - text: Just the files in the query result location, leaving the table
+          - text: The saved query results, while the table itself remains
+        explanation:
+          text: The result files stay in the bucket until you delete them, and the table is what `DROP TABLE` removes.
+      - id: whole-database
+        text: The whole database, with every table and file inside it
+        variants:
+          - text: The entire database, including all its tables and files
+          - text: Everything in the database, every table and file included
+        explanation:
+          text: '`DROP TABLE` removes one table definition. Removing the database is a separate statement, and neither deletes files in S3.'
+    correct_answers: [definition-only]
+    explanation:
+      text: |
+        An external table is only a description: the columns, how fields are separated, and the folder
+        to read. The data stays in S3, and the definition lives in the AWS Glue Data Catalog. Dropping
+        the table deletes the definition; the files, and Athena's result files, stay until you delete
+        them in S3.
+
+  # ---------------------------------------------------------------------------------------------
+  # Lesson 10.02, AI and machine learning (and Lab 14)
+  # ---------------------------------------------------------------------------------------------
+
+  - id: q10-comprehend-guest-comments
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "Text in: Comprehend finds meaning, Translate changes the language"
+    task: "3.7"
+    level: application
+    topics: [comprehend]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A hotel group collects thousands of written guest comments each week. The manager of each
+        hotel wants the unhappy comments first, and wants to know which ones name a particular hotel,
+        city or staff member. The group has no machine learning staff. Which service fits?
+    choices:
+      - id: textract
+        text: Amazon Textract
+        variants:
+          - text: Textract
+          - text: The Amazon Textract service
+        explanation:
+          text: Textract pulls text and structure out of scanned documents. The comments are already text; what's wanted is their meaning.
+      - id: comprehend
+        text: Amazon Comprehend
+        variants:
+          - text: Comprehend
+          - text: The Amazon Comprehend service
+        explanation:
+          text: Correct. Comprehend returns each comment's sentiment and the entities it mentions, such as places, organizations and people.
+      - id: transcribe
+        text: Amazon Transcribe
+        variants:
+          - text: Transcribe
+          - text: The Amazon Transcribe service
+        explanation:
+          text: Transcribe turns speech into text. Nothing here is spoken.
+      - id: translate
+        text: Amazon Translate
+        variants:
+          - text: Translate
+          - text: The Amazon Translate service
+        explanation:
+          text: Translate rewrites text in another language. It doesn't judge whether a guest is unhappy or find the names in a comment.
+    correct_answers: [comprehend]
+    hint:
+      text: The input is text, and what must come out is its meaning.
+    explanation:
+      text: |
+        Amazon Comprehend reads text and describes it using natural language processing: the sentiment
+        (positive, negative, neutral or mixed), the entities it mentions, key phrases, the language and
+        personal data. It's ready-made, so no machine learning skills are needed. It doesn't change the
+        text; it tells you what's in it.
+
+  - id: q10-comprehend-pii-in-chat
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "Text in: Comprehend finds meaning, Translate changes the language"
+    task: "3.7"
+    level: application
+    topics: [comprehend, personal-data]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A software company's support app sends each chat message, as a customer types it, to an AWS
+        service that must point out any home addresses or card numbers in the message before it is
+        saved. Which service does that job?
+    choices:
+      - id: macie
+        text: Amazon Macie
+        variants:
+          - text: Macie
+          - text: The Amazon Macie service
+        explanation:
+          text: Macie finds sensitive data in S3 buckets. It doesn't examine a piece of text that an application sends it before anything is stored.
+      - id: rekognition
+        text: Amazon Rekognition
+        variants:
+          - text: Rekognition
+          - text: The Amazon Rekognition service
+        explanation:
+          text: Rekognition analyzes images and video. A chat message is text.
+      - id: comprehend
+        text: Amazon Comprehend
+        variants:
+          - text: Comprehend
+          - text: The Amazon Comprehend service
+        explanation:
+          text: Correct. Comprehend detects personal data, such as names, addresses and card numbers, in text you send it.
+      - id: textract
+        text: Amazon Textract
+        variants:
+          - text: Textract
+          - text: The Amazon Textract service
+        explanation:
+          text: Textract reads scanned documents and images of forms. The chat message is already text.
+    correct_answers: [comprehend]
+    hint:
+      text: Ask where the data is when it's checked, in a bucket or in text that an application sends.
+    explanation:
+      text: |
+        Amazon Comprehend can find personal data, such as names, addresses and card numbers, in text
+        you send it, along with sentiment and entities. Amazon Macie does a related job in a different
+        place: it scans S3 buckets for sensitive data that is already stored. The input decides which.
+
+  - id: q10-translate-portuguese-mail
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "Text in: Comprehend finds meaning, Translate changes the language"
+    task: "3.7"
+    level: understanding
+    topics: [translate, comprehend]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A team uses Amazon Comprehend and learns that some support emails are in Portuguese. The
+        agents read only English. Which statement describes what the team should add?
+    choices:
+      - id: comprehend-rewrites
+        text: Nothing; Comprehend already returns each email rewritten in English
+        variants:
+          - text: Nothing more; Comprehend gives back each email in English already
+          - text: No new service; Comprehend already rewrites each email in English
+        explanation:
+          text: Comprehend can tell you which language a text is in, but it describes text; it never rewrites it in another language.
+      - id: translate-rewrites
+        text: Amazon Translate, which rewrites each email's text in English
+        variants:
+          - text: Amazon Translate, to turn the text of each email into English
+          - text: Amazon Translate, which gives each email back in English
+        explanation:
+          text: Correct. Translate turns text in one language into another, in real time or in batches.
+      - id: transcribe-converts
+        text: Amazon Transcribe, which converts each email's text into English
+        variants:
+          - text: Amazon Transcribe, to turn the text of each email into English
+          - text: Amazon Transcribe, which gives each email back in English
+        explanation:
+          text: Transcribe turns speech into text. It doesn't change the language of written text.
+      - id: polly-converts
+        text: Amazon Polly, which reads each email aloud in English
+        variants:
+          - text: Amazon Polly, to speak each email to the agents in English
+          - text: Amazon Polly, which gives each email back as English speech
+        explanation:
+          text: Polly turns text into speech in the text's own language. It doesn't translate.
+    correct_answers: [translate-rewrites]
+    explanation:
+      text: |
+        Text goes into three different services, and the output decides which. Comprehend finds
+        meaning, and can detect which language a text is in; only Amazon Translate rewrites text in
+        another language. The two often work together: translate first, then analyze.
+
+  - id: q10-transcribe-claim-calls
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "Sound and conversation: Transcribe listens, Polly speaks, Lex holds the conversation"
+    task: "3.7"
+    level: application
+    topics: [transcribe]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        An insurance company stores recordings of its claims calls in Amazon S3. Its auditors want a
+        written version of each call that shows which person said what, so they can search the
+        wording. Which service produces it?
+    choices:
+      - id: textract
+        text: Amazon Textract
+        variants:
+          - text: Textract
+          - text: The Amazon Textract service
+        explanation:
+          text: Textract reads text from documents and images. A call recording is audio.
+      - id: translate
+        text: Amazon Translate
+        variants:
+          - text: Translate
+          - text: The Amazon Translate service
+        explanation:
+          text: Translate changes the language of text that already exists. It doesn't listen to audio.
+      - id: comprehend
+        text: Amazon Comprehend
+        variants:
+          - text: Comprehend
+          - text: The Amazon Comprehend service
+        explanation:
+          text: Comprehend analyzes text for meaning. It could study the transcripts afterwards, but it can't make them from audio.
+      - id: transcribe
+        text: Amazon Transcribe
+        variants:
+          - text: Transcribe
+          - text: The Amazon Transcribe service
+        explanation:
+          text: Correct. Transcribe turns recorded or live speech into text and can label who is speaking.
+    correct_answers: [transcribe]
+    hint:
+      text: Speech goes in, and text must come out.
+    explanation:
+      text: |
+        Amazon Transcribe turns speech into text, from a recording in S3 or live audio. It can label
+        who is speaking and remove personal data from transcripts. Once the text exists, other services
+        such as Comprehend can analyze it.
+
+  - id: q10-polly-platform-announcements
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "Sound and conversation: Transcribe listens, Polly speaks, Lex holds the conversation"
+    task: "3.7"
+    level: application
+    topics: [polly]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A regional railway types platform changes and delay notices into its control system. It wants
+        each notice announced in the stations in a natural-sounding voice, without recording a person.
+        Which service turns the typed notices into the announcements?
+    choices:
+      - id: polly
+        text: Amazon Polly
+        variants:
+          - text: Polly
+          - text: The Amazon Polly service
+        explanation:
+          text: Correct. Polly takes text and returns lifelike speech, in many languages and voices.
+      - id: lex
+        text: Amazon Lex
+        variants:
+          - text: Lex
+          - text: The Amazon Lex service
+        explanation:
+          text: Lex builds bots that hold a conversation. Nobody is talking back here; typed text just needs to become speech.
+      - id: transcribe
+        text: Amazon Transcribe
+        variants:
+          - text: Transcribe
+          - text: The Amazon Transcribe service
+        explanation:
+          text: Transcribe works in the opposite direction, from speech to text.
+      - id: comprehend
+        text: Amazon Comprehend
+        variants:
+          - text: Comprehend
+          - text: The Amazon Comprehend service
+        explanation:
+          text: Comprehend finds meaning in text. It doesn't produce audio.
+    correct_answers: [polly]
+    hint:
+      text: Follow the arrow, text in and sound out.
+    explanation:
+      text: |
+        Amazon Polly turns text into lifelike speech. Text goes in and audio comes out, and the audio
+        can be stored and replayed. Transcribe runs the other way, and Lex decides what to say in a
+        conversation; neither turns typed text into an announcement.
+
+  - id: q10-polly-voicemail-mixup
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: '"Polly listens to customers" mixes up two services'
+    task: "3.7"
+    level: understanding
+    topics: [polly, transcribe]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A colleague proposes Amazon Polly to turn a dental clinic's patient voicemails into written
+        notes. Why won't that work?
+    choices:
+      - id: polly-video-only
+        text: Polly handles the sound in video files, not the sound in voicemails
+        variants:
+          - text: Polly works on the audio in videos, not on recorded voicemail
+          - text: Polly is for the sound inside video files rather than voicemails
+        explanation:
+          text: Polly doesn't analyze sound at all, in video or anywhere else. It produces speech.
+      - id: polly-speaks-only
+        text: Polly turns text into speech; Transcribe turns speech into text
+        variants:
+          - text: Polly makes speech from text; Transcribe writes speech down
+          - text: Polly speaks text aloud, while Transcribe writes speech out
+        explanation:
+          text: Correct. The arrow points one way for each service. Polly speaks; Transcribe writes down.
+      - id: needs-sagemaker
+        text: Polly needs a model trained in SageMaker AI before it can listen
+        variants:
+          - text: Polly can listen only after a model is trained in SageMaker AI
+          - text: A SageMaker AI model must be trained first for Polly to listen
+        explanation:
+          text: Polly is ready-made, and it never listens. No training would change its direction.
+      - id: polly-in-lex
+        text: Polly listens to callers only when it runs inside a Lex bot
+        variants:
+          - text: Polly can listen to callers, but just as part of a Lex bot
+          - text: Polly hears what callers say when a Lex bot is running it
+        explanation:
+          text: A Lex bot both listens and replies within one conversation, which is part of why the mix-up happens. Polly itself only speaks.
+    correct_answers: [polly-speaks-only]
+    explanation:
+      text: |
+        Polly turns text into speech; Amazon Transcribe turns speech into text. The two are easy to
+        confuse because both are "voice" services, and a bot built with Lex handles both directions in
+        one conversation. Remember the arrow: Polly speaks, Transcribe writes down.
+
+  - id: q10-lex-slot-collected
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "Sound and conversation: Transcribe listens, Polly speaks, Lex holds the conversation"
+    task: "3.7"
+    level: recall
+    topics: [lex]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A veterinary practice builds an Amazon Lex bot for booking check-ups. "Book a check-up" is
+        one thing customers want, and the bot must ask for the pet's name and the preferred day. In
+        Lex, what are the pet's name and the day?
+    choices:
+      - id: intents
+        text: Intents
+        variants:
+          - text: The bot's intents
+          - text: Two intents
+        explanation:
+          text: The intent is the thing the customer wants, here "book a check-up". The details it needs are something else.
+      - id: entities
+        text: Entities
+        variants:
+          - text: The bot's entities
+          - text: Two entities
+        explanation:
+          text: Entities are what Amazon Comprehend finds in text, such as people, places and dates. They aren't how a Lex bot defines what to collect.
+      - id: flows
+        text: Flows
+        variants:
+          - text: The bot's flows
+          - text: Two flows
+        explanation:
+          text: Flows belong to Amazon Connect Customer, where they decide what happens to each contact.
+      - id: slots
+        text: Slots
+        variants:
+          - text: The bot's slots
+          - text: Two slots
+        explanation:
+          text: Correct. Slots are the details the bot must collect to fulfill the intent.
+    correct_answers: [slots]
+    explanation:
+      text: |
+        A Lex bot is built from intents, the things customers want, each with example phrases, and
+        slots, the details the bot must collect for that intent. Lex understands the request, asks for
+        any missing slot, and replies, often calling the business's own code, such as a Lambda function.
+
+  - id: q10-lex-library-chat
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "Sound and conversation: Transcribe listens, Polly speaks, Lex holds the conversation"
+    task: "3.7"
+    level: application
+    topics: [lex]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A public library wants a chat window on its website. A member types "renew my books", the
+        bot asks for the library card number, and then confirms the new due date. Which service is
+        used to build the bot?
+    choices:
+      - id: comprehend
+        text: Amazon Comprehend
+        variants:
+          - text: Comprehend
+          - text: The Amazon Comprehend service
+        explanation:
+          text: Comprehend describes text, such as its sentiment. It doesn't hold a conversation or ask for missing details.
+      - id: lex
+        text: Amazon Lex
+        variants:
+          - text: Lex
+          - text: The Amazon Lex service
+        explanation:
+          text: Correct. Lex works out the intent (renew books), collects the slot (the card number) and replies.
+      - id: polly
+        text: Amazon Polly
+        variants:
+          - text: Polly
+          - text: The Amazon Polly service
+        explanation:
+          text: Polly can give a bot a voice, but it understands nothing. A typed chat needs no voice at all.
+      - id: translate
+        text: Amazon Translate
+        variants:
+          - text: Translate
+          - text: The Amazon Translate service
+        explanation:
+          text: Translate changes the language of text. It doesn't work out what a member wants.
+    correct_answers: [lex]
+    hint:
+      text: The input is a conversation.
+    explanation:
+      text: |
+        Amazon Lex builds bots that hold a conversation in text or by voice. A website chat window needs
+        only Lex: no phone line or contact center. The bot would call the library's own code, such as a
+        Lambda function, to renew the books.
+
+  - id: q10-caller-speech-to-english-two
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "Sound and conversation: Transcribe listens, Polly speaks, Lex holds the conversation"
+    task: "3.7"
+    level: application
+    topics: [transcribe, translate]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A tourist help line gets calls from visitors who speak Japanese. Staff read only English. The
+        help line wants each caller's spoken words to appear on the staff member's screen as English
+        text. Which two services, used one after the other, do this? (Select TWO.)
+    choices:
+      - id: polly
+        text: Amazon Polly
+        variants:
+          - text: Polly
+          - text: The Amazon Polly service
+        explanation:
+          text: Polly would be needed to speak a reply back to the caller, but it doesn't turn the caller's speech into text.
+      - id: transcribe
+        text: Amazon Transcribe
+        variants:
+          - text: Transcribe
+          - text: The Amazon Transcribe service
+        explanation:
+          text: Correct. Transcribe turns the caller's Japanese speech into Japanese text, the first step.
+      - id: comprehend
+        text: Amazon Comprehend
+        variants:
+          - text: Comprehend
+          - text: The Amazon Comprehend service
+        explanation:
+          text: Comprehend could detect that the text is Japanese, but it doesn't rewrite it in English.
+      - id: translate
+        text: Amazon Translate
+        variants:
+          - text: Translate
+          - text: The Amazon Translate service
+        explanation:
+          text: Correct. Translate turns the Japanese text into English text, the second step.
+      - id: rekognition
+        text: Amazon Rekognition
+        variants:
+          - text: Rekognition
+          - text: The Amazon Rekognition service
+        explanation:
+          text: Rekognition analyzes images and video. Nothing visual is involved.
+    correct_answers: [transcribe, translate]
+    hint:
+      text: Translation only ever works on text, so something has to make text first.
+    explanation:
+      text: |
+        The speech services chain together. Amazon Transcribe takes sound in and returns text in the
+        caller's language; Amazon Translate turns that text into English. To answer the caller aloud in
+        Japanese, the staff member's reply would go back through Translate and then Polly.
+
+  - id: q10-rekognition-listing-photos
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "Pictures and documents: Rekognition sees, Textract reads"
+    task: "3.7"
+    level: application
+    topics: [rekognition]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A second-hand marketplace stores sellers' item photos in Amazon S3. Before a listing goes live,
+        it wants each photo checked for offensive content, and a photo listed as a bicycle checked to
+        see whether a bicycle is actually in it. It has no ML team. Which service does the checking?
+    choices:
+      - id: macie
+        text: Amazon Macie
+        variants:
+          - text: Macie
+          - text: The Amazon Macie service
+        explanation:
+          text: Macie scans S3 buckets for sensitive data such as card numbers. It doesn't judge what a photo shows or whether it's offensive.
+      - id: textract
+        text: Amazon Textract
+        variants:
+          - text: Textract
+          - text: The Amazon Textract service
+        explanation:
+          text: Textract reads text, forms and tables in documents. It doesn't describe the objects in a photo or judge its content.
+      - id: transcribe
+        text: Amazon Transcribe
+        variants:
+          - text: Transcribe
+          - text: The Amazon Transcribe service
+        explanation:
+          text: Transcribe turns speech into text. Photos have no speech.
+      - id: rekognition
+        text: Amazon Rekognition
+        variants:
+          - text: Rekognition
+          - text: The Amazon Rekognition service
+        explanation:
+          text: Correct. Rekognition finds objects and scenes in images and flags unsafe content, with no ML expertise needed.
+    correct_answers: [rekognition]
+    hint:
+      text: The input is pictures of the world, not documents, and the photos happen to sit in S3.
+    explanation:
+      text: |
+        Amazon Rekognition analyzes images and video: it finds objects, scenes and concepts, spots text
+        in pictures, flags unsafe content, and analyzes and compares faces. It's ready-made, so the
+        marketplace calls an API and needs no machine learning skills. Where the photos are stored
+        doesn't change which service looks at them.
+
+  - id: q10-textract-intake-forms
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "Pictures and documents: Rekognition sees, Textract reads"
+    task: "3.7"
+    level: application
+    topics: [textract]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A physiotherapy clinic scans the paper forms that new patients fill in by hand. It wants each
+        label paired with its value, such as "Date of birth" with the date written beside it, and the
+        rows of the medication table kept as a table. Which service fits?
+    choices:
+      - id: textract
+        text: Amazon Textract
+        variants:
+          - text: Textract
+          - text: The Amazon Textract service
+        explanation:
+          text: Correct. Textract detects typed and handwritten text and returns form fields as label and value pairs, and tables as tables.
+      - id: transcribe
+        text: Amazon Transcribe
+        variants:
+          - text: Transcribe
+          - text: The Amazon Transcribe service
+        explanation:
+          text: Transcribe turns speech into text. These are scanned pages.
+      - id: comprehend
+        text: Amazon Comprehend
+        variants:
+          - text: Comprehend
+          - text: The Amazon Comprehend service
+        explanation:
+          text: Comprehend needs text that already exists, and it returns meaning, not a form's structure.
+      - id: translate
+        text: Amazon Translate
+        variants:
+          - text: Translate
+          - text: The Amazon Translate service
+        explanation:
+          text: Translate changes the language of text. It doesn't read scanned forms.
+    correct_answers: [textract]
+    hint:
+      text: The input is a document, and its structure must survive.
+    explanation:
+      text: |
+        Amazon Textract reads documents. It detects typed and handwritten text and pulls out form
+        fields (a label and its value) and tables. Its AnalyzeExpense operation does the same for
+        invoices and receipts, and AnalyzeID reads identity documents.
+
+  - id: q10-textract-over-rekognition
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "Pictures and documents: Rekognition sees, Textract reads"
+    task: "3.7"
+    level: understanding
+    topics: [textract, rekognition]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Amazon Rekognition can spot words in a picture. Why is Amazon Textract still the better fit
+        for photos of supplier invoices that an accounts team must pay?
+    choices:
+      - id: rekognition-no-text
+        text: Rekognition can't find words in a photo of a paper document
+        variants:
+          - text: Rekognition misses the words in photos of paper documents
+          - text: Words on a paper document are invisible to Rekognition
+        explanation:
+          text: Rekognition can detect text in images, which is why the two get confused. The difference is what comes back.
+      - id: video-only
+        text: Rekognition works on video, and invoices are still images
+        variants:
+          - text: Rekognition handles video, while invoices are still photos
+          - text: Invoices are still images, and Rekognition analyzes video
+        explanation:
+          text: Rekognition analyzes both images and video.
+      - id: structure
+        text: Textract returns its structure, such as vendor, total and line items
+        variants:
+          - text: Textract gives back the vendor, total and each line item as fields
+          - text: The vendor, total and line items come back from Textract as fields
+        explanation:
+          text: Correct. Rekognition returns labels and loose lines of words; Textract returns who was paid, how much and for what.
+      - id: textract-trained
+        text: Textract is trained on each company's own invoices before use
+        variants:
+          - text: Textract must first be trained on the company's own invoices
+          - text: Each company trains Textract on its own invoices before using it
+        explanation:
+          text: Textract is ready-made. AWS trained the model; the team just calls the API.
+    correct_answers: [structure]
+    explanation:
+      text: |
+        Both services can "see" words, but they return different things. Rekognition describes a
+        picture: labels such as "paper" and "text", and loose lines of words. Textract reads a
+        document: lines, form fields, tables, and for invoices and receipts the vendor, total and line
+        items. Documents go to Textract; pictures of the world go to Rekognition.
+
+  - id: q10-look-alikes-pairing-two
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "Pictures and documents: Rekognition sees, Textract reads"
+    task: "3.7"
+    level: understanding
+    topics: [comprehend, textract, rekognition]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        Which two pairings of an AWS service and what it returns are correct? (Select TWO.)
+    choices:
+      - id: rekognition-key-phrases
+        text: Amazon Rekognition returns the key phrases in an email
+        variants:
+          - text: Rekognition gives back an email's key phrases
+          - text: An email's key phrases come back from Rekognition
+        explanation:
+          text: Key phrases come from Comprehend, which analyzes text. Rekognition analyzes images and video.
+      - id: comprehend-sentiment
+        text: Amazon Comprehend returns the sentiment and entities in text
+        variants:
+          - text: Comprehend gives back the sentiment and entities of text
+          - text: Sentiment and entities in text come back from Comprehend
+        explanation:
+          text: Correct. Comprehend finds meaning in text you already have.
+      - id: textract-faces
+        text: Amazon Textract returns the faces seen in a video
+        variants:
+          - text: Textract gives back the faces in a video
+          - text: The faces in a video come back from Textract
+        explanation:
+          text: Faces in images and video are Rekognition's job. Textract reads documents.
+      - id: textract-fields
+        text: Amazon Textract returns the fields and tables in a scanned form
+        variants:
+          - text: Textract gives back a scanned form's fields and tables
+          - text: A scanned form's fields and tables come back from Textract
+        explanation:
+          text: Correct. Textract extracts a document's text and structure.
+      - id: comprehend-photo-text
+        text: Amazon Comprehend returns the text printed in a photo
+        variants:
+          - text: Comprehend gives back the text printed in a photo
+          - text: The text printed in a photo comes back from Comprehend
+        explanation:
+          text: Comprehend takes text as input; it doesn't pull text out of a picture. That's Textract, or Rekognition's text detection.
+    correct_answers: [comprehend-sentiment, textract-fields]
+    explanation:
+      text: |
+        Three services all "look at" content and are easy to mix up. Textract extracts a document's text
+        and structure; Comprehend interprets text you already have; Rekognition interprets images and
+        video. Name the input and the output you need, and the service follows.
+
+  - id: q10-sagemaker-spare-parts
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "When nothing ready-made fits, SageMaker AI builds your own model"
+    task: "3.7"
+    level: application
+    topics: [sagemaker-ai, retired-services]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A farm equipment maker, new to AWS's AI services in 2026, wants to predict how many of each
+        spare part its dealers will order next month, from its own ten years of order history. Its
+        data scientists will build, train and deploy the model. Which service should they use?
+    choices:
+      - id: comprehend
+        text: Amazon Comprehend
+        variants:
+          - text: Comprehend
+          - text: The Amazon Comprehend service
+        explanation:
+          text: Comprehend analyzes the meaning of text. Order history is numbers, and the question is the company's own.
+      - id: forecast
+        text: Amazon Forecast
+        variants:
+          - text: Forecast
+          - text: The Amazon Forecast service
+        explanation:
+          text: Forecast was AWS's ready-made time-series service, but it is closed to new customers (announced 2024-07-29), and it isn't on the exam's list. AWS points to Amazon SageMaker Canvas instead.
+      - id: sagemaker-ai
+        text: Amazon SageMaker AI
+        variants:
+          - text: SageMaker AI
+          - text: The Amazon SageMaker AI service
+        explanation:
+          text: Correct. SageMaker AI is for building, training and deploying your own models on your own data.
+      - id: rekognition
+        text: Amazon Rekognition
+        variants:
+          - text: Rekognition
+          - text: The Amazon Rekognition service
+        explanation:
+          text: Rekognition analyzes images and video. There's nothing visual here.
+    correct_answers: [sagemaker-ai]
+    hint:
+      text: The answer has to be learned from the company's own data, and one listed service no longer takes new customers.
+    explanation:
+      text: |
+        Amazon SageMaker AI is a fully managed service for building, training and deploying your own
+        machine learning models. A team turns to it when the question is its own and no ready-made
+        service answers it. AWS runs the servers; the data, the model and the ML skill are the team's.
+        Status checked 2026-10-24.
+
+  - id: q10-ready-made-delivery-notes
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "When nothing ready-made fits, SageMaker AI builds your own model"
+    task: "3.7"
+    level: understanding
+    topics: [sagemaker-ai, ready-made-ai]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A logistics company is deciding where to use a ready-made AI service and where its data
+        scientists should build a model in Amazon SageMaker AI. Which need calls for a ready-made
+        service?
+    choices:
+      - id: route-delays
+        text: Predicting which delivery routes will run late, from the company's own trip records
+        variants:
+          - text: Forecasting late delivery routes, learned from its own trip history
+          - text: Learning from its own trip records which delivery routes will run late
+        explanation:
+          text: The answer must be learned from the company's own data, which is SageMaker AI's job.
+      - id: delivery-notes
+        text: Reading the text and totals from photos of signed delivery notes
+        variants:
+          - text: Pulling the text and totals out of photos of signed delivery notes
+          - text: Extracting text and totals from pictures of signed delivery notes
+        explanation:
+          text: Correct. Reading documents is a solved problem; Textract does it with a model AWS already trained.
+      - id: fuel-model
+        text: Estimating each truck's fuel use with a model trained on its own sensors
+        variants:
+          - text: Working out each truck's fuel use from a model trained on its sensors
+          - text: A model trained on the trucks' own sensor data to estimate fuel use
+        explanation:
+          text: A model trained on the company's own sensor data is a custom model, built in SageMaker AI.
+      - id: driver-ranking
+        text: Ranking drivers for bonuses with a scoring model built in-house
+        variants:
+          - text: Scoring drivers for bonuses with a model the company builds itself
+          - text: Using an in-house scoring model to rank drivers for bonuses
+        explanation:
+          text: A scoring model the company designs for its own purpose is built, trained and deployed in SageMaker AI.
+    correct_answers: [delivery-notes]
+    explanation:
+      text: |
+        Start with a ready-made service and move to SageMaker AI only when nothing fits. Reading
+        documents is covered by Amazon Textract, with no ML skills and a price per page. Predictions
+        that must be learned from the company's own data are SageMaker AI's job, and they need data
+        scientists.
+
+  - id: q10-sagemaker-today-name
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: '"Amazon SageMaker is the ML service" uses an old name'
+    task: "3.7"
+    level: recall
+    topics: [sagemaker-ai, service-names]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A course from 2023 names "Amazon SageMaker" as the service where data scientists build, train
+        and deploy their own models. What is that service called today?
+    choices:
+      - id: bedrock
+        text: Amazon Bedrock
+        variants:
+          - text: Bedrock
+          - text: The Amazon Bedrock service
+        explanation:
+          text: Bedrock gives you foundation models through an API to build generative AI apps on. It isn't the renamed SageMaker.
+      - id: q-developer
+        text: Amazon Q Developer
+        variants:
+          - text: Q Developer
+          - text: The Amazon Q Developer assistant
+        explanation:
+          text: Q Developer is an assistant that helps people build and run on AWS. It doesn't train your models.
+      - id: comprehend
+        text: Amazon Comprehend
+        variants:
+          - text: Comprehend
+          - text: The Amazon Comprehend service
+        explanation:
+          text: Comprehend is a ready-made text analysis service. Nothing is built or trained.
+      - id: sagemaker-ai
+        text: Amazon SageMaker AI
+        variants:
+          - text: SageMaker AI
+          - text: The Amazon SageMaker AI service
+        explanation:
+          text: Correct. AWS renamed the service on 2024-12-03; "Amazon SageMaker" now names a wider platform that includes it.
+    correct_answers: [sagemaker-ai]
+    explanation:
+      text: |
+        On 2024-12-03 AWS renamed the build, train and deploy service Amazon SageMaker AI. "Amazon
+        SageMaker" now names a wider platform for data, analytics and AI that includes SageMaker AI.
+        Many command names still say "sagemaker" so existing code keeps working. The exam guide uses
+        SageMaker AI.
+
+  - id: q10-q-developer-console-help
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "Amazon Q is a family of assistants, not one product"
+    task: "3.7"
+    level: application
+    topics: [amazon-q]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A cloud engineer, working in the AWS Management Console, wants to ask in plain language why
+        one of her Lambda functions keeps timing out and what AWS's best practices suggest. Which AWS
+        offering is built for this?
+    choices:
+      - id: lex
+        text: Amazon Lex
+        variants:
+          - text: Lex
+          - text: An Amazon Lex bot
+        explanation:
+          text: Lex builds bots for your own customers. It doesn't know about your AWS resources.
+      - id: q-developer
+        text: Amazon Q Developer
+        variants:
+          - text: Q Developer
+          - text: The Amazon Q Developer assistant
+        explanation:
+          text: Correct. Q Developer answers questions about AWS services, your resources and best practices, in the console and in the AWS documentation.
+      - id: q-business
+        text: Amazon Q Business
+        variants:
+          - text: Q Business
+          - text: The Amazon Q Business assistant
+        explanation:
+          text: Q Business answered employees' questions from company documents, and it is closed to new customers (checked 2026-10-24).
+      - id: quick-sight
+        text: Amazon Quick Sight
+        variants:
+          - text: Quick Sight
+          - text: An Amazon Quick Sight dashboard
+        explanation:
+          text: Quick Sight builds dashboards from data. It doesn't explain your AWS resources.
+    correct_answers: [q-developer]
+    hint:
+      text: '"Amazon Q" alone doesn''t say which product; read the second word.'
+    explanation:
+      text: |
+        Amazon Q Developer is a generative AI assistant for people who build and run on AWS. In the
+        console and the AWS documentation you ask about services, your resources and best practices.
+        Its code-editor plugins and paid subscriptions reach end of support on 2027-04-30, but Q
+        Developer in the console carries on (checked 2026-10-24).
+
+  - id: q10-amazon-q-brand
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: '"Amazon Q is one product" leads to wrong answers'
+    task: "3.7"
+    level: understanding
+    topics: [amazon-q, retired-services]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A manager says, "We'll use Amazon Q for our developers' AWS questions and for answering staff
+        questions from our HR handbook." Which statement is accurate (as of 2026-10-24)?
+    choices:
+      - id: one-product
+        text: Amazon Q is one product, and a new customer can use it for both jobs
+        variants:
+          - text: Amazon Q is a single product that a new customer can use for both
+          - text: Both jobs are covered by one product, Amazon Q, for new customers
+        explanation:
+          text: That's the misconception the exam guide's bare "Amazon Q" invites. The two jobs belong to different products.
+      - id: brand-q-business-closed
+        text: Amazon Q is a family; Q Developer fits one job, and Q Business is closed
+        variants:
+          - text: Amazon Q names several products; Q Developer fits one, Q Business is closed
+          - text: Amazon Q is a brand; Q Developer suits one job, and Q Business is closed
+        explanation:
+          text: Correct. Q Developer helps with AWS and code. Q Business worked over company documents, and new customers can no longer sign up; AWS points them to Amazon Quick.
+      - id: renamed-lex
+        text: Amazon Q is the new name of Amazon Lex, so it builds bots for both
+        variants:
+          - text: Amazon Q is what Amazon Lex is called now, so it builds both bots
+          - text: Amazon Lex was renamed Amazon Q, which builds a bot for each job
+        explanation:
+          text: Lex is still Lex, a service for building chat and voice bots. Amazon Q is a family of generative AI assistants.
+      - id: train-own
+        text: Amazon Q is where teams train their own machine learning models for both jobs
+        variants:
+          - text: Amazon Q is the service for training the custom models that both jobs need
+          - text: Teams train their own machine learning models for both jobs in Amazon Q
+        explanation:
+          text: Training your own models is SageMaker AI's job. Amazon Q products are finished assistants.
+    correct_answers: [brand-q-business-closed]
+    explanation:
+      text: |
+        "Amazon Q" is a brand for several generative AI assistants. Amazon Q Developer helps people build
+        and run on AWS. Amazon Q Business answered employees' questions from company documents; it is
+        closed to new customers (announced 2026-06-30), and AWS points them to Amazon Quick. When a
+        question describes help with code or AWS, the answer is Q Developer.
+
+  - id: q10-kendra-policy-search
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: '"Kendra is the answer for searching company documents" is out of date'
+    task: "3.7"
+    level: understanding
+    topics: [retired-services]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A design written in late 2026 for a company that has never used Amazon Kendra proposes it, so
+        that employees can ask natural-language questions across internal policy documents. What is
+        the problem with the proposal?
+    choices:
+      - id: renamed-opensearch
+        text: Kendra was renamed Amazon OpenSearch Service, so the name is wrong
+        variants:
+          - text: The name is out of date, since Kendra became OpenSearch Service
+          - text: Kendra now goes by Amazon OpenSearch Service, so the name is wrong
+        explanation:
+          text: OpenSearch Service succeeded Amazon Elasticsearch Service, not Kendra. Kendra was a separate service.
+      - id: images-only
+        text: Kendra searches images and video only, not documents
+        variants:
+          - text: Kendra works on pictures and video, not on documents
+          - text: Documents are out of reach; Kendra searches only images and video
+        explanation:
+          text: Kendra was built for searching documents. The problem is its status, not its job.
+      - id: closed
+        text: Kendra is closed to new customers, so the company can't sign up
+        variants:
+          - text: New customers can no longer sign up for Kendra
+          - text: Kendra no longer accepts new customers, including this company
+        explanation:
+          text: Correct. AWS closed Kendra to new customers on 2026-07-30 and points them to Amazon Bedrock Knowledge Bases.
+      - id: needs-training
+        text: Kendra must first be trained in SageMaker AI on the documents
+        variants:
+          - text: The documents must first train a Kendra model in SageMaker AI
+          - text: A SageMaker AI training run on the documents has to come first
+        explanation:
+          text: The issue isn't training. A new customer can't use Kendra at all.
+    correct_answers: [closed]
+    explanation:
+      text: |
+        Amazon Kendra was once the answer for intelligent search over company documents. AWS closed it to
+        new customers on 2026-07-30, pointing them to Amazon Bedrock Knowledge Bases, and the 2026 exam
+        guide no longer lists it (checked 2026-10-24). If Kendra appears among the options, treat it as a
+        distractor.
+
+  - id: q10-new-customer-can-use-two
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "Some AI names are closed or gone: recognize them, don't choose them"
+    task: "3.7"
+    level: understanding
+    topics: [retired-services]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A start-up opens its first AWS account, on the Paid plan, in November 2026 and wants to add AI
+        features. Which two of these services can it sign up for as a new customer? (Select TWO.)
+    choices:
+      - id: fraud-detector
+        text: Amazon Fraud Detector
+        variants:
+          - text: Fraud Detector
+          - text: The Amazon Fraud Detector service
+        explanation:
+          text: Closed to new customers since 2025-11-07. AWS points to SageMaker AI with an open-source library, or AWS WAF Fraud Control for sign-up and login pages.
+      - id: textract
+        text: Amazon Textract
+        variants:
+          - text: Textract
+          - text: The Amazon Textract service
+        explanation:
+          text: Correct. Textract is available and on the exam's list.
+      - id: kendra
+        text: Amazon Kendra
+        variants:
+          - text: Kendra
+          - text: The Amazon Kendra service
+        explanation:
+          text: Closed to new customers since 2026-07-30, and removed from the exam guide.
+      - id: forecast
+        text: Amazon Forecast
+        variants:
+          - text: Forecast
+          - text: The Amazon Forecast service
+        explanation:
+          text: Closed to new customers (announced 2024-07-29). AWS points to Amazon SageMaker Canvas.
+      - id: comprehend
+        text: Amazon Comprehend
+        variants:
+          - text: Comprehend
+          - text: The Amazon Comprehend service
+        explanation:
+          text: Correct. Comprehend is available and on the exam's list.
+    correct_answers: [textract, comprehend]
+    explanation:
+      text: |
+        AWS retires services faster than practice questions are rewritten. Kendra, Fraud Detector and
+        Forecast are closed to new customers, though existing customers keep using them (checked
+        2026-10-24). Recognize the names, and don't choose them; the ready-made services on the exam's
+        list, such as Textract and Comprehend, are open.
+
+  - id: q10-textract-customer-side
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "Your side of the line"
+    task: "2.1"
+    level: understanding
+    topics: [shared-responsibility, textract]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A property agency sends scanned tenancy agreements to Amazon Textract and keeps the results in
+        S3. Under the shared responsibility model, which of these is the agency's job?
+    choices:
+      - id: retrain
+        text: Retraining Textract's model when it misreads a page
+        variants:
+          - text: Training Textract's model again after it misreads a page
+          - text: Updating Textract's model whenever a page is misread
+        explanation:
+          text: AWS trains and runs the models behind ready-made services. The agency's part is checking results where they matter.
+      - id: patch
+        text: Patching the servers that Textract's models run on
+        variants:
+          - text: Keeping the servers behind Textract's models patched
+          - text: Applying updates to the servers that run Textract
+        explanation:
+          text: Ready-made AI services sit far toward AWS's side of the line. AWS runs and patches the servers.
+      - id: iam-and-bucket
+        text: Controlling who may call Textract, and keeping results private
+        variants:
+          - text: Deciding who can call Textract, and keeping its results private
+          - text: Limiting who may send pages to Textract, and storing results privately
+        explanation:
+          text: Correct. IAM policies decide who can send data, and the agreements hold personal data, so the inputs and outputs belong in private, encrypted storage.
+      - id: scale
+        text: Adding capacity to Textract before the busy moving season
+        variants:
+          - text: Scaling Textract up before the busy moving season
+          - text: Giving Textract more capacity ahead of moving season
+        explanation:
+          text: The service scales itself. The agency pays per page and adds nothing.
+    correct_answers: [iam-and-bucket]
+    explanation:
+      text: |
+        With ready-made AI services, AWS trains and runs the models and the servers. The customer keeps
+        who may call the service (IAM), what it sends and where results go (private, encrypted buckets
+        for personal data), whether content may be used to improve the service, and checking results
+        where money or customers are affected.
+
+  - id: q10-ai-opt-out-policy
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "Your side of the line"
+    task: "2.1"
+    level: recall
+    topics: [shared-responsibility, organizations]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A law firm doesn't want AWS AI services to store or use its content to improve those services.
+        What can it use to opt out across all its accounts?
+    choices:
+      - id: block-public-access
+        text: S3 Block Public Access, turned on for each of its buckets
+        variants:
+          - text: Turning on S3 Block Public Access for each of its buckets
+          - text: S3 Block Public Access, applied to each bucket it owns
+        explanation:
+          text: Block Public Access stops buckets from being made public. It says nothing about how AWS AI services use content sent to them.
+      - id: opt-out-policy
+        text: An AI services opt-out policy in AWS Organizations
+        variants:
+          - text: An AWS Organizations AI services opt-out policy
+          - text: The AI services opt-out policy type in AWS Organizations
+        explanation:
+          text: Correct. An AI services opt-out policy applies the choice to the accounts in an organization.
+      - id: config-rule
+        text: An AWS Config rule that checks each AI service's settings
+        variants:
+          - text: AWS Config rules that evaluate each AI service's settings
+          - text: A Config rule checking the settings of each AI service
+        explanation:
+          text: Config records and evaluates resource settings. It doesn't opt content out of service improvement.
+      - id: delete-users
+        text: Removing the IAM users that call the AI services
+        variants:
+          - text: Deleting the IAM users who call AI services
+          - text: Taking away the IAM users that use AI services
+        explanation:
+          text: That stops the firm from using the services at all, rather than changing how its content is used.
+    correct_answers: [opt-out-policy]
+    explanation:
+      text: |
+        AWS AI services may store and use customer content to improve the service. Whether to allow that
+        is the customer's decision, and an AI services opt-out policy in AWS Organizations records it for
+        the organization's accounts.
+
+  - id: q10-polly-lesson-audio-two
+    page: guide/10-data-ai-and-more/05-lab-14-polly-text-to-speech.md
+    section: "Recap"
+    task: "3.7"
+    level: application
+    topics: [polly, cost]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        An online cooking school has 300 short lesson summaries that rarely change, and thousands of
+        students press "listen" each month. It uses Amazon Polly. Which two choices keep its Polly
+        costs low? (Select TWO.)
+    choices:
+      - id: synthesize-once
+        text: Synthesize each summary once, store the audio, and replay the file
+        variants:
+          - text: Make each summary's audio once, keep it, and play the stored file
+          - text: Create the audio for each summary once and replay the saved copy
+        explanation:
+          text: Correct. Polly charges per character each time it makes speech, and stored output can be replayed at no extra charge.
+      - id: call-every-play
+        text: Ask Polly for fresh audio every time a student presses listen
+        variants:
+          - text: Request new audio from Polly on each press of listen
+          - text: Have Polly make the speech again for every listen
+        explanation:
+          text: That pays for the same characters thousands of times.
+      - id: cheaper-engine
+        text: Use a lower-cost voice engine, such as Standard, where it sounds good enough
+        variants:
+          - text: Pick a cheaper engine, such as Standard, where its voice is acceptable
+          - text: Choose a less costly engine like Standard where its sound will do
+        explanation:
+          text: Correct. The rate per character depends on the engine; the most natural-sounding engines cost several times more.
+      - id: own-voice-model
+        text: Train and host a voice model of its own in SageMaker AI
+        variants:
+          - text: Build and host its own voice model in SageMaker AI
+          - text: Host a custom voice model it trains in SageMaker AI
+        explanation:
+          text: Building and hosting a model costs far more than a ready-made service for a solved problem.
+      - id: transcribe-cache
+        text: Use Amazon Transcribe to cache the audio between plays
+        variants:
+          - text: Cache the audio between plays with Amazon Transcribe
+          - text: Keep the audio between plays in Amazon Transcribe
+        explanation:
+          text: Transcribe turns speech into text. It isn't a cache, and it adds cost.
+    correct_answers: [synthesize-once, cheaper-engine]
+    hint:
+      text: Ask what Polly charges for, and what makes that rate higher or lower.
+    explanation:
+      text: |
+        Polly charges for the characters it turns into speech, each time, at a rate set by the voice
+        engine. Generating each summary once and replaying the stored audio pays for the characters once;
+        choosing a cheaper engine where it sounds good enough lowers the rate. Prices change, so check the
+        Polly pricing page.
+
+  # ---------------------------------------------------------------------------------------------
+  # Lesson 10.03, People, apps and devices
+  # ---------------------------------------------------------------------------------------------
+
+  - id: q10-workspaces-tax-season
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "WorkSpaces gives each person a whole desktop that runs in AWS"
+    task: "3.8"
+    level: application
+    topics: [workspaces, end-user-computing]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        An accounting firm hires 25 contractors for tax season. They work from their own laptops and
+        need a full Windows desktop with the firm's tax software, spreadsheets and email, and the firm
+        wants no client files left on the laptops. In May the desktops go away. Which service fits?
+    choices:
+      - id: workspaces
+        text: Amazon WorkSpaces
+        variants:
+          - text: WorkSpaces
+          - text: A desktop in Amazon WorkSpaces
+        explanation:
+          text: Correct. Each contractor gets a whole virtual desktop that runs in AWS and reaches the laptop as pixels, and the firm removes them when the season ends.
+      - id: client-vpn
+        text: AWS Client VPN
+        variants:
+          - text: Client VPN
+          - text: A connection through AWS Client VPN
+        explanation:
+          text: Client VPN gives each laptop an encrypted network path into a VPC. The software and files would still run and sit on the laptops.
+      - id: amplify
+        text: AWS Amplify
+        variants:
+          - text: Amplify
+          - text: A front end on AWS Amplify
+        explanation:
+          text: Amplify builds and hosts web and mobile front ends. It doesn't give anyone a desktop.
+      - id: secure-browser
+        text: Amazon WorkSpaces Secure Browser
+        variants:
+          - text: WorkSpaces Secure Browser
+          - text: A browser in WorkSpaces Secure Browser
+        explanation:
+          text: A streamed browser covers web apps only, not tax software and spreadsheets, and it closes to new customers on 2026-10-29.
+    correct_answers: [workspaces]
+    hint:
+      text: Ask how much of a computer each contractor needs.
+    explanation:
+      text: |
+        Amazon WorkSpaces gives each user a virtual desktop running Windows or Linux in AWS, streamed to
+        the device as pixels, so the firm's files stay in AWS. There's no hardware to buy, users can be
+        added and removed as needs change, and removing the desktops when the season ends stops their
+        charges.
+
+  - id: q10-workspaces-part-time-billing
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "WorkSpaces gives each person a whole desktop that runs in AWS"
+    task: "3.8"
+    level: application
+    topics: [workspaces, cost]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A charity gives WorkSpaces desktops to volunteers who each log in for about two hours a week.
+        Which billing setup is likely to cost the least for these desktops?
+    choices:
+      - id: monthly
+        text: Monthly billing, with one fixed fee per desktop for unlimited use
+        variants:
+          - text: The monthly mode, a fixed fee per desktop however much it's used
+          - text: Monthly billing, paying one flat fee per desktop for any amount of use
+        explanation:
+          text: A fixed monthly fee suits full-time users past the break-even point. Two hours a week is far below it.
+      - id: hourly-autostop
+        text: Hourly billing with AutoStop, paying a low monthly fee plus the hours used
+        variants:
+          - text: The hourly mode with AutoStop, a small monthly fee plus each hour run
+          - text: Hourly billing and AutoStop, with a low monthly part and a charge per hour
+        explanation:
+          text: Correct. Desktops stop after users disconnect, so the volunteers pay for few hours on top of a small monthly fee.
+      - id: monthly-autostop
+        text: Monthly billing with AutoStop, so the fixed fee pauses while stopped
+        variants:
+          - text: The monthly mode plus AutoStop, pausing the fixed fee when stopped
+          - text: Monthly billing and AutoStop, with the flat fee paused while stopped
+        explanation:
+          text: The monthly fee is fixed however much the desktop is used. AutoStop pauses hourly charges, which only the hourly mode has.
+      - id: hourly-always-on
+        text: Hourly billing, with every desktop left running all week
+        variants:
+          - text: The hourly mode, keeping each desktop running all week long
+          - text: Hourly billing, where the desktops stay on through the week
+        explanation:
+          text: Paying by the hour for desktops that run all week throws away the saving. AutoStop stops a desktop when the user disconnects.
+    correct_answers: [hourly-autostop]
+    hint:
+      text: Picture the cost line for each billing mode at very low hours.
+    explanation:
+      text: |
+        WorkSpaces offers two billing modes. Monthly is one fixed fee, however much the desktop is used;
+        hourly is a low monthly fee plus a charge for each hour the desktop runs. With AutoStop, a
+        desktop stops after the user disconnects and hourly charges pause. Light, part-time use sits
+        below the break-even point, where hourly costs less.
+
+  - id: q10-workspaces-billing-two
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "WorkSpaces gives each person a whole desktop that runs in AWS"
+    task: "3.8"
+    level: understanding
+    topics: [workspaces, cost]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        Which two statements about Amazon WorkSpaces billing are accurate? (Select TWO.)
+    choices:
+      - id: monthly-rises
+        text: The monthly mode's fee rises with each hour the desktop is used
+        variants:
+          - text: In the monthly mode, the fee goes up with every hour of use
+          - text: Monthly billing charges more for each extra hour of use
+        explanation:
+          text: The monthly mode is one fixed fee, however much the desktop is used.
+      - id: hourly-has-monthly-part
+        text: The hourly mode has a low monthly fee as well as a charge for each hour
+        variants:
+          - text: Hourly billing adds a charge per hour to a small monthly fee
+          - text: In the hourly mode, a low monthly fee comes with a per-hour charge
+        explanation:
+          text: Correct. The monthly part still applies even in hours the desktop isn't running.
+      - id: autostop-pauses
+        text: With AutoStop, hourly charges pause while the desktop is stopped
+        variants:
+          - text: AutoStop pauses the hourly charges while a desktop is stopped
+          - text: A stopped desktop with AutoStop runs up no hourly charges
+        explanation:
+          text: Correct. AutoStop stops the desktop after the user disconnects (60 minutes by default), and hourly charges pause.
+      - id: autostop-free-month
+        text: AutoStop also removes the monthly part of the hourly mode
+        variants:
+          - text: With AutoStop, the hourly mode's monthly fee goes away too
+          - text: AutoStop cancels the monthly fee in the hourly mode as well
+        explanation:
+          text: The monthly part still applies. AutoStop affects only the hourly charges.
+      - id: partial-free
+        text: Partial hours aren't billed in the hourly mode
+        variants:
+          - text: The hourly mode doesn't bill for part of an hour
+          - text: Hourly billing ignores any partial hour
+        explanation:
+          text: Partial hours count as full hours.
+    correct_answers: [hourly-has-monthly-part, autostop-pauses]
+    explanation:
+      text: |
+        WorkSpaces bills monthly (one fixed fee) or hourly (a low monthly fee plus each hour the
+        desktop runs), and you can switch. With AutoStop, the desktop stops after the user disconnects
+        and hourly charges pause, but the monthly part still applies and partial hours count as full
+        ones (checked 2026-10-24).
+
+  - id: q10-applications-cad-course
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "WorkSpaces Applications streams single apps; Secure Browser streams one web browser"
+    task: "3.8"
+    level: application
+    topics: [workspaces-applications, end-user-computing]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A technical college wants 300 students to use one engineering design program during a
+        semester, from college PCs and their own laptops, without installing it anywhere and without
+        giving each student a full desktop. Which service fits?
+    choices:
+      - id: applications
+        text: Amazon WorkSpaces Applications
+        variants:
+          - text: Amazon AppStream 2.0 (now WorkSpaces Applications)
+          - text: WorkSpaces Applications, formerly AppStream 2.0
+        explanation:
+          text: Correct. It streams individual applications from AWS to a browser or client, so every student gets the same installed version and no desktop.
+      - id: workspaces
+        text: Amazon WorkSpaces
+        variants:
+          - text: Amazon WorkSpaces virtual desktops
+          - text: A WorkSpaces desktop for each student
+        explanation:
+          text: WorkSpaces gives each user a whole desktop. The college wants one program, not 300 desktops to manage.
+      - id: secure-browser
+        text: Amazon WorkSpaces Secure Browser
+        variants:
+          - text: WorkSpaces Secure Browser (formerly WorkSpaces Web)
+          - text: Secure Browser, formerly WorkSpaces Web
+        explanation:
+          text: A streamed browser reaches web apps only. A desktop design program isn't a web app, and Secure Browser closes to new customers on 2026-10-29.
+      - id: amplify
+        text: AWS Amplify
+        variants:
+          - text: AWS Amplify Hosting
+          - text: The AWS Amplify tools
+        explanation:
+          text: Amplify builds and hosts web and mobile front ends. It doesn't stream a desktop program.
+    correct_answers: [applications]
+    hint:
+      text: Ask what each student should see on screen.
+    explanation:
+      text: |
+        Amazon WorkSpaces Applications, which the exam guide still calls Amazon AppStream 2.0, streams
+        individual desktop applications from AWS to a user's browser or client. Users always get the
+        version you installed, and AWS says application data is never stored on their devices. It suits
+        giving many people one or two programs without managing a desktop for each.
+
+  - id: q10-secure-browser-new-customer
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "WorkSpaces Applications streams single apps; Secure Browser streams one web browser"
+    task: "3.8"
+    level: understanding
+    topics: [workspaces-secure-browser, retired-services]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A consulting firm that has never used Amazon WorkSpaces Secure Browser plans to start in
+        December 2026, to give contractors an isolated browser for its internal web apps. What should
+        the firm know?
+    choices:
+      - id: needs-vpn
+        text: It works only if each contractor installs a VPN client first
+        variants:
+          - text: Each contractor needs a VPN client installed before it works
+          - text: A VPN client on every contractor's laptop is required first
+        explanation:
+          text: Secure Browser needs no VPN or client software; it streams to the browser users already have. The issue is its status.
+      - id: renamed-applications
+        text: It was renamed WorkSpaces Applications, so the firm should look for that
+        variants:
+          - text: Its new name is WorkSpaces Applications, which the firm should use
+          - text: AWS renamed it WorkSpaces Applications, under which it carries on
+        explanation:
+          text: WorkSpaces Applications is the new name of AppStream 2.0. Secure Browser's earlier name was WorkSpaces Web.
+      - id: mobile-only
+        text: It streams mobile apps, not web apps, so it doesn't fit the need
+        variants:
+          - text: It is for mobile apps rather than web apps, so it won't fit
+          - text: Web apps are out of scope; it streams mobile apps instead
+        explanation:
+          text: Secure Browser does fit the need technically, since it streams a browser for internal websites and SaaS apps.
+      - id: closed-alternatives
+        text: It closes to new customers on 2026-10-29; AWS suggests other options
+        variants:
+          - text: New customers can't sign up after 2026-10-29; AWS points elsewhere
+          - text: From 2026-10-29 it takes no new customers, and AWS offers alternatives
+        explanation:
+          text: Correct. For new setups, AWS suggests WorkSpaces Applications with a Chrome browser image you manage, or an enterprise secure browser from an AWS Partner.
+    correct_answers: [closed-alternatives]
+    explanation:
+      text: |
+        Amazon WorkSpaces Secure Browser (formerly WorkSpaces Web) gives users an isolated browser that
+        runs in AWS, for internal websites and SaaS apps. It closes to new customers on 2026-10-29;
+        existing customers keep using it (checked 2026-10-24). It is still on the exam guide, so learn
+        what it does, but don't plan new work on it.
+
+  - id: q10-what-user-sees-two
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "WorkSpaces Applications streams single apps; Secure Browser streams one web browser"
+    task: "3.8"
+    level: recall
+    topics: [workspaces, workspaces-applications, workspaces-secure-browser]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        The three WorkSpaces services differ in what the user sees on screen. Which two pairings are
+        correct? (Select TWO.)
+    choices:
+      - id: browser-desktop
+        text: WorkSpaces Secure Browser gives the user a whole Windows desktop
+        variants:
+          - text: A whole Windows desktop is what Secure Browser gives the user
+          - text: With Secure Browser, the user sees a full Windows desktop
+        explanation:
+          text: Secure Browser gives one web browser, the least of the three.
+      - id: workspaces-desktop
+        text: Amazon WorkSpaces gives the user a whole desktop of their own
+        variants:
+          - text: A whole desktop of their own is what WorkSpaces gives the user
+          - text: With WorkSpaces, the user sees a full desktop of their own
+        explanation:
+          text: Correct. Windows or Linux, any app they need, files kept.
+      - id: applications-network
+        text: WorkSpaces Applications gives the user a network path into a VPC
+        variants:
+          - text: A network path into a VPC is what WorkSpaces Applications gives
+          - text: With WorkSpaces Applications, the user gets a path into a VPC
+        explanation:
+          text: A network path is what a VPN gives. WorkSpaces Applications streams programs.
+      - id: applications-one-app
+        text: WorkSpaces Applications gives the user one or a few applications
+        variants:
+          - text: One or a few applications are what WorkSpaces Applications gives
+          - text: With WorkSpaces Applications, the user sees one or a few programs
+        explanation:
+          text: Correct. It is the exam's AppStream 2.0, application streaming.
+      - id: workspaces-browser
+        text: Amazon WorkSpaces gives the user a single web browser
+        variants:
+          - text: A single web browser is what WorkSpaces gives the user
+          - text: With WorkSpaces, the user sees one web browser only
+        explanation:
+          text: That's Secure Browser. WorkSpaces gives a whole desktop.
+    correct_answers: [workspaces-desktop, applications-one-app]
+    explanation:
+      text: |
+        Ask what the user sees. Amazon WorkSpaces gives a whole desktop; WorkSpaces Applications (the
+        exam's AppStream 2.0) gives one or a few applications; WorkSpaces Secure Browser gives one web
+        browser. All three run in AWS, stream pixels and keep data off the user's device. Give people the
+        smallest thing that does their job.
+
+  - id: q10-client-vpn-not-desktop
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "WorkSpaces Applications streams single apps; Secure Browser streams one web browser"
+    task: "3.8"
+    level: understanding
+    topics: [end-user-computing, client-vpn]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A clinic wants its part-time staff to work on patient records from home, with no records ever
+        stored on their personal computers. An IT contractor suggests AWS Client VPN instead of a
+        WorkSpaces service. Why doesn't Client VPN meet the goal by itself?
+    choices:
+      - id: network-path-only
+        text: It gives each computer a network path, but the apps and data still run on it
+        variants:
+          - text: It adds a network path, yet the apps and data still run on the computer
+          - text: The computer gets a path to the network, but still runs the apps and data
+        explanation:
+          text: Correct. A VPN connects a device; the WorkSpaces family gives the person a computer, an app or a browser that runs in AWS.
+      - id: not-encrypted
+        text: Its traffic isn't encrypted, so records could be read on the way
+        variants:
+          - text: It sends traffic without encryption, exposing records in transit
+          - text: Records could be read in transit, since its traffic is unencrypted
+        explanation:
+          text: Client VPN traffic is encrypted. The problem is where the work happens, not the connection.
+      - id: offices-only
+        text: It connects whole office networks, not individual people's devices
+        variants:
+          - text: It links office networks, not the devices of individual people
+          - text: Individual devices can't use it; it joins whole office networks
+        explanation:
+          text: That describes Site-to-Site VPN. Client VPN does connect individual people's devices.
+      - id: closed
+        text: It is closed to new customers, so the clinic can't sign up
+        variants:
+          - text: New customers can no longer sign up for it, so it's ruled out
+          - text: The clinic can't start using it, as it takes no new customers
+        explanation:
+          text: Client VPN is available. The status change in this lesson is WorkSpaces Secure Browser's.
+    correct_answers: [network-path-only]
+    explanation:
+      text: |
+        A VPN gives a device a network path; the WorkSpaces services give the person a desktop, an app
+        or a browser that runs in AWS. With Client VPN, the staff would still run the software and open
+        records on their own computers. Streaming keeps the data in AWS, the security design principle
+        "keep people away from data".
+
+  - id: q10-appstream-name-today
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: '"AppStream 2.0" and "WorkSpaces Web" are older names'
+    task: "3.8"
+    level: recall
+    topics: [workspaces-applications, service-names]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        An exam answer names Amazon AppStream 2.0. Under which name will a learner find that service
+        in the AWS console today?
+    choices:
+      - id: secure-browser
+        text: Amazon WorkSpaces Secure Browser
+        variants:
+          - text: WorkSpaces Secure Browser
+          - text: The WorkSpaces Secure Browser service
+        explanation:
+          text: Secure Browser was formerly WorkSpaces Web, a different service that streams a browser.
+      - id: workspaces
+        text: Amazon WorkSpaces
+        variants:
+          - text: WorkSpaces
+          - text: The Amazon WorkSpaces service
+        explanation:
+          text: WorkSpaces gives whole desktops and was never called AppStream.
+      - id: applications
+        text: Amazon WorkSpaces Applications
+        variants:
+          - text: WorkSpaces Applications
+          - text: The WorkSpaces Applications service
+        explanation:
+          text: Correct. AppStream 2.0 is now WorkSpaces Applications, and it still streams individual applications.
+      - id: amplify
+        text: AWS Amplify
+        variants:
+          - text: Amplify
+          - text: The AWS Amplify service
+        explanation:
+          text: Amplify builds and hosts web and mobile front ends. It has nothing to do with AppStream.
+    correct_answers: [applications]
+    explanation:
+      text: |
+        AWS now calls AppStream 2.0 Amazon WorkSpaces Applications, and WorkSpaces Web became
+        WorkSpaces Secure Browser. The exam guide still prints "Amazon AppStream 2.0", so on the exam it
+        means application streaming; in the console, look for WorkSpaces Applications.
+
+  - id: q10-connect-outage-calls
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "Connect runs the contact center; Lex is the bot inside it"
+    task: "3.8"
+    level: application
+    topics: [connect, contact-center]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A water utility needs a cloud contact center for outage calls: phone numbers, queues that route
+        callers to the right team, staff who answer the calls, and live reports for supervisors. It wants no telephone hardware. Which service fits?
+    choices:
+      - id: connect
+        text: Amazon Connect
+        variants:
+          - text: Amazon Connect Customer
+          - text: An Amazon Connect instance
+        explanation:
+          text: Correct. It provides the phone numbers, queues, routing, flows, agents and real-time reports of a contact center.
+      - id: lex
+        text: Amazon Lex
+        variants:
+          - text: Lex
+          - text: An Amazon Lex bot
+        explanation:
+          text: Lex builds bots that understand callers. It has no phone numbers, queues or agents of its own.
+      - id: sns
+        text: Amazon SNS
+        variants:
+          - text: Amazon Simple Notification Service
+          - text: An Amazon SNS topic
+        explanation:
+          text: SNS pushes short notifications to subscribers. It can tell customers about an outage, but it doesn't take their calls.
+      - id: ses
+        text: Amazon SES
+        variants:
+          - text: Amazon Simple Email Service
+          - text: Email through Amazon SES
+        explanation:
+          text: SES sends and receives email. It isn't a contact center.
+    correct_answers: [connect]
+    hint:
+      text: The need is a place where customers' calls arrive and people answer them.
+    explanation:
+      text: |
+        Amazon Connect, now called Amazon Connect Customer, is a cloud contact center. Administrators get
+        phone numbers, set up queues and routing and build flows; agents answer by voice, chat, SMS and
+        other channels; supervisors watch performance in real time. There's no telephone hardware to buy.
+
+  - id: q10-airline-bot-then-agent-two
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "Connect runs the contact center; Lex is the bot inside it"
+    task: "3.8"
+    level: application
+    topics: [connect, lex, contact-center]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A regional airline wants its reservations phone line to answer first with an automated
+        assistant that understands requests such as "change my flight to Friday", and to pass the
+        caller to a person in a queue when the assistant can't help. Which two services does it combine?
+        (Select TWO.)
+    choices:
+      - id: translate
+        text: Amazon Translate
+        variants:
+          - text: Translate
+          - text: The Amazon Translate service
+        explanation:
+          text: Translate changes the language of text. It neither runs the phone line nor understands what the caller wants.
+      - id: connect
+        text: Amazon Connect
+        variants:
+          - text: Amazon Connect Customer
+          - text: The Amazon Connect service
+        explanation:
+          text: Correct. Connect owns the phone number, the flow each call follows, the queue and the agents.
+      - id: sns
+        text: Amazon SNS
+        variants:
+          - text: SNS
+          - text: The Amazon SNS service
+        explanation:
+          text: SNS sends notifications. It doesn't answer calls or queue callers.
+      - id: lex
+        text: Amazon Lex
+        variants:
+          - text: Lex
+          - text: The Amazon Lex service
+        explanation:
+          text: Correct. A Connect flow hands the caller to a Lex bot, which works out the intent and collects the details.
+      - id: ses
+        text: Amazon SES
+        variants:
+          - text: SES
+          - text: The Amazon SES service
+        explanation:
+          text: SES sends email, such as a booking confirmation afterwards, but it plays no part in the call.
+    correct_answers: [connect, lex]
+    explanation:
+      text: |
+        A contact center that needs a bot uses both services. Amazon Connect (Connect Customer) owns the
+        phone line, flows, queues and agents; Amazon Lex understands what the caller wants. The call
+        starts and ends in Connect, which hands the caller to the Lex bot and back to a queue for an agent
+        when the bot can't help.
+
+  - id: q10-connect-lex-independent
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "Connect runs the contact center; Lex is the bot inside it"
+    task: "3.8"
+    level: understanding
+    topics: [connect, lex]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        Which statement about Amazon Connect and Amazon Lex is accurate?
+    choices:
+      - id: connect-builds-bots
+        text: Connect is the service that builds chatbots, and Lex supplies phone numbers
+        variants:
+          - text: Connect builds the chatbots, while Lex supplies the phone numbers
+          - text: Lex gives the phone numbers, and Connect is where chatbots are built
+        explanation:
+          text: The roles are reversed. Lex builds the bot; Connect owns the phone numbers.
+      - id: need-each-other
+        text: Neither works alone; every Connect center needs Lex, and every Lex bot needs Connect
+        variants:
+          - text: Each needs the other; a Connect center needs Lex, and a Lex bot needs Connect
+          - text: They can't be used apart; Connect requires Lex, and Lex requires Connect
+        explanation:
+          text: Each works without the other. They are a pair when a contact center needs a bot.
+      - id: each-alone
+        text: Connect can run with human agents only, and Lex can run in a website chat alone
+        variants:
+          - text: Connect works with only human agents, and a Lex bot works alone in web chat
+          - text: A Lex bot can serve a website chat by itself, and Connect can use only people
+        explanation:
+          text: Correct. A call center with only people needs only Connect; a website chat bot needs only Lex.
+      - id: same-service
+        text: They are two names for one service, after AWS renamed Lex to Connect
+        variants:
+          - text: AWS renamed Lex to Connect, so the two names mean one service
+          - text: Connect is the new name for Lex, so both names mean the same service
+        explanation:
+          text: They are different services. The rename was Amazon Connect to Amazon Connect Customer.
+    correct_answers: [each-alone]
+    explanation:
+      text: |
+        Amazon Connect (Connect Customer) is a contact center: phone numbers, queues, routing, flows,
+        agents and reports. Amazon Lex builds chat and voice bots. A contact center that needs a bot uses
+        both; a website chat bot needs only Lex; a call center staffed only by people needs only Connect.
+        On the exam, Connect sits under business applications and Lex under machine learning.
+
+  - id: q10-ses-ticket-confirmations
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "SES sends email at scale"
+    task: "3.8"
+    level: application
+    topics: [ses]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A concert ticket seller wants its booking system to send each buyer a styled confirmation with
+        their seats and a receipt, from the seller's own domain, plus a monthly newsletter to fans who
+        opted in. It doesn't want to run mail servers. Which service fits?
+    choices:
+      - id: sns
+        text: Amazon SNS
+        variants:
+          - text: Amazon Simple Notification Service
+          - text: An Amazon SNS topic
+        explanation:
+          text: SNS pushes short notifications to subscribers by several channels; its email is a plain alert, not a styled confirmation from your own domain.
+      - id: ses
+        text: Amazon SES
+        variants:
+          - text: Amazon Simple Email Service
+          - text: Email sent with Amazon SES
+        explanation:
+          text: Correct. SES sends transactional and marketing email from your own addresses and domains.
+      - id: connect
+        text: Amazon Connect
+        variants:
+          - text: Amazon Connect Customer
+          - text: A contact center in Amazon Connect
+        explanation:
+          text: Connect runs a contact center for conversations with customers. It isn't for sending confirmations and newsletters.
+      - id: amplify
+        text: AWS Amplify
+        variants:
+          - text: AWS Amplify Hosting
+          - text: A site hosted with AWS Amplify
+        explanation:
+          text: Amplify builds and hosts the booking website, but it doesn't send the emails.
+    correct_answers: [ses]
+    hint:
+      text: Two kinds of email, one service built for both.
+    explanation:
+      text: |
+        Amazon Simple Email Service (Amazon SES) sends and receives email from your own addresses and
+        domains: transactional email such as confirmations and password resets, and marketing email such
+        as newsletters, with no mail servers to run. SNS sends short notifications to subscribers and is
+        not an email platform.
+
+  - id: q10-ses-sandbox-verified-only
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "SES sends email at scale"
+    task: "3.8"
+    level: understanding
+    topics: [ses]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A pet-food shop's developer has just turned on Amazon SES in the shop's new AWS account. Her
+        "your order has shipped" test reaches her own verified address, but the same message to real
+        customers is refused. What explains this, and what should she do next?
+    choices:
+      - id: suspended
+        text: The account is suspended for spam; open an abuse case with AWS
+        variants:
+          - text: AWS suspended the account for spam; file an abuse case
+          - text: Spam got the account suspended; raise an abuse case with AWS
+        explanation:
+          text: Nothing was suspended. Every new account starts with SES in a restricted mode.
+      - id: subscribe-first
+        text: Customers must subscribe before SES can mail them; send each a subscription link
+        variants:
+          - text: Each customer has to subscribe first; send them all a subscription link
+          - text: SES mails only subscribers; send every customer a link to subscribe
+        explanation:
+          text: Subscriptions belong to Amazon SNS topics. SES sends to any address once the account has production access.
+      - id: sandbox
+        text: SES starts in a sandbox; ask AWS for production access
+        variants:
+          - text: New accounts start in the SES sandbox; request production access
+          - text: SES begins in its sandbox; apply to AWS for production access
+        explanation:
+          text: Correct. In the sandbox you can send only to verified addresses, with low limits, until AWS grants production access.
+      - id: own-domain-only
+        text: SES delivers only inside the shop's own domain; pick another service
+        variants:
+          - text: SES can reach addresses in the shop's own domain alone; switch services
+          - text: Mail from SES stays within the shop's own domain; choose another service
+        explanation:
+          text: SES sends to customers anywhere; that's its main job. The limit she hit is the sandbox's.
+    correct_answers: [sandbox]
+    explanation:
+      text: |
+        Every new account starts in the SES sandbox: you can send only to addresses you've verified, with
+        low limits, until you ask AWS for production access. The sandbox protects SES's reputation, and
+        so yours, from spam sent by mistake or on purpose.
+
+  - id: q10-amplify-nonprofit-app
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "Amplify builds and hosts web and mobile front ends"
+    task: "3.8"
+    level: application
+    topics: [amplify]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A food bank's only developer keeps its volunteer website's code in a Git repository. She wants
+        every commit she makes deployed automatically, with no servers to look after, and wants to add
+        volunteer sign-in to the food bank's phone app without wiring AWS services by hand. Which
+        service fits both needs?
+    choices:
+      - id: beanstalk
+        text: AWS Elastic Beanstalk
+        variants:
+          - text: Elastic Beanstalk
+          - text: An AWS Elastic Beanstalk environment
+        explanation:
+          text: Beanstalk runs server-side applications on EC2 instances it builds in your account. It isn't a front-end and mobile toolkit.
+      - id: lightsail
+        text: Amazon Lightsail
+        variants:
+          - text: Lightsail
+          - text: An Amazon Lightsail instance
+        explanation:
+          text: Lightsail rents a simple server at a fixed monthly price. She would set it up, update it and deploy to it herself.
+      - id: ec2
+        text: Amazon EC2
+        variants:
+          - text: EC2
+          - text: An Amazon EC2 instance
+        explanation:
+          text: An EC2 instance is a server for her to run and patch, the opposite of what she wants.
+      - id: amplify
+        text: AWS Amplify
+        variants:
+          - text: Amplify
+          - text: The AWS Amplify tools
+        explanation:
+          text: Correct. Amplify Hosting builds and deploys every commit from Git, and Amplify's libraries add sign-in and other back-end features to web and mobile apps.
+    correct_answers: [amplify]
+    hint:
+      text: One service is aimed at front-end and mobile developers rather than at running servers.
+    explanation:
+      text: |
+        AWS Amplify is a set of tools and services for building, connecting and hosting web and mobile
+        apps. Amplify Hosting connects to a Git repository and builds and deploys every change; its
+        libraries and back-end tools add sign-in, data and file storage. Elastic Beanstalk and Lightsail
+        are for running servers and server-side applications.
+
+  - id: q10-iot-vineyard-sensors
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "IoT Core connects devices and routes what they send"
+    task: "3.8"
+    level: application
+    topics: [iot-core]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A vineyard puts 2,000 soil-moisture sensors in its fields. Each sensor must prove its identity
+        to AWS and publish small readings over MQTT, and the readings must be routed to a store for
+        history and to an alerting service when the soil is too dry. Which service is built for this?
+    choices:
+      - id: iot-core
+        text: AWS IoT Core
+        variants:
+          - text: IoT Core
+          - text: The AWS IoT Core service
+        explanation:
+          text: Correct. IoT Core connects devices securely, authenticates each with a certificate, speaks MQTT and routes messages with rules.
+      - id: data-streams
+        text: Amazon Kinesis Data Streams
+        variants:
+          - text: Kinesis Data Streams
+          - text: A Kinesis data stream
+        explanation:
+          text: Kinesis streams data once it's in AWS. It doesn't connect, authenticate or manage devices.
+      - id: greengrass
+        text: AWS IoT Greengrass
+        variants:
+          - text: IoT Greengrass
+          - text: The AWS IoT Greengrass software
+        explanation:
+          text: Greengrass is software that runs on devices, and it's out of the exam's scope. The device gateway in AWS is IoT Core.
+      - id: sqs
+        text: Amazon SQS
+        variants:
+          - text: SQS
+          - text: An Amazon SQS queue
+        explanation:
+          text: SQS is a message queue between applications, with no device identity or MQTT.
+    correct_answers: [iot-core]
+    hint:
+      text: Three words in the request point at devices, not applications.
+    explanation:
+      text: |
+        AWS IoT Core lets connected devices talk securely to AWS services. Devices usually speak MQTT, a
+        lightweight protocol; each proves its identity, typically with a certificate; and IoT rules send
+        matching messages to other services such as S3, Lambda or SNS. Analyzing large streams once the
+        data is in AWS is a job for the analytics services.
+
+  - id: q10-iot-rule-greenhouse
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "IoT Core connects devices and routes what they send"
+    task: "3.8"
+    level: understanding
+    topics: [iot-core]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A greenhouse's sensors send temperature readings to AWS IoT Core. The grower wants only readings
+        above 35 °C to go to an Amazon SNS topic that texts her. Which part of IoT Core does that
+        selection and hand-off?
+    choices:
+      - id: device-shadow
+        text: The Device Shadow, which keeps each sensor's last reported state
+        variants:
+          - text: Each sensor's Device Shadow, holding its last reported state
+          - text: The Device Shadow storing every sensor's last reported state
+        explanation:
+          text: A Device Shadow lets apps read a device's last state, even while it's offline. It doesn't pick out readings and send them on.
+      - id: iot-rule
+        text: An IoT rule, which filters the messages and sends matches to SNS
+        variants:
+          - text: An IoT rule that filters messages and passes matches on to SNS
+          - text: An IoT rule, filtering the readings and sending matches to SNS
+        explanation:
+          text: Correct. A rule is a SQL-like filter on incoming messages that sends matching data to other AWS services.
+      - id: mqtt
+        text: MQTT, which decides which readings each topic should send on
+        variants:
+          - text: MQTT itself, deciding which readings each topic sends on
+          - text: The MQTT protocol, choosing which readings go out per topic
+        explanation:
+          text: MQTT is how devices publish messages to topics. It doesn't filter them or route them to other services.
+      - id: certificate
+        text: The sensor's certificate, which allows only warm readings out
+        variants:
+          - text: Each sensor's certificate, letting only warm readings through
+          - text: The certificate on the sensor, passing only warm readings on
+        explanation:
+          text: A certificate proves which device is talking. It doesn't look at what the reading says.
+    correct_answers: [iot-rule]
+    explanation:
+      text: |
+        IoT Core itself doesn't send the warning. An IoT rule, a SQL-like filter on incoming messages,
+        picks the readings that matter and hands them to another service, such as an SNS topic that emails
+        or texts. Another rule could send every reading to S3 for history.
+
+  - id: q10-device-shadow-vending
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "IoT Core connects devices and routes what they send"
+    task: "3.8"
+    level: application
+    topics: [iot-core]
+    type: multiple_choice
+    selection: single
+    prompt:
+      text: |
+        A company's vending machines report their stock levels through AWS IoT Core. Its app must show
+        each machine's last known stock even while a machine's mobile connection drops for a few minutes.
+        Which IoT Core feature helps?
+    choices:
+      - id: device-shadow
+        text: The Device Shadow, a stored copy of each machine's last reported state
+        variants:
+          - text: Device Shadow, keeping a copy of each machine's last reported state
+          - text: Each machine's Device Shadow, holding its last reported state
+        explanation:
+          text: Correct. The app reads the shadow instead of the machine, and the machine updates it when it reconnects.
+      - id: iot-rule
+        text: An IoT rule that resends old readings when a machine is offline
+        variants:
+          - text: An IoT rule resending earlier readings while a machine is offline
+          - text: An IoT rule that replays past readings whenever a machine drops off
+        explanation:
+          text: A rule filters and routes incoming messages. It doesn't stand in for an offline device.
+      - id: kinesis-replay
+        text: Kinesis Data Streams replay, which reads the machine's records again
+        variants:
+          - text: Replay in Kinesis Data Streams, reading the machine's records again
+          - text: Kinesis Data Streams, replaying the machine's records once more
+        explanation:
+          text: Replay lets your programs reread a stream. It isn't how an app gets a device's current state from IoT Core.
+      - id: greengrass
+        text: AWS IoT Greengrass, which keeps the app connected to each machine
+        variants:
+          - text: AWS IoT Greengrass, holding the app's connection to each machine
+          - text: IoT Greengrass, which keeps each machine linked to the app
+        explanation:
+          text: Greengrass is software that runs on devices, and it's out of the exam's scope.
+    correct_answers: [device-shadow]
+    hint:
+      text: The app needs a copy of the state that doesn't depend on the machine being online.
+    explanation:
+      text: |
+        A Device Shadow is IoT Core's stored copy of each device's last reported state. Apps read it, or
+        set a desired state, even while the device is offline, and the device updates it when it
+        reconnects.
+
+  - id: q10-euc-iot-customer-side-two
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "Your side of the line"
+    task: "2.1"
+    level: understanding
+    topics: [shared-responsibility, workspaces, iot-core]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A manufacturer uses Amazon WorkSpaces for its designers and AWS IoT Core for its factory
+        sensors. Under the shared responsibility model, which two tasks are the manufacturer's? (Select
+        TWO.)
+    choices:
+      - id: streaming-servers
+        text: Patching the servers that stream the WorkSpaces desktops
+        variants:
+          - text: Keeping the WorkSpaces streaming servers patched
+          - text: Applying patches to the servers behind the WorkSpaces streams
+        explanation:
+          text: AWS runs the streaming servers. What's installed on the desktops themselves is the customer's.
+      - id: who-signs-in
+        text: Deciding who may sign in to the desktops, through a directory and MFA
+        variants:
+          - text: Controlling desktop sign-in through a directory and MFA
+          - text: Choosing who can log in to the desktops, with a directory and MFA
+        explanation:
+          text: Correct. Who may sign in, what's installed and settings such as clipboard use stay with the customer.
+      - id: device-gateway
+        text: Keeping IoT Core's device gateway running for the sensors
+        variants:
+          - text: Running the IoT Core gateway that the sensors connect to
+          - text: Keeping the device gateway of IoT Core available
+        explanation:
+          text: AWS runs the device gateway. It's a managed service.
+      - id: device-certs
+        text: Managing each sensor's certificate and policy, and its software
+        variants:
+          - text: Looking after each sensor's certificate, policy and software
+          - text: Each sensor's certificate and policy, plus the software on it
+        explanation:
+          text: Correct. Device identity, permissions, the sensors' software and where rules send the data are the customer's.
+      - id: hardware-failures
+        text: Replacing failed hardware in the data centers behind both services
+        variants:
+          - text: Swapping out failed hardware behind both services
+          - text: Fixing hardware failures in the data centers for both services
+        explanation:
+          text: Physical hardware and data centers are always AWS's side of the line.
+    correct_answers: [who-signs-in, device-certs]
+    explanation:
+      text: |
+        AWS runs the streaming servers, the device gateway and the infrastructure underneath. The
+        customer keeps its users and their permissions (a directory, MFA), what's installed on the
+        desktops, each device's certificate and policy, the software on the sensors, and where IoT rules
+        send the data.
+
+  - id: q10-resort-needs-matched-two
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "Worked example: finishing the owner's requests"
+    task: "3.8"
+    level: application
+    topics: [end-user-computing, iot-core, amplify, ses, connect]
+    type: multiple_choice
+    selection: multiple
+    selection_count: 2
+    prompt:
+      text: |
+        A holiday resort lists five needs and a proposed service for each. Which two matches are
+        correct? (Select TWO.)
+    choices:
+      - id: thermostats-iot
+        text: Room thermostats reporting temperatures to AWS, matched with AWS IoT Core
+        variants:
+          - text: AWS IoT Core, for room thermostats that report temperatures to AWS
+          - text: Thermostats in the rooms sending temperatures to AWS, with AWS IoT Core
+        explanation:
+          text: Correct. Devices connect through IoT Core.
+      - id: queue-ses
+        text: A front-desk phone line with a queue for callers, matched with Amazon SES
+        variants:
+          - text: Amazon SES, for a front-desk phone line that queues callers
+          - text: A phone line at the front desk with a caller queue, with Amazon SES
+        explanation:
+          text: SES sends email. A phone line with queues is Amazon Connect (Connect Customer).
+      - id: website-amplify
+        text: A booking website deployed from Git on every commit, matched with AWS Amplify
+        variants:
+          - text: AWS Amplify, for a booking site deployed from Git on each commit
+          - text: A booking website that deploys from Git with each commit, with AWS Amplify
+        explanation:
+          text: Correct. Amplify Hosting deploys every commit from the Git repository.
+      - id: auditors-applications
+        text: A whole desktop for the night auditors, matched with WorkSpaces Applications
+        variants:
+          - text: WorkSpaces Applications, for whole desktops for the night auditors
+          - text: Full desktops for the night auditors, with WorkSpaces Applications
+        explanation:
+          text: WorkSpaces Applications streams one or a few apps. A whole desktop is Amazon WorkSpaces.
+      - id: emails-connect
+        text: Booking confirmation emails to guests, matched with Amazon Connect
+        variants:
+          - text: Amazon Connect, for booking confirmation emails to guests
+          - text: Guests' booking confirmation emails, with Amazon Connect
+        explanation:
+          text: Connect is for conversations with customers. Confirmation emails are Amazon SES.
+    correct_answers: [thermostats-iot, website-amplify]
+    hint:
+      text: For each need, ask who is on the other end, then what they need.
+    explanation:
+      text: |
+        Ask who is on the other end. Staff needing a whole desktop get Amazon WorkSpaces, or WorkSpaces
+        Applications for one or two apps; customers on the phone get Amazon Connect, and customers by email
+        get Amazon SES; app users get a front end built and hosted with AWS Amplify; devices connect through
+        AWS IoT Core.
+
+flashcards:
+
+  - id: c10-glue-not-the-query
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Catalog: Glue records what your data looks like and gets it ready"
+    task: "3.7"
+    level: understanding
+    topics: [glue]
+    front:
+      text: A question asks which service *runs the query* over files in S3. Why is AWS Glue the wrong pick?
+    back:
+      text: Glue discovers, catalogs and transforms data so others can query it. It doesn't answer questions; a query service such as Athena does.
+
+  - id: c10-athena-table-definitions
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Catalog: Glue records what your data looks like and gets it ready"
+    task: "3.7"
+    level: recall
+    topics: [athena, glue]
+    front:
+      text: Where does Athena find the column names and types for a folder of files in S3?
+    back:
+      text: In a data catalog, normally the AWS Glue Data Catalog. A Glue crawler or a table you create in Athena puts the definition there.
+
+  - id: c10-streams-or-firehose
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Data Streams, Firehose or SQS: what happens after the data is read"
+    task: "3.7"
+    level: understanding
+    topics: [data-streams, data-firehose]
+    front:
+      text: Kinesis Data Streams or Amazon Data Firehose? Which question usually decides?
+    back:
+      text: Must your own programs read the records, perhaps several of them or again later? Then Data Streams. Just land them in a store with no code? Then Firehose.
+
+  - id: c10-sqs-not-a-stream
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Data Streams, Firehose or SQS: what happens after the data is read"
+    task: "3.7"
+    level: understanding
+    topics: [sqs, data-streams]
+    front:
+      text: Why is Amazon SQS the wrong answer when several programs must read the same flow of records?
+    back:
+      text: SQS hands each message to one worker, which deletes it when the job is done. Nothing stays for a second program or a replay.
+
+  - id: c10-kda-sql-as-answer
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Data Streams, Firehose or SQS: what happens after the data is read"
+    task: "3.7"
+    level: recall
+    topics: [kinesis, retired-services]
+    front:
+      text: How should you treat "Kinesis Data Analytics for SQL" when it appears as an answer?
+    back:
+      text: As a wrong answer. New SQL applications stopped on 2025-10-15 and AWS began deleting existing ones on 2026-01-27 (checked 2026-10-24).
+
+  - id: c10-athena-cost-driver
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "What you pay for (as of 2026-10-24)"
+    task: "3.7"
+    level: understanding
+    topics: [athena, cost]
+    front:
+      text: What sets the cost of an Athena query, and how do you lower it?
+    back:
+      text: The amount of data it scans. Compress the files, partition them, and convert them to a columnar format such as Parquet.
+
+  - id: c10-when-redshift-not-athena
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Worked example: the owner's sales dashboard"
+    task: "3.7"
+    level: understanding
+    topics: [redshift, athena]
+    front:
+      text: What signals that a pipeline's query step should move from Athena to Redshift?
+    back:
+      text: Regular, complex reports that join data combined from many sources, run again and again. Occasional questions over files in S3 stay with Athena.
+
+  - id: c10-dashboards-not-query
+    page: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    section: "Visualize: Quick Sight turns answers into dashboards"
+    task: "3.7"
+    level: understanding
+    topics: [quick-sight]
+    front:
+      text: A question asks for dashboards for business users. Why isn't the answer Athena or Redshift?
+    back:
+      text: They run the queries. Amazon Quick Sight draws the dashboards, using services such as Athena or Redshift as its data sources.
+
+  - id: c10-ai-method-questions
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "Worked example: three of the owner's requests"
+    task: "3.7"
+    level: understanding
+    topics: [ready-made-ai]
+    front:
+      text: In what order do you ask the questions that pick an AI service?
+    back:
+      text: 1. Does a ready-made service cover it (if not, SageMaker AI)? 2. What goes in? 3. Only if text goes in, what must come out?
+
+  - id: c10-documents-pictures-text
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "Pictures and documents: Rekognition sees, Textract reads"
+    task: "3.7"
+    level: understanding
+    topics: [textract, rekognition, comprehend]
+    front:
+      text: Textract, Rekognition or Comprehend? State the rule that tells them apart.
+    back:
+      text: Documents go to Textract, pictures of the world go to Rekognition, and text you already have goes to Comprehend.
+
+  - id: c10-when-sagemaker-ai
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "When nothing ready-made fits, SageMaker AI builds your own model"
+    task: "3.7"
+    level: understanding
+    topics: [sagemaker-ai]
+    front:
+      text: When does a team choose Amazon SageMaker AI over a ready-made AI service?
+    back:
+      text: When no ready-made service covers the need, typically because the answer must be learned from the team's own data. It takes ML skills.
+
+  - id: c10-comprehend-or-macie
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "Warm-up: what you remember"
+    task: "3.7"
+    level: understanding
+    topics: [comprehend, personal-data]
+    front:
+      text: Amazon Comprehend and Amazon Macie can both find personal data. What decides between them?
+    back:
+      text: Where the data is. Comprehend checks text that you send it; Macie scans data already stored in S3 buckets.
+
+  - id: c10-closed-to-new-customers
+    page: guide/10-data-ai-and-more/02-ai-and-ml.md
+    section: "Some AI names are closed or gone: recognize them, don't choose them"
+    task: "3.7"
+    level: understanding
+    topics: [retired-services]
+    front:
+      text: What does "closed to new customers" mean for a service such as Amazon Kendra?
+    back:
+      text: Existing customers keep using it; new customers can't sign up. Treat it as a wrong answer for a new design.
+
+  - id: c10-polly-synthesize-once
+    page: guide/10-data-ai-and-more/05-lab-14-polly-text-to-speech.md
+    section: "Recap"
+    task: "3.7"
+    level: understanding
+    topics: [polly, cost]
+    front:
+      text: Why should a site synthesize each fixed product description with Polly once, rather than on every play?
+    back:
+      text: Polly charges per character each time it makes speech. Stored audio can be replayed at no extra charge, so you pay for the characters once.
+
+  - id: c10-workspaces-family-by-view
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "WorkSpaces Applications streams single apps; Secure Browser streams one web browser"
+    task: "3.8"
+    level: understanding
+    topics: [workspaces, workspaces-applications, workspaces-secure-browser]
+    front:
+      text: How do you choose among WorkSpaces, WorkSpaces Applications and WorkSpaces Secure Browser?
+    back:
+      text: 'By what the user sees: a whole desktop (WorkSpaces), one or a few apps (WorkSpaces Applications), or one web browser (Secure Browser).'
+
+  - id: c10-workspaces-billing-choice
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "WorkSpaces gives each person a whole desktop that runs in AWS"
+    task: "3.8"
+    level: application
+    topics: [workspaces, cost]
+    front:
+      text: Which WorkSpaces billing mode suits part-time staff, and which suits full-time staff?
+    back:
+      text: Part-time, hourly with AutoStop (a low monthly fee plus the hours run). Full-time, past the break-even point, monthly (one fixed fee).
+
+  - id: c10-connect-lex-which
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "Connect runs the contact center; Lex is the bot inside it"
+    task: "3.8"
+    level: application
+    topics: [connect, lex]
+    front:
+      text: Which services does each need? A website chat bot; a call center staffed only by people; a call center with a bot first.
+    back:
+      text: Lex alone; Connect alone; Connect with a Lex bot inside its flow.
+
+  - id: c10-iot-rule-sends-alert
+    page: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    section: "IoT Core connects devices and routes what they send"
+    task: "3.8"
+    level: understanding
+    topics: [iot-core]
+    front:
+      text: Does AWS IoT Core itself send a "freezer too warm" text to the owner?
+    back:
+      text: No. An IoT rule picks out the warm readings and hands them to another service, such as an Amazon SNS topic, which sends the text.

@@ -151,11 +151,29 @@ warning on your own `q…` and `c…` items (answer-position bias, a correct cho
 missing explanations, duplicates). Ignore warnings about `term-`, `abbr-` and `diff-` cards: they
 come from the glossary and are handled separately.
 
+Then run the dump-similarity check on your module (it shows no dump text; never pass
+`--show-text`, and never open anything else in that repository):
+
+```bash
+python3 -I source/practice/build_bundle.py --only NN --out practice/work/tmp-NN --similarity practice/work/similarity/NN.jsonl
+cd /data/atc/study/study-aws-ccp-dump-analysis && python3 -I tools/check_similarity.py --candidates /data/atc/study/atc-study-aws_certified_cloud_practitioner/practice/work/similarity/NN.jsonl --summary
+```
+
+Rewrite any REJECT or REVIEW question with a new scenario and, where the reason is "same services +
+same correct answer", a different choice set. If a REVIEW can't be cleared without making the
+question worse, keep it and list it in your final message for the owner's review.
+
 Then read your file once as a learner: repeated items, two questions testing one fact the same
 way, any question with two defensible answers.
 
 ## Boundaries
 
+- Keep scratch files only in your own folder,
+  `/tmp/claude-1000/-data-atc-study-study-aws-certified-cloud-practitioner/90d7019c-4727-40dc-b5e8-2d3498ef2995/scratchpad/items-NN/`:
+  other writers share the scratchpad, and generic names collide.
+- Use the official service names in every wording (short or long form). Never drop or change a
+  name to make a question look less like another one: the similarity check must judge the real
+  question.
 - Write only your items file, your blueprint, and `practice/work/tmp-NN/`. Other writers are working
   on other modules at the same time; don't touch their files, the glossary, the builder or any
   guide page. If a page seems wrong, say so in your final message instead of changing it.

@@ -10,6 +10,7 @@ terms_introduced: [commitment, term, payment option, Savings Plans, Compute Savi
 pillars: [cost-optimization, reliability]
 facts_checked: 2026-10-24
 sources:
+  - "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cr-concepts.html"
   - "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html"
   - "https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html"
   - "https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html"
@@ -265,7 +266,7 @@ By default your instances share physical servers with other customers' instances
 
 ## Capacity Reservations: a guarantee, not a discount
 
-An **On-Demand Capacity Reservation** holds EC2 capacity for a chosen instance type in **one AZ**, so your instances can launch when you need them ([Capacity Reservations](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html)). One for immediate use needs no commitment: cancel it any time. One booked for a future date needs a commitment for a set duration.
+An **On-Demand Capacity Reservation** holds EC2 capacity for a chosen instance type in **one AZ**, so your instances can launch when you need them ([Capacity Reservations](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html)). One for immediate use needs no commitment: cancel it any time. One booked for a future date (5 to 120 days ahead) commits you to keeping it for a minimum period, at least 14 days for most instance types, and needs at least 32 vCPUs ([Capacity Reservation concepts](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cr-concepts.html), checked 2026-10-24).
 
 It's charged at the **On-Demand rate whether you run instances in it or not**. When a matching instance runs in it, you pay for the instance and nothing extra; empty slots are billed as unused reservation ([Capacity Reservation pricing and billing](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/capacity-reservations-pricing-billing.html)).
 
@@ -282,7 +283,7 @@ You may have read that reserving capacity lowers the price, as a Reserved Instan
 
 <details><summary>Feedback</summary>
 
-**C is right.** It guarantees the capacity in that AZ without a long commitment. Booked ahead for next month's date, it needs a set duration, so the bakery books it for the launch day and pays the On-Demand rate for that time, used or not.
+**C is right.** It's the only choice that guarantees capacity in that AZ. Booked ahead for next month's date, it commits the bakery to at least 14 days at the On-Demand rate, used or not (ten small servers may also fall short of the 32-vCPU minimum, so check the size). A reservation created on the morning itself needs no commitment and can be cancelled after the launch, but nothing is guaranteed until it's created. Either way, it's far less than A's three years.
 
 - **A is wrong.** A zonal one would hold capacity, but three years of payments for one day is a costly mistake.
 - **B is wrong.** Spot is the opposite of guaranteed: capacity may not be there, and it can be taken back.
@@ -419,7 +420,7 @@ Teams review usage before they commit, commit to what they're sure of, and add m
 
    <details><summary>Feedback</summary>
 
-   (a) **A Savings Plan or Reserved Instance:** steady and proven. (b) **On-Demand:** short; a commitment would sit idle. (c) **Spot:** interruptible and flexible. (d) **An On-Demand Capacity Reservation** for the weekend (created when needed and cancelled afterwards; one booked ahead for a future date needs a set duration): a guarantee with no long commitment, and no discount unless combined with a Savings Plan or Regional Reserved Instance.
+   (a) **A Savings Plan or Reserved Instance:** steady and proven. (b) **On-Demand:** short; a commitment would sit idle. (c) **Spot:** interruptible and flexible. (d) **An On-Demand Capacity Reservation** for the weekend (created when needed and cancelled afterwards, or booked ahead with at least 14 days' commitment): a guarantee with no long commitment, and no discount unless combined with a Savings Plan or Regional Reserved Instance.
 
    </details>
 
