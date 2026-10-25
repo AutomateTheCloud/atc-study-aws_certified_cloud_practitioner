@@ -110,7 +110,7 @@ The cheapest migration is the one you don't do. Before planning any moves, sort 
 
 **Long description.** A horizontal bar chart, 0 to 70 percent, of average CPU and memory use over 90 days for the chain's ten applications (made-up figures). Two shaded zones: below 5 percent, zombie; 5 to 20 percent, idle. Recipe archive 2 percent, zombie. Payroll 8 percent, idle, highlighted, with the note "idle by the number, yet it pays everyone each month". Shop tools (about 30 small apps) 12 percent, idle. Accounting 16 percent, idle. Chain website 22 percent. Email and calendars 34 percent. Loyalty database 41 percent. Stock and ordering 48 percent. Oven control 57 percent. Wholesale portal 63 percent. Notes: AWS lists low use as a reason to consider retiring, and also as a reason to retain; business value decides.
 
-AWS lists low use under both strategies: you might retire a zombie, or keep it where it is. Low use is a reason to ask questions, not an answer. The question that decides is whether the application still has business value.
+AWS lists low use under both strategies: you might retire a zombie, or keep it where it is. Low use is a reason to ask questions. What decides the answer is whether the application still has business value.
 
 > **Your turn:** Use AWS's criteria. For each application, say retire or retain, and name the criterion. (a) The chain's oven control, which talks directly to the controllers on the central bakery's ovens. (b) The chain's accounting, moved to new servers with a new license eight months ago. (c) Outside the chain's portfolio, another company's old staff-newsletter site that has had no visitors in five months.
 
