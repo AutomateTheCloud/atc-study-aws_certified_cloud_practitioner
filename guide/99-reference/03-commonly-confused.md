@@ -86,7 +86,7 @@ The exam's wrong answers are often a near neighbor of the right one. These 267 g
   - Taught in: [Computers and servers](../01-on-ramp/01-computers-and-servers.md)
 - **[IPv4](01-glossary.md#i)** · **[IPv6](01-glossary.md#i)**
   - IPv4: IPv4 addresses are four numbers separated by dots, and they have run out; IPv6 addresses are groups of letters and digits separated by colons, with vastly more of them.
-  - IPv6: IPv6 addresses are groups separated by colons, with plenty to go round; IPv4 addresses are four numbers separated by dots, and they have run out.
+  - IPv6: IPv6 addresses are groups separated by colons, with plenty to go around; IPv4 addresses are four numbers separated by dots, and they have run out.
   - Taught in: [Networks, IP addresses, DNS and HTTPS](../01-on-ramp/02-networks-ip-dns-https.md)
 - **[memory](01-glossary.md#m)** · **[storage](01-glossary.md#s)**
   - memory: Memory holds the work in progress and empties when the power goes off; storage is bigger and slower, and keeps files and data with the power off.

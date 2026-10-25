@@ -3,7 +3,7 @@
 format_version: '0.2'
 id: b247b7a9-9b89-4b04-8cd5-17aed3c38d61
 title: Practice Questions and Flashcards for the AWS Certified Cloud Practitioner Exam (CLF-C02)
-version: 0.3.1
+version: 0.3.2
 language: en
 subject: Cloud computing
 tags:
@@ -63019,7 +63019,7 @@ flashcards:
     text: What does **agility** mean?
   back:
     text: 'The ability to get new resources, and try new ideas, quickly and cheaply: a new resource takes
-      minutes rather than weeks, and you can delete it afterwards.'
+      minutes rather than weeks, and you can delete it afterward.'
   tags:
   - module-02
   - clf-02-03
@@ -65140,7 +65140,7 @@ flashcards:
   front:
     text: What does **Amazon WorkSpaces** mean?
   back:
-    text: An AWS service giving each user a virtual desktop, running Windows or Linux in AWS, streamed
+    text: An AWS service that gives each user a virtual desktop, running Windows or Linux in AWS, streamed
       to their own device as pixels. It bills monthly, or hourly with AutoStop, which suits part-time
       staff.
   tags:
@@ -65231,9 +65231,9 @@ flashcards:
   front:
     text: What does **Amazon WorkSpaces Secure Browser** mean?
   back:
-    text: An AWS service, formerly WorkSpaces Web, giving users an isolated web browser that runs in AWS,
-      streamed to their own browser, for internal websites and SaaS apps. It is closed to new customers
-      from 2026-10-29.
+    text: An AWS service, formerly WorkSpaces Web, that gives users an isolated web browser that runs
+      in AWS, streamed to their own browser, for internal websites and SaaS apps. It is closed to new
+      customers from 2026-10-29.
   tags:
   - module-10
   - clf-10-03
@@ -66211,8 +66211,8 @@ flashcards:
     text: What does **AWS Application Discovery Service** mean?
   back:
     text: An AWS service that collects data about on-premises servers and databases, their use and the
-      connections between them, to group them into applications. Closed to new customers; AWS points to
-      AWS Transform.
+      connections between them, to group them into applications. It is closed to new customers, and AWS
+      points to AWS Transform.
   tags:
   - module-13
   - clf-13-03
@@ -68198,7 +68198,8 @@ flashcards:
     text: What does **AWS Migration Acceleration Program (MAP)** mean?
   back:
     text: AWS's program for organizations migrating at scale, in three phases (assess, mobilize, and migrate
-      and modernize), offering tools, training, partner expertise and funding toward early migration costs.
+      and modernize). It offers tools, training, partner expertise and funding toward early migration
+      costs.
   tags:
   - module-13
   - clf-13-01
@@ -68232,7 +68233,7 @@ flashcards:
     text: What does **AWS Migration Hub** mean?
   back:
     text: An AWS service that tracks the status of each application's migration in one place, whichever
-      tool does the moving; it moves nothing. Closed to new customers; AWS points to AWS Transform.
+      tool does the moving; it moves nothing. It is closed to new customers, and AWS points to AWS Transform.
   tags:
   - module-13
   - clf-13-03
@@ -68618,9 +68619,9 @@ flashcards:
   front:
     text: What does **AWS Resource Access Manager (AWS RAM)** mean?
   back:
-    text: Shares a resource you create once, such as VPC subnets or a transit gateway, with chosen accounts,
-      your organization or its OUs. The sharing account keeps owning it; the others use it within the
-      share's permissions.
+    text: A service that shares a resource you create once, such as VPC subnets or a transit gateway,
+      with chosen accounts, your organization or its OUs. The sharing account keeps owning it; the others
+      use it within the share's permissions.
   tags:
   - module-09
   - clf-09-05
@@ -69731,7 +69732,7 @@ flashcards:
     text: What does **AWS-generated tag** mean?
   back:
     text: A cost allocation tag that AWS creates and applies, such as aws:createdBy for who created a
-      resource. Only the management account activates it, and it covers only resources created afterwards.
+      resource. Only the management account activates it, and it covers only resources created afterward.
   tags:
   - module-11
   - clf-11-04
@@ -70545,7 +70546,7 @@ flashcards:
   front:
     text: What does **business continuity** mean?
   back:
-    text: Keeping the business running through a major disruption, not just restoring it afterwards; one
+    text: Keeping the business running through a major disruption, not just restoring it afterward; one
       of the reasons to use more than one Region.
   tags:
   - module-03
@@ -73422,8 +73423,8 @@ flashcards:
     text: What does **default VPC** mean?
   back:
     text: The VPC AWS creates in each Region of every account, with a public subnet in every Availability
-      Zone, an internet gateway and automatic public IPv4 addresses. Handy for a first test, but every
-      subnet in it is public.
+      Zone, an internet gateway and automatic public IPv4 addresses. It's handy for a first test, but
+      every subnet in it is public.
   tags:
   - module-07
   - clf-07-01
@@ -79287,7 +79288,7 @@ flashcards:
   front:
     text: What does **milestone** mean?
   back:
-    text: A saved record of a workload's review in the Well-Architected Tool, which can't be changed afterwards,
+    text: A saved record of a workload's review in the Well-Architected Tool, which can't be changed afterward,
       so a later review can be compared with it to show progress. Deleting the workload deletes its milestones.
   tags:
   - module-14
@@ -79634,9 +79635,9 @@ flashcards:
   front:
     text: What does **NAT gateway** mean?
   back:
-    text: Lets servers in private subnets connect out to the internet while outsiders can't connect in.
-      The usual, zonal kind sits in one AZ's public subnet with an Elastic IP address. Billed hourly and
-      per GB (see the lesson).
+    text: A gateway that lets servers in private subnets reach the internet while outsiders can't connect
+      in. The usual, zonal kind sits in one AZ's public subnet with an Elastic IP address. Billed hourly
+      and per GB.
   tags:
   - module-07
   - clf-07-01
@@ -80431,7 +80432,7 @@ flashcards:
   front:
     text: What does **Organizations access report** mean?
   back:
-    text: An IAM access report, run from an organization's management account, showing when the services
+    text: An IAM access report, run from an organization's management account, that shows when the services
       its service control policies allow were last used in each account.
   tags:
   - module-09
@@ -80516,7 +80517,7 @@ flashcards:
   front:
     text: What does **packet** mean?
   back:
-    text: One small piece of data travelling across a network, labeled with where it comes from and where
+    text: One small piece of data traveling across a network, labeled with where it comes from and where
       it is going.
   tags:
   - module-07
@@ -85263,8 +85264,8 @@ flashcards:
   front:
     text: What does **speech synthesis** mean?
   back:
-    text: Turning text into spoken audio, as Amazon Polly does. Polly returns the audio straight away,
-      so nothing is stored in your account unless you save it.
+    text: Turning text into spoken audio, as Amazon Polly does. Polly returns the audio right away, so
+      nothing is stored in your account unless you save it.
   tags:
   - module-10
   - clf-10-05
