@@ -1,8 +1,10 @@
-# Review report: CLF-C02 practice bundle, version 0.3.1
+# Review report: CLF-C02 practice bundle, version 0.3.2
 
 **Practice Questions and Flashcards for the AWS Certified Cloud Practitioner Exam (CLF-C02)**,
 built 2026-10-24 from the guide's Modules 01 to 14 and its glossary.
 
+- Version 0.3.2 (2026-10-25) changes only the wording of 15 flashcard backs, from the glossary's style
+  pass; no question, choice or `id` changed, so the checks below still apply.
 - Bundle: `clf-c02-practice.waymark` (OpenWaymark 0.2), built from `clf-c02-practice/study.yaml`.
 - **922 questions** (737 with one answer, 185 "Select TWO") and **1,693 flashcards**.
 - Each version kept every item and choice `id`: 0.1.0 had Modules 02–07, 0.2.0 added 08–13, and 0.3.0 adds
