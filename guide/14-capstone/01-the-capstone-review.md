@@ -118,9 +118,9 @@ For each question, note what the workload does well, what it lacks, and which pa
 
 > **Misconception:** "A review scores the workload, and a good workload has no findings."
 >
-> That's not right. The Framework calls a review a conversation, not an audit; its outcome is a set of actions, not a grade ([The review process](https://docs.aws.amazon.com/wellarchitected/latest/framework/the-review-process.html)). The Tool counts high and medium risks, but nobody passes or fails. A review that finds nothing probably asked too few questions.
+> It doesn't. The Framework calls a review a conversation, not an audit; its outcome is a set of actions, not a grade ([The review process](https://docs.aws.amazon.com/wellarchitected/latest/framework/the-review-process.html)). The Tool counts high and medium risks, but nobody passes or fails. A review that finds nothing probably asked too few questions.
 >
-> It's tempting because exams and audits are scored, and the Tool's risk counts look like a score. They are a to-do list.
+> The mix-up is natural: exams and audits are scored, and the Tool's risk counts look like a score. They are a to-do list.
 
 > **Your turn:** Ask the security starter question, SEC 4, of the inventory. Write one strength and one gap.
 

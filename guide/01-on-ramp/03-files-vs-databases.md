@@ -165,7 +165,7 @@ The engine also solves the shared-file problems:
 - **Rules.** The pickup date column accepts only dates, and no two orders can share an order number.
 - **All or nothing.** A **transaction** groups changes, such as "save the order and record the payment": either all are saved or none are, even if the power fails halfway. Once confirmed, it stays saved.
 
-> **Misconception:** "A spreadsheet is a database." That's not right. A spreadsheet has rows and columns, so it looks like a table, but it's a file. Online spreadsheets do merge several people's edits, but they don't enforce column types and unique keys, make changes all-or-nothing, or answer programs' queries the way a database engine does. It's tempting because the screen looks the same. The difference isn't the grid; it's the program in charge of the data.
+> **Misconception:** "A spreadsheet is a database." It isn't. A spreadsheet has rows and columns, so it looks like a table, but it's a file. Online spreadsheets do merge several people's edits, but they don't enforce column types and unique keys, make changes all-or-nothing, or answer programs' queries the way a database engine does. The mix-up is easy because the screen looks the same. The difference isn't the grid; it's the program in charge of the data.
 
 > **Your turn:** Answer the second prequestion. Sam changes order 1041 and Lee adds order 1044 at the same moment, but now the orders are in a database. What happens to each change, and why?
 

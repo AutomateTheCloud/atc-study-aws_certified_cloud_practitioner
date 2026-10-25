@@ -192,7 +192,7 @@ From the [AWS KMS pricing page](https://aws.amazon.com/kms/pricing/), checked 20
 
 ### "Compliance needs CloudHSM" is wrong
 
-You may have read that any regulated workload needs CloudHSM. That's not right. KMS keys are already protected by FIPS 140-3 Level 3 validated hardware, and AWS's own CloudHSM guide says to consider KMS if you want managed keys and don't need to operate your own HSMs. CloudHSM is the answer when a rule specifically requires single-tenant HSMs, or full control that KMS's shared, managed service can't give. It's tempting because "hardware security module" sounds stronger than "key service", when in fact KMS runs on HSMs too.
+You may have read that any regulated workload needs CloudHSM. That's wrong. KMS keys are already protected by FIPS 140-3 Level 3 validated hardware, and AWS's own CloudHSM guide says to consider KMS if you want managed keys and don't need to operate your own HSMs. CloudHSM is the answer when a rule specifically requires single-tenant HSMs, or full control that KMS's shared, managed service can't give. It's tempting because "hardware security module" sounds stronger than "key service", when in fact KMS runs on HSMs too.
 
 | | AWS KMS | AWS CloudHSM | AWS Certificate Manager |
 |---|---|---|---|

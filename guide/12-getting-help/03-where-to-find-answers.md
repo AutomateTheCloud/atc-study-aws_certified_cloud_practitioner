@@ -209,9 +209,9 @@ How do you know the address belongs to AWS? AWS publishes its **IP address range
 
 ### "Abuse goes to AWS Support" is wrong
 
-You may have read that you open a support case to report an attack from an AWS address. That's not right. AWS's own article says that AWS Support can't help with abuse reports, or with questions about notifications from Trust & Safety. Abuse goes through the abuse form, on any Support plan, and a support case only delays it.
+A common assumption is that you open a support case to report an attack from an AWS address. You don't. AWS's own article says that AWS Support can't help with abuse reports, or with questions about notifications from Trust & Safety. Abuse goes through the abuse form, on any Support plan, and a support case only delays it.
 
-It's tempting because Support is the AWS contact most people know, and because some security problems really do go to Support. The difference is whose resource is misbehaving:
+The mistake is natural, because Support is the AWS contact most people know and some security problems really do go to Support. The difference is whose resource is misbehaving:
 
 ![Three rows. Row 1, highlighted: traffic from someone else's AWS resource is attacking you; go to AWS Trust & Safety through the abuse report form. Row 2: AWS tells you that your resource is causing abuse; answer Trust & Safety and fix the resource. Row 3: someone is inside your own account; open a support case from that account, marked as an urgent security incident.](../../images/12-03-abuse-directions.svg)
 

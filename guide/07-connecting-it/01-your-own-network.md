@@ -157,7 +157,7 @@ A route alone doesn't put a server on the internet, though. For IPv4, the server
 
 ### "A public IP address makes a subnet public" is wrong
 
-You may have read that a subnet is public if its servers have public addresses. That's not right. The VPC User Guide defines a public subnet by its route to an internet gateway, and gives the opposite case as an example: a server with a public address in a subnet without that route can't talk to the internet at all ([Internet gateways](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html)). It's tempting because in the default VPC the two always come together, and even AWS's general glossary describes public subnets loosely. Follow the route.
+You may have read that a subnet is public if its servers have public addresses. That's wrong. The VPC User Guide defines a public subnet by its route to an internet gateway, and gives the opposite case as an example: a server with a public address in a subnet without that route can't talk to the internet at all ([Internet gateways](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html)). People believe it because in the default VPC the two always come together, and even AWS's general glossary describes public subnets loosely. Follow the route.
 
 The address still costs money. As of 2026-10-24, every public IPv4 address, in use or idle, costs **$0.005 an hour** in US East (N. Virginia), about $3.65 for a month of 730 hours ([Amazon VPC pricing](https://aws.amazon.com/vpc/pricing/); AWS Price List, AmazonVPC offer).
 
@@ -197,7 +197,7 @@ Sometimes a server in a private subnet must start a conversation with the intern
 
 ### "A NAT gateway is free" is wrong
 
-You may have read that NAT gateways are free, like internet gateways. That's not right. AWS charges for every hour a NAT gateway exists, and for every GB it processes; a partial hour bills as a full hour ([Pricing for NAT gateways](https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-pricing.html); [Amazon VPC pricing](https://aws.amazon.com/vpc/pricing/)). As of 2026-10-24 in US East (N. Virginia), that's **$0.045 an hour and $0.045 per GB**, plus its Elastic IP address at the public IPv4 rate (AWS Price List). Data transfer to the internet comes on top (lesson 07.04). It's tempting because both are called gateways and sit in the same route tables, and the internet gateway really is free.
+You may have read that NAT gateways are free, like internet gateways. They aren't. AWS charges for every hour a NAT gateway exists, and for every GB it processes; a partial hour bills as a full hour ([Pricing for NAT gateways](https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-pricing.html); [Amazon VPC pricing](https://aws.amazon.com/vpc/pricing/)). As of 2026-10-24 in US East (N. Virginia), that's **$0.045 an hour and $0.045 per GB**, plus its Elastic IP address at the public IPv4 rate (AWS Price List). Data transfer to the internet comes on top (lesson 07.04). It's tempting because both are called gateways and sit in the same route tables, and the internet gateway really is free.
 
 ![Stacked bars for a month of 730 hours, US East (N. Virginia) prices as of 2026-10-24: one NAT gateway with 10 GB, $36.95; one with 200 GB, $45.50; two, one per AZ, with 200 GB in total, $82.00; a gateway endpoint for 200 GB to S3 instead, $0.](../../images/07-01-nat-cost.svg)
 

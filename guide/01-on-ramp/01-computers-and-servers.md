@@ -164,7 +164,7 @@ sequenceDiagram
 
 **Long description.** A sequence between two parties: the customer's phone (the client) and the bakery's web server. First, the phone sends a request for the menu page; the server's program reads the menu from storage; the server sends back the page. Second, the phone sends a request containing an order; the server's program saves the order to storage; the server replies "order confirmed".
 
-> **Misconception:** "A server is a different kind of machine." That's not right. A server has the same four parts as your laptop. What differs is how it is built and kept, because it runs all day, every day, for many users at once. It's tempting because servers live out of sight, in locked rooms and data centers.
+> **Misconception:** "A server is a different kind of machine." It's the same kind of machine as your laptop, with the same four parts. What differs is how it is built and kept, because it runs all day, every day, for many users at once. It's tempting because servers live out of sight, in locked rooms and data centers.
 
 ![Two columns compared. A laptop: one person uses it; it has a screen and keyboard; it sleeps or is switched off often; one power supply and one disk; it sits on a desk. A server: many clients use it at once over the network; usually no screen or keyboard, managed over the network; runs all the time; often two power supplies and several disks so one failure doesn't stop it; mounted in a rack in a server room or data center. Both have a processor, memory, storage and a network connection.](../../images/01-01-laptop-vs-server.svg)
 

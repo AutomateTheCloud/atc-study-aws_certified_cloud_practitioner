@@ -106,9 +106,9 @@ So deleting an EC2 instance can delete its operating-system volume too. Module 0
 
 ### "Instance store survives a stop" is wrong
 
-You may have read that instance store data is still there after you stop and start the server. That's not right. AWS says it persists through a reboot, but a stop, hibernation or termination erases every block.
+You may have read that instance store data is still there after you stop and start the server. It's gone. AWS says it persists through a reboot, but a stop, hibernation or termination erases every block.
 
-It's tempting because a reboot keeps the data, and "stop" sounds like a longer reboot. It isn't: instance store disks belong to the physical computer, and a stop releases them. Copy anything you need to keep to EBS, S3 or EFS.
+The mistake is easy because a reboot keeps the data, and "stop" sounds like a longer reboot. It isn't: instance store disks belong to the physical computer, and a stop releases them. Copy anything you need to keep to EBS, S3 or EFS.
 
 > **Your turn:** The bakery's nephew wants to keep the only copy of the order database on instance store, "because it's the fastest disk". Give him two reasons in two sentences why that's a bad idea, and say which block storage to use instead.
 
