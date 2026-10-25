@@ -58,7 +58,7 @@ The case appears in Support Center's case history, and you may also get an email
 
 - Lessons: [Support plans](../12-getting-help/01-support-plans.md#every-account-starts-on-basic-which-answers-account-questions-but-not-technical-ones); [Where to find answers](../12-getting-help/03-where-to-find-answers.md).
 - Lab: [Lab 17, Stop 2](../12-getting-help/05-lab-17-support-center-tour.md#stop-2-which-cases-can-you-open), which looks at the case types without submitting one.
-- Simulation: [S15, Support plan chooser](../12-getting-help/06-sim-support-plan-chooser.md).
+- Optional simulation: [S15, Support plan chooser](../12-getting-help/06-sim-support-plan-chooser.md).
 
 ---
 

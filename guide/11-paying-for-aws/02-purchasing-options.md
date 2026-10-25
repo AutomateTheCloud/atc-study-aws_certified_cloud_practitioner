@@ -251,7 +251,7 @@ Separately, if capacity in one AZ must be guaranteed, add a Capacity Reservation
 
    </details>
 
-**Next:** [Estimate, watch, analyze](03-estimate-watch-analyze.md). To practice choosing, try [Simulation S13](07-sim-purchasing-option-tree.md).
+**Next:** [Estimate, watch, analyze](03-estimate-watch-analyze.md). To practice choosing, try the optional [Simulation S13](07-sim-purchasing-option-tree.md).
 
 ## Where to check the current details
 

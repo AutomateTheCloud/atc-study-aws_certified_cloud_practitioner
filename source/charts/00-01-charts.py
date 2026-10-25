@@ -5,8 +5,9 @@
 
 Usage: python3 -I source/charts/00-01-charts.py
 Writes images/00-01-path-hours.svg. The hours are estimates until the pilot,
-recomputed on 2026-10-25 after the course was shortened: the sum of the times
-the module briefs state (see the "Three paths" section of
+recomputed on 2026-10-25 after simulations, mixed sets, optional labs, the
+capstone review and "Beyond the exam" pages left the main path: the sum of the
+times the pages themselves state (see the "Three paths" section of
 guide/00-start-here/01-welcome.md for how). Change them there and here together.
 """
 import os
@@ -18,9 +19,9 @@ from chartkit import make_style, right_rounded, svg  # noqa: E402
 
 # path, who it is for, estimated hours (before the 3-4 hour guardrails primer)
 PATHS = [
-    ("Fast path", "already works in IT or with AWS", 17),
-    ("Standard path", "most learners", 36),
-    ("On-ramp path", "new to IT basics", 37.5),
+    ("Fast path", "already works in IT or with AWS", 16),
+    ("Standard path", "most learners", 32),
+    ("On-ramp path", "new to IT basics", 33.5),
 ]
 
 STYLE = make_style()
@@ -46,14 +47,14 @@ def path_hours():
         bw = pw * hours / xmax
         body.append(f'<path class="s1" d="{right_rounded(left, y, bw, 22)}"><title>{name}: about {hours} hours</title></path>')
         body.append(f'<text class="lab" x="{left + bw + 8:.1f}" y="{y + 16}">about {hours} h</text>')
-    body.append(f'<text class="tick" x="16" y="{h - 12}">Estimates until our pilot. At 5 hours a week: about 4, 8, and 8 to 9 weeks, including the primer.</text>')
+    body.append(f'<text class="tick" x="16" y="{h - 12}">Estimates until our pilot. At 5 hours a week: about 4, 7, and 7 to 8 weeks, including the primer.</text>')
     svg(
         "00-01-path-hours.svg", w, h,
         "Estimated study hours on each path",
         "Horizontal bar chart of estimated study hours, before the guardrails primer. "
-        "Fast path, for people who already work in IT or with AWS: about 17 hours. "
-        "Standard path, for most learners: about 36 hours. "
-        "On-ramp path, for people new to IT basics: about 37.5 hours. "
+        "Fast path, for people who already work in IT or with AWS: about 16 hours. "
+        "Standard path, for most learners: about 32 hours. "
+        "On-ramp path, for people new to IT basics: about 33.5 hours. "
         "Every path adds 3 to 4 hours for the guardrails primer.",
         body, STYLE,
     )

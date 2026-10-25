@@ -92,7 +92,7 @@ This lab sends 211 characters four times (we count the download as a request): o
 ### Listen in three engines
 
 3. In the console search bar, type `Polly` and open **Amazon Polly**. Choose **Text-to-Speech** (a tab or a menu entry). The text box opens with AWS's example text, read by the voice **Tiffany**, and the **Generative** engine is selected.
-   > **If something went wrong:** if a page says your account is on the Free plan and offers **Upgrade plan**, stop. Don't upgrade; read the rest of the lab instead and go on to the simulation.
+   > **If something went wrong:** if a page says your account is on the Free plan and offers **Upgrade plan**, stop. Don't upgrade; read the rest of the lab instead and go on to the module's mastery check.
 4. If **SSML** is turned on, turn it off: you are sending plain text, not speech markup. Delete the example text and paste the description. The counter under the box should read **211 characters used**.
 5. Under **Engine**, choose **Standard**. (The list also offers **Long-Form**, a fourth engine for long texts, which this lab doesn't use.) For the language, choose US English (shown as **English, US** or similar), and for the voice, choose **Joanna**. Joanna has Standard, Neural and Generative versions ([Available voices](https://docs.aws.amazon.com/polly/latest/dg/available-voices.html), checked 2026-10-24), so you hear one voice through three engines.
 6. Choose **Listen**.
@@ -133,7 +133,7 @@ You turned text into speech without building or training anything: Polly ran the
 >
 > </details>
 
-**Next:** [Simulation S12](06-sim-input-output-matcher.md) matches all six of the owner's requests, including this one, to services.
+**Next:** the module's [mastery check](07-check.md). For more practice first, the optional [Simulation S12](06-sim-input-output-matcher.md) matches all six of the owner's requests, including this one, to services.
 
 ## Where to check the current details
 

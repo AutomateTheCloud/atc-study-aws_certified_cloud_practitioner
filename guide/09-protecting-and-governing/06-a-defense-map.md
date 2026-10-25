@@ -139,7 +139,7 @@ AWS provides the tools and runs what lies under them; you choose the tools and c
 
    </details>
 
-**Next:** [Lab 12](07-lab-12-answer-the-auditor.md), where you answer the auditor with evidence from your own account, then [Simulation S9](08-sim-security-findings-tour.md) and [Simulation S11](10-sim-organizations-and-scps.md).
+**Next:** [Lab 12](07-lab-12-answer-the-auditor.md), where you answer the auditor with evidence from your own account, then the module's [mastery check](11-check.md). For more practice, try the optional [Simulation S9](08-sim-security-findings-tour.md) and [Simulation S11](10-sim-organizations-and-scps.md).
 
 ## Where to check the current details
 

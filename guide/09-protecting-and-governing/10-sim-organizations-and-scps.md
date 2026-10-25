@@ -1,7 +1,7 @@
 ---
 type: sim
 id: clf-09-10
-title: "Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill"
+title: "Optional simulation S11: Govern many accounts with OUs and SCPs, and pay one bill"
 tasks: ["2.2", "2.3", "4.2"]
 objectives: ["09.05a"]
 reader: "Adult studying alone, possibly new to IT, who has read lesson 09.05; about 20 minutes"
@@ -28,9 +28,11 @@ sources:
   - "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html"
 ---
 
-# Simulation S11: Govern the bakery chain's accounts with OUs and SCPs, and pay one bill
+# Optional simulation S11: Govern the bakery chain's accounts with OUs and SCPs, and pay one bill
 
 **Exam guide:** [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): tasks [2.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.2) and [2.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.3); [Domain 4, Billing, Pricing, and Support](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html) (12% of the exam): task [4.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.2).
+
+> **Note:** This simulation is optional practice for learners who want more decisions to make; the main path and the module's hours leave it out.
 
 ## Before you start: your account, your responsibility
 
@@ -141,6 +143,6 @@ SCPs set the ceiling at each level, and an action must be allowed at every level
 
 ---
 
-"Simulation S11: Govern many accounts with OUs and SCPs, and pay one bill" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional simulation S11: Govern many accounts with OUs and SCPs, and pay one bill" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt

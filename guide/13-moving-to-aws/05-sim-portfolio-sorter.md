@@ -1,7 +1,7 @@
 ---
 type: sim
 id: clf-13-05
-title: "Simulation S16: Sort the chain's ten applications into the 7 Rs"
+title: "Optional simulation S16: Sort the chain's ten applications into the 7 Rs"
 tasks: ["1.3", "1.4"]
 objectives: ["13.02a", "13.01a"]
 reader: "Adult studying alone, possibly new to IT, who has read lessons 13.01 to 13.04; about 20 minutes"
@@ -27,9 +27,11 @@ sources:
   - "https://docs.aws.amazon.com/snowball/latest/developer-guide/snowball-edge-availability-change.html"
 ---
 
-# Simulation S16: Choose a migration strategy for each of the chain's ten applications, and name who worries about what
+# Optional simulation S16: Choose a migration strategy for each of the chain's ten applications, and name who worries about what
 
 **Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): tasks [1.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.3) and [1.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.4).
+
+> **Note:** This simulation is optional practice for learners who want more decisions to make; the main path and the module's hours leave it out.
 
 ## Before you start: your account, your responsibility
 
@@ -136,6 +138,6 @@ Retire what nobody needs, retain what can't move yet, repurchase when a product 
 
 ---
 
-"Simulation S16: Sort the chain's ten applications into the 7 Rs" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional simulation S16: Sort the chain's ten applications into the 7 Rs" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt

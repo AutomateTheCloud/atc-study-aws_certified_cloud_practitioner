@@ -183,7 +183,7 @@ Four answers came from your own records and one from AWS's: the shared responsib
 >
 > </details>
 
-**Next:** [Simulation S9](08-sim-security-findings-tour.md), a tour of the findings the security services produce.
+**Next:** the module's [mastery check](11-check.md). For more practice first, the optional [Simulation S9](08-sim-security-findings-tour.md) is a tour of the findings the security services produce.
 
 ## Where to check the current details
 

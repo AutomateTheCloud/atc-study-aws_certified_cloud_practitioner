@@ -105,7 +105,7 @@ Elastic Load Balancing has three current types, chosen by the traffic they handl
 
 You may have read that the **Classic Load Balancer** is a current option alongside ALB and NLB. That's out of date: AWS calls it the previous generation and recommends moving to a current type ([What is Elastic Load Balancing?](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html)). It's tempting because older courses list four equal types.
 
-> **Example:** the owner wants two things: "Don't crash in December" and "Don't pay for six servers in January." So the group spans two AZs with a **minimum of 2** and a **maximum of 8**, target tracking follows the orders, and an **Application Load Balancer** serves the HTTPS site in both AZs. With lesson 02.02's made-up demand, the group runs 29 server-months a year instead of the 72 a fixed December-sized fleet would: elastic and highly available. The load balancer bills for every hour or partial hour, with or without customers ([Elastic Load Balancing pricing](https://aws.amazon.com/elasticloadbalancing/pricing/), checked 2026-10-24), so [Simulation S7](07-sim-elasticity-with-auto-scaling.md) practices this on paper.
+> **Example:** the owner wants two things: "Don't crash in December" and "Don't pay for six servers in January." So the group spans two AZs with a **minimum of 2** and a **maximum of 8**, target tracking follows the orders, and an **Application Load Balancer** serves the HTTPS site in both AZs. With lesson 02.02's made-up demand, the group runs 29 server-months a year instead of the 72 a fixed December-sized fleet would: elastic and highly available. The load balancer bills for every hour or partial hour, with or without customers ([Elastic Load Balancing pricing](https://aws.amazon.com/elasticloadbalancing/pricing/), checked 2026-10-24), so the optional [Simulation S7](07-sim-elasticity-with-auto-scaling.md) practices this on paper.
 
 ## Summary
 
@@ -158,7 +158,7 @@ You may have read that the **Classic Load Balancer** is a current option alongsi
 
    </details>
 
-**Next:** [Containers and serverless](03-containers-and-serverless.md), where you run code without managing servers at all. To practice this lesson, work through [Simulation S7](07-sim-elasticity-with-auto-scaling.md).
+**Next:** [Containers and serverless](03-containers-and-serverless.md), where you run code without managing servers at all. For more practice on this lesson, work through the optional [Simulation S7](07-sim-elasticity-with-auto-scaling.md).
 
 ## Where to check the current details
 

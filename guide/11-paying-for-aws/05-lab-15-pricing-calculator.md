@@ -5,7 +5,7 @@ title: "Lab 15: Price the bakery's setup in the AWS Pricing Calculator"
 tasks: ["4.1", "4.2", "1.4"]
 objectives: ["11.03a", "11.02a", "11.01a"]
 reader: "Adult studying alone, possibly new to IT, who has read lessons 06.01 and 06.02; about 45 minutes; a laptop or desktop with a web browser"
-prerequisites: ["clf-06-01", "clf-06-07"]
+prerequisites: ["clf-06-01", "clf-06-02"]
 terms_introduced: [hourly item, estimate link]
 pillars: [cost-optimization]
 lab: "15"

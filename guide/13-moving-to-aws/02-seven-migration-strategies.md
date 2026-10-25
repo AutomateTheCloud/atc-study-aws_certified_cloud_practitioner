@@ -177,7 +177,7 @@ The exam guide's example of a migration strategy is "database replication" (task
 
    </details>
 
-**Next:** [Migration tools](03-migration-tools.md). To sort all ten of the chain's applications, try [Simulation S16: the portfolio sorter](05-sim-portfolio-sorter.md).
+**Next:** [Migration tools](03-migration-tools.md). To sort all ten of the chain's applications, try the optional [Simulation S16: the portfolio sorter](05-sim-portfolio-sorter.md).
 
 ## Where to check the current details
 

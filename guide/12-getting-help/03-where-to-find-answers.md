@@ -177,7 +177,7 @@ The exam names two kinds of partner: **independent software vendors (ISVs)**, wh
 
    </details>
 
-**Next:** see these places for yourself in [Lab 17](05-lab-17-support-center-tour.md), then practice the plan choice in [Simulation S15](06-sim-support-plan-chooser.md).
+**Next:** see these places for yourself in [Lab 17](05-lab-17-support-center-tour.md), then the module's [mastery check](07-check.md). To practice the plan choice, try the optional [Simulation S15](06-sim-support-plan-chooser.md).
 
 ## Where to check the current details
 

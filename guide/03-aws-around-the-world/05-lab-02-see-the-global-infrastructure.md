@@ -191,7 +191,7 @@ You saw Regions with their codes, some off until enabled; each Region's AZs, nam
 >
 > </details>
 
-**Next:** choose resilience strategies for three businesses in [Simulation S2](06-sim-blast-radius.md).
+**Next:** the module's [mastery check](07-check.md). If you want more decisions to make first, choose resilience strategies for three businesses in the optional [Simulation S2](06-sim-blast-radius.md).
 
 ## Where to check the current details
 

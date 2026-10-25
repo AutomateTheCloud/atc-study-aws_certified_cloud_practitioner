@@ -1,7 +1,7 @@
 ---
 type: check
 id: clf-90-02
-title: "Mixed set 1: Modules 02 to 05"
+title: "Optional mixed set 1: Modules 02 to 05"
 tasks: ["1.1", "1.2", "1.4", "2.1", "2.3", "3.1", "3.2", "3.4", "3.6", "4.1"]
 objectives: []
 reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 to 05; about 45 minutes"
@@ -17,13 +17,15 @@ sources:
   - "https://aws.amazon.com/rds/faqs/"
 ---
 
-# Mixed set 1: thirty questions across Modules 02 to 05, shuffled together
+# Optional mixed set 1: thirty questions across Modules 02 to 05, shuffled together
 
 These thirty questions in the exam's style mix everything from the first four teaching modules, so each question makes you work out first what it's about. Mixing topics feels harder than a module's own check, but that harder practice is the kind that sticks.
 
 **Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): tasks [1.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.1), [1.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.2) and [1.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.4); [Domain 2, Security and Compliance](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html) (30% of the exam): tasks [2.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.1) and [2.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html#cloud-practitioner-02-task2.3); [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): tasks [3.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.1), [3.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.2), [3.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.4) and [3.6](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.6); [Domain 4, Billing, Pricing, and Support](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html) (12% of the exam): task [4.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.1).
 
 **For:** an adult studying alone, possibly new to IT, who has finished Modules 02 to 05. **Time:** about 45 minutes, plus time to go through the answer key.
+
+> **Note:** This mixed set is optional practice for learners who want more questions before the practice exams; the main path and its hours leave it out.
 
 ## What this set assumes
 
@@ -344,6 +346,6 @@ Next: [Module 06: Running applications](../06-running-applications/00-brief.md).
 
 ---
 
-"Mixed set 1: Modules 02 to 05" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional mixed set 1: Modules 02 to 05" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt

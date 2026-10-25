@@ -1,7 +1,7 @@
 ---
 type: sim
 id: clf-12-06
-title: "Simulation S15: Choose the cheapest Support plan that fits"
+title: "Optional simulation S15: Choose the cheapest Support plan that fits"
 tasks: ["4.3", "3.8"]
 objectives: ["12.01a"]
 reader: "Adult studying alone, possibly new to IT, who has read lesson 12.01 and done Lab 17; about 15 minutes"
@@ -25,9 +25,11 @@ sources:
   - "https://docs.aws.amazon.com/awssupport/latest/user/support-plans-eos.html"
 ---
 
-# Simulation S15: Choose the cheapest Support plan that fits the bakery and four other businesses
+# Optional simulation S15: Choose the cheapest Support plan that fits the bakery and four other businesses
 
 **Exam guide:** [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): task [3.8](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.8); [Domain 4, Billing, Pricing, and Support](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html) (12% of the exam): task [4.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.3).
+
+> **Note:** This simulation is optional practice for learners who want more decisions to make; the main path and the module's hours leave it out.
 
 ## Before you start: your account, your responsibility
 
@@ -145,6 +147,6 @@ flowchart TD
 
 ---
 
-"Simulation S15: Choose the cheapest Support plan that fits" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional simulation S15: Choose the cheapest Support plan that fits" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt

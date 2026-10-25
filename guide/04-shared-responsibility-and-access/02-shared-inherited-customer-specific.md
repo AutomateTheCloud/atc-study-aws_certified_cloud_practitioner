@@ -160,7 +160,7 @@ A **customer-specific control** depends only on what you build, so AWS has no ma
 
    </details>
 
-**Next:** try [Simulation S3: the responsibility slider](08-sim-responsibility-slider.md), then [Identities](03-identities.md), which starts the second half of the module: who can do what in your account.
+**Next:** [Identities](03-identities.md), which starts the second half of the module: who can do what in your account. For more practice first, try the optional [Simulation S3: the responsibility slider](08-sim-responsibility-slider.md).
 
 ## Where to check the current details
 

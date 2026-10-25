@@ -1,10 +1,10 @@
 ---
 type: sim
 id: clf-11-07
-title: "Simulation S13: Choose how to pay for each of the bakery's workloads"
+title: "Optional simulation S13: Choose how to pay for each of the bakery's workloads"
 tasks: ["4.1", "1.4"]
 objectives: ["11.02a"]
-reader: "Adult studying alone, possibly new to IT, who has read lesson 06.01 and done Simulation S7; about 30 minutes"
+reader: "Adult studying alone, possibly new to IT, who has read lesson 06.01 and done Simulation S7; about 20 minutes"
 prerequisites: ["clf-11-02"]
 terms_introduced: [baseline usage]
 pillars: [cost-optimization]
@@ -13,7 +13,7 @@ rung: L2-L3
 mode: sim
 free_plan: "not needed"
 signup_path: "none"
-time: "30 minutes"
+time: "20 minutes"
 cost: "$0 (no AWS account used)"
 worst_case: "$0"
 needs: []
@@ -29,9 +29,11 @@ sources:
   - "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html"
 ---
 
-# Simulation S13: Choose how to pay for each of the bakery's workloads, and how much to commit
+# Optional simulation S13: Choose how to pay for each of the bakery's workloads, and how much to commit
 
 **Exam guide:** [Domain 1, Cloud Concepts](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html) (24% of the exam): task [1.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html#cloud-practitioner-02-task1.4); [Domain 4, Billing, Pricing, and Support](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html) (12% of the exam): task [4.1](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html#cloud-practitioner-02-task4.1).
+
+> **Note:** This simulation is optional practice for learners who want more decisions to make; the main path and the module's hours leave it out.
 
 ## Before you start: your account, your responsibility
 
@@ -148,6 +150,6 @@ Ask the tree's questions in order. Commit only to the baseline, choose the flexi
 
 ---
 
-"Simulation S13: Choose how to pay for each of the bakery's workloads" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional simulation S13: Choose how to pay for each of the bakery's workloads" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt

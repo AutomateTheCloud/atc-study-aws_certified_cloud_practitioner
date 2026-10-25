@@ -10,9 +10,11 @@ Written 2026-10-25 so a new session can pick up without the old conversation. Re
   Labs 18–19), `90-exam-prep` (how-to, three mixed sets, two 65-item practice exams), `98-how-to`
   (nine task cards) and `99-reference` (glossary plus generated reference pages). 149 pages; the
   site contract check passes with 0 errors.
-- **Released:** tag `v0.3.0` (2026-10-25): the style pass, its follow-up fixes, one date format
-  and US spelling. The learning site's daily release workflow opens the publishing pull request.
-  The primer's latest release is `v0.1.2`. A further release follows the Lab 16 and 19 next-day
+- **Released:** tag `v0.4.0` (2026-10-25): the course cut to the exam's depth (design/optimization-brief.md):
+  a main path of about 32 hours, nine core labs, optional simulations and mixed sets, "Beyond the exam"
+  pages, "Exam guide" lines, a 456-term glossary and practice bundle 0.4.0. The learning site's daily
+  release workflow opens the publishing pull request; the site's redirects for the 11 merged pages
+  ship with it. The primer's latest release is `v0.1.2`. A further release follows the next-day lab
   checks.
 - **Practice bundle:** `practice/`, version 0.4.0: 780 questions (three wordings per choice) and
   929 flashcards. Every item was solved blind against the guide; every wording passes the

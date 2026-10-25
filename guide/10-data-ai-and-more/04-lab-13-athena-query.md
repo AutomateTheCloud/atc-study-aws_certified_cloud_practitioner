@@ -91,7 +91,7 @@ You delete all of it at the end.
 
 **Why this matters:** Athena is the "query" verb from [10.01](01-analytics-in-five-verbs.md): no server to size, and a bill that follows use, which is the cost design principle "[Adopt a consumption model](https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-dp.html)" and the performance principle "[Use serverless architectures](https://docs.aws.amazon.com/wellarchitected/latest/framework/perf-dp.html)". Because you pay for data scanned, storing data so queries read less of it is [PERF03-BP04 Implement strategies to improve query performance in data store](https://docs.aws.amazon.com/wellarchitected/latest/performance-efficiency-pillar/perf_data_implement_strategies_to_improve_query_performance.html), and deleting the results you no longer need is [COST04-BP03 Decommission resources](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_decomissioning_resources_decommission.html).
 
-> **New sign-up path:** IAM users can't sign in to the console there, and your Region is fixed (as of 2026-10-23). We haven't checked whether Athena is offered on that path. If it is, use your assigned Region wherever this lab says `us-east-1`. If it isn't, read the steps and go on to [Simulation S12](06-sim-input-output-matcher.md).
+> **New sign-up path:** IAM users can't sign in to the console there, and your Region is fixed (as of 2026-10-23). We haven't checked whether Athena is offered on that path. If it is, use your assigned Region wherever this lab says `us-east-1`. If it isn't, read the steps and go on to the optional [Simulation S12](06-sim-input-output-matcher.md) or the module's [mastery check](07-check.md).
 
 **About the screens:** labels in **bold** and the figures quoted are what we saw when we ran this lab end to end in our test account, on the Free plan, on 2026-10-25. AWS changes its console often. If a label differs, look for the option with the same meaning.
 
@@ -257,7 +257,7 @@ You answered a business question with SQL over a file, with no database to build
 >
 > </details>
 
-**Next:** [Lab 14](05-lab-14-polly-text-to-speech.md) has Amazon Polly read a product description aloud; then [Simulation S12](06-sim-input-output-matcher.md) matches all six of the owner's requests to services.
+**Next:** [Lab 14](05-lab-14-polly-text-to-speech.md) has Amazon Polly read a product description aloud; then the optional [Simulation S12](06-sim-input-output-matcher.md) matches all six of the owner's requests to services, before the module's [mastery check](07-check.md).
 
 ## Where to check the current details
 

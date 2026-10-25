@@ -173,7 +173,7 @@ Kinesis streams data once it's in AWS, but doesn't connect or authenticate devic
 
    </details>
 
-**Next:** practice the match with [Simulation S12: input → output matcher](06-sim-input-output-matcher.md), then take [the module's mastery check](07-check.md).
+**Next:** take [the module's mastery check](07-check.md). For more practice first, try the match in the optional [Simulation S12: input → output matcher](06-sim-input-output-matcher.md).
 
 ## Where to check the current details
 

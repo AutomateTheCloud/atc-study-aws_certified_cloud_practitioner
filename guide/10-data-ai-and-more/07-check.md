@@ -203,7 +203,7 @@ Take Check A closed-book, and write down your answers before you open any feedba
 
 ## Correction map
 
-For each miss, reread the section, then redo the matching decision in [Simulation S12](06-sim-input-output-matcher.md).
+For each miss, reread the section. For more practice, redo the matching decision in the optional [Simulation S12](06-sim-input-output-matcher.md).
 
 | Question | Objective | Reread |
 |---|---|---|

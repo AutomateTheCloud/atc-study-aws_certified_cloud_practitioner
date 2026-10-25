@@ -1,7 +1,7 @@
 ---
 type: sim
 id: clf-05-10
-title: "Simulation S6: Multi-AZ, read replica or backup: protect the order database"
+title: "Optional simulation S6: Multi-AZ, read replica or backup: protect the order database"
 tasks: ["3.4", "3.2"]
 objectives: ["05.05a"]
 reader: "Adult studying alone, possibly new to IT, who has read lessons 03.03 and 05.05; about 20 minutes"
@@ -25,9 +25,11 @@ sources:
   - "https://aws.amazon.com/backup/faqs/"
 ---
 
-# Simulation S6: Multi-AZ, read replica or backup: protect the order database
+# Optional simulation S6: Multi-AZ, read replica or backup: protect the order database
 
 **Exam guide:** [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): tasks [3.2](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.2) and [3.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.4).
+
+> **Note:** This simulation is optional practice for learners who want more decisions to make; the main path and the module's hours leave it out.
 
 ## Before you start: your account, your responsibility
 
@@ -123,6 +125,6 @@ Each extra copy has one job. A **Multi-AZ standby** keeps the database running t
 
 ---
 
-"Simulation S6: Multi-AZ, read replica or backup: protect the order database" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional simulation S6: Multi-AZ, read replica or backup: protect the order database" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt

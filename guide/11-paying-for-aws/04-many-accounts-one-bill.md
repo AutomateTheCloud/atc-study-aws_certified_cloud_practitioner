@@ -4,8 +4,8 @@ id: clf-11-04
 title: "Many accounts, one bill"
 tasks: ["4.2", "4.1"]
 objectives: ["11.04a"]
-reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 to 10, the guardrails primer, Simulation S11 and lesson 11.03; about 20 minutes; works on a phone"
-prerequisites: [clf-09-10, clf-11-02, clf-11-03, clf-02-06]
+reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 to 10, the guardrails primer, lesson 09.05 and lesson 11.03; about 20 minutes; works on a phone"
+prerequisites: [clf-09-05, clf-11-02, clf-11-03, clf-02-06]
 terms_introduced: [purchasing account, discount sharing, cost allocation tag, AWS-generated tag, user-defined tag, tag activation, tag backfill]
 pillars: [cost-optimization]
 facts_checked: 2026-10-25
@@ -29,7 +29,7 @@ An organization gets one bill, priced as if it were one account, so a commitment
 
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 20 minutes. Reading works on a phone.
 
-**Before you start:** [Simulation S11](../09-protecting-and-governing/10-sim-organizations-and-scps.md) introduced the chain's organization (the bakery grown into a small chain) and [lesson 11.02](02-purchasing-options.md) the commitments; the ideas you need are restated here.
+**Before you start:** [lesson 09.05](../09-protecting-and-governing/05-compliance-and-governance.md) introduced AWS Organizations, the optional [Simulation S11](../09-protecting-and-governing/10-sim-organizations-and-scps.md) the chain's organization (the bakery grown into a small chain), and [lesson 11.02](02-purchasing-options.md) the commitments; the ideas you need are restated here.
 
 ## Warm-up: what you remember
 
@@ -57,7 +57,7 @@ Try this before you read on, and guess if you're unsure: you tag a bucket `team=
 
 AWS Billing Conductor, which builds a second, custom-priced version of the bill for AWS partners and internal chargeback, is out of the exam's scope; for "one bill for many accounts", the answer is consolidated billing.
 
-> **Warning:** creating or joining an organization moves a Free plan account to the Paid plan ([Choosing a plan](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html), checked 2026-10-24). Learn this part from Simulation S11 and this lesson, not in your own account.
+> **Warning:** creating or joining an organization moves a Free plan account to the Paid plan ([Choosing a plan](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html), checked 2026-10-24). Learn this part from this lesson and, if you like, the optional Simulation S11, not in your own account.
 
 ## A commitment discount goes to its owner first, then to matching usage anywhere in the organization
 
@@ -156,7 +156,7 @@ It's easy to assume that tagging a resource is enough to see its costs by tag. I
 
    </details>
 
-**Next:** activate tags yourself in [Optional lab 16](06-lab-16-cost-allocation-tags.md), or go on to [Simulation S13](07-sim-purchasing-option-tree.md).
+**Next:** [Lab 15](05-lab-15-pricing-calculator.md), if you haven't done it, then the module's [mastery check](09-check.md). For more practice, activate tags yourself in [Optional lab 16](06-lab-16-cost-allocation-tags.md), or try the optional [Simulation S13](07-sim-purchasing-option-tree.md).
 
 ## Where to check the current details
 

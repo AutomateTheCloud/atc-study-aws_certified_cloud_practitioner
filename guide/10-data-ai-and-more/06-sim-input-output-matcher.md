@@ -1,7 +1,7 @@
 ---
 type: sim
 id: clf-10-06
-title: "Simulation S12: Match each request to a service by what goes in and what comes out"
+title: "Optional simulation S12: Match each request to a service by what goes in and comes out"
 tasks: ["3.7", "3.8"]
 objectives: ["10.01a", "10.02a", "10.03a"]
 reader: "Adult studying alone, possibly new to IT, who has read lessons 10.01 to 10.03; about 20 minutes"
@@ -34,9 +34,11 @@ sources:
   - "https://docs.aws.amazon.com/forecast/latest/dg/what-is-forecast.html"
 ---
 
-# Simulation S12: Match the owner's six requests to services by what goes in and what comes out
+# Optional simulation S12: Match the owner's six requests to services by what goes in and what comes out
 
 **Exam guide:** [Domain 3, Cloud Technology and Services](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html) (34% of the exam): tasks [3.7](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.7) and [3.8](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.8).
+
+> **Note:** This simulation is optional practice for learners who want more decisions to make; the main path and the module's hours leave it out.
 
 ## Before you start: your account, your responsibility
 
@@ -146,6 +148,6 @@ Name what goes in and what must come out, pick the ready-made service that turns
 
 ---
 
-"Simulation S12: Match each request to a service by what goes in and what comes out" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional simulation S12: Match each request to a service by what goes in and comes out" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt
