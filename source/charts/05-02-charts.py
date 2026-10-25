@@ -99,56 +99,5 @@ def protection_layers():
         "Durability, AWS's side of the line, sits under all five.", body, style=STYLE)
 
 
-def versioning():
-    """Four frames: upload, overwrite, delete (delete marker), restore."""
-    w = 700
-    body = [
-        '<text class="title" x="16" y="28">With versioning on, an overwrite or a delete can be undone</text>',
-        '<text class="sub" x="16" y="48">One key, cakes/birthday.jpg, in four moments. The top of each stack is what people see.</text>',
-    ]
-    fw, gap = 160, 12
-    top = 74
-    frames = [
-        ("1. Upload", [("v1: first photo", "cur")], "One version, the current one."),
-        ("2. Overwrite", [("v2: new photo", "cur"), ("v1: first photo", "ver")],
-         "v1 is kept underneath as a noncurrent version."),
-        ("3. Delete", [("Delete marker", "marker"), ("v2: new photo", "ver"), ("v1: first photo", "ver")],
-         "A marker goes on top. The photo looks gone; v1 and v2 are still stored."),
-        ("4. Restore", [("v2: new photo", "cur"), ("v1: first photo", "ver")],
-         "Delete the marker, and v2 is current again."),
-    ]
-    bh, bgap = 30, 6
-    base = top + 58 + 3 * (bh + bgap)  # the bottom of every stack lines up
-    for i, (head, stack, note) in enumerate(frames):
-        x = 16 + i * (fw + gap)
-        body.append(f'<rect class="panel" x="{x}" y="{top}" width="{fw}" height="250" rx="8"/>')
-        body.append(f'<text class="head" x="{x + 12}" y="{top + 24}">{head}</text>')
-        y = base - len(stack) * (bh + bgap)
-        for j, (label, cls) in enumerate(stack):
-            body.append(f'<rect class="{cls}" x="{x + 12}" y="{y}" width="{fw - 24}" height="{bh}" rx="5"/>')
-            body.append(f'<text class="cellt" x="{x + 22}" y="{y + 20}">{label}</text>')
-            if j == 0 and cls != "ver":
-                body.append(f'<text class="tag" x="{x + fw - 18}" y="{y - 5}" text-anchor="end">current</text>')
-            y += bh + bgap
-        text_lines(body, x + 12, base + 24, wrap(note, 22), cls="small", dy=16)
-        if i < len(frames) - 1:
-            ax = x + fw + 1
-            body.append(f'<line class="arrow" x1="{ax}" y1="{top + 125}" x2="{ax + gap - 2}" y2="{top + 125}"/>')
-            body.append(f'<path class="arrowhead" d="M{ax + gap - 6},{top + 121} L{ax + gap - 6},{top + 129} L{ax + gap - 1},{top + 125} Z"/>')
-    y = top + 250 + 24
-    y = text_lines(body, 16, y, wrap("Every version is a whole copy, and S3 bills each one. Three versions of a 2 MB photo are 6 MB of storage.", 112), cls="small")
-    y += 4
-    body.append(f'<text class="note" x="16" y="{y}">Our drawing of the S3 User Guide, "Retaining multiple versions of objects with S3 Versioning", checked 2026-10-24.</text>')
-    svg("05-02-versioning.svg", w, y + 14,
-        "S3 versioning in four moments: upload, overwrite, delete and restore",
-        "Four panels, left to right, for one key, cakes/birthday.jpg. The top of each stack is what people "
-        "see. 1, upload: one version, v1, the current one. 2, overwrite: v2 is current, and v1 is kept "
-        "underneath as a noncurrent version. 3, delete: a delete marker goes on top and is current; the "
-        "photo looks gone, but v1 and v2 are still stored. 4, restore: delete the marker, and v2 is current "
-        "again, with v1 underneath. Below: every version is a whole copy, and S3 bills each one; three "
-        "versions of a 2 MB photo are 6 MB of storage.", body, style=STYLE)
-
-
 if __name__ == "__main__":
     protection_layers()
-    versioning()

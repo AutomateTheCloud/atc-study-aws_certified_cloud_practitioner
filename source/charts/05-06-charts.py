@@ -148,66 +148,6 @@ def data_shapes():
         body, style=STYLE)
 
 
-def dynamodb_month():
-    """AWS's dated on-demand example: requests per day over one month, and the bill."""
-    w = 680
-    days = list(range(1, 31))
-    req = [20_000 if d <= 10 else (5_000_000 if d == 11 else 100_000) for d in days]
-    writes = sum(r / 2 for r in req)
-    reads = writes
-    wcost, rcost, scost = writes / 1e6 * 0.625, reads / 1e6 * 0.125, 2 * 0.25
-    assert round(writes) == 3_550_000 and round(wcost, 2) == 2.22 and round(rcost, 2) == 0.44
-    total = wcost + rcost + scost
-    body = [
-        '<text class="title" x="16" y="28">On-demand DynamoDB: a quiet month with one huge day</text>',
-        '<text class="sub" x="16" y="48">Requests per day (reads plus writes) in AWS\'s own pricing example, US East (N. Virginia)</text>',
-    ]
-    left, top, pw, ph = 70, 84, 590, 220
-    ymax = 5_000_000
-    for v in range(0, ymax + 1, 1_000_000):
-        yy = top + ph - ph * v / ymax
-        body.append(f'<line class="{"axis" if v == 0 else "grid"}" x1="{left}" x2="{left + pw}" y1="{yy:.1f}" y2="{yy:.1f}"/>')
-        lab = "0" if v == 0 else f"{v // 1_000_000} million"
-        body.append(f'<text class="tick" x="{left - 8}" y="{yy + 4:.1f}" text-anchor="end">{lab}</text>')
-    band = pw / 30
-    bw = band - 2  # a 2px surface gap between adjacent bars
-    for d, r in zip(days, req):
-        h = max(ph * r / ymax, 2)
-        x = left + band * (d - 1) + 1
-        body.append(f'<path class="s1" d="{top_rounded(x, top + ph - h, bw, h, 3)}"><title>Day {d}: {r:,} requests</title></path>')
-    for d in (1, 5, 11, 15, 20, 25, 30):
-        body.append(f'<text class="tick" x="{left + band * (d - 0.5):.1f}" y="{top + ph + 18}" text-anchor="middle">{d}</text>')
-    body.append(f'<text class="tick" x="{left + pw / 2}" y="{top + ph + 36}" text-anchor="middle">Day of the month</text>')
-    # Direct annotations for the three phases.
-    xa = left + band * 11 + 8
-    body.append(f'<text class="ann" x="{xa:.1f}" y="{top + 14}">Day 11: 5 million requests. The table</text>')
-    body.append(f'<text class="ann" x="{xa:.1f}" y="{top + 30}">kept up; nothing was set up in advance.</text>')
-    body.append(f'<text class="ann" x="{left + 4}" y="{top + ph - 30}">Days 1-10: 20,000</text>')
-    body.append(f'<text class="ann" x="{left + 4}" y="{top + ph - 14}">a day</text>')
-    body.append(f'<text class="ann" x="{left + band * 19:.1f}" y="{top + ph - 14}">Days 12-30: 100,000 a day</text>')
-    y = top + ph + 64
-    body.append(f'<text class="head" x="16" y="{y}">The month\'s bill: ${total:.2f}</text>')
-    rows = [(f"${wcost:.2f}", "3.55 million writes at $0.625 per million"),
-            (f"${rcost:.2f}", "3.55 million reads at $0.125 per million"),
-            (f"${scost:.2f}", "27 GB stored on average: the first 25 GB free, 2 GB at $0.25 per GB-month")]
-    y += 20
-    for amt, what in rows:
-        body.append(f'<text class="lab" x="70" y="{y}" text-anchor="end">{amt}</text>')
-        body.append(f'<text class="small" x="80" y="{y}">{what}</text>')
-        y += 18
-    y += 10
-    body.append(f'<text class="note" x="16" y="{y}">AWS\'s example on the DynamoDB on-demand pricing page, retrieved 2026-10-23. Prices change and vary by Region.</text>')
-    body.append(f'<text class="note" x="16" y="{y + 16}">Days 1-10 are too small to see at this scale and are drawn at the minimum height.</text>')
-    svg("05-06-dynamodb-on-demand.svg", w, y + 30,
-        "Requests per day to an on-demand DynamoDB table over one month, and the month's bill",
-        "A bar chart of requests per day, reads plus writes, for days 1 to 30, from AWS's pricing example for a new "
-        "table in US East (N. Virginia), retrieved 2026-10-23. Days 1 to 10: 20,000 a day, too small to see at this "
-        "scale. Day 11: 5 million; the table kept up with nothing set up in advance. Days 12 to 30: 100,000 a day. "
-        f"The month's bill is ${total:.2f}: ${wcost:.2f} for 3.55 million writes at $0.625 per million, ${rcost:.2f} "
-        f"for 3.55 million reads at $0.125 per million, and ${scost:.2f} for 27 GB stored on average, of which the "
-        "first 25 GB are free and 2 GB cost $0.25 per GB-month.", body, style=STYLE)
-
-
 PANES = [
     ("Running the shop: transactional", "Amazon RDS or Amazon Aurora", "pane",
      ["\"Save order 1042.\" \"Change this customer's address.\"",
@@ -223,44 +163,5 @@ PANES = [
 PROWS = ["A typical request", "Each request touches", "The workload", "The data"]
 
 
-def oltp_vs_analytics():
-    w = 680
-    body = [
-        '<text class="title" x="16" y="28">A database that runs the shop vs a warehouse that studies it</text>',
-        '<text class="sub" x="16" y="48">Both use SQL; they are built for opposite kinds of work</text>',
-    ]
-    lw = 140
-    cw, gap = 252, 8
-    xs = [16 + lw + i * (cw + gap) for i in range(2)]
-    y = 66
-    for x, (name, svc, cls, _) in zip(xs, PANES):
-        body.append(f'<rect class="{cls}" x="{x}" y="{y}" width="{cw}" height="50" rx="6"/>')
-        body.append(f'<text class="cellt" x="{x + 10}" y="{y + 20}">{name}</text>')
-        body.append(f'<text class="cells" x="{x + 10}" y="{y + 38}">{svc}</text>')
-    y += 58
-    for r, row in enumerate(PROWS):
-        cells = [wrap(p[3][r], 38) for p in PANES]
-        h = 12 + 15 * max(len(c) for c in cells) + 6
-        body.append(f'<line class="grid" x1="16" x2="{xs[1] + cw}" y1="{y}" y2="{y}"/>')
-        text_lines(body, 16, y + 19, wrap(row, 20), cls="rowl", dy=15)
-        for x, c in zip(xs, cells):
-            text_lines(body, x + 10, y + 19, c, cls="small", dy=15)
-        y += h
-    body.append(f'<line class="grid" x1="16" x2="{xs[1] + cw}" y1="{y}" y2="{y}"/>')
-    y += 22
-    body.append(f'<text class="note" x="16" y="{y}">From the Amazon RDS and Amazon Redshift documentation, checked 2026-10-23. Bakery examples are made up.</text>')
-    svg("05-06-oltp-vs-analytics.svg", w, y + 14,
-        "A transactional database compared with a data warehouse",
-        "Two columns. Running the shop, transactional, Amazon RDS or Amazon Aurora: a typical request is save order "
-        "1042 or change this customer's address; each request touches a few rows at a time, in milliseconds; the "
-        "workload is many small reads and writes all day from the website; the data is the ordering website's own, "
-        "kept up to date. Studying the business, analytics, Amazon Redshift: a typical request is total sales "
-        "by month and product for three years; each request touches large amounts of data in one query; the workload "
-        "is fewer, larger queries from analysts and reports; the data is copied in from many sources such as "
-        "orders, the till and the website.", body, style=STYLE)
-
-
 if __name__ == "__main__":
     data_shapes()
-    dynamodb_month()
-    oltp_vs_analytics()

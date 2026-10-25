@@ -1,291 +1,135 @@
 ---
 type: lesson
 id: clf-05-05
-title: "Managed or self-managed databases"
+title: "Managed databases and choosing one"
 tasks: ["3.4", "2.1"]
-objectives: ["05.05a"]
+objectives: ["05.05a", "05.06a"]
 reader: "Adult studying alone, possibly new to IT, who has finished Modules 02 to 04, the guardrails primer and lessons 05.01 to 05.04; about 25 minutes; works on a phone"
-prerequisites: [clf-04-01, clf-03-01, clf-03-03, clf-05-04]
-terms_introduced: [database, relational database, database engine, DB instance, self-managed database, managed database, Multi-AZ deployment, primary, standby, synchronous replication, asynchronous replication, replication lag, read replica, promote, point-in-time recovery, Amazon Aurora]
-pillars: [reliability, cost-optimization, performance-efficiency, security]
+prerequisites: [clf-04-01, clf-03-03, clf-05-04]
+terms_introduced: [relational database, database engine, self-managed database, managed database, Multi-AZ deployment, standby, read replica, Amazon Aurora, NoSQL, key-value database, document database, in-memory database, graph database, data warehouse, Amazon DynamoDB, Amazon ElastiCache, Amazon DocumentDB, Amazon Neptune, Amazon Redshift, schema, AWS Database Migration Service, AWS Schema Conversion Tool]
+pillars: [reliability, performance-efficiency, cost-optimization]
 facts_checked: 2026-10-25
 sources:
   - "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html"
   - "https://aws.amazon.com/rds/faqs/"
-  - "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"
-  - "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html"
   - "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html"
-  - "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.ReadReplicas.html"
-  - "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_MySQL.Replication.ReadReplicas.html"
-  - "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.overview.html"
-  - "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StopInstance.html"
-  - "https://aws.amazon.com/rds/pricing/"
   - "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html"
-  - "https://docs.aws.amazon.com/rds/latest/auroraextendedcontent/aurora-faq.html"
-  - "https://aws.amazon.com/about-aws/whats-new/2026/03/amazon-aurora-postgresql-aws-free-tier/"
+  - "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html"
+  - "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/WhatIs.html"
+  - "https://docs.aws.amazon.com/documentdb/latest/developerguide/what-is.html"
+  - "https://docs.aws.amazon.com/neptune/latest/userguide/intro.html"
+  - "https://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html"
+  - "https://aws.amazon.com/dms/faqs/"
+  - "https://docs.aws.amazon.com/SchemaConversionTool/latest/userguide/CHAP_Welcome.html"
 ---
 
-# Let AWS run the database unless you have a reason not to, then choose a standby for availability and a replica for reads
+# Let AWS run the database, give each copy of it one job, and pick the database by the shape of the data
 
-You can run a database yourself on an EC2 server, or let Amazon RDS run it for you; AWS recommends RDS for most relational databases. Once it runs on RDS, three kinds of copy do three different jobs: a Multi-AZ standby keeps it running, a read replica takes extra reads, and backups take you back in time. In this lesson you learn to pick the hosting and the right copy for a need.
+AWS recommends a managed database, Amazon RDS, for most relational databases. On RDS, a Multi-AZ standby keeps the database running, a read replica takes extra reads, and backups take you back in time. Other AWS databases fit other shapes of data: items looked up by a key, documents, relationships, hot data in memory, and years of history for analysis.
 
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 25 minutes. Reading works on a phone.
 
-**Before you start:** this lesson builds on [Security of vs in the cloud](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md) (who does what on EC2 and RDS), [Regions, Availability Zones and data centers](../03-aws-around-the-world/01-regions-availability-zones-data-centers.md), [Surviving failure](../03-aws-around-the-world/03-surviving-failure.md) and [Hybrid storage and backup](04-hybrid-storage-and-backup.md) (snapshots and AWS Backup). If you skipped them, the key terms below give you enough to follow. The bakery scenario is in the [module brief](00-brief.md).
+**Before you start:** this lesson uses who does what on EC2 and RDS from [lesson 04.01](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md), and backup vs replication from [lesson 03.03](../03-aws-around-the-world/03-surviving-failure.md).
 
 ## Warm-up: what you remember
 
-Answer from memory before you look anything up.
-
-1. From lesson 04.01: the bakery moves a database from an EC2 server to Amazon RDS. Name two tasks that move from the bakery to AWS, and one that stays with the bakery.
-2. From lesson 03.03: in Module 03 you gave the bakery's order database a standby copy in a second Availability Zone. What does that protect against, and what doesn't it protect against?
-3. From lesson 05.04: RDS automated backups let you restore to any second within the retention period. What happens to them when you delete the database?
+1. The bakery moves its database from an EC2 server to Amazon RDS. Name one task that moves to AWS and one that stays with the bakery.
+2. Paying for a server every hour whether it's busy or not, or paying for each request the site serves: which is a fixed cost and which is variable?
 
 <details><summary>Feedback</summary>
 
-1. **To AWS:** installing and patching the operating system and the database software, backups, scaling and high availability. **Stays with the bakery:** tuning its queries, and deciding who can reach the data.
-2. **It protects against** losing a server, a data center or a whole AZ, because the standby takes over. **It doesn't protect against** losing the Region, or a mistake such as deleted orders, which it copies at once.
-3. **They are deleted with it, unless you choose to retain them when you delete it;** retained automated backups last until their retention period ends. Manual snapshots, such as a final snapshot taken at deletion, always stay.
+1. **To AWS:** patching the operating system and database software, backups, high availability. **Stays:** tuning queries, and deciding who can reach the data (lesson 04.01).
+2. **The hourly server is fixed** while it runs; **paying per request is variable** (lesson 02.02). One of this lesson's databases bills per request.
 
 </details>
 
 ## What you'll learn
 
-By the end of this lesson, you can:
+By the end of this lesson, you can choose between a self-managed and a managed database, and between high availability and read scaling (objective 05.05a), and pick a database for a shape of data (objective 05.06a).
 
-- explain why AWS recommends a managed database, and what you still do yourself;
-- explain what a Multi-AZ deployment, a read replica and an automated backup each do, and what each can't do;
-- say what Amazon Aurora adds to the RDS family;
-- choose between a self-managed and a managed database, and between high availability and read scaling, for a need (objective 05.05a).
-
-Try these before you read on. Guess if you're unsure; the answers are in the lesson.
-
-1. The bakery's German partner runs large sales reports every night, and the website slows down while they run. Would a Multi-AZ standby fix that?
-2. Can a read replica take over automatically if the main database fails?
-
-## The big picture: one database, three kinds of copy
-
-A database on RDS can have three kinds of copy. They hold the same data, but each one exists for a different job.
-
-![A Region with three Availability Zones. In AZ A, the primary takes every read and write from the website. In AZ B, the Multi-AZ standby gets every write at once (sync), serves nothing, and takes over if the primary fails. In AZ C, a read replica gets changes a little later (async, can lag) and answers read-only queries such as reports. Below, for the whole Region, automated backups and snapshots stored in Amazon S3. A key: standby, high availability; read replica, read scaling; backups and snapshots, point-in-time recovery.](../../images/05-05-big-picture.svg)
-
-*Notice the two arrows leaving the primary. The standby gets every write at once and serves nobody; the replica gets changes a little later and serves reads. That difference decides which job each can do.*
-
-**Long description.** A Region, US East (N. Virginia), holding three Availability Zones side by side. In AZ A, the primary takes every read and write from the website. In AZ B, the Multi-AZ standby takes no traffic and waits to take over if the primary fails; an arrow labeled "sync" shows it gets every write at once. In AZ C, a read replica answers read-only queries such as reports; an arrow labeled "async: can lag behind" shows changes arrive a little later. Below the AZs, for the whole Region: automated backups and snapshots stored in Amazon S3, a daily snapshot plus a log of every change, restorable to any second in the retention period (7 days by default, up to 35) or to a snapshot you took. A key lists each copy's job: the standby keeps the database running if its AZ fails (high availability); the read replica takes read-only work off the primary (read scaling); backups and snapshots go back to before a mistake (point-in-time recovery). The bakery's setup is made up for teaching.
-
-## Key terms (skip if you know them)
-
-- **Database:** software that stores data in an organized way and answers questions about it. A **relational database** keeps data in tables of rows and columns that link to each other, and you query it in SQL. Lesson 05.06 covers the other kinds.
-- **Database engine:** the database software itself, such as MySQL, PostgreSQL or Microsoft SQL Server.
-- **DB instance:** RDS's name for one running database server.
-- **Self-managed database:** one you install and run yourself, for example on an EC2 server. **Managed database:** one a provider runs for you, such as RDS.
-- **Primary:** the copy that takes writes. **Standby:** a copy that waits to take over.
-- **Synchronous replication:** each change is written to the copy at the same time as to the primary. **Asynchronous replication:** each change is sent to the copy just after; the delay is called **replication lag**.
-- **Promote:** turn a read replica into a separate, writable database.
-
-"Replica" is an everyday word for an exact copy, like a replica of a painting. A read replica isn't always exact: it can be seconds or more behind the primary.
+Try this before you read on, and guess if you're unsure: the German partner's nightly sales reports slow the bakery's website down. Would a Multi-AZ standby fix that?
 
 ## AWS recommends a managed database unless you have a reason not to
 
-You have two ways to run a relational database on AWS. You can install the engine yourself on an EC2 server, a **self-managed** database. Or you can use **Amazon Relational Database Service (Amazon RDS)**, which runs it for you. RDS offers six engines: IBM Db2, MariaDB, Microsoft SQL Server, MySQL, Oracle Database and PostgreSQL, plus Amazon Aurora ([What is Amazon RDS?](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html), checked 2026-10-23).
+A **relational database** keeps data in tables of rows and columns that link to each other, queried in SQL; the **database engine** is the software, such as MySQL or PostgreSQL. You can install an engine yourself on an EC2 server, a **self-managed database**, or let **Amazon Relational Database Service (Amazon RDS)** run it for you, a **managed database**. RDS offers six engines: IBM Db2, MariaDB, Microsoft SQL Server, MySQL, Oracle Database and PostgreSQL, plus Amazon Aurora ([What is Amazon RDS?](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html), checked 2026-10-23).
 
-Lesson [04.01](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md) already showed AWS's comparison table. On EC2, AWS runs the hardware, and you install and patch the operating system and the database, take backups, and build high availability and scaling. On RDS, AWS does all of that; you keep the application and its queries.
+On RDS, AWS installs and patches the operating system and database software and runs backups, failover and the hardware. You keep query tuning, who can reach the database, and which protections to turn on. On EC2, AWS runs only the hardware, and the rest is yours. AWS's RDS User Guide recommends RDS as the default for most relational databases and warns that manual patching is prone to mistakes. Our reasoning on when to run your own: when you need an engine RDS doesn't offer, or access to the server's operating system.
 
-AWS's own advice is direct: the RDS User Guide recommends RDS as the default choice for most relational databases. It names the risk of the alternative, too: when you update the operating system or database software by hand, you are more prone to mistakes, and a slip can take your application down ([What is Amazon RDS?](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html)).
+### Amazon Aurora is AWS's own relational engine in the RDS family
 
-When would you still run your own? AWS's guide doesn't list reasons, so here is our reasoning. If you need a database engine that RDS doesn't offer, RDS can't run it. And if your software needs access to the database server's operating system, a managed service won't give it to you, because AWS runs that layer. Outside cases like these, running your own adds work without giving you any control you need.
+**Amazon Aurora** is compatible with MySQL and PostgreSQL, so software written for those works with it, and you manage it through RDS ([What is Amazon Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)). Its storage copies your data across three Availability Zones, it supports up to 15 replicas that can also be failover targets, and AWS says it's faster than standard MySQL and PostgreSQL. The exam names RDS and Aurora as its relational examples.
 
-> **Your turn:** The owner's nephew wants to run MySQL on an EC2 server "to save money". His weekly chores would be: apply operating system patches, apply MySQL patches, check the nightly backup script, tune slow queries, and decide who gets a database login. Which chores disappear if the bakery uses RDS for MySQL instead, and which stay?
+## Each copy of the database has one job
 
-<details><summary>Model answer</summary>
+![Multi-AZ standby, read replica, and automated backups and snapshots compared on how each is copied, whether it answers queries, whether it takes over by itself, whether it saves you from a mistaken delete, and its job.](../../images/05-05-three-copies.svg)
 
-**Disappear:** operating system patches, MySQL patches and the backup script, because AWS handles them on RDS (the bakery still chooses settings such as how long to keep backups). **Stay:** tuning slow queries, and deciding who can log in and reach the database. Those are on the bakery's side of the line on every service.
+*Notice the row "Saves you from a mistaken delete?" Only the backup column says yes. And only the standby takes over by itself.*
 
-</details>
+**Long description.** Three columns. Multi-AZ standby: every write copied synchronously to another AZ; answers no queries; takes over by itself, typically in one to two minutes; doesn't save you from a mistaken delete; job, high availability. Read replica: changes copied asynchronously, so it can lag; answers read-only queries; doesn't take over by itself, but can be promoted by hand, losing any lag; doesn't save you from a mistaken delete; job, read scaling and a disaster recovery option. Automated backups and snapshots: a daily snapshot plus a log of every change; answer no queries until restored to a new database; do save you from a mistaken delete; job, going back in time. A note says this is for RDS engines other than Aurora.
 
-## A Multi-AZ deployment keeps the database running when an Availability Zone fails
+### A Multi-AZ deployment keeps the database running when an Availability Zone fails
 
-With a **Multi-AZ deployment**, RDS keeps a **standby** copy of your database in a different Availability Zone of the same Region. Every change is copied to it **synchronously**, at the same moment as to the primary, so the standby is always up to date. You don't use the standby yourself: in a Multi-AZ DB instance deployment it serves no reads and no writes ([Amazon RDS FAQs](https://aws.amazon.com/rds/faqs/), checked 2026-10-23).
+With a **Multi-AZ deployment**, RDS keeps a **standby** copy in another AZ of the same Region and writes every change to it at the same moment as to the primary. In the classic Multi-AZ DB instance deployment, the standby serves no reads or writes. If the primary's AZ, server or storage fails, RDS fails over automatically, typically in one to two minutes, and your application reconnects to the same name ([Amazon RDS FAQs](https://aws.amazon.com/rds/faqs/), checked 2026-10-23). It doesn't fail over for slow queries or corrupted data, and a mistaken delete reaches the standby at once. So the answer to the prequestion is no: the reports would still run on the primary.
 
-If the primary's AZ goes down, or the primary loses its network, compute or storage, RDS **fails over** automatically. It points the database's name at the standby, which becomes the new primary. Your application keeps using the same name and reconnects. AWS says a failover typically completes in one to two minutes.
+### A read replica takes read-only work off the primary
 
-![Three numbered frames. Frame 1, before: the name orders-db points at the primary in AZ A, and every write also reaches the standby in AZ B. Frame 2, the failure: AZ A fails; RDS detects it and promotes the standby, with no one having to act. Frame 3, typically one to two minutes later: the name points at the new primary in AZ B, and the website reconnects to the same name.](../../images/05-05-failover-frames.svg)
+A **read replica** is a read-only copy your application can query, for reports and other read-heavy work. RDS copies changes to it a little later, so it can lag behind the primary ([Working with DB instance read replicas](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html)). It can be in another AZ or, for most engines, another Region, and you can promote it into a separate, writable database, which makes a cross-Region replica a disaster recovery option. Each replica is billed as a database of its own.
 
-*Notice that the website never changes the name it uses. RDS moves the name; that is why no one has to act.*
+### Backups and snapshots take you back in time
 
-**Long description.** Three frames side by side. Frame 1, before, normal running: the website uses the database name orders-db, which points at the primary in AZ A; every write reaches the standby in AZ B synchronously. Frame 2, the failure: AZ A fails and the primary is marked failed; RDS detects the failure and promotes the standby, with no one having to act; the name is being moved. Frame 3, after, typically one to two minutes later: the old primary in AZ A is still failed, the former standby in AZ B is now the primary, and the website reconnects to the same name, which now points at AZ B. A note says RDS doesn't fail over for slow queries or corrupted data.
-
-Two more benefits come with it. Backups are taken from the standby, so the primary doesn't pause for them. And RDS applies some maintenance, such as operating system patches, to the standby first and then fails over, so the database is unavailable only for the failover. The cost: you pay Multi-AZ prices, and writes can be slightly slower, because each one waits for both copies ([Amazon RDS FAQs](https://aws.amazon.com/rds/faqs/)).
-
-What Multi-AZ doesn't do matters as much. It doesn't fail over because of slow queries or corrupted data. And because every change reaches the standby at once, a mistaken delete reaches it too. Multi-AZ is high availability, not a backup (lesson 03.03).
-
-AWS also offers a **Multi-AZ DB cluster**, with two standbys in three AZs that can also serve reads ([Configuring and managing a Multi-AZ deployment](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html)). The exam's classic "Multi-AZ" is the one-standby version described above.
-
-> **Check:** Answer the first prequestion. The German partner's nightly reports slow down the website. Would turning on Multi-AZ fix it?
->
-> A. Yes: the reports would run on the standby\
-> B. No: in a Multi-AZ DB instance deployment the standby serves no queries, so the reports still run on the primary\
-> C. Yes: Multi-AZ doubles the database's capacity
-
-<details><summary>Feedback</summary>
-
-**B is right.** The standby exists to take over, not to share work. Reports need a copy that serves reads: a read replica, next.
-
-- **A is wrong.** The standby can't be queried in a Multi-AZ DB instance deployment.
-- **C is wrong.** Only one copy serves traffic at a time; the second one waits.
-
-</details>
-
-## A read replica takes read-only work off the primary
-
-A **read replica** is a read-only copy of the database that your application can query. RDS copies changes to it **asynchronously**, using the engine's own replication, so it can lag behind the primary, and the lag can vary a lot ([Working with DB instance read replicas](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html), checked 2026-10-23). You send reports and other read-heavy work to it, and the primary is left free for the website.
-
-- **How many:** up to 15 per database for RDS for MySQL, MariaDB and PostgreSQL, and for SQL Server, where only Enterprise Edition supports them; up to 5 for Oracle, whose read-only replicas also need an Active Data Guard license ([MySQL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_MySQL.Replication.ReadReplicas.html), [SQL Server](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.ReadReplicas.html) and [Oracle](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.overview.html), checked 2026-10-25).
-- **Where:** in the same AZ, another AZ, or, for most engines, another Region.
-- **Cost:** each replica is billed as a database of its own. Copying data to a replica in the same Region costs nothing extra.
-- **By hand:** you create replicas yourself; RDS doesn't add or remove them as demand changes.
-
-You can also **promote** a read replica into a separate, writable database. AWS lists that as a disaster recovery option, for example with a replica in another Region.
+RDS automated backups let you restore to any second in the retention period (7 days by default, up to 35), and manual snapshots last until you delete them (lesson 05.04). Every restore creates a new database. They're the only copy that undoes damaged or deleted data, because the standby and the replica copy the damage.
 
 ### "A read replica gives you high availability" is wrong
 
-Some study material says that adding a read replica makes a database highly available. For the RDS engines above, it doesn't. A read replica doesn't take over automatically: if the primary fails, someone has to promote the replica, and the application has to be pointed at its new address. And because the copy is asynchronous, the last changes before the failure may never have reached it. For high availability, AWS's FAQ recommends Multi-AZ, whose standby is always in step and fails over by itself.
+Some study material says a read replica makes a database highly available. For the RDS engines above, it doesn't: if the primary fails, someone has to promote the replica and point the application at it, and changes it hadn't received yet are lost. For high availability, AWS's FAQ recommends Multi-AZ. The idea is tempting because a replica is a second running copy, often in another AZ, and in **Aurora** a replica can be the automatic failover target. For the other engines, keep the jobs apart: standby for availability, replica for reads.
 
-The idea seems reasonable at first: a replica is a second running copy, often in another AZ, and it can be promoted. It's also partly true in one place: in **Amazon Aurora**, a replica can be the automatic failover target. For the other RDS engines, keep the jobs apart: standby for availability, replica for reads.
+## Choose the database by the shape of the data
 
-> **Your turn:** Answer the second prequestion in two sentences: can a read replica take over automatically if the main database fails, and why does the answer matter for the bakery's orders?
+![Six cards, one per shape of data, each with its AWS database: relational, key-value, document, in-memory, graph and data warehouse.](../../images/05-06-data-shapes.svg)
 
-<details><summary>Model answer</summary>
+*Notice that the bakery has data of almost every shape. A real business rarely fits one database.*
 
-Not for RDS for MySQL or PostgreSQL: someone must promote it and repoint the site, and orders written just before the failure may be missing because the copy lags. A Multi-AZ standby fails over automatically and has every committed order, which is what the bakery needs for availability. (In Aurora, a replica can be the automatic failover target.)
+**Long description.** Six cards, each with a bakery example. Relational, tables with rows and columns linked to each other: orders, customers and order lines; Amazon RDS and Amazon Aurora. Key-value, one item looked up by its key, fast, at any scale: shopping carts by cart ID; Amazon DynamoDB. Document, records stored as JSON documents whose fields can vary: a product catalog; Amazon DocumentDB, and DynamoDB also stores documents. In-memory, hot data held in memory and answered in microseconds: best sellers and sign-in sessions; Amazon ElastiCache. Graph, things and the relationships between them: customers who bought this also bought; Amazon Neptune. Data warehouse, years of data from many sources, for analysis: sales by month and product; Amazon Redshift.
 
-</details>
+### DynamoDB stores items by key, at any scale, with no servers to run
 
-## Backups and snapshots take you back in time
+**Amazon DynamoDB** is AWS's main **NoSQL** database (one that uses a model other than linked tables). AWS describes it as serverless and fully managed, with single-digit millisecond responses at any scale; it stores items you fetch by a key (a **key-value database**) and documents, and by default copies data across three AZs ([What is Amazon DynamoDB?](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html), checked 2026-10-23). There are no servers to size or patch, and its on-demand mode bills per request. You give up the joins between tables that relational databases do.
 
-The third kind of copy, from lesson [05.04](04-hybrid-storage-and-backup.md), is the only one that stops changing. RDS **automated backups** take a daily snapshot plus a log of every change, so you can restore to any second within the retention period: 7 days by default, up to 35. **Manual snapshots** last until you delete them. Every restore creates a **new** database ([Amazon RDS FAQs](https://aws.amazon.com/rds/faqs/), checked 2026-10-23).
+### The database services side by side
 
-That makes backups the answer when the data itself is damaged: a deleted table, a bad update, an attack. Neither the standby nor a replica can help there, because both copy the damage.
+| Shape and need | Choose | Not this, because |
+|---|---|---|
+| Linked tables; transactions saved whole | **Amazon RDS** or **Amazon Aurora** | DynamoDB doesn't join tables; Redshift is for analysis |
+| Items by key; any scale; no servers | **Amazon DynamoDB** | RDS needs a server sized for the peak |
+| Repeated reads or sessions in microseconds | **Amazon ElastiCache**, an **in-memory database**, usually a cache in front of a main store | DynamoDB answers in milliseconds from durable storage |
+| JSON documents, especially with MongoDB code | **Amazon DocumentDB**, a **document database** compatible with MongoDB | DynamoDB stores documents too, without MongoDB compatibility |
+| Relationships many links deep, such as fraud rings or recommendations | **Amazon Neptune**, a **graph database** | Relational joins get complex over long chains of links |
+| Analysis over years of data from many sources | **Amazon Redshift**, a **data warehouse** (Module 10) | RDS and Aurora run the business; they aren't built for huge analytical queries |
+| An engine RDS doesn't offer, or the server's operating system | **A database on EC2** | You then patch, back up and build failover yourself |
 
-![Three columns compared. Multi-AZ standby: every write copied synchronously to another AZ; answers no queries; takes over automatically, typically in one to two minutes; doesn't save you from a mistaken delete; job, high availability. Read replica: changes copied asynchronously and can lag; answers read-only queries; doesn't take over by itself but can be promoted by hand, losing any lag; doesn't save you from a mistaken delete; job, read scaling and a disaster recovery option. Automated backups and snapshots: a daily snapshot plus a log of every change; answer no queries until restored; restore is a new database; do save you from a mistaken delete; job, going back in time.](../../images/05-05-three-copies.svg)
+Sources: each service's "What is" page, checked 2026-10-23. Amazon MemoryDB is out of scope for the exam; treat it as a distractor next to ElastiCache.
 
-*Notice the row "Saves you from a mistaken delete?" Only the backup column says yes. And only the standby says yes to "Takes over by itself?"*
+## Moving a database in: DMS moves the data, SCT converts the schema
 
-**Long description.** Three columns compared on five rows. How it's copied: the Multi-AZ standby gets every write synchronously, in another AZ; the read replica gets changes asynchronously and can lag behind; backups are a daily snapshot plus a log of every change, and snapshots are taken when you take them. Answers queries: standby no; read replica yes, read-only; backups no, you restore to a new database first. Takes over by itself: standby yes, by automatic failover, typically one to two minutes; read replica no, you can promote it by hand and lose any lag; backups no, a restore is a new database you switch to. Saves you from a mistaken delete: standby no, the delete reaches it at once; read replica no, it reaches it soon after; backups yes, restore to a moment before the mistake. The job: high availability; read scaling and a disaster recovery option; going back in time. A note says this is for RDS engines other than Aurora; in Aurora a read replica can also be the failover target.
+**AWS Database Migration Service (AWS DMS)** moves the **data**: it copies a database into AWS while the source keeps running, and can keep copying each new change until you switch over ([AWS DMS FAQs](https://aws.amazon.com/dms/faqs/), checked 2026-10-23). **AWS Schema Conversion Tool (AWS SCT)** converts the **schema**, the tables, views and code that define the database, when the engine changes, for example from Oracle to Aurora PostgreSQL; it lists what it can't convert for you to finish by hand ([What is the AWS Schema Conversion Tool?](https://docs.aws.amazon.com/SchemaConversionTool/latest/userguide/CHAP_Welcome.html)). Same engine: DMS alone. Different engine: SCT first, then DMS.
 
-**What's the same:** all three hold the bakery's orders. **What differs:** when they receive changes, whether anyone can query them, and whether they take over. **The principle:** name the failure first. A broken AZ needs a standby; too many reads need a replica; damaged data needs a backup. Production databases often use all three, because they answer different failures. To practice telling them apart, try [Simulation S6: Multi-AZ vs read replica](10-sim-multi-az-vs-read-replica.md).
+> **Example:** the bakery's orders link customers, orders and lines and must be saved whole: **RDS**, with **Multi-AZ** so an AZ failure loses no orders, a **read replica** for the partner's reports, and automated backups long enough to notice a mistake. The shopping carts are fetched by cart ID, swing hugely in December and are thrown away after the visit: **DynamoDB**, on demand. Three years of sales stay on the read replica until the analysis outgrows it; then **Redshift**.
 
-> **Check:** A web application runs on EC2 instances in two AZs behind a load balancer. Its RDS database must keep working, with no data lost, if one AZ fails. Which option meets this?
->
-> A. Add a read replica in the same AZ as the primary\
-> B. Take a snapshot every night\
-> C. Turn on a Multi-AZ deployment\
-> D. Add a read replica in another Region
-
-<details><summary>Feedback</summary>
-
-**C is right.** The synchronous standby in another AZ has every change and takes over automatically.
-
-- **A is wrong.** A replica in the same AZ is lost along with the primary, and it doesn't take over by itself.
-- **B is wrong.** A nightly snapshot loses up to a day of data, and restoring it takes time and creates a new database.
-- **D is wrong.** A replica in another Region helps with disaster recovery, but it must be promoted by hand and may lag, so recent data can be lost.
-
-</details>
-
-## Amazon Aurora is AWS's own relational engine in the RDS family
-
-**Amazon Aurora** is a relational database engine AWS built for the cloud. It is compatible with MySQL and PostgreSQL, so software written for those works with it, and it is part of RDS: you create and manage it through RDS ([What is Amazon Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html), checked 2026-10-23). The exam lists RDS and Aurora together as its examples of relational databases.
-
-What sets it apart:
-
-- **Storage across three AZs.** Aurora's storage grows by itself, up to 256 TiB, and copies your data across three Availability Zones; you pay for one copy ([Amazon Aurora FAQ](https://docs.aws.amazon.com/rds/latest/auroraextendedcontent/aurora-faq.html)).
-- **Up to 15 low-latency replicas,** which can also be the automatic failover target.
-- **Higher throughput.** AWS says Aurora delivers up to six times the throughput of standard MySQL or PostgreSQL on similar hardware (as of 2026-10-23). Older material quotes other multipliers; remember "faster", not the number.
-- **A serverless option** that scales capacity with demand.
-
-Choose Aurora when you want MySQL or PostgreSQL compatibility with more performance and availability built in. Choose another RDS engine when your software needs Oracle, SQL Server, Db2, MariaDB or plain MySQL or PostgreSQL as they are.
-
-## Your side of the line
-
-The line for RDS is in lesson [04.01](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md): AWS installs and patches the operating system and the database software, and runs backups, failover and the hardware. This lesson adds the choices that stay yours even then:
-
-- **Which protections to turn on.** AWS runs Multi-AZ, replicas and backups, but you decide whether the database has them, and how many days of backups to keep.
-- **Who can reach the database.** You control access with IAM and with security groups, and you place the database inside your network (Module 07).
-- **Query tuning.** AWS's guide names it as yours.
-- **Testing a restore.** RDS keeps the backups; only you can check that a restored database works for your application.
-
-On a self-managed database on EC2, add everything AWS does on RDS: the operating system, the database software, backups, replication and failover are all yours.
-
-## What you pay for
-
-RDS charges for what you use, with no minimum fee ([Amazon RDS FAQs](https://aws.amazon.com/rds/faqs/); [Amazon RDS pricing](https://aws.amazon.com/rds/pricing/), both checked 2026-10-23). The main charges are:
-
-- **Instance hours**, by size, billed per second with a 10-minute minimum. A Multi-AZ deployment is billed at Multi-AZ prices, and each read replica is billed as a database of its own.
-- **Storage** per GB-month, plus provisioned IOPS where you choose them.
-- **Backup storage** beyond the free amount, which equals your databases' provisioned storage in the Region.
-- **Data transfer** in and out of the database.
-
-Two traps for learners. A **stopped** database still pays for storage and backups, and RDS **starts it again by itself after seven days** ([Stopping an Amazon RDS DB instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StopInstance.html)). And because RDS bills every hour it runs, this guide has you practice Multi-AZ and read replicas in [Simulation S6](10-sim-multi-az-vs-read-replica.md) rather than a real lab. As of 2026-03-25, AWS also offers Aurora PostgreSQL in a serverless configuration on the Free plan ([AWS announcement](https://aws.amazon.com/about-aws/whats-new/2026/03/amazon-aurora-postgresql-aws-free-tier/)); usage comes out of your credits.
-
-For steady, long-running databases, Reserved Instances (one or three years) and Database Savings Plans (up to 35% off for a one-year commitment, per the RDS FAQ on 2026-10-23) lower the hourly price. Module 11 compares them.
-
-## Worked example: setting up the bakery's order database
-
-The owner writes: "Orders are the business. If a data center fails in December, the site must keep taking orders and lose none. Our German partner runs big sales reports every night and the site crawls. Last month a mistake deleted an afternoon of orders and we couldn't get them back. And my nephew says running our own database on a server would be cheaper."
-
-Someone who knows the options takes the problems one at a time, using the flowchart below.
-
-```mermaid
-flowchart TD
-  accTitle: Choosing RDS features for each problem
-  accDescr: If you need an engine RDS doesn't offer or the server's operating system, self-manage on EC2, running patches, backups, replication and failover yourself, and otherwise use Amazon RDS or Aurora. Then, per problem: Multi-AZ for an AZ or server failure, a read replica for too many reads, automated backups and snapshots for damaged or deleted data, and backups copied to another Region or a cross-Region replica you promote for a lost Region. A real database often ends with three or four answers, not one.
-  H{"Do you need an engine RDS doesn't offer,<br/>or the server's operating system?"} -->|"yes"| EC2["Self-managed on EC2:<br/>you run patches, backups,<br/>replication and failover"]
-  H -->|"no"| RDS["Amazon RDS<br/>(or Aurora)"]
-  RDS --> F{"Which failure or<br/>problem must it handle?"}
-  F -->|"an AZ or the server fails"| MAZ["Multi-AZ deployment"]
-  F -->|"too many reads, such as reports"| RR["Read replica"]
-  F -->|"damaged or deleted data"| BK["Automated backups<br/>and snapshots"]
-  F -->|"a whole Region is lost"| XR["Backups copied to another Region,<br/>or a cross-Region replica you promote"]
-```
-
-*Notice that the second question is asked once per problem. A real database often ends with three or four answers, not one.*
-
-**Long description.** A decision flowchart. First question: do you need an engine RDS doesn't offer, or the server's operating system? If yes: self-managed on EC2, where you run patches, backups, replication and failover. If no: Amazon RDS or Aurora. Then, for each problem: an AZ or the server fails, use a Multi-AZ deployment; too many reads such as reports, use a read replica; damaged or deleted data, use automated backups and snapshots; a whole Region is lost, use backups copied to another Region, or a cross-Region replica you promote.
-
-1. **Hosting.** The bakery needs plain MySQL or PostgreSQL and no access to the operating system. *So:* **RDS**, as AWS recommends. The nephew's server would add patching, backups and failover to his weekly chores, and a mistake there could stop the site; the instance hours he saves are small next to that risk.
-2. **"Keep taking orders, lose none."** That is an AZ failure with no data lost. *So:* **Multi-AZ**: a synchronous standby that fails over by itself in about one to two minutes.
-3. **"Reports make the site crawl."** Too many reads on the primary. *So:* **a read replica** for the partner's reports. A few seconds of lag doesn't matter for last night's sales.
-4. **"We couldn't get the orders back."** Damaged data. *So:* check that **automated backups** are on, with a retention long enough to notice a mistake (the owner picks 14 days), and add AWS Backup copies to the recovery Region, as in lesson 05.04. Then **test a restore**.
-5. **Region loss** was already settled in lesson 03.03: backup and restore into US East (Ohio).
-
-The expert didn't ask "which feature is best?" but "which failure are we guarding against?", once per failure.
-
-> **Your turn:** A year later the reports run on the replica, but the partner now wants the replica in Europe (Frankfurt) so German staff get faster reports. The owner asks whether that replica could also serve as the bakery's disaster recovery copy. In two or three sentences, say whether it can, and what the limits are.
+> **Your turn:** the German partner's old order system runs on Oracle in its office. The partner wants it on Aurora PostgreSQL, taking orders throughout the move. Which tools, in which order, and what does each do?
 
 <details><summary>Model answer</summary>
 
-Yes, with limits. A cross-Region read replica can be promoted to a separate, writable database if US East (N. Virginia) is lost, so it can be part of the disaster recovery plan. But someone must promote it and repoint the site, any changes it hadn't received yet are lost, and it copies mistakes, so the backups are still needed. One more check: copying US customers' orders into the EU must be allowed by the bakery's data rules.
+First **AWS SCT** (or DMS Schema Conversion), to convert the Oracle schema and code to PostgreSQL, because the engine changes. Then **AWS DMS**, to copy the data while the Oracle system keeps running and keep copying new orders until the switch-over. SCT alone moves no data, and DMS alone can't change the engine.
 
 </details>
-
-## In real work: managed by default, and one protection per failure
-
-At work, teams start from a managed database and add protections for named failures. The Well-Architected Framework backs both habits:
-
-- The **cost optimization** design principle "[Stop spending money on undifferentiated heavy lifting](https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-dp.html)": patching and backing up a database server is work AWS can do for you.
-- [REL10-BP01 Deploy the workload to multiple locations](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html) and [REL11-BP02 Fail over to healthy resources](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_withstand_component_failures_failover2good.html), which Multi-AZ does for the database.
-- [REL09-BP03 Perform data backup automatically](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_backing_up_data_automated_backups_data.html), which automated backups do.
-- In **performance efficiency**, [PERF03-BP02 Evaluate available configuration options for data store](https://docs.aws.amazon.com/wellarchitected/latest/performance-efficiency-pillar/perf_data_evaluate_configuration_options_data_store.html): read replicas are one such option.
 
 ## Summary
 
-- **AWS recommends a managed database, RDS, for most relational databases.** Run your own on EC2 only for a real reason, such as an engine RDS doesn't offer; then the operating system, patches, backups and failover are yours.
-- **A Multi-AZ deployment keeps the database running when an AZ fails:** a synchronous standby (in the classic one-standby form) that serves no queries and fails over automatically, typically in one to two minutes.
-- **A read replica takes read-only work off the primary.** It copies asynchronously, can lag, and doesn't take over by itself; it is not high availability (except as Aurora's failover target).
-- **Automated backups and snapshots take you back in time,** the only copy that saves you from damaged or deleted data.
-- **Aurora is AWS's MySQL- and PostgreSQL-compatible engine in the RDS family,** with storage copied across three AZs and up to 15 replicas.
-
-**For the bakery's data plan:** the order database runs on RDS with Multi-AZ, a read replica for reports, and automated backups plus AWS Backup copies. Lesson 05.06 checks that a relational database is the right shape for orders, and picks one for carts.
+- **Managed by default:** AWS recommends RDS for most relational databases; self-manage on EC2 only for a real reason, and then patches, backups and failover are yours.
+- **One copy, one job:** a Multi-AZ standby (synchronous, fails over automatically) for availability; a read replica (asynchronous, read-only) for reads; backups and snapshots for going back in time.
+- **A read replica isn't high availability** on the RDS engines, except as Aurora's failover target.
+- **By shape:** RDS or Aurora for linked tables, DynamoDB for items by key at any scale, ElastiCache for microsecond reads, DocumentDB for MongoDB documents, Neptune for relationships, Redshift for analysis.
+- **DMS moves data; SCT converts the schema** when the engine changes.
 
 ## Practice
 
@@ -300,73 +144,47 @@ At work, teams start from a managed database and add protections for named failu
 
    **B is right.** Multi-AZ keeps a synchronous standby in another AZ and fails over automatically.
 
-   - **A is wrong.** Read replicas copy asynchronously and scale reads; they don't fail over by themselves (outside Aurora).
-   - **C is wrong.** Automated backups let you restore to a point in time; a restore creates a new database and takes time.
-   - **D is wrong.** Snapshots are point-in-time copies kept until you delete them, not a running standby.
+   - **A is wrong.** Read replicas copy asynchronously and don't fail over by themselves (outside Aurora).
+   - **C is wrong.** Automated backups restore to a point in time, as a new database.
+   - **D is wrong.** Snapshots are point-in-time copies, not a running standby.
 
    </details>
 
-2. **A company's RDS for PostgreSQL database is slowed by read-heavy analytics queries during the day. What is the simplest RDS feature to relieve the primary?**
+2. **A gaming company needs a leaderboard that thousands of players read every second, answered in microseconds. Which service fits?**
+
+   A. Amazon ElastiCache\
+   B. Amazon Neptune\
+   C. Amazon Redshift\
+   D. AWS DMS
 
    <details><summary>Feedback</summary>
 
-   **Model answer:** Add one or more **read replicas** and send the analytics queries to them. The primary keeps handling writes and the application's normal reads. A Multi-AZ DB instance deployment wouldn't help, because its standby serves no queries.
+   **A is right.** ElastiCache serves data from memory in microseconds; leaderboards are a common use.
+
+   - **B is wrong.** Neptune is for relationship-heavy data.
+   - **C is wrong.** Redshift runs large analytical queries, not microsecond reads.
+   - **D is wrong.** DMS migrates databases; it doesn't serve data.
 
    </details>
 
-3. **Which task does a customer keep when moving a database from EC2 to Amazon RDS?**
-
-   A. Applying operating system patches\
-   B. Installing the database software\
-   C. Tuning the application's queries\
-   D. Building failover to a standby
+3. **A colleague says, "We have Multi-AZ and two read replicas, so we don't need backups." Why is that wrong?**
 
    <details><summary>Feedback</summary>
 
-   **C is right.** AWS's RDS guide names query tuning as the customer's.
-
-   - **A and B are wrong.** RDS installs and patches the operating system and the database software.
-   - **D is wrong.** RDS provides failover with Multi-AZ; the customer only turns it on.
+   **The standby and the replicas copy every change,** so a deleted table or a bad update reaches them within moments. Only backups or snapshots, copies that stopped changing before the mistake, can bring the data back.
 
    </details>
 
-4. **A colleague says, "We have Multi-AZ and two read replicas, so we don't need backups." Explain in two sentences why that's wrong.**
-
-   <details><summary>Feedback</summary>
-
-   **Model answer:** The standby and the replicas copy every change, so a deleted table or a bad update reaches them within moments. Only automated backups or snapshots, copies that stopped changing before the mistake, can bring the data back.
-
-   </details>
-
-5. **(From lesson 03.01.) Why does AWS place a Multi-AZ standby in a different Availability Zone rather than in the same one?**
-
-   <details><summary>Feedback</summary>
-
-   **Because AZs are built to fail independently.** Each AZ has its own power, cooling and networking, so an event that takes out the primary's AZ is very unlikely to take out the standby's.
-
-   </details>
-
-6. **(From lesson 02.05.) Running Multi-AZ costs more every hour than a single database. Which two Well-Architected pillars does that decision trade against each other?**
-
-   <details><summary>Feedback</summary>
-
-   **Reliability** (the database keeps working when an AZ fails) against **cost optimization** (paying for a standby that usually sits idle). The business's tolerance for downtime decides.
-
-   </details>
-
-**Next:** [Choosing a database](06-choosing-a-database.md). To practice the three copies, try [Simulation S6: Multi-AZ vs read replica](10-sim-multi-az-vs-read-replica.md).
+**Next:** try [Simulation S6: Multi-AZ vs read replica](10-sim-multi-az-vs-read-replica.md), then the [mastery check](11-check.md).
 
 ## Where to check the current details
 
-- [What is Amazon RDS?](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html), Amazon RDS User Guide: engines, the comparison with EC2, and Multi-AZ (checked 2026-10-23)
-- [Amazon RDS FAQs](https://aws.amazon.com/rds/faqs/): Multi-AZ, read replicas, backups and billing (checked 2026-10-23)
-- [Configuring and managing a Multi-AZ deployment](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html) and [Working with DB instance read replicas](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html) (checked 2026-10-23)
-- [Stopping an Amazon RDS DB instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StopInstance.html) and [Amazon RDS pricing](https://aws.amazon.com/rds/pricing/) (checked 2026-10-23)
-- [What is Amazon Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html) and the [Amazon Aurora FAQ](https://docs.aws.amazon.com/rds/latest/auroraextendedcontent/aurora-faq.html) (checked 2026-10-23)
-- [AWS Certified Cloud Practitioner (CLF-C02) exam guide](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html), task [3.4](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.4) (checked 2026-10-24)
+- [Amazon RDS FAQs](https://aws.amazon.com/rds/faqs/): Multi-AZ, read replicas and backups (checked 2026-10-23)
+- [What is Amazon DynamoDB?](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html) (checked 2026-10-23)
+- [AWS DMS FAQs](https://aws.amazon.com/dms/faqs/) (checked 2026-10-23)
 
 ---
 
-"Managed or self-managed databases" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Managed databases and choosing one" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt

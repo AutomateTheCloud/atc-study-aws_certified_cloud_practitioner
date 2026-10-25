@@ -4,8 +4,8 @@ id: clf-05-07
 title: "Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket"
 tasks: ["3.6", "4.1"]
 objectives: ["05.02a", "05.03a"]
-reader: "Adult studying alone, possibly new to IT, who has done Lab 01 and read lessons 05.02 and 05.03; about 60 minutes; a laptop or desktop"
-prerequisites: ["clf-02-06", "clf-05-02", "clf-05-03"]
+reader: "Adult studying alone, possibly new to IT, who has done Lab 01 and read lesson 05.02; about 60 minutes; a laptop or desktop"
+prerequisites: ["clf-02-06", "clf-05-02"]
 terms_introduced: [version ID, current version, noncurrent version, delete marker, lifecycle rule, prefix]
 pillars: [reliability, cost-optimization]
 lab: "05"
@@ -27,8 +27,6 @@ sources:
   - "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html"
   - "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
   - "https://docs.aws.amazon.com/AmazonS3/latest/userguide/empty-bucket.html"
-  - "https://docs.aws.amazon.com/AmazonS3/latest/userguide/GetStartedWithS3.html"
-  - "https://aws.amazon.com/s3/faqs/"
   - "https://aws.amazon.com/s3/pricing/"
 ---
 
@@ -38,36 +36,17 @@ sources:
 
 This guide is provided as is, without warranty. We work hard to keep it correct and current, but AWS changes often, and its services, prices, and free offers may differ from what is written here. The labs run in your own AWS account. You are responsible for that account, for its security, and for any charges it incurs, including charges from resources you forget to delete. Automate the Cloud Inc. is not liable for any costs, losses, or security incidents that result from following, or failing to follow, this material. Technical guidance here is general information, not advice about your specific systems.
 
-**Who this is for:** you have done [Lab 01](../02-why-the-cloud/06-lab-01-first-resource.md) and read lessons [05.02](02-s3-in-practice.md) and [05.03](03-storage-classes-and-lifecycle.md). **Time:** about 60 minutes, including a 15-minute wait, plus 5 minutes the next day. Part B gives you part of the answer; Part D, only the requirements.
+**Who this is for:** you have done [Lab 01](../02-why-the-cloud/06-lab-01-first-resource.md) and read lesson [05.02](02-s3-in-practice.md). **Time:** about 60 minutes, including a 15-minute wait, plus 5 minutes the next day. Part B gives you part of the answer; Part D, only the requirements.
 
 **Goal:** turn on versioning, write a lifecycle rule for the bakery's order exports, overwrite, delete and bring back a file, then set up the bucket for the seven-year tax archives from the owner's requirements alone. **End state:** your lab log holds both configurations, and your account holds nothing from this lab.
 
-```mermaid
-flowchart LR
-  accTitle: The stages of Lab 05
-  accDescr: Part A creates a bucket that keeps every version, Part B finishes a lifecycle rule during the wait, Part C overwrites, deletes, restores and then deletes every version, and Part D sets up the archive bucket from requirements alone, before both buckets are emptied and deleted. Part B comes before any upload because AWS asks you to wait 15 minutes after turning on versioning, and a rule needs no files.
-  A["Part A: create a bucket<br/>that keeps every version"] --> B["Part B: finish a<br/>lifecycle rule<br/>(during the wait)"]
-  B --> C["Part C: overwrite, delete,<br/>restore, then delete<br/>every version"]
-  C --> D["Part D: set up the<br/>archive bucket from<br/>requirements alone"]
-  D --> E["Clean up: empty and<br/>delete both buckets"]
-```
+**What it creates**, in US East (N. Virginia), `us-east-1`, tagged `guide` = `clf` and `lab` = `05`: an S3 bucket with versioning and a lifecycle rule, holding one small text file for a few minutes, and an empty archive bucket with the same two settings. You delete both, with every version.
 
-*Notice that Part B comes before any upload: AWS asks you to wait 15 minutes after turning on versioning, and a rule needs no files.*
-
-**Long description.** Five stages, left to right: Part A, a bucket that keeps every version; Part B, a lifecycle rule, during the wait; Part C, overwrite, delete, restore, then delete every version; Part D, the archive bucket from requirements alone; clean up both buckets.
-
-**What it creates**, in US East (N. Virginia), `us-east-1`, tagged `guide` = `clf` and `lab` = `05`:
-
-- an S3 bucket with versioning and a lifecycle rule, holding one small text file for a few minutes;
-- an empty archive bucket with versioning and a lifecycle rule.
-
-You delete both, with every version.
-
-**What it costs:** S3 charges for storage and for requests, with no minimum charge ([Amazon S3 FAQs](https://aws.amazon.com/s3/faqs/)). In US East (N. Virginia), as of 2026-10-24, uploads and other PUT, COPY, POST and LIST requests cost $0.005 per 1,000, reads cost $0.0004 per 1,000, and S3 Standard storage costs $0.023 per GB-month ([Amazon S3 pricing](https://aws.amazon.com/s3/pricing/)). This lab makes a few dozen requests and stores a few kilobytes for under an hour: even 200 of the dearer requests would cost $0.001, a tenth of a cent. **Free plan:** nothing is billed; it comes out of your credits, and nothing here upgrades your plan. **Worst case on a Paid plan** if you forget to clean up: a few kilobytes at $0.023 per GB-month, under a hundredth of a cent a month.
+**What it costs:** S3 charges for storage and requests, with no minimum charge. In US East (N. Virginia), as of 2026-10-24, uploads and other PUT, COPY, POST and LIST requests cost $0.005 per 1,000, and S3 Standard storage costs $0.023 per GB-month ([Amazon S3 pricing](https://aws.amazon.com/s3/pricing/)). This lab makes a few dozen requests and stores a few kilobytes for under an hour: well under a tenth of a cent. **Free plan:** nothing is billed; it comes out of your credits, and nothing here upgrades your plan. **Worst case on a Paid plan** if you forget to clean up: a few kilobytes at $0.023 per GB-month, under a hundredth of a cent a month.
 
 **Before you start:** the guardrails from the primer: [root MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/02-secure-the-root-user.md), [an IAM admin user with MFA](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/03-your-everyday-admin-identity.md), which you use here, [money alarms](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/05-money-alarms.md) and [the lab habits](https://github.com/AutomateTheCloud/atc-study-aws_account_guardrails/blob/main/primer/07-habits-for-every-lab.md), including your lab log.
 
-**Why this matters:** a mistake reaches every live copy of your data (Module 03); versioning keeps the earlier copies. For S3, AWS puts backup, versioning and replication of your data on your side of the line ([04.01](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)): [REL09-BP01 Identify and back up all data that needs to be backed up, or reproduce the data from sources](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_backing_up_data_identified_backups_data.html). Lifecycle rules keep only what you need, in the cheapest class that fits: [COST04-BP05 Enforce data retention policies](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/cost_decomissioning_resources_data_retention.html).
+**Why this matters:** for S3, versioning and backups of your data are on your side of the line ([04.01](../04-shared-responsibility-and-access/01-security-of-vs-in-the-cloud.md)), and lifecycle rules keep only what you need, in the cheapest class that fits.
 
 > **New sign-up path:** S3 is supported there, but IAM users can't sign in to the console and your Region is fixed (as of 2026-10-23). Use your assigned Region instead of `us-east-1`, and sign in the way that path gives you. We haven't run this lab on that path.
 
@@ -118,7 +97,7 @@ Start this part once 15 minutes have passed since step 5.
 
 *Notice that the delete in step 15 removes nothing; it adds a marker. Only step 19, deleting versions by ID, frees the space.*
 
-**Long description.** Six frames, newest on top. 1, upload: version 1 current. 2, overwrite: version 2 current, version 1 kept. 3, delete: a delete marker is current, so the file looks gone; versions 2 and 1 remain. 4, delete the marker: version 2 current again. 5, re-upload version 1's text: version 3 current. 6, delete every version: nothing left, not even a marker.
+**Long description.** Six frames, newest version on top: upload, version 1 current; overwrite, version 2 current over version 1; delete, a delete marker over both, so the file looks gone; delete the marker, version 2 current again; re-upload version 1's text, version 3 current; delete every version, nothing left.
 
 12. On the bucket's **Objects** tab, choose **Upload**, then **Add files**, pick `order-note.txt`, and choose **Upload**.
     **You should see:** a success message. Close the page; the file is in the list.
@@ -187,29 +166,15 @@ Deep Archive is S3's lowest-cost class; retrieval takes 12 to 48 hours, which fi
 
 ## Recap
 
-With versioning, a delete adds a marker and an overwrite adds a version, so mistakes can be undone, and you pay for every version kept. A lifecycle rule is the other half: it cools data as it ages and removes old versions on schedule.
+With versioning, a delete adds a marker and an overwrite adds a version, so mistakes can be undone, and you pay for every version kept. A lifecycle rule cools data as it ages and removes old versions on schedule.
 
-> **Reflect:** a teammate says "versioning is free insurance, turn it on everywhere and forget it". Write two sentences in reply.
->
-> <details><summary>Model answer</summary>
->
-> It's good insurance, but not free: every version is a whole stored file, so a file overwritten nightly keeps every old copy. Turn it on where losing data matters, with a rule that deletes noncurrent versions after the recovery window you need.
->
-> </details>
-
-**Next:** [Simulation S5](09-sim-lifecycle-cost-timeline.md) runs lifecycle plans forward a year, with the cost traps a one-hour lab can't show.
+**Next:** [Hybrid storage and backup](04-hybrid-storage-and-backup.md).
 
 ## Where to check the current details
 
-Amazon S3 User Guide pages, checked 2026-10-23:
-
-- [Retaining multiple versions of objects with S3 Versioning](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html)
-- [Enabling versioning on buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/manage-versioning-examples.html)
-- [Setting an S3 Lifecycle configuration on a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-set-lifecycle-configuration-intro.html)
-- [Understanding and managing Amazon S3 storage classes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)
-- [Emptying a general purpose bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/empty-bucket.html)
-
-Prices: [Amazon S3 pricing](https://aws.amazon.com/s3/pricing/) (figures above as of 2026-10-24).
+- [Retaining multiple versions of objects with S3 Versioning](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html) (checked 2026-10-23)
+- [Setting an S3 Lifecycle configuration on a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-set-lifecycle-configuration-intro.html) (checked 2026-10-23)
+- [Amazon S3 pricing](https://aws.amazon.com/s3/pricing/) (figures above as of 2026-10-24)
 
 ---
 

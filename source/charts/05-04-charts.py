@@ -83,68 +83,6 @@ LANES = [  # (on premises, connector, in AWS, label on the left arrow, label on 
 ]
 
 
-def hybrid_map():
-    """Big picture: what stays in the shop, what connects it, where the data lands; plus AWS Backup."""
-    w = 680
-    body = [
-        '<text class="title" x="16" y="28">The bakery\'s data: in the shop, in AWS, and what connects them</text>',
-        '<text class="sub" x="16" y="48">Three services link the shop to AWS; a fourth protects what already runs in AWS</text>',
-    ]
-    c1x, c2x, c3x, cw = 16, 264, 512, 160
-    y = 78
-    body.append(f'<text class="head" x="{c1x}" y="{y}">In the shop (on premises)</text>')
-    body.append(f'<text class="head" x="{c2x}" y="{y}">What connects them</text>')
-    body.append(f'<text class="head" x="{c3x}" y="{y}">In AWS</text>')
-    y += 14
-    zone_top = y - 6
-    for (p, c, a, l1, l2) in LANES:
-        h = max(box_height(p[0], p[1], 20), box_height(c[0], c[1], 20), box_height(a[0], a[1], 20))
-        box(body, "prem", c1x, y, cw, h, p[0], p[1], 20)
-        box(body, "link", c2x, y, cw, h, c[0], c[1], 20)
-        box(body, "aws", c3x, y, cw, h, a[0], a[1], 20)
-        mid = y + h / 2
-        arrow(body, c1x + cw + 2, mid, c2x - 3, mid)
-        arrow(body, c2x + cw + 2, mid, c3x - 3, mid)
-        for lab, x0 in ((l1, c1x + cw), (l2, c2x + cw)):
-            ls = wrap(lab, 13)
-            text_lines(body, x0 + 44, mid - 6 - 14 * (len(ls) - 1), ls, cls="arrlab", dy=14, anchor="middle")
-        y += h + 14
-    # The shop's boundary: a dashed outline round the first column.
-    body.append(f'<rect class="zone" x="{c1x - 6}" y="{zone_top}" width="{cw + 12}" height="{y - zone_top - 6}" rx="8"/>')
-    # AWS Backup lane: everything already in AWS.
-    y += 20
-    body.append(f'<text class="head" x="{c1x}" y="{y}">Already in AWS: the website itself</text>')
-    y += 12
-    src = ("Order database and the web server's disk",
-           ["Amazon RDS and Amazon EBS, chosen by tag"])
-    plan = ("AWS Backup plan", ["Every night; keep each backup for a set number of days"])
-    vault = ("Backup vault, plus a copy", ["Copied to a second Region for disaster recovery"])
-    h = max(box_height(src[0], src[1], 20), box_height(plan[0], plan[1], 20), box_height(vault[0], vault[1], 20))
-    box(body, "aws", c1x, y, cw, h, src[0], src[1], 20)
-    box(body, "link", c2x, y, cw, h, plan[0], plan[1], 20)
-    box(body, "aws", c3x, y, cw, h, vault[0], vault[1], 20)
-    mid = y + h / 2
-    arrow(body, c1x + cw + 2, mid, c2x - 3, mid)
-    arrow(body, c2x + cw + 2, mid, c3x - 3, mid)
-    body.append(f'<text class="arrlab" x="{c1x + cw + 44:.1f}" y="{mid - 6:.1f}" text-anchor="middle">backed up</text>')
-    body.append(f'<text class="arrlab" x="{c2x + cw + 44:.1f}" y="{mid - 6:.1f}" text-anchor="middle">stored</text>')
-    y += h + 26
-    body.append(f'<text class="note" x="16" y="{y}">Gray: runs in the shop. Orange: the service that connects or protects. Blue: where the data lands in AWS.</text>')
-    body.append(f'<text class="note" x="16" y="{y + 16}">The bakery\'s setup is made up for teaching. Service facts from AWS documentation, checked 2026-10-24.</text>')
-    svg("05-04-hybrid-map.svg", w, y + 30,
-        "The bakery's data: what stays in the shop, what connects it to AWS, and where it lands",
-        "Three columns: in the shop (on premises), what connects them, and in AWS. Row 1: back-office "
-        "computers where staff save invoices in a shared folder send files over SMB or NFS to S3 File Gateway, "
-        "a virtual machine in the shop with a local cache of recent files; it stores each file as an object in an "
-        "Amazon S3 bucket. Row 2: backup software that writes the accounts' weekly backups to tape writes virtual "
-        "tapes to Tape Gateway, which looks like a tape library; the tapes are stored in S3 and archived to the S3 "
-        "Glacier classes. Row 3: the till server is copied continuously by AWS Elastic Disaster Recovery to a "
-        "staging area in AWS with cheap storage, from which recovery servers launch in minutes. A dashed outline "
-        "marks the shop. Below, a fourth row for what already runs in AWS: the order database and the web "
-        "server's disk (Amazon RDS and Amazon EBS, chosen by tag) are backed up every "
-        "night by an AWS Backup plan into a backup vault, with a copy in a second Region.", body, style=STYLE)
-
-
 GATEWAYS = [  # (name, app, protocol label, kept locally, lands in AWS, typical need)
     ("S3 File Gateway", "File-sharing apps and users", "files: NFS or SMB",
      "recently used files, in a local cache",
@@ -278,6 +216,5 @@ def backup_dr_snapshot():
 
 
 if __name__ == "__main__":
-    hybrid_map()
     gateway_types()
     backup_dr_snapshot()
