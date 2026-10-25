@@ -56,7 +56,7 @@ D. A memory optimized instance type, paid for as Spot Instances
 
 <details><summary>Answer</summary>
 
-**D is right.** Two separate choices are made here. The bottleneck, memory, picks the family: memory optimized. Work that can be interrupted, with no commitment and the lowest cost, picks the purchasing option: Spot Instances.
+**D is right.** The item asks for two separate choices. The bottleneck, memory, picks the family: memory optimized. Work that can be interrupted, with no commitment and the lowest cost, picks the purchasing option: Spot Instances.
 
 - **A is wrong.** The family is right, but Reserved Instances need a commitment for a term, which the team won't make.
 - **B is wrong.** Spot isn't an instance type or a family. It's a way to pay for any instance type.
@@ -477,7 +477,7 @@ Three harder tasks. Each has no single right answer; compare your reasoning with
 (a) **EC2 instances in an Auto Scaling group across at least two AZs, behind an Application Load Balancer.** Target tracking follows the surge, and a scheduled action or predictive scaling adds instances before a sale opens at a known time, because new instances take minutes to start. The startup patches the AMI in the launch template and the guest operating system. If the store is already a container, ECS on Fargate is a strong alternative that removes the patching of servers.
 (b) **AWS Batch on Spot capacity.** The queue drives the compute, which is removed when the jobs finish, and interrupted jobs simply retry. The startup keeps the job images and their libraries up to date.
 (c) **AWS Lambda.** It runs only when a callback arrives, scales on its own, and bills nothing between callbacks. The startup owns the code, its libraries, the runtime version and the function's role.
-The plan applies [PERF02-BP01 Select the best compute options for your workload](https://docs.aws.amazon.com/wellarchitected/latest/performance-efficiency-pillar/perf_compute_hardware_select_best_compute_options.html): one shape of work, one compute choice, rather than one server type for everything.
+The plan applies [PERF02-BP01 Select the best compute options for your workload](https://docs.aws.amazon.com/wellarchitected/latest/performance-efficiency-pillar/perf_compute_hardware_select_best_compute_options.html): each shape of work gets its own compute choice, rather than one server type for everything.
 
 </details>
 

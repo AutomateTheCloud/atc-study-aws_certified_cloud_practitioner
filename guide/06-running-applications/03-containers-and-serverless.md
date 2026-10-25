@@ -31,7 +31,7 @@ sources:
 
 # Containers package your app; ECS or EKS runs them; Fargate and Lambda take the servers off your list
 
-Between renting a server on EC2 and running no server at all lies a ladder of choices. Containers package an app to run the same anywhere; Amazon ECS or Amazon EKS keeps them running; AWS Fargate and AWS Lambda take servers off your list. You learn to pick EC2, Fargate or Lambda and say what you still manage.
+There's a ladder of choices between renting a server on EC2 and running no server at all. Containers package an app to run the same anywhere; Amazon ECS or Amazon EKS keeps them running; AWS Fargate and AWS Lambda take servers off your list. You learn to pick EC2, Fargate or Lambda and say what you still manage.
 
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 25 minutes. Reading works on a phone.
 
@@ -175,7 +175,7 @@ Fargate suits apps that keep running, such as a web API, and jobs that run for a
 
 **AWS Lambda** runs your code with no servers to provision or manage. You upload a **function**, connect a **trigger**, and Lambda runs it each time an event arrives; AWS handles server maintenance, capacity, scaling and patching ([What is AWS Lambda?](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html), checked 2026-10-23). Triggers include a file landing in Amazon S3, a web request through Amazon API Gateway, a message in a queue, or a schedule in Amazon EventBridge.
 
-Here is the bakery's photo job as a Lambda function.
+Here's the bakery's photo job as a Lambda function.
 
 ```mermaid
 flowchart LR
@@ -281,7 +281,7 @@ Assumes 512 MB for 2 seconds per resize and that one small server keeps up (made
 
 The owner writes: "My nephew's script shrinks the day's new cake photos every night on the web server, and the site slows down while it runs. The inventory app arrived as a container, and the kitchen needs it all day. I don't want anyone patching more servers."
 
-Here is how an expert works through it. The flowchart is the method.
+An expert works through it with this flowchart, one question at a time.
 
 ```mermaid
 flowchart TD

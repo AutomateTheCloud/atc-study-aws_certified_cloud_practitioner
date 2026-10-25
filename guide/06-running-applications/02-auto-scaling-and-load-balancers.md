@@ -25,7 +25,7 @@ sources:
 
 # Auto Scaling decides how many servers run; a load balancer decides which one gets each request
 
-Two services turn one web server into a site that grows, shrinks and survives failures. Amazon EC2 Auto Scaling changes the number of instances to follow demand: elasticity. A load balancer gives customers one address and sends each request to a healthy instance in any Availability Zone; with instances in several zones, that gives high availability.
+Two services turn one web server into a site that grows and shrinks with demand and survives failures. Amazon EC2 Auto Scaling changes the number of instances to follow demand: elasticity. A load balancer gives customers one address and sends each request to a healthy instance in any Availability Zone; with instances in several zones, that gives high availability.
 
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 25 minutes. Reading works on a phone.
 
@@ -88,7 +88,7 @@ How does the group decide? You choose one or more ways ([Amazon EC2 Auto Scaling
 | **Predictive** | Forecasts traffic from past patterns and adds capacity before it arrives | Busy periods that repeat daily or weekly |
 | **Manual** | You change the desired capacity yourself | One-off changes |
 
-Here is Module 02's demand curve again, now with Auto Scaling and a minimum of 2.
+Here's Module 02's demand curve again, now with Auto Scaling and a minimum of 2.
 
 ![Column chart for each month's busiest hour: the group runs 2 instances in most months, 3 in November and 6 in December, while the orders need 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 3 and 6; a dashed line marks a fixed fleet of 6.](../../images/06-02-year-with-minimum.svg)
 
@@ -114,7 +114,7 @@ Made-up figures from [lesson 02.02](../02-why-the-cloud/02-before-and-after-the-
 
 ## A load balancer sends each request to a healthy instance
 
-**Elastic Load Balancing** spreads incoming traffic across targets, such as EC2 instances, containers and IP addresses, in one or more Availability Zones ([What is Elastic Load Balancing?](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html)). What it gives you:
+**Elastic Load Balancing** spreads incoming traffic across targets, such as EC2 instances, containers and IP addresses, in one or more Availability Zones ([What is Elastic Load Balancing?](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html)). It gives you four things:
 
 - **One front door.** Customers use one address, however many servers sit behind it.
 - **Only healthy targets.** It runs health checks and sends requests only to targets that pass.
@@ -244,7 +244,7 @@ The cost: 29 server-months instead of 72, plus the load balancer all year. The r
 
 <details><summary>Model answer</summary>
 
-It still meets "don't pay for six servers in January", because Auto Scaling still follows demand. But it brings back a single point of failure: if that AZ fails, every instance fails with it, and the load balancer has nowhere healthy to send orders. Elasticity without high availability.
+It still meets "don't pay for six servers in January", because Auto Scaling still follows demand. But it brings back a single point of failure: if that AZ fails, every instance fails with it, and the load balancer has nowhere healthy to send orders. The design is elastic but not highly available.
 
 </details>
 
