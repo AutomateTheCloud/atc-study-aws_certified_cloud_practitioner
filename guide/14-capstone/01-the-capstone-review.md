@@ -33,7 +33,7 @@ Now you use all six pillars on one workload: the bakery's, as you built it in La
 
 **For:** an adult studying alone, possibly new to IT, who wants to understand AWS and use it safely. **Time:** about 40 minutes to read, then about 90 minutes for your own review. Reading works on a phone; the write-up is easier on a laptop.
 
-**Before you start:** keep the inventory in the [module brief](00-brief.md) open in another tab. This lesson uses the pillars from [lesson 02.05](../02-why-the-cloud/05-the-well-architected-framework.md), costing from lessons [11.01](../11-paying-for-aws/01-how-aws-charges.md) and [11.03](../11-paying-for-aws/03-estimate-watch-analyze.md), and the Support plans from [lesson 12.01](../12-getting-help/01-support-plans.md); if one is hazy, reread its summary. No AWS account is needed; [Lab 18](02-lab-18-well-architected-tool-review.md) records part of your review in AWS's tool afterwards.
+**Before you start:** keep the inventory in the [module brief](00-brief.md) open in another tab. This lesson uses the pillars from [lesson 02.05](../02-why-the-cloud/05-the-well-architected-framework.md), costing from lessons [11.01](../11-paying-for-aws/01-how-aws-charges.md) and [11.03](../11-paying-for-aws/03-estimate-watch-analyze.md), and the Support plans from [lesson 12.01](../12-getting-help/01-support-plans.md); if one is hazy, reread its summary. No AWS account is needed; [Lab 18](02-lab-18-well-architected-tool-review.md) records part of your review in AWS's tool afterward.
 
 ## Warm-up: what you remember
 
@@ -229,7 +229,7 @@ flowchart TB
   ALB -->|"HTTPS, healthy<br/>servers only"| W2
 ```
 
-*Notice the new subnet. The fix needs a public subnet in the second AZ, not just a second server.*
+*Notice the new subnet. The fix needs a public subnet in the second AZ as well as a second server.*
 
 **Long description.** Customers send HTTPS to an Application Load Balancer spanning both AZs. It forwards only to healthy servers: web server 1 in the public subnet in `us-east-1a`, web server 2 in a new public subnet in `us-east-1b`, both in one Auto Scaling group with a minimum of 2.
 
