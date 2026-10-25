@@ -182,10 +182,19 @@ flowchart LR
    > - *Still OK after 10 minutes:* open the alarm and check its metric is `Errors` for `clf-lab11-box-count`, the statistic `Sum`, and the threshold "greater than or equal to 1". Fix it with **Edit**, then run `bad-order` again.
    > - *Insufficient data:* the missing data treatment is still the default. Edit it to treat missing data as good.
    > - *In alarm, but no email:* the alarm has no notification for **In alarm**, or the email is in spam.
+
+   ![The alarm clf-lab11-box-count-errors In alarm: its graph shows the Errors count rising to 2 above the red threshold line at 1, a state bar that turns from gray to green to red, and details listing Sum, a period of 1 minute, Errors >= 1 for 1 datapoints within 1 minute, and missing data treated as good.](../../images/08-06-in-alarm.png)
+
+   *Screenshot: the alarm **In alarm** after three failed runs, captured 2026-10-25 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+
 9. Run nothing. Keep watching the alarm.
    **You should see:** the state return to **OK**, and another email: about eight minutes after the last failure in our run. The alarm can stay in alarm for a few minutes after the last failure, because CloudWatch looks back over several recent data points before it decides ([Configuring how CloudWatch alarms treat missing data](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/alarms-and-missing-data.html)).
 10. Open the alarm and choose its **History** tab.
     **You should see:** the state changes, and the notifications sent at each one. Write the minutes from step 7 to each email in your lab log.
+
+    ![The alarm's History tab with seven rows, newest first: at 13:38:30 UTC an action to the SNS topic and a state update from In alarm to OK; at 13:32:30 an action and a state update from OK to In alarm; at 13:29:30 an action and a state update from Insufficient data to OK; at 13:28:13 the alarm created.](../../images/08-06-alarm-history.png)
+
+    *Screenshot: the alarm's **History**, with an email action at each change of state, including the first move to OK, captured 2026-10-25 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
 
 ## Check your work
 

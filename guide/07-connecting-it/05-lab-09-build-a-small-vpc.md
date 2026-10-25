@@ -120,6 +120,10 @@ This guide is provided as is, without warranty. We work hard to keep it correct 
 13. Choose **Your VPCs**, select `clf-lab09-vpc`, and open its **Resource map** tab, a picture of how the VPC's parts connect.
     **You should see:** the public subnet → `clf-lab09-public-rt` → the internet gateway, in a column called **Network Connections**; the private subnet → the main route table, shown only by its `rtb-` ID because it has no name, with no line to the gateway.
 
+    ![The VPC's resource map in four columns: the VPC clf-lab09-vpc; two subnets, clf-lab09-public-a in us-east-1a and clf-lab09-private-b in us-east-1b; two route tables, clf-lab09-public-rt and an unnamed rtb- ID; and under Network Connections, clf-lab09-igw. Lines link the public subnet to clf-lab09-public-rt and on to the gateway, and the private subnet to the unnamed main route table.](../../images/07-05-resource-map.png)
+
+    *Screenshot: the resource map, with only the public subnet's route table reaching the internet gateway, captured 2026-10-25 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+
 ### Part B: security groups
 
 14. In the left menu, choose **Security groups**, then **Create security group**. Fill in:

@@ -96,6 +96,11 @@ A tag key appears on the billing page only after it has been on a resource. Earl
 6. In the list, find `guide` and `lab` (the search box helps in a long list).
    **You should see:** both keys, each with the status **Inactive**, beside `aws:createdBy`.
    > **If something went wrong:** if a key isn't listed, AWS says it can take up to 24 hours to appear after you first tag a resource. Write "keys not listed yet" in your lab log, leave the bucket in place, and do steps 6 and 7 tomorrow. Then do the Cost Explorer check the day after that.
+
+   ![The Cost allocation tags page: a How it works panel, then one list of three tag keys, aws:createdBy, guide and lab, each with status Inactive, type Resource and last used month October 2026, with Activate, Deactivate and Undo buttons and, at the top, Backfill tags and Download CSV.](../../images/11-06-cost-allocation-tags.png)
+
+   *Screenshot: the three keys before activation, on a Free plan account, captured 2026-10-25 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+
 7. Select both keys and choose **Activate**. A window asks whether to activate the 2 inactive tags; choose **Activate**.
    **You should see:** "Your tags have been activated successfully", and both keys marked **Active**. AWS says activation can take up to 24 hours to take effect ([Activating user-defined cost allocation tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html), checked 2026-10-24).
 8. Look at the top right of the page for **Backfill tags**. Don't choose it. A tag backfill ([lesson 11.04](04-many-accounts-one-bill.md#a-tag-shows-costs-is-wrong)) applies a key's current activation to up to 12 earlier months, and only for months when the tag was already on the resource. AWS documents it for management accounts, at most one request every 24 hours ([Backfill cost allocation tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-allocation-backfill.html), checked 2026-10-24). Write in your lab log whether your standalone account shows the button: ours did, on 2026-10-25.

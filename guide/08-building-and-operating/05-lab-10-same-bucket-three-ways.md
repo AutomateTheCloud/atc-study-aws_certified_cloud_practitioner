@@ -237,8 +237,17 @@ flowchart LR
     **You should see:** the status `CREATE_COMPLETE`.
 17. Choose the **Events** tab and read it from the bottom up. Each line is a **stack event**: one step CloudFormation took, with its time and status. Then open the **Resources** tab and the **Outputs** tab ([Creating your first stack](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/gettingstarted.walkthrough.html)).
     **You should see:** `CREATE_IN_PROGRESS` and `CREATE_COMPLETE` events for `PhotoBucket` and for the stack, grouped under one **Operation ID**, newest first. `PhotoBucket` has two `CREATE_IN_PROGRESS` lines; the **Status reason** column, further right, says what each one marks. **Resources** lists `PhotoBucket` with your bucket's name as its physical ID; **Outputs** shows `BucketArn`.
+
+    ![The stack's Events tab: five events under one operation ID, newest first: clf-lab10-stack CREATE_COMPLETE, PhotoBucket CREATE_COMPLETE, PhotoBucket CREATE_IN_PROGRESS twice, and clf-lab10-stack CREATE_IN_PROGRESS, between 09:09:40 and 09:09:59.](../../images/08-05-stack-events.png)
+
+    *Screenshot: the stack's **Events** tab, newest event first, captured 2026-10-25 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+
 18. Open **S3**, then your `clf-lab10-cfn-` bucket, and its **Properties** tab. Scroll to **Tags**.
     **You should see:** `guide` and `lab` under **User-defined tags**. Choose **AWS-generated tags** beside it: three tags starting with `aws:cloudformation:` (`logical-id`, `stack-id` and `stack-name`), which CloudFormation adds to name the stack that owns the bucket ([Resource tags](https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-properties-resource-tags.html)).
+
+    ![The template bucket's Tags section on its Properties tab, with the AWS-generated tags tab open: aws:cloudformation:logical-id PhotoBucket, aws:cloudformation:stack-id with the stack's ARN, and aws:cloudformation:stack-name clf-lab10-stack.](../../images/08-05-aws-generated-tags.png)
+
+    *Screenshot: the three tags CloudFormation added, on the bucket's **AWS-generated tags** tab, captured 2026-10-25 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
 
 ## Check your work
 

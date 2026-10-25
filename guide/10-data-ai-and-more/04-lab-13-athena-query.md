@@ -206,6 +206,11 @@ You delete all of it at the end.
     ```
 
     **You should see:** croissant first (136 units, 374.00), then rye-loaf (34, 170.00), carrot-cake (5, 160.00), cinnamon-roll (36, 117.00) and lemon-tart (17, 110.50). Write the best seller in your lab log.
+
+    ![Athena's query editor with the products query, its status Completed with Data scanned 0.87 KB, and five results: croissant 136 units 374.00, rye-loaf 34 170.00, carrot-cake 5 160.00, cinnamon-roll 36 117.00, lemon-tart 17 110.50.](../../images/10-04-revenue-by-product.png)
+
+    *Screenshot: the answer, and **Data scanned: 0.87 KB**, billed as 10 MB, captured 2026-10-25 in our test account. AWS console screenshots are AWS material used as limited fair use and are not covered by this guide's license.*
+
 15. Before you run the next query, predict: does the shop or the online store bring in more? Then run:
 
     ```sql
