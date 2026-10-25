@@ -32,7 +32,7 @@ sources:
   - "https://docs.aws.amazon.com/awssupport/latest/user/fault-tolerance-checks.html"
   - "https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html"
   - "https://docs.aws.amazon.com/health/latest/ug/health-api.html"
-  - "https://aws.amazon.com/premiumsupport/knowledge-center/report-aws-abuse/"
+  - "https://repost.aws/knowledge-center/report-aws-abuse"
   - "https://aws.amazon.com/about-aws/whats-new/2023/03/aws-re-post-includes-knowledge-center-articles/"
   - "https://docs.aws.amazon.com/marketplace/latest/buyerguide/what-is-marketplace.html"
   - "https://docs.aws.amazon.com/marketplace/latest/buyerguide/saas-subscriptions.html"
@@ -236,7 +236,7 @@ Basic already gives you billing help, quota requests, AWS Health, a few Trusted 
 
 - [Case management](https://docs.aws.amazon.com/awssupport/latest/user/case-management.html), [Change AWS Support Plans](https://docs.aws.amazon.com/awssupport/latest/user/changing-support-plans.html) and [AWS Support pricing](https://aws.amazon.com/premiumsupport/pricing/) (checked 2026-10-24)
 - [AWS Trusted Advisor check reference](https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor-check-reference.html) and [AWS Health API](https://docs.aws.amazon.com/health/latest/ug/health-api.html) (checked 2026-10-24)
-- [Report abuse of AWS resources](https://aws.amazon.com/premiumsupport/knowledge-center/report-aws-abuse/) and [What is AWS Marketplace?](https://docs.aws.amazon.com/marketplace/latest/buyerguide/what-is-marketplace.html) (checked 2026-10-24)
+- [Report abuse of AWS resources](https://repost.aws/knowledge-center/report-aws-abuse) and [What is AWS Marketplace?](https://docs.aws.amazon.com/marketplace/latest/buyerguide/what-is-marketplace.html) (checked 2026-10-24)
 
 ---
 

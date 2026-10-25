@@ -29,7 +29,7 @@ This section holds two kinds of practice. Three **mixed sets** come during the c
 | [Practice exam 1](05-practice-exam-1.md) | A full form: 65 questions in the exam's format | At the end of the course, once | 90 minutes | Readiness, by domain |
 | [Practice exam 2](06-practice-exam-2.md) | A second full form, with different questions | A few days after practice exam 1, once | 90 minutes | Readiness, by domain |
 
-Every question on these five pages was written for this section, apart from the lessons' practice and the mastery checks. The questions follow the exam's style: one correct answer out of four, or "(Select TWO.)" with two correct answers out of five. They use the exam's names for services, with today's names in the answer keys ([The exam at a glance](../00-start-here/03-the-exam-at-a-glance.md) describes the real exam's format).
+Every question on these five pages was written for this section, separately from the lessons' practice and the mastery checks. The questions follow the exam's style: one correct answer out of four, or "(Select TWO.)" with two correct answers out of five. They use the exam's names for services, with today's names in the answer keys ([The exam at a glance](../00-start-here/03-the-exam-at-a-glance.md) describes the real exam's format).
 
 ## When to use each part
 

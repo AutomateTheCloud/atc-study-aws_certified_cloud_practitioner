@@ -317,7 +317,7 @@ Teams treat security groups as the main control and keep their rules as narrow a
 
    <details><summary>Feedback</summary>
 
-   **Yes.** Rule 100 is checked first and matches everything, so it decides; rule 200 is never reached. To block the range, give the deny rule a number below 100.
+   **Yes.** Rule 100 is checked first and matches everything, so it decides and rule 200 is never reached; to block the range, the deny rule needs a number below 100.
 
    </details>
 

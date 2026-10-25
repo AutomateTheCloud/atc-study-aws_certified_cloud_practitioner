@@ -177,7 +177,7 @@ No question needs a price, a percentage or a count. Free Tier terms and service 
 
 </details>
 
-**A9.** A university gives each student a sandbox AWS account with a monthly budget. The lecturer wants new instance launches blocked automatically in a student's account once its actual cost reaches the budget, without deleting anything. Which setup does this?
+**A9.** A university gives each student a sandbox AWS account with a monthly budget. The instructor wants new instance launches blocked automatically in a student's account once its actual cost reaches the budget, without deleting anything. Which setup does this?
 
 - A. The budget's alert on its own, because AWS stops spending at the budget amount
 - B. A budget action that applies an IAM policy denying new launches

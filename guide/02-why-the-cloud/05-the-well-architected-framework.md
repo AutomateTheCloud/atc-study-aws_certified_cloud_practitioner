@@ -329,7 +329,7 @@ Any three of: space (rent), power, cooling, the network connection, staff or a c
 
 </details>
 
-**Next:** put the cost ideas to work in [Lab 01: create, find and delete your first storage bucket](06-lab-01-first-resource.md).
+**Next:** measure agility for yourself in [Lab 01: create, find and delete your first storage bucket](06-lab-01-first-resource.md).
 
 ## Where to check the current details
 

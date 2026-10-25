@@ -90,7 +90,7 @@ For each event, write its rung (server, data center, AZ, Region, or off the ladd
 | 5 | Off the ladder: data | The standby deletes the orders too, within moments. Only a point-in-time backup from before the mistake brings them back. |
 | 6 | Off the ladder: data | A deletion doesn't always reach every copy: with current S3 Replication rules, a deletion is copied only if delete marker replication is turned on, and the permanent deletion of a specific version is never copied ([What does Amazon S3 replicate?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-what-is-isnot-replicated.html)). But a stolen password may reach the copies too, so don't count on them. Earlier versions (S3 versioning) or a backup restore the photos. Then lock out the attacker: Module 04 shows how. |
 
-Events 5 and 6 are the ones people miss: damage to the data travels with the data.
+Events 5 and 6 are the ones people miss: a second live copy doesn't protect data from a mistake, or from someone who can reach it.
 
 </details>
 
@@ -100,7 +100,7 @@ The owner asks: "We run in two AZs now. Which of these six events would still st
 
 <details><summary>Model answer</summary>
 
-Losing the whole Frankfurt Region (event 4) would stop the site, because both AZs are inside it. Events 5 and 6 would lose data, because live copies faithfully copy deletions; only backups protect against those.
+Losing the whole Frankfurt Region (event 4) would stop the site, because both AZs are inside it. Events 5 and 6 would lose data, because the standby database copies the deletion within moments and an attacker with a stolen password may reach the other copies too; only backups and earlier versions protect against those.
 
 </details>
 
