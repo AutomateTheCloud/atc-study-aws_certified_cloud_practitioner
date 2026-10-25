@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="444" viewBox="0 0 680 444" role="img" aria-labelledby="t d">
+<title id="t">A laptop compared with a server</title>
+<desc id="d">Two columns, laptop and server, on five rows. Used by: one person at a time; many clients at once, over the network. Screen and keyboard: built in; usually none, managed over the network. Runs: until it sleeps or is switched off; all the time. When a part fails: one power supply and one disk, so it stops; often two power supplies and several disks, so one failure doesn't stop it. Lives: on a desk or in a bag; in a rack in a server room or data center. A highlighted bottom row says both have a processor, memory, storage and a network connection.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --hi-fill:#d9e8fb; --n-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --hi-fill:#1b3554; --n-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 1.8; }
+  .n { fill: var(--n-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .plain { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .empty { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; stroke-dasharray: 5 4; }
+  .frame { fill: none; stroke: var(--ink); stroke-width: 1.8; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .head { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .zlab { fill: var(--muted); font-size: 12px; }
+  .arrlab { fill: var(--ink2); font-size: 12px; font-style: italic; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .arrowhead { fill: var(--ink2); }
+  .rowl { fill: var(--ink); font-size: 12px; font-weight: 600; }
+</style>
+<rect width="680" height="444" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">A laptop and a server have the same parts, built for different jobs</text>
+<text class="sub" x="16" y="48">How each is usually built and kept</text>
+<rect class="n" x="176.0" y="76.0" width="46.0" height="30.0" rx="3"/>
+<path class="n" d="M170,110 L228,110 L222,116 L176,116 Z"/>
+<text class="head" x="238" y="102">Laptop</text>
+<rect class="n" x="420.0" y="76.0" width="52.0" height="11.0" rx="2"/>
+<circle cx="464" cy="81.5" r="2" style="fill:var(--ink2)"/>
+<rect class="n" x="420.0" y="89.0" width="52.0" height="11.0" rx="2"/>
+<circle cx="464" cy="94.5" r="2" style="fill:var(--ink2)"/>
+<rect class="n" x="420.0" y="102.0" width="52.0" height="11.0" rx="2"/>
+<circle cx="464" cy="107.5" r="2" style="fill:var(--ink2)"/>
+<text class="head" x="486" y="102">Server</text>
+<line class="grid" x1="16" x2="664" y1="136.0" y2="136.0"/>
+<text class="rowl" x="16" y="156.0">Used by</text>
+<text class="small" x="176" y="156.0">One person at a time</text>
+<text class="small" x="420" y="156.0">Many clients at once, over the network</text>
+<line class="grid" x1="16" x2="664" y1="172.0" y2="172.0"/>
+<text class="rowl" x="16" y="192.0">Screen and keyboard</text>
+<text class="small" x="176" y="192.0">Built in</text>
+<text class="small" x="420" y="192.0">Usually none; managed over the network</text>
+<line class="grid" x1="16" x2="664" y1="208.0" y2="208.0"/>
+<text class="rowl" x="16" y="228.0">Runs</text>
+<text class="small" x="176" y="228.0">Until it sleeps or is switched off</text>
+<text class="small" x="420" y="228.0">All the time</text>
+<line class="grid" x1="16" x2="664" y1="244.0" y2="244.0"/>
+<text class="rowl" x="16" y="264.0">When a part fails</text>
+<text class="small" x="176" y="264.0">One power supply, one disk: it stops</text>
+<text class="small" x="420" y="264.0">Often two power supplies and several</text>
+<text class="small" x="420" y="280.0">disks, so one failure doesn't stop it</text>
+<line class="grid" x1="16" x2="664" y1="296.0" y2="296.0"/>
+<text class="rowl" x="16" y="316.0">Lives</text>
+<text class="small" x="176" y="316.0">On a desk or in a bag</text>
+<text class="small" x="420" y="316.0">In a rack in a server room or data</text>
+<text class="small" x="420" y="332.0">center</text>
+<line class="axis" x1="16" x2="664" y1="348.0" y2="348.0"/>
+<rect class="hi" x="16.0" y="358.0" width="648.0" height="44.0" rx="6"/>
+<text class="rowl" x="28" y="385">Both</text>
+<text class="cellt" x="176" y="385">A processor, memory, storage and a network connection</text>
+<text class="note" x="16" y="428">Typical builds; models vary. A rack is a tall metal frame that holds many servers.</text>
+</svg>

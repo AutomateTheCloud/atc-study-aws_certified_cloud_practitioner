@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="502" viewBox="0 0 680 502" role="img" aria-labelledby="t d">
+<title id="t">Four steps from a phone to a web page</title>
+<desc id="d">A customer's phone on the left and the bakery's web server, 192.0.2.10, on the right, with four numbered steps between them. 1, look up the name: the phone asks DNS where bakery.example is, and DNS answers 192.0.2.10. 2, travel to the address: packets cross the home network, the ISP and the internet, via routers, to 192.0.2.10 port 443. 3, highlighted, secure the line: the server sends its certificate, saying it holds the name bakery.example, and both sides agree how to encrypt. 4, ask and answer: inside an encrypted connection marked with a padlock, the request 'send me the order page' goes to the server and the page comes back.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --hi-fill:#d9e8fb; --n-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --hi-fill:#1b3554; --n-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 1.8; }
+  .hiband { fill: var(--hi-fill); stroke: none; }
+  .n { fill: var(--n-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .plain { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .frame { fill: none; stroke: var(--ink); stroke-width: 1.8; }
+  .tunnel { fill: none; stroke: var(--s1); stroke-width: 2.2; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .head { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .zlab { fill: var(--muted); font-size: 12px; }
+  .mono { fill: var(--ink); font-size: 13px; font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; }
+  .bigmono { fill: var(--ink); font-size: 22px; font-weight: 600; font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; }
+  .arrlab { fill: var(--ink2); font-size: 12px; font-style: italic; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .arrowhead { fill: var(--ink2); }
+  .rowl { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .num { fill: var(--ink); font-size: 13px; font-weight: 700; }
+  .numc { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; }
+  .numh { fill: var(--s1); stroke: var(--s1); stroke-width: 1.5; }
+  .numhl { fill: var(--surface); font-size: 13px; font-weight: 700; }
+</style>
+<rect width="680" height="502" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Four steps to one web page</text>
+<text class="sub" x="16" y="48">What happens when a customer opens bakery.example on their phone</text>
+<rect class="hiband" x="112.0" y="270.0" width="456.0" height="92.0" rx="6"/>
+<rect class="plain" x="16.0" y="70.0" width="92.0" height="392.0" rx="8"/>
+<text class="cellt" x="62.0" y="258.0" text-anchor="middle">Customer's</text>
+<text class="cellt" x="62.0" y="274.0" text-anchor="middle">phone</text>
+<rect class="plain" x="572.0" y="70.0" width="92.0" height="392.0" rx="8"/>
+<text class="cellt" x="618.0" y="250.0" text-anchor="middle">Bakery's</text>
+<text class="cellt" x="618.0" y="266.0" text-anchor="middle">web server</text>
+<text class="cellt" x="618.0" y="282.0" text-anchor="middle">192.0.2.10</text>
+<circle class="numc" cx="132" cy="88" r="11"/>
+<text class="num" x="132" y="92.5" text-anchor="middle">1</text>
+<text class="rowl" x="150" y="92">Look up the name</text>
+<rect class="n" x="340.0" y="104.0" width="150.0" height="46.0" rx="6"/>
+<text class="small" x="415.0" y="124.0" text-anchor="middle">DNS</text>
+<text class="small" x="415.0" y="139.0" text-anchor="middle">(the address book)</text>
+<line class="arrow" x1="109.0" y1="116.0" x2="339.0" y2="116.0"/>
+<path class="arrowhead" d="M331.0,111.0 L331.0,121.0 L339.0,116.0 Z"/>
+<line class="arrow" x1="339.0" y1="140.0" x2="109.0" y2="140.0"/>
+<path class="arrowhead" d="M117.0,145.0 L117.0,135.0 L109.0,140.0 Z"/>
+<text class="arrlab" x="122" y="112">"Where is bakery.example?"</text>
+<text class="arrlab" x="122" y="156">"192.0.2.10"</text>
+<circle class="numc" cx="132" cy="188" r="11"/>
+<text class="num" x="132" y="192.5" text-anchor="middle">2</text>
+<text class="rowl" x="150" y="192">Travel to the address</text>
+<rect class="n" x="128.0" y="206.0" width="104.0" height="26.0" rx="4"/>
+<text class="small" x="180.0" y="223" text-anchor="middle">home network</text>
+<rect class="n" x="244.0" y="206.0" width="104.0" height="26.0" rx="4"/>
+<text class="small" x="296.0" y="223" text-anchor="middle">ISP</text>
+<rect class="n" x="360.0" y="206.0" width="104.0" height="26.0" rx="4"/>
+<text class="small" x="412.0" y="223" text-anchor="middle">internet</text>
+<line class="arrow" x1="109.0" y1="246.0" x2="571.0" y2="246.0"/>
+<path class="arrowhead" d="M563.0,241.0 L563.0,251.0 L571.0,246.0 Z"/>
+<text class="arrlab" x="478" y="223">via routers</text>
+<text class="arrlab" x="340.0" y="260" text-anchor="middle">packets to 192.0.2.10, port 443</text>
+<circle class="numh" cx="132" cy="288" r="11"/>
+<text class="numhl" x="132" y="292.5" text-anchor="middle">3</text>
+<text class="rowl" x="150" y="292">Secure the line</text>
+<line class="arrow" x1="571.0" y1="316.0" x2="109.0" y2="316.0"/>
+<path class="arrowhead" d="M117.0,321.0 L117.0,311.0 L109.0,316.0 Z"/>
+<line class="arrow" x1="109.0" y1="342.0" x2="571.0" y2="342.0"/>
+<path class="arrowhead" d="M563.0,337.0 L563.0,347.0 L571.0,342.0 Z"/>
+<text class="arrlab" x="340.0" y="310" text-anchor="middle">certificate: "I hold the name bakery.example"</text>
+<text class="arrlab" x="340.0" y="358" text-anchor="middle">both sides agree how to encrypt</text>
+<circle class="numc" cx="132" cy="388" r="11"/>
+<text class="num" x="132" y="392.5" text-anchor="middle">4</text>
+<text class="rowl" x="150" y="392">Ask and answer</text>
+<rect class="tunnel" x="116.0" y="402.0" width="448.0" height="54.0" rx="14"/>
+<path class="arrow" d="M129,427 L129,424 A5,5 0 0 1 139,424 L139,427"/>
+<rect x="126" y="427" width="16" height="11" rx="2" style="fill:var(--ink2)"/>
+<line class="arrow" x1="152.0" y1="420.0" x2="558.0" y2="420.0"/>
+<path class="arrowhead" d="M550.0,415.0 L550.0,425.0 L558.0,420.0 Z"/>
+<line class="arrow" x1="558.0" y1="442.0" x2="152.0" y2="442.0"/>
+<path class="arrowhead" d="M160.0,447.0 L160.0,437.0 L152.0,442.0 Z"/>
+<text class="arrlab" x="308" y="415">request: "send me the order page"</text>
+<text class="arrlab" x="308" y="454">response: the page</text>
+<text class="note" x="16" y="486">Step 4 travels inside the encrypted connection that step 3 set up. Names and addresses are reserved for examples.</text>
+</svg>

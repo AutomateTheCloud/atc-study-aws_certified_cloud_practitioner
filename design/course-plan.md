@@ -286,6 +286,12 @@ high-risk issues, cost the fixes, and recommend a Support plan.
 
 The capstone is scored with a rubric. It goes beyond the blueprint.
 
+| Lesson or lab | Covers | Objective |
+|---|---|---|
+| 14.01 The capstone review | One starter question per pillar; findings and high risks; pricing the fixes; a Support plan; a rubric | Assemble a pillar-by-pillar review of a workload, price the fixes and recommend a Support plan, justifying each choice [J·Ev] |
+| Lab 18 | The Well-Architected Tool: define a workload, answer questions, read risks, save a milestone | Record a review in the Well-Architected Tool and read its risks [P·Ap] |
+| Lab 19 | Close-out: sweep all Regions by tag, the next-day bill, keep the guardrails | Close out an AWS account safely: find every leftover, check the bill and keep the guardrails [P·Ap] |
+
 ## 5. Lab ladder
 
 **Rungs:**

@@ -1,0 +1,301 @@
+# Names and statuses the glossary's exam_name fields don't carry: the hand-kept part of
+# guide/99-reference/02-names-exam-vs-current.md, built by source/reference/build_reference.py.
+# The rest of that page comes from the exam_name fields in reference/glossary.yaml.
+#
+# Facts from the research repo's docs/10 (names and status map), checked 2026-10-23, and the
+# AWS pages cited in each row. Re-check every row before a release.
+#
+# Fields of each entry under names:
+#   name       the name the exam guide or older material uses (required)
+#   now        today's name or status, in our own words, with dates as YYYY-MM-DD (required)
+#   section    exam | closed | feature | older | distractor (required):
+#                exam        the exam guide's name now covers more than one product
+#                closed      a service on the exam's list that is closed or closing to new customers
+#                feature     a retired or retiring part of a service on the exam's list
+#                older       an older name or plan you'll meet in older study material
+#                distractor  removed from the exam, out of its scope, or shut down: a wrong answer
+#   term       glossary term whose taught_in is the teaching page, or
+#   taught_in  repo-relative path of the teaching page (one of the two is required)
+#   mentions   text the teaching page must contain (default: name)
+#   source     the AWS page for the fact (required)
+
+checked: 2026-10-23
+
+names:
+  # The exam's name now covers several products
+  - name: Amazon Q
+    now: >-
+      A brand, not one product: Amazon Q Developer, and Amazon Q Business, which is closed to new
+      customers (announced 2026-06-30). Name the one you mean.
+    section: exam
+    term: Amazon Q
+    source: https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/qbusiness-availability-change.html
+  - name: Amazon Kinesis
+    now: >-
+      A family: Amazon Kinesis Data Streams, Amazon Data Firehose (formerly Kinesis Data Firehose)
+      and Kinesis Video Streams. Work out which member a question means.
+    section: exam
+    term: Amazon Kinesis
+    source: https://aws.amazon.com/kinesis/
+
+  # On the exam's list, but closed or closing to new customers
+  - name: AWS Application Discovery Service
+    now: Closed to new customers since 2025-11-07; AWS points to AWS Transform.
+    section: closed
+    term: AWS Application Discovery Service
+    source: https://docs.aws.amazon.com/application-discovery/latest/userguide/application-discovery-service-availability-change.html
+  - name: AWS Migration Hub
+    now: Closed to new customers since 2025-11-07; AWS points to AWS Transform.
+    section: closed
+    term: AWS Migration Hub
+    source: https://docs.aws.amazon.com/migrationhub/latest/ug/migrationhub-availability-change.html
+  - name: Amazon WorkSpaces Secure Browser
+    now: Closed to new customers from 2026-10-29. Existing customers keep using it.
+    section: closed
+    term: Amazon WorkSpaces Secure Browser
+    source: https://docs.aws.amazon.com/workspaces-web/latest/adminguide/workspaces-secure-browser-maintenance-mode.html
+  - name: Amazon Glacier (the vault service)
+    now: >-
+      Closed to new customers. The exam's "Amazon S3 Glacier" means the S3 Glacier storage
+      classes, not vaults.
+    section: closed
+    term: Amazon Glacier
+    mentions: Amazon Glacier
+    source: https://docs.aws.amazon.com/amazonglacier/latest/dev/introduction.html
+  - name: Amazon Q Business
+    now: Closed to new customers (announced 2026-06-30); AWS points to Amazon Quick.
+    section: closed
+    term: Amazon Q Business
+    source: https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/qbusiness-availability-change.html
+
+  # Retired or retiring parts of services on the exam's list
+  - name: Amazon Inspector Classic
+    now: >-
+      Shut down on 2026-05-20. Today's Amazon Inspector finds and scans resources on its own,
+      with no assessment templates.
+    section: feature
+    term: Amazon Inspector Classic
+    source: https://docs.aws.amazon.com/general/latest/gr/full_shutdown_services.html
+  - name: CloudTrail Lake
+    now: >-
+      Closed to new customers since 2026-05-31; AWS points to Amazon CloudWatch. CloudTrail and
+      its trails are unaffected.
+    section: feature
+    term: CloudTrail Lake
+    source: https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html
+  - name: AWS WAF Classic
+    now: The older version of AWS WAF; its sunset period ended on 2026-10-07.
+    section: feature
+    taught_in: guide/09-protecting-and-governing/04-the-front-door.md
+    mentions: WAF Classic
+    source: https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html
+  - name: Amazon FSx File Gateway
+    now: >-
+      A Storage Gateway type closed to new customers since 2024-10-28; S3 File, Volume and Tape
+      Gateway continue.
+    section: feature
+    taught_in: guide/05-storing-data/04-hybrid-storage-and-backup.md
+    source: https://docs.aws.amazon.com/filegateway/latest/filefsxw/what-is-file-fsxw.html
+  - name: Simple AD (AWS Directory Service)
+    now: A Directory Service directory type closed to new customers since 2026-07-30.
+    section: feature
+    taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+    mentions: Simple AD
+    source: https://docs.aws.amazon.com/directoryservice/latest/admin-guide/simple-ad-availability-change.html
+  - name: AWS X-Ray SDKs and daemon
+    now: >-
+      In maintenance mode since 2026-02-25 (security fixes only); AWS recommends OpenTelemetry.
+      X-Ray tracing itself continues, shown in CloudWatch.
+    section: feature
+    term: AWS X-Ray
+    mentions: X-Ray SDKs
+    source: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-migration.html
+  - name: Amazon Q Developer IDE plugins and paid subscriptions
+    now: >-
+      No new sign-ups since 2026-05-15; end of support on 2027-04-30. Q Developer in the AWS
+      console continues.
+    section: feature
+    term: Amazon Q Developer
+    mentions: "2027-04-30"
+    source: https://aws.amazon.com/blogs/devops/amazon-q-developer-end-of-support-announcement/
+  - name: Classic Load Balancer
+    now: The previous generation of Elastic Load Balancing; AWS recommends a current type.
+    section: feature
+    term: Classic Load Balancer
+    source: https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html
+
+  # Older names and plans in older study material
+  - name: AWS Single Sign-On (AWS SSO)
+    now: AWS IAM Identity Center, renamed on 2022-07-26.
+    section: older
+    term: AWS IAM Identity Center
+    mentions: Single Sign-On
+    source: https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html
+  - name: Amazon SageMaker (the machine learning service)
+    now: >-
+      Amazon SageMaker AI, renamed on 2024-12-03. "Amazon SageMaker" now names a wider data,
+      analytics and AI platform.
+    section: older
+    term: Amazon SageMaker AI
+    mentions: formerly Amazon SageMaker
+    source: https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html
+  - name: Amazon QuickSight
+    now: Amazon Quick Sight, part of Amazon Quick. AWS's pages give no date for the change.
+    section: older
+    term: Amazon Quick Sight
+    source: https://docs.aws.amazon.com/quicksight/latest/user/welcome.html
+  - name: Amazon Kinesis Data Firehose
+    now: Amazon Data Firehose, still a member of the Kinesis family.
+    section: older
+    term: Amazon Data Firehose
+    source: https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html
+  - name: Amazon WorkSpaces Web
+    now: Amazon WorkSpaces Secure Browser, which closes to new customers on 2026-10-29.
+    section: older
+    term: Amazon WorkSpaces Secure Browser
+    source: https://docs.aws.amazon.com/workspaces-web/latest/adminguide/what-is-workspaces-secure-browser.html
+  - name: Amazon Elasticsearch Service
+    now: Amazon OpenSearch Service, its successor.
+    section: older
+    term: Amazon OpenSearch Service
+    mentions: Elasticsearch Service
+    source: https://docs.aws.amazon.com/opensearch-service/latest/developerguide/what-is.html
+  - name: Personal Health Dashboard and Service Health Dashboard
+    now: One console, the AWS Health Dashboard, part of AWS Health.
+    section: older
+    term: AWS Health Dashboard
+    mentions: Personal Health Dashboard
+    source: https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html
+  - name: AWS TCO Calculator
+    now: >-
+      Gone: its address opens the AWS Pricing Calculator. For a migration business case, use
+      Migration Evaluator.
+    section: older
+    term: AWS Pricing Calculator
+    mentions: TCO Calculator
+    source: https://aws.amazon.com/tco-calculator/
+  - name: AWS Simple Monthly Calculator
+    now: Retired; its address leads to the AWS Pricing Calculator.
+    section: older
+    term: AWS Pricing Calculator
+    mentions: Simple Monthly Calculator
+    source: https://calculator.s3.amazonaws.com/index.html
+  - name: Developer Support
+    now: No new subscriptions since 2025-12-02; ends on 2027-01-01. Today's step up is Business Support+.
+    section: older
+    term: Developer Support
+    source: https://docs.aws.amazon.com/awssupport/latest/user/support-plans-eos.html
+  - name: Business Support
+    now: >-
+      No new subscriptions since 2025-12-02; ends on 2027-01-01. Customers aren't moved
+      automatically: they choose Business Support+.
+    section: older
+    term: Business Support
+    source: https://docs.aws.amazon.com/awssupport/latest/user/support-plans-eos.html
+  - name: Enterprise On-Ramp
+    now: Ends on 2027-01-01; AWS is moving its customers to Enterprise Support during 2026.
+    section: older
+    term: Enterprise On-Ramp
+    source: https://docs.aws.amazon.com/awssupport/latest/user/support-plans-eos.html
+
+  # Removed, out of scope or shut down: wrong answers only
+  - name: AWS Snowball
+    now: >-
+      Closed to new customers since 2025-11-07; support ends on 2026-12-31 in commercial Regions.
+      Removed from the 2026 exam guide; AWS points to DataSync and Data Transfer Terminal.
+    section: distractor
+    term: AWS Snowball
+    source: https://aws.amazon.com/snowball/
+  - name: AWS Snowmobile
+    now: Shut down on 2024-03-14.
+    section: distractor
+    taught_in: guide/00-start-here/04-aws-changes-fast.md
+    source: https://docs.aws.amazon.com/general/latest/gr/full_shutdown_services.html
+  - name: AWS Audit Manager
+    now: >-
+      Can't be set up in new accounts since 2026-04-30; removed from the 2026 exam guide. AWS
+      points to AWS Config conformance packs.
+    section: distractor
+    term: AWS Audit Manager
+    source: https://docs.aws.amazon.com/audit-manager/latest/userguide/audit-manager-availability-change.html
+  - name: Amazon Kendra
+    now: >-
+      Closed to new customers since 2026-07-30; removed from the 2026 exam guide. AWS points to
+      Amazon Bedrock Knowledge Bases.
+    section: distractor
+    term: Amazon Kendra
+    source: https://docs.aws.amazon.com/kendra/latest/dg/kendra-availability-change.html
+  - name: AWS AppSync
+    now: Still available, but removed from the 2026 exam guide's list.
+    section: distractor
+    taught_in: guide/10-data-ai-and-more/03-people-apps-and-devices.md
+    mentions: AppSync
+    source: https://docs.aws.amazon.com/appsync/latest/devguide/what-is-appsync.html
+  - name: Amazon Kinesis Data Analytics for SQL
+    now: >-
+      No new applications from 2025-10-15; shut down on 2026-01-27. AWS points to Amazon Managed
+      Service for Apache Flink.
+    section: distractor
+    taught_in: guide/10-data-ai-and-more/01-analytics-in-five-verbs.md
+    mentions: Kinesis Data Analytics
+    source: https://docs.aws.amazon.com/kinesisanalytics/latest/dev/what-is.html
+  - name: AWS OpsWorks
+    now: Shut down on 2024-05-01.
+    section: distractor
+    taught_in: guide/08-building-and-operating/04-connecting-parts-shipping-software.md
+    mentions: OpsWorks
+    source: https://docs.aws.amazon.com/general/latest/gr/full_shutdown_services.html
+  - name: AWS CodeStar
+    now: Shut down on 2024-07-25.
+    section: distractor
+    taught_in: guide/00-start-here/04-aws-changes-fast.md
+    source: https://docs.aws.amazon.com/general/latest/gr/full_shutdown_services.html
+  - name: AWS Cloud9
+    now: >-
+      Closed to new customers (announced 2024-07-25); dropped from the exam guide. AWS points to
+      its IDE Toolkits and AWS CloudShell.
+    section: distractor
+    taught_in: guide/08-building-and-operating/04-connecting-parts-shipping-software.md
+    mentions: Cloud9
+    source: https://docs.aws.amazon.com/cloud9/latest/user-guide/welcome.html
+  - name: AWS IQ
+    now: >-
+      Discontinued: 2026-05-28 on its own page, 2026-05-20 in AWS's lifecycle list. Out of the
+      exam's scope.
+    section: distractor
+    taught_in: guide/12-getting-help/04-partners-and-paid-help.md
+    source: https://aws.amazon.com/iq/
+  - name: AWS CodeDeploy
+    now: Available, but on the exam guide's out-of-scope list; a likely distractor next to CodeBuild and CodePipeline.
+    section: distractor
+    taught_in: guide/08-building-and-operating/04-connecting-parts-shipping-software.md
+    mentions: CodeDeploy
+    source: https://aws.amazon.com/codedeploy/
+  - name: AWS CloudShell
+    now: Available, and used in this guide's labs, but on the exam guide's out-of-scope list.
+    section: distractor
+    term: AWS CloudShell
+    source: https://aws.amazon.com/cloudshell/
+  - name: Amazon MemoryDB for Redis OSS
+    now: Amazon MemoryDB; available, but out of the exam's scope. A distractor next to ElastiCache.
+    section: distractor
+    taught_in: guide/05-storing-data/06-choosing-a-database.md
+    mentions: MemoryDB
+    source: https://aws.amazon.com/memorydb/
+  - name: AWS Network Firewall
+    now: Available, but out of the exam's scope. A distractor next to AWS WAF and security groups.
+    section: distractor
+    taught_in: guide/07-connecting-it/02-filtering-traffic.md
+    source: https://aws.amazon.com/network-firewall/
+  - name: AWS Wavelength
+    now: Available, but out of the exam's scope. Know Wavelength Zones only to tell them from Local Zones.
+    section: distractor
+    term: Wavelength Zone
+    mentions: Wavelength
+    source: https://aws.amazon.com/wavelength/
+  - name: AWS Managed Services (AMS)
+    now: Available, but out of the exam's scope. A distractor next to Support and Professional Services.
+    section: distractor
+    taught_in: guide/12-getting-help/04-partners-and-paid-help.md
+    mentions: AWS Managed Services
+    source: https://aws.amazon.com/managed-services/

@@ -13,6 +13,8 @@ license: cc-by-nc-4.0-with-internal-training
 sections:
   - dir: 00-start-here
     title: "Start here"
+  - dir: 01-on-ramp
+    title: "Module 01: On-ramp: IT foundations (optional)"
   - dir: 02-why-the-cloud
     title: "Module 02: Why organizations use the cloud"
   - dir: 03-aws-around-the-world
@@ -37,6 +39,8 @@ sections:
     title: "Module 12: Getting help"
   - dir: 13-moving-to-aws
     title: "Module 13: Moving to AWS"
+  - dir: 14-capstone
+    title: "Module 14: Capstone: a Well-Architected review"
   - dir: 99-reference
     title: "Reference"
 notices:

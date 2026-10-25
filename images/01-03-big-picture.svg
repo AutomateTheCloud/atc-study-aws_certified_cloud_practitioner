@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="428" viewBox="0 0 680 428" role="img" aria-labelledby="t d">
+<title id="t">The same orders kept as files and in a database</title>
+<desc id="d">Two panels under the question 'which orders are for pickup on 24 December?'. Files: a folder named orders holds three files, order-1041.txt, order-1042.txt and order-1043.txt; your program opens and reads every file, one, two, three, however few match. Database, highlighted: your program sends one query to the database engine and gets two rows back. The engine holds a table named orders with columns order_id, cake, pickup_date and customer_id: 1041, birthday cake, 2026-12-24, 7; 1042, lemon cake, 2026-12-23, 8; 1043, fruit cake, 2026-12-24, 7. Rows 1041 and 1043 are marked as matches.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --hi-fill:#d9e8fb; --n-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --hi-fill:#1b3554; --n-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 1.8; }
+  .hicell { fill: var(--hi-fill); stroke: none; }
+  .n { fill: var(--n-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .plain { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .frame { fill: none; stroke: var(--ink); stroke-width: 1.8; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .head { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .zlab { fill: var(--muted); font-size: 12px; }
+  .mono { fill: var(--ink); font-size: 12px; font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; }
+  .monoh { fill: var(--ink); font-size: 12px; font-weight: 700; font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; }
+  .arrlab { fill: var(--ink2); font-size: 12px; font-style: italic; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .link { stroke: var(--s1); stroke-width: 1.8; fill: none; }
+  .arrowhead { fill: var(--ink2); }
+  .linkhead { fill: var(--s1); }
+</style>
+<rect width="680" height="428" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">The same orders, kept two ways</text>
+<text class="sub" x="16" y="48">Question: which orders are for pickup on 24 December?</text>
+<rect class="frame" x="16.0" y="70.0" width="230.0" height="318.0" rx="10"/>
+<text class="head" x="30" y="94">Files</text>
+<path class="n" d="M30,114 L86,114 L94,122 L232,122 L232,266 L30,266 Z"/>
+<text class="cellt" x="38" y="140">Folder: orders</text>
+<rect class="plain" x="42.0" y="154.0" width="178.0" height="28.0" rx="4"/>
+<text class="mono" x="52" y="173">order-1041.txt</text>
+<text class="small" x="212" y="173" text-anchor="end">open 1</text>
+<rect class="plain" x="42.0" y="190.0" width="178.0" height="28.0" rx="4"/>
+<text class="mono" x="52" y="209">order-1042.txt</text>
+<text class="small" x="212" y="209" text-anchor="end">open 2</text>
+<rect class="plain" x="42.0" y="226.0" width="178.0" height="28.0" rx="4"/>
+<text class="mono" x="52" y="245">order-1043.txt</text>
+<text class="small" x="212" y="245" text-anchor="end">open 3</text>
+<rect class="plain" x="42.0" y="294.0" width="178.0" height="40.0" rx="6"/>
+<text class="cellt" x="131.0" y="319" text-anchor="middle">Your program</text>
+<line class="arrow" x1="131.0" y1="293.0" x2="131.0" y2="268.0"/>
+<path class="arrowhead" d="M126.0,276.0 L136.0,276.0 L131.0,268.0 Z"/>
+<text class="small" x="30" y="356.0">Opens and reads every file,</text>
+<text class="small" x="30" y="372.0">however few of them match</text>
+<rect class="hi" x="262.0" y="70.0" width="402.0" height="318.0" rx="10"/>
+<text class="head" x="276" y="94">Database</text>
+<rect class="plain" x="276.0" y="110.0" width="140.0" height="40.0" rx="6"/>
+<text class="cellt" x="346" y="135" text-anchor="middle">Your program</text>
+<rect class="n" x="496.0" y="110.0" width="154.0" height="40.0" rx="6"/>
+<text class="cellt" x="573" y="135" text-anchor="middle">Database engine</text>
+<line class="arrow" x1="417.0" y1="122.0" x2="495.0" y2="122.0"/>
+<path class="arrowhead" d="M487.0,117.0 L487.0,127.0 L495.0,122.0 Z"/>
+<line class="arrow" x1="495.0" y1="140.0" x2="417.0" y2="140.0"/>
+<path class="arrowhead" d="M425.0,145.0 L425.0,135.0 L417.0,140.0 Z"/>
+<text class="arrlab" x="448" y="170" text-anchor="middle">one query in, two rows back</text>
+<text class="zlab" x="276" y="202">Table: orders</text>
+<rect class="plain" x="276.0" y="210.0" width="328.0" height="104.0" rx="4"/>
+<text class="monoh" x="284.0" y="227">order_id</text>
+<text class="monoh" x="352.0" y="227">cake</text>
+<text class="monoh" x="454.0" y="227">pickup_date</text>
+<text class="monoh" x="546.0" y="227">cust_id</text>
+<line class="axis" x1="276" x2="604" y1="236" y2="236"/>
+<text class="mono" x="284.0" y="253">1041</text>
+<text class="mono" x="352.0" y="253">birthday cake</text>
+<text class="mono" x="454.0" y="253">2026-12-24</text>
+<text class="mono" x="546.0" y="253">7</text>
+<text class="cellt" x="612" y="253">match</text>
+<line class="grid" x1="277" x2="603" y1="262" y2="262"/>
+<text class="mono" x="284.0" y="279">1042</text>
+<text class="mono" x="352.0" y="279">lemon cake</text>
+<text class="mono" x="454.0" y="279">2026-12-23</text>
+<text class="mono" x="546.0" y="279">8</text>
+<line class="grid" x1="277" x2="603" y1="288" y2="288"/>
+<text class="mono" x="284.0" y="305">1043</text>
+<text class="mono" x="352.0" y="305">fruit cake</text>
+<text class="mono" x="454.0" y="305">2026-12-24</text>
+<text class="mono" x="546.0" y="305">7</text>
+<text class="cellt" x="612" y="305">match</text>
+<text class="small" x="276" y="356.0">The engine finds the matching rows itself;</text>
+<text class="small" x="276" y="372.0">only the answer comes back</text>
+<text class="note" x="16" y="412">The orders are made up for teaching. cust_id is short for customer_id.</text>
+</svg>

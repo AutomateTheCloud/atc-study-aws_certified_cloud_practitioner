@@ -1,0 +1,257 @@
+# The CLF-C02 exam guide's in-scope services: the source of the service map,
+# guide/99-reference/04-service-map.md, built by source/reference/build_reference.py.
+# From the exam guide's "In-scope AWS services" list, retrieved 2026-10-23
+# (https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html),
+# in the guide's category order. Names are the exam guide's.
+#
+# Fields:
+#   name       the exam guide's name (required)
+#   category   the exam guide's category (required)
+#   listed     false for a service the tasks need that the list doesn't name (default true)
+#   term       the glossary term for the service, when the generator can't match it by name,
+#              abbreviation or exam_name
+#   taught_in  a teaching page, for a service the guide teaches without a glossary entry
+#   does       what it does in a few words: needed when there is no glossary entry, and used
+#              in place of the glossary definition's first clause when that reads badly
+#   note       optional; shown after the description
+
+- name: Amazon Athena
+  category: Analytics
+- name: Amazon EMR
+  category: Analytics
+- name: AWS Glue
+  category: Analytics
+- name: Amazon Kinesis
+  category: Analytics
+- name: Amazon OpenSearch Service
+  category: Analytics
+- name: Amazon Quick Sight
+  category: Analytics
+- name: Amazon Redshift
+  category: Analytics
+- name: Amazon EventBridge
+  category: Application Integration
+- name: Amazon SNS
+  category: Application Integration
+- name: Amazon SQS
+  category: Application Integration
+- name: AWS Step Functions
+  category: Application Integration
+- name: Amazon Connect
+  category: Business Applications
+- name: Amazon SES
+  category: Business Applications
+- name: AWS Budgets
+  category: Cloud Financial Management
+- name: AWS Cost and Usage Reports
+  category: Cloud Financial Management
+  term: "AWS Cost and Usage Report"
+- name: AWS Cost Explorer
+  category: Cloud Financial Management
+- name: AWS Marketplace
+  category: Cloud Financial Management
+- name: AWS Batch
+  category: Compute
+- name: Amazon EC2
+  category: Compute
+- name: AWS Elastic Beanstalk
+  category: Compute
+- name: Amazon Lightsail
+  category: Compute
+- name: AWS Outposts
+  category: Compute
+- name: Amazon ECR
+  category: Containers
+- name: Amazon ECS
+  category: Containers
+- name: Amazon EKS
+  category: Containers
+- name: AWS Support
+  category: Customer Enablement
+- name: Amazon Aurora
+  category: Database
+- name: Amazon DocumentDB
+  category: Database
+- name: Amazon DynamoDB
+  category: Database
+- name: Amazon ElastiCache
+  category: Database
+- name: Amazon Neptune
+  category: Database
+- name: Amazon RDS
+  category: Database
+- name: AWS CLI
+  category: Developer Tools
+- name: AWS CodeBuild
+  category: Developer Tools
+- name: AWS CodePipeline
+  category: Developer Tools
+- name: AWS X-Ray
+  category: Developer Tools
+- name: Amazon AppStream 2.0
+  category: End User Computing
+- name: Amazon WorkSpaces
+  category: End User Computing
+- name: Amazon WorkSpaces Secure Browser
+  category: End User Computing
+- name: AWS Amplify
+  category: Frontend Web and Mobile
+- name: AWS IoT Core
+  category: Internet of Things
+- name: Amazon Comprehend
+  category: Machine Learning
+- name: Amazon Lex
+  category: Machine Learning
+- name: Amazon Polly
+  category: Machine Learning
+- name: Amazon Q
+  category: Machine Learning
+- name: Amazon Rekognition
+  category: Machine Learning
+- name: Amazon SageMaker AI
+  category: Machine Learning
+- name: Amazon Textract
+  category: Machine Learning
+- name: Amazon Transcribe
+  category: Machine Learning
+- name: Amazon Translate
+  category: Machine Learning
+- name: AWS Auto Scaling
+  category: Management and Governance
+  does: "Sets up scaling for several kinds of resource at once, such as groups of EC2 instances and DynamoDB tables"
+- name: AWS CloudFormation
+  category: Management and Governance
+- name: AWS CloudTrail
+  category: Management and Governance
+- name: Amazon CloudWatch
+  category: Management and Governance
+- name: AWS Compute Optimizer
+  category: Management and Governance
+- name: AWS Config
+  category: Management and Governance
+- name: AWS Control Tower
+  category: Management and Governance
+- name: AWS Health Dashboard
+  category: Management and Governance
+- name: AWS License Manager
+  category: Management and Governance
+- name: AWS Management Console
+  category: Management and Governance
+- name: AWS Organizations
+  category: Management and Governance
+- name: AWS Service Catalog
+  category: Management and Governance
+- name: Service Quotas
+  category: Management and Governance
+  term: "service quota"
+- name: AWS Systems Manager
+  category: Management and Governance
+  taught_in: guide/04-shared-responsibility-and-access/05-credentials-and-federation.md
+  does: "Tools for operating servers and applications at scale; the guide so far teaches only its Parameter Store capability"
+- name: AWS Trusted Advisor
+  category: Management and Governance
+- name: AWS Well-Architected Tool
+  category: Management and Governance
+- name: AWS Application Discovery Service
+  category: Migration and Transfer
+- name: AWS Application Migration Service
+  category: Migration and Transfer
+- name: AWS DMS
+  category: Migration and Transfer
+- name: Migration Evaluator
+  category: Migration and Transfer
+- name: AWS Migration Hub
+  category: Migration and Transfer
+- name: AWS SCT
+  category: Migration and Transfer
+- name: Amazon API Gateway
+  category: Networking and Content Delivery
+- name: Amazon CloudFront
+  category: Networking and Content Delivery
+- name: AWS Direct Connect
+  category: Networking and Content Delivery
+- name: AWS Global Accelerator
+  category: Networking and Content Delivery
+- name: AWS PrivateLink
+  category: Networking and Content Delivery
+- name: Amazon Route 53
+  category: Networking and Content Delivery
+- name: AWS Transit Gateway
+  category: Networking and Content Delivery
+- name: Amazon VPC
+  category: Networking and Content Delivery
+- name: AWS VPN
+  category: Networking and Content Delivery
+  taught_in: guide/07-connecting-it/04-connecting-networks-and-offices.md
+  does: "The family name for AWS Site-to-Site VPN and AWS Client VPN: encrypted connections over the internet"
+- name: AWS Site-to-Site VPN
+  category: Networking and Content Delivery
+  does: "Connects a whole network, such as an office, to AWS through encrypted tunnels over the internet"
+- name: AWS Client VPN
+  category: Networking and Content Delivery
+  does: "Lets individual people connect their own devices to a VPC, encrypted over the internet"
+- name: AWS Artifact
+  category: Security, Identity, and Compliance
+- name: AWS Certificate Manager (ACM)
+  category: Security, Identity, and Compliance
+- name: AWS CloudHSM
+  category: Security, Identity, and Compliance
+- name: Amazon Cognito
+  category: Security, Identity, and Compliance
+- name: Amazon Detective
+  category: Security, Identity, and Compliance
+- name: AWS Directory Service
+  category: Security, Identity, and Compliance
+- name: AWS Firewall Manager
+  category: Security, Identity, and Compliance
+- name: Amazon GuardDuty
+  category: Security, Identity, and Compliance
+- name: AWS IAM
+  category: Security, Identity, and Compliance
+- name: AWS IAM Identity Center
+  category: Security, Identity, and Compliance
+- name: Amazon Inspector
+  category: Security, Identity, and Compliance
+- name: AWS KMS
+  category: Security, Identity, and Compliance
+- name: Amazon Macie
+  category: Security, Identity, and Compliance
+- name: AWS RAM
+  category: Security, Identity, and Compliance
+- name: AWS Secrets Manager
+  category: Security, Identity, and Compliance
+- name: AWS Security Hub
+  category: Security, Identity, and Compliance
+  does: "Checks your settings against security standards, scores them, and gathers other services' findings in one place"
+- name: AWS Shield
+  category: Security, Identity, and Compliance
+- name: AWS WAF
+  category: Security, Identity, and Compliance
+- name: AWS Fargate
+  category: Serverless
+- name: AWS Lambda
+  category: Serverless
+- name: AWS Backup
+  category: Storage
+- name: Amazon EBS
+  category: Storage
+- name: Amazon EFS
+  category: Storage
+- name: AWS Elastic Disaster Recovery
+  category: Storage
+- name: Amazon FSx
+  category: Storage
+- name: Amazon S3
+  category: Storage
+- name: Amazon S3 Glacier
+  category: Storage
+- name: AWS Storage Gateway
+  category: Storage
+
+# Not on the list by name, but task 3.3 needs them (see the exam guide's task 3.3).
+- name: Elastic Load Balancing
+  category: Networking and Content Delivery
+  listed: false
+- name: Amazon EC2 Auto Scaling
+  category: Management and Governance
+  listed: false

@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="318" viewBox="0 0 680 318" role="img" aria-labelledby="t d">
+<title id="t">An orders table linked to a customers table</title>
+<desc id="d">Two tables. orders, with primary key order_id, and columns cake, pickup_date and customer_id: 1041, birthday cake, 2026-12-24, customer 7; 1042, lemon cake, 2026-12-23, customer 8; 1043, fruit cake, 2026-12-24, customer 7. customers, with primary key customer_id, highlighted, and columns name and phone: 7, Ana, 555-0107; 8, Ben, 555-0108. Lines run from the customer_id of orders 1041 and 1043 to Ana's row. A note says Ana's phone number is stored once, so a change there reaches both orders.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --hi-fill:#d9e8fb; --n-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --hi-fill:#1b3554; --n-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .hi { fill: var(--hi-fill); stroke: var(--s1); stroke-width: 1.8; }
+  .hicell { fill: var(--hi-fill); stroke: none; }
+  .n { fill: var(--n-fill); stroke: var(--ink2); stroke-width: 1.2; }
+  .plain { fill: var(--surface); stroke: var(--ink2); stroke-width: 1.2; }
+  .frame { fill: none; stroke: var(--ink); stroke-width: 1.8; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .head { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .zlab { fill: var(--muted); font-size: 12px; }
+  .mono { fill: var(--ink); font-size: 12px; font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; }
+  .monoh { fill: var(--ink); font-size: 12px; font-weight: 700; font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; }
+  .arrlab { fill: var(--ink2); font-size: 12px; font-style: italic; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .arrow { stroke: var(--ink2); stroke-width: 1.5; fill: none; }
+  .link { stroke: var(--s1); stroke-width: 1.8; fill: none; }
+  .arrowhead { fill: var(--ink2); }
+  .linkhead { fill: var(--s1); }
+</style>
+<rect width="680" height="318" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Two tables, linked by a key</text>
+<text class="sub" x="16" y="48">Each order names its customer by customer_id; the customer's details are kept once</text>
+<text class="head" x="16" y="84">orders</text>
+<rect class="plain" x="16.0" y="96.0" width="380.0" height="128.0" rx="4"/>
+<text class="monoh" x="24.0" y="113">order_id</text>
+<text class="monoh" x="98.0" y="113">cake</text>
+<text class="monoh" x="206.0" y="113">pickup_date</text>
+<text class="monoh" x="306.0" y="113">customer_id</text>
+<line class="axis" x1="16" x2="396" y1="128" y2="128"/>
+<text class="mono" x="24.0" y="145">1041</text>
+<text class="mono" x="98.0" y="145">birthday cake</text>
+<text class="mono" x="206.0" y="145">2026-12-24</text>
+<text class="mono" x="306.0" y="145">7</text>
+<line class="grid" x1="17" x2="395" y1="160" y2="160"/>
+<text class="mono" x="24.0" y="177">1042</text>
+<text class="mono" x="98.0" y="177">lemon cake</text>
+<text class="mono" x="206.0" y="177">2026-12-23</text>
+<text class="mono" x="306.0" y="177">8</text>
+<line class="grid" x1="17" x2="395" y1="192" y2="192"/>
+<text class="mono" x="24.0" y="209">1043</text>
+<text class="mono" x="98.0" y="209">fruit cake</text>
+<text class="mono" x="206.0" y="209">2026-12-24</text>
+<text class="mono" x="306.0" y="209">7</text>
+<text class="zlab" x="24" y="242">primary key: order_id</text>
+<text class="head" x="442" y="84">customers</text>
+<rect class="plain" x="442.0" y="96.0" width="238.0" height="96.0" rx="4"/>
+<rect class="hicell" x="443.0" y="97.0" width="96.0" height="30"/>
+<text class="monoh" x="450.0" y="113">customer_id</text>
+<text class="monoh" x="548.0" y="113">name</text>
+<text class="monoh" x="604.0" y="113">phone</text>
+<line class="axis" x1="442" x2="680" y1="128" y2="128"/>
+<text class="mono" x="450.0" y="145">7</text>
+<text class="mono" x="548.0" y="145">Ana</text>
+<text class="mono" x="604.0" y="145">555-0107</text>
+<line class="grid" x1="443" x2="679" y1="160" y2="160"/>
+<text class="mono" x="450.0" y="177">8</text>
+<text class="mono" x="548.0" y="177">Ben</text>
+<text class="mono" x="604.0" y="177">555-0108</text>
+<text class="cellt" x="450" y="210">primary key: customer_id</text>
+<path class="link" d="M356,144 L414,144 L414,144 L433,144"/>
+<path class="link" d="M356,208 L414,208 L414,144 L433,144"/>
+<line class="link" x1="430.0" y1="144.0" x2="441.0" y2="144.0"/>
+<path class="linkhead" d="M433.0,139.0 L433.0,149.0 L441.0,144.0 Z"/>
+<text class="small" x="16" y="276">Ana's phone number is stored once. Change it there, and both of her orders see the new number.</text>
+<text class="note" x="16" y="302">The people, orders and numbers are made up for teaching; 555-01xx numbers are kept for fiction.</text>
+</svg>

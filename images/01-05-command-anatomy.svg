@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="372" viewBox="0 0 680 372" role="img" aria-labelledby="t d">
+<title id="t">The parts of one AWS CLI command</title>
+<desc id="d">The command aws s3 mb s3://example-bakery-photos --region us-east-1, after a $ prompt, with each part bracketed and named. aws: the program, the AWS CLI itself. s3: the command, which service, Amazon S3. mb: the subcommand, what to do, make a bucket. s3://example-bakery-photos: the argument, what to do it to, the new bucket's name. --region us-east-1: an option, a setting written as a name with two dashes, then its value. A footnote says the $ is the prompt, the shell showing it is ready, and you don't type it.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .codebg { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .code { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace; fill: var(--ink); font-size: 15px; }
+  .code-s { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace; fill: var(--ink); font-size: 13px; }
+  .code-dim { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace; fill: var(--muted); font-size: 15px; }
+  .key { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .brk { stroke: var(--s1); stroke-width: 2; fill: none; }
+  .mark { fill: none; stroke: var(--s1); stroke-width: 1.5; }
+</style>
+<rect width="680" height="372" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">Anatomy of one AWS CLI command</text>
+<text class="sub" x="16" y="48">Read it left to right: which program, which service, what to do, to what, and how</text>
+<rect class="codebg" x="16" y="86" width="648" height="40" rx="6"/>
+<text class="code-dim" x="28.0" y="112" xml:space="preserve">$ </text>
+<text class="code" x="46.1" y="112" xml:space="preserve">aws</text>
+<text class="code" x="73.2" y="112" xml:space="preserve"> </text>
+<text class="code" x="82.2" y="112" xml:space="preserve">s3</text>
+<text class="code" x="100.2" y="112" xml:space="preserve"> </text>
+<text class="code" x="109.3" y="112" xml:space="preserve">mb</text>
+<text class="code" x="127.3" y="112" xml:space="preserve"> </text>
+<text class="code" x="136.4" y="112" xml:space="preserve">s3://example-bakery-photos</text>
+<text class="code" x="371.1" y="112" xml:space="preserve"> </text>
+<text class="code" x="380.2" y="112" xml:space="preserve">--region us-east-1</text>
+<path class="brk" d="M47.1,130 L47.1,136 L72.2,136 L72.2,130"/>
+<line class="lead" x1="59.6" x2="59.6" y1="136" y2="149"/>
+<text class="key" x="53.6" y="162" text-anchor="start">PROGRAM</text>
+<text class="small" x="53.605000000000004" y="178.0" text-anchor="start">The AWS CLI itself</text>
+<path class="brk" d="M83.2,130 L83.2,136 L99.2,136 L99.2,130"/>
+<line class="lead" x1="91.2" x2="91.2" y1="136" y2="213"/>
+<text class="key" x="85.2" y="226" text-anchor="start">COMMAND</text>
+<text class="small" x="85.21000000000001" y="242.0" text-anchor="start">Which service: Amazon S3</text>
+<path class="brk" d="M110.3,130 L110.3,136 L126.3,136 L126.3,130"/>
+<line class="lead" x1="118.3" x2="118.3" y1="136" y2="277"/>
+<text class="key" x="112.3" y="290" text-anchor="start">SUBCOMMAND</text>
+<text class="small" x="112.30000000000001" y="306.0" text-anchor="start">What to do: make a</text>
+<text class="small" x="112.30000000000001" y="321.0" text-anchor="start">bucket</text>
+<path class="brk" d="M137.4,130 L137.4,136 L370.1,136 L370.1,130"/>
+<line class="lead" x1="253.8" x2="253.8" y1="136" y2="149"/>
+<text class="key" x="253.8" y="162" text-anchor="middle">ARGUMENT</text>
+<text class="small" x="253.75" y="178.0" text-anchor="middle">What to do it to: the</text>
+<text class="small" x="253.75" y="193.0" text-anchor="middle">new bucket's name</text>
+<path class="brk" d="M381.2,130 L381.2,136 L541.7,136 L541.7,130"/>
+<line class="lead" x1="461.4" x2="461.4" y1="136" y2="213"/>
+<text class="key" x="461.4" y="226" text-anchor="middle">OPTION</text>
+<text class="small" x="461.43999999999994" y="242.0" text-anchor="middle">A setting: a name with</text>
+<text class="small" x="461.43999999999994" y="257.0" text-anchor="middle">two dashes, then its</text>
+<text class="small" x="461.43999999999994" y="272.0" text-anchor="middle">value</text>
+<text class="sub" x="16" y="358.0">$ is the prompt: the shell showing it is ready. You don't type it.</text>
+</svg>

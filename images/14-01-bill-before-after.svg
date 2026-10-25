@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="412" viewBox="0 0 680 412" role="img" aria-labelledby="t d">
+<title id="t">The bakery's monthly AWS bill as built, with the review's fixes, with Business Support+, and after later savings</title>
+<desc id="d">Stacked horizontal bars, dollars per month, US East (N. Virginia), price lists retrieved 2026-10-24, usage made up. As built: web server $11.88 plus storage, requests and backups $1.31, $13.19. With the fixes: web servers $23.76, load balancer $24.90, storage, requests and backups $1.70, $50.36. Plus Business Support+ at its $29 minimum: $79.36. Later, with two t4g.micro instances on 1-year Reserved Instances: web servers $16.32, total $71.92.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --s3:#1baf7a; --sup:#898781; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --s3:#199e70; --sup:#898781; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .s3 { fill: var(--s3); } .sup { fill: var(--sup); }
+  .gap { stroke: var(--surface); stroke-width: 2; }
+  .val { fill: var(--ink); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .valb { fill: var(--ink); font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .pick { fill: none; stroke: var(--ink); stroke-width: 2; }
+</style>
+<rect width="680" height="412" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">The bakery's monthly bill before and after the review</text>
+<text class="sub" x="16" y="48">US East (N. Virginia), price lists retrieved 2026-10-24; usage made up for teaching</text>
+<rect class="s1" x="16" y="70" width="12" height="12" rx="2"/>
+<text x="34" y="80">Web servers</text>
+<rect class="s2" x="121.2" y="70" width="12" height="12" rx="2"/>
+<text x="139.2" y="80">Load balancer</text>
+<rect class="s3" x="240.8" y="70" width="12" height="12" rx="2"/>
+<text x="258.8" y="80">Storage, requests, backups</text>
+<rect class="sup" x="454.0" y="70" width="12" height="12" rx="2"/>
+<text x="472.0" y="80">Support plan</text>
+<line class="axis" x1="214.0" x2="214.0" y1="98" y2="336"/>
+<text class="tick" x="214.0" y="352" text-anchor="middle">$0</text>
+<line class="grid" x1="303.0" x2="303.0" y1="98" y2="336"/>
+<text class="tick" x="303.0" y="352" text-anchor="middle">$20</text>
+<line class="grid" x1="392.0" x2="392.0" y1="98" y2="336"/>
+<text class="tick" x="392.0" y="352" text-anchor="middle">$40</text>
+<line class="grid" x1="481.0" x2="481.0" y1="98" y2="336"/>
+<text class="tick" x="481.0" y="352" text-anchor="middle">$60</text>
+<line class="grid" x1="570.0" x2="570.0" y1="98" y2="336"/>
+<text class="tick" x="570.0" y="352" text-anchor="middle">$80</text>
+<text class="tick" x="392.0" y="370" text-anchor="middle">USD per month</text>
+<text class="lab" x="204" y="118" text-anchor="end">As built</text>
+<text class="small" x="204" y="134" text-anchor="end">one server, no load balancer</text>
+<rect class="s1 gap" x="214.0" y="104" width="52.9" height="34"><title>As built: web server $11.88</title></rect>
+<path class="s3 gap" d="M266.9,104.0 L268.7,104.0 Q272.7,104.0 272.7,108.0 L272.7,134.0 Q272.7,138.0 268.7,138.0 L266.9,138.0 Z"><title>As built: storage, requests, backups $1.31</title></path>
+<text class="val" x="282.7" y="126.0">$13.19</text>
+<text class="lab" x="204" y="182" text-anchor="end">With the fixes</text>
+<text class="small" x="204" y="198" text-anchor="end">all eight in the write-up</text>
+<rect class="s1 gap" x="214.0" y="168" width="105.7" height="34"><title>With the fixes: web servers $23.76</title></rect>
+<rect class="s2 gap" x="319.7" y="168" width="110.8" height="34"><title>With the fixes: load balancer $24.90</title></rect>
+<path class="s3 gap" d="M430.5,168.0 L434.1,168.0 Q438.1,168.0 438.1,172.0 L438.1,198.0 Q438.1,202.0 434.1,202.0 L430.5,202.0 Z"><title>With the fixes: storage, requests, backups $1.70</title></path>
+<text class="val" x="448.1" y="190.0">$50.36</text>
+<text class="lab" x="204" y="246" text-anchor="end">Plus Business Support+</text>
+<text class="small" x="204" y="262" text-anchor="end">its $29 monthly minimum</text>
+<rect class="s1 gap" x="214.0" y="232" width="105.7" height="34"><title>Plus Business Support+: web servers $23.76</title></rect>
+<rect class="s2 gap" x="319.7" y="232" width="110.8" height="34"><title>Plus Business Support+: load balancer $24.90</title></rect>
+<rect class="s3 gap" x="430.5" y="232" width="7.6" height="34"><title>Plus Business Support+: storage, requests, backups $1.70</title></rect>
+<path class="sup gap" d="M438.1,232.0 L563.2,232.0 Q567.2,232.0 567.2,236.0 L567.2,262.0 Q567.2,266.0 563.2,266.0 L438.1,266.0 Z"><title>Plus Business Support+: Business Support+ $29.00</title></path>
+<text class="val" x="577.2" y="254.0">$79.36</text>
+<text class="lab" x="204" y="310" text-anchor="end">Later: Graviton, 1-year RIs</text>
+<text class="small" x="204" y="326" text-anchor="end">after a month of data</text>
+<rect class="s1 gap" x="214.0" y="296" width="72.6" height="34"><title>Later: Graviton, 1-year RIs: web servers $16.32</title></rect>
+<rect class="s2 gap" x="286.6" y="296" width="110.8" height="34"><title>Later: Graviton, 1-year RIs: load balancer $24.90</title></rect>
+<rect class="s3 gap" x="397.4" y="296" width="7.6" height="34"><title>Later: Graviton, 1-year RIs: storage, requests, backups $1.70</title></rect>
+<path class="sup gap" d="M405.0,296.0 L530.0,296.0 Q534.0,296.0 534.0,300.0 L534.0,326.0 Q534.0,330.0 530.0,330.0 L405.0,330.0 Z"><title>Later: Graviton, 1-year RIs: Business Support+ $29.00</title></path>
+<text class="val" x="544.0" y="318.0">$71.92</text>
+<text class="note" x="16" y="382">Lambda, CloudWatch, SNS email and data out stay inside their free allowances; VPC parts are free.</text>
+<text class="note" x="16" y="397">Later: two t4g.micro on 1-year Standard RIs, No Upfront, instead of two t3.micro On-Demand.</text>
+</svg>

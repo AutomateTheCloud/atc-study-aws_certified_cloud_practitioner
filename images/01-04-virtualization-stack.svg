@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="470" viewBox="0 0 680 470" role="img" aria-labelledby="t d">
+<title id="t">One physical server split into three virtual servers by a hypervisor</title>
+<desc id="d">Bottom to top. A physical server, the host: processors, memory, disks and network card, in a rack in a data center. On it, highlighted, the hypervisor, the virtualization layer, which gives each virtual server its share of processor, memory and disk and keeps them apart. A dashed line sits above the hypervisor: on a cloud server such as Amazon EC2, the customer runs what is above the line and the provider runs everything below it. Above the line, three virtual servers side by side, each with a guest operating system and an application: virtual server 1, Linux, the bakery's website; virtual server 2, Linux, the bakery's order database; virtual server 3, Windows, another customer's app, drawn dashed to show it belongs to someone else on the same host.</desc>
+
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+        --grid:#e1e0d9; --axis:#c3c2b7; --s1:#2a78d6; --s1-light:#9ec5f4; --s2:#eb6834; --aws-fill:#d9e8fb; --you-fill:#fbe1d6; --none-fill:#f1f0ec; }
+  @media (prefers-color-scheme: dark) {
+    svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+          --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s1-light:#1c5cab; --s2:#d95926; --aws-fill:#1b3554; --you-fill:#4d2716; --none-fill:#252523; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 13px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; }
+  .sub { fill: var(--ink2); font-size: 13px; }
+  .tick { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .lab { fill: var(--ink); font-size: 13px; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--axis); stroke-width: 1; }
+  .s1 { fill: var(--s1); } .s1l { fill: var(--s1-light); } .s2 { fill: var(--s2); }
+  .line-ink { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .line-s1 { stroke: var(--s1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dot-s1 { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .lead { stroke: var(--muted); stroke-width: 1; }
+  .aws { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 1.5; }
+  .you { fill: var(--you-fill); stroke: var(--s2); stroke-width: 1.5; }
+  .other { fill: var(--none-fill); stroke: var(--axis); stroke-width: 1.5; stroke-dasharray: 4 3; }
+  .hl { fill: var(--aws-fill); stroke: var(--s1); stroke-width: 3; }
+  .cellt { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .cells { fill: var(--ink2); font-size: 11.5px; }
+  .head { fill: var(--ink); font-size: 13px; font-weight: 600; }
+  .small { fill: var(--ink2); font-size: 12px; }
+  .note { fill: var(--muted); font-size: 11.5px; }
+  .frame { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .theline { stroke: var(--ink); stroke-width: 2.5; fill: none; stroke-dasharray: 8 5; stroke-linecap: round; }
+  .linelab { fill: var(--ink); font-size: 12.5px; font-weight: 600; }
+</style>
+<rect width="680" height="470" fill="var(--surface)" style="fill:var(--surface)"/>
+<text class="title" x="16" y="28">One physical server, three virtual servers</text>
+<text class="sub" x="16" y="48">The hypervisor shares out the hardware and keeps each virtual server apart</text>
+<rect class="frame" x="20" y="74" width="204" height="180" rx="8"/>
+<text class="head" x="122.0" y="94" text-anchor="middle">Virtual server 1</text>
+<rect class="you" x="30.0" y="106.0" width="184.0" height="58.0" rx="5"/>
+<text class="cellt" x="122.0" y="124.0" text-anchor="middle">Application</text>
+<text class="cells" x="122.0" y="139.0" text-anchor="middle">The bakery's website</text>
+<rect class="you" x="30.0" y="174.0" width="184.0" height="58.0" rx="5"/>
+<text class="cellt" x="122.0" y="192.0" text-anchor="middle">Guest operating system</text>
+<text class="cells" x="122.0" y="207.0" text-anchor="middle">Linux</text>
+<rect class="frame" x="228" y="74" width="204" height="180" rx="8"/>
+<text class="head" x="330.0" y="94" text-anchor="middle">Virtual server 2</text>
+<rect class="you" x="238.0" y="106.0" width="184.0" height="58.0" rx="5"/>
+<text class="cellt" x="330.0" y="124.0" text-anchor="middle">Application</text>
+<text class="cells" x="330.0" y="139.0" text-anchor="middle">The bakery's order</text>
+<text class="cells" x="330.0" y="153.0" text-anchor="middle">database</text>
+<rect class="you" x="238.0" y="174.0" width="184.0" height="58.0" rx="5"/>
+<text class="cellt" x="330.0" y="192.0" text-anchor="middle">Guest operating system</text>
+<text class="cells" x="330.0" y="207.0" text-anchor="middle">Linux</text>
+<rect class="frame" x="436" y="74" width="204" height="180" rx="8"/>
+<text class="head" x="538.0" y="94" text-anchor="middle">Virtual server 3</text>
+<rect class="other" x="446.0" y="106.0" width="184.0" height="58.0" rx="5"/>
+<text class="cellt" x="538.0" y="124.0" text-anchor="middle">Application</text>
+<text class="cells" x="538.0" y="139.0" text-anchor="middle">Another customer's app</text>
+<rect class="other" x="446.0" y="174.0" width="184.0" height="58.0" rx="5"/>
+<text class="cellt" x="538.0" y="192.0" text-anchor="middle">Guest operating system</text>
+<text class="cells" x="538.0" y="207.0" text-anchor="middle">Windows</text>
+<line class="theline" x1="16" x2="644" y1="270" y2="270"/>
+<text class="linelab" x="24" y="290">On a cloud server such as Amazon EC2: the customer runs what is above the line,</text>
+<text class="linelab" x="24" y="307">the provider runs everything below it</text>
+<rect class="hl" x="24.0" y="322.0" width="612.0" height="52.0" rx="5"/>
+<text class="cellt" x="330.0" y="340.0" text-anchor="middle">Hypervisor (the virtualization layer)</text>
+<text class="cells" x="330.0" y="355.0" text-anchor="middle">Gives each virtual server its share of processor, memory and disk, and keeps them apart</text>
+<rect class="aws" x="24.0" y="384.0" width="612.0" height="52.0" rx="5"/>
+<text class="cellt" x="330.0" y="402.0" text-anchor="middle">Physical server (the host)</text>
+<text class="cells" x="330.0" y="417.0" text-anchor="middle">Processors, memory, disks and network card, in a rack in a data center</text>
+<text class="note" x="16" y="458.0">Solid orange: the bakery's virtual servers. Dashed gray: another customer's, on the same host.</text>
+</svg>
