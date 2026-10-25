@@ -1,4 +1,4 @@
-# Review report: CLF-C02 practice bundle, version 0.3.0
+# Review report: CLF-C02 practice bundle, version 0.3.1
 
 **Practice Questions and Flashcards for the AWS Certified Cloud Practitioner Exam (CLF-C02)**,
 built 2026-10-24 from the guide's Modules 01 to 14 and its glossary.
@@ -99,18 +99,16 @@ Business Support+ qualifies for the Shield Response Team); and the labs' console
   Application Discovery Service, Application Migration Service), questions are framed so only one
   answer applies, and the explanation gives today's status.
 - **Similarity to known dump questions** (`tools/check_similarity.py`, run blind): all 889 questions
-  in all three wordings, 2,766 candidates: 2,760 PASS, 6 REVIEW, 0 REJECT.
+  in all three wordings, 2,766 candidates: 2,766 PASS, 0 REVIEW, 0 REJECT (version 0.3.1 rewrote the last six REVIEW items, below).
 - **Guide pages:** the checks found 40-odd places where the guide had simplified a fact too far.
   Each was checked against current AWS documentation and corrected on the page, with the source.
 
 ## Needs a human
 
-1. **Six questions need an authorized reviewer** (`--show-text` on just these):
-   `q05-classes-that-need-a-restore`, `q05-dr-backups-restore-in-hours`,
-   `q05-regenerable-preview-clips`, `q05-scans-read-a-few-times-a-year`,
-   `q05-ten-year-records-lowest-cost`, `q05-unpredictable-video-library`. Each is REVIEW on its first
-   wording only, because a known question offers a similar set of S3 storage classes and keys the
-   same one. None has stem or wording overlap.
+1. **The six REVIEW items are resolved without viewing dump text.** In 0.3.0, six Module 05 storage-class
+   questions scored REVIEW because a known question offered a similar set of S3 classes. Rather than open the
+   dump text (the author stays in the clean room), 0.3.1 rewrote them as statement, trade-off, lifecycle-rule
+   and action questions (`revision: 2`); all now PASS and a fresh blind solve matched all six.
 2. **Items resting on dated facts:** the explanations date them (2026-10-23 or 2026-10-24). Recheck
    them with every release: Support plan names and the legacy plans' end (2027-01-01), WorkSpaces
    Secure Browser closing to new customers (2026-10-29), Amazon Q Developer's subscriptions ending

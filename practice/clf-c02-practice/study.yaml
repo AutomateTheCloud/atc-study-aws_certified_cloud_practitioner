@@ -3,7 +3,7 @@
 format_version: '0.2'
 id: b247b7a9-9b89-4b04-8cd5-17aed3c38d61
 title: Practice Questions and Flashcards for the AWS Certified Cloud Practitioner Exam (CLF-C02)
-version: 0.3.0
+version: 0.3.1
 language: en
 subject: Cloud computing
 tags:
@@ -15164,64 +15164,64 @@ questions:
       Public Access keeps it that way"'
     url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/05-storing-data/02-s3-in-practice.md
 - id: q05-unpredictable-video-library
+  revision: 2
   type: multiple_choice
   selection: single
   prompt:
     text: |
-      An online course platform keeps lecture recordings in Amazon S3. A recording can sit
-      unwatched for a year and then be assigned to thousands of students overnight, and nobody can
-      say which one will be next. The platform wants each recording's storage cost to drop while
-      it goes unwatched, with no per-GB fee when it is suddenly read again. Which S3 storage class
-      fits?
+      An online course platform keeps lecture recordings in Amazon S3 in the S3 Intelligent-Tiering
+      class, because nobody can say which recording will be assigned to thousands of students
+      next. A finance analyst asks how a sudden read of a recording that sat unwatched for a year
+      will show up on the bill. Which statement is true?
   choices:
-  - id: standard
-    text: S3 Standard
+  - id: per-gb-fee
+    text: S3 Intelligent-Tiering charges a fee per GB for each read, like S3 Standard-IA
     variants:
-    - text: The Standard class
-    - text: Standard storage
+    - text: Intelligent-Tiering bills a per-GB fee on every read, as Standard-IA does
+    - text: With S3 Intelligent-Tiering, each read carries a per-GB fee, as in Standard-IA
     explanation:
-      text: Standard has no retrieval fee, but its storage price never drops, however long a recording
-        goes unwatched.
-  - id: intelligent-tiering
-    text: S3 Intelligent-Tiering
+      text: That is how the IA classes bill. Intelligent-Tiering charges no retrieval fee, which is why
+        it suits a pattern nobody can predict.
+  - id: monitoring-fee
+    text: S3 Intelligent-Tiering charges no per-GB fee for the read, only a small monthly fee per object
     variants:
-    - text: The Intelligent-Tiering class
-    - text: Intelligent-Tiering storage
+    - text: Intelligent-Tiering bills no per-GB read fee, only a small monthly per-object monitoring fee
+    - text: With S3 Intelligent-Tiering, reads have no per-GB fee; objects carry a small monthly monitoring
+        fee
     explanation:
-      text: It moves each object to cheaper tiers when it goes unread and back when it's read, with no
-        retrieval fees, only a small monitoring fee per object.
-  - id: glacier-instant
-    text: S3 Glacier Instant Retrieval
+      text: This is how it bills. A read moves the object back to the frequent tier with no retrieval
+        fee, and the small per-object monitoring fee pays for the watching.
+  - id: ninety-day-minimum
+    text: S3 Intelligent-Tiering bills a 90-day minimum stay, so each recording is charged for that long
     variants:
-    - text: The Glacier Instant Retrieval class
-    - text: Glacier Instant Retrieval storage
+    - text: Intelligent-Tiering enforces a 90-day minimum stay, billing each recording for at least that
+        long
+    - text: With S3 Intelligent-Tiering, every recording is billed for a 90-day minimum stay
     explanation:
-      text: It stores cheaply and reads in milliseconds, but it charges a fee per GB read, so a recording
-        that suddenly gets popular costs more.
-  - id: standard-ia
-    text: S3 Standard-IA
+      text: Intelligent-Tiering has no minimum stay. The 90-day minimum belongs to Glacier Instant Retrieval
+        and Glacier Flexible Retrieval.
+  - id: minimum-size
+    text: S3 Intelligent-Tiering bills any recording under 128 KB as if it were 128 KB
     variants:
-    - text: The Standard-IA class
-    - text: Standard-Infrequent Access
+    - text: Intelligent-Tiering treats every recording under 128 KB as 128 KB when billing
+    - text: With S3 Intelligent-Tiering, a recording under 128 KB is billed as 128 KB
     explanation:
-      text: Standard-IA suits a known, roughly monthly pattern, and it charges a fee per GB read.
+      text: Intelligent-Tiering has no minimum billed size; objects under 128 KB are simply never moved
+        to cheaper tiers. The 128 KB minimum applies to Standard-IA, One Zone-IA and Glacier Instant Retrieval.
   correct_answers:
-  - intelligent-tiering
-  hint:
-    text: The first question for any class is how often the data is read. What if the honest answer is
-      "we don't know"?
+  - monitoring-fee
   explanation:
     text: |
-      When the access pattern is unknown or changes, S3 Intelligent-Tiering is the answer. S3
-      watches each object, moves it to cheaper tiers after 30 and 90 days without a read, and
-      moves it back when it's read, with no retrieval fees. The IA and Glacier classes charge per
-      GB read, and fit only when you know how the data cools.
+      S3 Intelligent-Tiering moves each object to cheaper tiers after 30 and 90 days without a
+      read, and back when it's read, with no retrieval fees and no minimum stay. What it adds is a
+      small monthly monitoring fee per object. That is the trade for not having to predict the
+      access pattern, which the IA and Glacier classes require.
   tags:
   - module-05
   - clf-05-03
   - domain-3
   - task-3-6
-  - application
+  - understanding
   - exam-style
   - s3-storage-classes
   references:
@@ -15230,62 +15230,59 @@ questions:
       pick a class: how often, how fast, how replaceable"'
     url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/05-storing-data/03-storage-classes-and-lifecycle.md
 - id: q05-regenerable-preview-clips
+  revision: 2
   type: multiple_choice
   selection: single
   prompt:
     text: |
-      A mapping service renders map tiles, a few megabytes each, from source data it keeps
-      elsewhere, and it can re-render any tile whenever it needs to. Each tile is read about once a
-      month and must load in milliseconds. Which S3 storage class costs least for the tiles
-      without putting irreplaceable data at risk?
+      A mapping service keeps map tiles in Amazon S3 One Zone-IA instead of S3 Standard-IA to pay
+      less. Each tile is read about once a month, and the service can re-render any tile from
+      source data it keeps elsewhere. What does the service give up by choosing S3 One Zone-IA?
   choices:
-  - id: intelligent-tiering
-    text: S3 Intelligent-Tiering
+  - id: restore-step
+    text: Reading each tile in milliseconds, because every read would need a restore first
     variants:
-    - text: The Intelligent-Tiering class
-    - text: Intelligent-Tiering storage
+    - text: Millisecond reads, because a restore would come before each read
+    - text: Instant access to a tile, since each read would need a restore
     explanation:
-      text: Intelligent-Tiering is for patterns you can't predict. This one is known, and it keeps copies
-        across AZs that replaceable tiles don't need.
-  - id: standard-ia
-    text: S3 Standard-IA
+      text: One Zone-IA reads in milliseconds with no restore. Only the two coldest Glacier classes need
+        a restore.
+  - id: retrieval-fee
+    text: Freedom from a fee per GB on each tile that is read
     variants:
-    - text: The Standard-IA class
-    - text: Standard-Infrequent Access
+    - text: Reads that carry no per-GB charge at all
+    - text: Not having to pay for each GB that is read
     explanation:
-      text: Standard-IA fits the read pattern, but it pays for copies across AZs that replaceable tiles
-        don't need.
-  - id: glacier-flexible
-    text: S3 Glacier Flexible Retrieval
+      text: Both IA classes charge per GB read, so there was no such freedom to give up.
+  - id: minimum-stay
+    text: Freedom from a minimum storage duration on each stored tile
     variants:
-    - text: The Glacier Flexible Retrieval class
-    - text: Glacier Flexible Retrieval storage
+    - text: A tile that can be deleted at once with no charge
+    - text: Not paying for a minimum stay on each tile
     explanation:
-      text: Flexible Retrieval needs a restore of minutes to hours before a read, so tiles couldn't load
-        in milliseconds.
-  - id: one-zone-ia
-    text: S3 One Zone-IA
+      text: Both IA classes have a 30-day minimum stay, so there was no such freedom to give up.
+  - id: az-loss
+    text: Protection for the tiles if the Availability Zone that holds them is destroyed
     variants:
-    - text: The One Zone-IA class
-    - text: One Zone-Infrequent Access
+    - text: Survival of the tiles if their Availability Zone is lost
+    - text: Safety for the tiles should their one AZ be destroyed
     explanation:
-      text: It costs less than Standard-IA and reads in milliseconds. Losing it with an AZ is acceptable
-        because the tiles can be recreated.
+      text: One Zone-IA keeps data in one AZ, while Standard-IA keeps copies in at least three. Losing
+        the tiles with an AZ is acceptable only because they can be re-rendered.
   correct_answers:
-  - one-zone-ia
-  hint:
-    text: Ask the third question. Could the company recreate this data if one Availability Zone were destroyed?
+  - az-loss
   explanation:
     text: |
-      Data read about monthly that must come back in milliseconds belongs in an IA class. One
-      Zone-IA keeps the data in a single Availability Zone, so it costs less but can lose data
-      with that AZ. That's acceptable only for data you can recreate, such as these tiles.
+      One Zone-IA costs less than Standard-IA because it stores data in a single Availability
+      Zone, so the data can be lost if that AZ is destroyed. Everything else about the two classes
+      is alike: milliseconds reads, a fee per GB read, a 30-day minimum stay. That is why it fits
+      only data you can recreate, such as these tiles.
   tags:
   - module-05
   - clf-05-03
   - domain-3
   - task-3-6
-  - application
+  - understanding
   - exam-style
   - s3-storage-classes
   references:
@@ -15351,256 +15348,53 @@ questions:
       is as available as Standard" is wrong"'
     url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/05-storing-data/03-storage-classes-and-lifecycle.md
 - id: q05-scans-read-a-few-times-a-year
+  revision: 2
   type: multiple_choice
   selection: single
   prompt:
     text: |
-      A newspaper keeps decades of photo archives in Amazon S3, and it has no other copy. Any one
-      photo is opened perhaps a few times a year, but when an editor asks for one, it must appear
-      in milliseconds. Which S3 storage class is the most cost-effective fit?
+      A newspaper keeps decades of photo archives in Amazon S3 Glacier Instant Retrieval. A new
+      editor asks what that choice means for opening one photo. Which statement is true?
   choices:
-  - id: standard-ia
-    text: S3 Standard-IA
+  - id: restore-first
+    text: The photo needs a restore request first, which takes minutes at best
     variants:
-    - text: The Standard-IA class
-    - text: Standard-Infrequent Access
+    - text: A restore request must come first, and it takes minutes at best
+    - text: Opening the photo means requesting a restore, which takes minutes at best
     explanation:
-      text: Standard-IA reads in milliseconds, but it's built for data read about monthly and costs more
-        to store than the archive class that also answers in milliseconds.
-  - id: glacier-flexible
-    text: S3 Glacier Flexible Retrieval
+      text: That describes Glacier Flexible Retrieval. Instant Retrieval returns data in milliseconds
+        with no restore step.
+  - id: one-az
+    text: The photo sits in one Availability Zone and can be lost with it
     variants:
-    - text: The Glacier Flexible Retrieval class
-    - text: Glacier Flexible Retrieval storage
+    - text: Only one AZ holds the photo, so losing the AZ loses the photo
+    - text: The photo is kept in a single AZ and could vanish if that AZ fails
     explanation:
-      text: Flexible Retrieval needs a restore first, which takes minutes at best.
-  - id: glacier-instant
-    text: S3 Glacier Instant Retrieval
+      text: That describes One Zone-IA. Glacier Instant Retrieval keeps copies in at least three AZs.
+  - id: no-minimum
+    text: The photo can be deleted a week after upload without any extra charge
     variants:
-    - text: The Glacier Instant Retrieval class
-    - text: Glacier Instant Retrieval storage
+    - text: Deleting the photo one week after upload adds no extra charge
+    - text: A photo removed after seven days costs nothing beyond those days
     explanation:
-      text: Instant Retrieval is the archive class that still reads in milliseconds, for data read about
-        once a quarter.
-  - id: one-zone-ia
-    text: S3 One Zone-IA
+      text: Glacier Instant Retrieval has a 90-day minimum stay, so an early delete is billed for the
+        rest of it.
+  - id: milliseconds-with-fee
+    text: The photo opens in milliseconds, and each read adds a fee per GB
     variants:
-    - text: The One Zone-IA class
-    - text: One Zone-Infrequent Access
+    - text: The photo is returned in milliseconds, with a per-GB fee on each read
+    - text: Reading the photo takes milliseconds, and every read is billed per GB
     explanation:
-      text: One Zone-IA keeps data in a single AZ, so it suits only data you can recreate; these photos
-        are the only copy.
+      text: Instant Retrieval is the archive class that answers in milliseconds. It stores data for less
+        than Standard-IA, but charges per GB read.
   correct_answers:
-  - glacier-instant
-  hint:
-    text: Among the archive classes, only one answers without a restore step.
+  - milliseconds-with-fee
   explanation:
     text: |
-      The three S3 Glacier classes are chosen by how fast the data must come back. Glacier Instant
-      Retrieval reads in milliseconds, like Standard-IA, for data read even less often, and stores
-      it for less; AWS names news media as a typical use. The other two Glacier classes need a
-      restore before any read.
-  tags:
-  - module-05
-  - clf-05-03
-  - domain-3
-  - task-3-6
-  - application
-  - exam-style
-  - s3-glacier
-  - s3-storage-classes
-  references:
-  - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
-    reference: 'Module 05, page 05.03: Storage classes and lifecycle (clf-05-03), section "Three Glacier
-      classes: archive by how fast you need it back"'
-    url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/05-storing-data/03-storage-classes-and-lifecycle.md
-- id: q05-dr-backups-restore-in-hours
-  type: multiple_choice
-  selection: single
-  prompt:
-    text: |
-      An engineering firm copies its file server backups to Amazon S3 for disaster recovery and
-      expects to read them once or twice a year. A full restore can take hours, but now and then
-      one urgent file must be back within minutes. Which S3 storage class has the lowest storage
-      cost that still allows this?
-  choices:
-  - id: glacier-flexible
-    text: S3 Glacier Flexible Retrieval
-    variants:
-    - text: The Glacier Flexible Retrieval class
-    - text: Glacier Flexible Retrieval storage
-    explanation:
-      text: It costs less to store than Instant Retrieval, suits backups read once or twice a year, and
-        offers restores from minutes (expedited) to hours.
-  - id: glacier-instant
-    text: S3 Glacier Instant Retrieval
-    variants:
-    - text: The Glacier Instant Retrieval class
-    - text: Glacier Instant Retrieval storage
-    explanation:
-      text: Instant Retrieval reads in milliseconds, a speed these backups don't need, and costs more
-        to store than Flexible Retrieval.
-  - id: deep-archive
-    text: S3 Glacier Deep Archive
-    variants:
-    - text: The Glacier Deep Archive class
-    - text: Glacier Deep Archive storage
-    explanation:
-      text: Deep Archive is cheaper still, but its restores take many hours, so the urgent file can't
-        be back in minutes.
-  - id: standard
-    text: S3 Standard
-    variants:
-    - text: The Standard class
-    - text: Standard storage
-    explanation:
-      text: Standard reads at once, but it's the most expensive place to keep backups read once or twice
-        a year.
-  correct_answers:
-  - glacier-flexible
-  hint:
-    text: Line up the archive classes by how fast they return data, then find the cheapest one that can
-      still manage minutes.
-  explanation:
-    text: |
-      Glacier Flexible Retrieval is the archive class for backups and disaster recovery copies
-      read once or twice a year. A restore takes about 1 to 5 minutes with the expedited option,
-      hours with standard or bulk (as of 2026-10-23). Deep Archive is cheaper but can't return
-      data in minutes, and Instant Retrieval pays for speed these backups don't need.
-  tags:
-  - module-05
-  - clf-05-03
-  - domain-3
-  - task-3-6
-  - application
-  - exam-style
-  - s3-glacier
-  - s3-storage-classes
-  references:
-  - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
-    reference: 'Module 05, page 05.03: Storage classes and lifecycle (clf-05-03), section "Three Glacier
-      classes: archive by how fast you need it back"'
-    url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/05-storing-data/03-storage-classes-and-lifecycle.md
-- id: q05-ten-year-records-lowest-cost
-  type: multiple_choice
-  selection: single
-  prompt:
-    text: |
-      A pharmacy chain, setting up its first AWS account, must keep prescription records for ten
-      years. Nobody expects to read them, and if a regulator asks for one, the chain has three days
-      to produce it. Which option has the lowest storage cost in AWS that meets these needs?
-  choices:
-  - id: glacier-flexible
-    text: S3 Glacier Flexible Retrieval
-    variants:
-    - text: The Glacier Flexible Retrieval class
-    - text: Glacier Flexible Retrieval storage
-    explanation:
-      text: It meets the three-day limit easily, but it costs more to store than Deep Archive, and the
-        speed isn't needed.
-  - id: deep-archive
-    text: S3 Glacier Deep Archive
-    variants:
-    - text: The Glacier Deep Archive class
-    - text: Glacier Deep Archive storage
-    explanation:
-      text: Deep Archive is S3's lowest-cost class, built for records kept for years and read less than
-        once a year.
-  - id: standard-ia
-    text: S3 Standard-IA
-    variants:
-    - text: The Standard-IA class
-    - text: Standard-Infrequent Access
-    explanation:
-      text: Standard-IA is built for data read about monthly, and it costs far more to store than the
-        archive classes.
-  - id: glacier-vault
-    text: A vault in Amazon Glacier
-    variants:
-    - text: An Amazon Glacier vault
-    - text: A vault in the original Glacier service
-    explanation:
-      text: Amazon Glacier, the original vault service, is closed to new customers; AWS recommends the
-        S3 Glacier storage classes for new archives.
-  correct_answers:
-  - deep-archive
-  hint:
-    text: When a wait of days is fine, how cold can the data go? And which of these can a new customer
-      still use?
-  explanation:
-    text: |
-      S3 Glacier Deep Archive is the lowest-cost class, for records read less than once a year
-      and kept for years, such as for compliance. A restore takes 12 to 48 hours depending on the
-      option (as of 2026-10-23), which fits a three-day limit, and its 180-day minimum stay is no
-      trap for ten-year records. The old Glacier vault service takes no new customers.
-  tags:
-  - module-05
-  - clf-05-03
-  - domain-3
-  - task-3-6
-  - application
-  - exam-style
-  - s3-glacier
-  - s3-storage-classes
-  references:
-  - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
-    reference: 'Module 05, page 05.03: Storage classes and lifecycle (clf-05-03), section "Three Glacier
-      classes: archive by how fast you need it back"'
-    url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/05-storing-data/03-storage-classes-and-lifecycle.md
-- id: q05-classes-that-need-a-restore
-  type: multiple_choice
-  selection: multiple
-  selection_count: 2
-  prompt:
-    text: |
-      A designer tries to download an old project file from Amazon S3, and the request fails with
-      a message that the object must be restored first. In which TWO S3 storage classes could the
-      object be? (Select TWO.)
-  choices:
-  - id: glacier-instant
-    text: S3 Glacier Instant Retrieval
-    variants:
-    - text: The Glacier Instant Retrieval class
-    - text: Glacier Instant Retrieval storage
-    explanation:
-      text: Instant Retrieval reads in milliseconds with no restore step.
-  - id: glacier-flexible
-    text: S3 Glacier Flexible Retrieval
-    variants:
-    - text: The Glacier Flexible Retrieval class
-    - text: Glacier Flexible Retrieval storage
-    explanation:
-      text: You request a restore first, which takes minutes to hours.
-  - id: standard
-    text: S3 Standard
-    variants:
-    - text: The Standard class
-    - text: Standard storage
-    explanation:
-      text: Standard, the default class, reads in milliseconds with no restore and no retrieval fee.
-  - id: deep-archive
-    text: S3 Glacier Deep Archive
-    variants:
-    - text: The Glacier Deep Archive class
-    - text: Glacier Deep Archive storage
-    explanation:
-      text: You request a restore first, which takes many hours.
-  - id: standard-ia
-    text: S3 Standard-IA
-    variants:
-    - text: The Standard-IA class
-    - text: Standard-Infrequent Access
-    explanation:
-      text: Standard-IA reads in milliseconds; it charges per GB read but needs no restore.
-  correct_answers:
-  - glacier-flexible
-  - deep-archive
-  explanation:
-    text: |
-      The two coldest classes, Glacier Flexible Retrieval and Glacier Deep Archive, keep data
-      that you must restore, making a temporary readable copy, before you can read it. Every
-      class from Standard-IA down charges per GB read, but only these two make you wait. Glacier
-      Instant Retrieval answers in milliseconds.
+      S3 Glacier Instant Retrieval is the archive class for data read about once a quarter that
+      must still come back in milliseconds, such as news media or medical images. It stores
+      data across at least three AZs for less than Standard-IA, charges a fee per GB read, and
+      bills a 90-day minimum stay. The other two Glacier classes make you restore first.
   tags:
   - module-05
   - clf-05-03
@@ -15612,8 +15406,204 @@ questions:
   - s3-storage-classes
   references:
   - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
-    reference: 'Module 05, page 05.03: Storage classes and lifecycle (clf-05-03), section "The big picture:
-      from hot to cold"'
+    reference: 'Module 05, page 05.03: Storage classes and lifecycle (clf-05-03), section "Three Glacier
+      classes: archive by how fast you need it back"'
+    url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/05-storing-data/03-storage-classes-and-lifecycle.md
+- id: q05-dr-backups-restore-in-hours
+  revision: 2
+  type: multiple_choice
+  selection: single
+  prompt:
+    text: |
+      An engineering firm copies file server backups to Amazon S3. For the first month they are
+      read now and then, after that once or twice a year. A full restore can take hours, but one
+      urgent file must sometimes be back within minutes. Each backup is kept one year. Which S3
+      Lifecycle rule gives the lowest storage cost with no minimum-stay penalty?
+  choices:
+  - id: early-expire
+    text: Standard-IA at day 30, Glacier Flexible Retrieval at day 90, expire at day 120
+    variants:
+    - text: Move to Standard-IA at 30 days, Glacier Flexible Retrieval at 90, delete at 120
+    - text: After 30 days, Standard-IA; after 90, Glacier Flexible Retrieval; expire after 120
+    explanation:
+      text: The objects spend 30 days in Flexible Retrieval but are billed its 90-day minimum, and they
+        would not be kept the full year.
+  - id: flexible-keep-year
+    text: Standard-IA at day 30, Glacier Flexible Retrieval at day 90, expire at day 365
+    variants:
+    - text: Move to Standard-IA at 30 days, Glacier Flexible Retrieval at 90, delete at 365
+    - text: After 30 days, Standard-IA; after 90, Glacier Flexible Retrieval; expire after 365
+    explanation:
+      text: Each class is used longer than its minimum stay, so there is no penalty, and expedited restores
+        bring one file back in minutes.
+  - id: deep-archive-keep-year
+    text: Standard-IA at day 30, Glacier Deep Archive at day 90, expire at day 365
+    variants:
+    - text: Move to Standard-IA at 30 days, Glacier Deep Archive at 90, delete at 365
+    - text: After 30 days, Standard-IA; after 90, Glacier Deep Archive; expire after 365
+    explanation:
+      text: Deep Archive is cheaper to store, but restores take 12 hours or more, so the urgent file could
+        not be back in minutes.
+  - id: standard-ia-keep-year
+    text: Standard-IA at day 30, no further transition, expire at day 365
+    variants:
+    - text: Move to Standard-IA at 30 days, then stay there, delete at 365
+    - text: After 30 days, Standard-IA; no later change; expire after 365
+    explanation:
+      text: There is no penalty and reads take milliseconds, but Standard-IA costs several times more
+        to store than Flexible Retrieval for backups read once or twice a year.
+  correct_answers:
+  - flexible-keep-year
+  hint:
+    text: Find the coldest class that can still return a file in minutes, then check how long the rule
+      leaves objects in each class against its minimum stay.
+  explanation:
+    text: |
+      Glacier Flexible Retrieval is the archive class for backups read once or twice a year;
+      expedited restores take about 1 to 5 minutes (as of 2026-10-23). Deep Archive cannot return
+      data in minutes. Each expiration must also come after the transition plus the class's
+      minimum stay (30 days for Standard-IA, 90 for Flexible Retrieval), or the bill includes
+      days nobody used.
+  tags:
+  - module-05
+  - clf-05-03
+  - domain-3
+  - task-3-6
+  - application
+  - exam-style
+  - s3-glacier
+  - s3-storage-classes
+  - s3-lifecycle
+  references:
+  - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
+    reference: 'Module 05, page 05.03: Storage classes and lifecycle (clf-05-03), section "Three cost
+      traps"'
+    url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/05-storing-data/03-storage-classes-and-lifecycle.md
+- id: q05-ten-year-records-lowest-cost
+  revision: 2
+  type: multiple_choice
+  selection: single
+  prompt:
+    text: |
+      A pharmacy chain keeps ten years of prescription records in S3 Glacier Deep Archive. If a
+      regulator asks for one, the chain has three days to produce it. Which statement about this
+      choice is true?
+  choices:
+  - id: milliseconds
+    text: A record can be read in milliseconds, with no restore request
+    variants:
+    - text: Records are returned in milliseconds, with no restore needed
+    - text: A restore request is not needed, because records come back in milliseconds
+    explanation:
+      text: Deep Archive needs a restore first, which takes 12 to 48 hours depending on the option.
+  - id: minimum-size
+    text: Every record is billed as at least 128 KB, however small it is
+    variants:
+    - text: Records smaller than 128 KB are billed as 128 KB
+    - text: A small record is billed as if it were 128 KB
+    explanation:
+      text: The 128 KB minimum applies to the IA classes and Glacier Instant Retrieval. Deep Archive instead
+        adds about 40 KB of billed metadata per object.
+  - id: minimum-stay
+    text: Every record is billed for at least 180 days, which ten years of retention easily exceeds
+    variants:
+    - text: A record is billed for at least 180 days, a minimum that ten years of retention far exceeds
+    - text: Each record carries a 180-day minimum charge that ten years of retention easily passes
+    explanation:
+      text: Deep Archive has the longest minimum stay, 180 days, and it is no trap for records kept for
+        years. It is also S3's lowest-cost class.
+  - id: free-reads
+    text: Restoring a record never carries a retrieval fee
+    variants:
+    - text: A restore of a record is always free of retrieval fees
+    - text: No retrieval fee is charged for any restore of a record
+    explanation:
+      text: Deep Archive charges per GB retrieved. Only the bulk option of Flexible Retrieval is free.
+  correct_answers:
+  - minimum-stay
+  explanation:
+    text: |
+      S3 Glacier Deep Archive is the lowest-cost class, for records kept for years and read less
+      than once a year. A restore takes 12 to 48 hours (as of 2026-10-23), which fits a
+      three-day deadline. Its costs are a 180-day minimum stay, about 40 KB of metadata per
+      object and a per-GB retrieval fee, and only the minimum stay is harmless for ten-year records.
+  tags:
+  - module-05
+  - clf-05-03
+  - domain-3
+  - task-3-6
+  - understanding
+  - exam-style
+  - s3-glacier
+  - s3-storage-classes
+  references:
+  - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
+    reference: 'Module 05, page 05.03: Storage classes and lifecycle (clf-05-03), section "Three Glacier
+      classes: archive by how fast you need it back"'
+    url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/05-storing-data/03-storage-classes-and-lifecycle.md
+- id: q05-classes-that-need-a-restore
+  revision: 2
+  type: multiple_choice
+  selection: single
+  prompt:
+    text: |
+      A designer tries to download an old project file from Amazon S3, and the request fails with
+      a message that the object must be restored first. The file is stored in S3 Glacier
+      Deep Archive. What should the designer do to read it?
+  choices:
+  - id: versioning
+    text: Turn on S3 Versioning for the bucket, then retry the download
+    variants:
+    - text: Enable Versioning on the S3 bucket and download again
+    - text: Switch S3 Versioning on for the bucket, and try the download again
+    explanation:
+      text: Versioning keeps old versions of an object. It does not make an archived object readable.
+  - id: bucket-policy
+    text: Edit the S3 bucket policy to allow the designer to read the object
+    variants:
+    - text: Add an allow statement for the designer to the S3 bucket policy
+    - text: Change the S3 bucket policy so that the designer may read the object
+    explanation:
+      text: The message is about the object's storage state, not permission. A policy does not remove
+        the need to restore.
+  - id: restore
+    text: Request a restore, wait for the temporary copy, then download that copy
+    variants:
+    - text: Ask for a restore, then download the temporary copy once it is ready
+    - text: Start a restore, and read the temporary copy when it becomes available
+    explanation:
+      text: A restore makes a temporary readable copy of an object in the two coldest classes. It takes
+        12 to 48 hours in Deep Archive.
+  - id: wait-minimum
+    text: Wait until the 180-day minimum storage duration ends, then retry
+    variants:
+    - text: Retry after the object's 180-day minimum stay has passed
+    - text: Let the 180-day minimum storage duration finish, and then download again
+    explanation:
+      text: A minimum stay only decides how long you are billed. It never makes an object readable.
+  correct_answers:
+  - restore
+  hint:
+    text: The message names the step. Which two classes make you take it before any read?
+  explanation:
+    text: |
+      In Glacier Flexible Retrieval and Glacier Deep Archive, an object is not readable until you
+      request a restore, which makes a temporary readable copy. In Flexible Retrieval that takes
+      minutes to hours, in Deep Archive 12 to 48 hours. Glacier Instant Retrieval and the other
+      classes answer reads at once.
+  tags:
+  - module-05
+  - clf-05-03
+  - domain-3
+  - task-3-6
+  - application
+  - exam-style
+  - s3-glacier
+  - s3-storage-classes
+  references:
+  - title: Study Guide for the AWS Certified Cloud Practitioner Exam (CLF-C02)
+    reference: 'Module 05, page 05.03: Storage classes and lifecycle (clf-05-03), section "Key terms (skip
+      if you know them)"'
     url: https://github.com/AutomateTheCloud/atc-study-aws_certified_cloud_practitioner/blob/main/guide/05-storing-data/03-storage-classes-and-lifecycle.md
 - id: q05-old-course-glacier-vault
   type: multiple_choice
