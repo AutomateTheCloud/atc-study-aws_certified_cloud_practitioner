@@ -1,7 +1,7 @@
 ---
 type: lab
 id: clf-06-05
-title: "Lab 07: Run a Lambda function, read its logs, and stop them piling up"
+title: "Optional lab 07: Run a Lambda function, read its logs, and stop them piling up"
 tasks: ["3.3", "2.1"]
 objectives: ["06.03a"]
 reader: "Adult studying alone, possibly new to IT, who has done Lab 01 and read lesson 06.03; about 30 minutes, plus 5 the next day; a laptop or desktop"
@@ -31,11 +31,13 @@ sources:
   - "https://aws.amazon.com/blogs/compute/aws-lambda-standardizes-billing-for-init-phase/"
 ---
 
-# Lab 07: Run a Lambda function, read its logs, and stop them piling up
+# Optional lab 07: Run a Lambda function, read its logs, and stop them piling up
 
 ## Before you start: your account, your responsibility
 
 This guide is provided as is, without warranty. We work hard to keep it correct and current, but AWS changes often, and its services, prices, and free offers may differ from what is written here. The labs run in your own AWS account. You are responsible for that account, for its security, and for any charges it incurs, including charges from resources you forget to delete. Automate the Cloud Inc. is not liable for any costs, losses, or security incidents that result from following, or failing to follow, this material. Technical guidance here is general information, not advice about your specific systems.
+
+**This lab is optional.** The exam asks which compute service fits, not how to build a function; do it if you want to see Lambda for yourself.
 
 **Who this is for:** you have done [Lab 01](../02-why-the-cloud/06-lab-01-first-resource.md) and read [06.03 Containers and serverless](03-containers-and-serverless.md). You don't need to program: you paste the code given. **Time:** about 30 minutes, plus 5 minutes the next day.
 
@@ -211,6 +213,6 @@ You ran code without choosing, starting or patching a server, and paid by the mi
 
 ---
 
-"Lab 07: Run a Lambda function, read its logs, and stop them piling up" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
+"Optional lab 07: Run a Lambda function, read its logs, and stop them piling up" by Automate the Cloud Inc., licensed under CC BY-NC 4.0 with the Additional Permission for Internal Training from Automate the Cloud Inc.
 License: https://creativecommons.org/licenses/by-nc/4.0/
 Permission: https://automatethe.cloud/licenses/atc-internal-training-permission.txt

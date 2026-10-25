@@ -16,13 +16,11 @@ import sys
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from chartkit import line_key, make_style, right_rounded, svg, swatch, top_rounded  # noqa: E402
+from chartkit import line_key, make_style, svg, swatch, top_rounded  # noqa: E402
 
 ORDERS = [2, 1, 1, 0, 0, 1, 4, 10, 25, 45, 70, 95, 120, 110, 90, 80, 85, 100, 75, 50, 30, 15, 8, 4]
 PER_INSTANCE = 20  # orders an hour one instance handles (Module 02)
 MIN, MAX, FIXED = 2, 8, 6
-T3_SMALL = 0.0208  # per hour, Linux, on-demand
-ALB = 0.0225  # per hour or partial hour
 
 RUN = [min(MAX, max(MIN, math.ceil(o / PER_INSTANCE))) for o in ORDERS]
 
@@ -67,36 +65,5 @@ def day_capacity():
         body, style=STYLE)
 
 
-def day_cost():
-    fixed, scaled, alb = FIXED * 24 * T3_SMALL, sum(RUN) * T3_SMALL, 24 * ALB
-    assert (round(fixed, 2), round(scaled, 2), round(alb, 2)) == (3.0, 1.58, 0.54), "must match the model answer"
-    rows = [("Fixed fleet: 6 instances, 144 instance-hours", fixed),
-            ("Auto Scaling: 76 instance-hours", scaled)]
-    w, left, top, pw, rowh, xmax = 680, 16, 100, 470, 60, 4.5
-    h = top + rowh * len(rows) + 24
-    body = [
-        '<text class="title" x="16" y="28">One December Saturday: what the web tier costs</text>',
-        '<text class="sub" x="16" y="48">t3.small at $0.0208 an hour, ALB at $0.0225 an hour; US East (N. Virginia), as of 2026-10-24</text>',
-    ]
-    swatch(body, 16, 76, "s1", "Instances")
-    swatch(body, 120, 76, "s2", "Load balancer hours (same in both)")
-    sx = lambda v: pw * v / xmax
-    for i, (label, inst) in enumerate(rows):
-        y = top + i * rowh
-        body.append(f'<text class="lab" x="{left}" y="{y + 14}">{label}</text>')
-        by = y + 22
-        body.append(f'<rect class="s1" x="{left}" y="{by}" width="{sx(inst) - 2:.1f}" height="20"><title>{label}: instances ${inst:.2f}</title></rect>')
-        body.append(f'<path class="s2" d="{right_rounded(left + sx(inst), by, sx(alb), 20)}"><title>Load balancer: ${alb:.2f}</title></path>')
-        body.append(f'<text class="lab" x="{left + sx(inst + alb) + 8:.1f}" y="{by + 15}">${inst + alb:.2f} (${inst:.2f} + ${alb:.2f})</text>')
-    body.append(f'<line class="axis" x1="{left}" x2="{left}" y1="{top + 18}" y2="{top + rowh * len(rows)}"/>')
-    svg("06-07-day-cost.svg", w, h,
-        "One day's web-tier cost: a fixed fleet of six against Auto Scaling",
-        f"Horizontal stacked bars, prices as of 2026-10-24. Fixed fleet of 6 instances, 144 instance-hours: ${fixed:.2f} "
-        f"of instances plus ${alb:.2f} of load balancer hours, ${fixed + alb:.2f}. Auto Scaling, 76 instance-hours: "
-        f"${scaled:.2f} plus ${alb:.2f}, ${scaled + alb:.2f}. Load balancer capacity units and data transfer are left out.",
-        body, style=STYLE)
-
-
 if __name__ == "__main__":
     day_capacity()
-    day_cost()

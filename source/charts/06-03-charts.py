@@ -27,7 +27,7 @@ import sys
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from chartkit import make_style, svg, text_lines, wrap, line_key  # noqa: E402
+from chartkit import make_style, svg, text_lines, wrap  # noqa: E402
 
 # AWS = slot 1 (blue), you = slot 2 (orange), as in the 04.01 responsibility grids.
 # Cells carry a light tint with ink text, so the words, not the color, say who does it.
@@ -203,96 +203,9 @@ def lambda_vs_fargate():
         "is not for GPU work, which needs EC2, or for event-driven code that needs no container.", body, style=STYLE)
 
 
-# Pay per use vs an always-on server, for the bakery's photo-resize job.
-REQ = 0.20 / 1e6            # per request, Lambda, us-east-1, price list 2026-10-24
-GBS = 0.0000166667          # per GB-second, x86 first tier
-GBS_PER_PHOTO = 0.5 * 2     # 512 MB for 2 seconds (made up for teaching)
-T3_MICRO = 0.0104 * 730     # $ per month, on-demand, 730 hours
 FREE_REQ, FREE_GBS = 1_000_000, 400_000
-
-
-def lam(n, free=False):
-    if free:
-        return max(0, n - FREE_REQ) * REQ + max(0, n * GBS_PER_PHOTO - FREE_GBS) * GBS
-    return n * REQ + n * GBS_PER_PHOTO * GBS
-
-
-def pay_per_use():
-    w = 680
-    left, top, pw, ph = 64, 92, 580, 250
-    xmax, ymax = 1_000_000, 18
-    body = [
-        '<text class="title" x="16" y="28">Pay per use, or pay for a server that is always on?</text>',
-        '<text class="sub" x="16" y="48">Monthly compute cost of resizing photos. US East (N. Virginia), prices as of 2026-10-24.</text>',
-    ]
-    line_key(body, 16, 74, "line-s1", "Lambda")
-    line_key(body, 100, 74, "line-s1d", "Lambda, after the monthly free allowance")
-    line_key(body, 400, 74, "line-s2", "One t3.micro instance, on all month")
-
-    def X(n):
-        return left + pw * n / xmax
-
-    def Y(v):
-        return top + ph - ph * v / ymax
-
-    for v in range(0, ymax + 1, 3):
-        body.append(f'<line class="{"axis" if v == 0 else "grid"}" x1="{left}" x2="{left + pw}" y1="{Y(v):.1f}" y2="{Y(v):.1f}"/>')
-        body.append(f'<text class="tick" x="{left - 8}" y="{Y(v) + 4:.1f}" text-anchor="end">${v}</text>')
-    for n in range(0, xmax + 1, 200_000):
-        lab = "0" if n == 0 else f"{n // 1000:,}k"
-        body.append(f'<text class="tick" x="{X(n):.1f}" y="{top + ph + 18}" text-anchor="middle">{lab}</text>')
-    body.append(f'<text class="tick" x="{left + pw / 2}" y="{top + ph + 36}" text-anchor="middle">Photos resized per month</text>')
-    # Lines
-    pts = [(n, lam(n)) for n in range(0, xmax + 1, 10_000)]
-    body.append('<path class="line-s1" d="M' + " L".join(f"{X(n):.1f},{Y(v):.1f}" for n, v in pts) + '"/>')
-    pts = [(n, lam(n, True)) for n in range(0, xmax + 1, 10_000)]
-    body.append('<path class="line-s1d" d="M' + " L".join(f"{X(n):.1f},{Y(v):.1f}" for n, v in pts) + '"/>')
-    body.append(f'<line class="line-s2" x1="{left}" x2="{left + pw}" y1="{Y(T3_MICRO):.1f}" y2="{Y(T3_MICRO):.1f}"/>')
-    # Crossovers
-    cross1 = T3_MICRO / lam(1)
-    lo, hi = 400_000, 1_000_000
-    for _ in range(60):
-        mid = (lo + hi) / 2
-        lo, hi = (mid, hi) if lam(mid, True) < T3_MICRO else (lo, mid)
-    cross2 = lo
-    assert 440_000 < cross1 < 460_000 and 840_000 < cross2 < 870_000
-    for n in (cross1, cross2):
-        body.append(f'<circle class="dot-ink" cx="{X(n):.1f}" cy="{Y(T3_MICRO):.1f}" r="5"/>')
-    body.append(f'<text class="ann" x="{X(cross1) - 8:.1f}" y="{Y(T3_MICRO) - 40:.1f}" text-anchor="end">About {round(cross1, -4) / 1000:.0f}k photos: the server</text>')
-    body.append(f'<text class="ann" x="{X(cross1) - 8:.1f}" y="{Y(T3_MICRO) - 24:.1f}" text-anchor="end">becomes the cheaper choice</text>')
-    body.append(f'<line class="lead" x1="{X(cross1) - 4:.1f}" x2="{X(cross1):.1f}" y1="{Y(T3_MICRO) - 20:.1f}" y2="{Y(T3_MICRO) - 6:.1f}"/>')
-    body.append(f'<text class="ann" x="{X(cross2):.1f}" y="{Y(T3_MICRO) + 24:.1f}" text-anchor="middle">About {round(cross2, -4) / 1000:.0f}k with</text>')
-    body.append(f'<text class="ann" x="{X(cross2):.1f}" y="{Y(T3_MICRO) + 40:.1f}" text-anchor="middle">the free allowance</text>')
-    body.append(f'<text class="ann" x="{left + 8}" y="{Y(T3_MICRO) + 18:.1f}">${T3_MICRO:.2f} a month, busy or idle</text>')
-    bakery = 3_000
-    body.append(f'<circle class="dot-s1" cx="{X(bakery):.1f}" cy="{Y(lam(bakery)):.1f}" r="5"/>')
-    body.append(f'<text class="ann" x="{X(bakery) + 14:.1f}" y="{Y(16.2):.1f}">The bakery today: about 3,000 photos a month,</text>')
-    body.append(f'<text class="ann" x="{X(bakery) + 14:.1f}" y="{Y(16.2) + 16:.1f}">${lam(bakery):.2f} before the free allowance, $0 after it</text>')
-    body.append(f'<line class="lead" x1="{X(bakery) + 1:.1f}" x2="{X(bakery) + 8:.1f}" y1="{Y(lam(bakery)) - 7:.1f}" y2="{Y(16.2) - 4:.1f}"/>')
-    y = top + ph + 62
-    for line in (
-        "Assumes each resize needs 512 MB for 2 seconds (1 GB-second), and that one t3.micro could keep up;",
-        "made up for teaching. Lambda: $0.20 per million requests and $0.0000166667 per GB-second (x86).",
-        "Free allowance: 1 million requests and 400,000 GB-seconds a month. t3.micro: $0.0104 an hour, 730 hours.",
-        "Compute only: storage, logs and data transfer are left out. Sources: AWS Price List offer files,",
-        "retrieved 2026-10-24; Lambda pricing page, checked 2026-10-23. Prices change.",
-    ):
-        body.append(f'<text class="note" x="16" y="{y}">{line}</text>')
-        y += 15
-    svg("06-03-pay-per-use.svg", w, y + 4,
-        "Monthly compute cost of resizing photos: AWS Lambda against one always-on t3.micro instance",
-        f"A line chart. The horizontal axis is photos resized per month, from 0 to 1 million; the vertical axis is "
-        f"dollars per month, from 0 to 18. A flat line for one t3.micro instance running all month sits at "
-        f"${T3_MICRO:.2f}, whether busy or idle. A straight Lambda line, before the free allowance, rises from $0 to "
-        f"about ${lam(xmax):.2f} at 1 million photos and crosses the server line at about {round(cross1, -4) / 1000:.0f} "
-        f"thousand photos. A dashed Lambda line, after the monthly free allowance, stays at $0 until 400 thousand photos, "
-        f"then rises and crosses the server line at about {round(cross2, -4) / 1000:.0f} thousand photos. A dot marks "
-        f"the bakery today: about 3,000 photos a month, ${lam(bakery):.2f} before the free allowance and $0 after it. "
-        "Assumptions: each resize needs 512 MB for 2 seconds; one t3.micro could keep up; compute charges only. "
-        "Prices as of 2026-10-24.", body, style=STYLE)
 
 
 if __name__ == "__main__":
     what_you_manage()
     lambda_vs_fargate()
-    pay_per_use()
