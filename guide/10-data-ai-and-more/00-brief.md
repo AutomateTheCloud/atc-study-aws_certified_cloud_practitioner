@@ -47,7 +47,7 @@ Tags: the kind of knowledge (C concept) and what you do with it (Ap apply).
 
 ## What this covers on the exam
 
-Task [3.7](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.7), AI/ML and analytics, and the end-user computing, business application, front-end and IoT parts of task [3.8](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.8), in Domain 3 of the AWS Certified Cloud Practitioner (CLF-C02) exam (checked 2026-10-24). Module 08, "Building and operating", and Module 12, "Getting help", cover the rest of 3.8. Few questions spread over many services, so the lessons are short and built on comparisons.
+Task [3.7](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.7), AI/ML and analytics, and the end-user computing, business application, front-end and IoT parts of task [3.8](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html#cloud-practitioner-02-task3.8), in Domain 3 of the AWS Certified Cloud Practitioner (CLF-C02) exam (checked 2026-10-24). Module 08, "Building and operating", and Module 12, "Getting help", cover the rest of 3.8. The exam spreads few questions over many services, so the lessons are short and built on comparisons.
 
 ## How the module is laid out
 
