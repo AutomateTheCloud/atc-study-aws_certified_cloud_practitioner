@@ -37,7 +37,6 @@ sources:
   - "https://aws.amazon.com/snowball/"
   - "https://docs.aws.amazon.com/audit-manager/latest/userguide/audit-manager-availability-change.html"
   - "https://docs.aws.amazon.com/kendra/latest/dg/kendra-availability-change.html"
-  - "https://docs.aws.amazon.com/appsync/latest/devguide/what-is-appsync.html"
   - "https://docs.aws.amazon.com/kinesisanalytics/latest/dev/what-is.html"
   - "https://docs.aws.amazon.com/cloud9/latest/user-guide/welcome.html"
   - "https://aws.amazon.com/iq/"
@@ -64,12 +63,12 @@ AWS renames, splits and retires services faster than the CLF-C02 exam guide chan
 | Amazon AppStream 2.0 | **[Amazon WorkSpaces Applications](01-glossary.md#a)**: Streams individual desktop applications from AWS to a user's browser or client | [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md) |
 | Amazon Connect | **[Amazon Connect Customer](01-glossary.md#a)**: AWS's cloud contact center | [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md) |
 | Amazon EC2 instance types | **[instance family](01-glossary.md#i)**: In AWS's naming, the part of an instance type's name before the dot | [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md) |
-| Amazon EC2 instance types | **[purchasing option](01-glossary.md#p)**: How you pay for EC2 capacity | [Purchasing options](../11-paying-for-aws/02-purchasing-options.md) |
-| Amazon S3 Glacier | **[S3 Glacier storage classes](01-glossary.md#s)**: S3 archive storage classes, for data you must keep but rarely read | [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md) |
+| Amazon EC2 instance types | **[purchasing option](01-glossary.md#p)**: How you pay for EC2 capacity | [Amazon EC2: instances, images and instance types](../06-running-applications/01-ec2.md) |
+| Amazon S3 Glacier | **[S3 Glacier storage classes](01-glossary.md#s)**: S3 archive storage classes, for data you must keep but rarely read | [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md) |
 | AWS Application Migration Service | **[AWS Transform MGN](01-glossary.md#a)**: AWS's rehost service | [Migration tools](../13-moving-to-aws/03-migration-tools.md) |
 | AWS Savings Plans | **[Savings Plans](01-glossary.md#s)**: A commitment to spend a set amount per hour on eligible usage for one or three years, charged at lower rates | [Purchasing options](../11-paying-for-aws/02-purchasing-options.md) |
 | AWS Security Hub | **[AWS Security Hub CSPM](01-glossary.md#a)**: The original AWS Security Hub, renamed | [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md) |
-| AWS Trust and Safety team | **[AWS Trust & Safety team](01-glossary.md#a)**: The AWS team that handles reports of abuse coming from AWS resources, through AWS's abuse form | [Where to find answers](../12-getting-help/03-where-to-find-answers.md) |
+| AWS Trust and Safety team | **[AWS Trust & Safety team](01-glossary.md#a)**: The AWS team that handles reports of abuse coming from AWS resources, through AWS's abuse form | [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md) |
 | custom policy | **[customer managed policy](01-glossary.md#c)**: A permissions policy you write and manage yourself | [Policies and least privilege](../04-shared-responsibility-and-access/04-policies-and-least-privilege.md) |
 
 ## The exam's name now covers more than one product
@@ -83,7 +82,7 @@ AWS renames, splits and retires services faster than the CLF-C02 exam guide chan
 
 | Name | Today | Taught in |
 |---|---|---|
-| [Amazon Glacier (the vault service)](01-glossary.md#a) | Closed to new customers. The exam's "Amazon S3 Glacier" means the S3 Glacier storage classes, not vaults. | [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md) |
+| [Amazon Glacier (the vault service)](01-glossary.md#a) | Closed to new customers. The exam's "Amazon S3 Glacier" means the S3 Glacier storage classes, not vaults. | [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md) |
 | [Amazon Q Business](01-glossary.md#a) | Closed to new customers (announced 2026-06-30); AWS points to Amazon Quick. | [AI and machine learning](../10-data-ai-and-more/02-ai-and-ml.md) |
 | [Amazon WorkSpaces Secure Browser](01-glossary.md#a) | Closed to new customers from 2026-10-29. Existing customers keep using it. | [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md) |
 | [AWS Application Discovery Service](01-glossary.md#a) | Closed to new customers since 2025-11-07; AWS points to AWS Transform. | [Migration tools](../13-moving-to-aws/03-migration-tools.md) |
@@ -96,11 +95,11 @@ AWS renames, splits and retires services faster than the CLF-C02 exam guide chan
 | Amazon FSx File Gateway | A Storage Gateway type closed to new customers since 2024-10-28; S3 File, Volume and Tape Gateway continue. | [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md) |
 | [Amazon Inspector Classic](01-glossary.md#a) | Shut down on 2026-05-20. Today's Amazon Inspector finds and scans resources on its own, with no assessment templates. | [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md) |
 | [Amazon Q Developer IDE plugins and paid subscriptions](01-glossary.md#a) | No new sign-ups since 2026-05-15; end of support on 2027-04-30. Q Developer in the AWS console continues. | [AI and machine learning](../10-data-ai-and-more/02-ai-and-ml.md) |
-| AWS WAF Classic | The older version of AWS WAF; its sunset period ended on 2026-10-07. | [The front door](../09-protecting-and-governing/04-the-front-door.md) |
+| AWS WAF Classic | The older version of AWS WAF; its sunset period ended on 2026-10-07. | [Module 09: beyond the exam](../09-protecting-and-governing/12-beyond-the-exam.md) |
 | [AWS X-Ray SDKs and daemon](01-glossary.md#a) | In maintenance mode since 2026-02-25 (security fixes only); AWS recommends OpenTelemetry. X-Ray tracing itself continues, shown in CloudWatch. | [Watching workloads](../08-building-and-operating/03-watching-workloads.md) |
 | [Classic Load Balancer](01-glossary.md#c) | The previous generation of Elastic Load Balancing; AWS recommends a current type. | [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md) |
-| [CloudTrail Lake](01-glossary.md#c) | Closed to new customers since 2026-05-31; AWS points to Amazon CloudWatch. CloudTrail and its trails are unaffected. | [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md) |
-| Simple AD (AWS Directory Service) | A Directory Service directory type closed to new customers since 2026-07-30. | [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md) |
+| CloudTrail Lake | Closed to new customers since 2026-05-31; AWS points to Amazon CloudWatch. CloudTrail and its trails are unaffected. | [Module 09: beyond the exam](../09-protecting-and-governing/12-beyond-the-exam.md) |
+| Simple AD (AWS Directory Service) | A Directory Service directory type closed to new customers since 2026-07-30. | [Module 04: beyond the exam](../04-shared-responsibility-and-access/11-beyond-the-exam.md) |
 
 ## Older names and plans in older study material
 
@@ -117,7 +116,7 @@ AWS renames, splits and retires services faster than the CLF-C02 exam guide chan
 | [Business Support](01-glossary.md#b) | No new subscriptions since 2025-12-02; ends on 2027-01-01. Customers aren't moved automatically: they choose Business Support+. | [Support plans](../12-getting-help/01-support-plans.md) |
 | [Developer Support](01-glossary.md#d) | No new subscriptions since 2025-12-02; ends on 2027-01-01. Today's step up is Business Support+. | [Support plans](../12-getting-help/01-support-plans.md) |
 | [Enterprise On-Ramp](01-glossary.md#e) | Ends on 2027-01-01; AWS is moving its customers to Enterprise Support during 2026. | [Support plans](../12-getting-help/01-support-plans.md) |
-| [Personal Health Dashboard and Service Health Dashboard](01-glossary.md#a) | One console, the AWS Health Dashboard, part of AWS Health. | [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md) |
+| [Personal Health Dashboard and Service Health Dashboard](01-glossary.md#a) | One console, the AWS Health Dashboard, part of AWS Health. | [Lab 02: See Regions, Availability Zones and AWS Health in your own account](../03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md) |
 
 ## Wrong answers only: removed, out of scope or shut down
 
@@ -125,18 +124,17 @@ AWS renames, splits and retires services faster than the CLF-C02 exam guide chan
 |---|---|---|
 | [Amazon Kendra](01-glossary.md#a) | Closed to new customers since 2026-07-30; removed from the 2026 exam guide. AWS points to Amazon Bedrock Knowledge Bases. | [AI and machine learning](../10-data-ai-and-more/02-ai-and-ml.md) |
 | Amazon Kinesis Data Analytics for SQL | No new applications from 2025-10-15; shut down on 2026-01-27. AWS points to Amazon Managed Service for Apache Flink. | [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md) |
-| Amazon MemoryDB for Redis OSS | Amazon MemoryDB; available, but out of the exam's scope. A distractor next to ElastiCache. | [Choosing a database](../05-storing-data/06-choosing-a-database.md) |
-| AWS AppSync | Still available, but removed from the 2026 exam guide's list. | [People, apps and devices](../10-data-ai-and-more/03-people-apps-and-devices.md) |
+| Amazon MemoryDB for Redis OSS | Amazon MemoryDB; available, but out of the exam's scope. A distractor next to ElastiCache. | [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md) |
 | [AWS Audit Manager](01-glossary.md#a) | Can't be set up in new accounts since 2026-04-30; removed from the 2026 exam guide. AWS points to AWS Config conformance packs. | [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md) |
 | AWS Cloud9 | Closed to new customers (announced 2024-07-25); dropped from the exam guide. AWS points to its IDE Toolkits and AWS CloudShell. | [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md) |
-| [AWS CloudShell](01-glossary.md#a) | Available, and used in this guide's labs, but on the exam guide's out-of-scope list. | [Four ways in](../08-building-and-operating/01-four-ways-in.md) |
+| [AWS CloudShell](01-glossary.md#a) | Available, and used in this guide's labs, but on the exam guide's out-of-scope list. | [Four ways in, and infrastructure as code](../08-building-and-operating/01-four-ways-in.md) |
 | AWS CodeDeploy | Available, but on the exam guide's out-of-scope list; a likely distractor next to CodeBuild and CodePipeline. | [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md) |
 | AWS CodeStar | Shut down on 2024-07-25. | [AWS changes fast](../00-start-here/04-aws-changes-fast.md) |
 | AWS IQ | Discontinued: 2026-05-28 on its own page, 2026-05-20 in AWS's lifecycle list. Out of the exam's scope. | [AWS changes fast](../00-start-here/04-aws-changes-fast.md) |
-| AWS Managed Services (AMS) | Available, but out of the exam's scope. A distractor next to Support and Professional Services. | [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md) |
+| AWS Managed Services (AMS) | Available, but out of the exam's scope. A distractor next to Support and Professional Services. | [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md) |
 | AWS Network Firewall | Available, but out of the exam's scope. A distractor next to AWS WAF and security groups. | [Filtering traffic](../07-connecting-it/02-filtering-traffic.md) |
 | AWS OpsWorks | Shut down on 2024-05-01. | [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md) |
-| [AWS Snowball](01-glossary.md#a) | Closed to new customers since 2025-11-07; support ends on 2026-12-31 in commercial Regions. Removed from the 2026 exam guide; AWS points to DataSync and Data Transfer Terminal. | [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md) |
+| [AWS Snowball](01-glossary.md#a) | Closed to new customers since 2025-11-07; support ends on 2026-12-31 in commercial Regions. Removed from the 2026 exam guide; AWS points to DataSync and Data Transfer Terminal. | [Migration tools](../13-moving-to-aws/03-migration-tools.md) |
 | AWS Snowmobile | Shut down on 2024-03-14. | [AWS changes fast](../00-start-here/04-aws-changes-fast.md) |
 | [AWS Wavelength](01-glossary.md#w) | Available, but out of the exam's scope. Know Wavelength Zones only to tell them from Local Zones. | [The edge](../03-aws-around-the-world/04-the-edge.md) |
 

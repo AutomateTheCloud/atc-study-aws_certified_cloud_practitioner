@@ -189,7 +189,7 @@ questions:
 
   - id: q02-on-prem-quiet-months-cost
     page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
-    section: Before the cloud, organizations owned and ran their own equipment
+    section: "Three features together make something cloud computing"
     task: "1.1"
     level: understanding
     topics: [on-premises, fixed-expense]
@@ -304,7 +304,7 @@ questions:
 
   - id: q02-classify-two-cloud-providers
     page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
-    section: "Worked example: classifying three setups"
+    section: "The three deployment models are cloud, hybrid and on-premises"
     task: "3.1"
     level: application
     topics: [deployment-models]
@@ -363,7 +363,7 @@ questions:
 
   - id: q02-classify-office-servers-remote-staff
     page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
-    section: "Worked example: classifying three setups"
+    section: "The three deployment models are cloud, hybrid and on-premises"
     task: "3.1"
     level: application
     topics: [deployment-models]
@@ -544,7 +544,7 @@ questions:
 
   - id: q02-reason-to-keep-part-on-premises
     page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
-    section: Hybrid is often a deliberate choice, not a halfway failure
+    section: "The three deployment models are cloud, hybrid and on-premises"
     task: "3.1"
     level: understanding
     topics: [deployment-models, hybrid]
@@ -602,133 +602,11 @@ questions:
         that must stay in a particular place, and moving to the cloud in stages. The analyzer
         software fits the first reason.
 
-  - id: q02-saas-web-app-grouping
-    page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
-    section: "Going deeper (optional): IaaS, PaaS and SaaS"
-    task: "3.1"
-    level: application
-    topics: [service-models]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A school signs in through a web browser to a document-editing application that the provider
-        runs entirely. The school manages only its users and their documents. Which grouping of
-        cloud services is this?
-    choices:
-      - id: iaas
-        text: Infrastructure as a service (IaaS)
-        variants:
-          - text: IaaS (infrastructure as a service)
-          - text: The infrastructure-as-a-service grouping
-        explanation:
-          text: |
-            IaaS gives you basic building blocks such as computers and storage, and you manage the
-            operating systems and software on them. The school runs no servers at all.
-      - id: paas
-        text: Platform as a service (PaaS)
-        variants:
-          - text: PaaS (platform as a service)
-          - text: The platform-as-a-service grouping
-        explanation:
-          text: |
-            PaaS gives you a place to run your own application. The school didn't write or upload
-            any application; it uses a finished one.
-      - id: hybrid
-        text: Hybrid deployment
-        variants:
-          - text: A hybrid deployment
-          - text: The hybrid deployment model
-        explanation:
-          text: |
-            Hybrid is a deployment model, which describes where a system runs, not what kind of
-            service it is. Nothing here runs on-premises either.
-      - id: saas
-        text: Software as a service (SaaS)
-        variants:
-          - text: SaaS (software as a service)
-          - text: The software-as-a-service grouping
-        explanation:
-          text: |
-            Correct. A finished application run entirely by the provider, used through a browser, is
-            software as a service.
-    correct_answers: [saas]
-    hint:
-      text: Ask how much the provider runs for the school, and how much the school runs itself.
-    explanation:
-      text: |
-        IaaS, PaaS and SaaS sort cloud services by how much the provider runs for you. With SaaS the
-        provider runs a finished application, and you manage only how you use it and your data in
-        it. These groupings describe the kind of service; the deployment model describes where your
-        system runs.
-
-  - id: q02-undifferentiated-heavy-lifting
-    page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
-    section: "In real work: the deployment model is a business decision"
-    task: "1.1"
-    level: understanding
-    topics: [design-principles, cost-optimization]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A Well-Architected cost optimization design principle says to stop spending money on
-        "undifferentiated heavy lifting". For a small online florist, which task is an example of
-        that kind of work?
-    choices:
-      - id: arranging-bouquets
-        text: Designing the seasonal bouquets it sells
-        variants:
-          - text: Creating the bouquet designs for each season
-          - text: Planning the flower arrangements it offers
-        explanation:
-          text: |
-            Bouquet design is what sets the florist apart from competitors: differentiated work, the
-            kind it should spend its effort on.
-      - id: racking-servers
-        text: Installing and cooling the servers its site runs on
-        variants:
-          - text: Setting up and cooling the servers behind its website
-          - text: Racking and cooling the machines that run its site
-        explanation:
-          text: |
-            Correct. Every organization that owns servers does this the same way, and customers
-            don't choose a florist for how it cools its servers.
-      - id: customer-service
-        text: Answering customers' questions about their flower orders
-        variants:
-          - text: Replying to customer questions about deliveries and orders
-          - text: Helping customers who ask about their bouquet orders
-        explanation:
-          text: |
-            Customer service is part of how the florist competes and keeps customers; it isn't
-            generic infrastructure work.
-      - id: choosing-suppliers
-        text: Choosing which flower growers to buy its stock from
-        variants:
-          - text: Picking the growers that supply its flowers
-          - text: Selecting the flower growers it buys from
-        explanation:
-          text: |
-            Choosing suppliers shapes the florist's product and prices; it isn't IT work done the same
-            way by everyone.
-    correct_answers: [racking-servers]
-    hint:
-      text: '"Undifferentiated" means it doesn''t set the business apart from its competitors.'
-    explanation:
-      text: |
-        Undifferentiated heavy lifting is work every organization must do the same way and that
-        doesn't set it apart, such as buying, racking, powering and cooling servers. The cloud hands
-        that work to the provider, so the business can spend its effort on what customers actually
-        choose it for. AWS's advantage "stop spending money running and maintaining data centers"
-        makes the same point.
-
-
   # ---------------------------------------------------------------- 02.02 Before and after: the demand curve
 
   - id: q02-fixed-servers-two-problems
     page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
-    section: Buying for normal months turns customers away at the peak
+    section: "Any fixed amount of capacity is a guess"
     task: "1.4"
     level: application
     topics: [demand-curve, idle-capacity, lost-sales]
@@ -798,7 +676,7 @@ questions:
 
   - id: q02-buy-for-peak-main-cost
     page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
-    section: Buying for the peak means paying for idle servers
+    section: "Any fixed amount of capacity is a guess"
     task: "1.4"
     level: understanding
     topics: [demand-curve, idle-capacity]
@@ -852,62 +730,6 @@ questions:
         of the year. Idle servers still cost money: they were paid for up front, and they still need
         space and power. AWS's answer to having to choose a number in advance is the advantage it
         calls "stop guessing capacity".
-
-  - id: q02-idle-server-months-count
-    page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
-    section: Buying for the peak means paying for idle servers
-    task: "1.4"
-    level: application
-    topics: [demand-curve, idle-capacity]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A tutoring company owns 5 servers all year. Adding up each month's need, it uses 35
-        server-months of capacity over the year, and it never needs more than 5 servers in any
-        month. How many server-months of capacity does it pay for but leave idle?
-    choices:
-      - id: thirty-five
-        text: "35"
-        variants:
-          - text: Thirty-five
-          - text: 35 server-months
-        explanation:
-          text: |
-            35 is the capacity the company uses, not the part it leaves idle.
-      - id: twenty-five
-        text: "25"
-        variants:
-          - text: Twenty-five
-          - text: 25 server-months
-        explanation:
-          text: |
-            Correct. It owns 5 × 12 = 60 server-months and uses 35, so 60 − 35 = 25 are idle.
-      - id: sixty
-        text: "60"
-        variants:
-          - text: Sixty
-          - text: 60 server-months
-        explanation:
-          text: |
-            60 is everything the company owns over the year (5 × 12), not the part it leaves idle.
-      - id: thirty
-        text: "30"
-        variants:
-          - text: Thirty
-          - text: 30 server-months
-        explanation:
-          text: |
-            This subtracts the 5 servers from the 35 server-months used, which mixes servers with
-            server-months.
-    correct_answers: [twenty-five]
-    hint:
-      text: First work out how many server-months it owns over twelve months.
-    explanation:
-      text: |
-        A server-month is one server running for one month. Owning 5 servers for 12 months is 60
-        server-months; the company uses 35 of them, so the other 25 are idle capacity, paid for but
-        doing no work. In the cloud, it would rent only the 35 it uses.
 
   - id: q02-why-cloud-capacity-follows-demand
     page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
@@ -1024,7 +846,7 @@ questions:
 
   - id: q02-cloud-cuts-operating-costs-claim
     page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
-    section: The cloud doesn't always cut operating costs
+    section: "\"The cloud always cuts operating costs\" is wrong"
     task: "1.4"
     level: understanding
     topics: [fixed-vs-variable, cloud-economics-misconceptions]
@@ -1680,7 +1502,7 @@ questions:
 
   - id: q02-elasticity-not-agility-scenarios
     page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
-    section: Elasticity and agility both sound like "fast"
+    section: "Agility: getting something new takes minutes, not weeks"
     task: "1.1"
     level: application
     topics: [cloud-benefits, elasticity, agility]
@@ -1852,58 +1674,6 @@ questions:
         it at once needs capacity that grows with demand, which is elasticity. High availability
         would protect the site when a server or a data center fails, a different problem that the
         university may also want to solve.
-
-  - id: q02-four-nines-downtime
-    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
-    section: "High availability: the system keeps working when a part fails"
-    task: "1.1"
-    level: recall
-    topics: [high-availability]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A system is designed to be available 99.99% of the time ("four nines"). About how much
-        downtime does that allow over a year?
-    choices:
-      - id: three-days
-        text: About 3.7 days
-        variants:
-          - text: Roughly 3.7 days
-          - text: Around 3.7 days
-        explanation:
-          text: |
-            About 3.7 days a year is 99% availability, two nines.
-      - id: nine-hours
-        text: About 8.8 hours
-        variants:
-          - text: Roughly 8.8 hours
-          - text: Around 8.8 hours
-        explanation:
-          text: |
-            About 8.8 hours a year is 99.9%, three nines.
-      - id: fifty-three-minutes
-        text: About 53 minutes
-        variants:
-          - text: Roughly 53 minutes
-          - text: Around 53 minutes
-        explanation:
-          text: |
-            Correct. 0.01% of a year's 8,760 hours is about 0.88 hours, or about 53 minutes.
-      - id: five-minutes
-        text: About 5 minutes
-        variants:
-          - text: Roughly 5 minutes
-          - text: Around 5 minutes
-        explanation:
-          text: |
-            About 5 minutes a year is 99.999%, five nines.
-    correct_answers: [fifty-three-minutes]
-    explanation:
-      text: |
-        Availability is usually measured as the percentage of time a system is working, and each
-        extra nine allows a tenth of the downtime. Over a year of 8,760 hours, 99.9% allows about
-        8.8 hours, 99.99% about 53 minutes, and 99.999% about 5 minutes.
 
   - id: q02-family-records-benefit
     page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
@@ -2138,7 +1908,7 @@ questions:
 
   - id: q02-one-server-one-az-in-cloud
     page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
-    section: "In real work: the benefits map to the Well-Architected pillars"
+    section: "High availability: the system keeps working when a part fails"
     task: "1.1"
     level: understanding
     topics: [cloud-benefits, high-availability]
@@ -2196,9 +1966,9 @@ questions:
         explains this split of responsibilities.
 
   - id: q02-benefits-reliability-pillar
-    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
-    section: "In real work: the benefits map to the Well-Architected pillars"
-    task: "1.1"
+    page: guide/02-why-the-cloud/05-the-well-architected-framework.md
+    section: "Six pillars, six questions"
+    task: "1.2"
     level: application
     topics: [cloud-benefits, well-architected-pillars]
     type: multiple_choice
@@ -2605,7 +2375,7 @@ questions:
 
   - id: q02-what-makes-cloud-most-expensive
     page: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
-    section: "Worked example: the bakery's three-year comparison"
+    section: "Moving to the cloud doesn't automatically lower costs"
     task: "1.4"
     level: application
     topics: [cloud-economics, idle-capacity]
@@ -2663,7 +2433,7 @@ questions:
 
   - id: q02-first-month-difference
     page: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
-    section: "Worked example: the bakery's three-year comparison"
+    section: "Capital or operating, fixed or variable: two different questions"
     task: "1.4"
     level: understanding
     topics: [cloud-economics, capex-opex]
@@ -3910,8 +3680,8 @@ questions:
   # ---------------------------------------------------------------- 02.06 Lab 01
 
   - id: q02-lab-bucket-minutes-benefit
-    page: guide/02-why-the-cloud/06-lab-01-first-resource.md
-    section: Recap
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: "Agility: getting something new takes minutes, not weeks"
     task: "1.1"
     level: understanding
     topics: [agility, cloud-benefits]
@@ -4037,133 +3807,9 @@ questions:
 
   # ---------------------------------------------------------------- 02.07 Simulation S1
 
-  - id: q02-sim-matched-renting-cost
-    page: guide/02-why-the-cloud/07-sim-demand-curve.md
-    section: "Decision 2: finish the comparison"
-    task: "1.4"
-    level: application
-    topics: [cloud-economics, demand-curve]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        In a cost simulation, renting a server costs $250 per server-month (made-up price), and a
-        bakery's demand adds up to 25 server-months over the year. Peak demand is 6 servers, in
-        December. What does renting exactly what each month needs cost for the year?
-    choices:
-      - id: three-thousand-seven-fifty
-        text: "$3,750"
-        variants:
-          - text: "$3,750 a year"
-          - text: "3,750 dollars"
-        explanation:
-          text: |
-            That is 25 server-months at $150, the owned price, not the $250 rental price.
-      - id: eighteen-thousand
-        text: "$18,000"
-        variants:
-          - text: "$18,000 a year"
-          - text: "18,000 dollars"
-        explanation:
-          text: |
-            That is 6 servers for all 12 months (72 server-months) at $250: the cost of leaving peak
-            capacity running all year.
-      - id: ten-thousand-eight-hundred
-        text: "$10,800"
-        variants:
-          - text: "$10,800 a year"
-          - text: "10,800 dollars"
-        explanation:
-          text: |
-            That is 6 servers for 12 months at $150, the cost of owning enough for the peak.
-      - id: six-thousand-two-fifty
-        text: "$6,250"
-        variants:
-          - text: "$6,250 a year"
-          - text: "6,250 dollars"
-        explanation:
-          text: |
-            Correct. 25 server-months × $250 = $6,250, with no idle capacity and no lost orders.
-    correct_answers: [six-thousand-two-fifty]
-    hint:
-      text: Renting matched to demand means paying only for the server-months actually used.
-    explanation:
-      text: |
-        A server-month is one server running for one month. Renting exactly what each month needs
-        means paying for the 25 server-months used: 25 × $250 = $6,250. Leaving 6 servers running all
-        year would mean paying for 72 server-months, $18,000, the most expensive option in the
-        simulation. All figures are made up for teaching.
-
-  - id: q02-sim-what-owned-price-hides
-    page: guide/02-why-the-cloud/07-sim-demand-curve.md
-    section: "Decision 5: look inside the $150"
-    task: "1.4"
-    level: understanding
-    topics: [on-premises-costs, cloud-economics]
-    type: multiple_choice
-    selection: multiple
-    selection_count: 2
-    prompt:
-      text: |
-        A cost model prices each owned server at a flat $150 a month, which bundles its share of
-        hardware, space, power, cooling, network, staff and licenses. Which two real features of
-        owning does this flat monthly figure leave out? (Select TWO.)
-    choices:
-      - id: power-cooling
-        text: The electricity and cooling the servers use
-        variants:
-          - text: Power and cooling for the servers
-          - text: What the servers cost to power and cool
-        explanation:
-          text: |
-            Power and cooling are already inside the $150.
-      - id: up-front-payment
-        text: The large payment made up front for the hardware
-        variants:
-          - text: The big up-front payment for the servers
-          - text: Paying for the hardware in one large sum at the start
-        explanation:
-          text: |
-            Correct. The model spreads the hardware cost evenly over the months, but in reality it is
-            paid in one large sum when the servers are bought.
-      - id: staff-time
-        text: The staff time spent looking after the servers
-        variants:
-          - text: Staff hours spent maintaining the servers
-          - text: People's time to look after the equipment
-        explanation:
-          text: |
-            Staff are already inside the $150.
-      - id: weeks-to-install
-        text: The weeks it takes to buy and install new servers
-        variants:
-          - text: The wait of weeks to order and install servers
-          - text: Weeks spent buying and installing new servers
-        explanation:
-          text: |
-            Correct. A flat monthly price ignores the wait for new capacity, during which a busy site
-            can't serve its customers.
-      - id: licenses
-        text: The software licenses each server needs
-        variants:
-          - text: Licenses for the servers' software
-          - text: Software license fees for each server
-        explanation:
-          text: |
-            Licenses are already inside the $150.
-    correct_answers: [up-front-payment, weeks-to-install]
-    hint:
-      text: The seven cost groups are all inside the $150. Think about timing instead of amounts.
-    explanation:
-      text: |
-        A flat monthly price is a convenient way to compare owning with renting, but it hides two
-        things about owning: the large up-front payment when the servers are bought, and the weeks
-        it takes to buy and install them. Both make owning look better in the model than it feels in
-        practice, above all when new servers are needed before a peak.
-
   - id: q02-sim-matched-option-benefit
-    page: guide/02-why-the-cloud/07-sim-demand-curve.md
-    section: "Decision 6: name the ideas"
+    page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
+    section: "Elasticity: capacity grows and shrinks with demand"
     task: "1.1"
     level: understanding
     topics: [elasticity, cloud-benefits]
@@ -4234,7 +3880,7 @@ flashcards:
 
   - id: c02-two-providers-not-hybrid
     page: guide/02-why-the-cloud/01-what-cloud-computing-is.md
-    section: "Worked example: classifying three setups"
+    section: "The three deployment models are cloud, hybrid and on-premises"
     level: understanding
     topics: [deployment-models]
     front:
@@ -4260,7 +3906,7 @@ flashcards:
 
   - id: c02-any-fixed-number-is-a-guess
     page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
-    section: Buying for normal months turns customers away at the peak
+    section: "Any fixed amount of capacity is a guess"
     level: understanding
     topics: [demand-curve]
     front:
@@ -4298,7 +3944,7 @@ flashcards:
 
   - id: c02-elasticity-or-agility-rule
     page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
-    section: Elasticity and agility both sound like "fast"
+    section: "Agility: getting something new takes minutes, not weeks"
     level: understanding
     topics: [elasticity, agility]
     front:
@@ -4334,7 +3980,7 @@ flashcards:
 
   - id: c02-global-reach-or-agility-rule
     page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
-    section: Global reach and agility both happen "in minutes"
+    section: "Global reach: run close to users anywhere, in minutes"
     level: understanding
     topics: [global-reach, agility]
     front:
@@ -4346,7 +3992,7 @@ flashcards:
 
   - id: c02-benefits-need-design
     page: guide/02-why-the-cloud/03-telling-the-benefits-apart.md
-    section: "In real work: the benefits map to the Well-Architected pillars"
+    section: "High availability: the system keeps working when a part fails"
     level: understanding
     topics: [cloud-benefits]
     front:
@@ -4371,8 +4017,8 @@ flashcards:
         doesn't mean variable; the two pairs answer different questions.
 
   - id: c02-cloud-left-at-peak
-    page: guide/02-why-the-cloud/04-what-a-data-center-really-costs.md
-    section: "Worked example: the bakery's three-year comparison"
+    page: guide/02-why-the-cloud/02-before-and-after-the-demand-curve.md
+    section: "\"The cloud always cuts operating costs\" is wrong"
     level: understanding
     topics: [cloud-economics, idle-capacity]
     front:

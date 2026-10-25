@@ -364,7 +364,7 @@ questions:
 
   - id: q05-copies-across-azs
     page: guide/05-storing-data/01-block-file-object.md
-    section: "Where the copies live decides what a failure can take"
+    section: "Block, file and object side by side"
     task: "3.6"
     level: understanding
     topics: [durability, availability-zones]
@@ -419,7 +419,7 @@ questions:
 
   - id: q05-protect-only-copy-on-ebs
     page: guide/05-storing-data/01-block-file-object.md
-    section: "Where the copies live decides what a failure can take"
+    section: "Block storage: a disk attached to one server"
     task: "3.6"
     level: application
     topics: [ebs, backup]
@@ -575,57 +575,6 @@ questions:
         its settings are yours: turning on encryption, and taking snapshots or other backups. A safe
         setting you don't turn on doesn't protect you.
 
-  - id: q05-existing-ontap-to-aws
-    page: guide/05-storing-data/01-block-file-object.md
-    section: "File storage: one folder tree that many servers share"
-    task: "3.6"
-    level: understanding
-    topics: [file-storage, fsx]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A company's engineering team depends on a NetApp ONTAP storage system in its data center.
-        It wants to move that file storage to AWS and keep the features and tools it already uses.
-        Which service fits best?
-    choices:
-      - id: efs
-        text: Amazon EFS
-        variants:
-          - text: Amazon Elastic File System (Amazon EFS)
-          - text: An EFS file system
-        explanation:
-          text: EFS is AWS's own NFS file system. It doesn't keep NetApp ONTAP's features and tools.
-      - id: s3
-        text: Amazon S3
-        variants:
-          - text: Amazon Simple Storage Service (Amazon S3)
-          - text: An S3 bucket
-        explanation:
-          text: S3 is object storage, not a file system that works like the team's existing one.
-      - id: fsx-ontap
-        text: Amazon FSx for NetApp ONTAP
-        variants:
-          - text: FSx for NetApp ONTAP
-          - text: The NetApp ONTAP option of Amazon FSx
-        explanation:
-          text: FSx runs well-known third-party file systems, fully managed; this one is for teams already using NetApp ONTAP.
-      - id: fsx-windows
-        text: Amazon FSx for Windows File Server
-        variants:
-          - text: FSx for Windows File Server
-          - text: The Windows File Server option of Amazon FSx
-        explanation:
-          text: This FSx option provides Windows shares over SMB. It's the right family but the wrong file system for a NetApp ONTAP team.
-    correct_answers: [fsx-ontap]
-    hint:
-      text: One AWS family exists so that a file system you already run can move without changing.
-    explanation:
-      text: |
-        Amazon FSx runs familiar third-party file systems for you, so applications move without
-        changes: Windows File Server, NetApp ONTAP, OpenZFS or Lustre. When the requirement is to
-        keep an existing file system working the same, FSx is the answer, here FSx for NetApp ONTAP.
-
   - id: q05-fast-scratch-space
     page: guide/05-storing-data/01-block-file-object.md
     section: "Block storage: a disk attached to one server"
@@ -728,7 +677,7 @@ questions:
 
   - id: q05-bpa-account-on-bucket-off
     page: guide/05-storing-data/02-s3-in-practice.md
-    section: "Private by default, and Block Public Access keeps it that way"
+    section: "Private and encrypted from the start"
     task: "3.6"
     level: understanding
     topics: [s3-security, block-public-access]
@@ -833,7 +782,7 @@ questions:
 
   - id: q05-what-encryption-at-rest-stops
     page: guide/05-storing-data/02-s3-in-practice.md
-    section: "\"Encrypted means safe from everyone\" is wrong"
+    section: "Private and encrypted from the start"
     task: "3.6"
     level: understanding
     topics: [s3-security, encryption]
@@ -880,7 +829,7 @@ questions:
 
   - id: q05-control-who-decrypts
     page: guide/05-storing-data/02-s3-in-practice.md
-    section: "Encryption at rest is automatic; you choose who holds the keys"
+    section: "Private and encrypted from the start"
     task: "3.6"
     level: understanding
     topics: [s3-security, encryption]
@@ -1029,7 +978,7 @@ questions:
 
   - id: q05-deleted-from-unversioned-bucket
     page: guide/05-storing-data/02-s3-in-practice.md
-    section: "\"S3 is so durable that AWS can always get my file back\" is wrong"
+    section: "Versioning lets you undo an overwrite or a delete"
     task: "3.6"
     level: understanding
     topics: [s3-versioning, durability]
@@ -1130,52 +1079,6 @@ questions:
         compliance mode nobody can remove that protection early. Encryption, Block Public Access and
         durability protect against other things.
 
-  - id: q05-mfa-delete-who-can-enable
-    page: guide/05-storing-data/02-s3-in-practice.md
-    section: "Versioning lets you undo an overwrite or a delete"
-    task: "3.6"
-    level: recall
-    topics: [s3-versioning, root-user]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: Who can turn on MFA Delete for an S3 bucket?
-    choices:
-      - id: any-admin
-        text: Any IAM user with administrator permissions
-        variants:
-          - text: An IAM admin user with full S3 access
-          - text: Any IAM identity with administrator access
-        explanation:
-          text: Even full administrator permissions aren't enough; it's one of the tasks that need root user credentials.
-      - id: versioning-permission
-        text: Any identity allowed to change versioning
-        variants:
-          - text: Whoever may edit the bucket's versioning
-          - text: Any IAM role that can change bucket settings
-        explanation:
-          text: Permission to change versioning doesn't extend to MFA Delete; only the root user can turn it on.
-      - id: root-user
-        text: Only the AWS account root user
-        variants:
-          - text: The account's root user, and nobody else
-          - text: Just the root user of the account
-        explanation:
-          text: MFA Delete is a root-only task, and it can't be turned on in the console.
-      - id: aws-support
-        text: AWS Support, on request from the owner
-        variants:
-          - text: AWS Support, after the account asks
-          - text: An AWS Support engineer, when asked
-        explanation:
-          text: AWS Support doesn't change your bucket settings; this is your side of the line.
-    correct_answers: [root-user]
-    explanation:
-      text: |
-        MFA Delete makes a permanent delete of a version require a code from the account's MFA
-        device. Only the root user can turn it on, and not in the console. For stronger protection,
-        S3 Object Lock blocks deletes until a date you set.
-
   - id: q05-stop-new-versions
     page: guide/05-storing-data/02-s3-in-practice.md
     section: "Versioning lets you undo an overwrite or a delete"
@@ -1226,7 +1129,7 @@ questions:
 
   - id: q05-copy-to-another-region
     page: guide/05-storing-data/02-s3-in-practice.md
-    section: "A copy somewhere else: replication and backups"
+    section: "Versioning lets you undo an overwrite or a delete"
     task: "3.6"
     level: recall
     topics: [s3-replication]
@@ -1278,7 +1181,7 @@ questions:
 
   - id: q05-s3-customer-tasks
     page: guide/05-storing-data/02-s3-in-practice.md
-    section: "Your side of the line for S3"
+    section: "The big picture: five layers, three of them already on"
     task: "2.1"
     level: understanding
     topics: [shared-responsibility, s3-security]
@@ -1382,62 +1285,12 @@ questions:
         copy each day. A lifecycle rule that deletes noncurrent versions after a recovery window
         keeps the safety and stops the growth.
 
-  - id: q05-private-bucket-public-website
-    page: guide/05-storing-data/02-s3-in-practice.md
-    section: "Private by default, and Block Public Access keeps it that way"
-    task: "3.6"
-    level: application
-    topics: [s3-security, block-public-access]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A furniture store's website shows product photos that are stored in S3. The owner wants the
-        bucket to stay private, with Block Public Access on. How can visitors still see the photos?
-    choices:
-      - id: turn-off-bpa
-        text: Turn off Block Public Access so visitors can read the bucket
-        variants:
-          - text: Disable Block Public Access for the photo bucket
-          - text: Switch off Block Public Access on the bucket
-        explanation:
-          text: That opens the bucket to the world, exposing every photo in it, which the owner doesn't want.
-      - id: public-acl
-        text: Make each photo public with an object ACL
-        variants:
-          - text: Grant public read on each photo through ACLs
-          - text: Use ACLs to open the photos to everyone
-        explanation:
-          text: Block Public Access overrides ACLs that grant public access, and the owner wants nothing public.
-      - id: server-reads
-        text: The web server reads them with its own permissions
-        variants:
-          - text: The site's server fetches them using its own access
-          - text: The web server gets them through its IAM permissions
-        explanation:
-          text: The server is a named identity that a policy allows to read. It sends the photos to visitors, and the bucket stays private.
-      - id: sse-c
-        text: Encrypt the photos with SSE-C so they're safe in public
-        variants:
-          - text: Use SSE-C so public photos stay protected
-          - text: Protect the public photos with keys you supply
-        explanation:
-          text: Encryption doesn't make a public bucket safe, and it doesn't help visitors see photos.
-    correct_answers: [server-reads]
-    hint:
-      text: Block Public Access stops grants to everyone. Does it affect access given to a named identity?
-    explanation:
-      text: |
-        A bucket never needs to be public for a website to use its files. The web server reads the
-        photos with its own permissions and sends them to visitors. Block Public Access blocks
-        grants to everyone, not access given to named identities, so it stays on.
-
   # ---------------------------------------------------------------- 05.03 Storage classes and lifecycle
 
   - id: q05-unpredictable-video-library
     revision: 2
-    page: guide/05-storing-data/03-storage-classes-and-lifecycle.md
-    section: "Three questions pick a class: how often, how fast, how replaceable"
+    page: guide/05-storing-data/02-s3-in-practice.md
+    section: "Storage classes: how often, how fast, how replaceable"
     task: "3.6"
     level: understanding
     topics: [s3-storage-classes]
@@ -1488,8 +1341,8 @@ questions:
 
   - id: q05-regenerable-preview-clips
     revision: 2
-    page: guide/05-storing-data/03-storage-classes-and-lifecycle.md
-    section: "Three questions pick a class: how often, how fast, how replaceable"
+    page: guide/05-storing-data/02-s3-in-practice.md
+    section: "Storage classes: how often, how fast, how replaceable"
     task: "3.6"
     level: understanding
     topics: [s3-storage-classes]
@@ -1538,7 +1391,7 @@ questions:
         only data you can recreate, such as these tiles.
 
   - id: q05-standard-ia-compared-with-standard
-    page: guide/05-storing-data/03-storage-classes-and-lifecycle.md
+    page: guide/05-storing-data/02-s3-in-practice.md
     section: "\"Standard-IA is as available as Standard\" is wrong"
     task: "3.6"
     level: understanding
@@ -1586,8 +1439,8 @@ questions:
 
   - id: q05-scans-read-a-few-times-a-year
     revision: 2
-    page: guide/05-storing-data/03-storage-classes-and-lifecycle.md
-    section: "Three Glacier classes: archive by how fast you need it back"
+    page: guide/05-storing-data/02-s3-in-practice.md
+    section: "Storage classes: how often, how fast, how replaceable"
     task: "3.6"
     level: understanding
     topics: [s3-glacier, s3-storage-classes]
@@ -1634,116 +1487,10 @@ questions:
         data across at least three AZs for less than Standard-IA, charges a fee per GB read, and
         bills a 90-day minimum stay. The other two Glacier classes make you restore first.
 
-  - id: q05-dr-backups-restore-in-hours
-    revision: 2
-    page: guide/05-storing-data/03-storage-classes-and-lifecycle.md
-    section: "Three cost traps"
-    task: "3.6"
-    level: application
-    topics: [s3-glacier, s3-storage-classes, s3-lifecycle]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        An engineering firm copies file server backups to Amazon S3. For the first month they are
-        read now and then, after that once or twice a year. A full restore can take hours, but one
-        urgent file must sometimes be back within minutes. Each backup is kept one year. Which S3
-        Lifecycle rule gives the lowest storage cost with no minimum-stay penalty?
-    choices:
-      - id: early-expire
-        text: Standard-IA at day 30, Glacier Flexible Retrieval at day 90, expire at day 120
-        variants:
-          - text: Move to Standard-IA at 30 days, Glacier Flexible Retrieval at 90, delete at 120
-          - text: After 30 days, Standard-IA; after 90, Glacier Flexible Retrieval; expire after 120
-        explanation:
-          text: The objects spend 30 days in Flexible Retrieval but are billed its 90-day minimum, and they would not be kept the full year.
-      - id: flexible-keep-year
-        text: Standard-IA at day 30, Glacier Flexible Retrieval at day 90, expire at day 365
-        variants:
-          - text: Move to Standard-IA at 30 days, Glacier Flexible Retrieval at 90, delete at 365
-          - text: After 30 days, Standard-IA; after 90, Glacier Flexible Retrieval; expire after 365
-        explanation:
-          text: Each class is used longer than its minimum stay, so there is no penalty, and expedited restores bring one file back in minutes.
-      - id: deep-archive-keep-year
-        text: Standard-IA at day 30, Glacier Deep Archive at day 90, expire at day 365
-        variants:
-          - text: Move to Standard-IA at 30 days, Glacier Deep Archive at 90, delete at 365
-          - text: After 30 days, Standard-IA; after 90, Glacier Deep Archive; expire after 365
-        explanation:
-          text: Deep Archive is cheaper to store, but restores take 12 hours or more, so the urgent file could not be back in minutes.
-      - id: standard-ia-keep-year
-        text: Standard-IA at day 30, no further transition, expire at day 365
-        variants:
-          - text: Move to Standard-IA at 30 days, then stay there, delete at 365
-          - text: After 30 days, Standard-IA; no later change; expire after 365
-        explanation:
-          text: There is no penalty and reads take milliseconds, but Standard-IA costs several times more to store than Flexible Retrieval for backups read once or twice a year.
-    correct_answers: [flexible-keep-year]
-    hint:
-      text: Find the coldest class that can still return a file in minutes, then check how long the rule leaves objects in each class against its minimum stay.
-    explanation:
-      text: |
-        Glacier Flexible Retrieval is the archive class for backups read once or twice a year;
-        expedited restores take about 1 to 5 minutes (as of 2026-10-23). Deep Archive cannot return
-        data in minutes. Each expiration must also come after the transition plus the class's
-        minimum stay (30 days for Standard-IA, 90 for Flexible Retrieval), or the bill includes
-        days nobody used.
-
-  - id: q05-ten-year-records-lowest-cost
-    revision: 2
-    page: guide/05-storing-data/03-storage-classes-and-lifecycle.md
-    section: "Three Glacier classes: archive by how fast you need it back"
-    task: "3.6"
-    level: understanding
-    topics: [s3-glacier, s3-storage-classes]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A pharmacy chain keeps ten years of prescription records in S3 Glacier Deep Archive. If a
-        regulator asks for one, the chain has three days to produce it. Which statement about this
-        choice is true?
-    choices:
-      - id: milliseconds
-        text: A record can be read in milliseconds, with no restore request
-        variants:
-          - text: Records are returned in milliseconds, with no restore needed
-          - text: A restore request is not needed, because records come back in milliseconds
-        explanation:
-          text: Deep Archive needs a restore first, which takes 12 to 48 hours depending on the option.
-      - id: minimum-size
-        text: Every record is billed as at least 128 KB, however small it is
-        variants:
-          - text: Records smaller than 128 KB are billed as 128 KB
-          - text: A small record is billed as if it were 128 KB
-        explanation:
-          text: The 128 KB minimum applies to the IA classes and Glacier Instant Retrieval. Deep Archive instead adds about 40 KB of billed metadata per object.
-      - id: minimum-stay
-        text: Every record is billed for at least 180 days, which ten years of retention easily exceeds
-        variants:
-          - text: A record is billed for at least 180 days, a minimum that ten years of retention far exceeds
-          - text: Each record carries a 180-day minimum charge that ten years of retention easily passes
-        explanation:
-          text: Deep Archive has the longest minimum stay, 180 days, and it is no trap for records kept for years. It is also S3's lowest-cost class.
-      - id: free-reads
-        text: Restoring a record never carries a retrieval fee
-        variants:
-          - text: A restore of a record is always free of retrieval fees
-          - text: No retrieval fee is charged for any restore of a record
-        explanation:
-          text: Deep Archive charges per GB retrieved. Only the bulk option of Flexible Retrieval is free.
-    correct_answers: [minimum-stay]
-    explanation:
-      text: |
-        S3 Glacier Deep Archive is the lowest-cost class, for records kept for years and read less
-        than once a year. A restore takes 12 to 48 hours (as of 2026-10-23), which fits a
-        three-day deadline. Its costs are a 180-day minimum stay, about 40 KB of metadata per
-        object and a per-GB retrieval fee, and only the minimum stay is harmless for ten-year records.
-
   - id: q05-classes-that-need-a-restore
     revision: 2
-    page: guide/05-storing-data/03-storage-classes-and-lifecycle.md
-    section: "Key terms (skip if you know them)"
+    page: guide/05-storing-data/02-s3-in-practice.md
+    section: "Storage classes: how often, how fast, how replaceable"
     task: "3.6"
     level: application
     topics: [s3-glacier, s3-storage-classes]
@@ -1794,7 +1541,7 @@ questions:
         classes answer reads at once.
 
   - id: q05-old-course-glacier-vault
-    page: guide/05-storing-data/03-storage-classes-and-lifecycle.md
+    page: guide/05-storing-data/02-s3-in-practice.md
     section: "\"Glacier vaults are the S3 Glacier classes\" is wrong"
     task: "3.6"
     level: understanding
@@ -1843,7 +1590,7 @@ questions:
         the exam guide says "Amazon S3 Glacier", think of the three classes.
 
   - id: q05-logs-cool-then-delete
-    page: guide/05-storing-data/03-storage-classes-and-lifecycle.md
+    page: guide/05-storing-data/02-s3-in-practice.md
     section: "Lifecycle rules move and delete objects for you"
     task: "3.6"
     level: understanding
@@ -1895,7 +1642,7 @@ questions:
         is for patterns you can't predict.
 
   - id: q05-lifecycle-and-intelligent-tiering
-    page: guide/05-storing-data/03-storage-classes-and-lifecycle.md
+    page: guide/05-storing-data/02-s3-in-practice.md
     section: "Lifecycle rules move and delete objects for you"
     task: "3.6"
     level: understanding
@@ -1950,8 +1697,8 @@ questions:
         and a bucket policy can't stop them.
 
   - id: q05-build-artifacts-in-deep-archive
-    page: guide/05-storing-data/03-storage-classes-and-lifecycle.md
-    section: "Three cost traps"
+    page: guide/05-storing-data/02-s3-in-practice.md
+    section: "Storage classes: how often, how fast, how replaceable"
     task: "4.1"
     level: application
     topics: [s3-storage-classes, storage-pricing]
@@ -2000,58 +1747,9 @@ questions:
         (as of 2026-10-23). Two weeks of data billed as half a year costs more than two weeks in S3
         Standard. Cold classes are for data kept for months or years.
 
-  - id: q05-tiny-files-moved-to-standard-ia
-    page: guide/05-storing-data/03-storage-classes-and-lifecycle.md
-    section: "Three cost traps"
-    task: "4.1"
-    level: understanding
-    topics: [s3-storage-classes, storage-pricing]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A company moves two million files of about 10 KB each from S3 Standard to S3 Standard-IA,
-        expecting its storage bill to fall by about half. Instead, the bill rises. What is the main
-        reason?
-    choices:
-      - id: higher-price
-        text: Standard-IA charges more per GB stored than Standard does
-        variants:
-          - text: Standard-IA's storage price per GB is above Standard's
-          - text: Each GB costs more to store in Standard-IA than Standard
-        explanation:
-          text: Standard-IA's price per GB stored is lower than Standard's. The trap is in how small objects are measured.
-      - id: minimum-size
-        text: Standard-IA bills each small object at a minimum size
-        variants:
-          - text: Each tiny object is billed as a larger minimum size
-          - text: Small objects are charged at a minimum billable size
-        explanation:
-          text: Standard-IA bills any object under 128 KB as 128 KB, so each 10 KB file is billed at more than twelve times its size.
-      - id: more-copies
-        text: Standard-IA keeps extra copies of every object
-        variants:
-          - text: Each object is copied to more AZs in Standard-IA
-          - text: Standard-IA stores more copies of each object
-        explanation:
-          text: Standard-IA keeps copies across at least three AZs, like Standard; there are no extra copies to pay for.
-      - id: versioning-on
-        text: The transition turned on versioning for the bucket
-        variants:
-          - text: Moving the files switched versioning on
-          - text: A transition enables versioning automatically
-        explanation:
-          text: Transitions don't change versioning, which only you can turn on.
-    correct_answers: [minimum-size]
-    explanation:
-      text: |
-        Standard-IA, One Zone-IA and Glacier Instant Retrieval bill any object under 128 KB as
-        128 KB (as of 2026-10-23). For millions of tiny files, that outweighs the lower price per
-        GB, and each transition is a billed request too. Small files usually belong in S3 Standard.
-
   - id: q05-daily-reads-from-standard-ia
-    page: guide/05-storing-data/03-storage-classes-and-lifecycle.md
-    section: "Three cost traps"
+    page: guide/05-storing-data/02-s3-in-practice.md
+    section: "Storage classes: how often, how fast, how replaceable"
     task: "4.1"
     level: understanding
     topics: [s3-storage-classes, storage-pricing]
@@ -2098,8 +1796,8 @@ questions:
         cost more than leaving it in Standard. Choose the class by how often the data is read.
 
   - id: q05-expire-old-versions
-    page: guide/05-storing-data/07-lab-05-versions-and-lifecycle.md
-    section: "Part B: finish a lifecycle rule (completion)"
+    page: guide/05-storing-data/02-s3-in-practice.md
+    section: "Lifecycle rules move and delete objects for you"
     task: "4.1"
     level: application
     topics: [s3-lifecycle, s3-versioning]
@@ -2150,7 +1848,7 @@ questions:
         only adds delete markers.
 
   - id: q05-limit-lifecycle-rule-scope
-    page: guide/05-storing-data/03-storage-classes-and-lifecycle.md
+    page: guide/05-storing-data/02-s3-in-practice.md
     section: "Lifecycle rules move and delete objects for you"
     task: "3.6"
     level: recall
@@ -2202,61 +1900,6 @@ questions:
         A lifecycle rule can cover the whole bucket, or only objects with a given name prefix or a
         given tag. That lets one bucket hold, for example, exports kept a year and logs kept 90
         days, each under its own rule.
-
-  - id: q05-cheapest-plan-that-meets-rules
-    revision: 2
-    page: guide/05-storing-data/09-sim-lifecycle-cost-timeline.md
-    section: "The rules of this simulation"
-    task: "4.1"
-    level: application
-    topics: [s3-lifecycle, storage-pricing]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A company keeps weekly data exports in Amazon S3 for 180 days, then deletes them. For the
-        first 30 days, staff must be able to open any export at once. After that, a wait of up to
-        six hours is acceptable, but not longer. Which lifecycle plan meets these rules at the
-        lowest storage cost?
-    choices:
-      - id: standard-then-flexible
-        text: Standard for 30 days, then Flexible Retrieval until deletion
-        variants:
-          - text: Standard until day 30, then Flexible Retrieval until day 180
-          - text: Keep it in Standard 30 days, then move it to Flexible Retrieval
-        explanation:
-          text: This meets the 30-day rule, then uses the coldest class whose restores fit within six hours. The 150-day stay passes its 90-day minimum.
-      - id: standard-then-deep-archive
-        text: Standard for 30 days, then Deep Archive until deletion
-        variants:
-          - text: Standard until day 30, then Deep Archive until day 180
-          - text: Keep it in Standard 30 days, then move it to Deep Archive
-        explanation:
-          text: It's cheaper still, but a restore from Deep Archive takes 12 to 48 hours, which breaks the six-hour limit.
-      - id: flexible-from-upload
-        text: Flexible Retrieval from upload until deletion
-        variants:
-          - text: Straight into Flexible Retrieval, deleted at day 180
-          - text: Flexible Retrieval for the whole 180 days, from day 0
-        explanation:
-          text: Every read from Flexible Retrieval needs a restore first, so staff couldn't open new exports at once.
-      - id: standard-then-ia
-        text: Standard for 30 days, then Standard-IA until deletion
-        variants:
-          - text: Standard until day 30, then Standard-IA until day 180
-          - text: Keep it in Standard 30 days, then move it to Standard-IA
-        explanation:
-          text: It meets the rules, but after day 30 it pays for millisecond reads when a six-hour wait is allowed, so it costs more.
-    correct_answers: [standard-then-flexible]
-    hint:
-      text: Check the first rule first. Then, for days 30 to 180, find the coldest class that can still return data within six hours.
-    explanation:
-      text: |
-        The cheapest plan that keeps the rules puts each stretch of the data's life in the coldest
-        class those rules allow. S3 Standard covers the days when exports must open at once. After
-        that, Glacier Flexible Retrieval restores in minutes to hours, within the six-hour limit,
-        while Deep Archive's 12 to 48 hours would break it. Standard-IA meets the rules but buys
-        speed nobody needs.
 
   # ---------------------------------------------------------------- 05.04 Hybrid storage and backup
 
@@ -2364,104 +2007,6 @@ questions:
         archives them to S3 Glacier Flexible Retrieval or Deep Archive. The backup jobs keep running
         as before, and nobody carries tapes.
 
-  - id: q05-volume-gateway-stored-mode
-    page: guide/05-storing-data/04-hybrid-storage-and-backup.md
-    section: "Storage Gateway lets on-premises software use AWS storage without changing"
-    task: "3.6"
-    level: understanding
-    topics: [hybrid-storage, storage-gateway]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: In AWS Storage Gateway's Volume Gateway, which statement describes stored mode?
-    choices:
-      - id: cached-description
-        text: The full data lives in AWS, and the gateway caches the busy part
-        variants:
-          - text: Data is kept in AWS, with frequently used data cached locally
-          - text: AWS holds all the data, while the gateway keeps the busy data
-        explanation:
-          text: That's cached mode. Ask where the full dataset lives.
-      - id: stored-description
-        text: The full data stays on premises, with point-in-time copies in AWS
-        variants:
-          - text: Everything stays local, and AWS holds snapshots of it
-          - text: All data is kept in the building, with snapshots sent to AWS
-        explanation:
-          text: In stored mode the gateway keeps the whole dataset in the building, and AWS receives point-in-time copies as snapshots.
-      - id: shared-folder
-        text: Servers see the volumes as a shared folder over SMB or NFS
-        variants:
-          - text: The volumes appear to servers as a network file share
-          - text: The gateway presents the data as shared folders
-        explanation:
-          text: A shared folder over SMB or NFS is S3 File Gateway. Volume Gateway presents disks, over iSCSI.
-      - id: tapes
-        text: The data is written to virtual tapes and then archived
-        variants:
-          - text: Volumes are saved as virtual tapes in an archive
-          - text: It stores the data as archived virtual tapes
-        explanation:
-          text: Virtual tapes belong to Tape Gateway.
-    correct_answers: [stored-description]
-    explanation:
-      text: |
-        Volume Gateway presents disks over iSCSI, and its two modes differ in where the full dataset
-        lives. In cached mode the full data lives in AWS and only frequently used data stays local.
-        In stored mode the full data stays on premises, and AWS holds point-in-time copies as EBS
-        snapshots.
-
-  - id: q05-cloud-backed-disks
-    page: guide/05-storing-data/04-hybrid-storage-and-backup.md
-    section: "Storage Gateway lets on-premises software use AWS storage without changing"
-    task: "3.6"
-    level: application
-    topics: [hybrid-storage, storage-gateway]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        An office's application servers need disks presented over iSCSI. The company wants the full
-        data kept in AWS, with only frequently used data kept in the office for fast access. Which
-        option fits?
-    choices:
-      - id: stored-mode
-        text: Volume Gateway in stored mode
-        variants:
-          - text: Stored mode of Volume Gateway
-          - text: A Volume Gateway in stored mode
-        explanation:
-          text: Stored mode keeps the full data in the office and sends point-in-time copies to AWS, the opposite of what's asked.
-      - id: s3-file-gateway
-        text: Amazon S3 File Gateway
-        variants:
-          - text: The S3 File Gateway type of Storage Gateway
-          - text: Storage Gateway's S3 File Gateway
-        explanation:
-          text: S3 File Gateway presents a shared folder of files, not disks over iSCSI.
-      - id: cached-mode
-        text: Volume Gateway in cached mode
-        variants:
-          - text: Cached mode of Volume Gateway
-          - text: A Volume Gateway in cached mode
-        explanation:
-          text: Cached mode keeps the full data in AWS, in S3, and only the busy part on site.
-      - id: tape-gateway
-        text: Tape Gateway
-        variants:
-          - text: The Tape Gateway type of Storage Gateway
-          - text: Storage Gateway's Tape Gateway
-        explanation:
-          text: Tape Gateway uses iSCSI too, but it presents tapes for backup software, not disks for servers.
-    correct_answers: [cached-mode]
-    hint:
-      text: Disks point to one gateway type. Then ask where the full dataset should live.
-    explanation:
-      text: |
-        Disks over iSCSI mean Volume Gateway. In cached mode the full data lives in AWS and the
-        gateway keeps only frequently used data locally; in stored mode it's the other way round.
-        The question that separates them is where the full dataset lives.
-
   - id: q05-many-accounts-one-backup-plan
     page: guide/05-storing-data/04-hybrid-storage-and-backup.md
     section: "AWS Backup runs backups for many services from one set of rules"
@@ -2567,7 +2112,7 @@ questions:
 
   - id: q05-drs-compared-with-aws-backup
     page: guide/05-storing-data/04-hybrid-storage-and-backup.md
-    section: "\"Elastic Disaster Recovery is a backup service\" is wrong"
+    section: "Elastic Disaster Recovery keeps whole servers ready to launch"
     task: "3.6"
     level: understanding
     topics: [backup, disaster-recovery]
@@ -2666,7 +2211,7 @@ questions:
 
   - id: q05-before-deleting-test-database
     page: guide/05-storing-data/04-hybrid-storage-and-backup.md
-    section: "Snapshots are point-in-time copies of one disk or one database"
+    section: "Snapshots, AWS Backup and Elastic Disaster Recovery"
     task: "3.6"
     level: application
     topics: [backup, rds]
@@ -2717,7 +2262,7 @@ questions:
 
   - id: q05-ebs-snapshot-statements
     page: guide/05-storing-data/04-hybrid-storage-and-backup.md
-    section: "Snapshots are point-in-time copies of one disk or one database"
+    section: "Snapshots, AWS Backup and Elastic Disaster Recovery"
     task: "3.6"
     level: recall
     topics: [backup, ebs]
@@ -2769,59 +2314,9 @@ questions:
         the volume, and you can restore new volumes from it or copy it to another Region or
         account. It gives back data as it was, not running servers.
 
-  - id: q05-one-time-move-into-s3
-    page: guide/05-storing-data/04-hybrid-storage-and-backup.md
-    section: "\"Snowball is the answer for moving lots of data\" is wrong"
-    task: "3.6"
-    level: understanding
-    topics: [data-transfer]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A firm with no AWS history plans a single migration of 60 TB of engineering drawings from a
-        file server in its office into Amazon S3, over its own internet connection. Which service
-        does AWS now point new customers to for this move?
-    choices:
-      - id: datasync
-        text: AWS DataSync
-        variants:
-          - text: The AWS DataSync service
-          - text: DataSync
-        explanation:
-          text: DataSync moves data over the network between on-premises storage and AWS storage such as S3.
-      - id: s3-file-gateway
-        text: Amazon S3 File Gateway
-        variants:
-          - text: S3 File Gateway, a Storage Gateway type
-          - text: The S3 File Gateway type of Storage Gateway
-        explanation:
-          text: S3 File Gateway is a lasting link that office software uses every day, not a tool for moving data once.
-      - id: aws-backup
-        text: AWS Backup
-        variants:
-          - text: The AWS Backup service
-          - text: A plan in AWS Backup
-        explanation:
-          text: AWS Backup manages backups of resources under one set of rules; it isn't a tool for migrating a file server's contents.
-      - id: snowball
-        text: AWS Snowball
-        variants:
-          - text: An AWS Snowball device
-          - text: Snowball Edge
-        explanation:
-          text: Snowball was the old answer, a shipped device, but it's closed to new customers and its support is ending.
-    correct_answers: [datasync]
-    explanation:
-      text: |
-        Moving data once is a different job from a lasting hybrid link such as Storage Gateway. AWS
-        DataSync does it over the network. Snowball Edge stopped taking new customers on 2025-11-07,
-        and AWS ends support for Snowball devices in its commercial Regions on 2026-12-31 (checked
-        2026-10-23); the current exam guide no longer lists the Snow Family.
-
   - id: q05-jobs-for-aws-backup
     page: guide/05-storing-data/04-hybrid-storage-and-backup.md
-    section: "A snapshot, AWS Backup and Elastic Disaster Recovery side by side"
+    section: "AWS Backup runs backups for many services from one set of rules"
     task: "3.6"
     level: understanding
     topics: [backup, aws-backup]
@@ -2876,7 +2371,7 @@ questions:
 
   - id: q05-backup-customer-duties
     page: guide/05-storing-data/04-hybrid-storage-and-backup.md
-    section: "Your side of the line"
+    section: "Moving data once, without Snowball"
     task: "2.1"
     level: understanding
     topics: [shared-responsibility, backup]
@@ -3033,7 +2528,7 @@ questions:
 
   - id: q05-rds-customer-tasks
     page: guide/05-storing-data/05-managed-or-self-managed-databases.md
-    section: "Your side of the line"
+    section: "AWS recommends a managed database unless you have a reason not to"
     task: "2.1"
     level: understanding
     topics: [shared-responsibility, rds]
@@ -3285,8 +2780,8 @@ questions:
         Aurora, a replica can be the automatic failover target.
 
   - id: q05-recover-from-a-wrong-delete
-    page: guide/05-storing-data/10-sim-multi-az-vs-read-replica.md
-    section: "Decision 1: for each event, which copy keeps the bakery going or gets its data back?"
+    page: guide/05-storing-data/05-managed-or-self-managed-databases.md
+    section: "Backups and snapshots take you back in time"
     task: "3.4"
     level: application
     topics: [rds, backup]
@@ -3338,7 +2833,7 @@ questions:
 
   - id: q05-how-rds-copies-are-kept
     page: guide/05-storing-data/05-managed-or-self-managed-databases.md
-    section: "Backups and snapshots take you back in time"
+    section: "Each copy of the database has one job"
     task: "3.4"
     level: understanding
     topics: [rds, high-availability, read-scaling]
@@ -3542,8 +3037,8 @@ questions:
         faster but runs, and bills, all the time.
 
   - id: q05-backups-kept-too-briefly
-    page: guide/05-storing-data/10-sim-multi-az-vs-read-replica.md
-    section: "Decision 4: \"Backups are automatic, so we're covered for mistakes.\""
+    page: guide/05-storing-data/05-managed-or-self-managed-databases.md
+    section: "Backups and snapshots take you back in time"
     task: "3.4"
     level: application
     topics: [rds, backup]
@@ -3592,53 +3087,6 @@ questions:
         mistake older than the retention period can't be undone. Raise the retention and take
         monthly manual snapshots, which are kept until you delete them. Backup storage costs money,
         so keep what the checking routine needs.
-
-  - id: q05-stopped-rds-database
-    page: guide/05-storing-data/05-managed-or-self-managed-databases.md
-    section: "What you pay for"
-    task: "3.4"
-    level: understanding
-    topics: [rds, database-pricing]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: To save money, a team stops an RDS DB instance that it won't need for a month. What should the team know?
-    choices:
-      - id: free-while-stopped
-        text: A stopped database costs nothing until it's started
-        variants:
-          - text: Nothing is billed while the database is stopped
-          - text: Stopping it ends every charge until it restarts
-        explanation:
-          text: A stopped database still pays for its storage and backups.
-      - id: storage-and-restart
-        text: Storage is still billed, and RDS restarts it after seven days
-        variants:
-          - text: It still pays for storage, and RDS restarts it after a week
-          - text: Storage charges go on, and it restarts itself after 7 days
-        explanation:
-          text: Storage and backups keep billing, and RDS starts the database again by itself after seven days.
-      - id: deleted-after-week
-        text: RDS deletes a database that has stayed stopped for a whole week
-        variants:
-          - text: After seven days in the stopped state, RDS deletes the database
-          - text: A full week in the stopped state makes RDS remove the database
-        explanation:
-          text: RDS doesn't delete it; it starts it again.
-      - id: loses-data
-        text: Stopping it erases the data, as with instance store
-        variants:
-          - text: The data is lost on a stop, like instance store
-          - text: A stop wipes its data, just as with instance store
-        explanation:
-          text: RDS storage persists through a stop; the instance store rule doesn't apply.
-    correct_answers: [storage-and-restart]
-    explanation:
-      text: |
-        A stopped RDS database still pays for storage and backups, and RDS starts it again by itself
-        after seven days (as of 2026-10-23). A month-long pause therefore needs a plan: stop it
-        again, or take a snapshot and delete the database. Instance hours are billed per second
-        whenever it runs.
 
   - id: q05-application-after-failover
     page: guide/05-storing-data/05-managed-or-self-managed-databases.md
@@ -3689,7 +3137,7 @@ questions:
   # ---------------------------------------------------------------- 05.06 Choosing a database
 
   - id: q05-ticket-baskets-by-id
-    page: guide/05-storing-data/06-choosing-a-database.md
+    page: guide/05-storing-data/05-managed-or-self-managed-databases.md
     section: "DynamoDB stores items by key, at any scale, with no servers to run"
     task: "3.4"
     level: application
@@ -3741,8 +3189,8 @@ questions:
         carts among its own examples.
 
   - id: q05-linked-order-tables
-    page: guide/05-storing-data/06-choosing-a-database.md
-    section: "Relational databases fit structured data that links together"
+    page: guide/05-storing-data/05-managed-or-self-managed-databases.md
+    section: "The database services side by side"
     task: "3.4"
     level: application
     topics: [relational-databases, choosing-a-database]
@@ -3793,8 +3241,8 @@ questions:
         examples.
 
   - id: q05-same-queries-thousands-of-times
-    page: guide/05-storing-data/06-choosing-a-database.md
-    section: "ElastiCache answers from memory in microseconds"
+    page: guide/05-storing-data/05-managed-or-self-managed-databases.md
+    section: "The database services side by side"
     task: "3.4"
     level: application
     topics: [elasticache, choosing-a-database]
@@ -3844,8 +3292,8 @@ questions:
         cache is added in front of a main store, never instead of one.
 
   - id: q05-catalog-written-for-mongodb
-    page: guide/05-storing-data/06-choosing-a-database.md
-    section: "DocumentDB fits documents; Neptune fits relationships"
+    page: guide/05-storing-data/05-managed-or-self-managed-databases.md
+    section: "The database services side by side"
     task: "3.4"
     level: application
     topics: [documentdb, choosing-a-database]
@@ -3895,8 +3343,8 @@ questions:
         documents; the existing MongoDB code is what points to DocumentDB.
 
   - id: q05-friends-of-friends
-    page: guide/05-storing-data/06-choosing-a-database.md
-    section: "DocumentDB fits documents; Neptune fits relationships"
+    page: guide/05-storing-data/05-managed-or-self-managed-databases.md
+    section: "The database services side by side"
     task: "3.4"
     level: understanding
     topics: [neptune, choosing-a-database]
@@ -3946,8 +3394,8 @@ questions:
         recommendation engines, fraud detection and knowledge graphs among its uses.
 
   - id: q05-redshift-statements
-    page: guide/05-storing-data/06-choosing-a-database.md
-    section: "Redshift studies the business; it doesn't run the shop"
+    page: guide/05-storing-data/05-managed-or-self-managed-databases.md
+    section: "The database services side by side"
     task: "3.4"
     level: recall
     topics: [redshift, choosing-a-database]
@@ -4001,8 +3449,8 @@ questions:
         work, not the language.
 
   - id: q05-checkout-on-redshift
-    page: guide/05-storing-data/06-choosing-a-database.md
-    section: "Redshift studies the business; it doesn't run the shop"
+    page: guide/05-storing-data/05-managed-or-self-managed-databases.md
+    section: "The database services side by side"
     task: "3.4"
     level: understanding
     topics: [redshift, relational-databases]
@@ -4050,7 +3498,7 @@ questions:
         data for analysis.
 
   - id: q05-dynamodb-statements
-    page: guide/05-storing-data/06-choosing-a-database.md
+    page: guide/05-storing-data/05-managed-or-self-managed-databases.md
     section: "DynamoDB stores items by key, at any scale, with no servers to run"
     task: "3.4"
     level: understanding
@@ -4103,158 +3551,8 @@ questions:
         millisecond responses at any scale. In on-demand mode it bills per request, which makes it
         a purely variable cost. It doesn't join tables, and microsecond reads need DAX.
 
-  - id: q05-unknown-traffic-new-table
-    page: guide/05-storing-data/06-choosing-a-database.md
-    section: "DynamoDB stores items by key, at any scale, with no servers to run"
-    task: "3.4"
-    level: application
-    topics: [dynamodb, database-pricing]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A startup is launching an app on DynamoDB. It has no idea how much traffic to expect, and
-        traffic may spike suddenly. It wants no capacity planning and to pay only for the requests
-        it serves. Which option should it choose?
-    choices:
-      - id: provisioned
-        text: Provisioned capacity
-        variants:
-          - text: Provisioned capacity mode
-          - text: The provisioned capacity mode
-        explanation:
-          text: Provisioned capacity means setting reads and writes per second and paying by the hour, which suits steady, predictable traffic.
-      - id: on-demand
-        text: On-demand capacity
-        variants:
-          - text: On-demand capacity mode
-          - text: The on-demand capacity mode
-        explanation:
-          text: On-demand bills per request, with no capacity to plan; it scales up for a spike and back down.
-      - id: dax
-        text: DynamoDB Accelerator (DAX)
-        variants:
-          - text: A DAX cache for the table
-          - text: DAX in front of the table
-        explanation:
-          text: DAX is a cache for faster reads; it doesn't change how capacity is planned or billed.
-      - id: global-tables
-        text: DynamoDB global tables
-        variants:
-          - text: A global table across Regions
-          - text: Global tables in DynamoDB
-        explanation:
-          text: Global tables copy a table across Regions; they don't remove capacity planning.
-    correct_answers: [on-demand]
-    hint:
-      text: Unknown and spiky traffic, and paying per request - which capacity mode needs nothing set in advance?
-    explanation:
-      text: |
-        DynamoDB's on-demand capacity mode bills per read and write request, with no capacity to
-        plan: the table scales up for a spike and back down. Provisioned capacity, where you set
-        reads and writes per second, can cost less for steady, predictable traffic.
-
-  - id: q05-players-on-three-continents
-    page: guide/05-storing-data/06-choosing-a-database.md
-    section: "DynamoDB stores items by key, at any scale, with no servers to run"
-    task: "3.4"
-    level: understanding
-    topics: [dynamodb, disaster-recovery]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A gaming company's DynamoDB table serves players on three continents. It wants players to
-        use a copy of the table in a Region near them, and the game to survive the loss of a whole
-        Region. Which feature fits?
-    choices:
-      - id: dax
-        text: DynamoDB Accelerator (DAX)
-        variants:
-          - text: A DAX cache for the table
-          - text: DAX in front of the table
-        explanation:
-          text: DAX speeds up reads with a cache; it doesn't copy the table to other Regions.
-      - id: point-in-time-recovery
-        text: Point-in-time recovery
-        variants:
-          - text: The table's point-in-time recovery
-          - text: Point-in-time recovery for the table
-        explanation:
-          text: Point-in-time recovery restores the table as it was; it doesn't serve players from other Regions.
-      - id: global-tables
-        text: DynamoDB global tables
-        variants:
-          - text: A global table across Regions
-          - text: Global tables in DynamoDB
-        explanation:
-          text: A global table is copied across several Regions, for users around the world and for surviving a Region's loss.
-      - id: on-demand
-        text: On-demand capacity
-        variants:
-          - text: On-demand capacity mode
-          - text: The on-demand capacity mode
-        explanation:
-          text: On-demand changes how capacity is billed, not where the data lives.
-    correct_answers: [global-tables]
-    hint:
-      text: Both needs call for copies of the table in more than one Region.
-    explanation:
-      text: |
-        DynamoDB global tables copy one table across several Regions, so users around the world
-        reach a nearby copy, and the table survives the loss of a Region. Check data-residency rules
-        first: adding a Region copies the data there.
-
-  - id: q05-microsecond-dynamodb-reads
-    page: guide/05-storing-data/06-choosing-a-database.md
-    section: "DynamoDB stores items by key, at any scale, with no servers to run"
-    task: "3.4"
-    level: recall
-    topics: [dynamodb]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        An application's DynamoDB reads take single-digit milliseconds, and the team needs them in
-        microseconds while keeping DynamoDB. Which feature is built for this?
-    choices:
-      - id: global-tables
-        text: DynamoDB global tables
-        variants:
-          - text: A global table across Regions
-          - text: Global tables in DynamoDB
-        explanation:
-          text: Global tables copy data across Regions; reads stay in milliseconds.
-      - id: provisioned
-        text: Provisioned capacity
-        variants:
-          - text: Provisioned capacity mode
-          - text: The provisioned capacity mode
-        explanation:
-          text: Provisioned capacity changes billing and planning, not where reads come from.
-      - id: point-in-time-recovery
-        text: Point-in-time recovery
-        variants:
-          - text: The table's point-in-time recovery
-          - text: Point-in-time recovery for the table
-        explanation:
-          text: Point-in-time recovery is a backup feature.
-      - id: dax
-        text: DynamoDB Accelerator (DAX)
-        variants:
-          - text: A DAX cache for the table
-          - text: DAX in front of the table
-        explanation:
-          text: DAX is an in-memory cache built only for DynamoDB, turning millisecond reads into microsecond ones.
-    correct_answers: [dax]
-    explanation:
-      text: |
-        DynamoDB Accelerator (DAX) is an in-memory cache built for DynamoDB, which turns its
-        millisecond reads into microsecond reads. ElastiCache is the general in-memory service that
-        sits in front of other stores, such as an RDS database.
-
   - id: q05-tool-that-moves-the-data
-    page: guide/05-storing-data/06-choosing-a-database.md
+    page: guide/05-storing-data/05-managed-or-self-managed-databases.md
     section: "Moving a database in: DMS moves the data, SCT converts the schema"
     task: "3.4"
     level: understanding
@@ -4303,7 +3601,7 @@ questions:
         changes.
 
   - id: q05-sql-server-to-aurora-mysql
-    page: guide/05-storing-data/06-choosing-a-database.md
+    page: guide/05-storing-data/05-managed-or-self-managed-databases.md
     section: "Moving a database in: DMS moves the data, SCT converts the schema"
     task: "3.4"
     level: application
@@ -4363,7 +3661,7 @@ questions:
         can't change the engine.
 
   - id: q05-same-engine-migration
-    page: guide/05-storing-data/06-choosing-a-database.md
+    page: guide/05-storing-data/05-managed-or-self-managed-databases.md
     section: "Moving a database in: DMS moves the data, SCT converts the schema"
     task: "3.4"
     level: understanding
@@ -4408,57 +3706,9 @@ questions:
         fits as it is and AWS DMS alone can move the data. A heterogeneous migration changes the
         engine and needs the schema converted first, with SCT or DMS Schema Conversion.
 
-  - id: q05-change-data-capture
-    page: guide/05-storing-data/06-choosing-a-database.md
-    section: "Moving a database in: DMS moves the data, SCT converts the schema"
-    task: "3.4"
-    level: recall
-    topics: [database-migration]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        After the first full copy, AWS DMS can keep the target in step with everything written to
-        the source until the switch-over. What is this called?
-    choices:
-      - id: schema-conversion
-        text: Schema conversion
-        variants:
-          - text: Converting the schema
-          - text: Schema translation
-        explanation:
-          text: Schema conversion translates the structure for a new engine; it's SCT's job.
-      - id: point-in-time-recovery
-        text: Point-in-time recovery
-        variants:
-          - text: Recovery to a point in time
-          - text: Point-in-time restore
-        explanation:
-          text: Point-in-time recovery restores a database as it was; it's a backup feature.
-      - id: cdc
-        text: Change data capture
-        variants:
-          - text: Change data capture (CDC)
-          - text: CDC, or change data capture
-        explanation:
-          text: Change data capture copies each new change after the first full copy.
-      - id: multi-az
-        text: Multi-AZ replication
-        variants:
-          - text: Replication across AZs
-          - text: Multi-AZ copying
-        explanation:
-          text: Multi-AZ keeps a standby of one RDS database; it isn't a migration feature.
-    correct_answers: [cdc]
-    explanation:
-      text: |
-        Change data capture is DMS copying each new change after the first full copy, so the target
-        stays in step until you switch over, or for as long as you like. That ongoing copy is the
-        "database replication" migration strategy that the exam guide names in task 1.3.
-
   - id: q05-dynamodb-customer-task
-    page: guide/05-storing-data/06-choosing-a-database.md
-    section: "Your side of the line"
+    page: guide/05-storing-data/05-managed-or-self-managed-databases.md
+    section: "DynamoDB stores items by key, at any scale, with no servers to run"
     task: "2.1"
     level: understanding
     topics: [shared-responsibility, dynamodb]
@@ -4505,61 +3755,13 @@ questions:
         patch, and by default it copies your data across three Availability Zones. Your data,
         deciding which data is sensitive, and the IAM permissions on each table stay yours.
 
-  - id: q05-load-one-cart
-    page: guide/05-storing-data/08-lab-06-a-dynamodb-table.md
-    section: "Get one item, then query one cart"
-    task: "3.4"
-    level: understanding
-    topics: [dynamodb]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A DynamoDB table holds shopping-cart items, with the partition key `CartId` and the sort key
-        `Product`. How should the application load every item in one customer's cart?
-    choices:
-      - id: query-partition-key
-        text: Query the table by the cart's CartId
-        variants:
-          - text: Run a query on the CartId partition key
-          - text: Query using the cart's CartId value alone
-        explanation:
-          text: A query finds every item that shares a partition key, which here is one whole cart.
-      - id: get-by-product
-        text: Get the items using only the Product sort key
-        variants:
-          - text: Look items up by the Product sort key alone
-          - text: Fetch the items with just the Product value
-        explanation:
-          text: The sort key only tells apart items within one cart; it doesn't pick the cart.
-      - id: sql-join
-        text: Join the cart table to a products table in SQL
-        variants:
-          - text: Use a SQL join between the carts and products
-          - text: Join the carts with the product table in SQL
-        explanation:
-          text: DynamoDB doesn't join tables.
-      - id: table-per-cart
-        text: Create a separate table for each cart and read it
-        variants:
-          - text: Give every cart its own table, then read that
-          - text: Store each cart in a table of its own and read it
-        explanation:
-          text: One table holds all carts; the partition key groups each cart's items.
-    correct_answers: [query-partition-key]
-    explanation:
-      text: |
-        The partition key picks which group an item belongs to, and the sort key tells the items in
-        that group apart. A get with both keys finds exactly one item; a query with the partition key
-        alone finds the whole group, which is how a site would load one customer's cart.
-
 flashcards:
 
   # ---------------------------------------------------------------- 05.01 Block, file, object
 
   - id: c05-storage-shape-first-question
     page: guide/05-storing-data/01-block-file-object.md
-    section: "Worked example: placing the bakery's data"
+    section: "The big picture: three shapes of storage"
     level: understanding
     topics: [block-storage, file-storage, object-storage]
     front:
@@ -4595,7 +3797,7 @@ flashcards:
 
   - id: c05-what-each-copy-survives
     page: guide/05-storing-data/01-block-file-object.md
-    section: "Where the copies live decides what a failure can take"
+    section: "Block, file and object side by side"
     level: understanding
     topics: [durability, availability-zones]
     front:
@@ -4609,7 +3811,7 @@ flashcards:
 
   - id: c05-durability-doesnt-undo-deletes
     page: guide/05-storing-data/02-s3-in-practice.md
-    section: "\"S3 is so durable that AWS can always get my file back\" is wrong"
+    section: "Versioning lets you undo an overwrite or a delete"
     level: understanding
     topics: [durability, s3-versioning]
     front:
@@ -4631,23 +3833,11 @@ flashcards:
         Versioning, and a copy somewhere else (replication or backups). Block Public Access,
         private-by-default access and SSE-S3 encryption start on.
 
-  - id: c05-private-bucket-behind-a-website
-    page: guide/05-storing-data/02-s3-in-practice.md
-    section: "Private by default, and Block Public Access keeps it that way"
-    level: understanding
-    topics: [s3-security, block-public-access]
-    front:
-      text: How can a website show images from an S3 bucket that stays private?
-    back:
-      text: |
-        The web server reads the images with its own permissions and sends them to visitors. The
-        bucket never has to be open to everyone.
-
   # ---------------------------------------------------------------- 05.03 Storage classes and lifecycle
 
   - id: c05-three-questions-pick-a-class
-    page: guide/05-storing-data/03-storage-classes-and-lifecycle.md
-    section: "Three questions pick a class: how often, how fast, how replaceable"
+    page: guide/05-storing-data/02-s3-in-practice.md
+    section: "Storage classes: how often, how fast, how replaceable"
     level: understanding
     topics: [s3-storage-classes]
     front:
@@ -4658,8 +3848,8 @@ flashcards:
         Zone were destroyed?
 
   - id: c05-check-expiration-after-minimum-stay
-    page: guide/05-storing-data/03-storage-classes-and-lifecycle.md
-    section: "Three cost traps"
+    page: guide/05-storing-data/02-s3-in-practice.md
+    section: "Lifecycle rules move and delete objects for you"
     level: application
     topics: [s3-lifecycle, storage-pricing]
     front:
@@ -4668,40 +3858,6 @@ flashcards:
       text: |
         Make sure the expiration comes after the last transition plus that class's minimum storage
         duration. Otherwise you pay for days nobody used.
-
-  - id: c05-tiny-files-stay-in-standard
-    page: guide/05-storing-data/03-storage-classes-and-lifecycle.md
-    section: "Three cost traps"
-    level: understanding
-    topics: [s3-storage-classes, storage-pricing]
-    front:
-      text: Why do many tiny files usually cost less in S3 Standard than in an IA class?
-    back:
-      text: |
-        The IA classes bill each object under 128 KB as 128 KB (as of 2026-10-23), and every
-        transition is a billed request. Standard bills tiny files at their real size.
-
-  - id: c05-object-lock-through-lifecycle
-    page: guide/05-storing-data/03-storage-classes-and-lifecycle.md
-    section: "Your side of the line"
-    level: recall
-    topics: [object-lock, s3-lifecycle]
-    front:
-      text: Does S3 Object Lock still protect an object after a lifecycle rule moves it to another storage class?
-    back:
-      text: Yes. Object Lock's protection stays in force as lifecycle rules move the object between classes.
-
-  - id: c05-more-steps-arent-cheaper
-    page: guide/05-storing-data/09-sim-lifecycle-cost-timeline.md
-    section: "Decision 3: the owner asks why Plan B, with more steps, costs more"
-    level: understanding
-    topics: [s3-lifecycle, storage-pricing]
-    front:
-      text: Does a lifecycle plan with more transition steps usually cost less?
-    back:
-      text: |
-        Not necessarily. A step pays only when it matches a real change in how the data is used.
-        Faster classes that the rules don't require just buy speed nobody needs.
 
   # ---------------------------------------------------------------- 05.04 Hybrid storage and backup
 
@@ -4719,7 +3875,7 @@ flashcards:
 
   - id: c05-hybrid-service-first-question
     page: guide/05-storing-data/04-hybrid-storage-and-backup.md
-    section: "Worked example: matching the bakery's needs to services"
+    section: "Moving data once, without Snowball"
     level: understanding
     topics: [hybrid-storage, backup]
     front:
@@ -4730,23 +3886,11 @@ flashcards:
         there, or needing to restart in minutes after a disaster); or nowhere, because it's a
         one-time move.
 
-  - id: c05-after-snowball
-    page: guide/05-storing-data/04-hybrid-storage-and-backup.md
-    section: "\"Snowball is the answer for moving lots of data\" is wrong"
-    level: recall
-    topics: [data-transfer, exam-names]
-    front:
-      text: AWS Snowball is closed to new customers. Where does AWS point them for moving data into AWS?
-    back:
-      text: |
-        AWS DataSync over the network, AWS Data Transfer Terminal (bring your own drives to an
-        upload site), or AWS Partners (as of 2026-10-23).
-
   # ---------------------------------------------------------------- 05.05 Managed or self-managed databases
 
   - id: c05-name-the-failure-first
     page: guide/05-storing-data/05-managed-or-self-managed-databases.md
-    section: "Backups and snapshots take you back in time"
+    section: "Each copy of the database has one job"
     level: understanding
     topics: [rds, high-availability, read-scaling]
     front:
@@ -4769,8 +3913,8 @@ flashcards:
         engines, a replica must be promoted by hand.
 
   - id: c05-multi-az-stays-in-one-region
-    page: guide/05-storing-data/10-sim-multi-az-vs-read-replica.md
-    section: "Decision 1: for each event, which copy keeps the bakery going or gets its data back?"
+    page: guide/05-storing-data/05-managed-or-self-managed-databases.md
+    section: "A Multi-AZ deployment keeps the database running when an Availability Zone fails"
     level: understanding
     topics: [rds, disaster-recovery]
     front:
@@ -4780,21 +3924,11 @@ flashcards:
         The primary and the standby are both in AZs of the same Region. Surviving a Region's loss
         takes backups copied to, or a replica in, another Region.
 
-  - id: c05-multi-az-write-cost
-    page: guide/05-storing-data/05-managed-or-self-managed-databases.md
-    section: "A Multi-AZ deployment keeps the database running when an Availability Zone fails"
-    level: understanding
-    topics: [rds, high-availability]
-    front:
-      text: Besides a higher price, what can a Multi-AZ deployment cost an RDS database, and why?
-    back:
-      text: Slightly slower writes, because each write waits until both the primary and the standby have it.
-
   # ---------------------------------------------------------------- 05.06 Choosing a database
 
   - id: c05-run-or-study-the-business
-    page: guide/05-storing-data/06-choosing-a-database.md
-    section: "Worked example: the bakery's databases"
+    page: guide/05-storing-data/05-managed-or-self-managed-databases.md
+    section: "The database services side by side"
     level: understanding
     topics: [choosing-a-database, redshift]
     front:
@@ -4804,21 +3938,9 @@ flashcards:
         Does the data run the business (many small reads and writes) or study it (big questions
         over years, from many sources)? Studying it at scale points to Amazon Redshift.
 
-  - id: c05-purpose-built-not-one-per-kind
-    page: guide/05-storing-data/06-choosing-a-database.md
-    section: "In real work: purpose-built, but no more than you need"
-    level: understanding
-    topics: [choosing-a-database]
-    front:
-      text: Does "use purpose-built databases" mean adding a new database for every kind of data?
-    back:
-      text: |
-        No. Match each kind of data to its shape, then ask whether its scale justifies another
-        service. Every extra database has to be paid for, secured and backed up.
-
   - id: c05-why-orders-are-relational
-    page: guide/05-storing-data/06-choosing-a-database.md
-    section: "Relational databases fit structured data that links together"
+    page: guide/05-storing-data/05-managed-or-self-managed-databases.md
+    section: "The database services side by side"
     level: understanding
     topics: [relational-databases, choosing-a-database]
     front:

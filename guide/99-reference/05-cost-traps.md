@@ -143,7 +143,7 @@ These are on AWS's "time" meter: they bill every hour they exist, busy or idle (
 
 **How to avoid it:** choose a class by how long data stays and how often it's read, not by the storage price alone. Don't move lots of tiny files to archive classes. S3 Intelligent-Tiering avoids retrieval fees for unpredictable access, for a monitoring fee.
 
-**Taught in:** [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md); [Simulation S5: Run a year of lifecycle rules forward and find the cost traps](../05-storing-data/09-sim-lifecycle-cost-timeline.md)
+**Taught in:** [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md)
 
 ### Old versions are billed in full
 
@@ -151,7 +151,7 @@ These are on AWS's "time" meter: they bill every hour they exist, busy or idle (
 
 **How to avoid it:** pair versioning with a lifecycle rule that deletes noncurrent versions after a safety window, such as 30 days.
 
-**Taught in:** [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md); [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md)
+**Taught in:** [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md); [Lab 05: Keep every version, add a lifecycle rule, and set up an archive bucket](../05-storing-data/07-lab-05-versions-and-lifecycle.md)
 
 ### Logs are kept forever unless you say otherwise
 
@@ -253,7 +253,7 @@ These are on AWS's "time" meter: they bill every hour they exist, busy or idle (
 
 **How to avoid it:** browse, but don't choose Subscribe or Request Offer from a lab account.
 
-**Taught in:** [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md); [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
+**Taught in:** [Lab 17: Tour the help every AWS account gets, on the Basic plan](../12-getting-help/05-lab-17-support-center-tour.md); [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
 
 ## Watching doesn't stop spending
 
@@ -263,7 +263,7 @@ These are on AWS's "time" meter: they bill every hour they exist, busy or idle (
 
 **How to avoid it:** set budgets and alerts anyway (the guardrails primer does), and add cleanup habits: they're what actually stop a runaway cost.
 
-**Taught in:** [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md); [Simulation S14: Follow a runaway cost and see which guardrails alert and which stop it](../11-paying-for-aws/08-sim-guardrail-timeline.md)
+**Taught in:** [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md)
 
 ### Some actions move a Free plan account to the Paid plan
 
@@ -271,7 +271,7 @@ These are on AWS's "time" meter: they bill every hour they exist, busy or idle (
 
 **How to avoid it:** practice those in the guide's simulations, and choose an upgrade only when you've decided to pay.
 
-**Taught in:** [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md); [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md); [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md)
+**Taught in:** [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md); [Many accounts, one bill](../11-paying-for-aws/04-many-accounts-one-bill.md); [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md)
 
 ## After every lab
 

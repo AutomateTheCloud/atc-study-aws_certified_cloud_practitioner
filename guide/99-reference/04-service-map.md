@@ -31,7 +31,7 @@ None: every in-scope service is taught somewhere in the guide.
 | [Amazon Kinesis](01-glossary.md#a) | A family of AWS services for data that arrives continuously | [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md) |
 | [Amazon OpenSearch Service](01-glossary.md#a) | A managed AWS service that runs the OpenSearch search and analytics engine for log analytics, application monitoring and website search | [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md) |
 | [Amazon Quick Sight](01-glossary.md#a) | AWS's business intelligence service | [Analytics in five verbs](../10-data-ai-and-more/01-analytics-in-five-verbs.md) |
-| [Amazon Redshift](01-glossary.md#a) | AWS's fully managed data warehouse, running SQL analysis over very large amounts of data from many sources | [Choosing a database](../05-storing-data/06-choosing-a-database.md) |
+| [Amazon Redshift](01-glossary.md#a) | AWS's fully managed data warehouse, running SQL analysis over very large amounts of data from many sources | [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md) |
 
 ## Application Integration
 
@@ -56,7 +56,7 @@ None: every in-scope service is taught somewhere in the guide.
 | [AWS Budgets](01-glossary.md#a) | An AWS service that tracks cost or usage against a target you set and alerts by email or SNS when actual or forecasted cost crosses a threshold | [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md) |
 | [AWS Cost and Usage Reports](01-glossary.md#a) | AWS's most detailed cost and usage data | [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md) |
 | [AWS Cost Explorer](01-glossary.md#a) | An AWS tool that charts your costs and usage | [Estimate, watch, analyze](../11-paying-for-aws/03-estimate-watch-analyze.md) |
-| [AWS Marketplace](01-glossary.md#a) | A curated catalog of software, data and services from other companies | [Partners and paid help](../12-getting-help/04-partners-and-paid-help.md) |
+| [AWS Marketplace](01-glossary.md#a) | A curated catalog of software, data and services from other companies | [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md) |
 
 ## Compute
 
@@ -86,18 +86,18 @@ None: every in-scope service is taught somewhere in the guide.
 
 | Service | What it does | Taught in |
 |---|---|---|
-| [Amazon Aurora](01-glossary.md#a) | AWS's own relational database engine, compatible with MySQL and PostgreSQL and managed through Amazon RDS | [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md) |
-| [Amazon DocumentDB](01-glossary.md#a) | AWS's managed document database, compatible with MongoDB's drivers and tools, for data that is naturally a document | [Choosing a database](../05-storing-data/06-choosing-a-database.md) |
-| [Amazon DynamoDB](01-glossary.md#a) | AWS's main NoSQL database | [Choosing a database](../05-storing-data/06-choosing-a-database.md) |
-| [Amazon ElastiCache](01-glossary.md#a) | AWS's in-memory service | [Choosing a database](../05-storing-data/06-choosing-a-database.md) |
-| [Amazon Neptune](01-glossary.md#a) | AWS's managed graph database, for data where the connections matter most | [Choosing a database](../05-storing-data/06-choosing-a-database.md) |
-| [Amazon RDS](01-glossary.md#a) | Managed relational databases | [Managed or self-managed databases](../05-storing-data/05-managed-or-self-managed-databases.md) |
+| [Amazon Aurora](01-glossary.md#a) | AWS's own relational database engine, compatible with MySQL and PostgreSQL and managed through Amazon RDS | [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md) |
+| [Amazon DocumentDB](01-glossary.md#a) | AWS's managed document database, compatible with MongoDB's drivers and tools, for data that is naturally a document | [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md) |
+| [Amazon DynamoDB](01-glossary.md#a) | AWS's main NoSQL database | [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md) |
+| [Amazon ElastiCache](01-glossary.md#a) | AWS's in-memory service | [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md) |
+| [Amazon Neptune](01-glossary.md#a) | AWS's managed graph database, for data where the connections matter most | [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md) |
+| [Amazon RDS](01-glossary.md#a) | Managed relational databases | [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md) |
 
 ## Developer Tools
 
 | Service | What it does | Taught in |
 |---|---|---|
-| [AWS CLI](01-glossary.md#a) | A free, open-source program that sends instructions to AWS as typed commands | [Four ways in](../08-building-and-operating/01-four-ways-in.md) |
+| [AWS CLI](01-glossary.md#a) | A free, open-source program that sends instructions to AWS as typed commands | [Four ways in, and infrastructure as code](../08-building-and-operating/01-four-ways-in.md) |
 | [AWS CodeBuild](01-glossary.md#a) | A fully managed build service | [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md) |
 | [AWS CodePipeline](01-glossary.md#a) | A continuous delivery service that models a release as a pipeline of stages | [Connecting parts, shipping software](../08-building-and-operating/04-connecting-parts-shipping-software.md) |
 | [AWS X-Ray](01-glossary.md#a) | A service that traces requests through an application | [Watching workloads](../08-building-and-operating/03-watching-workloads.md) |
@@ -141,17 +141,17 @@ None: every in-scope service is taught somewhere in the guide.
 | Service | What it does | Taught in |
 |---|---|---|
 | [AWS Auto Scaling](01-glossary.md#a) | Sets up scaling for several kinds of resource at once, such as groups of EC2 instances and DynamoDB tables | [Auto Scaling and load balancers](../06-running-applications/02-auto-scaling-and-load-balancers.md) |
-| [AWS CloudFormation](01-glossary.md#a) | AWS's infrastructure as code service | [IaC and automation](../08-building-and-operating/02-iac-and-automation.md) |
-| [AWS CloudTrail](01-glossary.md#a) | The AWS service that records each action taken on your account, by a person, a role or an AWS service, through any way in, as an event | [Watching workloads](../08-building-and-operating/03-watching-workloads.md) |
+| [AWS CloudFormation](01-glossary.md#a) | AWS's infrastructure as code service | [Four ways in, and infrastructure as code](../08-building-and-operating/01-four-ways-in.md) |
+| [AWS CloudTrail](01-glossary.md#a) | The AWS service that records each action taken on your account, by a person, a role or an AWS service, through any way in, as an event | [Lab 01: Create, find and delete your first storage bucket](../02-why-the-cloud/06-lab-01-first-resource.md) |
 | [Amazon CloudWatch](01-glossary.md#a) | AWS's monitoring service for resources and applications | [Watching workloads](../08-building-and-operating/03-watching-workloads.md) |
 | [AWS Compute Optimizer](01-glossary.md#a) | An AWS service that, once you opt in, analyzes resources' configuration and CloudWatch metrics and reports each as optimized, over-provisioned, under-provisioned or idle | [The business case](../13-moving-to-aws/04-the-business-case.md) |
 | [AWS Config](01-glossary.md#a) | An AWS service that keeps an inventory of your resources and a history of each one's settings | [Who did what, how it runs, how it was set](../09-protecting-and-governing/01-who-did-what.md) |
 | [AWS Control Tower](01-glossary.md#a) | A service built on AWS Organizations, Service Catalog and IAM Identity Center that sets up a best-practice multi-account landing zone and keeps it governed with controls, Account Factory and a dashboard | [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md) |
-| [AWS Health Dashboard](01-glossary.md#a) | AWS Health's console page | [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md) |
-| [AWS License Manager](01-glossary.md#a) | An AWS service that tracks the software licenses you use and bring, across accounts | [The business case](../13-moving-to-aws/04-the-business-case.md) |
-| [AWS Management Console](01-glossary.md#a) | AWS's web application for working with every AWS service by pointing and clicking | [Four ways in](../08-building-and-operating/01-four-ways-in.md) |
+| [AWS Health Dashboard](01-glossary.md#a) | AWS Health's console page | [Lab 02: See Regions, Availability Zones and AWS Health in your own account](../03-aws-around-the-world/05-lab-02-see-the-global-infrastructure.md) |
+| [AWS License Manager](01-glossary.md#a) | An AWS service that tracks the software licenses you use and bring, across accounts | [Where to find answers and who can help](../12-getting-help/03-where-to-find-answers.md) |
+| [AWS Management Console](01-glossary.md#a) | AWS's web application for working with every AWS service by pointing and clicking | [Four ways in, and infrastructure as code](../08-building-and-operating/01-four-ways-in.md) |
 | [AWS Organizations](01-glossary.md#a) | An AWS service that joins several AWS accounts into one organization under a management account | [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md) |
-| [AWS Service Catalog](01-glossary.md#a) | A service where administrators publish approved templates as products | [IaC and automation](../08-building-and-operating/02-iac-and-automation.md) |
+| [AWS Service Catalog](01-glossary.md#a) | A service where administrators publish approved templates as products | [Four ways in, and infrastructure as code](../08-building-and-operating/01-four-ways-in.md) |
 | [Service Quotas](01-glossary.md#s) | The most of something an account may have or use | [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md) |
 | AWS Systems Manager | Tools for operating servers and applications at scale; the guide so far teaches only its Parameter Store capability | [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md) |
 | [AWS Trusted Advisor](01-glossary.md#a) | An AWS service that checks your account against AWS's best practices in six categories | [Tools that watch your account](../12-getting-help/02-tools-that-watch-your-account.md) |
@@ -163,21 +163,21 @@ None: every in-scope service is taught somewhere in the guide.
 |---|---|---|
 | [AWS Application Discovery Service](01-glossary.md#a) | An AWS service that collects data about on-premises servers and databases, their use and the connections between them, to group them into applications | [Migration tools](../13-moving-to-aws/03-migration-tools.md) |
 | [AWS Application Migration Service](01-glossary.md#a) (now AWS Transform MGN) | AWS's rehost service | [Migration tools](../13-moving-to-aws/03-migration-tools.md) |
-| [AWS DMS](01-glossary.md#a) | A service that moves database data into AWS, or between on-premises and cloud databases | [Choosing a database](../05-storing-data/06-choosing-a-database.md) |
+| [AWS DMS](01-glossary.md#a) | A service that moves database data into AWS, or between on-premises and cloud databases | [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md) |
 | [Migration Evaluator](01-glossary.md#m) | An AWS service that builds a migration business case from measured data about your current servers | [Migration tools](../13-moving-to-aws/03-migration-tools.md) |
 | [AWS Migration Hub](01-glossary.md#a) | An AWS service that tracks the status of each application's migration in one place, whichever tool does the moving | [Migration tools](../13-moving-to-aws/03-migration-tools.md) |
-| [AWS SCT](01-glossary.md#a) | A program you download that converts a database's schema | [Choosing a database](../05-storing-data/06-choosing-a-database.md) |
+| [AWS SCT](01-glossary.md#a) | A program you download that converts a database's schema | [Managed databases and choosing one](../05-storing-data/05-managed-or-self-managed-databases.md) |
 
 ## Networking and Content Delivery
 
 | Service | What it does | Taught in |
 |---|---|---|
 | [Amazon API Gateway](01-glossary.md#a) | A service for publishing APIs at any scale with no servers of your own | [Names and the edge](../07-connecting-it/03-names-and-the-edge.md) |
-| [Amazon CloudFront](01-glossary.md#a) | AWS's content delivery network | [Names and the edge](../07-connecting-it/03-names-and-the-edge.md) |
+| [Amazon CloudFront](01-glossary.md#a) | AWS's content delivery network | [The edge](../03-aws-around-the-world/04-the-edge.md) |
 | [AWS Direct Connect](01-glossary.md#a) | A dedicated connection from your network to AWS at a Direct Connect location, off the public internet, for consistent performance and high bandwidth | [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md) |
-| [AWS Global Accelerator](01-glossary.md#a) | A service whose fixed anycast IP addresses bring users' traffic onto AWS's network at the nearest edge | [Names and the edge](../07-connecting-it/03-names-and-the-edge.md) |
+| [AWS Global Accelerator](01-glossary.md#a) | A service whose fixed anycast IP addresses bring users' traffic onto AWS's network at the nearest edge | [The edge](../03-aws-around-the-world/04-the-edge.md) |
 | [AWS PrivateLink](01-glossary.md#a) | Private access from a VPC to one service | [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md) |
-| [Amazon Route 53](01-glossary.md#a) | AWS's DNS service | [Names and the edge](../07-connecting-it/03-names-and-the-edge.md) |
+| [Amazon Route 53](01-glossary.md#a) | AWS's DNS service | [The edge](../03-aws-around-the-world/04-the-edge.md) |
 | [AWS Transit Gateway](01-glossary.md#a) | A hub that VPCs, VPN connections and Direct Connect links each attach to once | [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md) |
 | [Amazon VPC](01-glossary.md#a) | Your account's own virtual network in one Region, isolated from everyone else's | [Your own network](../07-connecting-it/01-your-own-network.md) |
 | AWS VPN | The family name for AWS Site-to-Site VPN and AWS Client VPN: encrypted connections over the internet | [Connecting networks and offices](../07-connecting-it/04-connecting-networks-and-offices.md) |
@@ -198,7 +198,7 @@ None: every in-scope service is taught somewhere in the guide.
 | [Amazon GuardDuty](01-glossary.md#a) | A threat detection service that reads CloudTrail management events, VPC Flow Logs and DNS logs | [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md) |
 | [AWS IAM](01-glossary.md#a) | The AWS service that holds an account's identities and their permissions | [Identities](../04-shared-responsibility-and-access/03-identities.md) |
 | [AWS IAM Identity Center](01-glossary.md#a) | AWS's recommended way to give a workforce single sign-on to many AWS accounts and business applications | [Credentials and federation](../04-shared-responsibility-and-access/05-credentials-and-federation.md) |
-| [Amazon Inspector](01-glossary.md#a) | A vulnerability management service that finds EC2 instances, container images in Amazon ECR and Lambda functions on its own | [Finding threats and weaknesses](../09-protecting-and-governing/03-finding-threats-and-weaknesses.md) |
+| [Amazon Inspector](01-glossary.md#a) | A vulnerability management service that finds EC2 instances, container images in Amazon ECR and Lambda functions on its own | [Filtering traffic](../07-connecting-it/02-filtering-traffic.md) |
 | [AWS KMS](01-glossary.md#a) | The AWS service that creates and controls the keys that encrypt your data | [Encryption](../09-protecting-and-governing/02-encryption.md) |
 | [Amazon Macie](01-glossary.md#a) | A service that inventories your S3 buckets and uses machine learning and pattern matching to find sensitive data | [Encryption](../09-protecting-and-governing/02-encryption.md) |
 | AWS RAM | Shares a resource you create once, such as VPC subnets, with other accounts or your organization | [Compliance and governance](../09-protecting-and-governing/05-compliance-and-governance.md) |
@@ -224,7 +224,7 @@ None: every in-scope service is taught somewhere in the guide.
 | [AWS Elastic Disaster Recovery](01-glossary.md#a) | A service continuously replicating whole servers' disks to a low-cost staging area in an AWS Region | [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md) |
 | [Amazon FSx](01-glossary.md#a) | A family of fully managed third-party file systems | [Block, file and object storage](../05-storing-data/01-block-file-object.md) |
 | [Amazon S3](01-glossary.md#a) | AWS's object storage | [Block, file and object storage](../05-storing-data/01-block-file-object.md) |
-| [Amazon S3 Glacier](01-glossary.md#s) (now S3 Glacier storage classes) | S3 archive storage classes, for data you must keep but rarely read | [Storage classes and lifecycle](../05-storing-data/03-storage-classes-and-lifecycle.md) |
+| [Amazon S3 Glacier](01-glossary.md#s) (now S3 Glacier storage classes) | S3 archive storage classes, for data you must keep but rarely read | [S3 protection, storage classes and lifecycle](../05-storing-data/02-s3-in-practice.md) |
 | [AWS Storage Gateway](01-glossary.md#a) | A hybrid storage service | [Hybrid storage and backup](../05-storing-data/04-hybrid-storage-and-backup.md) |
 
 ## Needed by the tasks but not on the list

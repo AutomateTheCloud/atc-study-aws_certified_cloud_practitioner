@@ -172,106 +172,9 @@ questions:
         how long to keep them (with S3 lifecycle rules, for example). AWS recommends a multi-Region
         trail, so actions in every enabled Region are kept.
 
-  - id: q09-console-trail-regions
-    page: guide/09-protecting-and-governing/01-who-did-what.md
-    section: "CloudTrail records who did what, when and from where"
-    task: "2.2"
-    level: recall
-    topics: [cloudtrail, trails]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        An administrator at an architecture firm creates a CloudTrail trail in the AWS Management
-        Console while working in Europe (Ireland). Which Regions' events does the trail record?
-    choices:
-      - id: ireland-only
-        text: Only Europe (Ireland), where the trail was created
-        variants:
-          - text: Just Europe (Ireland), the Region it was made in
-          - text: Only the Region it was created in, Europe (Ireland)
-        explanation:
-          text: Tempting because many resources are Regional, but trails created in the console are multi-Region.
-      - id: us-east-1-only
-        text: Only US East (N. Virginia), where CloudTrail is based
-        variants:
-          - text: Just US East (N. Virginia), CloudTrail's home Region
-          - text: Only N. Virginia, the Region where CloudTrail runs
-        explanation:
-          text: CloudTrail isn't run from one Region for your trails. Some global services record their events in N. Virginia, but that doesn't limit a trail.
-      - id: regions-with-resources
-        text: Only the Regions where the firm has running resources
-        variants:
-          - text: Just the Regions in which the firm runs resources
-          - text: Only those Regions that hold the firm's resources
-        explanation:
-          text: A multi-Region trail covers every Region enabled in the account, whether or not anything runs there yet.
-      - id: all-enabled-regions
-        text: Every Region that is enabled in the firm's account
-        variants:
-          - text: All the Regions enabled in the firm's account
-          - text: Each Region the firm's account has enabled
-        explanation:
-          text: Correct. Trails created in the console are multi-Region, covering every Region enabled in the account.
-    correct_answers: [all-enabled-regions]
-    explanation:
-      text: |
-        AWS recommends a multi-Region trail, and trails created in the console are multi-Region: they
-        record events from every Region enabled in the account. That matters for evidence, because
-        an action in a Region nobody watches is still an action an auditor may ask about.
-
-  - id: q09-prove-logs-untouched
-    page: guide/09-protecting-and-governing/01-who-did-what.md
-    section: "CloudTrail records who did what, when and from where"
-    task: "2.2"
-    level: understanding
-    topics: [cloudtrail, log-integrity]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A bank's trail delivers CloudTrail log files to an S3 bucket. An external auditor worries that
-        an administrator could edit or delete a file afterwards to hide an action. Which CloudTrail
-        feature lets the bank show that the files weren't changed after delivery?
-    choices:
-      - id: organization-trail
-        text: An organization trail
-        variants:
-          - text: A trail for the whole organization
-          - text: An organization-wide trail
-        explanation:
-          text: An organization trail logs every account in an organization and can't be changed by member accounts, but it doesn't prove that delivered files are unaltered.
-      - id: data-events
-        text: Data events on the log bucket
-        variants:
-          - text: Data event logging for the log bucket
-          - text: Recording data events on the log bucket
-        explanation:
-          text: Data events would record reads and writes of objects in the bucket, but they don't validate that each log file is the one CloudTrail delivered.
-      - id: integrity-validation
-        text: Log file integrity validation
-        variants:
-          - text: Validation of log file integrity
-          - text: CloudTrail's log file integrity check
-        explanation:
-          text: Correct. It lets the bank prove that log files weren't changed or deleted after CloudTrail delivered them.
-      - id: multi-region
-        text: A multi-Region trail
-        variants:
-          - text: A trail that covers all Regions
-          - text: A trail recording every Region
-        explanation:
-          text: Covering every Region widens what is recorded; it says nothing about whether a file was edited later.
-    correct_answers: [integrity-validation]
-    explanation:
-      text: |
-        Evidence is only useful if it can be trusted. Log file integrity validation lets you prove that
-        CloudTrail's log files weren't modified or deleted after delivery. Teams also send logs to a
-        separate account that day-to-day users can't change.
-
   - id: q09-who-opened-case-file
     page: guide/09-protecting-and-governing/01-who-did-what.md
-    section: "\"CloudTrail records everything, forever\" is wrong"
+    section: "CloudTrail records who did what, when and from where"
     task: "2.2"
     level: application
     topics: [cloudtrail, data-events]
@@ -324,7 +227,7 @@ questions:
 
   - id: q09-ec2-logs-missing-in-cloudwatch
     page: guide/09-protecting-and-governing/01-who-did-what.md
-    section: "CloudWatch shows how things are running, not who changed them"
+    section: "Security logs end up in an S3 bucket or CloudWatch Logs"
     task: "2.2"
     level: application
     topics: [cloudwatch, logs]
@@ -373,66 +276,6 @@ questions:
         system and the applications are the customer's, and their logs reach CloudWatch Logs only if
         the customer installs the CloudWatch agent to send them. A record that was never sent can't be
         shown later.
-
-  - id: q09-email-on-root-sign-in
-    page: guide/09-protecting-and-governing/01-who-did-what.md
-    section: "CloudWatch shows how things are running, not who changed them"
-    task: "2.2"
-    level: application
-    topics: [cloudwatch, cloudtrail, root-user]
-    type: multiple_choice
-    selection: multiple
-    selection_count: 2
-    prompt:
-      text: |
-        A startup wants its security lead emailed within minutes whenever anyone signs in as the
-        account's root user. It plans to build this with CloudTrail and CloudWatch. Which TWO parts
-        does it need? (Select TWO.)
-    choices:
-      - id: trail-to-log-group
-        text: A trail that also sends its events to a CloudWatch Logs log group
-        variants:
-          - text: A trail configured to deliver its events to CloudWatch Logs as well
-          - text: A CloudTrail trail that also delivers events to a log group
-        explanation:
-          text: Correct. Event history can't feed an alarm; a trail can send its events to a CloudWatch Logs log group.
-      - id: dashboard-graph
-        text: A CloudWatch dashboard with a graph of root sign-ins
-        variants:
-          - text: A graph of root sign-ins on a CloudWatch dashboard
-          - text: A CloudWatch dashboard that charts root sign-ins
-        explanation:
-          text: A dashboard shows metrics to whoever is looking at it. It doesn't send anything, so nobody is emailed unless they happen to open it.
-      - id: alarm-on-events
-        text: A metric filter for root sign-ins, with a CloudWatch alarm on it
-        variants:
-          - text: A metric filter counting root sign-ins, watched by a CloudWatch alarm
-          - text: A CloudWatch alarm on a metric filter that counts root sign-ins
-        explanation:
-          text: Correct. A metric filter on the log group turns root sign-in events into a count, and an alarm on that count emails the lead through an Amazon SNS topic.
-      - id: credential-report
-        text: The IAM credential report, checked for the root user's last sign-in
-        variants:
-          - text: IAM's credential report, read for when the root user last signed in
-          - text: The credential report from IAM, showing the root user's last sign-in
-        explanation:
-          text: The credential report shows when a password was last used, but it is a file you generate, at most every four hours, and read; it doesn't send alerts.
-      - id: event-history-alone
-        text: CloudTrail Event history, filtered to root sign-in events
-        variants:
-          - text: CloudTrail Event history, searched for root sign-ins
-          - text: The Event history in CloudTrail, filtered for root sign-ins
-        explanation:
-          text: Event history is a 90-day view you search. It doesn't deliver events anywhere, so nothing can alarm on it.
-    correct_answers: [trail-to-log-group, alarm-on-events]
-    hint:
-      text: CloudTrail knows about the sign-in; CloudWatch knows how to raise an alarm. What joins them?
-    explanation:
-      text: |
-        CloudTrail records each sign-in as an event, and a trail can send its events to a CloudWatch
-        Logs log group. There, a metric filter (lesson 08.03) counts root sign-ins, and a CloudWatch
-        alarm on that count notifies someone, usually through an Amazon SNS topic. A dashboard,
-        Event history and the credential report are things someone has to look at, not alerts.
 
   - id: q09-config-history-starts-at-recording
     page: guide/09-protecting-and-governing/01-who-did-what.md
@@ -698,7 +541,7 @@ questions:
 
   - id: q09-records-on-with-nothing-set-up
     page: guide/09-protecting-and-governing/01-who-did-what.md
-    section: "Security logs live in a few known places, for set lengths of time"
+    section: "The big picture: four records, four questions"
     task: "2.2"
     level: understanding
     topics: [logging, audit-records]
@@ -756,7 +599,7 @@ questions:
 
   - id: q09-who-opened-mysql-port
     page: guide/09-protecting-and-governing/01-who-did-what.md
-    section: "Worked example: three of the auditor's questions"
+    section: "AWS Config records how each resource was set, and judges it against your rules"
     task: "2.2"
     level: application
     topics: [aws-config, cloudtrail, audit-records]
@@ -807,8 +650,8 @@ questions:
         history.
 
   - id: q09-event-history-can-answer
-    page: guide/09-protecting-and-governing/07-lab-12-answer-the-auditor.md
-    section: "Part A: follow one change from start to finish (follow-along)"
+    page: guide/09-protecting-and-governing/01-who-did-what.md
+    section: "CloudTrail records who did what, when and from where"
     task: "2.2"
     level: understanding
     topics: [cloudtrail, event-history]
@@ -855,68 +698,9 @@ questions:
         it records actions rather than what a resource looked like on a date. Each limit is part of
         an honest answer to an auditor.
 
-  - id: q09-config-item-stays-true
-    page: guide/09-protecting-and-governing/09-sim-config-timeline.md
-    section: "Decision 1: answer the auditor's four questions"
-    task: "2.2"
-    level: application
-    topics: [aws-config, configuration-items]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        AWS Config recorded these configuration items for a hotel group's security group `db-sg`
-        (times in UTC):
-
-        | Item | Recorded | Inbound rules |
-        |---|---|---|
-        | 1 | Before Monday | TCP 5432 from `10.0.1.0/24` |
-        | 2 | Tuesday 09:15 | TCP 5432 from `10.0.1.0/24`; TCP 5432 from `0.0.0.0/0` |
-        | 3 | Thursday 16:20 | TCP 5432 from `10.0.1.0/24` |
-
-        What did `db-sg` allow on Wednesday at 18:00?
-    choices:
-      - id: private-only
-        text: Port 5432 from `10.0.1.0/24` only
-        variants:
-          - text: Only port 5432 from `10.0.1.0/24`
-          - text: TCP 5432 from `10.0.1.0/24`, nothing more
-        explanation:
-          text: That was the state before Tuesday 09:15 and again after Thursday 16:20, not on Wednesday evening.
-      - id: both-rules
-        text: Port 5432 from `10.0.1.0/24` and from anywhere
-        variants:
-          - text: TCP 5432 from `10.0.1.0/24` and from `0.0.0.0/0`
-          - text: Port 5432 from both `10.0.1.0/24` and anywhere
-        explanation:
-          text: Correct. Item 2 was the current state from Tuesday 09:15 until item 3 replaced it on Thursday 16:20.
-      - id: unknown-no-item
-        text: Unknown, because Config saved no item on Wednesday
-        variants:
-          - text: It can't be known, since no item was recorded Wednesday
-          - text: Nobody can say, as Config recorded nothing on Wednesday
-        explanation:
-          text: Config records an item when a resource changes. No item on Wednesday means nothing changed, so item 2 still described the group.
-      - id: needs-cloudtrail
-        text: Unknown until CloudTrail shows who changed the group
-        variants:
-          - text: It can't be told without CloudTrail naming who changed it
-          - text: Nobody can say until CloudTrail shows who made the change
-        explanation:
-          text: CloudTrail names who made each change, but the state on a date is exactly what Config's items answer.
-    correct_answers: [both-rules]
-    hint:
-      text: A configuration item describes the resource from the moment it is recorded until what happens next?
-    explanation:
-      text: |
-        Config saves a configuration item each time a recorded resource changes, and each item stays
-        true until the next one replaces it. Reading the timeline, item 2 covered Tuesday 09:15 to
-        Thursday 16:20, so on Wednesday evening the database port was open to anywhere. Who opened it
-        is a separate question for CloudTrail.
-
   - id: q09-config-flags-but-does-not-stop
-    page: guide/09-protecting-and-governing/09-sim-config-timeline.md
-    section: "Decision 2: the owner says, \"Config caught it, so Config would have stopped it next time.\""
+    page: guide/09-protecting-and-governing/01-who-did-what.md
+    section: "AWS Config records how each resource was set, and judges it against your rules"
     task: "2.2"
     level: understanding
     topics: [aws-config, preventive-detective]
@@ -1222,58 +1006,6 @@ questions:
         load balancers, CloudFront and API Gateway, and renews them. AWS KMS manages the keys that
         encrypt stored data, records each use in CloudTrail and can rotate key material.
 
-  - id: q09-genome-bucket-refuse-http
-    page: guide/09-protecting-and-governing/02-encryption.md
-    section: "TLS certificates from ACM protect data in transit"
-    task: "2.2"
-    level: application
-    topics: [encryption-in-transit, s3-encryption]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A university research lab keeps genome files in an Amazon S3 bucket. A review finds that a few
-        old scripts still upload over plain HTTP. The lab wants those uploads to fail until the
-        scripts are fixed. What should it do?
-    choices:
-      - id: switch-to-sse-kms
-        text: Switch the bucket's default encryption from SSE-S3 to SSE-KMS
-        variants:
-          - text: Change the bucket's default encryption to SSE-KMS instead of SSE-S3
-          - text: Move the bucket from SSE-S3 to SSE-KMS default encryption
-        explanation:
-          text: That changes how the files are encrypted at rest. S3 would still accept uploads over plain HTTP.
-      - id: acm-on-bucket
-        text: Request a certificate from AWS Certificate Manager and attach it to the bucket
-        variants:
-          - text: Attach a certificate issued by AWS Certificate Manager (ACM) to the bucket
-          - text: Install an ACM-issued TLS certificate directly on the S3 bucket itself
-        explanation:
-          text: ACM certificates attach to integrated services such as load balancers, CloudFront and API Gateway, not to a bucket. S3 already offers HTTPS; the problem is that it also accepts HTTP.
-      - id: deny-insecure-transport
-        text: Add a bucket policy that denies requests where `aws:SecureTransport` is false
-        variants:
-          - text: Write a bucket policy with a deny for requests whose `aws:SecureTransport` is false
-          - text: Use a bucket policy denying requests when the `aws:SecureTransport` key is false
-        explanation:
-          text: Correct. AWS recommends this deny, based on the `aws:SecureTransport` condition, and the Config rule `s3-bucket-ssl-requests-only` checks for it.
-      - id: block-public-access
-        text: Turn on S3 Block Public Access for the bucket and the account
-        variants:
-          - text: Enable Block Public Access on the bucket and across the account
-          - text: Switch on S3 Block Public Access at bucket and account level
-        explanation:
-          text: Block Public Access controls whether a bucket can be made public. It doesn't decide whether requests must use HTTPS.
-    correct_answers: [deny-insecure-transport]
-    hint:
-      text: Offering HTTPS and requiring it are different. Think about what can refuse a request.
-    explanation:
-      text: |
-        Turning HTTPS on isn't the same as requiring it: S3 accepts plain HTTP unless you say
-        otherwise. A bucket policy that denies any request where `aws:SecureTransport` is false makes
-        S3 refuse unencrypted connections, and the Config rule `s3-bucket-ssl-requests-only` can
-        check that the policy is in place.
-
   - id: q09-aws-ebs-key-kind
     page: guide/09-protecting-and-governing/02-encryption.md
     section: "KMS holds the keys for data at rest, and records every use"
@@ -1376,106 +1108,6 @@ questions:
         contractor with broad S3 permissions still can't decrypt, and every use of the key is
         recorded in CloudTrail.
 
-  - id: q09-rotated-key-old-manuscripts
-    page: guide/09-protecting-and-governing/02-encryption.md
-    section: "KMS holds the keys for data at rest, and records every use"
-    task: "2.2"
-    level: understanding
-    topics: [kms, key-rotation]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A publisher turned on automatic rotation for the customer managed key that protects its
-        manuscript archive. An editor asks what happens to manuscripts that were encrypted under the
-        key two years ago. What is the answer?
-    choices:
-      - id: reencrypt-or-lose
-        text: They must be re-encrypted before the next rotation, or they become unreadable
-        variants:
-          - text: Unless they're re-encrypted before the next rotation, they can't be read
-          - text: They need re-encrypting before each rotation, or access to them is lost
-        explanation:
-          text: Rotation keeps the older key material, so nothing has to be re-encrypted to stay readable.
-      - id: old-material-kept
-        text: They stay readable, because KMS keeps the older key material to decrypt them
-        variants:
-          - text: KMS keeps the earlier key material, so they can still be decrypted
-          - text: They remain readable, since the old key material is kept for them
-        explanation:
-          text: Correct. Rotation makes new key material for new encryption and keeps the old material to decrypt older data.
-      - id: auto-reencrypted
-        text: KMS re-encrypts them automatically under the new key material overnight
-        variants:
-          - text: They're rewritten under the new key material straight after rotation
-          - text: Rotation automatically re-encrypts them with the new key material
-        explanation:
-          text: KMS doesn't rewrite your data. Older data stays encrypted under the older material, which KMS keeps.
-      - id: new-key-id
-        text: They can be read only after every app is updated to the key's new ID
-        variants:
-          - text: Apps must switch to the rotated key's new ID before the files can be read
-          - text: Each application needs the key's new ID before it can decrypt them
-        explanation:
-          text: Rotation changes the key material, not the key you refer to. Applications keep using the same key.
-    correct_answers: [old-material-kept]
-    explanation:
-      text: |
-        Automatic rotation of a customer managed key makes new key material every 365 days by
-        default. KMS keeps the older material, so data encrypted before the rotation still decrypts
-        and nothing has to be re-encrypted.
-
-  - id: q09-retired-system-keep-key-usable-later
-    page: guide/09-protecting-and-governing/02-encryption.md
-    section: "KMS holds the keys for data at rest, and records every use"
-    task: "2.2"
-    level: application
-    topics: [kms, key-deletion]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A shipping company is retiring an old customer-records system. The security lead wants
-        nobody to use the system's customer managed KMS key from now on, but the legal team may need
-        to read the system's archived files next year. What should the lead do with the key?
-    choices:
-      - id: schedule-deletion
-        text: Schedule it for deletion with the shortest waiting period allowed
-        variants:
-          - text: Delete it after the minimum waiting period KMS allows
-          - text: Set it to be deleted with the shortest wait KMS offers
-        explanation:
-          text: Once the waiting period ends and the key is deleted, everything encrypted under it is unreadable forever, so legal couldn't read the files next year.
-      - id: delete-recoverable
-        text: Delete it now, since KMS can restore a deleted key for 30 days afterward
-        variants:
-          - text: Remove it, relying on KMS to keep a restorable copy for 30 days
-          - text: Delete it; KMS keeps deleted keys recoverable for the next 30 days
-        explanation:
-          text: The waiting period comes before deletion, not after. A deleted key can't be brought back.
-      - id: disable-key
-        text: Disable the key, and enable it again if the files are needed
-        variants:
-          - text: Turn the key off, then turn it back on if legal needs the files
-          - text: Disable it for now and re-enable it when the files are needed
-        explanation:
-          text: Correct. Disabling stops all use and can be undone, which is what AWS suggests when you aren't sure you'll never need the key.
-      - id: switch-default-sse-s3
-        text: Change the archive bucket's default encryption to SSE-S3
-        variants:
-          - text: Set SSE-S3 as the archive bucket's default encryption
-          - text: Switch the archive's default encryption over to SSE-S3
-        explanation:
-          text: Default encryption applies to new objects. The archived files stay encrypted under the KMS key, which remains usable.
-    correct_answers: [disable-key]
-    hint:
-      text: One action can be undone; the other ends access to the data for good.
-    explanation:
-      text: |
-        Deleting a KMS key makes everything encrypted under it unreadable, forever. KMS forces a
-        waiting period of 7 to 30 days before deletion, and AWS suggests disabling a key instead
-        when you aren't sure. A disabled key can't be used, but it can be enabled again.
-
   - id: q09-cmk-over-sse-s3-two-gains
     page: guide/09-protecting-and-governing/02-encryption.md
     section: "KMS holds the keys for data at rest, and records every use"
@@ -1534,62 +1166,9 @@ questions:
         data, and a CloudTrail record of every use. It also lets you choose rotation and disable or
         delete the key.
 
-  - id: q09-regulator-dedicated-hsm-keep-kms
-    page: guide/09-protecting-and-governing/02-encryption.md
-    section: "CloudHSM gives you hardware no one else uses, and more of the work"
-    task: "2.2"
-    level: application
-    topics: [cloudhsm, kms]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A national payments processor's regulator rules that its encryption keys must sit in
-        single-tenant hardware security modules under the processor's exclusive control. Its
-        engineers still want Amazon S3 and Amazon RDS to encrypt through their usual AWS KMS
-        settings. What fits both?
-    choices:
-      - id: custom-key-store
-        text: A KMS custom key store backed by an AWS CloudHSM cluster
-        variants:
-          - text: AWS CloudHSM, connected to KMS as a custom key store
-          - text: KMS keys kept in a CloudHSM cluster through a custom key store
-        explanation:
-          text: Correct. A custom key store keeps KMS keys in the processor's own CloudHSM cluster, so services that use KMS can use keys held in HSMs only it controls.
-      - id: rotated-cmk
-        text: Customer managed keys in AWS KMS with automatic rotation
-        variants:
-          - text: AWS KMS customer managed keys, rotated automatically
-          - text: Customer managed KMS keys set to rotate every year
-        explanation:
-          text: Standard KMS runs on validated HSMs that AWS shares among many customers. Rotation doesn't make the hardware single-tenant.
-      - id: aws-managed-keys
-        text: AWS managed keys such as `aws/s3` and `aws/rds`
-        variants:
-          - text: The AWS managed keys `aws/s3` and `aws/rds`
-          - text: AWS's managed keys for S3 and RDS, such as `aws/rds`
-        explanation:
-          text: AWS controls these keys, and they sit on KMS's shared hardware, so they meet neither the exclusive-control nor the single-tenant rule.
-      - id: sse-s3-rds-default
-        text: SSE-S3 for the buckets and the default key for RDS
-        variants:
-          - text: S3-managed keys for the buckets plus RDS's default key
-          - text: SSE-S3 on the buckets, with RDS's built-in key
-        explanation:
-          text: These leave the keys under AWS's control, the opposite of what the regulator asks.
-    correct_answers: [custom-key-store]
-    hint:
-      text: The rule names dedicated hardware, and the engineers want to keep one service's integrations with S3 and RDS.
-    explanation:
-      text: |
-        AWS CloudHSM gives single-tenant HSMs in your own VPC, with users and keys you control
-        outside IAM. A KMS custom key store bridges the two: KMS keys live in your CloudHSM cluster,
-        so S3, RDS and other services that integrate with KMS can still use them. Reach for this only
-        when a rule like the regulator's requires it.
-
   - id: q09-telehealth-adviser-cloudhsm-claim
     page: guide/09-protecting-and-governing/02-encryption.md
-    section: "\"Compliance needs CloudHSM\" is wrong"
+    section: "CloudHSM gives you hardware no one else uses, and more of the work"
     task: "2.2"
     level: understanding
     topics: [cloudhsm, kms]
@@ -1798,58 +1377,6 @@ questions:
         reads them as soon as you turn it on, with nothing else to set up. Optional protection plans
         widen its view. It works per Region, and it reports suspicious activity as findings; it
         doesn't block anything.
-
-  - id: q09-guardduty-finding-to-phone
-    page: guide/09-protecting-and-governing/03-finding-threats-and-weaknesses.md
-    section: "GuardDuty watches activity and reports threats happening now"
-    task: "2.2"
-    level: application
-    topics: [guardduty, eventbridge]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A streaming-media company already runs Amazon GuardDuty. The on-call engineer wants a text
-        message within minutes whenever GuardDuty raises a high-severity finding. What should the
-        company build?
-    choices:
-      - id: guardduty-block-setting
-        text: A GuardDuty setting that blocks the address named in each high-severity finding
-        variants:
-          - text: An option in GuardDuty that blocks the source address of serious findings
-          - text: A GuardDuty feature that cuts off the address behind each severe finding
-        explanation:
-          text: GuardDuty has no blocking setting, and blocking isn't the request anyway, since the engineer wants to be told.
-      - id: eventbridge-to-sns
-        text: An Amazon EventBridge rule that matches the findings and sends them to an SNS topic
-        variants:
-          - text: An EventBridge rule matching those findings, with an Amazon SNS topic as its target
-          - text: A rule in Amazon EventBridge that routes the findings to an Amazon SNS topic
-        explanation:
-          text: Correct. GuardDuty findings arrive as events; an EventBridge rule matches them and an SNS topic sends the message.
-      - id: config-rule
-        text: An AWS Config rule that marks GuardDuty noncompliant whenever it raises a finding
-        variants:
-          - text: A Config rule that flags GuardDuty as noncompliant each time a finding appears
-          - text: An AWS Config rule that turns noncompliant when GuardDuty reports a finding
-        explanation:
-          text: Config rules judge resource settings against a desired setting. They don't watch for findings or send alerts about them.
-      - id: trail-to-s3
-        text: A CloudTrail trail that delivers each new GuardDuty finding to an S3 bucket
-        variants:
-          - text: A CloudTrail trail that copies every GuardDuty finding into an Amazon S3 bucket
-          - text: A trail in CloudTrail that writes GuardDuty's findings to an S3 bucket
-        explanation:
-          text: A trail delivers API activity as log files; it isn't how findings are routed, and files in a bucket don't text anyone.
-    correct_answers: [eventbridge-to-sns]
-    hint:
-      text: Module 08 built alerts by matching an event with a rule and sending it to a topic.
-    explanation:
-      text: |
-        GuardDuty reports findings; any response, including an alert, is something you build. An
-        Amazon EventBridge rule can match GuardDuty findings, for example by severity, and send
-        them to an Amazon SNS topic that texts or emails people. It's the same pattern Module 08
-        used for CloudWatch alarms.
 
   - id: q09-guardduty-team-note-two
     page: guide/09-protecting-and-governing/03-finding-threats-and-weaknesses.md
@@ -2333,8 +1860,8 @@ questions:
         Detective.
 
   - id: q09-trusted-advisor-basic-support-view
-    page: guide/09-protecting-and-governing/03-finding-threats-and-weaknesses.md
-    section: "Trusted Advisor is a first look at your settings, with a few security checks free"
+    page: guide/12-getting-help/02-tools-that-watch-your-account.md
+    section: "Trusted Advisor checks your setup in six categories, and your plan sets how much you see"
     task: "2.4"
     level: understanding
     topics: [trusted-advisor, support-plans]
@@ -2593,8 +2120,8 @@ questions:
   # ---------------------------------------------------------------------------------------------
 
   - id: q09-sim-rdp-control-failed
-    page: guide/09-protecting-and-governing/08-sim-security-findings-tour.md
-    section: "Decision 1: name the service that raised each finding"
+    page: guide/09-protecting-and-governing/03-finding-threats-and-weaknesses.md
+    section: "Match a finding to its service by asking what it looked at"
     task: "2.2"
     level: application
     topics: [security-hub, findings]
@@ -2645,8 +2172,8 @@ questions:
         and Inspector reports actual network paths, but neither runs a standard's controls.
 
   - id: q09-sim-same-port-two-services
-    page: guide/09-protecting-and-governing/08-sim-security-findings-tour.md
-    section: "Decision 1: name the service that raised each finding"
+    page: guide/09-protecting-and-governing/03-finding-threats-and-weaknesses.md
+    section: "Match a finding to its service by asking what it looked at"
     task: "2.2"
     level: application
     topics: [inspector, security-hub, findings]
@@ -3754,7 +3281,7 @@ questions:
 
   - id: q09-school-district-remaining-duty-two
     page: guide/09-protecting-and-governing/05-compliance-and-governance.md
-    section: "Your remaining duty: what no AWS document does for you"
+    section: "\"Not in Services in Scope means you can't use it\" is wrong"
     task: "2.2"
     level: understanding
     topics: [shared-responsibility, compliance-programs]
@@ -3811,8 +3338,8 @@ questions:
         assessed, not that the district's use of it is compliant.
 
   - id: q09-fintech-continuous-framework-checks
-    page: guide/09-protecting-and-governing/05-compliance-and-governance.md
-    section: "\"Audit Manager is the compliance answer\" is wrong"
+    page: guide/09-protecting-and-governing/01-who-did-what.md
+    section: "\"Audit Manager is the compliance answer\" is out of date"
     task: "2.2"
     level: understanding
     topics: [audit-manager, config]
@@ -4013,112 +3540,6 @@ questions:
         to keep workloads and everyday users out of it: no SCP protects what runs there. The Region
         rule still holds in every member account under the root.
 
-  - id: q09-analytics-ou-allow-list-blocks-rds
-    page: guide/09-protecting-and-governing/10-sim-organizations-and-scps.md
-    section: "Part 1: predict"
-    task: "2.3"
-    level: application
-    topics: [scp, organizations]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        A university's Analytics OU no longer has FullAWSAccess. In its place is an SCP that allows
-        only Amazon S3, Amazon Athena and AWS Glue actions. A researcher's account inside that OU
-        still has FullAWSAccess attached to the account itself, and her IAM policy allows
-        everything. She tries to create an Amazon RDS database. What happens?
-    choices:
-      - id: denied-ou-leaves-out-rds
-        text: It's denied, because the OU above the account doesn't allow RDS
-        variants:
-          - text: AWS refuses it, since the Analytics OU's SCP leaves out RDS
-          - text: It fails, because the OU's allow list doesn't include RDS
-        explanation:
-          text: Correct. Every level above the account must allow the action, and the Analytics OU doesn't.
-      - id: allowed-account-policy-wins
-        text: It works, because the account's own FullAWSAccess takes priority
-        variants:
-          - text: It succeeds, since the SCP on the account itself wins
-          - text: The request goes ahead, as the account-level FullAWSAccess prevails
-        explanation:
-          text: There's no "closest policy wins" rule. A block at any level holds for everything below it.
-      - id: allowed-iam-allows-all
-        text: It works, because her IAM policy allows every action
-        variants:
-          - text: It succeeds, since her IAM policy grants all actions
-          - text: The request goes ahead, as her IAM policy permits everything
-        explanation:
-          text: An IAM allow can't lift a request above an SCP.
-      - id: denied-needs-resource-policy
-        text: It's denied, because RDS also needs a resource-based policy
-        variants:
-          - text: It fails, since creating the database needs a resource policy too
-          - text: AWS refuses it, as RDS requires a resource-based policy as well
-        explanation:
-          text: Her IAM policy is enough to grant the action; nothing else is required. The block comes from the OU's SCP.
-    correct_answers: [denied-ou-leaves-out-rds]
-    hint:
-      text: An account gets only what every level above it allows.
-    explanation:
-      text: |
-        An action must be allowed by the SCPs at every level: the organization root, each OU above
-        the account, and the account itself. The Analytics OU's allow list leaves out RDS, so the
-        account's own FullAWSAccess can't bring it back, and no IAM policy can lift a request above
-        an SCP.
-
-  - id: q09-clinics-ou-denied-after-tidy-up
-    page: guide/09-protecting-and-governing/10-sim-organizations-and-scps.md
-    section: "Part 2: diagnose"
-    task: "2.3"
-    level: application
-    topics: [scp, organizations]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        On Monday morning, everyone in the three accounts under a hospital group's Clinics OU gets
-        "access denied" for every action, while accounts in other OUs work normally. On Friday an
-        engineer tidied up the Clinics OU's SCPs, leaving only one that denies Regions outside the
-        United States. What is the most likely cause?
-    choices:
-      - id: identity-center-expired
-        text: The OU's IAM Identity Center sessions all expired over the weekend
-        variants:
-          - text: Sign-in sessions from IAM Identity Center ran out for those accounts
-          - text: IAM Identity Center sessions for the Clinics accounts timed out
-        explanation:
-          text: Expired sessions would ask people to sign in again, not deny every action to people who are signed in, and they have nothing to do with an SCP change.
-      - id: deny-list-blocks-unnamed
-        text: The Region SCP also blocks US Regions, since SCP denials apply in every Region
-        variants:
-          - text: The Region SCP denies US Regions too, because an SCP denial covers all Regions
-          - text: Because SCP denials reach every Region, the Region SCP blocks the US as well
-        explanation:
-          text: An SCP denies only what it names, here the Regions outside the United States. The trouble is that nothing at that level allows anything, in any Region.
-      - id: full-access-detached
-        text: FullAWSAccess was detached, so every action fails at that OU
-        variants:
-          - text: The OU lost FullAWSAccess, leaving no allow at that level
-          - text: Removing FullAWSAccess left that OU allowing no actions
-        explanation:
-          text: Correct. With only a deny list left, the OU allows nothing, and every account below it inherits the block.
-      - id: config-locked-accounts
-        text: AWS Config marked the accounts noncompliant and locked them
-        variants:
-          - text: Config found the accounts noncompliant and blocked them
-          - text: The accounts were locked after AWS Config flagged them
-        explanation:
-          text: Config records and evaluates settings. It never locks accounts.
-    correct_answers: [full-access-detached]
-    hint:
-      text: Every level must allow an action. What still allows anything at the Clinics OU?
-    explanation:
-      text: |
-        AWS attaches FullAWSAccess, which allows every action, at every level by default, so other
-        SCPs can simply list what to deny. Detaching it from an OU without a replacement leaves
-        nothing allowed there, so every action in the accounts below fails. Reattach FullAWSAccess,
-        and test SCP changes on a small OU before applying them to accounts that matter.
-
   - id: q09-scp-differs-from-iam-policy-two
     page: guide/09-protecting-and-governing/05-compliance-and-governance.md
     section: "SCP or IAM policy: a ceiling or a key"
@@ -4230,55 +3651,6 @@ questions:
         accounts already governed. Organizations alone gives the building blocks, and you design the
         rest.
 
-  - id: q09-control-tower-checks-before-create
-    page: guide/09-protecting-and-governing/05-compliance-and-governance.md
-    section: "AWS Control Tower sets up and watches a multi-account environment, on top of Organizations"
-    task: "2.3"
-    level: recall
-    topics: [control-tower]
-    type: multiple_choice
-    selection: single
-    prompt:
-      text: |
-        An AWS Control Tower control examines resources a team deploys with AWS CloudFormation before
-        they are created, and stops any that break its rule. Which kind of control is it?
-    choices:
-      - id: preventive
-        text: A preventive control
-        variants:
-          - text: The preventive kind
-          - text: A control of the preventive kind
-        explanation:
-          text: Preventive controls stop actions using SCPs and RCPs. They don't inspect CloudFormation resources before creation.
-      - id: detective
-        text: A detective control
-        variants:
-          - text: The detective kind
-          - text: A control of the detective kind
-        explanation:
-          text: Detective controls use AWS Config rules to find resources that already exist and break a rule.
-      - id: corrective
-        text: A corrective control
-        variants:
-          - text: The corrective kind
-          - text: A control of the corrective kind
-        explanation:
-          text: Control Tower's three kinds are preventive, detective and proactive. "Corrective" isn't one of them.
-      - id: proactive
-        text: A proactive control
-        variants:
-          - text: The proactive kind
-          - text: A control of the proactive kind
-        explanation:
-          text: Correct. Proactive controls use CloudFormation hooks to check resources before they're created.
-    correct_answers: [proactive]
-    explanation:
-      text: |
-        Control Tower has three kinds of control. Preventive controls stop actions, using SCPs and
-        RCPs; detective controls find resources that break a rule, using AWS Config rules; proactive
-        controls check resources deployed with CloudFormation before they're created, using
-        CloudFormation hooks. AWS used to call controls guardrails.
-
   - id: q09-nonprofit-step-by-step-fix
     page: guide/09-protecting-and-governing/05-compliance-and-governance.md
     section: "Where AWS publishes security information"
@@ -4379,8 +3751,8 @@ questions:
         how to set up features and what's new.
 
   - id: q09-grocery-chain-consolidated-billing
-    page: guide/09-protecting-and-governing/10-sim-organizations-and-scps.md
-    section: "Part 3: the bill"
+    page: guide/11-paying-for-aws/04-many-accounts-one-bill.md
+    section: "Consolidated billing combines usage and sends one bill"
     task: "4.2"
     level: understanding
     topics: [consolidated-billing, organizations]
@@ -4696,7 +4068,7 @@ questions:
 
   - id: q09-shield-advanced-leaves-gaps
     page: guide/09-protecting-and-governing/06-a-defense-map.md
-    section: "Worked example: the bakery's plan after a competitor's attack"
+    section: "Each layer stops different attacks"
     task: "2.4"
     level: application
     topics: [defense-in-depth, aws-shield]
@@ -4749,7 +4121,7 @@ flashcards:
 
   - id: c09-trail-on-day-one
     page: guide/09-protecting-and-governing/01-who-did-what.md
-    section: "\"CloudTrail records everything, forever\" is wrong"
+    section: "CloudTrail records who did what, when and from where"
     task: "2.2"
     level: understanding
     topics: [cloudtrail, trails]
@@ -4771,7 +4143,7 @@ flashcards:
 
   - id: c09-ec2-logs-need-agent
     page: guide/09-protecting-and-governing/01-who-did-what.md
-    section: "CloudWatch shows how things are running, not who changed them"
+    section: "Security logs end up in an S3 bucket or CloudWatch Logs"
     task: "2.2"
     level: recall
     topics: [cloudwatch, logs]
@@ -4792,8 +4164,8 @@ flashcards:
       text: Last accessed information covers identity-based policies only. Access granted through a resource-based policy, such as a bucket policy, doesn't appear in it.
 
   - id: c09-detect-fix-prevent
-    page: guide/09-protecting-and-governing/09-sim-config-timeline.md
-    section: "Decision 2: the owner says, \"Config caught it, so Config would have stopped it next time.\""
+    page: guide/09-protecting-and-governing/01-who-did-what.md
+    section: "AWS Config records how each resource was set, and judges it against your rules"
     task: "2.2"
     level: understanding
     topics: [aws-config, preventive-detective]
@@ -4802,42 +4174,9 @@ flashcards:
     back:
       text: A remediation action attached to the rule fixes it. IAM permissions that don't allow the change, or an SCP across accounts, prevent it. The rule alone only reports.
 
-  - id: c09-cloudfront-cert-in-n-virginia
-    page: guide/09-protecting-and-governing/02-encryption.md
-    section: "TLS certificates from ACM protect data in transit"
-    task: "2.2"
-    level: recall
-    topics: [acm, cloudfront]
-    front:
-      text: A site in Europe is served through Amazon CloudFront. In which Region must its ACM certificate be requested or imported?
-    back:
-      text: US East (N. Virginia). ACM certificates are Regional, and CloudFront uses certificates from that Region, wherever the site's origin runs.
-
-  - id: c09-why-kms-deletion-waits
-    page: guide/09-protecting-and-governing/02-encryption.md
-    section: "KMS holds the keys for data at rest, and records every use"
-    task: "2.2"
-    level: understanding
-    topics: [kms, key-deletion]
-    front:
-      text: What happens when you delete an AWS KMS key, and what does AWS suggest if you aren't sure?
-    back:
-      text: After a forced wait of 7 to 30 days (30 by default), the key is gone and everything encrypted under it is unreadable forever. If unsure, disable the key instead.
-
-  - id: c09-rds-encrypt-after-creation
-    page: guide/09-protecting-and-governing/02-encryption.md
-    section: "KMS holds the keys for data at rest, and records every use"
-    task: "2.2"
-    level: application
-    topics: [kms, rds, encryption-at-rest]
-    front:
-      text: An Amazon RDS database was created without encryption. How do you end up with an encrypted one?
-    back:
-      text: Take a snapshot, copy it with encryption turned on, and restore a new database from the copy. Encryption can't be switched on in place.
-
   - id: c09-encryption-choice-order
     page: guide/09-protecting-and-governing/02-encryption.md
-    section: "\"Compliance needs CloudHSM\" is wrong"
+    section: "CloudHSM gives you hardware no one else uses, and more of the work"
     task: "2.2"
     level: understanding
     topics: [kms, cloudhsm, acm]
@@ -4973,7 +4312,7 @@ flashcards:
 
   - id: c09-management-account-no-workloads
     page: guide/09-protecting-and-governing/05-compliance-and-governance.md
-    section: "AWS Organizations groups accounts so you can govern them together"
+    section: "An SCP is a ceiling: it limits everyone in a member account, and grants nothing"
     task: "2.3"
     level: understanding
     topics: [organizations, scp]
@@ -4981,17 +4320,6 @@ flashcards:
       text: Why should an organization's management account hold no workloads?
     back:
       text: It controls and pays for the whole organization, so a break-in there reaches everything. And SCPs don't apply to it, so no ceiling protects what runs there.
-
-  - id: c09-full-access-detached-no-replacement
-    page: guide/09-protecting-and-governing/05-compliance-and-governance.md
-    section: "An SCP is a ceiling: it limits everyone in a member account, and grants nothing"
-    task: "2.3"
-    level: understanding
-    topics: [scp]
-    front:
-      text: What happens if you detach FullAWSAccess from an OU and leave only deny-list SCPs there?
-    back:
-      text: Nothing is allowed at that level, so every action in the accounts below fails. Every level must allow; test SCP changes on a small OU first.
 
   - id: c09-organizations-or-control-tower
     page: guide/09-protecting-and-governing/05-compliance-and-governance.md
