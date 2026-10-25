@@ -119,7 +119,7 @@ No question needs a price, a percentage or a count. Free Tier terms and service 
 
 **B is right.** Standard Reserved Instances give the larger discount and can be sold on the Reserved Instance Marketplace, which suits a team that won't change. Convertible Reserved Instances give less discount but can be exchanged for another Convertible Reserved Instance of a different family, which suits Team 2.
 
-- **A is wrong.** It's the wrong way round: a Convertible can't be sold, and a Standard can't be exchanged for another family.
+- **A is wrong.** It's the wrong way around: a Convertible can't be sold, and a Standard can't be exchanged for another family.
 - **C is wrong.** Team 2 couldn't move its Standard reservations to the new family.
 - **D is wrong.** Team 1 would give up discount it doesn't need to, and lose the right to sell.
 
@@ -352,7 +352,7 @@ Take this only after the correction map, and closed-book. The threshold is the s
 **D is right.** A Convertible Reserved Instance can be exchanged for another Convertible Reserved Instance with a different family, operating system or tenancy, of equal or higher value, in the same Region. That's the freedom it trades some discount for.
 
 - **A is wrong.** Only Standard Reserved Instances can be sold on the Reserved Instance Marketplace.
-- **B is wrong.** Reserved Instances can't be cancelled; the commitment is paid for the whole term.
+- **B is wrong.** Reserved Instances can't be canceled; the commitment is paid for the whole term.
 - **C is wrong.** The lessons describe no such conversion: a Reserved Instance stays a Reserved Instance until its term ends.
 
 </details>
@@ -502,7 +502,7 @@ In the sandbox, an automatic budget action that applies an IAM policy (or an SCP
 
 <details><summary>Model answer</summary>
 
-Map both accounts to a `Shared` value in the `Team` cost category, then add a split charge rule that spreads `Shared` across the three teams in proportion to each team's own costs. The kitchen team, with the smallest costs, then carries the smallest share, which answers its objection without hiding the cost. An even split or fixed percentages are the alternatives if the teams agree to them. Each team's saved Cost Explorer report and budget, filtered to its `Team` value, then shows its own costs plus its share of the shared accounts. COST03-BP03 asks the business to agree these categories in advance, so the split is a decision, not an argument each month.
+Map both accounts to a `Shared` value in the `Team` cost category, then add a split charge rule that spreads `Shared` across the three teams in proportion to each team's own costs. The kitchen team, with the smallest costs, then carries the smallest share, which answers its objection without hiding the cost. An even split or fixed percentages are the alternatives if the teams agree to them. Each team's saved Cost Explorer report and budget, filtered to its `Team` value, then shows its own costs plus its share of the shared accounts. COST03-BP03 asks the business to agree on these categories in advance, so the split is settled once instead of argued over each month.
 
 </details>
 

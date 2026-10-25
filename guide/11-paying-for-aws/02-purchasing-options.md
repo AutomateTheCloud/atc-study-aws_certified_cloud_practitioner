@@ -118,7 +118,7 @@ A commitment is a bet on future use, and the team has no data to bet with. On-De
 
 ## A commitment trades flexibility for a lower rate
 
-Savings Plans and Reserved Instances work the same way at heart ([Reserved Instances overview](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html); [What are Savings Plans?](https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html)):
+Savings Plans and Reserved Instances work in the same basic way ([Reserved Instances overview](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html); [What are Savings Plans?](https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html)):
 
 - You commit for **one or three years**; three years earns the bigger discount.
 - You pay **All, Partial or No Upfront.**
@@ -167,7 +167,7 @@ A **Reserved Instance** is not a machine. It's a **billing discount** that AWS a
 
 ### "A Reserved Instance is a server set aside for you" is wrong
 
-It's easy to assume that buying a Reserved Instance gives you a server. It doesn't. Nothing launches when you buy one, and you don't connect to it. If a matching instance is running, its bill drops; if none is, you pay for the reservation and get nothing. The name invites the mistake, and one kind, the zonal Reserved Instance, does hold capacity, below. Even that is a promise of room to launch, not a running machine.
+It's easy to assume that buying a Reserved Instance gives you a server. It doesn't. Nothing launches when you buy one, and you don't connect to it. If a matching instance is running, its bill drops; if none is, you pay for the reservation and get nothing. The name invites the mistake, and one kind, the zonal Reserved Instance, does hold capacity (more on that below). Even that is a promise of room to launch, not a running machine.
 
 ### Standard or Convertible
 
@@ -240,7 +240,7 @@ You may have read that Reserved Instances save "up to 75%", as if that were the 
 
 ## Spot Instances: deep discounts for work that can stop
 
-A **Spot Instance** runs on EC2 capacity that's spare right now, for up to 90% less than On-Demand ([Amazon EC2 Spot Instances](https://aws.amazon.com/ec2/spot/)). There's no commitment. The **Spot price** is set by EC2 for each instance type in each AZ and moves gradually with long-term supply and demand. The catch: when EC2 needs the capacity back, it interrupts your instance, after a two-minute **interruption notice** ([Spot Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)).
+A **Spot Instance** runs on EC2 capacity that's spare right now, for up to 90% less than On-Demand ([Amazon EC2 Spot Instances](https://aws.amazon.com/ec2/spot/)). There's no commitment. The **Spot price** is set by EC2 for each instance type in each AZ and moves gradually with long-term supply and demand. The catch is that when EC2 needs the capacity back, it interrupts your instance, after a two-minute **interruption notice** ([Spot Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)).
 
 So Spot suits work that can stop and pick up again, or be split across many instances: data analysis, batch jobs, background processing, tests. It doesn't suit the bakery's only web server or its order database. Savings Plans don't cover Spot usage, and Spot spending doesn't count toward a Savings Plan commitment.
 
@@ -283,7 +283,7 @@ You might expect reserving capacity to lower the price, as a Reserved Instance d
 
 <details><summary>Feedback</summary>
 
-**C is right.** It's the only choice that guarantees capacity in that AZ. Booked ahead for next month's date, it commits the bakery to at least 14 days at the On-Demand rate, used or not (ten small servers may also fall short of the 32-vCPU minimum, so check the size). A reservation created on the morning itself needs no commitment and can be cancelled after the launch, but nothing is guaranteed until it's created. Either way, it's far less than A's three years.
+**C is right.** It's the only choice that guarantees capacity in that AZ. Booked ahead for next month's date, it commits the bakery to at least 14 days at the On-Demand rate, used or not (ten small servers may also fall short of the 32-vCPU minimum, so check the size). A reservation created on the morning itself needs no commitment and can be canceled after the launch, but nothing is guaranteed until it's created. Either way, it's far less than A's three years.
 
 - **A is wrong.** A zonal one would hold capacity, but three years of payments for one day is a costly mistake.
 - **B is wrong.** Spot is the opposite of guaranteed: capacity may not be there, and it can be taken back.
@@ -328,7 +328,7 @@ Lesson 11.01 explained the bakery's bill. The owner now asks: "Can we pay less f
 
 These are lesson 06.02's 29 server-months, counted as if each month's busiest hour lasted all month, so they overstate the peak a little: lesson 11.01's December bill averaged 4 servers, not 6. The base of 2, which is what the bakery commits to, is the same either way.
 
-1. **Split the shape.** Two servers run every hour of the year: steady and predictable. The extras run for weeks: short and unpredictable.
+1. **Split the shape.** Two servers run every hour of the year, so that part is steady and predictable. The extras run for weeks, and they're short-lived and hard to predict.
 2. **Commit to the base only.** A one-year commitment covering two `t3.small` servers. A Compute Savings Plan would follow a later move to Lambda; a Regional Reserved Instance is the option with a published rate in our price data, so we use it for the arithmetic.
 3. **Leave the peak On-Demand.** A commitment sized for December would sit unused for ten months.
 4. **Check by pricing all three.**
@@ -404,7 +404,7 @@ Teams review usage before they commit, commit to what they're sure of, and add m
 
    - **A is wrong.** Nothing launches; the discount applies to instances you run.
    - **B is wrong.** They don't renew; matching instances return to On-Demand rates.
-   - **D is wrong.** They can't be cancelled, though a Standard one can be sold on the Reserved Instance Marketplace and a Convertible one exchanged.
+   - **D is wrong.** They can't be canceled, though a Standard one can be sold on the Reserved Instance Marketplace and a Convertible one exchanged.
 
    </details>
 
@@ -420,7 +420,7 @@ Teams review usage before they commit, commit to what they're sure of, and add m
 
    <details><summary>Feedback</summary>
 
-   (a) **A Savings Plan or Reserved Instance:** steady and proven. (b) **On-Demand:** short; a commitment would sit idle. (c) **Spot:** interruptible and flexible. (d) **An On-Demand Capacity Reservation** for the weekend (created when needed and cancelled afterwards, or booked ahead with at least 14 days' commitment): a guarantee with no long commitment, and no discount unless combined with a Savings Plan or Regional Reserved Instance.
+   (a) **A Savings Plan or Reserved Instance:** steady and proven. (b) **On-Demand:** short; a commitment would sit idle. (c) **Spot:** interruptible and flexible. (d) **An On-Demand Capacity Reservation** for the weekend (created when needed and canceled afterward, or booked ahead with at least 14 days' commitment): a guarantee with no long commitment, and no discount unless combined with a Savings Plan or Regional Reserved Instance.
 
    </details>
 
