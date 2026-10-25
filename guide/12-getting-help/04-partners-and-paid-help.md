@@ -125,7 +125,7 @@ How you reach one: a new customer fills in AWS's contact form for sales, and a s
 
 **AWS Professional Services** is AWS's own consulting organization. You hire it to design, build, migrate and manage workloads on AWS. Its practice areas include data and AI, migration, modernization, and scale and security, and it works alongside AWS Partners, which bring their own industry knowledge and long-term support ([AWS Professional Services](https://aws.amazon.com/professional-services/), checked 2026-10-24). You reach it through AWS's contact form, and some of its offerings are listed in AWS Marketplace.
 
-Professional Services and solutions architects are both AWS people, so they're easy to confuse. The difference is the hands: a solutions architect advises you while you build; Professional Services builds with you or for you, under a contract.
+Professional Services and solutions architects are both AWS people, so they're easy to confuse. The difference is who does the hands-on work: a solutions architect advises you while you build; Professional Services builds with you or for you, under a contract.
 
 > **Warning:** On AWS's Free plan, creating a Professional Services contract upgrades the account to the Paid plan automatically, and so does joining the AWS Partner Network ([Choosing a plan](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html), checked 2026-10-24). Neither is needed for this guide. Read about them; don't sign up from your lab account.
 
