@@ -149,7 +149,7 @@ flowchart LR
 
 ## Check your work
 
-- [ ] Your lab log shows how many minutes the bucket took, from opening S3 to seeing it in the list.
+- [ ] Your lab log shows how many minutes the bucket took, from starting the stopwatch to the success message.
 - [ ] Tag Editor, searching all Regions, found exactly one bucket tagged `lab` = `01`.
 - [ ] CloudTrail Event history shows a `CreateBucket` event made by your IAM admin user, not the root user.
 

@@ -29,7 +29,7 @@ ENGINES = [
     ("Standard", 4.00, True),
     ("Neural", 16.00, True),
     ("Generative", 30.00, True),
-    ("Long Form", 100.00, False),
+    ("Long-Form", 100.00, False),
 ]
 
 
@@ -70,7 +70,7 @@ def price_by_engine():
         "Horizontal bar chart of Amazon Polly's pay-as-you-go price per 1 million characters, before any free "
         "allowance, checked 2026-10-24. Standard: $4, so the lab's 211-character description costs about "
         "$0.0008 to synthesize once. Neural: $16, about $0.0034 once. Generative: $30, about $0.0063 once. "
-        "Long Form: $100, about $0.0211 once; the lab doesn't use it. You pay each time Polly synthesizes, so "
+        "Long-Form: $100, about $0.0211 once; the lab doesn't use it. You pay each time Polly synthesizes, so "
         "speech you will reuse is best synthesized once and kept as a file, which AWS allows at no extra charge.",
         body, style=STYLE)
 

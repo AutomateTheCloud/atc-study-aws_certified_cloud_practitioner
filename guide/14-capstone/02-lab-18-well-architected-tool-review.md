@@ -221,7 +221,7 @@ You turned a review into evidence-backed answers, predicted the risks from the F
 >
 > <details><summary>Model answer</summary>
 >
-> One good answer is SEC 2, starting with [SEC02-BP05](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_identities_audit.html): a monthly look at IAM's credential report and last accessed information costs nothing and protects the account that every other fix depends on. COST 3's detailed reports matter less while the bill is small. Any choice is sound if it weighs impact on the business against effort and cost.
+> One good answer is SEC 2, starting with [SEC02-BP05](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_identities_audit.html): a monthly look at IAM's credential report and last accessed information costs nothing and protects the account that every other fix depends on. COST 3's detailed reports matter less while the bill is small, though any choice is sound if it weighs impact on the business against effort and cost.
 >
 > </details>
 
