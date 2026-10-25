@@ -110,7 +110,7 @@ The CAF describes the change itself as four **transformation domains** that form
 - **Organization:** change how teams work, for example organizing them around products. For the chain: one team owns wholesale ordering from end to end.
 - **Product:** new offers and new ways to earn money. For the chain: a subscription service for cafés.
 
-The chain matters. Moving servers alone (technology) delivers some savings; most of the larger outcomes come from what the move makes possible next.
+The order matters. Moving servers alone (technology) delivers some savings, but most of the larger outcomes come from what the move makes possible next.
 
 ### "Process is one of the CAF perspectives" is wrong
 
@@ -161,7 +161,7 @@ Two traps among the capability names:
 
 ## Map a concern by asking what is at stake, not who is asking
 
-Here is a method that works for the exam and for real meetings. Read the concern, ignore the job title, and ask in turn what the concern is really about. The first match is usually the perspective.
+This method works for the exam and in real meetings: read the concern, ignore the job title, and ask in turn what the concern is really about. The first match is usually the perspective.
 
 ```mermaid
 flowchart TD

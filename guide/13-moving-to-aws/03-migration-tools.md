@@ -111,7 +111,7 @@ Older material sends you to the "AWS TCO Calculator" for this job. That tool is 
 
 ## The discovery and tracking tools are closed to new customers
 
-The exam guide lists two planning tools that new customers can no longer get. Learn what they do, because questions use them, and learn their status, because real work does.
+The exam guide lists two planning tools that new customers can no longer get. You still need to know what they do, because exam questions use them, and their status, because real work depends on it.
 
 - **AWS Application Discovery Service** collects data about on-premises servers and databases: their configuration, how busy they are, and the network connections between them. You use it to group servers into applications and to spot dependencies before you plan the move.
 - **AWS Migration Hub** is one place to track the status of each application's migration, whichever tool does the moving. It moves nothing itself.
@@ -227,7 +227,7 @@ It's tempting because Snowball was the textbook answer for years, and it still s
 
 For the chain, the files are the recipes from the recipe archive, which 13.02 retires: the application goes, the recipes are kept in an S3 archive storage class. If they fit in a few gigabytes, uploading them straight to S3 is enough; a large file share is a job for DataSync.
 
-When a file share is large, whether the network is fast enough is arithmetic, not guesswork. Take a company outside the chain's portfolio with 60 TB of files to move:
+When a file share is large, you can work out whether the network is fast enough with simple arithmetic. Take a company outside the chain's portfolio with 60 TB of files to move:
 
 ![Horizontal bar chart: days to copy 60 TB over the network using 80 percent of the link. 100 Mbps: 69.4 days. 500 Mbps: 13.9 days. 1 Gbps: 6.9 days. 10 Gbps: 0.7 days, about 17 hours.](../../images/13-03-transfer-days.svg)
 
