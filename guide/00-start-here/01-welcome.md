@@ -50,7 +50,7 @@ The exam tests the knowledge behind these; the hands-on work goes beyond it.
 
 Besides this start module, the guide has 14 modules, a separate guardrails primer and an exam-preparation section. A **module** is a group of pages built around one realistic task: it opens with a scenario and ends with you doing it.
 
-Each module has short lessons, hands-on **labs** in your own AWS account, **simulations** (exercises that run on our site or on paper, for things that would cost money or carry risk in a real account), and a **mastery check** at the end. You pass a check at 80%. If you miss something, the check points you to the section to reread, and then you take a second check with new questions.
+Each module has short lessons, hands-on **labs** in your own AWS account, **simulations** (exercises that run on our site or on paper, for things that would cost money or carry risk in a real account), and a **mastery check** at the end. You pass a check at 80%. If you miss something, the check points you to the section to reread, and then you take a second check with new questions. Two modules differ: each on-ramp lesson opens with a short test-out instead, and the capstone is scored with a rubric.
 
 | # | Module | What you do by the end | Hours |
 |---|---|---|---|

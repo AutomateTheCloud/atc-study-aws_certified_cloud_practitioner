@@ -156,7 +156,7 @@ In case 6, the shop account's **root user** signs in and tries to create an IAM 
 
 ### Decision 5: thirty staff, twelve accounts
 
-The chain now has twelve shop accounts and thirty staff. Each person needs a different level of access in several accounts. What should the chain use, and why can't you try it in your Free plan lab account?
+The bakery now has ten shops, each with its own account, and thirty staff. Each person needs a different level of access in several accounts. What should the chain use, and why can't you try it in your Free plan lab account?
 
 <details><summary>Model answer</summary>
 

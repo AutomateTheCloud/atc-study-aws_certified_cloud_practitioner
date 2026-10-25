@@ -210,7 +210,7 @@ A **permission set** is Identity Center's bundle of permissions; it creates the 
 
 ### "AWS Single Sign-On" is the old name
 
-You may see "AWS Single Sign-On" or "AWS SSO" in older questions. AWS renamed it **AWS IAM Identity Center** on July 26, 2022. It's the same service, so pick Identity Center when a scenario asks for workforce single sign-on. The old name survives in some command names, which is one reason it lingers.
+You may see "AWS Single Sign-On" or "AWS SSO" in older questions. AWS renamed it **AWS IAM Identity Center** on 2022-07-26. It's the same service, so pick Identity Center when a scenario asks for workforce single sign-on. The old name survives in some command names, which is one reason it lingers.
 
 ### Four identity services, side by side
 
@@ -225,7 +225,7 @@ The exam asks you to tell these apart. The key question is *whose* identities th
 A few details from the services' pages ([Cognito](https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html); [Directory Service](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html); checked 2026-10-23):
 
 - Cognito **user pools** sign app users in, including with Google, Apple or Facebook accounts; **identity pools** swap that sign-in for temporary, limited AWS credentials.
-- Directory Service offers **AWS Managed Microsoft AD**, and **AD Connector**, which passes sign-ins to an existing on-premises directory. A third type, Simple AD, has been closed to new customers since July 30, 2026.
+- Directory Service offers **AWS Managed Microsoft AD**, and **AD Connector**, which passes sign-ins to an existing on-premises directory. A third type, Simple AD, has been closed to new customers since 2026-07-30.
 - IAM itself can federate one standalone account with a SAML 2.0 or OIDC identity provider, without Identity Center.
 
 ```mermaid

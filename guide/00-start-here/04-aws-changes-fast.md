@@ -89,7 +89,7 @@ Checked on 2026-10-23. Module numbers say where the guide teaches each.
 | AWS Application Migration Service (still the exam's name) | AWS Transform MGN (module 13) | [Product page](https://aws.amazon.com/application-migration-service/) |
 | AWS Security Hub, one product | Two: Security Hub CSPM (the original) and a new, unified Security Hub (module 09) | [Security Hub docs](https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html) |
 | AWS Snowball as the answer for moving large amounts of data | Closed to new customers since 2025-11-07; support ends 2026-12-31; removed from the exam guide (modules 05 and 13) | [AWS Snowball](https://aws.amazon.com/snowball/) |
-| AWS OpsWorks, AWS CodeStar, AWS Snowmobile, AWS Cloud9 | Shut down in 2024. AWS Cloud9 is closed to new customers | [Full shutdown list](https://docs.aws.amazon.com/general/latest/gr/full_shutdown_services.html); [Cloud9 docs](https://docs.aws.amazon.com/cloud9/latest/user-guide/welcome.html) |
+| AWS OpsWorks, AWS CodeStar, AWS Snowmobile, AWS Cloud9 | Shut down in 2024 (Snowmobile on 2024-03-14, CodeStar on 2024-07-25). AWS Cloud9 is closed to new customers | [Full shutdown list](https://docs.aws.amazon.com/general/latest/gr/full_shutdown_services.html); [Cloud9 docs](https://docs.aws.amazon.com/cloud9/latest/user-guide/welcome.html) |
 | The TCO Calculator | Gone; its address leads to the AWS Pricing Calculator (modules 11 and 13) | [AWS Pricing Calculator](https://calculator.aws/) |
 | Two types of Savings Plans | Four: Compute, Database, EC2 Instance and SageMaker AI (module 11) | [Savings Plans types](https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html) |
 

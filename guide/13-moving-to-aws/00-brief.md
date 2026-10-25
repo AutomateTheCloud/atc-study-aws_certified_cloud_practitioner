@@ -23,7 +23,7 @@ This module teaches how an organization decides to move to the cloud, and how it
 
 ## The scenario: a chain buys the bakery
 
-The bakery grew: it opened a few shops of its own and gathered its AWS accounts into one organization (Simulations S4 and S11). Its site still runs on AWS (EC2, RDS, Lambda and S3 in the Module 07 network). Now a larger regional bakery chain has bought it. In this module, **the chain** means that buyer. The chain runs its own systems in a rented data center whose lease ends in 18 months. Its board asks: **should we move too, and how?**
+The bakery grew: it opened ten shops of its own and gathered its AWS accounts into one organization (Simulations S4 and S11). Its site still runs on AWS (EC2, RDS, Lambda and S3 in the Module 07 network). Now a larger regional bakery chain has bought it. In this module, **the chain** means that buyer. The chain runs its own systems in a rented data center whose lease ends in 18 months. Its board asks: **should we move too, and how?**
 
 The chain's ten applications (all made up for teaching):
 
