@@ -15,7 +15,7 @@ The 1000 terms this guide has taught so far (modules 00, 01, 02, 03, 04, 05, 06,
 
 [A](#a) · [B](#b) · [C](#c) · [D](#d) · [E](#e) · [F](#f) · [G](#g) · [H](#h) · [I](#i) · [J](#j) · [K](#k) · [L](#l) · [M](#m) · [N](#n) · [O](#o) · [P](#p) · [Q](#q) · [R](#r) · [S](#s) · [T](#t) · [U](#u) · [V](#v) · [W](#w) · X · [Y](#y) · [Z](#z)
 
-## #
+## 0–9
 
 **7 Rs**: AWS's seven migration strategies: retire, retain, rehost, relocate, repurchase, replatform, and refactor or re-architect. AWS's 2016 list had six; relocate was added later.
 

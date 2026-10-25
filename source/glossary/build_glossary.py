@@ -152,7 +152,8 @@ def render(entries):
     groups = {}
     for e in entries:
         letter = e["term"][0].upper()
-        groups.setdefault(letter if letter in string.ascii_uppercase else "#", []).append(e)
+        # Not "#": in Markdown, "## #" is an empty heading (the "#" closes it).
+        groups.setdefault(letter if letter in string.ascii_uppercase else "0–9", []).append(e)
 
     jump = " · ".join(
         f"[{c}](#{c.lower()})" if c in groups else c for c in string.ascii_uppercase
